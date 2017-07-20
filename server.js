@@ -1,19 +1,61 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var mongodb = require("mongodb");
-var ObjectID = mongodb.ObjectID;
+var throng = require('throng');
 
-var CONTACTS_COLLECTION = "contacts";
+var WORKERS = process.env.WEB_CONCURRENCY || 1;
+var PORT = process.env.PORT || 5000;
+var ENV = process.env.ENV || 'local';
 
-var app = express();
-app.use(bodyParser.json());
+// support multi http request
+throng({
+  workers: WORKERS,
+  lifetime: Infinity
+}, start);
 
-// Create link to Angular build directory
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
+function start() {
+  var compression = require('compression');
+  var express = require('express');
+  var morgan = require('morgan');
+  var prerender = require('prerender-node');
+  var app = express();
+
+  app.use(morgan('dev'));
+  app.use('*', function(req, res, next) {
+    var shouldRedirect = false;
+    var host = req.get('Host');
+
+    if (!host.match(/^www\..*/i) && ENV === 'prod') {
+      host = 'www.' + host;
+      shouldRedirect = true;
+    }
+
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      shouldRedirect = true;
+    }
+
+    if (shouldRedirect && ENV !== 'local') {
+      res.redirect(301, 'https://' + host + req.originalUrl);
+    } else {
+      next();
+    }
+  });
+  app.use(prerender.set('prerenderToken', 'W7C9qOob3QilKJiMu1XN'));
+  app.use(compression());
+  app.use(express.static('' + __dirname + '/dist'));
+  app.use(function(req, res) {
+    res.sendfile('dist/index.html');
+  });
+
+  app.listen(PORT, onListen);
+
+  function onListen() {
+    console.log('Listening on', PORT);
+  }
+}
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
+
+var mongodb = require("mongodb");
+var ObjectID = mongodb.ObjectID;
 
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
