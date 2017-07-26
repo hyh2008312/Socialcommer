@@ -5,8 +5,7 @@
     "MEAN",
     "Angular",
     "Node",
-    "MongoDB",
-    "mLab"
+    "Angular cli"
   ],
   "repository": "https://github.com/chrisckchang/mean-contactlist-angular2",
   "success_url": "/",
