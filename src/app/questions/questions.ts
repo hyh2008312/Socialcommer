@@ -3,6 +3,7 @@ export class Questions {
   questionTitle : string;
   description : string;
   owner: Owner;
+  created: string;
 }
 
 export class Owner {
