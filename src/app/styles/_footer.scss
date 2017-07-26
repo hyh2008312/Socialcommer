@@ -1,0 +1,103 @@
+.xb-footer-hide{
+  @include xb-xs-screen{
+    display: none;
+  }
+
+  &__PC{
+    @include xb-gt-xs-screen{
+      display: none;
+    }
+  }
+}
+.footer {
+  align-self: flex-end;
+  width: 100%;
+  position: relative;
+  @include resetBorder();
+  @include xb-xs-screen{
+    padding-bottom: 10px;
+  }
+  .container{
+    height: 240px;
+    @media screen and (max-width: 600px){
+      height: auto;
+    }
+  }
+  /* Set the fixed height of the footer here */
+  background-color: #000;
+  $margins: (1 16px) (2 12px);
+  @each $margin in $margins {
+    &__margin-top-#{nth($margin, 1)}{
+      margin-top: nth($margin, 2);
+    }
+  }
+
+  &__text-wrap{
+    padding: 0 10px 0 24px;
+    color: #999999;
+  }
+  &__text{
+    margin-bottom: 0;
+    @media screen and (max-width: 600px) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__logo-wrap{
+    margin-right: 16px;
+    img{
+      width: 120px;
+      height: 30px;
+    }
+  }
+  .list-inline{
+    color: #999999;
+    @media screen and (min-width: 600px) and (max-width: 750px) {
+      padding: 10px 0;
+    }
+    >div{
+      cursor: pointer;
+      color: #fff;
+      margin-left: 40px;
+      @media screen and (max-width: 600px){
+        margin-left: 24px;
+      }
+      &:first-child{
+        margin-left: 0;
+      }
+      a{
+        color: #fff;
+        &:hover{
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+    span{
+      margin-left: 16px;
+      i{
+        width: 24px;
+        height: 24px;
+        background-color: rgba(255,255,255,.5);
+        border-radius: 50%;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #000;
+        &:hover{
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .list-inline-1{
+    @media screen and (max-width: 600px) {
+      margin-top: 16px;
+    }
+  }
+}
+.xb-footer-padding{
+  @include xb-xs-screen{
+    padding-bottom: 60px;
+  }
+}

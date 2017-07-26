@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.animation-opacity-show{
+
+  @include prefixer(animation, opacity-show .5s linear 0s 1 normal, $prefix-list);
+
+  @at-root {
+
+    @include prefix-keyframes(opacity-show, $prefix-list) {
+      0%   { opacity: .5;}
+      99% { opacity: 1;}
+    }
+  }
+}
+
+// perk points animation
+.animation-perks-points{
+
+  @include prefixer(animation, perks-points-flow 2s linear .1s 1 forwards, $prefix-list);
+
+  @at-root {
+
+    @include prefix-keyframes(perks-points-flow, $prefix-list) {
+      0%   {
+        opacity: 0;
+        top:40%;
+        @include prefix-content(transform,translateX(-50%) scale(.8, .8));
+      }
+      50%  {
+        opacity: 1;
+        @include prefix-content(transform,translateX(-50%) scale(.9, .9));
+      }
+      75%  {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        top:35%;
+        @include prefix-content(transform,translateX(-50%) scale(1, 1));
+        display: none;
+      }
+    }
+  }
+}
+

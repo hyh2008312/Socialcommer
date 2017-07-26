@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,kBAAS;EACP,KAAK,EAAE,OAAc;AAEvB,qBAAY;EACV,KAAK,EAAE,OAAc",
+"sources": ["user-follow.component.scss"],
+"names": [],
+"file": "user-follow.component.css"
+}

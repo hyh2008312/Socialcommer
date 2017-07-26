@@ -1,0 +1,12 @@
+.message{
+  padding: 120px 0;
+  &__title{
+    margin-bottom: 16px;
+  }
+  &__text{
+    line-height: 24px;
+  }
+  &__button{
+    margin-top: 72px;
+  }
+}

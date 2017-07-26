@@ -1,0 +1,257 @@
+@import "../../styles/main.scss";
+
+.xb-ask-list{
+  &__item{
+    margin-bottom: 16px;
+    padding: 16px;
+    display: block;
+    overflow: hidden;
+    @include resetBorder();
+    @include xb-xs-screen{
+      padding: 16px 8px;
+    }
+    .md-padding{
+      padding: 0;
+    }
+    >.md-button{
+      margin: 0;
+    }
+  }
+  &__margin-top{
+    margin-top: 24px;
+    @include xb-xs-screen{
+      margin-top: 16px;
+    }
+  }
+  &__head-bg{
+    app-user-avatar{
+      margin-right: 16px;
+      @include avatar-header(medium);
+      @include xb-xs-screen{
+        margin-right: 12px;
+      }
+    }
+    .md-subhead{
+      line-height: 18px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .md-body-1{
+      line-height: 14px;
+    }
+    .md-margin-left-1{
+      height: 18px;
+      @include ellipsisText();
+    }
+  }
+  &__title{
+    margin-top: 12px;
+    margin-bottom: 20px;
+    display: block;
+    word-wrap: break-word;
+    &:hover{
+      color: rgba(0,0,0,.84);
+    }
+    @include media();
+    @include xb-xs-screen{
+      margin-top: 0;
+      font-size: 16px;
+      line-height: 24px;
+      max-height: none;
+      margin-bottom: 8px;
+      text-decoration: none;
+    }
+  }
+  &__title-1{
+    margin-top: 12px;
+    margin-bottom: 20px;
+    display: block;
+    &:hover{
+      color: rgba(0,0,0,.84);
+    }
+    @include media();
+    @include xb-xs-screen{
+      margin-top: 0;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 8px;
+      text-decoration: none;
+    }
+  }
+  &__title-2{
+    margin-top: 12px;
+    margin-bottom: 20px;
+    display: block;
+    word-wrap: break-word;
+    max-height: 96px;
+    overflow: hidden;
+    &:hover{
+      color: rgba(0,0,0,.84);
+    }
+    @include media();
+    @include xb-xs-screen{
+      margin-top: 0;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 8px;
+      text-decoration: none;
+      max-height: 72px;
+    }
+  }
+  &__answer-content-display{
+    cursor: pointer;
+  }
+  &__answer-content{
+    margin-top: 12px;
+    word-wrap: break-word;
+    display: block;
+    padding: 0;
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    img{
+      max-width: 100%;
+    }
+    iframe{
+      width: 100%;
+    }
+  }
+  &__answer-image{
+    margin-top: 12px;
+    display: block;
+    >img{
+      width: 100%;
+    }
+  }
+  &__answer-image-bg{
+    margin-left: 16px;
+    margin-top: 12px;
+    height: 125px;
+    >img{
+      height: 125px;
+      width: auto;
+    }
+    @include xb-xs-screen{
+      margin-left: 8px;
+      margin-top: 20px;
+      height: 60px;
+      >img{
+        height: 60px;
+        width: auto;
+      }
+    }
+  }
+  &__img-bg{
+    margin-top: 4px;
+    max-height: 150px;
+    position: relative;
+    overflow: hidden;
+    >img{
+      width: 100%;
+    }
+  }
+  $parent: &;
+  &__actions{
+    margin-top: 16px;
+    height: 56px;
+    border-top: 1px solid rgba(0,0,0,.12);
+    .md-button{
+      padding: 0;
+      margin: 0;
+      min-width: 0;
+    }
+    #{$parent}__margin-left{
+      margin-left: 40px;
+      @include xb-xs-screen{
+        margin-left: 16px;
+      }
+    }
+  }
+  &__actions-1{
+    margin-top: 16px;
+    height: 56px;
+    border-top: 1px solid rgba(0,0,0,.12);
+    .md-button{
+      padding: 0 16px;
+      margin: 0;
+      min-width: 0;
+    }
+    #{$parent}__margin-left{
+      padding: 0;
+      margin-left: 40px;
+      @include xb-xs-screen{
+        margin-left: 8px;
+      }
+    }
+    i{
+      margin-left: 24px;
+      font-size: 20px;
+      line-height: 20px;
+      cursor: pointer;
+    }
+  }
+  &__actions-2{
+    margin-bottom: -16px;
+    .md-button{
+      padding: 0;
+      margin: 0 0 0 16px;
+      min-width: 0;
+      width: 24px;
+      height: 24px;
+      .material-icons{
+        margin: 0;
+      }
+    }
+    i{
+      margin-left: 24px;
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+  &__color{
+    color: #3f51b5;
+  }
+  &__best-answer{
+    margin-top: 16px;
+    @include xb-xs-screen{
+      margin-top: 8px;
+    }
+    i{
+      color: #ff9800;
+      width: 24px;
+      height: 24px;
+      font-size: 24px;
+      line-height: 24px;
+      text-align: center;
+    }
+  }
+  &__menu-bg{
+    position: relative;
+  }
+  &__menu{
+    position: absolute;
+    top: 30px;
+    left: -38px;
+    width: 100px;
+    z-index: 1;
+    @include resetBorder();
+    >div{
+      padding: 4px 0;
+      line-height: 24px;
+      text-align: center;
+    }
+  }
+  &__answer-title{
+    background-color: $whiteColor;
+    padding: 16px 16px 20px;
+    margin-bottom: 16px;
+    font-size: 20px;
+    line-height: 28px;
+
+    @include resetBorder();
+    @include xb-xs-screen{
+      padding: 16px 8px 20px;
+    }
+  }
+}

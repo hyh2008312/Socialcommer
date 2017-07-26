@@ -1,0 +1,42 @@
+.report-publisher{
+  avatar-img{
+    width: 36px;
+    height: 36px;
+    display: block;
+    margin-right: 10px;
+  }
+  img{
+    width: 36px;
+    height: 36px;
+    margin-bottom: 0;
+  }
+  font-size: 16px;
+  font-weight: 300;
+  color: #999999;
+}
+.report-category{
+  font-size: 14px;
+  line-height: 14px;
+  color: #1c87d9;
+  margin-bottom: 10px;
+  &--small{
+    margin-bottom: 5px;
+  }
+}
+.report-product{
+  margin-bottom: 5px;
+}
+
+.report-rating{
+  margin-bottom: 0;
+}
+
+.review-order-title{
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-left: 4px solid #000000;
+  padding-left: 10px;
+  margin-top:0;
+}

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="xb-ask-list__answer-title">
+    {{answer.questionTitle}}
+  </div>
+  <div class="background-whitem xb-question-detail__list">
+    <div class="xb-ask-list__item">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-ask-list__head-bg" fxLayout="row" fxFlex>
+          <app-user-avatar [avatar]="userprofile.avatar" [name]="owner.firstName"></app-user-avatar>
+          <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex>
+            <div class="md-subhead" fxLayout="row" fxLayoutAlign="start center" >
+              {{owner.firstName}}
+              <app-user-badge class="md-margin-left-1" [point]="owner.badgePoint"></app-user-badge>
+              <div class="md-dark-secondary md-margin-left-1">
+                {{userprofile.position + '@' + userprofile.company}}
+              </div>
+            </div>
+            <span class="md-body-1 md-dark-secondary">Answered <span>{{answer.created | amTimeAgo}}</span></span>
+          </div>
+        </div>
+        <app-user-follow [follow]="currentUser.follow"></app-user-follow>
+      </div>
+      <div ng-if="answer.isBestAnswer" class="xb-ask-list__best-answer" fxLayout="row" fxLayoutAlign="start center" >
+        <i class="iconfontXberts icon-pic-best-answer1"></i>
+        <div class="xb-bold md-margin-left-1">Top Answer</div>
+      </div>
+      <div [innerHTML]="answer.description"></div>
+    </div>
+  </div>
+</div>
+

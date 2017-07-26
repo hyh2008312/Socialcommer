@@ -1,0 +1,21 @@
+.md-section{
+  //border: 1px solid #000000;
+  padding-top:32px;
+  padding-bottom: 32px;
+  &__title{
+    text-align: center;
+    //border: 1px solid #000000;
+    margin-bottom: 24px;
+    >.md-headline{
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    >.md-subhead{
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  &__content{
+    //border: 1px solid #000000;
+  }
+}
