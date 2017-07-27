@@ -6,6 +6,7 @@
     padding: 16px;
     display: block;
     overflow: hidden;
+
     @include resetBorder();
     @include xb-xs-screen{
       padding: 16px 8px;
@@ -24,6 +25,7 @@
     }
   }
   &__head-bg{
+    min-width: 0;
     app-user-avatar{
       margin-right: 16px;
       @include avatar-header(medium);

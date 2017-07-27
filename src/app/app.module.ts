@@ -16,6 +16,10 @@ import { UserAvatarComponent } from './components/user-avatar/user-avatar.compon
 import { UserBadgeComponent } from './components/user-badge/user-badge.component';
 import { UserFollowComponent } from './components/user-follow/user-follow.component';
 
+import { ViewResizeDirective } from './directives/view-resize/view-resize.directive';
+
+import { SafeHtmlPipe } from './pipes/safe-html/safe-html.pipe';
+
 import { QuestionsService } from './questions/questions.service';
 
 
@@ -25,7 +29,9 @@ import { QuestionsService } from './questions/questions.service';
     AnswerDetailComponent,
     UserAvatarComponent,
     UserBadgeComponent,
-    UserFollowComponent
+    UserFollowComponent,
+    ViewResizeDirective,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
