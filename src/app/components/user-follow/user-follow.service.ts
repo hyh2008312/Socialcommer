@@ -15,6 +15,7 @@ export class FollowService {
                private windowRef: WindowRef) { }
 
   createAuthorizationHeader(headers: Headers) {
+    alert(this.windowRef.nativeWindow().WebAppInterface.getAccessToken());
     headers.append('Authorization',
       this.windowRef.nativeWindow().WebAppInterface.getAccessToken() != '' ?
       'Bearer ' + this.windowRef.nativeWindow().WebAppInterface.getAccessToken(): '');
