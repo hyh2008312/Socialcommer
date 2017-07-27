@@ -23,6 +23,8 @@ import { SafeHtmlPipe } from './pipes/safe-html/safe-html.pipe';
 import { QuestionsService } from './questions/questions.service';
 import { FollowService } from './components/user-follow/user-follow.service';
 
+import { WindowRef } from './provider/window-ref.provider';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { FollowService } from './components/user-follow/user-follow.service';
     MomentModule,
     FlexLayoutModule
   ],
-  providers: [QuestionsService,FollowService],
+  providers: [QuestionsService,FollowService,WindowRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

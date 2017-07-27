@@ -6,7 +6,8 @@
     <div class="xb-ask-list__item" fxLayout="column">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="xb-ask-list__head-bg" fxLayout="row" fxFlex>
-          <app-user-avatar [avatar]="userprofile.avatar" [name]="owner.firstName" fxFlex="none"></app-user-avatar>
+          <app-user-avatar [avatar]="userprofile.avatar" [name]="owner.firstName" fxFlex="none"
+            (click)="toProfile(owner.id)"></app-user-avatar>
           <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex="nogrow">
             <div class="md-subhead" fxLayout="row" fxLayoutAlign="start center" >
               {{owner.firstName}}

@@ -3,20 +3,32 @@ import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
+import { WindowRef } from '../../provider/window-ref.provider';
+
 import { Follow } from './user-follow';
 
 @Injectable()
 export class FollowService {
   private followUrl = 'https://api-staging.xberts.com/xberts/experts/';
 
-  constructor( private http: Http ) { }
+  constructor( private http: Http,
+               private windowRef: WindowRef) { }
 
   createAuthorizationHeader(headers: Headers) {
-    headers.append('Authorization', 'Bearer ' +
-      'Iw4GAwU8i31tUUuMwbKVOYQbxfC0dJ');
+    headers.append('Authorization',
+      this.windowRef.nativeWindow().WebAppInterface.getAccessToken() != '' ?
+      'Bearer ' + this.windowRef.nativeWindow().WebAppInterface.getAccessToken(): '');
   }
 
   follow(id:number): Promise<Follow> {
+
+    if(this.windowRef.nativeWindow().WebAppInterface.getAccessToken
+      && this.windowRef.nativeWindow().WebAppInterface.getAccessToken() == '') {
+      if( this.windowRef.nativeWindow().WebAppInterface.toLogin ) {
+        this.windowRef.nativeWindow().WebAppInterface.toLogin();
+      }
+      return;
+    }
 
     let headers = new Headers({
       'Content-Type': 'application/json'
