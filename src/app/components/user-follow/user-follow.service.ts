@@ -21,8 +21,8 @@ export class FollowService {
   }
 
   follow(id:number): Promise<Follow> {
-    if(window['WebAppInterface'] && window['WebAppInterface'].getAccessToken() == '') {
-      if( window['WebAppInterface'] ) {
+    if(window['WebAppInterface']) {
+      if(window['WebAppInterface'].getAccessToken() == '') {
         window['WebAppInterface'].toLogin();
       }
       return;
