@@ -48,6 +48,6 @@ export class AnswerDetailComponent implements OnInit {
   }
 
   toProfile(id:number) {
-    this.windowRef.nativeWindow().WebAppInterface.toProfile(id);
+    this.windowRef.webAppInterface && this.windowRef.webAppInterface.toProfile(id);
   }
 }

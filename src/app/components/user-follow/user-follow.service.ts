@@ -15,18 +15,19 @@ export class FollowService {
                private windowRef: WindowRef) { }
 
   createAuthorizationHeader(headers: Headers) {
-    alert(this.windowRef.nativeWindow().WebAppInterface.getAccessToken());
+    window.alert(this.windowRef.webAppInterface.getAccessToken);
+
     headers.append('Authorization',
-      this.windowRef.nativeWindow().WebAppInterface.getAccessToken() != '' ?
-      'Bearer ' + this.windowRef.nativeWindow().WebAppInterface.getAccessToken(): '');
+      this.windowRef.webAppInterface && this.windowRef.webAppInterface.getAccessToken() != '' ?
+      'Bearer ' + this.windowRef.webAppInterface.getAccessToken(): '');
   }
 
   follow(id:number): Promise<Follow> {
 
-    if(this.windowRef.nativeWindow().WebAppInterface.getAccessToken
-      && this.windowRef.nativeWindow().WebAppInterface.getAccessToken() == '') {
-      if( this.windowRef.nativeWindow().WebAppInterface.toLogin ) {
-        this.windowRef.nativeWindow().WebAppInterface.toLogin();
+    if(this.windowRef.webAppInterface
+      && this.windowRef.webAppInterface.getAccessToken() == '') {
+      if( this.windowRef.webAppInterface ) {
+        this.windowRef.webAppInterface.toLogin();
       }
       return;
     }

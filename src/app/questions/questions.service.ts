@@ -5,16 +5,29 @@ import 'rxjs/add/operator/toPromise';
 
 import { Questions } from './questions';
 
+import { WindowRef } from '../provider/window-ref.provider';
+
 @Injectable()
 export class QuestionsService {
   private answersUrl = 'https://api-staging.xberts.com/answers/';
 
-  constructor( private http: Http ) { }
+  constructor( private http: Http,
+               private windowRef: WindowRef) { }
+
+  createAuthorizationHeader(headers: Headers) {
+
+    headers.append('Authorization',
+      this.windowRef.webAppInterface && this.windowRef.webAppInterface.getAccessToken() != '' ?
+      'Bearer ' + this.windowRef.webAppInterface.getAccessToken(): '');
+  }
 
   getAnswerDetail(id:number): Promise<Questions> {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
+
+    this.createAuthorizationHeader(headers);
+
     let options = new RequestOptions({headers:headers});
 
     const url = `${this.answersUrl}${id}/`;
