@@ -5,8 +5,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Questions, Owner, Userprofile, CurrentUser} from '../questions';
 import { QuestionsService } from '../questions.service';
 
-import { WindowRef } from '../../provider/window-ref.provider';
-
 @Component({
   selector: 'app-answer-detail',
   templateUrl: './answer-detail.component.html',
@@ -22,7 +20,6 @@ export class AnswerDetailComponent implements OnInit {
 
   constructor(
     private questionsService: QuestionsService,
-    private windowRef: WindowRef,
     private route: ActivatedRoute
   ) { }
 
@@ -48,6 +45,6 @@ export class AnswerDetailComponent implements OnInit {
   }
 
   toProfile(id:number) {
-    this.windowRef.webAppInterface && this.windowRef.webAppInterface.toProfile(id);
+    window['WebAppInterface'] && window['WebAppInterface'].toProfile(id);
   }
 }
