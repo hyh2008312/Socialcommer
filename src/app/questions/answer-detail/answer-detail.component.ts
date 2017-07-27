@@ -25,7 +25,6 @@ export class AnswerDetailComponent implements OnInit {
 
   ngOnInit():void {
 
-    window.alert(window['WebAppInterface']['testAndroid']);
     this.route.paramMap
       .switchMap((params: ParamMap) =>{
         return this.questionsService.getAnswerDetail(+params.get('id'))
