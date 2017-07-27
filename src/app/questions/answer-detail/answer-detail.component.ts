@@ -46,6 +46,8 @@ export class AnswerDetailComponent implements OnInit {
   }
 
   toProfile(id:number) {
-    window['WebAppInterface'] && window['WebAppInterface'].toProfile(id);
+    if(window['WebAppInterface']) {
+      window['WebAppInterface'].toProfile(id);
+    }
   }
 }
