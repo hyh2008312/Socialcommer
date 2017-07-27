@@ -15,7 +15,7 @@ export class FollowService {
                private windowRef: WindowRef) { }
 
   createAuthorizationHeader(headers: Headers) {
-    window.alert(this.windowRef.webAppInterface.getAccessToken);
+
 
     headers.append('Authorization',
       this.windowRef.webAppInterface && this.windowRef.webAppInterface.getAccessToken() != '' ?
@@ -23,7 +23,7 @@ export class FollowService {
   }
 
   follow(id:number): Promise<Follow> {
-
+    window.alert(this.windowRef.webAppInterface.getAccessToken);
     if(this.windowRef.webAppInterface
       && this.windowRef.webAppInterface.getAccessToken() == '') {
       if( this.windowRef.webAppInterface ) {
