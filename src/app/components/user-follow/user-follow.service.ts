@@ -13,10 +13,11 @@ export class FollowService {
 
   createAuthorizationHeader(headers: Headers) {
 
-
-    headers.append('Authorization',
-      window['WebAppInterface'] && window['WebAppInterface'].getAccessToken() != '' ?
+    if(window['WebAppInterface']) {
+      headers.append('Authorization', window['WebAppInterface'].getAccessToken() != '' ?
       'Bearer ' + window['WebAppInterface'].getAccessToken(): '');
+    }
+
   }
 
   follow(id:number): Promise<Follow> {

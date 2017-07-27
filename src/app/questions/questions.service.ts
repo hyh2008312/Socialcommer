@@ -13,9 +13,10 @@ export class QuestionsService {
 
   createAuthorizationHeader(headers: Headers) {
 
-    headers.append('Authorization',
-      window['WebAppInterface'] && window['WebAppInterface'].getAccessToken() != '' ?
+    if(window['WebAppInterface']) {
+      headers.append('Authorization', window['WebAppInterface'].getAccessToken() != '' ?
       'Bearer ' + window['WebAppInterface'].getAccessToken(): '');
+    }
   }
 
   getAnswerDetail(id:number): Promise<Questions> {

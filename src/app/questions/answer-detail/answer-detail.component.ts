@@ -30,7 +30,7 @@ export class AnswerDetailComponent implements OnInit {
         return this.questionsService.getAnswerDetail(+params.get('id'))
       })
       .subscribe(answer => {
-        window.alert(window['WebAppInterface']);
+
         this.answer = answer;
         this.owner = answer.owner;
         this.userprofile = answer.owner.userprofile;
