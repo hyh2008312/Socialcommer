@@ -38,6 +38,8 @@ export class AnswerDetailComponent implements OnInit {
           this.currentUser = {
             follow: false
           };
+        } else {
+          this.currentUser = answer.owner.currentUser;
         }
 
         return this;
