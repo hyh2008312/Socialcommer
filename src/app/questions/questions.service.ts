@@ -12,7 +12,7 @@ export class QuestionsService {
   constructor( private http: Http) { }
 
   createAuthorizationHeader(headers: Headers) {
-    headers.append('Authorization', 'Bearer ' + 't2qbamuki52MMZBZNQI7SIEUvhb15o');
+
     if(window['WebAppInterface']) {
       headers.append('Authorization', window['WebAppInterface'].getAccessToken() != '' ?
       'Bearer ' + window['WebAppInterface'].getAccessToken(): '');
