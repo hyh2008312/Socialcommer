@@ -14,7 +14,6 @@ export class FollowService {
   createAuthorizationHeader(headers: Headers) {
 
     if(window['WebAppInterface']) {
-      window.alert(window['WebAppInterface'].getAccessToken());
       headers.append('Authorization', window['WebAppInterface'].getAccessToken() != '' ?
       'Bearer ' + window['WebAppInterface'].getAccessToken(): '');
     }
@@ -26,7 +25,6 @@ export class FollowService {
       if(window['WebAppInterface'].getAccessToken() == '') {
         window['WebAppInterface'].toLogin();
       }
-      return;
     }
 
     let headers = new Headers({
