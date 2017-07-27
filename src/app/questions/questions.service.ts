@@ -14,6 +14,7 @@ export class QuestionsService {
   createAuthorizationHeader(headers: Headers) {
 
     if(window['WebAppInterface']) {
+      window.alert(window['WebAppInterface'].getAccessToken() );
       headers.append('Authorization', window['WebAppInterface'].getAccessToken() != '' ?
       'Bearer ' + window['WebAppInterface'].getAccessToken(): '');
     }
