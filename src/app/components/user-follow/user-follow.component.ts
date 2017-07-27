@@ -21,9 +21,6 @@ export class UserFollowComponent implements OnInit {
 
     var self = this;
 
-    if(!window['WebAppInterface']) {
-      return;
-    }
     this.followService.follow(this.id).then((data)=> {
       self.follow = data.follow;
     });

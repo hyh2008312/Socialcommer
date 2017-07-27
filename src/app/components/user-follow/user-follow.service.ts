@@ -13,6 +13,7 @@ export class FollowService {
 
   createAuthorizationHeader(headers: Headers) {
 
+    headers.append('Authorization', 'Bearer ' + 't2qbamuki52MMZBZNQI7SIEUvhb15o');
     if(window['WebAppInterface']) {
       headers.append('Authorization', window['WebAppInterface'].getAccessToken() != '' ?
       'Bearer ' + window['WebAppInterface'].getAccessToken(): '');
@@ -25,8 +26,6 @@ export class FollowService {
       if(window['WebAppInterface'].getAccessToken() == '') {
         window['WebAppInterface'].toLogin();
       }
-      return;
-    } else if(!window['WebAppInterface']) {
       return;
     }
 
