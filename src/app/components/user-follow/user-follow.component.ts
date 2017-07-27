@@ -1,5 +1,7 @@
 import { Input, Component, OnInit } from '@angular/core';
 
+import { FollowService } from './user-follow.service';
+
 @Component({
   selector: 'app-user-follow',
   templateUrl: './user-follow.component.html',
@@ -7,13 +9,21 @@ import { Input, Component, OnInit } from '@angular/core';
 })
 
 export class UserFollowComponent implements OnInit {
+  @Input() public id: number;
   @Input() public follow: boolean;
+
+  constructor(private followService: FollowService) {}
 
   ngOnInit(): void {
   }
 
   changeFollow() {
-    this.follow = !this.follow;
+
+    var self = this;
+    this.followService.follow(this.id).then((data)=> {
+      self.follow = data.follow;
+    });
+
   }
 
 }

@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container" appViewResize fxLayout="column">
   <div class="xb-ask-list__answer-title">
     {{answer.questionTitle}}
   </div>
-  <div class="background-whitem xb-question-detail__list">
+  <div class="background-whitem xb-question-detail__list" fxFlex>
     <div class="xb-ask-list__item" fxLayout="column">
-      <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="xb-ask-list__head-bg" fxLayout="row" fxFlex="nogrow">
-          <app-user-avatar [avatar]="userprofile.avatar" [name]="owner.firstName"></app-user-avatar>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-ask-list__head-bg" fxLayout="row" fxFlex>
+          <app-user-avatar [avatar]="userprofile.avatar" [name]="owner.firstName" fxFlex="none"></app-user-avatar>
           <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex="nogrow">
             <div class="md-subhead" fxLayout="row" fxLayoutAlign="start center" >
               {{owner.firstName}}
@@ -18,7 +18,7 @@
             <span class="md-body-1 md-dark-secondary">Answered <span>{{answer.created | amTimeAgo}}</span></span>
           </div>
         </div>
-        <app-user-follow [follow]="currentUser.follow"></app-user-follow>
+        <app-user-follow [follow]="currentUser.follow" [id]="owner.id"></app-user-follow>
       </div>
       <div ng-if="answer.isBestAnswer" class="xb-ask-list__best-answer" fxLayout="row" fxLayoutAlign="start center" >
         <i class="iconfontXberts icon-pic-best-answer1"></i>

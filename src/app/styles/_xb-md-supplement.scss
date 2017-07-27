@@ -167,15 +167,7 @@ img.xb2-img-responsible {
 }
 
 
-@mixin regular() {
-  font-weight: 400;
-}
-@mixin light() {
-  font-weight: 300;
-}
-@mixin media() {
-  font-weight: 500;
-}
+
 
 .md-subhead, b {
   font-weight: 500;
@@ -241,4 +233,7 @@ p,.md-body-1 {
       height: 2px;
     }
   }
+}
+.xb-pointer{
+  cursor: pointer;
 }

@@ -269,3 +269,13 @@
   max-height: $defaultLineHeight * $multi;
   overflow: hidden;
 }
+
+@mixin regular() {
+  font-weight: 400;
+}
+@mixin light() {
+  font-weight: 300;
+}
+@mixin media() {
+  font-weight: 500;
+}

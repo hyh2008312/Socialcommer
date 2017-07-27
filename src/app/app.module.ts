@@ -21,6 +21,7 @@ import { ViewResizeDirective } from './directives/view-resize/view-resize.direct
 import { SafeHtmlPipe } from './pipes/safe-html/safe-html.pipe';
 
 import { QuestionsService } from './questions/questions.service';
+import { FollowService } from './components/user-follow/user-follow.service';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { QuestionsService } from './questions/questions.service';
     MomentModule,
     FlexLayoutModule
   ],
-  providers: [QuestionsService],
+  providers: [QuestionsService,FollowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

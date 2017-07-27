@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Renderer,AfterViewInit} from '@angular/core';
+import {Directive, ElementRef, HostListener, Renderer, AfterViewInit} from '@angular/core';
 
 @Directive({
   selector: '[appViewResize]'
@@ -10,12 +10,15 @@ export class ViewResizeDirective implements AfterViewInit {
 
   }
 
-  @HostListener('resize') onResize() {
-    this.changeViewSize();
-  }
-
   ngAfterViewInit() {
     this.changeViewSize();
+    let self = this;
+
+    this.changeViewSize();
+
+    window.onresize = function() {
+      self.changeViewSize();
+    };
   }
 
   public changeViewSize() {

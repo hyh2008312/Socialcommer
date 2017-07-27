@@ -1,3 +1,6 @@
+@import "utils/index";
+@import "variables";
+
 html {
   position: relative;
   min-height: 100%;
@@ -9,7 +12,7 @@ body {
   /* overwrite material.css */
   max-width: 100%;
   max-height: 100%;
-  overflow: hidden;
+  overflow: scroll;
   background-color: $lightWhiteColor;
   font-size: $defaultFontSize;
   line-height: (20px / $defaultFontSize);
@@ -149,4 +152,12 @@ a.block-link {
   position: relative;
   margin-top: 25px;
   overflow: visible;
+}
+
+iframe{
+  max-width: 100%;
+}
+
+img{
+  max-width: 100%;
 }
