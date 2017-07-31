@@ -25,25 +25,21 @@ export class AnswerDetailComponent implements OnInit {
 
   ngOnInit():void {
 
-    this.route.paramMap
-      .switchMap((params: ParamMap) =>{
-        return this.questionsService.getAnswerDetail(+params.get('id'))
-      })
-      .subscribe(answer => {
+    let id = this.route.snapshot.params['id'];
+    this.questionsService.getAnswerDetail(id).then(answer => {
+      this.answer = answer;
+      this.owner = answer.owner;
+      this.userprofile = answer.owner.userprofile;
+      if(answer.owner.currentUser == null) {
+        this.currentUser = {
+          follow: false
+        };
+      } else {
+        this.currentUser = answer.owner.currentUser;
+      }
 
-        this.answer = answer;
-        this.owner = answer.owner;
-        this.userprofile = answer.owner.userprofile;
-        if(answer.owner.currentUser == null) {
-          this.currentUser = {
-            follow: false
-          };
-        } else {
-          this.currentUser = answer.owner.currentUser;
-        }
-
-        return this;
-      });
+      return this;
+    });
 
   }
 

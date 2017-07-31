@@ -12,20 +12,20 @@
             <div class="md-subhead" fxLayout="row" fxLayoutAlign="start center" >
               {{owner.firstName}}
               <app-user-badge class="md-margin-left-1" [point]="owner.badgePoint"></app-user-badge>
-              <div class="md-dark-secondary md-margin-left-1">
+              <div class="md-dark-secondary md-margin-left-1" *ngIf="userprofile.position || userprofile.company">
                 {{userprofile.position + '@' + userprofile.company}}
               </div>
             </div>
-            <span class="md-body-1 md-dark-secondary">Answered <span>{{answer.created | amTimeAgo}}</span></span>
+            <span class="md-body-1 md-dark-secondary" *ngIf="answer.created">Answered <span>{{answer.created | amTimeAgo}}</span></span>
           </div>
         </div>
         <app-user-follow [follow]="currentUser.follow" [id]="owner.id"></app-user-follow>
       </div>
-      <div ng-if="answer.isBestAnswer" class="xb-ask-list__best-answer" fxLayout="row" fxLayoutAlign="start center" >
+      <div *ngIf="answer.isBestAnswer" class="xb-ask-list__best-answer" fxLayout="row" fxLayoutAlign="start center" >
         <i class="iconfontXberts icon-pic-best-answer1"></i>
         <div class="xb-bold md-margin-left-1">Top Answer</div>
       </div>
-      <div class="xb-ask-list__answer-content" [innerHTML]="answer.description | safeHtml"></div>
+      <div class="xb-ask-list__answer-content" *ngIf="answer.description" [innerHTML]="answer.description | safeHtml"></div>
     </div>
   </div>
 </div>
