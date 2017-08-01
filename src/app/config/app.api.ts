@@ -5,7 +5,7 @@ export class BaseApi{
 
   constructor(){
     this.url = 'https://api-staging.xberts.com/';
-    if(process.env.ENV == 'prod') {
+    if(environment.production) {
       this.url = 'https://api.xberts.com/';
     }
 
