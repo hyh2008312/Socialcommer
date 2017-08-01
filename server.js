@@ -22,7 +22,6 @@ function start() {
     var shouldRedirect = false;
     var host = req.get('Host');
 
-
     if (req.headers['x-forwarded-proto'] !== 'https') {
       shouldRedirect = true;
     }
