@@ -19,10 +19,11 @@ function start() {
 
   app.use(morgan('dev'));
   app.use('*', function(req, res, next) {
+
     var shouldRedirect = false;
     var host = req.get('Host');
 
-    if (!host.match(/^mobile\..*/i) && ENV === 'prod') {
+    if (!host.match(/^mobile\..*/i) && ENV === 'local') {
       host = 'mobile.' + host;
       shouldRedirect = true;
     }
