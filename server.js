@@ -22,10 +22,6 @@ function start() {
     var shouldRedirect = false;
     var host = req.get('Host');
 
-    if (!host.match(/^www\..*/i) && ENV === 'prod') {
-      host = 'mobile.' + host;
-      shouldRedirect = true;
-    }
 
     if (req.headers['x-forwarded-proto'] !== 'https') {
       shouldRedirect = true;
