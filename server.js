@@ -27,7 +27,7 @@ function start() {
     }
 
     if (shouldRedirect && ENV !== 'local') {
-      res.redirect(301, 'https://' + host + req.originalUrl);
+      res.redirect(301, 'https://' + host);
     } else {
       next();
     }
