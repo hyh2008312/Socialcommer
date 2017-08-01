@@ -1,13 +1,13 @@
 {
-  "name": "MEAN Contact List",
-  "description": "Example contact list app using MEAN",
+  "name": "XbertsMobileApp",
+  "description": "XbertsMobileApp",
   "keywords": [
     "MEAN",
     "Angular",
     "Node",
     "Angular cli"
   ],
-  "repository": "https://github.com/chrisckchang/mean-contactlist-angular2",
+  "repository": "https://git.heroku.com/xberts-mobile.git",
   "success_url": "/",
   "formation": {
     "web": {
