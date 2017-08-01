@@ -22,19 +22,26 @@ function start() {
     var shouldRedirect = false;
     var host = req.get('Host');
 
+    if (!host.match(/^mobile\..*/i) && ENV === 'prod') {
+      host = 'mobile.' + host;
+      shouldRedirect = true;
+    }
+
     if (req.headers['x-forwarded-proto'] !== 'https') {
       shouldRedirect = true;
     }
 
     if (shouldRedirect && ENV !== 'local') {
-      res.redirect(301, 'https://' + host);
+      res.redirect(301, 'https://' + host + req.originalUrl);
     } else {
       next();
     }
   });
   app.use(prerender.set('prerenderToken', 'W7C9qOob3QilKJiMu1XN'));
   app.use(compression());
-  app.use(express.static('' + __dirname + '/dist'));
+  app.use(express.static('' + __dirname + '/dist', {
+    maxAge : 864000
+  }));
   app.use(function(req, res) {
     res.sendfile('dist/index.html');
   });
