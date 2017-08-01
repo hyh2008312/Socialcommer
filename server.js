@@ -20,9 +20,7 @@ function start() {
   app.use(morgan('dev'));
   app.use(prerender.set('prerenderToken', 'W7C9qOob3QilKJiMu1XN'));
   app.use(compression());
-  app.use(express.static('' + __dirname + '/dist', {
-    maxAge : 864000
-  }));
+  app.use(express.static('' + __dirname + '/dist'));
   app.use(function(req, res) {
     res.sendfile('dist/index.html');
   });
