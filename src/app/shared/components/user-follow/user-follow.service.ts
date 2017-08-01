@@ -5,11 +5,13 @@ import 'rxjs/add/operator/toPromise';
 
 import { Follow } from './user-follow';
 
+import { BaseApi } from '../../../config/app.api';
+
 @Injectable()
 export class FollowService {
-  private followUrl = 'https://api-staging.xberts.com/xberts/experts/';
+  private followUrl = 'xberts/experts/';
 
-  constructor( private http: Http) { }
+  constructor( private http: Http,private baseUrl: BaseApi) { }
 
   createAuthorizationHeader(headers: Headers) {
 
@@ -34,7 +36,7 @@ export class FollowService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.followUrl}${id}/follow/`;
+    const url = `${this.baseUrl.url}${this.followUrl}${id}/follow/`;
 
     return this.http.post(url, null, options)
       .toPromise()

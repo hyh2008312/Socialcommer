@@ -5,11 +5,13 @@ import 'rxjs/add/operator/toPromise';
 
 import { Questions } from './questions';
 
+import { BaseApi } from '../config/app.api';
+
 @Injectable()
 export class QuestionsService {
-  private answersUrl = 'https://api-staging.xberts.com/answers/';
+  private answersUrl = 'answers/';
 
-  constructor( private http: Http) { }
+  constructor( private http: Http, private baseUrl: BaseApi) { }
 
   createAuthorizationHeader(headers: Headers) {
 
@@ -29,7 +31,7 @@ export class QuestionsService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.answersUrl}${id}/`;
+    const url = `${this.baseUrl.url}${this.answersUrl}${id}/`;
 
     return this.http.get(url, options)
       .toPromise()

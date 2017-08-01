@@ -8,10 +8,34 @@ import { MomentModule }        from 'angular2-moment';
 import { SafeHtmlPipe }         from './pipes/safe-html/safe-html.pipe';
 import { ViewResizeDirective }  from './directives/view-resize/view-resize.directive';
 
+import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
+import { UserBadgeComponent } from './components/user-badge/user-badge.component';
+import { UserFollowComponent } from './components/user-follow/user-follow.component';
+
+import { FollowService } from './components/user-follow/user-follow.service';
+
 @NgModule({
-  imports:      [ CommonModule ],
-  declarations: [ SafeHtmlPipe, ViewResizeDirective ],
-  exports:      [ SafeHtmlPipe, ViewResizeDirective,
-    CommonModule, FormsModule, FlexLayoutModule, MomentModule]
+  imports: [ CommonModule ],
+  declarations: [
+    SafeHtmlPipe,
+    ViewResizeDirective,
+    UserAvatarComponent,
+    UserBadgeComponent,
+    UserFollowComponent
+  ],
+  exports: [
+    SafeHtmlPipe,
+    ViewResizeDirective,
+    UserAvatarComponent,
+    UserBadgeComponent,
+    UserFollowComponent,
+    CommonModule,
+    FormsModule,
+    FlexLayoutModule,
+    MomentModule
+  ],
+  providers: [
+    FollowService
+  ]
 })
 export class SharedModule { }
