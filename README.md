@@ -1,8 +1,36 @@
+# Xberts web app
 
-# Mean Contactlist Angular2
+## Deployment
 
-Contact List is a RESTful API server and web application built with the MEAN (Angular 2) stack. It is a simple example that aims to concisely demonstrate basic MEAN and REST architecture. You can find the full tutorial here: https://devcenter.heroku.com/articles/mean-apps-restful-api.
+### Setup
+  - Install heroku toolbelt
+  - Login to heroku
 
-You can deploy a live copy of this application to Heroku with the button below.
+        heroku login
+  
+  - Add heroku git remote
+  
+        git remote add staging https://git.heroku.com/xberts-web-staging.git
+        git remote add prod https://git.heroku.com/xberts-mobile.git
+        
+  - Set default remote to staging
+  
+        git config heroku.remote staging
+        
+### Update staging server
+  - Push update
+  
+        git push staging develop:master
+        
+### Update production server
+  - Push update
+  
+        git push heroku master
+        
+## Build
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/chrisckchang/mean-contactlist-angular2)
+Run `grunt` for building and `grunt serve` for preview.
+
+## Testing
+
+Running `grunt test` will run the unit tests with karma.
