@@ -47,5 +47,3 @@ function start() {
     console.log('Listening on', PORT);
   }
 }
-
-global.env = process.env.ENV || 'dev';
