@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start:prod": "ng serve --env=prod",
-    "postinstall": "node postInstall.js"
+    "postinstall": "ng build --prod --env=${ENV} -aot"
   },
   "private": true,
   "dependencies": {
