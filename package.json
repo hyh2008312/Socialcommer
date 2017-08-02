@@ -5,11 +5,13 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --prod -aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --env=dev -aot"
+    "start:prod": "ng serve --env=prod",
+    "prebuild": "./scripts/prebuild.js",
+    "postinstall": "chmod +x ./scripts/*.js"
   },
   "private": true,
   "dependencies": {
