@@ -3,7 +3,7 @@ export class BaseApi{
 
   constructor(){
     this.url = 'https://api-staging.xberts.com/';
-    if(window.env.ENV === 'prod') {
+    if((<any>window).env.ENV === 'prod') {
       this.url = 'https://api.xberts.com/';
     }
 
