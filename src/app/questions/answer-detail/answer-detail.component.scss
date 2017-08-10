@@ -43,6 +43,7 @@
     .md-margin-left-1{
       height: 18px;
       @include ellipsisText();
+      @include regular();
     }
   }
   &__answer-content-display{

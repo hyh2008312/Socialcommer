@@ -187,7 +187,8 @@
   .xb-ask-list__head-bg .md-margin-left-1 {
     height: 18px;
     overflow: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    font-weight: 400; }
 .xb-ask-list__answer-content-display {
   cursor: pointer; }
 .xb-ask-list__answer-content {
