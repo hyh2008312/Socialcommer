@@ -112,6 +112,7 @@
     line-height: 28px;
 
     @include resetBorder();
+    @include media();
     @include xb-xs-screen{
       padding: 16px 8px 20px;
     }

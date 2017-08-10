@@ -244,7 +244,8 @@
   border-radius: 2px;
   -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
   -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  font-weight: 500; }
   @media screen and (max-width: 599px) {
     .xb-ask-list__answer-title {
       padding: 16px 8px 20px; } }
