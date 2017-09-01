@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Renderer, AfterViewInit} from '@angular/core';
+import {Directive, ElementRef, Renderer, AfterViewInit} from '@angular/core';
 
 @Directive({
   selector: '[appViewResize]'

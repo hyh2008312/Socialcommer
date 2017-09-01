@@ -13,7 +13,7 @@ export class UserFollowComponent implements OnInit {
   @Input() public id: number;
   @Input() public follow: boolean;
   @Input() public followersAmount: number;
-  @Input() public expertId: number;
+  @Input() public expertId: any;
   private disabled:boolean = false;
 
   constructor(private followService: FollowService) {}

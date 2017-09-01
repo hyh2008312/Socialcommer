@@ -390,6 +390,9 @@ p, .md-body-1 {
   margin-top: 8px;
   -webkit-padding-start: 16px; }
 
+.xb-scroll {
+  overflow: scroll; }
+
 .animation-opacity-show {
   -webkit-animation: opacity-show 0.5s linear 0s 1 normal;
   -moz-animation: opacity-show 0.5s linear 0s 1 normal;
@@ -562,6 +565,68 @@ p, .md-body-1 {
     -o-transform: translateX(-50%) scale(1, 1);
     transform: translateX(-50%) scale(1, 1);
     display: none; } }
+.animation-height-hide {
+  -webkit-animation: height-hide 0.3s linear 0s 1 normal;
+  -moz-animation: height-hide 0.3s linear 0s 1 normal;
+  -ms-animation: height-hide 0.3s linear 0s 1 normal;
+  -o-animation: height-hide 0.3s linear 0s 1 normal;
+  animation: height-hide 0.3s linear 0s 1 normal; }
+@-webkit-keyframes height-hide {
+  0% {
+    height: 56px; }
+  100% {
+    height: 0; } }
+@-moz-keyframes height-hide {
+  0% {
+    height: 56px; }
+  100% {
+    height: 0; } }
+@-ms-keyframes height-hide {
+  0% {
+    height: 56px; }
+  100% {
+    height: 0; } }
+@-o-keyframes height-hide {
+  0% {
+    height: 56px; }
+  100% {
+    height: 0; } }
+@keyframes height-hide {
+  0% {
+    height: 56px; }
+  100% {
+    height: 0; } }
+.animation-height-show {
+  -webkit-animation: height-show 0.3s linear 0s 1 normal;
+  -moz-animation: height-show 0.3s linear 0s 1 normal;
+  -ms-animation: height-show 0.3s linear 0s 1 normal;
+  -o-animation: height-show 0.3s linear 0s 1 normal;
+  animation: height-show 0.3s linear 0s 1 normal; }
+@-webkit-keyframes height-show {
+  0% {
+    height: 0; }
+  100% {
+    height: 56px; } }
+@-moz-keyframes height-show {
+  0% {
+    height: 0; }
+  100% {
+    height: 56px; } }
+@-ms-keyframes height-show {
+  0% {
+    height: 0; }
+  100% {
+    height: 56px; } }
+@-o-keyframes height-show {
+  0% {
+    height: 0; }
+  100% {
+    height: 56px; } }
+@keyframes height-show {
+  0% {
+    height: 0; }
+  100% {
+    height: 56px; } }
 .padding {
   padding: 5px 10px; }
 

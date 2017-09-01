@@ -2,8 +2,9 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Reviews, Applicant, Review, Reviewer, Userprofile, CurrentUser, Image, Achievement} from '../reviews';
+import { Reviews, Applicant, Review, Reviewer, Userprofile, CurrentUser, Image, Achievement, Interact} from '../reviews';
 import { ReviewsService } from '../reviews.service';
+import {Flashsale} from "../reviews";
 
 @Component({
   selector: 'app-reviews-detail',
@@ -14,6 +15,7 @@ import { ReviewsService } from '../reviews.service';
 export class ReviewsDetailComponent implements OnInit {
 
   reviews : Reviews = new Reviews();
+  interact : Interact = new Interact();
   applicant : Applicant = new Applicant();
   review : Review = new Review();
   reviewer : Reviewer = new Reviewer();
@@ -22,6 +24,8 @@ export class ReviewsDetailComponent implements OnInit {
   image : Image = new Image();
   achievement : Achievement = new Achievement();
 
+  private userId: string = '111';
+  private scrollUp: boolean;
 
   constructor(
     private reviewsService: ReviewsService,
@@ -29,10 +33,15 @@ export class ReviewsDetailComponent implements OnInit {
   ) { }
 
   ngOnInit():void {
+    if(window['WebAppInterface']) {
+      this.userId = window['WebAppInterface'].getUserId();
+    }
 
     let id = this.route.snapshot.params['id'];
     this.reviewsService.getReviewsDetail(id).then(reviews => {
       this.reviews = reviews;
+      this.interact = this.reviews.interact;
+
       this.applicant = reviews.applicant;
       this.review = reviews.applicant.review;
       this.reviewer = reviews.applicant.reviewer;
@@ -44,6 +53,11 @@ export class ReviewsDetailComponent implements OnInit {
         };
       } else {
         this.currentUser = reviews.applicant.reviewer.userprofile.current_user;
+      }
+
+      if(window['WebAppInterface']) {
+        window['WebAppInterface'].toPrice(reviews.applicant.review.flashsale.sale_price.amount,
+          reviews.applicant.review.project.buy_url);
       }
 
       let self = this;
@@ -97,4 +111,7 @@ export class ReviewsDetailComponent implements OnInit {
     return cons;
   }
 
+  onScrollChange(event:boolean) {
+    this.scrollUp = event;
+  }
 }

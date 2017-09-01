@@ -148,21 +148,26 @@
 
 .xb-articles-header {
   height: 56px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent);
-  position: fixed;
+  background: #3f51b5;
   width: 100%;
   left: 0; }
+  .xb-articles-header__hide {
+    overflow: hidden;
+    background: #3f51b5;
+    height: 0; }
   .xb-articles-header__icon {
-    color: #fff;
-    padding: 8px;
-    font-size: 24px;
-    line-height: 24px; }
-  .xb-articles-header__back {
     color: #fff;
     padding: 8px;
     font-size: 16px;
     line-height: 16px; }
+  .xb-articles-header__back {
+    color: #fff;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 16px;
+    margin-left: 2px; }
   .xb-articles-header__vote {
-    color: #fff; }
+    color: #fff;
+    font-weight: 300; }
 
 /*# sourceMappingURL=articles-detail-header.component.css.map */

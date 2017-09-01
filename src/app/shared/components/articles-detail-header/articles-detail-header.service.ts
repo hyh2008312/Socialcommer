@@ -3,13 +3,13 @@ import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Follow } from './articles-detail-header';
+import { Joiners,Vote } from './articles-detail-header';
 
 import { BaseApi } from '../../../config/app.api';
 
 @Injectable()
 export class ArticlesDetailHeaderService {
-  private voteUrl = '/interact/joins/';
+  private voteUrl = 'interact/joins/';
 
   constructor( private http: Http,private baseUrl: BaseApi) { }
 
@@ -22,7 +22,24 @@ export class ArticlesDetailHeaderService {
 
   }
 
-  follow(id:number): Promise<Follow> {
+  getJoiner(interactId:number,joinerId:string): Promise<Joiners> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}${this.voteUrl}?interact_id=${interactId}&joiner_id=${joinerId}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json() as Joiners)
+      .catch(this.handleError);
+  }
+
+  joins(interact: number): Promise<Vote> {
     if(window['WebAppInterface']) {
       if(window['WebAppInterface'].getAccessToken() == '') {
         window['WebAppInterface'].toLogin();
@@ -36,11 +53,33 @@ export class ArticlesDetailHeaderService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}${this.voteUrl}${id}/follow/`;
+    const url = `${this.baseUrl.url}${this.voteUrl}`;
+
+    return this.http.post(url, {interact: interact}, options)
+      .toPromise()
+      .then(response => response.json() as Vote)
+      .catch(this.handleError);
+  }
+
+  vote(id:number): Promise<Vote> {
+    if(window['WebAppInterface']) {
+      if(window['WebAppInterface'].getAccessToken() == '') {
+        window['WebAppInterface'].toLogin();
+      }
+    }
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}${this.voteUrl}${id}`;
 
     return this.http.post(url, null, options)
       .toPromise()
-      .then(response => response.json() as Follow)
+      .then(response => response.json() as Vote)
       .catch(this.handleError);
   }
 

@@ -1,8 +1,13 @@
-<div class="xb-articles-header" fxLayout="row" fxLayoutAlign="start center">
+<div [ngClass]="{'xb-articles-header__hide animation-height-hide':showHeader == true,
+  'xb-articles-header animation-height-show': !showHeader}"
+     fxLayout="row" fxLayoutAlign="start center">
   <div fxFlex>
-    <i class="iconfontXberts icon-ic-back xb-articles-header__back" ></i>
+    <i class="iconfontXberts icon-ic-back xb-articles-header__back" (click)="back()"></i>
   </div>
-  <i class="iconfontXberts icon-ic-upvote-line xb-articles-header__icon"></i>
-  <span class="xb-articles-header__vote md-margin-right-2">12</span>
-  <i class="iconfontXberts icon-ic-comment-line xb-articles-header__icon md-margin-right-2"></i>
+  <i class="iconfontXberts icon-ic-upvote-line1 xb-articles-header__icon"
+    [ngClass]="{'icon-ic-upvote':vote.vote,'icon-ic-upvote-line1':!vote.vote}"
+    (click)="toVote()"></i>
+  <span class="xb-articles-header__vote md-margin-right-2">{{voteAmount > 0 ? voteAmount : ''}}</span>
+  <i class="iconfontXberts icon-ic-comment-line xb-articles-header__icon md-margin-right-2"
+     (click)="toComment(interactId, joinId)"></i>
 </div>

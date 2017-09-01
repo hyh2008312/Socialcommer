@@ -17,6 +17,7 @@ export class AnswerDetailComponent implements OnInit {
   owner : Owner = new Owner();
   userprofile: Userprofile = new Userprofile();
   currentUser: CurrentUser = new CurrentUser();
+  private scrollUp:boolean;
 
   constructor(
     private questionsService: QuestionsService,
@@ -47,5 +48,9 @@ export class AnswerDetailComponent implements OnInit {
     if(window['WebAppInterface']) {
       window['WebAppInterface'].toProfile(id);
     }
+  }
+
+  onScrollChange(event:boolean) {
+    this.scrollUp = event;
   }
 }

@@ -11,6 +11,12 @@ export class Reviews {
   cost_performance: number;
   usability: number;
   image: Image;
+  interact : Interact;
+}
+
+export class Interact{
+  id: number;
+  vote_amount: number;
 }
 
 export class Applicant {
@@ -22,11 +28,26 @@ export class Applicant {
 export class Review {
   title: string;
   id: number;
+  project: Project;
+  flashsale: Flashsale;
 }
 
 export class Reviewer {
   id: number;
   userprofile: Userprofile;
+}
+
+export class Project {
+  buy_url: string;
+}
+
+export class Flashsale{
+  sale_price: Currency;
+}
+
+export class Currency {
+  amount: string;
+  currency: string;
 }
 
 export class Userprofile {

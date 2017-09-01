@@ -5,6 +5,7 @@ import { ReviewsService } from './reviews.service';
 
 import { SharedModule } from '../shared/shared.module';
 import { ScorePointsComponent } from '../shared/components/score-points/score-points.component';
+import { ArticlesDetailHeaderComponent } from '../shared/components/articles-detail-header/articles-detail-header.component';
 
 
 @NgModule({
@@ -13,9 +14,11 @@ import { ScorePointsComponent } from '../shared/components/score-points/score-po
     ReviewsRoutingModule
   ],
   exports: [
+    ArticlesDetailHeaderComponent,
     ScorePointsComponent
   ],
   declarations: [
+    ArticlesDetailHeaderComponent,
     ScorePointsComponent,
     ReviewsDetailComponent
   ],

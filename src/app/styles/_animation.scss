@@ -43,3 +43,28 @@
   }
 }
 
+.animation-height-hide{
+
+  @include prefixer(animation, height-hide .3s linear 0s 1 normal, $prefix-list);
+
+  @at-root {
+
+    @include prefix-keyframes(height-hide, $prefix-list) {
+      0%   { height: 56px;}
+      100% { height: 0;}
+    }
+  }
+}
+
+.animation-height-show{
+
+  @include prefixer(animation, height-show .3s linear 0s 1 normal, $prefix-list);
+
+  @at-root {
+
+    @include prefix-keyframes(height-show, $prefix-list) {
+      0%   { height: 0;}
+      100% { height: 56px;}
+    }
+  }
+}

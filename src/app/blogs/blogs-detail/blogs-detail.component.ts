@@ -19,12 +19,19 @@ export class BlogsDetailComponent implements OnInit {
   currentUser : CurrentUser = new CurrentUser();
   achievement : Achievement = new Achievement();
 
+  private userId: string;
+  private scrollUp: boolean;
+
   constructor(
     private blogsService: BlogsService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit():void {
+
+    if(window['WebAppInterface']) {
+      this.userId = window['WebAppInterface'].getUserId();
+    }
 
     let id = this.route.snapshot.params['id'];
     this.blogsService.getBlogsDetail(id).then(blogs => {
@@ -71,4 +78,7 @@ export class BlogsDetailComponent implements OnInit {
     return details;
   }
 
+  onScrollChange(event:boolean) {
+    this.scrollUp = event;
+  }
 }

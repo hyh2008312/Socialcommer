@@ -4,16 +4,22 @@
 
 .xb-articles-header{
   height: 56px;
-  background: linear-gradient(180deg, rgba(0,0,0,.75), rgba(0,0,0,0));
-  position: fixed;
+  background: $primaryColor;
+
   width: 100%;
   left: 0;
+
+  &__hide{
+    overflow: hidden;
+    background: $primaryColor;
+    height: 0;
+  }
 
   &__icon{
     color: $whiteColor;
     padding: 8px;
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 16px;
   }
 
   &__back{
@@ -21,11 +27,15 @@
     padding: 8px;
     font-size: 16px;
     line-height: 16px;
+    margin-left: 2px;
   }
 
   &__vote{
     color: $whiteColor;
+    font-weight: 300;
   }
+
+
 }
 
 

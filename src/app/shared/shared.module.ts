@@ -7,11 +7,11 @@ import { MomentModule }        from 'angular2-moment';
 
 import { SafeHtmlPipe }         from './pipes/safe-html/safe-html.pipe';
 import { ViewResizeDirective }  from './directives/view-resize/view-resize.directive';
+import { ViewScrollDirective }  from './directives/view-srcoll/view-scroll.directive';
 
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserBadgeComponent } from './components/user-badge/user-badge.component';
 import { UserFollowComponent } from './components/user-follow/user-follow.component';
-
 
 import { FollowService } from './components/user-follow/user-follow.service';
 
@@ -20,6 +20,7 @@ import { FollowService } from './components/user-follow/user-follow.service';
   declarations: [
     SafeHtmlPipe,
     ViewResizeDirective,
+    ViewScrollDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent
@@ -27,6 +28,7 @@ import { FollowService } from './components/user-follow/user-follow.service';
   exports: [
     SafeHtmlPipe,
     ViewResizeDirective,
+    ViewScrollDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
