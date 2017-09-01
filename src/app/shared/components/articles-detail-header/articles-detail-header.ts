@@ -2,7 +2,7 @@ export class Joiners {
   count : number;
   next: any;
   previous: any;
-  result : Vote[];
+  results : Vote[];
 }
 
 export class Vote{

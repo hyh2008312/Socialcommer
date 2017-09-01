@@ -45,10 +45,10 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
       self.articlesDetailHeaderService.getJoiner(self.interactId,self.userId).then(Joiners => {
         self.joiners = Joiners;
-        if(Joiners.result.length > 0) {
-          self.vote = Joiners.result[0];
-          self.joiner = Joiners.result[0].joiner;
-          self.joinId = Joiners.result[0].joiner.id;
+        if(Joiners.results.length > 0) {
+          self.vote = Joiners.results[0];
+          self.joiner = Joiners.results[0].joiner;
+          self.joinId = Joiners.results[0].joiner.id;
         }
         return self;
       });
