@@ -8,7 +8,7 @@ import { Input, Component, OnInit } from '@angular/core';
 
 export class ScorePointsComponent implements OnInit {
   @Input() public score: number;
-  private number: number[] = [1,2,3,4,5];
+  number: number[] = [1,2,3,4,5];
 
   ngOnInit(): void {
 

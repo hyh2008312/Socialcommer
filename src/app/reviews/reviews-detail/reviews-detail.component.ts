@@ -24,8 +24,8 @@ export class ReviewsDetailComponent implements OnInit {
   image : Image = new Image();
   achievement : Achievement = new Achievement();
 
-  private userId: string = '111';
-  private scrollUp: boolean;
+  userId: string = '111';
+  scrollUp: boolean;
 
   constructor(
     private reviewsService: ReviewsService,

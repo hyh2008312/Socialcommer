@@ -19,8 +19,8 @@ export class BlogsDetailComponent implements OnInit {
   currentUser : CurrentUser = new CurrentUser();
   achievement : Achievement = new Achievement();
 
-  private userId: string;
-  private scrollUp: boolean;
+  userId: string;
+  scrollUp: boolean;
 
   constructor(
     private blogsService: BlogsService,

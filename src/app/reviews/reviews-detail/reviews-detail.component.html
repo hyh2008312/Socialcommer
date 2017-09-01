@@ -1,5 +1,5 @@
 <div class="container" appViewResize fxLayout="column">
-  <app-articles-detail-header [showHeader]="scrollUp" [backFrom]="review"
+  <app-articles-detail-header [showHeader]="scrollUp" [backFrom]="'review'"
     [interactId]="interact.id" [userId]="userId" [voteAmount]="interact.vote_amount"></app-articles-detail-header>
   <div class="xb-scroll" fxFlex appViewScroll (onScrollChange)="onScrollChange($event)">
     <img [src]="image.image_origin" class="xb2-img-responsible">
@@ -38,7 +38,7 @@
     <div class="xb2-page-head__content background-whitem md-margin-top-1 xb2-page-head__content-2">
     <div fxLayout="row">
       <app-user-avatar [avatar]="userprofile.avatar" [name]="userprofile.first_name" [large]="true" fxFlex="none"
-                       (click)="toProfile(userprofile.id)"></app-user-avatar>
+                       (click)="toProfile(reviewer.id)"></app-user-avatar>
       <div fxLayout="column" fxFlex>
         <div class="md-margin-left-1" fxLayout="column" fxLayoutAlign="start">
           <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -51,7 +51,7 @@
                 {{getPosition(userprofile.position, userprofile.company)}}
               </div>
             </div>
-            <app-user-follow [follow]="currentUser.follow" [id]="userprofile.id"
+            <app-user-follow [follow]="currentUser.follow" [id]="reviewer.id"
             [followersAmount]="achievement.followersAmount" [expertId]="userId"></app-user-follow>
           </div>
           <div class="xb2-page-head__head-bottom" fxLayout="row" fxLayoutAlign="start center">

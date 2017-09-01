@@ -4,20 +4,15 @@ import { BlogsRoutingModule } from './blogs.routes.module';
 import { BlogsService } from './blogs.service';
 
 import { SharedModule } from '../shared/shared.module';
-import { ArticlesDetailHeaderComponent } from '../shared/components/articles-detail-header/articles-detail-header.component';
-
 
 @NgModule({
   imports: [
     SharedModule,
     BlogsRoutingModule
   ],
-  exports: [
-    ArticlesDetailHeaderComponent
-  ],
+  exports: [],
   declarations: [
-    BlogsDetailComponent,
-    ArticlesDetailHeaderComponent
+    BlogsDetailComponent
   ],
   providers: [
     BlogsService

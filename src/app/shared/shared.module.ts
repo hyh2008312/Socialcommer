@@ -12,6 +12,8 @@ import { ViewScrollDirective }  from './directives/view-srcoll/view-scroll.direc
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserBadgeComponent } from './components/user-badge/user-badge.component';
 import { UserFollowComponent } from './components/user-follow/user-follow.component';
+import { ScorePointsComponent } from './components/score-points/score-points.component';
+import { ArticlesDetailHeaderComponent } from './components/articles-detail-header/articles-detail-header.component';
 
 import { FollowService } from './components/user-follow/user-follow.service';
 
@@ -23,7 +25,9 @@ import { FollowService } from './components/user-follow/user-follow.service';
     ViewScrollDirective,
     UserAvatarComponent,
     UserBadgeComponent,
-    UserFollowComponent
+    UserFollowComponent,
+    ArticlesDetailHeaderComponent,
+    ScorePointsComponent
   ],
   exports: [
     SafeHtmlPipe,
@@ -32,6 +36,8 @@ import { FollowService } from './components/user-follow/user-follow.service';
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
+    ArticlesDetailHeaderComponent,
+    ScorePointsComponent,
     CommonModule,
     FormsModule,
     FlexLayoutModule,

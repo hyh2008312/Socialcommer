@@ -22,9 +22,9 @@ export class ArticlesDetailHeaderComponent implements OnInit {
   @Input() public backFrom : string;
   @Input() public voteAmount: number = 0;
 
-  private joinId: number;
+  joinId: number;
 
-  private joinsed: boolean = false;
+  joinsed: boolean = false;
 
   joiners : Joiners = new Joiners();
   vote : Vote = new Vote();

@@ -4,8 +4,6 @@ import { ReviewsRoutingModule } from './reviews.routes.module';
 import { ReviewsService } from './reviews.service';
 
 import { SharedModule } from '../shared/shared.module';
-import { ScorePointsComponent } from '../shared/components/score-points/score-points.component';
-import { ArticlesDetailHeaderComponent } from '../shared/components/articles-detail-header/articles-detail-header.component';
 
 
 @NgModule({
@@ -13,13 +11,8 @@ import { ArticlesDetailHeaderComponent } from '../shared/components/articles-det
     SharedModule,
     ReviewsRoutingModule
   ],
-  exports: [
-    ArticlesDetailHeaderComponent,
-    ScorePointsComponent
-  ],
+  exports: [],
   declarations: [
-    ArticlesDetailHeaderComponent,
-    ScorePointsComponent,
     ReviewsDetailComponent
   ],
   providers: [
