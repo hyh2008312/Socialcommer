@@ -4,7 +4,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Reviews, Applicant, Review, Reviewer, Userprofile, CurrentUser, Image, Achievement, Interact} from '../reviews';
 import { ReviewsService } from '../reviews.service';
-import {Flashsale} from "../reviews";
 
 @Component({
   selector: 'app-reviews-detail',
@@ -24,8 +23,8 @@ export class ReviewsDetailComponent implements OnInit {
   image : Image = new Image();
   achievement : Achievement = new Achievement();
 
-  userId: string = '111';
-  scrollUp: boolean;
+  userId: string = '';
+  scrollUp: boolean = false;
 
   constructor(
     private reviewsService: ReviewsService,

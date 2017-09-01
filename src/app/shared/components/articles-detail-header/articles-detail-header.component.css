@@ -149,8 +149,21 @@
 .xb-articles-header {
   height: 56px;
   background: #3f51b5;
-  width: 100%;
-  left: 0; }
+  box-sizing: border-box;
+  max-height: 100%;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  place-content: center flex-start;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-box-align: center;
+  width: 100%; }
+  .xb-articles-header > div:nth-child(1) {
+    flex: 1 1 1px;
+    box-sizing: border-box;
+    -webkit-box-flex: 1; }
   .xb-articles-header__hide {
     overflow: hidden;
     background: #3f51b5;

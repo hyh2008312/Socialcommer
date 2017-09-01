@@ -26,15 +26,6 @@ export class ViewScrollDirective {
     }
   }
 
-  @HostListener('scroll') onScroll() {
-    if(this.element.nativeElement.scrollTop > this.startX) {
-      this.scroll(true);
-    } else if(this.element.nativeElement.scrollTop < this.startX){
-      this.scroll(false);
-    }
-    this.startX = this.element.nativeElement.scrollTop;
-  }
-
   scroll(scrolledUp:boolean) {
     this.onScrollChange.emit(scrolledUp);
   }

@@ -16,6 +16,7 @@ import { ScorePointsComponent } from './components/score-points/score-points.com
 import { ArticlesDetailHeaderComponent } from './components/articles-detail-header/articles-detail-header.component';
 
 import { FollowService } from './components/user-follow/user-follow.service';
+import { ArticlesDetailHeaderService } from './components/articles-detail-header/articles-detail-header.service';
 
 @NgModule({
   imports: [ CommonModule ],
@@ -26,8 +27,8 @@ import { FollowService } from './components/user-follow/user-follow.service';
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
-    ArticlesDetailHeaderComponent,
-    ScorePointsComponent
+    ScorePointsComponent,
+    ArticlesDetailHeaderComponent
   ],
   exports: [
     SafeHtmlPipe,
@@ -36,15 +37,16 @@ import { FollowService } from './components/user-follow/user-follow.service';
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
-    ArticlesDetailHeaderComponent,
     ScorePointsComponent,
+    ArticlesDetailHeaderComponent,
     CommonModule,
     FormsModule,
     FlexLayoutModule,
     MomentModule
   ],
   providers: [
-    FollowService
+    FollowService,
+    ArticlesDetailHeaderService
   ]
 })
 export class SharedModule { }

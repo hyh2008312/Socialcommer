@@ -1,6 +1,4 @@
-<div [ngClass]="{'xb-articles-header__hide animation-height-hide':showHeader == true,
-  'xb-articles-header animation-height-show': !showHeader}"
-     fxLayout="row" fxLayoutAlign="start center">
+<div class="xb-articles-header " [ngClass]="{'xb-articles-header__hide animation-height-hide':showHeader}">
   <div fxFlex>
     <i class="iconfontXberts icon-ic-back xb-articles-header__back" (click)="back()"></i>
   </div>

@@ -4,8 +4,6 @@ import { ArticlesDetailHeaderService } from './articles-detail-header.service';
 
 import { Joiners, Vote, Joiner } from './articles-detail-header';
 
-import {Observable} from 'rxjs/Observable';
-
 @Component({
   selector: 'app-articles-detail-header',
   templateUrl: './articles-detail-header.component.html',
@@ -15,7 +13,6 @@ import {Observable} from 'rxjs/Observable';
 
 export class ArticlesDetailHeaderComponent implements OnInit {
 
-  private active: boolean = false;
   @Input() public showHeader: boolean = false;
   @Input() public interactId: number;
   @Input() public userId: string;
