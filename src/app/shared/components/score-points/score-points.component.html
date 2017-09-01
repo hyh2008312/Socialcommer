@@ -1,0 +1,9 @@
+<ng-container *ngFor="let n of number; trackBy: trackByN;">
+  <i class="material-icons xb-rating-star__star xb-rating-star__color"
+     *ngIf="n < score + 1 && n <= score">star</i>
+  <i class="material-icons xb-rating-star__star xb-rating-star__color"
+     *ngIf="n < score + 1 && score < n">star_half</i>
+  <i class="material-icons xb-rating-star__star"
+     *ngIf="n >= score + 1">star_border</i>
+</ng-container>
+

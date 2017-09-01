@@ -1,0 +1,47 @@
+<div class="container">
+  <app-articles-detail-header></app-articles-detail-header>
+  <img [src]="blogs.cover" class="xb2-img-responsible">
+  <div class="xb2-page-head__content background-whitem">
+    <div class="xb2-page-head__title">{{blogs.title}}</div>
+    <div class="md-margin-bottom-2 md-padding-top-1" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="xb2-page-head__info">By {{owner.first_name}}</div>
+      <div class="xb2-page-head__info">{{blogs.created | amDateFormat:'MMMM Do, YYYY'}}</div>
+    </div>
+    <div *ngIf="blogs.details" [innerHTML]="getDetail(blogs.details) | safeHtml"></div>
+  </div>
+  <div class="xb2-page-head__content background-whitem md-margin-top-1 xb2-page-head__content-2">
+    <div fxLayout="row">
+      <app-user-avatar [avatar]="userprofile.avatar" [name]="owner.first_name" [large]="true" fxFlex="none"
+                       (click)="toProfile(owner.id)"></app-user-avatar>
+      <div fxLayout="column" fxFlex>
+        <div class="md-margin-left-1" fxLayout="column" fxLayoutAlign="start">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="xb2-page-head__content-1">
+              <div class="md-subhead" fxLayout="row" fxLayoutAlign="start center" >
+                {{owner.first_name}}
+                <app-user-badge class="md-margin-left-1" [point]="owner.badge_point"></app-user-badge>
+              </div>
+              <div class="md-margin-top-1 xb2-page-head__info-1 xb2-page-head__ellipsis" *ngIf="userprofile.position || userprofile.company">
+                {{getPosition(userprofile.position, userprofile.company)}}
+              </div>
+            </div>
+            <app-user-follow [follow]="currentUser.follow" [id]="owner.id"
+            [followersAmount]="achievement.followersAmount" [expertId]="35"></app-user-follow>
+          </div>
+          <div class="xb2-page-head__head-bottom" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <div class="xb-bold">{{achievement.blogApprovedAmount}}</div>
+              <div class="xb2-page-head__info-1">{{achievement.blogApprovedAmount > 1? 'Articles':'Article'}}</div>
+            </div>
+            <span fxFlex="none"></span>
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <div class="xb-bold">{{achievement.followersAmount}}</div>
+              <div class="xb2-page-head__info-1">{{achievement.followersAmount > 1? 'Followers':'Follower'}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

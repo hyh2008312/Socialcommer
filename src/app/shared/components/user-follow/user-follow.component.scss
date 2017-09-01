@@ -3,6 +3,8 @@
   line-height: 36px;
   padding: 0 2px;
   text-align: center;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .xb-follow{
@@ -13,5 +15,9 @@
   &__following{
     @extend %content;
     color: rgb(255,87,34);
+  }
+  &__disabled{
+    @extend %content;
+    color: rgba(0,0,0,.38);
   }
 }

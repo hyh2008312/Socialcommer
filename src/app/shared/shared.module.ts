@@ -12,6 +12,7 @@ import { UserAvatarComponent } from './components/user-avatar/user-avatar.compon
 import { UserBadgeComponent } from './components/user-badge/user-badge.component';
 import { UserFollowComponent } from './components/user-follow/user-follow.component';
 
+
 import { FollowService } from './components/user-follow/user-follow.service';
 
 @NgModule({

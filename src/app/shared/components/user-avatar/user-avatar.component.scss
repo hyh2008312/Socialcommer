@@ -4,4 +4,10 @@
     height: 40px;
     border-radius: 50%;
   }
+  &__large{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: block;
+  }
 }

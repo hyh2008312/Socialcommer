@@ -152,31 +152,6 @@ button, html, body, input, select, textarea {
 p {
   margin: 0 0 10px; }
 
-.xb2-h1 {
-  font-size: 34px;
-  line-height: 40px;
-  font-weight: 400;
-  margin-bottom: 24px; }
-
-.xb2-h2 {
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 500;
-  margin-top: 0;
-  margin-bottom: 16px; }
-  @media screen and (max-width: 599px) {
-    .xb2-h2 {
-      font-size: 34px;
-      line-height: 40px;
-      font-weight: 400;
-      margin-bottom: 8px; } }
-
-.xb2-h3 {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 500;
-  margin-bottom: 8px; }
-
 .xb-fab-fixed {
   position: fixed !important; }
 
@@ -216,10 +191,6 @@ p {
   width: 100%;
   margin: 0; }
 
-md-input-container label.md-container-ignore {
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.54); }
-
 a {
   color: #3f51b5; }
   a:hover {
@@ -230,15 +201,9 @@ a.xb2-nostyle-link {
   a.xb2-nostyle-link:hover {
     color: inherit; }
 
-md-list-item.md-padding-clear {
-  padding: 0 0; }
-
-.xb2-ul {
-  margin-bottom: 8px;
-  -webkit-padding-start: 16px; }
-
 img.xb2-img-responsible {
-  width: 100%; }
+  width: 100%;
+  display: block; }
 
 .xb2-bottom-fixed {
   position: fixed;
@@ -419,6 +384,11 @@ p, .md-body-1 {
 
 .xb-pointer {
   cursor: pointer; }
+
+.xb2-ul {
+  margin-bottom: 10px;
+  margin-top: 8px;
+  -webkit-padding-start: 16px; }
 
 .animation-opacity-show {
   -webkit-animation: opacity-show 0.5s linear 0s 1 normal;
@@ -796,6 +766,9 @@ a.block-link {
   display: block; }
   a.block-link:hover, a.block-link:active {
     text-decoration: none; }
+
+p, li {
+  color: rgba(0, 0, 0, 0.87); }
 
 .note-editor {
   border: 1px solid #f9f9f9; }

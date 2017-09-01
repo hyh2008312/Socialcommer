@@ -12,6 +12,9 @@ import { FollowService } from './user-follow.service';
 export class UserFollowComponent implements OnInit {
   @Input() public id: number;
   @Input() public follow: boolean;
+  @Input() public followersAmount: number;
+  @Input() public expertId: number;
+  private disabled:boolean = false;
 
   constructor(private followService: FollowService) {}
 
@@ -20,12 +23,24 @@ export class UserFollowComponent implements OnInit {
 
   changeFollow() {
 
-    var self = this;
+    if(!this.disabled) {
+      this.disabled = true;
 
-    this.followService.follow(this.id).then((data)=> {
-      self.follow = data.follow;
-    });
+      let self = this;
 
+      this.followService.follow(this.id).then((data)=> {
+        this.disabled = false;
+        self.follow = data.follow;
+        if(self.expertId && self.expertId != self.id) {
+          if(self.follow == false) {
+            self.followersAmount--;
+          } else {
+            self.followersAmount++;
+          }
+        }
+      });
+
+    }
   }
 
 }
