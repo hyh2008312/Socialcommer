@@ -89,7 +89,7 @@ export class ReviewsDetailComponent implements OnInit {
     } else if(position && !company) {
       return `${position}`;
     } else if(company && !position) {
-      return `${position}`;
+      return `${company}`;
     }
   }
 
