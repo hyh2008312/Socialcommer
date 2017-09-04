@@ -82,7 +82,7 @@ export class BlogsDetailComponent implements OnInit {
     this.scrollUp = event;
   }
 
-  onFollwerChange(event:boolean) {
+  onFollowerChange(event:boolean) {
     if(event == true) {
       this.achievement.followersAmount++;
     } else {
