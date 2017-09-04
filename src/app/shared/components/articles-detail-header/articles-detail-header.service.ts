@@ -80,7 +80,7 @@ export class ArticlesDetailHeaderService {
     alert(url);
 
     alert(vote);
-    return this.http.post(url, {id:id, vote:vote}, options)
+    return this.http.patch(url, {id:id, vote:vote}, options)
       .toPromise()
       .then(response => response.json() as Vote)
       .catch(this.handleError);
