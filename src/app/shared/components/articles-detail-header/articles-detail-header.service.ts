@@ -61,7 +61,7 @@ export class ArticlesDetailHeaderService {
       .catch(this.handleError);
   }
 
-  vote(id:number): Promise<Vote> {
+  vote(id:number,vote:any): Promise<Vote> {
     if(window['WebAppInterface']) {
       if(window['WebAppInterface'].getAccessToken() == '') {
         window['WebAppInterface'].toLogin();
@@ -77,7 +77,7 @@ export class ArticlesDetailHeaderService {
 
     const url = `${this.baseUrl.url}${this.voteUrl}${id}`;
 
-    return this.http.post(url, null, options)
+    return this.http.post(url, {vote:vote}, options)
       .toPromise()
       .then(response => response.json() as Vote)
       .catch(this.handleError);
