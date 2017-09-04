@@ -9,6 +9,7 @@
 
   &__content-1{
     padding: 8px 0;
+    min-width: 0;
   }
 
   &__content-2{
@@ -72,6 +73,10 @@
     height: 0;
     padding-bottom: 56.25%;
     background-color: rgba(0,0,0,.12);
+  }
+
+  &__min-width{
+    min-width: 0;
   }
 }
 

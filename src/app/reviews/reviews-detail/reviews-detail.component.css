@@ -150,7 +150,8 @@
   padding: 0 16px;
   overflow: hidden; }
 .xb2-page-head__content-1 {
-  padding: 8px 0; }
+  padding: 8px 0;
+  min-width: 0; }
 .xb2-page-head__content-2 {
   padding: 12px 16px 16px; }
 .xb2-page-head__title {
@@ -204,5 +205,7 @@
   height: 0;
   padding-bottom: 56.25%;
   background-color: rgba(0, 0, 0, 0.12); }
+.xb2-page-head__min-width {
+  min-width: 0; }
 
 /*# sourceMappingURL=reviews-detail.component.css.map */
