@@ -75,13 +75,14 @@ export class ArticlesDetailHeaderComponent implements OnInit {
       if(!this.joinsed) {
         this.joinsed = true;
         this.articlesDetailHeaderService.joins(this.interactId).then(Vote => {
-          alert(JSON.stringify(Vote))
+
           this.vote = Vote;
           this.joiner = Vote.joiner;
           this.joinId = Vote.joiner.id;
 
           let self = this;
           self.articlesDetailHeaderService.vote(self.joinId).then(Vote => {
+            alert(JSON.stringify(Vote))
             this.joinsed = false;
 
             self.vote = Vote;
@@ -103,6 +104,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
       if(!this.joinsed) {
         this.joinsed = true;
         this.articlesDetailHeaderService.vote(this.joinId).then(Vote => {
+          alert(JSON.stringify(Vote))
           this.joinsed = false;
 
           this.vote = Vote;
