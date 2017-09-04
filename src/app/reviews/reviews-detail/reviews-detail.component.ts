@@ -34,7 +34,6 @@ export class ReviewsDetailComponent implements OnInit {
   ngOnInit():void {
     if(window['WebAppInterface']) {
       this.userId = window['WebAppInterface'].getUserId();
-      alert(this.userId);
     }
 
     let id = this.route.snapshot.params['id'];
