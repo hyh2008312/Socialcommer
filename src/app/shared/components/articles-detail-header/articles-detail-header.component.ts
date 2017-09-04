@@ -59,7 +59,6 @@ export class ArticlesDetailHeaderComponent implements OnInit {
   }
 
   back() {
-    alert(this.backFrom);
     if(this.backFrom == 'review') {
       if(window['WebAppInterface']) {
         window['WebAppInterface'].reviewBack();
