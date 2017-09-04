@@ -182,5 +182,7 @@
   .xb-articles-header__vote {
     color: #fff;
     font-weight: 300; }
+  .xb-articles-header__color {
+    color: #ff5722; }
 
 /*# sourceMappingURL=articles-detail-header.component.css.map */
