@@ -41,12 +41,11 @@ export class ArticlesDetailHeaderComponent implements OnInit {
       let self = this;
 
       self.articlesDetailHeaderService.getJoiner(self.interactId,self.userId).then(Joiners => {
-        alert(JSON.stringify(Joiners));
         self.joiners = Joiners;
         if(Joiners.results.length > 0) {
           self.vote = Joiners.results[0];
           self.joiner = Joiners.results[0].joiner;
-          self.joinId = Joiners.results[0].joiner.id;
+          self.joinId = Joiners.results[0].id;
         }
         return self;
       });
@@ -87,7 +86,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
             self.vote = Vote;
             self.joiner = Vote.joiner;
-            self.joinId = Vote.joiner.id;
+            self.joinId = Vote.id;
 
             if(Vote.vote == true) {
               self.voteAmount++;
@@ -108,7 +107,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
           this.vote = Vote;
           this.joiner = Vote.joiner;
-          this.joinId = Vote.joiner.id;
+          this.joinId = Vote.id;
 
           if(Vote.vote == true) {
             this.voteAmount++;
