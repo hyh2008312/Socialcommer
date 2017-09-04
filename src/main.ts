@@ -7,6 +7,10 @@ import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
+
+  window['reloadUser'] = function() {
+    window.location.reload(true);
+  };
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);

@@ -33,9 +33,6 @@ export class ReviewsDetailComponent implements OnInit {
   ) { }
 
   ngOnInit():void {
-    window['reloadUser'] = function() {
-      window.location.reload(true);
-    };
 
     if(window['WebAppInterface']) {
       this.userId = window['WebAppInterface'].getUserId();
