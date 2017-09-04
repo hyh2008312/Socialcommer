@@ -39,6 +39,8 @@ export class Reviewer {
 
 export class Project {
   buy_url: string;
+  title: string;
+  final_price: Currency;
 }
 
 export class Flashsale{

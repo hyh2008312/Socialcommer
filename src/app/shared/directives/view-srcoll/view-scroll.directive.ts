@@ -19,9 +19,13 @@ export class ViewScrollDirective {
   }
 
   @HostListener('touchmove') onTouchMove() {
-    if(this.element.nativeElement.scrollTop > this.startX) {
-      this.scroll(true);
-    } else if(this.element.nativeElement.scrollTop < this.startX){
+    if(his.element.nativeElement.scrollTop > 0) {
+      if(this.element.nativeElement.scrollTop > this.startX) {
+        this.scroll(true);
+      } else if(this.element.nativeElement.scrollTop < this.startX){
+        this.scroll(false);
+      }
+    } else if(this.element.nativeElement.scrollTop == 0) {
       this.scroll(false);
     }
   }

@@ -4,7 +4,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Reviews, Applicant, Review, Project, Reviewer, Userprofile, CurrentUser, Image, Achievement, Interact} from '../reviews';
 import { ReviewsService } from '../reviews.service';
-import {Project} from "../reviews";
 
 @Component({
   selector: 'app-reviews-detail',
