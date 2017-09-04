@@ -29,15 +29,17 @@ export class ArticlesDetailHeaderService {
     });
     this.createAuthorizationHeader(headers);
 
-    let options = new RequestOptions({
-      interact_id: interactId,
-      joiner_id: joinerId,
-      headers:headers
-    });
+    let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}${this.voteUrl}?interact_id=${interactId}&joiner_id=${joinerId}`;
+    const url = `${this.baseUrl.url}${this.voteUrl}`;
 
-    return this.http.get(url, options)
+    return this.http({
+        url:url,
+        method: 'get',
+        search: `interact_id=${interactId}&joiner_id=${joinerId}`,
+        headers: options,
+        body: ''
+      })
       .toPromise()
       .then(response => response.json() as Joiners)
       .catch(this.handleError);
