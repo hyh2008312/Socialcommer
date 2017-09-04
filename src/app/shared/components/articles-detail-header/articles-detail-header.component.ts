@@ -42,6 +42,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
       self.articlesDetailHeaderService.getJoiner(self.interactId,self.userId).then(Joiners => {
         self.joiners = Joiners;
+        alert(JSON.string(Joiners))
         if(Joiners.results.length > 0) {
           self.vote = Joiners.results[0];
           self.joiner = Joiners.results[0].joiner;
