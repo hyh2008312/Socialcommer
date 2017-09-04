@@ -31,9 +31,9 @@ export class UserFollowComponent implements OnInit {
       if(window['WebAppInterface']) {
         if(window['WebAppInterface'].getAccessToken() == '') {
           window['WebAppInterface'].toLogin();
+          this.disabled = false;
+          return;
         }
-        this.disabled = false;
-        return;
       }
 
       let self = this;
