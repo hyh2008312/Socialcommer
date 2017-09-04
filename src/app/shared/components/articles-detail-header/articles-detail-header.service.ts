@@ -75,7 +75,7 @@ export class ArticlesDetailHeaderService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}${this.voteUrl}${id}`;
+    const url = `${this.baseUrl.url}${this.voteUrl}${id}/`;
 
     return this.http.post(url, {vote:vote}, options)
       .toPromise()
