@@ -1,4 +1,4 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { FollowService } from './user-follow.service';
 
