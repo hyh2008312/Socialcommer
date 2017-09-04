@@ -54,7 +54,7 @@ export class UserFollowComponent implements OnInit {
   }
 
   changeFollower(follower:boolean) {
-    this.followerChange.emit(follower);
+    this.onFollowerChange.emit(follower);
   }
 
 }
