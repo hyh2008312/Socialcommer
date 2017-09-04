@@ -81,7 +81,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
           this.joinId = Vote.joiner.id;
 
           let self = this;
-          alert(selft.joinId + "|" + self.vote.vote)
+          alert(self.joinId + "|" + self.vote.vote)
           self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
             alert(JSON.stringify(Vote))
             this.joinsed = false;
