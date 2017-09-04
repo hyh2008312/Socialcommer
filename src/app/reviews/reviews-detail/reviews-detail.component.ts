@@ -40,7 +40,7 @@ export class ReviewsDetailComponent implements OnInit {
     let id = this.route.snapshot.params['id'];
     this.reviewsService.getReviewsDetail(id).then(reviews => {
       this.reviews = reviews;
-      this.interact = this.reviews.interact;
+      this.interact = reviews.interact;
 
       this.applicant = reviews.applicant;
       this.review = reviews.applicant.review;

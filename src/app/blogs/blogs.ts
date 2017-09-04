@@ -5,7 +5,8 @@ export class Blogs {
   description: string;
   created: string;
   cover: string;
-  owner: Owner
+  owner: Owner;
+  interact: Interact;
 }
 
 export class Owner {
@@ -43,4 +44,9 @@ export class Achievement {
   shareProductFeaturedAmount : number = 0;
   thumbsUpAmount : number = 0;
   trialAmount : number = 0;
+}
+
+export class Interact{
+  id: number;
+  vote_amount: number;
 }
