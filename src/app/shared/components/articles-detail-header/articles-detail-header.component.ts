@@ -71,7 +71,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
   }
 
   toVote() {
-    alert(this.vote)
+    alert(this.vote.vote)
     if(this.vote.vote == null) {
       if(!this.joinsed) {
         this.joinsed = true;
