@@ -29,7 +29,11 @@ export class ArticlesDetailHeaderService {
     });
     this.createAuthorizationHeader(headers);
 
-    let options = new RequestOptions({headers:headers});
+    let options = new RequestOptions({
+      interact_id: interactId,
+      joiner_id: joinerId,
+      headers:headers
+    });
 
     const url = `${this.baseUrl.url}${this.voteUrl}?interact_id=${interactId}&joiner_id=${joinerId}`;
 
