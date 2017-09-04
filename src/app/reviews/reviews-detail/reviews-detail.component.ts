@@ -34,7 +34,7 @@ export class ReviewsDetailComponent implements OnInit {
 
   ngOnInit():void {
     window['reloadUser'] = function() {
-      alert(1111);
+      window.location.reload(true);
     };
 
     if(window['WebAppInterface']) {
