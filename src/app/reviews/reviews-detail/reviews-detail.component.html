@@ -2,7 +2,8 @@
   <app-articles-detail-header [showHeader]="scrollUp" [backFrom]="'review'"
     [interactId]="interact.id" [userId]="userId" [voteAmount]="interact.vote_amount"></app-articles-detail-header>
   <div class="xb-scroll" fxFlex appViewScroll (onScrollChange)="onScrollChange($event)">
-    <img [src]="image.image_origin" class="xb2-img-responsible">
+    <img [src]="image.image_origin" *ngIf="image.image_origin" class="xb2-img-responsible" />
+    <div *ngIf="!image.image_origin" class="xb2-page-head__loading-image"></div>
     <div class="xb2-page-head__content background-whitem">
       <div class="xb2-page-head__title">{{project.title}}</div>
       <div class="xb2-page-head__subtitle">{{reviews.title}}</div>

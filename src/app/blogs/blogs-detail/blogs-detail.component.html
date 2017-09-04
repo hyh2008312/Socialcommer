@@ -1,6 +1,8 @@
 <div class="container">
-  <app-articles-detail-header [showHeader]="scrollUp" [backFrom]="'blog'"></app-articles-detail-header>
-  <img [src]="blogs.cover" class="xb2-img-responsible" appViewScroll (onScrollChange)="onScrollChange($event)">
+  <app-articles-detail-header [showHeader]="scrollUp" [backFrom]="'blog'"
+                              appViewScroll (onScrollChange)="onScrollChange($event)"></app-articles-detail-header>
+  <img [src]="blogs.cover" *ngIf="blogs.cover"  class="xb2-img-responsible">
+  <div  *ngIf="!blogs.cover" class="xb2-page-head__loading-image"></div>
   <div class="xb2-page-head__content background-whitem">
     <div class="xb2-page-head__title">{{blogs.title}}</div>
     <div class="md-margin-bottom-2 md-padding-top-1" fxLayout="row" fxLayoutAlign="space-between center">

@@ -45,7 +45,7 @@
 
 .animation-height-hide{
 
-  @include prefixer(animation, height-hide .3s linear 0s 1 normal, $prefix-list);
+  @include prefixer(animation, height-hide .2s linear 0s 1 normal, $prefix-list);
 
   @at-root {
 
@@ -58,7 +58,7 @@
 
 .animation-height-show{
 
-  @include prefixer(animation, height-show .3s linear 0s 1 normal, $prefix-list);
+  @include prefixer(animation, height-show .2s linear 0s 1 normal, $prefix-list);
 
   @at-root {
 

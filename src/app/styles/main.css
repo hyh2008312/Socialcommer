@@ -566,11 +566,11 @@ p, .md-body-1 {
     transform: translateX(-50%) scale(1, 1);
     display: none; } }
 .animation-height-hide {
-  -webkit-animation: height-hide 0.3s linear 0s 1 normal;
-  -moz-animation: height-hide 0.3s linear 0s 1 normal;
-  -ms-animation: height-hide 0.3s linear 0s 1 normal;
-  -o-animation: height-hide 0.3s linear 0s 1 normal;
-  animation: height-hide 0.3s linear 0s 1 normal; }
+  -webkit-animation: height-hide 0.2s linear 0s 1 normal;
+  -moz-animation: height-hide 0.2s linear 0s 1 normal;
+  -ms-animation: height-hide 0.2s linear 0s 1 normal;
+  -o-animation: height-hide 0.2s linear 0s 1 normal;
+  animation: height-hide 0.2s linear 0s 1 normal; }
 @-webkit-keyframes height-hide {
   0% {
     height: 56px; }
