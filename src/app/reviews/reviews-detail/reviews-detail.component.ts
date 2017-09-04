@@ -55,7 +55,6 @@ export class ReviewsDetailComponent implements OnInit {
       }
 
       if(window['WebAppInterface']) {
-        alert(reviews.applicant.review.flashsale.sale_price.amount)
         window['WebAppInterface'].toPrice(reviews.applicant.review.flashsale.sale_price.amount,
           'https://www.baidu.com');
           //reviews.applicant.review.project.buy_url);

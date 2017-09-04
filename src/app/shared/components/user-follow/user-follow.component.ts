@@ -41,7 +41,7 @@ export class UserFollowComponent implements OnInit {
       this.followService.follow(this.id).then((data)=> {
         this.disabled = false;
         self.follow = data.follow;
-        if(self.expertId && self.expertId != self.id) {
+        if(self.expertId) {
           if(self.follow == false) {
             self.changeFollower(self.follow);
           } else {
