@@ -2,8 +2,9 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Reviews, Applicant, Review, Reviewer, Userprofile, CurrentUser, Image, Achievement, Interact} from '../reviews';
+import { Reviews, Applicant, Review, Project, Reviewer, Userprofile, CurrentUser, Image, Achievement, Interact} from '../reviews';
 import { ReviewsService } from '../reviews.service';
+import {Project} from "../reviews";
 
 @Component({
   selector: 'app-reviews-detail',
@@ -17,6 +18,7 @@ export class ReviewsDetailComponent implements OnInit {
   interact : Interact = new Interact();
   applicant : Applicant = new Applicant();
   review : Review = new Review();
+  project : Project = new Project();
   reviewer : Reviewer = new Reviewer();
   userprofile : Userprofile = new Userprofile();
   currentUser : CurrentUser = new CurrentUser();
@@ -43,6 +45,7 @@ export class ReviewsDetailComponent implements OnInit {
 
       this.applicant = reviews.applicant;
       this.review = reviews.applicant.review;
+      this.project = reviews.applicant.review.project;
       this.reviewer = reviews.applicant.reviewer;
       this.userprofile = reviews.applicant.reviewer.userprofile;
       this.image = reviews.image;
@@ -55,9 +58,8 @@ export class ReviewsDetailComponent implements OnInit {
       }
 
       if(window['WebAppInterface']) {
-        window['WebAppInterface'].toPrice(reviews.applicant.review.flashsale.sale_price.amount,
-          'https://www.baidu.com');
-          //reviews.applicant.review.project.buy_url);
+        window['WebAppInterface'].toPrice(reviews.applicant.review.project.final_price.amount,
+          reviews.applicant.review.project.buy_url);
       }
 
       let self = this;
