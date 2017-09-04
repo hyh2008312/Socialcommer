@@ -23,11 +23,6 @@ export class FollowService {
   }
 
   follow(id:number): Promise<Follow> {
-    if(window['WebAppInterface']) {
-      if(window['WebAppInterface'].getAccessToken() == '') {
-        window['WebAppInterface'].toLogin();
-      }
-    }
 
     let headers = new Headers({
       'Content-Type': 'application/json'

@@ -19,8 +19,8 @@ export class BlogsDetailComponent implements OnInit {
   currentUser : CurrentUser = new CurrentUser();
   achievement : Achievement = new Achievement();
 
-  userId: string;
-  scrollUp: boolean;
+  userId : string = '';
+  scrollUp : boolean = false;
 
   constructor(
     private blogsService: BlogsService,
@@ -80,5 +80,13 @@ export class BlogsDetailComponent implements OnInit {
 
   onScrollChange(event:boolean) {
     this.scrollUp = event;
+  }
+
+  onFollwerChange(event:boolean) {
+    if(event == true) {
+      this.achievement.followersAmount++;
+    } else {
+      this.achievement.followersAmount--;
+    }
   }
 }

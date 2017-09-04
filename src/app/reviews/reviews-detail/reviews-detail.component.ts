@@ -23,8 +23,8 @@ export class ReviewsDetailComponent implements OnInit {
   image : Image = new Image();
   achievement : Achievement = new Achievement();
 
-  userId: string = '';
-  scrollUp: boolean = false;
+  userId : string = '';
+  scrollUp : boolean = false;
 
   constructor(
     private reviewsService: ReviewsService,
@@ -113,5 +113,13 @@ export class ReviewsDetailComponent implements OnInit {
 
   onScrollChange(event:boolean) {
     this.scrollUp = event;
+  }
+
+  onFollwerChange(event:boolean) {
+    if(event == true) {
+      this.achievement.followersAmount++;
+    } else {
+      this.achievement.followersAmount--;
+    }
   }
 }

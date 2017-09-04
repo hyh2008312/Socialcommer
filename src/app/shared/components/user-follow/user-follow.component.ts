@@ -12,8 +12,10 @@ import { FollowService } from './user-follow.service';
 export class UserFollowComponent implements OnInit {
   @Input() public id: number;
   @Input() public follow: boolean;
-  @Input() public followersAmount: number;
   @Input() public expertId: any;
+
+  @Output() followerChange = new EventEmitter();
+
   private disabled:boolean = false;
 
   constructor(private followService: FollowService) {}
@@ -26,6 +28,14 @@ export class UserFollowComponent implements OnInit {
     if(!this.disabled) {
       this.disabled = true;
 
+      if(window['WebAppInterface']) {
+        if(window['WebAppInterface'].getAccessToken() == '') {
+          window['WebAppInterface'].toLogin();
+        }
+        this.disabled = false;
+        return;
+      }
+
       let self = this;
 
       this.followService.follow(this.id).then((data)=> {
@@ -33,14 +43,18 @@ export class UserFollowComponent implements OnInit {
         self.follow = data.follow;
         if(self.expertId && self.expertId != self.id) {
           if(self.follow == false) {
-            self.followersAmount--;
+            self.changeFollower(self.follow);
           } else {
-            self.followersAmount++;
+            self.changeFollower(self.follow);
           }
         }
       });
 
     }
+  }
+
+  changeFollower(follower:boolean) {
+    this.followerChange.emit(follower);
   }
 
 }

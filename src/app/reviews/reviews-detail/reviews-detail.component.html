@@ -52,7 +52,7 @@
               </div>
             </div>
             <app-user-follow [follow]="currentUser.follow" [id]="reviewer.id"
-            [followersAmount]="achievement.followersAmount" [expertId]="userId"></app-user-follow>
+                             [expertId]="userId" (onFollowerChange)="onScrollChange($event)"></app-user-follow>
           </div>
           <div class="xb2-page-head__head-bottom" fxLayout="row" fxLayoutAlign="start center">
             <div fxLayout="column" fxLayoutAlign="center start">
