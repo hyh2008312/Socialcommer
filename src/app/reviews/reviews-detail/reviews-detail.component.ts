@@ -1,5 +1,5 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Reviews, Applicant, Review, Project, Reviewer, Userprofile, CurrentUser, Image, Achievement, Interact} from '../reviews';
@@ -33,6 +33,10 @@ export class ReviewsDetailComponent implements OnInit {
   ) { }
 
   ngOnInit():void {
+    window['reloadUser'] = function() {
+      alert(1111);
+    };
+
     if(window['WebAppInterface']) {
       this.userId = window['WebAppInterface'].getUserId();
     }
