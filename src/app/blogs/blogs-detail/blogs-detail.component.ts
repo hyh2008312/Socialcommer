@@ -72,7 +72,7 @@ export class BlogsDetailComponent implements OnInit {
     } else if(position && !company) {
       return `${position}`;
     } else if(company && !position) {
-      return `${position}`;
+      return `${company}`;
     }
   }
 
