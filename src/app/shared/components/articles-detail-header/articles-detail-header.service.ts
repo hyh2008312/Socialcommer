@@ -77,6 +77,9 @@ export class ArticlesDetailHeaderService {
 
     const url = `${this.baseUrl.url}${this.voteUrl}${id}/`;
 
+    alert(url);
+
+    alert(vote);
     return this.http.post(url, {id:id, vote:vote}, options)
       .toPromise()
       .then(response => response.json() as Vote)

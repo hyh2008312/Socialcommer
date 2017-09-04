@@ -81,7 +81,6 @@ export class ArticlesDetailHeaderComponent implements OnInit {
           this.joinId = Vote.joiner.id;
 
           let self = this;
-          alert(self.joinId + "|" + self.vote.vote)
           self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
             alert(JSON.stringify(Vote))
             this.joinsed = false;
@@ -102,10 +101,8 @@ export class ArticlesDetailHeaderComponent implements OnInit {
         });
       }
     } else {
-      alert(this.joinsed)
       if(!this.joinsed) {
         this.joinsed = true;
-        alert(this.joinId + "|" + this.vote.vote)
         this.articlesDetailHeaderService.vote(this.joinId, this.vote.vote).then(Vote => {
           alert(JSON.stringify(Vote))
           this.joinsed = false;
