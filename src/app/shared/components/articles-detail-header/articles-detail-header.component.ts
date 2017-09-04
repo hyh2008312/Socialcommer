@@ -71,11 +71,11 @@ export class ArticlesDetailHeaderComponent implements OnInit {
   }
 
   toVote() {
-    alert(this.vote.vote)
     if(this.vote.vote == null) {
       if(!this.joinsed) {
         this.joinsed = true;
         this.articlesDetailHeaderService.joins(this.interactId).then(Vote => {
+          alert(JSON.stringify(Vote))
           this.vote = Vote;
           this.joiner = Vote.joiner;
           this.joinId = Vote.joiner.id;
