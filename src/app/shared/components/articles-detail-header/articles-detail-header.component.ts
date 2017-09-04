@@ -54,6 +54,10 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
   toComment(interactId: number, joinId: number) {
     if(window['WebAppInterface']) {
+      if(window['WebAppInterface'].getAccessToken() == '') {
+        window['WebAppInterface'].toLogin();
+        return;
+      }
       window['WebAppInterface'].toComment(interactId.toString(),joinId.toString());
     }
   }
