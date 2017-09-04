@@ -103,6 +103,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
     } else {
       if(!this.joinsed) {
         this.joinsed = true;
+        alert(this.joinId)
         this.articlesDetailHeaderService.vote(this.joinId).then(Vote => {
           alert(JSON.stringify(Vote))
           this.joinsed = false;
