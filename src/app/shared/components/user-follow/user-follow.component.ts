@@ -14,7 +14,7 @@ export class UserFollowComponent implements OnInit {
   @Input() public follow: boolean;
   @Input() public expertId: any;
 
-  @Output() followerChange = new EventEmitter();
+  @Output() onFollowerChange = new EventEmitter();
 
   private disabled:boolean = false;
 
