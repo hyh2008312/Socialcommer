@@ -31,15 +31,11 @@ export class ArticlesDetailHeaderService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}${this.voteUrl}`;
+    const url = `${this.baseUrl.url}${this.voteUrl}?interact_id=${interactId}&joiner_id=${joinerId}`;
 
-    return this.http({
-        url:url,
-        method: 'get',
-        search: `interact_id=${interactId}&joiner_id=${joinerId}`,
-        headers: options,
-        body: ''
-      })
+    alert(url);
+
+    return this.http.get(url, options)
       .toPromise()
       .then(response => response.json() as Joiners)
       .catch(this.handleError);
