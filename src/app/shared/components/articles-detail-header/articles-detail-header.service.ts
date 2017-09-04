@@ -33,8 +33,6 @@ export class ArticlesDetailHeaderService {
 
     const url = `${this.baseUrl.url}${this.voteUrl}?interact_id=${interactId}&joiner_id=${joinerId}`;
 
-    alert(url);
-
     return this.http.get(url, options)
       .toPromise()
       .then(response => response.json() as Joiners)
