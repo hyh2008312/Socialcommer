@@ -24,6 +24,10 @@ export class AnswerDetailComponent implements OnInit {
 
   ngOnInit():void {
 
+    if(window['WebAppInterface']) {
+      window['WebAppInterface'].toCancelProgress();
+    }
+
     let id = this.route.snapshot.params['id'];
     this.questionsService.getAnswerDetail(id).then(answer => {
       this.answer = answer;

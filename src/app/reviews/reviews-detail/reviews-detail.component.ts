@@ -35,6 +35,10 @@ export class ReviewsDetailComponent implements OnInit {
   ngOnInit():void {
 
     if(window['WebAppInterface']) {
+      window['WebAppInterface'].toCancelProgress();
+    }
+
+    if(window['WebAppInterface']) {
       this.userId = window['WebAppInterface'].getUserId();
     }
 
