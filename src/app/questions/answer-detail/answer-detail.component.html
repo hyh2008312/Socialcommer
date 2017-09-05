@@ -6,14 +6,14 @@
     <div class="xb-ask-list__item" fxLayout="column">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="xb-ask-list__head-bg" fxLayout="row" fxFlex>
-          <app-user-avatar [avatar]="userprofile.avatar" [name]="owner.firstName" fxFlex="none"
+          <app-user-avatar [avatar]="owner.avatar" [name]="owner.firstName" fxFlex="none"
             (click)="toProfile(owner.id)"></app-user-avatar>
           <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex="nogrow">
             <div class="md-subhead" fxLayout="row" fxLayoutAlign="start center" >
               {{owner.firstName}}
               <app-user-badge class="md-margin-left-1" [point]="owner.badgePoint"></app-user-badge>
-              <div class="md-dark-secondary md-margin-left-1" *ngIf="userprofile.position || userprofile.company">
-                {{userprofile.position + '@' + userprofile.company}}
+              <div class="md-dark-secondary md-margin-left-1" *ngIf="owner.position || owner.company">
+                {{getPosition(owner.position, owner.company)}}
               </div>
             </div>
             <span class="md-body-1 md-dark-secondary" *ngIf="answer.created">Answered <span>{{answer.created | amTimeAgo}}</span></span>

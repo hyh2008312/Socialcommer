@@ -12,10 +12,6 @@ export class Owner {
   badgePoint : number;
   currentUser : CurrentUser;
   firstName : string = '';
-  userprofile: Userprofile;
-}
-
-export class Userprofile {
   avatar : string;
   company : string = '';
   position : string = '';
