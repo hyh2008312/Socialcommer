@@ -14,4 +14,8 @@ window['reloadUser'] = function() {
   window.location.reload(true);
 };
 
+if(window['WebAppInterface']) {
+  window['WebAppInterface'].toCancelProgress();
+}
+
 platformBrowserDynamic().bootstrapModule(AppModule);
