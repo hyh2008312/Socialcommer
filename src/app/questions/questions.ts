@@ -10,13 +10,9 @@ export class Questions {
 export class Owner {
   id : number;
   badgePoint : number;
-  currentUser : CurrentUser;
   firstName : string = '';
   avatar : string;
   company : string = '';
   position : string = '';
 }
 
-export class CurrentUser {
-  follow : boolean;
-}

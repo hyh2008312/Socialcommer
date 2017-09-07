@@ -2,7 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Questions, Owner, CurrentUser} from '../questions';
+import { Questions, Owner} from '../questions';
 import { QuestionsService } from '../questions.service';
 
 @Component({
@@ -15,7 +15,6 @@ export class AnswerDetailComponent implements OnInit {
 
   answer : Questions = new Questions();
   owner : Owner = new Owner();
-  currentUser: CurrentUser = new CurrentUser();
 
   constructor(
     private questionsService: QuestionsService,
@@ -32,13 +31,6 @@ export class AnswerDetailComponent implements OnInit {
     this.questionsService.getAnswerDetail(id).then(answer => {
       this.answer = answer;
       this.owner = answer.owner;
-      if(answer.owner.currentUser == null) {
-        this.currentUser = {
-          follow: false
-        };
-      } else {
-        this.currentUser = answer.owner.currentUser;
-      }
 
       return this;
     });

@@ -11,8 +11,8 @@ import { FollowService } from './user-follow.service';
 
 export class UserFollowComponent implements OnInit {
   @Input() public id: number;
-  @Input() public follow: boolean;
   @Input() public expertId: any;
+  follow: boolean = false;
 
   @Output() onFollowerChange = new EventEmitter();
 
@@ -21,6 +21,7 @@ export class UserFollowComponent implements OnInit {
   constructor(private followService: FollowService) {}
 
   ngOnInit(): void {
+    this.follow = this.getFollowList();
   }
 
   changeFollow() {
@@ -38,13 +39,19 @@ export class UserFollowComponent implements OnInit {
 
       let self = this;
 
-      this.followService.follow(this.id).then((data)=> {
-        this.disabled = false;
+      self.followService.follow(self.id).then((data)=> {
+        self.disabled = false;
         self.follow = data.follow;
         if(self.expertId) {
           if(self.follow == false) {
+            if(window['WebAppInterface']) {
+              window['WebAppInterface'].deleteFollowProfile(self.id);
+            }
             self.changeFollower(self.follow);
           } else {
+            if(window['WebAppInterface']) {
+              window['WebAppInterface'].addFollowProfile(self.id);
+            }
             self.changeFollower(self.follow);
           }
         }
@@ -55,6 +62,21 @@ export class UserFollowComponent implements OnInit {
 
   changeFollower(follower:boolean) {
     this.onFollowerChange.emit(follower);
+  }
+
+  getFollowList() {
+    if(window['WebAppInterface']) {
+      let followList = window['WebAppInterface'].getFollowProfiles();
+      followList = followList.split(',');
+      alert(followList);
+
+      let self = this;
+      if(followList.find(item => item == self.id)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
 }

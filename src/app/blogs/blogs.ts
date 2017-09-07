@@ -14,19 +14,11 @@ export class Owner {
   first_name: string;
   last_name: string;
   badge_point: number;
-  current_user: CurrentUser;
-  userprofile: Userprofile;
-}
-
-export class Userprofile {
   avatar : string;
   company : string;
   position : string;
 }
 
-export class CurrentUser {
-  follow : boolean;
-}
 
 export class Achievement {
 

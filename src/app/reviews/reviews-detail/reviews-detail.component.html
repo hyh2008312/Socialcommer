@@ -52,7 +52,7 @@
                 {{getPosition(userprofile.position, userprofile.company)}}
               </div>
             </div>
-            <app-user-follow [follow]="currentUser.follow" [id]="reviewer.id"
+            <app-user-follow [id]="reviewer.id"
                              [expertId]="userId" (onFollowerChange)="onFollowerChange($event)"></app-user-follow>
           </div>
           <div class="xb2-page-head__head-bottom" fxLayout="row" fxLayoutAlign="start center">

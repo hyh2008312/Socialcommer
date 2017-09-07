@@ -19,7 +19,7 @@
             <span class="md-body-1 md-dark-secondary" *ngIf="answer.created">Answered <span>{{answer.created | amTimeAgo}}</span></span>
           </div>
         </div>
-        <app-user-follow [follow]="currentUser.follow" [id]="owner.id"></app-user-follow>
+        <app-user-follow [id]="owner.id"></app-user-follow>
       </div>
       <div *ngIf="answer.isBestAnswer" class="xb-ask-list__best-answer" fxLayout="row" fxLayoutAlign="start center" >
         <i class="iconfontXberts icon-pic-best-answer1"></i>

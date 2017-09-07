@@ -2,7 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Reviews, Applicant, Review, Project, Reviewer, Userprofile, CurrentUser, Image, Achievement, Interact} from '../reviews';
+import { Reviews, Applicant, Review, Project, Reviewer, Userprofile, Image, Achievement, Interact} from '../reviews';
 import { ReviewsService } from '../reviews.service';
 
 @Component({
@@ -20,7 +20,6 @@ export class ReviewsDetailComponent implements OnInit {
   project : Project = new Project();
   reviewer : Reviewer = new Reviewer();
   userprofile : Userprofile = new Userprofile();
-  currentUser : CurrentUser = new CurrentUser();
   image : Image = new Image();
   achievement : Achievement = new Achievement();
 
@@ -53,13 +52,6 @@ export class ReviewsDetailComponent implements OnInit {
       this.reviewer = reviews.applicant.reviewer;
       this.userprofile = reviews.applicant.reviewer.userprofile;
       this.image = reviews.image;
-      if(reviews.applicant.reviewer.userprofile.current_user == null) {
-        this.currentUser = {
-          follow: false
-        };
-      } else {
-        this.currentUser = reviews.applicant.reviewer.userprofile.current_user;
-      }
 
       if(window['WebAppInterface']) {
         window['WebAppInterface'].toPrice(reviews.applicant.review.project.final_price.amount,

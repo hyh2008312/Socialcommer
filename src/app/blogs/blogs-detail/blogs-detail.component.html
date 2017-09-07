@@ -14,7 +14,7 @@
     </div>
     <div class="xb2-page-head__content background-whitem md-margin-top-1 xb2-page-head__content-2">
       <div fxLayout="row">
-        <app-user-avatar [avatar]="userprofile.avatar" [name]="owner.first_name" [large]="true" fxFlex="none"
+        <app-user-avatar [avatar]="owner.avatar" [name]="owner.first_name" [large]="true" fxFlex="none"
                          (click)="toProfile(owner.id)"></app-user-avatar>
         <div class="xb2-page-head__min-width" fxLayout="column" fxFlex>
           <div class="md-margin-left-1" fxLayout="column" fxLayoutAlign="start">
@@ -24,11 +24,11 @@
                   {{owner.first_name}}
                   <app-user-badge class="md-margin-left-1" [point]="owner.badge_point"></app-user-badge>
                 </div>
-                <div class="md-margin-top-1 xb2-page-head__info-1 xb2-page-head__ellipsis" *ngIf="userprofile.position || userprofile.company">
-                  {{getPosition(userprofile.position, userprofile.company)}}
+                <div class="md-margin-top-1 xb2-page-head__info-1 xb2-page-head__ellipsis" *ngIf="owner.position || owner.company">
+                  {{getPosition(owner.position, owner.company)}}
                 </div>
               </div>
-              <app-user-follow [follow]="currentUser.follow" [id]="owner.id"
+              <app-user-follow [id]="owner.id"
                                [expertId]="userId" (onFollowerChange)="onFollowerChange($event)"></app-user-follow>
             </div>
             <div class="xb2-page-head__head-bottom" fxLayout="row" fxLayoutAlign="start center">
