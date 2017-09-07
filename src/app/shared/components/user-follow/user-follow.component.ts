@@ -75,7 +75,6 @@ export class UserFollowComponent implements OnInit {
     if(window['WebAppInterface']) {
       let followList = window['WebAppInterface'].getFollowProfiles();
       followList = followList.split(',');
-      alert(followList);
 
       let self = this;
       if(followList.find(item => item == self.id.toString())) {
