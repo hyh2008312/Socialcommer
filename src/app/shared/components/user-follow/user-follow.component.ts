@@ -46,16 +46,19 @@ export class UserFollowComponent implements OnInit {
       self.followService.follow(self.id).then((data)=> {
         self.disabled = false;
         self.follow = data.follow;
+        if(self.follow == false) {
+          if(window['WebAppInterface']) {
+            window['WebAppInterface'].deleteFollowProfile(self.id.toString());
+          }
+        } else {
+          if(window['WebAppInterface']) {
+            window['WebAppInterface'].addFollowProfile(self.id.toString());
+          }
+        }
         if(self.expertId) {
           if(self.follow == false) {
-            if(window['WebAppInterface']) {
-              window['WebAppInterface'].deleteFollowProfile(self.id.toString());
-            }
             self.changeFollower(self.follow);
           } else {
-            if(window['WebAppInterface']) {
-              window['WebAppInterface'].addFollowProfile(self.id.toString());
-            }
             self.changeFollower(self.follow);
           }
         }
