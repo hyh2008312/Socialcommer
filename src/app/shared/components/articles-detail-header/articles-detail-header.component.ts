@@ -38,7 +38,6 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
   ngOnChanges(): void{
     if(this.userId != '' && this.interactId) {
-      alert(this.userId);
       let self = this;
 
       self.articlesDetailHeaderService.getJoiner(self.interactId,self.userId).then(Joiners => {
@@ -48,6 +47,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
           self.joiner = Joiners.results[0].joiner;
           self.joinId = Joiners.results[0].id;
         }
+        alert(self.joiners);
         return self;
       });
     }
