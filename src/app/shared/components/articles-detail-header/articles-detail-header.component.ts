@@ -84,6 +84,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
           this.joiner = Vote.joiner;
           this.joinId = Vote.id;
 
+          alert(Vote);
           let self = this;
           self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
             alert(Vote);
