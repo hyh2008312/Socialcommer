@@ -47,7 +47,6 @@ export class ArticlesDetailHeaderComponent implements OnInit {
           self.joiner = Joiners.results[0].joiner;
           self.joinId = Joiners.results[0].id;
         }
-        alert(self.joiners);
         return self;
       });
     }
@@ -76,6 +75,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
   }
 
   toVote() {
+    alert(this.vote.vote)
     if(this.vote.vote == null) {
       if(!this.joinsed) {
         this.joinsed = true;
