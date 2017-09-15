@@ -38,7 +38,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
   ngOnChanges(): void{
     if(this.userId != '' && this.interactId) {
-      aler(this.userId);
+      alert(this.userId);
       let self = this;
 
       self.articlesDetailHeaderService.getJoiner(self.interactId,self.userId).then(Joiners => {
