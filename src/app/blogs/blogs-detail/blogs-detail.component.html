@@ -2,7 +2,7 @@
   <app-articles-detail-header [showHeader]="scrollUp" [backFrom]="'blog'"
     [interactId]="interact.id" [userId]="userId" [voteAmount]="interact.vote_amount"></app-articles-detail-header>
   <div class="xb-scroll" fxFlex appViewScroll (onScrollChange)="onScrollChange($event)">
-    <img [src]="blogs.cover" *ngIf="blogs.cover"  class="xb2-img-responsible">
+    <img [src]="getBlogsImage(blogs.cover)" *ngIf="blogs.cover"  class="xb2-img-responsible">
     <div  *ngIf="!blogs.cover" class="xb2-page-head__loading-image"></div>
     <div class="xb2-page-head__content background-whitem">
       <div class="xb2-page-head__title">{{blogs.title}}</div>

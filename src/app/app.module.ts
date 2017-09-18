@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routes.module';
 import { AppComponent } from './app.component';
 
 import {BaseApi} from './config/app.api';
+import {SystemConstant, BlogCover} from './config/app.constant';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import {BaseApi} from './config/app.api';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [BaseApi],
+  providers: [BaseApi,SystemConstant, BlogCover],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

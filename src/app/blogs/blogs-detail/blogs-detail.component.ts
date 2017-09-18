@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Blogs, Owner, Achievement, Interact} from '../blogs';
 import { BlogsService } from '../blogs.service';
+import { SystemConstant, BlogCover} from '../../config/app.constant';
 
 @Component({
   selector: 'app-blogs-detail',
@@ -23,7 +24,9 @@ export class BlogsDetailComponent implements OnInit {
 
   constructor(
     private blogsService: BlogsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private systemConstant: SystemConstant,
+    private blogCover: BlogCover
   ) { }
 
   ngOnInit():void {
@@ -84,5 +87,28 @@ export class BlogsDetailComponent implements OnInit {
     } else {
       this.achievement.followersAmount--;
     }
+  }
+
+  getBlogsImage(url:string) {
+    if(url == null) {
+      return false;
+    }
+    let use = this.blogCover.use;
+    let category = this.blogCover.category;
+    let detail = this.blogCover.detail;
+    let originUrl = this.blogCover.originUrl;
+
+    let domainFile = url.split(this.systemConstant.baseUrl)[1];
+    if(domainFile != null) {
+      let file = url.split(originUrl)[1];
+      if(file != null) {
+        return this.systemConstant.accessUrl + '/public/' + category + '/' + use + '/' + detail + '/' + file;
+      } else {
+        return this.systemConstant.accessUrl + domainFile;
+      }
+    } else {
+      return url;
+    }
+
   }
 }
