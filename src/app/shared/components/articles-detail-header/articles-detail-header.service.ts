@@ -77,7 +77,7 @@ export class ArticlesDetailHeaderService {
 
     const url = `${this.baseUrl.url}${this.voteUrl}${id}/`;
 
-    return this.http.patch(url, {id:id, vote:vote == true? null: true}, options)
+    return this.http.patch(url, {id:id, vote:vote}, options)
       .toPromise()
       .then(response => response.json() as Vote)
       .catch(this.handleError);

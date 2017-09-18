@@ -75,8 +75,9 @@ export class ArticlesDetailHeaderComponent implements OnInit {
   }
 
   toVote() {
+    console.log(this.vote.vote)
     if(this.vote.vote == null) {
-      if(this.joinId==null) {
+      if(!this.joinsed) {
         this.joinsed = true;
         if(!this.joinId) {
           this.articlesDetailHeaderService.joins(this.interactId).then(Vote => {
@@ -86,37 +87,34 @@ export class ArticlesDetailHeaderComponent implements OnInit {
             this.joinId = Vote.id;
 
             let self = this;
+
+            self.vote.vote = this.vote.vote == true? null: true;
+
+            if(self.vote.vote == true) {
+              self.voteAmount++;
+            } else {
+              self.voteAmount--;
+            }
+
             self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
               self.joinsed = false;
-
-              self.vote = Vote;
-              self.joiner = Vote.joiner;
-              self.joinId = Vote.id;
-
-              if(Vote.vote == true) {
-                self.voteAmount++;
-              } else {
-                self.voteAmount--;
-              }
-
               return self;
             });
 
           });
         } else {
           let self = this;
+
+          self.vote.vote = this.vote.vote == true? null: true;
+
+          if(self.vote.vote == true) {
+            self.voteAmount++;
+          } else {
+            self.voteAmount--;
+          }
+
           self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
             self.joinsed = false;
-
-            self.vote = Vote;
-            self.joiner = Vote.joiner;
-            self.joinId = Vote.id;
-
-            if(Vote.vote == true) {
-              self.voteAmount++;
-            } else {
-              self.voteAmount--;
-            }
 
             return self;
           });
@@ -126,18 +124,16 @@ export class ArticlesDetailHeaderComponent implements OnInit {
     } else {
       if(!this.joinsed) {
         this.joinsed = true;
+
+        this.vote.vote = this.vote.vote == true? null: true;
+
+        if(this.vote.vote == true) {
+          this.voteAmount++;
+        } else {
+          this.voteAmount--;
+        }
         this.articlesDetailHeaderService.vote(this.joinId, this.vote.vote).then(Vote => {
           this.joinsed = false;
-
-          this.vote = Vote;
-          this.joiner = Vote.joiner;
-          this.joinId = Vote.id;
-
-          if(Vote.vote == true) {
-            this.voteAmount++;
-          } else {
-            this.voteAmount--;
-          }
 
           return this;
         });
