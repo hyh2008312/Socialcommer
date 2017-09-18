@@ -18,7 +18,7 @@ export class BlogsDetailComponent implements OnInit {
   achievement : Achievement = new Achievement();
   interact : Interact = new Interact();
 
-  userId : string = '';
+  userId : string = '46';
   scrollUp : boolean = false;
 
   constructor(

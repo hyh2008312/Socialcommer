@@ -76,9 +76,9 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
   toVote() {
     if(this.vote.vote == null) {
-      if(!this.joinsed) {
+      if(this.joinId==null) {
         this.joinsed = true;
-        if(!this.joiner) {
+        if(!this.joinId) {
           this.articlesDetailHeaderService.joins(this.interactId).then(Vote => {
 
             this.vote = Vote;
@@ -87,7 +87,6 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
             let self = this;
             self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
-              alert(Vote);
               self.joinsed = false;
 
               self.vote = Vote;

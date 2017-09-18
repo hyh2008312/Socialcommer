@@ -20,6 +20,9 @@ export class BlogsService {
       headers.append('Authorization', window['WebAppInterface'].getAccessToken() != '' ?
       'Bearer ' + window['WebAppInterface'].getAccessToken(): '');
     }
+
+    headers.append('Authorization',
+      'Bearer ' + 'by9HYMskRpQCu91AV4KbQ0musDypGE');
   }
 
   getBlogsDetail(id:number): Promise<Blogs> {
