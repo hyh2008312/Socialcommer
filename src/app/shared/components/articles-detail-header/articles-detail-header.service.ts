@@ -20,9 +20,6 @@ export class ArticlesDetailHeaderService {
       'Bearer ' + window['WebAppInterface'].getAccessToken(): '');
     }
 
-    headers.append('Authorization',
-      'Bearer ' + 'by9HYMskRpQCu91AV4KbQ0musDypGE');
-
   }
 
   getJoiner(interactId:number,joinerId:string): Promise<Joiners> {
