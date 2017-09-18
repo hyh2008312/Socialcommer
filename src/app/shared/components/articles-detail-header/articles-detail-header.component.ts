@@ -78,16 +78,35 @@ export class ArticlesDetailHeaderComponent implements OnInit {
     if(this.vote.vote == null) {
       if(!this.joinsed) {
         this.joinsed = true;
-        this.articlesDetailHeaderService.joins(this.interactId).then(Vote => {
+        if(!this.joiner) {
+          this.articlesDetailHeaderService.joins(this.interactId).then(Vote => {
 
-          this.vote = Vote;
-          this.joiner = Vote.joiner;
-          this.joinId = Vote.id;
+            this.vote = Vote;
+            this.joiner = Vote.joiner;
+            this.joinId = Vote.id;
 
-          alert(Vote);
+            let self = this;
+            self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
+              alert(Vote);
+              self.joinsed = false;
+
+              self.vote = Vote;
+              self.joiner = Vote.joiner;
+              self.joinId = Vote.id;
+
+              if(Vote.vote == true) {
+                self.voteAmount++;
+              } else {
+                self.voteAmount--;
+              }
+
+              return self;
+            });
+
+          });
+        } else {
           let self = this;
           self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
-            alert(Vote);
             self.joinsed = false;
 
             self.vote = Vote;
@@ -102,8 +121,8 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
             return self;
           });
+        }
 
-        });
       }
     } else {
       if(!this.joinsed) {
