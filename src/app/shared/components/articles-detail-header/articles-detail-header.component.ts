@@ -31,11 +31,14 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
   }
 
-  toComment(interactId: number, joinId: number) {
+  toComment(interactId: number, joinId: any) {
     if(window['WebAppInterface']) {
       if(window['WebAppInterface'].getAccessToken() == '') {
         window['WebAppInterface'].toLogin();
         return;
+      }
+      if(joinId == null) {
+        joinId = '';
       }
       window['WebAppInterface'].toComment(interactId.toString(),joinId.toString());
     }
