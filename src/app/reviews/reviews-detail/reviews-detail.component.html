@@ -1,6 +1,7 @@
 <div class="container" appViewResize fxLayout="column">
   <app-articles-detail-header [showHeader]="scrollUp" [backFrom]="'review'"
-    [interactId]="interact.id" [userId]="userId" [voteAmount]="interact.vote_amount"></app-articles-detail-header>
+    [interactId]="interact.id" [userId]="userId" [voteAmount]="interact.vote_amount"
+    [vote]="vote"></app-articles-detail-header>
   <div class="xb-scroll" fxFlex appViewScroll (onScrollChange)="onScrollChange($event)">
     <img [src]="image.image_origin" *ngIf="image.image_origin" class="xb2-img-responsible" />
     <div *ngIf="!image.image_origin" class="xb2-page-head__loading-image"></div>

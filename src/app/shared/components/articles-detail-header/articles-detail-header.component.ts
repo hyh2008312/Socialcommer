@@ -1,8 +1,8 @@
-import { Input, Component, OnInit, OnChanges} from '@angular/core';
+import { Input, Component, OnInit} from '@angular/core';
 
 import { ArticlesDetailHeaderService } from './articles-detail-header.service';
 
-import { Joiners, Vote, Joiner } from './articles-detail-header';
+import { Vote } from './articles-detail-header';
 
 @Component({
   selector: 'app-articles-detail-header',
@@ -16,16 +16,11 @@ export class ArticlesDetailHeaderComponent implements OnInit {
   @Input() public showHeader: boolean = false;
   @Input() public interactId: number;
   @Input() public userId: string;
+  @Input() public vote: any;
   @Input() public backFrom : string;
   @Input() public voteAmount: number = 0;
 
-  joinId: number;
-
   joinsed: boolean = false;
-
-  joiners : Joiners = new Joiners();
-  vote : Vote = new Vote();
-  joiner : Joiner = new Joiner();
 
   constructor(
     private articlesDetailHeaderService: ArticlesDetailHeaderService
@@ -34,22 +29,6 @@ export class ArticlesDetailHeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-  }
-
-  ngOnChanges(): void{
-    if(this.userId != '' && this.interactId) {
-      let self = this;
-
-      self.articlesDetailHeaderService.getJoiner(self.interactId,self.userId).then(Joiners => {
-        self.joiners = Joiners;
-        if(Joiners.results.length > 0) {
-          self.vote = Joiners.results[0];
-          self.joiner = Joiners.results[0].joiner;
-          self.joinId = Joiners.results[0].id;
-        }
-        return self;
-      });
-    }
   }
 
   toComment(interactId: number, joinId: number) {
@@ -75,16 +54,13 @@ export class ArticlesDetailHeaderComponent implements OnInit {
   }
 
   toVote() {
-    console.log(this.vote.vote)
     if(this.vote.vote == null) {
       if(!this.joinsed) {
         this.joinsed = true;
-        if(!this.joinId) {
+        if(!this.vote.id) {
           this.articlesDetailHeaderService.joins(this.interactId).then(Vote => {
 
             this.vote = Vote;
-            this.joiner = Vote.joiner;
-            this.joinId = Vote.id;
 
             let self = this;
 
@@ -96,7 +72,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
               self.voteAmount--;
             }
 
-            self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
+            self.articlesDetailHeaderService.vote(self.vote.id,self.vote.vote).then(Vote => {
               self.joinsed = false;
               return self;
             });
@@ -113,7 +89,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
             self.voteAmount--;
           }
 
-          self.articlesDetailHeaderService.vote(self.joinId,self.vote.vote).then(Vote => {
+          self.articlesDetailHeaderService.vote(self.vote.id,self.vote.vote).then(Vote => {
             self.joinsed = false;
 
             return self;
@@ -132,7 +108,7 @@ export class ArticlesDetailHeaderComponent implements OnInit {
         } else {
           this.voteAmount--;
         }
-        this.articlesDetailHeaderService.vote(this.joinId, this.vote.vote).then(Vote => {
+        this.articlesDetailHeaderService.vote(this.vote.id, this.vote.vote).then(Vote => {
           this.joinsed = false;
 
           return this;

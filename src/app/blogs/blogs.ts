@@ -40,5 +40,11 @@ export class Achievement {
 
 export class Interact{
   id: number;
+  current_join: Vote;
   vote_amount: number;
+}
+
+export class Vote{
+  id : any;
+  vote : any = null;
 }

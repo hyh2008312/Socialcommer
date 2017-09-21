@@ -3,7 +3,7 @@ import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Joiners,Vote } from './articles-detail-header';
+import { Vote } from './articles-detail-header';
 
 import { BaseApi } from '../../../config/app.api';
 
@@ -20,23 +20,6 @@ export class ArticlesDetailHeaderService {
       'Bearer ' + window['WebAppInterface'].getAccessToken(): '');
     }
 
-  }
-
-  getJoiner(interactId:number,joinerId:string): Promise<Joiners> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-
-    let options = new RequestOptions({headers:headers});
-
-    const url = `${this.baseUrl.url}${this.voteUrl}?interact_id=${interactId}&joiner_id=${joinerId}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json() as Joiners)
-      .catch(this.handleError);
   }
 
   joins(interact: number): Promise<Vote> {
@@ -61,7 +44,7 @@ export class ArticlesDetailHeaderService {
       .catch(this.handleError);
   }
 
-  vote(id:number,vote:any): Promise<Vote> {
+  vote(id:any,vote:any): Promise<Vote> {
     if(window['WebAppInterface']) {
       if(window['WebAppInterface'].getAccessToken() == '') {
         window['WebAppInterface'].toLogin();

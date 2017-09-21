@@ -16,6 +16,7 @@ export class Reviews {
 
 export class Interact{
   id: number;
+  current_join: Vote;
   vote_amount: number;
 }
 
@@ -87,4 +88,9 @@ export class Achievement {
   shareProductFeaturedAmount : number = 0;
   thumbsUpAmount : number = 0;
   trialAmount : number = 0;
+}
+
+export class Vote{
+  id : any;
+  vote : any = null;
 }

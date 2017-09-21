@@ -2,7 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Blogs, Owner, Achievement, Interact} from '../blogs';
+import { Blogs, Owner, Achievement, Interact, Vote} from '../blogs';
 import { BlogsService } from '../blogs.service';
 import { SystemConstant, BlogCover} from '../../config/app.constant';
 
@@ -18,6 +18,7 @@ export class BlogsDetailComponent implements OnInit {
   owner : Owner = new Owner();
   achievement : Achievement = new Achievement();
   interact : Interact = new Interact();
+  vote: Vote = new Vote();
 
   userId : string = '';
   scrollUp : boolean = false;
@@ -44,6 +45,11 @@ export class BlogsDetailComponent implements OnInit {
       this.blogs = blogs;
       this.owner = blogs.owner;
       this.interact = blogs.interact;
+      if(blogs.interact.current_join == null) {
+        this.vote = { id: null, vote: null};
+      } else {
+        this.vote = blogs.interact.current_join;
+      }
 
       let self = this;
 
