@@ -23,11 +23,6 @@ export class ArticlesDetailHeaderService {
   }
 
   joins(interact: number): Promise<Vote> {
-    if(window['WebAppInterface']) {
-      if(window['WebAppInterface'].getAccessToken() == '') {
-        window['WebAppInterface'].toLogin();
-      }
-    }
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -45,11 +40,6 @@ export class ArticlesDetailHeaderService {
   }
 
   vote(id:any,vote:any): Promise<Vote> {
-    if(window['WebAppInterface']) {
-      if(window['WebAppInterface'].getAccessToken() == '') {
-        window['WebAppInterface'].toLogin();
-      }
-    }
 
     let headers = new Headers({
       'Content-Type': 'application/json'

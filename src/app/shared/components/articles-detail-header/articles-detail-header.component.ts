@@ -57,6 +57,12 @@ export class ArticlesDetailHeaderComponent implements OnInit {
   }
 
   toVote() {
+    if(window['WebAppInterface']) {
+      if(window['WebAppInterface'].getAccessToken() == '') {
+        window['WebAppInterface'].toLogin();
+        return;
+      }
+    }
     if(this.vote.vote == null) {
       if(!this.joinsed) {
         this.joinsed = true;
