@@ -5,8 +5,8 @@
   <div fxFlex>
     <i class="iconfontXberts icon-ic-back xb-articles-header__back" (click)="back()"></i>
   </div>
-  <i class="iconfontXberts xb-articles-header__icon"
-    [ngClass]="{'icon-ic-upvote xb-articles-header__color':vote.vote,'icon-ic-upvote':!vote.vote}"
+  <i class="iconfontXberts xb-articles-header__icon icon-ic-upvote"
+    [ngClass]="{'xb-articles-header__color':vote.vote}"
     (click)="toVote()"></i>
   <span class="xb-articles-header__vote md-margin-right-2">{{voteAmount > 0 ? voteAmount : ''}}</span>
   <i class="iconfontXberts icon-ic-comment xb-articles-header__icon md-margin-right-2"
