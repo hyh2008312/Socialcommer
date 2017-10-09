@@ -18,8 +18,24 @@ import { ArticlesDetailHeaderComponent } from './components/articles-detail-head
 import { FollowService } from './components/user-follow/user-follow.service';
 import { ArticlesDetailHeaderService } from './components/articles-detail-header/articles-detail-header.service';
 
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatSelectModule,
+  MatSlideToggleModule
+} from '@angular/material';
+
 @NgModule({
-  imports: [ CommonModule ],
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatSlideToggleModule
+  ],
   declarations: [
     SafeHtmlPipe,
     ViewResizeDirective,
@@ -42,7 +58,12 @@ import { ArticlesDetailHeaderService } from './components/articles-detail-header
     CommonModule,
     FormsModule,
     FlexLayoutModule,
-    MomentModule
+    MomentModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatSlideToggleModule
   ],
   providers: [
     FollowService,
