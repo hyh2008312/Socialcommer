@@ -23,14 +23,3 @@ $colors: (
     color: $color;
   }
 }
-@import '../../../../node_modules/@angular/material/theming';
-
-@include mat-core();
-
-$primary: mat-palette($mat-lime, 500);
-$accent:  mat-palette($mat-lime, 500, A200, A400);
-$warn:    mat-palette($mat-red, 500);
-
-$theme: mat-light-theme($primary, $accent, $warn);
-
-@include angular-material-theme($theme);

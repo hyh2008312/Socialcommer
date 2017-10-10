@@ -1,0 +1,75 @@
+@import "../styles/utils/_index";
+@import "../styles/_variables";
+
+.xb-login{
+  &__container{
+    max-width: 332px;
+  }
+
+  &__auto{
+    margin: auto;
+  }
+
+  &__width{
+    .mat-form-field{
+      width: 100%;
+    }
+  }
+
+  &__facebook{
+    padding: 0 28px;
+    color: $whiteColor;
+    background-color: $facebookColor;
+    margin-bottom: 16px;
+  }
+
+  &__google{
+    padding: 0 28px;
+    color: $whiteColor;
+    background-color: $googleColor;
+    margin-bottom: 16px;
+  }
+
+  &__margin-left{
+    margin-left: 32px;
+  }
+
+  &__margin-top{
+    margin-top: 48px;
+  }
+
+  &__title{
+    font-size: 34px;
+    font-weight: bold;
+    margin-top: 72px;
+  }
+
+  &__header{
+    margin-top: 108px;
+  }
+
+  &__circle{
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    text-align: center;
+    border: 2px solid $primaryColor;
+    color: $primaryColor;
+    line-height: 28px;
+
+    &.active{
+      background-color: $primaryColor;
+      color: $whiteColor;
+    }
+  }
+
+  &__line{
+    background-color: $primaryColor;
+    height: 2px;
+    width: 100%;
+  }
+
+}
+
+
+

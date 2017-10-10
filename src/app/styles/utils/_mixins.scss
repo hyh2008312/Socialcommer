@@ -1,3 +1,5 @@
+@import "../variables";
+
 @mixin xbGrid($width) {
   width: percentage($width/12 - 0.01);
   max-width: 100%;
@@ -100,12 +102,6 @@
   border-left: $px1 solid transparent;
   border-right: $px1 solid transparent;
   border-bottom: $px2 solid $color;
-}
-
-
-@mixin resetBorder{
-  border-radius: 2px;
-  @include box-shadow(0 0 0 1px rgba(0, 0, 0, 0.06));
 }
 
 @mixin changeMdIcon($arguments...){
@@ -309,4 +305,9 @@
   font-size: 12px;
   line-height: 20px;
   font-weight: 400;
+}
+
+@mixin resetBorder{
+  border-radius: 2px;
+  @include box-shadow(0 0 0 1px rgba(0, 0, 0, 0.06));
 }

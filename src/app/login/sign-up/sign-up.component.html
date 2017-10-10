@@ -1,0 +1,67 @@
+<div class="container">
+  <app-sign-up-header [step]="step"></app-sign-up-header>
+  <div class="xb-login__container xb-login__auto xb-login__margin-top" fxLayout="column" *ngIf="step == 0">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field fxFlex="48">
+      <input matInput placeholder="First Name">
+    </mat-form-field>
+    <mat-form-field fxFlex="48">
+      <input matInput placeholder="Last Name">
+    </mat-form-field>
+  </div>
+  <div fxFLex class="xb-login__width">
+    <mat-form-field>
+      <input matInput placeholder="Email Address">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Country" [(ngModel)]="country" name="country">
+        <mat-option *ngFor="let country of countries" [value]="country.code">
+          {{ country.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" (click)="signUp()">SIGN UP</button>
+  <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
+  <button class="xb-login__facebook" mat-raised-button>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <i class="iconfontXberts icon-ic-facebook"></i>
+      <span class="md-align-center" fxFlex>Continue with Facebook</span>
+    </div>
+  </button>
+  <button class="xb-login__google" mat-raised-button>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <i class="iconfontXberts icon-pic-google"></i>
+      <span class="md-align-center" fxFlex>Continue with Google</span>
+    </div>
+  </button>
+  <a class="text-underline md-dark-primary" routerLink="/cp/login">Already have an account?</a>
+</div>
+  <div class="xb-login__container xb-login__auto xb-login__margin-top" fxLayout="column" *ngIf="step == 1">
+    <div fxFLex class="xb-login__width">
+      <mat-form-field>
+        <input matInput placeholder="Store Name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Store Currency" [(ngModel)]="currency" name="currency">
+          <mat-option *ngFor="let currency of currencies" [value]="currency.code">
+            {{ currency.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+      <div fxFlex>
+        http://www.influenstore.com/
+      </div>
+      <mat-form-field class="md-margin-left-2">
+        <input matInput placeholder="Store URL">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="complete()">COMPLETE</button>
+  </div>
+</div>
+
