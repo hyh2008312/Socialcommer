@@ -1,0 +1,212 @@
+@import "../styles/utils/_index";
+@import "../styles/_variables";
+
+.xb-shop{
+  &__icons{
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  &__left-navigation{
+    margin-top: 16px;
+    margin-right: 16px;
+    border-right: 1px solid rgba(0,0,0,.12);
+    &-bg{
+      width: 200px;
+      margin-right: 16px;
+    }
+    &-buttons{
+      height: 56px;
+      color: rgba(0,0,0,.87);
+      @include media();
+      &.active{
+        color: $primaryColor;
+      }
+    }
+  }
+
+  &__margin-top{
+    margin-top: 48px;
+  }
+
+  &__width-100{
+    width: 100%;
+  }
+
+  &__product{
+    position: relative;
+    .mat-button{
+      padding: 0;
+      margin-left: 16px;
+      min-width: 0;
+      min-height: 0;
+      line-height: 1;
+    }
+
+
+    &-image{
+      width: 192px;
+      height: 108px;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-right: 16px;
+      position: relative;
+
+      >img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+    }
+
+    &-title{
+      font-size: 16px;
+      font-weight: bold;
+      color: rgba(0,0,0, .87);
+      line-height: 24px;
+      max-height: 48px;
+      overflow: hidden;
+    }
+
+    &-price{
+      font-size: 16px;
+      font-weight: bold;
+      color: rgba(0,0,0, .87);
+      line-height: 24px;
+      max-height: 48px;
+    }
+
+    &-category{
+      padding: 0 12px;
+      line-height: 28px;
+      border-radius: 2px;
+      background-color: rgba(0,0,0,.12);
+    }
+
+    &-list{
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      &:last-child{
+        border-bottom: none;
+      }
+    }
+
+    &-buttons {
+      position: absolute;
+      right: 0;
+      top: 6px;
+      z-index: 10;
+    }
+  }
+
+  &__white{
+    color: $whiteColor !important;
+  }
+
+  &__dialog{
+    max-width: 960px;
+    padding: 16px 24px;
+    max-height: calc(100vh - 160px);
+
+    &-margin-left{
+      margin-left: 64px;
+    }
+  }
+
+  &__dashboard{
+    &-card{
+      border-radius: 10px;
+      padding: 28px 0 28px 28px;
+      color: $whiteColor;
+      margin-bottom: 32px;
+    }
+
+    &-number{
+      font-size: 34px;
+      line-height: 34px;
+      margin-bottom: 4px;
+    }
+
+    &-title{
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 8px;
+
+      @include media();
+    }
+
+    &-color-1{
+      background-color: $navigationColor;
+    }
+    &-color-2{
+      background-color: $primaryColor;
+    }
+    &-color-3{
+      background-color: $orangeColor;
+    }
+    &-color-4{
+      background-color: $dangerColor;
+    }
+
+    &-content{
+      border-top: 1px solid rgba(0,0,0,.12);
+    }
+
+    &-margin-right{
+      margin-right: 56px;
+    }
+
+    &-table{
+      span{
+        line-height: 28px;
+        height: 28px;
+        max-width: 100%;
+        @include text-overflow();
+      }
+    }
+  }
+
+  &__select{
+    position: relative;
+    height: 40px;
+    &-color{
+      color: $primaryColor;
+      @include media();
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+
+    &-tri{
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid rgba(0,0,0,.87);
+    }
+
+    &-panel{
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 120px;
+      background-color: $whiteColor;
+      @include resetBorder();
+
+
+      >div{
+        line-height: 40px;
+        padding: 0 16px;
+
+        &.active{
+          background-color: rgba(0,0,0,.12);
+        }
+      }
+    }
+  }
+}
+
+

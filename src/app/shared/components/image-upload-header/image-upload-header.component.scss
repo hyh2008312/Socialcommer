@@ -1,0 +1,24 @@
+@import "../../../styles/utils/index.scss";
+@import "../../../styles/variables.scss";
+
+.preview-label {
+  width: 100px;
+  height:100px;
+  border:1px dotted #ccc;
+  position: relative;
+  vertical-align: top;
+}
+.preview-label>input {
+  display: none;
+}
+.preview-label .uploadimgicon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.preview-label .uploadimgremove {
+  position: absolute;
+  top:5px;
+  right:5px;
+}

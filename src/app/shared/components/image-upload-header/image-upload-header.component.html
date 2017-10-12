@@ -1,0 +1,8 @@
+<label class="preview-label" *ngIf="upload">
+  <img src="{{previewImgSrcs}}" width="100px" height="100px">
+  <i class="iconfontXberts icon-pic-google" (click)="remove()" ></i>
+</label>
+<label class="preview-label" *ngIf="!upload">
+  <input type="file" (change)="previewPic($event)">
+  <i class="iconfontXberts icon-pic-google" ></i>
+</label>

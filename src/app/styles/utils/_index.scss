@@ -7,15 +7,45 @@
 
 @include mat-core();
 $primary: mat-palette($mat-cyan, 500);
-$accent: mat-palette($mat-cyan, 400);
-$warn:    mat-palette($mat-cyan, 600);
+$accent: mat-palette($mat-amber, A400);
+$warn: mat-palette($mat-amber, A400);
 $theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
+
+.mat-button,.mat-raised-button{
+  font-size: 16px;
+}
 
 .mat-raised-button:not([class*=mat-elevation-z]){
   @include box-shadow(none);
 }
 
+.mat-form-field{
+  width: 300px;
+}
+
 .mat-form-field-underline{
   background-color: rgba(0,0,0,.12);
+}
+
+.mat-toolbar{
+  background-color: $whiteColor;
+  min-height: 56px;
+  height: 56px;
+  .mat-toolbar-row{
+    min-height: 56px;
+    height: 56px;
+  }
+  border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.mat-slide-toggle{
+  height: auto;
+  line-height: 0;
+}
+
+.mat-raised-button{
+  &.mat-accent{
+    color: rgba(white, 0.87);
+  }
 }

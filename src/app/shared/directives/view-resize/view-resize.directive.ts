@@ -1,10 +1,12 @@
-import {Directive, ElementRef, Renderer, AfterViewInit} from '@angular/core';
+import {Directive, ElementRef, Renderer, AfterViewInit, Input} from '@angular/core';
 
 @Directive({
   selector: '[appViewResize]'
 })
 
 export class ViewResizeDirective implements AfterViewInit {
+
+  @Input() margin: number = 0;
 
   constructor(private el:ElementRef, private renderer:Renderer) {
 
@@ -22,7 +24,7 @@ export class ViewResizeDirective implements AfterViewInit {
   }
 
   public changeViewSize() {
-    this.renderer.setElementStyle(this.el.nativeElement, "height", window.innerHeight + 'px');
+    this.renderer.setElementStyle(this.el.nativeElement, "height", (window.innerHeight - this.margin) + 'px');
   }
 
 }

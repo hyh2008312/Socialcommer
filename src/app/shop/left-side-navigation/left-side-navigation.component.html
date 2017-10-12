@@ -1,0 +1,10 @@
+<div class="xb-shop__left-navigation" fxFlex>
+  <div class="xb-shop__left-navigation-bg">
+    <a class="xb-shop__left-navigation-buttons" *ngFor="let content of contents"
+       routerLink="{{content.router}}" [routerLinkActive]="['active']"
+       fxLayout="row" fxLayoutAlign="start center">
+      <i class="iconfontXberts xb-shop__icons" [ngClass]="content.icon"></i>
+      <span class="md-margin-left-2">{{ content.text }}</span>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="md-margin-top-2" fxLayout="column">
+  <div class="md-dark-secondary">
+    Store Name
+  </div>
+  <mat-form-field>
+    <input matInput >
+  </mat-form-field>
+  <div class="md-dark-secondary">
+    Store Description
+  </div>
+  <mat-form-field class="xb-shop__width-100">
+    <textarea matInput></textarea>
+  </mat-form-field>
+  <div class="md-dark-secondary">
+    Store Currency
+  </div>
+  <mat-form-field>
+    <mat-select [(ngModel)]="currency" name="currency">
+      <mat-option *ngFor="let currency of currencies" [value]="currency.code">
+        {{ currency.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+    <div>
+      http://www.influenstore.com/
+    </div>
+    <mat-form-field class="md-margin-left-2">
+      <input matInput placeholder="Store URL">
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <div class="md-dark-secondary">
+      Store Status
+    </div>
+    <span class="md-margin-left-2 md-margin-right-2">Close</span>
+    <mat-slide-toggle
+      color="primary"
+      [checked]="checked"
+      [disabled]="disabled">
+    </mat-slide-toggle>
+    <span class="md-margin-left-2 md-margin-right-2">Open</span>
+  </div>
+  <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-raised-button color="primary">SAVE CHANGE</button>
+    <div class="md-margin-left-2">
+      <button mat-button color="primary">CANCEL</button>
+    </div>
+  </div>
+</div>

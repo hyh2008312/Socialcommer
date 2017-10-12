@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LoginService } from '../login.service';
 
@@ -33,7 +34,7 @@ export class SignUpComponent implements OnInit {
   }];
 
   constructor(
-
+    private router: Router
   ) { }
 
   ngOnInit():void {
@@ -45,6 +46,7 @@ export class SignUpComponent implements OnInit {
 
   complete() {
     this.step = 2;
+    this.router.navigateByUrl('shop/1/store');
   }
 
 }

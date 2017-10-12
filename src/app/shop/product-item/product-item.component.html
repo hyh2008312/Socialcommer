@@ -1,0 +1,28 @@
+<div class="xb-shop__product" fxLayout="row" fxLayoutAlign="start">
+  <div class="xb-shop__product-image">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpECZaHv_X20L77tJJ58RHb3JJRG_tfsfhX5Y7po8rZyZJo1KxHA">
+  </div>
+  <div class="xb-shop__product-content" fxLayout="column" fxFlex>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div fxFlex class="xb-shop__product-title">Aroma Essential Oil Diffuser 130ML Aromatherapy Cool Mist Humidifier</div>
+      <div class="line-through md-margin-left-1 md-margin-right-2">$12.00</div>
+      <div class="xb-shop__product-price">$8.00</div>
+    </div>
+    <div fxFlex>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+        <div>#2017092781</div>
+        <div class="xb-shop__product-category md-margin-left-2">Accessories</div>
+        <div class="xb-shop__product-price" fxLayout="row" fxLayoutAlign="end center" fxFlex>On Sale</div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div>Sep 27th, 2017</div>
+      <div fxFlex fxLayout="row" fxLayoutAlign="end center">
+        <button mat-button color="primary">Edit</button>
+        <button mat-button color="primary" *ngIf="status == 2">Publish</button>
+        <button mat-button color="primary" *ngIf="status == 0">Unpublish</button>
+        <button mat-button color="primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

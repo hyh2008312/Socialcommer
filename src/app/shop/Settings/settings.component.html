@@ -1,0 +1,96 @@
+<mat-tab-group color="accent">
+  <mat-tab label="Edit Profile">
+    <div class="md-margin-top-3" fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div>
+          <div class="md-dark-secondary">
+            First Name
+          </div>
+          <mat-form-field >
+            <input matInput>
+          </mat-form-field>
+        </div>
+        <div class="md-margin-left-2">
+          <div class="md-dark-secondary">
+            Last Name
+          </div>
+          <mat-form-field>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="md-dark-secondary">
+        Country
+      </div>
+      <mat-form-field>
+        <mat-select [(ngModel)]="country" name="country">
+          <mat-option *ngFor="let country of countries" [value]="country.code">
+            {{ country.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="md-dark-secondary">
+        About Me
+      </div>
+      <mat-form-field class="xb-shop__width-100">
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <div class="md-dark-secondary">
+        Profile Picture
+      </div>
+      <div class="md-margin-top-2">
+        <app-image-upload-preview [(previewImgFile)]="previewImgFile"></app-image-upload-preview>
+      </div>
+      <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+        <button mat-raised-button color="primary">SAVE CHANGE</button>
+        <div class="md-margin-left-2">
+          <button mat-button color="primary">CANCEL</button>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Change Email Address">
+    <div class="md-margin-top-3" fxLayout="column">
+      <div class="md-dark-secondary">
+        Email Address
+      </div>
+      <mat-form-field>
+        <input matInput >
+      </mat-form-field>
+      <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+        <button mat-raised-button color="primary">SAVE CHANGE</button>
+        <div class="md-margin-left-2">
+          <button mat-button color="primary">CANCEL</button>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Change Password">
+    <div class="md-margin-top-3" fxLayout="column">
+      <div class="md-dark-secondary">
+        Current Password
+      </div>
+      <mat-form-field>
+        <input matInput type="password">
+      </mat-form-field>
+      <div class="md-dark-secondary">
+        New Password
+      </div>
+      <mat-form-field>
+        <input matInput type="text">
+      </mat-form-field>
+      <div class="md-dark-secondary">
+        Confirm Password
+      </div>
+      <mat-form-field>
+        <input matInput type="text">
+      </mat-form-field>
+      <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+        <button mat-raised-button color="primary">SAVE CHANGE</button>
+        <div class="md-margin-left-2">
+          <button mat-button color="primary">CANCEL</button>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

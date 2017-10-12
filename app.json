@@ -1,18 +1,12 @@
 {
-  "name": "XbertsMobileApp",
-  "description": "XbertsMobileApp",
+  "name": "XbertsWebApp",
+  "description": "Xberts new web app",
   "keywords": [
-    "MEAN",
+    "Restful",
     "Angular",
     "Node",
     "Angular cli"
   ],
-  "repository": "https://git.heroku.com/xberts-mobile.git",
-  "success_url": "/",
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "free"
-    }
-  }
+  "repository": "https://heyh@bitbucket.org/xberts/web.git",
+  "success_url": "/"
 }

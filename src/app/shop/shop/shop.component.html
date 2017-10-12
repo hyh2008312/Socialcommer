@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <div class="container" fxLayout="row" fxLayoutAlign="start center">
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
+      <span> Admin v2.0</span>
+      <button mat-button color="primary">Storefront Preview</button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <i class="iconfontXberts icon-ic-user xb-shop__icons md-dark-secondary"></i>
+    </div>
+  </div>
+</mat-toolbar>
+<div appViewResize [margin]="56" fxLayout="row" fxLayoutAlign="start stretch">
+  <div  class="container" fxLayout="row" fxLayoutAlign="start stretch">
+    <app-left-side-navigation fxLayout="column" ></app-left-side-navigation>
+    <div class="md-margin-top-2" fxFlex fxLayout="column">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
