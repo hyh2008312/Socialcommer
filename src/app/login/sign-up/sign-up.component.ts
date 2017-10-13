@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginService } from '../login.service';
 
@@ -10,6 +11,8 @@ import { LoginService } from '../login.service';
 })
 
 export class SignUpComponent implements OnInit {
+
+  signUpGroup : FormGroup;
 
   step: number = 0;
 
@@ -34,14 +37,30 @@ export class SignUpComponent implements OnInit {
   }];
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private service: LoginService,
+    private fb: FormBuilder
+  ) {
+    this.signUpGroup = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      country: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   ngOnInit():void {
   }
 
   signUp() {
-    this.step = 1;
+    if(!this.signUpGroup.valid) {
+      return;
+    }
+
+    this.service.signUp(this.signUpGroup.value).then((data) => {
+      console.log(data)
+    })
   }
 
   complete() {

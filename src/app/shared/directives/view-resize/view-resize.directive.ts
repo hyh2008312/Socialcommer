@@ -13,7 +13,6 @@ export class ViewResizeDirective implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.changeViewSize();
     let self = this;
 
     this.changeViewSize();

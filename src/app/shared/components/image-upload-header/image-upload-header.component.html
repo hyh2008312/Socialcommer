@@ -1,8 +1,11 @@
-<label class="preview-label" *ngIf="upload">
-  <img src="{{previewImgSrcs}}" width="100px" height="100px">
-  <i class="iconfontXberts icon-pic-google" (click)="remove()" ></i>
-</label>
-<label class="preview-label" *ngIf="!upload">
-  <input type="file" (change)="previewPic($event)">
-  <i class="iconfontXberts icon-pic-google" ></i>
-</label>
+<div fxLayout="row" fxLayoutAlign="start center">
+  <label class="preview-label" fxLayout="row" fxLayoutAlign="center center"
+    [ngClass]="{'preview-label__not-upload': !upload }">
+    <input type="file" (change)="previewPic($event)" >
+    <i class="material-icons" *ngIf="!upload">photo_camera</i>
+    <img src="{{previewImgSrcs}}" *ngIf="upload">
+  </label>
+  <label class="md-margin-left-3 preview-label__color">
+    <input type="file" (change)="previewPic($event)" >Change Picture
+  </label>
+</div>

@@ -16,6 +16,7 @@ export class CatalogComponent implements OnInit {
 
   animal: string;
   name: string;
+  showToggles : boolean = false;
 
   constructor(
     public dialog: MatDialog
@@ -34,6 +35,10 @@ export class CatalogComponent implements OnInit {
     });
   }
 
+  openToggle() {
+    this.showToggles = !this.showToggles;
+  }
+
 }
 @Component({
   selector: 'app-catalog-add-product-dialog',
@@ -43,9 +48,25 @@ export class CatalogComponent implements OnInit {
 
 export class CatalogAddProductDialog {
 
+  public ngxCropperConfig: Object;
+
   constructor(
     public dialogRef: MatDialogRef<CatalogAddProductDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.ngxCropperConfig = {
+      url: null, // image server url
+      maxsize: 512000, // image max size, default 500k = 512000bit
+      title: 'Apply your image size and position', // edit modal title, this is default
+      uploadBtnName: 'Upload Image', // default Upload Image
+      uploadBtnClass: null, // default bootstrap styles, btn btn-primary
+      cancelBtnName: 'Cancel', // default Cancel
+      cancelBtnClass: null, // default bootstrap styles, btn btn-default
+      applyBtnName: 'Apply', // default Apply
+      applyBtnClass: null, // default bootstrap styles, btn btn-primary
+      fdName: 'file', // default 'file', this is  Content-Disposition: form-data; name="file"; filename="fire.jpg"
+      aspectRatio: 1 / 1// default 1 / 1, for example: 16 / 9, 4 / 3 ...
+    }
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

@@ -1,13 +1,15 @@
 import { NgModule }            from '@angular/core';
 import { CommonModule }        from '@angular/common';
-import { FormsModule }         from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
 
 import { FlexLayoutModule }    from '@angular/flex-layout';
 import { MomentModule }        from 'angular2-moment';
 
 import { SafeHtmlPipe }         from './pipes/safe-html/safe-html.pipe';
+
 import { ViewResizeDirective }  from './directives/view-resize/view-resize.directive';
 import { ViewScrollDirective }  from './directives/view-srcoll/view-scroll.directive';
+import { RepeatOrderDirective }  from './directives/repeat-order/repeat-order.directive';
 
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserBadgeComponent } from './components/user-badge/user-badge.component';
@@ -22,6 +24,7 @@ import { ArticlesDetailHeaderService } from './components/articles-detail-header
 import { ImageUploadPreviewService } from './components/image-upload-preview/image-upload-preview.service';
 
 import { QuillEditorModule } from 'ngx-quill-editor';
+import { AngularCropperjsModule } from 'angular-cropperjs';
 
 import {
   MatFormFieldModule,
@@ -34,14 +37,19 @@ import {
   MatDialogModule,
   MatChipsModule,
   MatIconModule,
-  MatSortModule
+  MatSortModule,
+  MatRadioModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     QuillEditorModule,
+    AngularCropperjsModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
@@ -51,12 +59,15 @@ import {
     MatTabsModule,
     MatDialogModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   declarations: [
     SafeHtmlPipe,
     ViewResizeDirective,
     ViewScrollDirective,
+    RepeatOrderDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
@@ -69,16 +80,20 @@ import {
     SafeHtmlPipe,
     ViewResizeDirective,
     ViewScrollDirective,
+    RepeatOrderDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
     ScorePointsComponent,
     ArticlesDetailHeaderComponent,
     ImageUploadPreviewComponent,
+    ImageUploadHeaderComponent,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     QuillEditorModule,
+    AngularCropperjsModule,
     MomentModule,
     MatInputModule,
     MatFormFieldModule,
@@ -90,7 +105,9 @@ import {
     MatDialogModule,
     MatChipsModule,
     MatIconModule,
-    MatSortModule
+    MatSortModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [
     FollowService,

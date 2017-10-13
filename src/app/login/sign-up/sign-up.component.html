@@ -1,30 +1,34 @@
 <div class="container">
   <app-sign-up-header [step]="step"></app-sign-up-header>
   <div class="xb-login__container xb-login__auto xb-login__margin-top" fxLayout="column" *ngIf="step == 0">
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <mat-form-field fxFlex="48">
-      <input matInput placeholder="First Name">
-    </mat-form-field>
-    <mat-form-field fxFlex="48">
-      <input matInput placeholder="Last Name">
-    </mat-form-field>
-  </div>
-  <div fxFLex class="xb-login__width">
-    <mat-form-field>
-      <input matInput placeholder="Email Address">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Password">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-select placeholder="Country" [(ngModel)]="country" name="country">
-        <mat-option *ngFor="let country of countries" [value]="country.code">
-          {{ country.value }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <button mat-raised-button color="primary" (click)="signUp()">SIGN UP</button>
+  <form [formGroup]="signUpGroup" (ngSubmit)="signUp()" novalidate>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field fxFlex="48">
+        <input matInput placeholder="First Name" formControlName="firstName">
+      </mat-form-field>
+      <mat-form-field fxFlex="48">
+        <input matInput placeholder="Last Name" formControlName="lastName">
+      </mat-form-field>
+    </div>
+    <div fxFLex class="xb-login__width">
+      <mat-form-field>
+        <input matInput placeholder="Email Address" formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Password" formControlName="password">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Country" [(ngModel)]="country" name="country" formControlName="country">
+          <mat-option *ngFor="let country of countries" [value]="country.code">
+            {{ country.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="column">
+      <button mat-raised-button color="primary" type="submit">SIGN UP</button>
+    </div>
+  </form>
   <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
   <button class="xb-login__facebook" mat-raised-button>
     <div fxLayout="row" fxLayoutAlign="start center">

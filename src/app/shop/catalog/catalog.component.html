@@ -1,5 +1,18 @@
-<div class="xb-shop__product">
-  <button class="xb-shop__product-buttons" mat-raised-button color="accent" (click)="addProduct()">Add New Product</button>
+<div class="xb-shop__product md-margin-right-2">
+  <div class="xb-shop__product-buttons md-padding-bottom-1" (mouseleave)="openToggle()">
+    <button mat-raised-button color="accent" (click)="openToggle()">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <i class="material-icons">add</i>
+        <span class="md-margin-left-1">Add New Product</span>
+      </div>
+    </button>
+    <div class="xb-shop__product-button-list" *ngIf="showToggles">
+      <a class="md-padding-left-2 xb-pointer" fxLayout="row" fxLayoutAlign="start center"
+        routerLink="../products">Find Products to Share</a>
+      <a class="md-padding-left-2 xb-pointer" fxLayout="row" fxLayoutAlign="start center"
+           (click)="addProduct()">Sumbmit a Product</a>
+    </div>
+  </div>
   <mat-tab-group color="accent">
     <mat-tab label="Published">
       <div class="md-margin-top-2" fxLayout="column">

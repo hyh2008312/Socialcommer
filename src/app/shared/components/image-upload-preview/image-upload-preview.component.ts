@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { ImageUploadPreviewService } from "./image-upload-preview.service";
+import { AngularCropperjsComponent } from 'angular-cropperjs';
 
 @Component({
   selector: 'app-image-upload-preview',
@@ -11,11 +12,22 @@ export class ImageUploadPreviewComponent implements OnInit {
   @Input() previewImgFile;
   @Output() previewImgFileChange: EventEmitter<string> = new EventEmitter();
 
+  @ViewChild('angularCropper') public angularCropper: AngularCropperjsComponent;
+
   previewImgSrcs: Object;
 
   upload: boolean = false;
+  croppedSrc: any = false;
+  config: Object;
 
-  constructor(public previewImageService: ImageUploadPreviewService) { }
+  public cropper : AngularCropperjsComponent;
+
+  constructor(public previewImageService: ImageUploadPreviewService) {
+    this.config = {
+      aspectRatio : 1,
+      scalable: true,
+    }
+  }
 
   ngOnInit() {
   }
@@ -37,10 +49,22 @@ export class ImageUploadPreviewComponent implements OnInit {
     })
 
   }
-  remove(i) {
+
+  remove() {
     this.previewImgSrcs = {};
     this.previewImgFile = {};
 
     this.upload = false;
+    this.croppedSrc = false;
   }
+
+  onCropped() {
+    const canvas = this.angularCropper.cropper.getCroppedCanvas();
+    this.croppedSrc = canvas.toDataURL('image/png');
+  }
+
+  onEdit() {
+    this.croppedSrc = false;
+  }
+
 }

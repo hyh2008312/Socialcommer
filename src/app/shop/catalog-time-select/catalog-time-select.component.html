@@ -1,7 +1,7 @@
-<div class="xb-shop__select xb-pointer" fxLayout="row" fxLayoutAlign="start center">
+<div class="xb-shop__select xb-pointer" fxLayout="row" fxLayoutAlign="start center" (mouseleave)="closePanel()">
   <div class="xb-shop__select-color" (click)="showPanel()">{{time}}</div>
   <div class="xb-shop__select-tri" (click)="showPanel()"></div>
-  <div class="xb-shop__select-panel" *ngIf="panel" (mouseleave)="showPanel()">
+  <div class="xb-shop__select-panel" *ngIf="panel">
     <div [ngClass]="{'active': item.value == time}" *ngFor="let item of times;" (click)="addTime(item);">
       {{ item.value }}
     </div>

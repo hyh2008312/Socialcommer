@@ -15,7 +15,8 @@ export class LeftSideNavigationComponent implements OnInit {
   }, {
     icon: 'icon-pic-product',
     text: 'Catalog',
-    router: './catalog'
+    router: './catalog',
+    router1: './products'
   }, {
     icon: 'icon-pic-store',
     text: 'Store',

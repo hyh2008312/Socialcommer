@@ -1,8 +1,15 @@
 export class Login {
-  id : number;
-  title : string;
-  details : string;
-  description: string;
-  created: string;
-  cover: string;
+  accessToken : string;
+  expireIn : number;
+  refreshToken : string;
+  scope: string;
+  tokenType: string;
+}
+
+export class SignUp{
+  avatar: any;
+  email: any;
+  firstName: string;
+  id: number;
+  lastName: string;
 }

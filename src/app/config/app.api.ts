@@ -20,9 +20,9 @@ export class BaseApi{
   };
 
   constructor(){
-    this.url = 'https://api-staging.xberts.com/';
+    this.url = 'http://45.33.50.95:9009/';
     if(environment.production === true) {
-      this.url = 'https://api.xberts.com/';
+      this.url = 'http://45.33.50.95:9009/';
     }
 
   }

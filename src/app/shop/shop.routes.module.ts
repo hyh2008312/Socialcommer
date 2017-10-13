@@ -6,6 +6,7 @@ import { StoreComponent } from './store/store.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { SettingsComponent } from "./settings/settings.component";
+import { FindProductsComponent } from "./find-products/find-products.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,8 @@ const routes: Routes = [
       path: 'settings', component: SettingsComponent
     }, {
       path: 'catalog', component: CatalogComponent
+    }, {
+      path: 'products', component: FindProductsComponent
     }]
   }
 ];

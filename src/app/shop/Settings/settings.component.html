@@ -1,6 +1,6 @@
-<mat-tab-group color="accent">
+<mat-tab-group class="md-margin-right-2" color="accent">
   <mat-tab label="Edit Profile">
-    <div class="md-margin-top-3" fxLayout="column">
+    <div class="md-margin-top-3">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div>
           <div class="md-dark-secondary">
@@ -39,18 +39,18 @@
         Profile Picture
       </div>
       <div class="md-margin-top-2">
-        <app-image-upload-preview [(previewImgFile)]="previewImgFile"></app-image-upload-preview>
+        <app-image-upload-header [(previewImgFile)]="previewImgFile"></app-image-upload-header>
       </div>
       <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
         <button mat-raised-button color="primary">SAVE CHANGE</button>
-        <div class="md-margin-left-2">
+        <div class="xb-shop__margin-left">
           <button mat-button color="primary">CANCEL</button>
         </div>
       </div>
     </div>
   </mat-tab>
   <mat-tab label="Change Email Address">
-    <div class="md-margin-top-3" fxLayout="column">
+    <div class="md-margin-top-3">
       <div class="md-dark-secondary">
         Email Address
       </div>
@@ -59,14 +59,14 @@
       </mat-form-field>
       <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
         <button mat-raised-button color="primary">SAVE CHANGE</button>
-        <div class="md-margin-left-2">
+        <div class="xb-shop__margin-left">
           <button mat-button color="primary">CANCEL</button>
         </div>
       </div>
     </div>
   </mat-tab>
   <mat-tab label="Change Password">
-    <div class="md-margin-top-3" fxLayout="column">
+    <div class="md-margin-top-3">
       <div class="md-dark-secondary">
         Current Password
       </div>
@@ -87,7 +87,7 @@
       </mat-form-field>
       <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
         <button mat-raised-button color="primary">SAVE CHANGE</button>
-        <div class="md-margin-left-2">
+        <div class="xb-shop__margin-left">
           <button mat-button color="primary">CANCEL</button>
         </div>
       </div>

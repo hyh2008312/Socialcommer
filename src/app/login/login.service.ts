@@ -3,7 +3,7 @@ import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Login } from './login';
+import { Login, SignUp } from './login';
 
 import { BaseApi } from '../config/app.api';
 
@@ -12,8 +12,38 @@ export class LoginService {
 
   constructor( private http: Http, private baseUrl: BaseApi) { }
 
-  createAuthorizationHeader(headers: Headers) {
+  login(id:number): Promise<Login> {
 
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}oauth2/token/`;
+
+    return this.http.post(url, {}, options)
+      .toPromise()
+      .then(response => response.json() as Login)
+      .catch(this.handleError);
+  }
+
+  signUp(object: any): Promise<SignUp> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}user/signup/`;
+
+    console.log(options)
+
+    return this.http.post(url, JSON.stringify(object), options)
+      .toPromise()
+      .then(response => response.json() as SignUp)
+      .catch(this.handleError);
   }
 
   private handleError (error: Response | any) {

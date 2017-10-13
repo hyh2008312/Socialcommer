@@ -1,0 +1,42 @@
+<div  class="xb-shop__products-content" >
+  <div class="xb-shop__products-title" fxLayout="row" fxLayoutAlign="start center">
+    <a routerLink="../catalog">Catalog</a>&nbsp;&nbsp;>&nbsp;&nbsp;Find Products to Sell
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start start">
+    <div class="xb-shop__products-left-bg">
+      <div class="xb-shop__products-title-1">Filter By Country</div>
+      <app-products-sort [(selectedSort)]="selectedCountries" [sorts]="countries"
+         (selectedSortChange)="onSelectedChange($event)"></app-products-sort>
+
+      <div class="xb-shop__products-title-1 md-margin-top-3">Filter By Category</div>
+      <div fxLayout="column">
+        <mat-checkbox class="md-margin-top-1" *ngFor="let category of categories;"
+                      (change)="onCheckedChange(category,1)" [(ngModel)]="category.checked">
+          {{ category.name }}
+        </mat-checkbox>
+      </div>
+      <div class="xb-shop__products-title-1 md-margin-top-3">Filter By Source</div>
+      <div fxLayout="column">
+        <mat-checkbox class="md-margin-top-1" *ngFor="let source of sources;"
+                      (change)="onCheckedChange(source,2)" [(ngModel)]="source.checked">
+          {{ source.name }}
+        </mat-checkbox>
+      </div>
+    </div>
+    <div fxFlex>
+      <div>
+        <mat-chip-list fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+          <mat-chip *ngFor="let sort of selectedChips" [selectable]="selectable" [removable]="removable" (remove)="remove(sort)">
+            {{sort.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="48px">
+        <app-product-item-card *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10,11]"></app-product-item-card>
+      </div>
+    </div>
+  </div>
+
+</div>

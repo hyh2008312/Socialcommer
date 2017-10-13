@@ -21,6 +21,11 @@ export class ImageUploadHeaderComponent implements OnInit {
   }
 
   previewPic(event) {
+    this.previewImgSrcs = {};
+    this.previewImgFile = {};
+
+    this.upload = false;
+
     if(!event.target.files[0]) {
       return;
     }
@@ -37,10 +42,6 @@ export class ImageUploadHeaderComponent implements OnInit {
     })
 
   }
-  remove(i) {
-    this.previewImgSrcs = {};
-    this.previewImgFile = {};
 
-    this.upload = false;
-  }
+
 }
