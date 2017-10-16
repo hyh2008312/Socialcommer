@@ -5,6 +5,7 @@ import { CatalogComponent, CatalogAddProductDialog } from './catalog/catalog.com
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { FindProductsComponent, FindProductsDialog } from "./find-products/find-products.component";
+import { LeftProductsImageComponent } from "./left-products-image/left-products-image.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
 import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-select.component";
@@ -35,10 +36,13 @@ import { SharedModule } from '../shared/shared.module';
     CatalogTimeSelectComponent,
     FindProductsComponent,
     ProductsSortComponent,
-    ProductItemCardComponent
+    ProductItemCardComponent,
+    FindProductsDialog,
+    LeftProductsImageComponent
   ],
   entryComponents: [
-    CatalogAddProductDialog
+    CatalogAddProductDialog,
+    FindProductsDialog
   ],
   providers: [
     ShopService

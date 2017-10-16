@@ -20,6 +20,8 @@ export class StoreComponent implements OnInit {
     value: 'USD'
   }];
 
+  checked: boolean;
+
   constructor(
 
   ) { }
