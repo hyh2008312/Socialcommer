@@ -13,19 +13,19 @@ export class AuthenticationService implements AuthService {
   constructor(private http: Http) {}
 
   public isAuthorized(): Observable<boolean> {
-    const isAuthorized: boolean = !!localStorage.getItem('oauthtoken');
+    const isAuthorized: boolean = !!localStorage.getItem('accessToken');
 
     return Observable.of(isAuthorized);
   }
 
   public getAccessToken(): Observable<string> {
-    const accessToken: string = localStorage.getItem('oauthtoken').accessToken;
+    const accessToken: string = localStorage.getItem('accessToken');
 
     return Observable.of(accessToken);
   }
 
   public refreshToken(): Observable<any> {
-    const refreshToken: string = localStorage.getItem('oauthtoken').refreshToken;
+    const refreshToken: string = localStorage.getItem('refreshToken');
 
     let self = this;
     return this.http
@@ -46,12 +46,14 @@ export class AuthenticationService implements AuthService {
   }
 
   public getTokenExpireDate(): Observable<string> {
-    const expireDate: string = localStorage.getItem('oauthtoken').expireDate;
+    const expireDate: string = localStorage.getItem('expireDate');
     return Observable.of(expireDate);
   }
 
   public logout(): void {
-    localStorage.removeItem('oauthtoken');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('expireDate');
     location.reload(true);
   }
 

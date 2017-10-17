@@ -46,12 +46,12 @@ export class SignUpComponent implements OnInit {
         Validators.required,
         Validators.email
       ]],
-      country: ['',  [
+      country: ['', Validators.required],
+      password: ['', [
         Validators.required,
         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
         Validators.minLength(6)
-      ]],
-      password: ['', Validators.required]
+      ]]
     });
 
     this.countries = this.constant.getCountries();
