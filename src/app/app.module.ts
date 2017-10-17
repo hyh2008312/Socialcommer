@@ -11,6 +11,7 @@ import {SystemConstant, BlogCover} from './config/app.constant';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import { AuthenticationModule } from './shared/services/authentication/index';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AuthenticationModule
   ],
   providers: [BaseApi,SystemConstant, BlogCover],
   bootstrap: [AppComponent]

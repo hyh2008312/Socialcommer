@@ -12,4 +12,5 @@ export class SignUp{
   firstName: string;
   id: number;
   lastName: string;
+
 }

@@ -12,7 +12,7 @@ export class LoginService {
 
   constructor( private http: Http, private baseUrl: BaseApi) { }
 
-  login(id:number): Promise<Login> {
+  login(token:number): Promise<Login> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ export class LoginService {
 
     const url = `${this.baseUrl.url}oauth2/token/`;
 
-    return this.http.post(url, {}, options)
+    return this.http.post(url, token, options)
       .toPromise()
       .then(response => response.json() as Login)
       .catch(this.handleError);
@@ -38,8 +38,6 @@ export class LoginService {
 
     const url = `${this.baseUrl.url}user/signup/`;
 
-    console.log(options)
-
     return this.http.post(url, JSON.stringify(object), options)
       .toPromise()
       .then(response => response.json() as SignUp)
@@ -50,8 +48,8 @@ export class LoginService {
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+      const err = body.error || body;
+      errMsg = `${err.detail}`;
     } else {
       errMsg = error.msg ? error.msg : error.toString();
     }

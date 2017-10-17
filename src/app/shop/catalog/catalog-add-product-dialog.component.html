@@ -34,6 +34,14 @@
     </mat-form-field>
     <span class="md-margin-left-2">USD</span>
   </div>
+  <div class="md-dark-secondary md-margin-top-2">Add your affiliate link</div>
+  <mat-form-field class="xb-shop__width-100" >
+    <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with">
+  </mat-form-field>
+  <div class="md-dark-secondary md-margin-top-2">Tell your audiences why you recommend this product</div>
+  <mat-form-field class="xb-shop__width-100">
+    <textarea matInput value="Your opinion is very important to your audiences"></textarea>
+  </mat-form-field>
   <div class="md-dark-secondary">Description</div>
   <div class="md-margin-top-2">
     <quill-editor [(ngModel)]="editorContent"

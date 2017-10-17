@@ -1,0 +1,69 @@
+<div class="xb-store__background" (click)="close()">
+  <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details" (click)="$event.stopPropagation();">
+    <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-xs="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-store__details-padding-bottom" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column">
+      <div class="xb-store__details-margin-right">
+        <app-left-products-image></app-left-products-image>
+      </div>
+      <div class="xb-store__details-content">
+        <div>Electronics</div>
+        <div class="xb-store__details-title md-margin-top-1">[Updated Version] Linner Active Noise Cancelling Headphones, Lightning In Ear Wired Earphone with Built-In
+          Mic and Remote (Comfortable and Secure Fit, MFi Certified) for iPhone X 8 7 6 Plus, iPad iPod</div>
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-store__details-price">$8.00</div>
+          <div class="line-through md-margin-left-2">$12.00</div>
+          <div class="xb-store__details-sale md-margin-left-2">50% OFF</div>
+        </div>
+        <div class="xb-store__details-buttons" fxLayout="column">
+          <button mat-raised-button color="primary">GET IT NOW</button>
+        </div>
+        <div class="md-margin-top-2">
+          <app-share-button [link]="shareLink" [text]="text"></app-share-button>
+        </div>
+      </div>
+    </div>
+    <div class="xb-store__details-padding-top">
+      <div class="xb-store__details-title">Store Owner Says</div>
+      <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-store__content-left" fxFlex="none">
+          <div class="xb-store__header">
+            <img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">
+          </div>
+          <div class="md-subhead md-margin-top-2">Owen</div>
+          <div class="md-margin-top-1">India</div>
+        </div>
+        <div class="xb-store__content-right">
+          <div class="xb-store__icons md-dark-third">
+            <i class="iconfontXberts icon-pic-quota"></i>
+          </div>
+          <div class="md-margin-top-2 xb-store__content-text">
+            Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.
+            Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training
+            that make you an expert in your field? Show your customers that there are read people with instersting stories working
+            behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.
+          </div>
+          <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start">
+            <i class="iconfontXberts icon-pic-quota-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="xb-store__details-description">
+      <div class="xb-store__details-title">Store Owner Says</div>
+      <div class="md-margin-top-2 xb-store__content-text">
+        Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.
+        Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training
+        that make you an expert in your field? Show your customers that there are read people with instersting stories working
+        behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.
+      </div>
+      <div class="md-margin-top-2">
+        <img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">
+      </div>
+    </div>
+  </div>
+</div>

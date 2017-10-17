@@ -60,3 +60,13 @@ $theme: mat-light-theme($primary, $accent, $warn);
   height: auto !important;
   overflow: visible !important;
 }
+
+.mat-raised-button{
+  line-height: 40px;
+  border-radius: 4px;
+
+  @include xb-xs-screen{
+    line-height: 36px;
+  }
+}
+

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule , Routes} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
+import { PublicGuard, ProtectedGuard } from 'ngx-auth';
 
 import { AppComponent } from './app.component';
 
@@ -8,12 +9,26 @@ const routes: Routes = [
     path: '',
     component: AppComponent,
     children: [
-      { path: '', redirectTo: '/cp/login', pathMatch: 'full' },
-      { path: 'answer', loadChildren: 'app/questions/question.module#QuestionModule', },
-      { path: 'review', loadChildren: 'app/reviews/reviews.module#ReviewsModule'},
-      { path: 'blog', loadChildren: 'app/blogs/blogs.module#BlogsModule'},
-      { path: 'cp', loadChildren: 'app/login/login.module#LoginModule'},
-      { path: 'shop', loadChildren: 'app/shop/shop.module#ShopModule'}
+      {
+        path: 'cp',
+        canActivate: [ PublicGuard ],
+        loadChildren: 'app/login/login.module#LoginModule'
+      }, {
+        path: 'shop',
+        canActivate: [ ProtectedGuard ],
+        loadChildren: 'app/shop/shop.module#ShopModule'
+      }, {
+        path: 'store',
+        loadChildren: 'app/store/store.module#StoreModule'
+      }, {
+        path: '',
+        redirectTo: 'shop',
+        pathMatch: 'full'
+      }, {
+        path: '**',
+        redirectTo: 'shop',
+        pathMatch: 'full'
+      }
     ]
   }
 ];

@@ -1490,6 +1490,13 @@ input.mat-input-element {
   height: auto !important;
   overflow: visible !important; }
 
+.mat-raised-button {
+  line-height: 40px;
+  border-radius: 4px; }
+  @media screen and (max-width: 599px) {
+    .mat-raised-button {
+      line-height: 36px; } }
+
 .xb-shop__icons {
   width: 40px;
   height: 40px;
@@ -1518,6 +1525,8 @@ input.mat-input-element {
   position: relative; }
 .xb-shop__width-100 {
   width: 100%; }
+.xb-shop__width-1 {
+  width: 100px; }
 .xb-shop__product {
   position: relative; }
   .xb-shop__product .mat-button {
@@ -1568,7 +1577,7 @@ input.mat-input-element {
   .xb-shop__product-buttons {
     position: absolute;
     right: 0;
-    top: 6px;
+    top: 0;
     z-index: 10; }
   .xb-shop__product-button-list {
     width: 188px;

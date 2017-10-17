@@ -20,9 +20,9 @@ export class BaseApi{
   };
 
   constructor(){
-    this.url = 'http://45.33.50.95:9009/';
+    this.url = 'http://45.33.50.95/';
     if(environment.production === true) {
-      this.url = 'http://45.33.50.95:9009/';
+      this.url = 'http://45.33.50.95/';
     }
 
   }
