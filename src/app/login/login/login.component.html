@@ -1,14 +1,21 @@
 <div class="container" appViewResize fxLayout="row" fxLayoutAlign="center center">
-  <div class="xb-login__container" fxLayout="column">
+  <div class="xb-login__container" fxLayout="column" >
     <div class="xb-login__error md-margin-bottom-2" *ngIf="loginErr">{{loginErr}}</div>
-    <form [formGroup]="loginGroup" (ngSubmit)="login()" novalidate>
-      <div fxFLex class="xb-login__width">
+    <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="loginGroup" (ngSubmit)="login()" novalidate>
+      <div class="xb-login__width">
         <mat-form-field>
-          <input matInput placeholder="Email Address" formControlName="email">
+          <input matInput placeholder="Email Address" formControlName="username">
         </mat-form-field>
+        <div *ngIf="loginGroup.controls.username.touched">
+          <div class="xb-login__error md-margin-bottom-2" *ngIf="loginGroup.controls.username.errors?.email">Email is invalid.</div>
+        </div>
         <mat-form-field>
-          <input matInput placeholder="Password" formControlName="password">
+          <input matInput type="password" placeholder="Password" formControlName="password">
         </mat-form-field>
+        <div *ngIf="loginGroup.controls.password.touched">
+          <div class="xb-login__error md-margin-bottom-2" *ngIf="loginGroup.controls.password.errors?.pattern">Password pattern is invalid.</div>
+          <div class="xb-login__error md-margin-bottom-2" *ngIf="loginGroup.controls.password.errors?.minLength">Password must be at least 6 characters long.</div>
+        </div>
       </div>
       <a class="text-underline md-margin-bottom-3 md-dark-primary" routerLink="/cp/resetPassword">Forgot password?</a>
       <div class="md-margin-top-2" fxLayout="column">

@@ -36,6 +36,10 @@
     margin-top: 48px;
   }
 
+  &__margin-bottom{
+    margin-bottom: 48px;
+  }
+
   &__margin-left{
     margin-left: 16px;
     position: relative;
@@ -108,6 +112,15 @@
       }
     }
 
+    &-none{
+      margin-top: 144px;
+      span{
+        margin-top: 16px;
+        color: rgba(0,0,0,.87);
+        @include media();
+      }
+    }
+
     &-buttons {
       position: absolute;
       right: 0;
@@ -172,15 +185,31 @@
 
     &-color-1{
       background-color: $navigationColor;
+      background-image: url("https://media.xberts.com/collector/source/web/pic/pic-view.png");
+      background-position: top right;
+      background-size: auto 80%;
+      background-repeat: no-repeat;
     }
     &-color-2{
       background-color: $primaryColor;
+      background-image: url("https://media.xberts.com/collector/source/web/pic/pic-visitor.png");
+      background-position: top right;
+      background-size: auto 80%;
+      background-repeat: no-repeat;
     }
     &-color-3{
       background-color: $orangeColor;
+      background-image: url("https://media.xberts.com/collector/source/web/pic/pic-conversions.png");
+      background-position: top right;
+      background-size: auto 80%;
+      background-repeat: no-repeat;
     }
     &-color-4{
       background-color: $dangerColor;
+      background-image: url("https://media.xberts.com/collector/source/web/pic/pic-listings.png");
+      background-position: top right;
+      background-size: auto 80%;
+      background-repeat: no-repeat;
     }
 
     &-content{

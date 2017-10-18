@@ -11,7 +11,6 @@ const routes: Routes = [
     children: [
       {
         path: 'cp',
-        canActivate: [ PublicGuard ],
         loadChildren: 'app/login/login.module#LoginModule'
       }, {
         path: 'shop',
@@ -22,12 +21,7 @@ const routes: Routes = [
         loadChildren: 'app/store/store.module#StoreModule'
       }, {
         path: '',
-        redirectTo: 'shop',
-        pathMatch: 'full'
-      }, {
-        path: '**',
-        redirectTo: 'shop',
-        pathMatch: 'full'
+        loadChildren: 'app/landing-page/landing-page.module#LandingPageModule'
       }
     ]
   }

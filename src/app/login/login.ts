@@ -1,16 +1,14 @@
 export class Login {
-  accessToken : string;
-  expireIn : number;
-  refreshToken : string;
+  access_token : string;
+  expire_in : number;
+  refresh_token : string;
   scope: string;
-  tokenType: string;
+  token_type: string;
 }
 
 export class SignUp{
-  avatar: any;
   email: any;
   firstName: string;
   id: number;
   lastName: string;
-
 }

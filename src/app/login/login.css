@@ -1465,7 +1465,8 @@ input.mat-input-element {
   width: 300px; }
 
 .mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12); }
+  background-color: rgba(0, 0, 0, 0.12);
+  bottom: calc(1.25em + 1px); }
 
 .mat-toolbar {
   background-color: #fff;
@@ -1498,7 +1499,8 @@ input.mat-input-element {
       line-height: 36px; } }
 
 .xb-login__container {
-  max-width: 332px; }
+  max-width: 332px;
+  width: 100%; }
 .xb-login__auto {
   margin: auto; }
 .xb-login__width .mat-form-field {

@@ -1,0 +1,73 @@
+@import "../styles/utils/_index";
+@import "../styles/_variables";
+
+.xb-landing-page{
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+
+  &__banner{
+    height: 645px;
+    background-image: url("https://media.xberts.com/collector/source/web/pic/pic-title.jpg");
+    background-position: center top;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+
+    &-title{
+      font-size: 56px;
+      line-height: 64px;
+      color: $whiteColor;
+      margin-top: 144px;
+    }
+    &-subtitle{
+      font-size: 24px;
+      line-height: 24px;
+      color: $whiteColor;
+    }
+
+    &-button{
+      margin-top: 40px;
+      color: $blackColor;
+      background-color: $whiteColor;
+      font-size: 16px;
+      line-height: 48px;
+      border-radius: 20px;
+      text-align: center;
+      width: 176px;
+      display: block;
+    }
+  }
+
+  &__navigation{
+    height: 56px;
+    &-login{
+      font-size: 16px;
+      color: $whiteColor;
+    }
+
+    &-button{
+      font-size: 16px;
+      color: $whiteColor;
+      background-color: $primaryColor;
+      line-height: 40px;
+      padding: 0 24px;
+      border-radius: 16px;
+    }
+  }
+
+  &__height-1{
+    height: 685px;
+  }
+
+  &__title-1{
+    font-size: 48px;
+    margin-top: 80px;
+    line-height: 1;
+  }
+
+  &__content-1{
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+

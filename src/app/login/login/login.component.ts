@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginService } from '../login.service';
+import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +20,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private service: LoginService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private auth: AuthenticationService
   ) {
     this.loginGroup = this.fb.group({
-      email: ['', [
+      username: ['', [
         Validators.required,
         Validators.email
       ]],
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit {
     let self = this;
     self.service.login(this.loginGroup.value).then((data) => {
       self.loginErr = false;
+      this.auth.setAccessToken(data);
       //this.router.navigateByUrl('shop/1/dashboard');
     }).catch((data) => {
       self.loginErr = data;

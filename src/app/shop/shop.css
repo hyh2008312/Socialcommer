@@ -1520,6 +1520,8 @@ input.mat-input-element {
       color: #00bdd6; }
 .xb-shop__margin-top {
   margin-top: 48px; }
+.xb-shop__margin-bottom {
+  margin-bottom: 48px; }
 .xb-shop__margin-left {
   margin-left: 16px;
   position: relative; }
@@ -1574,6 +1576,12 @@ input.mat-input-element {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
     .xb-shop__product-list:last-child {
       border-bottom: none; }
+  .xb-shop__product-none {
+    margin-top: 144px; }
+    .xb-shop__product-none span {
+      margin-top: 16px;
+      color: rgba(0, 0, 0, 0.87);
+      font-weight: 500; }
   .xb-shop__product-buttons {
     position: absolute;
     right: 0;
@@ -1618,13 +1626,29 @@ input.mat-input-element {
   margin-bottom: 8px;
   font-weight: 500; }
 .xb-shop__dashboard-color-1 {
-  background-color: #3f52b4; }
+  background-color: #3f52b4;
+  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-view.png");
+  background-position: top right;
+  background-size: auto 80%;
+  background-repeat: no-repeat; }
 .xb-shop__dashboard-color-2 {
-  background-color: #00bdd6; }
+  background-color: #00bdd6;
+  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-visitor.png");
+  background-position: top right;
+  background-size: auto 80%;
+  background-repeat: no-repeat; }
 .xb-shop__dashboard-color-3 {
-  background-color: #ffc500; }
+  background-color: #ffc500;
+  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-conversions.png");
+  background-position: top right;
+  background-size: auto 80%;
+  background-repeat: no-repeat; }
 .xb-shop__dashboard-color-4 {
-  background-color: #e53935; }
+  background-color: #e53935;
+  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-listings.png");
+  background-position: top right;
+  background-size: auto 80%;
+  background-repeat: no-repeat; }
 .xb-shop__dashboard-content {
   border-top: 1px solid rgba(0, 0, 0, 0.12); }
 .xb-shop__dashboard-margin-right {

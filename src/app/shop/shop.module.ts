@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ShopComponent } from './shop/shop.component';
 import { StoreComponent } from './store/store.component';
-import { CatalogComponent, CatalogAddProductDialog } from './catalog/catalog.component';
+import { CatalogComponent } from './catalog/catalog.component';
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { FindProductsComponent, FindProductsDialog } from "./find-products/find-products.component";
+import { CatalogAddProductComponent } from "./catalog-add-product/catalog-add-product.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
 import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-select.component";
@@ -27,9 +28,9 @@ import { SharedModule } from '../shared/shared.module';
     ShopComponent,
     StoreComponent,
     CatalogComponent,
-    CatalogAddProductDialog,
     DashboardComponent,
     SettingsComponent,
+    CatalogAddProductComponent,
     LeftSideNavigationComponent,
     ProductItemComponent,
     CatalogTimeSelectComponent,
@@ -39,7 +40,6 @@ import { SharedModule } from '../shared/shared.module';
     FindProductsDialog
   ],
   entryComponents: [
-    CatalogAddProductDialog,
     FindProductsDialog
   ],
   providers: [

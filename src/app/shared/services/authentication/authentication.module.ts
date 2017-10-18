@@ -6,7 +6,7 @@ import { AuthenticationService } from './authentication.service';
 @NgModule({
   imports: [ AuthModule ],
   providers: [
-    { provide: PROTECTED_FALLBACK_PAGE_URI, useValue: '/' },
+    { provide: PROTECTED_FALLBACK_PAGE_URI, useValue: '/shop/dashboard' },
     { provide: PUBLIC_FALLBACK_PAGE_URI, useValue: '/cp/login' },
     { provide: AUTH_SERVICE, useClass: AuthenticationService }
   ]

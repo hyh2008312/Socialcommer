@@ -6,13 +6,14 @@ import 'rxjs/add/operator/toPromise';
 import { Login, SignUp } from './login';
 
 import { BaseApi } from '../config/app.api';
+import { SystemConstant } from '../config/app.constant';
 
 @Injectable()
 export class LoginService {
 
-  constructor( private http: Http, private baseUrl: BaseApi) { }
+  constructor( private http: Http, private baseUrl: BaseApi, private systemConstant: SystemConstant) { }
 
-  login(token:number): Promise<Login> {
+  login(token:any): Promise<Login> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -21,6 +22,9 @@ export class LoginService {
     let options = new RequestOptions({headers:headers});
 
     const url = `${this.baseUrl.url}oauth2/token/`;
+
+    token.client_id = this.systemConstant.clientId;
+    token.grant_type = "password";
 
     return this.http.post(url, token, options)
       .toPromise()

@@ -8,9 +8,9 @@
     </button>
     <div class="xb-shop__product-button-list" *ngIf="showToggles">
       <a class="md-padding-left-2 xb-pointer" fxLayout="row" fxLayoutAlign="start center"
-        routerLink="../products">Find Products to Share</a>
+         routerLink="../products">Find Products to Share</a>
       <a class="md-padding-left-2 xb-pointer" fxLayout="row" fxLayoutAlign="start center"
-           (click)="addProduct()">Sumbmit a Product</a>
+         routerLink="./create">Sumbmit a Product</a>
     </div>
   </div>
   <mat-tab-group color="accent">
@@ -30,10 +30,17 @@
     </mat-tab>
     <mat-tab label="Unpublish">
       <div class="md-margin-top-2" fxLayout="column">
-        <div class="xb-shop__product-list" *ngFor="let item of [0,1,2]">
+        <div class="xb-shop__product-list" *ngFor="let item of [0,1,2]" fxShow="false">
           <app-product-item [status]="2"></app-product-item>
+        </div>
+        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <img src="https://media.xberts.com/collector/source/web/pic/pic-none.png">
+            <span >Nothing in your store. Add new product from now on.</span>
+          </div>
         </div>
       </div>
     </mat-tab>
   </mat-tab-group>
 </div>
+<router-outlet></router-outlet>
