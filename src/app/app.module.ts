@@ -6,8 +6,8 @@ import { AppRoutingModule } from './app.routes.module';
 
 import { AppComponent } from './app.component';
 
-import {BaseApi} from './config/app.api';
-import {SystemConstant, BlogCover} from './config/app.constant';
+import {BaseApi, SystemConstant} from './config/app.api';
+import {BlogCover} from './config/app.constant';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 

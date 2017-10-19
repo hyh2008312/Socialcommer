@@ -7,8 +7,7 @@ import 'rxjs/add/operator/catch';
 
 import { AuthService } from 'ngx-auth';
 
-import { BaseApi } from '../../../config/app.api';
-import { SystemConstant } from '../../../config/app.constant';
+import { BaseApi,SystemConstant } from '../../../config/app.api';
 
 @Injectable()
 export class AuthenticationService implements AuthService {

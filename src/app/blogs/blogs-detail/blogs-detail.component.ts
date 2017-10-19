@@ -4,7 +4,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Blogs, Owner, Achievement, Interact, Vote} from '../blogs';
 import { BlogsService } from '../blogs.service';
-import { SystemConstant, BlogCover} from '../../config/app.constant';
+import { SystemConstant} from '../../config/app.api';
+import { BlogCover} from '../../config/app.constant';
 
 @Component({
   selector: 'app-blogs-detail',

@@ -1,8 +1,20 @@
-export class SystemConstant{
-  accessUrl : string = 'https://media.xberts.com';
-  baseUrl : string = 'https://xbertsmedia.s3.amazonaws.com';
+export class ImageConstant{
 
-  clientId : string = 'SxnVI98BehT3NSCLbhrP4GFiig6erbTkYMaSRvkQ';
+  IMAGE_UPLOAD_TYPE = {
+    'BLOG_COVER':{
+      'category': 'blog',
+      'use': 'cover',
+      'originUrl':'image/blog/cover/',
+      'list': 'xy',
+      'detail': 'co'
+    },
+    "BLOG_DETAILS": {
+      'category': 'blog',
+      'use': 'details',
+      'originUrl':'image/blog/details/',
+      'detail': 'mo'
+    }
+  };
 }
 
 export class BlogCover{

@@ -5,8 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { Login, SignUp } from './login';
 
-import { BaseApi } from '../config/app.api';
-import { SystemConstant } from '../config/app.constant';
+import { BaseApi, SystemConstant } from '../config/app.api';
 
 @Injectable()
 export class LoginService {
