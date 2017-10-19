@@ -15,8 +15,11 @@ export class ShopService {
 
   createAuthorizationHeader(headers: Headers) {
 
-    headers.append('Authorization', this.auth.getAccessToken() ?
-    'Bearer ' + this.auth.getAccessToken(): '');
+    this.auth.getAccessToken().subscribe((data) => {
+      if(data) {
+        headers.append('Authorization', 'Bearer ' + data);
+      }
+    });
 
   }
 
@@ -37,6 +40,22 @@ export class ShopService {
       .catch(this.handleError);
   }
 
+  changePassword(password:any): Promise<Product> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}user/pw/`;
+
+    return this.http.put(url, password, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
 
   private handleError (error: Response | any) {
     let errMsg: string;

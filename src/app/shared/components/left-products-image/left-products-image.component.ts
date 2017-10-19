@@ -7,9 +7,11 @@ import { ICarouselConfig, AnimationConfig } from '../angular4-carousel/index';
   styleUrls: ['./left-products-image.scss']
 })
 
+
+
 export class LeftProductsImageComponent implements OnInit {
 
-  @Input() private images = [
+  @Input() public images = [
     {
       id: 0,
       src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpECZaHv_X20L77tJJ58RHb3JJRG_tfsfhX5Y7po8rZyZJo1KxHA',
@@ -32,7 +34,7 @@ export class LeftProductsImageComponent implements OnInit {
     }
   ];
 
-  public selectedImage: Object;
+  public selectedImage: any;
 
   public imageSources: string[] = [
     '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',

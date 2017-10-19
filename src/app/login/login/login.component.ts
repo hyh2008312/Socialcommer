@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     self.service.login(this.loginGroup.value).then((data) => {
       self.loginErr = false;
       this.auth.setAccessToken(data);
-      //this.router.navigateByUrl('shop/1/dashboard');
+      this.router.navigateByUrl('shop/1/dashboard');
     }).catch((data) => {
       self.loginErr = data;
     });

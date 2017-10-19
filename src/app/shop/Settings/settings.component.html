@@ -67,30 +67,49 @@
   </mat-tab>
   <mat-tab label="Change Password">
     <div class="md-margin-top-3">
-      <div class="md-dark-secondary">
-        Current Password
-      </div>
-      <mat-form-field>
-        <input matInput type="password">
-      </mat-form-field>
-      <div class="md-dark-secondary">
-        New Password
-      </div>
-      <mat-form-field>
-        <input matInput type="text">
-      </mat-form-field>
-      <div class="md-dark-secondary">
-        Confirm Password
-      </div>
-      <mat-form-field>
-        <input matInput type="text">
-      </mat-form-field>
-      <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-        <button mat-raised-button color="primary">SAVE CHANGE</button>
-        <div class="xb-shop__margin-left">
-          <button mat-button color="primary">CANCEL</button>
+      <form  [formGroup]="settingForm" (ngSubmit)="doSubmit()" novalidate>
+        <div class="md-dark-secondary">
+          Current Password
         </div>
-      </div>
+        <mat-form-field>
+          <input matInput type="password" formControlName="currentPassword">
+        </mat-form-field>
+
+        <div *ngIf="formErrors['currentPassword']" class="error">
+          {{ formErrors['currentPassword'] }}
+        </div>
+
+        <div class="md-dark-secondary">
+          New Password
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="password"
+                 validateEqual="confirmPassword"
+                 reverse="true">
+        </mat-form-field>
+        <div *ngIf="formErrors['password']" class="error">
+          {{ formErrors['password'] }}
+        </div>
+
+        <div class="md-dark-secondary">
+          Confirm Password
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="confirmPassword"
+                 validateEqual="password"
+                 reverse="false">
+        </mat-form-field>
+
+        <div *ngIf="formErrors['confirmPassword']" class="error">
+          {{ formErrors['confirmPassword'] }}
+        </div>
+        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary" type="submit">SAVE CHANGE</button>
+          <div class="xb-shop__margin-left">
+            <button mat-button color="primary">CANCEL</button>
+          </div>
+        </div>
+      </form>
     </div>
   </mat-tab>
 </mat-tab-group>

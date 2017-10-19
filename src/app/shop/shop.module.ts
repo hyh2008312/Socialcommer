@@ -15,6 +15,7 @@ import { ProductItemCardComponent } from "./product-item-card/product-item-card.
 
 import { ShopRoutingModule } from './shop.routes.module';
 import { ShopService } from './shop.service';
+import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -43,7 +44,8 @@ import { SharedModule } from '../shared/shared.module';
     FindProductsDialog
   ],
   providers: [
-    ShopService
+    ShopService,
+    AuthenticationService
   ]
 })
 export class ShopModule { }

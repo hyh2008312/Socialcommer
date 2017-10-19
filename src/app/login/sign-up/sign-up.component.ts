@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginService } from '../login.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
+import { AuthenticationService } from  '../../shared/services/authentication/authentication.service';
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'app-sign-up',
@@ -37,7 +39,8 @@ export class SignUpComponent implements OnInit {
     private router : Router,
     private service: LoginService,
     private fb: FormBuilder,
-    private constant: ConstantService
+    private constant: ConstantService,
+    private auth: AuthenticationService
   ) {
     this.signUpGroup = this.fb.group({
       firstName: ['', Validators.required],
@@ -58,7 +61,14 @@ export class SignUpComponent implements OnInit {
 
   }
 
-  ngOnInit():void {}
+  ngOnInit():void {
+    this.auth.getAccessToken().subscribe((data) => {
+      if(data) {
+        this.step = 1;
+      }
+    });
+
+  }
 
   signUp() {
     if(!this.signUpGroup.valid) {
@@ -68,7 +78,14 @@ export class SignUpComponent implements OnInit {
     let self = this;
     self.service.signUp(this.signUpGroup.value).then((data) => {
       self.signUpErr = false;
-      self.step = 1;
+      let loginObject = {
+        username: self.signUpGroup.value.email,
+        password: self.signUpGroup.value.password
+      };
+      self.service.login(loginObject).then((data)=>{
+        self.auth.setAccessToken(data);
+        self.step = 1;
+      });
     }).catch((data) => {
       self.signUpErr = data;
     });

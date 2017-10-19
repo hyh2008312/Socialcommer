@@ -11,6 +11,7 @@ import { ViewResizeDirective }  from './directives/view-resize/view-resize.direc
 import { ViewScrollDirective }  from './directives/view-srcoll/view-scroll.directive';
 import { RepeatOrderDirective }  from './directives/repeat-order/repeat-order.directive';
 import { SocialShareDirective }  from './directives/social-share/social-share.directive';
+import { ValidateEqualDirective }  from './directives/validate-equal/validate-equal.directive';
 
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserBadgeComponent } from './components/user-badge/user-badge.component';
@@ -76,6 +77,7 @@ import {
     ViewScrollDirective,
     RepeatOrderDirective,
     SocialShareDirective,
+    ValidateEqualDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
@@ -92,6 +94,7 @@ import {
     ViewScrollDirective,
     RepeatOrderDirective,
     SocialShareDirective,
+    ValidateEqualDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
