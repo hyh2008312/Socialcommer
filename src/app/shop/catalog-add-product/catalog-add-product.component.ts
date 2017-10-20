@@ -94,7 +94,7 @@ export class CatalogAddProductComponent implements OnInit {
   public editorContent = "insert content...";
 
   close():void {
-    this.router.navigate(['/shop/catalog']);
+    this.router.navigate(['/shop/listings']);
   }
 
   create() {
