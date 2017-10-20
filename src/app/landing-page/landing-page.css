@@ -1538,13 +1538,22 @@ input.mat-input-element {
       line-height: 40px;
       text-align: center;
       border-radius: 16px;
-      width: 120px;
+      width: 100px;
+      display: block; }
+    .xb-landing-page__navigation-button-1 {
+      font-size: 16px;
+      color: #fff;
+      background-color: #00bdd6;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 16px;
+      width: 160px;
       display: block; }
   .xb-landing-page__height-1 {
     height: 685px;
     overflow: hidden; }
   .xb-landing-page__height-2 {
-    height: 645px;
+    height: 245px;
     overflow: hidden; }
   .xb-landing-page__height-3 {
     height: 540px;
@@ -1553,21 +1562,21 @@ input.mat-input-element {
   .xb-landing-page__title-1 {
     font-size: 48px;
     margin-top: 80px;
-    line-height: 1;
-    font-weight: 300; }
+    line-height: 64px;
+    font-weight: 300;
+    text-align: center; }
   .xb-landing-page__title-2 {
     font-size: 24px;
     line-height: 32px; }
   .xb-landing-page__title-3 {
     font-size: 48px;
-    margin-top: 174px;
     line-height: 1;
     font-weight: 300; }
   .xb-landing-page__title-4 {
-    font-size: 48px;
+    font-size: 32px;
     margin-top: 144px;
-    line-height: 1;
-    font-weight: 300; }
+    line-height: 64px;
+    font-weight: 500; }
   .xb-landing-page__content-1 {
     font-size: 24px;
     line-height: 32px;
@@ -1575,6 +1584,11 @@ input.mat-input-element {
   .xb-landing-page__content-2 {
     font-size: 16px;
     line-height: 24px; }
+  .xb-landing-page__content-3 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 300;
+    text-align: center; }
   .xb-landing-page__image-list {
     padding: 0 64px;
     margin-top: 48px; }
@@ -1585,19 +1599,15 @@ input.mat-input-element {
     .xb-landing-page__image-list img {
       width: 240px; }
   .xb-landing-page__background-1 {
-    background-color: #f1f1f1;
-    background-image: url("https://media.xberts.com/collector/source/web/pic/pic-easy.png");
-    background-position: 100% 52%;
-    background-size: 46% auto;
-    background-repeat: no-repeat; }
+    background-color: #f1f1f1; }
   .xb-landing-page__background-2 {
     position: absolute;
     left: 0;
     width: 50%;
     height: 100%;
     background-image: url("https://media.xberts.com/collector/source/web/pic/pic-cost.jpg");
-    background-position: center;
-    background-size: 110% auto;
+    background-position: top right;
+    background-size: auto 100%;
     background-repeat: no-repeat;
     overflow: hidden; }
   .xb-landing-page__background-3 {
@@ -1606,8 +1616,8 @@ input.mat-input-element {
     width: 50%;
     height: 100%;
     background-image: url("https://media.xberts.com/collector/source/web/pic/pic-add.jpg");
-    background-position: center;
-    background-size: 110% auto;
+    background-position: top left;
+    background-size: auto 100%;
     background-repeat: no-repeat;
     overflow: hidden; }
   .xb-landing-page__background-4 {
@@ -1615,9 +1625,9 @@ input.mat-input-element {
     left: 0;
     width: 50%;
     height: 100%;
-    background-image: url("https://media.xberts.com/collector/source/web/pic/pic-cost.jpg");
-    background-position: center;
-    background-size: 110% auto;
+    background-image: url("https://media.xberts.com/collector/source/web/pic/pic-costumer.jpg");
+    background-position: top right;
+    background-size: auto 100%;
     background-repeat: no-repeat;
     overflow: hidden; }
   .xb-landing-page__background-5 {
@@ -1626,8 +1636,8 @@ input.mat-input-element {
     width: 50%;
     height: 100%;
     background-image: url("https://media.xberts.com/collector/source/web/pic/pic-data.jpg");
-    background-position: center;
-    background-size: 110% auto;
+    background-position: top left;
+    background-size: auto 100%;
     background-repeat: no-repeat;
     overflow: hidden; }
   .xb-landing-page__background-6 {
