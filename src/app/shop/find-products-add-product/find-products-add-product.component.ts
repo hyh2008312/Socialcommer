@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 
 export class FindProductsAddProductComponent implements OnInit {
 
+  public shareLink: string;
   public text = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.'
     + 'Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training'
     + 'that make you an expert in your field? Show your customers that there are read people with instersting stories working'
@@ -19,7 +20,7 @@ export class FindProductsAddProductComponent implements OnInit {
   ) { }
 
   ngOnInit():void {
-
+    this.shareLink = window.location.href;
   }
 
   close():void {
