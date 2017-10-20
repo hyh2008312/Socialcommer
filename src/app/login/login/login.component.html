@@ -6,22 +6,18 @@
         <mat-form-field>
           <input matInput placeholder="Email Address" formControlName="username">
         </mat-form-field>
-        <div *ngIf="loginGroup.controls.username.touched">
-          <div class="xb-login__error md-margin-bottom-2"
-               *ngIf="loginGroup.controls.username.errors?.email">Please enter a valid email address.</div>
+        <div *ngIf="formErrors['username']" class="xb-input-error">
+          {{ formErrors['username'] }}
         </div>
         <mat-form-field>
           <input matInput type="password" placeholder="Password" formControlName="password">
         </mat-form-field>
-        <div *ngIf="loginGroup.controls.password.touched">
-          <div class="xb-login__error md-margin-bottom-2"
-               *ngIf="loginGroup.controls.password.errors?.pattern">Password pattern is invalid.</div>
-          <div class="xb-login__error md-margin-bottom-2" *ngIf="loginGroup.controls.password.errors?.minLength">
-            The password must contain at least 6 characters.</div>
+        <div *ngIf="formErrors['password']" class="xb-input-error">
+          {{ formErrors['password'] }}
         </div>
       </div>
       <a class="text-underline md-margin-bottom-3 md-dark-primary" routerLink="/cp/resetPassword">Forgot password?</a>
-      <div class="md-margin-top-2" fxLayout="column">
+      <div fxLayout="column">
         <button mat-raised-button color="primary" type="submit">LOGIN</button>
       </div>
     </form>

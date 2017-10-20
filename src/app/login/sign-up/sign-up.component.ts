@@ -15,25 +15,61 @@ import {Subject} from "rxjs/Subject";
 
 export class SignUpComponent implements OnInit {
 
-  signUpGroup : FormGroup;
-
   step: number = 0;
 
   country: string;
-
-  public countries: Object[];
-
   currency: string;
 
-  public signUpErr: any = false;
+  public countries: Object[];
+  public currencies: Object[];
 
-  currencies = [{
-    code: 'INR',
-    value: 'INR'
-  },{
-    code: 'USD',
-    value: 'USD'
-  }];
+  signUpGroup : FormGroup;
+  storeForm : FormGroup;
+
+  public signUpErr: any = false;
+  public storeErr: any = false;
+
+  //存储错误信息
+  formErrors = {
+    'firstName': '',
+    'lastName': '',
+    'email': '',
+    'password' : '',
+    'country' : '',
+    'name': '',
+    'currency': '',
+    'displayName' : ''
+  };
+
+  //错误对应的提示
+  validationMessages = {
+    'firstName': {
+      'required': 'First name is required.',
+    },
+    'lastName': {
+      'required': 'Last name is required.',
+    },
+    'email':{
+      'required': 'Email is required.',
+      'email': 'Please enter a valid email address.'
+    },
+    'password':{
+      'required': 'Password is required.',
+      'minlength': 'Password must contain at least 6 characters.'
+    },
+    'country':{
+      'required': 'Password is required.'
+    },
+    'name': {
+      'required': 'Store name is required.'
+    },
+    'currency': {
+      'required': 'Store currency is required.'
+    },
+    'displayName': {
+      'required': 'Url is required.'
+    }
+  };
 
   constructor(
     private router : Router,
@@ -52,21 +88,74 @@ export class SignUpComponent implements OnInit {
       country: ['', Validators.required],
       password: ['', [
         Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
         Validators.minLength(6)
       ]]
     });
 
-    this.countries = this.constant.getCountries();
+    this.storeForm = this.fb.group({
+      name: ['', Validators.required],
+      currency: ['', Validators.required],
+      displayName: ['', Validators.required]
+    });
 
+    this.countries = this.constant.getCountries();
+    this.currencies = this.constant.getCurrencies();
+
+    this.signUpGroup.valueChanges.subscribe(data => this.onSignUpGroupValueChanged(data));
+    this.storeForm.valueChanges.subscribe(data => this.onStoreFormValueChanged(data));
   }
 
   ngOnInit():void {
-    this.auth.getAccessToken().subscribe((data) => {
-      if(data) {
-        this.step = 1;
+    //this.auth.getAccessToken().subscribe((data) => {
+    //  if(data) {
+    //    this.step = 1;
+    //  }
+    //});
+  }
+
+  /**
+   * 表单值改变时，重新校验
+   * @param data
+   */
+  onSignUpGroupValueChanged(data) {
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      //取到表单字段
+      const control = this.signUpGroup.get(field);
+      //表单字段已修改或无效
+      if (control && control.dirty && !control.valid) {
+        //取出对应字段可能的错误信息
+        const messages = this.validationMessages[field];
+        //从errors里取出错误类型，再拼上该错误对应的信息
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + '';
+          break;
+        }
       }
-    });
+
+    }
+
+  }
+
+  onStoreFormValueChanged(data) {
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      //取到表单字段
+      const control = this.storeForm.get(field);
+      //表单字段已修改或无效
+      if (control && control.dirty && !control.valid) {
+        //取出对应字段可能的错误信息
+        const messages = this.validationMessages[field];
+        //从errors里取出错误类型，再拼上该错误对应的信息
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + '';
+          break;
+        }
+      }
+
+    }
 
   }
 
@@ -92,6 +181,15 @@ export class SignUpComponent implements OnInit {
   }
 
   complete() {
+    if(!this.storeForm.valid) {
+      return;
+    }
+
+    let self = this;
+
+    self.service.createStore(this.storeForm.value).then((data)=>{
+      self.step = 1;
+    });
     this.step = 2;
     this.router.navigateByUrl('shop/1/store');
   }

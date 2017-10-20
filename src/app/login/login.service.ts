@@ -3,14 +3,30 @@ import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Login, SignUp } from './login';
+import { Login, SignUp, Store } from './login';
 
 import { BaseApi, SystemConstant } from '../config/app.api';
+import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 
 @Injectable()
 export class LoginService {
 
-  constructor( private http: Http, private baseUrl: BaseApi, private systemConstant: SystemConstant) { }
+  constructor(
+    private http: Http,
+    private baseUrl: BaseApi,
+    private systemConstant: SystemConstant,
+    private auth: AuthenticationService
+  ) { }
+
+  createAuthorizationHeader(headers: Headers) {
+
+    this.auth.getAccessToken().subscribe((data) => {
+      if(data) {
+        headers.append('Authorization', 'Bearer ' + data);
+      }
+    });
+
+  }
 
   login(token:any): Promise<Login> {
 
@@ -44,6 +60,23 @@ export class LoginService {
     return this.http.post(url, JSON.stringify(object), options)
       .toPromise()
       .then(response => response.json() as SignUp)
+      .catch(this.handleError);
+  }
+
+  createStore(object: any): Promise<Store> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}stores/`;
+
+    return this.http.post(url, JSON.stringify(object), options)
+      .toPromise()
+      .then(response => response.json() as Store)
       .catch(this.handleError);
   }
 

@@ -26,6 +26,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 .mat-form-field-underline{
   background-color: rgba(0,0,0,.12);
+  min-height: 1.1px;
 }
 
 .mat-toolbar{

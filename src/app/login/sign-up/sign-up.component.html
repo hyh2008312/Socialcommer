@@ -3,33 +3,48 @@
   <div class="xb-login__container xb-login__auto xb-login__margin-top" fxLayout="column" *ngIf="step == 0">
     <div class="xb-login__error md-margin-bottom-2" *ngIf="signUpErr">{{signUpErr}}</div>
     <form [formGroup]="signUpGroup" (ngSubmit)="signUp()" novalidate>
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <mat-form-field fxFlex="48">
-        <input matInput placeholder="First Name" formControlName="firstName">
-      </mat-form-field>
-      <mat-form-field fxFlex="48">
-        <input matInput placeholder="Last Name" formControlName="lastName">
-      </mat-form-field>
-    </div>
-    <div fxFLex class="xb-login__width">
-      <mat-form-field>
-        <input matInput placeholder="Email Address" formControlName="email">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Password" formControlName="password">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Country" [(ngModel)]="country" name="country" formControlName="country">
-          <mat-option *ngFor="let country of countries" [value]="country.code">
-            {{ country.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div fxLayout="column">
-      <button mat-raised-button color="primary" type="submit">SIGN UP</button>
-    </div>
-  </form>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field fxFlex="48">
+          <input matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field fxFlex="48">
+          <input matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div *ngIf="formErrors['firstName']" class="xb-input-error">
+        {{ formErrors['firstName'] }}
+      </div>
+      <div *ngIf="formErrors['lastName']" class="xb-input-error">
+        {{ formErrors['lastName'] }}
+      </div>
+      <div class="xb-login__width">
+        <mat-form-field>
+          <input matInput placeholder="Email Address" formControlName="email">
+        </mat-form-field>
+        <div *ngIf="formErrors['email']" class="xb-input-error">
+          {{ formErrors['email'] }}
+        </div>
+        <mat-form-field>
+          <input matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+        <div *ngIf="formErrors['password']" class="xb-input-error">
+          {{ formErrors['password'] }}
+        </div>
+        <mat-form-field>
+          <mat-select placeholder="Country" [(ngModel)]="country" name="country" formControlName="country">
+            <mat-option *ngFor="let country of countries" [value]="country.code">
+              {{ country.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="formErrors['country']" class="xb-input-error">
+          {{ formErrors['country'] }}
+        </div>
+      </div>
+      <div fxLayout="column">
+        <button mat-raised-button color="primary" type="submit">SIGN UP</button>
+      </div>
+    </form>
     <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
     <button class="xb-login__facebook" mat-raised-button>
     <div fxLayout="row" fxLayoutAlign="start center">
@@ -46,30 +61,43 @@
     <a class="text-underline md-dark-primary" routerLink="/cp/login">Already have an account?</a>
   </div>
   <div class="xb-login__container xb-login__auto xb-login__margin-top" fxLayout="column" *ngIf="step == 1">
-    <div fxFLex class="xb-login__width">
-      <mat-form-field>
-        <input matInput placeholder="Store Name">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Store Currency" [(ngModel)]="currency" name="currency">
-          <mat-option *ngFor="let currency of currencies" [value]="currency.code">
-            {{ currency.value }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
-      <div>
-        https://
+    <form [formGroup]="storeForm" (ngSubmit)="complete()" novalidate>
+      <div fxFLex class="xb-login__width">
+        <mat-form-field>
+          <input matInput placeholder="Store Name" formControlName="name">
+        </mat-form-field>
+        <div *ngIf="formErrors['name']" class="xb-input-error">
+          {{ formErrors['name'] }}
+        </div>
+        <mat-form-field>
+          <mat-select placeholder="Store Currency" [(ngModel)]="currency" name="currency" formControlName="currency">
+            <mat-option *ngFor="let currency of currencies" [value]="currency.code">
+              {{ currency.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="formErrors['currency']" class="xb-input-error">
+          {{ formErrors['currency'] }}
+        </div>
       </div>
-      <mat-form-field class="md-margin-left-2 xb-login__width">
-        <input matInput>
-      </mat-form-field>
-      <div class="md-margin-left-2">
-        .socialcommer.com/
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div>
+          https://
+        </div>
+        <mat-form-field class="md-margin-left-2 xb-login__width">
+          <input matInput formControlName="displayName">
+        </mat-form-field>
+        <div class="md-margin-left-2">
+          .socialcommer.com/
+        </div>
       </div>
-    </div>
-    <button mat-raised-button color="primary" (click)="complete()">COMPLETE</button>
+      <div *ngIf="formErrors['displayName']" class="xb-input-error">
+        {{ formErrors['displayName'] }}
+      </div>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="primary" type="submit">COMPLETE</button>
+      </div>
+    </form>
   </div>
 </div>
 

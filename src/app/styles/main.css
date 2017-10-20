@@ -1465,7 +1465,8 @@ input.mat-input-element {
   width: 300px; }
 
 .mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12); }
+  background-color: rgba(0, 0, 0, 0.12);
+  min-height: 1.1px; }
 
 .mat-toolbar {
   background-color: #fff;
@@ -1743,6 +1744,11 @@ p, .md-body-1 {
 
 .xb-scroll {
   overflow: scroll; }
+
+.xb-input-error {
+  color: #e53935;
+  font-size: 12px;
+  padding-bottom: 8px; }
 
 .animation-opacity-show {
   -webkit-animation: opacity-show 0.5s linear 0s 1 normal;
@@ -3445,7 +3451,8 @@ input.mat-input-element {
   width: 300px; }
 
 .mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12); }
+  background-color: rgba(0, 0, 0, 0.12);
+  min-height: 1.1px; }
 
 .mat-toolbar {
   background-color: #fff;

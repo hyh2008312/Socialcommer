@@ -12,3 +12,14 @@ export class SignUp{
   id: number;
   lastName: string;
 }
+
+export class Store{
+  id: number;
+  name: string;
+  displayName: string;
+  owner: any;
+  description: string;
+  currency: string;
+  url: string;
+  country: string;
+}

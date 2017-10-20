@@ -179,3 +179,9 @@ p,.md-body-1 {
 .xb-scroll{
   overflow: scroll;
 }
+
+.xb-input-error{
+  color: $dangerColor;
+  font-size: 12px;
+  padding-bottom: 8px;
+}

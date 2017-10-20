@@ -34,17 +34,14 @@ export class SettingsComponent implements OnInit {
     this.settingForm = this.fb.group({
       currentPassword: ['', [
         Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
         Validators.minLength(6)
       ]],
       password: ['', [
         Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
         Validators.minLength(6)
       ]],
       confirmPassword: ['', [
         Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
         Validators.minLength(6)
       ]]
     });
@@ -66,19 +63,16 @@ export class SettingsComponent implements OnInit {
   validationMessages = {
     'currentPassword': {
       'required': 'CurrentPassword is required.',
-      'pattern': 'CurrentPassword pattern is invalid.',
       'minlength': 'Password must contain at least 6 characters.'
     },
     'password': {
       'required': 'Password is required.',
-      'pattern': 'Password pattern is invalid.',
       'minlength': 'Password must contain at least 6 characters.'
     },
     'confirmPassword':{
       'required': 'ConfirmPassword is required.',
       'minlength': 'ConfirmPassword must contain at least 6 characters.',
-      'validateEqual': 'ConfirmPassword is different from Password.',
-      'pattern': 'CurrentPassword pattern is invalid.'
+      'validateEqual': 'ConfirmPassword is different from Password.'
     }
   };
 
@@ -113,12 +107,9 @@ export class SettingsComponent implements OnInit {
       return;
     }
 
-    console.log(this.settingForm.value);
     this.shopService.changePassword({
       currentPassword: this.settingForm.value.currentPassword,
       password: this.settingForm.value.password
-    }).then((data)=> {
-      console.log(data)
     });
   }
 

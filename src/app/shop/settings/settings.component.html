@@ -75,7 +75,7 @@
           <input matInput type="password" formControlName="currentPassword">
         </mat-form-field>
 
-        <div *ngIf="formErrors['currentPassword']" class="error">
+        <div *ngIf="formErrors['currentPassword']" class="xb-input-error">
           {{ formErrors['currentPassword'] }}
         </div>
 
@@ -87,7 +87,7 @@
                  validateEqual="confirmPassword"
                  reverse="true">
         </mat-form-field>
-        <div *ngIf="formErrors['password']" class="error">
+        <div *ngIf="formErrors['password']" class="xb-input-error">
           {{ formErrors['password'] }}
         </div>
 
@@ -100,7 +100,7 @@
                  reverse="false">
         </mat-form-field>
 
-        <div *ngIf="formErrors['confirmPassword']" class="error">
+        <div *ngIf="formErrors['confirmPassword']" class="xb-input-error">
           {{ formErrors['confirmPassword'] }}
         </div>
         <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">

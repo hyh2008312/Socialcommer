@@ -1465,7 +1465,8 @@ input.mat-input-element {
   width: 300px; }
 
 .mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12); }
+  background-color: rgba(0, 0, 0, 0.12);
+  min-height: 1.1px; }
 
 .mat-toolbar {
   background-color: #fff;
@@ -1524,7 +1525,7 @@ input.mat-input-element {
       line-height: 48px;
       border-radius: 20px;
       text-align: center;
-      width: 176px;
+      width: 200px;
       display: block; }
   .xb-landing-page__navigation {
     height: 56px; }
@@ -1547,7 +1548,7 @@ input.mat-input-element {
       line-height: 40px;
       text-align: center;
       border-radius: 16px;
-      width: 160px;
+      width: 200px;
       display: block; }
   .xb-landing-page__height-1 {
     height: 685px;

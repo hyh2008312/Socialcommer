@@ -248,5 +248,15 @@ export class ConstantService {
     ];
   }
 
+  getCurrencies() {
+    return  [{
+      code: 'INR',
+      name: 'INR'
+    },{
+      code: 'USD',
+      name: 'USD'
+    }];
+  }
+
 }
 
