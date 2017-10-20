@@ -24,7 +24,7 @@ export class FindProductsAddProductComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate(['/shop/listings']);
+    this.router.navigate(['/shop/products']);
   }
 
 }
