@@ -1,22 +1,22 @@
-<div  class="xb-shop__products-content" >
+<div>
   <div class="xb-shop__products-title" fxLayout="row" fxLayoutAlign="start center">
-    <a routerLink="../catalog">Catalog</a>&nbsp;&nbsp;>&nbsp;&nbsp;Find Products to Sell
+    <a routerLink="../listings">Listings</a>&nbsp;&nbsp;>&nbsp;&nbsp;Search affiliate products
   </div>
 
   <div fxLayout="row" fxLayoutAlign="start start">
     <div class="xb-shop__products-left-bg">
-      <div class="xb-shop__products-title-1">Filter By Country</div>
+      <div class="xb-shop__products-title-1">By Shipping Country:</div>
       <app-products-sort [(selectedSort)]="selectedCountries" [sorts]="countries"
          (selectedSortChange)="onSelectedChange($event)"></app-products-sort>
 
-      <div class="xb-shop__products-title-1 md-margin-top-3">Filter By Category</div>
+      <div class="xb-shop__products-title-1 md-margin-top-3">By Product Category:</div>
       <div fxLayout="column">
         <mat-checkbox class="md-margin-top-1" *ngFor="let category of categories;"
                       (change)="onCheckedChange(category,1)" [(ngModel)]="category.checked">
           {{ category.name }}
         </mat-checkbox>
       </div>
-      <div class="xb-shop__products-title-1 md-margin-top-3">Filter By Source</div>
+      <div class="xb-shop__products-title-1 md-margin-top-3">By Affiliate Channel:</div>
       <div fxLayout="column">
         <mat-checkbox class="md-margin-top-1" *ngFor="let source of sources;"
                       (change)="onCheckedChange(source,2)" [(ngModel)]="source.checked">
@@ -38,5 +38,5 @@
       </div>
     </div>
   </div>
-
 </div>
+<router-outlet></router-outlet>

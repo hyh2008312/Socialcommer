@@ -25,13 +25,13 @@ export class FindProductsComponent implements OnInit {
     checked: false
   }];
   sources = [{
-    name: 'Amazon in',
+    name: 'Amazon.in',
     checked: false
   }, {
     name: 'Amazon.com',
     checked: false
   }, {
-    name: 'Aliexpress',
+    name: 'Aliexpress.com',
     checked: false
   }];
 
@@ -111,14 +111,5 @@ export class FindProductsComponent implements OnInit {
     }
 
   }
-
-}
-@Component({
-  selector: 'app-find-products-dialog',
-  templateUrl: './find-products-dialog.component.html',
-  styleUrls: ['../shop.scss']
-})
-
-export class FindProductsDialog {
 
 }

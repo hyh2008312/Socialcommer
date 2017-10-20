@@ -9,5 +9,7 @@ import { Input, Component } from '@angular/core';
 export class ShareButtonComponent {
   @Input() public link: string;
   @Input() public text: string;
+  @Input() public style: any;
+
 
 }

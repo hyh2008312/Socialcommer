@@ -1,6 +1,8 @@
 @import "../styles/utils/_index";
 @import "../styles/_variables";
 
+@import "../shared/components/share-button/share-button.component";
+
 .xb-store{
   overflow-y: scroll;
   overflow-x: hidden;
@@ -322,10 +324,7 @@
       background-color: #f1f1f1;
       overflow: hidden;
     }
-    &-icons{
-      margin-bottom: 16px;
-      margin-right: 10vw;
-    }
+
   }
 
   &__background{
@@ -477,6 +476,27 @@
       }
     }
   }
-}
 
+  &__footer{
+    padding: 40px 0;
+    background-color: #252525;
+    color: rgba(255,255,255,.5);
+    font-size: 16px;
+    position: relative;
+
+    &-icons{
+      position: absolute;
+      right: 0;
+      bottom: 40px;
+      margin-right: 10vw;
+
+      @include xb-xs-screen{
+        position: relative;
+        bottom: 0;
+        margin-right: 0;
+        margin-top: 16px;
+      }
+    }
+  }
+}
 

@@ -65,8 +65,18 @@
         <button mat-raised-button color="primary">SUBSCRIBE</button>
       </div>
     </div>
-    <div class="xb-store__bottom-icons" fxLayout="row" fxLayoutAlign="end center">
-      <app-share-button [link]="shareLink" [text]="text"></app-share-button>
+  </div>
+  <div class="xb-store__footer">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div class="md-margin-left-2">©2017 Xberts, Inc. All rights reserved</div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="center center">
+        <img class="md-margin-top-1" src="https://media.xberts.com/collector/source/web/pic/pic-power.png">
+        <img class="md-margin-left-2" src="https://media.xberts.com/collector/source/web/pic/pic-foot-logo.png">
+      </div>
+    </div>
+    <div class="xb-store__footer-icons" fxLayout="row" fxLayoutAlign="end center"
+      fxLayoutAlign.xs="center center">
+      <app-share-button [link]="shareLink" [text]="text" [style]="{'store':true}"></app-share-button>
     </div>
   </div>
 </div>

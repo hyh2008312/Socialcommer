@@ -1,9 +1,11 @@
 <mat-toolbar>
   <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
-    <span> Admin v2.0</span>
-    <div class="md-margin-left-2">
-      <button mat-button color="primary" routerLink="/store">Storefront Preview</button>
-    </div>
+    <span fxLayout="row" fxLayoutAlign="start center"> <img src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png" width="120"></span>
+    <a class="md-margin-left-2 md-dark-primary" >
+      <button mat-button >
+        <a class="md-dark-primary" routerLink="/store" target="_blank">View Storefront</a>
+      </button>
+    </a>
   </div>
   <a fxLayout="row" fxLayoutAlign="start center" routerLink="./settings">
     <i class="iconfontXberts icon-ic-user xb-shop__icons md-dark-secondary"></i>
@@ -12,7 +14,7 @@
 <div appViewResize [margin]="56" fxLayout="column">
   <div fxLayout="row" fxLayoutAlign="stretch stretch" fxFlex>
     <app-left-side-navigation fxLayout="column" ></app-left-side-navigation>
-    <div class="md-margin-top-2" fxFlex fxLayout="column">
+    <div class="md-margin-top-2 xb-shop__scroll" fxFlex fxLayout="column">
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -1656,16 +1656,16 @@ input.mat-input-element {
     margin-top: 64px;
     margin-bottom: 80px; }
   .xb-landing-page__footer-top {
-    background-color: #222;
+    background-color: #252525;
     color: rgba(255, 255, 255, 0.5);
-    border-bottom: 1px solid #252525; }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
     .xb-landing-page__footer-top > div {
       height: 80px; }
   .xb-landing-page__footer-text {
     padding: 0 24px;
     font-size: 16px; }
   .xb-landing-page__footer-bottom {
-    background-color: #222;
+    background-color: #252525;
     color: rgba(255, 255, 255, 0.5);
     overflow: hidden; }
 

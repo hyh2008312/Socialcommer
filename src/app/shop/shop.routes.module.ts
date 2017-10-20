@@ -8,6 +8,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { FindProductsComponent } from "./find-products/find-products.component";
 import { CatalogAddProductComponent } from "./catalog-add-product/catalog-add-product.component";
+import { FindProductsAddProductComponent } from "./find-products-add-product/find-products-add-product.component";
 
 const routes: Routes = [
   {
@@ -20,12 +21,15 @@ const routes: Routes = [
       }, {
         path: 'settings', component: SettingsComponent
       }, {
-        path: 'catalog', component: CatalogComponent,
+        path: 'listings', component: CatalogComponent,
         children: [{
             path: 'create', component: CatalogAddProductComponent
         }]
       }, {
-        path: 'products', component: FindProductsComponent
+        path: 'products', component: FindProductsComponent,
+        children: [{
+          path: ':id', component: FindProductsAddProductComponent
+        }]
       }, {
         path: '',
         redirectTo: 'dashboard',
