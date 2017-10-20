@@ -12,6 +12,7 @@ import {BlogCover} from './config/app.constant';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AuthenticationModule } from './shared/services/authentication/index';
+import { UserModule } from './shared/services/user/user.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuthenticationModule } from './shared/services/authentication/index';
     AppRoutingModule,
     HttpModule,
     BrowserAnimationsModule,
-    AuthenticationModule
+    AuthenticationModule,
+    UserModule
   ],
   providers: [BaseApi,SystemConstant, BlogCover],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './shared/services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SocialCommer';
+
+  constructor(
+    private userService: UserService
+  ) {
+    this.userService.getUser().then((data) => {
+      console.log(data)
+    })
+  }
 }

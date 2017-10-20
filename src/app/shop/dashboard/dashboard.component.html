@@ -1,43 +1,25 @@
-<div class="md-margin-right-2" fxLayout="row" fxLayoutAlign="space-between center">
-  <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex="24">
-    <div class="xb-shop__dashboard-number">234</div>
-    <div>Total Views</div>
-  </div>
-  <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2" fxFlex="24">
-    <div class="xb-shop__dashboard-number">1223</div>
-    <div>Total Visitors</div>
-  </div>
-  <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3" fxFlex="24">
-    <div class="xb-shop__dashboard-number">453</div>
-    <div class="">Total Conversions</div>
-  </div>
-  <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4" fxFlex="24">
-    <div class="xb-shop__dashboard-number">12</div>
-    <div>Listings</div>
-  </div>
-</div>
-<div class="md-margin-right-2" fxLayout="row" fxLayoutALign="start start">
-  <div class="xb-shop__dashboard-content md-margin-bottom-4" fxLayout="column" fxLayoutALign="start start">
+<div class="md-margin-right-2">
+  <div class="md-margin-bottom-4">
     <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
       <div class="xb-shop__dashboard-number xb-bold" fxFlex>Overview</div>
       <app-catalog-time-select [(time)]="timeOverview" [times]="times"></app-catalog-time-select>
     </div>
-    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
-      <div class="xb-shop__dashboard-margin-right" fxLayout="column" fxLayoutAlign="start center">
-        <div class="xb-shop__dashboard-title">Views</div>
-        <div>234</div>
+    <div class="md-margin-top-2 md-margin-right-2" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex="24">
+        <div class="xb-shop__dashboard-number">234</div>
+        <div>Total Views</div>
       </div>
-      <div class="xb-shop__dashboard-margin-right" fxLayout="column" fxLayoutAlign="start center">
-        <div class="xb-shop__dashboard-title">Visitors</div>
-        <div>2113</div>
+      <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2" fxFlex="24">
+        <div class="xb-shop__dashboard-number">1223</div>
+        <div>Total Visitors</div>
       </div>
-      <div class="xb-shop__dashboard-margin-right" fxLayout="column" fxLayoutAlign="start center">
-        <div class="xb-shop__dashboard-title">Conversions</div>
-        <div>348</div>
+      <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3" fxFlex="24">
+        <div class="xb-shop__dashboard-number">453</div>
+        <div class="">Total Click-to-Buy</div>
       </div>
-      <div fxLayout="column" fxLayoutAlign="start center">
-        <div class="xb-shop__dashboard-title">Listings</div>
-        <div>12</div>
+      <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4" fxFlex="24">
+        <div class="xb-shop__dashboard-number">12</div>
+        <div>Listings</div>
       </div>
     </div>
   </div>
@@ -91,7 +73,7 @@
       <span>213</span>
     </div>
     <div fxLayout="column" fxLayoutAlign="start center">
-      <div class="xb-shop__dashboard-title">Conversions</div>
+      <div class="xb-shop__dashboard-title">Click-to-Buy</div>
       <span>89</span>
       <span>89</span>
       <span>89</span>

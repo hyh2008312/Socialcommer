@@ -10,9 +10,9 @@ import { ShopService } from '../shop.service';
 
 export class DashboardComponent implements OnInit {
 
-  timeOverview: string = 'All time';
+  timeOverview: string = 'All Time';
 
-  timeStatistic: string = 'All time';
+  timeStatistic: string = 'All Time';
 
   times = [{
     code: 'Yesterday',
@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
     code: 'Last 30 days',
     value: 'Last 30 days'
   }, {
-    code: 'All time',
-    value: 'All time'
+    code: 'All Time',
+    value: 'All Time'
   }];
 
   constructor(
