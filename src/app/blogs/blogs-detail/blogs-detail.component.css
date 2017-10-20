@@ -1465,8 +1465,7 @@ input.mat-input-element {
   width: 300px; }
 
 .mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12);
-  min-height: 1.1px; }
+  background-color: rgba(0, 0, 0, 0.12); }
 
 .mat-toolbar {
   background-color: #fff;
