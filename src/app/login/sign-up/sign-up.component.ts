@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginService } from '../login.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
 import { AuthenticationService } from  '../../shared/services/authentication/authentication.service';
-import {Subject} from "rxjs/Subject";
+
+import { Subject } from "rxjs/Subject";
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,7 @@ import {Subject} from "rxjs/Subject";
   styleUrls: ['../login.scss']
 })
 
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
 
   step: number = 0;
 
@@ -76,7 +77,8 @@ export class SignUpComponent implements OnInit {
     private service: LoginService,
     private fb: FormBuilder,
     private constant: ConstantService,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private routerInfo :ActivatedRoute
   ) {
     this.signUpGroup = this.fb.group({
       firstName: ['', Validators.required],
@@ -103,14 +105,12 @@ export class SignUpComponent implements OnInit {
 
     this.signUpGroup.valueChanges.subscribe(data => this.onSignUpGroupValueChanged(data));
     this.storeForm.valueChanges.subscribe(data => this.onStoreFormValueChanged(data));
-  }
 
-  ngOnInit():void {
-    //this.auth.getAccessToken().subscribe((data) => {
-    //  if(data) {
-    //    this.step = 1;
-    //  }
-    //});
+    this.auth.isAuthorized().subscribe((auth) => {
+      if(auth && this.routerInfo.snapshot.queryParams["step"] == 1) {
+        this.step = 1;
+      }
+    });
   }
 
   /**
@@ -188,13 +188,9 @@ export class SignUpComponent implements OnInit {
     let self = this;
 
     self.service.createStore(this.storeForm.value).then((data)=>{
-      self.step = 1;
+      self.step = 2;
+      this.router.navigateByUrl('shop/1/store');
     });
-    this.step = 2;
-    this.router.navigateByUrl('shop/1/store');
-  }
-
-  ngOnDestroy(){
 
   }
 

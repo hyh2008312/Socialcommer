@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginService } from '../login.service';
 import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
+import { UserService } from '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +39,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private service: LoginService,
     private fb: FormBuilder,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private userService: UserService
   ) {
     this.loginGroup = this.fb.group({
       username: ['', [
@@ -90,8 +92,14 @@ export class LoginComponent implements OnInit {
     let self = this;
     self.service.login(this.loginGroup.value).then((data) => {
       self.loginErr = false;
-      this.auth.setAccessToken(data);
-      this.router.navigateByUrl('shop/1/dashboard');
+      self.auth.setAccessToken(data);
+      self.userService.currentUser.subscribe((data) => {
+        if(data.store && data.store.name) {
+          self.router.navigateByUrl('shop/1/dashboard');
+        } else {
+          self.router.navigate(['cp/signUp'],{ queryParams: { step: 1 } });
+        }
+      });
     }).catch((data) => {
       self.loginErr = data;
     });

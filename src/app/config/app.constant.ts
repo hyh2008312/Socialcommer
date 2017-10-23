@@ -1,17 +1,3 @@
-export class User {
-  first_name : string;
-  last_name : string;
-  country : string;
-  avatar : string;
-  position : string;
-  company_phone : string;
-  company_web : string;
-  company_detail : string;
-  biography : string;
-  gender : string;
-  isTrusted : boolean;
-}
-
 export class ImageConstant{
 
   IMAGE_UPLOAD_TYPE = {

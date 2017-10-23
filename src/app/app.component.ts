@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { UserService } from './shared/services/user/user.service';
 
 @Component({
@@ -12,8 +12,14 @@ export class AppComponent {
   constructor(
     private userService: UserService
   ) {
-    this.userService.getUser().then((data) => {
-      console.log(data)
-    })
+    let self = this;
+    self.userService.currentUser.subscribe((data) => {
+      if( data == null ) {
+        this.userService.getUser().then((data) => {
+          this.userService.addUser(data);
+        });
+      }
+    });
   }
+
 }

@@ -26,7 +26,7 @@ import { UserModule } from './shared/services/user/user.module';
     AuthenticationModule,
     UserModule
   ],
-  providers: [BaseApi,SystemConstant, BlogCover],
+  providers: [BaseApi, SystemConstant, BlogCover],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Http, Response , Headers , RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
+import{ Subject, BehaviorSubject } from 'rxjs';
+
 import { AuthenticationService } from '../authentication/authentication.service';
 
 import { BaseApi,SystemConstant } from '../../../config/app.api';
-import { User } from '../../../config/app.constant';
+import { User } from './user';
 
 @Injectable()
 export class UserService {
+  currentUser: Subject<User> = new BehaviorSubject<User>(null);
 
   constructor(
     private http: Http,
@@ -44,6 +47,10 @@ export class UserService {
       .toPromise()
       .then(response => response.json() as User)
       .catch(this.handleError);
+  }
+
+  public addUser(newUser: User): void {
+    this.currentUser.next(newUser);
   }
 
   private handleError (error: Response | any) {
