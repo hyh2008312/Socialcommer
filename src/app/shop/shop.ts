@@ -20,3 +20,18 @@ export class Product {
   sale_price: string;
   original_price: string;
 }
+
+export class Email{
+  email: string;
+}
+
+export class Store{
+  id: number;
+  name: string;
+  displayName: string;
+  owner: any;
+  description: string;
+  currency: string;
+  url: string;
+  country: string;
+}

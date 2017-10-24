@@ -1,0 +1,54 @@
+<div class="xb-store__background" (click)="close()">
+  <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details" (click)="$event.stopPropagation();">
+    <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-xs="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <form [formGroup]="productForm" novalidate>
+      <div class="xb-shop__edit-title">Product Title</div>
+      <mat-form-field class="xb-shop__width-100">
+        <input matInput formControlName="title">
+      </mat-form-field>
+      <div class="md-margin-top-2 xb-shop__edit-title">Category</div>
+      <mat-form-field class="xb-shop__width-100">
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                    [removable]="removable" (remove)="remove(tag)">
+            {{tag.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)" formControlName="tags"/>
+        </mat-chip-list>
+      </mat-form-field>
+      <div class="xb-shop__edit-title">Price</div>
+      <div class="xb-shop__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-store__details-price">$8.00</div>
+        <div class="line-through md-margin-left-2">$12.00</div>
+        <div class="xb-store__details-sale md-margin-left-2">50% OFF</div>
+      </div>
+      <div class="xb-shop__edit-title md-margin-top-2">Add your affiliate link</div>
+      <mat-form-field class="xb-shop__width-100" >
+        <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with">
+      </mat-form-field>
+      <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product</div>
+      <mat-form-field class="xb-shop__width-100">
+        <textarea matInput value="Your opinion is very important to your audiences"></textarea>
+      </mat-form-field>
+    </form>
+    <div class="xb-shop__edit-title">Description</div>
+    <div class="md-margin-top-2">
+      <quill-editor [(ngModel)]="editorContent"></quill-editor>
+    </div>
+    <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+      <button mat-raised-button color="primary">PUBLISH</button>
+      <div class="md-margin-left-2">
+        <button mat-button color="primary">SAVE AS DRAFT</button>
+      </div>
+    </div>
+  </div>
+</div>

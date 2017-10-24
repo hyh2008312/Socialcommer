@@ -61,6 +61,7 @@
     <a class="text-underline md-dark-primary" routerLink="/cp/login">Already have an account?</a>
   </div>
   <div class="xb-login__container xb-login__auto xb-login__margin-top" fxLayout="column" *ngIf="step == 1">
+    <div class="xb-login__error md-margin-bottom-2" *ngIf="storeErr">{{storeErr}}</div>
     <form [formGroup]="storeForm" (ngSubmit)="complete()" novalidate>
       <div fxFLex class="xb-login__width">
         <mat-form-field>

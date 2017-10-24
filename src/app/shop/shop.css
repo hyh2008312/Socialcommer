@@ -1524,6 +1524,12 @@ input.mat-input-element {
   margin-top: 48px; }
 .xb-shop__margin-bottom {
   margin-bottom: 48px; }
+.xb-shop__margin-bottom-1 {
+  margin-bottom: 40px; }
+.xb-shop__margin-bottom-2 {
+  margin-bottom: 32px; }
+.xb-shop__margin-bottom-3 {
+  margin-bottom: 16px; }
 .xb-shop__margin-left {
   margin-left: 16px;
   position: relative; }
@@ -1766,5 +1772,16 @@ input.mat-input-element {
     .xb-shop__card:hover .xb-shop__card-content {
       height: auto;
       border-radius: 4px; }
+.xb-shop__edit-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+  margin-bottom: 16px; }
+.xb-shop__edit-description img {
+  width: 100%; }
+.xb-shop__edit-color {
+  color: #00bdd6;
+  font-weight: 500;
+  cursor: pointer; }
 
 /*# sourceMappingURL=shop.css.map */

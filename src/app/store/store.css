@@ -1465,8 +1465,7 @@ input.mat-input-element {
   width: 300px; }
 
 .mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12);
-  min-height: 1.1px; }
+  background-color: rgba(0, 0, 0, 0.12); }
 
 .mat-toolbar {
   background-color: #fff;
@@ -2965,8 +2964,7 @@ input.mat-input-element {
   width: 300px; }
 
 .mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12);
-  min-height: 1.1px; }
+  background-color: rgba(0, 0, 0, 0.12); }
 
 .mat-toolbar {
   background-color: #fff;
@@ -3130,7 +3128,7 @@ input.mat-input-element {
         padding: 0 8px 24px; } }
   .xb-store__width {
     width: 294px;
-    height: 41px;
+    height: 42px;
     background-color: #fff;
     overflow: hidden;
     border: 1px solid #F8F8F8;

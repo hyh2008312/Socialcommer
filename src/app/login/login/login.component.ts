@@ -94,11 +94,23 @@ export class LoginComponent implements OnInit {
       self.loginErr = false;
       self.auth.setAccessToken(data);
       self.userService.currentUser.subscribe((data) => {
-        if(data.store && data.store.name) {
-          self.router.navigateByUrl('shop/1/dashboard');
+        if(data) {
+          if(data.store && data.store.name) {
+            self.router.navigateByUrl('shop/1/dashboard');
+          } else {
+            self.router.navigate(['cp/signUp'],{ queryParams: { step: 1 } });
+          }
         } else {
-          self.router.navigate(['cp/signUp'],{ queryParams: { step: 1 } });
+          self.userService.getUser().then((data) => {
+            self.userService.addUser(data);
+            if(data.store && data.store.name) {
+              self.router.navigateByUrl('shop/1/dashboard');
+            } else {
+              self.router.navigate(['cp/signUp'],{ queryParams: { step: 1 } });
+            }
+          });
         }
+
       });
     }).catch((data) => {
       self.loginErr = data;

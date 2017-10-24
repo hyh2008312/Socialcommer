@@ -13,13 +13,18 @@ export class AppComponent {
     private userService: UserService
   ) {
     let self = this;
-    self.userService.currentUser.subscribe((data) => {
-      if( data == null ) {
-        this.userService.getUser().then((data) => {
-          this.userService.addUser(data);
-        });
-      }
-    });
+
+    // 防止懒加载重定向
+    if(!window['userInfo']) {
+      window['userInfo'] = true;
+      self.userService.currentUser.subscribe((data) => {
+        if( data == null ) {
+          self.userService.getUser().then((data) => {
+            self.userService.addUser(data);
+          });
+        }
+      });
+    }
   }
 
 }

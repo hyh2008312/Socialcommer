@@ -18,12 +18,16 @@ export class StoreComponent implements OnInit {
   checked: boolean;
 
   constructor(
-    private constantService : ConstantService
+    private constantService : ConstantService,
+    private shopService : ShopService
   ) {
     this.currencies = this.constantService.getCurrencies();
   }
 
   ngOnInit():void {
+    this.shopService.getStore().then((data) => {
+      console.log(data)
+    })
   }
 
 }

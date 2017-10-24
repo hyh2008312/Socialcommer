@@ -7,6 +7,8 @@ import { SettingsComponent } from "./settings/settings.component";
 import { FindProductsComponent } from "./find-products/find-products.component";
 import { CatalogAddProductComponent } from "./catalog-add-product/catalog-add-product.component";
 import { FindProductsAddProductComponent } from "./find-products-add-product/find-products-add-product.component";
+import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/find-products-edit-preview.component";
+import { FindProductsEditComponent } from "./find-products-edit/find-products-edit.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
 import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-select.component";
@@ -39,7 +41,9 @@ import { SharedModule } from '../shared/shared.module';
     FindProductsComponent,
     ProductsSortComponent,
     ProductItemCardComponent,
-    FindProductsAddProductComponent
+    FindProductsAddProductComponent,
+    FindProductsEditPreviewComponent,
+    FindProductsEditComponent
   ],
   entryComponents: [
   ],

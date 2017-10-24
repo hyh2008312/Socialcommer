@@ -68,7 +68,8 @@ export class SignUpComponent {
       'required': 'Store currency is required.'
     },
     'displayName': {
-      'required': 'Url is required.'
+      'required': 'Url is required.',
+      'pattern': 'Url pattern is invalid.'
     }
   };
 
@@ -97,7 +98,10 @@ export class SignUpComponent {
     this.storeForm = this.fb.group({
       name: ['', Validators.required],
       currency: ['', Validators.required],
-      displayName: ['', Validators.required]
+      displayName: ['', [
+        Validators.required,
+        Validators.pattern('^([_a-zA-Z0-9]+)$')
+      ]]
     });
 
     this.countries = this.constant.getCountries();
@@ -149,7 +153,7 @@ export class SignUpComponent {
         //取出对应字段可能的错误信息
         const messages = this.validationMessages[field];
         //从errors里取出错误类型，再拼上该错误对应的信息
-        for (const key in control.errors) {
+        for(const key in control.errors) {
           this.formErrors[field] += messages[key] + '';
           break;
         }
@@ -189,9 +193,10 @@ export class SignUpComponent {
 
     self.service.createStore(this.storeForm.value).then((data)=>{
       self.step = 2;
-      this.router.navigateByUrl('shop/1/store');
+      this.router.navigateByUrl('shop/store');
+    }).catch((data) => {
+      self.storeErr = data;
     });
-
   }
 
 }

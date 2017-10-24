@@ -256,7 +256,7 @@ export class ConstantService {
       { code: 'EUR', name: 'EUR', currency: '€' },
       { code: 'AUD', name: 'AUD', currency: 'AU$' },
       { code: 'SGD', name: 'SGD', currency: 'SG$' },
-      { code: 'RMB', name: 'RMB', currency: '¥' }
+      { code: 'CNY', name: 'RMB', currency: '¥' }
     ];
   }
 

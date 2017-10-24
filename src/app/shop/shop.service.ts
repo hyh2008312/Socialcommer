@@ -3,7 +3,7 @@ import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Product } from './shop';
+import { Product, Email, Store } from './shop';
 
 import { BaseApi } from '../config/app.api';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
@@ -21,6 +21,23 @@ export class ShopService {
       }
     });
 
+  }
+
+  getStore(): Promise<Store> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}stores/list`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json() as Store)
+      .catch(this.handleError);
   }
 
   createProducts(product:Product): Promise<Product> {
@@ -54,6 +71,23 @@ export class ShopService {
     return this.http.put(url, password, options)
       .toPromise()
       .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  changeEmail(email:any): Promise<Email> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}user/email/`;
+
+    return this.http.put(url, email, options)
+      .toPromise()
+      .then(response => response.json() as Email)
       .catch(this.handleError);
   }
 

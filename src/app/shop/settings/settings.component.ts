@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../shop.service';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConstantService } from  '../../shared/services/constant/constant.service';
 
 @Component({
   selector: 'app-settings',
@@ -12,25 +13,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SettingsComponent implements OnInit {
 
   settingForm : FormGroup;
+  emailForm: FormGroup;
 
   settingErr : any = false;
+  emailErr: any = false;
 
   country: string;
 
-  countries = [{
-    code: 'IN',
-    value: 'INDIA'
-  },{
-    code: 'US',
-    value: 'US'
-  }];
+  countries: Object[];
 
   previewImgFile: Object;
 
   constructor(
     private fb: FormBuilder,
-    private shopService: ShopService
+    private shopService: ShopService,
+    private constant: ConstantService
   ) {
+
+    this.countries = this.constant.getCountries();
+
     this.settingForm = this.fb.group({
       currentPassword: ['', [
         Validators.required,
@@ -46,7 +47,15 @@ export class SettingsComponent implements OnInit {
       ]]
     });
 
+    this.emailForm = this.fb.group({
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]]
+    });
+
     this.settingForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.emailForm.valueChanges.subscribe(data => this.onEmailFormValueChanged(data));
   }
 
   ngOnInit():void {
@@ -57,7 +66,8 @@ export class SettingsComponent implements OnInit {
   formErrors = {
     'currentPassword': '',
     'password': '',
-    'confirmPassword':''
+    'confirmPassword':'',
+    'email': ''
   };
   //错误对应的提示
   validationMessages = {
@@ -73,6 +83,10 @@ export class SettingsComponent implements OnInit {
       'required': 'ConfirmPassword is required.',
       'minlength': 'ConfirmPassword must contain at least 6 characters.',
       'validateEqual': 'ConfirmPassword is different from Password.'
+    },
+    'email':{
+      'required': 'Email is required.',
+      'email': 'Please enter a valid email address.'
     }
   };
 
@@ -102,8 +116,39 @@ export class SettingsComponent implements OnInit {
 
   }
 
-  doSubmit():void {
-    if(!this.settingForm.valid) {
+  onEmailFormValueChanged(data) {
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      //取到表单字段
+      const control = this.emailForm.get(field);
+      //表单字段已修改或无效
+      if (control && control.dirty && !control.valid) {
+        //取出对应字段可能的错误信息
+        const messages = this.validationMessages[field];
+        //从errors里取出错误类型，再拼上该错误对应的信息
+        for(const key in control.errors) {
+          this.formErrors[field] += messages[key] + '';
+          break;
+        }
+      }
+
+    }
+
+  }
+
+  changeEmail(): void {
+    if(!this.emailForm.valid) {
+      return;
+    }
+
+    this.shopService.changeEmail({
+      email: this.emailForm.value.email
+    });
+  }
+
+  changePassword():void {
+    if(!this.emailForm.valid) {
       return;
     }
 
