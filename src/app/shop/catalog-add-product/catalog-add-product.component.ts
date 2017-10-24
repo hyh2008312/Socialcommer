@@ -47,13 +47,63 @@ export class CatalogAddProductComponent implements OnInit {
       tags: ['', [
         Validators.required
       ]],
-      sale_price: ['', [
+      salePrice: ['', [
         Validators.required
       ]],
-      original_price: ['', [
+      originalPrice: ['', [
         Validators.required
       ]]
     });
+
+    this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
+  }
+
+  //存储错误信息
+  formErrors = {
+    'name': '',
+    'tags': '',
+    'salePrice':'',
+    'originalPrice': ''
+  };
+  //错误对应的提示
+  validationMessages = {
+    'name': {
+      'required': 'Name is required.'
+    },
+    'tags': {
+      'required': 'Tag is required.'
+    },
+    'salePrice':{
+      'required': 'Sale price is required.'
+    },
+    'originalPrice':{
+      'required': 'Original price is required.'
+    }
+  };
+
+  /**
+   * 表单值改变时，重新校验
+   * @param data
+   */
+  onValueChanged(data) {
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      //取到表单字段
+      const control = this.productForm.get(field);
+      //表单字段已修改或无效
+      if (control && control.dirty && !control.valid) {
+        //取出对应字段可能的错误信息
+        const messages = this.validationMessages[field];
+        //从errors里取出错误类型，再拼上该错误对应的信息
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + '';
+          break;
+        }
+      }
+
+    }
+
   }
 
   previewImgFile: Object;

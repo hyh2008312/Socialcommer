@@ -23,6 +23,40 @@ export class ShopService {
 
   }
 
+  createProduct(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}product/`;
+
+    return this.http.post(url, product, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getProduct(): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}product/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   getStore(): Promise<Store> {
 
     let headers = new Headers({
@@ -32,9 +66,26 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}stores/list`;
+    const url = `${this.baseUrl.url}store/list/`;
 
     return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json() as Store)
+      .catch(this.handleError);
+  }
+
+  changeStore(store:any): Promise<Store> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}stores/${store.id}/`;
+
+    return this.http.put(url, store, options)
       .toPromise()
       .then(response => response.json() as Store)
       .catch(this.handleError);

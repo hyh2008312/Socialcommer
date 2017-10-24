@@ -8,10 +8,12 @@ import { AuthenticationService } from '../authentication/authentication.service'
 
 import { BaseApi,SystemConstant } from '../../../config/app.api';
 import { User } from './user';
+import { Store } from '../../../shop/shop';
 
 @Injectable()
 export class UserService {
   currentUser: Subject<User> = new BehaviorSubject<User>(null);
+  store: Subject<Store> = new BehaviorSubject<Store>(null);
 
   constructor(
     private http: Http,
@@ -51,6 +53,10 @@ export class UserService {
 
   public addUser(newUser: User): void {
     this.currentUser.next(newUser);
+  }
+
+  public addStore(newStore: Store): void {
+    this.store.next(newStore);
   }
 
   private handleError (error: Response | any) {

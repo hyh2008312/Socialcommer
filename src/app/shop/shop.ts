@@ -34,4 +34,6 @@ export class Store{
   currency: string;
   url: string;
   country: string;
+  created: string;
+  status: any;
 }
