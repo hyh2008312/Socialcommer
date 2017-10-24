@@ -102,7 +102,7 @@ export class StoreComponent implements OnInit {
   ngOnInit():void {
     let self = this;
     self.userService.store.subscribe((data) => {
-      console
+      console.log(data)
       if( data == null ) {
         self.shopService.getStore().then((data) => {
 

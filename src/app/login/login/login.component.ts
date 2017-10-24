@@ -90,28 +90,33 @@ export class LoginComponent implements OnInit {
     }
 
     let self = this;
+    let _setLogin = false;
     self.service.login(this.loginGroup.value).then((data) => {
       self.loginErr = false;
       self.auth.setAccessToken(data);
       self.userService.currentUser.subscribe((data) => {
-        if(data) {
-          if(data.store && data.store.name) {
+        if(data && data.store) {
+          if(data.store.name) {
             self.router.navigateByUrl('shop/1/dashboard');
           } else {
             self.router.navigate(['cp/signUp'],{ queryParams: { step: 1 } });
           }
         } else {
-          self.userService.getUser().then((data) => {
-            self.userService.addUser(data);
-            if(data.store && data.store.name) {
-              self.router.navigateByUrl('shop/1/dashboard');
-            } else {
-              self.router.navigate(['cp/signUp'],{ queryParams: { step: 1 } });
-            }
-          });
-        }
+          if(!_setLogin) {
+            _setLogin = true;
+            self.userService.getUser().then((data) => {
+              self.userService.addUser(data);
+              if(data && data.store && data.store.name) {
+                self.router.navigateByUrl('shop/1/dashboard');
+              } else {
+                self.router.navigate(['cp/signUp'],{ queryParams: { step: 1 } });
+              }
+            });
+          }
 
+        }
       });
+
     }).catch((data) => {
       self.loginErr = data;
     });
