@@ -101,18 +101,42 @@ export class StoreComponent implements OnInit {
 
   ngOnInit():void {
     let self = this;
+    let firstInit = false;
     self.userService.store.subscribe((data) => {
-      console.log(data)
-      if( data == null ) {
-        self.shopService.getStore().then((data) => {
+      if(!firstInit) {
+        firstInit = true;
+        if( data == null ) {
+          self.shopService.getStore().then((data) => {
 
-          let store = data[0];
+            let store = data[0];
+            self.store = store;
+            let status = store.status == 'open'? true: false;
+            let _store = store;
+            _store.status = status;
+            self.userService.addStore(_store);
+
+            self.storeForm = self.fb.group({
+              name: [store.name, [
+                Validators.required
+              ]],
+              description: [store.description],
+              currency: [store.currency, [
+                Validators.required
+              ]],
+              displayName: [store.displayName, [
+                Validators.required
+              ]],
+              status: [status, [
+                Validators.required
+              ]]
+            });
+          });
+        } else {
+          let store = data;
           self.store = store;
-          let status = store.status == 'open'? true: false;
-          let _store = store;
-          _store.status = status;
-          self.userService.addStore(_store);
+          self.userService.addStore(store);
 
+          let status = store.status;
           self.storeForm = self.fb.group({
             name: [store.name, [
               Validators.required
@@ -128,28 +152,7 @@ export class StoreComponent implements OnInit {
               Validators.required
             ]]
           });
-        });
-      } else {
-        let store = data;
-        self.store = store;
-        self.userService.addStore(store);
-
-        let status = store.status;
-        self.storeForm = self.fb.group({
-          name: [store.name, [
-            Validators.required
-          ]],
-          description: [store.description],
-          currency: [store.currency, [
-            Validators.required
-          ]],
-          displayName: [store.displayName, [
-            Validators.required
-          ]],
-          status: [status, [
-            Validators.required
-          ]]
-        });
+        }
       }
     });
 
@@ -164,9 +167,11 @@ export class StoreComponent implements OnInit {
 
     let store = this.storeForm.value;
     store.id = this.store.id;
-    this.shopService.changeStore(store).then((data) => {
+    store.status = store.status == true? 'open': 'close';
+    let self = this;
 
-      console.log(data)
+    this.shopService.changeStore(store).then((data) => {
+      self.userService.addStore(data);
     });
   }
 
