@@ -5,9 +5,7 @@ export class User {
   isEmailVerified : boolean;
   isStaff : boolean;
   lastName : string;
-  store : Store;
+  store : any;
 }
 
-export class Store{
-  name : any;
-}
+

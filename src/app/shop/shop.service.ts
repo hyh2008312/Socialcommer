@@ -3,7 +3,7 @@ import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Product, Email, Store } from './shop';
+import { StoreProduct, Email, Store } from './shop';
 
 import { BaseApi } from '../config/app.api';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
@@ -23,7 +23,7 @@ export class ShopService {
 
   }
 
-  createProduct(product: any): Promise<any> {
+  createProduct(product: any): Promise<StoreProduct> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -32,15 +32,15 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}product/`;
+    const url = `${this.baseUrl.url}store_products/`;
 
     return this.http.post(url, product, options)
       .toPromise()
-      .then(response => response.json())
+      .then(response => response.json() as StoreProduct)
       .catch(this.handleError);
   }
 
-  getProduct(): Promise<any> {
+  getProduct(): Promise<StoreProduct> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -49,11 +49,11 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}product/`;
+    const url = `${this.baseUrl.url}products/`;
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
+      .then(response => response.json() as StoreProduct)
       .catch(this.handleError);
   }
 
@@ -91,24 +91,7 @@ export class ShopService {
       .catch(this.handleError);
   }
 
-  createProducts(product:Product): Promise<Product> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-
-    let options = new RequestOptions({headers:headers});
-
-    const url = `${this.baseUrl.url}/products/`;
-
-    return this.http.post(url, product, options)
-      .toPromise()
-      .then(response => response.json() as Product)
-      .catch(this.handleError);
-  }
-
-  changePassword(password:any): Promise<Product> {
+  changePassword(password:any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'

@@ -11,6 +11,9 @@
       <mat-form-field class="xb-shop__width-100">
         <input matInput formControlName="name">
       </mat-form-field>
+      <div *ngIf="formErrors['name']" class="xb-input-error">
+        {{ formErrors['name'] }}
+      </div>
       <div class="md-dark-secondary">Picture</div>
       <div class="md-margin-top-2">
         <app-image-upload-preview [(previewImgFile)]="previewImgFile"></app-image-upload-preview>
@@ -29,6 +32,9 @@
                  (matChipInputTokenEnd)="add($event)" formControlName="tags"/>
         </mat-chip-list>
       </mat-form-field>
+      <div *ngIf="formErrors['tags']" class="xb-input-error">
+        {{ formErrors['tags'] }}
+      </div>
       <div fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field >
           <input matInput placeholder="Actual sale price" formControlName="salePrice">
@@ -39,21 +45,35 @@
         </mat-form-field>
         <span class="md-margin-left-2">USD</span>
       </div>
+      <div *ngIf="formErrors['salePrice']" class="xb-input-error">
+        {{ formErrors['salePrice'] }}
+      </div>
+      <div *ngIf="formErrors['originalPrice']" class="xb-input-error">
+        {{ formErrors['originalPrice'] }}
+      </div>
       <div class="md-dark-secondary md-margin-top-2">Add your affiliate link</div>
       <mat-form-field class="xb-shop__width-100" >
-        <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with">
+        <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with"
+               formControlName="purchaseUrl">
       </mat-form-field>
+      <div *ngIf="formErrors['purchaseUrl']" class="xb-input-error">
+        {{ formErrors['purchaseUrl'] }}
+      </div>
       <div class="md-dark-secondary md-margin-top-2">Tell your audiences why you recommend this product</div>
       <mat-form-field class="xb-shop__width-100">
-        <textarea matInput value="Your opinion is very important to your audiences"></textarea>
+        <textarea matInput value="Your opinion is very important to your audiences"
+                  formControlName="recommendation"></textarea>
       </mat-form-field>
+      <div *ngIf="formErrors['recommendation']" class="xb-input-error">
+        {{ formErrors['recommendation'] }}
+      </div>
     </form>
     <div class="md-dark-secondary">Description</div>
     <div class="md-margin-top-2">
       <quill-editor [(ngModel)]="editorContent"></quill-editor>
     </div>
     <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-      <button mat-raised-button color="primary">PUBLISH</button>
+      <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
       <div class="md-margin-left-2">
         <button mat-button color="primary">SAVE AS DRAFT</button>
       </div>

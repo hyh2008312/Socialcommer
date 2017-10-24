@@ -1465,8 +1465,7 @@ input.mat-input-element {
   width: 300px; }
 
 .mat-form-field-underline {
-  background-color: rgba(0, 0, 0, 0.12);
-  min-height: 1.1px; }
+  background-color: rgba(0, 0, 0, 0.12); }
 
 .mat-toolbar {
   background-color: #fff;
@@ -1497,6 +1496,9 @@ input.mat-input-element {
   @media screen and (max-width: 599px) {
     .mat-raised-button {
       line-height: 36px; } }
+
+textarea.mat-input-element {
+  line-height: 1.5; }
 
 button, html, body, input, select, textarea {
   font-family: Roboto,Helvetica Neue,sans-serif; }
@@ -3482,6 +3484,9 @@ input.mat-input-element {
   @media screen and (max-width: 599px) {
     .mat-raised-button {
       line-height: 36px; } }
+
+textarea.mat-input-element {
+  line-height: 1.5; }
 
 html {
   position: relative;

@@ -1497,6 +1497,9 @@ input.mat-input-element {
     .mat-raised-button {
       line-height: 36px; } }
 
+textarea.mat-input-element {
+  line-height: 1.5; }
+
 .xb-landing-page {
   height: 100vh;
   width: 100vw;

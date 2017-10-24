@@ -4,7 +4,10 @@ import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ENTER } from '@angular/cdk/keycodes';
-const COMMA = 188;
+
+import { ShopService } from '../shop.service';
+import { Product, StoreProduct } from '../shop';
+import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-catalog-add-product',
@@ -15,16 +18,37 @@ const COMMA = 188;
 export class CatalogAddProductComponent implements OnInit {
 
   public ngxCropperConfig: Object;
-
   productForm : FormGroup;
+  previewImgFile: Object;
+  visible: boolean = true;
+  selectable: boolean = true;
+  removable: boolean = true;
+  addOnBlur: boolean = true;
+
+  // Editor
+  public editor;
+  public editorContent = "insert content...";
+
+  // Enter, comma
+  separatorKeysCodes = [ENTER, 188];
+  tags = [];
+
+  storeId: number;
 
   ngOnInit() {
-
+    let self = this;
+    self.userService.store.subscribe((data) => {
+      if(data) {
+        self.storeId = data.id;
+      }
+    });
   }
 
   constructor(
     public router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public shopService: ShopService,
+    public userService: UserService
   ) {
     this.ngxCropperConfig = {
       url: null, // image server url
@@ -52,6 +76,12 @@ export class CatalogAddProductComponent implements OnInit {
       ]],
       originalPrice: ['', [
         Validators.required
+      ]],
+      purchaseUrl: ['', [
+        Validators.required
+      ]],
+      recommendation: ['', [
+        Validators.required
       ]]
     });
 
@@ -63,7 +93,9 @@ export class CatalogAddProductComponent implements OnInit {
     'name': '',
     'tags': '',
     'salePrice':'',
-    'originalPrice': ''
+    'originalPrice': '',
+    'purchaseUrl': '',
+    'recommendation': ''
   };
   //错误对应的提示
   validationMessages = {
@@ -78,6 +110,12 @@ export class CatalogAddProductComponent implements OnInit {
     },
     'originalPrice':{
       'required': 'Original price is required.'
+    },
+    'purchaseUrl': {
+      'required': 'Purchase url price is required.'
+    },
+    'recommendation':{
+      'required': 'Recommendation is required.'
     }
   };
 
@@ -106,16 +144,7 @@ export class CatalogAddProductComponent implements OnInit {
 
   }
 
-  previewImgFile: Object;
-  visible: boolean = true;
-  selectable: boolean = true;
-  removable: boolean = true;
-  addOnBlur: boolean = true;
 
-  // Enter, comma
-  separatorKeysCodes = [ENTER, COMMA];
-
-  tags = [];
 
   add(event: MatChipInputEvent): void {
     let input = event.input;
@@ -140,14 +169,38 @@ export class CatalogAddProductComponent implements OnInit {
     }
   }
 
-  public editor;
-  public editorContent = "insert content...";
+
 
   close():void {
     this.router.navigate(['/shop/listings']);
   }
 
   create() {
+    if(!this.productForm.valid) {
+      return;
+    }
 
+    let productForm = this.productForm.value;
+
+    let storeProduct = new StoreProduct();
+    storeProduct.purchaseUrl = productForm.purchaseUrl;
+    storeProduct.store = this.storeId;
+    storeProduct.isCustomer = true;
+
+    let product = new Product();
+
+    storeProduct.product = product;
+    storeProduct.product.description = this.editorContent;
+    storeProduct.product.name = productForm.name;
+    storeProduct.product.originalPrice = productForm.originalPrice;
+    storeProduct.product.salePrice = productForm.salePrice;
+    storeProduct.product.tags = productForm.tags;
+    storeProduct.product.recommendation = productForm.recommendation;
+
+    console.log(storeProduct);
+
+    this.shopService.createProduct(storeProduct).then((data) => {
+      console.log(data)
+    });
   }
 }

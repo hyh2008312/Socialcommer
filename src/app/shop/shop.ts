@@ -12,13 +12,31 @@ export class Product {
   name: string;
   title: string;
   description: string;
-  image_urls: any;
+  imageUrls: any;
   status: string;
   created: string;
   tags: string;
   owner: any;
-  sale_price: string;
-  original_price: string;
+  salePrice: string;
+  originalPrice: string;
+  recommendation: string;
+}
+
+export class StoreProduct{
+  id: number;
+  status: string;
+  category: string;
+  created: string;
+  name: string;
+  title: string;
+  recommendation: string;
+  owner: any;
+  product: Product;
+
+  image: any;
+  store: number;
+  purchaseUrl: string;
+  isCustomer: boolean;
 }
 
 export class Email{

@@ -43,7 +43,7 @@ export class StoreComponent implements OnInit {
       displayName: ['', [
         Validators.required
       ]],
-      status: [true, [
+      status: [false, [
         Validators.required
       ]]
     });
@@ -115,20 +115,12 @@ export class StoreComponent implements OnInit {
             _store.status = status;
             self.userService.addStore(_store);
 
-            self.storeForm = self.fb.group({
-              name: [store.name, [
-                Validators.required
-              ]],
-              description: [store.description],
-              currency: [store.currency, [
-                Validators.required
-              ]],
-              displayName: [store.displayName, [
-                Validators.required
-              ]],
-              status: [status, [
-                Validators.required
-              ]]
+            self.storeForm.setValue({
+              name: store.name,
+              description : store.description,
+              currency: store.currency,
+              displayName: store.displayName,
+              status: status
             });
           });
         } else {
@@ -136,21 +128,13 @@ export class StoreComponent implements OnInit {
           self.store = store;
           self.userService.addStore(store);
 
-          let status = store.status;
-          self.storeForm = self.fb.group({
-            name: [store.name, [
-              Validators.required
-            ]],
-            description: [store.description],
-            currency: [store.currency, [
-              Validators.required
-            ]],
-            displayName: [store.displayName, [
-              Validators.required
-            ]],
-            status: [status, [
-              Validators.required
-            ]]
+          let status = store.status == 'open'? true: false;
+          self.storeForm.setValue({
+            name: store.name,
+            description : store.description,
+            currency: store.currency,
+            displayName: store.displayName,
+            status: status
           });
         }
       }
@@ -167,7 +151,6 @@ export class StoreComponent implements OnInit {
 
     let store = this.storeForm.value;
     store.id = this.store.id;
-    store.status = store.status == true? 'open': 'close';
     let self = this;
 
     this.shopService.changeStore(store).then((data) => {

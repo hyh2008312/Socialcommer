@@ -1497,6 +1497,9 @@ input.mat-input-element {
     .mat-raised-button {
       line-height: 36px; } }
 
+textarea.mat-input-element {
+  line-height: 1.5; }
+
 .padding {
   padding: 5px 10px; }
 
@@ -2995,6 +2998,9 @@ input.mat-input-element {
   @media screen and (max-width: 599px) {
     .mat-raised-button {
       line-height: 36px; } }
+
+textarea.mat-input-element {
+  line-height: 1.5; }
 
 .xb-social-share {
   width: 40px;
