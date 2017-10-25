@@ -17,7 +17,19 @@
       @include transform(translate(-50%, -50%));
     }
     &.active{
-      border: 2px solid $orangeColor;
+      >img{
+        border: 2px solid $orangeColor;
+      }
+    }
+    @include xb-sm-screen{
+      width: 60px;
+    }
+  }
+
+  &__margin-bottom{
+    margin-bottom: 15px;
+    @include xb-sm-screen{
+      margin-bottom: 5px;
     }
   }
   &__right{
@@ -32,6 +44,10 @@
       left: 50%;
       top: 50%;
       @include transform(translate(-50%, -50%));
+    }
+
+    @include xb-sm-screen{
+      width: 320px;
     }
   }
 

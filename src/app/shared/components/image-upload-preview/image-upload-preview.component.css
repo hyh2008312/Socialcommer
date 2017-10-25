@@ -1501,13 +1501,13 @@ textarea.mat-input-element {
   line-height: 1.5; }
 
 .preview-label {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   position: relative;
   overflow: hidden;
   display: block; }
   .preview-label__not-upload {
-    border: 1px dashed rgba(0, 0, 0, 0.12); }
+    border: 2px dashed rgba(0, 0, 0, 0.12); }
     .preview-label__not-upload .material-icons {
       width: 40px;
       height: 40px;
@@ -1516,7 +1516,7 @@ textarea.mat-input-element {
       text-align: center;
       color: rgba(0, 0, 0, 0.54); }
   .preview-label__upload {
-    border: 1px solid rgba(0, 0, 0, 0.12); }
+    border: 1px solid #ededed; }
   .preview-label input {
     display: none; }
   .preview-label .popup-mask {

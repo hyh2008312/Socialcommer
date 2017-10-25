@@ -7,6 +7,7 @@ export class BaseApi{
     this.url = 'http://45.33.50.95/';
     if(environment.production === true) {
       this.url = 'http://45.33.50.95/';
+      //this.url = 'http://192.168.2.43:9009/';
     }
 
   }

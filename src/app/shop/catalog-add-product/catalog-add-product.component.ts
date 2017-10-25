@@ -19,7 +19,7 @@ export class CatalogAddProductComponent implements OnInit {
 
   public ngxCropperConfig: Object;
   productForm : FormGroup;
-  previewImgFile: Object;
+  previewImgFile: any[] = [];
   visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
@@ -34,12 +34,14 @@ export class CatalogAddProductComponent implements OnInit {
   tags = [];
 
   storeId: number;
+  storeCurrency: string = 'USD';
 
   ngOnInit() {
     let self = this;
     self.userService.store.subscribe((data) => {
       if(data) {
         self.storeId = data.id;
+        self.storeCurrency = data.currency;
       }
     });
   }
@@ -65,7 +67,7 @@ export class CatalogAddProductComponent implements OnInit {
     };
 
     this.productForm = this.fb.group({
-      name: ['', [
+      title: ['', [
         Validators.required
       ]],
       tags: ['', [
@@ -81,7 +83,8 @@ export class CatalogAddProductComponent implements OnInit {
         Validators.required
       ]],
       recommendation: ['', [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(1000)
       ]]
     });
 
@@ -90,7 +93,7 @@ export class CatalogAddProductComponent implements OnInit {
 
   //存储错误信息
   formErrors = {
-    'name': '',
+    'title': '',
     'tags': '',
     'salePrice':'',
     'originalPrice': '',
@@ -99,8 +102,8 @@ export class CatalogAddProductComponent implements OnInit {
   };
   //错误对应的提示
   validationMessages = {
-    'name': {
-      'required': 'Name is required.'
+    'title': {
+      'required': 'Title is required.'
     },
     'tags': {
       'required': 'Tag is required.'
@@ -115,7 +118,8 @@ export class CatalogAddProductComponent implements OnInit {
       'required': 'Purchase url price is required.'
     },
     'recommendation':{
-      'required': 'Recommendation is required.'
+      'required': 'Recommendation is required.',
+      'maxlength' : 'Recommendation contain 1000 characters at most.'
     }
   };
 
@@ -184,18 +188,24 @@ export class CatalogAddProductComponent implements OnInit {
 
     let storeProduct = new StoreProduct();
     storeProduct.purchaseUrl = productForm.purchaseUrl;
-    storeProduct.store = this.storeId;
+    storeProduct.storeId = this.storeId;
     storeProduct.isCustomer = true;
+    storeProduct.recommendation = productForm.recommendation;
 
     let product = new Product();
 
     storeProduct.product = product;
     storeProduct.product.description = this.editorContent;
-    storeProduct.product.name = productForm.name;
-    storeProduct.product.originalPrice = productForm.originalPrice;
-    storeProduct.product.salePrice = productForm.salePrice;
+    storeProduct.product.title = productForm.title;
+    storeProduct.product.originalPrice = {
+      amount:  productForm.originalPrice,
+      currency: this.storeCurrency
+    };
+    storeProduct.product.salePrice = {
+      amount: productForm.salePrice,
+      currency: this.storeCurrency
+    };
     storeProduct.product.tags = productForm.tags;
-    storeProduct.product.recommendation = productForm.recommendation;
 
     console.log(storeProduct);
 

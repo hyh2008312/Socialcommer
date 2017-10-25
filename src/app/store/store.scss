@@ -17,6 +17,9 @@
       padding: 0 8px;
       height: 56.25vw;
     }
+    @include xb-sm-screen{
+      padding: 0 16px;
+    }
   }
 
   &__store-name{
@@ -163,6 +166,10 @@
       margin-top: 16px;
       padding: 0 8px 16px;
     }
+
+    @include xb-sm-screen{
+      padding: 0 16px 64px;
+    }
   }
 
   &__content-1{
@@ -173,6 +180,10 @@
 
     @include xb-xs-screen{
       padding: 0 8px 16px;
+    }
+
+    @include xb-sm-screen{
+      padding: 0 16px 16px;
     }
   }
 
@@ -361,6 +372,16 @@
       overflow-y: scroll;
       overflow-x: hidden;
     }
+
+    @include xb-sm-screen{
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
     &-close{
       position: absolute;
       left: calc(100% + 24px);
@@ -381,6 +402,16 @@
           line-height: 24px;
         }
       }
+
+      @include xb-sm-screen{
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i{
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
     }
 
     &-title{
@@ -392,6 +423,11 @@
         font-size: 16px;
         line-height: 24px;
       }
+
+      @include xb-sm-screen{
+        font-size: 16px;
+        line-height: 24px;
+      }
     }
 
     &-price{
@@ -400,6 +436,10 @@
       @include media();
 
       @include xb-xs-screen{
+        font-size: 16px;
+      }
+
+      @include xb-sm-screen{
         font-size: 16px;
       }
     }
@@ -414,12 +454,22 @@
       @include xb-xs-screen{
         line-height: 24px;
       }
+
+      @include xb-sm-screen{
+        line-height: 24px;
+      }
     }
 
     &-margin-right{
       margin-right: 32px;
       @include xb-xs-screen{
         margin-right: 0;
+
+      }
+      @include xb-sm-screen{
+        margin-right: 16px;
+        margin-left: 16px;
+        margin-top: 16px;
       }
     }
 
@@ -428,6 +478,10 @@
       padding-bottom: 64px;
 
       @include xb-xs-screen{
+        padding-bottom: 16px;
+      }
+
+      @include xb-sm-screen{
         padding-bottom: 16px;
       }
     }
@@ -439,6 +493,10 @@
 
       @include xb-xs-screen{
         padding: 16px 8px 16px;
+      }
+
+      @include xb-sm-screen{
+        padding: 16px 16px 16px;
       }
     }
 
@@ -452,11 +510,19 @@
         padding: 16px 8px 16px;
         margin-bottom: 32px;
       }
+      @include xb-sm-screen{
+        padding: 16px;
+        margin-bottom: 32px;
+      }
     }
 
     &-content{
       @include xb-xs-screen{
         padding: 0 8px;
+        margin-top: 16px;
+      }
+      @include xb-sm-screen{
+        padding: 0 16px 0 0;
         margin-top: 16px;
       }
     }
@@ -466,6 +532,15 @@
       background-color: $whiteColor;
 
       @include xb-xs-screen{
+        margin-top: 0;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        bottom: 56px;
+        padding: 8px;
+        z-index: 1;
+      }
+      @include xb-sm-screen{
         margin-top: 0;
         position: fixed;
         width: 100%;

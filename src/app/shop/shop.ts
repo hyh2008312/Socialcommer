@@ -17,9 +17,8 @@ export class Product {
   created: string;
   tags: string;
   owner: any;
-  salePrice: string;
-  originalPrice: string;
-  recommendation: string;
+  salePrice: any;
+  originalPrice: any;
 }
 
 export class StoreProduct{
@@ -34,7 +33,7 @@ export class StoreProduct{
   product: Product;
 
   image: any;
-  store: number;
+  storeId: number;
   purchaseUrl: string;
   isCustomer: boolean;
 }

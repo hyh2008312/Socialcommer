@@ -32,9 +32,43 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store_products/`;
+    const url = `${this.baseUrl.url}store/relation/`;
 
     return this.http.post(url, product, options)
+      .toPromise()
+      .then(response => response.json() as StoreProduct)
+      .catch(this.handleError);
+  }
+
+  deleteProduct(product: any): Promise<StoreProduct> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/relation/${product.id}/`;
+
+    return this.http.delete(url, options)
+      .toPromise()
+      .then(response => response.json() as StoreProduct)
+      .catch(this.handleError);
+  }
+
+  changeProduct(product: any): Promise<StoreProduct> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/relation/${product.id}/`;
+
+    return this.http.put(url, product, options)
       .toPromise()
       .then(response => response.json() as StoreProduct)
       .catch(this.handleError);

@@ -7,18 +7,19 @@
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
     <form [formGroup]="productForm" novalidate>
-      <div class="md-dark-secondary">Product name</div>
-      <mat-form-field class="xb-shop__width-100">
-        <input matInput formControlName="name">
-      </mat-form-field>
-      <div *ngIf="formErrors['name']" class="xb-input-error">
-        {{ formErrors['name'] }}
-      </div>
-      <div class="md-dark-secondary">Picture</div>
+      <div class="xb-shop__edit-title">Product Picture</div>
       <div class="md-margin-top-2">
-        <app-image-upload-preview [(previewImgFile)]="previewImgFile"></app-image-upload-preview>
+        <app-image-upload-preview-multi [(previewImgFile)]="previewImgFile"></app-image-upload-preview-multi>
+        <div class="md-margin-top-1">(Cover Picture)</div>
       </div>
-      <div class="md-margin-top-2 md-dark-secondary">Category</div>
+      <div class="md-margin-top-2 xb-shop__edit-title">Product Title</div>
+      <mat-form-field class="xb-shop__width-100">
+        <input matInput formControlName="title">
+      </mat-form-field>
+      <div *ngIf="formErrors['title']" class="xb-input-error">
+        {{ formErrors['title'] }}
+      </div>
+      <div class="md-margin-top-2 xb-shop__edit-title">Category</div>
       <mat-form-field class="xb-shop__width-100">
         <mat-chip-list #chipList>
           <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
@@ -35,15 +36,16 @@
       <div *ngIf="formErrors['tags']" class="xb-input-error">
         {{ formErrors['tags'] }}
       </div>
+      <div class="xb-shop__edit-title">Price</div>
       <div fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field >
           <input matInput placeholder="Actual sale price" formControlName="salePrice">
         </mat-form-field>
-        <span class="md-margin-left-2">USD</span>
+        <span class="md-margin-left-2">{{storeCurrency}}</span>
         <mat-form-field class="xb-shop__dialog-margin-left">
           <input matInput placeholder="Original price"  formControlName="originalPrice">
         </mat-form-field>
-        <span class="md-margin-left-2">USD</span>
+        <span class="md-margin-left-2">{{storeCurrency}}</span>
       </div>
       <div *ngIf="formErrors['salePrice']" class="xb-input-error">
         {{ formErrors['salePrice'] }}
@@ -51,7 +53,7 @@
       <div *ngIf="formErrors['originalPrice']" class="xb-input-error">
         {{ formErrors['originalPrice'] }}
       </div>
-      <div class="md-dark-secondary md-margin-top-2">Add your affiliate link</div>
+      <div class="xb-shop__edit-title md-margin-top-2">Add your affiliate link</div>
       <mat-form-field class="xb-shop__width-100" >
         <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with"
                formControlName="purchaseUrl">
@@ -59,23 +61,22 @@
       <div *ngIf="formErrors['purchaseUrl']" class="xb-input-error">
         {{ formErrors['purchaseUrl'] }}
       </div>
-      <div class="md-dark-secondary md-margin-top-2">Tell your audiences why you recommend this product</div>
+      <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product</div>
       <mat-form-field class="xb-shop__width-100">
-        <textarea matInput value="Your opinion is very important to your audiences"
-                  formControlName="recommendation"></textarea>
+        <textarea matInput value="Your opinion is very important to your audiences" formControlName="recommendation"></textarea>
       </mat-form-field>
       <div *ngIf="formErrors['recommendation']" class="xb-input-error">
         {{ formErrors['recommendation'] }}
       </div>
     </form>
-    <div class="md-dark-secondary">Description</div>
+    <div class="xb-shop__edit-title">Description</div>
     <div class="md-margin-top-2">
       <quill-editor [(ngModel)]="editorContent"></quill-editor>
     </div>
     <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-      <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
+      <button mat-raised-button color="primary" (click)="create({type:0})">PUBLISH</button>
       <div class="md-margin-left-2">
-        <button mat-button color="primary">SAVE AS DRAFT</button>
+        <button mat-button color="primary" (click)="create({type:1})">SAVE AS DRAFT</button>
       </div>
     </div>
   </div>

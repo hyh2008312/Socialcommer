@@ -3048,6 +3048,9 @@ textarea.mat-input-element {
       .xb-store__banner {
         padding: 0 8px;
         height: 56.25vw; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__banner {
+        padding: 0 16px; } }
   .xb-store__store-name {
     font-size: 56px;
     font-weight: 500;
@@ -3160,6 +3163,9 @@ textarea.mat-input-element {
       .xb-store__content {
         margin-top: 16px;
         padding: 0 8px 16px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__content {
+        padding: 0 16px 64px; } }
   .xb-store__content-1 {
     max-width: 1000px;
     padding-bottom: 16px;
@@ -3168,6 +3174,9 @@ textarea.mat-input-element {
     @media screen and (max-width: 599px) {
       .xb-store__content-1 {
         padding: 0 8px 16px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__content-1 {
+        padding: 0 16px 16px; } }
   .xb-store__content-left {
     width: 120px;
     margin-right: 48px;
@@ -3303,6 +3312,14 @@ textarea.mat-input-element {
         height: calc(100vh - 56px);
         overflow-y: scroll;
         overflow-x: hidden; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__details {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: calc(100vh - 56px);
+        overflow-y: scroll;
+        overflow-x: hidden; } }
     .xb-store__details-close {
       position: absolute;
       left: calc(100% + 24px);
@@ -3324,6 +3341,18 @@ textarea.mat-input-element {
           .xb-store__details-close i {
             font-size: 24px;
             line-height: 24px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xb-store__details-close {
+          left: 50%;
+          top: calc(100% - 40px);
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%); }
+          .xb-store__details-close i {
+            font-size: 24px;
+            line-height: 24px; } }
     .xb-store__details-title {
       font-size: 24px;
       line-height: 32px;
@@ -3332,11 +3361,18 @@ textarea.mat-input-element {
         .xb-store__details-title {
           font-size: 16px;
           line-height: 24px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xb-store__details-title {
+          font-size: 16px;
+          line-height: 24px; } }
     .xb-store__details-price {
       font-size: 24px;
       line-height: 24px;
       font-weight: 500; }
       @media screen and (max-width: 599px) {
+        .xb-store__details-price {
+          font-size: 16px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
         .xb-store__details-price {
           font-size: 16px; } }
     .xb-store__details-sale {
@@ -3348,15 +3384,26 @@ textarea.mat-input-element {
       @media screen and (max-width: 599px) {
         .xb-store__details-sale {
           line-height: 24px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xb-store__details-sale {
+          line-height: 24px; } }
     .xb-store__details-margin-right {
       margin-right: 32px; }
       @media screen and (max-width: 599px) {
         .xb-store__details-margin-right {
           margin-right: 0; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xb-store__details-margin-right {
+          margin-right: 16px;
+          margin-left: 16px;
+          margin-top: 16px; } }
     .xb-store__details-padding-bottom {
       border-bottom: 1px solid rgba(0, 0, 0, 0.12);
       padding-bottom: 64px; }
       @media screen and (max-width: 599px) {
+        .xb-store__details-padding-bottom {
+          padding-bottom: 16px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
         .xb-store__details-padding-bottom {
           padding-bottom: 16px; } }
     .xb-store__details-padding-top {
@@ -3366,6 +3413,9 @@ textarea.mat-input-element {
       @media screen and (max-width: 599px) {
         .xb-store__details-padding-top {
           padding: 16px 8px 16px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xb-store__details-padding-top {
+          padding: 16px 16px 16px; } }
     .xb-store__details-description {
       padding-top: 48px; }
       .xb-store__details-description img {
@@ -3374,14 +3424,31 @@ textarea.mat-input-element {
         .xb-store__details-description {
           padding: 16px 8px 16px;
           margin-bottom: 32px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xb-store__details-description {
+          padding: 16px;
+          margin-bottom: 32px; } }
     @media screen and (max-width: 599px) {
       .xb-store__details-content {
         padding: 0 8px;
+        margin-top: 16px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__details-content {
+        padding: 0 16px 0 0;
         margin-top: 16px; } }
     .xb-store__details-buttons {
       margin-top: 16px;
       background-color: #fff; }
       @media screen and (max-width: 599px) {
+        .xb-store__details-buttons {
+          margin-top: 0;
+          position: fixed;
+          width: 100%;
+          left: 0;
+          bottom: 56px;
+          padding: 8px;
+          z-index: 1; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
         .xb-store__details-buttons {
           margin-top: 0;
           position: fixed;

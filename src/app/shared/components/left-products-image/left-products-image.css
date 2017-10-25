@@ -1517,8 +1517,16 @@ textarea.mat-input-element {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
-  .xb-image-display__left.active {
+  .xb-image-display__left.active > img {
     border: 2px solid #ffc500; }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-image-display__left {
+      width: 60px; } }
+.xb-image-display__margin-bottom {
+  margin-bottom: 15px; }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-image-display__margin-bottom {
+      margin-bottom: 5px; } }
 .xb-image-display__right {
   width: 480px;
   padding-bottom: 100%;
@@ -1535,6 +1543,9 @@ textarea.mat-input-element {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-image-display__right {
+      width: 320px; } }
 .xb-image-display__slide {
   width: 100vw;
   height: 100vw;

@@ -19,6 +19,7 @@ import { UserFollowComponent } from './components/user-follow/user-follow.compon
 import { ScorePointsComponent } from './components/score-points/score-points.component';
 import { ArticlesDetailHeaderComponent } from './components/articles-detail-header/articles-detail-header.component';
 import { ImageUploadPreviewComponent } from './components/image-upload-preview/image-upload-preview.component';
+import { ImageUploadPreviewMultiComponent } from './components/image-upload-preview-multi/image-upload-preview-multi.component';
 import { ImageUploadHeaderComponent } from './components/image-upload-header/image-upload-header.component';
 import { LeftProductsImageComponent } from './components/left-products-image/left-products-image.component';
 import { ShareButtonComponent } from './components/share-button/share-button.component';
@@ -84,6 +85,7 @@ import {
     ScorePointsComponent,
     ArticlesDetailHeaderComponent,
     ImageUploadPreviewComponent,
+    ImageUploadPreviewMultiComponent,
     ImageUploadHeaderComponent,
     LeftProductsImageComponent,
     ShareButtonComponent
@@ -101,6 +103,7 @@ import {
     ScorePointsComponent,
     ArticlesDetailHeaderComponent,
     ImageUploadPreviewComponent,
+    ImageUploadPreviewMultiComponent,
     ImageUploadHeaderComponent,
     LeftProductsImageComponent,
     ShareButtonComponent,

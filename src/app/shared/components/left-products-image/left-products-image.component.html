@@ -1,7 +1,7 @@
 <div class="xb-image-display" fxLayout="row" fxLayoutAlign="start start" fxShow="false" fxShow.gt-xs="true">
   <div class="md-margin-right-2" fxLayout="column" fxLayoutAlign="start start">
     <div class="xb-image-display__left"
-         [ngClass]="{'active': image == selectedImage ,'md-margin-bottom-2':i < images.length - 1 }"
+         [ngClass]="{'active': image == selectedImage ,'xb-image-display__margin-bottom':i < images.length - 1 }"
          *ngFor="let image of images; let i = index;" (click)="selectImage(image)">
       <img [src]="image.src">
     </div>
@@ -12,7 +12,7 @@
     </div>
   </div>
 </div>
-<div class="xb-image-display__slide" fxShow="false" fxShow.xs="true" >
+<div class="xb-image-display__slide" fxShow="false" fxShow.xs="true">
   <carousel [sources]="imageSources" [config]="config" (currentSlideChange)="slideChange($event)"></carousel>
   <span>{{ (slideNumber + 1) + ' / ' + imageSources.length }}</span>
 </div>

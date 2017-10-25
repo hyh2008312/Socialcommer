@@ -3504,6 +3504,12 @@ body {
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent; }
+  body ::-webkit-scrollbar {
+    width: 4px; }
+  body ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.19); }
 
 * {
   outline: none;
