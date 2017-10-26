@@ -14,6 +14,14 @@ export class FindProductsEditPreviewComponent implements OnInit {
     + 'that make you an expert in your field? Show your customers that there are read people with instersting stories working'
     + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
 
+  public previewImg = [
+    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
+    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
+    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
+    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
+    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg'
+  ];
+
   constructor(
     public router: Router
   ) { }

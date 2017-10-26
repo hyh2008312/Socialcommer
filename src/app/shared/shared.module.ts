@@ -20,6 +20,7 @@ import { ScorePointsComponent } from './components/score-points/score-points.com
 import { ArticlesDetailHeaderComponent } from './components/articles-detail-header/articles-detail-header.component';
 import { ImageUploadPreviewComponent } from './components/image-upload-preview/image-upload-preview.component';
 import { ImageUploadPreviewMultiComponent } from './components/image-upload-preview-multi/image-upload-preview-multi.component';
+import { ImagePreviewMultiComponent } from './components/image-preview-multi/image-preview-multi.component';
 import { ImageUploadHeaderComponent } from './components/image-upload-header/image-upload-header.component';
 import { LeftProductsImageComponent } from './components/left-products-image/left-products-image.component';
 import { ShareButtonComponent } from './components/share-button/share-button.component';
@@ -86,6 +87,7 @@ import {
     ArticlesDetailHeaderComponent,
     ImageUploadPreviewComponent,
     ImageUploadPreviewMultiComponent,
+    ImagePreviewMultiComponent,
     ImageUploadHeaderComponent,
     LeftProductsImageComponent,
     ShareButtonComponent
@@ -104,6 +106,7 @@ import {
     ArticlesDetailHeaderComponent,
     ImageUploadPreviewComponent,
     ImageUploadPreviewMultiComponent,
+    ImagePreviewMultiComponent,
     ImageUploadHeaderComponent,
     LeftProductsImageComponent,
     ShareButtonComponent,

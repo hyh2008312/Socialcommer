@@ -23,6 +23,17 @@ export class ShopService {
 
   }
 
+  serializeParams(params) {
+
+    let array = [];
+
+    for (const key in params) {
+      array.push(key + '=' + params[key]);
+    }
+
+    return array.join('&');
+  }
+
   createProduct(product: any): Promise<StoreProduct> {
 
     let headers = new Headers({
@@ -74,7 +85,7 @@ export class ShopService {
       .catch(this.handleError);
   }
 
-  getProduct(): Promise<StoreProduct> {
+  getProduct(product: any): Promise<StoreProduct> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -83,7 +94,7 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}products/`;
+    const url = `${this.baseUrl.url}store/relation/?${this.serializeParams(product)}`;
 
     return this.http.get(url, options)
       .toPromise()

@@ -3068,10 +3068,12 @@ textarea.mat-input-element {
     margin-top: 24px;
     max-width: 1000px;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    font-size: 16px; }
     @media screen and (max-width: 599px) {
       .xb-store__store-description {
-        margin-top: 8px; } }
+        margin-top: 8px;
+        font-size: 14px; } }
   .xb-store__store-buttons {
     position: absolute;
     font-size: 16px;
