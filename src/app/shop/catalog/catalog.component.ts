@@ -51,7 +51,9 @@ export class CatalogComponent implements OnInit {
 
     this.shopService.getProduct({
       storeId: this.storeId,
-      relationStatus: relationStatus
+      relationStatus: relationStatus,
+      page: 1,
+      pageSize: 12
     }).then((data) => {
       console.log(data)
     });

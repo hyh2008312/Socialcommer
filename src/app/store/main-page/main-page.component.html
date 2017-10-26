@@ -1,4 +1,7 @@
 <div class="xb-store" >
+  <div class="xb-store__navigation" fxLayout="row" fxLayoutAlign="center center" fxShow="false" fxShow.xs="show">
+    Your store name here
+  </div>
   <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center">
     <div class="xb-store__store-name">
       Your store name here
@@ -15,7 +18,8 @@
   </div>
   <div>
     <div class="xb-store__title">My Collections</div>
-    <app-store-navigation [(category)]="category" [categories]="categories"></app-store-navigation>
+    <app-store-navigation [(category)]="category" [categories]="categories"
+      fxShow="true" fxShow.xs="false"></app-store-navigation>
     <div class="xb-store__content xb-store__border-bottom">
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
         <app-store-item-card *ngFor="let item of [0,1,2,3,4,5]" fxFlex.xs="48" fxFlex.gt-xs="30"></app-store-item-card>
@@ -28,7 +32,7 @@
     </div>
     <div class="xb-store__content-1">
       <div class="xb-store__title">Store Owner</div>
-      <div fxLayout="row" fxLayoutAlign="start start">
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
         <div class="xb-store__content-left" fxFlex="none">
           <div class="xb-store__header">
             <img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">
@@ -37,7 +41,7 @@
           <div class="md-margin-top-1">India</div>
         </div>
         <div class="xb-store__content-right">
-          <div class="xb-store__icons md-dark-third">
+          <div class="xb-store__icons md-dark-third" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota"></i>
           </div>
           <div class="md-margin-top-2 xb-store__content-text">
@@ -46,7 +50,7 @@
             that make you an expert in your field? Show your customers that there are read people with instersting stories working
             behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.
           </div>
-          <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start">
+          <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota-2"></i>
           </div>
         </div>
@@ -68,10 +72,11 @@
   </div>
   <div class="xb-store__footer">
     <div fxLayout="column" fxLayoutAlign="center center">
-      <div class="md-margin-left-2">©2017 Xberts, Inc. All rights reserved</div>
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="center center">
-        <img class="md-margin-top-1" src="https://media.xberts.com/collector/source/web/pic/pic-power.png">
-        <img class="md-margin-left-2" src="https://media.xberts.com/collector/source/web/pic/pic-foot-logo.png">
+      <div class="xb-store__footer-margin-left">©2017 Xberts, Inc. All rights reserved</div>
+      <div class="xb-store__footer-margin-top" fxLayout="row" fxLayoutAlign="center center"
+           fxLayout.xs="column" fxLayoutAlign.xs="center center">
+        <img class="xb-store__footer-margin-top-1" src="https://media.xberts.com/collector/source/web/pic/pic-power.png">
+        <img class="xb-store__footer-margin-left xb-store__footer-margin-top-2" src="https://media.xberts.com/collector/source/web/pic/pic-foot-logo.png">
       </div>
     </div>
     <div class="xb-store__footer-icons" fxLayout="row" fxLayoutAlign="end center"

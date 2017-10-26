@@ -3505,11 +3505,13 @@ body {
   padding: 0;
   -webkit-tap-highlight-color: transparent; }
   body ::-webkit-scrollbar {
-    width: 4px; }
+    width: 1px; }
   body ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 2px;
     border-radius: 2px;
-    background: rgba(0, 0, 0, 0.19); }
+    -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.19); }
 
 * {
   outline: none;

@@ -3039,6 +3039,10 @@ textarea.mat-input-element {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100vh; }
+  .xb-store__navigation {
+    height: 56px;
+    font-size: 16px;
+    font-weight: bold; }
   .xb-store__banner {
     background-color: #000;
     height: 500px;
@@ -3046,8 +3050,8 @@ textarea.mat-input-element {
     position: relative; }
     @media screen and (max-width: 599px) {
       .xb-store__banner {
-        padding: 0 8px;
-        height: 56.25vw; } }
+        padding: 0 16px;
+        height: 320px; } }
     @media screen and (min-width: 600px) and (max-width: 959px) {
       .xb-store__banner {
         padding: 0 16px; } }
@@ -3060,7 +3064,7 @@ textarea.mat-input-element {
     @media screen and (max-width: 599px) {
       .xb-store__store-name {
         font-size: 24px;
-        margin-top: 8px; } }
+        margin-top: 0; } }
   .xb-store__store-description {
     font-weight: 500;
     color: #fff;
@@ -3072,7 +3076,7 @@ textarea.mat-input-element {
     font-size: 16px; }
     @media screen and (max-width: 599px) {
       .xb-store__store-description {
-        margin-top: 8px;
+        margin-top: 16px;
         font-size: 14px; } }
   .xb-store__store-buttons {
     position: absolute;
@@ -3099,8 +3103,8 @@ textarea.mat-input-element {
     text-align: center; }
     @media screen and (max-width: 599px) {
       .xb-store__title {
-        margin-top: 24px;
-        margin-bottom: 20px; } }
+        margin-top: 32px;
+        margin-bottom: 24px; } }
   .xb-store__title-1 {
     font-size: 34px;
     color: rgba(0, 0, 0, 0.87);
@@ -3164,10 +3168,10 @@ textarea.mat-input-element {
     @media screen and (max-width: 599px) {
       .xb-store__content {
         margin-top: 16px;
-        padding: 0 8px 16px; } }
+        padding: 0 16px 40px; } }
     @media screen and (min-width: 600px) and (max-width: 959px) {
       .xb-store__content {
-        padding: 0 16px 64px; } }
+        padding: 0 16px 40px; } }
   .xb-store__content-1 {
     max-width: 1000px;
     padding-bottom: 16px;
@@ -3175,18 +3179,18 @@ textarea.mat-input-element {
     margin-right: auto; }
     @media screen and (max-width: 599px) {
       .xb-store__content-1 {
-        padding: 0 8px 16px; } }
+        padding: 0 16px 40px; } }
     @media screen and (min-width: 600px) and (max-width: 959px) {
       .xb-store__content-1 {
-        padding: 0 16px 16px; } }
+        padding: 0 16px 40px; } }
   .xb-store__content-left {
     width: 120px;
     margin-right: 48px;
     text-align: center; }
     @media screen and (max-width: 599px) {
       .xb-store__content-left {
-        margin-right: 16px;
-        width: 64px; } }
+        margin-right: 0;
+        width: 88px; } }
   .xb-store__content-text {
     line-height: 24px; }
   .xb-store__header {
@@ -3246,7 +3250,7 @@ textarea.mat-input-element {
       padding: 8px 0 16px; }
       @media screen and (max-width: 599px) {
         .xb-store__card-content {
-          padding: 8px 0; } }
+          padding: 8px 0 16px; } }
     .xb-store__card-title {
       height: 56px;
       line-height: 28px;
@@ -3393,7 +3397,12 @@ textarea.mat-input-element {
       margin-right: 32px; }
       @media screen and (max-width: 599px) {
         .xb-store__details-margin-right {
-          margin-right: 0; } }
+          margin-right: 16px;
+          margin-left: 16px;
+          border-radius: 2px;
+          -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+          -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); } }
       @media screen and (min-width: 600px) and (max-width: 959px) {
         .xb-store__details-margin-right {
           margin-right: 16px;
@@ -3432,7 +3441,7 @@ textarea.mat-input-element {
           margin-bottom: 32px; } }
     @media screen and (max-width: 599px) {
       .xb-store__details-content {
-        padding: 0 8px;
+        padding: 0 16px;
         margin-top: 16px; } }
     @media screen and (min-width: 600px) and (max-width: 959px) {
       .xb-store__details-content {
@@ -3465,6 +3474,26 @@ textarea.mat-input-element {
     color: rgba(255, 255, 255, 0.5);
     font-size: 16px;
     position: relative; }
+    .xb-store__footer-margin-top {
+      margin-top: 16px; }
+      @media screen and (max-width: 599px) {
+        .xb-store__footer-margin-top {
+          margin-top: 8px; } }
+    .xb-store__footer-margin-top-1 {
+      margin-top: 8px; }
+      @media screen and (max-width: 599px) {
+        .xb-store__footer-margin-top-1 {
+          margin-top: 0; } }
+    .xb-store__footer-margin-top-2 {
+      margin-top: 0; }
+      @media screen and (max-width: 599px) {
+        .xb-store__footer-margin-top-2 {
+          margin-top: 8px; } }
+    .xb-store__footer-margin-left {
+      margin-left: 16px; }
+      @media screen and (max-width: 599px) {
+        .xb-store__footer-margin-left {
+          margin-left: 0; } }
     .xb-store__footer-icons {
       position: absolute;
       right: 0;
@@ -3475,6 +3504,6 @@ textarea.mat-input-element {
           position: relative;
           bottom: 0;
           margin-right: 0;
-          margin-top: 16px; } }
+          margin-top: 12px; } }
 
 /*# sourceMappingURL=store.css.map */
