@@ -1,5 +1,5 @@
 <div class="xb-store" >
-  <div class="xb-store__navigation" fxLayout="row" fxLayoutAlign="center center" fxShow="false" fxShow.xs="show">
+  <div class="xb-store__nav" fxLayout="row" fxLayoutAlign="center center" fxShow="false" fxShow.xs="show">
     Your store name here
   </div>
   <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center">
@@ -24,7 +24,7 @@
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
         <app-store-item-card *ngFor="let item of [0,1,2,3,4,5]" fxFlex.xs="48" fxFlex.gt-xs="30"></app-store-item-card>
       </div>
-      <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center">
+      <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center" (click)="jumpList()">
         <div>
           SEE MORE
         </div>

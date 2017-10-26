@@ -17,6 +17,7 @@ import { ProductsSortComponent } from "./products-sort/products-sort.component";
 import { ProductItemCardComponent } from "./product-item-card/product-item-card.component";
 
 import { ShopRoutingModule } from './shop.routes.module';
+
 import { ShopService } from './shop.service';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 

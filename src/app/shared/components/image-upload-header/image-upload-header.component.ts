@@ -1,10 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ImageUploadPreviewService } from "../image-upload-preview/image-upload-preview.service";
+import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
 
 @Component({
   selector: 'app-image-upload-header',
   templateUrl: './image-upload-header.component.html',
-  styleUrls: ['./image-upload-header.component.css']
+  styleUrls: ['./image-upload-header.component.css'],
+  providers: [S3UploaderService]
 })
 export class ImageUploadHeaderComponent implements OnInit {
 
@@ -15,7 +17,12 @@ export class ImageUploadHeaderComponent implements OnInit {
 
   upload: boolean = false;
 
-  constructor(public previewImageService: ImageUploadPreviewService) { }
+  constructor(
+    public previewImageService: ImageUploadPreviewService,
+    public s3UploaderService: S3UploaderService
+  ) {
+
+  }
 
   ngOnInit() {
   }
@@ -30,10 +37,28 @@ export class ImageUploadHeaderComponent implements OnInit {
       return;
     }
     let that = this;
-    this.previewImageService.readAsDataUrl(event.target.files[0]).then(function(result) {
+
+    this.previewImageService.readAsDataUrl(event.target.files[0]).then((result) => {
 
       that.previewImgSrcs = result;
       let file = event.target.files[0];
+
+      let image = new Image();
+      image.onload = function(){
+        let width = image.width;
+        let height = image.height;
+
+        that.s3UploaderService.upload({
+          type: file.type,
+          fileName: file.name,
+          use: 'avatar',
+          width: width,
+          height: height
+        }).then((data)=> {
+          console.log(data)
+        });
+      };
+      image.src = window.URL.createObjectURL(file);
 
       that.previewImgFile = file;
       that.previewImgFileChange.emit(that.previewImgFile);

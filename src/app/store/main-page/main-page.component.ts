@@ -28,4 +28,8 @@ export class MainPageComponent implements OnInit {
     this.shareLink = window.location.href;
   }
 
+  jumpList():void {
+    this.router.navigate(['store/list']);
+  }
+
 }

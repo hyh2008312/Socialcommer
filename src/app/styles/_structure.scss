@@ -27,6 +27,7 @@ body {
     -webkit-border-radius: 2px;
     border-radius: 2px;
     @include box-shadow(0 0 0 2px rgba(0,0,0,.19));
+    background-color: rgba(0,0,0,.19);
   }
 
 }

@@ -29,6 +29,7 @@ import { FollowService } from './components/user-follow/user-follow.service';
 import { ArticlesDetailHeaderService } from './components/articles-detail-header/articles-detail-header.service';
 import { ImageUploadPreviewService } from './components/image-upload-preview/image-upload-preview.service';
 import { ConstantService } from './services/constant/constant.service';
+import { S3UploaderService } from './services/s3-upload/s3-upload.service';
 
 import { QuillEditorModule } from 'ngx-quill-editor';
 import { AngularCropperjsModule } from 'angular-cropperjs';

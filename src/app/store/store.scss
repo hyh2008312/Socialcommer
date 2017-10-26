@@ -8,10 +8,21 @@
   overflow-x: hidden;
   height: 100vh;
 
-  &__navigation{
+  &__nav{
     height: 56px;
     font-size: 16px;
     font-weight: bold;
+    border-bottom: 1px solid rgba(0,0,0,.19);
+    position: relative;
+
+    i{
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 32px;
+      line-height: 32px;
+      padding: 12px;
+    }
   }
 
   &__banner{
@@ -302,7 +313,7 @@
     }
 
     &-sale{
-      background-color: $orangeColor;
+      background-color: $primaryColor;
       border-radius: 4px;
       padding: 0 8px;
       color: $whiteColor;
@@ -453,7 +464,7 @@
     }
 
     &-sale{
-      background-color: $orangeColor;
+      background-color: $primaryColor;
       border-radius: 4px;
       padding: 0 8px;
       color: $whiteColor;
@@ -473,12 +484,14 @@
       @include xb-xs-screen{
         margin-right: 16px;
         margin-left: 16px;
+        margin-top: 16px;
         @include resetBorder();
       }
       @include xb-sm-screen{
         margin-right: 16px;
         margin-left: 16px;
         margin-top: 16px;
+        @include resetBorder();
       }
     }
 
@@ -501,11 +514,11 @@
       padding-bottom: 16px;
 
       @include xb-xs-screen{
-        padding: 16px 8px 16px;
+        padding: 0 16px 16px;
       }
 
       @include xb-sm-screen{
-        padding: 16px 16px 16px;
+        padding: 0 16px 16px;
       }
     }
 
@@ -516,12 +529,10 @@
       }
 
       @include xb-xs-screen{
-        padding: 16px 8px 16px;
-        margin-bottom: 32px;
+        padding: 0 16px 16px;
       }
       @include xb-sm-screen{
-        padding: 16px;
-        margin-bottom: 32px;
+        padding: 0 16px 16px;
       }
     }
 
@@ -539,25 +550,6 @@
     &-buttons{
       margin-top: 16px;
       background-color: $whiteColor;
-
-      @include xb-xs-screen{
-        margin-top: 0;
-        position: fixed;
-        width: 100%;
-        left: 0;
-        bottom: 56px;
-        padding: 8px;
-        z-index: 1;
-      }
-      @include xb-sm-screen{
-        margin-top: 0;
-        position: fixed;
-        width: 100%;
-        left: 0;
-        bottom: 56px;
-        padding: 8px;
-        z-index: 1;
-      }
     }
   }
 

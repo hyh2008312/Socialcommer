@@ -4,19 +4,41 @@ import { Http, RequestOptions, Headers, Response} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 
 import { BaseApi } from '../../../config/app.api';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
+
+
+interface UploadFile {
+  type: string;
+  fileName: string;
+  use: string;
+  width: number;
+  height: number;
+}
 
 @Injectable()
 export class S3UploaderService {
 
   constructor(
     private http: Http,
-    private baseUrl: BaseApi
+    private baseUrl: BaseApi,
+    private auth: AuthenticationService
   ) {
+  }
+
+  createAuthorizationHeader(headers: Headers) {
+
+    this.auth.getAccessToken().subscribe((data) => {
+      if(data) {
+        headers.append('Authorization', 'Bearer ' + data);
+      }
+    });
+
   }
 
   private getTokenPostOptions(): RequestOptions {
 
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+    this.createAuthorizationHeader(headers);
     let options = new RequestOptions({ headers: headers });
 
     return options;
@@ -25,15 +47,16 @@ export class S3UploaderService {
   private getPostOptions(): RequestOptions {
 
     let headers = new Headers({ 'Content-Type': 'application/json; charset=UTF-8' });
+    this.createAuthorizationHeader(headers);
     let options = new RequestOptions({ headers: headers });
 
     return options;
   }
 
-  upload(file: any): Promise<any> {
+  upload(file: UploadFile): Promise<any> {
 
     let _options = this.getPostOptions();
-    const url = `${this.baseUrl.url}/aws/s3policy/`;
+    const url = `${this.baseUrl.url}image/s3policy/`;
 
     return this.http.post(url, file, _options)
       .toPromise()

@@ -3039,10 +3039,19 @@ textarea.mat-input-element {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100vh; }
-  .xb-store__navigation {
+  .xb-store__nav {
     height: 56px;
     font-size: 16px;
-    font-weight: bold; }
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.19);
+    position: relative; }
+    .xb-store__nav i {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 32px;
+      line-height: 32px;
+      padding: 12px; }
   .xb-store__banner {
     background-color: #000;
     height: 500px;
@@ -3260,7 +3269,7 @@ textarea.mat-input-element {
       font-size: 16px;
       font-weight: 700; }
     .xb-store__card-sale {
-      background-color: #ffc500;
+      background-color: #00bdd6;
       border-radius: 4px;
       padding: 0 8px;
       color: #fff;
@@ -3382,7 +3391,7 @@ textarea.mat-input-element {
         .xb-store__details-price {
           font-size: 16px; } }
     .xb-store__details-sale {
-      background-color: #ffc500;
+      background-color: #00bdd6;
       border-radius: 4px;
       padding: 0 8px;
       color: #fff;
@@ -3399,6 +3408,7 @@ textarea.mat-input-element {
         .xb-store__details-margin-right {
           margin-right: 16px;
           margin-left: 16px;
+          margin-top: 16px;
           border-radius: 2px;
           -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
           -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
@@ -3407,7 +3417,11 @@ textarea.mat-input-element {
         .xb-store__details-margin-right {
           margin-right: 16px;
           margin-left: 16px;
-          margin-top: 16px; } }
+          margin-top: 16px;
+          border-radius: 2px;
+          -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+          -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); } }
     .xb-store__details-padding-bottom {
       border-bottom: 1px solid rgba(0, 0, 0, 0.12);
       padding-bottom: 64px; }
@@ -3423,22 +3437,20 @@ textarea.mat-input-element {
       padding-bottom: 16px; }
       @media screen and (max-width: 599px) {
         .xb-store__details-padding-top {
-          padding: 16px 8px 16px; } }
+          padding: 0 16px 16px; } }
       @media screen and (min-width: 600px) and (max-width: 959px) {
         .xb-store__details-padding-top {
-          padding: 16px 16px 16px; } }
+          padding: 0 16px 16px; } }
     .xb-store__details-description {
       padding-top: 48px; }
       .xb-store__details-description img {
         width: 100%; }
       @media screen and (max-width: 599px) {
         .xb-store__details-description {
-          padding: 16px 8px 16px;
-          margin-bottom: 32px; } }
+          padding: 0 16px 16px; } }
       @media screen and (min-width: 600px) and (max-width: 959px) {
         .xb-store__details-description {
-          padding: 16px;
-          margin-bottom: 32px; } }
+          padding: 0 16px 16px; } }
     @media screen and (max-width: 599px) {
       .xb-store__details-content {
         padding: 0 16px;
@@ -3450,24 +3462,6 @@ textarea.mat-input-element {
     .xb-store__details-buttons {
       margin-top: 16px;
       background-color: #fff; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-buttons {
-          margin-top: 0;
-          position: fixed;
-          width: 100%;
-          left: 0;
-          bottom: 56px;
-          padding: 8px;
-          z-index: 1; } }
-      @media screen and (min-width: 600px) and (max-width: 959px) {
-        .xb-store__details-buttons {
-          margin-top: 0;
-          position: fixed;
-          width: 100%;
-          left: 0;
-          bottom: 56px;
-          padding: 8px;
-          z-index: 1; } }
   .xb-store__footer {
     padding: 40px 0;
     background-color: #252525;

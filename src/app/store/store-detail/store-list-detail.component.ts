@@ -4,12 +4,12 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { StoreService } from '../store.service';
 
 @Component({
-  selector: 'app-store-detail',
+  selector: 'app-store-list-detail',
   templateUrl: './store-detail.component.html',
   styleUrls: ['../store.scss']
 })
 
-export class StoreDetailComponent implements OnInit {
+export class StoreListDetailComponent implements OnInit {
 
   public shareLink: string;
   public text = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.'
@@ -27,7 +27,7 @@ export class StoreDetailComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate(['./store']);
+    this.router.navigate(['./store/list']);
   }
 
 }
