@@ -3140,6 +3140,11 @@ textarea.mat-input-element {
       width: 100%;
       height: 2px;
       background-color: #ffc500; }
+    .xb-store__navigation-mobile {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    @media screen and (max-width: 599px) {
+      .xb-store__navigation {
+        line-height: 48px; } }
   .xb-store__margin-right {
     margin-right: 40px; }
     @media screen and (max-width: 599px) {

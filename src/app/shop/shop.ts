@@ -29,6 +29,8 @@ export class StoreProduct{
   name: string;
   title: string;
   recommendation: string;
+  description: string;
+  tags: string;
   owner: any;
   product: Product;
 

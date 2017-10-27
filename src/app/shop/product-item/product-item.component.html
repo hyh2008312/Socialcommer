@@ -4,7 +4,7 @@
   </div>
   <div class="xb-shop__product-content" fxLayout="column" fxFlex>
     <div fxLayout="row" fxLayoutAlign="start start">
-      <div fxFlex class="xb-shop__product-title">Aroma Essential Oil Diffuser 130ML Aromatherapy Cool Mist Humidifier</div>
+      <div fxFlex class="xb-shop__product-title">{{product.title}}</div>
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="line-through md-margin-left-1 md-margin-right-2">$12.00</div>
         <div class="xb-shop__product-price">$8.00</div>
@@ -12,12 +12,12 @@
     </div>
     <div fxFlex>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
-        <div>#2017092781</div>
-        <div class="xb-shop__product-category md-margin-left-2">Accessories</div>
+        <div>#{{product.id}}</div>
+        <div class="xb-shop__product-category md-margin-left-2">{{product.tags}}</div>
       </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center">
-      <div>Sep 27th, 2017</div>
+      <div>{{product.created | amDateFormat:'MMMM Do, YYYY'}}</div>
       <div fxFlex fxLayout="row" fxLayoutAlign="end center">
         <button mat-button color="primary">Edit</button>
         <button mat-button color="primary" *ngIf="status == 2">Publish</button>

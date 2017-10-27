@@ -16,10 +16,11 @@
   <mat-tab-group color="accent" (selectedTabChange)="changeProducts($event)">
     <mat-tab label="Published">
       <div class="md-margin-top-2" fxLayout="column">
-        <div class="xb-shop__product-list" *ngFor="let item of [0,1,2]">
-          <app-product-item [status]="0"></app-product-item>
+        <div class="xb-shop__product-list" *ngFor="let item of productPublished">
+          <app-product-item [status]="0" [product]="item"></app-product-item>
         </div>
-        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center" fxShow="false">
+        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+             *ngIf="productPublished && productPublished.length <= 0">
           <div fxLayout="column" fxLayoutAlign="center center">
             <img src="https://media.xberts.com/collector/source/web/pic/pic-none.png">
             <span class="md-dark-secondary">You haven't published any products yet.</span>
@@ -29,10 +30,11 @@
     </mat-tab>
     <mat-tab label="Draft Saved">
       <div class="md-margin-top-2" fxLayout="column">
-        <div class="xb-shop__product-list" *ngFor="let item of [0,1,2]">
-          <app-product-item [status]="1"></app-product-item>
+        <div class="xb-shop__product-list" *ngFor="let item of productDraft">
+          <app-product-item [status]="1" [product]="item"></app-product-item>
         </div>
-        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center" fxShow="false">
+        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+             *ngIf="productDraft && productDraft.length <= 0">
           <div fxLayout="column" fxLayoutAlign="center center">
             <img src="https://media.xberts.com/collector/source/web/pic/pic-none.png">
             <span class="md-dark-secondary">You haven't saved any drafts yet.</span>
@@ -42,10 +44,11 @@
     </mat-tab>
     <mat-tab label="Unpublish">
       <div class="md-margin-top-2" fxLayout="column">
-        <div class="xb-shop__product-list" *ngFor="let item of [0,1,2]" fxShow="false">
-          <app-product-item [status]="2"></app-product-item>
+        <div class="xb-shop__product-list" *ngFor="let item of productUnpublished" >
+          <app-product-item [status]="2" [product]="item"></app-product-item>
         </div>
-        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center">
+        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+             *ngIf="productUnpublished && productUnpublished.length <= 0">
           <div fxLayout="column" fxLayoutAlign="center center">
             <img src="https://media.xberts.com/collector/source/web/pic/pic-none.png">
             <span class="md-dark-secondary">You haven't unpublished any products yet.</span>

@@ -134,6 +134,14 @@
         background-color: $orangeColor;
       }
     }
+
+    &-mobile{
+      border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+
+    @include xb-xs-screen{
+      line-height: 48px;
+    }
   }
 
   &__margin-right{

@@ -3,8 +3,9 @@
     <i class="material-icons md-dark-primary" routerLink="/store">keyboard_arrow_left</i> Your store name here
   </div>
   <div>
-    <div class="xb-store__title">My Collections</div>
-    <app-store-navigation [(category)]="category" [categories]="categories"></app-store-navigation>
+    <div class="xb-store__navigation-mobile">
+      <app-store-navigation [(category)]="category" [categories]="categories"></app-store-navigation>
+    </div>
     <div class="xb-store__content xb-store__border-bottom">
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
         <app-store-item-card *ngFor="let item of [0,1,2,3,4,5]" fxFlex.xs="48" fxFlex.gt-xs="30"></app-store-item-card>

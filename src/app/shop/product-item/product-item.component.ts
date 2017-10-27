@@ -9,6 +9,7 @@ import { Input, Component, OnInit} from '@angular/core';
 export class ProductItemComponent implements OnInit {
 
   @Input() status: number = 0;
+  @Input() product: any = null;
 
   constructor(
   ) { }
