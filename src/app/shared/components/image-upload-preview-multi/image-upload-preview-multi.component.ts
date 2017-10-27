@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { ImageUploadPreviewService } from "../image-upload-preview/image-upload-preview.service";
-
+import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
 
 @Component({
   selector: 'app-image-upload-preview-multi',
@@ -16,7 +16,10 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
 
   upload: boolean = false;
 
-  constructor(public previewImageService: ImageUploadPreviewService) {
+  constructor(
+    public previewImageService: ImageUploadPreviewService,
+    public s3UploaderService: S3UploaderService
+  ) {
 
   }
 
@@ -33,8 +36,26 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
       that.previewImgSrcs.push(result);
       let file = event.target.files[0];
 
-      that.previewImgFile.push(file);
-      that.previewImgFileChange.emit(that.previewImgFile);
+      let image = new Image();
+      image.onload = function(){
+        let width = image.width;
+        let height = image.height;
+
+        that.s3UploaderService.upload({
+          type: 'COLLECTOR_USER_AVATAR',
+          fileName: file.name,
+          use: 'avatar',
+          width: width,
+          height: height
+        }).then((data)=> {
+          let id = data.id;
+          that.s3UploaderService.uploadToS3(file, data).then((data) => {
+            that.previewImgFile.push(id);
+            that.previewImgFileChange.emit(that.previewImgFile);
+          });
+        });
+      };
+      image.src = window.URL.createObjectURL(file);
 
       if( that.previewImgSrcs.length >= 5) {
         that.upload = true;

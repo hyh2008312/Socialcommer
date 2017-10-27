@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output,OnChanges} from '@angular/core';
 import { ImageUploadPreviewService } from "../image-upload-preview/image-upload-preview.service";
 import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
 
@@ -12,8 +12,7 @@ export class ImageUploadHeaderComponent implements OnInit {
 
   @Input() previewImgFile;
   @Output() previewImgFileChange: EventEmitter<string> = new EventEmitter();
-
-  previewImgSrcs: Object;
+  @Input() previewImgSrcs: any = null;
 
   upload: boolean = false;
 
@@ -25,6 +24,13 @@ export class ImageUploadHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  ngOnChanges() {
+    if(this.previewImgSrcs) {
+      this.upload = true;
+    }
   }
 
   previewPic(event) {
@@ -55,15 +61,14 @@ export class ImageUploadHeaderComponent implements OnInit {
           width: width,
           height: height
         }).then((data)=> {
+          let id = data.id;
           that.s3UploaderService.uploadToS3(file, data).then((data) => {
-            console.log(data)
+            that.previewImgFile = id;
+            that.previewImgFileChange.emit(that.previewImgFile);
           });
         });
       };
       image.src = window.URL.createObjectURL(file);
-
-      that.previewImgFile = file;
-      that.previewImgFileChange.emit(that.previewImgFile);
 
       that.upload = true;
     })

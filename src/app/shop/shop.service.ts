@@ -153,8 +153,6 @@ export class ShopService {
       .catch(this.handleError);
   }
 
-
-
   getStore(): Promise<Store> {
 
     let headers = new Headers({
@@ -186,6 +184,57 @@ export class ShopService {
     return this.http.put(url, store, options)
       .toPromise()
       .then(response => response.json() as Store)
+      .catch(this.handleError);
+  }
+
+  getUserProfile(): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}user/userprofile/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  changeUserProfile(user: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}user/userprofile/`;
+
+    return this.http.put(url, user, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  changeAvatar(user: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}user/userprofile/avatar/`;
+
+    return this.http.put(url, user, options)
+      .toPromise()
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

@@ -12,9 +12,11 @@ import { ConstantService } from  '../../shared/services/constant/constant.servic
 
 export class SettingsComponent implements OnInit {
 
+  profileForm: FormGroup;
   settingForm : FormGroup;
   emailForm: FormGroup;
 
+  profileErr: any = false;
   settingErr : any = false;
   emailErr: any = false;
 
@@ -22,7 +24,8 @@ export class SettingsComponent implements OnInit {
 
   countries: Object[];
 
-  previewImgFile: Object;
+  previewImgFile: any = null;
+  previewImgSrcs: any = null;
 
   constructor(
     private fb: FormBuilder,
@@ -31,6 +34,21 @@ export class SettingsComponent implements OnInit {
   ) {
 
     this.countries = this.constant.getCountries();
+
+    this.profileForm = this.fb.group({
+      firstName: ['', [
+        Validators.required
+      ]],
+      lastName: ['', [
+        Validators.required
+      ]],
+      country: ['', [
+        Validators.required
+      ]],
+      biography: ['', [
+        Validators.required
+      ]]
+    });
 
     this.settingForm = this.fb.group({
       currentPassword: ['', [
@@ -54,23 +72,51 @@ export class SettingsComponent implements OnInit {
       ]]
     });
 
+    this.profileForm.valueChanges.subscribe(data => this.onProfileFormValueChanged(data));
     this.settingForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.emailForm.valueChanges.subscribe(data => this.onEmailFormValueChanged(data));
   }
 
   ngOnInit():void {
+    let self = this;
+    self.shopService.getUserProfile().then((data) => {
+      self.profileForm.setValue({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        country: data.country,
+        biography: data.biography
+      });
+      self.previewImgSrcs = data.avatarUrl;
+      self.previewImgFile = data.avatarId;
+    });
 
   }
 
   //存储错误信息
   formErrors = {
+    'firstName': '',
+    'lastName': '',
+    'country': '',
+    'biography': '',
     'currentPassword': '',
     'password': '',
-    'confirmPassword':'',
+    'confirmPassword': '',
     'email': ''
   };
   //错误对应的提示
   validationMessages = {
+    'firstName': {
+      'required': 'First name is required.'
+    },
+    'lastName': {
+      'required': 'Last name is required.'
+    },
+    'country': {
+      'required': 'Country is required.'
+    },
+    'biography': {
+      'required': 'Biography is required.'
+    },
     'currentPassword': {
       'required': 'CurrentPassword is required.',
       'minlength': 'Password must contain at least 6 characters.'
@@ -95,6 +141,26 @@ export class SettingsComponent implements OnInit {
    * 表单值改变时，重新校验
    * @param data
    */
+  onProfileFormValueChanged(data) {
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      //取到表单字段
+      const control = this.profileForm.get(field);
+      //表单字段已修改或无效
+      if (control && control.dirty && !control.valid) {
+        //取出对应字段可能的错误信息
+        const messages = this.validationMessages[field];
+        //从errors里取出错误类型，再拼上该错误对应的信息
+        for(const key in control.errors) {
+          this.formErrors[field] += messages[key] + '';
+          break;
+        }
+      }
+
+    }
+
+  }
   onValueChanged(data) {
 
     for (const field in this.formErrors) {
@@ -135,6 +201,18 @@ export class SettingsComponent implements OnInit {
 
     }
 
+  }
+
+  changeUserProfile(): void {
+    if(!this.profileForm.valid) {
+      return;
+    }
+
+    let user = this.profileForm.value;
+    user.avatarId = this.previewImgFile;
+    this.shopService.changeUserProfile(user).then((data) => {
+      console.log(data)
+    });
   }
 
   changeEmail(): void {
