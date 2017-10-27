@@ -35,13 +35,6 @@ export class S3UploaderService {
 
   }
 
-  private getTokenPostOptions(): RequestOptions {
-
-    let headers = new Headers({ 'Content-Type': 'multipart/form-data; charset=UTF-8' });
-    let options = new RequestOptions({ headers: headers });
-
-    return options;
-  }
 
   private getPostOptions(): RequestOptions {
 
@@ -78,9 +71,7 @@ export class S3UploaderService {
 
     formData.append('file', file);
 
-    let _options = this.getTokenPostOptions();
-
-    return this.http.post(postParams.url, formData, _options)
+    return this.http.post(postParams.url, formData)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
