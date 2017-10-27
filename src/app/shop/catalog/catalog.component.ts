@@ -80,4 +80,16 @@ export class CatalogComponent implements OnInit {
     });
   }
 
+  productChange(event) {
+    switch(event.status) {
+      case 0:
+        switch(event.event) {
+          case 'delete':
+            this.productPublished.splice(event.index,1);
+            break;
+        }
+        break;
+    }
+  }
+
 }

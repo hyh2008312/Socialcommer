@@ -7,6 +7,8 @@ export class Shop {
   cover: string;
 }
 
+
+
 export class Product {
   id: number;
   name: string;
@@ -19,6 +21,8 @@ export class Product {
   owner: any;
   salePrice: any;
   originalPrice: any;
+  images: any;
+  isDraft: boolean;
 }
 
 export class StoreProduct{
@@ -34,10 +38,11 @@ export class StoreProduct{
   owner: any;
   product: Product;
 
-  image: any;
+  images: any;
   storeId: number;
   purchaseUrl: string;
   isCustomer: boolean;
+  isDraft: boolean;
 }
 
 export class Email{

@@ -1453,9 +1453,6 @@ input.mat-input-element {
 .mat-simple-snackbar-action {
   color: #ffc400; }
 
-.mat-button, .mat-raised-button {
-  font-size: 16px; }
-
 .mat-raised-button:not([class*=mat-elevation-z]) {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -1598,7 +1595,7 @@ textarea.mat-input-element {
     top: 0;
     z-index: 10; }
   .xb-shop__product-button-list {
-    width: 212px;
+    width: 196px;
     position: absolute;
     right: 0;
     top: 100%;

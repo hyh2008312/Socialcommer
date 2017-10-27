@@ -1453,9 +1453,6 @@ input.mat-input-element {
 .mat-simple-snackbar-action {
   color: #ffc400; }
 
-.mat-button, .mat-raised-button {
-  font-size: 16px; }
-
 .mat-raised-button:not([class*=mat-elevation-z]) {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -2955,9 +2952,6 @@ input.mat-input-element {
 .mat-simple-snackbar-action {
   color: #ffc400; }
 
-.mat-button, .mat-raised-button {
-  font-size: 16px; }
-
 .mat-raised-button:not([class*=mat-elevation-z]) {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -3141,7 +3135,7 @@ textarea.mat-input-element {
       height: 2px;
       background-color: #ffc500; }
     .xb-store__navigation-mobile {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
     @media screen and (max-width: 599px) {
       .xb-store__navigation {
         line-height: 48px; } }

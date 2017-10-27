@@ -17,7 +17,7 @@
     <mat-tab label="Published">
       <div class="md-margin-top-2" fxLayout="column">
         <div class="xb-shop__product-list" *ngFor="let item of productPublished">
-          <app-product-item [status]="0" [product]="item"></app-product-item>
+          <app-product-item [status]="0" [product]="item" [index]="index" (productChange)="productChange($event)"></app-product-item>
         </div>
         <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
              *ngIf="productPublished && productPublished.length <= 0">

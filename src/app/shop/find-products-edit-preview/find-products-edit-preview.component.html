@@ -12,28 +12,45 @@
         <app-image-preview-multi [previewImg]="previewImg"></app-image-preview-multi>
       </div>
       <div class="xb-shop__edit-title">Product Title</div>
-      <mat-form-field class="xb-shop__width-100">
-        <input matInput formControlName="title">
-      </mat-form-field>
-      <div class="xb-shop__margin-bottom-2">
-        [Updated Version] Linner Active Noise Cancelling Headphones, Lightning In Ear Wired Earphone with Built-In
-        Mic and Remote (Comfortable and Secure Fit, MFi Certified) for iPhone X 8 7 6 Plus, iPad iPod
+      <div [hidden]="!showTitleInput" >
+        <mat-form-field class="xb-shop__width-100">
+          <input matInput formControlName="title" [(ngModel)]="product.title">
+        </mat-form-field>
+        <div class="xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary" (click)="showTitle()">SAVE</button>
+          <div class="xb-shop__margin-left">
+            <button mat-button color="primary">CANCEL</button>
+          </div>
+        </div>
+      </div>
+      <div class="xb-shop__margin-bottom-2" [hidden]="showTitleInput" (click)="showTitle()">
+        {{product.title}}
       </div>
       <div class="xb-shop__edit-title">Category</div>
-      <mat-form-field class="xb-shop__width-100">
-        <mat-chip-list #chipList>
-          <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
-                    [removable]="removable" (remove)="remove(tag)">
-            {{tag.name}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-          <input [matChipInputFor]="chipList"
-                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                 [matChipInputAddOnBlur]="addOnBlur"
-                 (matChipInputTokenEnd)="add($event)" formControlName="tags"/>
-        </mat-chip-list>
-      </mat-form-field>
-      <div class="xb-shop__margin-bottom-3">Electronics</div>
+      <div [hidden]="!showCategoryInput" >
+        <mat-form-field class="xb-shop__width-100">
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                      [removable]="removable" (remove)="remove(tag)">
+              {{tag.name}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)" formControlName="tags" [(ngModel)]="product.tags"/>
+          </mat-chip-list>
+        </mat-form-field>
+        <div class="xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary" (click)="showCategory()">SAVE</button>
+          <div class="xb-shop__margin-left">
+            <button mat-button color="primary">CANCEL</button>
+          </div>
+        </div>
+      </div>
+      <div class="xb-shop__margin-bottom-2" [hidden]="showCategoryInput" (click)="showCategory()">
+        {{product.tags}}
+      </div>
       <div class="xb-shop__edit-title">Price</div>
       <div class="xb-shop__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
         <div class="xb-store__details-price">$8.00</div>
@@ -52,24 +69,21 @@
       </mat-form-field>
     </form>
     <div class="xb-shop__edit-title">Description</div>
-    <div class="md-margin-top-2">
+    <div class="md-margin-top-2" [hidden]="!showDescriptionEditor">
       <quill-editor [(ngModel)]="editorContent"></quill-editor>
-    </div>
-    <div class="xb-shop__margin-bottom-2 xb-shop__edit-description">
-      <div class="md-margin-top-2 xb-store__content-text">
-        Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.
-        Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training
-        that make you an expert in your field? Show your customers that there are read people with instersting stories working
-        behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.
-      </div>
-      <div class="md-margin-top-2">
-        <img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">
+      <div class="md-margin-top-2 xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center">
+        <button mat-button color="primary" (click)="showDescription()">SAVE</button>
+        <div class="xb-shop__margin-left">
+          <button mat-button color="primary">CANCEL</button>
+        </div>
       </div>
     </div>
+    <div class="xb-shop__margin-bottom-2" [hidden]="showDescriptionEditor" [innerHTML]="editorContent | safeHtml" (click)="showDescription()"></div>
+
     <div fxLayout="row" fxLayoutAlign="start center">
       <button mat-raised-button color="primary">PUBLISH</button>
       <div class="xb-shop__margin-left">
-        <button mat-button color="primary">SAVE DRAFT</button>
+        <button mat-raised-button color="primary">SAVE DRAFT</button>
       </div>
     </div>
 

@@ -1,28 +1,28 @@
 <div class="xb-shop__product" fxLayout="row" fxLayoutAlign="start">
   <div class="xb-shop__product-image">
-    <img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">
+    <img [src]="product.imageUrl">
   </div>
   <div class="xb-shop__product-content" fxLayout="column" fxFlex>
     <div fxLayout="row" fxLayoutAlign="start start">
       <div fxFlex class="xb-shop__product-title">{{product.title}}</div>
       <div fxLayout="row" fxLayoutAlign="start center">
-        <div class="line-through md-margin-left-1 md-margin-right-2">$12.00</div>
-        <div class="xb-shop__product-price">$8.00</div>
+        <div class="line-through md-margin-left-1 md-margin-right-2">${{product.originalPriceAmount}}</div>
+        <div class="xb-shop__product-price">${{product.salePriceAmount}}</div>
       </div>
     </div>
     <div fxFlex>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
-        <div>#{{product.id}}</div>
+        <div>#{{product.productId}}</div>
         <div class="xb-shop__product-category md-margin-left-2">{{product.tags}}</div>
       </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="start center">
-      <div>{{product.created | amDateFormat:'MMMM Do, YYYY'}}</div>
+      <div>{{product.modifiedTime | amDateFormat:'MMMM Do, YYYY'}}</div>
       <div fxFlex fxLayout="row" fxLayoutAlign="end center">
         <button mat-button color="primary">Edit</button>
         <button mat-button color="primary" *ngIf="status == 2">Publish</button>
         <button mat-button color="primary" *ngIf="status == 0">Unpublish</button>
-        <button mat-button color="primary">Delete</button>
+        <button mat-button color="primary" (click)="delete()">Delete</button>
       </div>
     </div>
   </div>

@@ -38,7 +38,22 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
 
   public editor;
-  public editorContent = "insert content...";
+  public editorContent = `<div class="xb-shop__margin-bottom-2 xb-shop__edit-description">`+
+  `<div class="md-margin-top-2 xb-store__content-text">`+
+  `Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.`+
+  `Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training`+
+  `that make you an expert in your field? Show your customers that there are read people with instersting stories working`+
+  `behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.`+
+  `</div>`+
+  `<div class="md-margin-top-2">`+
+  `<img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">`+
+  `</div>`+
+  `</div>`;
+
+  product = {
+    title: '[Updated Version] Linner Active Noise Cancelling Headphones, Lightning In Ear Wired Earphone with Built-InMic and Remote (Comfortable and Secure Fit, MFi Certified) for iPhone X 8 7 6 Plus, iPad iPod',
+    tags: '11111'
+  };
 
   constructor(
     public router: Router,
@@ -90,6 +105,22 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   close():void {
     this.router.navigate(['/shop/products']);
+  }
+
+  showTitleInput: boolean = false;
+  showCategoryInput: boolean = false;
+  showDescriptionEditor: boolean = false;
+
+  showTitle() {
+    this.showTitleInput = !this.showTitleInput;
+  }
+
+  showCategory() {
+    this.showCategoryInput = !this.showCategoryInput;
+  }
+
+  showDescription() {
+    this.showDescriptionEditor = !this.showDescriptionEditor;
   }
 
 }

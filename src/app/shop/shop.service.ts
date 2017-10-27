@@ -3,7 +3,7 @@ import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { StoreProduct, Email, Store } from './shop';
+import { StoreProduct, Email, Store} from './shop';
 
 import { BaseApi } from '../config/app.api';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
@@ -51,20 +51,20 @@ export class ShopService {
       .catch(this.handleError);
   }
 
-  deleteProduct(product: any): Promise<StoreProduct> {
+  deleteProduct(product: any): Promise<any> {
 
     let headers = new Headers({
-      'Content-Type': 'application/json'
+      'Content-Type': 'app  lication/json'
     });
 
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/${product.id}/`;
+    const url = `${this.baseUrl.url}store/relation/${product.productId}/`;
 
     return this.http.delete(url, options)
       .toPromise()
-      .then(response => response.json() as StoreProduct)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

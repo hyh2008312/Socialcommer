@@ -12,9 +12,6 @@ $warn: mat-palette($mat-red, 500);
 $theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
 
-.mat-button,.mat-raised-button{
-  font-size: 16px;
-}
 
 .mat-raised-button:not([class*=mat-elevation-z]){
   @include box-shadow(none);

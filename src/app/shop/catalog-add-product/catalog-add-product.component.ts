@@ -189,14 +189,16 @@ export class CatalogAddProductComponent implements OnInit {
     let storeProduct = new StoreProduct();
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
-    storeProduct.isCustomer = true;
+    storeProduct.isCustomer = false;
     storeProduct.recommendation = productForm.recommendation;
+    storeProduct.isDraft = false;
 
     let product = new Product();
 
     storeProduct.product = product;
     storeProduct.product.description = this.editorContent;
     storeProduct.product.title = productForm.title;
+    storeProduct.product.images = [];
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice,
       currency: this.storeCurrency
@@ -206,6 +208,7 @@ export class CatalogAddProductComponent implements OnInit {
       currency: this.storeCurrency
     };
     storeProduct.product.tags = productForm.tags;
+    storeProduct.product.isDraft = false;
 
     console.log(storeProduct);
 

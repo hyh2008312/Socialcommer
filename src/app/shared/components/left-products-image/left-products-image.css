@@ -1453,9 +1453,6 @@ input.mat-input-element {
 .mat-simple-snackbar-action {
   color: #ffc400; }
 
-.mat-button, .mat-raised-button {
-  font-size: 16px; }
-
 .mat-raised-button:not([class*=mat-elevation-z]) {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
