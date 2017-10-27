@@ -55,10 +55,7 @@ export class ImageUploadHeaderComponent implements OnInit {
           width: width,
           height: height
         }).then((data)=> {
-          that.s3UploaderService.uploadToS3(
-            {type: 'COLLECTOR_USER_AVATAR', fileName: file.name},
-            data
-          ).then((data) => {
+          that.s3UploaderService.uploadToS3(file, data).then((data) => {
             console.log(data)
           });
         });

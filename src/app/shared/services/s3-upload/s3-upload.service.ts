@@ -68,13 +68,14 @@ export class S3UploaderService {
     let formData = new FormData();
 
     formData.append('acl',  postParams.acl);
+    formData.append('key', postParams.key);
     formData.append('Content-Type', postParams['Content-Type']);
+    formData.append('policy', postParams.policy);
     formData.append('x-amz-date', postParams['x-amz-date']);
     formData.append('x-amz-algorithm', postParams['x-amz-algorithm']);
     formData.append('x-amz-credential', postParams['x-amz-credential']);
     formData.append('x-amz-signature', postParams['x-amz-signature']);
-    formData.append('policy', postParams.policy);
-    formData.append('key', postParams.key);
+
     formData.append('file', file);
 
     let _options = this.getTokenPostOptions();
