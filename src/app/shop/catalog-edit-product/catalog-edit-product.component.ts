@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -10,12 +10,12 @@ import { Product, StoreProduct } from '../shop';
 import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
-  selector: 'app-catalog-add-product',
-  templateUrl: './catalog-add-product.component.html',
+  selector: 'app-catalog-edit-product',
+  templateUrl: './catalog-edit-product.component.html',
   styleUrls: ['../../store/store.scss','../shop.scss']
 })
 
-export class CatalogAddProductComponent implements OnInit {
+export class CatalogEditProductComponent implements OnInit {
 
   productForm : FormGroup;
   previewImgFile: any[] = [];
@@ -35,21 +35,12 @@ export class CatalogAddProductComponent implements OnInit {
   storeId: number;
   storeCurrency: string = 'USD';
 
-  ngOnInit() {
-    let self = this;
-    self.userService.store.subscribe((data) => {
-      if(data) {
-        self.storeId = data.id;
-        self.storeCurrency = data.currency;
-      }
-    });
-  }
-
   constructor(
     public router: Router,
     private fb: FormBuilder,
     public shopService: ShopService,
-    public userService: UserService
+    public userService: UserService,
+    private activatedRoute : ActivatedRoute
   ) {
 
     this.productForm = this.fb.group({
@@ -106,6 +97,43 @@ export class CatalogAddProductComponent implements OnInit {
     }
   };
 
+  ngOnInit() {
+    let self = this;
+    let firstLoad = false;
+    self.userService.store.subscribe((data) => {
+      if(data) {
+        self.storeId = data.id;
+        self.storeCurrency = data.currency;
+        if(!firstLoad) {
+          firstLoad = true;
+
+          let id = self.activatedRoute.snapshot.params['id'];
+          self.shopService.getProduct(id).then((data) => {
+
+            let tagArr = data.tags.split(',');
+            for(let value of tagArr) {
+
+              self.tags.push({
+                name: value
+              });
+            }
+            self.productForm.setValue({
+              title: data.title,
+              salePrice: data.salePriceAmount,
+              originalPrice: data.originalPriceAmount,
+              purchaseUrl: data.purchaseUrl,
+              recommendation: data.recommendation
+            });
+
+
+            this.editorContent = data.description;
+          })
+
+        }
+      }
+    });
+  }
+
   /**
    * 表单值改变时，重新校验
    * @param data
@@ -126,7 +154,6 @@ export class CatalogAddProductComponent implements OnInit {
           break;
         }
       }
-
     }
 
   }
@@ -190,6 +217,7 @@ export class CatalogAddProductComponent implements OnInit {
       amount: productForm.salePrice,
       currency: this.storeCurrency
     };
+
     storeProduct.product.isDraft = false;
 
     let tagArr = [];
@@ -197,11 +225,13 @@ export class CatalogAddProductComponent implements OnInit {
       tagArr.push(value.name);
     }
     storeProduct.product.tags = tagArr.join(',');
+    return false;
 
-    console.log(storeProduct);
 
-    this.shopService.createProduct(storeProduct).then((data) => {
-      console.log(data)
-    });
+
+    //
+    //this.shopService.createProduct(storeProduct).then((data) => {
+    //  console.log(data)
+    //});
   }
 }

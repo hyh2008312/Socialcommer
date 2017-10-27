@@ -34,6 +34,40 @@ export class ShopService {
     return array.join('&');
   }
 
+  getProductList(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/relation/?${this.serializeParams(product)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getProduct(id: number): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/relation/${id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   createProduct(product: any): Promise<StoreProduct> {
 
     let headers = new Headers({
@@ -85,7 +119,7 @@ export class ShopService {
       .catch(this.handleError);
   }
 
-  getProduct(product: any): Promise<any> {
+  publishProduct(product: any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -94,13 +128,32 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/?${this.serializeParams(product)}`;
+    const url = `${this.baseUrl.url}store/relation/on/${product.productId}/`;
 
     return this.http.get(url, options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
   }
+
+  unpublishProduct(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/relation/off/${product.productId}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+
 
   getStore(): Promise<Store> {
 

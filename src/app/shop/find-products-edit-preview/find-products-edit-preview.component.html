@@ -72,7 +72,7 @@
     <div class="md-margin-top-2" [hidden]="!showDescriptionEditor">
       <quill-editor [(ngModel)]="editorContent"></quill-editor>
       <div class="md-margin-top-2 xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center">
-        <button mat-button color="primary" (click)="showDescription()">SAVE</button>
+        <button mat-raised-button color="primary" (click)="showDescription()">SAVE</button>
         <div class="xb-shop__margin-left">
           <button mat-button color="primary">CANCEL</button>
         </div>
@@ -83,7 +83,7 @@
     <div fxLayout="row" fxLayoutAlign="start center">
       <button mat-raised-button color="primary">PUBLISH</button>
       <div class="xb-shop__margin-left">
-        <button mat-raised-button color="primary">SAVE DRAFT</button>
+        <button mat-button color="primary">SAVE DRAFT</button>
       </div>
     </div>
 

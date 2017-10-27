@@ -1,5 +1,7 @@
 import { Input, Output, Component, OnInit,EventEmitter} from '@angular/core';
+
 import { ShopService } from '../shop.service';
+import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-product-item',
@@ -14,12 +16,22 @@ export class ProductItemComponent implements OnInit {
   @Input() index: number = 0;
   @Output() productChange = new EventEmitter<any>();
 
+  storeId;
+  storeCurrency = 'USD';
+
   constructor(
-    private shopService: ShopService
+    private shopService: ShopService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
-
+    let self = this;
+    self.userService.store.subscribe((data) => {
+      if(data) {
+        self.storeId = data.id;
+        self.storeCurrency = data.currency;
+      }
+    });
   }
 
   delete() {
@@ -35,7 +47,29 @@ export class ProductItemComponent implements OnInit {
     });
   }
 
-  edit() {
+  publish() {
+    let self = this;
 
+    self.shopService.publishProduct(this.product).then((data) => {
+      self.productChange.emit({
+        product: data,
+        event: 'publish',
+        status: self.status,
+        index: self.index
+      })
+    });
+  }
+
+  unpublish() {
+    let self = this;
+
+    self.shopService.unpublishProduct(this.product).then((data) => {
+      self.productChange.emit({
+        product: self.product,
+        event: 'unpublish',
+        status: self.status,
+        index: self.index
+      })
+    });
   }
 }

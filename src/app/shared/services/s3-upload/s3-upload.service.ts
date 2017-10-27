@@ -37,7 +37,7 @@ export class S3UploaderService {
 
   private getTokenPostOptions(): RequestOptions {
 
-    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+    let headers = new Headers({ 'Content-Type': 'multipart/form-data; charset=UTF-8' });
     this.createAuthorizationHeader(headers);
     let options = new RequestOptions({ headers: headers });
 

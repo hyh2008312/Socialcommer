@@ -20,8 +20,8 @@
       <div>{{product.modifiedTime | amDateFormat:'MMMM Do, YYYY'}}</div>
       <div fxFlex fxLayout="row" fxLayoutAlign="end center">
         <button mat-button color="primary">Edit</button>
-        <button mat-button color="primary" *ngIf="status == 2">Publish</button>
-        <button mat-button color="primary" *ngIf="status == 0">Unpublish</button>
+        <button mat-button color="primary" *ngIf="status == 2" (click)="publish()">Publish</button>
+        <button mat-button color="primary" *ngIf="status == 0" (click)="unpublish()">Unpublish</button>
         <button mat-button color="primary" (click)="delete()">Delete</button>
       </div>
     </div>

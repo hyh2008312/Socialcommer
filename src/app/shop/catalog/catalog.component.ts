@@ -15,9 +15,9 @@ export class CatalogComponent implements OnInit {
   storeId: number;
   storeCurrency: string = 'USD';
 
-  productPublished: any;
-  productDraft: any;
-  productUnpublished: any;
+  productPublished: any = [];
+  productDraft: any = [];
+  productUnpublished: any = [];
 
   constructor(
     private shopService: ShopService,
@@ -58,7 +58,7 @@ export class CatalogComponent implements OnInit {
     }
 
     let self = this;
-    self.shopService.getProduct({
+    self.shopService.getProductList({
       storeId: this.storeId,
       relationStatus: relationStatus,
       page: 1,
@@ -86,6 +86,19 @@ export class CatalogComponent implements OnInit {
         switch(event.event) {
           case 'delete':
             this.productPublished.splice(event.index,1);
+            break;
+          case 'unpublish':
+            this.productPublished.splice(event.index,1);
+            break;
+        }
+        break;
+      case 2:
+        switch(event.event) {
+          case 'delete':
+            this.productUnpublished.splice(event.index,1);
+            break;
+          case 'publish':
+            this.productUnpublished.splice(event.index,1);
             break;
         }
         break;
