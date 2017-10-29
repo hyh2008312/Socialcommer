@@ -5,14 +5,15 @@ import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
 @Component({
   selector: 'app-image-upload-preview-multi',
   templateUrl: './image-upload-preview-multi.component.html',
-  styleUrls: ['../image-upload-preview/image-upload-preview.component.css']
+  styleUrls: ['../image-upload-preview/image-upload-preview.component.css'],
+  providers: [S3UploaderService]
 })
 export class ImageUploadPreviewMultiComponent implements OnInit {
 
   @Input() previewImgFile: any[] = [];
   @Output() previewImgFileChange: EventEmitter<any[]> = new EventEmitter();
 
-  previewImgSrcs: any[] = [];
+  @Input() previewImgSrcs: any[] = [];
 
   upload: boolean = false;
 

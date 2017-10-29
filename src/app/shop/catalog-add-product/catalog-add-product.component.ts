@@ -19,6 +19,7 @@ export class CatalogAddProductComponent implements OnInit {
 
   productForm : FormGroup;
   previewImgFile: any[] = [];
+  previewImgSrcs: any[] = [];
   visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
@@ -199,9 +200,10 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product.tags = tagArr.join(',');
 
     console.log(storeProduct);
+    console.log(this.previewImgFile);
 
-    this.shopService.createProduct(storeProduct).then((data) => {
-      console.log(data)
-    });
+    //this.shopService.createProduct(storeProduct).then((data) => {
+    //  console.log(data)
+    //});
   }
 }
