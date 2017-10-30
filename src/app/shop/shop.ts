@@ -18,8 +18,8 @@ export class Product {
   created: string;
   tags: string;
   owner: any;
-  salePrice: any;
-  originalPrice: any;
+  salePrice: any = 0;
+  originalPrice: any = 0;
   images: any;
   isDraft: boolean;
 }

@@ -13,7 +13,7 @@
          routerLink="./create">Create an affiliate product</a>
     </div>
   </div>
-  <mat-tab-group color="accent" (selectedTabChange)="changeProducts($event)">
+  <mat-tab-group color="accent" (selectedTabChange)="changeProducts($event)"  [(selectedIndex)]="selectedIndex">
     <mat-tab label="Published">
       <div class="md-margin-top-2" fxLayout="column">
         <div class="xb-shop__product-list" *ngFor="let item of productPublished;let i = index;">

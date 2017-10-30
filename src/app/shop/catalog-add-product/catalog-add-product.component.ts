@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -50,7 +50,8 @@ export class CatalogAddProductComponent implements OnInit {
     public router: Router,
     private fb: FormBuilder,
     public shopService: ShopService,
-    public userService: UserService
+    public userService: UserService,
+    private activatedRoute: ActivatedRoute
   ) {
 
     this.productForm = this.fb.group({
@@ -167,7 +168,7 @@ export class CatalogAddProductComponent implements OnInit {
     if(!this.productForm.valid) {
       return;
     }
-
+    let self = this;
     let productForm = this.productForm.value;
 
     let storeProduct = new StoreProduct();
@@ -200,12 +201,12 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product.tags = tagArr.join(',');
 
     this.shopService.createProduct(storeProduct).then((data) => {
-      this.close();
+      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'published'}, replaceUrl: true});
     });
   }
 
   createDraft() {
-
+    let self = this;
     let productForm = this.productForm.value;
 
     let storeProduct = new StoreProduct();
@@ -213,7 +214,8 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.storeId = this.storeId;
     storeProduct.isCustomer = false;
     storeProduct.recommendation = productForm.recommendation;
-    storeProduct.isDraft = false;
+    storeProduct.isDraft = true;
+    storeProduct.status = 'off';
 
     let product = new Product();
 
@@ -222,11 +224,11 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product.title = productForm.title;
     storeProduct.product.images = this.previewImgFile;
     storeProduct.product.originalPrice = {
-      amount:  productForm.originalPrice,
+      amount: productForm.originalPrice == ''? 0: productForm.originalPrice,
       currency: this.storeCurrency
     };
     storeProduct.product.salePrice = {
-      amount: productForm.salePrice,
+      amount: productForm.salePrice == ''? 0: productForm.salePrice,
       currency: this.storeCurrency
     };
     storeProduct.product.isDraft = true;
@@ -238,7 +240,8 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product.tags = tagArr.join(',');
 
     this.shopService.createProduct(storeProduct).then((data) => {
-      this.close();
+      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});
     });
   }
+
 }

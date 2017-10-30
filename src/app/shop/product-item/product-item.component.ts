@@ -76,6 +76,18 @@ export class ProductItemComponent implements OnInit {
   }
 
   edit() {
-    this.router.navigateByUrl(`shop/listings/${this.product.id}/edit`);
+    let tab = '';
+    switch (this.status) {
+      case 0:
+        tab = 'publish';
+        break;
+      case 1:
+        tab = 'draft';
+        break;
+      case 2:
+        tab = 'unpublish';
+        break;
+    }
+    this.router.navigate([`shop/listings/${this.product.id}/edit`], {queryParams: {tab}});
   }
 }

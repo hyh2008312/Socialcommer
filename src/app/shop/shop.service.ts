@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import{ Subject, BehaviorSubject } from 'rxjs';
 
 import { StoreProduct, Email, Store} from './shop';
 
@@ -21,6 +22,12 @@ export class ShopService {
       }
     });
 
+  }
+
+  currentListingTab: Subject<any> = new BehaviorSubject<any>(null);
+
+  public setCurrentListingTab(newTab: number): void {
+    this.currentListingTab.next(newTab);
   }
 
   serializeParams(params) {

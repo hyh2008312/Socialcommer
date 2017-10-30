@@ -1,4 +1,7 @@
-import { Component, OnInit, Inject} from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject} from '@angular/core';
+import { Router,NavigationStart, ActivatedRoute} from '@angular/router';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
 
 import { ShopService } from '../shop.service';
 import { UserService } from  '../../shared/services/user/user.service';
@@ -19,25 +22,82 @@ export class CatalogComponent implements OnInit {
   productDraft: any = false;
   productUnpublished: any = false;
 
+  selectedIndex: number = 0;
+  subscription: any;
+  subscription1: any;
+
   constructor(
     private shopService: ShopService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
 
   }
 
   ngOnInit():void {
     let self = this;
-    let firstLoad = false;
-    self.userService.store.subscribe((data) => {
+
+    this.subscription = self.userService.store.subscribe((data) => {
       if(data) {
         self.storeId = data.id;
         self.storeCurrency = data.currency;
-        if(!firstLoad) {
-          this.changeProducts({index:0})
+        self.subscription1 = self.activatedRoute.queryParams.subscribe((data)=> {
+          if(data.tab == 'published' ) {
+            self.selectedIndex = 0;
+          }
+          if(data.tab == 'draft') {
+            self.selectedIndex = 1;
+          }
+          if(data.tab == 'unpublished') {
+            self.selectedIndex = 2;
+          }
+          if(data.tab == null) {
+            self.changeProducts({index: self.selectedIndex});
+          }
+        });
+      }
+    });
+
+    this.router.events.subscribe(s => {
+      if (s instanceof NavigationStart) {
+        if(s.url.split('?')[0] == '/shop/listings') {
+          self.subscription = self.userService.store.subscribe((data) => {
+            if(data) {
+              self.storeId = data.id;
+              self.storeCurrency = data.currency;
+              self.subscription1 = self.activatedRoute.queryParams.subscribe((data)=> {
+                if(data.tab == 'published') {
+                  self.selectedIndex = 0;
+                }
+                if(data.tab == 'draft') {
+                  self.selectedIndex = 1;
+                }
+                if(data.tab == 'unpublished') {
+                  self.selectedIndex = 1;
+                }
+                if(data.tab == null) {
+                  self.changeProducts({index: self.selectedIndex});
+                }
+              });
+            }
+          });
+        } else {
+          self.subscription.unsubscribe();
+          self.subscription1.unsubscribe();
         }
       }
     });
+
+    self.shopService.currentListingTab.subscribe((data) => {
+      console.log(data)
+    });
+
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.subscription1.unsubscribe();
   }
 
   openToggle() {
@@ -46,6 +106,7 @@ export class CatalogComponent implements OnInit {
 
   changeProducts(event) {
     let relationStatus = 'published';
+    this.shopService.setCurrentListingTab(event.index);
     switch (event.index) {
       case 1:
         relationStatus = 'draft';

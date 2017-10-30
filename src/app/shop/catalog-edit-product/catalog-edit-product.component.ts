@@ -25,6 +25,9 @@ export class CatalogEditProductComponent implements OnInit {
   removable: boolean = true;
   addOnBlur: boolean = true;
   relationId: number;
+  productId: number;
+
+  tab: string = '';
 
   // Editor
   public editor;
@@ -134,11 +137,18 @@ export class CatalogEditProductComponent implements OnInit {
 
             self.relationId = data.id;
 
+            self.productId = data.productId;
+
             self.editorContent = data.description;
           })
 
         }
       }
+    });
+
+    self.activatedRoute.queryParams.subscribe((data) => {
+      console.log(data)
+      self.tab = data.tab;
     });
   }
 
@@ -199,13 +209,12 @@ export class CatalogEditProductComponent implements OnInit {
     if(!this.productForm.valid) {
       return;
     }
-    let id = parseInt(this.activatedRoute.snapshot.params['id']);
 
     let productForm = this.productForm.value;
 
     let storeProduct = new StoreProduct();
     storeProduct.id = this.relationId;
-    storeProduct.productId = id;
+    storeProduct.productId = this.productId;
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
     storeProduct.isCustomer = false;
@@ -217,7 +226,8 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.product.description = this.editorContent;
     storeProduct.product.title = productForm.title;
-    storeProduct.product.images = this.previewImgFile;
+    storeProduct.product.images = [];
+    storeProduct.product.images = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice,
       currency: this.storeCurrency
@@ -237,39 +247,40 @@ export class CatalogEditProductComponent implements OnInit {
 
     let self = this;
     this.shopService.changeProduct(storeProduct).then((data) => {
-      self.close();
+      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'published'}, replaceUrl: true});
     });
   }
 
   createDraft() {
     let productForm = this.productForm.value;
-    let id = parseInt(this.activatedRoute.snapshot.params['id']);
 
     let storeProduct = new StoreProduct();
     storeProduct.id = this.relationId;
-    storeProduct.productId = id;
+    storeProduct.productId = this.productId;
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
     storeProduct.isCustomer = false;
     storeProduct.recommendation = productForm.recommendation;
-    storeProduct.isDraft = false;
+    storeProduct.isDraft = true;
+    storeProduct.status = 'off';
 
     let product = new Product();
 
     storeProduct.product = product;
     storeProduct.product.description = this.editorContent;
     storeProduct.product.title = productForm.title;
-    storeProduct.product.images = this.previewImgFile;
+    storeProduct.product.images = [];
+    storeProduct.product.images = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
-      amount:  productForm.originalPrice,
+      amount:  productForm.originalPrice == ''? 0: productForm.originalPrice,
       currency: this.storeCurrency
     };
     storeProduct.product.salePrice = {
-      amount: productForm.salePrice,
+      amount: productForm.salePrice == ''? 0: productForm.salePrice,
       currency: this.storeCurrency
     };
 
-    storeProduct.product.isDraft = true;
+    storeProduct.product.isDraft = false;
 
     let tagArr = [];
     for(let value of this.tags) {
@@ -279,7 +290,54 @@ export class CatalogEditProductComponent implements OnInit {
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings'], { replaceUrl: true });
+      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});
+    });
+  }
+
+  save() {
+    if(!this.productForm.valid) {
+      return;
+    }
+
+    let productForm = this.productForm.value;
+
+    let storeProduct = new StoreProduct();
+    storeProduct.id = this.relationId;
+    storeProduct.productId = this.productId;
+    storeProduct.purchaseUrl = productForm.purchaseUrl;
+    storeProduct.storeId = this.storeId;
+    storeProduct.isCustomer = false;
+    storeProduct.recommendation = productForm.recommendation;
+    storeProduct.isDraft = false;
+    storeProduct.status = 'off';
+
+    let product = new Product();
+
+    storeProduct.product = product;
+    storeProduct.product.description = this.editorContent;
+    storeProduct.product.title = productForm.title;
+    storeProduct.product.images = [];
+    storeProduct.product.images = [...this.previewImgFile];
+    storeProduct.product.originalPrice = {
+      amount:  productForm.originalPrice == ''? 0: productForm.originalPrice,
+      currency: this.storeCurrency
+    };
+    storeProduct.product.salePrice = {
+      amount: productForm.salePrice == ''? 0: productForm.salePrice,
+      currency: this.storeCurrency
+    };
+
+    storeProduct.product.isDraft = false;
+
+    let tagArr = [];
+    for(let value of this.tags) {
+      tagArr.push(value.name);
+    }
+    storeProduct.product.tags = tagArr.join(',');
+
+    let self = this;
+    self.shopService.changeProduct(storeProduct).then((data) => {
+      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'unpublished'}, replaceUrl: true});
     });
   }
 }

@@ -72,9 +72,9 @@
         <quill-editor [(ngModel)]="editorContent"></quill-editor>
       </div>
       <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-        <button mat-raised-button color="primary" (click)="create({type:0})">PUBLISH</button>
+        <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
         <div class="md-margin-left-2">
-          <button mat-button color="primary" (click)="create({type:1})">SAVE AS DRAFT</button>
+          <button mat-button color="primary" (click)="createDraft()">SAVE AS DRAFT</button>
         </div>
       </div>
     </div>
