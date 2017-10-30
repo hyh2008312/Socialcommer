@@ -225,6 +225,8 @@ export class CatalogEditProductComponent implements OnInit {
       currency: this.storeCurrency
     };
 
+    storeProduct.product.isDraft = false;
+
     let tagArr = [];
     for(let value of this.tags) {
       tagArr.push(value.name);

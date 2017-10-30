@@ -191,6 +191,7 @@ export class CatalogAddProductComponent implements OnInit {
       amount: productForm.salePrice,
       currency: this.storeCurrency
     };
+    storeProduct.product.isDraft = false;
 
     let tagArr = [];
     for(let value of this.tags) {
