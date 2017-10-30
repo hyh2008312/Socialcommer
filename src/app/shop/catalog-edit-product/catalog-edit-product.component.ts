@@ -19,10 +19,12 @@ export class CatalogEditProductComponent implements OnInit {
 
   productForm : FormGroup;
   previewImgFile: any[] = [];
+  previewImgSrcs: any[] = [];
   visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
   addOnBlur: boolean = true;
+  relationId: number;
 
   // Editor
   public editor;
@@ -125,8 +127,14 @@ export class CatalogEditProductComponent implements OnInit {
               recommendation: data.recommendation
             });
 
+            for(let value of data.imageUrl) {
+              self.previewImgFile.push(value.id);
+              self.previewImgSrcs.push(value.url);
+            }
 
-            this.editorContent = data.description;
+            self.relationId = data.id;
+
+            self.editorContent = data.description;
           })
 
         }
@@ -183,8 +191,6 @@ export class CatalogEditProductComponent implements OnInit {
     }
   }
 
-
-
   close():void {
     this.router.navigate(['/shop/listings']);
   }
@@ -197,6 +203,7 @@ export class CatalogEditProductComponent implements OnInit {
     let productForm = this.productForm.value;
 
     let storeProduct = new StoreProduct();
+    storeProduct.id = this.relationId;
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
     storeProduct.isCustomer = false;
@@ -208,7 +215,7 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.product.description = this.editorContent;
     storeProduct.product.title = productForm.title;
-    storeProduct.product.images = [];
+    storeProduct.product.images = this.previewImgFile;
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice,
       currency: this.storeCurrency
@@ -218,20 +225,14 @@ export class CatalogEditProductComponent implements OnInit {
       currency: this.storeCurrency
     };
 
-    storeProduct.product.isDraft = false;
-
     let tagArr = [];
     for(let value of this.tags) {
       tagArr.push(value.name);
     }
     storeProduct.product.tags = tagArr.join(',');
-    return false;
 
+    this.shopService.changeProduct(storeProduct).then((data) => {
 
-
-    //
-    //this.shopService.createProduct(storeProduct).then((data) => {
-    //  console.log(data)
-    //});
+    });
   }
 }

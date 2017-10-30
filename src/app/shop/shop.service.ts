@@ -94,7 +94,7 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/${product.productId}/`;
+    const url = `${this.baseUrl.url}store/relation/${product.id}/`;
 
     return this.http.delete(url, options)
       .toPromise()
@@ -128,7 +128,7 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/on/${product.productId}/`;
+    const url = `${this.baseUrl.url}store/relation/on/${product.id}/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -145,7 +145,7 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/off/${product.productId}/`;
+    const url = `${this.baseUrl.url}store/relation/off/${product.id}/`;
 
     return this.http.get(url, options)
       .toPromise()

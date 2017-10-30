@@ -81,6 +81,7 @@ export class CatalogComponent implements OnInit {
   }
 
   productChange(event) {
+    console.log(event.index)
     switch(event.status) {
       case 0:
         switch(event.event) {

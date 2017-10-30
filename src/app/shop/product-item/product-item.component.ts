@@ -1,4 +1,5 @@
 import { Input, Output, Component, OnInit,EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ShopService } from '../shop.service';
 import { UserService } from  '../../shared/services/user/user.service';
@@ -21,7 +22,8 @@ export class ProductItemComponent implements OnInit {
 
   constructor(
     private shopService: ShopService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -71,5 +73,9 @@ export class ProductItemComponent implements OnInit {
         index: self.index
       })
     });
+  }
+
+  edit() {
+    this.router.navigateByUrl(`shop/listings/${this.product.id}/edit`);
   }
 }

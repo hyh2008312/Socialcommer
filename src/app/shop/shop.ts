@@ -14,7 +14,6 @@ export class Product {
   name: string;
   title: string;
   description: string;
-  imageUrls: any;
   status: string;
   created: string;
   tags: string;

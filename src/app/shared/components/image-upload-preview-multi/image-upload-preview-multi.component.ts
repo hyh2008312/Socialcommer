@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, OnChanges} from '@angular/core';
 import { ImageUploadPreviewService } from "../image-upload-preview/image-upload-preview.service";
 import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
 
@@ -27,6 +27,12 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges() {
+    if(this.previewImgSrcs.length >= 5) {
+      this.upload = true;
+    }
+  }
+
   previewPic(event) {
     if(!event.target.files[0]) {
       return;
@@ -43,9 +49,9 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
         let height = image.height;
 
         that.s3UploaderService.upload({
-          type: 'COLLECTOR_USER_AVATAR',
+          type: 'COLLECTOR_PRODUCT_COVER',
           fileName: file.name,
-          use: 'avatar',
+          use: 'cover',
           width: width,
           height: height
         }).then((data)=> {

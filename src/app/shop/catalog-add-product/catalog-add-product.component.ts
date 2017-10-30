@@ -182,7 +182,7 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.product.description = this.editorContent;
     storeProduct.product.title = productForm.title;
-    storeProduct.product.images = [];
+    storeProduct.product.images = this.previewImgFile;
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice,
       currency: this.storeCurrency
@@ -191,7 +191,6 @@ export class CatalogAddProductComponent implements OnInit {
       amount: productForm.salePrice,
       currency: this.storeCurrency
     };
-    storeProduct.product.isDraft = false;
 
     let tagArr = [];
     for(let value of this.tags) {
@@ -199,11 +198,8 @@ export class CatalogAddProductComponent implements OnInit {
     }
     storeProduct.product.tags = tagArr.join(',');
 
-    console.log(storeProduct);
-    console.log(this.previewImgFile);
-
-    //this.shopService.createProduct(storeProduct).then((data) => {
-    //  console.log(data)
-    //});
+    this.shopService.createProduct(storeProduct).then((data) => {
+      console.log(data)
+    });
   }
 }
