@@ -35,7 +35,13 @@ export class ShopService {
     let array = [];
 
     for (const key in params) {
-      array.push(key + '=' + params[key]);
+      if(Array.isArray(params[key])) {
+        let item = params[key].join(',');
+        array.push(key + '=' + item);
+      } else {
+        array.push(key + '=' + params[key]);
+      }
+
     }
 
     return array.join('&');
@@ -51,6 +57,24 @@ export class ShopService {
     this.createAuthorizationHeader(headers);
 
     const url = `${this.baseUrl.url}store/relation/?${this.serializeParams(product)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getRecommendProductList(product: any): Promise<any> {
+
+    console.log(product)
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    this.createAuthorizationHeader(headers);
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}product/?${this.serializeParams(product)}`;
 
     return this.http.get(url, options)
       .toPromise()

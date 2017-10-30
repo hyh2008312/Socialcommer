@@ -44,8 +44,10 @@ export class FindProductsComponent implements OnInit {
   removable: boolean = true;
 
   constructor(
-    public dialog: MatDialog
-  ) { }
+    private shopService: ShopService
+  ) {
+
+  }
 
   ngOnInit():void {
   }
@@ -64,7 +66,7 @@ export class FindProductsComponent implements OnInit {
     }
 
     this.selectedChips.push({name : event, type: 0});
-
+    this.getProductList();
   }
 
   onCheckedChange(event, type:number) {
@@ -79,6 +81,7 @@ export class FindProductsComponent implements OnInit {
     if(event.checked) {
       this.selectedChips.push({type: type, ...event});
     }
+    this.getProductList();
 
   }
 
@@ -109,7 +112,33 @@ export class FindProductsComponent implements OnInit {
         this.sources[_index1].checked = false;
         break;
     }
+    this.getProductList();
+  }
 
+  getProductList() {
+    console.log(this.selectedChips);
+    let country = [];
+    let categoryId = [];
+    let source = [];
+    for(let value of this.selectedChips) {
+      if(value.type == 0) {
+        country.push(value.name);
+      }
+      if(value.type == 1) {
+        categoryId.push(value.name);
+      }
+      if(value.type == 2) {
+        source.push(value.name);
+      }
+    }
+
+    this.shopService.getRecommendProductList({
+      country,
+      categoryId,
+      source
+    }).then((data) => {
+      console.log(data);
+    })
   }
 
 }

@@ -90,7 +90,7 @@ export class CatalogComponent implements OnInit {
     });
 
     self.shopService.currentListingTab.subscribe((data) => {
-      console.log(data)
+      self.selectedIndex = data;
     });
 
   }
