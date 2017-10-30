@@ -1783,5 +1783,11 @@ textarea.mat-input-element {
   color: #00bdd6;
   font-weight: 500;
   cursor: pointer; }
+@media screen and (max-width: 599px) {
+  .xb-shop__mobile-dialog-inner {
+    padding: 16px; } }
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .xb-shop__mobile-dialog-inner {
+    padding: 16px; } }
 
 /*# sourceMappingURL=shop.css.map */

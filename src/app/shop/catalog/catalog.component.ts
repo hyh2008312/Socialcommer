@@ -15,9 +15,9 @@ export class CatalogComponent implements OnInit {
   storeId: number;
   storeCurrency: string = 'USD';
 
-  productPublished: any = [];
-  productDraft: any = [];
-  productUnpublished: any = [];
+  productPublished: any = false;
+  productDraft: any = false;
+  productUnpublished: any = false;
 
   constructor(
     private shopService: ShopService,
@@ -81,7 +81,6 @@ export class CatalogComponent implements OnInit {
   }
 
   productChange(event) {
-    console.log(event.index)
     switch(event.status) {
       case 0:
         switch(event.event) {

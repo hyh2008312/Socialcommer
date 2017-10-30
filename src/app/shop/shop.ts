@@ -26,6 +26,7 @@ export class Product {
 
 export class StoreProduct{
   id: number;
+  productId: number;
   status: string;
   category: string;
   created: string;

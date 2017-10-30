@@ -199,11 +199,13 @@ export class CatalogEditProductComponent implements OnInit {
     if(!this.productForm.valid) {
       return;
     }
+    let id = parseInt(this.activatedRoute.snapshot.params['id']);
 
     let productForm = this.productForm.value;
 
     let storeProduct = new StoreProduct();
     storeProduct.id = this.relationId;
+    storeProduct.productId = id;
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
     storeProduct.isCustomer = false;
@@ -233,8 +235,51 @@ export class CatalogEditProductComponent implements OnInit {
     }
     storeProduct.product.tags = tagArr.join(',');
 
+    let self = this;
     this.shopService.changeProduct(storeProduct).then((data) => {
+      self.close();
+    });
+  }
 
+  createDraft() {
+    let productForm = this.productForm.value;
+    let id = parseInt(this.activatedRoute.snapshot.params['id']);
+
+    let storeProduct = new StoreProduct();
+    storeProduct.id = this.relationId;
+    storeProduct.productId = id;
+    storeProduct.purchaseUrl = productForm.purchaseUrl;
+    storeProduct.storeId = this.storeId;
+    storeProduct.isCustomer = false;
+    storeProduct.recommendation = productForm.recommendation;
+    storeProduct.isDraft = false;
+
+    let product = new Product();
+
+    storeProduct.product = product;
+    storeProduct.product.description = this.editorContent;
+    storeProduct.product.title = productForm.title;
+    storeProduct.product.images = this.previewImgFile;
+    storeProduct.product.originalPrice = {
+      amount:  productForm.originalPrice,
+      currency: this.storeCurrency
+    };
+    storeProduct.product.salePrice = {
+      amount: productForm.salePrice,
+      currency: this.storeCurrency
+    };
+
+    storeProduct.product.isDraft = true;
+
+    let tagArr = [];
+    for(let value of this.tags) {
+      tagArr.push(value.name);
+    }
+    storeProduct.product.tags = tagArr.join(',');
+
+    let self = this;
+    self.shopService.changeProduct(storeProduct).then((data) => {
+      self.router.navigate(['/shop/listings'], { replaceUrl: true });
     });
   }
 }

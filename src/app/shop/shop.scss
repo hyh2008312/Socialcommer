@@ -415,6 +415,15 @@
       cursor: pointer;
     }
   }
+
+  &__mobile-dialog-inner{
+    @include xb-xs-screen{
+      padding: 16px;
+    }
+    @include xb-sm-screen{
+      padding: 16px;
+    }
+  }
 }
 
 
