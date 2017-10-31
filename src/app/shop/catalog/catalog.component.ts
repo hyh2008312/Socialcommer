@@ -26,6 +26,20 @@ export class CatalogComponent implements OnInit {
   subscription: any;
   subscription1: any;
 
+  // MatPaginator Inputs
+  length:number = 0;
+  pageSize = 12;
+  pageSizeOptions = [3, 6, 12];
+
+  // MatPaginator Output
+  changePage(event) {
+    console.log(event)
+  }
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
+
   constructor(
     private shopService: ShopService,
     private userService: UserService,
@@ -125,7 +139,7 @@ export class CatalogComponent implements OnInit {
       page: 1,
       pageSize: 12
     }).then((data) => {
-
+      self.length = data.count;
       switch (event.index) {
         case 1:
           self.productDraft = data.results;

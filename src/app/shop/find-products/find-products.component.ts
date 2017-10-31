@@ -116,7 +116,6 @@ export class FindProductsComponent implements OnInit {
   }
 
   getProductList() {
-    console.log(this.selectedChips);
     let country = [];
     let categoryId = [];
     let source = [];

@@ -49,7 +49,8 @@ import {
   MatIconModule,
   MatSortModule,
   MatRadioModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatPaginatorModule
 } from '@angular/material';
 
 @NgModule({
@@ -72,7 +73,8 @@ import {
     MatChipsModule,
     MatIconModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule
   ],
   declarations: [
     SafeHtmlPipe,
@@ -131,7 +133,8 @@ import {
     MatIconModule,
     MatSortModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule
   ],
   providers: [
     FollowService,

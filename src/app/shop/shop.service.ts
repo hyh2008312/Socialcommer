@@ -36,12 +36,13 @@ export class ShopService {
 
     for (const key in params) {
       if(Array.isArray(params[key])) {
-        let item = params[key].join(',');
-        array.push(key + '=' + item);
+        if(params[key].length > 0) {
+          let item = params[key].join(',');
+          array.push(key + '=' + item);
+        }
       } else {
         array.push(key + '=' + params[key]);
       }
-
     }
 
     return array.join('&');
