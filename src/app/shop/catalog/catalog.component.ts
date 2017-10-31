@@ -114,13 +114,13 @@ export class CatalogComponent implements OnInit {
     switch (type) {
       case 0:
         this.productPublishedIndex = event.pageIndex + 1;
-        break;
+          break;
       case 1:
         this.productDraftIndex = event.pageIndex + 1;
-        break;
+          break;
       case 2:
         this.productUnpublishedIndex = event.pageIndex + 1;
-        break;
+          break;
     }
     this.changeProducts({index: type});
   }
@@ -141,13 +141,13 @@ export class CatalogComponent implements OnInit {
       case 1:
         relationStatus = 'draft';
         page = this.productDraftIndex;
-            break;
+          break;
       case 2:
         relationStatus = 'unpublished';
         page = this.productUnpublishedIndex;
-            break;
+          break;
       default:
-            break;
+        break;
     }
 
     let self = this;
@@ -155,7 +155,7 @@ export class CatalogComponent implements OnInit {
       storeId: this.storeId,
       relationStatus: relationStatus,
       page: page,
-      page_size: 12
+      page_size: this.pageSize
     }).then((data) => {
       self.length = data.count;
       switch (event.index) {
