@@ -19,8 +19,11 @@ export class CatalogComponent implements OnInit {
   storeCurrency: string = 'USD';
 
   productPublished: any = false;
+  productPublishedIndex = 1;
   productDraft: any = false;
+  productDraftIndex = 1;
   productUnpublished: any = false;
+  productUnpublishedIndex = 1;
 
   selectedIndex: number = 0;
   subscription: any;
@@ -30,15 +33,6 @@ export class CatalogComponent implements OnInit {
   length:number = 0;
   pageSize = 12;
   pageSizeOptions = [3, 6, 12];
-
-  // MatPaginator Output
-  changePage(event) {
-    console.log(event)
-  }
-
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  }
 
   constructor(
     private shopService: ShopService,
@@ -114,6 +108,28 @@ export class CatalogComponent implements OnInit {
     this.subscription1.unsubscribe();
   }
 
+  // MatPaginator Output
+  changePage(event, type) {
+    console.log(event)
+    this.pageSize = event.pageSize;
+    switch (type) {
+      case 0:
+        this.productPublishedIndex = event.pageIndex + 1;
+        break;
+      case 1:
+        this.productDraftIndex = event.pageIndex + 1;
+        break;
+      case 2:
+        this.productUnpublishedIndex = event.pageIndex + 1;
+        break;
+    }
+    this.changeProducts({index: type});
+  }
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
+
   openToggle() {
     this.showToggles = !this.showToggles;
   }
@@ -121,12 +137,15 @@ export class CatalogComponent implements OnInit {
   changeProducts(event) {
     let relationStatus = 'published';
     this.shopService.setCurrentListingTab(event.index);
+    let page = this.productPublishedIndex;
     switch (event.index) {
       case 1:
         relationStatus = 'draft';
+        page = this.productDraftIndex;
             break;
       case 2:
         relationStatus = 'unpublished';
+        page = this.productUnpublishedIndex;
             break;
       default:
             break;
@@ -136,7 +155,7 @@ export class CatalogComponent implements OnInit {
     self.shopService.getProductList({
       storeId: this.storeId,
       relationStatus: relationStatus,
-      page: 1,
+      page: page,
       pageSize: 12
     }).then((data) => {
       self.length = data.count;

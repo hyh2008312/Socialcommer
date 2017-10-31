@@ -22,7 +22,8 @@
         <mat-paginator [length]="length"
                        [pageSize]="pageSize"
                        [pageSizeOptions]="pageSizeOptions"
-                       (page)="changePage($event)">
+                       (page)="changePage($event, 0)"
+                       *ngIf="productPublished && productPublished.length > 0">
         </mat-paginator>
         <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
              *ngIf="productPublished && productPublished.length <= 0">
@@ -38,6 +39,12 @@
         <div class="xb-shop__product-list" *ngFor="let item of productDraft;let i = index;">
           <app-product-item [status]="1" [index]="i" [product]="item"></app-product-item>
         </div>
+        <mat-paginator [length]="length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="changePage($event, 1)"
+                       *ngIf="productDraft && productDraft.length > 0">
+        </mat-paginator>
         <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
              *ngIf="productDraft && productDraft.length <= 0">
           <div fxLayout="column" fxLayoutAlign="center center">
@@ -52,6 +59,12 @@
         <div class="xb-shop__product-list" *ngFor="let item of productUnpublished;let i = index;" >
           <app-product-item [status]="2" [product]="item" [index]="i" (productChange)="productChange($event)"></app-product-item>
         </div>
+        <mat-paginator [length]="length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="changePage($event, 2)"
+                       *ngIf="productUnpublished && productUnpublished.length > 0">
+        </mat-paginator>
         <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
              *ngIf="productUnpublished && productUnpublished.length <= 0">
           <div fxLayout="column" fxLayoutAlign="center center">

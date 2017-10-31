@@ -220,6 +220,7 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.isCustomer = false;
     storeProduct.recommendation = productForm.recommendation;
     storeProduct.isDraft = false;
+    storeProduct.status = 'on';
 
     let product = new Product();
 
@@ -262,7 +263,6 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.isCustomer = false;
     storeProduct.recommendation = productForm.recommendation;
     storeProduct.isDraft = true;
-    storeProduct.status = 'off';
 
     let product = new Product();
 
@@ -309,7 +309,6 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.isCustomer = false;
     storeProduct.recommendation = productForm.recommendation;
     storeProduct.isDraft = false;
-    storeProduct.status = 'off';
 
     let product = new Product();
 
