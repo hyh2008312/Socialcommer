@@ -110,7 +110,6 @@ export class CatalogComponent implements OnInit {
 
   // MatPaginator Output
   changePage(event, type) {
-    console.log(event)
     this.pageSize = event.pageSize;
     switch (type) {
       case 0:
@@ -156,7 +155,7 @@ export class CatalogComponent implements OnInit {
       storeId: this.storeId,
       relationStatus: relationStatus,
       page: page,
-      pageSize: 12
+      page_size: 12
     }).then((data) => {
       self.length = data.count;
       switch (event.index) {
