@@ -67,14 +67,11 @@ export class CatalogAddProductComponent implements OnInit {
       salePrice: ['', [
         Validators.required
       ]],
-      originalPrice: ['', [
-        Validators.required
-      ]],
+      originalPrice: [''],
       purchaseUrl: ['', [
         Validators.required
       ]],
       recommendation: ['', [
-        Validators.required,
         Validators.maxLength(1000)
       ]]
     });
@@ -87,7 +84,6 @@ export class CatalogAddProductComponent implements OnInit {
     'title': '',
     'tags': '',
     'salePrice':'',
-    'originalPrice': '',
     'purchaseUrl': '',
     'recommendation': ''
   };
@@ -102,14 +98,10 @@ export class CatalogAddProductComponent implements OnInit {
     'salePrice':{
       'required': 'Sale price is required.'
     },
-    'originalPrice':{
-      'required': 'Original price is required.'
-    },
     'purchaseUrl': {
       'required': 'Purchase url price is required.'
     },
     'recommendation':{
-      'required': 'Recommendation is required.',
       'maxlength' : 'Recommendation contain 1000 characters at most.'
     }
   };
@@ -188,7 +180,7 @@ export class CatalogAddProductComponent implements OnInit {
     let storeProduct = new StoreProduct();
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
-    storeProduct.isCustomer = false;
+    storeProduct.isCustomer = true;
     storeProduct.recommendation = productForm.recommendation;
     storeProduct.isDraft = false;
     storeProduct.status = "on";
@@ -227,7 +219,7 @@ export class CatalogAddProductComponent implements OnInit {
     let storeProduct = new StoreProduct();
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
-    storeProduct.isCustomer = false;
+    storeProduct.isCustomer = true;
     storeProduct.recommendation = productForm.recommendation;
     storeProduct.isDraft = true;
     storeProduct.status = 'off';

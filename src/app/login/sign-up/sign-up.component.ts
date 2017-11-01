@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
 import { AuthenticationService } from  '../../shared/services/authentication/authentication.service';
+import { UserService } from '../../shared/services/user/user.service';
 
 import { Subject } from "rxjs/Subject";
 
@@ -79,7 +80,8 @@ export class SignUpComponent {
     private fb: FormBuilder,
     private constant: ConstantService,
     private auth: AuthenticationService,
-    private routerInfo :ActivatedRoute
+    private routerInfo :ActivatedRoute,
+    private userService: UserService
   ) {
     this.signUpGroup = this.fb.group({
       firstName: ['', Validators.required],
@@ -192,8 +194,12 @@ export class SignUpComponent {
     let self = this;
 
     self.service.createStore(this.storeForm.value).then((data)=>{
-      self.step = 2;
-      this.router.navigateByUrl('shop/store');
+      self.userService.getUser().then((data) => {
+        self.userService.addUser(data);
+        self.userService.addStore(data.store[0]);
+        self.step = 2;
+        this.router.navigateByUrl('shop/store');
+      });
     }).catch((data) => {
       self.storeErr = data;
     });

@@ -22,9 +22,6 @@
         <div class="xb-store__details-buttons" fxLayout="column">
           <button mat-raised-button color="primary" (click)="addEdit()">Add To Store</button>
         </div>
-        <div class="md-margin-top-2">
-          <app-share-button [link]="shareLink" [text]="product.recommendation"></app-share-button>
-        </div>
       </div>
     </div>
     <div class="xb-store__details-description" *ngIf="product.description">

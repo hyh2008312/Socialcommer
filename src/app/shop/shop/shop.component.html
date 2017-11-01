@@ -3,12 +3,13 @@
     <span fxLayout="row" fxLayoutAlign="start center"> <img src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png" width="120"></span>
     <a class="md-margin-left-2 md-dark-primary" >
       <button mat-button >
-        <a class="md-dark-primary" routerLink="/store" target="_blank">View Storefront</a>
+        <a class="md-dark-primary" routerLink="/store/{{storeName}}" target="_blank">View Storefront</a>
       </button>
     </a>
   </div>
   <a fxLayout="row" fxLayoutAlign="start center" routerLink="./settings">
-    <i class="iconfontXberts icon-ic-user xb-shop__icons md-dark-secondary"></i>
+    <i *ngIf="!avatar" class="iconfontXberts icon-ic-user xb-shop__icons md-dark-secondary"></i>
+    <img *ngIf="avatar" class="xb-shop__avatar" [src]="avatar" />
   </a>
 </mat-toolbar>
 <div appViewResize [margin]="56" fxLayout="column">

@@ -6,17 +6,20 @@ import { StoreListComponent } from './store-list/store-list.component';
 import { StoreListDetailComponent } from './store-detail/store-list-detail.component';
 import { StoreDetailComponent } from './store-detail/store-detail.component';
 
-const routes: Routes = [
-  {
+const routes: Routes = [{
+  path: ':name', component: MainPageComponent,
+  children: [{
     path: 'list', component: StoreListComponent,
     children: [{
       path: ':id', component: StoreListDetailComponent
     }]
-  }, {
-    path: '', component: MainPageComponent,
-    children: [{
-      path: ':id', component: StoreDetailComponent
-    }]
+  },{
+    path: ':id', component: StoreDetailComponent
+  }]
+}, {
+  path: '',
+  redirectTo: '/',
+  pathMatch: 'full'
 }];
 
 @NgModule({

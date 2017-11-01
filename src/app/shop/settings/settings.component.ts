@@ -47,9 +47,7 @@ export class SettingsComponent implements OnInit {
       country: ['', [
         Validators.required
       ]],
-      biography: ['', [
-        Validators.required
-      ]]
+      biography: ['']
     });
 
     this.settingForm = this.fb.group({
@@ -107,7 +105,6 @@ export class SettingsComponent implements OnInit {
     'firstName': '',
     'lastName': '',
     'country': '',
-    'biography': '',
     'currentPassword': '',
     'password': '',
     'confirmPassword': '',
@@ -123,9 +120,6 @@ export class SettingsComponent implements OnInit {
     },
     'country': {
       'required': 'Country is required.'
-    },
-    'biography': {
-      'required': 'Biography is required.'
     },
     'currentPassword': {
       'required': 'CurrentPassword is required.',

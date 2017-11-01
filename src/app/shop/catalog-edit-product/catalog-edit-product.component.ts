@@ -39,7 +39,7 @@ export class CatalogEditProductComponent implements OnInit {
 
   // Enter, comma
   separatorKeysCodes = [ENTER, 188];
-  tags = [];
+  tags: any[] = [];
 
   storeId: number;
   storeCurrency: string = 'USD';
@@ -68,7 +68,6 @@ export class CatalogEditProductComponent implements OnInit {
         Validators.required
       ]],
       recommendation: ['', [
-        Validators.required,
         Validators.maxLength(1000)
       ]]
     });
@@ -79,7 +78,6 @@ export class CatalogEditProductComponent implements OnInit {
   //存储错误信息
   formErrors = {
     'title': '',
-    'tags': '',
     'salePrice':'',
     'originalPrice': '',
     'purchaseUrl': '',
@@ -89,9 +87,6 @@ export class CatalogEditProductComponent implements OnInit {
   validationMessages = {
     'title': {
       'required': 'Title is required.'
-    },
-    'tags': {
-      'required': 'Tag is required.'
     },
     'salePrice':{
       'required': 'Sale price is required.'
@@ -103,7 +98,6 @@ export class CatalogEditProductComponent implements OnInit {
       'required': 'Purchase url price is required.'
     },
     'recommendation':{
-      'required': 'Recommendation is required.',
       'maxlength' : 'Recommendation contain 1000 characters at most.'
     }
   };
@@ -234,7 +228,7 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.productId = this.productId;
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
-    storeProduct.isCustomer = false;
+    storeProduct.isCustomer = true;
     storeProduct.recommendation = productForm.recommendation;
     storeProduct.isDraft = false;
     storeProduct.status = 'on';
@@ -277,7 +271,7 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.productId = this.productId;
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
-    storeProduct.isCustomer = false;
+    storeProduct.isCustomer = true;
     storeProduct.recommendation = productForm.recommendation;
     storeProduct.isDraft = true;
 
@@ -372,7 +366,7 @@ export class CatalogEditProductComponent implements OnInit {
         let height = image.height;
 
         that.s3UploaderService.upload({
-          type: 'COLLECTOR_PRODUCT_DETAILS',
+          type: 'COLLECTOR_PRODUCT_DET',
           fileName: file.name,
           use: 'detail',
           width: width,

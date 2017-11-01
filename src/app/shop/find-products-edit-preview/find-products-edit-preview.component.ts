@@ -61,9 +61,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       purchaseUrl: ['', [
         Validators.required
       ]],
-      recommendation: ['', [
-        Validators.required
-      ]]
+      recommendation: ['']
     });
   }
 
@@ -74,8 +72,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
       self.productForm.setValue({
         title: data.title,
-        purchaseUrl: data.purchaseUrl,
-        recommendation: data.recommendation
+        purchaseUrl: '',
+        recommendation: ''
       });
 
       self.editorContent = data.description;
@@ -110,7 +108,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
   //存储错误信息
   formErrors = {
     'title': '',
-    'tags': '',
     'purchaseUrl': '',
     'recommendation': ''
   };
@@ -118,9 +115,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
   validationMessages = {
     'title': {
       'required': 'Title is required.'
-    },
-    'tags': {
-      'required': 'Tag is required.'
     },
     'purchaseUrl': {
       'required': 'Purchase url price is required.'

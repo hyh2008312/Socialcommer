@@ -3403,10 +3403,12 @@ textarea.mat-input-element {
           line-height: 24px; } }
     .xb-store__details-margin-right {
       width: 580px;
+      height: 480px;
       margin-right: 32px; }
       @media screen and (max-width: 599px) {
         .xb-store__details-margin-right {
-          width: 416px;
+          width: auto;
+          height: auto;
           margin-right: 16px;
           margin-left: 16px;
           margin-top: 16px;
@@ -3416,7 +3418,8 @@ textarea.mat-input-element {
           box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); } }
       @media screen and (min-width: 600px) and (max-width: 959px) {
         .xb-store__details-margin-right {
-          width: auto;
+          width: 416px;
+          height: 320px;
           margin-right: 16px;
           margin-left: 16px;
           margin-top: 16px; } }

@@ -100,7 +100,13 @@ export class LoginService {
     if (error instanceof Response) {
       const body = error.json() || '';
       const err = body.error || body;
-      errMsg = `${err.detail}`;
+      if(err.detail) {
+        errMsg = `${err.detail}`;
+      } else {
+        if(err.error) {
+          errMsg = "Sorry! Server is busy now!";
+        }
+      }
     } else {
       errMsg = error.msg ? error.msg : error.toString();
     }

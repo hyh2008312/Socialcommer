@@ -47,9 +47,6 @@
         <mat-form-field class="xb-shop__width-100">
           <textarea matInput formControlName="biography"></textarea>
         </mat-form-field>
-        <div *ngIf="formErrors['biography']" class="xb-input-error">
-          {{ formErrors['biography'] }}
-        </div>
       </form>
       <div class="md-dark-secondary">
         Profile Picture
@@ -59,9 +56,6 @@
       </div>
       <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
         <button mat-raised-button color="primary" (click)="changeUserProfile()">SAVE CHANGE</button>
-        <div class="xb-shop__margin-left">
-          <button mat-button color="primary">CANCEL</button>
-        </div>
       </div>
     </div>
   </mat-tab>
@@ -80,9 +74,6 @@
       </form>
       <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
         <button mat-raised-button color="primary" click="changeEmail()">SAVE CHANGE</button>
-        <div class="xb-shop__margin-left">
-          <button mat-button color="primary">CANCEL</button>
-        </div>
       </div>
     </div>
   </mat-tab>
@@ -128,9 +119,6 @@
       <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
         <button mat-raised-button color="primary"
                 (click)="changePassword()">SAVE CHANGE</button>
-        <div class="xb-shop__margin-left">
-          <button mat-button color="primary">CANCEL</button>
-        </div>
       </div>
     </div>
   </mat-tab>

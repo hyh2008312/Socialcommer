@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { StoreService } from '../store.service';
+
+import { Store, Owner } from '../store';
 
 @Component({
   selector: 'app-main-page',
@@ -18,10 +20,20 @@ export class MainPageComponent implements OnInit {
   + 'that make you an expert in your field? Show your customers that there are read people with instersting stories working'
   + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
 
-  constructor(
-    private router: Router
-  ) {
+  store: Store = new Store();
+  owner: Owner = new Owner();
 
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private storeService: StoreService
+  ) {
+    let storeName = this.activatedRoute.snapshot.params['name'];
+    let self = this;
+    this.storeService.getStore(storeName).then((data) => {
+      self.store = data;
+      self.owner = data.owner;
+    });
   }
 
   ngOnInit():void {

@@ -11,7 +11,6 @@ import { RecommendProduct, Image } from '../shop';
 
 export class FindProductsAddProductComponent implements OnInit {
 
-  public shareLink: string;
   product: RecommendProduct = new RecommendProduct();
   image: any;
   selectedImage: Image = new Image();
@@ -26,7 +25,6 @@ export class FindProductsAddProductComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.shareLink = window.location.href;
 
     let id = this.activatedRoute.snapshot.params['id'];
 

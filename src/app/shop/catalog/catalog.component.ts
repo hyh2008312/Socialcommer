@@ -32,7 +32,7 @@ export class CatalogComponent implements OnInit {
   // MatPaginator Inputs
   length:number = 0;
   pageSize = 12;
-  pageSizeOptions = [3, 6, 12];
+  pageSizeOptions = [6, 12];
 
   constructor(
     private shopService: ShopService,
