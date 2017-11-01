@@ -35,6 +35,7 @@ export class Product {
   status: string;
   created: string;
   tags: string;
+  category: string;
   owner: any;
   salePrice: any = 0;
   originalPrice: any = 0;

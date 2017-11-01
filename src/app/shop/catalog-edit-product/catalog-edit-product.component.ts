@@ -115,7 +115,7 @@ export class CatalogEditProductComponent implements OnInit {
           let id = self.activatedRoute.snapshot.params['id'];
           self.shopService.getProduct(id).then((data) => {
 
-            let tagArr = data.tags.split(',');
+            let tagArr = data.category.split(',');
             for(let value of tagArr) {
 
               self.tags.push({
@@ -140,7 +140,7 @@ export class CatalogEditProductComponent implements OnInit {
             self.productId = data.productId;
 
             self.editorContent = data.description;
-          })
+          });
 
         }
       }
@@ -255,7 +255,7 @@ export class CatalogEditProductComponent implements OnInit {
     for(let value of this.tags) {
       tagArr.push(value.name);
     }
-    storeProduct.product.tags = tagArr.join(',');
+    storeProduct.product.category = tagArr.join(',');
 
     let self = this;
     this.shopService.changeProduct(storeProduct).then((data) => {
@@ -297,7 +297,7 @@ export class CatalogEditProductComponent implements OnInit {
     for(let value of this.tags) {
       tagArr.push(value.name);
     }
-    storeProduct.product.tags = tagArr.join(',');
+    storeProduct.product.category = tagArr.join(',');
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {
@@ -343,7 +343,7 @@ export class CatalogEditProductComponent implements OnInit {
     for(let value of this.tags) {
       tagArr.push(value.name);
     }
-    storeProduct.product.tags = tagArr.join(',');
+    storeProduct.product.category = tagArr.join(',');
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {

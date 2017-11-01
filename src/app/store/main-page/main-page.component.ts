@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StoreService } from '../store.service';
 
-import { Store, Owner } from '../store';
+import { Store } from '../store';
 
 @Component({
   selector: 'app-main-page',
@@ -12,8 +12,11 @@ import { Store, Owner } from '../store';
 
 export class MainPageComponent implements OnInit {
 
-  public categories = ['All','Electronics','Home','Kitchen'];
-  public category = 'All';
+  public categories:any = [];
+  public category: any = {
+    id: null,
+    name : ''
+  };
   public shareLink: string;
   public text = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.'
   + 'Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training'
@@ -21,7 +24,6 @@ export class MainPageComponent implements OnInit {
   + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
 
   store: Store = new Store();
-  owner: Owner = new Owner();
 
   constructor(
     private router: Router,
@@ -32,7 +34,8 @@ export class MainPageComponent implements OnInit {
     let self = this;
     this.storeService.getStore(storeName).then((data) => {
       self.store = data;
-      self.owner = data.owner;
+      self.categories = [...data.category];
+      self.category = self.categories[0];
     });
   }
 
@@ -41,7 +44,8 @@ export class MainPageComponent implements OnInit {
   }
 
   jumpList():void {
-    this.router.navigate(['store/list']);
+    let storeName = this.activatedRoute.snapshot.params['name'];
+    this.router.navigate([`store/${storeName}/list`]);
   }
 
 }

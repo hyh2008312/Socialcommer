@@ -7,8 +7,7 @@
       {{store.name}}
     </div>
     <div class="xb-store__store-description">
-      This is your starter site, a single page online storefront. All of the images and text on this page can be
-      changed to personalize the site for brand and to communicate your unique story to your customers.
+      {{store.description}}
     </div>
     <div class="xb-store__store-buttons" fxShow="false" fxShow.gt-xs="true">
       <span>Shop Now</span>
@@ -35,20 +34,17 @@
       <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
         <div class="xb-store__content-left" fxFlex="none">
           <div class="xb-store__header">
-            <img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">
+            <img [src]="store.ownerAvatar">
           </div>
-          <div class="md-subhead md-margin-top-2">{{owner.firstName}}</div>
-          <div class="md-margin-top-1">{{owner.country}}</div>
+          <div class="md-subhead md-margin-top-2">{{store.ownerFirstName}}</div>
+          <div class="md-margin-top-1">{{store.ownerCountry}}</div>
         </div>
         <div class="xb-store__content-right">
           <div class="xb-store__icons md-dark-third" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota"></i>
           </div>
           <div class="md-margin-top-2 xb-store__content-text">
-            Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.
-            Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training
-            that make you an expert in your field? Show your customers that there are read people with instersting stories working
-            behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.
+            {{store.ownerBiography}}
           </div>
           <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota-2"></i>

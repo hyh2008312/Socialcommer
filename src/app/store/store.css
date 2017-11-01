@@ -3076,11 +3076,17 @@ textarea.mat-input-element {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 16px; }
+    font-size: 16px;
+    line-height: 24px;
+    max-height: 72px;
+    overflow: hidden; }
     @media screen and (max-width: 599px) {
       .xb-store__store-description {
         margin-top: 16px;
-        font-size: 14px; } }
+        font-size: 14px;
+        line-height: 20px;
+        max-height: 72px;
+        overflow: hidden; } }
   .xb-store__store-buttons {
     position: absolute;
     font-size: 16px;
@@ -3455,7 +3461,8 @@ textarea.mat-input-element {
     @media screen and (max-width: 599px) {
       .xb-store__details-content {
         padding: 0 16px;
-        margin-top: 16px; } }
+        margin-top: 16px;
+        width: 100%; } }
     @media screen and (min-width: 600px) and (max-width: 959px) {
       .xb-store__details-content {
         padding: 0 16px 0 0;

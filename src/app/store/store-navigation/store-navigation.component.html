@@ -1,8 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center">
   <div class="xb-store__navigation" *ngFor="let item of categories;let i = index;" (click)="changeCategory(item)"
-       [ngClass]="{'active': item == category, 'xb-store__margin-right': i < categories.length - 1}">
-    <div>{{index}}</div>
-    <span>{{ item }}</span>
+       [ngClass]="{'active': item.name == category.name, 'xb-store__margin-right': i < categories.length - 1}">
+    <span>{{ item.name }}</span>
   </div>
 </div>
 

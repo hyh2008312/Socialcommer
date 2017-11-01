@@ -1,16 +1,15 @@
 export class Store {
   id : number;
   name : string;
-  details : string;
   description: string;
   cover: string;
-  owner: Owner;
+  ownerAvatar: string;
+  ownerCountry: string;
+  ownerFirstName: string;
+  ownerLastName: string;
+  ownerBiography: string;
+  category: any;
+
+  displayName: string;
 }
 
-export class Owner{
-  avatar: string;
-  firstName: string;
-  id: number;
-  lastName: string;
-  country: string;
-}

@@ -79,7 +79,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       self.editorContent = data.description;
 
       self.product.title = data.title;
-      self.product.tags = data.tags;
+      self.product.tags = data.category;
 
       let tagArr = data.tags.split(',');
       for(let value of tagArr) {
@@ -267,7 +267,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       images : [...images],
-      tags : tagArr.join(',')
+      category : tagArr.join(',')
     };
 
     let self = this;
@@ -300,7 +300,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       images : [...images],
-      tags : tagArr.join(',')
+      category : tagArr.join(',')
     };
 
     let self = this;

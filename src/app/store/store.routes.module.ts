@@ -14,7 +14,7 @@ const routes: Routes = [{
       path: ':id', component: StoreListDetailComponent
     }]
   },{
-    path: ':id', component: StoreDetailComponent
+    path: 'detail/:id', component: StoreDetailComponent
   }]
 }, {
   path: '',

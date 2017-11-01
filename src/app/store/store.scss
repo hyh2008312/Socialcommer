@@ -60,10 +60,16 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 16px;
+    line-height: 24px;
+    max-height: 72px;
+    overflow: hidden;
 
     @include xb-xs-screen{
       margin-top: 16px;
       font-size: 14px;
+      line-height: 20px;
+      max-height: 60px;
+      overflow: hidden;
     }
   }
 

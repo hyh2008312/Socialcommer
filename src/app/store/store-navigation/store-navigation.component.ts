@@ -8,8 +8,11 @@ import { Input, Output, Component, OnInit, EventEmitter} from '@angular/core';
 
 export class StoreNavigationComponent implements OnInit {
 
-  @Input() category : string;
-  @Input() categories = [];
+  @Input() category : any = {
+    id: null,
+    name: ''
+  };
+  @Input() categories: any[] = [];
 
   @Output() categoryChange = new EventEmitter<string>();
 
@@ -21,7 +24,7 @@ export class StoreNavigationComponent implements OnInit {
 
   }
 
-  changeCategory(category: string) {
+  changeCategory(category: any) {
     this.category = category;
     this.categoryChange.emit(this.category);
   }

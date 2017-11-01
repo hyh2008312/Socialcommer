@@ -205,7 +205,7 @@ export class CatalogAddProductComponent implements OnInit {
     for(let value of this.tags) {
       tagArr.push(value.name);
     }
-    storeProduct.product.tags = tagArr.join(',');
+    storeProduct.product.category = tagArr.join(',');
 
     this.shopService.createProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings'], { queryParams: {tab: 'published'}, replaceUrl: true});
@@ -244,7 +244,7 @@ export class CatalogAddProductComponent implements OnInit {
     for(let value of this.tags) {
       tagArr.push(value.name);
     }
-    storeProduct.product.tags = tagArr.join(',');
+    storeProduct.product.category = tagArr.join(',');
 
     this.shopService.createProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});
