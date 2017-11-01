@@ -42,8 +42,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   // Reset product
   productCopy: any;
-
   storeId: number;
+  category: any;
 
   constructor(
     public router: Router,
@@ -79,15 +79,12 @@ export class FindProductsEditPreviewComponent implements OnInit {
       self.editorContent = data.description;
 
       self.product.title = data.title;
-      self.product.tags = data.category;
+      self.product.tags = data.categoryName;
 
-      let tagArr = data.tags.split(',');
-      for(let value of tagArr) {
-
-        self.tags.push({
-          name: value
-        });
-      }
+      self.tags.push({
+        id: data.categoryId,
+        name: data.categoryName
+      });
 
       if(data.imageUrl.length > 0) {
         for(let value of data.imageUrl) {
@@ -101,6 +98,12 @@ export class FindProductsEditPreviewComponent implements OnInit {
     self.userService.store.subscribe((data) => {
       if(data) {
         self.storeId = data.id;
+      }
+    });
+
+    self.userService.category.subscribe((data) => {
+      if(data) {
+        self.category = data;
       }
     });
   }
@@ -140,11 +143,31 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   add(event: MatChipInputEvent): void {
     let input = event.input;
-    let value = event.value;
+    let _value = event.value;
+    let self = this;
 
     // Add our person
-    if ((value || '').trim()) {
-      this.tags.push({ name: value.trim() });
+    if ((_value || '').trim()) {
+      let isRepeat = false;
+
+      for(let value of self.category) {
+        if(value.name == _value) {
+          isRepeat = true;
+          this.tags.push({ id:value.id, name: _value.trim() });
+          break;
+        }
+      }
+
+      if(!isRepeat) {
+        self.shopService.createCategory({
+          categoryName: _value
+        }).then((data) => {
+          if(data) {
+            self.category.unshift(data);
+            self.tags.push({ id:data.id, name: _value.trim() });
+          }
+        });
+      }
     }
 
     // Reset the input value
@@ -187,13 +210,11 @@ export class FindProductsEditPreviewComponent implements OnInit {
   }
 
   resetCategory() {
-    let tagArr = this.productCopy.tags.split(',');
     this.tags = [];
-    for(let value of tagArr) {
-      this.tags.push({
-        name: value
-      });
-    }
+    this.tags.push({
+      id: this.productCopy.categoryId,
+      name: this.productCopy.categoryName
+    });
   }
 
   showDescription() {
@@ -245,11 +266,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
     }
 
     let productForm = this.productForm.value;
-
-    let tagArr = [];
-    for(let value of this.tags) {
-      tagArr.push(value.name);
-    }
     let images = [];
     for(let value of this.productCopy.imageUrl) {
       images.push(value.id);
@@ -267,7 +283,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       images : [...images],
-      category : tagArr.join(',')
+      categoryId : this.tags[0].id
     };
 
     let self = this;
@@ -279,10 +295,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
   createDraft() {
     let productForm = this.productForm.value;
 
-    let tagArr = [];
-    for(let value of this.tags) {
-      tagArr.push(value.name);
-    }
     let images = [];
     for(let value of this.productCopy.imageUrl) {
       images.push(value.id);
@@ -300,7 +312,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       images : [...images],
-      category : tagArr.join(',')
+      categoryId : this.tags[0].id
     };
 
     let self = this;

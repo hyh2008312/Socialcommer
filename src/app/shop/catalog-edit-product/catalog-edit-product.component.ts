@@ -43,6 +43,7 @@ export class CatalogEditProductComponent implements OnInit {
 
   storeId: number;
   storeCurrency: string = 'USD';
+  category: any;
 
   constructor(
     public router: Router,
@@ -115,13 +116,10 @@ export class CatalogEditProductComponent implements OnInit {
           let id = self.activatedRoute.snapshot.params['id'];
           self.shopService.getProduct(id).then((data) => {
 
-            let tagArr = data.category.split(',');
-            for(let value of tagArr) {
-
-              self.tags.push({
-                name: value
-              });
-            }
+            self.tags.push({
+              id: data.categoryId,
+              name: data.categoryName
+            });
             self.productForm.setValue({
               title: data.title,
               salePrice: data.salePriceAmount,
@@ -148,6 +146,12 @@ export class CatalogEditProductComponent implements OnInit {
 
     self.activatedRoute.queryParams.subscribe((data) => {
       self.tab = data.tab;
+    });
+
+    self.userService.category.subscribe((data) => {
+      if(data) {
+        self.category = data;
+      }
     });
   }
 
@@ -191,11 +195,31 @@ export class CatalogEditProductComponent implements OnInit {
 
   add(event: MatChipInputEvent): void {
     let input = event.input;
-    let value = event.value;
+    let _value = event.value;
+    let self = this;
 
     // Add our person
-    if ((value || '').trim()) {
-      this.tags.push({ name: value.trim() });
+    if ((_value || '').trim()) {
+      let isRepeat = false;
+
+      for(let value of self.category) {
+        if(value.name == _value) {
+          isRepeat = true;
+          this.tags.push({ id:value.id, name: _value.trim() });
+          break;
+        }
+      }
+
+      if(!isRepeat) {
+        self.shopService.createCategory({
+          categoryName: _value
+        }).then((data) => {
+          if(data) {
+            self.category.unshift(data);
+            self.tags.push({ id:data.id, name: _value.trim() });
+          }
+        });
+      }
     }
 
     // Reset the input value
@@ -250,12 +274,7 @@ export class CatalogEditProductComponent implements OnInit {
     };
 
     storeProduct.product.isDraft = false;
-
-    let tagArr = [];
-    for(let value of this.tags) {
-      tagArr.push(value.name);
-    }
-    storeProduct.product.category = tagArr.join(',');
+    storeProduct.categoryId = this.tags[0].id;
 
     let self = this;
     this.shopService.changeProduct(storeProduct).then((data) => {
@@ -297,7 +316,7 @@ export class CatalogEditProductComponent implements OnInit {
     for(let value of this.tags) {
       tagArr.push(value.name);
     }
-    storeProduct.product.category = tagArr.join(',');
+    storeProduct.categoryName = tagArr.join(',');
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {
@@ -343,7 +362,7 @@ export class CatalogEditProductComponent implements OnInit {
     for(let value of this.tags) {
       tagArr.push(value.name);
     }
-    storeProduct.product.category = tagArr.join(',');
+    storeProduct.categoryName = tagArr.join(',');
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {

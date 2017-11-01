@@ -35,7 +35,8 @@ export class Product {
   status: string;
   created: string;
   tags: string;
-  category: string;
+  categoryId: number;
+  categoryName: string;
   owner: any;
   salePrice: any = 0;
   originalPrice: any = 0;
@@ -47,7 +48,8 @@ export class StoreProduct{
   id: number;
   productId: number;
   status: string;
-  category: string;
+  categoryId: number;
+  categoryName: string;
   created: string;
   name: string;
   title: string;

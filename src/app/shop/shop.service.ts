@@ -48,6 +48,40 @@ export class ShopService {
     return array.join('&');
   }
 
+  getCategoryList(): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}category/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  createCategory(category: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}category/`;
+
+    return this.http.post(url, category, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   getProductList(product: any): Promise<any> {
 
     let headers = new Headers({

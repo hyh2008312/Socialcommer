@@ -15,7 +15,8 @@ export class ShopComponent implements OnInit {
   storeName: any = false;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private shopService: ShopService
   ) { }
 
   ngOnInit():void {
@@ -27,6 +28,11 @@ export class ShopComponent implements OnInit {
           self.storeName = data.store[0].displayName;
         }
       }
+    });
+
+
+    self.shopService.getCategoryList().then((data) => {
+      self.userService.addCategory(data);
     });
   }
 

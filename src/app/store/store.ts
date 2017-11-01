@@ -13,3 +13,7 @@ export class Store {
   displayName: string;
 }
 
+export class Product{
+
+}
+

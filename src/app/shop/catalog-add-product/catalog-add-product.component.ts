@@ -39,6 +39,7 @@ export class CatalogAddProductComponent implements OnInit {
 
   storeId: number;
   storeCurrency: string = 'USD';
+  category: any;
 
   ngOnInit() {
     let self = this;
@@ -46,6 +47,12 @@ export class CatalogAddProductComponent implements OnInit {
       if(data) {
         self.storeId = data.id;
         self.storeCurrency = data.currency;
+      }
+    });
+
+    self.userService.category.subscribe((data) => {
+      if(data) {
+        self.category = data;
       }
     });
   }
@@ -133,11 +140,31 @@ export class CatalogAddProductComponent implements OnInit {
 
   add(event: MatChipInputEvent): void {
     let input = event.input;
-    let value = event.value;
+    let _value = event.value;
+    let self = this;
 
     // Add our person
-    if ((value || '').trim()) {
-      this.tags.push({ name: value.trim() });
+    if ((_value || '').trim()) {
+      let isRepeat = false;
+
+      for(let value of self.category) {
+        if(value.name == _value) {
+          isRepeat = true;
+          this.tags.push({ id:value.id, name: _value.trim() });
+          break;
+        }
+      }
+
+      if(!isRepeat) {
+        self.shopService.createCategory({
+          categoryName: _value
+        }).then((data) => {
+          if(data) {
+            self.category.unshift(data);
+            self.tags.push({ id:data.id, name: _value.trim() });
+          }
+        });
+      }
     }
 
     // Reset the input value
@@ -200,12 +227,7 @@ export class CatalogAddProductComponent implements OnInit {
       currency: this.storeCurrency
     };
     storeProduct.product.isDraft = false;
-
-    let tagArr = [];
-    for(let value of this.tags) {
-      tagArr.push(value.name);
-    }
-    storeProduct.product.category = tagArr.join(',');
+    storeProduct.categoryId = this.tags[0].id;
 
     this.shopService.createProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings'], { queryParams: {tab: 'published'}, replaceUrl: true});
@@ -240,11 +262,7 @@ export class CatalogAddProductComponent implements OnInit {
     };
     storeProduct.product.isDraft = true;
 
-    let tagArr = [];
-    for(let value of this.tags) {
-      tagArr.push(value.name);
-    }
-    storeProduct.product.category = tagArr.join(',');
+    storeProduct.categoryId = this.tags[0].id;
 
     this.shopService.createProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StoreService } from '../store.service';
 
-import { Store } from '../store';
+import { Store, Product } from '../store';
 
 @Component({
   selector: 'app-main-page',
@@ -24,6 +24,8 @@ export class MainPageComponent implements OnInit {
   + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
 
   store: Store = new Store();
+  page = 1;
+  product: Product = new Product();
 
   constructor(
     private router: Router,
@@ -36,6 +38,8 @@ export class MainPageComponent implements OnInit {
       self.store = data;
       self.categories = [...data.category];
       self.category = self.categories[0];
+
+      //self.storeService.getProductList().then((data)=>{console.log(data)})
     });
   }
 
@@ -44,8 +48,14 @@ export class MainPageComponent implements OnInit {
   }
 
   jumpList():void {
-    let storeName = this.activatedRoute.snapshot.params['name'];
-    this.router.navigate([`store/${storeName}/list`]);
+    //let storeName = this.activatedRoute.snapshot.params['name'];
+    //this.router.navigate([`store/${storeName}/list`]);
+
+
+  }
+
+  changeCategory() {
+    //self.storeService.getProductList().then((data)=>{console.log(data)})
   }
 
 }
