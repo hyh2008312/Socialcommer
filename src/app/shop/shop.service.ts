@@ -261,7 +261,7 @@ export class ShopService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}stores/${store.id}/`;
+    const url = `${this.baseUrl.url}store_create/${store.id}/`;
 
     return this.http.put(url, store, options)
       .toPromise()
