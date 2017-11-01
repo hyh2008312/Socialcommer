@@ -13,6 +13,7 @@ export class StoreListComponent implements OnInit {
   public categories = ['All','Electronics','Home','Kitchen'];
   public category = 'All';
   public shareLink: string;
+  public text = '';
 
   constructor(
     private router: Router
