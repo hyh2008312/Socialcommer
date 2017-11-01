@@ -3,6 +3,7 @@ import { ShopService } from '../shop.service';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
+import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -30,7 +31,8 @@ export class SettingsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private shopService: ShopService,
-    private constant: ConstantService
+    private constant: ConstantService,
+    private userService: UserService
   ) {
 
     this.countries = this.constant.getCountries();
@@ -88,6 +90,14 @@ export class SettingsComponent implements OnInit {
       });
       self.previewImgSrcs = data.avatarUrl;
       self.previewImgFile = data.avatarId;
+    });
+
+    self.userService.currentUser.subscribe((data) => {
+      if(data) {
+        self.emailForm.setValue({
+          email: data.email
+        });
+      }
     });
 
   }

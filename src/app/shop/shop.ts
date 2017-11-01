@@ -7,7 +7,25 @@ export class Shop {
   cover: string;
 }
 
-
+export class RecommendProduct {
+  categoryId : number;
+  categoryName : string;
+  createdTime : string;
+  description : string;
+  id : number;
+  imageUrl : any = [];
+  isUser : boolean;
+  modifiedTime : string;
+  originalPriceAmount : number;
+  originalPriceCurrency : string;
+  purchaseUrl : string;
+  recommendation : string;
+  salePriceAmount : number;
+  salePriceCurrency : string;
+  source : string;
+  tags : string;
+  title: string;
+}
 
 export class Product {
   id: number;
@@ -43,6 +61,7 @@ export class StoreProduct{
   purchaseUrl: string;
   isCustomer: boolean;
   isDraft: boolean;
+  isUser: boolean;
 }
 
 export class Email{
@@ -60,4 +79,9 @@ export class Store{
   country: string;
   created: string;
   status: any;
+}
+
+export class Image{
+  id: number;
+  url: string;
 }

@@ -1,4 +1,4 @@
-import { Input, Output, Component, OnInit, EventEmitter, ContentChild} from '@angular/core';
+import { Input, Output, Component, OnInit, OnChanges} from '@angular/core';
 import { ICarouselConfig, AnimationConfig } from '../angular4-carousel/index';
 
 @Component({
@@ -8,41 +8,11 @@ import { ICarouselConfig, AnimationConfig } from '../angular4-carousel/index';
 })
 
 
-
 export class LeftProductsImageComponent implements OnInit {
 
-  @Input() public images = [
-    {
-      id: 0,
-      src: '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    },
-    {
-      id: 1,
-      src: '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    },
-    {
-      id: 2,
-      src: '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    },
-    {
-      id: 3,
-      src: '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    },
-    {
-      id: 4,
-      src: '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    }
-  ];
-
-  public selectedImage: any;
-
-  public imageSources: string[] = [
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg'
-  ];
+  @Input() public images:any = [];
+  @Input() public selectedImage: any;
+  @Input() public imageSources: string[] = [];
 
   public config: ICarouselConfig = {
     verifyBeforeLoad: true,
@@ -60,12 +30,10 @@ export class LeftProductsImageComponent implements OnInit {
 
   }
 
-
   ngOnInit():void {
-    this.selectedImage = this.images[0];
   }
 
-  selectImage(image: string) {
+  selectImage(image: any) {
     this.selectedImage = image;
   }
 

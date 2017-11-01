@@ -9,6 +9,9 @@ import { ShopService } from '../shop.service';
 import { Product, StoreProduct } from '../shop';
 import { UserService } from  '../../shared/services/user/user.service';
 
+import { ImageUploadPreviewService } from "../../shared/components/image-upload-preview/image-upload-preview.service";
+import { S3UploaderService } from "../../shared/services/s3-upload/s3-upload.service";
+
 @Component({
   selector: 'app-catalog-add-product',
   templateUrl: './catalog-add-product.component.html',
@@ -28,6 +31,7 @@ export class CatalogAddProductComponent implements OnInit {
   // Editor
   public editor;
   public editorContent = "insert content...";
+  public editorImageId = 'quillImage';
 
   // Enter, comma
   separatorKeysCodes = [ENTER, 188];
@@ -51,7 +55,9 @@ export class CatalogAddProductComponent implements OnInit {
     private fb: FormBuilder,
     public shopService: ShopService,
     public userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public previewImageService: ImageUploadPreviewService,
+    public s3UploaderService: S3UploaderService
   ) {
 
     this.productForm = this.fb.group({
@@ -133,8 +139,6 @@ export class CatalogAddProductComponent implements OnInit {
 
   }
 
-
-
   add(event: MatChipInputEvent): void {
     let input = event.input;
     let value = event.value;
@@ -158,7 +162,17 @@ export class CatalogAddProductComponent implements OnInit {
     }
   }
 
-
+  onEditorCreated(quill) {
+    this.editor = quill;
+    // console.log('quill is ready! this is current quill instance object', quill);
+    let self = this;
+    this.editor.getModule('toolbar').addHandler("image", (image) => {
+      if(image) {
+        var fileInput = document.getElementById(self.editorImageId);
+        fileInput.click();
+      }
+    });
+  }
 
   close():void {
     this.router.navigate(['/shop/listings']);
@@ -216,6 +230,7 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.isCustomer = false;
     storeProduct.recommendation = productForm.recommendation;
     storeProduct.isDraft = true;
+    storeProduct.status = 'off';
 
     let product = new Product();
 
@@ -242,6 +257,40 @@ export class CatalogAddProductComponent implements OnInit {
     this.shopService.createProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});
     });
+  }
+
+  addPicture(event) {
+    if(!event.target.files[0]) {
+      return;
+    }
+    let that = this;
+    this.previewImageService.readAsDataUrl(event.target.files[0]).then(function(result) {
+
+      let file = event.target.files[0];
+
+      let image = new Image();
+      image.onload = function(){
+        let width = image.width;
+        let height = image.height;
+
+        that.s3UploaderService.upload({
+          type: 'COLLECTOR_PRODUCT_DETAILS',
+          fileName: file.name,
+          use: 'detail',
+          width: width,
+          height: height
+        }).then((data)=> {
+          let id = data.id;
+          let imageUrl = `${data.url}/${data.key}`;
+          that.s3UploaderService.uploadToS3(file, data).then((data) => {
+            that.editor.insertEmbed(that.editor.getLength(), 'image', imageUrl);
+          });
+        });
+      };
+      image.src = window.URL.createObjectURL(file);
+
+    })
+
   }
 
 }

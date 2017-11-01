@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { ENTER } from '@angular/cdk/keycodes';
+
+import { ShopService } from '../shop.service';
+import { UserService } from  '../../shared/services/user/user.service';
+import { ImageUploadPreviewService } from "../../shared/components/image-upload-preview/image-upload-preview.service";
+import { S3UploaderService } from "../../shared/services/s3-upload/s3-upload.service";
+
+import { StoreProduct } from '../shop';
 
 @Component({
   selector: 'app-find-products-edit-preview',
@@ -15,18 +21,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   productForm : FormGroup;
 
-  public text = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.'
-    + 'Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training'
-    + 'that make you an expert in your field? Show your customers that there are read people with instersting stories working'
-    + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
-
-  public previewImg = [
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg',
-    '//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg'
-  ];
+  public previewImg = [];
 
   // Enter, comma
   separatorKeysCodes = [ENTER, 188];
@@ -36,34 +31,31 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   tags = [];
 
-
   public editor;
-  public editorContent = `<div class="xb-shop__margin-bottom-2 xb-shop__edit-description">`+
-  `<div class="md-margin-top-2 xb-store__content-text">`+
-  `Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.`+
-  `Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training`+
-  `that make you an expert in your field? Show your customers that there are read people with instersting stories working`+
-  `behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.`+
-  `</div>`+
-  `<div class="md-margin-top-2">`+
-  `<img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">`+
-  `</div>`+
-  `</div>`;
+  public editorContent = '';
+  public editorImageId = 'quillImage';
 
   product = {
-    title: '[Updated Version] Linner Active Noise Cancelling Headphones, Lightning In Ear Wired Earphone with Built-InMic and Remote (Comfortable and Secure Fit, MFi Certified) for iPhone X 8 7 6 Plus, iPad iPod',
-    tags: '11111'
+    title: '',
+    tags: ''
   };
+
+  // Reset product
+  productCopy: any;
+
+  storeId: number;
 
   constructor(
     public router: Router,
-    private fb: FormBuilder
+    private activatedRoute: ActivatedRoute,
+    private shopService: ShopService,
+    private fb: FormBuilder,
+    public userService: UserService,
+    public previewImageService: ImageUploadPreviewService,
+    public s3UploaderService: S3UploaderService
   ) {
     this.productForm = this.fb.group({
       title: ['', [
-        Validators.required
-      ]],
-      tags: ['', [
         Validators.required
       ]],
       purchaseUrl: ['', [
@@ -76,7 +68,79 @@ export class FindProductsEditPreviewComponent implements OnInit {
   }
 
   ngOnInit():void {
+    let id = this.activatedRoute.snapshot.params['id'];
+    let self = this;
+    self.shopService.getRecommendProduct({id}).then((data) => {
 
+      self.productForm.setValue({
+        title: data.title,
+        purchaseUrl: data.purchaseUrl,
+        recommendation: data.recommendation
+      });
+
+      self.editorContent = data.description;
+
+      self.product.title = data.title;
+      self.product.tags = data.tags;
+
+      let tagArr = data.tags.split(',');
+      for(let value of tagArr) {
+
+        self.tags.push({
+          name: value
+        });
+      }
+
+      if(data.imageUrl.length > 0) {
+        for(let value of data.imageUrl) {
+          self.previewImg.push(value.url);
+        }
+      }
+
+      self.productCopy = data;
+    });
+
+    self.userService.store.subscribe((data) => {
+      if(data) {
+        self.storeId = data.id;
+      }
+    });
+  }
+
+  //存储错误信息
+  formErrors = {
+    'title': '',
+    'tags': '',
+    'purchaseUrl': '',
+    'recommendation': ''
+  };
+  //错误对应的提示
+  validationMessages = {
+    'title': {
+      'required': 'Title is required.'
+    },
+    'tags': {
+      'required': 'Tag is required.'
+    },
+    'purchaseUrl': {
+      'required': 'Purchase url price is required.'
+    },
+    'recommendation':{
+      'required': 'Recommendation is required.',
+      'maxlength' : 'Recommendation contain 1000 characters at most.'
+    }
+  };
+
+  onEditorCreated(quill) {
+    this.editor = quill;
+    // console.log('quill is ready! this is current quill instance object', quill);
+    let self = this;
+    this.editor.getModule('toolbar').addHandler("image", (image) => {
+      if(image) {
+        var fileInput = document.getElementById(self.editorImageId);
+        fileInput.click();
+      }
+    });
   }
 
 
@@ -115,12 +179,140 @@ export class FindProductsEditPreviewComponent implements OnInit {
     this.showTitleInput = !this.showTitleInput;
   }
 
+  resetTitle() {
+    this.product.title = this.productCopy.title;
+  }
+
   showCategory() {
     this.showCategoryInput = !this.showCategoryInput;
+    let tagArr = [];
+    for(let value of this.tags) {
+      tagArr.push(value.name);
+    }
+    this.product.tags = tagArr.join(',');
+  }
+
+  resetCategory() {
+    let tagArr = this.productCopy.tags.split(',');
+    this.tags = [];
+    for(let value of tagArr) {
+      this.tags.push({
+        name: value
+      });
+    }
   }
 
   showDescription() {
     this.showDescriptionEditor = !this.showDescriptionEditor;
+  }
+
+  resetDescription() {
+    this.editorContent = this.productCopy.description;
+  }
+
+  addPicture(event) {
+    if(!event.target.files[0]) {
+      return;
+    }
+    let that = this;
+    this.previewImageService.readAsDataUrl(event.target.files[0]).then(function(result) {
+
+      let file = event.target.files[0];
+
+      let image = new Image();
+      image.onload = function(){
+        let width = image.width;
+        let height = image.height;
+
+        that.s3UploaderService.upload({
+          type: 'COLLECTOR_PRODUCT_DETAILS',
+          fileName: file.name,
+          use: 'detail',
+          width: width,
+          height: height
+        }).then((data)=> {
+          let id = data.id;
+          let imageUrl = `${data.url}/${data.key}`;
+          that.s3UploaderService.uploadToS3(file, data).then((data) => {
+            that.editor.insertEmbed(that.editor.getLength(), 'image', imageUrl);
+          });
+        });
+      };
+      image.src = window.URL.createObjectURL(file);
+
+    })
+
+  }
+
+
+  create() {
+    if(!this.productForm.valid) {
+      return;
+    }
+
+    let productForm = this.productForm.value;
+
+    let tagArr = [];
+    for(let value of this.tags) {
+      tagArr.push(value.name);
+    }
+    let images = [];
+    for(let value of this.productCopy.imageUrl) {
+      images.push(value.id);
+    }
+
+    let storeProduct = {
+      productId: this.productCopy.id,
+      purchaseUrl : productForm.purchaseUrl,
+      storeId : this.storeId,
+      isCustomer : true,
+      recommendation : productForm.recommendation,
+      isDraft : false,
+      status : 'on',
+      isUser : true,
+      description : this.editorContent,
+      title : productForm.title,
+      images : [...images],
+      tags : tagArr.join(',')
+    };
+
+    let self = this;
+    this.shopService.createProduct(storeProduct).then((data) => {
+      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'published'}, replaceUrl: true});
+    });
+  }
+
+  createDraft() {
+    let productForm = this.productForm.value;
+
+    let tagArr = [];
+    for(let value of this.tags) {
+      tagArr.push(value.name);
+    }
+    let images = [];
+    for(let value of this.productCopy.imageUrl) {
+      images.push(value.id);
+    }
+
+    let storeProduct = {
+      productId: this.productCopy.id,
+      purchaseUrl : productForm.purchaseUrl,
+      storeId : this.storeId,
+      isCustomer : true,
+      recommendation : productForm.recommendation,
+      isDraft : true,
+      status : 'off',
+      isUser : true,
+      description : this.editorContent,
+      title : productForm.title,
+      images : [...images],
+      tags : tagArr.join(',')
+    };
+
+    let self = this;
+    this.shopService.createProduct(storeProduct).then((data) => {
+      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});
+    });
   }
 
 }

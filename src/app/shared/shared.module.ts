@@ -140,7 +140,8 @@ import {
     FollowService,
     ArticlesDetailHeaderService,
     ImageUploadPreviewService,
-    ConstantService
+    ConstantService,
+    S3UploaderService
   ]
 })
 export class SharedModule { }

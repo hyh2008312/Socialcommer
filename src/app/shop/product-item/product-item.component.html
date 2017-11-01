@@ -6,7 +6,7 @@
     <div fxLayout="row" fxLayoutAlign="start start">
       <div fxFlex class="xb-shop__product-title">{{product.title}}</div>
       <div fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
-        <div class="line-through md-margin-left-1 md-margin-right-2">${{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+        <div class="line-through md-margin-left-1 md-margin-right-2">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
         <div class="xb-shop__product-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
       </div>
     </div>

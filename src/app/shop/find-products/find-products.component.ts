@@ -43,6 +43,15 @@ export class FindProductsComponent implements OnInit {
   selectable: boolean = true;
   removable: boolean = true;
 
+  // MatPaginator Inputs
+  productIndex: number = 1;
+  length:number = 0;
+  pageSize = 12;
+  pageSizeOptions = [3, 6, 12];
+
+  // Product list
+  productList: any = false;
+
   constructor(
     private shopService: ShopService
   ) {
@@ -50,6 +59,18 @@ export class FindProductsComponent implements OnInit {
   }
 
   ngOnInit():void {
+    this.getProductList();
+  }
+
+  // MatPaginator Output
+  changePage(event, type) {
+    this.pageSize = event.pageSize;
+    this.productIndex = event.pageIndex + 1;
+    this.getProductList();
+  }
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
   }
 
   onSelectedChange(event) {
@@ -131,12 +152,18 @@ export class FindProductsComponent implements OnInit {
       }
     }
 
+    let self = this;
     this.shopService.getRecommendProductList({
       country,
       categoryId,
-      source
+      source,
+      page: this.productIndex,
+      page_size: this.pageSize
     }).then((data) => {
-      console.log(data);
+
+      self.length = data.count;
+
+      self.productList = data.results;
     })
   }
 

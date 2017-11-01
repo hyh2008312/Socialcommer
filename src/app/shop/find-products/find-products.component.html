@@ -34,8 +34,14 @@
         </mat-chip-list>
       </div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="48px">
-        <app-product-item-card *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10,11]"></app-product-item-card>
+        <app-product-item-card *ngFor="let product of productList" [product]="product"></app-product-item-card>
       </div>
+      <mat-paginator [length]="length"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="pageSizeOptions"
+                     (page)="changePage($event)"
+                     *ngIf="productList && productList.length > 0">
+      </mat-paginator>
     </div>
   </div>
 </div>

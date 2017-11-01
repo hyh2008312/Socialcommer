@@ -488,18 +488,21 @@
     }
 
     &-margin-right{
+      width: 580px;
       margin-right: 32px;
       @include xb-xs-screen{
+        width: 416px;
         margin-right: 16px;
         margin-left: 16px;
         margin-top: 16px;
         @include resetBorder();
       }
       @include xb-sm-screen{
+        width: auto;
         margin-right: 16px;
         margin-left: 16px;
         margin-top: 16px;
-        @include resetBorder();
+
       }
     }
 
@@ -537,10 +540,10 @@
       }
 
       @include xb-xs-screen{
-        padding: 0 16px 16px;
+        padding: 16px 16px 16px;
       }
       @include xb-sm-screen{
-        padding: 0 16px 16px;
+        padding: 16px 16px 16px;
       }
     }
 

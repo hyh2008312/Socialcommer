@@ -67,7 +67,6 @@ export class ShopService {
 
   getRecommendProductList(product: any): Promise<any> {
 
-    console.log(product)
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -93,6 +92,23 @@ export class ShopService {
     this.createAuthorizationHeader(headers);
 
     const url = `${this.baseUrl.url}store/relation/${id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getRecommendProduct(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    this.createAuthorizationHeader(headers);
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}product/${product.id}/`;
 
     return this.http.get(url, options)
       .toPromise()

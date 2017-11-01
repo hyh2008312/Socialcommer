@@ -1,9 +1,9 @@
 <div class="xb-store__background" (click)="close()">
-  <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.xs="true">
+  <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-store__details" (click)="$event.stopPropagation();">
-    <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-xs="true">
+    <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-sm="true">
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
     <div class="xb-shop__mobile-dialog-inner">
@@ -68,7 +68,9 @@
       </form>
       <div class="xb-shop__edit-title">Description</div>
       <div class="md-margin-top-2">
-        <quill-editor [(ngModel)]="editorContent"></quill-editor>
+        <quill-editor [(ngModel)]="editorContent"
+                      (ready)="onEditorCreated($event)"></quill-editor>
+        <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
       </div>
       <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="tab == 'publish'">
         <button mat-raised-button color="primary" (click)="create()">SAVE</button>

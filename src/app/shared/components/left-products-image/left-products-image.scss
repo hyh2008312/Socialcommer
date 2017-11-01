@@ -9,6 +9,7 @@
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    @include resetBorder();
     >img{
       position: absolute;
       width: 100%;
@@ -17,9 +18,7 @@
       @include transform(translate(-50%, -50%));
     }
     &.active{
-      >img{
-        border: 2px solid $orangeColor;
-      }
+      border: 1px solid $orangeColor;
     }
     @include xb-sm-screen{
       width: 60px;
@@ -38,6 +37,8 @@
     height: 0;
     overflow: hidden;
     position: relative;
+
+    @include resetBorder();
     >img{
       position: absolute;
       width: 100%;

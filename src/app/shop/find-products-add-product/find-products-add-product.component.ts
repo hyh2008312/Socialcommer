@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatChipInputEvent } from '@angular/material';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { ENTER } from '@angular/cdk/keycodes';
-const COMMA = 188;
+import { Router, ActivatedRoute} from '@angular/router';
+import { ShopService } from '../shop.service';
+import { RecommendProduct, Image } from '../shop';
 
 @Component({
   selector: 'app-find-products-add-product',
@@ -15,21 +12,44 @@ const COMMA = 188;
 export class FindProductsAddProductComponent implements OnInit {
 
   public shareLink: string;
-  public text = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.'
-    + 'Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training'
-    + 'that make you an expert in your field? Show your customers that there are read people with instersting stories working'
-    + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
+  product: RecommendProduct = new RecommendProduct();
+  image: any;
+  selectedImage: Image = new Image();
+  imageSources: string[] = [];
 
   constructor(
-    public router: Router
-  ) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private shopService: ShopService
+  ) {
+
+  }
 
   ngOnInit():void {
     this.shareLink = window.location.href;
+
+    let id = this.activatedRoute.snapshot.params['id'];
+
+    let self = this;
+    self.shopService.getRecommendProduct({id}).then((data) => {
+      self.product = data;
+      self.image = data.imageUrl;
+      self.selectedImage = data.imageUrl[0];
+      if(data.imageUrl.length > 0) {
+        for(let value of data.imageUrl) {
+          self.imageSources.push(value.url);
+        }
+      }
+    });
   }
 
   close():void {
     this.router.navigate(['/shop/products']);
+  }
+
+  addEdit(): void {
+    let id = this.activatedRoute.snapshot.params['id'];
+    this.router.navigate([`/shop/products/${id}/preview`]);
   }
 
 }

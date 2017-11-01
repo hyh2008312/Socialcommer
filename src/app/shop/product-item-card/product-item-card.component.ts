@@ -8,7 +8,7 @@ import { Input, Component, OnInit} from '@angular/core';
 
 export class ProductItemCardComponent implements OnInit {
 
-  @Input() status: number = 0;
+  @Input() product:any = {};
 
   constructor(
   ) { }

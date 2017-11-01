@@ -53,12 +53,15 @@ export class CatalogComponent implements OnInit {
         self.subscription1 = self.activatedRoute.queryParams.subscribe((data)=> {
           if(data.tab == 'published' ) {
             self.selectedIndex = 0;
+            self.changeProducts({index: self.selectedIndex});
           }
           if(data.tab == 'draft') {
             self.selectedIndex = 1;
+            self.changeProducts({index: self.selectedIndex});
           }
           if(data.tab == 'unpublished') {
             self.selectedIndex = 2;
+            self.changeProducts({index: self.selectedIndex});
           }
           if(data.tab == null) {
             self.changeProducts({index: self.selectedIndex});
@@ -77,12 +80,15 @@ export class CatalogComponent implements OnInit {
               self.subscription1 = self.activatedRoute.queryParams.subscribe((data)=> {
                 if(data.tab == 'published') {
                   self.selectedIndex = 0;
+                  self.changeProducts({index: self.selectedIndex});
                 }
                 if(data.tab == 'draft') {
                   self.selectedIndex = 1;
+                  self.changeProducts({index: self.selectedIndex});
                 }
                 if(data.tab == 'unpublished') {
-                  self.selectedIndex = 1;
+                  self.selectedIndex = 2;
+                  self.changeProducts({index: self.selectedIndex});
                 }
                 if(data.tab == null) {
                   self.changeProducts({index: self.selectedIndex});

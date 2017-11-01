@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ShopService } from '../shop.service';
+import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-shop',
@@ -10,11 +11,20 @@ import { ShopService } from '../shop.service';
 
 export class ShopComponent implements OnInit {
 
-  constructor(
+  avatar: any = false;
 
+  constructor(
+    private userService: UserService
   ) { }
 
   ngOnInit():void {
+    let self = this;
+    self.userService.currentUser.subscribe((data) => {
+      console.log(data);
+      if(data) {
+        self.avatar = data.avatar;
+      }
+    });
   }
 
 }

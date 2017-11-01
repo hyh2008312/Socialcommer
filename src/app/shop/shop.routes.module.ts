@@ -11,7 +11,6 @@ import { CatalogAddProductComponent } from "./catalog-add-product/catalog-add-pr
 import { CatalogEditProductComponent } from "./catalog-edit-product/catalog-edit-product.component";
 import { FindProductsAddProductComponent } from "./find-products-add-product/find-products-add-product.component";
 import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/find-products-edit-preview.component";
-import { FindProductsEditComponent } from "./find-products-edit/find-products-edit.component";
 
 const routes: Routes = [
   {
@@ -36,8 +35,6 @@ const routes: Routes = [
           path: ':id', component: FindProductsAddProductComponent
         }, {
           path: ':id/preview', component: FindProductsEditPreviewComponent
-        }, {
-          path: ':id/edit', component: FindProductsEditComponent
         }]
       }, {
         path: '',

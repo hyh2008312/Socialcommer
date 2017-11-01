@@ -6,6 +6,7 @@ export class User {
   isStaff : boolean;
   lastName : string;
   store : any;
+  avatar: any;
 }
 
 
