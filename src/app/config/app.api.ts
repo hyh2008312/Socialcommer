@@ -17,5 +17,5 @@ export class SystemConstant{
   accessUrl : string = 'https://media.xberts.com';
   baseUrl : string = 'https://xbertsmedia.s3.amazonaws.com';
 
-  clientId : string = 'SxnVI98BehT3NSCLbhrP4GFiig6erbTkYMaSRvkQ';
+  clientId : string = 'pMmnRNF1bjJk4aQDF6zq36FS4WQ7giI0vCQcHgUZ';
 }
