@@ -17,9 +17,7 @@ export class ShopComponent implements OnInit {
   constructor(
     private userService: UserService,
     private shopService: ShopService
-  ) { }
-
-  ngOnInit():void {
+  ) {
     let self = this;
     self.userService.currentUser.subscribe((data) => {
       if(data) {
@@ -29,7 +27,10 @@ export class ShopComponent implements OnInit {
         }
       }
     });
+  }
 
+  ngOnInit():void {
+    let self = this;
 
     self.shopService.getCategoryList().then((data) => {
       self.userService.addCategory(data);

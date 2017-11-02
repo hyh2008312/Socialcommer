@@ -3063,7 +3063,7 @@ textarea.mat-input-element {
     font-weight: 500;
     color: #fff;
     text-align: center;
-    margin-top: 180px; }
+    margin-top: 160px; }
     @media screen and (max-width: 599px) {
       .xb-store__store-name {
         font-size: 24px;
@@ -3094,7 +3094,8 @@ textarea.mat-input-element {
     bottom: 20px;
     width: 100%;
     text-align: center;
-    color: #fff; }
+    color: #fff;
+    width: 100%; }
     .xb-store__store-buttons i {
       font-size: 40px;
       font-weight: 200; }

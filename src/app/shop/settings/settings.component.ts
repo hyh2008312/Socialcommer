@@ -214,8 +214,11 @@ export class SettingsComponent implements OnInit {
 
     let user = this.profileForm.value;
     user.avatarId = this.previewImgFile;
+    let self = this;
     this.shopService.changeUserProfile(user).then((data) => {
-      console.log(data)
+      self.userService.getUser().then((data)=> {
+        self.userService.addUser(data);
+      })
     });
   }
 

@@ -14,23 +14,25 @@
         <app-left-products-image [images]="image" [selectedImage]="selectedImage"
           [imageSources]="imageSources"></app-left-products-image>
       </div>
-      <div class="xb-store__details-content">
+      <div class="xb-store__details-content" fxFlex>
         <div>{{product.categoryName}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-store__details-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
           <div class="line-through md-margin-left-2">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
-          <div class="xb-store__details-sale md-margin-left-2">50% OFF</div>
+          <div class="xb-store__details-sale md-margin-left-2" *ngIf="product.salePriceAmount">
+            {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
+          </div>
         </div>
-        <div class="xb-store__details-buttons" fxLayout="column">
+        <a class="xb-store__details-buttons" fxLayout="column" href="{{product.purchaseUrl}}" target="_blank">
           <button mat-raised-button color="primary">GET IT NOW</button>
-        </div>
+        </a>
         <div class="md-margin-top-2">
           <app-share-button [link]="shareLink" [text]="text"></app-share-button>
         </div>
       </div>
     </div>
-    <div class="xb-store__details-padding-top">
+    <div class="xb-store__details-padding-top" *ngIf="product.recommendation">
       <div class="xb-store__title">Store Owner</div>
       <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
         <div class="xb-store__content-left" fxFlex="none">
@@ -45,7 +47,7 @@
             <i class="iconfontXberts icon-pic-quota"></i>
           </div>
           <div class="md-margin-top-2 xb-store__content-text">
-            {{store.ownerBiography}}
+            {{product.recommendation}}
           </div>
           <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota-2"></i>
@@ -53,7 +55,7 @@
         </div>
       </div>
     </div>
-    <div class="xb-store__details-description">
+    <div class="xb-store__details-description" *ngIf="product.description">
       <div class="xb-store__title">About the Product</div>
       <div class="ql-editor ql-container xb-shop__margin-bottom-2"
            [innerHTML]="product.description | safeHtml"></div>
