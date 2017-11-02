@@ -1561,5 +1561,8 @@ textarea.mat-input-element {
     right: 16px;
     bottom: 12px;
     color: #fff; }
+  .xb-image-display__slide > img {
+    width: 100%;
+    display: block; }
 
 /*# sourceMappingURL=left-products-image.css.map */

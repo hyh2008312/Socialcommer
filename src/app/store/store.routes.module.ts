@@ -9,12 +9,12 @@ import { StoreDetailComponent } from './store-detail/store-detail.component';
 const routes: Routes = [{
   path: ':name', component: MainPageComponent,
   children: [{
-    path: 'list', component: StoreListComponent,
-    children: [{
-      path: ':id', component: StoreListDetailComponent
-    }]
-  },{
     path: 'detail/:id', component: StoreDetailComponent
+  }]
+}, {
+  path: ':name/list', component: StoreListComponent,
+  children: [{
+    path: ':id', component: StoreListDetailComponent
   }]
 }, {
   path: '',

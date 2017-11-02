@@ -21,9 +21,18 @@
       fxShow="true" fxShow.xs="false"></app-store-navigation>
     <div class="xb-store__content xb-store__border-bottom">
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
-        <app-store-item-card *ngFor="let item of [0,1,2,3,4,5]" fxFlex.xs="48" fxFlex.gt-xs="30"></app-store-item-card>
+        <app-store-item-card *ngFor="let item of product"
+          fxFlex.xs="48" fxFlex.gt-xs="30"
+          [product]="item" [status]="0"></app-store-item-card>
       </div>
-      <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center" (click)="jumpList()">
+      <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+           (click)="jumpList()" *ngIf="!isMobile && nextPage && product.length > 0">
+        <div>
+          SEE MORE
+        </div>
+      </div>
+      <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+           (click)="jumpList()" *ngIf="isMobile">
         <div>
           SEE MORE
         </div>

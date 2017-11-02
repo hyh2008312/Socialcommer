@@ -166,6 +166,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
         }).then((data) => {
           if(data) {
             self.category.unshift(data);
+            self.userService.addCategory(self.category);
             self.tags.push({ id:data.id, name: _value.trim() });
           }
         });

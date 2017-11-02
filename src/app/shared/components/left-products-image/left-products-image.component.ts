@@ -13,7 +13,9 @@ export class LeftProductsImageComponent implements OnInit {
   @Input() public images:any = [{
     url: ''
   }];
-  @Input() public selectedImage: any;
+  @Input() public selectedImage: any = {
+    url: ''
+  };
   @Input() public imageSources: string[] = [''];
 
   public config: ICarouselConfig = {

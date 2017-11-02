@@ -11,15 +11,15 @@
     </div>
     <div class="xb-store__details-padding-bottom" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column">
       <div class="xb-store__details-margin-right">
-        <app-left-products-image></app-left-products-image>
+        <app-left-products-image [images]="image" [selectedImage]="selectedImage"
+          [imageSources]="imageSources"></app-left-products-image>
       </div>
       <div class="xb-store__details-content">
-        <div>Electronics</div>
-        <div class="xb-store__details-title md-margin-top-1">[Updated Version] Linner Active Noise Cancelling Headphones, Lightning In Ear Wired Earphone with Built-In
-          Mic and Remote (Comfortable and Secure Fit, MFi Certified) for iPhone X 8 7 6 Plus, iPad iPod</div>
+        <div>{{product.categoryName}}</div>
+        <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price">$8.00</div>
-          <div class="line-through md-margin-left-2">$12.00</div>
+          <div class="xb-store__details-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
+          <div class="line-through md-margin-left-2">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
           <div class="xb-store__details-sale md-margin-left-2">50% OFF</div>
         </div>
         <div class="xb-store__details-buttons" fxLayout="column">
@@ -35,20 +35,17 @@
       <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
         <div class="xb-store__content-left" fxFlex="none">
           <div class="xb-store__header">
-            <img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">
+            <img [src]="store.ownerAvatar">
           </div>
-          <div class="md-subhead md-margin-top-2">Owen</div>
-          <div class="md-margin-top-1">India</div>
+          <div class="md-subhead md-margin-top-2">{{store.ownerFirstName}}</div>
+          <div class="md-margin-top-1"> {{store.ownerCountry}}</div>
         </div>
         <div class="xb-store__content-right">
           <div class="xb-store__icons md-dark-third" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota"></i>
           </div>
           <div class="md-margin-top-2 xb-store__content-text">
-            Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.
-            Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training
-            that make you an expert in your field? Show your customers that there are read people with instersting stories working
-            behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.
+            {{store.ownerBiography}}
           </div>
           <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota-2"></i>
@@ -58,15 +55,8 @@
     </div>
     <div class="xb-store__details-description">
       <div class="xb-store__title">About the Product</div>
-      <div class="md-margin-top-2 xb-store__content-text">
-        Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.
-        Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training
-        that make you an expert in your field? Show your customers that there are read people with instersting stories working
-        behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.
-      </div>
-      <div class="md-margin-top-2">
-        <img src="//img14.360buyimg.com/n1/jfs/t5404/37/1574400102/222809/4907a2f6/59123908Nffed2d63.jpg">
-      </div>
+      <div class="ql-editor ql-container xb-shop__margin-bottom-2"
+           [innerHTML]="product.description | safeHtml"></div>
     </div>
   </div>
 </div>

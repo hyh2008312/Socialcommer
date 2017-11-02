@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import{ Subject, BehaviorSubject } from 'rxjs';
 
-import { Store, Product } from './store';
+import { Store } from './store';
 
 import { BaseApi } from '../config/app.api';
 
 @Injectable()
 export class StoreService {
+  store: Subject<Store> = new BehaviorSubject<Store>(null);
 
   constructor( private http: Http, private baseUrl: BaseApi) { }
 
@@ -64,6 +66,26 @@ export class StoreService {
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
+  }
+
+  getProduct(id: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}store/relation/${id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  public addStore(newStore: any): void {
+    this.store.next(newStore);
   }
 
   private handleError (error: Response | any) {

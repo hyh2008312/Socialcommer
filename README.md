@@ -3,19 +3,11 @@
 ## Deployment
 
 ### Setup
-  - Install heroku toolbelt
-  - Login to heroku
-
-        heroku login
   
-  - Add heroku git remote
+  - Add bitbucket git remote
   
         git remote add staging https://git.heroku.com/xberts-web-staging.git
         git remote add prod https://git.heroku.com/xberts-mobile.git
-        
-  - Set default remote to staging
-  
-        git config heroku.remote staging
         
 ### Update staging server
   - Push update

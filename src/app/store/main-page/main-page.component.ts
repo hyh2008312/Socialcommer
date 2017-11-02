@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { StoreService } from '../store.service';
 
-import { Store, Product } from '../store';
+import { StoreService } from '../store.service';
+import { Store } from '../store';
 
 @Component({
   selector: 'app-main-page',
@@ -26,6 +26,7 @@ export class MainPageComponent implements OnInit {
 
   store: Store = new Store();
   page = 1;
+  nextPage: boolean = true;
   product: any = [];
 
   queryMedia: any;
@@ -43,6 +44,7 @@ export class MainPageComponent implements OnInit {
       self.store = data;
       self.categories = [...data.category];
       self.category = self.categories[0];
+      self.storeService.addStore(data);
 
       self.queryProduct();
     });
@@ -76,6 +78,7 @@ export class MainPageComponent implements OnInit {
   changeCategory() {
     this.page = 1;
     this.product = [];
+    this.nextPage = true;
     this.queryProduct();
   }
 
@@ -90,7 +93,9 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.storeService.getProductList(options).then((data)=>{
       self.product = self.product.concat(data.results);
-      console.log(self.product)
+      if(data.next == null) {
+        self.nextPage = false;
+      }
     });
   }
 
