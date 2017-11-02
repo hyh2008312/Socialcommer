@@ -53,7 +53,7 @@
         </div>
         <div class="xb-shop__edit-title">Description</div>
         <div class="md-margin-top-2">
-          <quill-editor [(ngModel)]="editorContent" formControlName="description"
+          <quill-editor formControlName="description"
                         (ready)="onEditorCreated($event)"></quill-editor>
           <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
         </div>
