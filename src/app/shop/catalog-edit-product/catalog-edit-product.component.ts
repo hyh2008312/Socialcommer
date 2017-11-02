@@ -137,8 +137,6 @@ export class CatalogEditProductComponent implements OnInit {
             self.relationId = data.id;
 
             self.productId = data.productId;
-
-            self.editorContent = data.description;
           });
 
         }
@@ -344,7 +342,7 @@ export class CatalogEditProductComponent implements OnInit {
     let product = new Product();
 
     storeProduct.product = product;
-    storeProduct.product.description = this.editorContent;
+    storeProduct.product.description = productForm.description;
     storeProduct.product.title = productForm.title;
     storeProduct.product.images = [];
     storeProduct.product.images = [...this.previewImgFile];

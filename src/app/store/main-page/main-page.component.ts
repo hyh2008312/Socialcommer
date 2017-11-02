@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { StoreService } from '../store.service';
 
 import { Store, Product } from '../store';
@@ -25,12 +26,16 @@ export class MainPageComponent implements OnInit {
 
   store: Store = new Store();
   page = 1;
-  product: Product = new Product();
+  product: any = [];
+
+  queryMedia: any;
+  isMobile: boolean = false;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private media: ObservableMedia
   ) {
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
@@ -39,8 +44,18 @@ export class MainPageComponent implements OnInit {
       self.categories = [...data.category];
       self.category = self.categories[0];
 
-      //self.storeService.getProductList().then((data)=>{console.log(data)})
+      self.queryProduct();
     });
+
+    self.queryMedia = this.media.asObservable()
+      .subscribe((data) => {
+        if(data.mqAlias == 'xs') {
+          self.isMobile = true;
+        } else {
+          self.isMobile = false;
+        }
+
+      });
   }
 
   ngOnInit():void {
@@ -48,14 +63,39 @@ export class MainPageComponent implements OnInit {
   }
 
   jumpList():void {
-    //let storeName = this.activatedRoute.snapshot.params['name'];
-    //this.router.navigate([`store/${storeName}/list`]);
 
-
+    if(this.isMobile) {
+      let storeName = this.activatedRoute.snapshot.params['name'];
+      this.router.navigate([`store/${storeName}/list`]);
+    } else {
+      this.page++;
+      this.queryProduct();
+    }
   }
 
   changeCategory() {
-    //self.storeService.getProductList().then((data)=>{console.log(data)})
+    this.page = 1;
+    this.product = [];
+    this.queryProduct();
+  }
+
+  queryProduct() {
+    let options = {
+      categoryId: this.category.id,
+      storeId: this.store.id,
+      relationStatus: 'published',
+      page: this.page,
+      page_size: 12
+    };
+    let self = this;
+    self.storeService.getProductList(options).then((data)=>{
+      self.product = self.product.concat(data.results);
+      console.log(self.product)
+    });
+  }
+
+  ngOnDestroy() {
+    this.queryMedia.unsubscribe();
   }
 
 }
