@@ -9,7 +9,7 @@
   </div>
   <a fxLayout="row" fxLayoutAlign="start center" routerLink="./settings">
     <i *ngIf="!avatar" class="iconfontXberts icon-ic-user xb-shop__icons md-dark-secondary"></i>
-    <img *ngIf="avatar" class="xb-shop__avatar" [src]="avatar" />
+    <img *ngIf="avatar" class="xb-shop__avatar" src="{{avatar}}" />
   </a>
 </mat-toolbar>
 <div appViewResize [margin]="56" fxLayout="column">

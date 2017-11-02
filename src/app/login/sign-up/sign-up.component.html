@@ -65,13 +65,13 @@
     <form [formGroup]="storeForm" (ngSubmit)="complete()" novalidate>
       <div fxFLex class="xb-login__width">
         <mat-form-field>
-          <input matInput placeholder="Store Name" formControlName="name">
+          <input matInput placeholder="Store Name" formControlName="name" [(ngModel)]="storeName">
         </mat-form-field>
         <div *ngIf="formErrors['name']" class="xb-input-error">
           {{ formErrors['name'] }}
         </div>
         <mat-form-field>
-          <mat-select placeholder="Store Currency" [(ngModel)]="currency" name="currency" formControlName="currency">
+          <mat-select placeholder="Store Currency"  name="currency" formControlName="currency">
             <mat-option *ngFor="let currency of currencies" [value]="currency.code">
               {{ currency.name }}
             </mat-option>
@@ -85,8 +85,8 @@
         <div>
           https://www.socialcommer.net/store/
         </div>
-        <mat-form-field class="md-margin-left-2 xb-login__width">
-          <input matInput formControlName="displayName">
+        <mat-form-field class="md-margin-left-2 xb-login__width" >
+          <input matInput formControlName="displayName" [(ngModel)]="storeName">
         </mat-form-field>
       </div>
       <div *ngIf="formErrors['displayName']" class="xb-input-error">

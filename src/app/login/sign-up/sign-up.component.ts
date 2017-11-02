@@ -21,6 +21,7 @@ export class SignUpComponent {
 
   country: string;
   currency: string;
+  storeName: any;
 
   public countries: Object[];
   public currencies: Object[];
