@@ -61,7 +61,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
       purchaseUrl: ['', [
         Validators.required
       ]],
-      recommendation: ['']
+      recommendation: [''],
+      description: [''],
     });
   }
 
@@ -73,7 +74,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
       self.productForm.setValue({
         title: data.title,
         purchaseUrl: '',
-        recommendation: ''
+        recommendation: '',
+        description: data.description
       });
 
       self.editorContent = data.description;

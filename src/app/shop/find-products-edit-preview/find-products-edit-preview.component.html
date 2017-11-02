@@ -61,6 +61,20 @@
           <div class="line-through md-margin-left-2">$12.00</div>
           <div class="xb-store__details-sale md-margin-left-2">50% OFF</div>
         </div>
+        <div class="xb-shop__edit-title">Description</div>
+        <div class="md-margin-top-2" [hidden]="!showDescriptionEditor">
+          <quill-editor [(ngModel)]="editorContent" formControlName="description"
+                        (ready)="onEditorCreated($event)"></quill-editor>
+          <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
+          <div class="md-margin-top-2 xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center">
+            <button mat-raised-button color="primary" (click)="showDescription()">SAVE</button>
+            <div class="xb-shop__margin-left">
+              <button mat-button color="primary" (click)="resetDescription()">CANCEL</button>
+            </div>
+          </div>
+        </div>
+        <div class="ql-editor ql-container xb-shop__margin-bottom-2" [hidden]="showDescriptionEditor" [innerHTML]="editorContent | safeHtml" (click)="showDescription()"></div>
+
         <div class="xb-shop__edit-title">Add your affiliate link</div>
         <mat-form-field class="xb-shop__width-100" >
           <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with"
@@ -69,7 +83,7 @@
         <div *ngIf="formErrors['purchaseUrl']" class="xb-input-error">
           {{ formErrors['purchaseUrl'] }}
         </div>
-        <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product</div>
+        <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product(optional)</div>
         <mat-form-field class="xb-shop__width-100">
         <textarea matInput value="Your opinion is very important to your audiences"
                   formControlName="recommendation"></textarea>
@@ -78,20 +92,6 @@
           {{ formErrors['recommendation'] }}
         </div>
       </form>
-      <div class="xb-shop__edit-title">Description</div>
-      <div class="md-margin-top-2" [hidden]="!showDescriptionEditor">
-        <quill-editor [(ngModel)]="editorContent"
-                      (ready)="onEditorCreated($event)"></quill-editor>
-        <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
-        <div class="md-margin-top-2 xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center">
-          <button mat-raised-button color="primary" (click)="showDescription()">SAVE</button>
-          <div class="xb-shop__margin-left">
-            <button mat-button color="primary" (click)="resetDescription()">CANCEL</button>
-          </div>
-        </div>
-      </div>
-      <div class="ql-editor ql-container xb-shop__margin-bottom-2" [hidden]="showDescriptionEditor" [innerHTML]="editorContent | safeHtml" (click)="showDescription()"></div>
-
       <div fxLayout="row" fxLayoutAlign="start center">
         <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
         <div class="xb-shop__margin-left">

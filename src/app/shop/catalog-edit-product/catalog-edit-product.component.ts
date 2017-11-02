@@ -34,7 +34,6 @@ export class CatalogEditProductComponent implements OnInit {
 
   // Editor
   public editor;
-  public editorContent = "insert content...";
   public editorImageId = 'quillImage';
 
   // Enter, comma
@@ -70,7 +69,8 @@ export class CatalogEditProductComponent implements OnInit {
       ]],
       recommendation: ['', [
         Validators.maxLength(1000)
-      ]]
+      ]],
+      description: ['']
     });
 
     this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -125,7 +125,8 @@ export class CatalogEditProductComponent implements OnInit {
               salePrice: data.salePriceAmount,
               originalPrice: data.originalPriceAmount,
               purchaseUrl: data.purchaseUrl,
-              recommendation: data.recommendation
+              recommendation: data.recommendation,
+              description: data.description
             });
 
             for(let value of data.imageUrl) {
@@ -260,7 +261,7 @@ export class CatalogEditProductComponent implements OnInit {
     let product = new Product();
 
     storeProduct.product = product;
-    storeProduct.product.description = this.editorContent;
+    storeProduct.product.description = productForm.description;
     storeProduct.product.title = productForm.title;
     storeProduct.product.images = [];
     storeProduct.product.images = [...this.previewImgFile];
@@ -297,7 +298,7 @@ export class CatalogEditProductComponent implements OnInit {
     let product = new Product();
 
     storeProduct.product = product;
-    storeProduct.product.description = this.editorContent;
+    storeProduct.product.description =  productForm.description;
     storeProduct.product.title = productForm.title;
     storeProduct.product.images = [];
     storeProduct.product.images = [...this.previewImgFile];
