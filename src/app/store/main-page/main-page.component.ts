@@ -77,12 +77,10 @@ export class MainPageComponent implements OnInit {
 
   changeCategory() {
     this.page = 1;
-    this.product = [];
-    this.nextPage = true;
-    this.queryProduct();
+    this.queryProduct(true);
   }
 
-  queryProduct() {
+  queryProduct(clearProduct?:boolean) {
     let options = {
       categoryId: this.category.id,
       storeId: this.store.id,
@@ -92,6 +90,10 @@ export class MainPageComponent implements OnInit {
     };
     let self = this;
     self.storeService.getProductList(options).then((data)=>{
+      if(clearProduct) {
+        this.product = [];
+        this.nextPage = true;
+      }
       self.product = self.product.concat(data.results);
       if(data.next == null) {
         self.nextPage = false;

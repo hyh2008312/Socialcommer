@@ -37,7 +37,11 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   product = {
     title: '',
-    tags: ''
+    tags: '',
+    salePriceAmount: 0,
+    salePriceCurrency: 'USD',
+    originalPriceAmount: 0,
+    originalPriceCurrency: 'USD'
   };
 
   // Reset product
@@ -82,6 +86,10 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
       self.product.title = data.title;
       self.product.tags = data.categoryName;
+      self.product.salePriceAmount = data.salePriceAmount;
+      self.product.originalPriceAmount = data.originalPriceAmount;
+      self.product.salePriceCurrency = data.salePriceCurrency;
+      self.product.originalPriceCurrency = data.originalPriceCurrency;
 
       self.tags.push({
         id: data.categoryId,
@@ -252,7 +260,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
           let id = data.id;
           let imageUrl = `${data.url}/${data.key}`;
           that.s3UploaderService.uploadToS3(file, data).then((data) => {
-            that.editor.insertEmbed(that.editor.getLength(), 'image', imageUrl);
+            let range = that.editor.getSelection();
+            that.editor.insertEmbed(range.index, 'image', imageUrl);
           });
         });
       };

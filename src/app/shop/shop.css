@@ -1801,5 +1801,42 @@ textarea.mat-input-element {
 @media screen and (min-width: 600px) and (max-width: 959px) {
   .xb-shop__mobile-dialog-inner {
     padding: 16px; } }
+.xb-shop__store-template {
+  width: 360px;
+  height: 408px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
+  .xb-shop__store-template > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; }
+  .xb-shop__store-template-cover {
+    display: none !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); }
+  .xb-shop__store-template:hover .xb-shop__store-template-cover {
+    display: flex !important; }
+.xb-shop__store-button {
+  width: 116px;
+  border-radius: 16px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500; }
+  .xb-shop__store-button-primary {
+    background-color: #00bdd6;
+    color: #fff; }
+  .xb-shop__store-button-normal {
+    background-color: #fff;
+    color: #222; }
 
 /*# sourceMappingURL=shop.css.map */

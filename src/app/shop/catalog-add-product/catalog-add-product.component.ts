@@ -294,7 +294,8 @@ export class CatalogAddProductComponent implements OnInit {
           let id = data.id;
           let imageUrl = `${data.url}/${data.key}`;
           that.s3UploaderService.uploadToS3(file, data).then((data) => {
-            that.editor.insertEmbed(that.editor.getLength(), 'image', imageUrl);
+            let range = that.editor.getSelection();
+            that.editor.insertEmbed(range.index, 'image', imageUrl);
           });
         });
       };

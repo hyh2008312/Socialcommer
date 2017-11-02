@@ -7,7 +7,6 @@ export class SaleDiscountPipe implements PipeTransform {
 
   constructor(){}
   transform(value: any, originalPrice: any): any {
-    console.log(value +"|"+originalPrice)
     if(value > 0 && value >0) {
       return Math.floor((originalPrice - value) * 100 / originalPrice) + '%';
     } else if(originalPrice > 0 && !value) {

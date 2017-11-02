@@ -433,6 +433,59 @@
       padding: 16px;
     }
   }
+
+  &__store{
+    &-template{
+      width: 360px;
+      height: 408px;
+      position: relative;
+      overflow: hidden;
+
+      @include resetBorder();
+
+      >img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      $parent: &;
+      &-cover{
+        display: none !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.7);
+      }
+
+      &:hover{
+        #{$parent}-cover{
+          display: flex !important;
+        }
+      }
+    }
+    &-button{
+      width: 116px;
+      border-radius: 16px;
+      line-height: 32px;
+      text-align: center;
+      cursor: pointer;
+      @include media();
+
+      &-primary {
+        background-color: $primaryColor;
+        color: $whiteColor;
+      }
+
+      &-normal{
+        background-color: $whiteColor;
+        color: $blackColor;
+      }
+    }
+  }
 }
 
 
