@@ -46,14 +46,14 @@
           <button mat-raised-button color="primary" type="submit">SIGN UP</button>
         </div>
       </form>
-      <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
-      <button class="xb-login__facebook" mat-raised-button>
+      <div class="md-align-center md-margin-top-2 md-margin-bottom-2" hide>OR</div>
+      <button class="xb-login__facebook" mat-raised-button hide>
         <div fxLayout="row" fxLayoutAlign="start center">
           <i class="iconfontXberts icon-ic-facebook"></i>
           <span class="md-align-center" fxFlex>Continue with Facebook</span>
         </div>
       </button>
-      <button class="xb-login__google" mat-raised-button>
+      <button class="xb-login__google" mat-raised-button hide>
         <div fxLayout="row" fxLayoutAlign="start center">
           <i class="iconfontXberts icon-pic-google"></i>
           <span class="md-align-center" fxFlex>Continue with Google</span>
@@ -66,7 +66,7 @@
       <form [formGroup]="storeForm" (ngSubmit)="complete()" novalidate>
         <div fxFLex class="xb-login__width">
           <mat-form-field>
-            <input matInput placeholder="Store Name" formControlName="name" [(ngModel)]="storeName">
+            <input matInput placeholder="Store Name" formControlName="name">
           </mat-form-field>
           <div *ngIf="formErrors['name']" class="xb-input-error">
             {{ formErrors['name'] }}
@@ -87,7 +87,7 @@
             https://www.socialcommer.net/store/
           </div>
           <mat-form-field class="md-margin-left-2 xb-login__width" >
-            <input matInput formControlName="displayName" [(ngModel)]="storeName">
+            <input matInput formControlName="displayName">
           </mat-form-field>
         </div>
         <div *ngIf="formErrors['displayName']" class="xb-input-error">

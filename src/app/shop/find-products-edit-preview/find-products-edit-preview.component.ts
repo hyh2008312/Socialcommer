@@ -279,7 +279,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
     let productForm = this.productForm.value;
     let images = [];
     for(let value of this.productCopy.imageUrl) {
-      images.push(value.id);
+      images.push(value);
     }
 
     let storeProduct = {
@@ -308,7 +308,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
     let images = [];
     for(let value of this.productCopy.imageUrl) {
-      images.push(value.id);
+      images.push(value);
     }
 
     let storeProduct = {

@@ -218,7 +218,8 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.product.description = productForm.description;
     storeProduct.product.title = productForm.title;
-    storeProduct.product.cover = this.previewImgFile;
+    storeProduct.product.cover = [];
+    storeProduct.product.cover = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice,
       currency: this.storeCurrency
@@ -254,7 +255,8 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.product.description = productForm.description;
     storeProduct.product.title = productForm.title;
-    storeProduct.product.cover = this.previewImgFile;
+    storeProduct.product.cover = [];
+    storeProduct.product.cover = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
       amount: productForm.originalPrice == ''? 0: productForm.originalPrice,
       currency: this.storeCurrency
