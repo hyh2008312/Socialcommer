@@ -21,7 +21,7 @@ export class StorePreviewComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate(['/shop/store']);
+    this.router.navigate(['/shop/store'],{queryParams: {tab: 'templates'}});
   }
 
 }

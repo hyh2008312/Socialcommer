@@ -19,8 +19,8 @@ export class StoreDetailComponent implements OnInit {
     + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
   store: Store = new Store();
   product: Product = new Product();
-  image: any;
-  selectedImage: Image = new Image();
+  image: any = [];
+  selectedImage: any = false;
   imageSources: string[] = [];
 
   constructor(
@@ -47,7 +47,7 @@ export class StoreDetailComponent implements OnInit {
       if(data.imageUrl.length > 0) {
         self.selectedImage = data.imageUrl[0];
         for(let value of data.imageUrl) {
-          self.imageSources.push(value.url);
+          self.imageSources.push(value);
         }
       }
     });

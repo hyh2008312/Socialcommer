@@ -98,7 +98,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
       if(data.imageUrl.length > 0) {
         for(let value of data.imageUrl) {
-          self.previewImg.push(value.url);
+          self.previewImg.push(value);
         }
       }
 
@@ -294,7 +294,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       isUser : true,
       description : this.editorContent,
       title : productForm.title,
-      images : [...images],
+      cover : [...images],
       categoryId : this.tags[0]? this.tags[0].id : null
     };
 
@@ -323,7 +323,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       isUser : true,
       description : this.editorContent,
       title : productForm.title,
-      images : [...images],
+      cover : [...images],
       categoryId : this.tags[0]? this.tags[0].id : null
     };
 

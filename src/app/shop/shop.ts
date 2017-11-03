@@ -40,7 +40,7 @@ export class Product {
   owner: any;
   salePrice: any = 0;
   originalPrice: any = 0;
-  images: any;
+  cover: any;
   isDraft: boolean;
 }
 
@@ -59,7 +59,7 @@ export class StoreProduct{
   owner: any;
   product: Product;
 
-  images: any;
+  cover: any;
   storeId: number;
   purchaseUrl: string;
   isCustomer: boolean;

@@ -7,6 +7,7 @@ export class User {
   lastName : string;
   store : any;
   avatar: any;
+  country: string;
 }
 
 

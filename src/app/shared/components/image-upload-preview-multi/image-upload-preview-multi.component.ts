@@ -55,9 +55,9 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
           width: width,
           height: height
         }).then((data)=> {
-          let id = data.id;
+          let src = data.url + '/' + data.key;
           that.s3UploaderService.uploadToS3(file, data).then((data) => {
-            that.previewImgFile.push(id);
+            that.previewImgFile.push(src);
             that.previewImgFileChange.emit(that.previewImgFile);
           });
         });

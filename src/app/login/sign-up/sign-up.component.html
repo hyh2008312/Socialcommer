@@ -26,7 +26,7 @@
             {{ formErrors['email'] }}
           </div>
           <mat-form-field>
-            <input matInput placeholder="Password" formControlName="password">
+            <input matInput type="password" placeholder="Password" formControlName="password">
           </mat-form-field>
           <div *ngIf="formErrors['password']" class="xb-input-error">
             {{ formErrors['password'] }}

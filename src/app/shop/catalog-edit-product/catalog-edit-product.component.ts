@@ -128,8 +128,8 @@ export class CatalogEditProductComponent implements OnInit {
             });
 
             for(let value of data.imageUrl) {
-              self.previewImgFile.push(value.id);
-              self.previewImgSrcs.push(value.url);
+              self.previewImgFile.push(value);
+              self.previewImgSrcs.push(value);
             }
 
             self.relationId = data.id;
@@ -259,8 +259,8 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.description = productForm.description;
     storeProduct.title = productForm.title;
-    storeProduct.images = [];
-    storeProduct.images = [...this.previewImgFile];
+    storeProduct.cover = [];
+    storeProduct.cover = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice,
       currency: this.storeCurrency
@@ -296,8 +296,8 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.description =  productForm.description;
     storeProduct.title = productForm.title;
-    storeProduct.images = [];
-    storeProduct.images = [...this.previewImgFile];
+    storeProduct.cover = [];
+    storeProduct.cover = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice == ''? 0: productForm.originalPrice,
       currency: this.storeCurrency
@@ -339,8 +339,8 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.description = productForm.description;
     storeProduct.title = productForm.title;
-    storeProduct.images = [];
-    storeProduct.images = [...this.previewImgFile];
+    storeProduct.cover = [];
+    storeProduct.cover = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice == ''? 0: productForm.originalPrice,
       currency: this.storeCurrency

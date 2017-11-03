@@ -218,7 +218,7 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.product.description = productForm.description;
     storeProduct.product.title = productForm.title;
-    storeProduct.product.images = this.previewImgFile;
+    storeProduct.product.cover = this.previewImgFile;
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice,
       currency: this.storeCurrency
@@ -254,7 +254,7 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product = product;
     storeProduct.product.description = productForm.description;
     storeProduct.product.title = productForm.title;
-    storeProduct.product.images = this.previewImgFile;
+    storeProduct.product.cover = this.previewImgFile;
     storeProduct.product.originalPrice = {
       amount: productForm.originalPrice == ''? 0: productForm.originalPrice,
       currency: this.storeCurrency
@@ -295,7 +295,6 @@ export class CatalogAddProductComponent implements OnInit {
           width: width,
           height: height
         }).then((data)=> {
-          let id = data.id;
           let imageUrl = `${data.url}/${data.key}`;
           that.s3UploaderService.uploadToS3(file, data).then((data) => {
             let range = that.editor.getSelection();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute} from '@angular/router';
 
 import { Store } from '../shop';
 import { ShopService } from '../shop.service';
@@ -19,16 +20,18 @@ export class StoreComponent implements OnInit {
   storeErr: any = false;
 
   currency: string;
-
-  public currencies: Object[];
+  currencies: Object[];
 
   checked: boolean;
+
+  selectedIndex: number = 0;
 
   constructor(
     private constantService : ConstantService,
     private shopService : ShopService,
     private userService : UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute
   ) {
     this.currencies = this.constantService.getCurrencies();
 
@@ -140,6 +143,14 @@ export class StoreComponent implements OnInit {
       }
     });
 
+    self.activatedRoute.queryParams.subscribe((data)=> {
+      if(data.tab == 'settings' ) {
+        self.selectedIndex = 0;
+      }
+      if(data.tab == 'templates') {
+        self.selectedIndex = 1;
+      }
+    });
   }
 
   changeStore(): void {

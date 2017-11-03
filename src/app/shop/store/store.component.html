@@ -1,4 +1,4 @@
-<mat-tab-group class="md-margin-right-2" color="accent">
+<mat-tab-group class="md-margin-right-2" color="accent" [(selectedIndex)]="selectedIndex">
   <mat-tab label="Store Settings">
     <div class="md-margin-top-3">
       <form [formGroup]="storeForm" (ngSubmit)="changeStore()" novalidate>

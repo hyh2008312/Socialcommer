@@ -10,13 +10,9 @@ import { ICarouselConfig, AnimationConfig } from '../angular4-carousel/index';
 
 export class LeftProductsImageComponent implements OnInit {
 
-  @Input() public images:any = [{
-    url: ''
-  }];
-  @Input() public selectedImage: any = {
-    url: ''
-  };
-  @Input() public imageSources: string[] = [''];
+  @Input() public images:any = [];
+  @Input() public selectedImage: any;
+  @Input() public imageSources: string[] = [];
 
   public config: ICarouselConfig = {
     verifyBeforeLoad: true,

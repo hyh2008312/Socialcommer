@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'username': {
-      'required': 'Username is required.',
+      'required': 'This field is required',
     },
     'password':{
-      'required': 'Password is required.',
+      'required': 'This field is required',
       'minlength': 'Password must contain at least 6 characters.'
     }
   };
