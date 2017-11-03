@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ENTER } from '@angular/cdk/keycodes';
 
 import { ShopService } from '../shop.service';
+import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-find-products',
@@ -14,16 +15,7 @@ export class FindProductsComponent implements OnInit {
 
   sortsList = [];
   countries = ['India', 'United States'];
-  categories = [{
-    name: 'Electronic',
-    checked: false
-  }, {
-    name: 'Home',
-    checked: false
-  },{
-    name: 'Beauty',
-    checked: false
-  }];
+  categories:any = [];
   sources = [{
     name: 'Amazon.in',
     checked: false
@@ -53,13 +45,26 @@ export class FindProductsComponent implements OnInit {
   productList: any = false;
 
   constructor(
-    private shopService: ShopService
+    private shopService: ShopService,
+    private userService: UserService
   ) {
 
   }
 
   ngOnInit():void {
     this.getProductList();
+
+    let self = this;
+    self.userService.pubCategory.subscribe((data) => {
+      if(data) {
+        for (let value of data) {
+          self.categories.push({
+            checked: false,
+            ...value
+          });
+        }
+      }
+    });
   }
 
   // MatPaginator Output
@@ -145,7 +150,7 @@ export class FindProductsComponent implements OnInit {
         country.push(value.name);
       }
       if(value.type == 1) {
-        categoryId.push(value.name);
+        categoryId.push(value.id);
       }
       if(value.type == 2) {
         source.push(value.name);

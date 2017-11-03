@@ -34,6 +34,7 @@ export class ShopComponent implements OnInit {
 
     self.shopService.getCategoryList().then((data) => {
       self.userService.addUserCategory(data.userCategory);
+      self.userService.addPubCategory(data.pubCategory);
     });
   }
 

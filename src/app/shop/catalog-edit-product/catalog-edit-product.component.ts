@@ -61,9 +61,7 @@ export class CatalogEditProductComponent implements OnInit {
       salePrice: ['', [
         Validators.required
       ]],
-      originalPrice: ['', [
-        Validators.required
-      ]],
+      originalPrice: [''],
       purchaseUrl: ['', [
         Validators.required
       ]],

@@ -54,9 +54,9 @@ export class FindProductsEditPreviewComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private shopService: ShopService,
     private fb: FormBuilder,
-    public userService: UserService,
-    public previewImageService: ImageUploadPreviewService,
-    public s3UploaderService: S3UploaderService
+    private userService: UserService,
+    private previewImageService: ImageUploadPreviewService,
+    private s3UploaderService: S3UploaderService
   ) {
     this.productForm = this.fb.group({
       title: ['', [
