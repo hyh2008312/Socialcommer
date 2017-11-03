@@ -113,29 +113,29 @@ export class SettingsComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'firstName': {
-      'required': 'First name is required.'
+      'required': 'This field is required.'
     },
     'lastName': {
-      'required': 'Last name is required.'
+      'required': 'This field is required.'
     },
     'country': {
-      'required': 'Country is required.'
+      'required': 'This field is required.'
     },
     'currentPassword': {
-      'required': 'CurrentPassword is required.',
+      'required': 'This field is required.',
       'minlength': 'Password must contain at least 6 characters.'
     },
     'password': {
-      'required': 'Password is required.',
+      'required': 'This field is required.',
       'minlength': 'Password must contain at least 6 characters.'
     },
     'confirmPassword':{
-      'required': 'ConfirmPassword is required.',
+      'required': 'This field is required.',
       'minlength': 'ConfirmPassword must contain at least 6 characters.',
       'validateEqual': 'ConfirmPassword is different from Password.'
     },
     'email':{
-      'required': 'Email is required.',
+      'required': 'This field is required.',
       'email': 'Please enter a valid email address.'
     }
   };

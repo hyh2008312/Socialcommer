@@ -64,16 +64,16 @@ export class StoreComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'name': {
-      'required': 'Name is required.'
+      'required': 'This field is required.'
     },
     'currency': {
-      'required': 'Currency is required.'
+      'required': 'This field is required.'
     },
     'displayName':{
-      'required': 'Display name is required.'
+      'required': 'This field is required.'
     },
     'status':{
-      'required': 'Status is required.'
+      'required': 'This field is required.'
     }
   };
 

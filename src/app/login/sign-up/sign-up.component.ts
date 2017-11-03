@@ -47,30 +47,30 @@ export class SignUpComponent {
   //错误对应的提示
   validationMessages = {
     'firstName': {
-      'required': 'First name is required.',
+      'required': 'This field is required.',
     },
     'lastName': {
-      'required': 'Last name is required.',
+      'required': 'This field is required.',
     },
     'email':{
-      'required': 'Email is required.',
+      'required': 'This field is required.',
       'email': 'Please enter a valid email address.'
     },
     'password':{
-      'required': 'Password is required.',
+      'required': 'This field is required.',
       'minlength': 'Password must contain at least 6 characters.'
     },
     'country':{
       'required': 'Password is required.'
     },
     'name': {
-      'required': 'Store name is required.'
+      'required': 'This field is required.'
     },
     'currency': {
-      'required': 'Store currency is required.'
+      'required': 'This field is required.'
     },
     'displayName': {
-      'required': 'Url is required.',
+      'required': 'This field is required.',
       'pattern': 'Url pattern is invalid.'
     }
   };

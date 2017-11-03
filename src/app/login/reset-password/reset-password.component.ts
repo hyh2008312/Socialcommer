@@ -38,7 +38,7 @@ export class ResetPasswordComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'email': {
-      'required': 'Email is required.',
+      'required': 'This field is required.',
       'email': 'Invalid type.'
     }
   };
@@ -74,7 +74,7 @@ export class ResetPasswordComponent implements OnInit {
     }
     let self = this;
     this.loginService.resetPassword(this.resetForm.value).then((data)=> {
-      console.log(data)
+
     }).catch((data) => {
       self.resetErr = data;
     });

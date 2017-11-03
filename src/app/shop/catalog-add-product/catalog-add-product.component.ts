@@ -97,16 +97,16 @@ export class CatalogAddProductComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'title': {
-      'required': 'Title is required.'
+      'required': 'This field is required.'
     },
     'tags': {
-      'required': 'Tag is required.'
+      'required': 'This field is required.'
     },
     'salePrice':{
-      'required': 'Sale price is required.'
+      'required': 'This field is required.'
     },
     'purchaseUrl': {
-      'required': 'Purchase url price is required.'
+      'required': 'This field is required.'
     },
     'recommendation':{
       'maxlength' : 'Recommendation contain 1000 characters at most.'
