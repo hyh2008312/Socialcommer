@@ -1,40 +1,41 @@
-<div class="container" appViewResize fxLayout="row" fxLayoutAlign="center center">
-  <div class="xb-login__container" fxLayout="column" >
-    <div class="xb-login__error md-margin-bottom-2" *ngIf="loginErr">{{loginErr}}</div>
-    <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="loginGroup" (ngSubmit)="login()" novalidate>
-      <div class="xb-login__width">
-        <mat-form-field>
-          <input matInput placeholder="Email Address" formControlName="username">
-        </mat-form-field>
-        <div *ngIf="formErrors['username']" class="xb-input-error">
-          {{ formErrors['username'] }}
+<div class="xb-login__scroll">
+  <div class="container" appViewResize fxLayout="row" fxLayoutAlign="center center">
+    <div class="xb-login__container" fxLayout="column" >
+      <div class="xb-login__error md-margin-bottom-2" *ngIf="loginErr">{{loginErr}}</div>
+      <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="loginGroup" (ngSubmit)="login()" novalidate>
+        <div class="xb-login__width">
+          <mat-form-field>
+            <input matInput placeholder="Email Address" formControlName="username">
+          </mat-form-field>
+          <div *ngIf="formErrors['username']" class="xb-input-error">
+            {{ formErrors['username'] }}
+          </div>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" formControlName="password">
+          </mat-form-field>
+          <div *ngIf="formErrors['password']" class="xb-input-error">
+            {{ formErrors['password'] }}
+          </div>
         </div>
-        <mat-form-field>
-          <input matInput type="password" placeholder="Password" formControlName="password">
-        </mat-form-field>
-        <div *ngIf="formErrors['password']" class="xb-input-error">
-          {{ formErrors['password'] }}
+        <a class="text-underline md-margin-bottom-3 md-dark-primary" routerLink="/cp/resetPassword">Forgot password?</a>
+        <div fxLayout="column">
+          <button mat-raised-button color="primary" type="submit">LOGIN</button>
         </div>
-      </div>
-      <a class="text-underline md-margin-bottom-3 md-dark-primary" routerLink="/cp/resetPassword">Forgot password?</a>
-      <div fxLayout="column">
-        <button mat-raised-button color="primary" type="submit">LOGIN</button>
-      </div>
-    </form>
-    <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
-    <button class="xb-login__facebook" mat-raised-button>
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <i class="iconfontXberts icon-ic-facebook"></i>
-        <span class="md-align-center" fxFlex>Continue with Facebook</span>
-      </div>
-    </button>
-    <button class="xb-login__google" mat-raised-button>
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <i class="iconfontXberts icon-pic-google"></i>
-        <span class="md-align-center" fxFlex>Continue with Google</span>
-      </div>
-    </button>
-    <a class="text-underline md-dark-primary" routerLink="/cp/signUp">Don't have an account?</a>
+      </form>
+      <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
+      <button class="xb-login__facebook" mat-raised-button>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <i class="iconfontXberts icon-ic-facebook"></i>
+          <span class="md-align-center" fxFlex>Continue with Facebook</span>
+        </div>
+      </button>
+      <button class="xb-login__google" mat-raised-button>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <i class="iconfontXberts icon-pic-google"></i>
+          <span class="md-align-center" fxFlex>Continue with Google</span>
+        </div>
+      </button>
+      <a class="text-underline md-dark-primary" routerLink="/cp/signUp">Don't have an account?</a>
+    </div>
   </div>
 </div>
-

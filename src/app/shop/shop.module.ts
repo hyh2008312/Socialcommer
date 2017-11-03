@@ -10,6 +10,7 @@ import { CatalogEditProductComponent } from "./catalog-edit-product/catalog-edit
 import { FindProductsAddProductComponent } from "./find-products-add-product/find-products-add-product.component";
 import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/find-products-edit-preview.component";
 import { StorePreviewComponent } from "./store-preview/store-preview.component";
+import { StoreTemplateComponent } from "./store-template/store-template.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
 import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-select.component";
@@ -46,7 +47,8 @@ import { SharedModule } from '../shared/shared.module';
     ProductItemCardComponent,
     FindProductsAddProductComponent,
     FindProductsEditPreviewComponent,
-    StorePreviewComponent
+    StorePreviewComponent,
+    StoreTemplateComponent
   ],
   entryComponents: [
   ],

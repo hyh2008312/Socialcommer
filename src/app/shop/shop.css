@@ -1838,5 +1838,9 @@ textarea.mat-input-element {
   .xb-shop__store-button-normal {
     background-color: #fff;
     color: #222; }
+.xb-shop__store-padding {
+  padding: 0;
+  max-width: 1200px;
+  width: 100%; }
 
 /*# sourceMappingURL=shop.css.map */

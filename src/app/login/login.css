@@ -1543,5 +1543,9 @@ textarea.mat-input-element {
   width: 100%; }
 .xb-login__error {
   color: #e53935; }
+.xb-login__scroll {
+  overflow-y: scroll;
+  width: 100vw;
+  height: 100vh; }
 
 /*# sourceMappingURL=login.css.map */

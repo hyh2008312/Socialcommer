@@ -61,9 +61,8 @@ export class ImageUploadHeaderComponent implements OnInit {
           width: width,
           height: height
         }).then((data)=> {
-          let id = data.id;
+          that.previewImgFile = data.url + '/' + data.key;
           that.s3UploaderService.uploadToS3(file, data).then((data) => {
-            that.previewImgFile = id;
             that.previewImgFileChange.emit(that.previewImgFile);
           });
         });

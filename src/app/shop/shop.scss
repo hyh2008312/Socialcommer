@@ -485,6 +485,12 @@
         color: $blackColor;
       }
     }
+
+    &-padding{
+      padding: 0;
+      max-width: 1200px;
+      width: 100%;
+    }
   }
 }
 

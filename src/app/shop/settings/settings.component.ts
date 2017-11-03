@@ -86,8 +86,8 @@ export class SettingsComponent implements OnInit {
         country: data.country,
         biography: data.biography
       });
-      self.previewImgSrcs = data.avatarUrl;
-      self.previewImgFile = data.avatarId;
+      self.previewImgSrcs = data.avatar;
+      self.previewImgFile = data.avatar;
     });
 
     self.userService.currentUser.subscribe((data) => {
@@ -213,7 +213,7 @@ export class SettingsComponent implements OnInit {
     }
 
     let user = this.profileForm.value;
-    user.avatarId = this.previewImgFile;
+    user.avatar = this.previewImgFile;
     let self = this;
     this.shopService.changeUserProfile(user).then((data) => {
       self.userService.getUser().then((data)=> {
