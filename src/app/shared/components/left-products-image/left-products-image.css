@@ -1518,6 +1518,8 @@ textarea.mat-input-element {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
+  .xb-image-display__left-bg {
+    width: 84px; }
   .xb-image-display__left.active {
     border: 1px solid #ffc500; }
   @media screen and (min-width: 600px) and (max-width: 959px) {

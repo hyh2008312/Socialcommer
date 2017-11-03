@@ -6,6 +6,7 @@ import { FlexLayoutModule }    from '@angular/flex-layout';
 import { MomentModule }        from 'angular2-moment';
 
 import { SafeHtmlPipe }         from './pipes/safe-html/safe-html.pipe';
+import { SafeUrlPipe }         from './pipes/safe-url/safe-url.pipe';
 import { SaleDiscountPipe }         from './pipes/sale-discount/sale-discount.pipe';
 
 import { ViewResizeDirective }  from './directives/view-resize/view-resize.directive';
@@ -80,6 +81,7 @@ import {
   declarations: [
     SafeHtmlPipe,
     SaleDiscountPipe,
+    SafeUrlPipe,
     ViewResizeDirective,
     ViewScrollDirective,
     RepeatOrderDirective,
@@ -100,6 +102,7 @@ import {
   exports: [
     SafeHtmlPipe,
     SaleDiscountPipe,
+    SafeUrlPipe,
     ViewResizeDirective,
     ViewScrollDirective,
     RepeatOrderDirective,

@@ -1,0 +1,13 @@
+<div class="xb-store__background" (click)="close()">
+  <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details" (click)="$event.stopPropagation();">
+    <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div>
+      <iframe *ngIf="baseLink" src="{{baseLink | safeUrl}}"></iframe>
+    </div>
+  </div>
+</div>

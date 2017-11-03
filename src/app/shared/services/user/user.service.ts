@@ -14,7 +14,8 @@ import { Store } from '../../../shop/shop';
 export class UserService {
   currentUser: Subject<User> = new BehaviorSubject<User>(null);
   store: Subject<Store> = new BehaviorSubject<Store>(null);
-  category: Subject<any> = new BehaviorSubject<any>(null);
+  userCategory: Subject<any> = new BehaviorSubject<any>(null);
+  pubCategory: Subject<any> = new BehaviorSubject<any>(null);
 
   constructor(
     private http: Http,
@@ -60,8 +61,12 @@ export class UserService {
     this.store.next(newStore);
   }
 
-  public addCategory(newCategory: any): void {
-    this.category.next(newCategory);
+  public addUserCategory(newCategory: any): void {
+    this.userCategory.next(newCategory);
+  }
+
+  public addPubCategory(newCategory: any): void {
+    this.pubCategory.next(newCategory);
   }
 
   private handleError (error: Response | any) {

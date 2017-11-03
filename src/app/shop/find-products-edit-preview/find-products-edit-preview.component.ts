@@ -111,7 +111,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       }
     });
 
-    self.userService.category.subscribe((data) => {
+    self.userService.userCategory.subscribe((data) => {
       if(data) {
         self.category = data;
       }
@@ -174,7 +174,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
         }).then((data) => {
           if(data) {
             self.category.unshift(data);
-            self.userService.addCategory(self.category);
+            self.userService.addUserCategory(self.category);
             self.tags.push({ id:data.id, name: _value.trim() });
           }
         });
@@ -295,7 +295,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       images : [...images],
-      categoryId : this.tags[0].id
+      categoryId : this.tags[0]? this.tags[0].id : null
     };
 
     let self = this;
@@ -324,7 +324,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       images : [...images],
-      categoryId : this.tags[0].id
+      categoryId : this.tags[0]? this.tags[0].id : null
     };
 
     let self = this;

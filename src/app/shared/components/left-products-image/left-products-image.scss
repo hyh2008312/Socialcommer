@@ -17,6 +17,13 @@
       top: 50%;
       @include transform(translate(-50%, -50%));
     }
+
+    &-bg{
+      width: 84px;
+      @include xb-sm-screen{
+        width: 60px;
+      }
+    }
     &.active{
       border: 1px solid $orangeColor;
     }

@@ -32,8 +32,8 @@ export class FindProductsAddProductComponent implements OnInit {
     self.shopService.getRecommendProduct({id}).then((data) => {
       self.product = data;
       self.image = data.imageUrl;
-      self.selectedImage = data.imageUrl[0];
       if(data.imageUrl.length > 0) {
+        self.selectedImage = data.imageUrl[0];
         for(let value of data.imageUrl) {
           self.imageSources.push(value.url);
         }

@@ -147,7 +147,7 @@ export class CatalogEditProductComponent implements OnInit {
       self.tab = data.tab;
     });
 
-    self.userService.category.subscribe((data) => {
+    self.userService.userCategory.subscribe((data) => {
       if(data) {
         self.category = data;
       }
@@ -215,7 +215,7 @@ export class CatalogEditProductComponent implements OnInit {
         }).then((data) => {
           if(data) {
             self.category.unshift(data);
-            self.userService.addCategory(self.category);
+            self.userService.addUserCategory(self.category);
             self.tags.push({ id:data.id, name: _value.trim() });
           }
         });
@@ -249,7 +249,6 @@ export class CatalogEditProductComponent implements OnInit {
 
     let storeProduct = new StoreProduct();
     storeProduct.id = this.relationId;
-    storeProduct.productId = this.productId;
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
     storeProduct.isCustomer = true;
@@ -260,10 +259,10 @@ export class CatalogEditProductComponent implements OnInit {
     let product = new Product();
 
     storeProduct.product = product;
-    storeProduct.product.description = productForm.description;
-    storeProduct.product.title = productForm.title;
-    storeProduct.product.images = [];
-    storeProduct.product.images = [...this.previewImgFile];
+    storeProduct.description = productForm.description;
+    storeProduct.title = productForm.title;
+    storeProduct.images = [];
+    storeProduct.images = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice,
       currency: this.storeCurrency
@@ -273,8 +272,9 @@ export class CatalogEditProductComponent implements OnInit {
       currency: this.storeCurrency
     };
 
-    storeProduct.product.isDraft = false;
-    storeProduct.categoryId = this.tags[0].id;
+    if(this.tags[0]) {
+      storeProduct.categoryId = this.tags[0].id;
+    }
 
     let self = this;
     this.shopService.changeProduct(storeProduct).then((data) => {
@@ -287,7 +287,6 @@ export class CatalogEditProductComponent implements OnInit {
 
     let storeProduct = new StoreProduct();
     storeProduct.id = this.relationId;
-    storeProduct.productId = this.productId;
     storeProduct.purchaseUrl = productForm.purchaseUrl;
     storeProduct.storeId = this.storeId;
     storeProduct.isCustomer = true;
@@ -297,10 +296,10 @@ export class CatalogEditProductComponent implements OnInit {
     let product = new Product();
 
     storeProduct.product = product;
-    storeProduct.product.description =  productForm.description;
-    storeProduct.product.title = productForm.title;
-    storeProduct.product.images = [];
-    storeProduct.product.images = [...this.previewImgFile];
+    storeProduct.description =  productForm.description;
+    storeProduct.title = productForm.title;
+    storeProduct.images = [];
+    storeProduct.images = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice == ''? 0: productForm.originalPrice,
       currency: this.storeCurrency
@@ -310,13 +309,10 @@ export class CatalogEditProductComponent implements OnInit {
       currency: this.storeCurrency
     };
 
-    storeProduct.product.isDraft = false;
-
-    let tagArr = [];
-    for(let value of this.tags) {
-      tagArr.push(value.name);
+    storeProduct.isDraft = false;
+    if(this.tags[0]) {
+      storeProduct.categoryId = this.tags[0].id;
     }
-    storeProduct.categoryName = tagArr.join(',');
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {
@@ -343,10 +339,10 @@ export class CatalogEditProductComponent implements OnInit {
     let product = new Product();
 
     storeProduct.product = product;
-    storeProduct.product.description = productForm.description;
-    storeProduct.product.title = productForm.title;
-    storeProduct.product.images = [];
-    storeProduct.product.images = [...this.previewImgFile];
+    storeProduct.description = productForm.description;
+    storeProduct.title = productForm.title;
+    storeProduct.images = [];
+    storeProduct.images = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
       amount:  productForm.originalPrice == ''? 0: productForm.originalPrice,
       currency: this.storeCurrency
@@ -356,13 +352,10 @@ export class CatalogEditProductComponent implements OnInit {
       currency: this.storeCurrency
     };
 
-    storeProduct.product.isDraft = false;
-
-    let tagArr = [];
-    for(let value of this.tags) {
-      tagArr.push(value.name);
+    storeProduct.isDraft = false;
+    if(this.tags[0]) {
+      storeProduct.categoryId = this.tags[0].id;
     }
-    storeProduct.categoryName = tagArr.join(',');
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {

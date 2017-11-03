@@ -38,7 +38,7 @@ export class CatalogAddProductComponent implements OnInit {
 
   storeId: number;
   storeCurrency: string = 'USD';
-  category: any;
+  category: any = [];
 
   ngOnInit() {
     let self = this;
@@ -49,7 +49,7 @@ export class CatalogAddProductComponent implements OnInit {
       }
     });
 
-    self.userService.category.subscribe((data) => {
+    self.userService.userCategory.subscribe((data) => {
       if(data) {
         self.category = data;
       }
@@ -161,7 +161,7 @@ export class CatalogAddProductComponent implements OnInit {
         }).then((data) => {
           if(data) {
             self.category.unshift(data);
-            self.userService.addCategory(self.category);
+            self.userService.addUserCategory(self.category);
             self.tags.push({ id:data.id, name: _value.trim() });
           }
         });
@@ -228,7 +228,9 @@ export class CatalogAddProductComponent implements OnInit {
       currency: this.storeCurrency
     };
     storeProduct.product.isDraft = false;
-    storeProduct.categoryId = this.tags[0].id;
+    if(this.tags[0]) {
+      storeProduct.categoryId = this.tags[0].id;
+    }
 
     this.shopService.createProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings'], { queryParams: {tab: 'published'}, replaceUrl: true});
@@ -263,7 +265,9 @@ export class CatalogAddProductComponent implements OnInit {
     };
     storeProduct.product.isDraft = true;
 
-    storeProduct.categoryId = this.tags[0].id;
+    if(this.tags[0]) {
+      storeProduct.categoryId = this.tags[0].id;
+    }
 
     this.shopService.createProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});

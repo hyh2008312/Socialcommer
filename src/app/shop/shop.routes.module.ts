@@ -11,13 +11,17 @@ import { CatalogAddProductComponent } from "./catalog-add-product/catalog-add-pr
 import { CatalogEditProductComponent } from "./catalog-edit-product/catalog-edit-product.component";
 import { FindProductsAddProductComponent } from "./find-products-add-product/find-products-add-product.component";
 import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/find-products-edit-preview.component";
+import { StorePreviewComponent } from "./store-preview/store-preview.component";
 
 const routes: Routes = [
   {
     path: '', component: ShopComponent,
     children: [
       {
-        path: 'store', component: StoreComponent
+        path: 'store', component: StoreComponent,
+        children: [{
+          path: 'preview', component: StorePreviewComponent
+        }]
       }, {
         path: 'dashboard', component: DashboardComponent
       }, {

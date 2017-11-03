@@ -1,14 +1,14 @@
 <div class="xb-image-display" fxLayout="row" fxLayoutAlign="start start" fxShow="false" fxShow.gt-xs="true">
-  <div class="md-margin-right-2" fxLayout="column" fxLayoutAlign="start start">
+  <div class="md-margin-right-2 xb-image-display__left-bg" fxLayout="column" fxLayoutAlign="start start">
     <div class="xb-image-display__left"
          [ngClass]="{'active': image == selectedImage ,'xb-image-display__margin-bottom':i < images.length - 1 }"
          *ngFor="let image of images; let i = index;" (click)="selectImage(image)">
-      <img [src]="image.url">
+      <img *ngIf="image.url != ''" [src]="image.url">
     </div>
   </div>
   <div>
     <div class="xb-image-display__right">
-      <img [src]="selectedImage.url">
+      <img *ngIf="selectedImage.url != ''" [src]="selectedImage.url">
     </div>
   </div>
 </div>
