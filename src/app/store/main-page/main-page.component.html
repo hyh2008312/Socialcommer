@@ -3,7 +3,7 @@
     {{store.name}}
   </div>
   <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center"
-    style="background: url('https://media.xberts.com/collector/source/web/banner/pic-store-v1.0.jpg') center/auto 100% repeat;">
+    style="background: url('https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg') center/auto 100% repeat;">
     <div class="xb-store__store-name">
       {{store.name}}
     </div>
@@ -21,7 +21,7 @@
     <app-store-navigation [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"
       fxShow="true" fxShow.xs="false"></app-store-navigation>
     <div class="xb-store__content xb-store__border-bottom">
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
         <app-store-item-card *ngFor="let item of product"
           fxFlex.xs="48" fxFlex.gt-xs="30"
           [product]="item" [status]="0"></app-store-item-card>
