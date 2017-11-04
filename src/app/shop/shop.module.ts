@@ -11,6 +11,7 @@ import { FindProductsAddProductComponent } from "./find-products-add-product/fin
 import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/find-products-edit-preview.component";
 import { StorePreviewComponent } from "./store-preview/store-preview.component";
 import { StoreTemplateComponent } from "./store-template/store-template.component";
+import { StoreEditComponent } from "./store-edit/store-edit.component";
 import { StoreItemCardPreviewComponent } from "./store-item-card-preview/store-item-card-preview.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
@@ -50,6 +51,7 @@ import { SharedModule } from '../shared/shared.module';
     FindProductsEditPreviewComponent,
     StorePreviewComponent,
     StoreTemplateComponent,
+    StoreEditComponent,
     StoreItemCardPreviewComponent
   ],
   entryComponents: [

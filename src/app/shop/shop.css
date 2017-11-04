@@ -1842,5 +1842,117 @@ textarea.mat-input-element {
   padding: 0;
   max-width: 1200px;
   width: 100%; }
+.xb-shop__store-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #fff;
+  z-index: 500; }
+.xb-shop__template-edit {
+  border: 3px solid #00bdd6; }
+.xb-shop__template-banner {
+  background-color: #000;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #00bdd6; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__template-banner {
+      padding: 0 16px;
+      height: 320px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-shop__template-banner {
+      padding: 0 16px; } }
+.xb-shop__template-name {
+  margin: auto;
+  width: 300px;
+  height: 60px;
+  line-height: 60px;
+  color: #fff;
+  border: 1px solid #00bdd6;
+  text-align: center; }
+  .xb-shop__template-name input {
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    line-height: 60px;
+    color: #fff;
+    border: none;
+    background-color: transparent;
+    text-align: center; }
+.xb-shop__template-title {
+  width: 100%;
+  margin-top: 100px;
+  max-height: 112px;
+  text-align: center;
+  border: 1px solid #00bdd6;
+  color: #fff; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__template-title {
+      margin-top: 0; } }
+.xb-shop__template-description {
+  width: 100%;
+  height: 96px;
+  margin-top: 24px;
+  text-align: center;
+  color: #fff;
+  border: 1px solid #00bdd6; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__template-description {
+      margin-top: 16px; } }
+.xb-shop__template-user {
+  width: 100%;
+  margin-top: 24px;
+  border: 1px solid #00bdd6; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__template-user {
+      margin-top: 16px; } }
+  .xb-shop__template-user-name {
+    width: 100%;
+    margin-top: 12px;
+    border: 1px solid #00bdd6;
+    font-weight: 500;
+    height: 20px;
+    overflow: hidden; }
+    .xb-shop__template-user-name input {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      text-align: center;
+      font-weight: 500; }
+  .xb-shop__template-user-country {
+    width: 100%;
+    margin-top: 8px;
+    border: 1px solid #00bdd6;
+    height: 20px;
+    overflow: hidden; }
+    .xb-shop__template-user-country input {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      text-align: center; }
+.xb-shop__template-banner {
+  background-color: #000;
+  height: 500px;
+  position: relative; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__template-banner {
+      padding: 0 16px;
+      height: 320px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-shop__template-banner {
+      padding: 0 16px; } }
+.xb-shop__template-header {
+  width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #00bdd6; }
 
 /*# sourceMappingURL=shop.css.map */

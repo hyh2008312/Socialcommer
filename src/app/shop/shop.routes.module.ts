@@ -12,6 +12,7 @@ import { CatalogEditProductComponent } from "./catalog-edit-product/catalog-edit
 import { FindProductsAddProductComponent } from "./find-products-add-product/find-products-add-product.component";
 import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/find-products-edit-preview.component";
 import { StorePreviewComponent } from "./store-preview/store-preview.component";
+import { StoreEditComponent } from "./store-edit/store-edit.component";
 
 const routes: Routes = [
   {
@@ -20,7 +21,9 @@ const routes: Routes = [
       {
         path: 'store', component: StoreComponent,
         children: [{
-          path: 'preview', component: StorePreviewComponent
+          path: 'preview', component: StorePreviewComponent,
+        }, {
+          path: 'edit', component: StoreEditComponent
         }]
       }, {
         path: 'dashboard', component: DashboardComponent

@@ -231,6 +231,21 @@
     }
   }
 
+  &__content-2{
+    max-width: 1000px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include xb-xs-screen{
+      padding: 0 16px;
+    }
+
+    @include xb-sm-screen{
+      padding: 0 16px;
+    }
+  }
+
   &__content-left{
     width: 120px;
     margin-right: 48px;

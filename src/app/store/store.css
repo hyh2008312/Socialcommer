@@ -3204,6 +3204,17 @@ textarea.mat-input-element {
     @media screen and (min-width: 600px) and (max-width: 959px) {
       .xb-store__content-1 {
         padding: 0 16px 40px; } }
+  .xb-store__content-2 {
+    max-width: 1000px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto; }
+    @media screen and (max-width: 599px) {
+      .xb-store__content-2 {
+        padding: 0 16px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__content-2 {
+        padding: 0 16px; } }
   .xb-store__content-left {
     width: 120px;
     margin-right: 48px;

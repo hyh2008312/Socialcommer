@@ -13,6 +13,7 @@ export class ImageUploadHeaderComponent implements OnInit {
   @Input() previewImgFile;
   @Output() previewImgFileChange: EventEmitter<string> = new EventEmitter();
   @Input() previewImgSrcs: any = null;
+  @Input() larger : any = false;
 
   upload: boolean = false;
 

@@ -24,7 +24,7 @@ export class ImageUploadPreviewComponent implements OnInit {
 
   constructor(public previewImageService: ImageUploadPreviewService) {
     this.config = {
-      aspectRatio : 1,
+      aspectRatio : 1920 / 500,
       scalable: true,
     }
   }
@@ -42,8 +42,7 @@ export class ImageUploadPreviewComponent implements OnInit {
       that.previewImgSrcs = result;
       let file = event.target.files[0];
 
-      that.previewImgFile = file;
-      that.previewImgFileChange.emit(that.previewImgFile);
+
 
       that.upload = true;
     })
@@ -61,6 +60,8 @@ export class ImageUploadPreviewComponent implements OnInit {
   onCropped() {
     const canvas = this.angularCropper.cropper.getCroppedCanvas();
     this.croppedSrc = canvas.toDataURL('image/png');
+    this.previewImgFile = this.croppedSrc;
+    this.previewImgFileChange.emit(this.previewImgFile);
   }
 
   onEdit() {

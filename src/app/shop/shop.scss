@@ -491,6 +491,146 @@
       max-width: 1200px;
       width: 100%;
     }
+
+    &-bg{
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      background-color: $whiteColor;
+      z-index: 500;
+    }
+  }
+
+  &__template{
+
+    &-edit{
+      border: 3px solid $primaryColor;
+    }
+
+    &-banner{
+      background-color: #000;
+      height: 500px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid $primaryColor;
+      @include xb-xs-screen{
+        padding: 0 16px;
+        height: 320px;
+      }
+      @include xb-sm-screen{
+        padding: 0 16px;
+      }
+    }
+
+    &-name{
+      margin: auto;
+      width: 300px;
+      height: 60px;
+      line-height: 60px;
+      color: $whiteColor;
+      border: 1px solid $primaryColor;
+      text-align: center;
+      input{
+        margin: 0;
+        padding: 0;
+        height: 60px;
+        line-height: 60px;
+        color: $whiteColor;
+        border: none;
+        background-color: transparent;
+        text-align: center;
+      }
+    }
+
+    &-title{
+      width: 100%;
+      margin-top: 100px;
+      max-height: 112px;
+      text-align: center;
+      border: 1px solid $primaryColor;
+      color: $whiteColor;
+      @include xb-xs-screen{
+        margin-top: 0;
+      }
+    }
+
+    &-description{
+      width: 100%;
+      height: 96px;
+      margin-top: 24px;
+      text-align: center;
+      color: $whiteColor;
+      border: 1px solid $primaryColor;
+      @include xb-xs-screen{
+        margin-top: 16px;
+      }
+    }
+
+    &-user{
+      width: 100%;
+      margin-top: 24px;
+      border: 1px solid $primaryColor;
+      @include xb-xs-screen{
+        margin-top: 16px;
+      }
+
+      &-name{
+        width: 100%;
+        margin-top: 12px;
+        border: 1px solid $primaryColor;
+        @include media();
+        height: 20px;
+        overflow: hidden;
+        input{
+          margin: 0;
+          padding: 0;
+          border: none;
+          background-color: transparent;
+          text-align: center;
+          @include media();
+        }
+      }
+      &-country{
+        width: 100%;
+        margin-top: 8px;
+        border: 1px solid $primaryColor;
+        height: 20px;
+        overflow: hidden;
+        input{
+          margin: 0;
+          padding: 0;
+          border: none;
+          background-color: transparent;
+          text-align: center;
+        }
+      }
+    }
+
+    &-banner{
+      background-color: #000;
+      height: 500px;
+      position: relative;
+      @include xb-xs-screen{
+        padding: 0 16px;
+        height: 320px;
+      }
+      @include xb-sm-screen{
+        padding: 0 16px;
+      }
+    }
+
+    &-header{
+      width: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid $primaryColor;
+
+    }
   }
 }
 

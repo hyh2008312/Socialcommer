@@ -1,0 +1,134 @@
+<form [formGroup]="storeForm" novalidate>
+  <div class="xb-shop__store-bg">
+    <div class="xb-shop__template-banner" fxLayout="column" fxLayoutAlign.xs="center center" (click)="editImage()"
+         [ngStyle]="{'background': 'url(' + imageSrc + ') center / auto 100% ' }">
+
+      <div class="xb-store__content-2">
+        <div class="xb-shop__template-name" [hidden]="nameEdited" (click)="editName()"
+             [innerHTML]="nameTag | safeHtml">
+        </div>
+        <div class="xb-shop__template-name xb-shop__template-edit" [hidden]="!nameEdited">
+          <input formControlName="nameTag" [(ngModel)]="nameTag">
+        </div>
+        <div class="xb-shop__template-title ql-editor ql-container" [hidden]="titleEdited" (click)="editTitle()"
+             [innerHTML]="titleTag | safeHtml">
+        </div>
+        <div class="xb-shop__template-title xb-shop__template-edit" [hidden]="!titleEdited" (mouseleave)="editTitle()">
+          <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
+                        [options]="editorConfig"></quill-editor>
+        </div>
+        <div class="xb-shop__template-description ql-editor ql-container" [hidden]="descriptionEdited"
+             (click)="editDescription()"
+             [innerHTML]="descriptionTag | safeHtml">
+        </div>
+        <div class="xb-shop__template-description xb-shop__template-edit" [hidden]="!descriptionEdited"
+             (mouseleave)="editDescription()">
+          <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
+                        [options]="editorConfig"></quill-editor>
+        </div>
+      </div>
+      <div class="xb-store__store-buttons" fxShow="false" fxShow.gt-xs="true">
+        <span>Shop Now</span>
+        <br>
+        <i class="material-icons">keyboard_arrow_down</i>
+      </div>
+    </div>
+    <div>
+      <div class="xb-store__title">My Collections</div>
+      <app-store-navigation [(category)]="category" [categories]="categories"
+                            fxShow="true" fxShow.xs="false"></app-store-navigation>
+      <div class="xb-store__content xb-store__border-bottom">
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+          <app-store-item-card-preview *ngFor="let item of product"
+                                       fxFlex.xs="48" fxFlex.gt-xs="30"
+                                       [product]="item" [status]="0"></app-store-item-card-preview>
+        </div>
+        <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center">
+          <div>
+            SEE MORE
+          </div>
+        </div>
+      </div>
+      <div class="xb-store__content-1">
+        <div class="xb-store__title">Store Owner</div>
+        <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
+          <div class="xb-store__content-left" fxFlex="none">
+            <div class="xb-shop__template-header">
+              <app-image-upload-header [(previewImgFile)]="previewImgFile" [(previewImgSrcs)]="previewImgSrcs"
+              [larger]="true"></app-image-upload-header>
+            </div>
+            <div class="xb-shop__template-user-name" [hidden]="userNameEdited" (click)="editUserName()"
+                 [innerHTML]="user.firstName | safeHtml">
+            </div>
+            <div class="xb-shop__template-user-name xb-shop__template-edit" [hidden]="!userNameEdited" >
+              <input formControlName="name" [(ngModel)]="user.firstName">
+            </div>
+            <div class="xb-shop__template-user-country" [hidden]="userNameEdited" (click)="editUserName()"
+                 [innerHTML]="user.country | safeHtml">
+            </div>
+            <div class="xb-shop__template-user-country xb-shop__template-edit" [hidden]="!userNameEdited"
+                 >
+              <input formControlName="country" [(ngModel)]="user.country">
+            </div>
+          </div>
+          <div class="xb-store__content-right">
+            <div class="xb-store__icons md-dark-third" fxShow.xs="false">
+              <i class="iconfontXberts icon-pic-quota"></i>
+            </div>
+            <div class="xb-shop__template-user ql-editor ql-container" [hidden]="userEdited"
+                 (click)="editUser()"
+                 [innerHTML]="userTag | safeHtml">
+            </div>
+            <div class="xb-shop__template-user xb-shop__template-edit" [hidden]="!userEdited"
+                 (mouseleave)="editUser()">
+              <quill-editor formControlName="userTag" [(ngModel)]="userTag"
+                            [options]="editorConfig"></quill-editor>
+            </div>
+            <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
+              <i class="iconfontXberts icon-pic-quota-2"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="xb-store__bottom-bg" fxShow="false">
+      <div class="xb-store__title-1">
+        Subscribe My Newsletter
+      </div>
+      <div class="xb-store__bottom-1" fxLayout="row" fxLayoutAlign="center center">
+        <div class="xb-store__width">
+          <input type="text">
+        </div>
+        <div class="md-margin-left-2">
+          <button mat-raised-button color="primary">SUBSCRIBE</button>
+        </div>
+      </div>
+    </div>
+    <div class="xb-store__footer">
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div class="xb-store__footer-margin-left">©2017 Xberts, Inc. All rights reserved</div>
+        <div class="xb-store__footer-margin-top" fxLayout="row" fxLayoutAlign="center center"
+             fxLayout.xs="column" fxLayoutAlign.xs="center center">
+          <img class="xb-store__footer-margin-top-1" src="https://media.xberts.com/collector/source/web/pic/pic-power.png">
+          <img class="xb-store__footer-margin-left xb-store__footer-margin-top-2" src="https://media.xberts.com/collector/source/web/pic/pic-foot-logo.png">
+        </div>
+      </div>
+      <div class="xb-store__footer-icons" fxLayout="row" fxLayoutAlign="end center"
+           fxLayoutAlign.xs="center center">
+        <app-share-button [link]="shareLink" [text]="text" [style]="{'store':true}"></app-share-button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="xb-store__background" (click)="editImage()" *ngIf="imageEdited">
+  <div class="xb-store__details-close" (click)="editImage()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details" (click)="$event.stopPropagation();">
+    <div class="xb-store__details-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <app-image-upload-preview [(previewImgFile)]="imageSrc" (previewImgFileChange)="imageChange()"></app-image-upload-preview>
+  </div>
+</div>
