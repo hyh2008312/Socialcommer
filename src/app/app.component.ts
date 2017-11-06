@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { UserService } from './shared/services/user/user.service';
+import { AuthenticationService } from './shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ export class AppComponent {
   title = 'SocialCommer';
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) {
     let self = this;
 
@@ -22,6 +24,9 @@ export class AppComponent {
           self.userService.getUser().then((data) => {
             self.userService.addUser(data);
             self.userService.addStore(data.store[0]);
+            self.authenticationService.inviteToken(data.isInvite);
+          }).catch((data) => {
+            self.authenticationService.inviteToken(false);
           });
         }
       });

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
+import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-invite-code',
@@ -17,7 +18,8 @@ export class InviteCodeComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private authenticationService: AuthenticationService
   ) {
     this.inviteForm = this.fb.group({
       inviteToken: ['', [
@@ -74,6 +76,7 @@ export class InviteCodeComponent implements OnInit {
     }
     let self = this;
     self.loginService.validateCode(this.inviteForm.value).then((data)=> {
+      self.authenticationService.inviteToken(true);
       self.router.navigate(['/shop/store'],{queryParams: {tab: 'templates'}});
     }).catch((data) => {
       self.inviteErr = data;

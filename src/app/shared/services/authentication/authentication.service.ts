@@ -33,10 +33,10 @@ export class AuthenticationService implements AuthService {
   }
 
   public inviteToken(data: any): void {
-    if(!data.isInvite) {
+    if(!data) {
       localStorage.removeItem('inviteToken');
     } else {
-      localStorage.setItem('inviteToken', data.isInvite);
+      localStorage.setItem('inviteToken', JSON.stringify({isInvite: data}));
     }
 
   }
