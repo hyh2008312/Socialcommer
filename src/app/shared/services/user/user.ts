@@ -9,6 +9,7 @@ export class User {
   avatar: any;
   country: string;
   category: any;
+  isInvite: boolean;
 }
 
 

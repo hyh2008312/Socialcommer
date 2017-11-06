@@ -18,7 +18,7 @@ export class InviteCodeComponent implements OnInit {
     private loginService: LoginService
   ) {
     this.inviteForm = this.fb.group({
-      code: ['', [
+      inviteToken: ['', [
         Validators.required
       ]]
     });
@@ -31,12 +31,12 @@ export class InviteCodeComponent implements OnInit {
 
   //存储错误信息
   formErrors = {
-    'code': ''
+    'inviteToken': ''
   };
 
   //错误对应的提示
   validationMessages = {
-    'code': {
+    'inviteToken': {
       'required': 'This field is required.'
     }
   };

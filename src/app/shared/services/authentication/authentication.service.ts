@@ -21,7 +21,7 @@ export class AuthenticationService implements AuthService {
   }
 
   public isAuthorized(): Observable<boolean> {
-    const isAuthorized: boolean = !!localStorage.getItem('accessToken');
+    const isAuthorized: boolean = !!localStorage.getItem('accessToken') && !!localStorage.getItem('inviteToken');
 
     return Observable.of(isAuthorized);
   }
@@ -32,8 +32,17 @@ export class AuthenticationService implements AuthService {
     localStorage.setItem('expireDate', new Date().getTime() + (data.expires_in  * 1000) + '');
   }
 
+  public inviteToken(data: any): void {
+    if(!data.isInvite) {
+      localStorage.removeItem('inviteToken');
+    } else {
+      localStorage.setItem('inviteToken', data.isInvite);
+    }
+
+  }
+
   public getAccessToken(): Observable<string> {
-    const accessToken: string = localStorage.getItem('accessToken');
+    let accessToken: string = localStorage.getItem('accessToken');
 
     return Observable.of(accessToken);
   }

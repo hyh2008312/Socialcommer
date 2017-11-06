@@ -7,13 +7,13 @@
     <div class="xb-login__container" fxFlex>
       <div fxFLex class="xb-login__width">
         <div class="xb-login__error md-margin-bottom-2" *ngIf="inviteErr">{{inviteErr}}</div>
-        <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="resetForm" novalidate>
+        <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="inviteForm" novalidate>
           <mat-form-field>
-            <input matInput placeholder="Please enter your invitation code" formControlName="code">
+            <input matInput placeholder="Please enter your invitation code" formControlName="inviteToken">
           </mat-form-field>
         </form>
-        <div *ngIf="formErrors['code']" class="xb-input-error">
-          {{ formErrors['code'] }}
+        <div *ngIf="formErrors['inviteToken']" class="xb-input-error">
+          {{ formErrors['inviteToken'] }}
         </div>
       </div>
     </div>

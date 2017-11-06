@@ -102,9 +102,9 @@ export class LoginService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}user/resetpw/request/`;
+    const url = `${this.baseUrl.url}user/invite_token/`;
 
-    return this.http.post(url, JSON.stringify(object), options)
+    return this.http.put(url, JSON.stringify(object), options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
