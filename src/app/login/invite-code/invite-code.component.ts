@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
+import { UserService } from '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-invite-code',
@@ -14,12 +15,14 @@ export class InviteCodeComponent implements OnInit {
 
   inviteForm : FormGroup;
   inviteErr : any = false;
+  userId: any;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private loginService: LoginService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private userService: UserService
   ) {
     this.inviteForm = this.fb.group({
       inviteToken: ['', [
@@ -31,6 +34,10 @@ export class InviteCodeComponent implements OnInit {
   }
 
   ngOnInit():void {
+    let self = this;
+    this.userService.currentUser.subscribe((data) => {
+      self.userId = data.id;
+    })
   }
 
   //存储错误信息
@@ -75,7 +82,9 @@ export class InviteCodeComponent implements OnInit {
       return;
     }
     let self = this;
-    self.loginService.validateCode(this.inviteForm.value).then((data)=> {
+    let option = this.inviteForm.value;
+    option.userId = self.userId;
+    self.loginService.validateCode(option).then((data)=> {
       self.authenticationService.inviteToken(true);
       self.router.navigate(['/shop/store'],{queryParams: {tab: 'templates'}});
     }).catch((data) => {
