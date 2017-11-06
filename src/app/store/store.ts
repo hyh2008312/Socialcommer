@@ -9,6 +9,13 @@ export class Store {
   ownerLastName: string;
   ownerBiography: string;
   category: any;
+  nameTag: any;
+  titleTag: any;
+  descriptionTag: any;
+  userTag: any;
+  imageUrl: any;
+  status: any;
+  currency: string;
 
   displayName: string;
 }

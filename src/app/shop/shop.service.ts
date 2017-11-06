@@ -108,7 +108,7 @@ export class ShopService {
     this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}product/?${this.serializeParams(product)}`;
+    const url = `${this.baseUrl.url}products/?${this.serializeParams(product)}`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -142,7 +142,7 @@ export class ShopService {
     this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}product/${product.id}/`;
+    const url = `${this.baseUrl.url}products/${product.id}/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -351,6 +351,55 @@ export class ShopService {
     return this.http.put(url, email, options)
       .toPromise()
       .then(response => response.json() as Email)
+      .catch(this.handleError);
+  }
+
+  createTemplate(store:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}store/template/`;
+
+    return this.http.post(url, store, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getTemplateProductList(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}store/relation/?${this.serializeParams(product)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+
+  getSubCategory(category: any):Promise<any> {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}subcategory/?${this.serializeParams(category)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

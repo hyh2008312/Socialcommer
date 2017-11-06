@@ -1749,6 +1749,16 @@ p, .md-body-1 {
   font-size: 12px;
   padding-bottom: 8px; }
 
+.ql-editor, .ql-container {
+  height: auto;
+  box-sizing: border-box; }
+
+.ql-container .ql-editor {
+  min-height: 0 !important; }
+
+.ql-bubble .ql-tooltip {
+  z-index: 1000; }
+
 .animation-opacity-show {
   -webkit-animation: opacity-show 0.5s linear 0s 1 normal;
   -moz-animation: opacity-show 0.5s linear 0s 1 normal;
@@ -3493,6 +3503,7 @@ body {
   max-height: 100%;
   overflow: hidden;
   background-color: #fff;
+  font-family: Helvetica;
   font-size: 14px;
   line-height: 1.42857;
   margin: 0;

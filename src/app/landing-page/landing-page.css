@@ -1576,7 +1576,7 @@ textarea.mat-input-element {
     font-size: 32px;
     margin-top: 144px;
     line-height: 64px;
-    font-weight: 500; }
+    font-weight: 600; }
   .xb-landing-page__content-1 {
     font-size: 24px;
     line-height: 32px;
@@ -1657,7 +1657,7 @@ textarea.mat-input-element {
   .xb-landing-page__footer-top {
     background-color: #252525;
     color: rgba(255, 255, 255, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
     .xb-landing-page__footer-top > div {
       height: 80px; }
   .xb-landing-page__footer-text {

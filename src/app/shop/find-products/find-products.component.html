@@ -5,22 +5,15 @@
 
   <div fxLayout="row" fxLayoutAlign="start start">
     <div class="xb-shop__products-left-bg">
-      <div class="xb-shop__products-title-1">By Shipping Country:</div>
-      <app-products-sort [(selectedSort)]="selectedCountries" [sorts]="countries"
+      <div class="xb-shop__products-title-1">By Affiliate Channel:</div>
+      <app-products-sort [(selectedSort)]="selectedSource" [sorts]="sources"
          (selectedSortChange)="onSelectedChange($event)"></app-products-sort>
 
-      <div class="xb-shop__products-title-1 md-margin-top-3">By Product Category:</div>
+      <div class="xb-shop__products-title-1 md-margin-top-3" *ngIf="categories.length>0">By Product Category:</div>
       <div fxLayout="column">
         <mat-checkbox class="md-margin-top-1" *ngFor="let category of categories;"
                       (change)="onCheckedChange(category,1)" [(ngModel)]="category.checked">
           {{ category.name }}
-        </mat-checkbox>
-      </div>
-      <div class="xb-shop__products-title-1 md-margin-top-3">By Affiliate Channel:</div>
-      <div fxLayout="column">
-        <mat-checkbox class="md-margin-top-1" *ngFor="let source of sources;"
-                      (change)="onCheckedChange(source,2)" [(ngModel)]="source.checked">
-          {{ source.name }}
         </mat-checkbox>
       </div>
     </div>

@@ -2,16 +2,16 @@
   <div>
     <div class="xb-shop__card-image">
       <div class="xb-pointer" routerLink="/shop/products/{{product.id}}">
-        <img [src]="product.imageUrl">
+        <img [src]="product.cover">
       </div>
     </div>
     <div class="xb-shop__card-content" fxLayout="column">
       <div class="xb-shop__card-title xb-pointer" routerLink="/shop/products/{{product.id}}">{{product.title}}</div>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
-        <div class="xb-shop__card-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true}}</div>
-        <div class="line-through md-margin-left-1">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
-        <div class="xb-shop__card-sale md-margin-left-1">
-          {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF</div>
+        <div class="xb-shop__card-price">{{product.salePrice.amount|currency: product.salePrice.currency: true}}</div>
+        <div class="line-through md-margin-left-1" *ngIf="product.originalPrice.amount > 0">{{product.originalPrice.amount|currency: product.originalPrice.currency: true }}</div>
+        <div class="xb-shop__card-sale md-margin-left-1" *ngIf="product.originalPrice.amount > 0">
+          {{product.salePrice.amount|saleDiscount:product.originalPrice.amount}} OFF</div>
       </div>
       <div class="xb-shop__card-action md-margin-top-2">
         <div fxLayout="column">

@@ -58,9 +58,10 @@
         <div class="xb-shop__edit-title">Price</div>
         <div class="xb-shop__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-store__details-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true}}</div>
-          <div class="line-through md-margin-left-2">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
-          <div class="xb-store__details-sale md-margin-left-2">
-            {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF</div>
+          <div class="line-through md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
+            {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+          <div class="xb-store__details-sale md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
+            {{product.salePriceAmount | saleDiscount:product.originalPriceAmount}} OFF</div>
         </div>
         <div class="xb-shop__edit-title">Description</div>
         <div class="md-margin-top-2" [hidden]="!showDescriptionEditor">
@@ -75,8 +76,9 @@
           </div>
         </div>
         <div class="ql-editor ql-container xb-shop__margin-bottom-2" [hidden]="showDescriptionEditor"
-             [innerHTML]="editorContent | safeHtml" (click)="showDescription()"></div>
-
+              (click)="showDescription()">
+          <div [innerHTML]="editorContent | safeHtml"></div>
+        </div>
         <div class="xb-shop__edit-title">Add your affiliate link</div>
         <mat-form-field class="xb-shop__width-100" >
           <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with"

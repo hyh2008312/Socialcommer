@@ -30,9 +30,10 @@ export class FindProductsEditPreviewComponent implements OnInit {
   addOnBlur: boolean = true;
 
   tags = [];
+  category: any = [];
 
   public editor;
-  public editorContent = '';
+  public editorContent = 'Please add product details and images';
   public editorImageId = 'quillImage';
 
   product = {
@@ -47,7 +48,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
   // Reset product
   productCopy: any;
   storeId: number;
-  category: any;
 
   constructor(
     public router: Router,
@@ -82,25 +82,27 @@ export class FindProductsEditPreviewComponent implements OnInit {
         description: data.description
       });
 
-      self.editorContent = data.description;
+      let feature = '';
+      if(data.features) {
+        for(let value of data.features) {
+          feature += `<p>${value}</p><br>`;
+        }
+        self.editorContent = `<div>${feature}</div>`;
+      }
 
       self.product.title = data.title;
-      self.product.tags = data.categoryName;
-      self.product.salePriceAmount = data.salePriceAmount;
-      self.product.originalPriceAmount = data.originalPriceAmount;
-      self.product.salePriceCurrency = data.salePriceCurrency;
-      self.product.originalPriceCurrency = data.originalPriceCurrency;
+      self.product.tags = data.category;
+      self.product.salePriceAmount = data.salePrice.amount;
+      self.product.originalPriceAmount = data.originalPrice.amount;
+      self.product.salePriceCurrency = data.salePrice.currency;
+      self.product.originalPriceCurrency = data.originalPrice.currency;
 
       self.tags.push({
-        id: data.categoryId,
-        name: data.categoryName
+        id: null,
+        name: data.category
       });
 
-      if(data.imageUrl.length > 0) {
-        for(let value of data.imageUrl) {
-          self.previewImg.push(value);
-        }
-      }
+      self.previewImg.push(data.cover);
 
       self.productCopy = data;
     });
@@ -108,12 +110,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
     self.userService.store.subscribe((data) => {
       if(data) {
         self.storeId = data.id;
-      }
-    });
-
-    self.userService.userCategory.subscribe((data) => {
-      if(data) {
-        self.category = data;
       }
     });
   }
@@ -139,7 +135,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   onEditorCreated(quill) {
     this.editor = quill;
-    // console.log('quill is ready! this is current quill instance object', quill);
+
     let self = this;
     this.editor.getModule('toolbar').addHandler("image", (image) => {
       if(image) {
@@ -163,6 +159,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
         if(value.name == _value) {
           isRepeat = true;
           this.tags.push({ id:value.id, name: _value.trim() });
+          self.product.tags = _value.trim();
           break;
         }
       }
@@ -175,6 +172,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
             self.category.unshift(data);
             self.userService.addUserCategory(self.category);
             self.tags.push({ id:data.id, name: _value.trim() });
+            self.product.tags = _value.trim();
           }
         });
       }
@@ -278,9 +276,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
     let productForm = this.productForm.value;
     let images = [];
-    for(let value of this.productCopy.imageUrl) {
-      images.push(value);
-    }
+    images.push(this.productCopy.cover);
 
     let storeProduct = {
       productId: this.productCopy.id,
@@ -294,7 +290,17 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       cover : [...images],
-      categoryId : this.tags[0]? this.tags[0].id : null
+      categoryName : this.tags[0]? this.tags[0].name : null,
+      product: {
+        originalPrice : {
+          amount: this.product.originalPriceAmount,
+          currency: this.product.originalPriceCurrency
+        },
+        salePrice : {
+          amount: this.product.salePriceAmount,
+          currency: this.product.salePriceCurrency
+        }
+      }
     };
 
     let self = this;
@@ -307,9 +313,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
     let productForm = this.productForm.value;
 
     let images = [];
-    for(let value of this.productCopy.imageUrl) {
-      images.push(value);
-    }
+    images.push(this.productCopy.cover);
 
     let storeProduct = {
       productId: this.productCopy.id,
@@ -323,7 +327,17 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       cover : [...images],
-      categoryId : this.tags[0]? this.tags[0].id : null
+      categoryName : this.tags[0]? this.tags[0].name : '',
+      product: {
+        originalPrice : {
+          amount: this.product.originalPriceAmount,
+          currency: this.product.originalPriceCurrency
+        },
+        salePrice : {
+          amount: this.product.salePriceAmount,
+          currency: this.product.salePriceCurrency
+        }
+      }
     };
 
     let self = this;

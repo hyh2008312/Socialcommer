@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { ImageUploadPreviewService } from "./image-upload-preview.service";
 import { AngularCropperjsComponent } from 'angular-cropperjs';
+import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
 
 @Component({
   selector: 'app-image-upload-preview',
@@ -20,9 +21,14 @@ export class ImageUploadPreviewComponent implements OnInit {
   croppedSrc: any = false;
   config: Object;
 
+  file: any;
+
   public cropper : AngularCropperjsComponent;
 
-  constructor(public previewImageService: ImageUploadPreviewService) {
+  constructor(
+    private previewImageService: ImageUploadPreviewService,
+    private s3UploaderService : S3UploaderService
+  ) {
     this.config = {
       aspectRatio : 1920 / 500,
       scalable: true,
@@ -41,8 +47,7 @@ export class ImageUploadPreviewComponent implements OnInit {
 
       that.previewImgSrcs = result;
       let file = event.target.files[0];
-
-
+      that.file = file;
 
       that.upload = true;
     })
@@ -61,11 +66,47 @@ export class ImageUploadPreviewComponent implements OnInit {
     const canvas = this.angularCropper.cropper.getCroppedCanvas();
     this.croppedSrc = canvas.toDataURL('image/png');
     this.previewImgFile = this.croppedSrc;
-    this.previewImgFileChange.emit(this.previewImgFile);
+    var blob =  this.convertBase64UrlToFile(this.croppedSrc, this.file);
+
+    let that = this;
+    let image = new Image();
+    image.onload = function(){
+      let width = image.width;
+      let height = image.height;
+
+      that.s3UploaderService.upload({
+        type: 'COLLECTOR_STORE_TEMPLATE',
+        fileName: blob.name,
+        use: '',
+        width: width,
+        height: height
+      }).then((data)=> {
+        that.previewImgFile = data.url + '/' + data.key;
+        that.s3UploaderService.uploadToS3(blob, data).then((data) => {
+          that.previewImgFileChange.emit(that.previewImgFile);
+        });
+      });
+    };
+    image.src = window.URL.createObjectURL(blob);
   }
 
   onEdit() {
     this.croppedSrc = false;
   }
+
+  convertBase64UrlToFile(dataURI, $file, domain?:any) {
+    if($file == null) {
+      $file = {};
+      $file.name = domain + new Date().getTime();
+    }
+    let binary = atob(dataURI.split(',')[1]);
+    let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    let array = [];
+    for(let i = 0; i < binary.length; i++) {
+      array.push(binary.charCodeAt(i));
+    }
+    let file = new File([new Uint8Array(array)], $file.name, {type: mimeString});
+    return file;
+  };
 
 }

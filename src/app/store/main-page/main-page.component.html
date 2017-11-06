@@ -1,14 +1,22 @@
 <div class="xb-store" >
   <div class="xb-store__nav" fxLayout="row" fxLayoutAlign="center center" fxShow="false" fxShow.xs="show">
-    {{store.name}}
+    {{store.nameTag || store.name}}
   </div>
   <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center"
-    style="background: url('https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg') center/auto 100% repeat;">
-    <div class="xb-store__store-name">
-      {{store.name}}
-    </div>
-    <div class="xb-store__store-description">
-      {{store.description}}
+       [ngStyle]="{'background': 'url(' + store.imageUrl + ') center / auto 100% ' }">
+    <div class="xb-store__content-2">
+      <div class="xb-store__store-name" *ngIf="store.titleTag == ''">
+        {{store.name}}
+      </div>
+      <div class="ql-editor ql-container xb-store__template-title"
+           [innerHTML]="store.titleTag| safeHtml"  *ngIf="store.titleTag != ''" >
+      </div>
+      <div class="xb-store__store-description" *ngIf="store.descriptionTag == ''">
+        {{store.description}}
+      </div>
+      <div class="xb-store__template-description ql-editor ql-container"
+           [innerHTML]="store.descriptionTag | safeHtml" *ngIf="store.descriptionTag != ''">
+      </div>
     </div>
     <div class="xb-store__store-buttons" fxShow="false" fxShow.gt-xs="true">
       <span>Shop Now</span>
@@ -53,8 +61,11 @@
           <div class="xb-store__icons md-dark-third" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota"></i>
           </div>
-          <div class="md-margin-top-2 xb-store__content-text">
+          <div class="md-margin-top-2 xb-store__content-text" *ngIf="store.userTag == ''">
             {{store.ownerBiography}}
+          </div>
+          <div class="xb-store__template-user ql-editor ql-container"
+               [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">
           </div>
           <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota-2"></i>

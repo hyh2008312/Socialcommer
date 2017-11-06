@@ -185,6 +185,14 @@ p,.md-body-1 {
   font-size: 12px;
   padding-bottom: 8px;
 }
+
+.ql-editor, .ql-container{
+  height: auto;
+  box-sizing: border-box;
+}
+.ql-container .ql-editor{
+  min-height: 0 !important;
+}
 .ql-bubble .ql-tooltip{
   z-index: 1000;
 }

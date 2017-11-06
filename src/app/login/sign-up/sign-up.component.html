@@ -1,7 +1,6 @@
 <div class="xb-login__scroll">
-  <div class="container">
-    <app-sign-up-header [step]="step"></app-sign-up-header>
-    <div class="xb-login__container xb-login__auto xb-login__margin-top" fxLayout="column" *ngIf="step == 0">
+  <div class="container" appViewResize fxLayout="row" fxLayoutAlign="center center">
+    <div class="xb-login__container xb-login__auto" fxLayout="column" *ngIf="step == 0">
       <div class="xb-login__error md-margin-bottom-2" *ngIf="signUpErr">{{signUpErr}}</div>
       <form [formGroup]="signUpGroup" (ngSubmit)="signUp()" novalidate>
         <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -18,7 +17,7 @@
         <div *ngIf="formErrors['lastName']" class="xb-input-error">
           {{ formErrors['lastName'] }}
         </div>
-        <div class="xb-login__width">
+        <div class="xb-login__width" >
           <mat-form-field>
             <input matInput placeholder="Email Address" formControlName="email">
           </mat-form-field>
@@ -46,22 +45,24 @@
           <button mat-raised-button color="primary" type="submit">SIGN UP</button>
         </div>
       </form>
-      <div class="md-align-center md-margin-top-2 md-margin-bottom-2" hide>OR</div>
-      <button class="xb-login__facebook" mat-raised-button hide>
-        <div fxLayout="row" fxLayoutAlign="start center">
-          <i class="iconfontXberts icon-ic-facebook"></i>
-          <span class="md-align-center" fxFlex>Continue with Facebook</span>
-        </div>
-      </button>
-      <button class="xb-login__google" mat-raised-button hide>
-        <div fxLayout="row" fxLayoutAlign="start center">
-          <i class="iconfontXberts icon-pic-google"></i>
-          <span class="md-align-center" fxFlex>Continue with Google</span>
-        </div>
-      </button>
-      <a class="text-underline md-dark-primary" routerLink="/cp/login">Already have an account?</a>
+      <div class="md-align-center md-margin-top-2 md-margin-bottom-2" [hidden]="true">OR</div>
+      <div [hidden]="true">
+        <button class="xb-login__facebook" mat-raised-button >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <i class="iconfontXberts icon-ic-facebook"></i>
+            <span class="md-align-center" fxFlex>Continue with Facebook</span>
+          </div>
+        </button>
+        <button class="xb-login__google" mat-raised-button>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <i class="iconfontXberts icon-pic-google"></i>
+            <span class="md-align-center" fxFlex>Continue with Google</span>
+          </div>
+        </button>
+      </div>
+      <a class="text-underline md-dark-primary md-margin-top-2" routerLink="/cp/login">Already have an account?</a>
     </div>
-    <div class="xb-login__container xb-login__auto xb-login__margin-top" fxLayout="column" *ngIf="step == 1">
+    <div class="xb-login__container xb-login__auto" fxLayout="column" *ngIf="step == 1">
       <div class="xb-login__error md-margin-bottom-2" *ngIf="storeErr">{{storeErr}}</div>
       <form [formGroup]="storeForm" (ngSubmit)="complete()" novalidate>
         <div fxFLex class="xb-login__width">
@@ -97,6 +98,16 @@
           <button mat-raised-button color="primary" type="submit">COMPLETE</button>
         </div>
       </form>
+    </div>
+    <div class="xb-login__container" fxLayout="column" fxLayoutAlign="center center" *ngIf="step == 2">
+      <div class="xb-login__title-1 md-headline">
+        Thank you for your interest in SocialCommer.
+      </div>
+      <div class="md-margin-top-4">Our platform is still in private beta. We will send you an invitation code via email once your application
+        is approved. Please be patient and stay tuned.</div>
+      <div class="xb-login__margin-top">
+        <img src="https://media.xberts.com/collector/source/web/pic/pic-waiting-01.png">
+      </div>
     </div>
   </div>
 </div>

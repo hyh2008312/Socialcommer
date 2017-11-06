@@ -1,21 +1,19 @@
 <div class="container">
   <div class="xb-login__title md-headline">
-    Reset your password
-  </div>
-  <div class="md-margin-top-1">
-    We will send a message to your registered email address, so you can pick a new password.
+    Welcome back to SocialCommer!<br>
+    Please enter your invitation code to proceed.
   </div>
   <div class="xb-login__margin-top" fxLayout="row" fxLayoutAlign="start center">
     <div class="xb-login__container" fxFlex>
       <div fxFLex class="xb-login__width">
-        <div class="xb-login__error md-margin-bottom-2" *ngIf="resetErr">{{resetErr}}</div>
+        <div class="xb-login__error md-margin-bottom-2" *ngIf="inviteErr">{{inviteErr}}</div>
         <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="resetForm" novalidate>
           <mat-form-field>
-            <input matInput placeholder="Please enter your email address" formControlName="email">
+            <input matInput placeholder="Please enter your invitation code" formControlName="code">
           </mat-form-field>
         </form>
-        <div *ngIf="formErrors['email']" class="xb-input-error">
-          {{ formErrors['email'] }}
+        <div *ngIf="formErrors['code']" class="xb-input-error">
+          {{ formErrors['code'] }}
         </div>
       </div>
     </div>

@@ -14,20 +14,10 @@ import { UserService } from  '../../shared/services/user/user.service';
 export class FindProductsComponent implements OnInit {
 
   sortsList = [];
-  countries = ['India', 'United States'];
+  sources = ['Amazon.in', 'Amazon.com'];
   categories:any = [];
-  sources = [{
-    name: 'Amazon.in',
-    checked: false
-  }, {
-    name: 'Amazon.com',
-    checked: false
-  }, {
-    name: 'Aliexpress.com',
-    checked: false
-  }];
 
-  selectedCountries: string;
+  selectedSource: string;
 
   public currentIndex: number = 1;
   public selectedChips = [];
@@ -80,18 +70,23 @@ export class FindProductsComponent implements OnInit {
 
   onSelectedChange(event) {
 
-    for(let item of this.countries) {
+    let isChange = false;
+    for(let item of this.sources) {
       let index = this.selectedChips.findIndex((elem)=>{
         return elem.name == item;
       });
 
       if (index >= 0) {
-        this.selectedChips.splice(index, 1);
+        isChange = true;
         break;
       }
     }
+    if(isChange) {
+      this.selectedChips = [];
+    }
 
     this.selectedChips.push({name : event, type: 0});
+    this.getCategoryList();
     this.getProductList();
   }
 
@@ -123,7 +118,9 @@ export class FindProductsComponent implements OnInit {
 
     switch(sort.type) {
       case 0:
-        this.selectedCountries = null;
+        this.selectedSource = null;
+        this.selectedChips = [];
+        this.categories = [];
         break;
       case 1:
         let _index = this.categories.findIndex((item)=>{
@@ -131,36 +128,25 @@ export class FindProductsComponent implements OnInit {
         });
         this.categories[_index].checked = false;
         break;
-      case 2:
-        let _index1 = this.sources.findIndex((item)=>{
-          return item.name == sort.name;
-        });
-        this.sources[_index1].checked = false;
-        break;
     }
     this.getProductList();
   }
 
   getProductList() {
-    let country = [];
-    let categoryId = [];
+    let cats = [];
     let source = [];
     for(let value of this.selectedChips) {
       if(value.type == 0) {
-        country.push(value.name);
+        source.push(value.name);
       }
       if(value.type == 1) {
-        categoryId.push(value.id);
-      }
-      if(value.type == 2) {
-        source.push(value.name);
+        cats.push(value.id);
       }
     }
 
     let self = this;
     this.shopService.getRecommendProductList({
-      country,
-      categoryId,
+      cats,
       source,
       page: this.productIndex,
       page_size: this.pageSize
@@ -169,6 +155,23 @@ export class FindProductsComponent implements OnInit {
       self.length = data.count;
 
       self.productList = data.results;
+    })
+  }
+
+  getCategoryList() {
+
+    this.shopService.getSubCategory({
+      source: this.selectedSource.toLocaleLowerCase()
+    }).then((data) => {
+      this.categories = [];
+      for(let value of data) {
+        this.categories.push({
+          id: value.objectUrlId,
+          name: value.name,
+          checked: false
+        })
+      }
+
     })
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { ShopService } from '../shop.service';
-import { RecommendProduct, Image } from '../shop';
+import { RecommendProduct, Image, OriginalPrice, SalePrice} from '../shop';
 
 @Component({
   selector: 'app-find-products-add-product',
@@ -12,9 +12,12 @@ import { RecommendProduct, Image } from '../shop';
 export class FindProductsAddProductComponent implements OnInit {
 
   product: RecommendProduct = new RecommendProduct();
-  image: any;
-  selectedImage: Image = new Image();
+  originalPrice: OriginalPrice = new OriginalPrice();
+  salePrice: SalePrice = new SalePrice();
+  image: any = [];
+  selectedImage: any = '';
   imageSources: string[] = [];
+  description: any = false;
 
   constructor(
     private router: Router,
@@ -31,12 +34,18 @@ export class FindProductsAddProductComponent implements OnInit {
     let self = this;
     self.shopService.getRecommendProduct({id}).then((data) => {
       self.product = data;
-      self.image = data.imageUrl;
-      if(data.imageUrl.length > 0) {
-        self.selectedImage = data.imageUrl[0];
-        for(let value of data.imageUrl) {
-          self.imageSources.push(value.url);
+      self.originalPrice = data.originalPrice;
+      self.salePrice = data.salePrice;
+      self.image.push(data.cover);
+      self.selectedImage = data.cover;
+      self.imageSources.push(data.cover);
+
+      let feature = '';
+      if(data.features) {
+        for(let value of data.features) {
+          feature += `<p>${value}</p><br>`;
         }
+        self.description = `<div>${feature}</div>`;
       }
     });
   }

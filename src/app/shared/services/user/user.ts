@@ -8,6 +8,7 @@ export class User {
   store : any;
   avatar: any;
   country: string;
+  category: any;
 }
 
 

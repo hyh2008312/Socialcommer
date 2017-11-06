@@ -71,7 +71,7 @@ export class SignUpComponent {
     },
     'displayName': {
       'required': 'This field is required.',
-      'pattern': 'Url pattern is invalid.'
+      'pattern': 'Permalink only lowercase alphanumeric and "-" allowed.'
     }
   };
 
@@ -103,7 +103,7 @@ export class SignUpComponent {
       currency: ['', Validators.required],
       displayName: ['', [
         Validators.required,
-        Validators.pattern('^([_a-zA-Z0-9]+)$')
+        Validators.pattern('^[a-z0-9\.-]*$')
       ]]
     });
 
@@ -199,7 +199,7 @@ export class SignUpComponent {
         self.userService.addUser(data);
         self.userService.addStore(data.store[0]);
         self.step = 2;
-        this.router.navigateByUrl('shop/store');
+
       });
     }).catch((data) => {
       self.storeErr = data;

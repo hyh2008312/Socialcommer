@@ -3,8 +3,9 @@
 
 .xb-login{
   &__container{
-    max-width: 332px;
+    max-width: 352px;
     width: 100%;
+    padding: 0 10px;
   }
 
   &__auto{
@@ -40,13 +41,24 @@
   }
 
   &__margin-top{
-    margin-top: 48px;
+    margin-top: 72px;
+    @include xb-xs-screen{
+      margin-top: 48px;
+    }
   }
 
   &__title{
     font-size: 34px;
     font-weight: bold;
     margin-top: 72px;
+  }
+
+  &__title-1{
+    font-size: 34px;
+    font-weight: bold;
+    @include xb-xs-screen{
+      font-size: 24px;
+    }
   }
 
   &__header{

@@ -68,7 +68,7 @@ export class CatalogEditProductComponent implements OnInit {
       recommendation: ['', [
         Validators.maxLength(1000)
       ]],
-      description: ['']
+      description: ['Please add product details and images']
     });
 
     this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -271,7 +271,7 @@ export class CatalogEditProductComponent implements OnInit {
     };
 
     if(this.tags[0]) {
-      storeProduct.categoryId = this.tags[0].id;
+      storeProduct.categoryName = this.tags[0].name;
     }
 
     let self = this;
@@ -308,8 +308,9 @@ export class CatalogEditProductComponent implements OnInit {
     };
 
     storeProduct.isDraft = false;
+    storeProduct.categoryName = '';
     if(this.tags[0]) {
-      storeProduct.categoryId = this.tags[0].id;
+      storeProduct.categoryName = this.tags[0].name;
     }
 
     let self = this;
@@ -352,7 +353,7 @@ export class CatalogEditProductComponent implements OnInit {
 
     storeProduct.isDraft = false;
     if(this.tags[0]) {
-      storeProduct.categoryId = this.tags[0].id;
+      storeProduct.categoryName = this.tags[0].name;
     }
 
     let self = this;

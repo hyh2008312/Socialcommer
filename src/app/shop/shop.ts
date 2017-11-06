@@ -16,15 +16,23 @@ export class RecommendProduct {
   imageUrl : any = [];
   isUser : boolean;
   modifiedTime : string;
-  originalPriceAmount : number;
-  originalPriceCurrency : string;
+  originalPrice: OriginalPrice;
   purchaseUrl : string;
   recommendation : string;
-  salePriceAmount : number;
-  salePriceCurrency : string;
+  salePrice: SalePrice;
   source : string;
   tags : string;
   title: string;
+}
+
+export class OriginalPrice {
+  amount : number;
+  currency : string;
+}
+
+export class SalePrice {
+  amount : number;
+  currency : string;
 }
 
 export class Product {
@@ -72,19 +80,36 @@ export class Email{
 }
 
 export class Store{
-  id: number;
-  name: string;
-  displayName: string;
-  owner: any;
+  id : number;
+  name : string;
   description: string;
-  currency: string;
-  url: string;
-  country: string;
-  created: string;
+  cover: string;
+  ownerAvatar: string;
+  ownerCountry: string;
+  ownerFirstName: string;
+  ownerLastName: string;
+  ownerBiography: string;
+  category: any;
+  nameTag: any;
+  titleTag: any;
+  descriptionTag: any;
+  userTag: any;
+  imageUrl: any;
   status: any;
+  currency: string;
+
+  displayName: string;
 }
 
 export class Image{
   id: number;
   url: string = '';
+}
+
+export class UserProfile{
+  firstName: string;
+  lastName: string;
+  country: string;
+  biography: string;
+  avatar : string;
 }

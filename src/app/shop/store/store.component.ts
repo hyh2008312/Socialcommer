@@ -52,6 +52,24 @@ export class StoreComponent implements OnInit {
     });
 
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
+
+    let self = this;
+    self.userService.store.subscribe((data) => {
+      if( data == null) {
+      } else {
+        let store = data;
+        self.store = store;
+
+        let status = store.status == 'open'? true: false;
+        self.storeForm.setValue({
+          name: store.name,
+          description : store.description,
+          currency: store.currency,
+          displayName: store.displayName,
+          status: status
+        });
+      }
+    });
   }
 
   //存储错误信息
@@ -104,44 +122,6 @@ export class StoreComponent implements OnInit {
 
   ngOnInit():void {
     let self = this;
-    let firstInit = false;
-    self.userService.store.subscribe((data) => {
-      if(!firstInit) {
-        firstInit = true;
-        if( data == null ) {
-          self.shopService.getStore().then((data) => {
-
-            let store = data[0];
-            self.store = store;
-            let status = store.status == 'open'? true: false;
-            let _store = store;
-            _store.status = status;
-            self.userService.addStore(_store);
-
-            self.storeForm.setValue({
-              name: store.name,
-              description : store.description,
-              currency: store.currency,
-              displayName: store.displayName,
-              status: status
-            });
-          });
-        } else {
-          let store = data;
-          self.store = store;
-          self.userService.addStore(store);
-
-          let status = store.status == 'open'? true: false;
-          self.storeForm.setValue({
-            name: store.name,
-            description : store.description,
-            currency: store.currency,
-            displayName: store.displayName,
-            status: status
-          });
-        }
-      }
-    });
 
     self.activatedRoute.queryParams.subscribe((data)=> {
       if(data.tab == 'settings' ) {

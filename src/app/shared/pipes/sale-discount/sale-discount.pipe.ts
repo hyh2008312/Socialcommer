@@ -7,11 +7,11 @@ export class SaleDiscountPipe implements PipeTransform {
 
   constructor(){}
   transform(value: any, originalPrice: any): any {
-    if(value > 0 && value >0) {
+    if(value > 0 && originalPrice >0) {
       return Math.floor((originalPrice - value) * 100 / originalPrice) + '%';
-    } else if(originalPrice > 0 && !value) {
+    } else if(originalPrice > 0 && (!value || value <= 0)) {
       return '0';
-    } else if(value > 0 && !originalPrice) {
+    } else if(value > 0 && (!originalPrice || originalPrice <= 0)) {
       return '0';
     }
   }
