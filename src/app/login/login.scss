@@ -41,9 +41,16 @@
   }
 
   &__margin-top{
-    margin-top: 72px;
+    margin-top: 40px;
     @include xb-xs-screen{
-      margin-top: 48px;
+      margin-top: 24px;
+    }
+  }
+
+  &__margin-top-1{
+    margin-top: 120px;
+    @include xb-xs-screen{
+      margin-top: 40px;
     }
   }
 

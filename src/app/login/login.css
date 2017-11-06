@@ -1520,10 +1520,15 @@ textarea.mat-input-element {
 .xb-login__margin-left {
   margin-left: 32px; }
 .xb-login__margin-top {
-  margin-top: 72px; }
+  margin-top: 40px; }
   @media screen and (max-width: 599px) {
     .xb-login__margin-top {
-      margin-top: 48px; } }
+      margin-top: 24px; } }
+.xb-login__margin-top-1 {
+  margin-top: 120px; }
+  @media screen and (max-width: 599px) {
+    .xb-login__margin-top-1 {
+      margin-top: 4px; } }
 .xb-login__title {
   font-size: 34px;
   font-weight: bold;

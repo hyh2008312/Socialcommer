@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 
@@ -14,6 +15,7 @@ export class InviteCodeComponent implements OnInit {
   inviteErr : any = false;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private loginService: LoginService
   ) {
@@ -71,8 +73,8 @@ export class InviteCodeComponent implements OnInit {
       return;
     }
     let self = this;
-    this.loginService.validateCode(this.inviteForm.value).then((data)=> {
-
+    self.loginService.validateCode(this.inviteForm.value).then((data)=> {
+      self.router.navigate(['/shop/store'],{queryParams: {tab: 'templates'}});
     }).catch((data) => {
       self.inviteErr = data;
     });
