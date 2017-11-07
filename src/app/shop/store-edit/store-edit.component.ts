@@ -8,6 +8,9 @@ import { ShopService } from '../shop.service';
 
 import { ConstantService } from  '../../shared/services/constant/constant.service';
 
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { StoreShareDialogComponent } from "../store-share-dialog/store-share-dialog.component";
+
 @Component({
   selector: 'app-store-edit',
   templateUrl: './store-edit.component.html',
@@ -53,14 +56,13 @@ export class StoreEditComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private shopService: ShopService,
-    private constant: ConstantService
+    private constant: ConstantService,
+    private dialog: MatDialog
   ) {
 
     this.countries = this.constant.getCountries();
 
     let self = this;
-    let firstLoad = false;
-
     self.storeTemplateForm = self.fb.group({
       nameTag: [self.nameTag],
       titleTag: [self.titleTag],
@@ -84,11 +86,11 @@ export class StoreEditComponent implements OnInit {
 
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
-    self.userService.currentUser.subscribe((data) => {
+
+    let firstLoad = false;
+    self.userService.store.subscribe((data)=> {
       if(data) {
-        self.store = data.store[0];
-        self.categories = [...data.category];
-        self.category = self.categories[0];
+        self.store = data;
         if(!firstLoad) {
           firstLoad = true;
           self.nameTag = self.store.nameTag != ''? self.store.nameTag : self.nameTag;
@@ -100,18 +102,22 @@ export class StoreEditComponent implements OnInit {
             description : self.store.description,
             displayName: self.store.displayName
           });
-          self.queryProduct(false);
 
+          self.shopService.getFrontStore(self.store.displayName).then((data) => {
+            self.categories = [...data.category];
+            self.category = self.categories[0];
+            self.queryProduct(false);
+          });
         }
       }
-    });
-
-
-
+    })
 
   }
 
   ngOnInit():void {
+
+    this.shareLink = window.location.host + '/store/';
+
     let self = this;
     self.shopService.getUserProfile().then((data) => {
       self.userProfile = data;
@@ -126,6 +132,8 @@ export class StoreEditComponent implements OnInit {
         }
       }
     });
+
+    self.shopService.getStore()
 
   }
 
@@ -281,6 +289,7 @@ export class StoreEditComponent implements OnInit {
     this.shopService.changeStore(store).then((data) => {
       this.storeEdited = false;
       self.submitTemplate();
+      self.openDialog(this.store.displayName);
     });
   }
 
@@ -289,7 +298,7 @@ export class StoreEditComponent implements OnInit {
     this.queryProduct(true);
   }
 
-  queryProduct(clearProduct?:boolean) {
+  queryProduct(clearProduct?:boolean)  {
     let options = {
       categoryId: this.category.id,
       storeId: this.store.id,
@@ -307,6 +316,19 @@ export class StoreEditComponent implements OnInit {
       if(data.next == null) {
         self.nextPage = false;
       }
+    });
+  }
+
+  openDialog(displayName?:any): void {
+    let dialogRef = this.dialog.open(StoreShareDialogComponent, {
+      data: {
+        shareLink: 'http://' + this.shareLink + displayName,
+        text: '1111'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
     });
   }
 }

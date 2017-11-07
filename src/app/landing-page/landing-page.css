@@ -1520,11 +1520,11 @@ textarea.mat-input-element {
       margin-top: 40px;
       color: #222;
       background-color: #fff;
-      font-size: 16px;
-      line-height: 48px;
+      font-size: 14px;
+      line-height: 40px;
       border-radius: 20px;
       text-align: center;
-      width: 240px;
+      width: 220px;
       display: block; }
   .xb-landing-page__navigation {
     height: 56px; }
@@ -1532,22 +1532,22 @@ textarea.mat-input-element {
       font-size: 16px;
       color: #fff; }
     .xb-landing-page__navigation-button {
-      font-size: 16px;
+      font-size: 14px;
       color: #fff;
       background-color: #00bdd6;
       line-height: 40px;
       text-align: center;
-      border-radius: 16px;
+      border-radius: 20px;
       width: 100px;
       display: block; }
     .xb-landing-page__navigation-button-1 {
-      font-size: 16px;
+      font-size: 14px;
       color: #fff;
       background-color: #00bdd6;
       line-height: 40px;
       text-align: center;
-      border-radius: 16px;
-      width: 2px;
+      border-radius: 20px;
+      width: 220px;
       display: block; }
   .xb-landing-page__height-1 {
     height: 685px;

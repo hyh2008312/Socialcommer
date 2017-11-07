@@ -307,7 +307,7 @@ export class CatalogEditProductComponent implements OnInit {
       currency: this.storeCurrency
     };
 
-    storeProduct.isDraft = false;
+    storeProduct.isDraft = true;
     storeProduct.categoryName = '';
     if(this.tags[0]) {
       storeProduct.categoryName = this.tags[0].name;
@@ -377,7 +377,7 @@ export class CatalogEditProductComponent implements OnInit {
         let height = image.height;
 
         that.s3UploaderService.upload({
-          type: 'COLLECTOR_PRODUCT_DET',
+          type: 'COLLECTOR_PRODUCT_DETAILS',
           fileName: file.name,
           use: 'detail',
           width: width,

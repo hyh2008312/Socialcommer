@@ -52,7 +52,7 @@ export class StoreDetailComponent implements OnInit {
       }
 
       self.storeService.pageView({
-        pageType: 'Detail',
+        pageType: 'product',
         viewTime: new Date().getTime(),
         productId: data.id,
         storeId: data.storeId

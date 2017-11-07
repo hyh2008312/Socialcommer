@@ -19,6 +19,7 @@ import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-s
 import { ProductItemComponent } from "./product-item/product-item.component";
 import { ProductsSortComponent } from "./products-sort/products-sort.component";
 import { ProductItemCardComponent } from "./product-item-card/product-item-card.component";
+import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -52,9 +53,11 @@ import { SharedModule } from '../shared/shared.module';
     StorePreviewComponent,
     StoreTemplateComponent,
     StoreEditComponent,
-    StoreItemCardPreviewComponent
+    StoreItemCardPreviewComponent,
+    StoreShareDialogComponent
   ],
   entryComponents: [
+    StoreShareDialogComponent
   ],
   providers: [
     ShopService,

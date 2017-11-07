@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response , Headers , RequestOptions } from '@angular/http';
+import { Http, Response , Headers , RequestOptions, Jsonp } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import{ Subject, BehaviorSubject } from 'rxjs';
@@ -15,7 +15,8 @@ export class StoreService {
   constructor(
     private http: Http,
     private baseUrl: BaseApi,
-    private dataUrl: DataApi
+    private dataUrl: DataApi,
+    private jsonp : Jsonp
   ) { }
 
   createAuthorizationHeader(headers: Headers) {
@@ -102,7 +103,7 @@ export class StoreService {
 
     const url = `${this.dataUrl.url}data/upload/page_view?${this.serializeParams(statistics)}`;
 
-    return this.http.get(url, options)
+    return this.jsonp.get(url, options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
@@ -118,7 +119,7 @@ export class StoreService {
 
     const url = `${this.dataUrl.url}data/upload/buy_click?${this.serializeParams(statistics)}`;
 
-    return this.http.get(url, options)
+    return this.jsonp.get(url, options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);

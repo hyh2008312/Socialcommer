@@ -47,7 +47,7 @@ export class MainPageComponent implements OnInit {
       self.storeService.addStore(data);
 
       self.storeService.pageView({
-        pageType: 'Main',
+        pageType: 'store',
         viewTime: new Date().getTime(),
         storeId: data.id
       });

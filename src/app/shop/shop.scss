@@ -149,7 +149,7 @@
     }
 
     &-button-list{
-      width: 196px;
+      width: 210px;
       position: absolute;
       right: 0;
       top: 100%;
@@ -562,7 +562,6 @@
       border: 1px solid $primaryColor;
       color: $whiteColor;
       position: relative;
-      font-size: 56px;
       @include media();
       @include xb-xs-screen{
         margin-top: 0;
@@ -575,7 +574,6 @@
       color: $whiteColor;
       border: 1px solid $primaryColor;
       position: relative;
-      font-size: 16px;
       @include xb-xs-screen{
         margin-top: 16px;
       }
@@ -676,4 +674,55 @@
   }
 }
 
+.xb-share-dialog{
 
+  padding: 32px;
+  max-width: 672px;
+  position: relative;
+  @include xb-xs-screen{
+    padding: 0;
+  }
+
+  &__close{
+    position: absolute;
+    left: calc(100% - 16px);
+    top: 0;
+    color: $blackColor;
+    cursor: pointer;
+    i{
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+
+  &__title{
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    @include media();
+  }
+
+  &__content{
+    margin-top: 32px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    @include regular();
+  }
+
+  &__link{
+    font-size: 24px;
+    line-height: 32px;
+    text-decoration: underline;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 12px;
+    display: block;
+    color: rgba(0,0,0,.87);
+  }
+
+  &__margin-top{
+    margin-top: 48px;
+  }
+}
