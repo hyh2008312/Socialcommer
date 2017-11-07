@@ -23,6 +23,7 @@ export class RecommendProduct {
   source : string;
   tags : string;
   title: string;
+  category: string;
 }
 
 export class OriginalPrice {
