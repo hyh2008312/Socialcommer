@@ -24,6 +24,8 @@ export class MainPageComponent implements OnInit {
   + 'that make you an expert in your field? Show your customers that there are read people with instersting stories working'
   + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
 
+  baseImageUrl: string = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
+
   store: Store = new Store();
   page = 1;
   nextPage: boolean = true;
@@ -87,6 +89,9 @@ export class MainPageComponent implements OnInit {
   }
 
   queryProduct(clearProduct?:boolean) {
+    if(this.categories.length <= 0) {
+      return;
+    }
     let options = {
       categoryId: this.category.id,
       storeId: this.store.id,

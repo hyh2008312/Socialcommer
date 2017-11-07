@@ -185,8 +185,8 @@ export class StoreEditComponent implements OnInit {
   storeForm: FormGroup;
 
   nameTag = 'STORE NAME';
-  titleTag = 'Click here to edit the title';
-  descriptionTag = 'This is your starter site, a single page online storefront. All of the images and text on this page can be changed to personalize the site for brand and to communicate your unique story to your customers.';
+  titleTag = '<div class="xb-shop__template-title">Click here to edit the title</div>';
+  descriptionTag = '<div class="xb-shop__template-description">This is your starter site, a single page online storefront. All of the images and text on this page can be changed to personalize the site for brand and to communicate your unique story to your customers.</div>';
   userTag = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business. Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training that make you an expert in your field? Show your customers that there are real people with interesting stories working behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust in your brand.';
   imageSrc = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
 
@@ -299,6 +299,9 @@ export class StoreEditComponent implements OnInit {
   }
 
   queryProduct(clearProduct?:boolean)  {
+    if(this.categories.length <= 0) {
+      return;
+    }
     let options = {
       categoryId: this.category.id,
       storeId: this.store.id,

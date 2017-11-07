@@ -23,6 +23,10 @@ export class LeftSideNavigationComponent implements OnInit {
     router: './store'
   }, {
     icon: 'icon-ic-pc-set',
+    text: 'To-do List',
+    router: './toDoList'
+  }, {
+    icon: 'icon-ic-pc-set',
     text: 'Settings',
     router: './settings'
   }];

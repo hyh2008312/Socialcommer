@@ -686,12 +686,13 @@
   &__close{
     position: absolute;
     left: calc(100% - 16px);
-    top: 0;
+    top: -8px;
     color: $blackColor;
     cursor: pointer;
     i{
       font-size: 24px;
       line-height: 24px;
+      @include media();
     }
   }
 
@@ -724,5 +725,45 @@
 
   &__margin-top{
     margin-top: 48px;
+  }
+}
+
+.xb-affiliate-dialog{
+
+  padding: 32px;
+  max-width: 672px;
+  position: relative;
+  @include xb-xs-screen{
+    padding: 0;
+  }
+
+  &__close{
+    position: absolute;
+    left: calc(100% - 16px);
+    top: -8px;
+    color: $blackColor;
+    cursor: pointer;
+    i{
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+    }
+  }
+
+  &__title{
+    font-size: 24px;
+    line-height: 32px;
+    @include media();
+  }
+
+  &__content{
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 28px;
+    @include regular();
+  }
+
+  &__margin-top{
+    margin-top: 80px;
   }
 }

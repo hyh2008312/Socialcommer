@@ -13,7 +13,10 @@
             SAVE
           </div>
         </div>
-        <div class="xb-shop__template-name" [hidden]="nameEdited" (click)="editName()"
+        <div class="ql-editor ql-container xb-store__template-title"
+             [innerHTML]="store.titleTag | safeHtml"  *ngIf="store.titleTag != ''" >
+        </div>
+        <div class="xb-shop__template-name ql-editor ql-container" [hidden]="nameEdited" (click)="editName()"
              [innerHTML]="nameTag | safeHtml">
         </div>
         <div class="xb-shop__template-name xb-shop__template-edit" [hidden]="!nameEdited">

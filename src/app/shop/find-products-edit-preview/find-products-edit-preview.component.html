@@ -84,6 +84,7 @@
           <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with"
                  formControlName="purchaseUrl">
         </mat-form-field>
+        <div class="text-underline xb-pointer" (click)="openDialog()">How to get your affiliate link?</div>
         <div *ngIf="formErrors['purchaseUrl']" class="xb-input-error">
           {{ formErrors['purchaseUrl'] }}
         </div>

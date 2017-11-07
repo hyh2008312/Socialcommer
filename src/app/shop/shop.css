@@ -1600,7 +1600,7 @@ textarea.mat-input-element {
     top: 0;
     z-index: 10; }
   .xb-shop__product-button-list {
-    width: 20px;
+    width: 210px;
     position: absolute;
     right: 0;
     top: 100%;
@@ -2003,12 +2003,13 @@ textarea.mat-input-element {
   .xb-share-dialog__close {
     position: absolute;
     left: calc(100% - 16px);
-    top: 0;
+    top: -8px;
     color: #222;
     cursor: pointer; }
     .xb-share-dialog__close i {
       font-size: 24px;
-      line-height: 24px; }
+      line-height: 24px;
+      font-weight: 600; }
   .xb-share-dialog__title {
     font-size: 24px;
     line-height: 32px;
@@ -2032,5 +2033,34 @@ textarea.mat-input-element {
     color: rgba(0, 0, 0, 0.87); }
   .xb-share-dialog__margin-top {
     margin-top: 48px; }
+
+.xb-affiliate-dialog {
+  padding: 32px;
+  max-width: 672px;
+  position: relative; }
+  @media screen and (max-width: 599px) {
+    .xb-affiliate-dialog {
+      padding: 0; } }
+  .xb-affiliate-dialog__close {
+    position: absolute;
+    left: calc(100% - 16px);
+    top: -8px;
+    color: #222;
+    cursor: pointer; }
+    .xb-affiliate-dialog__close i {
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 600; }
+  .xb-affiliate-dialog__title {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600; }
+  .xb-affiliate-dialog__content {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: 400; }
+  .xb-affiliate-dialog__margin-top {
+    margin-top: 80px; }
 
 /*# sourceMappingURL=shop.css.map */

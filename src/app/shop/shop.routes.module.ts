@@ -13,6 +13,7 @@ import { FindProductsAddProductComponent } from "./find-products-add-product/fin
 import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/find-products-edit-preview.component";
 import { StorePreviewComponent } from "./store-preview/store-preview.component";
 import { StoreEditComponent } from "./store-edit/store-edit.component";
+import { ToDoListComponent } from "./to-do-list/to-do-list.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,8 @@ const routes: Routes = [
         }, {
           path: ':id/preview', component: FindProductsEditPreviewComponent
         }]
+      }, {
+        path: 'toDoList', component: ToDoListComponent
       }, {
         path: '',
         redirectTo: 'dashboard',
