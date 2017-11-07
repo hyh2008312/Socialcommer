@@ -6,13 +6,17 @@ import{ Subject, BehaviorSubject } from 'rxjs';
 
 import { Store } from './store';
 
-import { BaseApi } from '../config/app.api';
+import { BaseApi, DataApi } from '../config/app.api';
 
 @Injectable()
 export class StoreService {
   store: Subject<Store> = new BehaviorSubject<Store>(null);
 
-  constructor( private http: Http, private baseUrl: BaseApi) { }
+  constructor(
+    private http: Http,
+    private baseUrl: BaseApi,
+    private dataUrl: DataApi
+  ) { }
 
   createAuthorizationHeader(headers: Headers) {
 
@@ -96,7 +100,7 @@ export class StoreService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}/data/upload/page_view?${this.serializeParams(statistics)}`;
+    const url = `${this.dataUrl.url}data/upload/page_view?${this.serializeParams(statistics)}`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -112,7 +116,7 @@ export class StoreService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}/data/upload/buy_click?${this.serializeParams(statistics)}`;
+    const url = `${this.dataUrl.url}data/upload/buy_click?${this.serializeParams(statistics)}`;
 
     return this.http.get(url, options)
       .toPromise()

@@ -50,11 +50,27 @@ export class StoreDetailComponent implements OnInit {
           self.imageSources.push(value);
         }
       }
+
+      self.storeService.pageView({
+        pageType: 'Detail',
+        viewTime: new Date().getTime(),
+        productId: data.id,
+        storeId: data.storeId
+      });
     });
   }
 
   close():void {
     this.router.navigate([`./store/${this.store.displayName}`]);
+  }
+
+  openLink() {
+    let id = this.activatedRouter.snapshot.params['id'];
+    this.storeService.buttonClick({
+      viewTime: new Date().getTime(),
+      relationId: id,
+      storeId: this.store.id
+    });
   }
 
 }

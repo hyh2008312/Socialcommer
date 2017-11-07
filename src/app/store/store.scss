@@ -683,6 +683,7 @@
       color: $whiteColor;
       position: relative;
       padding: 0 16px;
+
       @include xb-xs-screen{
         margin-top: 0;
       }

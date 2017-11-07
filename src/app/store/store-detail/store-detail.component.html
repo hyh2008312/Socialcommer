@@ -24,7 +24,8 @@
             {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
           </div>
         </div>
-        <a class="xb-store__details-buttons" fxLayout="column" href="{{product.purchaseUrl}}" target="_blank">
+        <a class="xb-store__details-buttons" fxLayout="column" href="{{product.purchaseUrl}}" target="_blank"
+          (click)="openLink()">
           <button mat-raised-button color="primary">GET IT NOW</button>
         </a>
         <div class="md-margin-top-2">

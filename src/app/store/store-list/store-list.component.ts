@@ -42,6 +42,12 @@ export class StoreListComponent implements OnInit {
       self.category = self.categories[0];
       self.storeService.addStore(data);
 
+      self.storeService.pageView({
+        pageType: 'List',
+        viewTime: new Date().getTime(),
+        storeId: data.id
+      });
+
       self.queryProduct();
     });
   }

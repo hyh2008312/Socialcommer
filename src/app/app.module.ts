@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app.routes.module';
 
 import { AppComponent } from './app.component';
 
-import {BaseApi, SystemConstant} from './config/app.api';
+import {BaseApi, SystemConstant, DataApi} from './config/app.api';
 import {BlogCover} from './config/app.constant';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,7 +26,7 @@ import { UserModule } from './shared/services/user/user.module';
     AuthenticationModule,
     UserModule
   ],
-  providers: [BaseApi, SystemConstant, BlogCover],
+  providers: [BaseApi, SystemConstant, DataApi, BlogCover],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

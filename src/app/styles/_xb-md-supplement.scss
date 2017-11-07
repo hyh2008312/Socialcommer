@@ -139,12 +139,6 @@ $aligns: left right center justify;
   position: relative;
 }
 
-p,.md-body-1 {
-  font-size: 14px;
-  line-height: 24px;
-  @include regular;
-}
-
 .list-none-style {
   list-style: none;
 }

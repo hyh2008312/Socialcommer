@@ -46,6 +46,12 @@ export class MainPageComponent implements OnInit {
       self.category = self.categories[0];
       self.storeService.addStore(data);
 
+      self.storeService.pageView({
+        pageType: 'Main',
+        viewTime: new Date().getTime(),
+        storeId: data.id
+      });
+
       self.queryProduct();
     });
 
