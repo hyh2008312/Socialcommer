@@ -1,0 +1,81 @@
+@import "../../styles/utils/index";
+@import "../../styles/variables";
+
+.xb-about {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  &__left-2{
+    margin-left: 8px;
+  }
+  &__banner {
+    height: 368px;
+    background-image: url("https://media.xberts.com/collector/source/web/pic/service.jpg");
+    background-position: center;
+    background-size: auto 110%;
+    background-repeat: no-repeat;
+  }
+
+  &__navigation {
+    height: 56px;
+    &-login {
+      font-size: 16px;
+      color: $whiteColor;
+    }
+
+    &-button {
+      font-size: 16px;
+      color: $whiteColor;
+      background-color: $primaryColor;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 16px;
+      width: 100px;
+      display: block;
+    }
+    &-title {
+      font-size: 56px;
+      font-weight: 300;
+      color: $whiteColor;
+      text-align: center;
+      margin-top: 120px;
+    }
+  }
+
+  &-container {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 686px;
+  }
+  &-privacy {
+    &__content-1 {
+      font-size: 16px;
+      line-height: 28px;
+      margin-top: 32px;
+      color: black;
+      @include light();
+    }
+    &__content-2 {
+      font-size: 16px;
+      line-height: 28px;
+      margin-top: 32px;
+      color: black;
+      @include light();
+      &-title {
+        font-weight: bold;
+        color: black;
+        font-size: 16px;
+        line-height: 28px;
+      }
+    }
+    &__content-3 {
+      font-size: 16px;
+      line-height: 28px;
+      margin-top: 32px;
+      color: black;
+      margin-bottom: 72px;
+      @include light();
+    }
+  }
+
+}

@@ -1,0 +1,42 @@
+@import "../../styles/utils/index";
+@import "../../styles/variables";
+
+.xb-about {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  &__banner {
+    height: 368px;
+    background-image: url("https://media.xberts.com/collector/source/web/pic/FAQ.jpg");
+    background-position: center;
+    background-size: auto 110%;
+    background-repeat: no-repeat;
+  }
+
+  &__navigation{
+    height: 56px;
+    &-login{
+      font-size: 16px;
+      color: $whiteColor;
+    }
+
+    &-button{
+      font-size: 16px;
+      color: $whiteColor;
+      background-color: $primaryColor;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 16px;
+      width: 100px;
+      display: block;
+    }
+    &-title {
+      font-size: 56px;
+      font-weight: 300;
+      color: $whiteColor;
+      text-align: center;
+      margin-top: 120px;
+    }
+  }
+
+}

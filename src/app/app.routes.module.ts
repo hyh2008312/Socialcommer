@@ -22,6 +22,9 @@ const routes: Routes = [
       }, {
         path: '',
         loadChildren: 'app/landing-page/landing-page.module#LandingPageModule'
+      }, {
+        path: 'about',
+        loadChildren: 'app/about/about.module#AboutModule'
       }
     ]
   }
