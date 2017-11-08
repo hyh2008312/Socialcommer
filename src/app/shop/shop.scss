@@ -86,12 +86,13 @@
 
 
     &-image{
-      width: 192px;
-      height: 192px;
-      border-radius: 2px;
+      width: 160px;
+      height: 160px;
+      border-radius: 4px;
       overflow: hidden;
       margin-right: 16px;
       position: relative;
+      border: 1px solid rgba(0,0,0,.12);
 
       >img{
         position: absolute;
@@ -153,7 +154,7 @@
       position: absolute;
       right: 0;
       top: 100%;
-      background-color: $whiteColor;
+      background-color: $lightWhiteColor;
       @include media();
       @include resetBorder();
 

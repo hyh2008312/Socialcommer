@@ -227,8 +227,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
   resetCategory() {
     this.tags = [];
     this.tags.push({
-      id: this.productCopy.categoryId,
-      name: this.productCopy.categoryName
+      id: null,
+      name: this.productCopy.category
     });
   }
 
@@ -237,7 +237,15 @@ export class FindProductsEditPreviewComponent implements OnInit {
   }
 
   resetDescription() {
-    this.editorContent = this.productCopy.description;
+    let feature = '';
+    if(this.productCopy.features) {
+      for(let value of this.productCopy.features) {
+        feature += `<p>${value}</p><br>`;
+      }
+      this.editorContent = `<div>${feature}</div>`;
+    } else {
+      this.editorContent = '';
+    }
   }
 
   addPicture(event) {
