@@ -19,7 +19,7 @@
         </div>
         <a class="text-underline md-margin-bottom-3 md-dark-primary" routerLink="/cp/resetPassword">Forgot password?</a>
         <div fxLayout="column">
-          <button mat-raised-button color="primary" type="submit">LOGIN</button>
+          <button mat-raised-button color="primary" type="submit">LOG IN</button>
         </div>
       </form>
       <div class="md-align-center md-margin-top-2 md-margin-bottom-2" [hidden]="true">OR</div>
@@ -37,7 +37,9 @@
           </div>
         </button>
       </div>
-      <a class="text-underline md-dark-primary md-margin-top-2" routerLink="/cp/signUp">Don't have an account?</a>
+      <div class="md-margin-top-2" >Don't have an account?
+        <a class="text-underline md-margin-left-1 md-dark-primary" routerLink="/cp/signUp">Sign Up</a>
+      </div>
     </div>
   </div>
 </div>

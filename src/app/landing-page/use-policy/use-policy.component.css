@@ -1497,607 +1497,66 @@ input.mat-input-element {
 textarea.mat-input-element {
   line-height: 1.5; }
 
-.xb-shop__avatar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%; }
-.xb-shop__icons {
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  font-size: 24px;
-  line-height: 24px; }
-.xb-shop__left-navigation {
-  padding-top: 16px;
-  margin-right: 16px;
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
-  background-color: #0a2529; }
-  .xb-shop__left-navigation-bg {
-    width: 136px;
-    margin-right: 16px; }
-  .xb-shop__left-navigation-buttons {
-    padding-left: 8px;
-    height: 56px;
-    color: #fff;
-    font-weight: 600; }
-    .xb-shop__left-navigation-buttons.active {
-      color: #00bdd6; }
-.xb-shop__scroll {
-  overflow-y: scroll; }
-.xb-shop__margin-top {
-  margin-top: 48px; }
-.xb-shop__margin-bottom {
-  margin-bottom: 48px; }
-.xb-shop__margin-bottom-1 {
-  margin-bottom: 40px; }
-.xb-shop__margin-bottom-2 {
-  margin-bottom: 32px;
-  padding: 0; }
-.xb-shop__margin-bottom-3 {
-  margin-bottom: 16px; }
-.xb-shop__margin-left {
-  margin-left: 16px;
-  position: relative; }
-.xb-shop__width-100 {
-  width: 100%; }
-.xb-shop__width-1 {
-  width: 100px; }
-.xb-shop__product {
-  position: relative; }
-  .xb-shop__product .mat-button {
-    padding: 0;
-    margin-left: 16px;
-    min-width: 0;
-    min-height: 0;
-    line-height: 1; }
-  .xb-shop__product-image {
-    width: 160px;
-    height: 160px;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-right: 16px;
-    position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.12); }
-    .xb-shop__product-image > img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%); }
-  .xb-shop__product-title {
-    font-size: 16px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.87);
-    line-height: 24px;
-    max-height: 48px;
-    overflow: hidden; }
-  .xb-shop__product-price {
-    font-size: 16px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.87);
-    line-height: 24px;
-    max-height: 48px; }
-  .xb-shop__product-category {
-    padding: 0 12px;
-    line-height: 28px;
-    border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.12); }
-  .xb-shop__product-list {
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
-    .xb-shop__product-list:last-child {
-      border-bottom: none; }
-  .xb-shop__product-none {
-    margin-top: 144px; }
-    .xb-shop__product-none span {
-      margin-top: 16px;
-      font-weight: 600; }
-  .xb-shop__product-buttons {
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 10; }
-  .xb-shop__product-button-list {
-    width: 210px;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background-color: #f1f1f1;
-    font-weight: 600;
-    border-radius: 2px;
-    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-    -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
-    .xb-shop__product-button-list > a {
-      height: 56px;
-      color: rgba(0, 0, 0, 0.87); }
-      .xb-shop__product-button-list > a:hover {
-        background-color: rgba(0, 0, 0, 0.12); }
-.xb-shop__white {
-  color: #fff !important; }
-.xb-shop__dialog {
-  max-width: 960px;
-  padding: 16px 24px;
-  max-height: calc(100vh - 160px); }
-  .xb-shop__dialog-margin-left {
-    margin-left: 64px; }
-.xb-shop__dashboard-card {
-  border-radius: 10px;
-  padding: 28px 0 28px 28px;
-  color: #fff;
-  margin-bottom: 32px; }
-.xb-shop__dashboard-number {
-  font-size: 34px;
-  line-height: 34px;
-  margin-bottom: 4px; }
-.xb-shop__dashboard-title {
-  font-size: 16px;
-  line-height: 16px;
-  margin-bottom: 8px;
-  font-weight: 600; }
-.xb-shop__dashboard-color-1 {
-  background-color: #3f52b4;
-  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-view.png");
-  background-position: top right;
-  background-size: auto 80%;
-  background-repeat: no-repeat; }
-.xb-shop__dashboard-color-2 {
-  background-color: #00bdd6;
-  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-visitor.png");
-  background-position: top right;
-  background-size: auto 80%;
-  background-repeat: no-repeat; }
-.xb-shop__dashboard-color-3 {
-  background-color: #ffc500;
-  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-conversions.png");
-  background-position: top right;
-  background-size: auto 80%;
-  background-repeat: no-repeat; }
-.xb-shop__dashboard-color-4 {
-  background-color: #42ab34;
-  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-listings.png");
-  background-position: top right;
-  background-size: auto 80%;
-  background-repeat: no-repeat; }
-.xb-shop__dashboard-content {
-  border-top: 1px solid rgba(0, 0, 0, 0.12); }
-.xb-shop__dashboard-margin-right {
-  margin-right: 56px; }
-.xb-shop__dashboard-table span {
-  line-height: 28px;
-  height: 28px;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; }
-.xb-shop__select {
-  position: relative;
-  height: 40px; }
-  .xb-shop__select-color {
-    color: #00bdd6;
-    font-weight: 600;
-    margin-right: 8px;
-    white-space: nowrap; }
-  .xb-shop__select-tri {
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid rgba(0, 0, 0, 0.87); }
-  .xb-shop__select-panel {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 120px;
-    background-color: #fff;
-    border-radius: 2px;
-    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-    -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
-    .xb-shop__select-panel > div {
-      line-height: 40px;
-      padding: 0 16px; }
-      .xb-shop__select-panel > div.active {
-        background-color: rgba(0, 0, 0, 0.12); }
-.xb-shop__radio {
-  display: inline-flex;
-  flex-direction: column; }
-.xb-shop__products-title {
-  height: 56px;
-  font-size: 16px;
-  font-weight: 600; }
-.xb-shop__products-title-1 {
-  height: 40px;
-  font-size: 16px;
-  font-weight: 600; }
-.xb-shop__products-left-bg {
-  width: 240px; }
-.xb-shop__products-content {
-  max-height: calc(100vh - 72px);
-  overflow: scroll; }
-.xb-shop__card {
-  display: block;
-  width: 300px;
-  height: 435px;
-  position: relative;
-  z-index: 0; }
-  .xb-shop__card-image {
-    padding-bottom: 100%;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 2px;
-    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-    -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-    position: relative; }
-    .xb-shop__card-image > div {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 4px;
-      background-color: #fff;
-      overflow: hidden; }
-      .xb-shop__card-image > div > img {
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%); }
-  .xb-shop__card-content {
-    position: relative;
-    padding: 8px 16px 16px;
-    height: 208px; }
-  .xb-shop__card-title {
-    height: 56px;
-    line-height: 28px;
-    font-weight: 700;
-    overflow: hidden; }
-  .xb-shop__card-price {
-    font-size: 16px;
-    font-weight: 700; }
-  .xb-shop__card-sale {
-    background-color: #00bdd6;
-    border-radius: 4px;
-    padding: 0 8px;
-    color: #fff;
-    line-height: 24px; }
-  .xb-shop__card-action {
-    position: relative;
-    display: none; }
-  .xb-shop__card:hover {
-    position: relative;
-    overflow: visible;
-    z-index: 1; }
-    .xb-shop__card:hover > div {
-      border-radius: 4px;
-      -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.19);
-      -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.19);
-      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.19);
-      background-color: #fff; }
-    .xb-shop__card:hover .xb-shop__card-action {
-      width: 100%;
-      display: block; }
-      .xb-shop__card:hover .xb-shop__card-action > .mat-raised-button {
-        width: 100%; }
-    .xb-shop__card:hover .xb-shop__card-content {
-      height: auto;
-      border-radius: 4px; }
-.xb-shop__edit-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.87);
-  margin-bottom: 16px; }
-.xb-shop__edit-description img {
-  width: 100%; }
-.xb-shop__edit-color {
-  color: #00bdd6;
-  font-weight: 600;
-  cursor: pointer; }
-@media screen and (max-width: 599px) {
-  .xb-shop__mobile-dialog-inner {
-    padding: 16px; } }
-@media screen and (min-width: 600px) and (max-width: 959px) {
-  .xb-shop__mobile-dialog-inner {
-    padding: 16px; } }
-.xb-shop__store-template {
-  width: 360px;
-  height: 408px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 2px;
-  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-  -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
-  .xb-shop__store-template > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; }
-  .xb-shop__store-template-cover {
-    display: none !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); }
-  .xb-shop__store-template:hover .xb-shop__store-template-cover {
-    display: flex !important; }
-.xb-shop__store-button {
-  width: 116px;
-  border-radius: 16px;
-  line-height: 32px;
-  text-align: center;
-  cursor: pointer;
-  font-weight: 600; }
-  .xb-shop__store-button-primary {
-    background-color: #00bdd6;
-    color: #fff; }
-  .xb-shop__store-button-normal {
-    background-color: #fff;
-    color: #222; }
-.xb-shop__store-padding {
-  padding: 0;
-  max-width: 1200px;
-  width: 100%; }
-.xb-shop__store-bg {
-  position: absolute;
-  left: 0;
-  top: 0;
+.xb-about {
   height: 100vh;
   width: 100vw;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  background-color: #fff;
-  z-index: 500; }
-.xb-shop__template-edit {
-  border: 3px solid #00bdd6; }
-.xb-shop__template-banner {
-  background-color: #000;
-  height: 500px;
-  position: relative;
-  border: 1px solid #00bdd6; }
-  @media screen and (max-width: 599px) {
-    .xb-shop__template-banner {
-      padding: 0 16px;
-      height: 320px; } }
-  @media screen and (min-width: 600px) and (max-width: 959px) {
-    .xb-shop__template-banner {
-      padding: 0 16px; } }
-  .xb-shop__template-banner-right {
-    position: absolute;
-    top: 16px;
-    right: 0; }
-.xb-shop__template-name {
-  margin: auto;
-  width: 300px;
-  height: 60px;
-  line-height: 60px;
-  color: #fff;
-  border: 1px solid #00bdd6;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 600; }
-  .xb-shop__template-name input {
-    margin: 0;
-    padding: 0;
-    height: 60px;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 60px;
-    color: #fff;
-    border: none;
-    background-color: transparent;
-    text-align: center; }
-.xb-shop__template-title {
-  width: 100%;
-  margin-top: 100px;
-  max-height: 112px;
-  border: 1px solid #00bdd6;
-  color: #fff;
-  position: relative;
-  font-weight: 600; }
-  @media screen and (max-width: 599px) {
-    .xb-shop__template-title {
-      margin-top: 0; } }
-.xb-shop__template-description {
-  width: 100%;
-  margin-top: 24px;
-  color: #fff;
-  border: 1px solid #00bdd6;
-  position: relative; }
-  @media screen and (max-width: 599px) {
-    .xb-shop__template-description {
-      margin-top: 16px; } }
-.xb-shop__template-user {
-  width: 100%;
-  margin-top: 24px;
-  border: 1px solid #00bdd6;
-  position: relative; }
-  @media screen and (max-width: 599px) {
-    .xb-shop__template-user {
-      margin-top: 16px; } }
-  .xb-shop__template-user-name {
-    width: 100%;
-    margin-top: 12px;
-    border: 1px solid #00bdd6;
-    font-weight: 600;
-    height: 20px;
-    overflow: hidden; }
-    .xb-shop__template-user-name input {
-      margin: 0;
-      padding: 0;
-      border: none;
-      background-color: transparent;
+  overflow-y: scroll; }
+  .xb-about__left-2 {
+    margin-left: 8px; }
+  .xb-about__banner {
+    height: 368px;
+    background-image: url("https://media.xberts.com/collector/source/web/pic/use-privacy.jpg");
+    background-position: center;
+    background-size: auto 110%;
+    background-repeat: no-repeat; }
+  .xb-about__navigation {
+    height: 56px; }
+    .xb-about__navigation-login {
+      font-size: 16px;
+      color: #fff; }
+    .xb-about__navigation-button {
+      font-size: 16px;
+      color: #fff;
+      background-color: #00bdd6;
+      line-height: 40px;
       text-align: center;
-      font-weight: 600;
-      width: 100%; }
-  .xb-shop__template-user-country {
-    width: 100%;
-    margin-top: 8px;
-    border: 1px solid #00bdd6;
-    height: 20px;
-    overflow: hidden; }
-    .xb-shop__template-user-country-input {
-      width: 100%; }
-.xb-shop__template-header {
-  width: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #00bdd6; }
-.xb-shop__template-edit-button {
-  padding: 0 32px;
-  line-height: 32px;
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-  background-color: #00bdd6;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  z-index: 1;
-  font-size: 14px; }
-.xb-shop__template-button {
-  line-height: 40px;
-  border-radius: 16px;
-  background-color: #fff;
-  color: #222;
-  width: 100px;
-  text-align: center;
-  cursor: pointer; }
-.xb-shop__template-button-1 {
-  line-height: 40px;
-  border-radius: 16px;
-  background-color: #00bdd6;
-  color: #fff;
-  width: 100px;
-  text-align: center;
-  cursor: pointer; }
-.xb-shop__template-title-1 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 8px; }
-.xb-shop__template-content-1 {
-  margin-bottom: 24px; }
-.xb-shop__toDo-title {
-  margin-top: 64px;
-  font-size: 48px;
-  line-height: 1;
-  text-align: center;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.87); }
-.xb-shop__toDo-description {
-  margin-top: 8px;
-  font-size: 16px;
-  line-height: 28px;
-  text-align: center;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.87); }
-.xb-shop__toDo-content {
-  margin-top: 56px; }
-.xb-shop__toDo-card {
-  width: 320px;
-  height: 270px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 10px;
-  cursor: pointer; }
-  .xb-shop__toDo-card:hover {
-    -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19); }
-  .xb-shop__toDo-card > img {
-    width: 96px;
-    height: 96px;
-    display: block;
-    margin-top: 56px; }
-  .xb-shop__toDo-card > div {
-    font-size: 24px;
-    margin-top: 24px;
-    font-weight: 600;
-    text-align: center; }
-
-.xb-share-dialog {
-  padding: 32px;
-  max-width: 672px;
-  position: relative; }
-  @media screen and (max-width: 599px) {
-    .xb-share-dialog {
-      padding: 0; } }
-  .xb-share-dialog__close {
-    position: absolute;
-    left: calc(100% - 16px);
-    top: -8px;
-    color: #222;
-    cursor: pointer; }
-    .xb-share-dialog__close i {
-      font-size: 24px;
-      line-height: 24px;
-      font-weight: 600; }
-  .xb-share-dialog__title {
-    font-size: 24px;
-    line-height: 32px;
-    text-align: center;
-    font-weight: 600; }
-  .xb-share-dialog__content {
-    margin-top: 32px;
+      border-radius: 16px;
+      width: 120px;
+      display: block; }
+    .xb-about__navigation-title {
+      font-size: 56px;
+      font-weight: 300;
+      color: #fff;
+      text-align: center;
+      margin-top: 120px; }
+  .xb-about-container {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 686px; }
+  .xb-about-privacy__content-1 {
     font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    font-weight: 400; }
-  .xb-share-dialog__link {
-    font-size: 24px;
-    line-height: 32px;
-    text-decoration: underline;
-    text-align: center;
-    width: 100%;
-    overflow: hidden;
-    margin-top: 12px;
-    display: block;
-    color: rgba(0, 0, 0, 0.87); }
-  .xb-share-dialog__margin-top {
-    margin-top: 48px; }
-
-.xb-affiliate-dialog {
-  padding: 32px;
-  max-width: 672px;
-  position: relative; }
-  @media screen and (max-width: 599px) {
-    .xb-affiliate-dialog {
-      padding: 0; } }
-  .xb-affiliate-dialog__close {
-    position: absolute;
-    left: calc(100% - 16px);
-    top: -8px;
-    color: #222;
-    cursor: pointer; }
-    .xb-affiliate-dialog__close i {
-      font-size: 24px;
-      line-height: 24px;
-      font-weight: 600; }
-  .xb-affiliate-dialog__title {
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 600; }
-  .xb-affiliate-dialog__content {
-    margin-top: 16px;
-    font-size: 14px;
     line-height: 28px;
-    font-weight: 400; }
-  .xb-affiliate-dialog__margin-top {
-    margin-top: 80px; }
+    margin-top: 32px;
+    color: black;
+    font-weight: 300; }
+  .xb-about-privacy__bold {
+    font-weight: bold; }
+  .xb-about-privacy__content-2 {
+    font-size: 16px;
+    line-height: 28px;
+    color: black;
+    font-weight: 300; }
+    .xb-about-privacy__content-2-title {
+      font-weight: bold;
+      color: black;
+      font-size: 16px;
+      line-height: 28px; }
+  .xb-about-privacy__content-3 {
+    font-size: 16px;
+    line-height: 28px;
+    margin-top: 32px;
+    color: black;
+    margin-bottom: 72px;
+    font-weight: 300; }
 
-/*# sourceMappingURL=shop.css.map */
+/*# sourceMappingURL=use-policy.component.css.map */

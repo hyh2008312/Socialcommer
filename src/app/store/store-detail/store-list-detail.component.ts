@@ -13,10 +13,7 @@ import { Store, Product, Image } from '../store';
 export class StoreListDetailComponent implements OnInit {
 
   public shareLink: string;
-  public text = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.'
-    + 'Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training'
-    + 'that make you an expert in your field? Show your customers that there are read people with instersting stories working'
-    + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
+  public text = '';
   store: Store = new Store();
   product: Product = new Product();
   image: any = [];
@@ -43,6 +40,7 @@ export class StoreListDetailComponent implements OnInit {
     let self = this;
     this.storeService.getProduct(id).then((data) => {
       self.product = data;
+      self.text = data.title;
       self.image = data.imageUrl;
       if(data.imageUrl.length > 0) {
         self.selectedImage = data.imageUrl[0];

@@ -16,6 +16,7 @@ export class InviteCodeComponent implements OnInit {
   inviteForm : FormGroup;
   inviteErr : any = false;
   userId: any;
+  store: any = false;
 
   constructor(
     private router: Router,
@@ -36,7 +37,14 @@ export class InviteCodeComponent implements OnInit {
   ngOnInit():void {
     let self = this;
     this.userService.currentUser.subscribe((data) => {
-      self.userId = data.id;
+      if(data) {
+        self.userId = data.id;
+        if(data.store && data.store.length > 0) {
+          self.store = data.store;
+        }
+      }
+
+
     })
   }
 
@@ -86,7 +94,11 @@ export class InviteCodeComponent implements OnInit {
     option.userId = self.userId;
     self.loginService.validateCode(option).then((data)=> {
       self.authenticationService.inviteToken(true);
-      self.router.navigate(['/shop/store'],{queryParams: {tab: 'templates'}});
+      if(self.store) {
+        self.router.navigate(['/shop/toDoList']);
+      } else {
+        self.router.navigate(['cp/signUp'],{ queryParams: { step: 1 } });
+      }
     }).catch((data) => {
       self.inviteErr = data;
     });

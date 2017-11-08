@@ -19,10 +19,7 @@ export class MainPageComponent implements OnInit {
     name : ''
   };
   public shareLink: string;
-  public text = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.'
-  + 'Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training'
-  + 'that make you an expert in your field? Show your customers that there are read people with instersting stories working'
-  + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
+  public text = '';
 
   baseImageUrl: string = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
 
@@ -44,7 +41,12 @@ export class MainPageComponent implements OnInit {
     let self = this;
     this.storeService.getStore(storeName).then((data) => {
       self.store = data;
-      self.categories = [...data.category];
+      self.text = data.description;
+      if(data.category.length > 1) {
+        self.categories = [{name: 'All'}, ...data.category];
+      } else {
+        self.categories = [...data.category];
+      }
       self.category = self.categories[0];
       self.storeService.addStore(data);
 

@@ -11,6 +11,7 @@
         <div class="xb-shop__edit-title">Product Picture</div>
         <div class="xb-shop__margin-bottom-2">
           <app-image-preview-multi [previewImg]="previewImg"></app-image-preview-multi>
+          <div class="md-margin-top-1">* The first picture will be defaulted as cover image.</div>
         </div>
         <div class="xb-shop__edit-title">Product Title</div>
         <div [hidden]="!showTitleInput" >
@@ -81,14 +82,13 @@
         </div>
         <div class="xb-shop__edit-title">Add your affiliate link</div>
         <mat-form-field class="xb-shop__width-100" >
-          <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with"
-                 formControlName="purchaseUrl">
+          <input matInput formControlName="purchaseUrl">
         </mat-form-field>
         <div class="text-underline xb-pointer" (click)="openDialog()">How to get your affiliate link?</div>
         <div *ngIf="formErrors['purchaseUrl']" class="xb-input-error">
           {{ formErrors['purchaseUrl'] }}
         </div>
-        <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product(optional)</div>
+        <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product (optional)</div>
         <mat-form-field class="xb-shop__width-100">
         <textarea matInput value="Your opinion is very important to your audiences"
                   formControlName="recommendation"></textarea>

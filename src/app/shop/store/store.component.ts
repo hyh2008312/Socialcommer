@@ -125,10 +125,10 @@ export class StoreComponent implements OnInit {
 
     self.activatedRoute.queryParams.subscribe((data)=> {
       if(data.tab == 'settings' ) {
-        self.selectedIndex = 0;
+        self.selectedIndex = 1;
       }
       if(data.tab == 'templates') {
-        self.selectedIndex = 1;
+        self.selectedIndex = 0;
       }
     });
   }

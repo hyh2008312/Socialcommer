@@ -181,6 +181,7 @@ $aligns: left right center justify;
 }
 
 .ql-editor, .ql-container{
+  min-height: 96px;
   height: auto;
   box-sizing: border-box;
 }

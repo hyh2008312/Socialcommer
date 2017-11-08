@@ -225,7 +225,7 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product.cover = [];
     storeProduct.product.cover = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
-      amount:  productForm.originalPrice,
+      amount:  productForm.originalPrice != '' ? productForm.originalPrice : 0,
       currency: this.storeCurrency
     };
     storeProduct.product.salePrice = {

@@ -138,6 +138,9 @@ export class CatalogComponent implements OnInit {
   openToggle() {
     this.showToggles = !this.showToggles;
   }
+  closeToggle() {
+    this.showToggles = false;
+  }
 
   changeProducts(event) {
     let relationStatus = 'published';

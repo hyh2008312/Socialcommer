@@ -266,7 +266,7 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.cover = [];
     storeProduct.cover = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
-      amount:  productForm.originalPrice,
+      amount: productForm.originalPrice != '' ? productForm.originalPrice : 0,
       currency: this.storeCurrency
     };
     storeProduct.product.salePrice = {
@@ -358,6 +358,8 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.isDraft = false;
     if(this.tags[0]) {
       storeProduct.categoryName = this.tags[0].name;
+    } else {
+      storeProduct.categoryName = '';
     }
 
     let self = this;

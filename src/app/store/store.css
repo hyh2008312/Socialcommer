@@ -3068,6 +3068,25 @@ textarea.mat-input-element {
       .xb-store__store-name {
         font-size: 24px;
         margin-top: 0; } }
+  .xb-store__store-name-1 {
+    margin: 0 auto;
+    width: 300px;
+    height: 60px;
+    line-height: 60px;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600; }
+  .xb-store__store-title {
+    font-size: 56px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-top: 100px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__store-title {
+        font-size: 24px;
+        margin-top: 0; } }
   .xb-store__store-description {
     font-weight: 600;
     color: #fff;
@@ -3210,9 +3229,6 @@ textarea.mat-input-element {
     margin-left: auto;
     margin-right: auto;
     position: relative; }
-    @media screen and (max-width: 599px) {
-      .xb-store__content-2 {
-        padding: 0 16px; } }
     @media screen and (min-width: 600px) and (max-width: 959px) {
       .xb-store__content-2 {
         padding: 0 16px; } }
@@ -3554,16 +3570,26 @@ textarea.mat-input-element {
       position: absolute;
       top: 16px;
       right: 0; }
+  .xb-store__template-name {
+    margin: 0 auto;
+    width: 300px;
+    height: 60px;
+    line-height: 60px;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600; }
   .xb-store__template-title {
     width: 100%;
-    margin-top: 160px;
+    margin-top: 100px;
     max-height: 112px;
     color: #fff;
     position: relative;
     padding: 0 16px; }
     @media screen and (max-width: 599px) {
       .xb-store__template-title {
-        margin-top: 0; } }
+        margin-top: 0;
+        padding: 0; } }
   .xb-store__template-description {
     width: 100%;
     margin-top: 24px;
@@ -3573,7 +3599,8 @@ textarea.mat-input-element {
     overflow: hidden; }
     @media screen and (max-width: 599px) {
       .xb-store__template-description {
-        margin-top: 16px; } }
+        margin-top: 16px;
+        padding: 0; } }
   .xb-store__template-user {
     width: 100%;
     margin-top: 24px;

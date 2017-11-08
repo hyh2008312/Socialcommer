@@ -41,7 +41,9 @@ export class ShopService {
           array.push(key + '=' + item);
         }
       } else {
-        array.push(key + '=' + params[key]);
+        if(params[key] != undefined) {
+          array.push(key + '=' + params[key]);
+        }
       }
     }
 

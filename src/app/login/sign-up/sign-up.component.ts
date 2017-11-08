@@ -198,7 +198,12 @@ export class SignUpComponent {
       self.userService.getUser().then((data) => {
         self.userService.addUser(data);
         self.userService.addStore(data.store[0]);
-        self.step = 2;
+        if(self.routerInfo.snapshot.queryParams["step"] == 1) {
+          self.router.navigate(['/shop/toDoList']);
+        } else {
+          self.step = 2;
+        }
+
       });
     }).catch((data) => {
       self.storeErr = data;

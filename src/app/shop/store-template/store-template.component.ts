@@ -74,6 +74,7 @@ export class StoreTemplateComponent implements OnInit {
     salePriceCurrency : "USD",
     title : "The Best Organic Vitamin C Serum - [BIG 2-OZ Bottle] - Hyaluronic Acid, 20% C + E"
   }];
+  storeName: string = 'Store Name';
 
   constructor(
     private userService: UserService
@@ -82,6 +83,7 @@ export class StoreTemplateComponent implements OnInit {
     self.userService.currentUser.subscribe((data) => {
       if(data) {
         self.user = data;
+        self.storeName = data.store[0].name;
       }
     });
   }

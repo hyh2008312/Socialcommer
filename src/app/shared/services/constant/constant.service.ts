@@ -7,6 +7,11 @@ export class ConstantService {
 
   getCountries() {
     return [
+      {code: 'US', name: 'United States of America'},
+      {code: 'IN', name: 'India'},
+      {code: 'CA', name: 'Canada'},
+      {code: 'MA', name: 'Morocco'},
+      {code: 'PK', name: 'Pakistan'},
       {code: 'AF', name: 'Afghanistan'},
       {code: 'AL', name: 'Albania'},
       {code: 'DZ', name: 'Algeria'},
@@ -45,7 +50,6 @@ export class ConstantService {
       {code: 'BI', name: 'Burundi'},
       {code: 'KH', name: 'Cambodia'},
       {code: 'CM', name: 'Cameroon'},
-      {code: 'CA', name: 'Canada'},
       {code: 'CV', name: 'Cape Verde'},
       {code: 'KY', name: 'Cayman Islands'},
       {code: 'CF', name: 'Central African Republic'},
@@ -105,7 +109,6 @@ export class ConstantService {
       {code: 'HK', name: 'Hong Kong'},
       {code: 'H', name: 'Hungary'},
       {code: 'IS', name: 'Iceland'},
-      {code: 'IN', name: 'India'},
       {code: 'ID', name: 'Indonesia'},
       {code: 'IQ', name: 'Iraq'},
       {code: 'IE', name: 'Ireland'},
@@ -150,7 +153,6 @@ export class ConstantService {
       {code: 'MC', name: 'Monaco'},
       {code: 'MN', name: 'Mongolia'},
       {code: 'MS', name: 'Monserrat'},
-      {code: 'MA', name: 'Morocco'},
       {code: 'MZ', name: 'Mozambique'},
       {code: 'MM', name: 'Myanmar'},
       {code: 'NA', name: 'Namibia'},
@@ -168,7 +170,7 @@ export class ConstantService {
       {code: 'MP', name: 'Northern Mariana Islands'},
       {code: 'NO', name: 'Norway'},
       {code: 'OM', name: 'Oman'},
-      {code: 'PK', name: 'Pakistan'},
+
       {code: 'PW', name: 'Pala'},
       {code: 'PA', name: 'Panama'},
       {code: 'PG', name: 'Papua New Guinea'},
@@ -230,7 +232,6 @@ export class ConstantService {
       {code: 'AE', name: 'United Arab Emirates'},
       {code: 'GB', name: 'United Kingdom (Great Britain)'},
       {code: 'UM', name: 'United States Minor Outlying Islands'},
-      {code: 'US', name: 'United States of America'},
       {code: 'VI', name: 'United States Virgin Islands'},
       {code: 'UY', name: 'Uruguay'},
       {code: 'UZ', name: 'Uzbekistan'},

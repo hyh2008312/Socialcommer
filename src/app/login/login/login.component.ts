@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   validationMessages = {
     'username': {
       'required': 'This field is required',
+      'email': 'Please enter a valid email address.'
     },
     'password':{
       'required': 'This field is required',

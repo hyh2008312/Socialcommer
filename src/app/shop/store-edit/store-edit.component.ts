@@ -104,7 +104,12 @@ export class StoreEditComponent implements OnInit {
           });
 
           self.shopService.getFrontStore(self.store.displayName).then((data) => {
-            self.categories = [...data.category];
+            if(data.category.length > 1) {
+              self.categories = [{name: 'All'}, ...data.category];
+            } else {
+              self.categories = [...data.category];
+            }
+
             self.category = self.categories[0];
             self.queryProduct(false);
           });
@@ -264,6 +269,7 @@ export class StoreEditComponent implements OnInit {
         descriptionTag: option.descriptionTag,
         imageUrl: self.imageSrc
       }).then((data) => {
+        self.openDialog(self.store.displayName);
         self.router.navigate(['/shop/store'],{queryParams: {tab: 'templates'}});
 
         self.userService.getUser().then((data)=> {
@@ -287,9 +293,8 @@ export class StoreEditComponent implements OnInit {
     let self = this;
 
     this.shopService.changeStore(store).then((data) => {
-      this.storeEdited = false;
+      self.storeEdited = false;
       self.submitTemplate();
-      self.openDialog(this.store.displayName);
     });
   }
 
@@ -326,7 +331,7 @@ export class StoreEditComponent implements OnInit {
     let dialogRef = this.dialog.open(StoreShareDialogComponent, {
       data: {
         shareLink: 'http://' + this.shareLink + displayName,
-        text: '1111'
+        text: this.store.description
       }
     });
 
