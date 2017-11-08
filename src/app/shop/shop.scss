@@ -271,7 +271,7 @@
       width: 120px;
       background-color: $whiteColor;
       @include resetBorder();
-
+      z-index: 10;
 
       >div{
         line-height: 40px;

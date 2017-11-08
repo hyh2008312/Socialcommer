@@ -9,10 +9,10 @@ import {UsePolicyComponent} from './use-policy/use-policy.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  {path: 'privacy', component: PrivacyComponent},
-  {path: 'faq', component: FaqsComponent},
-  {path: 'terms', component: TermsComponent},
-  {path: 'aup', component: UsePolicyComponent},
+  { path: 'privacy', component: PrivacyComponent },
+  { path: 'faq', component: FaqsComponent },
+  { path: 'terms', component: TermsComponent },
+  { path: 'aup', component: UsePolicyComponent },
 ];
 
 @NgModule({

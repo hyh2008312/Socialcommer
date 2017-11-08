@@ -33,7 +33,7 @@ export class CatalogTimeSelectComponent implements OnInit {
 
   addTime(time: any) {
     this.time = time.value;
-
+    this.closePanel();
     this.timeChange.emit(time);
   }
 

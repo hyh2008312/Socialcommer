@@ -114,3 +114,11 @@ export class UserProfile{
   biography: string;
   avatar : string;
 }
+
+export class StoreStatistic{
+  clickTotal : number = 0;
+  listingTotal : number = 0;
+  storeId : string;
+  viewTotal : number = 0;
+  visitorTotal : number = 0;
+}

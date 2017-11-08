@@ -1689,7 +1689,8 @@ textarea.mat-input-element {
     border-radius: 2px;
     -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
     -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+    z-index: 10; }
     .xb-shop__select-panel > div {
       line-height: 40px;
       padding: 0 16px; }

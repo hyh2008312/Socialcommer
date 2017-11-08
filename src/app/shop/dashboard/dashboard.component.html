@@ -2,27 +2,27 @@
   <div class="md-margin-bottom-4">
     <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
       <div class="xb-shop__dashboard-number xb-bold" fxFlex>Overview</div>
-      <app-catalog-time-select [time]="timeOverview" (time)="getStore($event)" [times]="times"></app-catalog-time-select>
+      <app-catalog-time-select [time]="timeOverview" (timeChange)="getStore($event)" [times]="times"></app-catalog-time-select>
     </div>
     <div class="md-margin-top-2 md-margin-right-2" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex="24">
         <i class="iconfontXberts icon-pic-view" ></i>
-        <div class="xb-shop__dashboard-number">234</div>
+        <div class="xb-shop__dashboard-number">{{storeStatistic.viewTotal}}</div>
         <div>Total Views</div>
       </div>
       <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2" fxFlex="24">
         <i class="iconfontXberts icon-pic-victor" ></i>
-        <div class="xb-shop__dashboard-number">1223</div>
+        <div class="xb-shop__dashboard-number">{{storeStatistic.visitorTotal}}</div>
         <div>Total Visitors</div>
       </div>
       <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3" fxFlex="24">
         <i class="iconfontXberts icon-pic-cart" ></i>
-        <div class="xb-shop__dashboard-number">453</div>
+        <div class="xb-shop__dashboard-number">{{storeStatistic.clickTotal}}</div>
         <div class="">Total Click-to-Buy</div>
       </div>
       <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4" fxFlex="24">
         <i class="iconfontXberts icon-pic-shop" ></i>
-        <div class="xb-shop__dashboard-number">12</div>
+        <div class="xb-shop__dashboard-number">{{storeStatistic.listingTotal}}</div>
         <div>Listings</div>
       </div>
     </div>
