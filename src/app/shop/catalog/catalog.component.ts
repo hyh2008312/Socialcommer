@@ -194,6 +194,13 @@ export class CatalogComponent implements OnInit {
             break;
         }
         break;
+      case 1:
+        switch(event.event) {
+          case 'delete':
+            this.productDraft.splice(event.index,1);
+            break;
+        }
+        break;
       case 2:
         switch(event.event) {
           case 'delete':

@@ -421,6 +421,38 @@ export class ShopService {
       .catch(this.handleError);
   }
 
+  getStoreStatistics(store:any): Promise<Store> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}statistics/store/${store.id}/?${this.serializeParams(store)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json() as Store)
+      .catch(this.handleError);
+  }
+
+  getProductStatistics(product:any): Promise<Store> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}statistics/product/?${this.serializeParams(product)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json() as Store)
+      .catch(this.handleError);
+  }
+
   private handleError (error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ShopService } from '../shop.service';
+import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,22 +17,65 @@ export class DashboardComponent implements OnInit {
 
   times = [{
     code: 'Yesterday',
-    value: 'Yesterday'
+    value: 'Yesterday',
+    day: 1,
   }, {
     code: 'Last 7 days',
-    value: 'Last 7 days'
+    value: 'Last 7 days',
+    day: 7
   }, {
     code: 'Last 30 days',
-    value: 'Last 30 days'
+    value: 'Last 30 days',
+    day: 30
   }, {
     code: 'All Time',
-    value: 'All Time'
+    value: 'All Time',
+    day: 31
   }];
 
-  constructor(
+  storeDay: number = 1;
+  productDay: number = 1;
 
-  ) { }
+  storeId: number;
+
+  constructor(
+    private shopService: ShopService,
+    private userService: UserService
+  ) {
+
+  }
 
   ngOnInit():void {
+    let self = this;
+    this.userService.store.subscribe((data) => {
+      if(data) {
+        self.storeId = data.id;
+
+        self.getStore();
+      }
+    });
+
+  }
+
+  getStore(event?:any) {
+    console.log(event)
+
+    this.shopService.getStoreStatistics({
+      id: this.storeId,
+      day: this.storeDay
+    }).then((data) => {
+      console.log(data)
+    });
+  }
+
+  getProduct(event?:any) {
+    console.log(event)
+
+    this.shopService.getProductStatistics({
+      id: this.storeId,
+      day: this.productDay
+    }).then((data) => {
+      console.log(data)
+    });
   }
 }

@@ -9,9 +9,9 @@ import { Input, Output, Component, OnInit, EventEmitter} from '@angular/core';
 export class CatalogTimeSelectComponent implements OnInit {
 
   @Input() time : string;
-  @Input() times : [Object];
+  @Input() times : any[] = [];
 
-  @Output() timeChange = new EventEmitter<string>();
+  @Output() timeChange = new EventEmitter<any>();
 
   panel: boolean = false;
 
@@ -34,7 +34,7 @@ export class CatalogTimeSelectComponent implements OnInit {
   addTime(time: any) {
     this.time = time.value;
 
-    this.timeChange.emit(this.time);
+    this.timeChange.emit(time);
   }
 
 }

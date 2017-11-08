@@ -188,6 +188,17 @@
       padding: 28px 0 28px 28px;
       color: $whiteColor;
       margin-bottom: 32px;
+      overflow: hidden;
+      position: relative;
+
+      >i{
+        position: absolute;
+        color: $whiteColor;
+        font-size: 88px;
+        line-height: 88px;
+        right: 0;
+        top: 0;
+      }
     }
 
     &-number{
@@ -206,31 +217,15 @@
 
     &-color-1{
       background-color: $navigationColor;
-      background-image: url("https://media.xberts.com/collector/source/web/pic/pic-view.png");
-      background-position: top right;
-      background-size: auto 80%;
-      background-repeat: no-repeat;
     }
     &-color-2{
       background-color: $primaryColor;
-      background-image: url("https://media.xberts.com/collector/source/web/pic/pic-visitor.png");
-      background-position: top right;
-      background-size: auto 80%;
-      background-repeat: no-repeat;
     }
     &-color-3{
       background-color: $orangeColor;
-      background-image: url("https://media.xberts.com/collector/source/web/pic/pic-conversions.png");
-      background-position: top right;
-      background-size: auto 80%;
-      background-repeat: no-repeat;
     }
     &-color-4{
-      background-color: #42ab34;
-      background-image: url("https://media.xberts.com/collector/source/web/pic/pic-listings.png");
-      background-position: top right;
-      background-size: auto 80%;
-      background-repeat: no-repeat;
+      background-color: $successColor;
     }
 
     &-content{

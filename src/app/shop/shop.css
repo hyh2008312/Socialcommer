@@ -63,10 +63,10 @@
   color: #00bdd6; }
 
 .background-success {
-  background-color: #4caf50; }
+  background-color: #42ab34; }
 
 .xb-color-success {
-  color: #4caf50; }
+  color: #42ab34; }
 
 .background-danger {
   background-color: #e53935; }
@@ -1628,7 +1628,16 @@ textarea.mat-input-element {
   border-radius: 10px;
   padding: 28px 0 28px 28px;
   color: #fff;
-  margin-bottom: 32px; }
+  margin-bottom: 32px;
+  overflow: hidden;
+  position: relative; }
+  .xb-shop__dashboard-card > i {
+    position: absolute;
+    color: #fff;
+    font-size: 88px;
+    line-height: 88px;
+    right: 0;
+    top: 0; }
 .xb-shop__dashboard-number {
   font-size: 34px;
   line-height: 34px;
@@ -1639,29 +1648,13 @@ textarea.mat-input-element {
   margin-bottom: 8px;
   font-weight: 600; }
 .xb-shop__dashboard-color-1 {
-  background-color: #3f52b4;
-  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-view.png");
-  background-position: top right;
-  background-size: auto 80%;
-  background-repeat: no-repeat; }
+  background-color: #3f52b4; }
 .xb-shop__dashboard-color-2 {
-  background-color: #00bdd6;
-  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-visitor.png");
-  background-position: top right;
-  background-size: auto 80%;
-  background-repeat: no-repeat; }
+  background-color: #00bdd6; }
 .xb-shop__dashboard-color-3 {
-  background-color: #ffc500;
-  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-conversions.png");
-  background-position: top right;
-  background-size: auto 80%;
-  background-repeat: no-repeat; }
+  background-color: #ffc500; }
 .xb-shop__dashboard-color-4 {
-  background-color: #42ab34;
-  background-image: url("https://media.xberts.com/collector/source/web/pic/pic-listings.png");
-  background-position: top right;
-  background-size: auto 80%;
-  background-repeat: no-repeat; }
+  background-color: #42ab34; }
 .xb-shop__dashboard-content {
   border-top: 1px solid rgba(0, 0, 0, 0.12); }
 .xb-shop__dashboard-margin-right {
