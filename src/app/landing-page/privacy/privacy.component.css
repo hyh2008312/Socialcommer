@@ -395,12 +395,12 @@
 .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
   transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.001px);
   -ms-transform: translateY(-1.28125em) scale(0.75);
-  width: 133.33333%; }
+  width: 133.3333333333%; }
 .mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-placeholder-wrapper
 .mat-form-field-placeholder {
   transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.001px);
   -ms-transform: translateY(-1.28125em) scale(0.75);
-  width: 133.33333%; }
+  width: 133.3333333333%; }
 
 .mat-form-field-placeholder-wrapper {
   top: -0.84375em;
@@ -414,8 +414,8 @@
 
 .mat-form-field-subscript-wrapper {
   font-size: 75%;
-  margin-top: 0.54167em;
-  top: calc(100% - 1.66667em); }
+  margin-top: 0.5416666667em;
+  top: calc(100% - 1.6666666667em); }
 
 .mat-grid-tile-header,
 .mat-grid-tile-footer {
@@ -1532,7 +1532,14 @@ textarea.mat-input-element {
   .xb-about-container {
     margin-right: auto;
     margin-left: auto;
-    max-width: 686px; }
+    max-width: 686px;
+    width: 100%; }
+    @media screen and (max-width: 599px) {
+      .xb-about-container {
+        padding: 0 16px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-about-container {
+        padding: 0 16px; } }
   .xb-about-privacy__content-1 {
     font-size: 16px;
     line-height: 28px;
@@ -1557,5 +1564,23 @@ textarea.mat-input-element {
     color: black;
     margin-bottom: 72px;
     font-weight: 300; }
+  .xb-about__footer-top {
+    background-color: #252525;
+    color: rgba(255, 255, 255, 0.5); }
+    .xb-about__footer-top > div {
+      height: 80px; }
+  .xb-about__footer-text {
+    padding: 0 24px;
+    font-size: 16px;
+    color: #fff; }
+  .xb-about__footer-bottom {
+    background-color: #252525;
+    color: rgba(255, 255, 255, 0.5);
+    overflow: hidden; }
+  .xb-about-margin-top-2 {
+    margin-top: 0; }
+    @media screen and (max-width: 599px) {
+      .xb-about-margin-top-2 {
+        margin-top: 8px; } }
 
 /*# sourceMappingURL=privacy.component.css.map */
