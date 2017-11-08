@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response , Headers , RequestOptions } from '@angular/http';
+import { Http, Response , Headers , RequestOptions, Jsonp, URLSearchParams } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import{ Subject, BehaviorSubject } from 'rxjs';
@@ -15,7 +15,8 @@ export class StoreService {
   constructor(
     private http: Http,
     private baseUrl: BaseApi,
-    private dataUrl: DataApi
+    private dataUrl: DataApi,
+    private jsonp : Jsonp
   ) { }
 
   createAuthorizationHeader(headers: Headers) {
@@ -38,6 +39,18 @@ export class StoreService {
     }
 
     return array.join('&');
+  }
+
+  serializeParamsJSONP(params) {
+
+    let _params = new URLSearchParams();
+
+    for (const key in params) {
+      _params.set( key, params[key]);
+    }
+    _params.set('callback', "JSONP_CALLBACK");
+
+    return _params;
   }
 
   getStore(name:string): Promise<Store> {
@@ -94,15 +107,9 @@ export class StoreService {
 
   pageView(statistics): Promise<any> {
 
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
+    const url = `${this.dataUrl.url}data/upload/page_view`;
 
-    let options = new RequestOptions({headers:headers});
-
-    const url = `${this.dataUrl.url}data/upload/page_view?${this.serializeParams(statistics)}`;
-
-    return this.http.get(url, options)
+    return this.http.get(url,{search: this.serializeParamsJSONP(statistics)})
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
@@ -110,15 +117,9 @@ export class StoreService {
 
   buttonClick(statistics): Promise<any> {
 
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
+    const url = `${this.dataUrl.url}data/upload/buy_click`;
 
-    let options = new RequestOptions({headers:headers});
-
-    const url = `${this.dataUrl.url}data/upload/buy_click?${this.serializeParams(statistics)}`;
-
-    return this.http.get(url, options)
+    return this.http.get(url,{search: this.serializeParamsJSONP(statistics)})
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);

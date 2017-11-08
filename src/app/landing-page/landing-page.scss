@@ -29,11 +29,11 @@
       margin-top: 40px;
       color: $blackColor;
       background-color: $whiteColor;
-      font-size: 16px;
-      line-height: 48px;
+      font-size: 14px;
+      line-height: 40px;
       border-radius: 20px;
       text-align: center;
-      width: 240px;
+      width: 220px;
       display: block;
     }
   }
@@ -46,24 +46,24 @@
     }
 
     &-button{
-      font-size: 16px;
+      font-size: 14px;
       color: $whiteColor;
       background-color: $primaryColor;
       line-height: 40px;
       text-align: center;
-      border-radius: 16px;
+      border-radius: 20px;
       width: 100px;
       display: block;
     }
 
     &-button-1{
-      font-size: 16px;
+      font-size: 14px;
       color: $whiteColor;
       background-color: $primaryColor;
       line-height: 40px;
       text-align: center;
-      border-radius: 16px;
-      width: 240px;
+      border-radius: 20px;
+      width: 220px;
       display: block;
     }
   }

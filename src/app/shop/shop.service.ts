@@ -403,6 +403,22 @@ export class ShopService {
       .catch(this.handleError);
   }
 
+  getFrontStore(name:string): Promise<Store> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}stores/${name}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json() as Store)
+      .catch(this.handleError);
+  }
+
   private handleError (error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {

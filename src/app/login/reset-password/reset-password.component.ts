@@ -12,6 +12,8 @@ export class ResetPasswordComponent implements OnInit {
 
   resetForm : FormGroup;
   resetErr : any = false;
+  step: number = 0;
+  email: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -74,7 +76,7 @@ export class ResetPasswordComponent implements OnInit {
     }
     let self = this;
     this.loginService.resetPassword(this.resetForm.value).then((data)=> {
-
+      self.step = 1;
     }).catch((data) => {
       self.resetErr = data;
     });

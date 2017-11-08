@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div class="xb-shop__margin-bottom-2" [hidden]="showTitleInput" (click)="showTitle()">
+        <div class="xb-shop__margin-bottom-2 xb-pointer" [hidden]="showTitleInput" (click)="showTitle()">
           {{product.title}}
         </div>
         <div class="xb-shop__edit-title">Category</div>
@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-        <div class="xb-shop__margin-bottom-2" [hidden]="showCategoryInput" (click)="showCategory()">
+        <div class="xb-shop__margin-bottom-2 xb-pointer" [hidden]="showCategoryInput" (click)="showCategory()">
           {{product.tags}}
         </div>
         <div class="xb-shop__edit-title">Price</div>
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <div class="ql-editor ql-container xb-shop__margin-bottom-2" [hidden]="showDescriptionEditor"
+        <div class="ql-editor ql-container xb-shop__margin-bottom-2 xb-pointer" [hidden]="showDescriptionEditor"
               (click)="showDescription()">
           <div [innerHTML]="editorContent | safeHtml"></div>
         </div>
@@ -84,6 +84,7 @@
           <input matInput value="Please generate the affiliate link from the ecommerce site you're affiliated with"
                  formControlName="purchaseUrl">
         </mat-form-field>
+        <div class="text-underline xb-pointer" (click)="openDialog()">How to get your affiliate link?</div>
         <div *ngIf="formErrors['purchaseUrl']" class="xb-input-error">
           {{ formErrors['purchaseUrl'] }}
         </div>

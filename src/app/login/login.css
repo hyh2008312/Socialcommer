@@ -1499,8 +1499,22 @@ textarea.mat-input-element {
 
 .xb-login__container {
   max-width: 352px;
-  width: 100%;
-  padding: 0 10px; }
+  width: 100%; }
+  @media screen and (max-width: 599px) {
+    .xb-login__container {
+      padding: 0 16px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-login__container {
+      padding: 0 16px; } }
+.xb-login__container-1 {
+  max-width: 352px;
+  width: 100%; }
+  @media screen and (max-width: 599px) {
+    .xb-login__container-1 {
+      padding: 0 16px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-login__container-1 {
+      padding: 0 16px; } }
 .xb-login__auto {
   margin: auto; }
 .xb-login__width .mat-form-field {
@@ -1528,17 +1542,30 @@ textarea.mat-input-element {
   margin-top: 120px; }
   @media screen and (max-width: 599px) {
     .xb-login__margin-top-1 {
-      margin-top: 4px; } }
+      margin-top: 40px; } }
 .xb-login__title {
   font-size: 34px;
   font-weight: bold;
   margin-top: 72px; }
+  @media screen and (max-width: 599px) {
+    .xb-login__title {
+      font-size: 24px;
+      padding: 0 16px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-login__title {
+      font-size: 24px;
+      padding: 0 16px; } }
 .xb-login__title-1 {
   font-size: 34px;
   font-weight: bold; }
   @media screen and (max-width: 599px) {
     .xb-login__title-1 {
       font-size: 24px; } }
+.xb-login__title-2 {
+  font-size: 16px; }
+  @media screen and (max-width: 599px) {
+    .xb-login__title-2 {
+      font-size: 14px; } }
 .xb-login__header {
   margin-top: 108px; }
 .xb-login__circle {

@@ -26,6 +26,7 @@ import { ImagePreviewMultiComponent } from './components/image-preview-multi/ima
 import { ImageUploadHeaderComponent } from './components/image-upload-header/image-upload-header.component';
 import { LeftProductsImageComponent } from './components/left-products-image/left-products-image.component';
 import { ShareButtonComponent } from './components/share-button/share-button.component';
+import { ShareButtonRowComponent } from './components/share-button-row/share-button-row.component';
 import { StoreNavigationComponent } from './components/store-navigation/store-navigation.component';
 
 import { FollowService } from './components/user-follow/user-follow.service';
@@ -99,7 +100,8 @@ import {
     ImageUploadHeaderComponent,
     LeftProductsImageComponent,
     ShareButtonComponent,
-    StoreNavigationComponent
+    StoreNavigationComponent,
+    ShareButtonRowComponent
   ],
   exports: [
     SafeHtmlPipe,
@@ -122,6 +124,7 @@ import {
     LeftProductsImageComponent,
     ShareButtonComponent,
     StoreNavigationComponent,
+    ShareButtonRowComponent,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

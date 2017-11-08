@@ -260,5 +260,14 @@ export class ConstantService {
     ];
   }
 
+  getAffiliateLink() {
+    return {
+      'amazon.com' : 'https://affiliate-program.amazon.com/',
+      'amazon.in' : 'https://affiliate-program.amazon.in/',
+      'aliexpress.com' : 'https://portals.aliexpress.com/',
+      'eBay.com' : 'https://partnernetwork.ebay.com/'
+    }
+  }
+
 }
 

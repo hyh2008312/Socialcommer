@@ -13,12 +13,15 @@ import { StorePreviewComponent } from "./store-preview/store-preview.component";
 import { StoreTemplateComponent } from "./store-template/store-template.component";
 import { StoreEditComponent } from "./store-edit/store-edit.component";
 import { StoreItemCardPreviewComponent } from "./store-item-card-preview/store-item-card-preview.component";
+import { ToDoListComponent } from "./to-do-list/to-do-list.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
 import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-select.component";
 import { ProductItemComponent } from "./product-item/product-item.component";
 import { ProductsSortComponent } from "./products-sort/products-sort.component";
 import { ProductItemCardComponent } from "./product-item-card/product-item-card.component";
+import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
+import { ProductAffiliateLinkDialogComponent } from "./product-affiliate-link-dialog/product-affiliate-link-dialog.component";
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -38,6 +41,7 @@ import { SharedModule } from '../shared/shared.module';
     StoreComponent,
     CatalogComponent,
     DashboardComponent,
+    ToDoListComponent,
     SettingsComponent,
     CatalogAddProductComponent,
     CatalogEditProductComponent,
@@ -52,9 +56,13 @@ import { SharedModule } from '../shared/shared.module';
     StorePreviewComponent,
     StoreTemplateComponent,
     StoreEditComponent,
-    StoreItemCardPreviewComponent
+    StoreItemCardPreviewComponent,
+    StoreShareDialogComponent,
+    ProductAffiliateLinkDialogComponent
   ],
   entryComponents: [
+    StoreShareDialogComponent,
+    ProductAffiliateLinkDialogComponent
   ],
   providers: [
     ShopService,

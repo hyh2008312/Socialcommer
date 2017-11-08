@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule,JsonpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app.routes.module';
 
@@ -22,6 +22,7 @@ import { UserModule } from './shared/services/user/user.module';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
+    JsonpModule,
     BrowserAnimationsModule,
     AuthenticationModule,
     UserModule

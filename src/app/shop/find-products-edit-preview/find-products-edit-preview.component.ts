@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ENTER } from '@angular/cdk/keycodes';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { ShopService } from '../shop.service';
 import { UserService } from  '../../shared/services/user/user.service';
@@ -10,6 +11,8 @@ import { ImageUploadPreviewService } from "../../shared/components/image-upload-
 import { S3UploaderService } from "../../shared/services/s3-upload/s3-upload.service";
 
 import { StoreProduct } from '../shop';
+
+import { ProductAffiliateLinkDialogComponent } from "../product-affiliate-link-dialog/product-affiliate-link-dialog.component";
 
 @Component({
   selector: 'app-find-products-edit-preview',
@@ -42,7 +45,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
     salePriceAmount: 0,
     salePriceCurrency: 'USD',
     originalPriceAmount: 0,
-    originalPriceCurrency: 'USD'
+    originalPriceCurrency: 'USD',
+    source: ''
   };
 
   // Reset product
@@ -56,7 +60,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private previewImageService: ImageUploadPreviewService,
-    private s3UploaderService: S3UploaderService
+    private s3UploaderService: S3UploaderService,
+    private dialog: MatDialog
   ) {
     this.productForm = this.fb.group({
       title: ['', [
@@ -96,6 +101,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
       self.product.originalPriceAmount = data.originalPrice.amount;
       self.product.salePriceCurrency = data.salePrice.currency;
       self.product.originalPriceCurrency = data.originalPrice.currency;
+
+      self.product.source = data.source;
 
       self.tags.push({
         id: null,
@@ -220,8 +227,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
   resetCategory() {
     this.tags = [];
     this.tags.push({
-      id: this.productCopy.categoryId,
-      name: this.productCopy.categoryName
+      id: null,
+      name: this.productCopy.category
     });
   }
 
@@ -230,7 +237,15 @@ export class FindProductsEditPreviewComponent implements OnInit {
   }
 
   resetDescription() {
-    this.editorContent = this.productCopy.description;
+    let feature = '';
+    if(this.productCopy.features) {
+      for(let value of this.productCopy.features) {
+        feature += `<p>${value}</p><br>`;
+      }
+      this.editorContent = `<div>${feature}</div>`;
+    } else {
+      this.editorContent = '';
+    }
   }
 
   addPicture(event) {
@@ -265,9 +280,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       image.src = window.URL.createObjectURL(file);
 
     })
-
   }
-
 
   create() {
     if(!this.productForm.valid) {
@@ -343,6 +356,18 @@ export class FindProductsEditPreviewComponent implements OnInit {
     let self = this;
     this.shopService.createProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});
+    });
+  }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(ProductAffiliateLinkDialogComponent, {
+      data: {
+        source: this.product.source
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
     });
   }
 

@@ -95,6 +95,36 @@ export class LoginService {
       .catch(this.handleError);
   }
 
+  getResetPasswordConfirm(object:any): Promise<any> {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}user/resetpw/confirm/${object.uid}/${object.token}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  resetPasswordConfirm(object:any): Promise<any> {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}user/resetpw/confirm/${object.uid}/${object.token}/`;
+
+    return this.http.post(url, JSON.stringify(object), options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   validateCode(object:any): Promise<any> {
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -113,13 +143,17 @@ export class LoginService {
   private handleError (error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || body;
-      if(err.detail) {
-        errMsg = `${err.detail}`;
+      if(error.status == 401) {
+        errMsg = 'Your email or password is incorrect. Please try again!';
       } else {
-        if(err.error) {
-          errMsg = "Sorry! Server is busy now!";
+        const body = error.json() || '';
+        const err = body.error || body;
+        if(err.detail) {
+          errMsg = `${err.detail}`;
+        } else {
+          if(err.error) {
+            errMsg = "Sorry! Server is busy now!";
+          }
         }
       }
     } else {

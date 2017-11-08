@@ -5,7 +5,22 @@
   &__container{
     max-width: 352px;
     width: 100%;
-    padding: 0 10px;
+    @include xb-xs-screen{
+      padding: 0 16px;
+    }
+    @include xb-sm-screen{
+      padding: 0 16px;
+    }
+  }
+
+  &__container-1{
+    width: 100%;
+    @include xb-xs-screen{
+      padding: 0 16px;
+    }
+    @include xb-sm-screen{
+      padding: 0 16px;
+    }
   }
 
   &__auto{
@@ -58,6 +73,15 @@
     font-size: 34px;
     font-weight: bold;
     margin-top: 72px;
+
+    @include xb-xs-screen{
+      font-size: 24px;
+      padding: 0 16px;
+    }
+    @include xb-sm-screen{
+      font-size: 24px;
+      padding: 0 16px;
+    }
   }
 
   &__title-1{
@@ -65,6 +89,13 @@
     font-weight: bold;
     @include xb-xs-screen{
       font-size: 24px;
+    }
+  }
+
+  &__title-2{
+    font-size: 16px;
+    @include xb-xs-screen{
+      font-size: 14px;
     }
   }
 
