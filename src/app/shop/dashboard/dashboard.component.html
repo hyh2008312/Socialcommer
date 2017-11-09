@@ -1,11 +1,11 @@
 <div class="md-padding-left-2 md-padding-top-2">
   <div class="md-margin-right-2">
-    <div class="md-margin-bottom-4">
+    <div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-        <div class="xb-shop__dashboard-number xb-bold" fxFlex>Overview</div>
+        <div class="xb-shop__dashboard-number xb-bold xb-shop__dashboard-margin-right">Overview</div>
         <app-catalog-time-select [time]="timeOverview" (timeChange)="getStore($event)" [times]="times"></app-catalog-time-select>
       </div>
-      <div class="md-margin-top-2 md-margin-right-2" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
         <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex="24">
           <i class="iconfontXberts icon-pic-view" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.viewTotal}}</div>
@@ -29,61 +29,25 @@
       </div>
     </div>
   </div>
-  <div class="xb-shop__dashboard-content md-margin-right-2">
+  <div class="md-margin-right-2">
     <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-      <div class="xb-shop__dashboard-number xb-bold" fxFlex>Statistic</div>
+      <div class="xb-shop__dashboard-number xb-bold xb-shop__dashboard-margin-right">Statistic</div>
       <app-catalog-time-select [time]="timeStatistic" (timeChange)="getProduct($event)" [times]="times"></app-catalog-time-select>
     </div>
-    <div class="md-margin-top-2 xb-shop__dashboard-table" fxLayout="row" fxLayoutAlign="space-between start">
-      <div fxLayout="column" fxLayoutAlign="start start">
-        <div class="xb-shop__dashboard-title">Product ID</div>
-        <span>#2017092781</span>
-        <span>#2017092781</span>
-        <span>#2017092781</span>
-        <span>#2017092781</span>
-      </div>
-      <div fxLayout="column" fxLayoutAlign="start start" fxFlex="24">
-        <div class="xb-shop__dashboard-title">Product Name</div>
-        <span>PPOO&Moda111111111111111111111111</span>
-        <span>PPOO&Moda</span>
-        <span>PPOO&Moda</span>
-        <span>PPOO&Moda</span>
-      </div>
-      <div fxLayout="column" fxLayoutAlign="start start">
-        <div class="xb-shop__dashboard-title">Category</div>
-        <span>accessories</span>
-        <span>accessories</span>
-        <span>accessories</span>
-        <span>accessories</span>
-      </div>
-      <div fxLayout="column" fxLayoutAlign="start center">
-        <div class="xb-shop__dashboard-title">Original Price</div>
-        <span>$8.00</span>
-        <span>$8.00</span>
-        <span>$8.00</span>
-        <span>$8.00</span>
-      </div>
-      <div fxLayout="column" fxLayoutAlign="start center">
-        <div class="xb-shop__dashboard-title">Sale Price</div>
-        <span>$8.00</span>
-        <span>$8.00</span>
-        <span>$8.00</span>
-        <span>$8.00</span>
-      </div>
-      <div fxLayout="column" fxLayoutAlign="start center">
-        <div class="xb-shop__dashboard-title">Views</div>
-        <span>213</span>
-        <span>213</span>
-        <span>213</span>
-        <span>213</span>
-      </div>
-      <div fxLayout="column" fxLayoutAlign="start center">
-        <div class="xb-shop__dashboard-title">Click-to-Buy</div>
-        <span>89</span>
-        <span>89</span>
-        <span>89</span>
-        <span>89</span>
-      </div>
+    <div class="md-margin-top-2 ">
+      <app-statistic-title></app-statistic-title>
     </div>
+    <div class="md-margin-top-2" >
+      <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of productStatistic;let i = index;" >
+        <app-statistic-item [data]="item"></app-statistic-item>
+      </div>
+      <mat-paginator [length]="length"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="pageSizeOptions"
+                     (page)="changePage($event)"
+                     *ngIf="productStatistic && productStatistic.length > 0">
+      </mat-paginator>
+    </div>
+
   </div>
 </div>

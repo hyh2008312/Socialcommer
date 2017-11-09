@@ -159,13 +159,13 @@
       text-align: center;
     }
 
-    &-list{
-      padding: 16px;
-      background-color: $whiteColor;
+    &-item{
+      padding: 16px 0;
       border-bottom: 1px solid rgba(0,0,0,.12);
-      &:last-child{
-        border-bottom: none;
-      }
+    }
+    &-list{
+      padding: 0 16px;
+      background-color: $whiteColor;
     }
 
     &-none{
@@ -247,6 +247,10 @@
       margin-bottom: 8px;
 
       @include media();
+    }
+
+    &-margin-right{
+      margin-right: 54px;
     }
 
     &-color-1{
@@ -758,6 +762,24 @@
         margin-top: 24px;
         @include media();
         text-align: center;
+      }
+    }
+  }
+
+  &__statistic{
+    &-text{
+      text-align: center;
+      overflow: hidden;
+      height: 20px;
+      @include text-overflow();
+    }
+
+    &-bg{
+      cursor: pointer;
+      height: 48px;
+      padding: 12px 16px;
+      &:hover{
+        background-color: rgba(0,0,0,.08);
       }
     }
   }

@@ -39,6 +39,26 @@ export class DashboardComponent implements OnInit {
   storeId: number;
 
   storeStatistic: StoreStatistic = new StoreStatistic();
+  productStatistic: any[] = [];
+  productStatisticPage: number = 1;
+
+  // MatPaginator Inputs
+  length:number = 0;
+  pageSize = 12;
+  pageSizeOptions = [6, 12];
+
+  // MatPaginator Output
+  changePage(event) {
+    this.pageSize = event.pageSize;
+
+    this.productStatisticPage = event.pageIndex + 1;
+
+    this.getProduct();
+  }
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
 
   constructor(
     private shopService: ShopService,
@@ -80,11 +100,17 @@ export class DashboardComponent implements OnInit {
       this.productDay = event.day;
     }
 
+    let page = this.productStatisticPage;
+
+    let self = this;
     this.shopService.getProductStatistics({
       store: this.storeId,
-      day: this.productDay
+      day: this.productDay,
+      page: page,
+      page_size: this.pageSize
     }).then((data) => {
-      console.log(data)
+      self.length = data.count;
+      self.productStatistic = [...data.results];
     });
   }
 }

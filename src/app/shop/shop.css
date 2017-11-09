@@ -87,10 +87,10 @@
   color: #fff; }
 
 .background-light-white {
-  background-color: #f1f1f1; }
+  background-color: #eee; }
 
 .xb-color-light-white {
-  color: #f1f1f1; }
+  color: #eee; }
 
 .background-light {
   background-color: #dff2f4; }
@@ -135,10 +135,10 @@
   color: #fff; }
 
 .background-bg-light {
-  background-color: #f1f1f1; }
+  background-color: #eee; }
 
 .xb-color-bg-light {
-  color: #f1f1f1; }
+  color: #eee; }
 
 .background-bg-gray {
   background-color: #f2f5f7; }
@@ -1609,12 +1609,12 @@ textarea.mat-input-element {
     line-height: 28px;
     border-radius: 2px;
     text-align: center; }
-  .xb-shop__product-list {
-    padding: 16px;
-    background-color: #fff;
+  .xb-shop__product-item {
+    padding: 16px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
-    .xb-shop__product-list:last-child {
-      border-bottom: none; }
+  .xb-shop__product-list {
+    padding: 0 16px;
+    background-color: #fff; }
   .xb-shop__product-none {
     margin-top: 144px; }
     .xb-shop__product-none span {
@@ -1630,7 +1630,7 @@ textarea.mat-input-element {
     position: absolute;
     right: 0;
     top: 100%;
-    background-color: #f1f1f1;
+    background-color: #eee;
     font-weight: 600;
     border-radius: 2px;
     -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
@@ -1672,6 +1672,8 @@ textarea.mat-input-element {
   line-height: 16px;
   margin-bottom: 8px;
   font-weight: 600; }
+.xb-shop__dashboard-margin-right {
+  margin-right: 54px; }
 .xb-shop__dashboard-color-1 {
   background-color: #3f52b4; }
 .xb-shop__dashboard-color-2 {
@@ -2056,6 +2058,19 @@ textarea.mat-input-element {
     margin-top: 24px;
     font-weight: 600;
     text-align: center; }
+.xb-shop__statistic-text {
+  text-align: center;
+  overflow: hidden;
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+.xb-shop__statistic-bg {
+  cursor: pointer;
+  height: 48px;
+  padding: 12px 16px; }
+  .xb-shop__statistic-bg:hover {
+    background-color: rgba(0, 0, 0, 0.08); }
 
 .xb-share-dialog {
   padding: 32px;

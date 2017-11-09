@@ -163,7 +163,9 @@
     <div class="xb-store__details-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
-    <app-image-upload-preview [(previewImgFile)]="imageSrc" (previewImgFileChange)="editImage()"></app-image-upload-preview>
+    <div class="xb-shop__mobile-dialog-inner">
+      <app-image-upload-preview [(previewImgFile)]="imageSrc" (previewImgFileChange)="editImage()"></app-image-upload-preview>
+    </div>
   </div>
 </div>
 

@@ -1,13 +1,9 @@
 <div class="xb-shop__statistic" fxLayout="row" fxLayoutAlign="start center">
-  <div class="xb-shop__statistic-id md-margin-right-2" fxFlex="12">#</div>
-  <div class="xb-shop__statistic-title md-margin-right-2" fxFlex="35">111</div>
-  <div class="xb-shop__statistic-category md-margin-right-2" fxFlex="15">Cosmetics</div>
-  <div class="xb-shop__statistic-price md-margin-right-2" fxFlex="12">$12.00</div>
-  <div class="xb-shop__statistic-price md-margin-right-2" fxFlex="12">$9.99</div>
-  <div class="xb-shop__statistic-views" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
-    213
-  </div>
-  <div class="xb-shop__statistic-views" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
-    8
-  </div>
+  <div class="md-margin-right-2" fxFlex="10">#{{data.id}}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="35">{{data.title}}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">{{data.category}}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="12">{{data.originalPriceAmount|currency: data.originalPriceCurrency: true }}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="12">{{data.salePriceAmount|currency: data.salePriceCurrency: true }}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="10">{{data.viewTotal}}</div>
+  <div class="xb-shop__statistic-text" fxFlex="10">{{data.clickTotal}}</div>
 </div>

@@ -87,10 +87,10 @@
   color: #fff; }
 
 .background-light-white {
-  background-color: #f1f1f1; }
+  background-color: #eee; }
 
 .xb-color-light-white {
-  color: #f1f1f1; }
+  color: #eee; }
 
 .background-light {
   background-color: #dff2f4; }
@@ -135,10 +135,10 @@
   color: #fff; }
 
 .background-bg-light {
-  background-color: #f1f1f1; }
+  background-color: #eee; }
 
 .xb-color-bg-light {
-  color: #f1f1f1; }
+  color: #eee; }
 
 .background-bg-gray {
   background-color: #f2f5f7; }
@@ -1459,7 +1459,7 @@ input.mat-input-element {
   box-shadow: none; }
 
 .mat-form-field {
-  width: 300px; }
+  width: 280px; }
 
 .mat-form-field-underline {
   background-color: rgba(0, 0, 0, 0.12); }
@@ -1493,6 +1493,9 @@ input.mat-input-element {
   @media screen and (max-width: 599px) {
     .mat-raised-button {
       line-height: 36px; } }
+
+.mat-tab-nav-bar, .mat-tab-header {
+  border-bottom: none; }
 
 textarea.mat-input-element {
   line-height: 1.5; }

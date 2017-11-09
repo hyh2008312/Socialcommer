@@ -437,7 +437,7 @@ export class ShopService {
       .catch(this.handleError);
   }
 
-  getProductStatistics(product:any): Promise<Store> {
+  getProductStatistics(product:any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -449,7 +449,7 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json() as Store)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

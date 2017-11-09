@@ -25,6 +25,7 @@ import { ProductAffiliateLinkDialogComponent } from "./product-affiliate-link-di
 import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
 import { ProductTitleComponent } from './product-title/product-title.component';
 import { StatisticItemComponent } from './statistic-item/statistic-item.component';
+import { StatisticTitleComponent } from './statistic-title/statistic-title.component';
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -64,7 +65,8 @@ import { SharedModule } from '../shared/shared.module';
     StoreShareDialogComponent,
     ProductAffiliateLinkDialogComponent,
     SnackBarSuccessComponent,
-    StatisticItemComponent
+    StatisticItemComponent,
+    StatisticTitleComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,

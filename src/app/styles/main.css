@@ -87,10 +87,10 @@
   color: #fff; }
 
 .background-light-white {
-  background-color: #f1f1f1; }
+  background-color: #eee; }
 
 .xb-color-light-white {
-  color: #f1f1f1; }
+  color: #eee; }
 
 .background-light {
   background-color: #dff2f4; }
@@ -135,10 +135,10 @@
   color: #fff; }
 
 .background-bg-light {
-  background-color: #f1f1f1; }
+  background-color: #eee; }
 
 .xb-color-bg-light {
-  color: #f1f1f1; }
+  color: #eee; }
 
 .background-bg-gray {
   background-color: #f2f5f7; }
@@ -2081,10 +2081,10 @@ img.xb2-img-responsible {
   color: #fff; }
 
 .background-light-white {
-  background-color: #f1f1f1; }
+  background-color: #eee; }
 
 .xb-color-light-white {
-  color: #f1f1f1; }
+  color: #eee; }
 
 .background-light {
   background-color: #dff2f4; }
@@ -2129,10 +2129,10 @@ img.xb2-img-responsible {
   color: #fff; }
 
 .background-bg-light {
-  background-color: #f1f1f1; }
+  background-color: #eee; }
 
 .xb-color-bg-light {
-  color: #f1f1f1; }
+  color: #eee; }
 
 .background-bg-gray {
   background-color: #f2f5f7; }
@@ -5234,7 +5234,7 @@ hr {
       font-weight: normal;
       margin-bottom: 40px; }
     .xb-carousel .xb-carousel-body .xb-carousel-subtitle {
-      color: #f1f1f1;
+      color: #eee;
       font-size: 26px;
       margin-bottom: 40px; }
     .xb-carousel .xb-carousel-body .xb-carousel-howitwork {
@@ -5256,7 +5256,7 @@ hr {
           font-weight: normal;
           margin-bottom: 20px; }
         .xb-carousel .xb-carousel-body .xb-carousel-subtitle {
-          color: #f1f1f1;
+          color: #eee;
           font-size: 18px;
           margin-bottom: 20px; }
         .xb-carousel .xb-carousel-body .xb-carousel-button-wrap {
