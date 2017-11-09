@@ -42,6 +42,13 @@
     margin-right: auto;
     margin-left: auto;
     max-width: 686px;
+    width: 100%;
+    @include xb-xs-screen{
+      padding: 0 16px;
+    }
+    @include xb-sm-screen{
+      padding: 0 16px;
+    }
   }
   &-us {
     &__content-name{
@@ -98,6 +105,12 @@
       background-color: #252525;
       color: rgba(255,255,255,.5);
       overflow: hidden;
+    }
+  }
+  &-margin-top-2{
+    margin-top: 0;
+    @include xb-xs-screen{
+      margin-top: 8px;
     }
   }
 
