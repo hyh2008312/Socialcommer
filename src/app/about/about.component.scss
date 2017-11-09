@@ -36,6 +36,9 @@
       color: $whiteColor;
       text-align: center;
       margin-top: 120px;
+      @include xb-xs-screen{
+        font-size: 24px;
+      }
     }
   }
   &-container {
@@ -55,6 +58,9 @@
       font-size: 48px;
       font-weight: bold;
       color: black;
+      @include xb-xs-screen{
+        font-size: 24px;
+      }
     }
     &__content-1 {
       font-size: 16px;
