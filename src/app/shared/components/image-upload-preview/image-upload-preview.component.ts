@@ -64,7 +64,7 @@ export class ImageUploadPreviewComponent implements OnInit {
 
   onCropped() {
     const canvas = this.angularCropper.cropper.getCroppedCanvas();
-    this.croppedSrc = canvas.toDataURL('image/png');
+    this.croppedSrc = canvas.toDataURL('image/jpeg', 1.0);
     this.previewImgFile = this.croppedSrc;
     var blob =  this.convertBase64UrlToFile(this.croppedSrc, this.file);
 

@@ -7,7 +7,7 @@
     <div class="xb-store__template-mask"></div>
     <div class="xb-store__content-2">
       <div class="xb-store__template-name" fxShow.xs="false">
-        {{store.nameTag != '' ? store.titleTag : store.name}}
+        {{store.nameTag != '' ? store.nameTag : store.name}}
       </div>
       <div class="ql-editor ql-container xb-store__template-title"
            [innerHTML]="store.titleTag| safeHtml"  *ngIf="store.titleTag != ''" >

@@ -8,7 +8,7 @@ import { Input, Output, Component, OnInit,EventEmitter} from '@angular/core';
 
 export class StatisticItemComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() data: any = null;
 
   constructor(
 

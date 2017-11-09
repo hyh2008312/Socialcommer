@@ -103,6 +103,8 @@ export class StoreEditComponent implements OnInit {
             displayName: self.store.displayName
           });
 
+          self.imageSrc = self.store.imageUrl;
+
           self.shopService.getFrontStore(self.store.displayName).then((data) => {
             if(data.category.length > 1) {
               self.categories = [{name: 'All'}, ...data.category];
