@@ -1,0 +1,13 @@
+<div class="xb-shop__statistic" fxLayout="row" fxLayoutAlign="start center">
+  <div class="xb-shop__statistic-id md-margin-right-2" fxFlex="12">#{{data.id}}</div>
+  <div class="xb-shop__statistic-title md-margin-right-2" fxFlex="35">{{data.title}}</div>
+  <div class="xb-shop__statistic-category md-margin-right-2" fxFlex="15">{{data.categoryName}}</div>
+  <div class="xb-shop__statistic-price md-margin-right-2" fxFlex="12">$12.00</div>
+  <div class="xb-shop__statistic-price md-margin-right-2" fxFlex="12">$9.99</div>
+  <div class="xb-shop__statistic-views" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
+    <button mat-button color="primary" (click)="edit()">Edit</button>
+    <button mat-button color="primary" *ngIf="status == 2" (click)="publish()">Publish</button>
+    <button mat-button color="primary" *ngIf="status == 0" (click)="unpublish()">Unpublish</button>
+    <button mat-button color="primary" (click)="delete()">Delete</button>
+  </div>
+</div>
