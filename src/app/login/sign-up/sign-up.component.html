@@ -9,6 +9,7 @@
       </div>
       <div  fxFlex="noshrink" fxLayout="row" fxLayoutAlign="center center">
         <div class="xb-login__container xb-login__auto" fxLayout="column" *ngIf="step == 0">
+          <div class="xb-login__login-title">Sign Up For Free</div>
           <div class="xb-login__error md-margin-bottom-2" *ngIf="signUpErr">{{signUpErr}}</div>
           <form [formGroup]="signUpGroup" (ngSubmit)="signUp()" novalidate>
             <div fxLayout="row" fxLayoutAlign="space-between center">

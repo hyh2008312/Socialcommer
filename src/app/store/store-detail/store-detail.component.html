@@ -19,8 +19,8 @@
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-store__details-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
-          <div class="line-through md-margin-left-2">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
-          <div class="xb-store__details-sale md-margin-left-2" *ngIf="product.salePriceAmount">
+          <div class="line-through md-margin-left-2" *ngIf="product.originalPriceAmount > 0">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+          <div class="xb-store__details-sale md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
             {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
           </div>
         </div>

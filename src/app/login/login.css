@@ -1565,6 +1565,10 @@ textarea.mat-input-element {
   @media screen and (min-width: 600px) and (max-width: 959px) {
     .xb-login__title {
       font-size: 24px; } }
+.xb-login__login-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 8px; }
 .xb-login__title-1 {
   font-size: 34px;
   font-weight: bold; }

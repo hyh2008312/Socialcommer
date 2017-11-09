@@ -8,6 +8,7 @@
       </div>
       <div  fxFlex="noshrink" fxLayout="row" fxLayoutAlign="center center">
         <div class="xb-login__container" fxLayout="column" >
+          <div class="xb-login__login-title">Log In</div>
           <div class="xb-login__error md-margin-bottom-2" *ngIf="loginErr">{{loginErr}}</div>
           <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="loginGroup" (ngSubmit)="login()" novalidate>
             <div class="xb-login__width">

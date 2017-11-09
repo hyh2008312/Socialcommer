@@ -32,6 +32,18 @@ export class CatalogEditProductComponent implements OnInit {
   addOnBlur: boolean = true;
   relationId: number;
   productId: number;
+  isUser: boolean = false;
+
+  product = {
+    originalPrice: {
+      amount: 0,
+      currency: 'USD'
+    },
+    salePrice: {
+      amount: 0,
+      currency: 'USD'
+    }
+  };
 
   tab: string = '';
 
@@ -139,6 +151,13 @@ export class CatalogEditProductComponent implements OnInit {
             self.relationId = data.id;
 
             self.productId = data.productId;
+
+            self.isUser = data.isUser;
+
+            self.product.originalPrice.amount = data.originalPriceAmount;
+            self.product.originalPrice.currency = data.originalPriceCurrency;
+            self.product.salePrice.amount = data.salePriceAmount;
+            self.product.salePrice.currency = data.salePriceCurrency;
           });
 
         }
@@ -265,14 +284,27 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.title = productForm.title;
     storeProduct.cover = [];
     storeProduct.cover = [...this.previewImgFile];
-    storeProduct.product.originalPrice = {
-      amount: productForm.originalPrice != '' ? productForm.originalPrice : 0,
-      currency: this.storeCurrency
-    };
-    storeProduct.product.salePrice = {
-      amount: productForm.salePrice,
-      currency: this.storeCurrency
-    };
+
+    if(this.isUser) {
+      storeProduct.product.originalPrice = {
+        amount: productForm.originalPrice != '' ? productForm.originalPrice : 0,
+        currency: this.storeCurrency
+      };
+      storeProduct.product.salePrice = {
+        amount: productForm.salePrice,
+        currency: this.storeCurrency
+      };
+    } else {
+      storeProduct.product.originalPrice = {
+        amount: product.originalPrice.amount,
+        currency: product.originalPrice.currency
+      };
+      storeProduct.product.salePrice = {
+        amount: product.salePrice.amount,
+        currency: product.salePrice.currency
+      };
+    }
+
 
     if(this.tags[0]) {
       storeProduct.categoryName = this.tags[0].name;
@@ -302,15 +334,26 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.title = productForm.title;
     storeProduct.cover = [];
     storeProduct.cover = [...this.previewImgFile];
-    storeProduct.product.originalPrice = {
-      amount:  productForm.originalPrice == ''? 0: productForm.originalPrice,
-      currency: this.storeCurrency
-    };
-    storeProduct.product.salePrice = {
-      amount: productForm.salePrice == ''? 0: productForm.salePrice,
-      currency: this.storeCurrency
-    };
 
+    if(this.isUser) {
+      storeProduct.product.originalPrice = {
+        amount: productForm.originalPrice != '' ? productForm.originalPrice : 0,
+        currency: this.storeCurrency
+      };
+      storeProduct.product.salePrice = {
+        amount: productForm.salePrice,
+        currency: this.storeCurrency
+      };
+    } else {
+      storeProduct.product.originalPrice = {
+        amount: product.originalPrice.amount,
+        currency: product.originalPrice.currency
+      };
+      storeProduct.product.salePrice = {
+        amount: product.salePrice.amount,
+        currency: product.salePrice.currency
+      };
+    }
     storeProduct.isDraft = true;
     storeProduct.categoryName = '';
     if(this.tags[0]) {
@@ -346,14 +389,26 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.title = productForm.title;
     storeProduct.cover = [];
     storeProduct.cover = [...this.previewImgFile];
-    storeProduct.product.originalPrice = {
-      amount:  productForm.originalPrice == ''? 0: productForm.originalPrice,
-      currency: this.storeCurrency
-    };
-    storeProduct.product.salePrice = {
-      amount: productForm.salePrice == ''? 0: productForm.salePrice,
-      currency: this.storeCurrency
-    };
+
+    if(this.isUser) {
+      storeProduct.product.originalPrice = {
+        amount: productForm.originalPrice != '' ? productForm.originalPrice : 0,
+        currency: this.storeCurrency
+      };
+      storeProduct.product.salePrice = {
+        amount: productForm.salePrice,
+        currency: this.storeCurrency
+      };
+    } else {
+      storeProduct.product.originalPrice = {
+        amount: product.originalPrice.amount,
+        currency: product.originalPrice.currency
+      };
+      storeProduct.product.salePrice = {
+        amount: product.salePrice.amount,
+        currency: product.salePrice.currency
+      };
+    }
 
     storeProduct.isDraft = false;
     if(this.tags[0]) {

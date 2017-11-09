@@ -35,7 +35,7 @@
           </mat-chip-list>
         </mat-form-field>
         <div class="xb-shop__edit-title">Price</div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div *ngIf="isUser" fxLayout="row" fxLayoutAlign="start center">
           <mat-form-field >
             <input matInput placeholder="Actual sale price" formControlName="salePrice">
           </mat-form-field>
@@ -44,6 +44,13 @@
             <input matInput placeholder="Original price"  formControlName="originalPrice">
           </mat-form-field>
           <span class="md-margin-left-2">{{storeCurrency}}</span>
+        </div>
+        <div *ngIf="!isUser" class="xb-shop__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-store__details-price">{{product.salePrice.amount | currency: product.salePrice.currency: true}}</div>
+          <div class="line-through md-margin-left-2" *ngIf="product.originalPrice.amount > 0">
+            {{product.originalPrice.amount | currency: product.originalPrice.currency: true }}</div>
+          <div class="xb-store__details-sale md-margin-left-2" *ngIf="product.originalPrice.amount > 0">
+            {{product.salePrice.amount | saleDiscount:product.originalPrice.amount}} OFF</div>
         </div>
         <div *ngIf="formErrors['salePrice']" class="xb-input-error">
           {{ formErrors['salePrice'] }}

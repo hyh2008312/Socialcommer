@@ -4,14 +4,9 @@
 .xb-bottom-footer{
 
   &__footer{
-    &-top{
-      background-color: #252525;
-      color: rgba(255,255,255,.5);
-      border-bottom: 1px solid rgba(255,255,255,.1);
-      >div{
-        height: 64px;
-      }
-    }
+    background-color: #252525;
+    padding: 24px 0;
+    color: rgba(255,255,255,.5);
 
     &-text{
       padding: 0 24px;
@@ -23,24 +18,8 @@
       }
     }
 
-    &-bottom{
-      background-color: #252525;
-      color: rgba(255,255,255,.5);
-      overflow: hidden;
-      >div{
-        height: 64px;
-
-        @include xb-xs-screen{
-          height: 96px;
-        }
-      }
-    }
-
-    &-margin-left{
-      margin-left: 16px;
-      @include xb-xs-screen{
-        margin-top: 16px;
-      }
+    &-margin-top{
+      margin-top: 16px;
     }
   }
 }
