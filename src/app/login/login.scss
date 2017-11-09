@@ -3,13 +3,17 @@
 
 .xb-login{
   &__container{
-    max-width: 352px;
+    max-width: 400px;
+    padding: 40px 40px 54px;
+    background-color: $whiteColor;
+    border-radius: 4px;
+    @include box-shadow(0 0 3px 1px rgba(0, 0, 0, 0.19));
     width: 100%;
     @include xb-xs-screen{
-      padding: 0 16px;
+      padding: 40px 16px 56px;
     }
     @include xb-sm-screen{
-      padding: 0 16px;
+      padding: 40px 16px 56px;
     }
   }
 
@@ -53,6 +57,10 @@
 
   &__margin-left{
     margin-left: 32px;
+    @include xb-xs-screen{
+      margin-left: 0;
+      margin-top: 16px;
+    }
   }
 
   &__margin-top{
@@ -76,11 +84,9 @@
 
     @include xb-xs-screen{
       font-size: 24px;
-      padding: 0 16px;
     }
     @include xb-sm-screen{
       font-size: 24px;
-      padding: 0 16px;
     }
   }
 
@@ -132,6 +138,12 @@
     overflow-y: scroll;
     width: 100vw;
     height: 100vh;
+  }
+
+  &__width-mobile{
+    @include xb-xs-screen{
+      width: 100%;
+    }
   }
 
 }

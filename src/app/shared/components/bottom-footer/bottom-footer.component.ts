@@ -1,14 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-navigation-header',
-  templateUrl: './navigation-header.component.html',
-  styleUrls: ['./navigation-header.scss']
+  selector: 'app-bottom-footer',
+  templateUrl: './bottom-footer.component.html',
+  styleUrls: ['./bottom-footer.scss']
 })
 
-export class NavigationHeaderComponent implements OnInit {
-
-  @Input() style: boolean = false;
+export class BottomFooterComponent implements OnInit {
 
   constructor(
 

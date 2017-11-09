@@ -22,7 +22,7 @@ export class LeftSideNavigationComponent implements OnInit {
     text: 'Store',
     router: './store'
   }, {
-    icon: 'icon-ic-pc-set',
+    icon: 'icon-ic-new-hand',
     text: 'To-do List',
     router: './toDoList'
   }, {

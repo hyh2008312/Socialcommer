@@ -5,6 +5,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
 import { UserService } from  '../../shared/services/user/user.service';
 
+import { MatSnackBar } from '@angular/material';
+import { SnackBarSuccessComponent } from '../snack-bar-success/snack-bar-success.component';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -32,7 +35,8 @@ export class SettingsComponent implements OnInit {
     private fb: FormBuilder,
     private shopService: ShopService,
     private constant: ConstantService,
-    private userService: UserService
+    private userService: UserService,
+    public snackBar: MatSnackBar
   ) {
 
     this.countries = this.constant.getCountries();
@@ -216,6 +220,7 @@ export class SettingsComponent implements OnInit {
     user.avatar = this.previewImgFile;
     let self = this;
     this.shopService.changeUserProfile(user).then((data) => {
+      self.openSnackBar();
       self.userService.getUser().then((data)=> {
         self.userService.addUser(data);
       })
@@ -227,19 +232,32 @@ export class SettingsComponent implements OnInit {
       return;
     }
 
-    this.shopService.changeEmail({
+    let self = this;
+    self.shopService.changeEmail({
       email: this.emailForm.value.email
+    }).then((data) => {
+      self.openSnackBar();
     });
   }
 
   changePassword():void {
-    if(!this.emailForm.valid) {
+    if(!this.settingForm.valid) {
       return;
     }
 
-    this.shopService.changePassword({
+    let self = this;
+    self.shopService.changePassword({
       currentPassword: this.settingForm.value.currentPassword,
       password: this.settingForm.value.password
+    }).then((data) => {
+      self.openSnackBar();
+    });
+  }
+
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackBarSuccessComponent, {
+      duration: 1000,
+      verticalPosition: 'top'
     });
   }
 

@@ -2,8 +2,8 @@
   <div class="xb-shop__store-bg">
 
     <div class="xb-shop__template-banner" fxLayout="column" fxLayoutAlign.xs="center center"
-         [ngStyle]="{'background': 'url(' + imageSrc + ') center / auto 100% ' }">
-
+         [ngStyle]="{'background': 'url(' + (store.imageUrl == ''? imageSrc:store.imageUrl) + ') center / auto 100% ' }">
+      <div class="xb-shop__template-mask"></div>
       <div class="xb-store__content-2">
         <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-shop__template-button" (click)="close()">
@@ -163,7 +163,7 @@
     <div class="xb-store__details-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
-    <app-image-upload-preview [(previewImgFile)]="imageSrc"></app-image-upload-preview>
+    <app-image-upload-preview [(previewImgFile)]="imageSrc" (previewImgFileChange)="editImage()"></app-image-upload-preview>
   </div>
 </div>
 

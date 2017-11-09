@@ -242,7 +242,7 @@ export class StoreEditComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate(['/shop/store'],{queryParams: {tab: 'templates'}});
+    this.router.navigate(['/shop/store']);
   }
 
   submitTemplate() {
@@ -270,7 +270,7 @@ export class StoreEditComponent implements OnInit {
         imageUrl: self.imageSrc
       }).then((data) => {
         self.openDialog(self.store.displayName);
-        self.router.navigate(['/shop/store'],{queryParams: {tab: 'templates'}});
+        self.router.navigate(['/shop/store']);
 
         self.userService.getUser().then((data)=> {
           self.userService.addUser(data);

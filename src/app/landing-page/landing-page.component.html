@@ -1,13 +1,7 @@
 <div class="xb-landing-page">
   <div class="xb-landing-page__banner">
     <div class="container" fxLayout="column">
-      <div class="xb-landing-page__navigation" fxLayout="row" fxLayoutAlign="start center">
-        <div class="md-margin-left-2" fxFlex>
-          <img src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png" width="180">
-        </div>
-        <a class="xb-landing-page__navigation-login" routerLink="/cp/login">Log In</a>
-        <a class="md-margin-right-2 md-margin-left-4 xb-landing-page__navigation-button" routerLink="/cp/signUp">Sign Up</a>
-      </div>
+      <app-navigation-header></app-navigation-header>
       <div class="md-margin-left-2 xb-landing-page__banner-title">Start your affiliate online store & make money with zero cost</div>
       <div class="md-margin-left-2 md-margin-top-3 xb-landing-page__banner-subtitle">No Inventory Needed, No Shipment and Customer Queries to Handle!</div>
       <a class="md-margin-left-2 xb-landing-page__banner-button" routerLink="/cp/signUp">GET STARTED FOR FREE</a>
@@ -141,19 +135,6 @@
       <img class="xb-landing-page__image-bg" src="https://media.xberts.com/collector/source/web/pic/pic-bottom.png">
     </div>
   </div>
-  <div class="xb-landing-page__footer-top">
-    <div class="container" fxLayout="row" fxLayoutAlign="center center">
-      <div class="xb-landing-page__footer-text">About</div>
-      <div class="xb-landing-page__footer-text">FAQs</div>
-      <div class="xb-landing-page__footer-text">Terms</div>
-      <div class="xb-landing-page__footer-text">Privacy</div>
-    </div>
-  </div>
-  <div class="xb-landing-page__footer-bottom">
-    <div class="container md-margin-top-3 md-margin-bottom-3" fxLayout="row" fxLayoutAlign="center center">
-      <img src="https://media.xberts.com/collector/source/web/pic/pic-foot-logo.png">
-      <div class="md-margin-left-2">© 2017 SocialCommer.com. All rights reserved.</div>
-    </div>
-  </div>
+  <app-bottom-footer></app-bottom-footer>
 </div>
 

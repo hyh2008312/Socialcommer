@@ -76,7 +76,9 @@ export class DashboardComponent implements OnInit {
   }
 
   getProduct(event?:any) {
-    console.log(event)
+    if(event) {
+      this.productDay = event.day;
+    }
 
     this.shopService.getProductStatistics({
       store: this.storeId,

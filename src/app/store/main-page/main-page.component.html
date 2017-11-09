@@ -4,6 +4,7 @@
   </div>
   <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center"
        [ngStyle]="{'background': 'url(' + (store.imageUrl == ''? baseImageUrl:store.imageUrl) + ') center / auto 100% ' }">
+    <div class="xb-store__template-mask"></div>
     <div class="xb-store__content-2">
       <div class="xb-store__template-name" fxShow.xs="false">
         {{store.name}}

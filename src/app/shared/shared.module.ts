@@ -1,6 +1,7 @@
 import { NgModule }            from '@angular/core';
 import { CommonModule }        from '@angular/common';
 import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { FlexLayoutModule }    from '@angular/flex-layout';
 import { MomentModule }        from 'angular2-moment';
@@ -28,6 +29,8 @@ import { LeftProductsImageComponent } from './components/left-products-image/lef
 import { ShareButtonComponent } from './components/share-button/share-button.component';
 import { ShareButtonRowComponent } from './components/share-button-row/share-button-row.component';
 import { StoreNavigationComponent } from './components/store-navigation/store-navigation.component';
+import { NavigationHeaderComponent } from './components/navigation-header/navigation-header.component';
+import { BottomFooterComponent } from './components/bottom-footer/bottom-footer.component';
 
 import { FollowService } from './components/user-follow/user-follow.service';
 import { ArticlesDetailHeaderService } from './components/articles-detail-header/articles-detail-header.service';
@@ -54,11 +57,13 @@ import {
   MatSortModule,
   MatRadioModule,
   MatCheckboxModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 @NgModule({
   imports: [
+    RouterModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -78,7 +83,8 @@ import {
     MatIconModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   declarations: [
     SafeHtmlPipe,
@@ -101,7 +107,9 @@ import {
     LeftProductsImageComponent,
     ShareButtonComponent,
     StoreNavigationComponent,
-    ShareButtonRowComponent
+    ShareButtonRowComponent,
+    NavigationHeaderComponent,
+    BottomFooterComponent
   ],
   exports: [
     SafeHtmlPipe,
@@ -125,7 +133,10 @@ import {
     ShareButtonComponent,
     StoreNavigationComponent,
     ShareButtonRowComponent,
+    NavigationHeaderComponent,
+    BottomFooterComponent,
     CommonModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
@@ -146,7 +157,8 @@ import {
     MatSortModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   providers: [
     FollowService,

@@ -17,7 +17,6 @@
 
   &__left-navigation{
     padding-top: 16px;
-    margin-right: 16px;
     border-right: 1px solid rgba(0,0,0,.12);
     background-color: #0a2529;
 
@@ -74,16 +73,31 @@
     width: 100px;
   }
 
+  &__header{
+    position: absolute;
+    background-color: $whiteColor;
+    height: 65px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+  }
+
   &__product{
     position: relative;
-    .mat-button{
-      padding: 0;
-      margin-left: 16px;
-      min-width: 0;
-      min-height: 0;
-      line-height: 1;
+
+    &-navigation{
+      height: 64px;
+      background-color: $whiteColor;
+      padding: 0 16px;
+      border-radius: 2px;
     }
 
+    &-bg{
+      padding: 0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
 
     &-image{
       width: 160px;
@@ -101,6 +115,18 @@
         @include transform(translate(-50%, -50%));
       }
     }
+    &-width{
+      width: 160px;
+      margin-right: 16px;
+    }
+
+    &-id{
+      text-align: center;
+    }
+
+    &-time{
+      text-align: center;
+    }
 
     &-title{
       font-size: 16px;
@@ -111,23 +137,31 @@
       overflow: hidden;
     }
 
+    &-title-1{
+      font-size: 14px;
+      @include media();
+      color: rgba(0,0,0,.87);
+    }
+
     &-price{
-      font-size: 16px;
-      font-weight: bold;
-      color: rgba(0,0,0, .87);
-      line-height: 24px;
-      max-height: 48px;
+      text-align: center;
+      &-sale{
+        font-size: 16px;
+        font-weight: bold;
+        color: rgba(0,0,0, .87);
+        line-height: 24px;
+      }
     }
 
     &-category{
-      padding: 0 12px;
       line-height: 28px;
       border-radius: 2px;
-      background-color: rgba(0,0,0,.12);
+      text-align: center;
     }
 
     &-list{
-      padding: 16px 0;
+      padding: 16px;
+      background-color: $whiteColor;
       border-bottom: 1px solid rgba(0,0,0,.12);
       &:last-child{
         border-bottom: none;
@@ -144,8 +178,8 @@
 
     &-buttons {
       position: absolute;
-      right: 0;
-      top: 0;
+      right: 16px;
+      top: 16px;
       z-index: 10;
     }
 
@@ -667,6 +701,15 @@
       margin-bottom: 24px;
     }
 
+    &-mask{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.3);
+    }
+
   }
 
   &__toDo{
@@ -698,6 +741,7 @@
       border: 1px solid rgba(0,0,0,.12);
       border-radius: 10px;
       cursor: pointer;
+      background-color: $whiteColor;
       &:hover{
         @include box-shadow(0 0 3px 0 rgba(0,0,0,.19))
       }

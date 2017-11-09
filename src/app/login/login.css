@@ -1459,7 +1459,7 @@ input.mat-input-element {
   box-shadow: none; }
 
 .mat-form-field {
-  width: 300px; }
+  width: 280px; }
 
 .mat-form-field-underline {
   background-color: rgba(0, 0, 0, 0.12); }
@@ -1494,18 +1494,27 @@ input.mat-input-element {
     .mat-raised-button {
       line-height: 36px; } }
 
+.mat-tab-nav-bar, .mat-tab-header {
+  border-bottom: none; }
+
 textarea.mat-input-element {
   line-height: 1.5; }
 
 .xb-login__container {
-  max-width: 352px;
+  max-width: 400px;
+  padding: 40px 40px 54px;
+  background-color: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.19);
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.19);
   width: 100%; }
   @media screen and (max-width: 599px) {
     .xb-login__container {
-      padding: 0 16px; } }
+      padding: 40px 16px 56px; } }
   @media screen and (min-width: 600px) and (max-width: 959px) {
     .xb-login__container {
-      padding: 0 16px; } }
+      padding: 40px 16px 56px; } }
 .xb-login__container-1 {
   width: 100%; }
   @media screen and (max-width: 599px) {
@@ -1532,6 +1541,10 @@ textarea.mat-input-element {
   margin-bottom: 16px; }
 .xb-login__margin-left {
   margin-left: 32px; }
+  @media screen and (max-width: 599px) {
+    .xb-login__margin-left {
+      margin-left: 0;
+      margin-top: 16px; } }
 .xb-login__margin-top {
   margin-top: 40px; }
   @media screen and (max-width: 599px) {
@@ -1548,12 +1561,10 @@ textarea.mat-input-element {
   margin-top: 72px; }
   @media screen and (max-width: 599px) {
     .xb-login__title {
-      font-size: 24px;
-      padding: 0 16px; } }
+      font-size: 24px; } }
   @media screen and (min-width: 600px) and (max-width: 959px) {
     .xb-login__title {
-      font-size: 24px;
-      padding: 0 16px; } }
+      font-size: 24px; } }
 .xb-login__title-1 {
   font-size: 34px;
   font-weight: bold; }
@@ -1588,5 +1599,8 @@ textarea.mat-input-element {
   overflow-y: scroll;
   width: 100vw;
   height: 100vh; }
+@media screen and (max-width: 599px) {
+  .xb-login__width-mobile {
+    width: 100%; } }
 
 /*# sourceMappingURL=login.css.map */

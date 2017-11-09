@@ -7,6 +7,9 @@ import { ShopService } from '../shop.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
 import { UserService } from  '../../shared/services/user/user.service';
 
+import { MatSnackBar } from '@angular/material';
+import { SnackBarSuccessComponent } from '../snack-bar-success/snack-bar-success.component';
+
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -31,7 +34,8 @@ export class StoreComponent implements OnInit {
     private shopService : ShopService,
     private userService : UserService,
     private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public snackBar: MatSnackBar
   ) {
     this.currencies = this.constantService.getCurrencies();
 
@@ -145,7 +149,15 @@ export class StoreComponent implements OnInit {
     let self = this;
 
     this.shopService.changeStore(store).then((data) => {
+      self.openSnackBar();
       self.userService.addStore(data);
+    });
+  }
+
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackBarSuccessComponent, {
+      duration: 1000,
+      verticalPosition: 'top'
     });
   }
 

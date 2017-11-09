@@ -1,28 +1,45 @@
 @import "../../../styles/utils/_index";
 @import "../../../styles/_variables";
 
-.xb-navigation-header{
-  height: 56px;
+.xb-bottom-footer{
 
-  &__login{
-    font-size: 16px;
-    color: $whiteColor;
+  &__footer{
+    &-top{
+      background-color: #252525;
+      color: rgba(255,255,255,.5);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      >div{
+        height: 64px;
+      }
+    }
 
-    &-active{
-      color: $primaryColor;
+    &-text{
+      padding: 0 24px;
+      font-size: 14px;
+
+      @include xb-xs-screen{
+        padding: 0 8px;
+      }
+    }
+
+    &-bottom{
+      background-color: #252525;
+      color: rgba(255,255,255,.5);
+      overflow: hidden;
+      >div{
+        height: 64px;
+
+        @include xb-xs-screen{
+          height: 96px;
+        }
+      }
+    }
+
+    &-margin-left{
+      margin-left: 16px;
+      @include xb-xs-screen{
+        margin-top: 16px;
+      }
     }
   }
-
-  &__button{
-    font-size: 14px;
-    color: $whiteColor;
-    background-color: $primaryColor;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 20px;
-    width: 100px;
-    display: block;
-  }
-
 }
-

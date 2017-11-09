@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule }        from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule,JsonpModule } from '@angular/http';
 
@@ -9,7 +10,7 @@ import { AppComponent } from './app.component';
 import {BaseApi, SystemConstant, DataApi} from './config/app.api';
 import {BlogCover} from './config/app.constant';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AuthenticationModule } from './shared/services/authentication/index';
 import { UserModule } from './shared/services/user/user.module';

@@ -1,125 +1,129 @@
-<mat-tab-group class="md-margin-right-2" color="accent">
-  <mat-tab label="Edit Profile">
-    <div class="md-margin-top-3">
-      <form  [formGroup]="profileForm" novalidate>
-        <div fxLayout="row" fxLayoutAlign="start center">
-          <div>
-            <div class="md-dark-secondary">
-              First Name
+<div class="xb-shop__product md-padding-right-2 md-padding-top-2 md-padding-left-2">
+  <div class="xb-shop__header"></div>
+  <mat-tab-group class="md-margin-right-2" color="accent">
+    <mat-tab label="Edit Profile">
+      <div class="md-margin-top-3">
+        <form  [formGroup]="profileForm" novalidate>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div>
+              <div class="md-dark-secondary">
+                First Name
+              </div>
+              <mat-form-field >
+                <input matInput formControlName="firstName">
+              </mat-form-field>
+
             </div>
-            <mat-form-field >
-              <input matInput formControlName="firstName">
-            </mat-form-field>
+            <div class="md-margin-left-2">
+              <div class="md-dark-secondary">
+                Last Name
+              </div>
+              <mat-form-field>
+                <input matInput formControlName="lastName">
+              </mat-form-field>
 
-          </div>
-          <div class="md-margin-left-2">
-            <div class="md-dark-secondary">
-              Last Name
             </div>
-            <mat-form-field>
-              <input matInput formControlName="lastName">
-            </mat-form-field>
-
           </div>
-        </div>
-        <div *ngIf="formErrors['firstName']" class="xb-input-error">
-          {{ formErrors['firstName'] }}
-        </div>
-        <div *ngIf="formErrors['lastName']" class="xb-input-error">
-          {{ formErrors['lastName'] }}
-        </div>
+          <div *ngIf="formErrors['firstName']" class="xb-input-error">
+            {{ formErrors['firstName'] }}
+          </div>
+          <div *ngIf="formErrors['lastName']" class="xb-input-error">
+            {{ formErrors['lastName'] }}
+          </div>
+          <div class="md-dark-secondary">
+            Country
+          </div>
+          <mat-form-field>
+            <mat-select formControlName="country" name="country">
+              <mat-option *ngFor="let country of countries" [value]="country.code">
+                {{ country.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div *ngIf="formErrors['country']" class="xb-input-error">
+            {{ formErrors['lastName'] }}
+          </div>
+          <div class="md-dark-secondary">
+            About Me
+          </div>
+          <mat-form-field class="xb-shop__width-100">
+            <textarea matInput formControlName="biography"></textarea>
+          </mat-form-field>
+        </form>
         <div class="md-dark-secondary">
-          Country
+          Profile Picture
         </div>
-        <mat-form-field>
-          <mat-select formControlName="country" name="country">
-            <mat-option *ngFor="let country of countries" [value]="country.code">
-              {{ country.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div *ngIf="formErrors['country']" class="xb-input-error">
-          {{ formErrors['lastName'] }}
+        <div class="md-margin-top-2">
+          <app-image-upload-header [(previewImgFile)]="previewImgFile" [(previewImgSrcs)]="previewImgSrcs"></app-image-upload-header>
         </div>
-        <div class="md-dark-secondary">
-          About Me
+        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary" (click)="changeUserProfile()">SAVE CHANGE</button>
         </div>
-        <mat-form-field class="xb-shop__width-100">
-          <textarea matInput formControlName="biography"></textarea>
-        </mat-form-field>
-      </form>
-      <div class="md-dark-secondary">
-        Profile Picture
       </div>
-      <div class="md-margin-top-2">
-        <app-image-upload-header [(previewImgFile)]="previewImgFile" [(previewImgSrcs)]="previewImgSrcs"></app-image-upload-header>
-      </div>
-      <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-        <button mat-raised-button color="primary" (click)="changeUserProfile()">SAVE CHANGE</button>
-      </div>
-    </div>
-  </mat-tab>
-  <mat-tab label="Change Email Address">
-    <div class="md-margin-top-3">
-      <form  [formGroup]="emailForm" novalidate>
-        <div class="md-dark-secondary">
-          Email Address
+    </mat-tab>
+    <mat-tab label="Change Email Address">
+      <div class="md-margin-top-3">
+        <form  [formGroup]="emailForm" novalidate>
+          <div class="md-dark-secondary">
+            Email Address
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="email">
+          </mat-form-field>
+          <div *ngIf="formErrors['email']" class="xb-input-error">
+            {{ formErrors['email'] }}
+          </div>
+        </form>
+        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary" (click)="changeEmail()">SAVE CHANGE</button>
         </div>
-        <mat-form-field>
-          <input matInput formControlName="email">
-        </mat-form-field>
-        <div *ngIf="formErrors['email']" class="xb-input-error">
-          {{ formErrors['email'] }}
-        </div>
-      </form>
-      <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-        <button mat-raised-button color="primary" (click)="changeEmail()">SAVE CHANGE</button>
       </div>
-    </div>
-  </mat-tab>
-  <mat-tab label="Change Password">
-    <div class="md-margin-top-3">
-      <form  [formGroup]="settingForm" novalidate>
-        <div class="md-dark-secondary">
-          Current Password
-        </div>
-        <mat-form-field>
-          <input matInput type="password" formControlName="currentPassword">
-        </mat-form-field>
+    </mat-tab>
+    <mat-tab label="Change Password">
+      <div class="md-margin-top-3">
+        <form  [formGroup]="settingForm" novalidate>
+          <div class="md-dark-secondary">
+            Current Password
+          </div>
+          <mat-form-field>
+            <input matInput type="password" formControlName="currentPassword">
+          </mat-form-field>
 
-        <div *ngIf="formErrors['currentPassword']" class="xb-input-error">
-          {{ formErrors['currentPassword'] }}
-        </div>
+          <div *ngIf="formErrors['currentPassword']" class="xb-input-error">
+            {{ formErrors['currentPassword'] }}
+          </div>
 
-        <div class="md-dark-secondary">
-          New Password
-        </div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="password"
-                 validateEqual="confirmPassword"
-                 reverse="true">
-        </mat-form-field>
-        <div *ngIf="formErrors['password']" class="xb-input-error">
-          {{ formErrors['password'] }}
-        </div>
+          <div class="md-dark-secondary">
+            New Password
+          </div>
+          <mat-form-field>
+            <input matInput type="text" formControlName="password"
+                   validateEqual="confirmPassword"
+                   reverse="true">
+          </mat-form-field>
+          <div *ngIf="formErrors['password']" class="xb-input-error">
+            {{ formErrors['password'] }}
+          </div>
 
-        <div class="md-dark-secondary">
-          Confirm Password
-        </div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="confirmPassword"
-                 validateEqual="password"
-                 reverse="false">
-        </mat-form-field>
+          <div class="md-dark-secondary">
+            Confirm Password
+          </div>
+          <mat-form-field>
+            <input matInput type="text" formControlName="confirmPassword"
+                   validateEqual="password"
+                   reverse="false">
+          </mat-form-field>
 
-        <div *ngIf="formErrors['confirmPassword']" class="xb-input-error">
-          {{ formErrors['confirmPassword'] }}
+          <div *ngIf="formErrors['confirmPassword']" class="xb-input-error">
+            {{ formErrors['confirmPassword'] }}
+          </div>
+        </form>
+        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary"
+                  (click)="changePassword()">SAVE CHANGE</button>
         </div>
-      </form>
-      <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-        <button mat-raised-button color="primary"
-                (click)="changePassword()">SAVE CHANGE</button>
       </div>
-    </div>
-  </mat-tab>
-</mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

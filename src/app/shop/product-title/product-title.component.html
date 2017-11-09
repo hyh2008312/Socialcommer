@@ -1,21 +1,16 @@
-<div class="xb-shop__product" fxLayout="row" fxLayoutAlign="start center">
-  <div class="xb-shop__product-image" fxFlex="none">
-    <img [src]="product.imageUrl">
+<div class="xb-shop__product-navigation" fxLayout="row" fxLayoutAlign="start center">
+  <div class="xb-shop__product-width xb-shop__product-title-1" fxFlex="none">
+    Product Picture
   </div>
-  <div class="xb-shop__product-title md-margin-right-2" fxFlex="25">{{product.title}}</div>
-  <div class="xb-shop__product-id md-margin-right-2" fxFlex="15">#{{product.id}}</div>
-  <div class="xb-shop__product-category md-margin-right-2" fxFlex="15">{{product.categoryName}}</div>
-  <div class="xb-shop__product-time md-margin-right-2" fxFlex="12">{{product.modifiedTime | amDateFormat:'MMMM Do, YYYY'}}</div>
-  <div class="xb-shop__product-price md-margin-right-2" fxFlex="15">
-    <div class="xb-shop__product-price-sale">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
-    <div class="line-through" *ngIf="product.originalPriceAmount>0">
-      {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
-    </div>
-  </div>
-  <div class="xb-shop__product-action-buttons md-margin-right-2" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
-    <button mat-button color="primary" (click)="edit()">Edit</button>
-    <button mat-button color="primary" *ngIf="status == 2" (click)="publish()">Publish</button>
-    <button mat-button color="primary" *ngIf="status == 0" (click)="unpublish()">Unpublish</button>
-    <button mat-button color="primary" (click)="delete()">Delete</button>
-  </div>
+  <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="35">Product Name</div>
+  <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="12"
+       fxLayout="column" fxLayoutAlign="center center">Product ID</div>
+  <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="15"
+       fxLayout="column" fxLayoutAlign="center center">Product Tab</div>
+  <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="12"
+       fxLayout="column" fxLayoutAlign="center center">Time</div>
+  <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="15"
+       fxLayout="column" fxLayoutAlign="center center">Price</div>
+  <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="10"
+       fxLayout="column" fxLayoutAlign="center center">Action</div>
 </div>

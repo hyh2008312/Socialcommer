@@ -1459,7 +1459,7 @@ input.mat-input-element {
   box-shadow: none; }
 
 .mat-form-field {
-  width: 300px; }
+  width: 280px; }
 
 .mat-form-field-underline {
   background-color: rgba(0, 0, 0, 0.12); }
@@ -1493,6 +1493,9 @@ input.mat-input-element {
   @media screen and (max-width: 599px) {
     .mat-raised-button {
       line-height: 36px; } }
+
+.mat-tab-nav-bar, .mat-tab-header {
+  border-bottom: none; }
 
 textarea.mat-input-element {
   line-height: 1.5; }
@@ -3450,7 +3453,7 @@ input.mat-input-element {
   box-shadow: none; }
 
 .mat-form-field {
-  width: 300px; }
+  width: 280px; }
 
 .mat-form-field-underline {
   background-color: rgba(0, 0, 0, 0.12); }
@@ -3484,6 +3487,9 @@ input.mat-input-element {
   @media screen and (max-width: 599px) {
     .mat-raised-button {
       line-height: 36px; } }
+
+.mat-tab-nav-bar, .mat-tab-header {
+  border-bottom: none; }
 
 textarea.mat-input-element {
   line-height: 1.5; }

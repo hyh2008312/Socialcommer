@@ -22,6 +22,8 @@ import { ProductsSortComponent } from "./products-sort/products-sort.component";
 import { ProductItemCardComponent } from "./product-item-card/product-item-card.component";
 import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
 import { ProductAffiliateLinkDialogComponent } from "./product-affiliate-link-dialog/product-affiliate-link-dialog.component";
+import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
+import { ProductTitleComponent } from './product-title/product-title.component';
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -51,6 +53,7 @@ import { SharedModule } from '../shared/shared.module';
     FindProductsComponent,
     ProductsSortComponent,
     ProductItemCardComponent,
+    ProductTitleComponent,
     FindProductsAddProductComponent,
     FindProductsEditPreviewComponent,
     StorePreviewComponent,
@@ -58,11 +61,13 @@ import { SharedModule } from '../shared/shared.module';
     StoreEditComponent,
     StoreItemCardPreviewComponent,
     StoreShareDialogComponent,
-    ProductAffiliateLinkDialogComponent
+    ProductAffiliateLinkDialogComponent,
+    SnackBarSuccessComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
-    ProductAffiliateLinkDialogComponent
+    ProductAffiliateLinkDialogComponent,
+    SnackBarSuccessComponent
   ],
   providers: [
     ShopService,

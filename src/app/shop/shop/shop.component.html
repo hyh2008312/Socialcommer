@@ -12,10 +12,10 @@
     <img *ngIf="avatar" class="xb-shop__avatar" src="{{avatar}}" />
   </a>
 </mat-toolbar>
-<div appViewResize [margin]="56" fxLayout="column">
+<div class="background-bg-light" appViewResize [margin]="56" fxLayout="column">
   <div fxLayout="row" fxLayoutAlign="stretch stretch" fxFlex>
     <app-left-side-navigation fxLayout="column" ></app-left-side-navigation>
-    <div class="md-padding-top-2 xb-shop__scroll" fxFlex fxLayout="column">
+    <div class="xb-shop__scroll" fxFlex fxLayout="column">
       <router-outlet></router-outlet>
     </div>
   </div>

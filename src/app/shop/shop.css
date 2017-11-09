@@ -1459,7 +1459,7 @@ input.mat-input-element {
   box-shadow: none; }
 
 .mat-form-field {
-  width: 300px; }
+  width: 280px; }
 
 .mat-form-field-underline {
   background-color: rgba(0, 0, 0, 0.12); }
@@ -1494,6 +1494,9 @@ input.mat-input-element {
     .mat-raised-button {
       line-height: 36px; } }
 
+.mat-tab-nav-bar, .mat-tab-header {
+  border-bottom: none; }
+
 textarea.mat-input-element {
   line-height: 1.5; }
 
@@ -1509,7 +1512,6 @@ textarea.mat-input-element {
   line-height: 24px; }
 .xb-shop__left-navigation {
   padding-top: 16px;
-  margin-right: 16px;
   border-right: 1px solid rgba(0, 0, 0, 0.12);
   background-color: #0a2529; }
   .xb-shop__left-navigation-bg {
@@ -1542,14 +1544,25 @@ textarea.mat-input-element {
   width: 100%; }
 .xb-shop__width-1 {
   width: 100px; }
+.xb-shop__header {
+  position: absolute;
+  background-color: #fff;
+  height: 65px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
 .xb-shop__product {
   position: relative; }
-  .xb-shop__product .mat-button {
+  .xb-shop__product-navigation {
+    height: 64px;
+    background-color: #fff;
+    padding: 0 16px;
+    border-radius: 2px; }
+  .xb-shop__product-bg {
     padding: 0;
-    margin-left: 16px;
-    min-width: 0;
-    min-height: 0;
-    line-height: 1; }
+    border-radius: 2px;
+    overflow: hidden; }
   .xb-shop__product-image {
     width: 160px;
     height: 160px;
@@ -1567,6 +1580,13 @@ textarea.mat-input-element {
       -ms-transform: translate(-50%, -50%);
       -o-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); }
+  .xb-shop__product-width {
+    width: 160px;
+    margin-right: 16px; }
+  .xb-shop__product-id {
+    text-align: center; }
+  .xb-shop__product-time {
+    text-align: center; }
   .xb-shop__product-title {
     font-size: 16px;
     font-weight: bold;
@@ -1574,19 +1594,24 @@ textarea.mat-input-element {
     line-height: 24px;
     max-height: 48px;
     overflow: hidden; }
+  .xb-shop__product-title-1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.87); }
   .xb-shop__product-price {
-    font-size: 16px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.87);
-    line-height: 24px;
-    max-height: 48px; }
+    text-align: center; }
+    .xb-shop__product-price-sale {
+      font-size: 16px;
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.87);
+      line-height: 24px; }
   .xb-shop__product-category {
-    padding: 0 12px;
     line-height: 28px;
     border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.12); }
+    text-align: center; }
   .xb-shop__product-list {
-    padding: 16px 0;
+    padding: 16px;
+    background-color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
     .xb-shop__product-list:last-child {
       border-bottom: none; }
@@ -1597,8 +1622,8 @@ textarea.mat-input-element {
       font-weight: 600; }
   .xb-shop__product-buttons {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 16px;
+    top: 16px;
     z-index: 10; }
   .xb-shop__product-button-list {
     width: 210px;
@@ -1987,6 +2012,13 @@ textarea.mat-input-element {
   margin-bottom: 8px; }
 .xb-shop__template-content-1 {
   margin-bottom: 24px; }
+.xb-shop__template-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); }
 .xb-shop__toDo-title {
   margin-top: 64px;
   font-size: 48px;
@@ -2008,7 +2040,8 @@ textarea.mat-input-element {
   height: 270px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 10px;
-  cursor: pointer; }
+  cursor: pointer;
+  background-color: #fff; }
   .xb-shop__toDo-card:hover {
     -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
