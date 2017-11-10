@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LoginService } from '../login.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
@@ -8,6 +9,8 @@ import { AuthenticationService } from  '../../shared/services/authentication/aut
 import { UserService } from '../../shared/services/user/user.service';
 
 import { Subject } from "rxjs/Subject";
+
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -75,6 +78,8 @@ export class SignUpComponent {
     }
   };
 
+  public dialogRef: MatDialogRef<SignUpComponent>;
+
   constructor(
     private router : Router,
     private service: LoginService,
@@ -82,7 +87,8 @@ export class SignUpComponent {
     private constant: ConstantService,
     private auth: AuthenticationService,
     private routerInfo :ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private dialog: MatDialog
   ) {
     this.signUpGroup = this.fb.group({
       firstName: ['', Validators.required],
@@ -208,6 +214,26 @@ export class SignUpComponent {
     }).catch((data) => {
       self.storeErr = data;
     });
+  }
+
+  openLogIn(): void {
+    this.close();
+
+    let dialogRef = this.dialog.open(LoginComponent, {
+      data: {}
+    });
+
+    dialogRef.componentInstance.dialogRef = dialogRef;
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  close():void {
+    if(this.dialogRef) {
+      this.dialogRef.close();
+    }
   }
 
 }

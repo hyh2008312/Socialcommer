@@ -5,6 +5,8 @@ import { LoginService } from '../login.service';
 import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 import { UserService } from '../../shared/services/user/user.service';
 
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 @Component({
   selector: 'app-invite-code',
   templateUrl: './invite-code.component.html',
@@ -17,6 +19,8 @@ export class InviteCodeComponent implements OnInit {
   inviteErr : any = false;
   userId: any;
   store: any = false;
+
+  public dialogRef: MatDialogRef<InviteCodeComponent>;
 
   constructor(
     private router: Router,
@@ -94,6 +98,7 @@ export class InviteCodeComponent implements OnInit {
     option.userId = self.userId;
     self.loginService.validateCode(option).then((data)=> {
       self.authenticationService.inviteToken(true);
+      self.close();
       if(self.store) {
         self.router.navigate(['/shop/toDoList']);
       } else {
@@ -102,6 +107,12 @@ export class InviteCodeComponent implements OnInit {
     }).catch((data) => {
       self.inviteErr = data;
     });
+  }
+
+  close():void {
+    if(this.dialogRef) {
+      this.dialogRef.close();
+    }
   }
 
 }

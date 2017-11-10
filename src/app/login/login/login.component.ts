@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LoginService } from '../login.service';
 import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 import { UserService } from '../../shared/services/user/user.service';
+
+import { SignUpComponent } from '../sign-up/sign-up.component';
+import { ResetPasswordComponent } from "../reset-password/reset-password.component";
+import { InviteCodeComponent } from "../invite-code/invite-code.component";
 
 @Component({
   selector: 'app-login',
@@ -36,12 +41,15 @@ export class LoginComponent implements OnInit {
     }
   };
 
+  public dialogRef: MatDialogRef<LoginComponent>;
+
   constructor(
     private router: Router,
     private service: LoginService,
     private fb: FormBuilder,
     private auth: AuthenticationService,
-    private userService: UserService
+    private userService: UserService,
+    private dialog: MatDialog
   ) {
     this.loginGroup = this.fb.group({
       username: ['', [
@@ -101,15 +109,71 @@ export class LoginComponent implements OnInit {
         if(data && data.store && data.store.length>0) {
           self.userService.addStore(data.store[0]);
         }
+
         if(data && data.isInvite) {
+          self.close();
           self.router.navigateByUrl('shop/dashboard');
+
         } else {
-          self.router.navigateByUrl('cp/invitation');
+          if(self.dialogRef) {
+            self.dialogRef.close();
+            self.openInviteCode();
+          } else {
+            self.router.navigateByUrl('cp/invitation');
+          }
         }
       });
     }).catch((data) => {
       self.loginErr = data;
     });
 
+  }
+
+  openSignUp(): void {
+    this.close();
+
+    let dialogRef = this.dialog.open(SignUpComponent, {
+      data: {}
+    });
+
+    dialogRef.componentInstance.dialogRef = dialogRef;
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  openResetPassword(): void {
+    this.close();
+
+    let dialogRef = this.dialog.open(ResetPasswordComponent, {
+      data: {}
+    });
+
+    dialogRef.componentInstance.dialogRef = dialogRef;
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  openInviteCode(): void {
+    this.close();
+
+    let dialogRef = this.dialog.open(InviteCodeComponent, {
+      data: {}
+    });
+
+    dialogRef.componentInstance.dialogRef = dialogRef;
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  close():void {
+    if(this.dialogRef) {
+      this.dialogRef.close();
+    }
   }
 }

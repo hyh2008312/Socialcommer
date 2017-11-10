@@ -146,6 +146,12 @@
 .xb-color-bg-gray {
   color: #f2f5f7; }
 
+.background-bg-black {
+  background-color: #222; }
+
+.xb-color-bg-black {
+  color: #222; }
+
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
  * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
@@ -1499,6 +1505,13 @@ input.mat-input-element {
 
 textarea.mat-input-element {
   line-height: 1.5; }
+
+.mat-dialog-container {
+  max-width: 100vw !important;
+  padding: 0 !important; }
+  @media screen and (max-width: 599px) {
+    .mat-dialog-container {
+      background-color: transparent; } }
 
 .preview-label {
   width: 64px;

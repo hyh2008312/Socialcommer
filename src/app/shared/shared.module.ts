@@ -42,6 +42,13 @@ import { QuillEditorModule } from 'ngx-quill-editor';
 import { AngularCropperjsModule } from 'angular-cropperjs';
 import { CarouselModule } from './components/angular4-carousel/index';
 
+import { LoginComponent } from '../login/login/login.component';
+import { SignUpComponent } from '../login/sign-up/sign-up.component';
+import { ResetPasswordComponent } from '../login/reset-password/reset-password.component';
+import { ResetPasswordConfirmComponent } from '../login/reset-password-confirm/reset-password-confirm.component';
+import { InviteCodeComponent } from "../login/invite-code/invite-code.component";
+
+import { LoginService } from '../login/login.service';
 
 import {
   MatFormFieldModule,
@@ -109,7 +116,12 @@ import {
     StoreNavigationComponent,
     ShareButtonRowComponent,
     NavigationHeaderComponent,
-    BottomFooterComponent
+    BottomFooterComponent,
+    LoginComponent,
+    SignUpComponent,
+    ResetPasswordComponent,
+    ResetPasswordConfirmComponent,
+    InviteCodeComponent
   ],
   exports: [
     SafeHtmlPipe,
@@ -135,6 +147,11 @@ import {
     ShareButtonRowComponent,
     NavigationHeaderComponent,
     BottomFooterComponent,
+    LoginComponent,
+    SignUpComponent,
+    ResetPasswordComponent,
+    ResetPasswordConfirmComponent,
+    InviteCodeComponent,
     CommonModule,
     RouterModule,
     FormsModule,
@@ -165,7 +182,15 @@ import {
     ArticlesDetailHeaderService,
     ImageUploadPreviewService,
     ConstantService,
-    S3UploaderService
+    S3UploaderService,
+    LoginService
+  ],
+  entryComponents: [
+    LoginComponent,
+    SignUpComponent,
+    ResetPasswordComponent,
+    ResetPasswordConfirmComponent,
+    InviteCodeComponent
   ]
 })
 export class SharedModule { }

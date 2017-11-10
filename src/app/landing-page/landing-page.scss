@@ -13,12 +13,34 @@
     background-size: 1920px auto;
     background-repeat: repeat;
 
+    @include xb-xs-screen{
+      height: 320px;
+      background-size: auto 100%;
+    }
+
+    @include xb-sm-screen{
+      height: 320px;
+      background-size: auto 100%;
+    }
+
     &-title{
       font-size: 56px;
       line-height: 64px;
       color: $whiteColor;
       margin-top: 144px;
       @include light();
+
+      @include xb-xs-screen{
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 32px;
+      }
+
+      @include xb-sm-screen{
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 32px;
+      }
     }
     &-subtitle{
       font-size: 24px;
@@ -37,6 +59,9 @@
       text-align: center;
       width: 220px;
       display: block;
+      @include xb-xs-screen{
+        margin-top: 24px;
+      }
     }
   }
 
@@ -73,6 +98,13 @@
   &__height-1{
     height: 685px;
     overflow: hidden;
+    @include xb-xs-screen{
+      height: auto;
+    }
+    @include xb-sm-screen{
+      height: auto;
+      padding-bottom: 24px;
+    }
   }
 
   &__height-2{
@@ -81,9 +113,17 @@
   }
 
   &__height-3{
-    height: 540px;
+    height: 480px;
     overflow: hidden;
     position: relative;
+
+    @include xb-xs-screen{
+      height: 240px;
+    }
+
+    @include xb-sm-screen{
+      height: 320px;
+    }
   }
 
   &__title-1{
@@ -92,11 +132,31 @@
     line-height: 64px;
     @include light();
     text-align: center;
+
+    @include xb-xs-screen{
+      font-size: 24px;
+      line-height: 32px;
+      margin-top: 32px;
+    }
+
+    @include xb-sm-screen{
+      font-size: 24px;
+      line-height: 32px;
+      margin-top: 32px;
+    }
   }
 
   &__title-2{
     font-size: 24px;
     line-height: 32px;
+    @include xb-xs-screen{
+      font-size: 16px;
+      line-height: 24px;
+    }
+    @include xb-sm-screen{
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 
   &__title-3{
@@ -110,6 +170,18 @@
     margin-top: 144px;
     line-height: 48px;
     @include light();
+    @include xb-xs-screen{
+      font-size: 24px;
+      line-height: 32px;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    @include xb-sm-screen{
+      font-size: 24px;
+      line-height: 32px;
+      margin-top: 100px;
+    }
   }
 
 
@@ -117,11 +189,30 @@
     font-size: 22px;
     line-height: 32px;
     @include light();
+    @include xb-xs-screen{
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
+    }
+    @include xb-sm-screen{
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
   &__content-2{
     font-size: 18px;
     line-height: 24px;
     @include light();
+
+    @include xb-xs-screen{
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @include xb-sm-screen{
+      font-size: 14px;
+      text-align: center;
+    }
   }
 
   &__content-3{
@@ -129,19 +220,44 @@
     line-height: 32px;
     @include light();
     text-align: center;
+    @include xb-xs-screen{
+      font-size: 14px;
+      line-height: 20px;
+      padding: 0 16px;
+    }
+    @include xb-sm-screen{
+      font-size: 14px;
+      line-height: 20px;
+      padding: 0 16px;
+    }
   }
 
   &__image-list{
     padding: 0 64px;
     margin-top: 48px;
+    @include xb-xs-screen{
+      margin-top: 24px;
+      padding: 0 16px;
+
+      padding-bottom: 32px;
+    }
     >span{
       width: 100%;
       height: 1px;
       margin-bottom: 64px;
+      @include xb-xs-screen{
+        margin-bottom: 24px;
+      }
     }
     img{
       width: 200px;
       margin: auto;
+      @include xb-xs-screen{
+        width: 120px;
+      }
+      @include xb-sm-screen{
+        width: 120px;
+      }
     }
   }
 
@@ -159,6 +275,14 @@
     background-size: auto 640px;
     background-repeat: no-repeat;
     overflow: hidden;
+    @include xb-xs-screen{
+      width: 100%;
+      background-position: center;
+      background-size: auto 240px;
+    }
+    @include xb-sm-screen{
+      background-size: auto 320px;
+    }
   }
 
   &__background-3{
@@ -171,6 +295,15 @@
     background-size: auto 640px;
     background-repeat: no-repeat;
     overflow: hidden;
+    @include xb-xs-screen{
+      left: 0;
+      width: 100%;
+      background-position: center;
+      background-size: auto 240px;
+    }
+    @include xb-sm-screen{
+      background-size: auto 320px;
+    }
   }
 
   &__background-4{
@@ -183,6 +316,14 @@
     background-size: auto 640px;
     background-repeat: no-repeat;
     overflow: hidden;
+    @include xb-xs-screen{
+      width: 100%;
+      background-position: center;
+      background-size: auto 240px;
+    }
+    @include xb-sm-screen{
+      background-size: auto 320px;
+    }
   }
 
   &__background-5{
@@ -195,6 +336,15 @@
     background-size: auto 640px;
     background-repeat: no-repeat;
     overflow: hidden;
+    @include xb-xs-screen{
+      left: 0;
+      width: 100%;
+      background-position: center;
+      background-size: auto 240px;
+    }
+    @include xb-sm-screen{
+      background-size: auto 320px;
+    }
   }
 
   &__background-6{
@@ -208,11 +358,27 @@
     background-size: auto 80%;
     background-repeat: no-repeat;
     overflow: hidden;
+    @include xb-xs-screen{
+      width: 100%;
+      background-position: bottom;
+      background-size: auto 180px;
+    }
   }
 
   &__image-bg{
     margin-top: 64px;
     margin-bottom: 80px;
+
+    @include xb-sm-screen{
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
+
+  &__padding{
+    @include xb-xs-screen{
+      padding: 16px 0 48px;
+    }
   }
 
   &__footer{

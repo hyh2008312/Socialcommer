@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-reset-password-confirm',
@@ -14,6 +15,8 @@ export class ResetPasswordConfirmComponent implements OnInit {
   resetForm : FormGroup;
   resetErr : any = false;
   email: string = '';
+
+  public dialogRef: MatDialogRef<ResetPasswordConfirmComponent>;
 
   constructor(
     private fb: FormBuilder,
@@ -106,8 +109,15 @@ export class ResetPasswordConfirmComponent implements OnInit {
     this.loginService.resetPasswordConfirm({
       password, uid, token
     }).then((data) => {
+      self.close();
       self.router.navigate(['/cp/login']);
     });
+  }
+
+  close():void {
+    if(this.dialogRef) {
+      this.dialogRef.close();
+    }
   }
 
 }

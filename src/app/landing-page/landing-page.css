@@ -146,6 +146,12 @@
 .xb-color-bg-gray {
   color: #f2f5f7; }
 
+.background-bg-black {
+  background-color: #222; }
+
+.xb-color-bg-black {
+  color: #222; }
+
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
  * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
@@ -1500,6 +1506,13 @@ input.mat-input-element {
 textarea.mat-input-element {
   line-height: 1.5; }
 
+.mat-dialog-container {
+  max-width: 100vw !important;
+  padding: 0 !important; }
+  @media screen and (max-width: 599px) {
+    .mat-dialog-container {
+      background-color: transparent; } }
+
 .xb-landing-page {
   height: 100vh;
   width: 100vw;
@@ -1510,12 +1523,30 @@ textarea.mat-input-element {
     background-position: center;
     background-size: 1920px auto;
     background-repeat: repeat; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__banner {
+        height: 320px;
+        background-size: auto 100%; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__banner {
+        height: 320px;
+        background-size: auto 100%; } }
     .xb-landing-page__banner-title {
       font-size: 56px;
       line-height: 64px;
       color: #fff;
       margin-top: 144px;
       font-weight: 300; }
+      @media screen and (max-width: 599px) {
+        .xb-landing-page__banner-title {
+          font-size: 24px;
+          line-height: 32px;
+          margin-top: 32px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xb-landing-page__banner-title {
+          font-size: 24px;
+          line-height: 32px;
+          margin-top: 32px; } }
     .xb-landing-page__banner-subtitle {
       font-size: 24px;
       line-height: 24px;
@@ -1531,6 +1562,9 @@ textarea.mat-input-element {
       text-align: center;
       width: 220px;
       display: block; }
+      @media screen and (max-width: 599px) {
+        .xb-landing-page__banner-button {
+          margin-top: 24px; } }
   .xb-landing-page__navigation {
     height: 56px; }
     .xb-landing-page__navigation-login {
@@ -1557,22 +1591,53 @@ textarea.mat-input-element {
   .xb-landing-page__height-1 {
     height: 685px;
     overflow: hidden; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__height-1 {
+        height: auto; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__height-1 {
+        height: auto;
+        padding-bottom: 24px; } }
   .xb-landing-page__height-2 {
     height: 245px;
     overflow: hidden; }
   .xb-landing-page__height-3 {
-    height: 540px;
+    height: 480px;
     overflow: hidden;
     position: relative; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__height-3 {
+        height: 240px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__height-3 {
+        height: 320px; } }
   .xb-landing-page__title-1 {
     font-size: 36px;
     margin-top: 80px;
     line-height: 64px;
     font-weight: 300;
     text-align: center; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__title-1 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 32px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__title-1 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 32px; } }
   .xb-landing-page__title-2 {
     font-size: 24px;
     line-height: 32px; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__title-2 {
+        font-size: 16px;
+        line-height: 24px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__title-2 {
+        font-size: 16px;
+        line-height: 24px; } }
   .xb-landing-page__title-3 {
     font-size: 48px;
     line-height: 1;
@@ -1582,29 +1647,81 @@ textarea.mat-input-element {
     margin-top: 144px;
     line-height: 48px;
     font-weight: 300; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__title-4 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 24px;
+        text-align: center; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__title-4 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 100px; } }
   .xb-landing-page__content-1 {
     font-size: 22px;
     line-height: 32px;
     font-weight: 300; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__content-1 {
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__content-1 {
+        font-size: 14px;
+        line-height: 20px; } }
   .xb-landing-page__content-2 {
     font-size: 18px;
     line-height: 24px;
     font-weight: 300; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__content-2 {
+        font-size: 14px;
+        text-align: center; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__content-2 {
+        font-size: 14px;
+        text-align: center; } }
   .xb-landing-page__content-3 {
     font-size: 22px;
     line-height: 32px;
     font-weight: 300;
     text-align: center; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__content-3 {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 0 16px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__content-3 {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 0 16px; } }
   .xb-landing-page__image-list {
     padding: 0 64px;
     margin-top: 48px; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__image-list {
+        margin-top: 24px;
+        padding: 0 16px;
+        padding-bottom: 32px; } }
     .xb-landing-page__image-list > span {
       width: 100%;
       height: 1px;
       margin-bottom: 64px; }
+      @media screen and (max-width: 599px) {
+        .xb-landing-page__image-list > span {
+          margin-bottom: 24px; } }
     .xb-landing-page__image-list img {
       width: 200px;
       margin: auto; }
+      @media screen and (max-width: 599px) {
+        .xb-landing-page__image-list img {
+          width: 120px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xb-landing-page__image-list img {
+          width: 120px; } }
   .xb-landing-page__background-1 {
     background-color: #f1f1f1; }
   .xb-landing-page__background-2 {
@@ -1617,6 +1734,14 @@ textarea.mat-input-element {
     background-size: auto 640px;
     background-repeat: no-repeat;
     overflow: hidden; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__background-2 {
+        width: 100%;
+        background-position: center;
+        background-size: auto 240px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__background-2 {
+        background-size: auto 320px; } }
   .xb-landing-page__background-3 {
     position: absolute;
     left: 50%;
@@ -1627,6 +1752,15 @@ textarea.mat-input-element {
     background-size: auto 640px;
     background-repeat: no-repeat;
     overflow: hidden; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__background-3 {
+        left: 0;
+        width: 100%;
+        background-position: center;
+        background-size: auto 240px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__background-3 {
+        background-size: auto 320px; } }
   .xb-landing-page__background-4 {
     position: absolute;
     left: 0;
@@ -1637,6 +1771,14 @@ textarea.mat-input-element {
     background-size: auto 640px;
     background-repeat: no-repeat;
     overflow: hidden; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__background-4 {
+        width: 100%;
+        background-position: center;
+        background-size: auto 240px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__background-4 {
+        background-size: auto 320px; } }
   .xb-landing-page__background-5 {
     position: absolute;
     left: 50%;
@@ -1647,6 +1789,15 @@ textarea.mat-input-element {
     background-size: auto 640px;
     background-repeat: no-repeat;
     overflow: hidden; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__background-5 {
+        left: 0;
+        width: 100%;
+        background-position: center;
+        background-size: auto 240px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__background-5 {
+        background-size: auto 320px; } }
   .xb-landing-page__background-6 {
     position: absolute;
     left: 0;
@@ -1658,9 +1809,21 @@ textarea.mat-input-element {
     background-size: auto 80%;
     background-repeat: no-repeat;
     overflow: hidden; }
+    @media screen and (max-width: 599px) {
+      .xb-landing-page__background-6 {
+        width: 100%;
+        background-position: bottom;
+        background-size: auto 180px; } }
   .xb-landing-page__image-bg {
     margin-top: 64px;
     margin-bottom: 80px; }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-landing-page__image-bg {
+        margin-left: 16px;
+        margin-right: 16px; } }
+  @media screen and (max-width: 599px) {
+    .xb-landing-page__padding {
+      padding: 16px 0 48px; } }
   .xb-landing-page__footer-top {
     background-color: #252525;
     color: rgba(255, 255, 255, 0.5);

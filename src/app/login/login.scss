@@ -84,9 +84,11 @@
 
     @include xb-xs-screen{
       font-size: 24px;
+      margin-top: 24px;
     }
     @include xb-sm-screen{
       font-size: 24px;
+
     }
   }
 
@@ -149,6 +151,28 @@
   &__width-mobile{
     @include xb-xs-screen{
       width: 100%;
+    }
+  }
+
+  &__mobile{
+    &-bg{
+      width: 100vw;
+      height: calc(100vh - 56px);
+      padding: 16px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      background-color: $whiteColor;
+    }
+
+    &-height{
+      height: 56px;
+
+      >i{
+        font-size: 24px;
+        line-height: 24px;
+        padding: 16px;
+        color: $whiteColor;
+      }
     }
   }
 

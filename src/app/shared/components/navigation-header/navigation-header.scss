@@ -6,16 +6,10 @@
 
   &__image{
     width: 180px;
-    @include xb-xs-screen{
-      width: 120px;
-    }
   }
 
   &__margin-left{
     margin-left: 16px;
-    @include xb-xs-screen{
-      margin-left: 8px;
-    }
   }
 
   &__login{
@@ -43,6 +37,40 @@
       border-radius: 18px;
       margin-left: 16px;
     }
+  }
+
+  &__menu{
+    color: $whiteColor;
+    padding: 16px;
+
+    &-active{
+      color: $primaryColor;
+    }
+  }
+
+  &__mask{
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  &__black{
+    background: $blackColor;
+    height: 56px;
+    border-bottom: 1px solid rgba(255,255,255,.5);
+  }
+
+  &__list{
+    background: $blackColor;
+    height: 48px;
+    text-align: center;
+    color: $whiteColor;
+    line-height: 48px;
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-reset-password',
@@ -14,6 +15,8 @@ export class ResetPasswordComponent implements OnInit {
   resetErr : any = false;
   step: number = 0;
   email: string = '';
+
+  public dialogRef: MatDialogRef<ResetPasswordComponent>;
 
   constructor(
     private fb: FormBuilder,
@@ -82,4 +85,9 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
+  close():void {
+    if(this.dialogRef) {
+      this.dialogRef.close();
+    }
+  }
 }
