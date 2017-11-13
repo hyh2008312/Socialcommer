@@ -47,6 +47,9 @@
       line-height: 24px;
       color: $whiteColor;
       @include light();
+      @include xb-sm-screen{
+        font-size: 14px;
+      }
     }
 
     &-button{
@@ -113,7 +116,7 @@
   }
 
   &__height-3{
-    height: 480px;
+    height: 540px;
     overflow: hidden;
     position: relative;
 
@@ -370,8 +373,8 @@
     margin-bottom: 80px;
 
     @include xb-sm-screen{
-      margin-left: 16px;
-      margin-right: 16px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
 
