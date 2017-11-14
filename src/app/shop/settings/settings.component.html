@@ -1,9 +1,9 @@
 <div class="xb-shop__product md-padding-right-2 md-padding-top-2 md-padding-left-2">
   <div class="xb-shop__header"></div>
-  <mat-tab-group class="md-margin-right-2" color="accent">
+  <mat-tab-group color="accent">
     <mat-tab label="Edit Profile">
-      <div class="md-margin-top-3">
-        <form  [formGroup]="profileForm" novalidate>
+      <div class="md-margin-top-2 xb-shop__setting-bg">
+        <form class="md-margin-top-1" [formGroup]="profileForm" novalidate>
           <div fxLayout="row" fxLayoutAlign="start center">
             <div>
               <div class="md-dark-secondary">
@@ -62,8 +62,8 @@
       </div>
     </mat-tab>
     <mat-tab label="Change Email Address">
-      <div class="md-margin-top-3">
-        <form  [formGroup]="emailForm" novalidate>
+      <div class="md-margin-top-2 xb-shop__setting-bg">
+        <form class="md-margin-top-1" [formGroup]="emailForm" novalidate>
           <div class="md-dark-secondary">
             Email Address
           </div>
@@ -80,8 +80,8 @@
       </div>
     </mat-tab>
     <mat-tab label="Change Password">
-      <div class="md-margin-top-3">
-        <form  [formGroup]="settingForm" novalidate>
+      <div class="md-margin-top-2 xb-shop__setting-bg">
+        <form class="md-margin-top-1" [formGroup]="settingForm" novalidate>
           <div class="md-dark-secondary">
             Current Password
           </div>

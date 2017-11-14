@@ -199,7 +199,7 @@ export class CatalogAddProductComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate(['/shop/listings']);
+    this.router.navigate(['/shop/listings/products']);
   }
 
   create() {
@@ -238,7 +238,7 @@ export class CatalogAddProductComponent implements OnInit {
     }
 
     this.shopService.createProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'published'}, replaceUrl: true});
+      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'published'}, replaceUrl: true});
     });
   }
 
@@ -277,7 +277,7 @@ export class CatalogAddProductComponent implements OnInit {
     }
 
     this.shopService.createProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});
+      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'draft'}, replaceUrl: true});
     });
   }
 

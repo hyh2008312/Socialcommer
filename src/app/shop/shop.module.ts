@@ -14,18 +14,25 @@ import { StoreTemplateComponent } from "./store-template/store-template.componen
 import { StoreEditComponent } from "./store-edit/store-edit.component";
 import { StoreItemCardPreviewComponent } from "./store-item-card-preview/store-item-card-preview.component";
 import { ToDoListComponent } from "./to-do-list/to-do-list.component";
+import { ProductCategoryComponent } from "./product-category/product-category.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
 import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-select.component";
 import { ProductItemComponent } from "./product-item/product-item.component";
 import { ProductsSortComponent } from "./products-sort/products-sort.component";
 import { ProductItemCardComponent } from "./product-item-card/product-item-card.component";
-import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
-import { ProductAffiliateLinkDialogComponent } from "./product-affiliate-link-dialog/product-affiliate-link-dialog.component";
-import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
 import { ProductTitleComponent } from './product-title/product-title.component';
 import { StatisticItemComponent } from './statistic-item/statistic-item.component';
 import { StatisticTitleComponent } from './statistic-title/statistic-title.component';
+import { CategoryItemComponent } from './category-item/category-item.component';
+import { CategoryTitleComponent } from './category-title/category-title.component';
+
+import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
+import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
+import { ProductAffiliateLinkDialogComponent } from "./product-affiliate-link-dialog/product-affiliate-link-dialog.component";
+import { CategoryCreateDialogComponent } from "./category-create-dialog/category-create-dialog.component";
+import { CategoryDeleteDialogComponent } from "./category-delete-dialog/category-delete-dialog.component";
+import { CategoryEditDialogComponent } from "./category-edit-dialog/category-edit-dialog.component";
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -49,6 +56,7 @@ import { SharedModule } from '../shared/shared.module';
     SettingsComponent,
     CatalogAddProductComponent,
     CatalogEditProductComponent,
+    ProductCategoryComponent,
     LeftSideNavigationComponent,
     ProductItemComponent,
     CatalogTimeSelectComponent,
@@ -62,16 +70,24 @@ import { SharedModule } from '../shared/shared.module';
     StoreTemplateComponent,
     StoreEditComponent,
     StoreItemCardPreviewComponent,
+    StatisticItemComponent,
+    StatisticTitleComponent,
+    CategoryItemComponent,
+    CategoryTitleComponent,
     StoreShareDialogComponent,
     ProductAffiliateLinkDialogComponent,
     SnackBarSuccessComponent,
-    StatisticItemComponent,
-    StatisticTitleComponent
+    CategoryCreateDialogComponent,
+    CategoryDeleteDialogComponent,
+    CategoryEditDialogComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
     ProductAffiliateLinkDialogComponent,
-    SnackBarSuccessComponent
+    SnackBarSuccessComponent,
+    CategoryCreateDialogComponent,
+    CategoryDeleteDialogComponent,
+    CategoryEditDialogComponent
   ],
   providers: [
     ShopService,

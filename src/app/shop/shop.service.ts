@@ -453,6 +453,72 @@ export class ShopService {
       .catch(this.handleError);
   }
 
+  getCategory(category: any): Promise<any>  {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}relation/category/?${this.serializeParams(category)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  createProductCategory(category: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}relation/category/`;
+
+    return this.http.post(url, category, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  deleteProductCategory(category: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}relation/category/${category.id}/`;
+
+    return this.http.delete(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  editProductCategory(category: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}relation/category/${category.id}/`;
+
+    return this.http.put(url, category, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   private handleError (error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {

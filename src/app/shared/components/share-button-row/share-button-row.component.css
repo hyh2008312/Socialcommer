@@ -1508,7 +1508,8 @@ textarea.mat-input-element {
 
 .mat-dialog-container {
   max-width: 100vw !important;
-  padding: 0 !important; }
+  padding: 0 !important;
+  overflow: hidden !important; }
   @media screen and (max-width: 599px) {
     .mat-dialog-container {
       background-color: transparent; } }
@@ -1521,6 +1522,9 @@ textarea.mat-input-element {
   color: #fff; }
   .xb-social-share__margin-left {
     margin-left: 48px; }
+    @media screen and (max-width: 599px) {
+      .xb-social-share__margin-left {
+        margin-left: 16px; } }
   .xb-social-share__facebook {
     background-color: #4267b1; }
   .xb-social-share__twitter {

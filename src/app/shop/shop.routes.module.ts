@@ -14,6 +14,7 @@ import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/f
 import { StorePreviewComponent } from "./store-preview/store-preview.component";
 import { StoreEditComponent } from "./store-edit/store-edit.component";
 import { ToDoListComponent } from "./to-do-list/to-do-list.component";
+import { ProductCategoryComponent } from "./product-category/product-category.component";
 
 const routes: Routes = [
   {
@@ -31,11 +32,16 @@ const routes: Routes = [
       }, {
         path: 'settings', component: SettingsComponent
       }, {
-        path: 'listings', component: CatalogComponent,
+        path: 'listings',
         children: [{
-          path: 'create', component: CatalogAddProductComponent
+          path: 'products', component: CatalogComponent,
+          children: [ {
+            path: 'create', component: CatalogAddProductComponent
+          }, {
+            path: ':id/edit', component: CatalogEditProductComponent
+          }]
         }, {
-          path: ':id/edit', component: CatalogEditProductComponent
+          path: 'categories', component: ProductCategoryComponent
         }]
       }, {
         path: 'products', component: FindProductsComponent,

@@ -1,4 +1,6 @@
 import { Input, Component, OnInit} from '@angular/core';
+import { Router, ActivatedRoute} from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-left-side-navigation',
@@ -15,8 +17,15 @@ export class LeftSideNavigationComponent implements OnInit {
   }, {
     icon: 'icon-pic-product',
     text: 'Listings',
+    subContent: [{
+      text: 'Products',
+      router: './listings/products'
+    }, {
+      text: 'Categories',
+      router: './listings/categories'
+    }],
     router: './listings',
-    router1: './products'
+    slide: true
   }, {
     icon: 'icon-pic-store',
     text: 'Store',
@@ -31,10 +40,20 @@ export class LeftSideNavigationComponent implements OnInit {
     router: './settings'
   }];
   constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
 
+  }
+
+  changeSlide(obj:any, index: number) {
+    if(obj.subContent) {
+      this.router.navigate([`${obj.subContent[0].router}`], {relativeTo: this.activatedRoute});
+    } else {
+      this.router.navigate([`${obj.router}`], {relativeTo: this.activatedRoute});
+    }
   }
 
 }

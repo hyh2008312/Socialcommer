@@ -88,6 +88,6 @@ export class ProductItemComponent implements OnInit {
         tab = 'unpublish';
         break;
     }
-    this.router.navigate([`shop/listings/${this.product.id}/edit`], {queryParams: {tab}});
+    this.router.navigate([`shop/listings/products/${this.product.id}/edit`], {queryParams: {tab}});
   }
 }

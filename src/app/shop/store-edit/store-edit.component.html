@@ -177,44 +177,46 @@
     <div class="xb-store__details-close" (click)="editStore()" fxShow="false" fxShow.gt-sm="true">
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
-    <div class="xb-shop__template-title-1">
-      Ready to Publish
-    </div>
-    <div class="xb-shop__template-content-1">
-      Make sure all these setting are correct before your store goes live!
-    </div>
-    <form [formGroup]="storeForm" novalidate>
-      <div class="md-margin-top-2 md-margin-right-2" fxLayout="column">
-        <div class="md-dark-secondary">
-          Store Name
-        </div>
-        <mat-form-field>
-          <input matInput formControlName="name">
-        </mat-form-field>
-        <div *ngIf="formErrors['name']" class="xb-input-error">
-          {{ formErrors['name'] }}
-        </div>
-        <div class="md-dark-secondary">
-          Store Description
-        </div>
-        <mat-form-field class="xb-shop__width-100">
-          <textarea matInput  formControlName="description"></textarea>
-        </mat-form-field>
-        <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
-          <div>
-            https://www.socialcommer.net/store/
-          </div>
-          <mat-form-field class="md-margin-left-2 xb-shop__width-1">
-            <input matInput formControlName="displayName">
-          </mat-form-field>
-        </div>
-        <div *ngIf="formErrors['displayName']" class="xb-input-error">
-          {{ formErrors['displayName'] }}
-        </div>
-        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-          <button mat-raised-button color="primary" (click)="changeStore()">PUBLISH</button>
-        </div>
+    <div class="xb-shop__mobile-dialog-inner">
+      <div class="xb-shop__template-title-1">
+        Ready to Publish
       </div>
-    </form>
+      <div class="xb-shop__template-content-1">
+        Make sure all these setting are correct before your store goes live!
+      </div>
+      <form [formGroup]="storeForm" novalidate>
+        <div class="md-margin-top-2 md-margin-right-2" fxLayout="column">
+          <div class="md-dark-secondary">
+            Store Name
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <div *ngIf="formErrors['name']" class="xb-input-error">
+            {{ formErrors['name'] }}
+          </div>
+          <div class="md-dark-secondary">
+            Store Description
+          </div>
+          <mat-form-field class="xb-shop__width-100">
+            <textarea matInput  formControlName="description"></textarea>
+          </mat-form-field>
+          <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+            <div>
+              https://www.socialcommer.net/store/
+            </div>
+            <mat-form-field class="md-margin-left-2 xb-shop__width-1">
+              <input matInput formControlName="displayName">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['displayName']" class="xb-input-error">
+            {{ formErrors['displayName'] }}
+          </div>
+          <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+            <button mat-raised-button color="primary" (click)="changeStore()">PUBLISH</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

@@ -20,17 +20,59 @@
     border-right: 1px solid rgba(0,0,0,.12);
     background-color: #0a2529;
 
-    &-bg{
-      width: 136px;;
-      margin-right: 16px;
+    &-arrow{
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid $primaryColor;
+      margin-left: 8px;
     }
+
+    &-arrow-1{
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 5px solid $whiteColor;
+      margin-left: 8px;
+      display: none;
+    }
+
+    &-bg{
+      width: 160px;
+    }
+
     &-buttons{
       padding-left: 8px;
       height: 56px;
       color: $whiteColor;
       @include media();
+      cursor: pointer;
       &.active{
         color: $primaryColor;
+      }
+
+    }
+
+    &-bg-1{
+      background-color: #051c1d;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    $parent: &;
+
+    &-buttons-1{
+      padding-left: 8px;
+      height: 56px;
+      color: $whiteColor;
+      @include media();
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      &.active{
+        #{$parent}-arrow-1{
+          display: block;
+        }
       }
 
     }
@@ -766,6 +808,7 @@
   }
 
   &__statistic{
+    height: 48px;
     &-text{
       text-align: center;
       overflow: hidden;
@@ -776,27 +819,45 @@
     &-bg{
       cursor: pointer;
       height: 48px;
-      padding: 12px 16px;
+      padding: 0 16px;
       &:hover{
         background-color: rgba(0,0,0,.08);
       }
     }
   }
+
+  &__setting-bg{
+    min-height: calc(100vh - 137px);
+    background-color: $whiteColor;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 16px;
+  }
+}
+
+.xb-category{
+  &__title{
+    height: 56px;
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .xb-share-dialog{
 
-  padding: 32px;
-  max-width: 672px;
+  padding: 56px;
+  max-width: 720px;
   position: relative;
+  background-color: $whiteColor;
+  border-radius: 4px;
   @include xb-xs-screen{
-    padding: 0;
+    padding: 56px 16px;
   }
 
   &__close{
     position: absolute;
-    left: calc(100% - 16px);
-    top: -8px;
+    left: calc(100% - 40px);
+    top: 16px;
     color: $blackColor;
     cursor: pointer;
     i{
@@ -840,17 +901,18 @@
 
 .xb-affiliate-dialog{
 
-  padding: 32px;
-  max-width: 672px;
+  padding: 56px;
+  max-width: 720px;
   position: relative;
+  border-radius: 4px;
   @include xb-xs-screen{
     padding: 0;
   }
 
   &__close{
     position: absolute;
-    left: calc(100% - 16px);
-    top: -8px;
+    left: calc(100% - 40px);
+    top: 16px;
     color: $blackColor;
     cursor: pointer;
     i{
