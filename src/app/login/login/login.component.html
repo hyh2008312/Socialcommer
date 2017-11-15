@@ -34,22 +34,22 @@
             <button mat-raised-button color="primary" type="submit">LOG IN</button>
           </div>
         </form>
-        <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
         <div [hidden]="true">
+          <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
           <button class="xb-login__facebook" mat-raised-button >
             <div fxLayout="row" fxLayoutAlign="start center">
               <i class="iconfontXberts icon-ic-facebook"></i>
               <span class="md-align-center" fxFlex>Continue with Facebook</span>
             </div>
           </button>
+          <button class="xb-login__google" mat-raised-button (click)="googleLogin()">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <i class="iconfontXberts icon-pic-google"></i>
+              <span class="md-align-center" fxFlex>Continue with Google</span>
+            </div>
+          </button>
         </div>
-        <button class="xb-login__google" mat-raised-button (click)="googleLogin()">
-          <div fxLayout="row" fxLayoutAlign="start center">
-            <i class="iconfontXberts icon-pic-google"></i>
-            <span class="md-align-center" fxFlex>Continue with Google</span>
-          </div>
-        </button>
-        <div>Don't have an account?
+        <div class="md-margin-top-2">Don't have an account?
           <a class="text-underline md-margin-left-1 md-dark-primary" routerLink="/cp/signUp">Sign Up</a>
         </div>
       </div>
@@ -85,22 +85,22 @@
       <button mat-raised-button color="primary" type="submit">LOG IN</button>
     </div>
   </form>
-  <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
   <div [hidden]="true">
+    <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
     <button class="xb-login__facebook" mat-raised-button >
       <div fxLayout="row" fxLayoutAlign="start center">
         <i class="iconfontXberts icon-ic-facebook"></i>
         <span class="md-align-center" fxFlex>Continue with Facebook</span>
       </div>
     </button>
+    <button class="xb-login__google" mat-raised-button (click)="googleLogin()">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <i class="iconfontXberts icon-pic-google"></i>
+        <span class="md-align-center" fxFlex>Continue with Google</span>
+      </div>
+    </button>
   </div>
-  <button class="xb-login__google" mat-raised-button (click)="googleLogin()">
-    <div fxLayout="row" fxLayoutAlign="start center">
-      <i class="iconfontXberts icon-pic-google"></i>
-      <span class="md-align-center" fxFlex>Continue with Google</span>
-    </div>
-  </button>
-  <div >Don't have an account?
+  <div class="md-margin-top-2">Don't have an account?
     <a class="text-underline md-margin-left-1 md-dark-primary" (click)="openSignUp()">Sign Up</a>
   </div>
 </div>
