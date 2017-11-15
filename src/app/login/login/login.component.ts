@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -11,7 +11,7 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 import { ResetPasswordComponent } from "../reset-password/reset-password.component";
 import { InviteCodeComponent } from "../invite-code/invite-code.component";
 
-import { GoogleSignInSuccess } from 'angular-google-signin';
+import { AuthService } from "angular2-social-login";
 import { SystemConstant } from '../../config/app.api';
 
 @Component({
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   };
 
   public dialogRef: MatDialogRef<LoginComponent>;
-  public systemConstant: SystemConstant = new SystemConstant();
+  sub: any;
 
   constructor(
     private router: Router,
@@ -54,7 +54,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthenticationService,
     private userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public _auth: AuthService
   ) {
     this.loginGroup = this.fb.group({
       username: ['', [
@@ -68,11 +69,6 @@ export class LoginComponent implements OnInit {
 
     this.loginGroup.valueChanges.subscribe(data => this.onValueChanged(data));
 
-  }
-
-  onGoogleSignInSuccess(event: GoogleSignInSuccess) {
-    let googleUser: gapi.auth2.GoogleUser = event.googleUser;
-    this.token = googleUser.getAuthResponse().id_token;
   }
 
 
@@ -140,39 +136,14 @@ export class LoginComponent implements OnInit {
 
   }
 
-  googleLogin() {
-    let self = this;
-    self.service.googleLogin({
-      id_token: this.token
-    }).then((data) => {
-      if(data) {
-        self.loginErr = false;
-        let token = {
-          access_token: data.token.accessToken,
-          refresh_token: data.token.refreshToken,
-          expires_in: data.token.expiresIn,
-        };
-        self.auth.setAccessToken(token);
-        self.userService.addUser(data.user);
-        self.auth.inviteToken(data.user.isInvite);
-        if(data.user && data.user.store && data.user.store.length > 0) {
-          self.userService.addStore(data.user.store[0]);
-        }
-
-        if(data.user && data.user.isInvite) {
-          self.close();
-          self.router.navigate(['/shop/dashboard']);
-        } else {
-          if(self.dialogRef) {
-            self.dialogRef.close();
-            self.openInviteCode();
-          } else {
-            self.router.navigate(['/cp/invitation']);
-          }
-        }
+  googleLogin(provider) {
+    this.sub = this._auth.login(provider).subscribe(
+      (data) => {
+        console.log(data);
+        //user data
+        //name, image, uid, provider, uid, email, token (accessToken for Facebook & google, no token for linkedIn), idToken(only for google)
       }
-
-    });
+    )
   }
 
   openSignUp(): void {
@@ -221,5 +192,9 @@ export class LoginComponent implements OnInit {
     if(this.dialogRef) {
       this.dialogRef.close();
     }
+  }
+
+  ngOnDestroy(){
+    this.sub.unsubscribe();
   }
 }

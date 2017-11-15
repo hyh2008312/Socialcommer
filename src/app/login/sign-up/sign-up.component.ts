@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -12,7 +12,7 @@ import { Subject } from "rxjs/Subject";
 
 import { LoginComponent } from '../login/login.component';
 
-import { GoogleSignInSuccess } from 'angular-google-signin';
+import { AuthService } from "angular2-social-login";
 import { SystemConstant } from '../../config/app.api';
 
 @Component({
@@ -40,6 +40,8 @@ export class SignUpComponent {
 
   public signUpErr: any = false;
   public storeErr: any = false;
+
+  sub: any;
 
   //存储错误信息
   formErrors = {
@@ -93,7 +95,8 @@ export class SignUpComponent {
     private auth: AuthenticationService,
     private routerInfo :ActivatedRoute,
     private userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public _auth: AuthService
   ) {
     this.signUpGroup = this.fb.group({
       firstName: ['', Validators.required],
@@ -128,11 +131,6 @@ export class SignUpComponent {
         this.step = 1;
       }
     });
-  }
-
-  onGoogleSignInSuccess(event: GoogleSignInSuccess) {
-    let googleUser: gapi.auth2.GoogleUser = event.googleUser;
-    this.token = googleUser.getAuthResponse().id_token;
   }
 
   /**
@@ -202,23 +200,14 @@ export class SignUpComponent {
     });
   }
 
-  googleLogin(data: any) {
-    let self = this;
-    self.service.googleLogin({
-      id_token: self.token
-    }).then((data) => {
-      if(data) {
-        self.signUpErr = false;
-        let token = {
-          access_token: data.token.accessToken,
-          refresh_token: data.token.refreshToken,
-          expires_in: data.token.expiresIn,
-        };
-        self.auth.setAccessToken(token);
-        self.step = 1;
+  googleLogin(provider) {
+    this.sub = this._auth.login(provider).subscribe(
+      (data) => {
+        console.log(data);
+        //user data
+        //name, image, uid, provider, uid, email, token (accessToken for Facebook & google, no token for linkedIn), idToken(only for google)
       }
-
-    });
+    )
   }
 
   complete() {
@@ -262,6 +251,10 @@ export class SignUpComponent {
     if(this.dialogRef) {
       this.dialogRef.close();
     }
+  }
+
+  ngOnDestroy(){
+    this.sub.unsubscribe();
   }
 
 }

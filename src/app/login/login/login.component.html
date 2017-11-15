@@ -1,8 +1,4 @@
-<div class="xb-login__hidden">
-  <google-signin [clientId]="systemConstant.googleClientId"
-                 (googleSignInSuccess)="onGoogleSignInSuccess($event)">
-  </google-signin>
-</div>
+
 <div class="xb-login__scroll background-bg-light" fxShow.xs="false"  fxLayout="row" fxLayoutAlign="stretch stretch">
   <div fxLayout="column" fxFlex>
     <div class="background-bg-white">
@@ -42,7 +38,7 @@
               <span class="md-align-center" fxFlex>Continue with Facebook</span>
             </div>
           </button>
-          <button class="xb-login__google" mat-raised-button (click)="googleLogin()">
+          <button class="xb-login__google" mat-raised-button (click)="googleLogin('google')">
             <div fxLayout="row" fxLayoutAlign="start center">
               <i class="iconfontXberts icon-pic-google"></i>
               <span class="md-align-center" fxFlex>Continue with Google</span>
@@ -93,7 +89,7 @@
         <span class="md-align-center" fxFlex>Continue with Facebook</span>
       </div>
     </button>
-    <button class="xb-login__google" mat-raised-button (click)="googleLogin()">
+    <button class="xb-login__google" mat-raised-button (click)="googleLogin('google')">
       <div fxLayout="row" fxLayoutAlign="start center">
         <i class="iconfontXberts icon-pic-google"></i>
         <span class="md-align-center" fxFlex>Continue with Google</span>

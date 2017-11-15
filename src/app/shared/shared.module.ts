@@ -47,9 +47,10 @@ import { SignUpComponent } from '../login/sign-up/sign-up.component';
 import { ResetPasswordComponent } from '../login/reset-password/reset-password.component';
 import { ResetPasswordConfirmComponent } from '../login/reset-password-confirm/reset-password-confirm.component';
 import { InviteCodeComponent } from "../login/invite-code/invite-code.component";
-import { GoogleSignInComponent } from 'angular-google-signin';
 
 import { LoginService } from '../login/login.service';
+
+import { Angular2SocialLoginModule } from "angular2-social-login";
 
 import {
   MatFormFieldModule,
@@ -68,6 +69,12 @@ import {
   MatPaginatorModule,
   MatSnackBarModule
 } from '@angular/material';
+
+let providers = {
+  "google": {
+    "clientId": "529488372185-82kq2cmll3jlrpm2n6537mef1093ofip.apps.googleusercontent.com"
+  }
+};
 
 @NgModule({
   imports: [
@@ -92,7 +99,8 @@ import {
     MatRadioModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    Angular2SocialLoginModule
   ],
   declarations: [
     SafeHtmlPipe,
@@ -122,8 +130,7 @@ import {
     SignUpComponent,
     ResetPasswordComponent,
     ResetPasswordConfirmComponent,
-    InviteCodeComponent,
-    GoogleSignInComponent
+    InviteCodeComponent
   ],
   exports: [
     SafeHtmlPipe,
@@ -154,7 +161,6 @@ import {
     ResetPasswordComponent,
     ResetPasswordConfirmComponent,
     InviteCodeComponent,
-    GoogleSignInComponent,
     CommonModule,
     RouterModule,
     FormsModule,
@@ -197,3 +203,4 @@ import {
   ]
 })
 export class SharedModule { }
+Angular2SocialLoginModule.loadProvidersScripts(providers);
