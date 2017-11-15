@@ -29,6 +29,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angular-cropperjs": "^0.1.5",
+    "angular-google-signin": "^0.1.5",
     "angular2-moment": "^1.6.0",
     "angular4-carousel": "^3.1.8",
     "body-parser": "^1.17.2",

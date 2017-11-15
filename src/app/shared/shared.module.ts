@@ -154,6 +154,7 @@ import {
     ResetPasswordComponent,
     ResetPasswordConfirmComponent,
     InviteCodeComponent,
+    GoogleSignInComponent,
     CommonModule,
     RouterModule,
     FormsModule,
