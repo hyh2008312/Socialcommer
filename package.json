@@ -14,10 +14,10 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^4.4.4",
+    "@angular/animations": "^4.4.6",
     "@angular/cdk": "^2.0.0-beta.12",
-    "@angular/cli": "^1.4.8",
-    "@angular/common": "^4.0.0",
+    "@angular/cli": "^1.5.0",
+    "@angular/common": "^4.4.6",
     "@angular/compiler": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
@@ -28,12 +28,15 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "ajv": "^5.3.0",
+    "ajv-keywords": "^2.1.1",
     "angular-cropperjs": "^0.1.5",
     "angular2-moment": "^1.6.0",
     "angular4-carousel": "^3.1.8",
     "body-parser": "^1.17.2",
     "compression": "^1.7.0",
     "core-js": "^2.4.1",
+    "enhanced-resolve": "^3.3.0",
     "express": "^4.15.3",
     "flex-layout": "^1.0.1",
     "mongodb": "^2.2.30",
@@ -43,7 +46,6 @@
     "prerender-node": "^2.7.2",
     "rxjs": "^5.1.0",
     "throng": "^4.0.0",
-    "typescript": "^2.2.2",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -62,6 +64,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "typescript": "^2.3.1"
   }
 }
