@@ -1,3 +1,4 @@
+
 <div class="xb-login__scroll background-bg-light" fxShow.xs="false" fxLayout="row" fxLayoutAlign="stretch stretch">
   <div fxLayout="column" fxFlex fxLayoutAlign="stretch stretch">
     <div class="background-bg-white">
@@ -52,26 +53,27 @@
             <button mat-raised-button color="primary" type="submit">SIGN UP</button>
           </div>
         </form>
-        <div class="md-align-center md-margin-top-2 md-margin-bottom-2" [hidden]="true">OR</div>
         <div [hidden]="true">
+          <div class="md-align-center md-margin-top-2 md-margin-bottom-2" >OR</div>
           <button class="xb-login__facebook" mat-raised-button >
             <div fxLayout="row" fxLayoutAlign="start center">
               <i class="iconfontXberts icon-ic-facebook"></i>
               <span class="md-align-center" fxFlex>Continue with Facebook</span>
             </div>
           </button>
-          <button class="xb-login__google" mat-raised-button>
+          <button class="xb-login__google" mat-raised-button (click)="googleLogin('google')">
             <div fxLayout="row" fxLayoutAlign="start center">
               <i class="iconfontXberts icon-pic-google"></i>
               <span class="md-align-center" fxFlex>Continue with Google</span>
             </div>
           </button>
         </div>
-        <div class="md-margin-top-2" >Already have an account?
+        <div class="md-margin-top-2">Already have an account?
           <a class="text-underline md-dark-primary md-margin-left-1" routerLink="/cp/login">Log In</a>
         </div>
       </div>
       <div class="xb-login__container xb-login__auto" fxLayout="column" *ngIf="step == 1">
+        <div class="xb-login__login-title">Set Up Your Store</div>
         <div class="xb-login__error md-margin-bottom-2" *ngIf="storeErr">{{storeErr}}</div>
         <form [formGroup]="storeForm" (ngSubmit)="complete()" novalidate>
           <div fxFLex class="xb-login__width">
@@ -97,7 +99,7 @@
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">
             <div>
-              https://www.socialcommer.net/store/
+              https://www.socialcommer.com/store/
             </div>
             <mat-form-field class="md-margin-left-2 xb-login__width" >
               <input matInput formControlName="displayName">
@@ -179,26 +181,28 @@
         <button mat-raised-button color="primary" type="submit">SIGN UP</button>
       </div>
     </form>
-    <div class="md-align-center md-margin-top-2 md-margin-bottom-2" [hidden]="true">OR</div>
+
     <div [hidden]="true">
+      <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
       <button class="xb-login__facebook" mat-raised-button >
         <div fxLayout="row" fxLayoutAlign="start center">
           <i class="iconfontXberts icon-ic-facebook"></i>
           <span class="md-align-center" fxFlex>Continue with Facebook</span>
         </div>
       </button>
-      <button class="xb-login__google" mat-raised-button>
+      <button class="xb-login__google" mat-raised-button (click)="googleLogin('google')">
         <div fxLayout="row" fxLayoutAlign="start center">
           <i class="iconfontXberts icon-pic-google"></i>
           <span class="md-align-center" fxFlex>Continue with Google</span>
         </div>
       </button>
     </div>
-    <div class="md-margin-top-2" >Already have an account?
+    <div class="md-margin-top-2">Already have an account?
       <a class="text-underline md-dark-primary md-margin-left-1" (click)="openLogIn()">Log In</a>
     </div>
   </div>
   <div fxLayout="column" *ngIf="step == 1">
+    <div class="xb-login__login-title">Set Up Your Store</div>
     <div class="xb-login__error md-margin-bottom-2" *ngIf="storeErr">{{storeErr}}</div>
     <form [formGroup]="storeForm" (ngSubmit)="complete()" novalidate>
       <div fxFLex class="xb-login__width">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -10,6 +10,9 @@ import { UserService } from '../../shared/services/user/user.service';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { ResetPasswordComponent } from "../reset-password/reset-password.component";
 import { InviteCodeComponent } from "../invite-code/invite-code.component";
+
+import { AuthService } from "angular2-social-login";
+import { SystemConstant } from '../../config/app.api';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +26,8 @@ export class LoginComponent implements OnInit {
 
   loginErr : any = false;
 
+  token: any;
+
   //存储错误信息
   formErrors = {
     'username': '',
@@ -32,8 +37,7 @@ export class LoginComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'username': {
-      'required': 'This field is required',
-      'email': 'Please enter a valid email address.'
+      'required': 'This field is required'
     },
     'password':{
       'required': 'This field is required',
@@ -42,6 +46,7 @@ export class LoginComponent implements OnInit {
   };
 
   public dialogRef: MatDialogRef<LoginComponent>;
+  sub: any;
 
   constructor(
     private router: Router,
@@ -49,12 +54,12 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthenticationService,
     private userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public _auth: AuthService
   ) {
     this.loginGroup = this.fb.group({
       username: ['', [
-        Validators.required,
-        Validators.email
+        Validators.required
       ]],
       password: ['', [
         Validators.required,
@@ -63,7 +68,9 @@ export class LoginComponent implements OnInit {
     });
 
     this.loginGroup.valueChanges.subscribe(data => this.onValueChanged(data));
+
   }
+
 
   /**
    * 表单值改变时，重新校验
@@ -129,6 +136,16 @@ export class LoginComponent implements OnInit {
 
   }
 
+  googleLogin(provider) {
+    this.sub = this._auth.login(provider).subscribe(
+      (data) => {
+        console.log(data);
+        //user data
+        //name, image, uid, provider, uid, email, token (accessToken for Facebook & google, no token for linkedIn), idToken(only for google)
+      }
+    )
+  }
+
   openSignUp(): void {
     this.close();
 
@@ -175,5 +192,9 @@ export class LoginComponent implements OnInit {
     if(this.dialogRef) {
       this.dialogRef.close();
     }
+  }
+
+  ngOnDestroy(){
+    this.sub.unsubscribe();
   }
 }

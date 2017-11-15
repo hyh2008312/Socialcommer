@@ -2,6 +2,9 @@
 @import "../styles/_variables";
 
 .xb-shop{
+  &__bg-content{
+    height: calc(100vh - 56px);
+  }
   &__avatar{
     width: 24px;
     height: 24px;
@@ -833,6 +836,32 @@
     overflow: hidden;
     padding: 16px;
   }
+
+  &__pop-bg{
+    position: relative;
+    padding: 8px 0 8px 8px;
+    cursor: pointer;
+    &-list{
+      position: absolute;
+      right: 0;
+      top: 100%;
+      padding: 0 16px;
+      line-height: 36px;
+      text-align: center;
+      background-color: $lightWhiteColor;
+      @include resetBorder();
+      font-size: 16px;
+      z-index: 100;
+      display: none;
+    }
+
+    $parent: &;
+    &:hover{
+      #{$parent}-list{
+        display: block;
+      }
+    }
+  }
 }
 
 .xb-category{
@@ -936,7 +965,7 @@
   }
 
   &__margin-top{
-    margin-top: 80px;
+    margin-top: 32px;
   }
 }
 

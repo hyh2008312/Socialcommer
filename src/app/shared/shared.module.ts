@@ -50,6 +50,8 @@ import { InviteCodeComponent } from "../login/invite-code/invite-code.component"
 
 import { LoginService } from '../login/login.service';
 
+import { Angular2SocialLoginModule } from "angular2-social-login";
+
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -67,6 +69,12 @@ import {
   MatPaginatorModule,
   MatSnackBarModule
 } from '@angular/material';
+
+let providers = {
+  "google": {
+    "clientId": "529488372185-82kq2cmll3jlrpm2n6537mef1093ofip.apps.googleusercontent.com"
+  }
+};
 
 @NgModule({
   imports: [
@@ -91,7 +99,8 @@ import {
     MatRadioModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    Angular2SocialLoginModule
   ],
   declarations: [
     SafeHtmlPipe,
@@ -194,3 +203,4 @@ import {
   ]
 })
 export class SharedModule { }
+Angular2SocialLoginModule.loadProvidersScripts(providers);

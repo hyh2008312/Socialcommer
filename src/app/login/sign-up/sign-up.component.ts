@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -12,6 +12,9 @@ import { Subject } from "rxjs/Subject";
 
 import { LoginComponent } from '../login/login.component';
 
+import { AuthService } from "angular2-social-login";
+import { SystemConstant } from '../../config/app.api';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -21,6 +24,9 @@ import { LoginComponent } from '../login/login.component';
 export class SignUpComponent {
 
   step: number = 0;
+
+  token: any;
+  public systemConstant: SystemConstant = new SystemConstant();
 
   country: string;
   currency: string;
@@ -34,6 +40,8 @@ export class SignUpComponent {
 
   public signUpErr: any = false;
   public storeErr: any = false;
+
+  sub: any;
 
   //存储错误信息
   formErrors = {
@@ -56,8 +64,7 @@ export class SignUpComponent {
       'required': 'This field is required.',
     },
     'email':{
-      'required': 'This field is required.',
-      'email': 'Please enter a valid email address.'
+      'required': 'This field is required.'
     },
     'password':{
       'required': 'This field is required.',
@@ -88,14 +95,14 @@ export class SignUpComponent {
     private auth: AuthenticationService,
     private routerInfo :ActivatedRoute,
     private userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public _auth: AuthService
   ) {
     this.signUpGroup = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [
-        Validators.required,
-        Validators.email
+        Validators.required
       ]],
       country: ['', Validators.required],
       password: ['', [
@@ -193,6 +200,16 @@ export class SignUpComponent {
     });
   }
 
+  googleLogin(provider) {
+    this.sub = this._auth.login(provider).subscribe(
+      (data) => {
+        console.log(data);
+        //user data
+        //name, image, uid, provider, uid, email, token (accessToken for Facebook & google, no token for linkedIn), idToken(only for google)
+      }
+    )
+  }
+
   complete() {
     if(!this.storeForm.valid) {
       return;
@@ -234,6 +251,10 @@ export class SignUpComponent {
     if(this.dialogRef) {
       this.dialogRef.close();
     }
+  }
+
+  ngOnDestroy(){
+    this.sub.unsubscribe();
   }
 
 }

@@ -1514,6 +1514,8 @@ textarea.mat-input-element {
     .mat-dialog-container {
       background-color: transparent; } }
 
+.xb-shop__bg-content {
+  height: calc(100vh - 56px); }
 .xb-shop__avatar {
   width: 24px;
   height: 24px;
@@ -2119,6 +2121,27 @@ textarea.mat-input-element {
   border-radius: 4px;
   overflow: hidden;
   padding: 16px; }
+.xb-shop__pop-bg {
+  position: relative;
+  padding: 8px 0 8px 8px;
+  cursor: pointer; }
+  .xb-shop__pop-bg-list {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    padding: 0 16px;
+    line-height: 36px;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+    -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+    font-size: 16px;
+    z-index: 100;
+    display: none; }
+  .xb-shop__pop-bg:hover .xb-shop__pop-bg-list {
+    display: block; }
 
 .xb-category__title {
   height: 56px;
@@ -2196,6 +2219,6 @@ textarea.mat-input-element {
     line-height: 28px;
     font-weight: 400; }
   .xb-affiliate-dialog__margin-top {
-    margin-top: 80px; }
+    margin-top: 32px; }
 
 /*# sourceMappingURL=shop.css.map */

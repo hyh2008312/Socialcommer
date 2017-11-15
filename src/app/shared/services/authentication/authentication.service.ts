@@ -81,7 +81,6 @@ export class AuthenticationService implements AuthService {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('expireDate');
-    location.reload(true);
   }
 
 }

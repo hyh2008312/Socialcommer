@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ShopService } from '../shop.service';
 import { UserService } from  '../../shared/services/user/user.service';
+import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-shop',
@@ -13,10 +15,13 @@ export class ShopComponent implements OnInit {
 
   avatar: any = false;
   storeName: any = false;
+  isPopOpen: boolean = false;
 
   constructor(
     private userService: UserService,
-    private shopService: ShopService
+    private shopService: ShopService,
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
     let self = this;
     self.userService.currentUser.subscribe((data) => {
@@ -35,6 +40,15 @@ export class ShopComponent implements OnInit {
     self.shopService.getCategoryList().then((data) => {
       self.userService.addUserCategory(data);
     });
+  }
+
+  openPop() {
+    this.isPopOpen = !this.isPopOpen;
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/cp/login']);
   }
 
 }

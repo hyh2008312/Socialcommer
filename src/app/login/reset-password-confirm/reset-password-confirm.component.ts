@@ -44,9 +44,9 @@ export class ResetPasswordConfirmComponent implements OnInit {
     let token = this.activatedRoute.snapshot.params['token'];
 
     let self = this;
-    //this.loginService.getResetPasswordConfirm({uid,token}).then((data)=> {
-    //  self.email = data.email;
-    //});
+    this.loginService.getResetPasswordConfirm({uid,token}).then((data)=> {
+      self.email = data.email;
+    });
   }
 
   //存储错误信息

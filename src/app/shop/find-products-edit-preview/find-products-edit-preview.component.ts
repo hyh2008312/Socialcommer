@@ -318,7 +318,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
     let self = this;
     this.shopService.createProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'published'}, replaceUrl: true});
+      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'published'}, replaceUrl: true});
     });
   }
 
@@ -355,7 +355,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
     let self = this;
     this.shopService.createProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings'], { queryParams: {tab: 'draft'}, replaceUrl: true});
+      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'draft'}, replaceUrl: true});
     });
   }
 

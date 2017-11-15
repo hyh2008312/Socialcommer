@@ -10,8 +10,4 @@ if (environment.production) {
 
 }
 
-window['reloadUser'] = function() {
-  window.location.reload(true);
-};
-
-platformBrowserDynamic().bootstrapModule(AppModule);
+platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
