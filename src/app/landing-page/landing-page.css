@@ -1633,7 +1633,8 @@ textarea.mat-input-element {
         margin-top: 32px; } }
   .xb-landing-page__title-2 {
     font-size: 24px;
-    line-height: 32px; }
+    line-height: 32px;
+    text-align: center; }
     @media screen and (max-width: 599px) {
       .xb-landing-page__title-2 {
         font-size: 16px;
@@ -1678,7 +1679,8 @@ textarea.mat-input-element {
   .xb-landing-page__content-2 {
     font-size: 18px;
     line-height: 24px;
-    font-weight: 300; }
+    font-weight: 300;
+    text-align: center; }
     @media screen and (max-width: 599px) {
       .xb-landing-page__content-2 {
         font-size: 14px;
