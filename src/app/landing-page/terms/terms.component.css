@@ -1509,10 +1509,13 @@ textarea.mat-input-element {
 .mat-dialog-container {
   max-width: 100vw !important;
   padding: 0 !important;
-  overflow: hidden; }
+  overflow: hidden !important; }
   @media screen and (max-width: 599px) {
     .mat-dialog-container {
       background-color: transparent; } }
+
+.cdk-overlay-pane {
+  min-width: 100vw; }
 
 .xb-about {
   height: 100vh;

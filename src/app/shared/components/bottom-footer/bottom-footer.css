@@ -1514,6 +1514,9 @@ textarea.mat-input-element {
     .mat-dialog-container {
       background-color: transparent; } }
 
+.cdk-overlay-pane {
+  width: 100vw; }
+
 .xb-bottom-footer__footer {
   background-color: #252525;
   padding: 24px 0;

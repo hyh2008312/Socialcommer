@@ -1514,6 +1514,9 @@ textarea.mat-input-element {
     .mat-dialog-container {
       background-color: transparent; } }
 
+.cdk-overlay-pane {
+  min-width: 100vw; }
+
 .preview-label {
   width: 64px;
   height: 64px;
