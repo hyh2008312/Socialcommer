@@ -47,6 +47,7 @@ import { SignUpComponent } from '../login/sign-up/sign-up.component';
 import { ResetPasswordComponent } from '../login/reset-password/reset-password.component';
 import { ResetPasswordConfirmComponent } from '../login/reset-password-confirm/reset-password-confirm.component';
 import { InviteCodeComponent } from "../login/invite-code/invite-code.component";
+import { GoogleSignInComponent } from 'angular-google-signin';
 
 import { LoginService } from '../login/login.service';
 
@@ -121,7 +122,8 @@ import {
     SignUpComponent,
     ResetPasswordComponent,
     ResetPasswordConfirmComponent,
-    InviteCodeComponent
+    InviteCodeComponent,
+    GoogleSignInComponent
   ],
   exports: [
     SafeHtmlPipe,

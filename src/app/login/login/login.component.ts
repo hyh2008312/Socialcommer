@@ -11,6 +11,9 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 import { ResetPasswordComponent } from "../reset-password/reset-password.component";
 import { InviteCodeComponent } from "../invite-code/invite-code.component";
 
+import { GoogleSignInSuccess } from 'angular-google-signin';
+import { SystemConstant } from '../../config/app.api';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,6 +26,8 @@ export class LoginComponent implements OnInit {
 
   loginErr : any = false;
 
+  token: any;
+
   //存储错误信息
   formErrors = {
     'username': '',
@@ -32,8 +37,7 @@ export class LoginComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'username': {
-      'required': 'This field is required',
-      'email': 'Please enter a valid email address.'
+      'required': 'This field is required'
     },
     'password':{
       'required': 'This field is required',
@@ -42,6 +46,7 @@ export class LoginComponent implements OnInit {
   };
 
   public dialogRef: MatDialogRef<LoginComponent>;
+  public systemConstant: SystemConstant = new SystemConstant();
 
   constructor(
     private router: Router,
@@ -53,8 +58,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginGroup = this.fb.group({
       username: ['', [
-        Validators.required,
-        Validators.email
+        Validators.required
       ]],
       password: ['', [
         Validators.required,
@@ -63,7 +67,14 @@ export class LoginComponent implements OnInit {
     });
 
     this.loginGroup.valueChanges.subscribe(data => this.onValueChanged(data));
+
   }
+
+  onGoogleSignInSuccess(event: GoogleSignInSuccess) {
+    let googleUser: gapi.auth2.GoogleUser = event.googleUser;
+    this.token = googleUser.getAuthResponse().id_token;
+  }
+
 
   /**
    * 表单值改变时，重新校验
@@ -127,6 +138,41 @@ export class LoginComponent implements OnInit {
       self.loginErr = data;
     });
 
+  }
+
+  googleLogin() {
+    let self = this;
+    self.service.googleLogin({
+      id_token: this.token
+    }).then((data) => {
+      if(data) {
+        self.loginErr = false;
+        let token = {
+          access_token: data.token.accessToken,
+          refresh_token: data.token.refreshToken,
+          expires_in: data.token.expiresIn,
+        };
+        self.auth.setAccessToken(token);
+        self.userService.addUser(data.user);
+        self.auth.inviteToken(data.user.isInvite);
+        if(data.user && data.user.store && data.user.store.length > 0) {
+          self.userService.addStore(data.user.store[0]);
+        }
+
+        if(data.user && data.user.isInvite) {
+          self.close();
+          self.router.navigate(['/shop/dashboard']);
+        } else {
+          if(self.dialogRef) {
+            self.dialogRef.close();
+            self.openInviteCode();
+          } else {
+            self.router.navigate(['/cp/invitation']);
+          }
+        }
+      }
+
+    });
   }
 
   openSignUp(): void {

@@ -29,6 +29,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angular-cropperjs": "^0.1.5",
+    "angular-google-signin": "^0.1.5",
     "angular2-moment": "^1.6.0",
     "angular4-carousel": "^3.1.8",
     "body-parser": "^1.17.2",
@@ -43,7 +44,6 @@
     "prerender-node": "^2.7.2",
     "rxjs": "^5.1.0",
     "throng": "^4.0.0",
-    "typescript": "^2.2.2",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -62,6 +62,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "typescript": "^2.3.1"
   }
 }

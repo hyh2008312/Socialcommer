@@ -1,3 +1,8 @@
+<div class="xb-login__hidden">
+  <google-signin [clientId]="systemConstant.googleClientId"
+                 (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+  </google-signin>
+</div>
 <div class="xb-login__scroll background-bg-light" fxShow.xs="false"  fxLayout="row" fxLayoutAlign="stretch stretch">
   <div fxLayout="column" fxFlex>
     <div class="background-bg-white">
@@ -29,7 +34,7 @@
             <button mat-raised-button color="primary" type="submit">LOG IN</button>
           </div>
         </form>
-        <div class="md-align-center md-margin-top-2 md-margin-bottom-2" [hidden]="true">OR</div>
+        <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
         <div [hidden]="true">
           <button class="xb-login__facebook" mat-raised-button >
             <div fxLayout="row" fxLayoutAlign="start center">
@@ -37,14 +42,14 @@
               <span class="md-align-center" fxFlex>Continue with Facebook</span>
             </div>
           </button>
-          <button class="xb-login__google" mat-raised-button>
-            <div fxLayout="row" fxLayoutAlign="start center">
-              <i class="iconfontXberts icon-pic-google"></i>
-              <span class="md-align-center" fxFlex>Continue with Google</span>
-            </div>
-          </button>
         </div>
-        <div class="md-margin-top-2" >Don't have an account?
+        <button class="xb-login__google" mat-raised-button (click)="googleLogin()">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <i class="iconfontXberts icon-pic-google"></i>
+            <span class="md-align-center" fxFlex>Continue with Google</span>
+          </div>
+        </button>
+        <div>Don't have an account?
           <a class="text-underline md-margin-left-1 md-dark-primary" routerLink="/cp/signUp">Sign Up</a>
         </div>
       </div>
@@ -80,7 +85,7 @@
       <button mat-raised-button color="primary" type="submit">LOG IN</button>
     </div>
   </form>
-  <div class="md-align-center md-margin-top-2 md-margin-bottom-2" [hidden]="true">OR</div>
+  <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
   <div [hidden]="true">
     <button class="xb-login__facebook" mat-raised-button >
       <div fxLayout="row" fxLayoutAlign="start center">
@@ -88,14 +93,14 @@
         <span class="md-align-center" fxFlex>Continue with Facebook</span>
       </div>
     </button>
-    <button class="xb-login__google" mat-raised-button>
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <i class="iconfontXberts icon-pic-google"></i>
-        <span class="md-align-center" fxFlex>Continue with Google</span>
-      </div>
-    </button>
   </div>
-  <div class="md-margin-top-2" >Don't have an account?
+  <button class="xb-login__google" mat-raised-button (click)="googleLogin()">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <i class="iconfontXberts icon-pic-google"></i>
+      <span class="md-align-center" fxFlex>Continue with Google</span>
+    </div>
+  </button>
+  <div >Don't have an account?
     <a class="text-underline md-margin-left-1 md-dark-primary" (click)="openSignUp()">Sign Up</a>
   </div>
 </div>

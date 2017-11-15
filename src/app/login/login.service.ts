@@ -47,6 +47,24 @@ export class LoginService {
       .catch(this.handleError);
   }
 
+  googleLogin(token:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}user/google_sign/`;
+
+    token.client_id = this.systemConstant.clientId;
+
+    return this.http.post(url, token, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   signUp(object: any): Promise<SignUp> {
 
     let headers = new Headers({

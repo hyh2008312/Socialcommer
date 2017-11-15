@@ -12,6 +12,9 @@ import { Subject } from "rxjs/Subject";
 
 import { LoginComponent } from '../login/login.component';
 
+import { GoogleSignInSuccess } from 'angular-google-signin';
+import { SystemConstant } from '../../config/app.api';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -21,6 +24,9 @@ import { LoginComponent } from '../login/login.component';
 export class SignUpComponent {
 
   step: number = 0;
+
+  token: any;
+  public systemConstant: SystemConstant = new SystemConstant();
 
   country: string;
   currency: string;
@@ -56,8 +62,7 @@ export class SignUpComponent {
       'required': 'This field is required.',
     },
     'email':{
-      'required': 'This field is required.',
-      'email': 'Please enter a valid email address.'
+      'required': 'This field is required.'
     },
     'password':{
       'required': 'This field is required.',
@@ -94,8 +99,7 @@ export class SignUpComponent {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [
-        Validators.required,
-        Validators.email
+        Validators.required
       ]],
       country: ['', Validators.required],
       password: ['', [
@@ -124,6 +128,11 @@ export class SignUpComponent {
         this.step = 1;
       }
     });
+  }
+
+  onGoogleSignInSuccess(event: GoogleSignInSuccess) {
+    let googleUser: gapi.auth2.GoogleUser = event.googleUser;
+    this.token = googleUser.getAuthResponse().id_token;
   }
 
   /**
@@ -190,6 +199,25 @@ export class SignUpComponent {
       });
     }).catch((data) => {
       self.signUpErr = data;
+    });
+  }
+
+  googleLogin(data: any) {
+    let self = this;
+    self.service.googleLogin({
+      id_token: self.token
+    }).then((data) => {
+      if(data) {
+        self.signUpErr = false;
+        let token = {
+          access_token: data.token.accessToken,
+          refresh_token: data.token.refreshToken,
+          expires_in: data.token.expiresIn,
+        };
+        self.auth.setAccessToken(token);
+        self.step = 1;
+      }
+
     });
   }
 

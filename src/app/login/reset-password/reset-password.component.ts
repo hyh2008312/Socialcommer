@@ -24,8 +24,7 @@ export class ResetPasswordComponent implements OnInit {
   ) {
     this.resetForm = this.fb.group({
       email: ['', [
-        Validators.required,
-        Validators.email
+        Validators.required
       ]]
     });
 
@@ -43,8 +42,7 @@ export class ResetPasswordComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'email': {
-      'required': 'This field is required.',
-      'email': 'Invalid type.'
+      'required': 'This field is required.'
     }
   };
 
