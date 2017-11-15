@@ -1514,8 +1514,9 @@ textarea.mat-input-element {
     .mat-dialog-container {
       background-color: transparent; } }
 
-.cdk-overlay-pane {
-  min-width: 100vw; }
+@media screen and (max-width: 599px) {
+  .cdk-overlay-pane {
+    min-width: 100vw; } }
 
 button, html, body, input, select, textarea {
   font-family: Roboto,Helvetica Neue,sans-serif; }
@@ -3525,8 +3526,9 @@ textarea.mat-input-element {
     .mat-dialog-container {
       background-color: transparent; } }
 
-.cdk-overlay-pane {
-  min-width: 100vw; }
+@media screen and (max-width: 599px) {
+  .cdk-overlay-pane {
+    min-width: 100vw; } }
 
 html {
   position: relative;

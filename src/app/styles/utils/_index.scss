@@ -85,5 +85,7 @@ textarea.mat-input-element{
 }
 
 .cdk-overlay-pane{
-  min-width: 100vw;
+  @include xb-xs-screen{
+    min-width: 100vw;
+  }
 }

@@ -1514,7 +1514,8 @@ textarea.mat-input-element {
     .mat-dialog-container {
       background-color: transparent; } }
 
-.cdk-overlay-pane {
-  min-width: 100vw; }
+@media screen and (max-width: 599px) {
+  .cdk-overlay-pane {
+    min-width: 100vw; } }
 
 /*# sourceMappingURL=snack-bar-success.css.map */
