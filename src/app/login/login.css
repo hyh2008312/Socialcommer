@@ -1520,6 +1520,7 @@ textarea.mat-input-element {
 
 .xb-login__container {
   max-width: 400px;
+  margin: 32px 0;
   padding: 40px 40px 54px;
   background-color: #fff;
   border-radius: 4px;
@@ -1529,6 +1530,7 @@ textarea.mat-input-element {
   width: 100%; }
   @media screen and (max-width: 599px) {
     .xb-login__container {
+      margin: 32px 0;
       padding: 40px 16px 56px; } }
   @media screen and (min-width: 600px) and (max-width: 959px) {
     .xb-login__container {

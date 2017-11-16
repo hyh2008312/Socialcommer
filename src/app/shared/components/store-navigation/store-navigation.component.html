@@ -1,8 +1,8 @@
 <div class="xb-store__navigation-bg">
   <div class="xb-store__navigation-scroll" fxLayout="row" fxLayoutAlign="start center" fxShow="false" fxShow.xs="true">
-    <div class="xb-store__navigation" *ngFor="let item of categories;let i = index;" (click)="changeCategory(item)"
+    <div fxFlex="none" class="xb-store__navigation" *ngFor="let item of categories;let i = index;" (click)="changeCategory(item)"
          [ngClass]="{'active': item.name == category.name, 'xb-store__margin-right': i < categories.length - 1,
-         'md-margin-left-2':i == 0}">
+         'md-padding-right-2': i == categories.length - 1, 'md-margin-left-2':i == 0}">
       <span>{{ item.name }}</span>
     </div>
   </div>

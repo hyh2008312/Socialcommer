@@ -4,12 +4,14 @@
 .xb-login{
   &__container{
     max-width: 400px;
+    margin: 32px 0;
     padding: 40px 40px 54px;
     background-color: $whiteColor;
     border-radius: 4px;
     @include box-shadow(0 0 3px 1px rgba(0, 0, 0, 0.19));
     width: 100%;
     @include xb-xs-screen{
+      margin: 0;
       padding: 40px 16px 56px;
     }
     @include xb-sm-screen{

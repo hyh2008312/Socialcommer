@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 
@@ -35,13 +36,15 @@ export class MainPageComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService,
-    private media: ObservableMedia
+    private media: ObservableMedia,
+    private titleService: Title
   ) {
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
     this.storeService.getStore(storeName).then((data) => {
       self.store = data;
       self.text = data.description;
+      self.titleService.setTitle(data.description);
       if(data.category.length > 1) {
         self.categories = [{name: 'All'}, ...data.category];
       } else {
