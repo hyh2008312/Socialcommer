@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Title,Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { StoreService } from '../../store.service';
@@ -33,14 +33,16 @@ export class StoreListComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService,
-    private titleService: Title
+    private titleService: Title,
+    private metaService: Meta
   ) {
 
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
     this.storeService.getStore(storeName).then((data) => {
       self.store = data;
-      self.titleService.setTitle(data.description);
+      self.titleService.setTitle(data.name);
+      self.metaService.addTag({name: 'description', content: data.description});
       self.categories = [...data.category];
       self.category = self.categories[0];
       self.storeService.addStore(data);
