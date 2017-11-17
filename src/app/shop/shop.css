@@ -1709,6 +1709,9 @@ textarea.mat-input-element {
     line-height: 88px;
     right: 0;
     top: 0; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__dashboard-card {
+      margin-bottom: 16px; } }
 .xb-shop__dashboard-number {
   font-size: 34px;
   line-height: 34px;
@@ -2090,7 +2093,8 @@ textarea.mat-input-element {
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 10px;
   cursor: pointer;
-  background-color: #fff; }
+  background-color: #fff;
+  margin-bottom: 16px; }
   .xb-shop__toDo-card:hover {
     -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
@@ -2105,6 +2109,19 @@ textarea.mat-input-element {
     margin-top: 24px;
     font-weight: 600;
     text-align: center; }
+.xb-shop__toDo-margin-left {
+  margin-left: 16px; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__toDo-margin-left {
+      margin-left: 0; } }
+.xb-shop__toDo-margin-left-1 {
+  margin-left: 24px; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__toDo-margin-left-1 {
+      margin-left: 0; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-shop__toDo-margin-left-1 {
+      margin-left: 0; } }
 .xb-shop__statistic {
   height: 48px; }
   .xb-shop__statistic-text {

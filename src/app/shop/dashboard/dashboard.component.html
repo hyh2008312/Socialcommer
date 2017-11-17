@@ -5,23 +5,24 @@
         <div class="xb-shop__dashboard-number xb-bold xb-shop__dashboard-margin-right">Overview</div>
         <app-catalog-time-select [time]="timeOverview" (timeChange)="getStore($event)" [times]="times"></app-catalog-time-select>
       </div>
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex="24">
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center"
+           fxLayout.xs="column" fxLayoutAlign.xs="start stretch" fxLayoutWrap>
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex.gt-sm="24" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-view" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.viewTotal}}</div>
           <div>Total Views</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2" fxFlex="24">
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2" fxFlex.gt-sm="24" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-victor" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.visitorTotal}}</div>
           <div>Total Visitors</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3" fxFlex="24">
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3" fxFlex.gt-sm="24" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-cart" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.clickTotal}}</div>
           <div class="">Total Click-to-Buy</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4" fxFlex="24">
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4" fxFlex.gt-sm="24" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-shop" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.listingTotal}}</div>
           <div>Listings</div>

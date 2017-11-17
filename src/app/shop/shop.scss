@@ -277,6 +277,10 @@
         right: 0;
         top: 0;
       }
+
+      @include xb-xs-screen{
+        margin-bottom: 16px;
+      }
     }
 
     &-number{
@@ -791,6 +795,7 @@
       border-radius: 10px;
       cursor: pointer;
       background-color: $whiteColor;
+      margin-bottom: 16px;
       &:hover{
         @include box-shadow(0 0 3px 0 rgba(0,0,0,.19))
       }
@@ -807,6 +812,26 @@
         margin-top: 24px;
         @include media();
         text-align: center;
+      }
+    }
+
+    &-margin-left{
+      margin-left: 24px;
+
+      @include xb-xs-screen{
+        margin-left: 0;
+      }
+    }
+
+    &-margin-left-1{
+      margin-left: 24px;
+
+      @include xb-xs-screen{
+        margin-left: 0;
+      }
+
+      @include xb-sm-screen{
+        margin-left: 0;
       }
     }
   }
