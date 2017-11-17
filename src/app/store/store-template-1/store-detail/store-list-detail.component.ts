@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { StoreService } from '../store.service';
-import { Store, Product, Image } from '../store';
+import { StoreService } from '../../store.service';
+import { Store, Product, Image } from '../../store';
 
 @Component({
   selector: 'app-store-list-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../store.scss']
+  styleUrls: ['../../store.scss']
 })
 
 export class StoreListDetailComponent implements OnInit {

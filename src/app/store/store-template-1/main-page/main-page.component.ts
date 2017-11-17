@@ -3,13 +3,13 @@ import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 
-import { StoreService } from '../store.service';
-import { Store } from '../store';
+import { StoreService } from '../../store.service';
+import { Store } from '../../store';
 
 @Component({
-  selector: 'app-main-page',
+  selector: 'app-store-template-1',
   templateUrl: './main-page.component.html',
-  styleUrls: ['../store.scss','../../shop/shop.scss']
+  styleUrls: ['../../store.scss','../../../shop/shop.scss']
 })
 
 export class MainPageComponent implements OnInit {
@@ -39,6 +39,7 @@ export class MainPageComponent implements OnInit {
     private media: ObservableMedia,
     private titleService: Title
   ) {
+    console.log(this.activatedRoute.snapshot)
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
     this.storeService.getStore(storeName).then((data) => {
