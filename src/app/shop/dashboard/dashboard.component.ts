@@ -12,8 +12,8 @@ import { UserService } from  '../../shared/services/user/user.service';
 
 export class DashboardComponent implements OnInit {
 
-  timeOverview: string = 'All Time';
-  timeStatistic: string = 'All Time';
+  timeOverview: string = 'Yesterday';
+  timeStatistic: string = 'Yesterday';
 
   times = [{
     code: 'Yesterday',

@@ -1879,6 +1879,7 @@ textarea.mat-input-element {
   height: 408px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 24px;
   border-radius: 2px;
   -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
   -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
