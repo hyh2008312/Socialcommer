@@ -1824,7 +1824,7 @@ textarea.mat-input-element {
   .xb-shop__card-content {
     position: relative;
     padding: 8px 16px 16px;
-    height: 208px; }
+    height: 130px; }
   .xb-shop__card-title {
     height: 56px;
     line-height: 28px;
@@ -2110,7 +2110,7 @@ textarea.mat-input-element {
     font-weight: 600;
     text-align: center; }
 .xb-shop__toDo-margin-left {
-  margin-left: 16px; }
+  margin-left: 24px; }
   @media screen and (max-width: 599px) {
     .xb-shop__toDo-margin-left {
       margin-left: 0; } }

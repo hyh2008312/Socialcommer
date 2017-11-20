@@ -3118,13 +3118,15 @@ textarea.mat-input-element {
     color: #fff;
     text-align: center;
     font-size: 24px;
-    font-weight: 600; }
+    font-weight: 600;
+    z-index: 1; }
   .xb-store__store-title {
     font-size: 56px;
     font-weight: 600;
     color: #fff;
     text-align: center;
-    margin-top: 100px; }
+    margin-top: 100px;
+    z-index: 1; }
     @media screen and (max-width: 599px) {
       .xb-store__store-title {
         font-size: 24px;
@@ -3140,7 +3142,8 @@ textarea.mat-input-element {
     font-size: 16px;
     line-height: 24px;
     max-height: 72px;
-    overflow: hidden; }
+    overflow: hidden;
+    z-index: 1; }
     @media screen and (max-width: 599px) {
       .xb-store__store-description {
         margin-top: 16px;

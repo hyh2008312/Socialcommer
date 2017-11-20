@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
 import { Router,ActivatedRoute } from '@angular/router';
 
 import { StoreService } from '../../store.service';
@@ -24,9 +23,7 @@ export class StoreDetailComponent implements OnInit {
   constructor(
     public router: Router,
     private activatedRouter: ActivatedRoute,
-    private storeService: StoreService,
-    private titleService: Title,
-    private metaService: Meta
+    private storeService: StoreService
   ) {
     let self = this;
     this.storeService.store.subscribe((data) => {
@@ -44,8 +41,11 @@ export class StoreDetailComponent implements OnInit {
     this.storeService.getProduct(id).then((data) => {
       self.product = data;
       self.text = data.title;
-      self.titleService.setTitle(data.title);
-      self.metaService.addTag({name: 'description', content: data.description});
+      self.storeService.addTitleDescription({
+        title: data.name,
+        description: data.description,
+        shareImage: data.imageUrl
+      });
       self.image = data.imageUrl;
       if(data.imageUrl.length > 0) {
         self.selectedImage = data.imageUrl[0];

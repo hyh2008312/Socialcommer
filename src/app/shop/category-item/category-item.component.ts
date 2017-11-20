@@ -33,7 +33,7 @@ export class CategoryItemComponent implements OnInit {
     let dialogRef = this.dialog.open(CategoryDeleteDialogComponent, {
       data: {
         category : this.category,
-        isDelete: this.isDelete,
+        isDelete: this.isDelete
       }
     });
 

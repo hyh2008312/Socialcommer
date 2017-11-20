@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response , Headers , RequestOptions, Jsonp, URLSearchParams } from '@angular/http';
+import { Title, Meta } from '@angular/platform-browser';
 
 import 'rxjs/add/operator/toPromise';
 import{ Subject, BehaviorSubject } from 'rxjs';
@@ -16,7 +17,9 @@ export class StoreService {
     private http: Http,
     private baseUrl: BaseApi,
     private dataUrl: DataApi,
-    private jsonp : Jsonp
+    private jsonp : Jsonp,
+    private titleService: Title,
+    private metaService: Meta
   ) { }
 
   createAuthorizationHeader(headers: Headers) {
@@ -125,6 +128,17 @@ export class StoreService {
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
+  }
+
+  addTitleDescription(data:any) {
+    this.titleService.setTitle(data.title);
+    this.metaService.addTag({name: 'description', content: data.description});
+    this.metaService.addTag({property: "og:title", content: data.title});
+    this.metaService.addTag({property: "og:description", content: data.description});
+    this.metaService.addTag({property: "og:image", content: data.shareImage});
+    this.metaService.addTag({property: "og:image:width", content: '600'});
+    this.metaService.addTag({property: "og:image:height", content: '315'});
+    this.metaService.addTag({property: "og:url", content: location.href});
   }
 
   private handleError (error: Response | any) {

@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 
@@ -36,17 +35,18 @@ export class MainPageComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService,
-    private media: ObservableMedia,
-    private titleService: Title,
-    private metaService: Meta
+    private media: ObservableMedia
   ) {
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
     this.storeService.getStore(storeName).then((data) => {
       self.store = data;
       self.text = data.description;
-      self.titleService.setTitle(data.name);
-      self.metaService.addTag({name: 'description', content: data.description});
+      self.storeService.addTitleDescription({
+        title: data.name,
+        description: data.description,
+        shareImage: data.imageUrl
+      });
       if(data.category.length > 1) {
         self.categories = [{name: 'All'}, ...data.category];
       } else {
@@ -71,7 +71,6 @@ export class MainPageComponent implements OnInit {
         } else {
           self.isMobile = false;
         }
-
       });
   }
 

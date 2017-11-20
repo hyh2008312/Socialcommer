@@ -67,8 +67,7 @@ export class SignUpComponent {
       'required': 'This field is required.'
     },
     'password':{
-      'required': 'This field is required.',
-      'minlength': 'Password must contain at least 6 characters.'
+      'required': 'This field is required.'
     },
     'country':{
       'required': 'Password is required.'
@@ -106,8 +105,7 @@ export class SignUpComponent {
       ]],
       country: ['', Validators.required],
       password: ['', [
-        Validators.required,
-        Validators.minLength(6)
+        Validators.required
       ]]
     });
 

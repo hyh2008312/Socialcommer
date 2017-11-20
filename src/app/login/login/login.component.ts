@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
       'required': 'This field is required'
     },
     'password':{
-      'required': 'This field is required',
-      'minlength': 'Password must contain at least 6 characters.'
+      'required': 'This field is required'
     }
   };
 
@@ -62,8 +61,7 @@ export class LoginComponent implements OnInit {
         Validators.required
       ]],
       password: ['', [
-        Validators.required,
-        Validators.minLength(6)
+        Validators.required
       ]]
     });
 

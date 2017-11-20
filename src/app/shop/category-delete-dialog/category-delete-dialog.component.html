@@ -2,10 +2,16 @@
   <div class="xb-share-dialog__close" (click)="close()" >
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
-  <div class="xb-affiliate-dialog__title">
+  <div class="xb-affiliate-dialog__title" *ngIf="data.category.count <= 0">
     Are you sure you want to delete this category?
   </div>
-  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center"  *ngIf="data.category.count <= 0">
     <button mat-raised-button color="primary" (click)="deleteCategory()">DELETE</button>
+  </div>
+  <div class="xb-affiliate-dialog__title" *ngIf="data.category.count > 0">
+    You cannot delete this category until you remove all the products from it.
+  </div>
+  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center"  *ngIf="data.category.count > 0">
+    <button mat-raised-button color="primary" (click)="close()">OKAY</button>
   </div>
 </div>
