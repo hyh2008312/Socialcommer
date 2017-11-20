@@ -9,6 +9,9 @@ const routes: Routes = [{
   children: [{
      path: ':name',
      loadChildren: 'app/store/store-template-1/store-template-1.module#StoreTemplateOneModule'
+  }, {
+    path: ':name',
+    loadChildren: 'app/store/store-template-3/store-template-3.module#StoreTemplateThreeModule'
   }]
 }];
 
