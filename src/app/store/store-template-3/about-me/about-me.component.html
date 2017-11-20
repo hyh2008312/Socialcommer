@@ -1,0 +1,12 @@
+<div class="xb-store-template__about">
+  <div class="xb-store-template__about-title">About Me</div>
+  <div class="xb-store-template__about-image-bg">
+    <img [src]="store.ownerAvatar">
+  </div>
+  <div class="md-margin-top-2 xb-store__content-text" *ngIf="store.userTag == ''">
+    {{store.ownerBiography}}
+  </div>
+  <div class="xb-store__template-user ql-editor md-margin-top-2"
+       [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">
+  </div>
+</div>

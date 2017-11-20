@@ -1,7 +1,13 @@
-<div>
-  <div>
-    Store Name
+<div class="xb-store-template__container xb-store-template__content" fxLayout="row" fxLayoutAlign="start start">
+  <div class="xb-store-template__left" fxFlex="none" fxShow.xs="false">
+    <div class="xb-store-template__store-name">
+      Store Name
+    </div>
+    <app-store-template-3-navigation></app-store-template-3-navigation>
   </div>
-  <app-store-template-3-navigation></app-store-template-3-navigation>
+
+  <div class="xb-store-template__right" fxFlex>
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<router-outlet></router-outlet>
+

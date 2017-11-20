@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-store-item-card',
   templateUrl: './store-item-card.component.html',
-  styleUrls: ['../../../shop/shop.css','../../store.scss']
+  styleUrls: ['../store-template-3.scss']
 })
 
 export class StoreItemCardComponent implements OnInit {
@@ -23,7 +23,7 @@ export class StoreItemCardComponent implements OnInit {
     let link = '';
     switch (this.status) {
       case 0:
-        link = `/detail/${this.product.id}`;
+        link = `/collection/${this.product.id}`;
         break;
       case 1:
         link = `/${this.product.id}`;

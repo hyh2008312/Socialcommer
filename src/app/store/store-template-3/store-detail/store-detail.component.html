@@ -1,65 +1,52 @@
-<div class="xb-store__background" (click)="close()">
-  <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.xs="true" fxShow.sm="true">
-    <i class="iconfontXberts icon-ic-close"></i>
+<div class="xb-store__details-padding-bottom" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column">
+  <div class="xb-store__details-margin-right">
+    <app-left-products-image [images]="image" [selectedImage]="selectedImage"
+                             [imageSources]="imageSources"></app-left-products-image>
   </div>
-  <div class="xb-store__details" (click)="$event.stopPropagation();">
-    <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-sm="true">
-      <i class="iconfontXberts icon-ic-close"></i>
-    </div>
-    <div class="xb-store__nav" fxLayout="row" fxLayoutAlign="center center" fxShow="false" fxShow.xs="show">
-      Your store name here
-    </div>
-    <div class="xb-store__details-padding-bottom" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column">
-      <div class="xb-store__details-margin-right">
-        <app-left-products-image [images]="image" [selectedImage]="selectedImage"
-          [imageSources]="imageSources"></app-left-products-image>
-      </div>
-      <div class="xb-store__details-content" fxFlex>
-        <div>{{product.categoryName}}</div>
-        <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
-          <div class="line-through md-margin-left-2" *ngIf="product.originalPriceAmount > 0">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
-          <div class="xb-store__details-sale md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
-            {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
-          </div>
-        </div>
-        <a class="xb-store__details-buttons" fxLayout="column" href="{{product.purchaseUrl}}" target="_blank"
-          (click)="openLink()">
-          <button mat-raised-button color="primary">GET IT NOW</button>
-        </a>
-        <div class="md-margin-top-2">
-          <app-share-button [link]="shareLink" [text]="text"></app-share-button>
-        </div>
+  <div class="xb-store__details-content" fxFlex>
+    <div>{{product.categoryName}}</div>
+    <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-store__details-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
+      <div class="line-through md-margin-left-2" *ngIf="product.originalPriceAmount > 0">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+      <div class="xb-store__details-sale md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
+        {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
       </div>
     </div>
-    <div class="xb-store__details-padding-top" *ngIf="product.recommendation">
-      <div class="xb-store__title">Store Owner Says</div>
-      <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
-        <div class="xb-store__content-left" fxFlex="none">
-          <div class="xb-store__header">
-            <img [src]="store.ownerAvatar">
-          </div>
-          <div class="md-subhead md-margin-top-2">{{store.ownerFirstName}}</div>
-          <div class="md-margin-top-1"> {{store.ownerCountry}}</div>
-        </div>
-        <div class="xb-store__content-right">
-          <div class="xb-store__icons md-dark-third" fxShow.xs="false">
-            <i class="iconfontXberts icon-pic-quota"></i>
-          </div>
-          <div class="md-margin-top-2 xb-store__content-text">
-            {{product.recommendation}}
-          </div>
-          <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
-            <i class="iconfontXberts icon-pic-quota-2"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="xb-store__details-description" *ngIf="product.description">
-      <div class="xb-store__title">About the Product</div>
-      <div class="ql-editor ql-container xb-shop__margin-bottom-2"
-           [innerHTML]="product.description | safeHtml"></div>
+    <a class="xb-store__details-buttons" fxLayout="column" href="{{product.purchaseUrl}}" target="_blank"
+       (click)="openLink()">
+      <button mat-raised-button color="primary">GET IT NOW</button>
+    </a>
+    <div class="md-margin-top-2">
+      <app-share-button [link]="shareLink" [text]="text"></app-share-button>
     </div>
   </div>
+</div>
+<div class="xb-store__details-padding-top" *ngIf="product.recommendation">
+  <div class="xb-store__title">Store Owner Says</div>
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
+    <div class="xb-store__content-left" fxFlex="none">
+      <div class="xb-store__header">
+        <img [src]="store.ownerAvatar">
+      </div>
+      <div class="md-subhead md-margin-top-2">{{store.ownerFirstName}}</div>
+      <div class="md-margin-top-1"> {{store.ownerCountry}}</div>
+    </div>
+    <div class="xb-store__content-right">
+      <div class="xb-store__icons md-dark-third" fxShow.xs="false">
+        <i class="iconfontXberts icon-pic-quota"></i>
+      </div>
+      <div class="md-margin-top-2 xb-store__content-text">
+        {{product.recommendation}}
+      </div>
+      <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
+        <i class="iconfontXberts icon-pic-quota-2"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="xb-store__details-description" *ngIf="product.description">
+  <div class="xb-store__title">About the Product</div>
+  <div class="ql-editor ql-container xb-shop__margin-bottom-2"
+       [innerHTML]="product.description | safeHtml"></div>
 </div>

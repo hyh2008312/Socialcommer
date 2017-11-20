@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule , Routes} from '@angular/router';
 
-import { MainPageComponent } from './main-page/main-page.component.ts';
-import { StoreListComponent } from './store-list/store-list.component.ts';
-import { StoreListDetailComponent } from './store-detail/store-list-detail.component.ts';
-import { StoreDetailComponent } from './store-detail/store-detail.component.ts';
+import { MainPageComponent } from './main-page/main-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { StoreListComponent } from './store-list/store-list.component';
+import { AboutMeComponent } from './about-me/about-me.component';
+import { StoreDetailComponent } from './store-detail/store-detail.component';
 
 const routes: Routes = [{
   path: 'template-3', component: MainPageComponent,
   children: [{
-    path: 'detail/:id', component: StoreDetailComponent
-  }]
-}, {
-  path: 'template-3/list', component: StoreListComponent,
-  children: [{
-    path: ':id', component: StoreListDetailComponent
+    path: '', component: HomePageComponent
+  }, {
+    path: 'collection', component: StoreListComponent
+  }, {
+    path: 'collection/:id', component: StoreDetailComponent
+  }, {
+    path: 'about_me', component: AboutMeComponent
   }]
 }, {
   path: '',

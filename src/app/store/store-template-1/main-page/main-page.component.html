@@ -9,13 +9,13 @@
       <div class="xb-store__template-name" fxShow.xs="false">
         {{store.nameTag != '' ? store.nameTag : store.name}}
       </div>
-      <div class="ql-editor ql-container xb-store__template-title"
+      <div class="ql-editor xb-store__template-title"
            [innerHTML]="store.titleTag| safeHtml"  *ngIf="store.titleTag != ''" >
       </div>
       <div class="xb-store__store-description" *ngIf="store.descriptionTag == ''">
         {{store.description}}
       </div>
-      <div class="xb-store__template-description ql-editor ql-container"
+      <div class="xb-store__template-description ql-editor"
            [innerHTML]="store.descriptionTag | safeHtml" *ngIf="store.descriptionTag != ''">
       </div>
     </div>
@@ -66,7 +66,7 @@
           <div class="md-margin-top-2 xb-store__content-text" *ngIf="store.userTag == ''">
             {{store.ownerBiography}}
           </div>
-          <div class="xb-store__template-user ql-editor ql-container"
+          <div class="xb-store__template-user ql-editor"
                [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">
           </div>
           <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">

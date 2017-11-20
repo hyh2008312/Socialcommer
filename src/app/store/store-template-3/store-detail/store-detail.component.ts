@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { StoreService } from '../../store.service.ts';
+import { StoreService } from '../../store.service';
 import { Store, Product, Image } from '../../store';
 
 @Component({
-  selector: 'app-store-detail',
+  selector: 'app-store-template-3-store-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../store.scss']
+  styleUrls: ['../store-template-3.scss']
 })
 
 export class StoreDetailComponent implements OnInit {

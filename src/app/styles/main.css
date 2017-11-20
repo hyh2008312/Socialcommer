@@ -1766,9 +1766,11 @@ img.xb2-img-responsible {
   padding-bottom: 8px; }
 
 .ql-editor, .ql-container {
-  min-height: 96px;
   height: auto;
   box-sizing: border-box; }
+
+.ql-container {
+  min-height: 96px; }
 
 .ql-container .ql-editor {
   min-height: 0 !important; }

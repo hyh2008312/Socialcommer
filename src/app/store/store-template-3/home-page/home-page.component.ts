@@ -1,32 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { StoreService } from '../../store.service';
 import { Store } from '../../store';
 
 @Component({
-  selector: 'app-store-template-3-store-list',
-  templateUrl: './store-list.component.html',
+  selector: 'app-store-template-3-home-page',
+  templateUrl: './home-page.component.html',
   styleUrls: ['../store-template-3.scss']
 })
 
-export class StoreListComponent implements OnInit {
-
+export class HomePageComponent implements OnInit {
   public categories:any = [];
   public category: any = {
     id: null,
     name : ''
   };
   public shareLink: string;
-  public text = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.'
-    + 'Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training'
-    + 'that make you an expert in your field? Show your customers that there are read people with instersting stories working'
-    + 'behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust you brad.';
+  public text = '';
+
+  baseImageUrl: string = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
 
   store: Store = new Store();
   page = 1;
   nextPage: boolean = true;
   product: any = [];
+
+  queryMedia: any;
 
   constructor(
     private router: Router,
@@ -38,18 +38,25 @@ export class StoreListComponent implements OnInit {
 
   ngOnInit():void {
     this.shareLink = window.location.href;
+
     let self = this;
+
     let firstLoad = false;
     this.storeService.store.subscribe((data) => {
       if(data && !firstLoad) {
         firstLoad = true;
         self.store = data;
+        self.text = data.description;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
           shareImage: data.imageUrl
         });
-        self.categories = [{name: 'All'},...data.category];
+        if(data.category.length > 1) {
+          self.categories = [{name: 'All'}, ...data.category];
+        } else {
+          self.categories = [...data.category];
+        }
         self.category = self.categories[0];
         self.storeService.addStore(data);
 
@@ -64,14 +71,11 @@ export class StoreListComponent implements OnInit {
     });
   }
 
-  changeCategory() {
-    this.page = 1;
-    this.product = [];
-    this.nextPage = true;
-    this.queryProduct();
-  }
 
-  queryProduct() {
+  queryProduct(clearProduct?:boolean) {
+    if(this.categories.length <= 0) {
+      return;
+    }
     let options = {
       categoryId: this.category.id,
       storeId: this.store.id,
@@ -81,14 +85,14 @@ export class StoreListComponent implements OnInit {
     };
     let self = this;
     self.storeService.getProductList(options).then((data)=>{
+      if(clearProduct) {
+        this.product = [];
+        this.nextPage = true;
+      }
       self.product = self.product.concat(data.results);
       if(data.next == null) {
         self.nextPage = false;
       }
     });
-  }
-
-  back():void {
-    this.router.navigate([`./store/${this.store.displayName}`]);
   }
 }

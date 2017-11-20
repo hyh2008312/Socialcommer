@@ -19,7 +19,7 @@
         <div class="xb-shop__template-name xb-shop__template-edit" [hidden]="!nameEdited">
           <input formControlName="nameTag" [(ngModel)]="nameTag">
         </div>
-        <div class="xb-shop__template-title ql-editor ql-container" [hidden]="titleEdited" (click)="editTitle()"
+        <div class="xb-shop__template-title ql-editor" [hidden]="titleEdited" (click)="editTitle()"
              [innerHTML]="titleTag | safeHtml">
         </div>
         <div class="xb-shop__template-title xb-shop__template-edit" [hidden]="!titleEdited">
@@ -29,7 +29,7 @@
             CLICK TO SAVE
           </div>
         </div>
-        <div class="xb-shop__template-description ql-editor ql-container" [hidden]="descriptionEdited"
+        <div class="xb-shop__template-description ql-editor" [hidden]="descriptionEdited"
              (click)="editDescription()"
              [innerHTML]="descriptionTag | safeHtml">
         </div>
@@ -107,7 +107,7 @@
             <div class="xb-store__icons md-dark-third" fxShow.xs="false">
               <i class="iconfontXberts icon-pic-quota"></i>
             </div>
-            <div class="xb-shop__template-user ql-editor ql-container" [hidden]="userEdited"
+            <div class="xb-shop__template-user ql-editor" [hidden]="userEdited"
                  (click)="editUser()"
                  [innerHTML]="userTag | safeHtml">
             </div>

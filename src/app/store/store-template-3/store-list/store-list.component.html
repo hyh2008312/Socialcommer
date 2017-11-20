@@ -1,36 +1,14 @@
-<div class="xb-store" fxLayout="column">
-  <div class="xb-store__nav" fxLayout="row" fxLayoutAlign="center center" fxFlex="none">
-    <i class="material-icons md-dark-primary" (click)="back()">keyboard_arrow_left</i> Your store name here
+<div>
+  <div class="xb-store-template__collection-container">
+    <div class="xb-store-template__collection-title" fxShow.xs="false">
+      COLLECTIONS
+    </div>
+    <app-store-template-3-category [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"></app-store-template-3-category>
   </div>
-  <div fxFlex="noshrink">
-    <div class="xb-store__navigation-mobile">
-      <app-store-navigation [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"></app-store-navigation>
-    </div>
-    <div class="xb-store__content ">
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
-        <app-store-item-card *ngFor="let item of product"
-          fxFlex.xs="48" fxFlex.gt-xs="30"
-          [product]="item" [status]="1"></app-store-item-card>
-      </div>
-    </div>
-  </div>
-  <div class="xb-store__footer">
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <div class="xb-store__footer-margin-left">©2017 Xberts, Inc. All rights reserved</div>
-      <div class="xb-store__footer-margin-top" fxLayout="row" fxLayoutAlign="center center"
-           fxLayout.xs="column" fxLayoutAlign.xs="center center">
-        <img class="xb-store__footer-margin-top-1 xb-pointer"
-           src="https://media.xberts.com/collector/source/web/pic/pic-power.png"
-           routerLink="/">
-        <img class="xb-store__footer-margin-left xb-store__footer-margin-top-2 xb-pointer"
-           src="https://media.xberts.com/collector/source/web/pic/pic-foot-logo.png"
-           routerLink="/">
-      </div>
-    </div>
-    <div class="xb-store__footer-icons" fxLayout="row" fxLayoutAlign="end center"
-      fxLayoutAlign.xs="center center">
-      <app-share-button [link]="shareLink" [text]="text" [style]="{'store':true}"></app-share-button>
-    </div>
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutWrap>
+    <app-store-item-card *ngFor="let item of product"
+                         fxFlex="49" fxFlex.xs="100"
+                         [product]="item" [status]="1"></app-store-item-card>
+    <div fxFlex="49" fxFlex.xs="100"></div>
   </div>
 </div>
-<router-outlet></router-outlet>
