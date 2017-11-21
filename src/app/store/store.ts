@@ -13,7 +13,7 @@ export class Store {
   titleTag: any = '';
   descriptionTag: any = '';
   userTag: any = '';
-  imageUrl: any;
+  imageUrl: any = [];
   status: any;
   currency: string;
 

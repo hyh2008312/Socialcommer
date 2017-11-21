@@ -1662,7 +1662,9 @@ textarea.mat-input-element {
     padding: 0 16px;
     background-color: #fff; }
   .xb-shop__product-none {
-    margin-top: 144px; }
+    padding: 96px 0;
+    background-color: #fff;
+    border-radius: 4px; }
     .xb-shop__product-none span {
       margin-top: 16px;
       font-weight: 600; }
@@ -1824,7 +1826,7 @@ textarea.mat-input-element {
   .xb-shop__card-content {
     position: relative;
     padding: 8px 16px 16px;
-    height: 130px; }
+    height: 120px; }
   .xb-shop__card-title {
     height: 56px;
     line-height: 28px;

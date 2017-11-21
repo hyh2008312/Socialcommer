@@ -6,6 +6,7 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { StoreCategoryComponent } from './store-category/store-category.component';
 import { StoreDetailComponent } from './store-detail/store-detail.component';
 import { StoreItemCardComponent } from './store-item-card/store-item-card.component';
+import { ProductsImageCoverComponent } from './products-image-cover/products-image-cover.component';
 
 import { StoreNavigationComponent } from  './store-navigation/store-navigation.component'
 
@@ -30,7 +31,8 @@ import { SharedModule } from '../../shared/shared.module';
     StoreCategoryComponent,
     StoreDetailComponent,
     StoreItemCardComponent,
-    StoreNavigationComponent
+    StoreNavigationComponent,
+    ProductsImageCoverComponent
   ],
   entryComponents: [
   ],

@@ -1,12 +1,24 @@
 <div class="xb-store-template__container xb-store-template__content" fxLayout="row" fxLayoutAlign="start start">
   <div class="xb-store-template__left" fxFlex="none" fxShow.xs="false">
     <div class="xb-store-template__store-name">
-      Store Name
+      {{storeName}}
     </div>
     <app-store-template-3-navigation></app-store-template-3-navigation>
   </div>
 
   <div class="xb-store-template__right" fxFlex>
+    <div class="xb-store-template__top-navigation" fxShow.gt-xs="false" fxLayout="row" fxLayoutAlign="start center">
+      <i class="material-icons" (click)="openDialog()">menu</i>
+      <div class="xb-store-template__top-navigation-title" fxFlex>
+        {{storeName}}
+      </div>
+    </div>
+    <div class="xb-store-template__dialog" *ngIf="isDialogOpen" fxShow.gt-xs="false" >
+      <div class="xb-store-template__top-navigation" fxLayout="row" fxLayoutAlign="end center">
+        <i class="material-icons" (click)="openDialog()">close</i>
+      </div>
+      <app-store-template-3-navigation (routerChange)="openDialog($event)"></app-store-template-3-navigation>
+    </div>
     <router-outlet></router-outlet>
   </div>
 </div>

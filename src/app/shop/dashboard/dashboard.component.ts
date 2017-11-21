@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
   storeId: number;
 
   storeStatistic: StoreStatistic = new StoreStatistic();
-  productStatistic: any[] = [];
+  productStatistic: any = false;
   productStatisticPage: number = 1;
 
   // MatPaginator Inputs

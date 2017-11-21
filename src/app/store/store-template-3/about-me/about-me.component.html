@@ -6,7 +6,7 @@
   <div class="md-margin-top-2 xb-store__content-text" *ngIf="store.userTag == ''">
     {{store.ownerBiography}}
   </div>
-  <div class="xb-store__template-user ql-editor md-margin-top-2"
+  <div class="xb-store-template__about-user ql-editor md-margin-top-2"
        [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">
   </div>
 </div>

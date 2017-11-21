@@ -189,8 +189,13 @@ $aligns: left right center justify;
   min-height: 96px;
 }
 
+.ql-editor{
+  padding: 0;
+}
+
 .ql-container .ql-editor{
   min-height: 0 !important;
+  padding: 16px;
 }
 .ql-bubble .ql-tooltip{
   z-index: 1000;

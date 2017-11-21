@@ -70,9 +70,16 @@ import {
   MatSnackBarModule
 } from '@angular/material';
 
+
+import { GoogleClientId, FacebookClientId } from '../config/app.api';
+
 let providers = {
   "google": {
-    "clientId": "529488372185-82kq2cmll3jlrpm2n6537mef1093ofip.apps.googleusercontent.com"
+    "clientId": GoogleClientId
+  },
+  "facebook": {
+    "clientId": FacebookClientId,
+    "apiVersion": "v2.10"
   }
 };
 

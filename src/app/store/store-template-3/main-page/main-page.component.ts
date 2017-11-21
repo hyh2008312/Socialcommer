@@ -10,6 +10,9 @@ import { StoreService } from '../../store.service';
 
 export class MainPageComponent implements OnInit {
 
+  storeName: string = '';
+  isDialogOpen: boolean = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService
@@ -20,14 +23,22 @@ export class MainPageComponent implements OnInit {
   ngOnInit():void {
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
-    this.storeService.getStore(storeName).then((data) => {
+    self.storeService.getStore(storeName).then((data) => {
 
-      this.storeService.addStore(data);
+      self.storeName = data.name;
+      self.storeService.addStore(data);
     });
   }
 
   ngOnDestroy() {
 
+  }
+
+  openDialog(event:any) {
+    if(event) {
+      return this.isDialogOpen = false;
+    }
+    this.isDialogOpen = !this.isDialogOpen;
   }
 
 }

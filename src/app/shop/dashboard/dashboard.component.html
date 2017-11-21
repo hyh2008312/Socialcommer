@@ -48,6 +48,16 @@
                      (page)="changePage($event)"
                      *ngIf="productStatistic && productStatistic.length > 0">
       </mat-paginator>
+      <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+           *ngIf="productStatistic && productStatistic.length <= 0">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <img src="https://media.socialcommer.com/source/web/pic/pic-no-data.png">
+          <span class="md-dark-secondary">Your store doesn't have any products yet.</span>
+          <div class="md-margin-top-3">
+            <button mat-raised-button color="primary" routerLink="../listings/products">Add Your First Product</button>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

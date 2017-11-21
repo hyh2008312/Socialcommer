@@ -1,7 +1,24 @@
 @import "../../styles/utils/_index";
 @import "../../styles/_variables";
 
+@import '../../../../node_modules/@angular/material/theming';
+.mat-raised-button.mat-primary{
+  background-color: #6446c3;
+}
+
 .xb-store-template{
+
+  &__dialog{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255,255,255,.9);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 500;
+  }
 
   &__container{
     max-width: 1440px;
@@ -17,6 +34,7 @@
   &__right{
     height: 100vh;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   &__content{
@@ -266,7 +284,7 @@
     }
 
     &-sale{
-      background-color: $primaryColor;
+      background-color: #6446c3;
       border-radius: 4px;
       padding: 0 8px;
       color: $whiteColor;
@@ -299,6 +317,10 @@
         width: 100%;
       }
     }
+
+    &-user{
+      padding: 16px;
+    }
   }
 
   &__collection{
@@ -320,6 +342,156 @@
 
     &-margin-right{
       margin-right: 40px;
+    }
+  }
+
+  &__details{
+
+    &-category{
+      @include media();
+
+      &-bg{
+        height: 48px;
+        line-height: 48px;
+        padding: 0 16px;
+        display: block;
+        border-bottom: 1px solid rgba(0,0,0,.12);
+        white-space: nowrap;
+        @include text-overflow();
+
+        @include xb-sm-screen{
+          padding: 0 32px;
+        }
+      }
+    }
+
+    &-title{
+      font-size: 24px;
+      line-height: 32px;
+      margin-top: 32px;
+      margin-bottom: 24px;
+
+      @include media();
+
+      @include xb-xs-screen{
+        margin-top: 8px;
+        margin-bottom: 24px;
+      }
+    }
+
+    &-title-1{
+      font-size: 16px;
+      line-height: 32px;
+      @include media();
+      margin-bottom: 16px;
+    }
+
+    &-price{
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+    }
+
+    &-sale{
+      background-color: #6446c3;
+      border-radius: 4px;
+      padding: 0 8px;
+      color: $whiteColor;
+      line-height: 28px;
+
+    }
+
+    &-margin-right{
+      width: 580px;
+      height: 480px;
+      margin-right: 32px;
+      @include xb-xs-screen{
+        width: auto;
+        height: auto;
+        margin-right: 16px;
+        margin-left: 16px;
+        margin-top: 16px;
+        @include resetBorder();
+      }
+      @include xb-sm-screen{
+        width: 416px;
+        height: 320px;
+        margin-right: 16px;
+        margin-left: 16px;
+        margin-top: 16px;
+
+      }
+    }
+
+    &-padding-bottom{
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      padding-bottom: 64px;
+
+      @include xb-xs-screen{
+        padding-bottom: 16px;
+      }
+
+      @include xb-sm-screen{
+        padding-bottom: 16px;
+      }
+    }
+
+    &-padding-top{
+      border-top: 1px solid rgba(0,0,0,.12);
+      padding: 32px 24px;
+      margin: 0 8px;
+
+      @include xb-xs-screen{
+        margin: 0;
+        padding: 32px 16px;
+      }
+    }
+
+    &-description{
+      border-top: 1px solid rgba(0,0,0,.12);
+      padding: 32px 24px;
+      img{
+        width: 100%;
+      }
+      margin: 0 8px;
+      @include xb-xs-screen{
+        margin: 0;
+        padding: 32px 16px;
+      }
+    }
+
+    &-content{
+      margin-top: 72px;
+      margin-left: 32px;
+      padding-bottom: 32px;
+      @include xb-xs-screen{
+        margin: 0;
+        padding: 0 16px 40px;
+      }
+    }
+
+    &-buttons{
+      margin-top: 24px;
+      background-color: $whiteColor;
+      display: block;
+    }
+  }
+
+  &__top-navigation{
+    height: 54px;
+    background-color: #f1f1f1;
+
+    &-title{
+      font-size: 24px;
+      padding: 0 40px 0 0;
+      text-align: center;
+      @include media();
+      @include text-overflow();
+    }
+    >i{
+      padding: 8px;
+      font-size: 24px;
+      line-height: 24px;
     }
   }
 }

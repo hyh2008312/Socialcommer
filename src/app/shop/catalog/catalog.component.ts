@@ -72,7 +72,7 @@ export class CatalogComponent implements OnInit {
 
     this.router.events.subscribe(s => {
       if (s instanceof NavigationStart) {
-        if(s.url.split('?')[0] == '/shop/listings') {
+        if(s.url.split('?')[0] == '/shop/listings/products') {
           self.subscription = self.userService.store.subscribe((data) => {
             if(data) {
               self.storeId = data.id;

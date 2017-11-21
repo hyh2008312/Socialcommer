@@ -44,7 +44,7 @@ export class StoreDetailComponent implements OnInit {
       self.storeService.addTitleDescription({
         title: data.name,
         description: data.description,
-        shareImage: data.imageUrl
+        shareImage: data.imageUrl[0]
       });
       self.image = data.imageUrl;
       if(data.imageUrl.length > 0) {
