@@ -108,8 +108,8 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.storeService.getProductList(options).then((data)=>{
       if(clearProduct) {
-        this.product = [];
-        this.nextPage = true;
+        self.product = [];
+        self.nextPage = true;
       }
       self.product = self.product.concat(data.results);
       if(data.next == null) {

@@ -34,7 +34,7 @@ export class MainPageComponent implements OnInit {
 
   }
 
-  openDialog(event:any) {
+  openDialog(event?:any) {
     if(event) {
       return this.isDialogOpen = false;
     }

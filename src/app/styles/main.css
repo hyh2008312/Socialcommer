@@ -1782,6 +1782,10 @@ img.xb2-img-responsible {
 .ql-bubble .ql-tooltip {
   z-index: 1000; }
 
+.material-icons {
+  /* Support for  UC ! */
+  text-rendering: optimizeLegibility; }
+
 .animation-opacity-show {
   -webkit-animation: opacity-show 0.5s linear 0s 1 normal;
   -moz-animation: opacity-show 0.5s linear 0s 1 normal;

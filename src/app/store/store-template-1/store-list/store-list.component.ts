@@ -63,12 +63,13 @@ export class StoreListComponent implements OnInit {
 
   changeCategory() {
     this.page = 1;
-    this.product = [];
-    this.nextPage = true;
-    this.queryProduct();
+    this.queryProduct(true);
   }
 
-  queryProduct() {
+  queryProduct(clearProduct?:boolean) {
+    if(this.categories.length <= 0) {
+      return;
+    }
     let options = {
       categoryId: this.category.id,
       storeId: this.store.id,
@@ -78,6 +79,10 @@ export class StoreListComponent implements OnInit {
     };
     let self = this;
     self.storeService.getProductList(options).then((data)=>{
+      if(clearProduct) {
+        this.product = [];
+        this.nextPage = true;
+      }
       self.product = self.product.concat(data.results);
       if(data.next == null) {
         self.nextPage = false;

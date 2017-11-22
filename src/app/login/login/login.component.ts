@@ -45,7 +45,8 @@ export class LoginComponent implements OnInit {
   };
 
   public dialogRef: MatDialogRef<LoginComponent>;
-  sub: any;
+  facebookLoginSub: any;
+  googleLoginSub: any;
 
   constructor(
     private router: Router,
@@ -135,8 +136,30 @@ export class LoginComponent implements OnInit {
   }
 
   googleLogin(provider) {
-    this.sub = this._auth.login(provider).subscribe(
+    let self = this;
+    this.googleLoginSub = this._auth.login(provider).subscribe(
       (data) => {
+        if(data) {
+          self.service.googleLogin(data).then((res) => {
+            console.log(res)
+          });
+        }
+        console.log(data);
+        //user data
+        //name, image, uid, provider, uid, email, token (accessToken for Facebook & google, no token for linkedIn), idToken(only for google)
+      }
+    )
+  }
+
+  facebookLogin(provider) {
+    let self = this;
+    this.facebookLoginSub = this._auth.login(provider).subscribe(
+      (data) => {
+        if(data) {
+          self.service.facebookLogin(data).then((res) => {
+            console.log(res)
+          });
+        }
         console.log(data);
         //user data
         //name, image, uid, provider, uid, email, token (accessToken for Facebook & google, no token for linkedIn), idToken(only for google)
@@ -193,8 +216,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnDestroy(){
-    if(this.sub) {
-      this.sub.unsubscribe();
+    if(this.googleLoginSub) {
+      this.googleLoginSub.unsubscribe();
+    }
+    if(this.facebookLoginSub) {
+      this.facebookLoginSub.unsubscribe();
     }
   }
 }

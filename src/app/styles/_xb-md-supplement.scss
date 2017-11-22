@@ -200,3 +200,10 @@ $aligns: left right center justify;
 .ql-bubble .ql-tooltip{
   z-index: 1000;
 }
+
+.material-icons {
+  /* Support for  UC ! */
+  text-rendering: optimizeLegibility;
+
+
+}

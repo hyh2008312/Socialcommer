@@ -27,6 +27,7 @@ export class AuthenticationService implements AuthService {
   }
 
   public setAccessToken(data: any): void {
+    this.logout();
     localStorage.setItem('accessToken', data.access_token);
     localStorage.setItem('refreshToken', data.refresh_token);
     localStorage.setItem('expireDate', new Date().getTime() + (data.expires_in  * 1000) + '');

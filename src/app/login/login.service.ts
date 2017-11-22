@@ -65,6 +65,24 @@ export class LoginService {
       .catch(this.handleError);
   }
 
+  facebookLogin(token:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}user/facebook_sign/`;
+
+    token.client_id = this.systemConstant.clientId;
+
+    return this.http.post(url, token, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   signUp(object: any): Promise<SignUp> {
 
     let headers = new Headers({
