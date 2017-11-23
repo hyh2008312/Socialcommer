@@ -1658,5 +1658,8 @@ textarea.mat-input-element {
   width: 0;
   height: 0;
   overflow: hidden; }
+.xb-login__image {
+  max-width: 300px;
+  margin-bottom: 40px; }
 
 /*# sourceMappingURL=login.css.map */

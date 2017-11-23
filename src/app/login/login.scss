@@ -198,6 +198,11 @@
     height: 0;
     overflow: hidden;
   }
+
+  &__image{
+    max-width: 300px;
+    margin-bottom: 40px;
+  }
 }
 
 
