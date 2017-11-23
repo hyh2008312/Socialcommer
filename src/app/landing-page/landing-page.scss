@@ -4,7 +4,18 @@
 .xb-landing-page{
   height: 100vh;
   width: 100vw;
-  overflow-y: scroll;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  &__inner{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+  }
 
   &__banner{
     height: 645px;

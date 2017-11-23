@@ -37,6 +37,7 @@ export class StoreListComponent implements OnInit {
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
     this.storeService.getStore(storeName).then((data) => {
+      self.storeService.addStore(data);
       self.store = data;
       self.storeService.addTitleDescription({
         title: data.name,

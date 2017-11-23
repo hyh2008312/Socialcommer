@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, Inject, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LoginService } from '../login.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
@@ -9,16 +10,18 @@ import { UserService } from '../../shared/services/user/user.service';
 
 import { Subject } from "rxjs/Subject";
 
+import { LoginDialogComponent } from '../login/login-dialog.component';
+
 import { AuthService } from "angular2-social-login";
 import { SystemConstant } from '../../config/app.api';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
+  selector: 'app-sign-up-dialog',
+  templateUrl: './sign-up-dialog.component.html',
   styleUrls: ['../login.scss']
 })
 
-export class SignUpComponent {
+export class SignUpDialogComponent {
 
   step: number = 0;
   isFirstLogin: boolean = false;
@@ -88,6 +91,8 @@ export class SignUpComponent {
     }
   };
 
+
+
   constructor(
     private router : Router,
     private service: LoginService,
@@ -96,7 +101,10 @@ export class SignUpComponent {
     private auth: AuthenticationService,
     private routerInfo :ActivatedRoute,
     private userService: UserService,
-    public _auth: AuthService
+    private dialog: MatDialog,
+    public _auth: AuthService,
+    public dialogRef: MatDialogRef<SignUpDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.signUpGroup = this.fb.group({
       firstName: ['', Validators.required],
@@ -143,12 +151,12 @@ export class SignUpComponent {
   ngOnInit() {
     let self = this;
     self.authSub = self.auth.isAuthorized().subscribe((auth) => {
-      if(auth && this.routerInfo.snapshot.queryParams["step"] == 1) {
+      if(auth && self.data.step == 1) {
         self.step = 1;
       }
     });
     self.currentUserSub = self.userService.currentUser.subscribe((data) => {
-      if(data && self.routerInfo.snapshot.queryParams["tab"] == 'settingProfile') {
+      if(data &&  self.data.tab == 'settingProfile') {
         self.step = 0;
         self.isFirstLogin = true;
 
@@ -329,7 +337,6 @@ export class SignUpComponent {
           self.service.facebookLogin(data).then((res) => {
             self.signUpErr = false;
             if(res) {
-
               let token = {
                 access_token: res.token.accessToken,
                 refresh_token: res.token.refreshToken,
@@ -380,13 +387,36 @@ export class SignUpComponent {
         self.userService.addUser(data);
         self.userService.addStore(data.store[0]);
         self.step = 2;
+
       });
     }).catch((data) => {
       self.storeErr = data;
     });
   }
 
+  openLogIn(): void {
+    this.close();
+
+    let dialogRef = this.dialog.open(LoginDialogComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  close():void {
+    this.dialogRef.close();
+  }
+
   ngOnDestroy(){
+    if(this.googleLoginSub) {
+      this.googleLoginSub.unsubscribe();
+    }
+    if(this.facebookLoginSub) {
+      this.facebookLoginSub.unsubscribe();
+    }
   }
 
 }

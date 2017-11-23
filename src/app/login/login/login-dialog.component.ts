@@ -1,27 +1,35 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { LoginService } from '../login.service';
 import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 import { UserService } from '../../shared/services/user/user.service';
 
+import { SignUpDialogComponent } from '../sign-up/sign-up-dialog.component';
+import { ResetPasswordComponent } from "../reset-password/reset-password.component";
+import { InviteCodeComponent } from "../invite-code/invite-code.component";
+
 import { AuthService } from "angular2-social-login";
 import { SystemConstant } from '../../config/app.api';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
+  selector: 'app-login-dialog',
+  templateUrl: './login-dialog.component.html',
   styleUrls: ['../login.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginDialogComponent implements OnInit {
 
   loginGroup : FormGroup;
 
   loginErr : any = false;
 
   token: any;
+
+  step: number = 0;
+  tab: string = '';
 
   //存储错误信息
   formErrors = {
@@ -48,7 +56,9 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthenticationService,
     private userService: UserService,
-    public _auth: AuthService
+    private dialog: MatDialog,
+    public _auth: AuthService,
+    public dialogRef: MatDialogRef<LoginDialogComponent>
   ) {
     this.loginGroup = this.fb.group({
       username: ['', [
@@ -111,9 +121,11 @@ export class LoginComponent implements OnInit {
         }
 
         if(data && data.isInvite) {
+          self.close();
           self.router.navigate(['shop/dashboard']);
         } else {
-          self.router.navigate(['cp/invitation']);
+          self.close();
+          self.openInviteCode();
         }
 
       });
@@ -143,17 +155,20 @@ export class LoginComponent implements OnInit {
               self.userService.addUser(res.user);
               self.auth.inviteToken(res.user.isInvite);
               if(res.user.firstLogin) {
-                self.router.navigate(['cp/signUp'], {queryParams:{tab: 'settingProfile'}});
+                self.close();
+                self.tab = 'settingProfile';
+                self.openSignUp();
               } else {
                 if(res.user && res.user.store && res.user.store.length>0) {
                   self.userService.addStore(res.user.store[0]);
                 }
 
                 if(res.user && res.user.isInvite) {
+                  self.close();
                   self.router.navigate(['shop/dashboard']);
-
                 } else {
-                  self.router.navigate(['cp/invitation']);
+                  self.close();
+                  self.openInviteCode();
                 }
               }
             }
@@ -183,17 +198,19 @@ export class LoginComponent implements OnInit {
                 self.userService.addUser(res.user);
                 self.auth.inviteToken(res.user.isInvite);
                 if(res.user.firstLogin) {
-                  self.router.navigate(['cp/signUp'], {queryParams:{tab: 'settingProfile'}});
+                  self.tab = 'settingProfile';
+                  self.openSignUp();
                 } else {
                   if(res.user && res.user.store && res.user.store.length>0) {
                     self.userService.addStore(res.user.store[0]);
                   }
 
                   if(res.user && res.user.isInvite) {
+                    self.close();
                     self.router.navigate(['shop/dashboard']);
-
                   } else {
-                    self.router.navigate(['cp/invitation']);
+                    self.close();
+                    self.openInviteCode();
                   }
                 }
               }
@@ -203,8 +220,55 @@ export class LoginComponent implements OnInit {
       )
   }
 
+  openSignUp(): void {
+    this.close();
+
+    let dialogRef = this.dialog.open(SignUpDialogComponent, {
+      data: {
+        step: this.step,
+        tab: this.tab
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  openResetPassword(): void {
+    this.close();
+
+    let dialogRef = this.dialog.open(ResetPasswordComponent, {
+      data: {}
+    });
+
+    dialogRef.componentInstance.dialogRef = dialogRef;
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  openInviteCode(): void {
+    this.close();
+
+    let dialogRef = this.dialog.open(InviteCodeComponent, {
+      data: {}
+    });
+
+    dialogRef.componentInstance.dialogRef = dialogRef;
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  close():void {
+    this.dialogRef.close();
+  }
 
   ngOnDestroy(){
+    this.close();
     if(this.googleLoginSub) {
       this.googleLoginSub.unsubscribe();
     }

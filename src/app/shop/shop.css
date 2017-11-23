@@ -2116,6 +2116,9 @@ textarea.mat-input-element {
   @media screen and (max-width: 599px) {
     .xb-shop__toDo-margin-left {
       margin-left: 0; } }
+  @media screen and (max-width: 599px) {
+    .xb-shop__toDo-margin-left {
+      margin-left: 0; } }
 .xb-shop__toDo-margin-left-1 {
   margin-left: 24px; }
   @media screen and (max-width: 599px) {

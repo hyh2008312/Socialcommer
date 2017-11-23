@@ -99,6 +99,23 @@ export class LoginService {
       .catch(this.handleError);
   }
 
+  settingProfile(object: any): Promise<SignUp> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}user/first_login/`;
+
+    return this.http.put(url, JSON.stringify(object), options)
+      .toPromise()
+      .then(response => response.json() as SignUp)
+      .catch(this.handleError);
+  }
+
   createStore(object: any): Promise<Store> {
 
     let headers = new Headers({

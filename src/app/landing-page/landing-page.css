@@ -1521,7 +1521,16 @@ textarea.mat-input-element {
 .xb-landing-page {
   height: 100vh;
   width: 100vw;
-  overflow-y: scroll; }
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0; }
+  .xb-landing-page__inner {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100vh;
+    width: 100vw;
+    position: relative; }
   .xb-landing-page__banner {
     height: 645px;
     background-image: url("https://media.xberts.com/collector/source/web/banner/pic-title-2.jpg");

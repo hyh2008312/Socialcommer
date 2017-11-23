@@ -823,6 +823,10 @@
       @include xb-xs-screen{
         margin-left: 0;
       }
+
+      @include xb-sm-screen{
+        margin-left: 0;
+      }
     }
 
     &-margin-left-1{

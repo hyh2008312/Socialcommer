@@ -30,7 +30,10 @@
   }
 
   &__auto{
-    margin: auto;
+    margin: 40px auto;
+    @include xb-xs-screen{
+      margin: 0 auto;
+    }
   }
 
   &__width{
@@ -145,9 +148,20 @@
   }
 
   &__scroll{
-    overflow-y: scroll;
+    overflow: hidden;
     width: 100vw;
     height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    &-inner{
+      overflow-x: hidden;
+      overflow-y: scroll;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
   }
 
   &__width-mobile{

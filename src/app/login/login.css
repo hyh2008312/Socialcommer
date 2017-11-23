@@ -1530,7 +1530,7 @@ textarea.mat-input-element {
   width: 100%; }
   @media screen and (max-width: 599px) {
     .xb-login__container {
-      margin: 32px 0;
+      margin: 0;
       padding: 40px 16px 56px; } }
   @media screen and (min-width: 600px) and (max-width: 959px) {
     .xb-login__container {
@@ -1544,7 +1544,10 @@ textarea.mat-input-element {
     .xb-login__container-1 {
       padding: 0 16px; } }
 .xb-login__auto {
-  margin: auto; }
+  margin: 40px auto; }
+  @media screen and (max-width: 599px) {
+    .xb-login__auto {
+      margin: 0 auto; } }
 .xb-login__width .mat-form-field {
   width: 100%; }
 .xb-login__width-1 {
@@ -1621,9 +1624,18 @@ textarea.mat-input-element {
 .xb-login__error {
   color: #e53935; }
 .xb-login__scroll {
-  overflow-y: scroll;
+  overflow: hidden;
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0; }
+  .xb-login__scroll-inner {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100vw;
+    height: 100vh;
+    position: relative; }
 @media screen and (max-width: 599px) {
   .xb-login__width-mobile {
     width: 100%; } }

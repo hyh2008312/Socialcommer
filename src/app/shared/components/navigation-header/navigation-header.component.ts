@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { LoginComponent } from '../../../login/login/login.component';
-import { SignUpComponent } from '../../../login/sign-up/sign-up.component';
+import { LoginDialogComponent } from '../../../login/login/login-dialog.component';
+import { SignUpDialogComponent } from '../../../login/sign-up/sign-up-dialog.component';
 
 @Component({
   selector: 'app-navigation-header',
@@ -26,11 +26,9 @@ export class NavigationHeaderComponent implements OnInit {
   openLogIn(): void {
     this.isPopOpen = false;
 
-    let dialogRef = this.dialog.open(LoginComponent, {
+    let dialogRef = this.dialog.open(LoginDialogComponent, {
       data: {}
     });
-
-    dialogRef.componentInstance.dialogRef = dialogRef;
 
     dialogRef.afterClosed().subscribe(result => {
 
@@ -40,11 +38,9 @@ export class NavigationHeaderComponent implements OnInit {
   openSignUp(): void {
     this.isPopOpen = false;
 
-    let dialogRef = this.dialog.open(SignUpComponent, {
+    let dialogRef = this.dialog.open(SignUpDialogComponent, {
       data: {}
     });
-
-    dialogRef.componentInstance.dialogRef = dialogRef;
 
     dialogRef.afterClosed().subscribe(result => {
 

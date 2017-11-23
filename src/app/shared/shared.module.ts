@@ -42,8 +42,8 @@ import { QuillEditorModule } from 'ngx-quill-editor';
 import { AngularCropperjsModule } from 'angular-cropperjs';
 import { CarouselModule } from './components/angular4-carousel/index';
 
-import { LoginComponent } from '../login/login/login.component';
-import { SignUpComponent } from '../login/sign-up/sign-up.component';
+import { LoginDialogComponent } from '../login/login/login-dialog.component';
+import { SignUpDialogComponent } from '../login/sign-up/sign-up-dialog.component';
 import { ResetPasswordComponent } from '../login/reset-password/reset-password.component';
 import { ResetPasswordConfirmComponent } from '../login/reset-password-confirm/reset-password-confirm.component';
 import { InviteCodeComponent } from "../login/invite-code/invite-code.component";
@@ -133,8 +133,8 @@ let providers = {
     ShareButtonRowComponent,
     NavigationHeaderComponent,
     BottomFooterComponent,
-    LoginComponent,
-    SignUpComponent,
+    LoginDialogComponent,
+    SignUpDialogComponent,
     ResetPasswordComponent,
     ResetPasswordConfirmComponent,
     InviteCodeComponent
@@ -163,8 +163,8 @@ let providers = {
     ShareButtonRowComponent,
     NavigationHeaderComponent,
     BottomFooterComponent,
-    LoginComponent,
-    SignUpComponent,
+    LoginDialogComponent,
+    SignUpDialogComponent,
     ResetPasswordComponent,
     ResetPasswordConfirmComponent,
     InviteCodeComponent,
@@ -202,8 +202,8 @@ let providers = {
     LoginService
   ],
   entryComponents: [
-    LoginComponent,
-    SignUpComponent,
+    LoginDialogComponent,
+    SignUpDialogComponent,
     ResetPasswordComponent,
     ResetPasswordConfirmComponent,
     InviteCodeComponent
