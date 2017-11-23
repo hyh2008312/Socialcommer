@@ -7,18 +7,18 @@ import { StoreListDetailComponent } from './store-detail/store-list-detail.compo
 import { StoreDetailComponent } from './store-detail/store-detail.component';
 
 const routes: Routes = [{
-  path: 'tp1', component: MainPageComponent,
+  path: '', component: MainPageComponent,
   children: [{
     path: 'detail/:id', component: StoreDetailComponent
   }]
 }, {
-  path: 'tp1/list', component: StoreListComponent,
+  path: 'list', component: StoreListComponent,
   children: [{
     path: ':id', component: StoreListDetailComponent
   }]
 }, {
   path: '',
-  redirectTo: 'tp1'
+  redirectTo: ''
 }];
 
 @NgModule({

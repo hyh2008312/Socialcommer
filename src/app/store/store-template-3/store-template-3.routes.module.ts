@@ -8,7 +8,7 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { StoreDetailComponent } from './store-detail/store-detail.component';
 
 const routes: Routes = [{
-  path: 'tp3', component: MainPageComponent,
+  path: '3', component: MainPageComponent,
   children: [{
     path: '', component: HomePageComponent
   }, {
@@ -20,7 +20,7 @@ const routes: Routes = [{
   }]
 }, {
   path: '',
-  redirectTo: 'tp1'
+  redirectTo: '1'
 }];
 
 @NgModule({
