@@ -11,9 +11,12 @@
            fxLayout.xs="column" fxLayoutAlign.xs="start start">
         <div fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-store__card-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
-          <div class="line-through md-margin-left-1" *ngIf="product.originalPriceAmount > 0">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+          <div class="line-through md-margin-left-1"
+               *ngIf="product.originalPriceAmount > 0 && product.salePriceAmount != product.originalPriceAmount">
+            {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
         </div>
-        <div fxShow.xs="false" class="xb-store__card-sale xb-store__card-margin" *ngIf="product.originalPriceAmount > 0">
+        <div fxShow.xs="false" class="xb-store__card-sale xb-store__card-margin"
+             *ngIf="product.originalPriceAmount > 0 && product.salePriceAmount != product.originalPriceAmount">
           {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF</div>
       </div>
     </div>

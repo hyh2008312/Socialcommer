@@ -13,8 +13,11 @@
       <div class="xb-store-template__details-title">{{product.title}}</div>
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
         <div class="xb-store-template__details-price md-margin-right-2">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
-        <div class="line-through  md-dark-secondary md-margin-right-2" *ngIf="product.originalPriceAmount > 0">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
-        <div class="xb-store-template__details-sale" *ngIf="product.originalPriceAmount > 0">
+        <div class="line-through  md-dark-secondary md-margin-right-2"
+             *ngIf="product.originalPriceAmount > 0 && product.salePriceAmount != product.originalPriceAmount">
+          {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+        <div class="xb-store-template__details-sale"
+             *ngIf="product.originalPriceAmount > 0 && product.salePriceAmount != product.originalPriceAmount">
           {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
         </div>
       </div>
