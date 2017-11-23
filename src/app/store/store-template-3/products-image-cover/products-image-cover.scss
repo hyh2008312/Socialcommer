@@ -70,6 +70,7 @@
     width: 100vw;
     height: 100vw;
     position: relative;
+    overflow: hidden;
 
     @include xb-sm-screen{
       width: calc(100vw - 240px);

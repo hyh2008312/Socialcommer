@@ -63,6 +63,7 @@
     width: calc(100vw - 32px);
     height: calc(100vw - 32px);
     position: relative;
+    overflow: hidden;
 
     > span{
       position: absolute;

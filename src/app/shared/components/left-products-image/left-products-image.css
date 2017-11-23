@@ -1580,7 +1580,8 @@ textarea.mat-input-element {
 .xb-image-display__slide {
   width: calc(100vw - 32px);
   height: calc(100vw - 32px);
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .xb-image-display__slide > span {
     position: absolute;
     font-size: 12px;
