@@ -82,7 +82,7 @@ export class ImageUploadPreviewComponent implements OnInit {
         height: height
       }).then((data)=> {
         that.previewImgFile = data.url + '/' + data.key;
-        that.s3UploaderService.uploadToS3(blob, data).then((data) => {
+        that.s3UploaderService.uploadToS3WithoutLoading(blob, data).then((data) => {
           that.previewImgFileChange.emit(that.previewImgFile);
         });
       });

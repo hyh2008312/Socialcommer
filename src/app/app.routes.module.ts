@@ -27,6 +27,9 @@ const routes: Routes = [
         loadChildren: 'app/about/about.module#AboutModule'
       }
     ]
+  }, {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

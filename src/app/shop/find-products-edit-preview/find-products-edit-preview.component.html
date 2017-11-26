@@ -21,7 +21,7 @@
           <div *ngIf="formErrors['title']" class="xb-input-error">
             {{ formErrors['title'] }}
           </div>
-          <div class="xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center" fxHide>
             <button mat-raised-button color="primary" (click)="showTitle()">SAVE</button>
             <div class="xb-shop__margin-left">
               <button mat-button color="primary" (click)="resetTitle()">CANCEL</button>
@@ -30,31 +30,6 @@
         </div>
         <div class="xb-shop__margin-bottom-2 xb-pointer" [hidden]="showTitleInput" (click)="showTitle()">
           {{product.title}}
-        </div>
-        <div class="xb-shop__edit-title">Category</div>
-        <div [hidden]="!showCategoryInput" >
-          <mat-form-field class="xb-shop__width-100">
-            <mat-chip-list #chipList>
-              <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
-                        [removable]="removable" (remove)="remove(tag)">
-                {{tag.name}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input [matChipInputFor]="chipList"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     [matChipInputAddOnBlur]="addOnBlur"
-                     (matChipInputTokenEnd)="add($event)" />
-            </mat-chip-list>
-          </mat-form-field>
-          <div class="xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center">
-            <button mat-raised-button color="primary" (click)="showCategory()">SAVE</button>
-            <div class="xb-shop__margin-left">
-              <button mat-button color="primary" (click)="resetCategory()">CANCEL</button>
-            </div>
-          </div>
-        </div>
-        <div class="xb-shop__margin-bottom-2 xb-pointer" [hidden]="showCategoryInput" (click)="showCategory()">
-          {{product.tags}}
         </div>
         <div class="xb-shop__edit-title">Price</div>
         <div class="xb-shop__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
@@ -69,7 +44,7 @@
           <quill-editor [(ngModel)]="editorContent" formControlName="description"
                         (ready)="onEditorCreated($event)"></quill-editor>
           <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
-          <div class="md-margin-top-2 xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center">
+          <div class="md-margin-top-2 xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center" fxHide>
             <button mat-raised-button color="primary" (click)="showDescription()">SAVE</button>
             <div class="xb-shop__margin-left">
               <button mat-button color="primary" (click)="resetDescription()">CANCEL</button>
@@ -80,14 +55,39 @@
               (click)="showDescription()">
           <div [innerHTML]="editorContent | safeHtml"></div>
         </div>
-        <div class="xb-shop__edit-title">Add your affiliate link</div>
+        <div class="xb-shop__edit-title md-margin-top-3">Category <span class="xb-input-error xb-large-star">*</span></div>
+        <div [hidden]="!showCategoryInput" >
+          <mat-form-field class="xb-shop__width-100">
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                        [removable]="removable" (remove)="remove(tag)">
+                {{tag.name}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)" />
+            </mat-chip-list>
+          </mat-form-field>
+          <div class="xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center" fxHide>
+            <button mat-raised-button color="primary" (click)="showCategory()">SAVE</button>
+            <div class="xb-shop__margin-left">
+              <button mat-button color="primary" (click)="resetCategory()">CANCEL</button>
+            </div>
+          </div>
+        </div>
+        <div class="xb-shop__margin-bottom-2 xb-pointer" [hidden]="showCategoryInput" (click)="showCategory()">
+          {{product.tags}}
+        </div>
+        <div class="xb-shop__edit-title">Add your affiliate link <span class="xb-input-error xb-large-star">*</span></div>
         <mat-form-field class="xb-shop__width-100" >
           <input matInput formControlName="purchaseUrl">
         </mat-form-field>
-        <div class="text-underline xb-pointer" (click)="openDialog()">How to get your affiliate link?</div>
         <div *ngIf="formErrors['purchaseUrl']" class="xb-input-error">
           {{ formErrors['purchaseUrl'] }}
         </div>
+        <div class="text-underline xb-pointer" (click)="openDialog()">How to get your affiliate link?</div>
         <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product (optional)</div>
         <mat-form-field class="xb-shop__width-100">
         <textarea matInput value="Your opinion is very important to your audiences"
@@ -96,13 +96,16 @@
         <div *ngIf="formErrors['recommendation']" class="xb-input-error">
           {{ formErrors['recommendation'] }}
         </div>
-      </form>
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
-        <div class="xb-shop__margin-left">
-          <button mat-button color="primary"  (click)="createDraft()">SAVE DRAFT</button>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
+          <div class="xb-shop__margin-left">
+            <button mat-button color="primary"  (click)="createDraft()">SAVE DRAFT</button>
+          </div>
+          <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
+            <button mat-button color="primary" (click)="close()">CLOSE</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

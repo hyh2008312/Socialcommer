@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule }        from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule,JsonpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app.routes.module';
 
@@ -23,12 +24,13 @@ import { UserModule } from './shared/services/user/user.module';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
+    HttpClientModule,
     JsonpModule,
     BrowserAnimationsModule,
     AuthenticationModule,
     UserModule
   ],
-  providers: [BaseApi, SystemConstant, DataApi, BlogCover],
+  providers: [BaseApi, SystemConstant, DataApi, BlogCover,HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

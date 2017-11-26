@@ -29,10 +29,6 @@ export class StoreNavigationComponent implements OnInit {
     text: 'ABOUT ME',
     link: './about_me',
     exact: true
-  }, {
-    text: 'SUBSCRIBE',
-    link: './subscribe',
-    exact: true
   }];
 
   constructor(

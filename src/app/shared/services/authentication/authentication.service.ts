@@ -9,6 +9,8 @@ import { AuthService } from 'ngx-auth';
 
 import { BaseApi,SystemConstant } from '../../../config/app.api';
 
+import { HttpHeaders } from "@angular/common/http";
+
 @Injectable()
 export class AuthenticationService implements AuthService {
 
@@ -84,4 +86,8 @@ export class AuthenticationService implements AuthService {
     localStorage.removeItem('expireDate');
   }
 
+  public getHeaders(token?:string) {
+    // set the authorization null of http client
+    return {'authorization': ''};
+  }
 }

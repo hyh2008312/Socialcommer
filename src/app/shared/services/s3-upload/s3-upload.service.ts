@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers, Response} from "@angular/http";
 
+import { HttpRequest,HttpClient,HttpHeaders } from "@angular/common/http";
+
 import 'rxjs/add/operator/toPromise';
 
 import { BaseApi } from '../../../config/app.api';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { Observable } from "rxjs/Observable";
 
 
 interface UploadFile {
@@ -20,6 +23,7 @@ export class S3UploaderService {
 
   constructor(
     private http: Http,
+    private httpClient: HttpClient,
     private baseUrl: BaseApi,
     private auth: AuthenticationService
   ) {
@@ -56,7 +60,30 @@ export class S3UploaderService {
       .catch(this.handleError);
   }
 
-  uploadToS3(file: any, postParams: any): Promise<any> {
+  uploadToS3(file: any, postParams: any): Observable<any> {
+
+    let formData = new FormData();
+
+    formData.append('acl',  postParams.acl);
+    formData.append('key', postParams.key);
+    formData.append('Content-Type', postParams['Content-Type']);
+    formData.append('policy', postParams.policy);
+    formData.append('x-amz-date', postParams['x-amz-date']);
+    formData.append('x-amz-algorithm', postParams['x-amz-algorithm']);
+    formData.append('x-amz-credential', postParams['x-amz-credential']);
+    formData.append('x-amz-signature', postParams['x-amz-signature']);
+
+    formData.append('file', file);
+
+
+    const req = new HttpRequest('POST', postParams.url, formData, {
+      reportProgress: true
+    });
+
+    return this.httpClient.request(req);
+  }
+
+  uploadToS3WithoutLoading(file: any, postParams: any): Promise<any> {
 
     let formData = new FormData();
 

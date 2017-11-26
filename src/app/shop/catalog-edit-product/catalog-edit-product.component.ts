@@ -94,7 +94,6 @@ export class CatalogEditProductComponent implements OnInit {
   formErrors = {
     'title': '',
     'salePrice':'',
-    'originalPrice': '',
     'purchaseUrl': '',
     'recommendation': ''
   };
@@ -104,9 +103,6 @@ export class CatalogEditProductComponent implements OnInit {
       'required': 'This field is required.'
     },
     'salePrice':{
-      'required': 'This field is required.'
-    },
-    'originalPrice':{
       'required': 'This field is required.'
     },
     'purchaseUrl': {
@@ -446,7 +442,7 @@ export class CatalogEditProductComponent implements OnInit {
         }).then((data)=> {
           let id = data.id;
           let imageUrl = `${data.url}/${data.key}`;
-          that.s3UploaderService.uploadToS3(file, data).then((data) => {
+          that.s3UploaderService.uploadToS3WithoutLoading(file, data).then((data) => {
             let range = that.editor.getSelection();
             that.editor.insertEmbed(range.index, 'image', imageUrl);
           });

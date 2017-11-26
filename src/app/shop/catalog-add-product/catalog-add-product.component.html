@@ -8,19 +8,19 @@
     </div>
     <div class="xb-shop__mobile-dialog-inner">
       <form [formGroup]="productForm" novalidate>
-        <div class="xb-shop__edit-title">Product Picture</div>
+        <div class="xb-shop__edit-title">Product Picture <span class="xb-input-error xb-large-star">*</span></div>
         <div class="md-margin-top-2">
           <app-image-upload-preview-multi [(previewImgFile)]="previewImgFile" [(previewImgSrcs)]="previewImgSrcs"></app-image-upload-preview-multi>
           <div class="md-margin-top-1">* The first picture will be defaulted as cover image.</div>
         </div>
-        <div class="md-margin-top-2 xb-shop__edit-title">Product Title</div>
+        <div class="md-margin-top-2 xb-shop__edit-title">Product Title <span class="xb-input-error xb-large-star">*</span></div>
         <mat-form-field class="xb-shop__width-100">
           <input matInput formControlName="title">
         </mat-form-field>
         <div *ngIf="formErrors['title']" class="xb-input-error">
           {{ formErrors['title'] }}
         </div>
-        <div class="md-margin-top-2 xb-shop__edit-title">Category</div>
+        <div class="md-margin-top-2 xb-shop__edit-title">Category <span class="xb-input-error xb-large-star">*</span></div>
         <mat-form-field class="xb-shop__width-100">
           <mat-chip-list #chipList>
             <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
@@ -39,7 +39,7 @@
           <mat-form-field >
             <input matInput placeholder="Actual sale price" formControlName="salePrice">
           </mat-form-field>
-          <span class="md-margin-left-2">{{storeCurrency}}</span>
+          <span class="md-margin-left-2">{{storeCurrency}} <span class="xb-input-error xb-large-star">*</span></span>
           <mat-form-field class="xb-shop__dialog-margin-left">
             <input matInput placeholder="Original price"  formControlName="originalPrice">
           </mat-form-field>
@@ -48,16 +48,13 @@
         <div *ngIf="formErrors['salePrice']" class="xb-input-error">
           {{ formErrors['salePrice'] }}
         </div>
-        <div *ngIf="formErrors['originalPrice']" class="xb-input-error">
-          {{ formErrors['originalPrice'] }}
-        </div>
-        <div class="xb-shop__edit-title">Description</div>
+        <div class="xb-shop__edit-title">Description <span class="xb-input-error xb-large-star">*</span></div>
         <div class="md-margin-top-2">
           <quill-editor formControlName="description"
                         (ready)="onEditorCreated($event)"></quill-editor>
           <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
         </div>
-        <div class="xb-shop__edit-title md-margin-top-2">Add your affiliate link</div>
+        <div class="xb-shop__edit-title md-margin-top-2">Add your affiliate link <span class="xb-input-error xb-large-star">*</span></div>
         <mat-form-field class="xb-shop__width-100" >
           <input matInput formControlName="purchaseUrl">
         </mat-form-field>
@@ -72,13 +69,17 @@
         <div *ngIf="formErrors['recommendation']" class="xb-input-error">
           {{ formErrors['recommendation'] }}
         </div>
-      </form>
-      <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-        <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
-        <div class="md-margin-left-2">
-          <button mat-button color="primary" (click)="createDraft()">SAVE AS DRAFT</button>
+        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
+          <div class="md-margin-left-2">
+            <button mat-button color="primary" (click)="createDraft()">SAVE AS DRAFT</button>
+          </div>
+          <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
+            <button mat-button color="primary" (click)="close()">CLOSE</button>
+          </div>
         </div>
-      </div>
+      </form>
+
     </div>
   </div>
 </div>

@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output, OnChanges} from '@angula
 import { ImageUploadPreviewService } from "../image-upload-preview/image-upload-preview.service";
 import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
 
+import { HttpEventType, HttpResponse} from "@angular/common/http";
+
 @Component({
   selector: 'app-image-upload-preview-multi',
   templateUrl: './image-upload-preview-multi.component.html',
@@ -15,7 +17,13 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
 
   @Input() previewImgSrcs: any[] = [];
 
+  loading: any = [0,0,0,0,0];
+
   upload: boolean = false;
+
+  closeLoading: any = [true,true,true,true,true];
+
+  closeAnimate: any = [false,false,false,false,false];
 
   constructor(
     public previewImageService: ImageUploadPreviewService,
@@ -25,6 +33,7 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   ngOnChanges() {
@@ -38,6 +47,11 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
       return;
     }
     let that = this;
+    let length = that.previewImgSrcs.length;
+    that.loading[length] = 0;
+    that.closeLoading[length] = false;
+    that.closeAnimate[length] = false;
+
     this.previewImageService.readAsDataUrl(event.target.files[0]).then(function(result) {
 
       that.previewImgSrcs.push(result);
@@ -54,11 +68,20 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
           use: 'cover',
           width: width,
           height: height
-        }).then((data)=> {
+        }).then((data) => {
           let src = data.url + '/' + data.key;
-          that.s3UploaderService.uploadToS3(file, data).then((data) => {
-            that.previewImgFile.push(src);
-            that.previewImgFileChange.emit(that.previewImgFile);
+
+          that.s3UploaderService.uploadToS3(file, data).subscribe((event) => {
+            // Via this API, you get access to the raw event stream.
+            // Look for upload progress events.
+            if (event.type === HttpEventType.UploadProgress) {
+              // This is an upload progress event. Compute and show the % done:
+              that.loading[length] = Math.round(100 * event.loaded / event.total);
+            } else if (event instanceof HttpResponse) {
+              that.previewImgFile.push(src);
+              that.previewImgFileChange.emit(that.previewImgFile);
+
+            }
           });
         });
       };
@@ -78,5 +101,12 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
     this.upload = false;
   }
 
+  loadingChange(event, index) {
+    console.log(event)
+    if(event) {
+      this.closeAnimate[index] = true;
+      this.closeLoading[index] = true;
+    }
+  }
 
 }

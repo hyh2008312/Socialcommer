@@ -71,8 +71,10 @@ export class FindProductsEditPreviewComponent implements OnInit {
         Validators.required
       ]],
       recommendation: [''],
-      description: [''],
+      description: ['', Validators.required]
     });
+
+    this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
   }
 
   ngOnInit():void {
@@ -125,7 +127,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
   formErrors = {
     'title': '',
     'purchaseUrl': '',
-    'recommendation': ''
+    'recommendation': '',
+    'description' : ''
   };
   //错误对应的提示
   validationMessages = {
@@ -135,10 +138,37 @@ export class FindProductsEditPreviewComponent implements OnInit {
     'purchaseUrl': {
       'required': 'This field is required.'
     },
+    'description': {
+      'required': 'This field is required.'
+    },
     'recommendation':{
       'maxlength' : 'Recommendation contain 1000 characters at most.'
     }
   };
+
+  /**
+   * 表单值改变时，重新校验
+   * @param data
+   */
+  onValueChanged(data?:any) {
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      //取到表单字段
+      const control = this.productForm.get(field);
+      //表单字段已修改或无效
+      if (control && control.dirty && !control.valid) {
+        //取出对应字段可能的错误信息
+        const messages = this.validationMessages[field];
+        //从errors里取出错误类型，再拼上该错误对应的信息
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + '';
+          break;
+        }
+      }
+    }
+
+  }
 
   onEditorCreated(quill) {
     this.editor = quill;
@@ -271,7 +301,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
         }).then((data)=> {
           let id = data.id;
           let imageUrl = `${data.url}/${data.key}`;
-          that.s3UploaderService.uploadToS3(file, data).then((data) => {
+          that.s3UploaderService.uploadToS3WithoutLoading(file, data).then((data) => {
             let range = that.editor.getSelection();
             that.editor.insertEmbed(range.index, 'image', imageUrl);
           });

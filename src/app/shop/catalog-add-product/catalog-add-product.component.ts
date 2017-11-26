@@ -93,7 +93,6 @@ export class CatalogAddProductComponent implements OnInit {
   //存储错误信息
   formErrors = {
     'title': '',
-    'tags': '',
     'salePrice':'',
     'purchaseUrl': '',
     'recommendation': ''
@@ -101,9 +100,6 @@ export class CatalogAddProductComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'title': {
-      'required': 'This field is required.'
-    },
-    'tags': {
       'required': 'This field is required.'
     },
     'salePrice':{
@@ -303,7 +299,7 @@ export class CatalogAddProductComponent implements OnInit {
           height: height
         }).then((data)=> {
           let imageUrl = `${data.url}/${data.key}`;
-          that.s3UploaderService.uploadToS3(file, data).then((data) => {
+          that.s3UploaderService.uploadToS3WithoutLoading(file, data).then((data) => {
             let range = that.editor.getSelection();
             that.editor.insertEmbed(range.index, 'image', imageUrl);
           });
