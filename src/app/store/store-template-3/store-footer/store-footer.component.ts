@@ -11,6 +11,7 @@ export class StoreFooterComponent implements OnInit{
 
   link: string;
   @Input() text = '';
+  @Input() name = '';
 
   constructor(
   ) {

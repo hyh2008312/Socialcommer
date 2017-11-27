@@ -53,9 +53,7 @@
       <div class="xb-store__title">About Me</div>
       <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
         <div class="xb-store__content-left" fxFlex="none">
-          <div class="xb-store__header">
-            <img [src]="store.ownerAvatar">
-          </div>
+          <app-store-template-1-store-avatar [avatar]="store.ownerAvatar" [name]="store.ownerFirstName"></app-store-template-1-store-avatar>
           <div class="md-subhead md-margin-top-2">{{store.ownerFirstName}}</div>
           <div class="md-margin-top-1">{{store.ownerCountry}}</div>
         </div>

@@ -38,6 +38,7 @@ import { CategoryDeleteDialogComponent } from "./category-delete-dialog/category
 import { CategoryEditDialogComponent } from "./category-edit-dialog/category-edit-dialog.component";
 import { BlogCreateDialogComponent } from "./blog-create-dialog/blog-create-dialog.component";
 import { BlogEditDialogComponent } from "./blog-edit-dialog/blog-edit-dialog.component";
+import { BlogDeleteDialogComponent } from "./blog-delete-dialog/blog-delete-dialog.component";
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -89,7 +90,8 @@ import { SharedModule } from '../shared/shared.module';
     CategoryDeleteDialogComponent,
     CategoryEditDialogComponent,
     BlogCreateDialogComponent,
-    BlogEditDialogComponent
+    BlogEditDialogComponent,
+    BlogDeleteDialogComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
@@ -97,7 +99,8 @@ import { SharedModule } from '../shared/shared.module';
     SnackBarSuccessComponent,
     CategoryCreateDialogComponent,
     CategoryDeleteDialogComponent,
-    CategoryEditDialogComponent
+    CategoryEditDialogComponent,
+    BlogDeleteDialogComponent
   ],
   providers: [
     ShopService,

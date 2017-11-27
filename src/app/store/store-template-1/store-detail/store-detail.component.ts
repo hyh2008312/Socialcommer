@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef,ViewChild} from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 
 import { StoreService } from '../../store.service';
@@ -19,6 +19,8 @@ export class StoreDetailComponent implements OnInit {
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
+
+  showButton: boolean = false;
 
   constructor(
     public router: Router,
@@ -61,6 +63,10 @@ export class StoreDetailComponent implements OnInit {
         storeId: data.storeId
       });
     });
+  }
+
+  scrollChange($event) {
+    this.showButton = $event;
   }
 
   close():void {

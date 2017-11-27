@@ -108,12 +108,13 @@ export class LoginComponent implements OnInit {
         self.auth.inviteToken(data.isInvite);
         if(data && data.store && data.store.length>0) {
           self.userService.addStore(data.store[0]);
-        }
-
-        if(data && data.isInvite) {
-          self.router.navigate(['shop/dashboard']);
+          if(data && data.isInvite) {
+            self.router.navigate(['shop/dashboard']);
+          } else {
+            self.router.navigate(['cp/invitation']);
+          }
         } else {
-          self.router.navigate(['cp/invitation']);
+          self.router.navigate(['cp/signUp'], {queryParams: {step: 1}});
         }
 
       });
@@ -147,14 +148,17 @@ export class LoginComponent implements OnInit {
               } else {
                 if(res.user && res.user.store && res.user.store.length>0) {
                   self.userService.addStore(res.user.store[0]);
-                }
 
-                if(res.user && res.user.isInvite) {
-                  self.router.navigate(['shop/dashboard']);
+                  if(res.user && res.user.isInvite) {
+                    self.router.navigate(['shop/dashboard']);
 
+                  } else {
+                    self.router.navigate(['cp/invitation']);
+                  }
                 } else {
-                  self.router.navigate(['cp/invitation']);
+                  self.router.navigate(['cp/signUp'], {queryParams: {step: 1}});
                 }
+
               }
             }
           });
@@ -187,13 +191,15 @@ export class LoginComponent implements OnInit {
                 } else {
                   if(res.user && res.user.store && res.user.store.length>0) {
                     self.userService.addStore(res.user.store[0]);
-                  }
 
-                  if(res.user && res.user.isInvite) {
-                    self.router.navigate(['shop/dashboard']);
+                    if(res.user && res.user.isInvite) {
+                      self.router.navigate(['shop/dashboard']);
 
+                    } else {
+                      self.router.navigate(['cp/invitation']);
+                    }
                   } else {
-                    self.router.navigate(['cp/invitation']);
+                    self.router.navigate(['cp/signUp'], {queryParams: {step: 1}});
                   }
                 }
               }

@@ -6,7 +6,7 @@
     <div fxFlex="noshrink">
       <app-store-template-3-navigation></app-store-template-3-navigation>
     </div>
-    <app-store-template-3-store-footer [text]="text"></app-store-template-3-store-footer>
+    <app-store-template-3-store-footer [text]="text" [name]="storeName"></app-store-template-3-store-footer>
   </div>
 
   <div class="xb-store-template__right" fxFlex>
@@ -24,7 +24,7 @@
     </div>
     <router-outlet></router-outlet>
     <div class="background-light-gray">
-      <app-store-template-3-store-footer [text]="text" fxShow.gt-xs="false"></app-store-template-3-store-footer>
+      <app-store-template-3-store-footer [text]="text" [name]="storeName" fxShow.gt-xs="false"></app-store-template-3-store-footer>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import {Directive,EventEmitter,ElementRef,HostListener,Output} from '@angular/core';
+import {Directive,EventEmitter,ElementRef,HostListener,Output, NgZone} from '@angular/core';
 
 @Directive({
   selector: '[appViewScroll]'
@@ -8,26 +8,41 @@ export class ViewScrollDirective {
 
   @Output() onScrollChange = new EventEmitter();
 
-  constructor(private element: ElementRef) {
+  constructor(
+    private element: ElementRef,
+    private ngZone: NgZone
+  ) {
     // now, we can reference to: this.element
   }
 
-  private startX: number = 0;
+
+  @HostListener('mouseover') onMouseOver() {
+    let self = this;
+    this.ngZone.runOutsideAngular(() => {
+      let part = self.element.nativeElement.querySelector('.xb-store__details-buttons');
+
+      if(self.element.nativeElement.scrollTop > part.offsetTop) {
+        self.scroll(true);
+      } else {
+        self.scroll(false);
+      }
+    });
+  }
 
   @HostListener('touchstart') onTouchStart() {
-    this.startX = this.element.nativeElement.scrollTop;
+
   }
 
   @HostListener('touchmove') onTouchMove() {
-    if(this.element.nativeElement.scrollTop > 0) {
-      if(this.element.nativeElement.scrollTop > this.startX) {
-        this.scroll(true);
-      } else if(this.element.nativeElement.scrollTop < this.startX){
-        this.scroll(false);
+    let self = this;
+    this.ngZone.runOutsideAngular(() => {
+      let part = self.element.nativeElement.querySelector('.xb-store__details-buttons');
+      if(self.element.nativeElement.scrollTop > part.offsetTop) {
+        self.scroll(true);
+      } else {
+        self.scroll(false);
       }
-    } else if(this.element.nativeElement.scrollTop == 0) {
-      this.scroll(false);
-    }
+    });
   }
 
   scroll(scrolledUp:boolean) {

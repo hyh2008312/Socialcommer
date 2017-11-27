@@ -18,6 +18,7 @@
     @include text-overflow();
     padding: 0 56px;
     width: 100%;
+    text-align: center;
 
     i{
       position: absolute;
@@ -421,6 +422,10 @@
     }
   }
 
+  &__buttons-bg-1{
+    color: $whiteColor;
+  }
+
   &__bottom{
     &-bg{
       background-color: #f1f1f1;
@@ -462,6 +467,26 @@
       height: calc(100vh - 56px);
       overflow-y: scroll;
       overflow-x: hidden;
+    }
+
+    &-bg-new{
+      margin-top: 56px;
+      margin-bottom: 56px;
+      width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      padding: 40px 48px;
+      background-color: $whiteColor;
+
+      @include xb-xs-screen{
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
     }
 
     @include xb-sm-screen{
@@ -607,7 +632,7 @@
       }
 
       @include xb-xs-screen{
-        padding: 16px 16px 16px;
+        padding: 16px 16px 72px;
       }
       @include xb-sm-screen{
         padding: 16px 16px 16px;
@@ -629,6 +654,16 @@
     &-buttons{
       margin-top: 16px;
       background-color: $whiteColor;
+    }
+    &-buttons-fixed{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 8px 16px;
+      width: 100%;
+      background-color: $whiteColor;
+      z-index: 1;
+      display: block;
     }
   }
 

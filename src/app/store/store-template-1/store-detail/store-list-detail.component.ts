@@ -19,6 +19,7 @@ export class StoreListDetailComponent implements OnInit {
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
+  showButton:any = false;
 
   constructor(
     public router: Router,
@@ -61,6 +62,10 @@ export class StoreListDetailComponent implements OnInit {
         storeId: data.storeId
       });
     });
+  }
+
+  scrollChange($event) {
+    this.showButton = $event;
   }
 
   close():void {

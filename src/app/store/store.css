@@ -3086,7 +3086,8 @@ textarea.mat-input-element {
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 0 56px;
-    width: 100%; }
+    width: 100%;
+    text-align: center; }
     .xb-store__nav i {
       position: absolute;
       left: 0;
@@ -3399,6 +3400,8 @@ textarea.mat-input-element {
       .xb-store__buttons-bg > div:hover {
         background-color: #00bdd6;
         color: #fff; }
+  .xb-store__buttons-bg-1 {
+    color: #fff; }
   .xb-store__bottom-bg {
     background-color: #f1f1f1;
     overflow: hidden; }
@@ -3432,6 +3435,23 @@ textarea.mat-input-element {
         height: calc(100vh - 56px);
         overflow-y: scroll;
         overflow-x: hidden; } }
+    .xb-store__details-bg-new {
+      margin-top: 56px;
+      margin-bottom: 56px;
+      width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      padding: 40px 48px;
+      background-color: #fff; }
+      @media screen and (max-width: 599px) {
+        .xb-store__details-bg-new {
+          margin: 0;
+          padding: 0;
+          width: 100vw;
+          height: 100vh;
+          overflow-y: scroll;
+          overflow-x: hidden; } }
     @media screen and (min-width: 600px) and (max-width: 959px) {
       .xb-store__details {
         margin: 0;
@@ -3554,7 +3574,7 @@ textarea.mat-input-element {
         width: 100%; }
       @media screen and (max-width: 599px) {
         .xb-store__details-description {
-          padding: 16px 16px 16px; } }
+          padding: 16px 16px 72px; } }
       @media screen and (min-width: 600px) and (max-width: 959px) {
         .xb-store__details-description {
           padding: 16px 16px 16px; } }
@@ -3570,6 +3590,15 @@ textarea.mat-input-element {
     .xb-store__details-buttons {
       margin-top: 16px;
       background-color: #fff; }
+    .xb-store__details-buttons-fixed {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 8px 16px;
+      width: 100%;
+      background-color: #fff;
+      z-index: 1;
+      display: block; }
   .xb-store__footer {
     padding: 40px 0;
     background-color: #252525;
