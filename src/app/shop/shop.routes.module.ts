@@ -15,6 +15,9 @@ import { StorePreviewComponent } from "./store-preview/store-preview.component";
 import { StoreEditComponent } from "./store-edit/store-edit.component";
 import { ToDoListComponent } from "./to-do-list/to-do-list.component";
 import { ProductCategoryComponent } from "./product-category/product-category.component";
+import { BlogComponent } from "./blog/blog.component";
+import { BlogCreateDialogComponent } from "./blog-create-dialog/blog-create-dialog.component";
+import { BlogEditDialogComponent } from "./blog-edit-dialog/blog-edit-dialog.component";
 
 const routes: Routes = [
   {
@@ -49,6 +52,13 @@ const routes: Routes = [
           path: ':id', component: FindProductsAddProductComponent
         }, {
           path: ':id/preview', component: FindProductsEditPreviewComponent
+        }]
+      },{
+        path: 'blog', component: BlogComponent,
+        children: [{
+          path: 'create', component: BlogCreateDialogComponent
+        }, {
+          path: ':id/edit', component: BlogEditDialogComponent
         }]
       }, {
         path: 'toDoList', component: ToDoListComponent

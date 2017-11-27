@@ -99,10 +99,10 @@
   color: #dff2f4; }
 
 .background-light-gray {
-  background-color: #f9f9f9; }
+  background-color: #f1f1f1; }
 
 .xb-color-light-gray {
-  color: #f9f9f9; }
+  color: #f1f1f1; }
 
 .background-gray-light {
   background-color: #999; }
@@ -1513,6 +1513,10 @@ textarea.mat-input-element {
   @media screen and (max-width: 599px) {
     .mat-dialog-container {
       background-color: transparent; } }
+
+@media screen and (max-width: 599px) {
+  .cdk-overlay-pane {
+    min-width: 100vw; } }
 
 .xb-social-share {
   width: 200px;

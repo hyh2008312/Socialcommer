@@ -102,7 +102,6 @@ export class ImageUploadPreviewMultiComponent implements OnInit {
   }
 
   loadingChange(event, index) {
-    console.log(event)
     if(event) {
       this.closeAnimate[index] = true;
       this.closeLoading[index] = true;

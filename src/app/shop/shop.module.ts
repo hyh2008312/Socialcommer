@@ -15,6 +15,7 @@ import { StoreEditComponent } from "./store-edit/store-edit.component";
 import { StoreItemCardPreviewComponent } from "./store-item-card-preview/store-item-card-preview.component";
 import { ToDoListComponent } from "./to-do-list/to-do-list.component";
 import { ProductCategoryComponent } from "./product-category/product-category.component";
+import { BlogComponent } from "./blog/blog.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
 import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-select.component";
@@ -26,6 +27,8 @@ import { StatisticItemComponent } from './statistic-item/statistic-item.componen
 import { StatisticTitleComponent } from './statistic-title/statistic-title.component';
 import { CategoryItemComponent } from './category-item/category-item.component';
 import { CategoryTitleComponent } from './category-title/category-title.component';
+import { BlogItemComponent } from './blog-item/blog-item.component';
+import { BlogTitleComponent } from './blog-title/blog-title.component';
 
 import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
 import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
@@ -33,6 +36,8 @@ import { ProductAffiliateLinkDialogComponent } from "./product-affiliate-link-di
 import { CategoryCreateDialogComponent } from "./category-create-dialog/category-create-dialog.component";
 import { CategoryDeleteDialogComponent } from "./category-delete-dialog/category-delete-dialog.component";
 import { CategoryEditDialogComponent } from "./category-edit-dialog/category-edit-dialog.component";
+import { BlogCreateDialogComponent } from "./blog-create-dialog/blog-create-dialog.component";
+import { BlogEditDialogComponent } from "./blog-edit-dialog/blog-edit-dialog.component";
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -69,17 +74,22 @@ import { SharedModule } from '../shared/shared.module';
     StorePreviewComponent,
     StoreTemplateComponent,
     StoreEditComponent,
+    BlogComponent,
     StoreItemCardPreviewComponent,
     StatisticItemComponent,
     StatisticTitleComponent,
     CategoryItemComponent,
     CategoryTitleComponent,
+    BlogTitleComponent,
+    BlogItemComponent,
     StoreShareDialogComponent,
     ProductAffiliateLinkDialogComponent,
     SnackBarSuccessComponent,
     CategoryCreateDialogComponent,
     CategoryDeleteDialogComponent,
-    CategoryEditDialogComponent
+    CategoryEditDialogComponent,
+    BlogCreateDialogComponent,
+    BlogEditDialogComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,

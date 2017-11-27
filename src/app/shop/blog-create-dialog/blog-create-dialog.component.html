@@ -1,0 +1,41 @@
+<div class="xb-store__background">
+  <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details">
+    <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-shop__mobile-dialog-inner">
+      <form [formGroup]="blogForm" novalidate>
+        <div class="xb-shop__edit-title">Blog Cover <span class="xb-input-error xb-large-star">*</span></div>
+        <div class="md-margin-top-2">
+          <app-image-upload-preview-blog [(previewImgFile)]="previewImgFile" [(previewImgSrc)]="previewImgSrc"></app-image-upload-preview-blog>
+        </div>
+        <div class="md-margin-top-2 xb-shop__edit-title">Title <span class="xb-input-error xb-large-star">*</span></div>
+        <mat-form-field class="xb-shop__width-100">
+          <input matInput formControlName="title">
+        </mat-form-field>
+        <div *ngIf="formErrors['title']" class="xb-input-error">
+          {{ formErrors['title'] }}
+        </div>
+        <div class="xb-shop__edit-title">Description <span class="xb-input-error xb-large-star">*</span></div>
+        <div class="md-margin-top-2">
+          <quill-editor formControlName="context"
+                        (ready)="onEditorCreated($event)"></quill-editor>
+          <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
+        </div>
+        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
+          <div class="md-margin-left-2">
+            <button mat-button color="primary" (click)="createDraft()">SAVE DRAFT</button>
+          </div>
+          <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
+            <button mat-button color="primary" (click)="close()">CLOSE</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

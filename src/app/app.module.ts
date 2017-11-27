@@ -3,6 +3,9 @@ import { CommonModule }        from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule,JsonpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
+
 
 import { AppRoutingModule } from './app.routes.module';
 
@@ -28,7 +31,8 @@ import { UserModule } from './shared/services/user/user.module';
     JsonpModule,
     BrowserAnimationsModule,
     AuthenticationModule,
-    UserModule
+    UserModule,
+    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager ])
   ],
   providers: [BaseApi, SystemConstant, DataApi, BlogCover,HttpClientModule],
   bootstrap: [AppComponent]

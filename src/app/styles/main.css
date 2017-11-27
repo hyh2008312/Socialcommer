@@ -99,10 +99,10 @@
   color: #dff2f4; }
 
 .background-light-gray {
-  background-color: #f9f9f9; }
+  background-color: #f1f1f9; }
 
 .xb-color-light-gray {
-  color: #f9f9f9; }
+  color: #f1f1f9; }
 
 .background-gray-light {
   background-color: #999; }
@@ -2124,10 +2124,10 @@ img.xb2-img-responsible {
   color: #dff2f4; }
 
 .background-light-gray {
-  background-color: #f9f9f9; }
+  background-color: #f1f1f1; }
 
 .xb-color-light-gray {
-  color: #f9f9f9; }
+  color: #f1f1f1; }
 
 .background-gray-light {
   background-color: #999; }
@@ -3592,7 +3592,7 @@ a {
   text-decoration: none; }
 
 a.a-gray {
-  color: #f9f9f9; }
+  color: #f1f1f1; }
   a.a-gray:hover {
     color: #888;
     cursor: pointer; }
@@ -3615,7 +3615,7 @@ p, li {
   color: rgba(0, 0, 0, 0.87); }
 
 .note-editor {
-  border: 1px solid #f9f9f9; }
+  border: 1px solid #f1f1f1; }
 
 .growl-container.top-right {
   position: fixed;

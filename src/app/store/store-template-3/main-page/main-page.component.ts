@@ -12,6 +12,7 @@ export class MainPageComponent implements OnInit {
 
   storeName: string = '';
   isDialogOpen: boolean = false;
+  text: string = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,6 +27,7 @@ export class MainPageComponent implements OnInit {
     self.storeService.getStore(storeName).then((data) => {
 
       self.storeName = data.name;
+      self.text = data.description;
       self.storeService.addStore(data);
     });
   }
