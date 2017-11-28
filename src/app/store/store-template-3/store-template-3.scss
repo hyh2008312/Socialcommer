@@ -24,6 +24,31 @@
     max-width: 1440px;
     margin: auto;
   }
+
+  &__buttons-bg{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    >div{
+      width: 240px;
+      text-align: center;
+      line-height: 40px;
+      border: 1px solid #6446c3;
+      color: #6446c3;
+      border-radius: 4px;
+      cursor: pointer;
+      @include media();
+
+      @include xb-xs-screen{
+        line-height: 36px;
+      }
+
+      &:hover{
+        background-color: #6446c3;
+        color: $whiteColor;
+      }
+    }
+  }
+
   &__left{
     width: 240px;
     height: 100vh;
@@ -343,6 +368,13 @@
     &-margin-right{
       margin-right: 40px;
     }
+
+    &-bottom{
+      padding-bottom: 60px;
+      @include xb-xs-screen{
+        padding-bottom: 0;
+      }
+    }
   }
 
   &__details{
@@ -531,6 +563,27 @@
 
     &-margin-bottom-1{
       margin-bottom: 12px;
+    }
+  }
+
+  &__blog{
+    &-content{
+      margin: 120px 0;
+      padding: 0 120px;
+      @include xb-sm-screen{
+        margin: 48px 0;
+        padding: 0 36px;
+      }
+
+      @include xb-xs-screen{
+        margin: 48px 0;
+        padding: 0 16px;
+      }
+    }
+
+    &-title{
+      font-size: 32px;
+      @include media();
     }
   }
 }

@@ -120,6 +120,22 @@ export class StoreService {
       .catch(this.handleError);
   }
 
+  getBlogDetail(id: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}blog/${id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   public addStore(newStore: any): void {
     this.store.next(newStore);
   }
@@ -137,6 +153,16 @@ export class StoreService {
   buttonClick(statistics): Promise<any> {
 
     const url = `${this.dataUrl.url}data/upload/buy_click`;
+
+    return this.http.get(url,{search: this.serializeParamsJSONP(statistics)})
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  pageViewBlog(statistics): Promise<any> {
+
+    const url = `${this.dataUrl.url}data/upload/blog_click`;
 
     return this.http.get(url,{search: this.serializeParamsJSONP(statistics)})
       .toPromise()

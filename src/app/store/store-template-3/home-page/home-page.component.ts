@@ -101,6 +101,9 @@ export class HomePageComponent implements OnInit {
   }
 
   queryBlog(clearBlog?:boolean) {
+    if(!this.ownerId) {
+      return;
+    }
     let options = {
       ownerId: this.ownerId,
       page: this.page,

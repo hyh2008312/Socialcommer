@@ -526,7 +526,7 @@ export class ShopService {
     this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}blog/?${this.serializeParams(blog)}`;
+    const url = `${this.baseUrl.url}statistics/blog/?${this.serializeParams(blog)}`;
 
     return this.http.get(url, options)
       .toPromise()

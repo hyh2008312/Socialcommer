@@ -66,12 +66,15 @@ export class StoreListComponent implements OnInit {
 
   changeCategory() {
     this.page = 1;
-    this.product = [];
-    this.nextPage = true;
+    this.queryProduct(true);
+  }
+
+  jumpList():void {
+    this.page++;
     this.queryProduct();
   }
 
-  queryProduct() {
+  queryProduct(clearCategory?:boolean) {
     let options = {
       categoryId: this.category.id,
       storeId: this.store.id,
@@ -81,6 +84,10 @@ export class StoreListComponent implements OnInit {
     };
     let self = this;
     self.storeService.getProductList(options).then((data)=>{
+      if(clearCategory) {
+        self.product = [];
+        self.nextPage = true;
+      }
       self.product = self.product.concat(data.results);
       if(data.next == null) {
         self.nextPage = false;

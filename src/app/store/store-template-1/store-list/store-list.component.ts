@@ -91,6 +91,11 @@ export class StoreListComponent implements OnInit {
     });
   }
 
+  jumpList():void {
+    this.page++;
+    this.queryProduct();
+  }
+
   back():void {
     this.router.navigate([`./store/${this.store.displayName}`]);
   }

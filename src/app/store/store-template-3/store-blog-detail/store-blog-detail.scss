@@ -1,26 +1,42 @@
 @import "../../../styles/utils/_index";
 @import "../../../styles/_variables";
 
-.xb-blog-card{
+.xb-blog-detail{
   margin-top: 40px;
+
+  @include xb-xs-screen{
+    margin-top: 24px;
+  }
+
+  &__blog{
+    &-content{
+      margin: 120px 0;
+      padding: 0 120px;
+      @include xb-sm-screen{
+        margin: 48px 0;
+        padding: 0 36px;
+      }
+
+      @include xb-xs-screen{
+        margin: 24px 0;
+        padding: 0 16px;
+      }
+    }
+
+    &-title{
+      font-size: 32px;
+      @include media();
+    }
+  }
 
   &__title{
     font-size: 24px;
     line-height: 32px;
-    height: 32px;
-    @include text-overflow();
-    @include xb-xs-screen{
-      max-height: 64px;
-      height: 100%;
-    }
   }
 
   &__edit-time{
-    margin-top: 16px;
+    margin-top: 12px;
     color: rgba(0,0,0,.54);
-    @include xb-xs-screen{
-      margin-top: 12px;
-    }
   }
 
   &__image-bg{
@@ -39,25 +55,13 @@
   }
 
   &__description{
-    font-size: 16px;
-    line-height: 28px;
-    max-height: 112px;
-    overflow: hidden;
-    margin-top: 24px;
+    margin-top: 32px;
+    margin-bottom: 40px;
     @include xb-xs-screen{
       margin-top: 12px;
+      margin-bottom: 24px;
     }
   }
 
-  &__buttons{
-    margin: 24px 0;
-    font-size: 16px;
-    @include media();
-    color: #3a2481;
-
-    @include xb-xs-screen{
-      margin: 24px 0 8px;
-    }
-  }
 
 }

@@ -41,6 +41,19 @@ export class Product {
   title: string;
 }
 
+export class Blog{
+  context: string = '';
+  cover: string = '';
+  created: string = '';
+  description: string = '';
+  id: any;
+  owner: any;
+  modified: string = '';
+  status: string = 'published';
+  subTitle: string = '';
+  title: string = '';
+}
+
 export class Image{
   id: number;
   url: string = '';

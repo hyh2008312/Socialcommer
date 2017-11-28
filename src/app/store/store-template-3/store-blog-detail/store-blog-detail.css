@@ -1518,53 +1518,49 @@ textarea.mat-input-element {
   .cdk-overlay-pane {
     min-width: 100vw; } }
 
-.xb-blog-card {
+.xb-blog-detail {
   margin-top: 40px; }
-  .xb-blog-card__title {
+  @media screen and (max-width: 599px) {
+    .xb-blog-detail {
+      margin-top: 24px; } }
+  .xb-blog-detail__blog-content {
+    margin: 120px 0;
+    padding: 0 120px; }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-blog-detail__blog-content {
+        margin: 48px 0;
+        padding: 0 36px; } }
+    @media screen and (max-width: 599px) {
+      .xb-blog-detail__blog-content {
+        margin: 24px 0;
+        padding: 0 16px; } }
+  .xb-blog-detail__blog-title {
+    font-size: 32px;
+    font-weight: 600; }
+  .xb-blog-detail__title {
     font-size: 24px;
-    line-height: 32px;
-    height: 32px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; }
-    @media screen and (max-width: 599px) {
-      .xb-blog-card__title {
-        max-height: 64px;
-        height: 100%; } }
-  .xb-blog-card__edit-time {
-    margin-top: 16px;
+    line-height: 32px; }
+  .xb-blog-detail__edit-time {
+    margin-top: 12px;
     color: rgba(0, 0, 0, 0.54); }
-    @media screen and (max-width: 599px) {
-      .xb-blog-card__edit-time {
-        margin-top: 12px; } }
-  .xb-blog-card__image-bg {
+  .xb-blog-detail__image-bg {
     position: relative;
     margin-top: 16px;
     width: 100%;
     height: 0;
     padding-bottom: 66.66%;
     overflow: hidden; }
-    .xb-blog-card__image-bg > img {
+    .xb-blog-detail__image-bg > img {
       position: absolute;
       width: 100%;
       left: 0;
       top: 0; }
-  .xb-blog-card__description {
-    font-size: 16px;
-    line-height: 28px;
-    max-height: 112px;
-    overflow: hidden;
-    margin-top: 24px; }
+  .xb-blog-detail__description {
+    margin-top: 32px;
+    margin-bottom: 40px; }
     @media screen and (max-width: 599px) {
-      .xb-blog-card__description {
-        margin-top: 12px; } }
-  .xb-blog-card__buttons {
-    margin: 24px 0;
-    font-size: 16px;
-    font-weight: 600;
-    color: #3a2481; }
-    @media screen and (max-width: 599px) {
-      .xb-blog-card__buttons {
-        margin: 24px 0 8px; } }
+      .xb-blog-detail__description {
+        margin-top: 12px;
+        margin-bottom: 24px; } }
 
-/*# sourceMappingURL=store-blog-card.css.map */
+/*# sourceMappingURL=store-blog-detail.css.map */

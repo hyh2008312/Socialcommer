@@ -7,7 +7,8 @@ import { StoreCategoryComponent } from './store-category/store-category.componen
 import { StoreDetailComponent } from './store-detail/store-detail.component';
 import { StoreItemCardComponent } from './store-item-card/store-item-card.component';
 import { ProductsImageCoverComponent } from './products-image-cover/products-image-cover.component';
-
+import { StoreBlogComponent } from './store-blog/store-blog.component';
+import { StoreBlogDetailComponent } from './store-blog-detail/store-blog-detail.component';
 import { StoreBlogCardComponent } from './store-blog-card/store-blog-card.component';
 
 import { StoreNavigationComponent } from  './store-navigation/store-navigation.component';
@@ -37,7 +38,9 @@ import { SharedModule } from '../../shared/shared.module';
     StoreNavigationComponent,
     StoreFooterComponent,
     ProductsImageCoverComponent,
-    StoreBlogCardComponent
+    StoreBlogCardComponent,
+    StoreBlogComponent,
+    StoreBlogDetailComponent
   ],
   entryComponents: [
   ],

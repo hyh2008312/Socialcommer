@@ -1,4 +1,4 @@
-<div>
+<div class="xb-store-template__collection-bottom">
   <div class="xb-store-template__collection-container">
     <div class="xb-store-template__collection-title" fxShow.xs="false">
       COLLECTIONS
@@ -10,5 +10,11 @@
                          fxFlex="49" fxFlex.xs="100"
                          [product]="item" [status]="1"></app-store-item-card>
     <div fxFlex="49" fxFlex.xs="100"></div>
+  </div>
+  <div class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+       (click)="jumpList()" *ngIf="nextPage && product.length > 0">
+    <div>
+      SEE MORE
+    </div>
   </div>
 </div>
