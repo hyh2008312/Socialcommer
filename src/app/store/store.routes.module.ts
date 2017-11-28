@@ -1,22 +1,30 @@
-import { NgModule } from '@angular/core';
-import { RouterModule , Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { StoreMainComponent } from './store-main/store-main.component';
+import {StoreMainComponent} from './store-main/store-main.component';
 
 
 const routes: Routes = [{
   path: '', component: StoreMainComponent,
-  children: [{
-     path: ':name',
-     loadChildren: 'app/store/store-template-1/store-template-1.module#StoreTemplateOneModule'
-  }, {
-    path: ':name',
-    loadChildren: 'app/store/store-template-3/store-template-3.module#StoreTemplateThreeModule'
-  }]
+  children: [
+    {
+      path: ':name',
+      loadChildren: 'app/store/store-template-1/store-template-1.module#StoreTemplateOneModule'
+    },
+    {
+      path: ':name',
+      loadChildren: 'app/store/store-template-2/store-template-2.module#StoreTemplateTwoModule'
+    },
+    {
+      path: ':name',
+      loadChildren: 'app/store/store-template-3/store-template-3.module#StoreTemplateThreeModule'
+    }
+  ]
 }];
 
 @NgModule({
-  imports:[RouterModule.forChild(routes)],
-  exports:[RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class StoreRoutingModule{ }
+export class StoreRoutingModule {
+}
