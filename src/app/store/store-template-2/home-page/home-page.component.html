@@ -1,0 +1,163 @@
+<div class="xb-store ">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push" position="end">
+      <div class="xb-store-template__side_container">
+        <app-store-template-2-navigation></app-store-template-2-navigation>
+      </div>
+    </mat-sidenav>
+    <!--banner图-->
+    <div class="xb-store-template__banner "
+         [ngStyle]="{'background': 'url(' + (store.imageUrl == ''? baseImageUrl:store.imageUrl) + ') center / auto 100% ' }">
+      <div class="xb-store-template__template-mask"></div>
+      <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center" fxShow="true" fxShow.xs="false">
+        <div class="xb-store-template__store-name" fxFlex="none">
+          Store Name
+        </div>
+        <app-store-template-2-navigation fxFlex></app-store-template-2-navigation>
+      </div>
+      <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
+           fxShow.xs="true">
+        <div class="xb-store-template__store-name">
+          Store Name
+        </div>
+        <i class="material-icons xb-pointer" [ngStyle]="{'color': 'white','margin-right':'16px'}"
+           (click)="sidenav.open()">menu</i>
+      </div>
+
+      <div class="xb-store__content-2">
+        <div class="xb-store-template__template-title">
+          {{store.name}}
+        </div>
+        <div class="xb-store-template__store-description" *ngIf="store.descriptionTag == ''">
+          {{store.description}}
+        </div>
+        <div class="xb-store-template__template-description ql-editor"
+             [innerHTML]="store.descriptionTag | safeHtml" *ngIf="store.descriptionTag != ''">
+        </div>
+      </div>
+      <div class="xb-store-template__store-buttons" fxShow="false" fxShow.gt-xs="true">
+        <span>Shop Now</span>
+        <br>
+        <i class="material-icons">keyboard_arrow_down</i>
+      </div>
+    </div>
+    <!--商家信息介绍-->
+    <div class="xb-store-template__introduce" fxShow="true" fxShow.xs="false">
+      <div class="xb-store-template__introduce-one" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-store-template__introduce-one-top-left">
+          <div class="xb-store-template__introduce-one-title">About Me</div>
+          <div class="xb-store-template__introduce-one-describe">
+            In the Box: iPad, Lightning to USB Cable and USB Power
+            Adapter. Display: Retina display, 9.7-inch(diagonal) LED-backlit Multi-Touch display with IPS technology,
+            2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
+          </div>
+        </div>
+        <div class="xb-store-template__introduce-one-top-right">
+          <div class="xb-store-template__introduce-one-top-image"
+               [ngStyle]="{'background': 'url(' + (imageUrlOne) + ') center / 100% 100% ' }"
+          >
+            <img src={{imageOwnerThree}}>
+          </div>
+        </div>
+      </div>
+      <div class="xb-store-template__introduce-two" fxLayout="row" fxLayoutAlign="end start">
+        <div class="xb-store-template__introduce-two-bottom-left">
+          <div class="xb-store-template__introduce-two-bottom-image"
+               [ngStyle]="{'background': 'url(' + (imageOwnerFour) + ') center / auto 100% ' }"
+          >
+            <img src={{imageOwnerSix}}>
+          </div>
+        </div>
+
+        <div class="xb-store-template__introduce-two-bottom-right">
+          <div class="xb-store-template__introduce-two-describe">
+            In the Box: iPad, Lightning to USB Cable and USB Power
+            Adapter. Display: Retina display, 9.7-inch(diagonal) LED-backlit Multi-Touch display with IPS technology,
+            2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--商家信息移动端-->
+    <div class="xb-store-template__introduce" fxShow="false" fxShow.xs="true">
+      <div fxLayout="row" fxFlexAlign="center start">
+        <div class="xb-store-template__introduce-mobile-top-1"
+             [ngStyle]="{'background': 'url(' + (imageUrlOne) + ')   center / auto 100% ' }"></div>
+        <div class="xb-store-template__introduce-mobile-top-2"
+             [ngStyle]="{'background': 'url(' + (imageOwnerThree) + ') center / auto 100% ',
+           'background-repeat':'no-repeat'}"
+        ></div>
+      </div>
+      <div class="xb-store-template__introduce-mobile-top-title">
+        About Me
+      </div>
+      <div class="xb-store-template__introduce-one-describe">
+        In the Box: iPad, Lightning to USB Cable and USB Power
+        Adapter. Display: Retina display, 9.7-inch(diagonal) LED-backlit Multi-Touch display with IPS technology,
+        2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
+      </div>
+
+      <div [ngStyle]="{'margin-top':'40px'}" fxLayout="row" fxFlexAlign="center start">
+        <div class="xb-store-template__introduce-mobile-top-1"
+             [ngStyle]="{'background': 'url(' + (imageOwnerFour) + ') center / auto 100% ' }"></div>
+        <div class="xb-store-template__introduce-mobile-top-2"
+             [ngStyle]="{'background': 'url(' + (imageOwnerSix) + ') center / auto 100% ' ,
+           'background-repeat':'no-repeat'}"
+        ></div>
+      </div>
+      <div class="xb-store-template__introduce-one-describe">
+        In the Box: iPad, Lightning to USB Cable and USB Power
+        Adapter. Display: Retina display, 9.7-inch(diagonal) LED-backlit Multi-Touch display with IPS technology,
+        2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
+      </div>
+    </div>
+    <!--home-made-->
+    <div class="xb-store-template__home-made" fxLayout="column" fxLayoutAlign="start center"
+         [ngStyle]="{'background': 'url(' + imageHomeMade + ') center / auto 100% ' }">
+      <div class="xb-store-template__home-made-title">
+        My Collections
+      </div>
+      <div class="xb-store-template__home-made-des">
+        (diagonal) LED-backlit Multi-Touch display with IPS technology
+      </div>
+    </div>
+    <!--产品列表-->
+    <div class="xb-store-template__product-content ">
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+        <app-store-item-card *ngFor="let item of product"
+                             fxFlex.xs="48" fxFlex.gt-xs="30"
+                             [product]="item" [status]="0"></app-store-item-card>
+        <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+      </div>
+      <div class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+           (click)="jumpProductList()" *ngIf=" nextPage && product.length > 0">
+        <div>
+          SEE MORE
+        </div>
+      </div>
+    </div>
+    <!--订阅邮箱-->
+    <div class="xb-store-template__subscribe" fxLayout="column" fxLayoutAlign="start center"
+         [ngStyle]="{'background': 'url(' + imageOwnerEleven + ') center / auto 100% ' }">
+      <div class="xb-store-template__template-mask"></div>
+      <div class="xb-store-template__subscribe-title">
+        Subscribe My Newsletter
+      </div>
+      <div class="xb-store-template__subscribe-parent" fxLayout="row" fxLayout.xs="column" fxFlexAlign="start start">
+        <div class="xb-store-template__subscribe-email">
+          <input type="text">
+        </div>
+        <div class="xb-store-template__subscribe-submit">
+          SUBSCRIBE
+        </div>
+      </div>
+
+    </div>
+    <!--网址底部-->
+    <div>
+      <app-store-template-2-store-foot [storeName]="store.name"></app-store-template-2-store-foot>
+    </div>
+  </mat-sidenav-container>
+  <router-outlet></router-outlet>
+</div>
