@@ -8,7 +8,7 @@
       </div>
     </button>
   </div>
-  <mat-tab-group color="accent"  [(selectedIndex)]="selectedIndex">
+  <mat-tab-group color="accent" (selectedTabChange)="changeBlog($event)"  [(selectedIndex)]="selectedIndex">
     <mat-tab label="Published" >
       <div class="md-margin-top-2 ">
         <app-blog-title></app-blog-title>

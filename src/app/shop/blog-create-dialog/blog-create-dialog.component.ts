@@ -108,7 +108,7 @@ export class BlogCreateDialogComponent implements OnInit {
 
     blogForm.cover = this.previewImgFile;
 
-    blogForm.modified = 'published';
+    blogForm.status = 'published';
 
     this.shopService.createBlog(blogForm).then((data) => {
       self.router.navigate(['/shop/blog'], { queryParams: {tab: 'published'}, replaceUrl: true});
@@ -121,7 +121,7 @@ export class BlogCreateDialogComponent implements OnInit {
 
     blogForm.cover = this.previewImgFile;
 
-    blogForm.modified = 'edit';
+    blogForm.status = 'editing';
 
     this.shopService.createBlog(blogForm).then((data) => {
       self.router.navigate(['/shop/blog'], { queryParams: {tab: 'draft'}, replaceUrl: true});
