@@ -106,6 +106,8 @@ export class BlogCreateDialogComponent implements OnInit {
     let self = this;
     let blogForm = this.blogForm.value;
 
+    blogForm.cover = this.previewImgFile;
+
     blogForm.modified = 'published';
 
     this.shopService.createBlog(blogForm).then((data) => {
@@ -116,6 +118,8 @@ export class BlogCreateDialogComponent implements OnInit {
   createDraft() {
     let self = this;
     let blogForm = this.blogForm.value;
+
+    blogForm.cover = this.previewImgFile;
 
     blogForm.modified = 'edit';
 
