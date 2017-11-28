@@ -69,7 +69,7 @@ export class BlogEditDialogComponent implements OnInit {
   ngOnInit() {
     let self = this;
     let id = self.activatedRoute.snapshot.params['id'];
-    self.shopService.getProduct(id).then((data) => {
+    self.shopService.getBlogDetail(id).then((data) => {
 
       self.blogForm.setValue({
         title: data.title,
@@ -131,25 +131,29 @@ export class BlogEditDialogComponent implements OnInit {
     if(!this.blogForm.valid) {
       return;
     }
-
+    let id = this.activatedRoute.snapshot.params['id'];
     let blogForm = this.blogForm.value;
 
-    blogForm.edit = 'published';
+    blogForm.id = id;
+    blogForm.cover = this.previewImgFile;
+    blogForm.status = 'published';
 
     let self = this;
-    this.shopService.changeProduct(blogForm).then((data) => {
+    this.shopService.changeBlog(blogForm).then((data) => {
       self.router.navigate(['/shop/blog'], { queryParams: {tab: 'published'}, replaceUrl: true});
     });
   }
 
   createDraft() {
-
+    let id = this.activatedRoute.snapshot.params['id'];
     let blogForm = this.blogForm.value;
 
-    blogForm.edit = 'editing';
+    blogForm.id = id;
+    blogForm.cover = this.previewImgFile;
+    blogForm.status = 'editing';
 
     let self = this;
-    self.shopService.changeProduct(blogForm).then((data) => {
+    self.shopService.changeBlog(blogForm).then((data) => {
       self.router.navigate(['/shop/blog'], { queryParams: {tab: 'draft'}, replaceUrl: true});
     });
   }

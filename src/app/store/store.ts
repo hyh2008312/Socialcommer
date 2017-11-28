@@ -3,6 +3,7 @@ export class Store {
   name : string;
   description: string;
   cover: string;
+  ownerId: number;
   ownerAvatar: string;
   ownerCountry: string;
   ownerFirstName: string;

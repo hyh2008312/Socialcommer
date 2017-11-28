@@ -9,6 +9,7 @@ import { MomentModule }        from 'angular2-moment';
 import { SafeHtmlPipe }         from './pipes/safe-html/safe-html.pipe';
 import { SafeUrlPipe }         from './pipes/safe-url/safe-url.pipe';
 import { SaleDiscountPipe }         from './pipes/sale-discount/sale-discount.pipe';
+import { FormatCurrencyPipe }         from './pipes/format-currency/format-currency.pipe';
 
 import { ViewResizeDirective }  from './directives/view-resize/view-resize.directive';
 import { ViewScrollDirective }  from './directives/view-srcoll/view-scroll.directive';
@@ -115,6 +116,7 @@ let providers = {
     SafeHtmlPipe,
     SaleDiscountPipe,
     SafeUrlPipe,
+    FormatCurrencyPipe,
     ViewResizeDirective,
     ViewScrollDirective,
     RepeatOrderDirective,
@@ -147,6 +149,7 @@ let providers = {
     SafeHtmlPipe,
     SaleDiscountPipe,
     SafeUrlPipe,
+    FormatCurrencyPipe,
     ViewResizeDirective,
     ViewScrollDirective,
     RepeatOrderDirective,

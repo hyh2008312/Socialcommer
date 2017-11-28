@@ -8,6 +8,8 @@ import { StoreDetailComponent } from './store-detail/store-detail.component';
 import { StoreItemCardComponent } from './store-item-card/store-item-card.component';
 import { ProductsImageCoverComponent } from './products-image-cover/products-image-cover.component';
 
+import { StoreBlogCardComponent } from './store-blog-card/store-blog-card.component';
+
 import { StoreNavigationComponent } from  './store-navigation/store-navigation.component';
 import { StoreFooterComponent } from './store-footer/store-footer.component';
 
@@ -34,7 +36,8 @@ import { SharedModule } from '../../shared/shared.module';
     StoreItemCardComponent,
     StoreNavigationComponent,
     StoreFooterComponent,
-    ProductsImageCoverComponent
+    ProductsImageCoverComponent,
+    StoreBlogCardComponent
   ],
   entryComponents: [
   ],

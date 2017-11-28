@@ -43,7 +43,7 @@
         <mat-paginator [length]="length"
                        [pageSize]="pageSize"
                        [pageSizeOptions]="pageSizeOptions"
-                       (page)="changePage($event, 0)"
+                       (page)="changePage($event, 1)"
                        *ngIf="blog && blog.length > 0">
         </mat-paginator>
         <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"

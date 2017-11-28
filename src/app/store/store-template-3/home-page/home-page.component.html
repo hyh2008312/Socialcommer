@@ -23,5 +23,15 @@
         <div fxFlex="49" fxFlex.xs="100"></div>
       </div>
     </div>
+    <div>
+      <div>BLOG</div>
+
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="space-around start" fxLayoutWrap>
+        <app-store-template-3-store-blog *ngFor="let item of product"
+                             fxFlex="45" fxFlex.xs="100"
+                             [blog]="item" [status]="0"></app-store-template-3-store-blog>
+        <div fxFlex="49" fxFlex.xs="100"></div>
+      </div>
+    </div>
   </div>
 </div>

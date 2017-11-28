@@ -1,6 +1,9 @@
 import { Input, Output, Component, OnInit,EventEmitter, Inject} from '@angular/core';
-
+import { Router,ActivatedRoute } from '@angular/router';
 import { ShopService } from '../shop.service';
+
+import { BlogDeleteDialogComponent } from '../blog-delete-dialog/blog-delete-dialog.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-blog-item',
@@ -14,9 +17,11 @@ export class BlogItemComponent implements OnInit {
   @Input() index: number = 0;
   @Output() blogChange = new EventEmitter<any>();
 
+  isDelete : boolean = false;
 
   constructor(
-
+    private dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,11 +29,28 @@ export class BlogItemComponent implements OnInit {
   }
 
   deleteBlog() {
+    let dialogRef = this.dialog.open(BlogDeleteDialogComponent, {
+      data: {
+        blog : this.blog,
+        isDelete: this.isDelete
+      }
+    });
 
+    let self = this;
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(dialogRef.componentInstance.data.isDelete == true) {
+        self.blogChange.emit({
+          index: self.index,
+          blog: self.blog,
+          event: 'delete'
+        });
+      }
+    });
   }
 
   editBlog() {
-
+    this.router.navigate([`/shop/blog/${this.blog.id}/edit`], { queryParams: {tab: this.blog.status == 'published'? 'published':'draft'}});
   }
 
 }

@@ -30,12 +30,6 @@ export class ShopService {
     this.currentListingTab.next(newTab);
   }
 
-  currentBlogTab: Subject<any> = new BehaviorSubject<any>(null);
-
-  public setCurrentBlogTab(newTab: number): void {
-    this.currentBlogTab.next(newTab);
-  }
-
   serializeParams(params) {
 
     let array = [];
@@ -540,6 +534,23 @@ export class ShopService {
       .catch(this.handleError);
   }
 
+  getBlogDetail(id: number): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}blog/${id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   createBlog(blog: any): Promise<any> {
 
     let headers = new Headers({
@@ -554,6 +565,23 @@ export class ShopService {
     return this.http.post(url, blog, options)
       .toPromise()
       .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  changeBlog(blog: any): Promise<StoreProduct> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}blog/${blog.id}/`;
+
+    return this.http.put(url, blog, options)
+      .toPromise()
+      .then(response => response.json() as StoreProduct)
       .catch(this.handleError);
   }
 

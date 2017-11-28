@@ -25,7 +25,7 @@
                         (ready)="onEditorCreated($event)"></quill-editor>
           <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
         </div>
-        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="tab == 'publish'">
+        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="tab == 'published'">
           <button mat-raised-button color="primary" (click)="create()">SAVE</button>
           <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
             <button mat-button color="primary" (click)="close()">CLOSE</button>

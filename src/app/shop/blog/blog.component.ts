@@ -24,6 +24,7 @@ export class BlogComponent implements OnInit {
 
   blog: any = false;
   blogIndex = 1;
+  blogDraftIndex = 1;
 
   selectedIndex: number = 0;
 
@@ -37,14 +38,19 @@ export class BlogComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
 
-
-
   }
 
   // MatPaginator Output
   changePage(event, type) {
     this.pageSize = event.pageSize;
-    this.blogIndex = event.pageIndex + 1;
+    switch (type) {
+      case 0:
+        this.blogIndex = event.pageIndex + 1;
+        break;
+      case 1:
+        this.blogDraftIndex = event.pageIndex + 1;
+        break;
+    }
     this.changeBlog();
   }
 
@@ -91,13 +97,10 @@ export class BlogComponent implements OnInit {
       }
     });
 
-    self.shopService.currentBlogTab.subscribe((data) => {
-      self.selectedIndex = data;
-    });
   }
 
   changeBlog() {
-    let page = this.blogIndex;
+    let page = 1;
 
     let self = this;
 
@@ -105,11 +108,14 @@ export class BlogComponent implements OnInit {
     switch (this.selectedIndex) {
       case 0:
         status = 'published';
+        page = this.blogIndex;
         break;
       case 1:
         status = 'editing';
+        page = this.blogDraftIndex;
         break;
     }
+
     self.shopService.getBlog({
       page: page,
       page_size: this.pageSize,
@@ -135,15 +141,11 @@ export class BlogComponent implements OnInit {
     });
   }
 
-  categoryChange(event) {
+  blogChange(event) {
     switch(event.event) {
       case 'delete':
 
         this.blog.splice(event.index,1);
-
-        break;
-      case 'edit':
-        this.blog.splice(event.index,1, event.category);
 
         break;
     }

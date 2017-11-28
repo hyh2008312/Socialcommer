@@ -24,9 +24,12 @@ export class HomePageComponent implements OnInit {
   store: Store = new Store();
   page = 1;
   nextPage: boolean = true;
+  nextBlogPage: boolean = true;
   product: any = [];
 
-  queryMedia: any;
+  blog: any = [];
+
+  ownerId: any;
 
   constructor(
     private router: Router,
@@ -47,6 +50,7 @@ export class HomePageComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.text = data.description;
+        self.ownerId = data.ownerId;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
@@ -67,10 +71,10 @@ export class HomePageComponent implements OnInit {
         });
 
         self.queryProduct();
+        self.queryBlog();
       }
     });
   }
-
 
   queryProduct(clearProduct?:boolean) {
     if(this.categories.length <= 0) {
@@ -81,17 +85,36 @@ export class HomePageComponent implements OnInit {
       storeId: this.store.id,
       relationStatus: 'published',
       page: this.page,
-      page_size: 12
+      page_size: 4
     };
     let self = this;
     self.storeService.getProductList(options).then((data)=>{
       if(clearProduct) {
-        this.product = [];
-        this.nextPage = true;
+        self.product = [];
+        self.nextPage = true;
       }
       self.product = self.product.concat(data.results);
       if(data.next == null) {
         self.nextPage = false;
+      }
+    });
+  }
+
+  queryBlog(clearBlog?:boolean) {
+    let options = {
+      ownerId: this.ownerId,
+      page: this.page,
+      page_size: 2
+    };
+    let self = this;
+    self.storeService.getBlog(options).then((data)=>{
+      if(clearBlog) {
+        self.blog = [];
+        self.nextBlogPage = true;
+      }
+      self.blog = self.blog.concat(data.results);
+      if(data.next == null) {
+        self.blog = false;
       }
     });
   }

@@ -35,15 +35,21 @@
           </mat-chip-list>
         </mat-form-field>
         <div class="xb-shop__edit-title">Price</div>
-        <div fxLayout="row" fxLayoutAlign="start center">
-          <mat-form-field >
-            <input matInput placeholder="Actual sale price" formControlName="salePrice">
-          </mat-form-field>
-          <span class="md-margin-left-2">{{storeCurrency}} <span class="xb-input-error xb-large-star">*</span></span>
-          <mat-form-field class="xb-shop__dialog-margin-left">
-            <input matInput placeholder="Original price"  formControlName="originalPrice">
-          </mat-form-field>
-          <span class="md-margin-left-2">{{storeCurrency}}</span>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="md-margin-right-1">{{storeCurrency | formatCurrency}}</span>
+            <mat-form-field fxFlex >
+              <input type="number" matInput placeholder="Actual sale price" formControlName="salePrice">
+            </mat-form-field>
+            <span class="md-margin-left-2 md-margin-right-2">{{storeCurrency}} <span class="xb-input-error xb-large-star">*</span></span>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="md-margin-right-1">{{storeCurrency | formatCurrency}}</span>
+            <mat-form-field fxFlex>
+              <input type="number" matInput placeholder="Original price"  formControlName="originalPrice">
+            </mat-form-field>
+            <span class="md-margin-left-2">{{storeCurrency}}</span>
+          </div>
         </div>
         <div *ngIf="formErrors['salePrice']" class="xb-input-error">
           {{ formErrors['salePrice'] }}
