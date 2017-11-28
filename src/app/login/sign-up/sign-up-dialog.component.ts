@@ -386,7 +386,12 @@ export class SignUpDialogComponent {
       self.userService.getUser().then((data) => {
         self.userService.addUser(data);
         self.userService.addStore(data.store[0]);
-        self.step = 2;
+        if(data.isInvite) {
+          self.close();
+          self.router.navigate(['shop/dashboard']);
+        } else {
+          self.step = 2;
+        }
 
       });
     }).catch((data) => {

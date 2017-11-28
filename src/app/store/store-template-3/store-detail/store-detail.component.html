@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch"
+<div class="xb-store-template__details" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch"
      fxLayout.sm="column" fxLayoutAlign.sm="start stretch">
   <div class="xb-store-template__details-category-bg" fxHide.gt-sm>
     <span class="xb-pointer" routerLink="../">COLLECTION</span>  /  <span class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>
@@ -6,7 +6,7 @@
     <app-store-template-3-products-image-cover [images]="image" [selectedImage]="selectedImage"
                                                [imageSources]="imageSources"></app-store-template-3-products-image-cover>
   </div>
-  <div fxFlex>
+  <div class="xb-store-template__details-scroll" fxFlex.xs="none" fxFlex>
     <div class="xb-store-template__details-content">
       <div fxHide.xs fxHide.sm>
         <span class="xb-pointer" routerLink="../">COLLECTION</span>  /  <span class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>

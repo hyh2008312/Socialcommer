@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, ElementRef, ViewChild, OnDestroy, NgZone, EventEmitter,Output} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, ElementRef, ViewChild, OnDestroy, EventEmitter,Output} from '@angular/core';
 
 @Component({
   selector: 'app-image-preview-loading',
@@ -15,21 +15,15 @@ export class ImagePreviewLoadingComponent implements OnInit, OnDestroy {
 
   angel: any = 0;
 
-  constructor(
-    private ngZone: NgZone
-  ) {
+  constructor() {
 
   }
 
   ngOnInit() {
-
-
   }
 
   ngOnChanges() {
-
     this.paint();
-    //this.ngZone.runOutsideAngular(() => ;
   }
 
 

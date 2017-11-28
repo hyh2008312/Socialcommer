@@ -246,7 +246,7 @@
     &-content-1{
       position: relative;
       padding: 24px 0;
-      background-color: #f1f1f1;
+      background-color: #fff;
     }
 
     &-title{
@@ -475,6 +475,18 @@
       background-color: $whiteColor;
       display: block;
     }
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+    &-scroll{
+      height: 100vh;
+      overflow: scroll;
+
+      @include xb-xs-screen{
+        height: auto;
+        overflow: auto;
+      }
+    }
   }
 
   &__top-navigation{
@@ -492,6 +504,33 @@
       padding: 8px;
       font-size: 24px;
       line-height: 24px;
+    }
+  }
+
+  &__footer{
+
+    &-share{
+      cursor: pointer;
+      i{
+        font-size: 24px;
+        line-height: 24px;
+      }
+    }
+    &-text{
+      color: rgba(0,0,0,.54);
+      text-align: center;
+    }
+
+    &-margin-top{
+      margin-top: 50px;
+    }
+
+    &-margin-bottom{
+      margin-bottom: 40px;
+    }
+
+    &-margin-bottom-1{
+      margin-bottom: 12px;
     }
   }
 }

@@ -99,10 +99,10 @@
   color: #dff2f4; }
 
 .background-light-gray {
-  background-color: #f9f9f9; }
+  background-color: #f1f1f1; }
 
 .xb-color-light-gray {
-  color: #f9f9f9; }
+  color: #f1f1f1; }
 
 .background-gray-light {
   background-color: #999; }
@@ -1717,7 +1717,7 @@ textarea.mat-input-element {
   .xb-store-template__card-content-1 {
     position: relative;
     padding: 24px 0;
-    background-color: #f1f1f1; }
+    background-color: #fff; }
   .xb-store-template__card-title {
     line-height: 28px;
     font-weight: 600;
@@ -1885,6 +1885,15 @@ textarea.mat-input-element {
   margin-top: 24px;
   background-color: #fff;
   display: block; }
+.xb-store-template__details ::-webkit-scrollbar {
+  width: 0; }
+.xb-store-template__details-scroll {
+  height: 100vh;
+  overflow: scroll; }
+  @media screen and (max-width: 599px) {
+    .xb-store-template__details-scroll {
+      height: auto;
+      overflow: auto; } }
 .xb-store-template__top-navigation {
   height: 54px;
   background-color: #f1f1f1; }
@@ -1900,5 +1909,19 @@ textarea.mat-input-element {
     padding: 8px;
     font-size: 24px;
     line-height: 24px; }
+.xb-store-template__footer-share {
+  cursor: pointer; }
+  .xb-store-template__footer-share i {
+    font-size: 24px;
+    line-height: 24px; }
+.xb-store-template__footer-text {
+  color: rgba(0, 0, 0, 0.54);
+  text-align: center; }
+.xb-store-template__footer-margin-top {
+  margin-top: 50px; }
+.xb-store-template__footer-margin-bottom {
+  margin-bottom: 40px; }
+.xb-store-template__footer-margin-bottom-1 {
+  margin-bottom: 12px; }
 
 /*# sourceMappingURL=store-template-3.css.map */

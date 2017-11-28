@@ -1,0 +1,60 @@
+<div class="xb-shop__product md-padding-top-2 md-padding-right-2 md-padding-left-2 md-margin-bottom-2">
+  <div class="xb-shop__header"></div>
+  <div class="xb-shop__product-buttons md-padding-bottom-1">
+    <button mat-raised-button color="accent" >
+      <div fxLayout="row" fxLayoutAlign="start center" routerLink="../blog/create">
+        <i class="material-icons">add</i>
+        <span class="md-margin-left-1">Post a Blog</span>
+      </div>
+    </button>
+  </div>
+  <mat-tab-group color="accent" (selectedTabChange)="changeBlog($event)"  [(selectedIndex)]="selectedIndex">
+    <mat-tab label="Published" >
+      <div class="md-margin-top-2 ">
+        <app-blog-title></app-blog-title>
+      </div>
+      <div class="md-margin-top-2">
+        <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of blog;let i = index;">
+          <app-blog-item [blog]="item" [index]="i" (blogChange)="blogChange($event)"></app-blog-item>
+        </div>
+        <mat-paginator [length]="length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="changePage($event, 0)"
+                       *ngIf="blog && blog.length > 0">
+        </mat-paginator>
+        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+             *ngIf="blog && blog.length <= 0">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <img src="https://media.socialcommer.com/source/web/pic/pic-blog.png">
+            <span class="md-dark-secondary">You haven't published any categories yet.</span>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Drafts">
+      <div class="md-margin-top-2 ">
+        <app-blog-title></app-blog-title>
+      </div>
+      <div class="md-margin-top-2">
+        <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of blog;let i = index;">
+          <app-blog-item [blog]="item" [index]="i" (blogChange)="blogChange($event)"></app-blog-item>
+        </div>
+        <mat-paginator [length]="length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="changePage($event, 0)"
+                       *ngIf="blog && blog.length > 0">
+        </mat-paginator>
+        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+             *ngIf="blog && blog.length <= 0">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <img src="https://media.socialcommer.com/source/web/pic/pic-blog.png">
+            <span class="md-dark-secondary">You haven't published any categories yet.</span>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<router-outlet></router-outlet>

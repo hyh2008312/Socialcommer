@@ -69,10 +69,10 @@
         </div>
         <div *ngIf="categories.length<=0 && product.length <= 0" fxLayout="column" fxLayoutAlign="center center">
           <div>You haven't added any affiliate products yet. </div>
-          <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center" routerLink="/shop/listings/products">
-            <div>
-              CLICK TO ADD PRODUCT
-            </div>
+          <div class="md-margin-top-2" >
+            <button mat-raised-button color="primary" >
+              <a class="xb-store__buttons-bg-1" routerLink="/shop/products" target="_blank">Add Your First Product</a>
+            </button>
           </div>
         </div>
       </div>
