@@ -321,6 +321,9 @@
 
   &__about{
     margin: 72px 120px;
+    @include xb-sm-screen{
+      margin: 72px 32px;
+    }
     @include xb-xs-screen{
       margin: 0;
     }

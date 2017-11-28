@@ -1,7 +1,7 @@
 <div class="xb-shop__statistic" fxLayout="row" fxLayoutAlign="start center">
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="40"
        fxLayout="row" fxLayoutAlign="start center">{{blog.title}}</div>
-  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="20">{{blog.count || 0}}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="20">{{blog.viewTotal || 0}}</div>
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="20">{{blog.modified | amDateFormat:'MMMM Do, YYYY'}}</div>
   <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
     <button mat-button color="primary" (click)="editBlog()">Edit</button>

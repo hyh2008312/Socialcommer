@@ -1771,6 +1771,9 @@ textarea.mat-input-element {
     text-align: center; }
 .xb-store-template__about {
   margin: 72px 120px; }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-store-template__about {
+      margin: 72px 32px; } }
   @media screen and (max-width: 599px) {
     .xb-store-template__about {
       margin: 0; } }

@@ -32,7 +32,7 @@ export class LeftSideNavigationComponent implements OnInit {
     router: './store'
   }, {
     icon: 'icon-pic-blog',
-    text: 'Blog',
+    text: 'Blogs',
     router: './blog'
   }, {
     icon: 'icon-ic-new-hand',
