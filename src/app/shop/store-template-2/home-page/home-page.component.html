@@ -2,7 +2,7 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push" position="end">
       <div class="xb-store-template__side_container">
-        <app-store-template-2-navigation></app-store-template-2-navigation>
+        <app-shop-template-2-navigation></app-shop-template-2-navigation>
       </div>
     </mat-sidenav>
     <!--banner图-->
@@ -13,7 +13,7 @@
         <div class="xb-store-template__store-name" fxFlex="none">
           Store Name
         </div>
-        <app-store-template-2-navigation fxFlex></app-store-template-2-navigation>
+        <app-shop-template-2-navigation fxFlex></app-shop-template-2-navigation>
       </div>
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
            fxShow.xs="true">
@@ -53,7 +53,7 @@
             2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
           </div>
           <div class="md-margin-top-2">
-            <app-store-share-button [link]="shareLink" [text]="text"></app-store-share-button>
+            <app-shop-share-button [link]="shareLink" [text]="text"></app-shop-share-button>
           </div>
         </div>
         <div class="xb-store-template__introduce-one-top-right">
@@ -103,7 +103,7 @@
         2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
       </div>
       <div class="md-margin-top-1">
-        <app-store-share-button [link]="shareLink" [text]="text"></app-store-share-button>
+        <app-shop-share-button [link]="shareLink" [text]="text"></app-shop-share-button>
       </div>
       <div [ngStyle]="{'margin-top':'40px'}" fxLayout="row" fxFlexAlign="center start">
         <div class="xb-store-template__introduce-mobile-top-1"
@@ -132,9 +132,9 @@
     <!--产品列表-->
     <div class="xb-store-template__product-content ">
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
-        <app-store-item-card *ngFor="let item of product"
+        <app-shop-item-card *ngFor="let item of product"
                              fxFlex.xs="48" fxFlex.gt-xs="30"
-                             [product]="item" [status]="0"></app-store-item-card>
+                             [product]="item" [status]="0"></app-shop-item-card>
         <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
       </div>
       <div class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
@@ -164,7 +164,7 @@
     </div>
     <!--网址底部-->
     <div>
-      <app-store-template-2-store-foot [storeName]="store.name"></app-store-template-2-store-foot>
+      <app-shop-template-2-store-foot [storeName]="store.name"></app-shop-template-2-store-foot>
     </div>
   </mat-sidenav-container>
   <router-outlet></router-outlet>

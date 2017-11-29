@@ -281,11 +281,16 @@
     }
 
     &-title {
-      max-height: 56px;
-      height: 56px;
-      line-height: 28px;
-      font-weight: 700;
+      font-size: 24px;
+      height: 40px;
+      line-height: 40px;
+     @include media();
       overflow: hidden;
+    }
+    &-original {
+      font-size: 14px;
+      @include regular();
+      color: rgba(0, 0, 0, 0.54);
     }
 
     &-price {
