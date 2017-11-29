@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { MainPageComponent } from './main-page/main-page.component';
-import { StoreListComponent } from './store-list/store-list.component';
 import { StoreCategoryComponent } from './store-category/store-category.component';
 import { StoreDetailComponent } from './store-detail/store-detail.component';
 import { StoreItemCardComponent } from './store-item-card/store-item-card.component';
 import { ProductsImageCoverComponent } from './products-image-cover/products-image-cover.component';
-import { StoreBlogComponent } from './store-blog/store-blog.component';
 import { StoreBlogDetailComponent } from './store-blog-detail/store-blog-detail.component';
 import { StoreBlogCardComponent } from './store-blog-card/store-blog-card.component';
 
@@ -27,7 +25,6 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   declarations: [
     MainPageComponent,
-    StoreListComponent,
     StoreCategoryComponent,
     StoreDetailComponent,
     StoreItemCardComponent,
@@ -35,7 +32,6 @@ import { SharedModule } from '../../shared/shared.module';
     StoreFooterComponent,
     ProductsImageCoverComponent,
     StoreBlogCardComponent,
-    StoreBlogComponent,
     StoreBlogDetailComponent
   ],
   entryComponents: [

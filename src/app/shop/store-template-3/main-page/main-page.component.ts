@@ -27,8 +27,8 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.userService.store.subscribe((data) => {
       if( data ) {
-        self.storeName = data.name;
-        self.storeService.getStore( data.name).then((data) => {
+        self.storeName = data.displayName;
+        self.storeService.getStore( data.displayName).then((data) => {
           self.text = data.description;
           self.storeService.addStore(data);
         });

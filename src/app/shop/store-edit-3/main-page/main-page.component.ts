@@ -116,7 +116,7 @@ export class MainPageComponent implements OnInit {
           self.descriptionTag = self.store.descriptionTag != ''? self.store.descriptionTag : self.descriptionTag;
           self.userTag = self.store.descriptionTag != ''? self.store.userTag : self.userTag;
           self.storeForm.setValue({
-            name: self.store.name,
+            name: self.store.displayName,
             description : self.store.description,
             displayName: self.store.displayName
           });

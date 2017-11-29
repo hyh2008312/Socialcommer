@@ -197,7 +197,7 @@ export class LoginService {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
-
+    this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers:headers});
 
     const url = `${this.baseUrl.url}set/social/link`;

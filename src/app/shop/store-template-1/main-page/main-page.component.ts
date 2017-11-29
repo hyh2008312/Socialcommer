@@ -92,7 +92,7 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.userService.store.subscribe((data) => {
       if( data ) {
-        self.storeService.getStore( data.name).then((data) => {
+        self.storeService.getStore( data.displayName).then((data) => {
           self.store = data;
           self.text = data.description;
           self.storeService.addStore(data);
@@ -118,7 +118,7 @@ export class MainPageComponent implements OnInit {
   jumpList():void {
 
     if(this.isMobile) {
-      let storeName = this.activatedRoute.snapshot.params['name'];
+      let storeName = this.store.displayName;
       this.router.navigate([`store/${storeName}/list`]);
     } else {
       this.page++;

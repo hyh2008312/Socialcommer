@@ -52,7 +52,7 @@ export class HomePageComponent implements OnInit {
         self.text = data.description;
         self.ownerId = data.ownerId;
         self.storeService.addTitleDescription({
-          title: data.name,
+          title: data.displayName,
           description: data.description,
           shareImage: data.imageUrl
         });

@@ -1,13 +1,13 @@
 <div class="xb-store" >
   <div class="xb-store__nav" fxShow="false" fxShow.xs="show">
-    {{store.nameTag || store.name}}
+    {{store.nameTag || store.displayName}}
   </div>
   <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center"
        [ngStyle]="{'background': 'url(' + baseImageUrl + ') center / auto 100% ' }">
     <div class="xb-store__template-mask"></div>
     <div class="xb-store__content-2">
       <div class="xb-store__template-name" fxShow.xs="false">
-        {{store.nameTag != '' ? store.nameTag : store.name}}
+        {{store.nameTag != '' ? store.nameTag : store.displayName}}
       </div>
       <div class="ql-editor xb-store__template-title"
            [innerHTML]="store.titleTag| safeHtml"  *ngIf="store.titleTag != ''" >
