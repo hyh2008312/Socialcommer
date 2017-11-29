@@ -56,7 +56,8 @@ export class SignUpComponent {
     'country' : '',
     'name': '',
     'currency': '',
-    'displayName' : ''
+    'displayName' : '',
+    'socialMediaLink': ''
   };
 
   //错误对应的提示
@@ -85,6 +86,9 @@ export class SignUpComponent {
     'displayName': {
       'required': 'This field is required.',
       'pattern': 'Permalink only lowercase alphanumeric and "-" allowed.'
+    },
+    'socialMediaLink': {
+      'required': 'This field is required.'
     }
   };
 
@@ -116,7 +120,8 @@ export class SignUpComponent {
       displayName: ['', [
         Validators.required,
         Validators.pattern('^[a-z0-9\.-]*$')
-      ]]
+      ]],
+      socialMediaLink: ['', Validators.required]
     });
 
     this.settingForm = this.fb.group({
@@ -374,6 +379,12 @@ export class SignUpComponent {
     }
 
     let self = this;
+
+    let socialMediaLink = this.storeForm.value.socialMediaLink;
+
+    self.service.setSocialMediaLink({
+      socialMediaLink
+    });
 
     self.service.createStore(this.storeForm.value).then((data)=>{
       self.userService.getUser().then((data) => {

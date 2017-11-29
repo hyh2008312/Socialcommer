@@ -59,7 +59,8 @@ export class SignUpDialogComponent {
     'country' : '',
     'name': '',
     'currency': '',
-    'displayName' : ''
+    'displayName' : '',
+    'socialMediaLink': ''
   };
 
   //错误对应的提示
@@ -88,6 +89,9 @@ export class SignUpDialogComponent {
     'displayName': {
       'required': 'This field is required.',
       'pattern': 'Permalink only lowercase alphanumeric and "-" allowed.'
+    },
+    'socialMediaLink': {
+      'required': 'This field is required.'
     }
   };
 
@@ -136,7 +140,8 @@ export class SignUpDialogComponent {
       country: ['', Validators.required],
       password: ['', [
         Validators.required
-      ]]
+      ]],
+      socialMediaLink: ['', Validators.required]
     });
 
     this.countries = this.constant.getCountries();
@@ -381,6 +386,11 @@ export class SignUpDialogComponent {
     }
 
     let self = this;
+    let socialMediaLink = this.storeForm.value.socialMediaLink;
+
+    self.service.setSocialMediaLink({
+      socialMediaLink
+    });
 
     self.service.createStore(this.storeForm.value).then((data)=>{
       self.userService.getUser().then((data) => {

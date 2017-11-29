@@ -154,6 +154,17 @@
           <div *ngIf="formErrors['displayName']" class="xb-input-error">
             {{ formErrors['displayName'] }}
           </div>
+          <div class="md-dark-secondary">
+            Your Social Media Link :
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start start">
+            <mat-form-field fxFlex >
+              <input type="url" matInput formControlName="socialMediaLink">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['socialMediaLink']" class="xb-input-error">
+            {{ formErrors['socialMediaLink'] }}
+          </div>
           <div class="md-margin-top-1" fxLayout="column">
             <button mat-raised-button color="primary" type="submit">COMPLETE</button>
           </div>
