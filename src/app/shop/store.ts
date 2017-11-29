@@ -58,3 +58,11 @@ export class Image{
   id: number;
   url: string = '';
 }
+
+export class UserProfile{
+  firstName: string;
+  lastName: string;
+  country: string;
+  biography: string;
+  avatar : string;
+}

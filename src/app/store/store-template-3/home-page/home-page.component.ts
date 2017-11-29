@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit {
   public shareLink: string;
   public text = '';
 
-  baseImageUrl: string = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
+  baseImageUrl: string = 'https://media.socialcommer.com/source/web/template/3/15-pic.jpg';
 
   store: Store = new Store();
   page = 1;

@@ -1,48 +1,32 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { StoreService } from '../../store.service';
-import { ShopService } from '../../shop.service';
-import { UserService } from  '../../../shared/services/user/user.service';
+import { UserProfile,Store } from '../shop';
 
-import { UserProfile,Store } from '../../shop';
+import { UserService } from  '../../shared/services/user/user.service';
+import { ShopService } from '../shop.service';
+import { ConstantService } from  '../../shared/services/constant/constant.service';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { StoreShareDialogComponent } from "../../store-share-dialog/store-share-dialog.component";
+import { StoreShareDialogComponent } from "../store-share-dialog/store-share-dialog.component";
 
 @Component({
-  selector: 'app-shop-template-3',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['../store-template-3.scss']
+  selector: 'app-store-edit-1',
+  templateUrl: './store-edit-1.component.html',
+  styleUrls: ['../../store/store.scss','../shop.scss']
 })
 
-export class MainPageComponent implements OnInit {
-
-  viewIndex: number = 0;
-
-  storeName: string = '';
-  isDialogOpen: boolean = false;
+export class StoreEditComponent implements OnInit {
 
   public categories:any = [];
-  public category: any = {
-    id: null,
-    name : ''
-  };
+  public category: any = {};
   public shareLink: string;
   public text = '';
 
-  baseImageUrl: string = 'https://media.socialcommer.com/source/web/template/3/15-pic.jpg';
-
-  store: Store = new Store();
   page = 1;
   nextPage: boolean = true;
-  nextBlogPage: boolean = true;
   product: any = [];
-
-  blog: any = [];
-
-  ownerId: any;
 
   public editorConfig = {
     theme: 'bubble',
@@ -58,24 +42,26 @@ export class MainPageComponent implements OnInit {
       ]
     }
   };
+
   editorContent = '';
+  store: Store = new Store();
   userProfile: UserProfile = new UserProfile();
   previewImgFile: any = null;
   previewImgSrcs: any = null;
+  countries: Object[];
   userCountry: string = '';
 
-  storeTemplateForm: FormGroup;
-  storeForm: FormGroup;
-
   constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private storeService: StoreService,
-    private fb: FormBuilder,
     private userService: UserService,
+    private fb: FormBuilder,
+    private router: Router,
     private shopService: ShopService,
+    private constant: ConstantService,
     private dialog: MatDialog
   ) {
+
+    this.countries = this.constant.getCountries();
+
     let self = this;
     self.storeTemplateForm = self.fb.group({
       nameTag: [self.nameTag],
@@ -99,18 +85,13 @@ export class MainPageComponent implements OnInit {
     });
 
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
-  }
 
-  ngOnInit():void {
-    this.shareLink = window.location.href;
-    let self = this;
     let firstLoad = false;
     self.userService.store.subscribe((data)=> {
       if(data) {
         self.store = data;
         if(!firstLoad) {
           firstLoad = true;
-
           self.nameTag = self.store.nameTag != ''? self.store.nameTag : self.nameTag;
           self.titleTag = self.store.titleTag != ''? self.store.titleTag : self.titleTag;
           self.descriptionTag = self.store.descriptionTag != ''? self.store.descriptionTag : self.descriptionTag;
@@ -124,22 +105,14 @@ export class MainPageComponent implements OnInit {
           self.imageSrc = self.store.imageUrl;
 
           self.shopService.getFrontStore(self.store.displayName).then((data) => {
-            self.ownerId = data.ownerId;
             if(data.category.length > 1) {
               self.categories = [{name: 'All'}, ...data.category];
             } else {
               self.categories = [...data.category];
             }
+
             self.category = self.categories[0];
-
-            self.storeService.pageView({
-              pageType: 'store',
-              viewTime: new Date().getTime(),
-              storeId: data.id
-            });
-
-            self.queryProduct();
-            self.queryBlog();
+            self.queryProduct(false);
           });
         }
       }
@@ -147,6 +120,28 @@ export class MainPageComponent implements OnInit {
 
   }
 
+  ngOnInit():void {
+
+    this.shareLink = window.location.host + '/store/';
+
+    let self = this;
+    self.shopService.getUserProfile().then((data) => {
+      self.userProfile = data;
+
+      self.previewImgSrcs = data.avatar;
+      self.previewImgFile = data.avatar;
+
+      for(let value of self.constant.getCountries()) {
+        if(value.code == data.country) {
+          self.userCountry = value.name;
+          break;
+        }
+      }
+    });
+
+    self.shopService.getStore()
+
+  }
 
   //存储错误信息
   formErrors = {
@@ -190,7 +185,10 @@ export class MainPageComponent implements OnInit {
 
     }
 
-  };
+  }
+
+  storeTemplateForm: FormGroup;
+  storeForm: FormGroup;
 
   nameTag = 'STORE NAME';
   titleTag = '<div class="xb-shop__template-title">Click here to edit the title</div>';
@@ -306,6 +304,30 @@ export class MainPageComponent implements OnInit {
     this.queryProduct(true);
   }
 
+  queryProduct(clearProduct?:boolean)  {
+    if(this.categories.length <= 0) {
+      return;
+    }
+    let options = {
+      categoryId: this.category.id,
+      storeId: this.store.id,
+      relationStatus: 'published',
+      page: this.page,
+      page_size: 12
+    };
+    let self = this;
+    self.shopService.getTemplateProductList(options).then((data)=>{
+      if(clearProduct) {
+        this.product = [];
+        this.nextPage = true;
+      }
+      self.product = self.product.concat(data.results);
+      if(data.next == null) {
+        self.nextPage = false;
+      }
+    });
+  }
+
   openDialog(displayName?:any): void {
     let dialogRef = this.dialog.open(StoreShareDialogComponent, {
       data: {
@@ -318,68 +340,4 @@ export class MainPageComponent implements OnInit {
 
     });
   }
-
-  queryProduct(clearProduct?:boolean) {
-    if(this.categories.length <= 0) {
-      return;
-    }
-    let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
-      relationStatus: 'published',
-      page: this.page,
-      page_size: 4
-    };
-    let self = this;
-    self.storeService.getProductList(options).then((data)=>{
-      if(clearProduct) {
-        self.product = [];
-        self.nextPage = true;
-      }
-      self.product = self.product.concat(data.results);
-      if(data.next == null) {
-        self.nextPage = false;
-      }
-    });
-  }
-
-  queryBlog(clearBlog?:boolean) {
-    console.log(this.ownerId)
-    if(!this.ownerId) {
-      return;
-    }
-    let options = {
-      ownerId: this.ownerId,
-      page: this.page,
-      page_size: 2
-    };
-    let self = this;
-    self.storeService.getBlog(options).then((data)=>{
-      if(clearBlog) {
-        self.blog = [];
-        self.nextBlogPage = true;
-      }
-      self.blog = self.blog.concat(data.results);
-      if(data.next == null) {
-        self.blog = false;
-      }
-    });
-  }
-
-  ngOnDestroy() {
-
-  }
-
-  openNavigationDialog(event?:any) {
-    if(event) {
-      this.changeViewPort(event);
-      return this.isDialogOpen = false;
-    }
-    this.isDialogOpen = !this.isDialogOpen;
-  }
-
-  changeViewPort(index) {
-    this.viewIndex = index;
-  }
-
 }

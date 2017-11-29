@@ -26,7 +26,7 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.storeService.getStore(storeName).then((data) => {
 
-      self.storeName = data.name;
+      self.storeName = data.displayName;
       self.text = data.description;
       self.storeService.addStore(data);
     });

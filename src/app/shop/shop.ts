@@ -85,6 +85,7 @@ export class Store{
   name : string;
   description: string;
   cover: string;
+  ownerId: any;
   ownerAvatar: string;
   ownerCountry: string;
   ownerFirstName: string;
