@@ -13,6 +13,16 @@
       </div>
       <div class="xb-blog-detail__description"  [innerHTML]="blog.context | safeHtml"></div>
     </div>
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="start center">
+      <div class="xb-blog-detail__share md-margin-right-3"
+           appSocialShare  [facebook]="{u: link}">
+        <i class="iconfontXberts icon-ic-facebook"></i>
+      </div>
+      <div class="xb-blog-detail__share md-margin-right-3"
+           appSocialShare [twitter]="{url: link, text: text, hashtags: '' }">
+        <i class="iconfontXberts icon-ic-twitter"></i>
+      </div>
+    </div>
   </div>
 </div>
 

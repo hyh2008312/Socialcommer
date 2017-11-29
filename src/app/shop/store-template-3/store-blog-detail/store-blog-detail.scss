@@ -63,5 +63,11 @@
     }
   }
 
-
+  &__share{
+    cursor: pointer;
+    i{
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
 }

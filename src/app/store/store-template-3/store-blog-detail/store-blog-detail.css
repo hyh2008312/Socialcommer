@@ -1562,5 +1562,10 @@ textarea.mat-input-element {
       .xb-blog-detail__description {
         margin-top: 12px;
         margin-bottom: 24px; } }
+  .xb-blog-detail__share {
+    cursor: pointer; }
+    .xb-blog-detail__share i {
+      font-size: 24px;
+      line-height: 24px; }
 
 /*# sourceMappingURL=store-blog-detail.css.map */
