@@ -34,6 +34,10 @@ const routes: Routes = [
             },
             {
               path: '',
+              loadChildren: 'app/shop/store-template-2/store-template-2.module#StoreTemplateTwoModule'
+            },
+            {
+              path: '',
               loadChildren: 'app/shop/store-template-3/store-template-3.module#StoreTemplateThreeModule'
             }
           ]
