@@ -32,7 +32,7 @@ export class StoreBlogComponent implements OnInit {
         firstLoad = true;
 
         self.storeService.addTitleDescription({
-          title: data.name,
+          title: data.displayName,
           description: data.description,
           shareImage: data.imageUrl[0]
         });

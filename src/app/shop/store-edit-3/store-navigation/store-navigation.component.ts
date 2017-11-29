@@ -14,22 +14,16 @@ export class StoreNavigationComponent implements OnInit {
   routerObservable: any;
 
   contents = [{
-    text: 'HOME',
-    link: './',
-    exact: true
+    text: 'HOME'
   }, {
-    text: 'COLLECTION',
-    link: './collection',
-    exact: false
+    text: 'COLLECTION'
   }, {
-    text: 'BLOG',
-    link: './blog',
-    exact: true
+    text: 'BLOG'
   }, {
-    text: 'ABOUT ME',
-    link: './about_me',
-    exact: true
+    text: 'ABOUT ME'
   }];
+
+  navigationIndex = 0;
 
   constructor(
     private router: Router
@@ -38,19 +32,16 @@ export class StoreNavigationComponent implements OnInit {
   }
 
   ngOnInit():void {
-    let self = this;
-    self.routerObservable = self.router.events
-      .subscribe((event) => {
-        if (event instanceof NavigationStart) { // 当导航成功结束时执行
-          self.routerChange.emit(true);
-        }
-      });
+
   }
 
   ngOnDestroy() {
-    if(this.routerObservable) {
-      this.routerObservable.unsubscribe();
-    }
+
+  }
+
+  changeNavigation(index) {
+    this.navigationIndex = index;
+    this.routerChange.emit(index);
   }
 
 }

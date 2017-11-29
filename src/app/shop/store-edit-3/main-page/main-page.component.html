@@ -1,34 +1,206 @@
-<div class="xb-store-template__container xb-store-template__content" fxLayout="row" fxLayoutAlign="start stretch">
-  <div class="xb-store-template__left" fxFlex="none" fxShow.xs="false" fxLayout="column">
-    <div class="xb-store-template__store-name">
-      {{storeName}}
-    </div>
-    <div fxFlex="noshrink">
-      <app-shop-template-3-navigation></app-shop-template-3-navigation>
-    </div>
-    <app-shop-template-3-store-footer [text]="text" [name]="storeName"></app-shop-template-3-store-footer>
-  </div>
-
-  <div class="xb-store-template__right" fxFlex fxLayout="column">
-    <div class="xb-store-template__top-navigation" fxShow.gt-xs="false"
-         fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
-      <i class="material-icons" (click)="openDialog()">menu</i>
-      <div class="xb-store-template__top-navigation-title" fxFlex>
+<div class="xb-store-template__store-bg">
+  <div class="xb-store-template__container xb-store-template__content" fxLayout="row" fxLayoutAlign="start stretch">
+    <div class="xb-store-template__left" fxFlex="none" fxShow.xs="false" fxLayout="column">
+      <div class="xb-store-template__store-name">
         {{storeName}}
       </div>
-    </div>
-    <div class="xb-store-template__dialog" *ngIf="isDialogOpen" fxShow.gt-xs="false" >
-      <div class="xb-store-template__top-navigation" fxLayout="row" fxLayoutAlign="end center">
-        <i class="material-icons" (click)="openDialog()">close</i>
+      <div fxFlex="noshrink">
+        <app-shop-template-3-navigation (routerChange)="changeViewPort($event)"></app-shop-template-3-navigation>
       </div>
-      <app-shop-template-3-navigation (routerChange)="openDialog($event)"></app-shop-template-3-navigation>
+      <app-shop-template-3-store-footer [text]="text" [name]="storeName"></app-shop-template-3-store-footer>
     </div>
-    <div fxFlex="noshrink">
-      <router-outlet></router-outlet>
-    </div>
-    <div class="background-light-gray">
-      <app-shop-template-3-store-footer [text]="text" [name]="storeName" fxShow.gt-xs="false"></app-shop-template-3-store-footer>
+
+    <div class="xb-store-template__right" fxFlex fxLayout="column">
+      <div class="xb-store-template__top-navigation" fxShow.gt-xs="false"
+           fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
+        <i class="material-icons" (click)="openDialog()">menu</i>
+        <div class="xb-store-template__top-navigation-title" fxFlex>
+          {{storeName}}
+        </div>
+      </div>
+      <div class="xb-store-template__dialog" *ngIf="isDialogOpen" fxShow.gt-xs="false" >
+        <div class="xb-store-template__top-navigation" fxLayout="row" fxLayoutAlign="end center">
+          <i class="material-icons" (click)="openNavigationDialog()">close</i>
+        </div>
+        <app-shop-template-3-navigation (routerChange)="openNavigationDialog($event)"></app-shop-template-3-navigation>
+      </div>
+      <div fxFlex="noshrink">
+        <form [formGroup]="storeTemplateForm" novalidate>
+          <div class="xb-store" [hidden]="viewIndex != 0">
+            <div class="xb-store-template__banner xb-shop__template-edit" fxLayout="column" fxLayoutAlign="center center"
+                 [ngStyle]="{'background': 'url(' + imageSrc + ') center / auto 100% ' }">
+              <div class="xb-store-template__template-mask"></div>
+              <div class="xb-store__content-2">
+                <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
+                  <div class="xb-shop__template-button" (click)="close()">
+                    CANCEL
+                  </div>
+                  <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
+                    SAVE
+                  </div>
+                </div>
+                <div class="xb-shop__template-title ql-editor" [hidden]="titleEdited" (click)="editTitle()"
+                     [innerHTML]="titleTag | safeHtml">
+                </div>
+                <div class="xb-shop__template-title xb-shop__template-edit" [hidden]="!titleEdited">
+                  <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
+                                [options]="editorConfig"></quill-editor>
+                  <div class="xb-shop__template-edit-button" (click)="editTitle()">
+                    CLICK TO SAVE
+                  </div>
+                </div>
+                <div class="xb-shop__template-description ql-editor" [hidden]="descriptionEdited"
+                     (click)="editDescription()"
+                     [innerHTML]="descriptionTag | safeHtml">
+                </div>
+                <div class="xb-shop__template-description xb-shop__template-edit" [hidden]="!descriptionEdited">
+                  <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
+                                [options]="editorConfig"></quill-editor>
+                  <div class="xb-shop__template-edit-button" (click)="editDescription()">
+                    CLICK TO SAVE
+                  </div>
+                </div>
+              </div>
+              <div class="xb-shop__template-edit-button" (click)="editImage()">
+                CLICK TO CHANGE IMAGE
+              </div>
+            </div>
+            <div>
+              <div class="xb-store__content xb-store__border-bottom">
+                <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="space-around start" fxLayoutWrap>
+                  <app-shop-item-card *ngFor="let item of product"
+                                      fxFlex="49" fxFlex.xs="100"
+                                      [product]="item" [status]="0"></app-shop-item-card>
+                  <div fxFlex="49" fxFlex.xs="100"></div>
+                </div>
+              </div>
+              <div class="xb-store-template__blog-content">
+                <div class="xb-store-template__blog-title">BLOG</div>
+
+                <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+                  <app-shop-template-3-store-blog-card *ngFor="let item of blog"
+                                                       fxFlex="45" fxFlex.xs="100"
+                                                       [blog]="item" [status]="0"></app-shop-template-3-store-blog-card>
+                  <div fxFlex="49" fxFlex.xs="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="xb-store-template__collection-bottom" [hidden]="viewIndex != 1">
+            <div class="xb-store-template__collection-container">
+              <div class="xb-store-template__collection-title" fxShow.xs="false">
+                COLLECTIONS
+              </div>
+              <app-shop-template-3-category [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"></app-shop-template-3-category>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutWrap>
+              <app-shop-item-card *ngFor="let item of product"
+                                  fxFlex="49" fxFlex.xs="100"
+                                  [product]="item" [status]="1"></app-shop-item-card>
+              <div fxFlex="49" fxFlex.xs="100"></div>
+            </div>
+          </div>
+          <div class="xb-store-template__blog-content" [hidden]="viewIndex != 2">
+            <div class="xb-store-template__blog-title">BLOG</div>
+
+            <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+              <app-shop-template-3-store-blog-card *ngFor="let item of blog"
+                                                   fxFlex="45" fxFlex.xs="100"
+                                                   [blog]="item" [status]="1"></app-shop-template-3-store-blog-card>
+            </div>
+          </div>
+          <div class="xb-store-template__about" [hidden]="viewIndex != 3">
+            <div class="xb-store-template__about-title">About Me</div>
+            <div class="xb-store-template__about-image-bg" *ngIf="store.ownerAvatar && store.ownerAvatar != ''">
+              <img [src]="store.ownerAvatar">
+            </div>
+            <div class="xb-store-template__about-image-bg" *ngIf="!store.ownerAvatar || store.ownerAvatar == ''">
+              <img src="https://media.socialcommer.com/source/web/template/3/02-pic.jpg">
+            </div>
+            <div class="xb-store-template__about-user xb-shop__template-edit ql-editor" [hidden]="userEdited"
+                 (click)="editUser()"
+                 [innerHTML]="userTag | safeHtml">
+            </div>
+            <div class="xb-store-template__about-user xb-shop__template-edit" [hidden]="!userEdited">
+              <quill-editor formControlName="userTag" [(ngModel)]="userTag"
+                            [options]="editorConfig"></quill-editor>
+              <div class="xb-shop__template-edit-button" (click)="editUser()">
+                CLICK TO SAVE
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="background-light-gray">
+        <app-shop-template-3-store-footer [text]="text" [name]="storeName" fxShow.gt-xs="false"></app-shop-template-3-store-footer>
+      </div>
     </div>
   </div>
 </div>
 
+
+<div class="xb-store__background" *ngIf="imageEdited">
+  <div class="xb-store__details-close" (click)="editImage()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details" >
+    <div class="xb-store__details-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-shop__mobile-dialog-inner">
+      <app-image-upload-preview [(previewImgFile)]="imageSrc" (previewImgFileChange)="editImage()"></app-image-upload-preview>
+    </div>
+  </div>
+</div>
+
+<div class="xb-store__background" *ngIf="storeEdited">
+  <div class="xb-store__details-close" (click)="editStore()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details" >
+    <div class="xb-store__details-close" (click)="editStore()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-shop__mobile-dialog-inner">
+      <div class="xb-shop__template-title-1">
+        Ready to Publish
+      </div>
+      <div class="xb-shop__template-content-1">
+        Make sure all these setting are correct before your store goes live!
+      </div>
+      <form [formGroup]="storeForm" novalidate>
+        <div class="md-margin-top-2 md-margin-right-2" fxLayout="column">
+          <div class="md-dark-secondary">
+            Store Name
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <div *ngIf="formErrors['name']" class="xb-input-error">
+            {{ formErrors['name'] }}
+          </div>
+          <div class="md-dark-secondary">
+            Store Description
+          </div>
+          <mat-form-field class="xb-shop__width-100">
+            <textarea matInput  formControlName="description"></textarea>
+          </mat-form-field>
+          <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+            <div>
+              https://www.socialcommer.net/store/
+            </div>
+            <mat-form-field class="md-margin-left-2 xb-shop__width-1">
+              <input matInput formControlName="displayName">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['displayName']" class="xb-input-error">
+            {{ formErrors['displayName'] }}
+          </div>
+          <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+            <button mat-raised-button color="primary" (click)="changeStore()">PUBLISH</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

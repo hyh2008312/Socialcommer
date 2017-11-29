@@ -1,0 +1,222 @@
+<form [formGroup]="storeTemplateForm" novalidate>
+  <div class="xb-shop__store-bg">
+
+    <div class="xb-shop__template-banner" fxLayout="column" fxLayoutAlign.xs="center center"
+         [ngStyle]="{'background': 'url(' + imageSrc + ') center / auto 100% ' }">
+      <div class="xb-shop__template-mask"></div>
+      <div class="xb-store__content-2">
+        <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-shop__template-button" (click)="close()">
+            CANCEL
+          </div>
+          <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
+            SAVE
+          </div>
+        </div>
+        <div class="xb-shop__template-name" [hidden]="nameEdited" (click)="editName()"
+             [innerHTML]="nameTag | safeHtml">
+        </div>
+        <div class="xb-shop__template-name xb-shop__template-edit" [hidden]="!nameEdited">
+          <input formControlName="nameTag" [(ngModel)]="nameTag">
+        </div>
+        <div class="xb-shop__template-title ql-editor" [hidden]="titleEdited" (click)="editTitle()"
+             [innerHTML]="titleTag | safeHtml">
+        </div>
+        <div class="xb-shop__template-title xb-shop__template-edit" [hidden]="!titleEdited">
+          <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
+                        [options]="editorConfig"></quill-editor>
+          <div class="xb-shop__template-edit-button" (click)="editTitle()">
+            CLICK TO SAVE
+          </div>
+        </div>
+        <div class="xb-shop__template-description ql-editor" [hidden]="descriptionEdited"
+             (click)="editDescription()"
+             [innerHTML]="descriptionTag | safeHtml">
+        </div>
+        <div class="xb-shop__template-description xb-shop__template-edit" [hidden]="!descriptionEdited">
+          <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
+                        [options]="editorConfig"></quill-editor>
+          <div class="xb-shop__template-edit-button" (click)="editDescription()">
+            CLICK TO SAVE
+          </div>
+        </div>
+      </div>
+      <div class="xb-store__store-buttons" fxShow="false" fxShow.gt-xs="true">
+        <span>Shop Now</span>
+        <br>
+        <i class="material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="xb-shop__template-edit-button" (click)="editImage()">
+        CLICK TO CHANGE IMAGE
+      </div>
+    </div>
+    <div>
+      <div class="xb-store__title">My Collections</div>
+      <app-store-navigation [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"
+                            fxShow="true" fxShow.xs="false"></app-store-navigation>
+      <div class="xb-store__content xb-store__border-bottom">
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+          <app-store-item-card-preview *ngFor="let item of product"
+                                       fxFlex.xs="48" fxFlex.gt-xs="30"
+                                       [product]="item" [status]="0"></app-store-item-card-preview>
+          <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+        </div>
+        <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+             *ngIf="nextPage && product.length > 0">
+          <div>
+            SEE MORE
+          </div>
+        </div>
+        <div *ngIf="categories.length<=0 && product.length <= 0" fxLayout="column" fxLayoutAlign="center center">
+          <div>You haven't added any affiliate products yet. </div>
+          <div class="md-margin-top-2" >
+            <button mat-raised-button color="primary" >
+              <a class="xb-store__buttons-bg-1" routerLink="/shop/products" target="_blank">Add Your First Product</a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="xb-store__content-1">
+        <div class="xb-store__title">About Me</div>
+        <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
+          <div class="xb-store__content-left" fxFlex="none">
+            <div class="xb-shop__template-header">
+              <app-image-upload-header [(previewImgFile)]="previewImgFile" [(previewImgSrcs)]="previewImgSrcs"
+              [larger]="true"></app-image-upload-header>
+            </div>
+            <div class="xb-shop__template-user-name" [hidden]="userNameEdited" (click)="editUserName()"
+                 [innerHTML]="userProfile.firstName | safeHtml">
+            </div>
+            <div class="xb-shop__template-user-name xb-shop__template-edit" [hidden]="!userNameEdited" >
+              <input formControlName="name" [(ngModel)]="userProfile.firstName">
+            </div>
+            <div class="xb-shop__template-user-country" [hidden]="userCountryEdited" (click)="editUserCountry()"
+                 [innerHTML]="userCountry | safeHtml">
+            </div>
+            <div class="xb-shop__template-user-country xb-shop__template-edit" [hidden]="!userCountryEdited" >
+              <mat-form-field class="xb-shop__template-user-country-input">
+                <mat-select formControlName="country" name="country" [(ngModel)]="userProfile.country">
+                  <mat-option *ngFor="let country of countries" [value]="country.code">
+                    {{ country.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="xb-store__content-right" fxFlex>
+            <div class="xb-store__icons md-dark-third" fxShow.xs="false">
+              <i class="iconfontXberts icon-pic-quota"></i>
+            </div>
+            <div class="xb-shop__template-user ql-editor" [hidden]="userEdited"
+                 (click)="editUser()"
+                 [innerHTML]="userTag | safeHtml">
+            </div>
+            <div class="xb-shop__template-user xb-shop__template-edit" [hidden]="!userEdited">
+              <quill-editor formControlName="userTag" [(ngModel)]="userTag"
+                            [options]="editorConfig"></quill-editor>
+              <div class="xb-shop__template-edit-button" (click)="editUser()">
+                CLICK TO SAVE
+              </div>
+            </div>
+            <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
+              <i class="iconfontXberts icon-pic-quota-2"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="xb-store__bottom-bg" fxShow="false">
+      <div class="xb-store__title-1">
+        Subscribe My Newsletter
+      </div>
+      <div class="xb-store__bottom-1" fxLayout="row" fxLayoutAlign="center center">
+        <div class="xb-store__width">
+          <input type="text">
+        </div>
+        <div class="md-margin-left-2">
+          <button mat-raised-button color="primary">SUBSCRIBE</button>
+        </div>
+      </div>
+    </div>
+    <div class="xb-store__footer">
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div class="xb-store__footer-margin-left">© 2017 {{store.name}}. All rights reserved.</div>
+        <div class="xb-store__footer-margin-top" fxLayout="row" fxLayoutAlign="center center"
+             fxLayout.xs="column" fxLayoutAlign.xs="center center">
+          <img class="xb-store__footer-margin-top-1" src="https://media.xberts.com/collector/source/web/pic/pic-power.png">
+          <img class="xb-store__footer-margin-left xb-store__footer-margin-top-2" src="https://media.xberts.com/collector/source/web/pic/pic-foot-logo.png">
+        </div>
+      </div>
+      <div class="xb-store__footer-icons" fxLayout="row" fxLayoutAlign="end center"
+           fxLayoutAlign.xs="center center">
+        <app-share-button [link]="shareLink" [text]="text" [style]="{'store':true}"></app-share-button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="xb-store__background" *ngIf="imageEdited">
+  <div class="xb-store__details-close" (click)="editImage()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details" >
+    <div class="xb-store__details-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-shop__mobile-dialog-inner">
+      <app-image-upload-preview [(previewImgFile)]="imageSrc" (previewImgFileChange)="editImage()"></app-image-upload-preview>
+    </div>
+  </div>
+</div>
+
+<div class="xb-store__background" *ngIf="storeEdited">
+  <div class="xb-store__details-close" (click)="editStore()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details" >
+    <div class="xb-store__details-close" (click)="editStore()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-shop__mobile-dialog-inner">
+      <div class="xb-shop__template-title-1">
+        Ready to Publish
+      </div>
+      <div class="xb-shop__template-content-1">
+        Make sure all these setting are correct before your store goes live!
+      </div>
+      <form [formGroup]="storeForm" novalidate>
+        <div class="md-margin-top-2 md-margin-right-2" fxLayout="column">
+          <div class="md-dark-secondary">
+            Store Name
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <div *ngIf="formErrors['name']" class="xb-input-error">
+            {{ formErrors['name'] }}
+          </div>
+          <div class="md-dark-secondary">
+            Store Description
+          </div>
+          <mat-form-field class="xb-shop__width-100">
+            <textarea matInput  formControlName="description"></textarea>
+          </mat-form-field>
+          <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+            <div>
+              https://www.socialcommer.net/store/
+            </div>
+            <mat-form-field class="md-margin-left-2 xb-shop__width-1">
+              <input matInput formControlName="displayName">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['displayName']" class="xb-input-error">
+            {{ formErrors['displayName'] }}
+          </div>
+          <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+            <button mat-raised-button color="primary" (click)="changeStore()">PUBLISH</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

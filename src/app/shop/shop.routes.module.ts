@@ -42,7 +42,17 @@ const routes: Routes = [
             }
           ]
         }, {
-          path: 'edit', component: StoreEditComponent
+          path: 'edit', component: StoreEditComponent,
+          children: [
+            {
+              path: '',
+              loadChildren: 'app/shop/store-edit-1/store-template-1.module#StoreTemplateOneModule'
+            },
+            {
+              path: '',
+              loadChildren: 'app/shop/store-edit-3/store-template-3.module#StoreTemplateThreeModule'
+            }
+          ]
         }]
       }, {
         path: 'dashboard', component: DashboardComponent

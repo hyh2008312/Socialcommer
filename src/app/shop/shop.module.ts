@@ -10,9 +10,7 @@ import { CatalogEditProductComponent } from "./catalog-edit-product/catalog-edit
 import { FindProductsAddProductComponent } from "./find-products-add-product/find-products-add-product.component";
 import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/find-products-edit-preview.component";
 import { StorePreviewComponent } from "./store-preview/store-preview.component";
-import { StoreTemplateComponent } from "./store-template/store-template.component";
 import { StoreEditComponent } from "./store-edit/store-edit.component";
-import { StoreItemCardPreviewComponent } from "./store-item-card-preview/store-item-card-preview.component";
 import { ToDoListComponent } from "./to-do-list/to-do-list.component";
 import { ProductCategoryComponent } from "./product-category/product-category.component";
 import { BlogComponent } from "./blog/blog.component";
@@ -74,10 +72,8 @@ import { SharedModule } from '../shared/shared.module';
     FindProductsAddProductComponent,
     FindProductsEditPreviewComponent,
     StorePreviewComponent,
-    StoreTemplateComponent,
     StoreEditComponent,
     BlogComponent,
-    StoreItemCardPreviewComponent,
     StatisticItemComponent,
     StatisticTitleComponent,
     CategoryItemComponent,

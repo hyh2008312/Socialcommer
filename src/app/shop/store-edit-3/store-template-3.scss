@@ -8,6 +8,20 @@
 
 .xb-store-template{
 
+  &__store{
+    &-bg{
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      background-color: $whiteColor;
+      z-index: 500;
+    }
+  }
+
   &__dialog{
     position: absolute;
     left: 0;
@@ -124,7 +138,6 @@
   &__banner{
     background-color: #000;
     height: 560px;
-    overflow: hidden;
     position: relative;
     @include xb-xs-screen{
       height: 320px;
@@ -347,7 +360,8 @@
     }
 
     &-user{
-      padding: 16px;
+      position: relative;
+      margin-top: 24px;
     }
   }
 
@@ -595,5 +609,437 @@
       font-size: 32px;
       @include media();
     }
+  }
+}
+
+.xb-share-dialog{
+
+  padding: 56px;
+  max-width: 720px;
+  position: relative;
+  background-color: $whiteColor;
+  border-radius: 4px;
+  @include xb-xs-screen{
+    padding: 56px 16px;
+  }
+
+  &__close{
+    position: absolute;
+    left: calc(100% - 40px);
+    top: 16px;
+    color: $blackColor;
+    cursor: pointer;
+    i{
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+    }
+  }
+
+  &__title{
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    @include media();
+  }
+
+  &__content{
+    margin-top: 32px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    @include regular();
+  }
+
+  &__link{
+    font-size: 24px;
+    line-height: 32px;
+    text-decoration: underline;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 12px;
+    display: block;
+    color: rgba(0,0,0,.87);
+  }
+
+  &__margin-top{
+    margin-top: 48px;
+  }
+}
+
+.xb-affiliate-dialog{
+
+  padding: 56px;
+  max-width: 720px;
+  position: relative;
+  border-radius: 4px;
+  @include xb-xs-screen{
+    padding: 0;
+  }
+
+  &__close{
+    position: absolute;
+    left: calc(100% - 40px);
+    top: 16px;
+    color: $blackColor;
+    cursor: pointer;
+    i{
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+    }
+  }
+
+  &__title{
+    font-size: 24px;
+    line-height: 32px;
+    @include media();
+  }
+
+  &__content{
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 28px;
+    @include regular();
+  }
+
+  &__margin-top{
+    margin-top: 32px;
+  }
+}
+
+.xb-store{
+  &__background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgba(0,0,0,.7);
+    z-index: 1000;
+
+    @include xb-xs-screen{
+      overflow-y: hidden;
+    }
+  }
+
+  &__details{
+    margin-top: 56px;
+    margin-bottom: 56px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 40px 48px;
+    background-color: $whiteColor;
+
+    @include xb-sm-screen{
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    @include xb-xs-screen{
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    &-bg-new{
+      margin-top: 56px;
+      margin-bottom: 56px;
+      width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      padding: 40px 48px;
+      background-color: $whiteColor;
+
+      @include xb-xs-screen{
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+    }
+
+    &-close{
+      position: absolute;
+      left: calc(100% + 24px);
+      top: 0;
+      color: $whiteColor;
+      cursor: pointer;
+      i{
+        font-size: 56px;
+        line-height: 56px;
+      }
+
+      @include xb-xs-screen{
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i{
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+
+      @include xb-sm-screen{
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i{
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}
+
+.xb-shop{
+
+  &__store{
+    &-template{
+      width: 360px;
+      height: 408px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+
+      @include resetBorder();
+
+      >img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      $parent: &;
+      &-cover{
+        display: none !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.7);
+      }
+
+      &:hover{
+        #{$parent}-cover{
+          display: flex !important;
+        }
+      }
+    }
+    &-button{
+      width: 116px;
+      border-radius: 16px;
+      line-height: 32px;
+      text-align: center;
+      cursor: pointer;
+      @include media();
+
+      &-primary {
+        background-color: $primaryColor;
+        color: $whiteColor;
+      }
+
+      &-normal{
+        background-color: $whiteColor;
+        color: $blackColor;
+      }
+    }
+
+    &-padding{
+      padding: 0;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    &-bg{
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      background-color: $whiteColor;
+      z-index: 500;
+    }
+  }
+  &__template{
+
+    &-edit{
+      border: 1px solid $primaryColor;
+    }
+
+    &-banner{
+      &-right{
+        position: absolute;
+        top: 16px;
+        right: 16px;
+      }
+    }
+
+    &-name{
+      margin: auto;
+      width: 300px;
+      height: 60px;
+      line-height: 60px;
+      color: $whiteColor;
+      border: 1px solid $primaryColor;
+      text-align: center;
+      font-size: 24px;
+      @include media();
+      input{
+        margin: 0;
+        padding: 0;
+        height: 60px;
+        font-size: 24px;
+        @include media();
+        line-height: 60px;
+        color: $whiteColor;
+        border: none;
+        background-color: transparent;
+        text-align: center;
+      }
+    }
+
+    &-title{
+      border: 1px solid $primaryColor;
+      color: $whiteColor;
+      position: relative;
+      @include media();
+      margin: 0 24px;
+      @include xb-xs-screen{
+        margin: 0 16px;
+      }
+    }
+
+    &-description{
+      margin: 24px 24px 0 24px;
+      color: $whiteColor;
+      border: 1px solid $primaryColor;
+      position: relative;
+      @include xb-xs-screen{
+        margin: 16px 16px 0 16px;
+      }
+    }
+
+    &-user{
+      width: 100%;
+      margin-top: 24px;
+      border: 1px solid $primaryColor;
+      position: relative;
+      @include xb-xs-screen{
+        margin-top: 16px;
+      }
+
+      &-name{
+        width: 100%;
+        margin-top: 12px;
+        border: 1px solid $primaryColor;
+        @include media();
+        height: 20px;
+        overflow: hidden;
+        input{
+          margin: 0;
+          padding: 0;
+          border: none;
+          background-color: transparent;
+          text-align: center;
+          @include media();
+          width: 100%;
+        }
+      }
+      &-country{
+        width: 100%;
+        margin-top: 8px;
+        border: 1px solid $primaryColor;
+        height: 20px;
+        overflow: hidden;
+        &-input{
+          width: 100%;
+        }
+
+      }
+    }
+
+
+    &-header{
+      width: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid $primaryColor;
+
+    }
+
+    &-edit-button{
+      padding: 0 32px;
+      line-height: 32px;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      @include transform(translateX(-50%));
+      background-color: $primaryColor;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 1;
+      font-size: 14px;
+    }
+
+    &-button{
+      line-height: 40px;
+      border-radius: 16px;
+      background-color: $whiteColor;
+      color: $blackColor;
+      width: 100px;
+      text-align: center;
+      cursor: pointer;
+    }
+    &-button-1{
+      line-height: 40px;
+      border-radius: 16px;
+      background-color: $primaryColor;
+      color: $whiteColor;
+      width: 100px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    &-title-1{
+      font-size: 24px;
+      @include media();
+      margin-bottom: 8px;
+    }
+    &-content-1{
+      margin-bottom: 24px;
+    }
+
+    &-mask{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.3);
+    }
+
   }
 }
