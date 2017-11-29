@@ -31,6 +31,8 @@ export class MainPageComponent implements OnInit {
   queryMedia: any;
   isMobile: boolean = false;
 
+  about: string = 'Thank you for visiting my store! Have a nice day.  ';
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,

@@ -1,0 +1,7 @@
+<div class="c-user__header">
+  <img class="c-user__avatar" *ngIf="image" [src]="image"/>
+  <div class="c-user__name" [ngClass]="avatarColor" *ngIf="!image" fxLayout="row" fxLayoutAlign="center center">
+    {{failWords}}
+  </div>
+</div>
+

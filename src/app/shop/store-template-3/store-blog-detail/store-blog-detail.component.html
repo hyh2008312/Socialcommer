@@ -1,0 +1,18 @@
+<div>
+  <div class="xb-blog-detail__blog-content">
+    <div class="xb-blog-detail__blog-title">BLOG</div>
+    <div class="xb-blog-detail">
+      <div class="xb-blog-detail__title">
+        {{blog.title}}
+      </div>
+      <div class="xb-blog-detail__edit-time">
+        {{blog.modified | amDateFormat:'MMMM Do, YYYY'}}
+      </div>
+      <div class="xb-blog-detail__image-bg">
+        <img [src]="blog.cover" />
+      </div>
+      <div class="xb-blog-detail__description"  [innerHTML]="blog.context | safeHtml"></div>
+    </div>
+  </div>
+</div>
+

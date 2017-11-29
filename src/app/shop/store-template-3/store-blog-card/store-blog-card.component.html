@@ -1,0 +1,18 @@
+<div class="xb-blog-card">
+  <div class="xb-blog-card__title">
+    {{blog.title}}
+  </div>
+  <div class="xb-blog-card__edit-time">
+    {{blog.modified | amDateFormat:'MMMM Do, YYYY'}}
+  </div>
+  <div class="xb-blog-card__image-bg xb-pointer" (click)="jumpLink()">
+    <img [src]="blog.cover" />
+  </div>
+  <div class="xb-blog-card__description">
+    {{blog.context}}
+  </div>
+  <div class="xb-blog-card__buttons xb-pointer" (click)="jumpLink()">
+    Keep reading →
+  </div>
+</div>
+

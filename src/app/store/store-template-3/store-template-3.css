@@ -1920,6 +1920,11 @@ textarea.mat-input-element {
     .xb-store-template__details-scroll {
       height: auto;
       overflow: auto; } }
+.xb-store-template__details-cover-bg {
+  margin-top: 32px; }
+  @media screen and (max-width: 599px) {
+    .xb-store-template__details-cover-bg {
+      margin-top: 0; } }
 .xb-store-template__top-navigation {
   height: 54px;
   background-color: #f1f1f1; }

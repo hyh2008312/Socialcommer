@@ -5,11 +5,13 @@
     </div>
   </div>
   <div class="md-margin-right-2 xb-image-display__bottom-bg" fxLayout="row" fxLayoutAlign="start start">
-    <div class="xb-image-display__bottom xb-image-display__margin-left" fxFlex="none"
-         [ngClass]="{'active': image == selectedImage}"
-         *ngFor="let image of images; let i = index;" (click)="selectImage(image)">
-      <img *ngIf="image" [src]="image">
-    </div>
+    <ng-container *ngFor="let image of images; let i = index;">
+      <div class="xb-image-display__bottom xb-image-display__margin-left" fxFlex="none"
+           [ngClass]="{'active': image == selectedImage}" *ngIf="i < 4"
+           (click)="selectImage(image)">
+        <img *ngIf="image" [src]="image">
+      </div>
+    </ng-container>
   </div>
 
 </div>

@@ -4,7 +4,7 @@
     <img [src]="store.ownerAvatar">
   </div>
   <div class="md-margin-top-2 xb-store__content-text" *ngIf="store.userTag == ''">
-    {{store.ownerBiography}}
+    Thank you for visiting my store! Have a nice day.
   </div>
   <div class="xb-store-template__about-user ql-editor md-margin-top-2"
        [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">

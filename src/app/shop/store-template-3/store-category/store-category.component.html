@@ -1,0 +1,12 @@
+<div class="xb-store-template__category-bg" fxLayout="row" fxLayoutAlign="start center">
+  <div class="xb-store-template__category xb-store-template__category-margin-right" fxShow.xs="false">Categories:</div>
+  <div class="xb-store-template__category-scroll" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+    <div fxFlex="none" class="xb-store-template__category" *ngFor="let item of categories;let i = index;" (click)="changeCategory(item)"
+         [ngClass]="{'active': item.name == category.name, 'xb-store-template__category-margin-right': i < categories.length - 1,
+         'md-padding-right-2': i == categories.length - 1}">
+      <span>{{ item.name }}</span>
+    </div>
+  </div>
+</div>
+
+

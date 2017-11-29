@@ -43,6 +43,7 @@ import { BlogDeleteDialogComponent } from "./blog-delete-dialog/blog-delete-dial
 import { ShopRoutingModule } from './shop.routes.module';
 
 import { ShopService } from './shop.service';
+import { StoreService } from './store.service';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 
 import { SharedModule } from '../shared/shared.module';
@@ -104,6 +105,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [
     ShopService,
+    StoreService,
     AuthenticationService
   ]
 })

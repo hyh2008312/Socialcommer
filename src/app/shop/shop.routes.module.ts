@@ -27,6 +27,16 @@ const routes: Routes = [
         path: 'store', component: StoreComponent,
         children: [{
           path: 'preview', component: StorePreviewComponent,
+          children: [
+            {
+              path: '',
+              loadChildren: 'app/shop/store-template-1/store-template-1.module#StoreTemplateOneModule'
+            },
+            {
+              path: '',
+              loadChildren: 'app/shop/store-template-3/store-template-3.module#StoreTemplateThreeModule'
+            }
+          ]
         }, {
           path: 'edit', component: StoreEditComponent
         }]
@@ -51,7 +61,7 @@ const routes: Routes = [
         children: [{
           path: ':id', component: FindProductsAddProductComponent
         }, {
-          path: ':id/preview', component: FindProductsEditPreviewComponent
+          path: ':id/preview', component: FindProductsEditPreviewComponent,
         }]
       },{
         path: 'blog', component: BlogComponent,

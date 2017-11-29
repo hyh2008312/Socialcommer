@@ -1,0 +1,25 @@
+<div class="xb-image-display" fxHide.sm fxHide.xs>
+  <div>
+    <div class="xb-image-display__top">
+      <img *ngIf="selectedImage" [src]="selectedImage">
+    </div>
+  </div>
+  <div class="md-margin-right-2 xb-image-display__bottom-bg" fxLayout="row" fxLayoutAlign="start start">
+    <ng-container *ngFor="let image of images; let i = index;">
+      <div class="xb-image-display__bottom xb-image-display__margin-left" fxFlex="none"
+           [ngClass]="{'active': image == selectedImage}" *ngIf="i < 4"
+            (click)="selectImage(image)">
+        <img *ngIf="image" [src]="image">
+      </div>
+    </ng-container>
+  </div>
+
+</div>
+<div class="xb-image-display__slide" fxShow="false" fxShow.xs="true" fxShow.sm="true" *ngIf="imageSources.length >= 2" >
+  <carousel [sources]="imageSources" [config]="config" (currentSlideChange)="slideChange($event)"></carousel>
+  <span>{{ (slideNumber + 1) + ' / ' + imageSources.length }}</span>
+</div>
+<div class="xb-image-display__slide" fxHide.gt-sm
+     *ngIf="imageSources.length < 2" >
+  <img *ngIf="imageSources[0]" [src]="imageSources[0]" />
+</div>

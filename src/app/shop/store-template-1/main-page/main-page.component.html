@@ -1,0 +1,109 @@
+<div class="xb-store" >
+  <div class="xb-store__nav" fxShow="false" fxShow.xs="show">
+    {{store.nameTag || store.name}}
+  </div>
+  <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center"
+       [ngStyle]="{'background': 'url(' + (store.imageUrl == ''? baseImageUrl:store.imageUrl) + ') center / auto 100% ' }">
+    <div class="xb-store__template-mask"></div>
+    <div class="xb-store__content-2">
+      <div class="xb-store__template-name" fxShow.xs="false">
+        {{store.nameTag != '' ? store.nameTag : store.name}}
+      </div>
+      <div class="ql-editor xb-store__template-title"
+           [innerHTML]="store.titleTag| safeHtml"  *ngIf="store.titleTag != ''" >
+      </div>
+      <div class="xb-store__store-description" *ngIf="store.descriptionTag == ''">
+        {{store.description}}
+      </div>
+      <div class="xb-store__template-description ql-editor"
+           [innerHTML]="store.descriptionTag | safeHtml" *ngIf="store.descriptionTag != ''">
+      </div>
+    </div>
+    <div class="xb-store__store-buttons" fxShow="false" fxShow.gt-xs="true">
+      <span>Shop Now</span>
+      <br>
+      <i class="material-icons">keyboard_arrow_down</i>
+    </div>
+  </div>
+  <div>
+    <div class="xb-store__title">My Collections</div>
+    <app-store-navigation [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"
+      fxShow="true" fxShow.xs="false"></app-store-navigation>
+    <div class="xb-store__content xb-store__border-bottom">
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+        <app-shop-template-1-store-item-card *ngFor="let item of product"
+          fxFlex.xs="48" fxFlex.gt-xs="30"
+          [product]="item" [status]="0"></app-shop-template-1-store-item-card>
+        <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+      </div>
+      <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+           (click)="jumpList()" *ngIf="!isMobile && nextPage && product.length > 0">
+        <div>
+          SEE MORE
+        </div>
+      </div>
+      <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+           (click)="jumpList()" *ngIf="isMobile">
+        <div>
+          SEE MORE
+        </div>
+      </div>
+    </div>
+    <div class="xb-store__content-1">
+      <div class="xb-store__title">About Me</div>
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
+        <div class="xb-store__content-left" fxFlex="none">
+          <app-shop-template-1-store-avatar [avatar]="store.ownerAvatar" [name]="store.ownerFirstName"></app-shop-template-1-store-avatar>
+          <div class="md-subhead md-margin-top-2">{{store.ownerFirstName}}</div>
+          <div class="md-margin-top-1">{{store.ownerCountry}}</div>
+        </div>
+        <div class="xb-store__content-right" fxFlex>
+          <div class="xb-store__icons md-dark-third" fxShow.xs="false">
+            <i class="iconfontXberts icon-pic-quota"></i>
+          </div>
+          <div class="md-margin-top-2 xb-store__content-text" *ngIf="store.userTag == ''">
+            Thank you for visiting my store! Have a nice day.
+          </div>
+          <div class="xb-store__template-user ql-editor"
+               [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">
+          </div>
+          <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
+            <i class="iconfontXberts icon-pic-quota-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="xb-store__bottom-bg" fxShow="false">
+    <div class="xb-store__title-1">
+      Subscribe My Newsletter
+    </div>
+    <div class="xb-store__bottom-1" fxLayout="row" fxLayoutAlign="center center">
+      <div class="xb-store__width">
+        <input type="text">
+      </div>
+      <div class="md-margin-left-2">
+        <button mat-raised-button color="primary">SUBSCRIBE</button>
+      </div>
+    </div>
+  </div>
+  <div class="xb-store__footer">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div class="xb-store__footer-margin-left">© 2017 {{store.name}}. All rights reserved.</div>
+      <div class="xb-store__footer-margin-top" fxLayout="row" fxLayoutAlign="center center"
+           fxLayout.xs="column" fxLayoutAlign.xs="center center">
+        <img class="xb-store__footer-margin-top-1 xb-pointer"
+             src="https://media.xberts.com/collector/source/web/pic/pic-power.png"
+             routerLink="/">
+        <img class="xb-store__footer-margin-left xb-store__footer-margin-top-2 xb-pointer"
+             src="https://media.xberts.com/collector/source/web/pic/pic-foot-logo.png"
+             routerLink="/">
+      </div>
+    </div>
+    <div class="xb-store__footer-icons" fxLayout="row" fxLayoutAlign="end center"
+      fxLayoutAlign.xs="center center">
+      <app-share-button [link]="shareLink" [text]="text" [style]="{'store':true}"></app-share-button>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
