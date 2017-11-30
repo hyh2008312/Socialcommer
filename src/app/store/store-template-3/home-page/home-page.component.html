@@ -1,16 +1,13 @@
 <div class="xb-store" >
   <div class="xb-store-template__banner" fxLayout="column" fxLayoutAlign="center center"
-       [ngStyle]="{'background': 'url(' + (store.imageUrl == ''? baseImageUrl:store.imageUrl) + ') center / auto 100% ' }">
+     [ngStyle]="{'background': 'url(' + (imageList.imageSrc? baseImageUrl:imageList.imageSrc) + ') center / auto 100% ' }">
     <div class="xb-store-template__template-mask"></div>
     <div class="xb-store__content-2">
       <div class="ql-editor xb-store-template__template-title"
-           [innerHTML]="store.titleTag | safeHtml"  *ngIf="store.titleTag != ''" >
-      </div>
-      <div class="xb-store-template__store-description" *ngIf="store.descriptionTag == ''">
-        {{store.description}}
+           [innerHTML]="contextList.titleTag | safeHtml"  *ngIf="contextList.titleTag" >
       </div>
       <div class="xb-store-template__template-description ql-editor"
-           [innerHTML]="store.descriptionTag | safeHtml" *ngIf="store.descriptionTag != ''">
+           [innerHTML]="contextList.descriptionTag | safeHtml" *ngIf="contextList.descriptionTag">
       </div>
     </div>
   </div>

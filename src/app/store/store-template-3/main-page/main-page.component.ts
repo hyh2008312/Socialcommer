@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { StoreService } from '../../store.service';
 
 @Component({
@@ -15,20 +15,21 @@ export class MainPageComponent implements OnInit {
   text: string = '';
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private router : Router,
     private storeService: StoreService
   ) {
 
   }
 
   ngOnInit():void {
-    let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
-    self.storeService.getStore(storeName).then((data) => {
-
-      self.storeName = data.name;
-      self.text = data.description;
-      self.storeService.addStore(data);
+    let routerArray = this.router.url.split('/');
+    self.storeService.getStore(routerArray[2]).then((data) => {
+      if(data) {
+        self.storeName = data.displayName;
+        self.text = data.description;
+        self.storeService.addStore(data);
+      }
     });
   }
 

@@ -11,6 +11,7 @@ import { StoreService } from '../../store.service';
 export class MainPageComponent implements OnInit {
 
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService
   ) {
@@ -18,9 +19,8 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit():void {
-    let storeName = this.activatedRoute.snapshot.params['name'];
-    let self = this;
-    this.storeService.getStore(storeName).then((data) => {
+    let routerArray = this.router.url.split('/');
+    this.storeService.getStore(routerArray[2]).then((data) => {
 
       this.storeService.addStore(data);
     });

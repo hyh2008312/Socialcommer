@@ -147,7 +147,7 @@ export class MainPageComponent implements OnInit {
                       self.descriptionTag = data.context.descriptionTag != ''? data.context.descriptionTag : self.descriptionTag;
                       self.userTag = data.context.userTag != ''? data.context.userTag : self.userTag;
 
-                      self.imageSrc = data.image.imageUrl;
+                      self.imageSrc = data.image.imageSrc;
                       self.aboutMeSrc = data.image.aboutMeSrc;
                     }
                   });
@@ -284,7 +284,6 @@ export class MainPageComponent implements OnInit {
 
     let self = this;
 
-
     if(!this.templateId) {
       let options = {
         uid: 3,
@@ -301,9 +300,12 @@ export class MainPageComponent implements OnInit {
         }
       };
       this.shopService.createMultiTemplate(options).then((data) => {
+        self.templateList.push(data);
         self.shopService.createTemplate({
           storeId: self.store.id,
           templateId: data.id
+        }).then((data) => {
+          self.shopService.settTemplateList(self.templateList);
         });
         self.openDialog(`${self.store.displayName}/3`);
         self.router.navigate(['/shop/store']);
@@ -323,9 +325,18 @@ export class MainPageComponent implements OnInit {
         }
       };
       this.shopService.updateMultiTemplate(options).then((data) => {
+        let index = self.templateList.find((item) => {
+          if(item.id == data.id) {
+            return true;
+          }
+        });
+        self.templateList.splice(index, 1);
+        self.templateList.push(data);
         self.shopService.createTemplate({
           storeId: self.store.id,
           templateId: data.id
+        }).then((data) => {
+          self.shopService.settTemplateList(self.templateList);
         });
         self.openDialog(`${self.store.displayName}/3`);
         self.router.navigate(['/shop/store']);

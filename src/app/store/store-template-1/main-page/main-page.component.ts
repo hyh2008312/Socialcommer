@@ -39,32 +39,33 @@ export class MainPageComponent implements OnInit {
     private storeService: StoreService,
     private media: ObservableMedia
   ) {
-    let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
-    this.storeService.getStore(storeName).then((data) => {
-      self.storeService.addStore(data);
-      self.store = data;
-      self.text = data.description;
-      self.storeService.addTitleDescription({
-        title: data.name,
-        description: data.description,
-        shareImage: data.imageUrl
-      });
-      if(data.category.length > 1) {
-        self.categories = [{name: 'All'}, ...data.category];
-      } else {
-        self.categories = [...data.category];
+    let routerArray = this.router.url.split('/');
+    self.storeService.getStore(routerArray[2]).then((data) => {
+      if(data) {
+        self.store = data;
+        self.text = data.description;
+        self.storeService.addTitleDescription({
+          title: data.name,
+          description: data.description,
+          shareImage: data.imageUrl
+        });
+        if(data.category.length > 1) {
+          self.categories = [{name: 'All'}, ...data.category];
+        } else {
+          self.categories = [...data.category];
+        }
+        self.category = self.categories[0];
+        self.storeService.addStore(data);
+
+        self.storeService.pageView({
+          pageType: 'store',
+          viewTime: new Date().getTime(),
+          storeId: data.id
+        });
+
+        self.queryProduct();
       }
-      self.category = self.categories[0];
-      self.storeService.addStore(data);
-
-      self.storeService.pageView({
-        pageType: 'store',
-        viewTime: new Date().getTime(),
-        storeId: data.id
-      });
-
-      self.queryProduct();
     });
 
     self.queryMedia = this.media.asObservable()

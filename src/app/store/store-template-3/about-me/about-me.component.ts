@@ -14,26 +14,27 @@ export class AboutMeComponent implements OnInit {
   store: Store = new Store();
   public shareLink: string;
   public text = '';
+  contextList: any = {};
+  imageList: any = {};
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService
   ) {
-
+    let self = this;
+    this.storeService.store.subscribe((data) => {
+      if(data) {
+        self.store = data;
+        self.contextList = data.context;
+        self.imageList = data.image;
+        self.text = data.description;
+      }
+    });
   }
 
   ngOnInit():void {
     this.shareLink = window.location.href;
-    let self = this;
 
-    let firstLoad = false;
-    this.storeService.store.subscribe((data) => {
-      if(data && !firstLoad) {
-        firstLoad = true;
-        self.store = data;
-        self.text = data.description;
-      }
-    });
   }
 }

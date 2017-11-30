@@ -22,6 +22,8 @@ export class HomePageComponent implements OnInit {
   baseImageUrl: string = 'https://media.socialcommer.com/source/web/template/3/15-pic.jpg';
 
   store: Store = new Store();
+  contextList: any = {};
+  imageList: any = {};
   page = 1;
   nextPage: boolean = true;
   nextBlogPage: boolean = true;
@@ -44,11 +46,11 @@ export class HomePageComponent implements OnInit {
 
     let self = this;
 
-    let firstLoad = false;
     this.storeService.store.subscribe((data) => {
-      if(data && !firstLoad) {
-        firstLoad = true;
+      if(data) {
         self.store = data;
+        self.contextList = data.context;
+        self.imageList = data.image;
         self.text = data.description;
         self.ownerId = data.ownerId;
         self.storeService.addTitleDescription({
@@ -62,7 +64,6 @@ export class HomePageComponent implements OnInit {
           self.categories = [...data.category];
         }
         self.category = self.categories[0];
-        self.storeService.addStore(data);
 
         self.storeService.pageView({
           pageType: 'store',

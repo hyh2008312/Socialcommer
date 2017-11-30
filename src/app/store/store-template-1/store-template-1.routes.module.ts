@@ -16,9 +16,6 @@ const routes: Routes = [{
   children: [{
     path: ':id', component: StoreListDetailComponent
   }]
-}, {
-  path: '',
-  redirectTo: ''
 }];
 
 @NgModule({

@@ -10,7 +10,7 @@ import { StoreBlogComponent } from './store-blog/store-blog.component';
 import { StoreBlogDetailComponent } from './store-blog-detail/store-blog-detail.component';
 
 const routes: Routes = [{
-  path: '3', component: MainPageComponent,
+  path: '', component: MainPageComponent,
   children: [{
     path: '', component: HomePageComponent
   }, {
@@ -24,9 +24,6 @@ const routes: Routes = [{
   }, {
     path: 'about_me', component: AboutMeComponent
   }]
-}, {
-  path: '',
-  redirectTo: '1'
 }];
 
 @NgModule({
