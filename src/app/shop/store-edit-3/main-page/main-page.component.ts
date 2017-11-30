@@ -301,7 +301,10 @@ export class MainPageComponent implements OnInit {
         }
       };
       this.shopService.createMultiTemplate(options).then((data) => {
-        console.log(data);
+        self.shopService.createTemplate({
+          storeId: self.store.id,
+          templateId: data.id
+        });
         self.openDialog(`${self.store.displayName}/3`);
         self.router.navigate(['/shop/store']);
       });
@@ -320,7 +323,10 @@ export class MainPageComponent implements OnInit {
         }
       };
       this.shopService.updateMultiTemplate(options).then((data) => {
-        console.log(data);
+        self.shopService.createTemplate({
+          storeId: self.store.id,
+          templateId: data.id
+        });
         self.openDialog(`${self.store.displayName}/3`);
         self.router.navigate(['/shop/store']);
       });
