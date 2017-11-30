@@ -379,7 +379,7 @@
 
   &__products{
     &-title{
-      height: 56px;
+      margin-top: 24px;
       font-size: 16px;
       @include media();
     }
@@ -391,12 +391,52 @@
     }
 
     &-left-bg{
-      width: 225px;
+      margin-top: 24px;
+      width: 220px;
+      border-right: 1px solid rgba(0,0,0,.12);
+      margin-right: 16px;
+      min-height: calc(100vh - 96px);
     }
 
     &-content{
       max-height: calc(100vh - 72px);
       overflow: scroll;
+    }
+
+    &-search{
+      border: 1px solid $primaryColor;
+      border-radius: 4px;
+      height: 32px;
+      margin-right: 50px;
+      position: relative;
+
+      >i{
+        margin: 0 16px 0 12px;
+        color: rgba(0,0,0,.54);
+      }
+
+      >input{
+        border: none;
+        background-color: transparent;
+        width: 250px;
+      }
+
+      &-close{
+        position: absolute;
+        cursor: pointer;
+        right: 12px;
+        top: 50%;
+        @include transform(translateY(-50%));
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        background-color: rgba(0,0,0,.54);
+        >i{
+          font-size: 12px;
+          line-height: 12px;
+          color: $whiteColor;
+        }
+      }
     }
 
   }

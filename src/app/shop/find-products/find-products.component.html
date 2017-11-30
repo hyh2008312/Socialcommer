@@ -1,9 +1,6 @@
-<div class="md-margin-top-2 md-padding-left-2 md-padding-right-2">
-  <div class="xb-shop__products-title" fxLayout="row" fxLayoutAlign="start center">
-    <a routerLink="../listings/products">Listings</a>&nbsp;&nbsp;>&nbsp;&nbsp;Search affiliate products
-  </div>
+<div class="md-padding-top-2 md-padding-left-2 md-padding-right-2 background-bg-white" >
 
-  <div fxLayout="row" fxLayoutAlign="start start">
+  <div fxLayout="row" fxLayoutAlign="start stretch">
     <div class="xb-shop__products-left-bg">
       <div class="xb-shop__products-title-1">By Affiliate Channel:</div>
       <app-products-sort [(selectedSort)]="selectedSource" [sorts]="sources"
@@ -18,15 +15,31 @@
       </div>
     </div>
     <div fxFlex>
-      <div>
-        <mat-chip-list fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-          <mat-chip *ngFor="let sort of selectedChips" [selectable]="selectable" [removable]="removable" (remove)="remove(sort)">
-            {{sort.name}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-        </mat-chip-list>
+      <div class="xb-shop__products-title" fxLayout="row" fxLayoutAlign="start center">
+        <a routerLink="../listings/products">Listings</a>&nbsp;&nbsp;>&nbsp;&nbsp;Search affiliate products
       </div>
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="24px">
+      <div class="md-margin-top-3">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
+          <mat-chip-list fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px" fxFlex>
+            <mat-chip *ngFor="let sort of selectedChips" [selectable]="selectable" [removable]="removable" (remove)="remove(sort)">
+              {{sort.name}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <form class="xb-shop__products-search" [formGroup]="searchForm"
+                  fxLayout="row" fxLayoutAlign="start center" >
+              <i class="material-icons">search</i>
+              <input type="text" formControlName="searchKey" [(ngModel)]="searchKey" (keyup.enter)="getProductList()"/>
+              <div class="xb-shop__products-search-close" fxLayout="row" fxLayoutAlign="center center"
+                   *ngIf="searchKey != ''" (click)="clearSearchKey()">
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="24px">
         <app-product-item-card *ngFor="let product of productList" [product]="product"></app-product-item-card>
       </div>
       <mat-paginator [length]="length"

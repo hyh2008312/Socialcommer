@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ENTER } from '@angular/cdk/keycodes';
 
@@ -12,6 +13,8 @@ import { UserService } from  '../../shared/services/user/user.service';
 })
 
 export class FindProductsComponent implements OnInit {
+
+  searchForm: FormGroup;
 
   sortsList = [];
   sources = ['Amazon.in', 'Amazon.com'];
@@ -34,11 +37,16 @@ export class FindProductsComponent implements OnInit {
   // Product list
   productList: any = false;
 
+  searchKey: string = '';
+
   constructor(
     private shopService: ShopService,
-    private userService: UserService
+    private userService: UserService,
+    private fb: FormBuilder
   ) {
-
+    this.searchForm = this.fb.group({
+      searchKey: ['']
+    });
   }
 
   ngOnInit():void {
@@ -56,6 +64,11 @@ export class FindProductsComponent implements OnInit {
       }
     });
   }
+
+  clearSearchKey() {
+    this.searchKey = '';
+  }
+
 
   // MatPaginator Output
   changePage(event, type) {
@@ -149,7 +162,8 @@ export class FindProductsComponent implements OnInit {
       cats,
       source,
       page: this.productIndex,
-      page_size: this.pageSize
+      page_size: this.pageSize,
+      q: this.searchKey
     }).then((data) => {
 
       self.length = data.count;
