@@ -502,11 +502,12 @@
     }
 
     &-description {
-      width: 100%;
       margin-top: 24px;
       color: $whiteColor;
       position: relative;
       overflow: hidden;
+      margin-left: 16px;
+      margin-right: 16px;
       @include xb-xs-screen {
         margin-top: 16px;
         padding: 0 16px;

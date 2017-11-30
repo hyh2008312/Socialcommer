@@ -10,8 +10,8 @@
     max-width: 1200px;
     height: 56px;
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 16px;
+    margin-right: 16px;
     @include xb-xs-screen {
     }
   }
@@ -170,12 +170,14 @@
 
   }
   &__home-made {
+    position: relative;
     height: 270px;
     margin-top: 72px;
     @include xb-xs-screen {
       height: 120px;
     }
     &-title {
+      position: relative;
       font-size: 54px;
       color: $whiteColor;
       text-align: center;
@@ -205,8 +207,8 @@
       max-width: 1200px;
       margin-top: 53px;
       padding-bottom: 40px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: 16px;
+      margin-right: 16px;
 
       @include xb-xs-screen {
         margin-top: 16px;
@@ -277,7 +279,7 @@
       font-size: 24px;
       height: 40px;
       line-height: 40px;
-     @include media();
+      @include media();
       overflow: hidden;
     }
     &-original {
@@ -501,11 +503,12 @@
     }
 
     &-description {
-      width: 100%;
       margin-top: 24px;
       color: $whiteColor;
       position: relative;
       overflow: hidden;
+      margin-left: 64px;
+      margin-right: 64px;
       @include xb-xs-screen {
         margin-top: 16px;
         padding: 0 16px;
