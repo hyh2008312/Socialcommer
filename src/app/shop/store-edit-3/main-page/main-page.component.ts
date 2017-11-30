@@ -129,24 +129,6 @@ export class MainPageComponent implements OnInit {
             self.queryBlog();
           });
 
-          self.shopService.getMultiTemplate().then((data) => {
-            if(JSON.stringify(data) === '{}') {
-              self.isFirstEdit = true;
-            } else {
-              self.nameTag = data.context.nameTag != ''? data.context.nameTag : self.nameTag;
-              self.titleTag = data.context.titleTag != ''? data.context.titleTag : self.titleTag;
-              self.descriptionTag = data.context.descriptionTag != ''? data.context.descriptionTag : self.descriptionTag;
-              self.userTag = data.context.userTag != ''? data.context.userTag : self.userTag;
-              self.storeForm.setValue({
-                name: self.store.displayName,
-                description : self.store.description,
-                displayName: self.store.displayName
-              });
-
-              self.imageSrc = data.image.imageUrl;
-              self.aboutMeSrc = data.image.aboutMeSrc;
-            }
-          });
         }
       }
     })
