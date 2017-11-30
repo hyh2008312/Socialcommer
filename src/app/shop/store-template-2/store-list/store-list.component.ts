@@ -26,7 +26,51 @@ export class StoreListComponent implements OnInit {
   store: Store = new Store();
   page = 1;
   nextPage: boolean = true;
-  product: any = [];
+  product: any = [{
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
+  }, {
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-8.jpg'
+  }, {
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-9.jpg'
+  }, {
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-10.jpg'
+  }, {
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-9.jpg'
+  }, {
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
+  }
+  ];
+
   isClearData: boolean = false;
 
   constructor(private router: Router,
@@ -65,29 +109,10 @@ export class StoreListComponent implements OnInit {
   }
 
   changeCategory() {
-    this.page = 1;
-    this.isClearData = true;
-    this.nextPage = true;
-    this.queryProduct();
+
   }
 
   queryProduct() {
-    let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
-      relationStatus: 'published',
-      page: this.page,
-      page_size: 12
-    };
-    this.storeService.getProductList(options).then((data) => {
-      if (this.isClearData) {
-        this.product = [];
-      }
-      this.product = this.product.concat(data.results);
-      if (data.next == null) {
-        this.nextPage = false;
-      }
-    });
   }
 
   back(): void {

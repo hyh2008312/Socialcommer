@@ -121,6 +121,6 @@ export class HomePageComponent implements OnInit {
   }
 
   jumpProductList(): void {
-    this.router.navigate([`./store/${this.store.displayName}/2/products`]);
+    this.router.navigate([`./shop/store/preview/2/products`]);
   }
 }
