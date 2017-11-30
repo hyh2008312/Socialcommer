@@ -58,14 +58,13 @@ export class MainPageComponent implements OnInit {
   };
   editorContent = '';
   userProfile: UserProfile = new UserProfile();
-  previewImgFile: any = null;
-  previewImgSrcs: any = null;
   userCountry: string = '';
 
   storeTemplateForm: FormGroup;
   storeForm: FormGroup;
 
-  isFirstEdit: boolean = false;
+  templateId: any = false;
+  templateList: any = [];
 
   constructor(
     private router: Router,
@@ -105,33 +104,62 @@ export class MainPageComponent implements OnInit {
     this.shareLink = window.location.host + '/store/';
     let self = this;
     let firstLoad = false;
-    self.userService.store.subscribe((data)=> {
+    self.shopService.templateList.subscribe((data) => {
       if(data) {
-        self.store = data;
-        if(!firstLoad) {
-          firstLoad = true;
+        self.templateList = data;
+        self.userService.store.subscribe((data)=> {
+          if(data) {
+            self.store = data;
+            if(!firstLoad) {
+              firstLoad = true;
 
-          self.storeForm.setValue({
-            name: self.store.name,
-            description : self.store.description,
-            displayName: self.store.displayName
-          });
+              self.storeForm.setValue({
+                name: self.store.name,
+                description : self.store.description,
+                displayName: self.store.displayName
+              });
 
-          self.shopService.getFrontStore(self.store.displayName).then((data) => {
-            self.ownerId = data.ownerId;
-            if(data.category.length > 1) {
-              self.categories = [{name: 'All'}, ...data.category];
-            } else {
-              self.categories = [...data.category];
+              self.shopService.getFrontStore(self.store.displayName).then((data) => {
+                self.ownerId = data.ownerId;
+                if(data.category.length > 1) {
+                  self.categories = [{name: 'All'}, ...data.category];
+                } else {
+                  self.categories = [...data.category];
+                }
+                self.category = self.categories[0];
+                self.queryProduct();
+                self.queryBlog();
+              });
+
+              if(self.store.templateId != 1) {
+                self.templateList.find((item) => {
+                  if(item.id == self.store.templateId) {
+                    self.templateId = item.id;
+                    return true;
+                  }
+                });
+
+                if(self.templateId) {
+                  self.shopService.getMultiTemplateDetail(self.templateId).then((data) => {
+                    if(data) {
+                      self.nameTag = data.context.nameTag != ''? data.context.nameTag : self.nameTag;
+                      self.titleTag = data.context.titleTag != ''? data.context.titleTag : self.titleTag;
+                      self.descriptionTag = data.context.descriptionTag != ''? data.context.descriptionTag : self.descriptionTag;
+                      self.userTag = data.context.userTag != ''? data.context.userTag : self.userTag;
+
+                      self.imageSrc = data.image.imageUrl;
+                      self.aboutMeSrc = data.image.aboutMeSrc;
+                    }
+                  });
+                }
+              }
+
             }
-            self.category = self.categories[0];
-            self.queryProduct();
-            self.queryBlog();
-          });
-
-        }
+          }
+        })
       }
     })
+
 
   }
 
@@ -254,30 +282,45 @@ export class MainPageComponent implements OnInit {
       return;
     }
 
-    let options = {
-      uid: 3,
-      storeId: this.store.id,
-      context: {
-        nameTag: this.nameTag,
-        titleTag: this.titleTag,
-        descriptionTag: this.descriptionTag,
-        userTag: this.userTag,
-      },
-      image: {
-        imageSrc: this.imageSrc,
-        aboutMeSrc: this.aboutMeSrc
-      }
-    };
-
     let self = this;
 
-    if(!this.isFirstEdit) {
-      this.shopService.updateMultiTemplate(options).then((data) => {
+
+    if(!this.templateId) {
+      let options = {
+        uid: 3,
+        storeId: this.store.id,
+        context: {
+          nameTag: this.nameTag,
+          titleTag: this.titleTag,
+          descriptionTag: this.descriptionTag,
+          userTag: this.userTag,
+        },
+        image: {
+          imageSrc: this.imageSrc,
+          aboutMeSrc: this.aboutMeSrc
+        }
+      };
+      this.shopService.createMultiTemplate(options).then((data) => {
+        console.log(data);
         self.openDialog(`${self.store.displayName}/3`);
         self.router.navigate(['/shop/store']);
       });
     } else {
-      this.shopService.createMultiTemplate(options).then((data) => {
+      let options = {
+        id: this.templateId,
+        context: {
+          nameTag: this.nameTag,
+          titleTag: this.titleTag,
+          descriptionTag: this.descriptionTag,
+          userTag: this.userTag,
+        },
+        image: {
+          imageSrc: this.imageSrc,
+          aboutMeSrc: this.aboutMeSrc
+        }
+      };
+      this.shopService.updateMultiTemplate(options).then((data) => {
+        console.log(data);
         self.openDialog(`${self.store.displayName}/3`);
         self.router.navigate(['/shop/store']);
       });
