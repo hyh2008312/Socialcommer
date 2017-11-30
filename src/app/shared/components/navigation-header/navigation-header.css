@@ -1518,6 +1518,9 @@ textarea.mat-input-element {
   .cdk-overlay-pane {
     min-width: 100vw; } }
 
+.mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 .xb-navigation-header {
   height: 56px; }
   .xb-navigation-header__image {

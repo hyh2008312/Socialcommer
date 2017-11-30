@@ -99,6 +99,7 @@ export class Store{
   imageUrl: any;
   status: any;
   currency: string;
+  templateId: number;
 
   displayName: string;
 }

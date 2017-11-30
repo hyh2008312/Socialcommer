@@ -19,24 +19,41 @@
         <a routerLink="../listings/products">Listings</a>&nbsp;&nbsp;>&nbsp;&nbsp;Search affiliate products
       </div>
       <div class="md-margin-top-3">
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
-          <mat-chip-list fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px" fxFlex>
-            <mat-chip *ngFor="let sort of selectedChips" [selectable]="selectable" [removable]="removable" (remove)="remove(sort)">
-              {{sort.name}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
-          </mat-chip-list>
+        <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+          <div fxFlex>
+            <div [hidden]="selectedChips.length <= 0">
+              <mat-chip-list class="md-margin-bottom-4" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+                <mat-chip *ngFor="let sort of selectedChips" [selectable]="selectable" [removable]="removable" (remove)="remove(sort)">
+                  {{sort.name}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+            <div class="xb-shop__products-title-2" *ngIf="searchKey != '' && isSearch">
+              <span class="xb-shop__products-search-result">{{length}}</span>
+              {{length > 1? 'Results':'Result'}} for
+              <span class="xb-shop__products-search-result">{{searchKey}}</span>
+            </div>
+          </div>
           <div fxLayout="row" fxLayoutAlign="start center">
             <form class="xb-shop__products-search" [formGroup]="searchForm"
                   fxLayout="row" fxLayoutAlign="start center" >
               <i class="material-icons">search</i>
-              <input type="text" formControlName="searchKey" [(ngModel)]="searchKey" (keyup.enter)="getProductList()"/>
+              <input type="text" formControlName="searchKey" [(ngModel)]="searchKey" (keyup.enter)="getProductList(isSearch)"/>
               <div class="xb-shop__products-search-close" fxLayout="row" fxLayoutAlign="center center"
                    *ngIf="searchKey != ''" (click)="clearSearchKey()">
                 <i class="material-icons">close</i>
               </div>
             </form>
           </div>
+        </div>
+
+      </div>
+      <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+           *ngIf="productList && productList.length <= 0">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <img src="https://media.socialcommer.com/source/web/pic/pic-none-01.png">
+          <span class="md-dark-secondary">Please try again with different search keywords.</span>
         </div>
       </div>
       <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="24px">
@@ -48,6 +65,7 @@
                      (page)="changePage($event)"
                      *ngIf="productList && productList.length > 0">
       </mat-paginator>
+
     </div>
   </div>
 </div>

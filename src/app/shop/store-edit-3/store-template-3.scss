@@ -87,6 +87,14 @@
     text-align: center;
     font-size: 24px;
     @include media();
+    overflow-x: hidden;
+
+    >input{
+      font-size: 24px;
+      @include media();
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__navigation{
@@ -353,9 +361,10 @@
     }
 
     &-image-bg{
-      display: block;
+      position: relative;
       >img{
         width: 100%;
+        display: block;
       }
     }
 
@@ -885,6 +894,10 @@
 
     &-edit{
       border: 1px solid $primaryColor;
+      >input{
+        border: none;
+        background-color: transparent;
+      }
     }
 
     &-banner{

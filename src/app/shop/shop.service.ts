@@ -30,6 +30,12 @@ export class ShopService {
     this.currentListingTab.next(newTab);
   }
 
+  templateList: Subject<any> = new BehaviorSubject<any>(null);
+
+  public settTemplateList(newTab: number): void {
+    this.templateList.next(newTab);
+  }
+
   serializeParams(params) {
 
     let array = [];
@@ -356,6 +362,23 @@ export class ShopService {
       .catch(this.handleError);
   }
 
+  getMultiTemplateDetail(uid:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/template_detail/${uid}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   createTemplate(store:any): Promise<any> {
 
     let headers = new Headers({
@@ -368,6 +391,57 @@ export class ShopService {
     const url = `${this.baseUrl.url}store/template/`;
 
     return this.http.post(url, store, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  createMultiTemplate(store:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}store/template_list/`;
+
+    return this.http.post(url, store, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getMultiTemplate(template:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}store/template_list/?${this.serializeParams(template)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  updateMultiTemplate(store:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}store/template_detail/${store.id}/`;
+
+    return this.http.put(url, store, options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
@@ -388,7 +462,6 @@ export class ShopService {
       .then(response => response.json())
       .catch(this.handleError);
   }
-
 
   getSubCategory(category: any):Promise<any> {
     let headers = new Headers({

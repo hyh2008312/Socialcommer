@@ -1518,6 +1518,9 @@ textarea.mat-input-element {
   .cdk-overlay-pane {
     min-width: 100vw; } }
 
+.mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 .padding {
   padding: 5px 10px; }
 
@@ -3038,6 +3041,9 @@ textarea.mat-input-element {
   .cdk-overlay-pane {
     min-width: 100vw; } }
 
+.mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 .xb-social-share {
   width: 40px;
   height: 40px;
@@ -3071,352 +3077,367 @@ textarea.mat-input-element {
       line-height: 16px;
       color: #252525; }
 
-.xb-store {
-  overflow-x: hidden; }
-  .xb-store__nav {
-    height: 56px;
-    line-height: 56px;
-    font-size: 16px;
-    font-weight: bold;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.19);
-    position: relative;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 0 56px;
-    width: 100%;
-    text-align: center; }
-    .xb-store__nav i {
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 32px;
-      line-height: 32px;
-      padding: 12px; }
-  .xb-store__banner {
-    background-color: #000;
-    height: 500px;
-    overflow: hidden;
-    position: relative; }
-    @media screen and (max-width: 599px) {
-      .xb-store__banner {
-        padding: 0 16px;
-        height: 320px; } }
-    @media screen and (min-width: 600px) and (max-width: 959px) {
-      .xb-store__banner {
-        padding: 0 16px; } }
-  .xb-store__store-name {
-    font-size: 56px;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-    margin-top: 160px; }
-    @media screen and (max-width: 599px) {
-      .xb-store__store-name {
-        font-size: 24px;
-        margin-top: 0; } }
-  .xb-store__store-name-1 {
-    margin: 0 auto;
-    width: 300px;
-    height: 60px;
-    line-height: 60px;
-    color: #fff;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 600;
-    z-index: 1; }
-  .xb-store__store-title {
-    font-size: 56px;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-    margin-top: 100px;
-    z-index: 1; }
-    @media screen and (max-width: 599px) {
-      .xb-store__store-title {
-        font-size: 24px;
-        margin-top: 0; } }
-  .xb-store__store-description {
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-    margin-top: 24px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 16px;
-    line-height: 24px;
-    max-height: 72px;
-    overflow: hidden;
-    z-index: 1; }
-    @media screen and (max-width: 599px) {
-      .xb-store__store-description {
-        margin-top: 16px;
-        font-size: 14px;
-        line-height: 20px;
-        max-height: 60px;
-        overflow: hidden; } }
-  .xb-store__store-buttons {
-    position: absolute;
-    font-size: 16px;
-    font-weight: 600;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    color: #fff; }
-    .xb-store__store-buttons i {
-      font-size: 40px;
-      font-weight: 200; }
-    @media screen and (max-width: 599px) {
-      .xb-store__store-buttons {
-        bottom: 8px; }
-        .xb-store__store-buttons i {
-          font-size: 24px; } }
-  .xb-store__title {
-    font-size: 24px;
-    color: rgba(0, 0, 0, 0.87);
-    line-height: 24px;
-    margin-top: 48px;
-    margin-bottom: 40px;
-    text-align: center; }
-    @media screen and (max-width: 599px) {
-      .xb-store__title {
-        margin-top: 32px;
-        margin-bottom: 24px; } }
-  .xb-store__title-1 {
-    font-size: 34px;
-    color: rgba(0, 0, 0, 0.87);
-    line-height: 34px;
-    margin-top: 72px;
-    margin-bottom: 32px;
-    text-align: center; }
-    @media screen and (max-width: 599px) {
-      .xb-store__title-1 {
-        font-size: 24px;
-        line-height: 32px;
-        margin-top: 24px;
-        margin-bottom: 16px; } }
-  .xb-store__navigation {
-    position: relative;
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.87);
-    line-height: 32px;
-    cursor: pointer; }
-    .xb-store__navigation.active:after {
-      content: ' ';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: #ffc500; }
-    .xb-store__navigation-mobile {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
-    .xb-store__navigation-bg {
-      height: 48px; }
-      .xb-store__navigation-bg ::-webkit-scrollbar {
-        height: 0; }
-    .xb-store__navigation-scroll {
-      overflow-x: scroll;
-      width: 100%; }
-    @media screen and (max-width: 599px) {
-      .xb-store__navigation {
-        line-height: 48px; } }
-  .xb-store__margin-right {
-    margin-right: 40px; }
-    @media screen and (max-width: 599px) {
-      .xb-store__margin-right {
-        margin-right: 24px; } }
-  .xb-store__bottom-1 {
-    padding-bottom: 132px; }
-    @media screen and (max-width: 599px) {
-      .xb-store__bottom-1 {
-        padding: 0 8px 24px; } }
-  .xb-store__width {
-    width: 294px;
-    height: 42px;
-    background-color: #fff;
-    overflow: hidden;
-    border: 1px solid #F8F8F8;
-    border-radius: 4px; }
-    .xb-store__width input {
-      line-height: 36px;
-      width: 100%;
-      padding: 0 8px; }
-    @media screen and (max-width: 599px) {
-      .xb-store__width {
-        height: 38px; }
-        .xb-store__width input {
-          line-height: 32px;
-          width: 100%;
-          padding: 0 8px; } }
-  .xb-store__content {
-    max-width: 1000px;
-    margin-top: 24px;
-    padding-bottom: 64px;
-    margin-left: auto;
-    margin-right: auto; }
-    @media screen and (max-width: 599px) {
-      .xb-store__content {
-        margin-top: 16px;
-        padding: 0 16px 40px; } }
-    @media screen and (min-width: 600px) and (max-width: 959px) {
-      .xb-store__content {
-        padding: 0 16px 40px; } }
-  .xb-store__content-1 {
-    max-width: 1000px;
-    padding-bottom: 16px;
-    margin-left: auto;
-    margin-right: auto; }
-    @media screen and (max-width: 599px) {
-      .xb-store__content-1 {
-        padding: 0 16px 40px; } }
-    @media screen and (min-width: 600px) and (max-width: 959px) {
-      .xb-store__content-1 {
-        padding: 0 16px 40px; } }
-  .xb-store__content-2 {
-    max-width: 1000px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative; }
-    @media screen and (min-width: 600px) and (max-width: 959px) {
-      .xb-store__content-2 {
-        padding: 0 16px; } }
-  .xb-store__content-left {
-    width: 120px;
-    margin-right: 48px;
-    text-align: center; }
-    @media screen and (max-width: 599px) {
-      .xb-store__content-left {
-        margin-right: 0;
-        width: 88px; } }
-  .xb-store__content-text {
-    line-height: 24px; }
-  .xb-store__header {
-    width: 100%;
-    height: 0;
-    border-radius: 50%;
-    padding-bottom: 100%;
-    overflow: hidden;
-    position: relative; }
-    .xb-store__header > img {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      border-radius: 50%; }
-  .xb-store__icons i {
-    font-size: 40px;
-    line-height: 40px; }
-    @media screen and (max-width: 599px) {
-      .xb-store__icons i {
-        font-size: 24px;
-        line-height: 24px; } }
-  .xb-store__border-bottom {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
-  .xb-store__card {
-    display: block;
-    width: 100%;
-    position: relative;
-    z-index: 0;
-    margin-bottom: 32px; }
-    @media screen and (max-width: 599px) {
-      .xb-store__card {
-        margin-bottom: 0; } }
-    .xb-store__card-image {
-      padding-bottom: 100%;
-      width: 100%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 2px;
-      -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-      -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-      position: relative; }
-      .xb-store__card-image > a {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 4px;
-        overflow: hidden; }
-        .xb-store__card-image > a > img {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 100%;
-          -webkit-transform: translate(-50%, -50%);
-          -moz-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
-    .xb-store__card-margin {
-      margin-left: 8px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__card-margin {
-          margin-left: 0;
-          margin-top: 8px; } }
-    .xb-store__card-content {
-      position: relative;
-      padding: 8px 0 16px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__card-content {
-          padding: 8px 0 16px; } }
-    .xb-store__card-title {
-      max-height: 56px;
-      height: 56px;
-      line-height: 28px;
-      font-weight: 700;
-      overflow: hidden; }
-    .xb-store__card-price {
-      font-size: 16px;
-      font-weight: 700; }
-    .xb-store__card-sale {
-      background-color: #00bdd6;
-      border-radius: 4px;
-      padding: 0 8px;
-      color: #fff;
-      line-height: 24px; }
-    .xb-store__card-action {
-      position: relative;
-      display: none; }
-  .xb-store__buttons-bg {
-    margin-top: 20px; }
-    .xb-store__buttons-bg > div {
-      width: 240px;
-      text-align: center;
-      line-height: 40px;
-      border: 1px solid #00bdd6;
-      color: #00bdd6;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600; }
-      @media screen and (max-width: 599px) {
-        .xb-store__buttons-bg > div {
-          line-height: 36px; } }
-      .xb-store__buttons-bg > div:hover {
-        background-color: #00bdd6;
-        color: #fff; }
-  .xb-store__buttons-bg-1 {
-    color: #fff; }
-  .xb-store__bottom-bg {
-    background-color: #f1f1f1;
-    overflow: hidden; }
-  .xb-store__background {
+.xb-store__nav {
+  height: 56px;
+  line-height: 56px;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.19);
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 56px;
+  width: 100%;
+  text-align: center; }
+  .xb-store__nav i {
     position: absolute;
     left: 0;
     top: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000; }
+    font-size: 32px;
+    line-height: 32px;
+    padding: 12px; }
+.xb-store__banner {
+  background-color: #000;
+  height: 500px;
+  overflow: hidden;
+  position: relative; }
+  @media screen and (max-width: 599px) {
+    .xb-store__banner {
+      padding: 0 16px;
+      height: 320px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-store__banner {
+      padding: 0 16px; } }
+.xb-store__store-name {
+  font-size: 56px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  margin-top: 160px; }
+  @media screen and (max-width: 599px) {
+    .xb-store__store-name {
+      font-size: 24px;
+      margin-top: 0; } }
+.xb-store__store-name-1 {
+  margin: 0 auto;
+  width: 300px;
+  height: 60px;
+  line-height: 60px;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  z-index: 1; }
+.xb-store__store-title {
+  font-size: 56px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  margin-top: 100px;
+  z-index: 1; }
+  @media screen and (max-width: 599px) {
+    .xb-store__store-title {
+      font-size: 24px;
+      margin-top: 0; } }
+.xb-store__store-description {
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  margin-top: 24px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+  line-height: 24px;
+  max-height: 72px;
+  overflow: hidden;
+  z-index: 1; }
+  @media screen and (max-width: 599px) {
+    .xb-store__store-description {
+      margin-top: 16px;
+      font-size: 14px;
+      line-height: 20px;
+      max-height: 60px;
+      overflow: hidden; } }
+.xb-store__store-buttons {
+  position: absolute;
+  font-size: 16px;
+  font-weight: 600;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #fff; }
+  .xb-store__store-buttons i {
+    font-size: 40px;
+    font-weight: 200; }
+  @media screen and (max-width: 599px) {
+    .xb-store__store-buttons {
+      bottom: 8px; }
+      .xb-store__store-buttons i {
+        font-size: 24px; } }
+.xb-store__title {
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 24px;
+  margin-top: 48px;
+  margin-bottom: 40px;
+  text-align: center; }
+  @media screen and (max-width: 599px) {
+    .xb-store__title {
+      margin-top: 32px;
+      margin-bottom: 24px; } }
+.xb-store__title-1 {
+  font-size: 34px;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 34px;
+  margin-top: 72px;
+  margin-bottom: 32px;
+  text-align: center; }
+  @media screen and (max-width: 599px) {
+    .xb-store__title-1 {
+      font-size: 24px;
+      line-height: 32px;
+      margin-top: 24px;
+      margin-bottom: 16px; } }
+.xb-store__navigation {
+  position: relative;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 32px;
+  cursor: pointer; }
+  .xb-store__navigation.active:after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffc500; }
+  .xb-store__navigation-mobile {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+  .xb-store__navigation-bg {
+    height: 48px; }
+    .xb-store__navigation-bg ::-webkit-scrollbar {
+      height: 0; }
+  .xb-store__navigation-scroll {
+    overflow-x: scroll;
+    width: 100%; }
+  @media screen and (max-width: 599px) {
+    .xb-store__navigation {
+      line-height: 48px; } }
+.xb-store__margin-right {
+  margin-right: 40px; }
+  @media screen and (max-width: 599px) {
+    .xb-store__margin-right {
+      margin-right: 24px; } }
+.xb-store__bottom-1 {
+  padding-bottom: 132px; }
+  @media screen and (max-width: 599px) {
+    .xb-store__bottom-1 {
+      padding: 0 8px 24px; } }
+.xb-store__width {
+  width: 294px;
+  height: 42px;
+  background-color: #fff;
+  overflow: hidden;
+  border: 1px solid #F8F8F8;
+  border-radius: 4px; }
+  .xb-store__width input {
+    line-height: 36px;
+    width: 100%;
+    padding: 0 8px; }
+  @media screen and (max-width: 599px) {
+    .xb-store__width {
+      height: 38px; }
+      .xb-store__width input {
+        line-height: 32px;
+        width: 100%;
+        padding: 0 8px; } }
+.xb-store__content {
+  max-width: 1000px;
+  margin-top: 24px;
+  padding-bottom: 64px;
+  margin-left: auto;
+  margin-right: auto; }
+  @media screen and (max-width: 599px) {
+    .xb-store__content {
+      margin-top: 16px;
+      padding: 0 16px 40px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-store__content {
+      padding: 0 16px 40px; } }
+.xb-store__content-1 {
+  max-width: 1000px;
+  padding-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto; }
+  @media screen and (max-width: 599px) {
+    .xb-store__content-1 {
+      padding: 0 16px 40px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-store__content-1 {
+      padding: 0 16px 40px; } }
+.xb-store__content-2 {
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative; }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-store__content-2 {
+      padding: 0 16px; } }
+.xb-store__content-left {
+  width: 120px;
+  margin-right: 48px;
+  text-align: center; }
+  @media screen and (max-width: 599px) {
+    .xb-store__content-left {
+      margin-right: 0;
+      width: 88px; } }
+.xb-store__content-text {
+  line-height: 24px; }
+.xb-store__header {
+  width: 100%;
+  height: 0;
+  border-radius: 50%;
+  padding-bottom: 100%;
+  overflow: hidden;
+  position: relative; }
+  .xb-store__header > img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%; }
+.xb-store__icons i {
+  font-size: 40px;
+  line-height: 40px; }
+  @media screen and (max-width: 599px) {
+    .xb-store__icons i {
+      font-size: 24px;
+      line-height: 24px; } }
+.xb-store__border-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+.xb-store__card {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  margin-bottom: 32px; }
+  @media screen and (max-width: 599px) {
+    .xb-store__card {
+      margin-bottom: 0; } }
+  .xb-store__card-image {
+    padding-bottom: 100%;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+    -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+    position: relative; }
+    .xb-store__card-image > a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      overflow: hidden; }
+      .xb-store__card-image > a > img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+  .xb-store__card-margin {
+    margin-left: 8px; }
     @media screen and (max-width: 599px) {
-      .xb-store__background {
-        overflow-y: hidden; } }
-  .xb-store__details {
+      .xb-store__card-margin {
+        margin-left: 0;
+        margin-top: 8px; } }
+  .xb-store__card-content {
+    position: relative;
+    padding: 8px 0 16px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__card-content {
+        padding: 8px 0 16px; } }
+  .xb-store__card-title {
+    max-height: 56px;
+    height: 56px;
+    line-height: 28px;
+    font-weight: 700;
+    overflow: hidden; }
+  .xb-store__card-price {
+    font-size: 16px;
+    font-weight: 700; }
+  .xb-store__card-sale {
+    background-color: #00bdd6;
+    border-radius: 4px;
+    padding: 0 8px;
+    color: #fff;
+    line-height: 24px; }
+  .xb-store__card-action {
+    position: relative;
+    display: none; }
+.xb-store__buttons-bg {
+  margin-top: 20px; }
+  .xb-store__buttons-bg > div {
+    width: 240px;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid #00bdd6;
+    color: #00bdd6;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600; }
+    @media screen and (max-width: 599px) {
+      .xb-store__buttons-bg > div {
+        line-height: 36px; } }
+    .xb-store__buttons-bg > div:hover {
+      background-color: #00bdd6;
+      color: #fff; }
+.xb-store__buttons-bg-1 {
+  color: #fff; }
+.xb-store__bottom-bg {
+  background-color: #f1f1f1;
+  overflow: hidden; }
+.xb-store__background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000; }
+  @media screen and (max-width: 599px) {
+    .xb-store__background {
+      overflow-y: hidden; } }
+.xb-store__details {
+  margin-top: 56px;
+  margin-bottom: 56px;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding: 40px 48px;
+  background-color: #fff; }
+  @media screen and (max-width: 599px) {
+    .xb-store__details {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow-y: scroll;
+      overflow-x: hidden; } }
+  .xb-store__details-bg-new {
     margin-top: 56px;
     margin-bottom: 56px;
     width: 1000px;
@@ -3426,275 +3447,258 @@ textarea.mat-input-element {
     padding: 40px 48px;
     background-color: #fff; }
     @media screen and (max-width: 599px) {
-      .xb-store__details {
+      .xb-store__details-bg-new {
         margin: 0;
         padding: 0;
         width: 100vw;
-        height: calc(100vh - 56px);
+        height: 100vh;
         overflow-y: scroll;
         overflow-x: hidden; } }
-    .xb-store__details-bg-new {
-      margin-top: 56px;
-      margin-bottom: 56px;
-      width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      padding: 40px 48px;
-      background-color: #fff; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-bg-new {
-          margin: 0;
-          padding: 0;
-          width: 100vw;
-          height: 100vh;
-          overflow-y: scroll;
-          overflow-x: hidden; } }
-    @media screen and (min-width: 600px) and (max-width: 959px) {
-      .xb-store__details {
-        margin: 0;
-        padding: 0;
-        width: 100vw;
-        height: calc(100vh - 56px);
-        overflow-y: scroll;
-        overflow-x: hidden; } }
-    .xb-store__details-close {
-      position: absolute;
-      left: calc(100% + 24px);
-      top: 0;
-      color: #fff;
-      cursor: pointer; }
-      .xb-store__details-close i {
-        font-size: 56px;
-        line-height: 56px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-close {
-          left: 50%;
-          top: calc(100% - 40px);
-          -webkit-transform: translateX(-50%);
-          -moz-transform: translateX(-50%);
-          -ms-transform: translateX(-50%);
-          -o-transform: translateX(-50%);
-          transform: translateX(-50%); }
-          .xb-store__details-close i {
-            font-size: 24px;
-            line-height: 24px; } }
-      @media screen and (min-width: 600px) and (max-width: 959px) {
-        .xb-store__details-close {
-          left: 50%;
-          top: calc(100% - 40px);
-          -webkit-transform: translateX(-50%);
-          -moz-transform: translateX(-50%);
-          -ms-transform: translateX(-50%);
-          -o-transform: translateX(-50%);
-          transform: translateX(-50%); }
-          .xb-store__details-close i {
-            font-size: 24px;
-            line-height: 24px; } }
-    .xb-store__details-title {
-      font-size: 24px;
-      line-height: 32px;
-      font-weight: 600; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-title {
-          font-size: 16px;
-          line-height: 24px; } }
-      @media screen and (min-width: 600px) and (max-width: 959px) {
-        .xb-store__details-title {
-          font-size: 16px;
-          line-height: 24px; } }
-    .xb-store__details-price {
-      font-size: 24px;
-      line-height: 24px;
-      font-weight: 600; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-price {
-          font-size: 16px; } }
-      @media screen and (min-width: 600px) and (max-width: 959px) {
-        .xb-store__details-price {
-          font-size: 16px; } }
-    .xb-store__details-sale {
-      background-color: #00bdd6;
-      border-radius: 4px;
-      padding: 0 8px;
-      color: #fff;
-      line-height: 28px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-sale {
-          line-height: 24px; } }
-      @media screen and (min-width: 600px) and (max-width: 959px) {
-        .xb-store__details-sale {
-          line-height: 24px; } }
-    .xb-store__details-margin-right {
-      width: 580px;
-      height: 480px;
-      margin-right: 32px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-margin-right {
-          width: auto;
-          height: auto;
-          margin-right: 16px;
-          margin-left: 16px;
-          margin-top: 16px;
-          border-radius: 2px;
-          -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-          -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); } }
-      @media screen and (min-width: 600px) and (max-width: 959px) {
-        .xb-store__details-margin-right {
-          width: 416px;
-          height: 320px;
-          margin-right: 16px;
-          margin-left: 16px;
-          margin-top: 16px; } }
-    .xb-store__details-padding-bottom {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-      padding-bottom: 64px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-padding-bottom {
-          padding-bottom: 16px; } }
-      @media screen and (min-width: 600px) and (max-width: 959px) {
-        .xb-store__details-padding-bottom {
-          padding-bottom: 16px; } }
-    .xb-store__details-padding-top {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-      padding-top: 48px;
-      padding-bottom: 16px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-padding-top {
-          padding: 0 16px 16px; } }
-      @media screen and (min-width: 600px) and (max-width: 959px) {
-        .xb-store__details-padding-top {
-          padding: 0 16px 16px; } }
-    .xb-store__details-description {
-      padding-top: 48px; }
-      .xb-store__details-description img {
-        width: 100%; }
-      @media screen and (max-width: 599px) {
-        .xb-store__details-description {
-          padding: 16px 16px 72px; } }
-      @media screen and (min-width: 600px) and (max-width: 959px) {
-        .xb-store__details-description {
-          padding: 16px 16px 16px; } }
-    @media screen and (max-width: 599px) {
-      .xb-store__details-content {
-        padding: 0 16px;
-        margin-top: 16px;
-        width: 100%; } }
-    @media screen and (min-width: 600px) and (max-width: 959px) {
-      .xb-store__details-content {
-        padding: 0 16px 0 0;
-        margin-top: 16px; } }
-    .xb-store__details-buttons {
-      margin-top: 16px;
-      background-color: #fff; }
-    .xb-store__details-buttons-fixed {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      padding: 8px 16px;
-      width: 100%;
-      background-color: #fff;
-      z-index: 1;
-      display: block; }
-  .xb-store__footer {
-    padding: 40px 0;
-    background-color: #252525;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 16px;
-    position: relative; }
-    .xb-store__footer-margin-top {
-      margin-top: 16px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__footer-margin-top {
-          margin-top: 8px; } }
-    .xb-store__footer-margin-top-1 {
-      margin-top: 8px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__footer-margin-top-1 {
-          margin-top: 0; } }
-    .xb-store__footer-margin-top-2 {
-      margin-top: 0; }
-      @media screen and (max-width: 599px) {
-        .xb-store__footer-margin-top-2 {
-          margin-top: 8px; } }
-    .xb-store__footer-margin-left {
-      margin-left: 16px; }
-      @media screen and (max-width: 599px) {
-        .xb-store__footer-margin-left {
-          margin-left: 0; } }
-    .xb-store__footer-icons {
-      position: absolute;
-      right: 0;
-      bottom: 40px;
-      margin-right: 10vw; }
-      @media screen and (max-width: 599px) {
-        .xb-store__footer-icons {
-          position: relative;
-          bottom: 0;
-          margin-right: 0;
-          margin-top: 12px; } }
-  .xb-store__template-mask {
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-store__details {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow-y: scroll;
+      overflow-x: hidden; } }
+  .xb-store__details-close {
     position: absolute;
-    left: 0;
+    left: calc(100% + 24px);
     top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); }
-  .xb-store__template-banner {
-    background-color: #000;
-    height: 500px;
-    position: relative; }
+    color: #fff;
+    cursor: pointer; }
+    .xb-store__details-close i {
+      font-size: 56px;
+      line-height: 56px; }
     @media screen and (max-width: 599px) {
-      .xb-store__template-banner {
-        padding: 0 16px;
-        height: 320px; } }
+      .xb-store__details-close {
+        left: 50%;
+        top: calc(100% - 40px);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%); }
+        .xb-store__details-close i {
+          font-size: 24px;
+          line-height: 24px; } }
     @media screen and (min-width: 600px) and (max-width: 959px) {
-      .xb-store__template-banner {
-        padding: 0 16px; } }
-    .xb-store__template-banner-right {
-      position: absolute;
-      top: 16px;
-      right: 0; }
-  .xb-store__template-name {
-    margin: 0 auto;
-    min-width: 300px;
-    max-width: 100%;
-    height: 60px;
-    line-height: 60px;
-    color: #fff;
-    text-align: center;
+      .xb-store__details-close {
+        left: 50%;
+        top: calc(100% - 40px);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%); }
+        .xb-store__details-close i {
+          font-size: 24px;
+          line-height: 24px; } }
+  .xb-store__details-title {
     font-size: 24px;
-    font-weight: 600;
-    overflow: hidden; }
-  .xb-store__template-title {
-    width: 100%;
-    margin-top: 100px;
-    color: #fff;
-    position: relative;
-    padding: 0 16px; }
+    line-height: 32px;
+    font-weight: 600; }
     @media screen and (max-width: 599px) {
-      .xb-store__template-title {
-        margin-top: 0;
-        padding: 0; } }
-  .xb-store__template-description {
-    width: 100%;
-    margin-top: 24px;
-    color: #fff;
-    position: relative;
-    padding: 0 16px;
-    overflow: hidden; }
+      .xb-store__details-title {
+        font-size: 16px;
+        line-height: 24px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__details-title {
+        font-size: 16px;
+        line-height: 24px; } }
+  .xb-store__details-price {
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 600; }
     @media screen and (max-width: 599px) {
-      .xb-store__template-description {
+      .xb-store__details-price {
+        font-size: 16px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__details-price {
+        font-size: 16px; } }
+  .xb-store__details-sale {
+    background-color: #00bdd6;
+    border-radius: 4px;
+    padding: 0 8px;
+    color: #fff;
+    line-height: 28px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__details-sale {
+        line-height: 24px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__details-sale {
+        line-height: 24px; } }
+  .xb-store__details-margin-right {
+    width: 580px;
+    height: 480px;
+    margin-right: 32px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__details-margin-right {
+        width: auto;
+        height: auto;
+        margin-right: 16px;
+        margin-left: 16px;
         margin-top: 16px;
-        padding: 0; } }
-  .xb-store__template-user {
-    width: 100%;
-    margin-top: 24px;
-    position: relative;
-    padding: 0; }
-    @media screen and (max-width: 599px) {
-      .xb-store__template-user {
+        border-radius: 2px;
+        -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+        -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__details-margin-right {
+        width: 416px;
+        height: 320px;
+        margin-right: 16px;
+        margin-left: 16px;
         margin-top: 16px; } }
+  .xb-store__details-padding-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding-bottom: 64px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__details-padding-bottom {
+        padding-bottom: 16px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__details-padding-bottom {
+        padding-bottom: 16px; } }
+  .xb-store__details-padding-top {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding-top: 48px;
+    padding-bottom: 16px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__details-padding-top {
+        padding: 0 16px 16px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__details-padding-top {
+        padding: 0 16px 16px; } }
+  .xb-store__details-description {
+    padding-top: 48px; }
+    .xb-store__details-description img {
+      width: 100%; }
+    @media screen and (max-width: 599px) {
+      .xb-store__details-description {
+        padding: 16px 16px 72px; } }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      .xb-store__details-description {
+        padding: 16px 16px 16px; } }
+  @media screen and (max-width: 599px) {
+    .xb-store__details-content {
+      padding: 0 16px;
+      margin-top: 16px;
+      width: 100%; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-store__details-content {
+      padding: 0 16px 0 0;
+      margin-top: 16px; } }
+  .xb-store__details-buttons {
+    margin-top: 16px;
+    background-color: #fff; }
+  .xb-store__details-buttons-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 8px 16px;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+    display: block; }
+.xb-store__footer {
+  padding: 40px 0;
+  background-color: #252525;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  position: relative; }
+  .xb-store__footer-margin-top {
+    margin-top: 16px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__footer-margin-top {
+        margin-top: 8px; } }
+  .xb-store__footer-margin-top-1 {
+    margin-top: 8px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__footer-margin-top-1 {
+        margin-top: 0; } }
+  .xb-store__footer-margin-top-2 {
+    margin-top: 0; }
+    @media screen and (max-width: 599px) {
+      .xb-store__footer-margin-top-2 {
+        margin-top: 8px; } }
+  .xb-store__footer-margin-left {
+    margin-left: 16px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__footer-margin-left {
+        margin-left: 0; } }
+  .xb-store__footer-icons {
+    position: absolute;
+    right: 0;
+    bottom: 40px;
+    margin-right: 10vw; }
+    @media screen and (max-width: 599px) {
+      .xb-store__footer-icons {
+        position: relative;
+        bottom: 0;
+        margin-right: 0;
+        margin-top: 12px; } }
+.xb-store__template-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); }
+.xb-store__template-banner {
+  background-color: #000;
+  height: 500px;
+  position: relative; }
+  @media screen and (max-width: 599px) {
+    .xb-store__template-banner {
+      padding: 0 16px;
+      height: 320px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-store__template-banner {
+      padding: 0 16px; } }
+  .xb-store__template-banner-right {
+    position: absolute;
+    top: 16px;
+    right: 0; }
+.xb-store__template-name {
+  margin: 0 auto;
+  min-width: 300px;
+  max-width: 100%;
+  height: 60px;
+  line-height: 60px;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  overflow: hidden; }
+.xb-store__template-title {
+  width: 100%;
+  margin-top: 100px;
+  color: #fff;
+  position: relative;
+  padding: 0 16px; }
+  @media screen and (max-width: 599px) {
+    .xb-store__template-title {
+      margin-top: 0;
+      padding: 0; } }
+.xb-store__template-description {
+  width: 100%;
+  margin-top: 24px;
+  color: #fff;
+  position: relative;
+  padding: 0 16px;
+  overflow: hidden; }
+  @media screen and (max-width: 599px) {
+    .xb-store__template-description {
+      margin-top: 16px;
+      padding: 0; } }
+.xb-store__template-user {
+  width: 100%;
+  margin-top: 24px;
+  position: relative;
+  padding: 0; }
+  @media screen and (max-width: 599px) {
+    .xb-store__template-user {
+      margin-top: 16px; } }
 
 /*# sourceMappingURL=store.css.map */

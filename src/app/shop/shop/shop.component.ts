@@ -29,6 +29,11 @@ export class ShopComponent implements OnInit {
         self.avatar = data.avatar;
         if(data.store && data.store.length> 0) {
           self.storeName = data.store[0].displayName;
+          self.shopService.getMultiTemplate({
+            storeId: data.store[0].id
+          }).then((data) => {
+            self.shopService.settTemplateList(data);
+          })
         }
       }
     });
@@ -40,6 +45,8 @@ export class ShopComponent implements OnInit {
     self.shopService.getCategoryList().then((data) => {
       self.userService.addUserCategory(data);
     });
+
+
   }
 
   openPop() {

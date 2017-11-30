@@ -382,12 +382,20 @@
       margin-top: 24px;
       font-size: 16px;
       @include media();
+      color: rgba(0,0,0,.87);
     }
 
     &-title-1{
       height: 40px;
       font-size: 16px;
       @include media();
+      color: rgba(0,0,0,.87);
+    }
+
+    &-title-2{
+      font-size: 16px;
+      @include media();
+      color: rgba(0,0,0,.87);
     }
 
     &-left-bg{
@@ -436,6 +444,10 @@
           line-height: 12px;
           color: $whiteColor;
         }
+      }
+
+      &-result{
+        color: $primaryColor;
       }
     }
 
@@ -594,7 +606,7 @@
       }
     }
     &-button{
-      width: 116px;
+      width: 140px;
       border-radius: 16px;
       line-height: 32px;
       text-align: center;

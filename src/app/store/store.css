@@ -1518,6 +1518,9 @@ textarea.mat-input-element {
   .cdk-overlay-pane {
     min-width: 100vw; } }
 
+mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 .padding {
   padding: 5px 10px; }
 
@@ -3037,6 +3040,9 @@ textarea.mat-input-element {
 @media screen and (max-width: 599px) {
   .cdk-overlay-pane {
     min-width: 100vw; } }
+
+mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
 
 .xb-social-share {
   width: 40px;
