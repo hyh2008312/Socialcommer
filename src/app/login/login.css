@@ -99,10 +99,10 @@
   color: #dff2f4; }
 
 .background-light-gray {
-  background-color: #f1f1f9; }
+  background-color: #f1f1f1; }
 
 .xb-color-light-gray {
-  color: #f1f1f9; }
+  color: #f1f1f1; }
 
 .background-gray-light {
   background-color: #999; }
@@ -1517,6 +1517,9 @@ textarea.mat-input-element {
 @media screen and (max-width: 599px) {
   .cdk-overlay-pane {
     min-width: 100vw; } }
+
+mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
 
 .xb-login__container {
   max-width: 400px;

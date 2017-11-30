@@ -32,8 +32,6 @@ export class MainPageComponent implements OnInit {
   public shareLink: string;
   public text = '';
 
-  baseImageUrl: string = 'https://media.socialcommer.com/source/web/template/3/15-pic.jpg';
-
   store: Store = new Store();
   page = 1;
   nextPage: boolean = true;
@@ -66,6 +64,8 @@ export class MainPageComponent implements OnInit {
 
   storeTemplateForm: FormGroup;
   storeForm: FormGroup;
+
+  isFirstEdit: boolean = false;
 
   constructor(
     private router: Router,
@@ -102,7 +102,7 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.shareLink = window.location.href;
+    this.shareLink = window.location.host + '/store/';
     let self = this;
     let firstLoad = false;
     self.userService.store.subscribe((data)=> {
@@ -111,17 +111,11 @@ export class MainPageComponent implements OnInit {
         if(!firstLoad) {
           firstLoad = true;
 
-          self.nameTag = self.store.nameTag != ''? self.store.nameTag : self.nameTag;
-          self.titleTag = self.store.titleTag != ''? self.store.titleTag : self.titleTag;
-          self.descriptionTag = self.store.descriptionTag != ''? self.store.descriptionTag : self.descriptionTag;
-          self.userTag = self.store.descriptionTag != ''? self.store.userTag : self.userTag;
           self.storeForm.setValue({
-            name: self.store.displayName,
+            name: self.store.name,
             description : self.store.description,
             displayName: self.store.displayName
           });
-
-          self.imageSrc = self.store.imageUrl;
 
           self.shopService.getFrontStore(self.store.displayName).then((data) => {
             self.ownerId = data.ownerId;
@@ -131,15 +125,27 @@ export class MainPageComponent implements OnInit {
               self.categories = [...data.category];
             }
             self.category = self.categories[0];
-
-            self.storeService.pageView({
-              pageType: 'store',
-              viewTime: new Date().getTime(),
-              storeId: data.id
-            });
-
             self.queryProduct();
             self.queryBlog();
+          });
+
+          self.shopService.getMultiTemplate().then((data) => {
+            if(JSON.stringify(data) === '{}') {
+              self.isFirstEdit = true;
+            } else {
+              self.nameTag = data.context.nameTag != ''? data.context.nameTag : self.nameTag;
+              self.titleTag = data.context.titleTag != ''? data.context.titleTag : self.titleTag;
+              self.descriptionTag = data.context.descriptionTag != ''? data.context.descriptionTag : self.descriptionTag;
+              self.userTag = data.context.userTag != ''? data.context.userTag : self.userTag;
+              self.storeForm.setValue({
+                name: self.store.displayName,
+                description : self.store.description,
+                displayName: self.store.displayName
+              });
+
+              self.imageSrc = data.image.imageUrl;
+              self.aboutMeSrc = data.image.aboutMeSrc;
+            }
           });
         }
       }
@@ -194,9 +200,18 @@ export class MainPageComponent implements OnInit {
 
   nameTag = 'STORE NAME';
   titleTag = '<div class="xb-shop__template-title">Click here to edit the title</div>';
-  descriptionTag = '<div class="xb-shop__template-description">This is your starter site, a single page online storefront. All of the images and text on this page can be changed to personalize the site for brand and to communicate your unique story to your customers.</div>';
-  userTag = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business. Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training that make you an expert in your field? Show your customers that there are real people with interesting stories working behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust in your brand.';
-  imageSrc = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
+  descriptionTag = '<div class="xb-shop__template-description">This was founded with starter site, a single page ' +
+    'online storefront. All of the images and text on this page can be changed to personalize the site for brand ' +
+    'and to communicate your unique story to your customers.</div>';
+  userTag = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this ' +
+    'business. Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills' +
+    ' or training that make you an expert in your field? Show your customers that there are real people with interesting ' +
+    'stories working behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust ' +
+    'in your brand.';
+  imageSrc = 'https://media.socialcommer.com/source/web/template/3/15-pic.jpg';
+  aboutMeSrc = 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg';
+
+  uploadAboutType = 'COLLECTOR_STORE_TEMPLATE';
 
   nameEdited: boolean = false;
   titleEdited: boolean = false;
@@ -257,31 +272,34 @@ export class MainPageComponent implements OnInit {
       return;
     }
 
-    let user = this.userProfile;
-    user.avatar = this.previewImgFile;
+    let options = {
+      uid: 3,
+      storeId: this.store.id,
+      context: {
+        nameTag: this.nameTag,
+        titleTag: this.titleTag,
+        descriptionTag: this.descriptionTag,
+        userTag: this.userTag,
+      },
+      image: {
+        imageSrc: this.imageSrc,
+        aboutMeSrc: this.aboutMeSrc
+      }
+    };
+
     let self = this;
-    this.shopService.changeUserProfile(user).then((data) => {
 
-      let option = self.storeTemplateForm.value;
-
-      self.shopService.createTemplate({
-        storeId: self.store.id,
-        nameTag: option.nameTag,
-        titleTag: option.titleTag,
-        userTag: option.userTag,
-        descriptionTag: option.descriptionTag,
-        imageUrl: self.imageSrc
-      }).then((data) => {
-        self.openDialog(self.store.displayName);
+    if(!this.isFirstEdit) {
+      this.shopService.updateMultiTemplate(options).then((data) => {
+        self.openDialog(`${self.store.displayName}/3`);
         self.router.navigate(['/shop/store']);
-
-        self.userService.getUser().then((data)=> {
-          self.userService.addUser(data);
-          self.userService.addStore(data.store[0]);
-        });
-      })
-    });
-
+      });
+    } else {
+      this.shopService.createMultiTemplate(options).then((data) => {
+        self.openDialog(`${self.store.displayName}/3`);
+        self.router.navigate(['/shop/store']);
+      });
+    }
   }
 
   changeStore() {
@@ -344,7 +362,6 @@ export class MainPageComponent implements OnInit {
   }
 
   queryBlog(clearBlog?:boolean) {
-    console.log(this.ownerId)
     if(!this.ownerId) {
       return;
     }

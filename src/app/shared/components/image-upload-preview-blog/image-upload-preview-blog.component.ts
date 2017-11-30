@@ -17,6 +17,8 @@ export class ImageUploadPreviewBlogComponent implements OnInit {
 
   @Input() previewImgSrc: any;
 
+  @Input() type: string = 'COLLECTOR_BLOG_COVER';
+
   loading: number = 0;
 
   upload: boolean = false;
@@ -62,7 +64,7 @@ export class ImageUploadPreviewBlogComponent implements OnInit {
         let height = image.height;
 
         that.s3UploaderService.upload({
-          type: 'COLLECTOR_BLOG_COVER',
+          type: that.type,
           fileName: file.name,
           use: 'cover',
           width: width,

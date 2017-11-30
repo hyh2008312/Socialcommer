@@ -1518,6 +1518,9 @@ textarea.mat-input-element {
   .cdk-overlay-pane {
     min-width: 100vw; } }
 
+.mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
  * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
@@ -1596,7 +1599,13 @@ textarea.mat-input-element {
   margin-bottom: 40px;
   text-align: center;
   font-size: 24px;
-  font-weight: 600; }
+  font-weight: 600;
+  overflow-x: hidden; }
+  .xb-store-template__store-name > input {
+    font-size: 24px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center; }
 .xb-store-template__navigation {
   text-align: center;
   margin-bottom: 24px; }
@@ -1795,9 +1804,10 @@ textarea.mat-input-element {
         padding: 0 24px;
         margin: 24px 0; } }
   .xb-store-template__about-image-bg {
-    display: block; }
+    position: relative; }
     .xb-store-template__about-image-bg > img {
-      width: 100%; }
+      width: 100%;
+      display: block; }
   .xb-store-template__about-user {
     position: relative;
     margin-top: 24px; }
@@ -2195,6 +2205,9 @@ textarea.mat-input-element {
   z-index: 500; }
 .xb-shop__template-edit {
   border: 1px solid #00bdd6; }
+  .xb-shop__template-edit > input {
+    border: none;
+    background-color: transparent; }
 .xb-shop__template-banner-right {
   position: absolute;
   top: 16px;

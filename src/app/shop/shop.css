@@ -1518,6 +1518,9 @@ textarea.mat-input-element {
   .cdk-overlay-pane {
     min-width: 100vw; } }
 
+.mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 .xb-shop__bg-content {
   height: calc(100vh - 56px); }
 .xb-shop__avatar {
@@ -1780,11 +1783,17 @@ textarea.mat-input-element {
 .xb-shop__products-title {
   margin-top: 24px;
   font-size: 16px;
-  font-weight: 600; }
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.87); }
 .xb-shop__products-title-1 {
   height: 40px;
   font-size: 16px;
-  font-weight: 600; }
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.87); }
+.xb-shop__products-title-2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.87); }
 .xb-shop__products-left-bg {
   margin-top: 24px;
   width: 220px;
@@ -1801,7 +1810,7 @@ textarea.mat-input-element {
   margin-right: 50px;
   position: relative; }
   .xb-shop__products-search > i {
-    margin: 0 16px 0 16px;
+    margin: 0 16px 0 12px;
     color: rgba(0, 0, 0, 0.54); }
   .xb-shop__products-search > input {
     border: none;
@@ -1825,6 +1834,8 @@ textarea.mat-input-element {
       font-size: 12px;
       line-height: 12px;
       color: #fff; }
+  .xb-shop__products-search-result {
+    color: #00bdd6; }
 .xb-shop__card {
   display: block;
   width: 275px;
@@ -1940,7 +1951,7 @@ textarea.mat-input-element {
   .xb-shop__store-template:hover .xb-shop__store-template-cover {
     display: flex !important; }
 .xb-shop__store-button {
-  width: 116px;
+  width: 140px;
   border-radius: 16px;
   line-height: 32px;
   text-align: center;

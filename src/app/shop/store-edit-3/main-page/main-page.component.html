@@ -1,31 +1,34 @@
-<div class="xb-store-template__store-bg">
-  <div class="xb-store-template__container xb-store-template__content" fxLayout="row" fxLayoutAlign="start stretch">
-    <div class="xb-store-template__left" fxFlex="none" fxShow.xs="false" fxLayout="column">
-      <div class="xb-store-template__store-name">
-        {{storeName}}
+<form [formGroup]="storeTemplateForm" novalidate>
+  <div class="xb-store-template__store-bg">
+    <div class="xb-store-template__container xb-store-template__content" fxLayout="row" fxLayoutAlign="start stretch">
+      <div class="xb-store-template__left" fxFlex="none" fxShow.xs="false" fxLayout="column">
+        <div class="xb-store-template__store-name xb-shop__template-edit" [hidden]="nameEdited" (click)="editName()"
+             [innerHTML]="nameTag | safeHtml">
+        </div>
+        <div class="xb-store-template__store-name xb-shop__template-edit" [hidden]="!nameEdited">
+          <input formControlName="nameTag" [(ngModel)]="nameTag">
+        </div>
+        <div fxFlex="noshrink">
+          <app-shop-template-3-navigation (routerChange)="changeViewPort($event)"></app-shop-template-3-navigation>
+        </div>
+        <app-shop-template-3-store-footer [text]="text" [name]="storeName"></app-shop-template-3-store-footer>
       </div>
-      <div fxFlex="noshrink">
-        <app-shop-template-3-navigation (routerChange)="changeViewPort($event)"></app-shop-template-3-navigation>
-      </div>
-      <app-shop-template-3-store-footer [text]="text" [name]="storeName"></app-shop-template-3-store-footer>
-    </div>
 
-    <div class="xb-store-template__right" fxFlex fxLayout="column">
-      <div class="xb-store-template__top-navigation" fxShow.gt-xs="false"
-           fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
-        <i class="material-icons" (click)="openDialog()">menu</i>
-        <div class="xb-store-template__top-navigation-title" fxFlex>
-          {{storeName}}
+      <div class="xb-store-template__right" fxFlex fxLayout="column">
+        <div class="xb-store-template__top-navigation" fxShow.gt-xs="false"
+             fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
+          <i class="material-icons" (click)="openDialog()">menu</i>
+          <div class="xb-store-template__top-navigation-title" fxFlex>
+            {{nameTag}}
+          </div>
         </div>
-      </div>
-      <div class="xb-store-template__dialog" *ngIf="isDialogOpen" fxShow.gt-xs="false" >
-        <div class="xb-store-template__top-navigation" fxLayout="row" fxLayoutAlign="end center">
-          <i class="material-icons" (click)="openNavigationDialog()">close</i>
+        <div class="xb-store-template__dialog" *ngIf="isDialogOpen" fxShow.gt-xs="false" >
+          <div class="xb-store-template__top-navigation" fxLayout="row" fxLayoutAlign="end center">
+            <i class="material-icons" (click)="openNavigationDialog()">close</i>
+          </div>
+          <app-shop-template-3-navigation (routerChange)="openNavigationDialog($event)"></app-shop-template-3-navigation>
         </div>
-        <app-shop-template-3-navigation (routerChange)="openNavigationDialog($event)"></app-shop-template-3-navigation>
-      </div>
-      <div fxFlex="noshrink">
-        <form [formGroup]="storeTemplateForm" novalidate>
+        <div fxFlex="noshrink">
           <div class="xb-store" [hidden]="viewIndex != 0">
             <div class="xb-store-template__banner xb-shop__template-edit" fxLayout="column" fxLayoutAlign="center center"
                  [ngStyle]="{'background': 'url(' + imageSrc + ') center / auto 100% ' }">
@@ -111,11 +114,9 @@
           </div>
           <div class="xb-store-template__about" [hidden]="viewIndex != 3">
             <div class="xb-store-template__about-title">About Me</div>
-            <div class="xb-store-template__about-image-bg" *ngIf="store.ownerAvatar && store.ownerAvatar != ''">
-              <img [src]="store.ownerAvatar">
-            </div>
-            <div class="xb-store-template__about-image-bg" *ngIf="!store.ownerAvatar || store.ownerAvatar == ''">
-              <img src="https://media.socialcommer.com/source/web/template/3/02-pic.jpg">
+            <div class="xb-store-template__about-image-bg xb-shop__template-edit" >
+              <app-image-upload-preview-blog [(previewImgFile)]="aboutMeSrc" [(previewImgSrc)]="aboutMeSrc"
+                                             [type]="uploadAboutType"></app-image-upload-preview-blog>
             </div>
             <div class="xb-store-template__about-user xb-shop__template-edit ql-editor" [hidden]="userEdited"
                  (click)="editUser()"
@@ -129,15 +130,14 @@
               </div>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="background-light-gray">
-        <app-shop-template-3-store-footer [text]="text" [name]="storeName" fxShow.gt-xs="false"></app-shop-template-3-store-footer>
+        </div>
+        <div class="background-light-gray">
+          <app-shop-template-3-store-footer [text]="text" [name]="storeName" fxShow.gt-xs="false"></app-shop-template-3-store-footer>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+</form>
 
 <div class="xb-store__background" *ngIf="imageEdited">
   <div class="xb-store__details-close" (click)="editImage()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">

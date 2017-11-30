@@ -39,6 +39,10 @@ export class FindProductsComponent implements OnInit {
 
   searchKey: string = '';
 
+  isSearch: boolean = false;
+
+  searchCount: number = 0;
+
   constructor(
     private shopService: ShopService,
     private userService: UserService,
@@ -47,6 +51,12 @@ export class FindProductsComponent implements OnInit {
     this.searchForm = this.fb.group({
       searchKey: ['']
     });
+
+    this.searchForm.valueChanges.subscribe(data => this.onValueChanged(data));
+  }
+
+  onValueChanged(data) {
+    this.isSearch = false;
   }
 
   ngOnInit():void {
@@ -68,7 +78,6 @@ export class FindProductsComponent implements OnInit {
   clearSearchKey() {
     this.searchKey = '';
   }
-
 
   // MatPaginator Output
   changePage(event, type) {
@@ -145,7 +154,7 @@ export class FindProductsComponent implements OnInit {
     this.getProductList();
   }
 
-  getProductList() {
+  getProductList(isSearch?: any) {
     let cats = [];
     let source = [];
     for(let value of this.selectedChips) {
@@ -158,7 +167,7 @@ export class FindProductsComponent implements OnInit {
     }
 
     let self = this;
-    this.shopService.getRecommendProductList({
+    self.shopService.getRecommendProductList({
       cats,
       source,
       page: this.productIndex,
@@ -166,6 +175,9 @@ export class FindProductsComponent implements OnInit {
       q: this.searchKey
     }).then((data) => {
 
+      if(isSearch == false) {
+        self.isSearch = true;
+      }
       self.length = data.count;
 
       self.productList = data.results;
