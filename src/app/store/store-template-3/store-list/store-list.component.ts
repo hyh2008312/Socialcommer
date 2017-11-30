@@ -43,7 +43,7 @@ export class StoreListComponent implements OnInit {
         self.store = data;
         self.text = data.description;
         self.storeService.addTitleDescription({
-          title: data.displayName,
+          title: data.name,
           description: data.description,
           shareImage: data.imageUrl
         });
