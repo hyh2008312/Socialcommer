@@ -43,6 +43,8 @@ export class CatalogAddProductComponent implements OnInit {
   storeCurrency: string = 'USD';
   category: any = [];
 
+  hasPicture: boolean = false;
+
   ngOnInit() {
     let self = this;
     self.userService.store.subscribe((data) => {
@@ -84,7 +86,7 @@ export class CatalogAddProductComponent implements OnInit {
       recommendation: ['', [
         Validators.maxLength(1000)
       ]],
-      description: ['']
+      description: ['', [Validators.required]]
     });
 
     this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -93,6 +95,7 @@ export class CatalogAddProductComponent implements OnInit {
   //存储错误信息
   formErrors = {
     'title': '',
+    'description': '',
     'salePrice':'',
     'purchaseUrl': '',
     'recommendation': ''
@@ -100,6 +103,9 @@ export class CatalogAddProductComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'title': {
+      'required': 'This field is required.'
+    },
+    'description':{
       'required': 'This field is required.'
     },
     'salePrice':{
@@ -202,6 +208,7 @@ export class CatalogAddProductComponent implements OnInit {
     if(!this.productForm.valid) {
       return;
     }
+    this.hasPicture = false;
     let self = this;
     let productForm = this.productForm.value;
 
@@ -221,6 +228,7 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product.cover = [];
     storeProduct.product.cover = [...this.previewImgFile];
     if(storeProduct.product.cover.length <= 0) {
+      this.hasPicture = true;
       return;
     }
     storeProduct.product.originalPrice = {

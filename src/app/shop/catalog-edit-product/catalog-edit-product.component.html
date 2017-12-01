@@ -69,6 +69,9 @@
           <quill-editor formControlName="description"
                         (ready)="onEditorCreated($event)"></quill-editor>
           <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
+          <div *ngIf="formErrors['description']" class="xb-input-error md-margin-top-2">
+            {{ formErrors['description'] }}
+          </div>
         </div>
         <div class="xb-shop__edit-title md-margin-top-2">Add your affiliate link <span class="xb-input-error xb-large-star">*</span></div>
         <mat-form-field class="xb-shop__width-100" >
@@ -81,9 +84,13 @@
         <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product (optional)</div>
         <mat-form-field class="xb-shop__width-100">
           <textarea matInput value="Your opinion is very important to your audiences" formControlName="recommendation"></textarea>
+          <mat-hint><span class="xb-italic md-body-1">Note: Your opinion is very important to your audiences</span></mat-hint>
         </mat-form-field>
         <div *ngIf="formErrors['recommendation']" class="xb-input-error">
           {{ formErrors['recommendation'] }}
+        </div>
+        <div *ngIf="hasPicture" class="xb-input-error">
+          Your picture is still uploading. Please wait a bit!
         </div>
         <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="tab == 'publish'">
           <button mat-raised-button color="primary" (click)="create()">SAVE</button>

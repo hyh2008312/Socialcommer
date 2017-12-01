@@ -252,7 +252,7 @@ export class ConstantService {
   getCurrencies() {
     return  [
       { code: 'USD', name: 'USD', currency: '$'},
-      { code: 'INR', name: 'INR', currency: 'Rs' },
+      { code: 'INR', name: 'INR', currency: '₹' },
       { code: 'GBP', name: 'GBP', currency: '￡' },
       { code: 'EUR', name: 'EUR', currency: '€' },
       { code: 'AUD', name: 'AUD', currency: 'AU$' },

@@ -59,6 +59,8 @@ export class CatalogEditProductComponent implements OnInit {
   storeCurrency: string = 'USD';
   category: any;
 
+  hasPicture: boolean = false;
+
   constructor(
     public router: Router,
     private fb: FormBuilder,
@@ -84,7 +86,9 @@ export class CatalogEditProductComponent implements OnInit {
       recommendation: ['', [
         Validators.maxLength(1000)
       ]],
-      description: ['']
+      description: ['', [
+        Validators.required
+      ]]
     });
 
     this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -93,6 +97,7 @@ export class CatalogEditProductComponent implements OnInit {
   //存储错误信息
   formErrors = {
     'title': '',
+    'description': '',
     'salePrice':'',
     'purchaseUrl': '',
     'recommendation': ''
@@ -100,6 +105,9 @@ export class CatalogEditProductComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'title': {
+      'required': 'This field is required.'
+    },
+    'description':{
       'required': 'This field is required.'
     },
     'salePrice':{
@@ -262,6 +270,8 @@ export class CatalogEditProductComponent implements OnInit {
       return;
     }
 
+    this.hasPicture = false;
+
     let productForm = this.productForm.value;
 
     let storeProduct = new StoreProduct();
@@ -281,6 +291,7 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.cover = [];
     storeProduct.cover = [...this.previewImgFile];
     if(storeProduct.cover.length <= 0) {
+      this.hasPicture = true;
       return;
     }
 
@@ -369,7 +380,7 @@ export class CatalogEditProductComponent implements OnInit {
     if(!this.productForm.valid) {
       return;
     }
-
+    this.hasPicture = false;
     let productForm = this.productForm.value;
 
     let storeProduct = new StoreProduct();
@@ -390,6 +401,7 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.cover = [...this.previewImgFile];
 
     if(storeProduct.cover.length <= 0) {
+      this.hasPicture = true;
       return;
     }
 
