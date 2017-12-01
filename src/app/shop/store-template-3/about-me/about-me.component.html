@@ -3,11 +3,11 @@
   <div class="xb-store-template__about-image-bg">
     <img [src]="imageList.aboutMeSrc">
   </div>
-  <div class="md-margin-top-2 xb-store-template__about-user" *ngIf="contextList.userTag">
+  <div class="md-margin-top-2 xb-store-template__about-user" *ngIf="!contextList.userTag">
     Thank you for visiting my store! Have a nice day.
   </div>
   <div class="xb-store-template__about-user ql-editor md-margin-top-2"
-       [innerHTML]="contextList.userTag | safeHtml" *ngIf="contextList.userTag != ''">
+       [innerHTML]="contextList.userTag | safeHtml" *ngIf="contextList.userTag">
   </div>
   <div fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="start center">
     <div class="xb-store-template__footer-share md-margin-right-3"

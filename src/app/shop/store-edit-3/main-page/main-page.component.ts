@@ -307,7 +307,7 @@ export class MainPageComponent implements OnInit {
         }).then((data) => {
           self.shopService.settTemplateList(self.templateList);
         });
-        self.openDialog(`${self.store.displayName}/3`);
+        self.openDialog(`${self.store.displayName}`);
         self.router.navigate(['/shop/store']);
       });
     } else {
