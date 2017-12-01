@@ -1518,7 +1518,7 @@ textarea.mat-input-element {
   .cdk-overlay-pane {
     min-width: 100vw; } }
 
-mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+.mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
 .padding {
@@ -3041,7 +3041,7 @@ textarea.mat-input-element {
   .cdk-overlay-pane {
     min-width: 100vw; } }
 
-mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+.mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
 .xb-social-share {
@@ -3630,7 +3630,8 @@ mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
       margin-left: 16px; }
       @media screen and (max-width: 599px) {
         .xb-store__footer-margin-left {
-          margin-left: 0; } }
+          margin-left: 0;
+          text-align: center; } }
     .xb-store__footer-icons {
       position: absolute;
       right: 0;

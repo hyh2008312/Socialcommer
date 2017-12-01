@@ -84,7 +84,7 @@ export class CatalogEditProductComponent implements OnInit {
       recommendation: ['', [
         Validators.maxLength(1000)
       ]],
-      description: ['Please add product details and images']
+      description: ['']
     });
 
     this.productForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -280,6 +280,9 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.title = productForm.title;
     storeProduct.cover = [];
     storeProduct.cover = [...this.previewImgFile];
+    if(storeProduct.cover.length <= 0) {
+      return;
+    }
 
     if(this.isUser) {
       storeProduct.product.originalPrice = {
@@ -385,6 +388,10 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.title = productForm.title;
     storeProduct.cover = [];
     storeProduct.cover = [...this.previewImgFile];
+
+    if(storeProduct.cover.length <= 0) {
+      return;
+    }
 
     if(this.isUser) {
       storeProduct.product.originalPrice = {
