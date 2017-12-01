@@ -3,6 +3,7 @@ import { Http, Response , Headers , RequestOptions, Jsonp, URLSearchParams } fro
 import { Title, Meta } from '@angular/platform-browser';
 
 import 'rxjs/add/operator/toPromise';
+import { Observable } from  'rxjs/observable';
 import{ Subject, BehaviorSubject } from 'rxjs';
 
 import { Store } from './store';
@@ -12,6 +13,10 @@ import { BaseApi, DataApi } from '../config/app.api';
 @Injectable()
 export class StoreService {
   store: Subject<Store> = new BehaviorSubject<Store>(null);
+
+  public addStore(newStore: any): void {
+    this.store.next(newStore);
+  }
 
   constructor(
     private http: Http,
@@ -136,9 +141,6 @@ export class StoreService {
       .catch(this.handleError);
   }
 
-  public addStore(newStore: any): void {
-    this.store.next(newStore);
-  }
 
   pageView(statistics): Promise<any> {
 

@@ -34,8 +34,7 @@ export class StoreListComponent implements OnInit {
     private storeService: StoreService
   ) {
     let self = this;
-    let routerArray = self.router.url.split('/');
-    self.storeService.getStore(routerArray[2]).then((data) => {
+    self.storeService.store.subscribe((data) => {
       if(data) {
         self.store = data;
         self.text = data.description;
@@ -50,7 +49,6 @@ export class StoreListComponent implements OnInit {
           self.categories = [...data.category];
         }
         self.category = self.categories[0];
-        self.storeService.addStore(data);
 
         self.storeService.pageView({
           pageType: 'store',

@@ -27,26 +27,18 @@ export class StoreMainComponent implements OnInit {
   ngOnInit():void {
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
-    let routerArray = this.router.url.split('/');
-    if(routerArray.length == 4) {
-      if(routerArray[3] && parseInt(routerArray[3]) > 1) {
-        self.router.navigate([`/store/${routerArray[2]}/${routerArray[3]}`]);
-      } else {
-        self.router.navigate([`/store/${routerArray[2]}`]);
-      }
-    } else if(routerArray.length < 4) {
-      this.storeService.getStore(storeName).then((data) => {
-        if(data) {
-          if(data.templateId == 1) {
-            self.router.navigate([`/store/${storeName}/${data.templateId}`]);
-            return;
-          }
-          if(data.uid > 1) {
-            self.router.navigate([`/store/${storeName}/${data.uid}`]);
-          }
+    this.storeService.getStore(storeName).then((data) => {
+      if(data) {
+        this.storeService.addStore(data);
+        if(data.templateId == 1) {
+          self.router.navigate([`/store/${storeName}/${data.templateId}`]);
+          return;
         }
-      });
-    }
+        if(data.uid > 1) {
+          self.router.navigate([`/store/${storeName}/${data.uid}`]);
+        }
+      }
+    });
 
   }
 

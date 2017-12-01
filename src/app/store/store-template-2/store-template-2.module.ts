@@ -10,7 +10,6 @@ import {StoreItemCardComponent} from './store-item-card/store-item-card.componen
 import {StoreNavigationComponent} from './store-navigation/store-navigation.component'
 
 import {StoreTemplateTwoRoutingModule} from './store-template-2.routes.module';
-import {StoreService} from '../store.service';
 
 import {SharedModule} from '../../shared/shared.module';
 import {StoreFootComponent} from './store-foot/store-foot.component';
@@ -39,9 +38,7 @@ import {StoreShareButtonComponent} from './store-share-button/store-share-button
     StoreShareButtonComponent
   ],
   entryComponents: [],
-  providers: [
-    StoreService
-  ]
+  providers: []
 })
 export class StoreTemplateTwoModule {
 }

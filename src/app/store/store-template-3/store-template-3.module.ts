@@ -15,7 +15,6 @@ import { StoreNavigationComponent } from  './store-navigation/store-navigation.c
 import { StoreFooterComponent } from './store-footer/store-footer.component';
 
 import { StoreTemplateThreeRoutingModule } from './store-template-3.routes.module';
-import { StoreService } from '../store.service';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -45,7 +44,6 @@ import { SharedModule } from '../../shared/shared.module';
   entryComponents: [
   ],
   providers: [
-    StoreService
   ]
 })
 export class StoreTemplateThreeModule { }

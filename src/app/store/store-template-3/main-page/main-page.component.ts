@@ -23,12 +23,11 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit():void {
     let self = this;
-    let routerArray = this.router.url.split('/');
-    self.storeService.getStore(routerArray[2]).then((data) => {
+
+    self.storeService.store.subscribe((data) => {
       if(data) {
         self.storeName = data.context? data.context.nameTag: data.name;
         self.text = data.description;
-        self.storeService.addStore(data);
       }
     });
   }

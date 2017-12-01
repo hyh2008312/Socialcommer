@@ -140,7 +140,7 @@ export class BlogEditDialogComponent implements OnInit {
 
     let self = this;
     this.shopService.changeBlog(blogForm).then((data) => {
-      self.router.navigate(['/shop/blog'], { queryParams: {tab: 'published'}, replaceUrl: true});
+      self.router.navigate(['/shop/blog'], { queryParams: {tab: 'published'}});
     });
   }
 
@@ -154,7 +154,7 @@ export class BlogEditDialogComponent implements OnInit {
 
     let self = this;
     self.shopService.changeBlog(blogForm).then((data) => {
-      self.router.navigate(['/shop/blog'], { queryParams: {tab: 'draft'}, replaceUrl: true});
+      self.router.navigate(['/shop/blog'], { queryParams: {tab: 'draft'}});
     });
   }
 
