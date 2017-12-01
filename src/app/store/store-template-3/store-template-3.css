@@ -1668,7 +1668,7 @@ textarea.mat-input-element {
   @media screen and (max-width: 599px) {
     .xb-store-template__template-title {
       margin-top: 0;
-      padding: 0; } }
+      padding: 0 1; } }
 .xb-store-template__template-description {
   width: 100%;
   margin-top: 24px;
@@ -1793,7 +1793,10 @@ textarea.mat-input-element {
     .xb-store-template__about-image-bg > img {
       width: 100%; }
   .xb-store-template__about-user {
-    padding: 16px; }
+    padding: 16px 0; }
+    @media screen and (max-width: 599px) {
+      .xb-store-template__about-user {
+        padding: 16px; } }
 .xb-store-template__collection-title {
   font-size: 24px;
   font-weight: 600;

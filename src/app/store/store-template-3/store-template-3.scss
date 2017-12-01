@@ -179,7 +179,7 @@
 
       @include xb-xs-screen{
         margin-top: 0;
-        padding: 0;
+        padding: 0 16px;
       }
     }
 
@@ -347,7 +347,10 @@
     }
 
     &-user{
-      padding: 16px;
+      padding: 16px 0;
+      @include xb-xs-screen{
+        padding: 16px;
+      }
     }
   }
 

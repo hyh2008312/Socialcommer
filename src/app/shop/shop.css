@@ -1927,18 +1927,16 @@ textarea.mat-input-element {
     padding: 16px; } }
 .xb-shop__store-template {
   width: 360px;
-  height: 408px;
   position: relative;
   overflow: hidden;
   margin-bottom: 24px;
+  margin-right: 24px;
   border-radius: 2px;
   -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
   -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
   .xb-shop__store-template > img {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: block;
     width: 100%; }
   .xb-shop__store-template-cover {
     display: none !important;
@@ -1951,7 +1949,7 @@ textarea.mat-input-element {
   .xb-shop__store-template:hover .xb-shop__store-template-cover {
     display: flex !important; }
 .xb-shop__store-button {
-  width: 140px;
+  width: 148px;
   border-radius: 16px;
   line-height: 32px;
   text-align: center;

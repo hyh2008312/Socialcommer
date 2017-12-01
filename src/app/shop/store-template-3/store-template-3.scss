@@ -348,7 +348,10 @@
     }
 
     &-user{
-      padding: 16px;
+      padding: 16px 0;
+      @include xb-xs-screen{
+        padding: 16px;
+      }
     }
   }
 

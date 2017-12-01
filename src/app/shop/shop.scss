@@ -574,17 +574,14 @@
   &__store{
     &-template{
       width: 360px;
-      height: 408px;
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;
-
+      margin-right: 24px;
       @include resetBorder();
 
       >img{
-        position: absolute;
-        top: 0;
-        left: 0;
+        display: block;
         width: 100%;
       }
 
@@ -606,7 +603,7 @@
       }
     }
     &-button{
-      width: 140px;
+      width: 148px;
       border-radius: 16px;
       line-height: 32px;
       text-align: center;

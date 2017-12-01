@@ -39,6 +39,12 @@ export class MainPageComponent implements OnInit {
     private storeService: StoreService,
     private media: ObservableMedia
   ) {
+
+  }
+
+  ngOnInit():void {
+    this.shareLink = window.location.href;
+
     let self = this;
     let routerArray = this.router.url.split('/');
     self.storeService.getStore(routerArray[2]).then((data) => {
@@ -78,15 +84,10 @@ export class MainPageComponent implements OnInit {
       });
   }
 
-  ngOnInit():void {
-    this.shareLink = window.location.href;
-  }
-
   jumpList():void {
 
     if(this.isMobile) {
-      let storeName = this.activatedRoute.snapshot.params['name'];
-      this.router.navigate([`store/${storeName}/list`]);
+      this.router.navigate([`store/${this.store.displayName}/1/list`]);
     } else {
       this.page++;
       this.queryProduct();

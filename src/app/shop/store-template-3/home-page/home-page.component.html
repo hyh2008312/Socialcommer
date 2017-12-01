@@ -4,10 +4,16 @@
     <div class="xb-store-template__template-mask"></div>
     <div class="xb-store__content-2">
       <div class="ql-editor xb-store-template__template-title"
-           [innerHTML]="contextList.titleTag | safeHtml"  *ngIf="store.titleTag" >
+           [innerHTML]="contextList.titleTag | safeHtml"  *ngIf="contextList.titleTag" >
+      </div>
+      <div class="ql-editor xb-store-template__template-title"
+           [innerHTML]="store.titleTag | safeHtml"  *ngIf="!contextList.titleTag" >
       </div>
       <div class="xb-store-template__template-description ql-editor"
-           [innerHTML]="contextList.descriptionTag | safeHtml" *ngIf="store.descriptionTag">
+           [innerHTML]="contextList.descriptionTag | safeHtml" *ngIf="contextList.descriptionTag">
+      </div>
+      <div class="ql-editor xb-store-template__template-title"
+           [innerHTML]="store.descriptionTag | safeHtml"  *ngIf="!contextList.descriptionTag" >
       </div>
     </div>
   </div>

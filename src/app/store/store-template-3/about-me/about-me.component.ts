@@ -26,8 +26,8 @@ export class AboutMeComponent implements OnInit {
     this.storeService.store.subscribe((data) => {
       if(data) {
         self.store = data;
-        self.contextList = data.context;
-        self.imageList = data.image;
+        self.contextList = data.context?data.context: {};
+        self.imageList = data.image? data.image: {};
         self.text = data.description;
       }
     });

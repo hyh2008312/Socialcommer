@@ -1,7 +1,10 @@
 <div class="xb-store-template__about">
   <div class="xb-store-template__about-title">About Me</div>
-  <div class="xb-store-template__about-image-bg">
+  <div class="xb-store-template__about-image-bg" *ngIf="imageList.aboutMeSrc">
     <img [src]="imageList.aboutMeSrc">
+  </div>
+  <div class="xb-store-template__about-image-bg" *ngIf="!imageList.aboutMeSrc">
+    <img [src]="aboutMeSrc">
   </div>
   <div class="md-margin-top-2 xb-store-template__about-user" *ngIf="!contextList.userTag">
     Thank you for visiting my store! Have a nice day.
@@ -9,8 +12,8 @@
   <div class="xb-store-template__about-user ql-editor md-margin-top-2"
        [innerHTML]="contextList.userTag | safeHtml" *ngIf="contextList.userTag">
   </div>
-  <div fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="start center">
-    <div class="xb-store-template__footer-share md-margin-right-3"
+  <div class="md-margin-bottom-2" fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="start center">
+    <div class="xb-store-template__footer-share md-margin-left-2 md-margin-right-3"
          appSocialShare  [facebook]="{u: link}">
       <i class="iconfontXberts icon-ic-facebook"></i>
     </div>

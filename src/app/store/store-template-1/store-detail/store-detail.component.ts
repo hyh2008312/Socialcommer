@@ -70,7 +70,7 @@ export class StoreDetailComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate([`./store/${this.store.displayName}`]);
+    this.router.navigate([`./store/${this.store.displayName}/1`]);
   }
 
   openLink() {

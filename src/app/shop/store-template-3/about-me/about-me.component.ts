@@ -17,6 +17,8 @@ export class AboutMeComponent implements OnInit {
   contextList: any = {};
   imageList: any = {};
 
+  aboutMeSrc = 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg';
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -34,8 +36,8 @@ export class AboutMeComponent implements OnInit {
       if(data && !firstLoad) {
         firstLoad = true;
         self.store = data;
-        self.contextList = data.context;
-        self.imageList = data.image;
+        self.contextList = data.context? data.context: {};
+        self.imageList = data.image? data.image: {};
         self.text = data.description;
       }
     });

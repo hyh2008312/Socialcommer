@@ -1794,7 +1794,10 @@ textarea.mat-input-element {
     .xb-store-template__about-image-bg > img {
       width: 100%; }
   .xb-store-template__about-user {
-    padding: 16px; }
+    padding: 16px 0; }
+    @media screen and (max-width: 599px) {
+      .xb-store-template__about-user {
+        padding: 16px; } }
 .xb-store-template__collection-title {
   font-size: 24px;
   font-weight: 600;

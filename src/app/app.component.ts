@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { UserService } from './shared/services/user/user.service';
 import { AuthenticationService } from './shared/services/authentication/authentication.service';
+import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
 
   constructor(
     private userService: UserService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private angulartics2GoogleTagManager: Angulartics2GoogleTagManager
   ) {
     let self = this;
 

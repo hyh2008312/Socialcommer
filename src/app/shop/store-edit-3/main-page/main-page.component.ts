@@ -131,26 +131,17 @@ export class MainPageComponent implements OnInit {
                 self.queryBlog();
               });
 
-              if(self.store.templateId != 1) {
-                self.templateList.find((item) => {
-                  if(item.id == self.store.templateId) {
-                    self.templateId = item.id;
-                    return true;
-                  }
-                });
+              for(let value of self.templateList) {
+                if(value.uid == 3) {
+                  self.templateId = value.id;
+                  self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
+                  self.titleTag = value.context.titleTag != ''? value.context.titleTag : self.titleTag;
+                  self.descriptionTag = value.context.descriptionTag != ''? value.context.descriptionTag : self.descriptionTag;
+                  self.userTag = value.context.userTag != ''? value.context.userTag : self.userTag;
 
-                if(self.templateId) {
-                  self.shopService.getMultiTemplateDetail(self.templateId).then((data) => {
-                    if(data) {
-                      self.nameTag = data.context.nameTag != ''? data.context.nameTag : self.nameTag;
-                      self.titleTag = data.context.titleTag != ''? data.context.titleTag : self.titleTag;
-                      self.descriptionTag = data.context.descriptionTag != ''? data.context.descriptionTag : self.descriptionTag;
-                      self.userTag = data.context.userTag != ''? data.context.userTag : self.userTag;
-
-                      self.imageSrc = data.image.imageSrc;
-                      self.aboutMeSrc = data.image.aboutMeSrc;
-                    }
-                  });
+                  self.imageSrc = value.image.imageSrc;
+                  self.aboutMeSrc = value.image.aboutMeSrc;
+                  break;
                 }
               }
 
@@ -338,7 +329,7 @@ export class MainPageComponent implements OnInit {
         }).then((data) => {
           self.shopService.settTemplateList(self.templateList);
         });
-        self.openDialog(`${self.store.displayName}/3`);
+        self.openDialog(`${self.store.displayName}`);
         self.router.navigate(['/shop/store']);
       });
     }

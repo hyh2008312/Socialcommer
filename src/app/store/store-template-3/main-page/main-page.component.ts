@@ -26,7 +26,7 @@ export class MainPageComponent implements OnInit {
     let routerArray = this.router.url.split('/');
     self.storeService.getStore(routerArray[2]).then((data) => {
       if(data) {
-        self.storeName = data.displayName;
+        self.storeName = data.context? data.context.nameTag: data.name;
         self.text = data.description;
         self.storeService.addStore(data);
       }
