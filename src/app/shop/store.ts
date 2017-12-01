@@ -18,6 +18,11 @@ export class Store {
   status: any;
   currency: string;
 
+  uid: any;
+  templateId: any;
+  context: any;
+  image: any;
+
   displayName: string;
 }
 

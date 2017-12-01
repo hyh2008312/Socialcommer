@@ -22,6 +22,8 @@ export class HomePageComponent implements OnInit {
   baseImageUrl: string = 'https://media.socialcommer.com/source/web/template/3/15-pic.jpg';
 
   store: Store = new Store();
+  contextList: any = {};
+  imageList: any = {};
   page = 1;
   nextPage: boolean = true;
   nextBlogPage: boolean = true;
@@ -85,6 +87,8 @@ export class HomePageComponent implements OnInit {
       if(data && !firstLoad) {
         firstLoad = true;
         self.store = data;
+        self.contextList = data.context;
+        self.imageList = data.image;
         self.text = data.description;
         self.ownerId = data.ownerId;
         self.storeService.addStore(data);

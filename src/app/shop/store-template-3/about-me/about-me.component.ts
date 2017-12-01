@@ -14,6 +14,8 @@ export class AboutMeComponent implements OnInit {
   store: Store = new Store();
   public shareLink: string;
   public text = '';
+  contextList: any = {};
+  imageList: any = {};
 
   constructor(
     private router: Router,
@@ -32,6 +34,8 @@ export class AboutMeComponent implements OnInit {
       if(data && !firstLoad) {
         firstLoad = true;
         self.store = data;
+        self.contextList = data.context;
+        self.imageList = data.image;
         self.text = data.description;
       }
     });
