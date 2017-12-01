@@ -1,0 +1,8 @@
+<div class="md-margin-left-2" fxLayout="row" fxLayoutAlign="start center">
+  <div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: i == navigationIndex}"
+       *ngFor="let value of contents;let i = index;"
+       [style.color]="isBlack?'black':'white'"
+       (click)="changeNavigation(i)">
+    {{value.text}}
+  </div>
+</div>

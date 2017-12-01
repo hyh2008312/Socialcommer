@@ -1,0 +1,231 @@
+<div class="xb-template-2-edit ">
+  <form [formGroup]="storeTemplateForm" novalidate>
+    <!--1 home-->
+    <div [hidden]="viewIndex != 0">
+      <div class="xb-store-template__banner "
+           [ngStyle]="{'background': 'url(' + (bannerImageStr) + ') center / 100% 100% ' }">
+        <div class="xb-store-template__template-mask"></div>
+        <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
+
+          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
+               [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
+
+          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none" [hidden]="!nameEdited">
+            <input formControlName="nameTag" [(ngModel)]="nameTag" >
+          </div>
+          <app-store-template-edit-2-navigation fxFlex [navigationIndex]="viewIndex"
+                                                (routerChange)="changeViewIndex($event)"></app-store-template-edit-2-navigation>
+        </div>
+        <div class="xb-store__content-2">
+          <div class="xb-template-2-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-template-2-edit__button" (click)="close()">
+              CANCEL
+            </div>
+            <div class="xb-template-2-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
+              SAVE
+            </div>
+          </div>
+
+          <div class="xb-template-2-edit__store-title xb-template-2-edit__edit-border ql-editor"
+               [innerHTML]="titleTag | safeHtml" [hidden]="titleEdited" (click)="editTitle()"></div>
+          <div class="xb-template-2-edit__store-title xb-template-2-edit__edit-border" [hidden]="!titleEdited">
+            <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
+                          [options]="editorConfig"></quill-editor>
+            <div class="xb-template-2-edit__edit-button" (click)="editTitle()">
+              CLICK TO SAVE
+            </div>
+          </div>
+
+          <div class="xb-template-2-edit__store-description xb-template-2-edit__edit-border ql-editor"
+               [innerHTML]="descriptionTag | safeHtml" [hidden]="descriptionEdited" (click)="editDescription()"></div>
+
+          <div class="xb-template-2-edit__store-description xb-template-2-edit__edit-border" [hidden]="!descriptionEdited">
+            <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
+                          [options]="editorConfig"></quill-editor>
+            <div class="xb-template-2-edit__edit-button" (click)="editDescription()">
+              CLICK TO SAVE
+            </div>
+          </div>
+        </div>
+        <div class="xb-store-template__store-buttons" fxShow="false" fxShow.gt-xs="true">
+          <span>Shop Now</span>
+          <br>
+          <i class="material-icons">keyboard_arrow_down</i>
+        </div>
+      </div>
+      <!--商家信息介绍-->
+      <div class="xb-store-template__introduce">
+        <div class="xb-store-template__introduce-one" fxLayout="row" fxLayoutAlign="start start">
+          <div class="xb-store-template__introduce-one-top-left">
+            <div class="xb-store-template__introduce-one-title">About Me</div>
+            <div class="xb-store-template__introduce-title-line"></div>
+
+
+            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border ql-editor"
+                 [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"></div>
+
+            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border" [hidden]="!aboutMeEdited">
+              <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
+                            [options]="editorConfig"></quill-editor>
+              <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
+                CLICK TO SAVE
+              </div>
+            </div>
+
+
+
+
+
+            <div class="md-margin-top-2">
+              <app-store-share-button-edit [link]="shareLink" [text]="text"></app-store-share-button-edit>
+            </div>
+          </div>
+          <div class="xb-store-template__introduce-one-top-right">
+            <div class="xb-store-template__introduce-one-top-image xb-template-2-edit__edit-border"
+                 [ngStyle]="{'background': 'url(' + (aboutMeOneImageStr) + ') center / 100% 100% ' }"
+            >
+              <img class="xb-template-2-edit__edit-border" src={{aboutMeTwoImageStr}}>
+            </div>
+          </div>
+        </div>
+        <div class="xb-store-template__introduce-two" fxLayout="row" fxLayoutAlign="end start">
+          <div class="xb-store-template__introduce-two-bottom-left">
+            <div class="xb-store-template__introduce-two-bottom-image xb-template-2-edit__edit-border"
+                 [ngStyle]="{'background': 'url(' + (homeMadeOneImageStr) + ') center / auto 100% ' }"
+            >
+              <img class="xb-template-2-edit__edit-border" src={{homeMadeTwoImageStr}}>
+            </div>
+          </div>
+
+          <div class="xb-store-template__introduce-two-bottom-right">
+
+
+            <div class="xb-store-template__introduce-two-describe xb-template-2-edit__edit-border ql-editor"
+                 [innerHTML]="homeMadeDesTag | safeHtml" [hidden]="homeMadeDesEdited" (click)="editHomeMadeDes()"></div>
+
+            <div class="xb-store-template__introduce-two-describe xb-template-2-edit__edit-border" [hidden]="!homeMadeDesEdited">
+              <quill-editor formControlName="homeMadeDesTag" [(ngModel)]="homeMadeDesTag"
+                            [options]="editorConfig"></quill-editor>
+              <div class="xb-template-2-edit__edit-button" (click)="editHomeMadeDes()">
+                CLICK TO SAVE
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!--home-made-->
+      <div class="xb-store-template__home-made xb-template-2-edit__edit-border" fxLayout="column"
+           fxLayoutAlign="start center"
+           [ngStyle]="{'background': 'url(' + imageHomeMade + ') center / auto auto ' }">
+        <div class="xb-store-template__template-mask"></div>
+        <div class="xb-store-template__home-made-title ">
+          Shop My Favorite Collections
+        </div>
+      </div>
+
+      <!--产品列表-->
+      <div class="xb-store-template__product-content ">
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+          <app-store-item-card-edit *ngFor="let item of product"
+                                    fxFlex.xs="48" fxFlex.gt-xs="30"
+                                    [product]="item" [status]="0"></app-store-item-card-edit>
+          <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+        </div>
+        <div class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+             (click)="jumpProductList()">
+          <div>
+            SEE MORE
+          </div>
+        </div>
+      </div>
+      <div>
+        <app-store-template-edit-2-store-foot [storeName]="luzhenqiang"></app-store-template-edit-2-store-foot>
+      </div>
+    </div>
+
+    <!--2 products-->
+    <div [hidden]="viewIndex != 1">
+      <!--头部消息-->
+      <div class="xb-template-2-edit__container">
+        <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
+          <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
+                 [ngStyle]="{'color':'black'}"
+                 fxFlex="none">
+              Store Name
+            </div>
+            <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
+                                                  (routerChange)="changeViewIndex($event)"
+                                                  fxFlex></app-store-template-edit-2-navigation>
+          </div>
+        </div>
+
+        <div class="xb-store-template__collection-title">
+          Products
+        </div>
+      </div>
+      <!--产品列表-->
+      <div class="xb-store-template__collection—product">
+        <div class="xb-store-template__collection—category" fxLayout="column" fxLayoutAlign="start start" fxShow="true"
+             fxShow.xs="false">
+          <app-store-template-edit-2-category fxFlexAlign="center" [(category)]="category" [categories]="categories"
+                                              (categoryChange)="queryProduct(true)"></app-store-template-edit-2-category>
+        </div>
+        <div>
+          <div class="xb-store-template__list-products md-margin-top-1">
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+              <app-store-item-card-edit *ngFor="let item of product"
+                                        fxFlex.xs="48" fxFlex.gt-xs="30"
+                                        [product]="item" [status]="1"></app-store-item-card-edit>
+              <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--网页底部-->
+      <div>
+        <app-store-template-edit-2-store-foot [storeName]="store.name"></app-store-template-edit-2-store-foot>
+      </div>
+    </div>
+
+
+    <!--3 about me -->
+    <div [hidden]="viewIndex != 2">
+      <div class="xb-template-2-edit__container">
+        <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
+          <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
+                 [ngStyle]="{'color':'black'}"
+                 fxFlex="none">
+              Store Name
+            </div>
+            <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
+                                                  (routerChange)="changeViewIndex($event)"
+                                                  fxFlex></app-store-template-edit-2-navigation>
+          </div>
+        </div>
+
+        <div class="xb-store-template__collection-title">
+          About me
+        </div>
+      </div>
+      <div class="xb-store-template__about-bg">
+        <div class="xb-store-template__about-image-bg">
+          <img [src]="aboutMeCover">
+        </div>
+        <div
+          class="xb-template-2-edit__edit-border md-margin-top-2 md-margin-left-2 md-margin-right-2 xb-store__content-text ">
+          "店铺介绍"
+        </div>
+        <!-- <div class=" xb-template-2-edit__edit-border xb-store__template-user md-margin-left-2 md-margin-right-2 ql-editor md-margin-top-2"
+              [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">
+         </div>-->
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
+
