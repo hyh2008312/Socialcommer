@@ -38,7 +38,7 @@
       </div>
       <div class="md-margin-top-2">
         <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of blog;let i = index;">
-          <app-blog-item [blog]="item" [index]="i" (blogChange)="blogChange($event)"></app-blog-item>
+          <app-blog-item [blog]="item" [index]="i" (blogChange)="blogChange($event)" [status]="1"></app-blog-item>
         </div>
         <mat-paginator [length]="length"
                        [pageSize]="pageSize"

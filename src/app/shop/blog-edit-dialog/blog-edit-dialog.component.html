@@ -24,6 +24,9 @@
           <quill-editor formControlName="context"
                         (ready)="onEditorCreated($event)"></quill-editor>
           <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
+          <div *ngIf="formErrors['context']" class="xb-input-error md-margin-top-2">
+            {{ formErrors['context'] }}
+          </div>
         </div>
         <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="tab == 'published'">
           <button mat-raised-button color="primary" (click)="create()">SAVE</button>

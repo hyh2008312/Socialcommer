@@ -97,12 +97,18 @@ export class BlogComponent implements OnInit {
       }
     });
 
+    self.shopService.currentBlogTab.subscribe((data) => {
+      if(data) {
+        self.selectedIndex = data;
+      }
+    });
+
   }
 
   changeBlog() {
     let page = 1;
-
     let self = this;
+    this.shopService.setCurrentBlogTab(self.selectedIndex);
 
     let status = '';
     switch (this.selectedIndex) {

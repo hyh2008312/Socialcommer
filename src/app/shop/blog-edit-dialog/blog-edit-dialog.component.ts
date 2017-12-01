@@ -49,7 +49,9 @@ export class BlogEditDialogComponent implements OnInit {
       title: ['', [
         Validators.required
       ]],
-      context: ['Write down your moment']
+      context: ['Write down your moment',[
+        Validators.required
+      ]]
     });
 
     this.blogForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -57,11 +59,15 @@ export class BlogEditDialogComponent implements OnInit {
 
   //存储错误信息
   formErrors = {
-    'title': ''
+    'title': '',
+    'context': ''
   };
   //错误对应的提示
   validationMessages = {
     'title': {
+      'required': 'This field is required.'
+    },
+    'context': {
       'required': 'This field is required.'
     }
   };

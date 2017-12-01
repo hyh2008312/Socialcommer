@@ -16,6 +16,7 @@ export class BlogItemComponent implements OnInit {
   @Input() blog: any = null;
   @Input() index: number = 0;
   @Output() blogChange = new EventEmitter<any>();
+  @Input() status: any = 0;
 
   isDelete : boolean = false;
 
@@ -50,7 +51,7 @@ export class BlogItemComponent implements OnInit {
   }
 
   editBlog() {
-    this.router.navigate([`/shop/blog/${this.blog.id}/edit`], { queryParams: {tab: this.blog.status == 'published'? 'published':'draft'}});
+    this.router.navigate([`/shop/blog/${this.blog.id}/edit`], { queryParams: {tab: this.status == 0? 'published':'draft'}});
   }
 
 }

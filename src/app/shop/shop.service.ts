@@ -30,6 +30,12 @@ export class ShopService {
     this.currentListingTab.next(newTab);
   }
 
+  currentBlogTab: Subject<any> = new BehaviorSubject<any>(null);
+
+  public setCurrentBlogTab(newTab: number): void {
+    this.currentBlogTab.next(newTab);
+  }
+
   templateList: Subject<any> = new BehaviorSubject<any>(null);
 
   public settTemplateList(newTab: number): void {
