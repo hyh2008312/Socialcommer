@@ -268,7 +268,8 @@ export class StoreEditComponent implements OnInit {
         titleTag: option.titleTag,
         userTag: option.userTag,
         descriptionTag: option.descriptionTag,
-        imageUrl: self.imageSrc
+        imageUrl: self.imageSrc,
+        templateId: 1
       }).then((data) => {
         self.openDialog(self.store.displayName);
         self.router.navigate(['/shop/store']);
