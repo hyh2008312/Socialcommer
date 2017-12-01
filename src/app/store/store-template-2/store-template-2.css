@@ -1649,20 +1649,20 @@ textarea.mat-input-element {
         left: -80px; }
 .xb-store-template__home-made {
   position: relative;
-  height: 540px;
+  height: 270px;
   margin-top: 72px; }
   @media screen and (max-width: 599px) {
     .xb-store-template__home-made {
-      height: 240px; } }
+      height: 120px; } }
   .xb-store-template__home-made-title {
     position: relative;
     font-size: 54px;
     color: #fff;
     text-align: center;
-    margin-top: 208px; }
+    margin-top: 100px; }
     @media screen and (max-width: 599px) {
       .xb-store-template__home-made-title {
-        margin-top: 64px;
+        margin-top: 46px;
         font-size: 24px;
         font-weight: 600; } }
   .xb-store-template__home-made-des {
@@ -1911,11 +1911,12 @@ textarea.mat-input-element {
       font-size: 24px;
       font-weight: 600; } }
 .xb-store-template__template-description {
-  width: 100%;
   margin-top: 24px;
   color: #fff;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-left: 16px;
+  margin-right: 16px; }
   @media screen and (max-width: 599px) {
     .xb-store-template__template-description {
       margin-top: 16px;
