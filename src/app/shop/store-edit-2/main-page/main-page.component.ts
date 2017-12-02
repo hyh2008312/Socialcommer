@@ -46,6 +46,8 @@ export class MainPageComponent implements OnInit {
 
   bannerImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-1.jpg';
 
+  uploadAboutType = 'COLLECTOR_STORE_TEMPLATE';
+
 
   public editorConfig = {
     theme: 'bubble',
@@ -75,7 +77,11 @@ export class MainPageComponent implements OnInit {
   descriptionEdited: boolean = false;
   aboutMeEdited: boolean = false;
   homeMadeDesEdited: boolean = false;
+  imageEdited: boolean = false;
 
+  editImage() {
+    this.imageEdited = !this.imageEdited;
+  }
   editName() {
     this.nameEdited = !this.nameEdited;
   }

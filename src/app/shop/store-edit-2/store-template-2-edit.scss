@@ -98,6 +98,31 @@
     cursor: pointer;
   }
 
+  &__background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgba(0,0,0,.7);
+    z-index: 1000;
+
+    @include xb-xs-screen{
+      overflow-y: hidden;
+    }
+  }
+
+  &__mobile-dialog-inner{
+    @include xb-xs-screen{
+      padding: 16px;
+    }
+    @include xb-sm-screen{
+      padding: 16px;
+    }
+  }
+
 }
 
 
@@ -174,7 +199,6 @@
   &__banner {
     background-color: #000;
     height: 560px;
-    overflow: hidden;
     position: relative;
     @include xb-xs-screen {
       height: 320px;

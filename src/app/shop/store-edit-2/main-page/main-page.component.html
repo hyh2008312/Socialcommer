@@ -10,8 +10,9 @@
           <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
                [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
-          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none" [hidden]="!nameEdited">
-            <input formControlName="nameTag" [(ngModel)]="nameTag" >
+          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
+               [hidden]="!nameEdited">
+            <input formControlName="nameTag" [(ngModel)]="nameTag">
           </div>
           <app-store-template-edit-2-navigation fxFlex [navigationIndex]="viewIndex"
                                                 (routerChange)="changeViewIndex($event)"></app-store-template-edit-2-navigation>
@@ -39,7 +40,8 @@
           <div class="xb-template-2-edit__store-description xb-template-2-edit__edit-border ql-editor"
                [innerHTML]="descriptionTag | safeHtml" [hidden]="descriptionEdited" (click)="editDescription()"></div>
 
-          <div class="xb-template-2-edit__store-description xb-template-2-edit__edit-border" [hidden]="!descriptionEdited">
+          <div class="xb-template-2-edit__store-description xb-template-2-edit__edit-border"
+               [hidden]="!descriptionEdited">
             <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
                           [options]="editorConfig"></quill-editor>
             <div class="xb-template-2-edit__edit-button" (click)="editDescription()">
@@ -52,7 +54,11 @@
           <br>
           <i class="material-icons">keyboard_arrow_down</i>
         </div>
+        <div class="xb-template-2-edit__edit-button" (click)="editImage()">
+          CLICK TO CHANGE IMAGE
+        </div>
       </div>
+
       <!--商家信息介绍-->
       <div class="xb-store-template__introduce">
         <div class="xb-store-template__introduce-one" fxLayout="row" fxLayoutAlign="start start">
@@ -64,17 +70,14 @@
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border ql-editor"
                  [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"></div>
 
-            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border" [hidden]="!aboutMeEdited">
+            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
+                 [hidden]="!aboutMeEdited">
               <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
                             [options]="editorConfig"></quill-editor>
               <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
                 CLICK TO SAVE
               </div>
             </div>
-
-
-
-
 
             <div class="md-margin-top-2">
               <app-store-share-button-edit [link]="shareLink" [text]="text"></app-store-share-button-edit>
@@ -98,12 +101,11 @@
           </div>
 
           <div class="xb-store-template__introduce-two-bottom-right">
-
-
             <div class="xb-store-template__introduce-two-describe xb-template-2-edit__edit-border ql-editor"
                  [innerHTML]="homeMadeDesTag | safeHtml" [hidden]="homeMadeDesEdited" (click)="editHomeMadeDes()"></div>
 
-            <div class="xb-store-template__introduce-two-describe xb-template-2-edit__edit-border" [hidden]="!homeMadeDesEdited">
+            <div class="xb-store-template__introduce-two-describe xb-template-2-edit__edit-border"
+                 [hidden]="!homeMadeDesEdited">
               <quill-editor formControlName="homeMadeDesTag" [(ngModel)]="homeMadeDesTag"
                             [options]="editorConfig"></quill-editor>
               <div class="xb-template-2-edit__edit-button" (click)="editHomeMadeDes()">
@@ -143,17 +145,20 @@
         <app-store-template-edit-2-store-foot [storeName]="luzhenqiang"></app-store-template-edit-2-store-foot>
       </div>
     </div>
-
     <!--2 products-->
     <div [hidden]="viewIndex != 1">
       <!--头部消息-->
       <div class="xb-template-2-edit__container">
         <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
           <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
-            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
-                 [ngStyle]="{'color':'black'}"
-                 fxFlex="none">
-              Store Name
+
+            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border " [ngStyle]="{'color':'black'}"
+                 fxFlex="none"
+                 [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
+
+            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
+                 [hidden]="!nameEdited" >
+              <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
             </div>
             <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
                                                   (routerChange)="changeViewIndex($event)"
@@ -188,18 +193,21 @@
         <app-store-template-edit-2-store-foot [storeName]="store.name"></app-store-template-edit-2-store-foot>
       </div>
     </div>
-
-
     <!--3 about me -->
     <div [hidden]="viewIndex != 2">
       <div class="xb-template-2-edit__container">
         <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
           <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
+
             <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
-                 [ngStyle]="{'color':'black'}"
-                 fxFlex="none">
-              Store Name
+                 fxFlex="none" [ngStyle]="{'color':'black'}"
+                 [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
+
+            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
+                 [hidden]="!nameEdited">
+              <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
             </div>
+
             <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
                                                   (routerChange)="changeViewIndex($event)"
                                                   fxFlex></app-store-template-edit-2-navigation>
@@ -211,21 +219,37 @@
         </div>
       </div>
       <div class="xb-store-template__about-bg">
-        <div class="xb-store-template__about-image-bg">
-          <img [src]="aboutMeCover">
+        <div class="xb-store-template__about-image-bg xb-template-2-edit__edit-border">
+          <app-image-upload-preview-blog [(previewImgFile)]="aboutMeCover" [(previewImgSrc)]="aboutMeCover"
+                                         [type]="uploadAboutType"></app-image-upload-preview-blog>
         </div>
-        <div
-          class="xb-template-2-edit__edit-border md-margin-top-2 md-margin-left-2 md-margin-right-2 xb-store__content-text ">
-          "店铺介绍"
+        <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border ql-editor"
+             [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"></div>
+
+        <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
+             [hidden]="!aboutMeEdited">
+          <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
+                        [options]="editorConfig"></quill-editor>
+          <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
+            CLICK TO SAVE
+          </div>
         </div>
-        <!-- <div class=" xb-template-2-edit__edit-border xb-store__template-user md-margin-left-2 md-margin-right-2 ql-editor md-margin-top-2"
-              [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">
-         </div>-->
       </div>
 
     </div>
-
   </form>
-
+</div>
+<div class="xb-template-2-edit__background" *ngIf="imageEdited">
+  <div class="xb-store-template__detail-close" (click)="editImage()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store-template__detail" >
+    <div class="xb-store-template__detail-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-template-2-edit__mobile-dialog-inner">
+      <app-image-upload-preview [(previewImgFile)]="bannerImageStr" (previewImgFileChange)="editImage()"></app-image-upload-preview>
+    </div>
+  </div>
 </div>
 
