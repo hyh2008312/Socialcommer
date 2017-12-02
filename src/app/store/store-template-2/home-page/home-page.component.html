@@ -7,32 +7,33 @@
     </mat-sidenav>
     <!--banner图-->
     <div class="xb-store-template__banner "
-         [ngStyle]="{'background': 'url(' + (store.imageUrl == ''? baseImageUrl:store.imageUrl) + ') center / auto 100% ' }">
+         [ngStyle]="{'background': 'url(' + (imageList.bannerImageStr == ''? baseImageUrl:imageList.bannerImageStr) + ') center / auto 100% ' }">
       <div class="xb-store-template__template-mask"></div>
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center" fxShow="true" fxShow.xs="false">
         <div class="xb-store-template__store-name" fxFlex="none">
-          Store Name
+          <div class="ql-editor "
+               [innerHTML]="contextList.nameTag | safeHtml" *ngIf="contextList.nameTag">
+          </div>
         </div>
         <app-store-template-2-navigation fxFlex></app-store-template-2-navigation>
       </div>
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
            fxShow.xs="true">
         <div class="xb-store-template__store-name">
-          Store Name
+          <div class="ql-editor "
+               [innerHTML]="contextList.nameTag | safeHtml" *ngIf="contextList.nameTag">
+          </div>
         </div>
         <i class="material-icons xb-pointer" [ngStyle]="{'color': 'white','margin-right':'16px'}"
            (click)="sidenav.open()">menu</i>
       </div>
 
-      <div class="xb-store__content-2">
-        <div class="xb-store-template__template-title">
-          {{store.name}}
+      <div class="xb-store__content-2 xb-store-template__width-1000">
+        <div class="xb-store-template__template-title ql-editor" [innerHTML]="contextList.titleTag | safeHtml"
+             *ngIf="contextList.titleTag">
         </div>
-        <div class="xb-store-template__store-description" *ngIf="store.descriptionTag == ''">
-          {{store.description}}
-        </div>
-        <div class="xb-store-template__template-description ql-editor"
-             [innerHTML]="store.descriptionTag | safeHtml" *ngIf="store.descriptionTag != ''">
+        <div class="xb-store-template__store-description ql-editor" [innerHTML]="contextList.descriptionTag | safeHtml"
+             *ngIf="contextList.descriptionTag">
         </div>
       </div>
       <div class="xb-store-template__store-buttons" fxShow="false" fxShow.gt-xs="true">
@@ -47,10 +48,8 @@
         <div class="xb-store-template__introduce-one-top-left">
           <div class="xb-store-template__introduce-one-title">About Me</div>
           <div class="xb-store-template__introduce-title-line"></div>
-          <div class="xb-store-template__introduce-one-describe">
-            In the Box: iPad, Lightning to USB Cable and USB Power
-            Adapter. Display: Retina display, 9.7-inch(diagonal) LED-backlit Multi-Touch display with IPS technology,
-            2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
+          <div class="xb-store-template__introduce-one-describe ql-editor"
+               [innerHTML]="contextList.aboutMeTag | safeHtml" *ngIf="contextList.aboutMeTag">
           </div>
           <div class="md-margin-top-2">
             <app-store-share-button [link]="shareLink" [text]="text"></app-store-share-button>
@@ -58,26 +57,24 @@
         </div>
         <div class="xb-store-template__introduce-one-top-right">
           <div class="xb-store-template__introduce-one-top-image"
-               [ngStyle]="{'background': 'url(' + (imageUrlOne) + ') center / 100% 100% ' }"
+               [ngStyle]="{'background': 'url(' + (imageList.aboutMeOneImageStr) + ') center / 100% 100% ' }"
           >
-            <img src={{imageOwnerThree}}>
+            <img src={{imageList.aboutMeTwoImageStr}}>
           </div>
         </div>
       </div>
       <div class="xb-store-template__introduce-two" fxLayout="row" fxLayoutAlign="end start">
         <div class="xb-store-template__introduce-two-bottom-left">
           <div class="xb-store-template__introduce-two-bottom-image"
-               [ngStyle]="{'background': 'url(' + (imageOwnerFour) + ') center / auto 100% ' }"
+               [ngStyle]="{'background': 'url(' + (imageList.homeMadeOneImageStr) + ') center / auto 100% ' }"
           >
-            <img src={{imageOwnerSix}}>
+            <img src={{imageList.homeMadeTwoImageStr}}>
           </div>
         </div>
 
         <div class="xb-store-template__introduce-two-bottom-right">
-          <div class="xb-store-template__introduce-two-describe">
-            In the Box: iPad, Lightning to USB Cable and USB Power
-            Adapter. Display: Retina display, 9.7-inch(diagonal) LED-backlit Multi-Touch display with IPS technology,
-            2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
+          <div class="xb-store-template__introduce-two-describe ql-editor"
+               [innerHTML]="contextList.homeMadeDesTag | safeHtml" *ngIf="contextList.homeMadeDesTag">
           </div>
         </div>
 
@@ -87,9 +84,9 @@
     <div class="xb-store-template__introduce" fxShow="false" fxShow.xs="true">
       <div fxLayout="row" fxFlexAlign="center start">
         <div class="xb-store-template__introduce-mobile-top-1"
-             [ngStyle]="{'background': 'url(' + (imageUrlOne) + ')   center / auto 100% ' }"></div>
+             [ngStyle]="{'background': 'url(' + (imageList.aboutMeOneImageStr) + ')   center / auto 100% ' }"></div>
         <div class="xb-store-template__introduce-mobile-top-2"
-             [ngStyle]="{'background': 'url(' + (imageOwnerThree) + ') center / auto 100% ',
+             [ngStyle]="{'background': 'url(' + (imageList.aboutMeTwoImageStr) + ') center / auto 100% ',
            'background-repeat':'no-repeat'}"
         ></div>
       </div>
@@ -97,26 +94,24 @@
         About Me
       </div>
       <div class="xb-store-template__introduce-title-line"></div>
-      <div class="xb-store-template__introduce-one-describe">
-        In the Box: iPad, Lightning to USB Cable and USB Power
-        Adapter. Display: Retina display, 9.7-inch(diagonal) LED-backlit Multi-Touch display with IPS technology,
-        2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
+      <div class="xb-store-template__introduce-one-describe ql-editor"
+           [innerHTML]="contextList.aboutMeTag | safeHtml" *ngIf="contextList.aboutMeTag"
+      >
       </div>
       <div class="md-margin-top-1">
         <app-store-share-button [link]="shareLink" [text]="text"></app-store-share-button>
       </div>
       <div [ngStyle]="{'margin-top':'40px'}" fxLayout="row" fxFlexAlign="center start">
         <div class="xb-store-template__introduce-mobile-top-1"
-             [ngStyle]="{'background': 'url(' + (imageOwnerFour) + ') center / auto 100% ' }"></div>
+             [ngStyle]="{'background': 'url(' + (imageList.homeMadeOneImageStr) + ') center / auto 100% ' }"></div>
         <div class="xb-store-template__introduce-mobile-top-2"
-             [ngStyle]="{'background': 'url(' + (imageOwnerSix) + ') center / auto 100% ' ,
+             [ngStyle]="{'background': 'url(' + (imageList.homeMadeTwoImageStr) + ') center / auto 100% ' ,
            'background-repeat':'no-repeat'}"
         ></div>
       </div>
-      <div class="xb-store-template__introduce-one-describe">
-        In the Box: iPad, Lightning to USB Cable and USB Power
-        Adapter. Display: Retina display, 9.7-inch(diagonal) LED-backlit Multi-Touch display with IPS technology,
-        2048x1536-pixel resolution at 264 ppi,Fingerprint-resistant oleophobic coating.
+      <div class="xb-store-template__introduce-one-describe ql-editor"
+           [innerHTML]="contextList.homeMadeDesTag | safeHtml" *ngIf="contextList.homeMadeDesTag"
+      >
       </div>
     </div>
     <!--home-made-->
@@ -162,7 +157,7 @@
     </div>
     <!--网址底部-->
     <div>
-      <app-store-template-2-store-foot [storeName]="store.name"></app-store-template-2-store-foot>
+      <app-store-template-2-store-foot [storeName]="contextList.nameTag"></app-store-template-2-store-foot>
     </div>
   </mat-sidenav-container>
   <router-outlet></router-outlet>

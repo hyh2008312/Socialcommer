@@ -34,6 +34,9 @@ export class HomePageComponent implements OnInit {
   nextPage: boolean = true;
   product: any = [];
 
+  contextList: any = {};
+  imageList: any = {};
+  ownerId: any;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -43,36 +46,42 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.shareLink = window.location.href;
-
     let self = this;
-
     let firstLoad = false;
+
     this.storeService.store.subscribe((data) => {
-      if (data && !firstLoad) {
-        firstLoad = true;
+      if(data) {
         self.store = data;
+        self.contextList = data.context?data.context: {};
+        self.imageList = data.image?data.image:{};
         self.text = data.description;
+        self.ownerId = data.ownerId;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
           shareImage: data.imageUrl
         });
-        if (data.category.length > 1) {
+        if(data.category.length > 1) {
           self.categories = [{name: 'All'}, ...data.category];
         } else {
           self.categories = [...data.category];
         }
         self.category = self.categories[0];
-        self.storeService.addStore(data);
 
         self.storeService.pageView({
           pageType: 'store',
           viewTime: new Date().getTime(),
           storeId: data.id
         });
+
         self.queryProduct();
+
       }
     });
+
+
+
+
   }
 
 

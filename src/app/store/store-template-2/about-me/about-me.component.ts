@@ -12,7 +12,10 @@ import { Store } from '../../store';
 
 export class AboutMeComponent implements OnInit {
   store: Store = new Store();
-
+  contextList: any = {};
+  imageList: any = {};
+  ownerId: any;
+  text:string;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -22,14 +25,13 @@ export class AboutMeComponent implements OnInit {
   }
 
   ngOnInit():void {
-
     let self = this;
-
-    let firstLoad = false;
     this.storeService.store.subscribe((data) => {
-      if(data && !firstLoad) {
-        firstLoad = true;
+      if(data) {
         self.store = data;
+        self.contextList = data.context?data.context: {};
+        self.imageList = data.image? data.image: {};
+        self.text = data.description;
       }
     });
   }

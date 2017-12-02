@@ -24,6 +24,20 @@
 
     }
   }
+  &__image-position{
+    position: absolute;
+    top: 200px;
+    left: 360px;
+    width: 200px;
+    height: 240px;
+  }
+  &__image-home-position{
+    width: 200px;
+    height: 240px;
+    position: absolute;
+    top: -120px;
+    left: -80px;
+  }
   &__edit-button{
     padding: 0 32px;
     line-height: 32px;
@@ -121,6 +135,21 @@
     @include xb-sm-screen{
       padding: 16px;
     }
+  }
+  &__title-1{
+    font-size: 24px;
+    @include media();
+    margin-bottom: 8px;
+  }
+  &__content-1{
+    margin-bottom: 24px;
+  }
+
+  &__width-100{
+    width: 100%;
+  }
+  &__margin-top-48{
+    margin-top: 48px;
   }
 
 }
@@ -262,11 +291,11 @@
         width: 480px;
         height: 320px;
         > img {
-          position: absolute;
+         /* position: absolute;
           top: 200px;
           left: 360px;
           width: 200px;
-          height: 240px;
+          height: 240px;*/
         }
       }
     }
@@ -292,11 +321,7 @@
         width: 480px;
         height: 320px;
         > img {
-          width: 200px;
-          height: 240px;
-          position: absolute;
-          top: -120px;
-          left: -80px;
+
         }
       }
 

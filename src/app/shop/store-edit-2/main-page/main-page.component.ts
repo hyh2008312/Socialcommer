@@ -1,11 +1,12 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {StoreService} from '../../store.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../shared/services/user/user.service';
 import {ShopService} from '../../shop.service';
 import {MatDialog} from '@angular/material';
 import {Store} from '../../shop';
+import { StoreShareDialogComponent } from "../../store-share-dialog/store-share-dialog.component";
 
 @Component({
   selector: 'app-store-template-edit-2',
@@ -78,10 +79,12 @@ export class MainPageComponent implements OnInit {
   aboutMeEdited: boolean = false;
   homeMadeDesEdited: boolean = false;
   imageEdited: boolean = false;
+  storeEdited:boolean=false;
 
   editImage() {
     this.imageEdited = !this.imageEdited;
   }
+
   editName() {
     this.nameEdited = !this.nameEdited;
   }
@@ -102,6 +105,9 @@ export class MainPageComponent implements OnInit {
   editHomeMadeDes() {
     this.homeMadeDesEdited = !this.homeMadeDesEdited;
   }
+  editStore() {
+    this.storeEdited = !this.storeEdited;
+  }
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -120,9 +126,67 @@ export class MainPageComponent implements OnInit {
       aboutMeTag: [self.aboutMeTag],
       homeMadeDesTag: [self.homeMadeDesTag]
     });
+    self.storeForm = this.fb.group({
+      name: ['', [
+        Validators.required
+      ]],
+      description: ['', [
+        Validators.required
+      ]],
+      displayName: ['', [
+        Validators.required
+      ]]
+    });
 
-
+    this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
   }
+
+  /**
+   * 表单值改变时，重新校验
+   * @param data
+   */
+  onValueChanged(data) {
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      //取到表单字段
+      const control = this.storeForm.get(field);
+      //表单字段已修改或无效
+      if (control && control.dirty && !control.valid) {
+        //取出对应字段可能的错误信息
+        const messages = this.validationMessages[field];
+        //从errors里取出错误类型，再拼上该错误对应的信息
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + '';
+          break;
+        }
+      }
+
+    }
+
+  };
+
+  //存储错误信息
+  formErrors = {
+    'name': '',
+    'displayName': '',
+    'description': ''
+  };
+  //错误对应的提示
+  validationMessages = {
+    'name': {
+      'required': 'This field is required.'
+    },
+    'displayName': {
+      'required': 'This field is required.'
+    },
+    'description': {
+      'required': 'This field is required.'
+    }
+  };
+
+  storeName: string = '';
+  isDialogOpen: boolean = false;
 
   public categories: any = [];
   public category: any = {
@@ -146,12 +210,11 @@ export class MainPageComponent implements OnInit {
             self.store = data;
             if (!firstLoad) {
               firstLoad = true;
-
-              /*self.storeForm.setValue({
+              self.storeForm.setValue({
                 name: self.store.name,
-                description : self.store.description,
+                description: self.store.description,
                 displayName: self.store.displayName
-              });*/
+              });
 
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
@@ -161,21 +224,24 @@ export class MainPageComponent implements OnInit {
                   self.categories = [...data.category];
                 }
                 self.category = self.categories[0];
-                console.log(JSON.stringify(this.category));
-                console.log('-------->' + '22222')
                 self.queryProduct();
               });
 
               for (let value of self.templateList) {
                 if (value.uid == 2) {
                   self.templateId = value.id;
-                  /*self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
+                  self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
                   self.titleTag = value.context.titleTag != ''? value.context.titleTag : self.titleTag;
                   self.descriptionTag = value.context.descriptionTag != ''? value.context.descriptionTag : self.descriptionTag;
-                  self.userTag = value.context.userTag != ''? value.context.userTag : self.userTag;
+                  self.aboutMeTag = value.context.aboutMeTag != ''? value.context.aboutMeTag : self.aboutMeTag;
+                  self.homeMadeDesTag = value.context.homeMadeDesTag != ''? value.context.homeMadeDesTag : self.homeMadeDesTag;
 
-                  self.imageSrc = value.image.imageSrc;
-                  self.aboutMeSrc = value.image.aboutMeSrc;*/
+                  self.bannerImageStr = value.image.bannerImageStr;
+                  self.aboutMeCover = value.image.aboutMeCover;
+                  self.aboutMeOneImageStr = value.image.aboutMeOneImageStr;
+                  self.aboutMeTwoImageStr = value.image.aboutMeTwoImageStr;
+                  self.homeMadeOneImageStr = value.image.homeMadeOneImageStr;
+                  self.homeMadeTwoImageStr = value.image.homeMadeTwoImageStr;
                   break;
                 }
               }
@@ -185,7 +251,11 @@ export class MainPageComponent implements OnInit {
         })
       }
     })
+  }
 
+  changeCategory() {
+    this.page = 1;
+    this.queryProduct(true);
   }
 
 
@@ -217,6 +287,14 @@ export class MainPageComponent implements OnInit {
 
   }
 
+  openNavigationDialog(event?:any) {
+    if(event) {
+      this.changeViewIndex(event);
+      return this.isDialogOpen = false;
+    }
+    this.isDialogOpen = !this.isDialogOpen;
+  }
+
 
   changeViewIndex(index): void {
     this.viewIndex = index;
@@ -224,6 +302,121 @@ export class MainPageComponent implements OnInit {
 
   jumpProductList(): void {
     this.viewIndex = 1;
+  }
+  close() {
+    this.router.navigate(['/shop/store']);
+  }
+
+  submitTemplate() {
+    if(!this.storeForm.valid) {
+      this.storeEdited = true;
+      return;
+    }
+    if(!this.storeTemplateForm.valid) {
+      return;
+    }
+
+    let self = this;
+
+    if(!this.templateId) {
+      let options = {
+        uid: 2,
+        storeId: this.store.id,
+        context: {
+          nameTag: this.nameTag,
+          titleTag: this.titleTag,
+          descriptionTag: this.descriptionTag,
+          aboutMeTag:this.aboutMeTag,
+          homeMadeDesTag: this.homeMadeDesTag,
+        },
+        image: {
+          bannerImageStr:this.bannerImageStr,
+          aboutMeCover:this.aboutMeCover,
+          aboutMeOneImageStr:this.aboutMeOneImageStr,
+          aboutMeTwoImageStr:this.aboutMeTwoImageStr,
+          homeMadeOneImageStr:this.homeMadeOneImageStr,
+          homeMadeTwoImageStr:this.homeMadeTwoImageStr,
+        }
+      };
+      this.shopService.createMultiTemplate(options).then((data) => {
+        self.templateList.push(data);
+        self.shopService.createTemplate({
+          storeId: self.store.id,
+          templateId: data.id
+        }).then((data) => {
+          self.shopService.settTemplateList(self.templateList);
+        });
+        self.openDialog(`${self.store.displayName}`);
+        self.router.navigate(['/shop/store']);
+      });
+    } else {
+      let options = {
+        id: this.templateId,
+        context: {
+          nameTag: this.nameTag,
+          titleTag: this.titleTag,
+          descriptionTag: this.descriptionTag,
+          aboutMeTag:this.aboutMeTag,
+          homeMadeDesTag: this.homeMadeDesTag,
+        },
+        image: {
+          bannerImageStr:this.bannerImageStr,
+          aboutMeCover:this.aboutMeCover,
+          aboutMeOneImageStr:this.aboutMeOneImageStr,
+          aboutMeTwoImageStr:this.aboutMeTwoImageStr,
+          homeMadeOneImageStr:this.homeMadeOneImageStr,
+          homeMadeTwoImageStr:this.homeMadeTwoImageStr,
+        }
+      };
+      this.shopService.updateMultiTemplate(options).then((data) => {
+        let index = self.templateList.find((item) => {
+          if(item.id == data.id) {
+            return true;
+          }
+        });
+        self.templateList.splice(index, 1);
+        self.templateList.push(data);
+        self.shopService.createTemplate({
+          storeId: self.store.id,
+          templateId: data.id
+        }).then((data) => {
+          self.shopService.settTemplateList(self.templateList);
+        });
+        self.openDialog(`${self.store.displayName}`);
+        self.router.navigate(['/shop/store']);
+      });
+    }
+  }
+
+  openDialog(displayName?:any): void {
+    let dialogRef = this.dialog.open(StoreShareDialogComponent, {
+      data: {
+        shareLink: 'http://' + this.shareLink + displayName,
+        text: this.store.description
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+
+  changeStore() {
+    if(!this.storeForm.valid) {
+      return;
+    }
+
+    let store = this.storeForm.value;
+    store.id = this.store.id;
+    store.statuts = this.store.status;
+    store.currency = this.store.currency;
+    let self = this;
+
+    this.shopService.changeStore(store).then((data) => {
+      self.storeEdited = false;
+      self.submitTemplate();
+    });
   }
 
 }

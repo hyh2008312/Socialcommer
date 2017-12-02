@@ -66,7 +66,6 @@
             <div class="xb-store-template__introduce-one-title">About Me</div>
             <div class="xb-store-template__introduce-title-line"></div>
 
-
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border ql-editor"
                  [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"></div>
 
@@ -74,6 +73,7 @@
                  [hidden]="!aboutMeEdited">
               <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
                             [options]="editorConfig"></quill-editor>
+
               <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
                 CLICK TO SAVE
               </div>
@@ -87,7 +87,11 @@
             <div class="xb-store-template__introduce-one-top-image xb-template-2-edit__edit-border"
                  [ngStyle]="{'background': 'url(' + (aboutMeOneImageStr) + ') center / 100% 100% ' }"
             >
-              <img class="xb-template-2-edit__edit-border" src={{aboutMeTwoImageStr}}>
+              <div class="xb-template-2-edit__image-position xb-template-2-edit__edit-border">
+                <app-image-upload-preview-two-template [(previewImgFile)]="aboutMeTwoImageStr" [(previewImgSrc)]="aboutMeTwoImageStr"
+                                               [type]="uploadAboutType"></app-image-upload-preview-two-template>
+              </div>
+
             </div>
           </div>
         </div>
@@ -96,9 +100,14 @@
             <div class="xb-store-template__introduce-two-bottom-image xb-template-2-edit__edit-border"
                  [ngStyle]="{'background': 'url(' + (homeMadeOneImageStr) + ') center / auto 100% ' }"
             >
-              <img class="xb-template-2-edit__edit-border" src={{homeMadeTwoImageStr}}>
+              <div class="xb-template-2-edit__image-home-position xb-template-2-edit__edit-border">
+                <app-image-upload-preview-two-template [(previewImgFile)]="homeMadeTwoImageStr" [(previewImgSrc)]="homeMadeTwoImageStr"
+                                                       [type]="uploadAboutType"></app-image-upload-preview-two-template>
+              </div>
             </div>
+
           </div>
+
 
           <div class="xb-store-template__introduce-two-bottom-right">
             <div class="xb-store-template__introduce-two-describe xb-template-2-edit__edit-border ql-editor"
@@ -157,7 +166,7 @@
                  [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
             <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
-                 [hidden]="!nameEdited" >
+                 [hidden]="!nameEdited">
               <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
             </div>
             <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
@@ -175,7 +184,7 @@
         <div class="xb-store-template__collection—category" fxLayout="column" fxLayoutAlign="start start" fxShow="true"
              fxShow.xs="false">
           <app-store-template-edit-2-category fxFlexAlign="center" [(category)]="category" [categories]="categories"
-                                              (categoryChange)="queryProduct(true)"></app-store-template-edit-2-category>
+                                              (categoryChange)="changeCategory()"></app-store-template-edit-2-category>
         </div>
         <div>
           <div class="xb-store-template__list-products md-margin-top-1">
@@ -226,29 +235,81 @@
         <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border ql-editor"
              [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"></div>
 
-        <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
+        <!--<div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
              [hidden]="!aboutMeEdited">
           <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
                         [options]="editorConfig"></quill-editor>
           <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
             CLICK TO SAVE
           </div>
-        </div>
+        </div>-->
       </div>
 
     </div>
   </form>
 </div>
 <div class="xb-template-2-edit__background" *ngIf="imageEdited">
-  <div class="xb-store-template__detail-close" (click)="editImage()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+  <div class="xb-store-template__detail-close" (click)="editImage()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
-  <div class="xb-store-template__detail" >
+  <div class="xb-store-template__detail">
     <div class="xb-store-template__detail-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
     <div class="xb-template-2-edit__mobile-dialog-inner">
-      <app-image-upload-preview [(previewImgFile)]="bannerImageStr" (previewImgFileChange)="editImage()"></app-image-upload-preview>
+      <app-image-upload-preview [(previewImgFile)]="bannerImageStr"
+                                (previewImgFileChange)="editImage()"></app-image-upload-preview>
+    </div>
+  </div>
+</div>
+<div class="xb-template-2-edit__background" *ngIf="storeEdited">
+  <div class="xb-store-template__detail-close" (click)="editStore()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store-template__detail" >
+    <div class="xb-store-template__detail-close" (click)="editStore()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-template-2-edit__mobile-dialog-inner">
+      <div class="xb-template-2-edit__title-1">
+        Ready to Publish
+      </div>
+      <div class="xb-template-2-edit__content-1">
+        Make sure all these setting are correct before your store goes live!
+      </div>
+      <form [formGroup]="storeForm" novalidate>
+        <div class="md-margin-top-2 md-margin-right-2" fxLayout="column">
+          <div class="md-dark-secondary">
+            Store Name
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <div *ngIf="formErrors['name']" class="xb-input-error">
+            {{ formErrors['name'] }}
+          </div>
+          <div class="md-dark-secondary">
+            Store Description
+          </div>
+          <mat-form-field class="xb-template-2-edit__width-100">
+            <textarea matInput  formControlName="description"></textarea>
+          </mat-form-field>
+          <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+            <div>
+              https://www.socialcommer.net/store/
+            </div>
+            <mat-form-field class="md-margin-left-2 xb-shop__width-1">
+              <input matInput formControlName="displayName">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['displayName']" class="xb-input-error">
+            {{ formErrors['displayName'] }}
+          </div>
+          <div class="xb-template-2-edit__margin-top-48" fxLayout="row" fxLayoutAlign="start center">
+            <button mat-raised-button color="primary" (click)="changeStore()">PUBLISH</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

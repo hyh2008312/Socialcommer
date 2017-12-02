@@ -1,0 +1,17 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+  <label class="preview-label preview-label__upload" fxLayout="column" fxLayoutAlign="start center" *ngIf="upload">
+    <img src="{{previewImgSrc}}">
+    <app-image-preview-loading [percent]="loading" *ngIf="!closeAnimate && !closeLoading"
+                               (loadingChange)="loadingChange($event)" [width]="1200"></app-image-preview-loading>
+    <div class="popup-mask">
+      <div fxLayout="row" fxLayoutAlign="end start">
+        <i class="material-icons xb-pointer" (click)="remove(i);">clear</i>
+      </div>
+    </div>
+  </label>
+  <label class="preview-label preview-label__not-upload" *ngIf="!upload" fxLayout="row" fxLayoutAlign="center center">
+    <input type="file" (change)="previewPic($event)">
+    <i class="iconfontXberts icon-ic-upload"></i><span>Upload cover picture(200*240)</span>
+  </label>
+</div>
+
