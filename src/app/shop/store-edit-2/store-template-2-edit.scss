@@ -75,6 +75,9 @@
     color: $whiteColor;
     position: relative;
     margin-top: 144px;
+    @include xb-xs-screen{
+      margin-top: 0;
+    }
   }
   &__store-description{
     @include media();
@@ -285,6 +288,7 @@
         margin-left: 80px;
         width: 480px;
         height: 320px;
+        position: relative;
       }
       &-top-image {
         position: relative;
@@ -308,6 +312,7 @@
       &-bottom-right {
         width: 400px;
         margin-right: 160px;
+        position: relative;
       }
       &-describe {
         position: relative;

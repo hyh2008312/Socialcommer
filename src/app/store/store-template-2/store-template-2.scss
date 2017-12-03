@@ -3,11 +3,16 @@
 
 .xb-store-template {
 
-&__width-1000{
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
+  &__width-1000{
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100;
+    position: relative;
+      @include xb-xs-screen{
+        padding: 0 16px;
+      }
+  }
 
 
   &__top_container {
@@ -34,6 +39,12 @@
     @include xb-xs-screen {
       margin-left: 15px;
       font-size: 16px;
+    }
+  }
+  &__store-description {
+    margin-top: 24px;
+    @include xb-xs-screen {
+      margin-top: 16px;
     }
   }
   &__category-store-name {
@@ -488,10 +499,9 @@
       width: 100%;
       position: relative;
       margin-top: 144px;
+      overflow: hidden;
       @include xb-xs-screen {
-        margin-top: 35px;
-        font-size: 24px;
-        font-weight: 600;
+        margin-top: 0;
       }
     }
 

@@ -291,6 +291,8 @@ export class MainPageComponent implements OnInit {
         }
       };
       this.shopService.createMultiTemplate(options).then((data) => {
+        data.context = options.context;
+        data.image = options.image;
         self.templateList.push(data);
         self.shopService.createTemplate({
           storeId: self.store.id,
@@ -322,6 +324,8 @@ export class MainPageComponent implements OnInit {
           }
         });
         self.templateList.splice(index, 1);
+        data.context = options.context;
+        data.image = options.image;
         self.templateList.push(data);
         self.shopService.createTemplate({
           storeId: self.store.id,

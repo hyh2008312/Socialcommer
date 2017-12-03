@@ -79,6 +79,7 @@ export class MainPageComponent implements OnInit {
   aboutMeEdited: boolean = false;
   homeMadeDesEdited: boolean = false;
   imageEdited: boolean = false;
+  imageHomeMadeEdited: boolean = false;
   storeEdited:boolean=false;
 
   editImage() {
@@ -105,6 +106,11 @@ export class MainPageComponent implements OnInit {
   editHomeMadeDes() {
     this.homeMadeDesEdited = !this.homeMadeDesEdited;
   }
+
+  editImageHomeMade() {
+    this.imageHomeMadeEdited = !this.imageHomeMadeEdited;
+  }
+
   editStore() {
     this.storeEdited = !this.storeEdited;
   }
@@ -204,6 +210,7 @@ export class MainPageComponent implements OnInit {
     let firstLoad = false;
     self.shopService.templateList.subscribe((data) => {
       if (data) {
+        console.log(data)
         self.templateList = data;
         self.userService.store.subscribe((data) => {
           if (data) {
@@ -226,9 +233,9 @@ export class MainPageComponent implements OnInit {
                 self.category = self.categories[0];
                 self.queryProduct();
               });
-
               for (let value of self.templateList) {
                 if (value.uid == 2) {
+
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
                   self.titleTag = value.context.titleTag != ''? value.context.titleTag : self.titleTag;
@@ -236,6 +243,7 @@ export class MainPageComponent implements OnInit {
                   self.aboutMeTag = value.context.aboutMeTag != ''? value.context.aboutMeTag : self.aboutMeTag;
                   self.homeMadeDesTag = value.context.homeMadeDesTag != ''? value.context.homeMadeDesTag : self.homeMadeDesTag;
 
+                  self.imageHomeMade = value.image.imageHomeMade;
                   self.bannerImageStr = value.image.bannerImageStr;
                   self.aboutMeCover = value.image.aboutMeCover;
                   self.aboutMeOneImageStr = value.image.aboutMeOneImageStr;
@@ -303,6 +311,7 @@ export class MainPageComponent implements OnInit {
   jumpProductList(): void {
     this.viewIndex = 1;
   }
+
   close() {
     this.router.navigate(['/shop/store']);
   }
@@ -330,6 +339,7 @@ export class MainPageComponent implements OnInit {
           homeMadeDesTag: this.homeMadeDesTag,
         },
         image: {
+          imageHomeMade: this.imageHomeMade,
           bannerImageStr:this.bannerImageStr,
           aboutMeCover:this.aboutMeCover,
           aboutMeOneImageStr:this.aboutMeOneImageStr,
@@ -339,6 +349,8 @@ export class MainPageComponent implements OnInit {
         }
       };
       this.shopService.createMultiTemplate(options).then((data) => {
+        data.context = options.context;
+        data.image = options.image;
         self.templateList.push(data);
         self.shopService.createTemplate({
           storeId: self.store.id,
@@ -360,6 +372,7 @@ export class MainPageComponent implements OnInit {
           homeMadeDesTag: this.homeMadeDesTag,
         },
         image: {
+          imageHomeMade: this.imageHomeMade,
           bannerImageStr:this.bannerImageStr,
           aboutMeCover:this.aboutMeCover,
           aboutMeOneImageStr:this.aboutMeOneImageStr,
@@ -375,6 +388,8 @@ export class MainPageComponent implements OnInit {
           }
         });
         self.templateList.splice(index, 1);
+        data.context = options.context;
+        data.image = options.image;
         self.templateList.push(data);
         self.shopService.createTemplate({
           storeId: self.store.id,
@@ -400,7 +415,6 @@ export class MainPageComponent implements OnInit {
 
     });
   }
-
 
   changeStore() {
     if(!this.storeForm.valid) {

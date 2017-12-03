@@ -3,14 +3,14 @@
     <!--1 home-->
     <div [hidden]="viewIndex != 0">
       <div class="xb-store-template__banner "
-           [ngStyle]="{'background': 'url(' + (bannerImageStr) + ') center / 100% 100% ' }">
+           [ngStyle]="{'background': 'url(' + (bannerImageStr) + ') center / auto 640px no-repeat' }">
         <div class="xb-store-template__template-mask"></div>
         <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
-          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
+          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
                [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
-          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
+          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
                [hidden]="!nameEdited">
             <input formControlName="nameTag" [(ngModel)]="nameTag">
           </div>
@@ -30,8 +30,7 @@
           <div class="xb-template-2-edit__store-title xb-template-2-edit__edit-border ql-editor"
                [innerHTML]="titleTag | safeHtml" [hidden]="titleEdited" (click)="editTitle()"></div>
           <div class="xb-template-2-edit__store-title xb-template-2-edit__edit-border" [hidden]="!titleEdited">
-            <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
-                          [options]="editorConfig"></quill-editor>
+            <quill-editor formControlName="titleTag" [(ngModel)]="titleTag" [options]="editorConfig"></quill-editor>
             <div class="xb-template-2-edit__edit-button" (click)="editTitle()">
               CLICK TO SAVE
             </div>
@@ -87,6 +86,8 @@
             <div class="xb-store-template__introduce-one-top-image xb-template-2-edit__edit-border"
                  [ngStyle]="{'background': 'url(' + (aboutMeOneImageStr) + ') center / 100% 100% ' }"
             >
+              <app-image-upload-preview-two-template [(previewImgFile)]="aboutMeOneImageStr" [(previewImgSrc)]="aboutMeOneImageStr"
+                                                     [type]="uploadAboutType"></app-image-upload-preview-two-template>
               <div class="xb-template-2-edit__image-position xb-template-2-edit__edit-border">
                 <app-image-upload-preview-two-template [(previewImgFile)]="aboutMeTwoImageStr" [(previewImgSrc)]="aboutMeTwoImageStr"
                                                [type]="uploadAboutType"></app-image-upload-preview-two-template>
@@ -100,6 +101,8 @@
             <div class="xb-store-template__introduce-two-bottom-image xb-template-2-edit__edit-border"
                  [ngStyle]="{'background': 'url(' + (homeMadeOneImageStr) + ') center / auto 100% ' }"
             >
+              <app-image-upload-preview-two-template [(previewImgFile)]="homeMadeOneImageStr" [(previewImgSrc)]="homeMadeOneImageStr"
+                                                     [type]="uploadAboutType"></app-image-upload-preview-two-template>
               <div class="xb-template-2-edit__image-home-position xb-template-2-edit__edit-border">
                 <app-image-upload-preview-two-template [(previewImgFile)]="homeMadeTwoImageStr" [(previewImgSrc)]="homeMadeTwoImageStr"
                                                        [type]="uploadAboutType"></app-image-upload-preview-two-template>
@@ -128,10 +131,13 @@
       <!--home-made-->
       <div class="xb-store-template__home-made xb-template-2-edit__edit-border" fxLayout="column"
            fxLayoutAlign="start center"
-           [ngStyle]="{'background': 'url(' + imageHomeMade + ') center / auto auto ' }">
+           [ngStyle]="{'background': 'url(' + imageHomeMade + ') center / auto 560px no-repeat' }">
         <div class="xb-store-template__template-mask"></div>
         <div class="xb-store-template__home-made-title ">
           Shop My Favorite Collections
+        </div>
+        <div class="xb-template-2-edit__edit-button" (click)="editImageHomeMade()">
+          CLICK TO CHANGE IMAGE
         </div>
       </div>
 
@@ -162,10 +168,9 @@
           <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
             <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border " [ngStyle]="{'color':'black'}"
-                 fxFlex="none"
                  [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
-            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
+            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
                  [hidden]="!nameEdited">
               <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
             </div>
@@ -209,10 +214,10 @@
           <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
             <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
-                 fxFlex="none" [ngStyle]="{'color':'black'}"
+                 [ngStyle]="{'color':'black'}"
                  [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
-            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border" fxFlex="none"
+            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
                  [hidden]="!nameEdited">
               <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
             </div>
@@ -235,16 +240,19 @@
         <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border ql-editor"
              [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"></div>
 
-        <!--<div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
+        <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
              [hidden]="!aboutMeEdited">
           <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
                         [options]="editorConfig"></quill-editor>
           <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
             CLICK TO SAVE
           </div>
-        </div>-->
+        </div>
       </div>
-
+      <!--网页底部-->
+      <div>
+        <app-store-template-edit-2-store-foot [storeName]="store.name"></app-store-template-edit-2-store-foot>
+      </div>
     </div>
   </form>
 </div>
@@ -259,6 +267,20 @@
     <div class="xb-template-2-edit__mobile-dialog-inner">
       <app-image-upload-preview [(previewImgFile)]="bannerImageStr"
                                 (previewImgFileChange)="editImage()"></app-image-upload-preview>
+    </div>
+  </div>
+</div>
+<div class="xb-template-2-edit__background" *ngIf="imageHomeMadeEdited">
+  <div class="xb-store-template__detail-close" (click)="editImageHomeMade()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store-template__detail">
+    <div class="xb-store-template__detail-close" (click)="editImageHomeMade()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-template-2-edit__mobile-dialog-inner">
+      <app-image-upload-preview [(previewImgFile)]="imageHomeMade"
+                                (previewImgFileChange)="editImageHomeMade()"></app-image-upload-preview>
     </div>
   </div>
 </div>
