@@ -48,6 +48,7 @@ export class MainPageComponent implements OnInit {
   bannerImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-1.jpg';
 
   uploadAboutType = 'COLLECTOR_STORE_TEMPLATE';
+  text = '';
 
 
   public editorConfig = {
@@ -210,11 +211,11 @@ export class MainPageComponent implements OnInit {
     let firstLoad = false;
     self.shopService.templateList.subscribe((data) => {
       if (data) {
-        console.log(data)
         self.templateList = data;
         self.userService.store.subscribe((data) => {
           if (data) {
             self.store = data;
+            self.text = data.description;
             if (!firstLoad) {
               firstLoad = true;
               self.storeForm.setValue({

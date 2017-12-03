@@ -105,7 +105,7 @@ export class BlogComponent implements OnInit {
 
   }
 
-  changeBlog() {
+  changeBlog($event?:any) {
     let page = 1;
     let self = this;
     this.shopService.setCurrentBlogTab(self.selectedIndex);
