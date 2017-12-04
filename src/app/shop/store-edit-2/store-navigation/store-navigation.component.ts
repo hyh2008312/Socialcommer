@@ -15,11 +15,11 @@ export class StoreNavigationComponent implements OnInit {
 
 
   contents = [{
-    text: 'Home'
+    text: 'HOME'
   }, {
-    text: 'Products'
+    text: 'PRODUCTS'
   },  {
-    text: 'About Me'
+    text: 'ABOUT ME'
   }];
 
 

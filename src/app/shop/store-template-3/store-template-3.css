@@ -1665,7 +1665,7 @@ textarea.mat-input-element {
   width: 100%;
   color: #fff;
   position: relative;
-  padding: 0 16px; }
+  padding: 0 32px; }
   @media screen and (max-width: 599px) {
     .xb-store-template__template-title {
       margin-top: 0;

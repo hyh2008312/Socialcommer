@@ -1550,7 +1550,7 @@ textarea.mat-input-element {
 .xb-store-template__nav_container {
   margin-left: 44px; }
 .xb-store-template__navigation {
-  width: 80px;
+  margin-left: 16px;
   text-align: center;
   color: #fff; }
   .xb-store-template__navigation.active {

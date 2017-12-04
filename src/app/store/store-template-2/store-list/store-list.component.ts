@@ -58,7 +58,6 @@ export class StoreListComponent implements OnInit {
           storeId: data.id
         });
         this.isClearData=false ;
-        console.log( "-------->"+this.isClearData);
         this.queryProduct();
       }
     });

@@ -1,23 +1,21 @@
 <div class="xb-shop__left-navigation" fxFlex>
   <div class="xb-shop__left-navigation-bg">
     <ng-container *ngFor="let content of contents; let i = index;">
-      <a class="xb-shop__left-navigation-buttons"
-         routerLink="{{content.router}}" [routerLinkActive]="['active']"
-         fxLayout="row" fxLayoutAlign="start center" *ngIf="!content.slide">
+      <a class="xb-shop__left-navigation-buttons" [ngClass]="{'active': content.isActive}"
+         (click)="changeSlide(content,i)" fxLayout="row" fxLayoutAlign="start center" *ngIf="!content.slide">
         <i class="iconfontXberts xb-shop__icons" [ngClass]="content.icon"></i>
         <span class="md-margin-left-1">{{ content.text }}</span>
       </a>
       <div *ngIf="content.slide" fxLayout="column">
-        <div class="xb-shop__left-navigation-buttons" [ngClass]="{'active': rla.isActive}"
-             (click)="changeSlide(content,i)" routerLink="{{content.router}}" routerLinkActive #rla="routerLinkActive"
-             fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-shop__left-navigation-buttons" [ngClass]="{'active': content.isActive}"
+             (click)="changeSlide(content,i)" fxLayout="row" fxLayoutAlign="start center">
           <i class="iconfontXberts xb-shop__icons" [ngClass]="content.icon"></i>
           <span class="md-margin-left-1">{{ content.text }}</span>
-          <div class="xb-shop__left-navigation-arrow" *ngIf="rla.isActive"></div>
+          <div class="xb-shop__left-navigation-arrow" *ngIf="content.isActive"></div>
         </div>
-        <div class="xb-shop__left-navigation-bg-1" *ngIf="rla.isActive">
+        <div class="xb-shop__left-navigation-bg-1" *ngIf="content.isActive">
           <ng-container *ngFor="let item of content.subContent;">
-            <div class="xb-shop__left-navigation-buttons-1" routerLink="{{item.router}}" [routerLinkActive]="['active']"
+            <div class="xb-shop__left-navigation-buttons-1" routerLink="{{item.router ? item.router: editRouter}}" [routerLinkActive]="['active']"
                  fxLayout="row" fxLayoutAlign="start center"  >
               <i class="iconfontXberts xb-shop__icons"></i>
               <span class="md-margin-left-1">{{ item.text }}</span>

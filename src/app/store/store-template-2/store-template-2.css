@@ -1564,7 +1564,7 @@ textarea.mat-input-element {
 .xb-store-template__nav_container {
   margin-left: 44px; }
 .xb-store-template__navigation {
-  width: 80px;
+  margin-left: 16px;
   text-align: center;
   color: #fff; }
   .xb-store-template__navigation.active {
@@ -1659,17 +1659,6 @@ textarea.mat-input-element {
   @media screen and (max-width: 599px) {
     .xb-store-template__home-made {
       height: 120px; } }
-  .xb-store-template__home-made-title {
-    position: relative;
-    font-size: 54px;
-    color: #fff;
-    text-align: center;
-    margin-top: 100px; }
-    @media screen and (max-width: 599px) {
-      .xb-store-template__home-made-title {
-        margin-top: 46px;
-        font-size: 24px;
-        font-weight: 600; } }
   .xb-store-template__home-made-des {
     position: relative;
     font-size: 24px;

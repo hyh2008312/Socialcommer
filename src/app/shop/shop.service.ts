@@ -36,9 +36,15 @@ export class ShopService {
     this.currentBlogTab.next(newTab);
   }
 
+  templateUid: Subject<any> = new BehaviorSubject<any>(null);
+
+  public setTemplateUId(newTab: number): void {
+    this.templateUid.next(newTab);
+  }
+
   templateList: Subject<any> = new BehaviorSubject<any>(null);
 
-  public settTemplateList(newTab: number): void {
+  public setTemplateList(newTab: number): void {
     this.templateList.next(newTab);
   }
 

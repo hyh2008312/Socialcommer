@@ -2,6 +2,20 @@
 @import "../styles/_variables";
 
 .xb-shop{
+  &__logo{
+    position: relative;
+    &-badge{
+      position: absolute;
+      top: -2px;
+      left: 100%;
+      background-color: #fec32d;
+      color: $whiteColor;
+      line-height: 14px;
+      font-size: 10px;
+      border-radius: 2px;
+      padding: 0 4px;
+    }
+  }
   &__bg-content{
     height: calc(100vh - 56px);
   }

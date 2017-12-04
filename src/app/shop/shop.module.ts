@@ -14,6 +14,7 @@ import { StoreEditComponent } from "./store-edit/store-edit.component";
 import { ToDoListComponent } from "./to-do-list/to-do-list.component";
 import { ProductCategoryComponent } from "./product-category/product-category.component";
 import { BlogComponent } from "./blog/blog.component";
+import { StoreFrontComponent } from './store-front/store-front.component';
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
 import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-select.component";
@@ -74,6 +75,7 @@ import { SharedModule } from '../shared/shared.module';
     StorePreviewComponent,
     StoreEditComponent,
     BlogComponent,
+    StoreFrontComponent,
     StatisticItemComponent,
     StatisticTitleComponent,
     CategoryItemComponent,

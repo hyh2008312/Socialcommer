@@ -33,6 +33,10 @@ export class MainPageComponent implements OnInit {
     'yourself and why you create this business. Show your customers that there are real people with ' +
     'interesting stories working behind the scenes.</div>';
 
+  aboutMeNewTag = '<div> Here you let your customers get to know you. Tell them a little bit about ' +
+    'yourself and why you create this business. Show your customers that there are real people with ' +
+    'interesting stories working behind the scenes.</div>';
+
   aboutMeOneImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-2.jpg';
   aboutMeTwoImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-3.jpg';
   aboutMeCover = 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg';
@@ -41,6 +45,8 @@ export class MainPageComponent implements OnInit {
     ' Do you have special skills that make you an expert in your field?  ' +
     'Helping customers feel connected to you and your purpose will' +
     ' inspire more trust in your brand.</div>';
+
+  homeMadeTitle = '<div>Shop My Favorite Collections</div>';
 
   homeMadeOneImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-4.jpg';
   homeMadeTwoImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-6.jpg';
@@ -78,7 +84,9 @@ export class MainPageComponent implements OnInit {
   titleEdited: boolean = false;
   descriptionEdited: boolean = false;
   aboutMeEdited: boolean = false;
+  aboutMeNewEdited: boolean = false;
   homeMadeDesEdited: boolean = false;
+  homeMadeTitleEdited: boolean = false;
   imageEdited: boolean = false;
   imageHomeMadeEdited: boolean = false;
   storeEdited:boolean=false;
@@ -104,8 +112,16 @@ export class MainPageComponent implements OnInit {
     this.aboutMeEdited = !this.aboutMeEdited;
   }
 
+  editAboutMeNew() {
+    this.aboutMeNewEdited = !this.aboutMeNewEdited;
+  }
+
   editHomeMadeDes() {
     this.homeMadeDesEdited = !this.homeMadeDesEdited;
+  }
+
+  editHomeMadeTitle() {
+    this.homeMadeTitleEdited = !this.homeMadeTitleEdited;
   }
 
   editImageHomeMade() {
@@ -114,6 +130,11 @@ export class MainPageComponent implements OnInit {
 
   editStore() {
     this.storeEdited = !this.storeEdited;
+  }
+
+  changeAboutMe($event) {
+    this.aboutMeTag = $event;
+    this.aboutMeNewTag = $event;
   }
 
   constructor(private router: Router,
@@ -131,7 +152,9 @@ export class MainPageComponent implements OnInit {
       titleTag: [self.titleTag],
       descriptionTag: [self.descriptionTag],
       aboutMeTag: [self.aboutMeTag],
-      homeMadeDesTag: [self.homeMadeDesTag]
+      aboutMeNewTag: [self.aboutMeNewTag],
+      homeMadeDesTag: [self.homeMadeDesTag],
+      homeMadeTitle: [self.homeMadeTitle]
     });
     self.storeForm = this.fb.group({
       name: ['', [
@@ -242,7 +265,9 @@ export class MainPageComponent implements OnInit {
                   self.titleTag = value.context.titleTag != ''? value.context.titleTag : self.titleTag;
                   self.descriptionTag = value.context.descriptionTag != ''? value.context.descriptionTag : self.descriptionTag;
                   self.aboutMeTag = value.context.aboutMeTag != ''? value.context.aboutMeTag : self.aboutMeTag;
+                  self.aboutMeNewTag = value.context.aboutMeNewTag != ''? value.context.aboutMeNewTag : self.aboutMeNewTag;
                   self.homeMadeDesTag = value.context.homeMadeDesTag != ''? value.context.homeMadeDesTag : self.homeMadeDesTag;
+                  self.homeMadeTitle = value.context.homeMadeTitle != ''? value.context.homeMadeTitle : self.homeMadeTitle;
 
                   self.imageHomeMade = value.image.imageHomeMade;
                   self.bannerImageStr = value.image.bannerImageStr;
@@ -304,7 +329,6 @@ export class MainPageComponent implements OnInit {
     this.isDialogOpen = !this.isDialogOpen;
   }
 
-
   changeViewIndex(index): void {
     this.viewIndex = index;
   }
@@ -314,7 +338,7 @@ export class MainPageComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate(['/shop/store']);
+    this.router.navigate(['/shop/store/templates']);
   }
 
   submitTemplate() {
@@ -337,7 +361,9 @@ export class MainPageComponent implements OnInit {
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           aboutMeTag:this.aboutMeTag,
+          aboutMeNewTag:this.aboutMeNewTag,
           homeMadeDesTag: this.homeMadeDesTag,
+          homeMadeTitle: this.homeMadeTitle
         },
         image: {
           imageHomeMade: this.imageHomeMade,
@@ -353,14 +379,15 @@ export class MainPageComponent implements OnInit {
         data.context = options.context;
         data.image = options.image;
         self.templateList.push(data);
+        self.shopService.setTemplateUId(2);
         self.shopService.createTemplate({
           storeId: self.store.id,
           templateId: data.id
         }).then((data) => {
-          self.shopService.settTemplateList(self.templateList);
+          self.shopService.setTemplateList(self.templateList);
         });
         self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/store']);
+        self.router.navigate(['/shop/store/templates']);
       });
     } else {
       let options = {
@@ -370,7 +397,9 @@ export class MainPageComponent implements OnInit {
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           aboutMeTag:this.aboutMeTag,
+          aboutMeNewTag:this.aboutMeNewTag,
           homeMadeDesTag: this.homeMadeDesTag,
+          homeMadeTitle: this.homeMadeTitle
         },
         image: {
           imageHomeMade: this.imageHomeMade,
@@ -392,14 +421,15 @@ export class MainPageComponent implements OnInit {
         data.context = options.context;
         data.image = options.image;
         self.templateList.push(data);
+        self.shopService.setTemplateUId(2);
         self.shopService.createTemplate({
           storeId: self.store.id,
           templateId: data.id
         }).then((data) => {
-          self.shopService.settTemplateList(self.templateList);
+          self.shopService.setTemplateList(self.templateList);
         });
         self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/store']);
+        self.router.navigate(['/shop/store/templates']);
       });
     }
   }

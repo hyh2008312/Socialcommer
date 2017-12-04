@@ -215,7 +215,7 @@
   }
 
   &__navigation {
-    width: 80px;
+    margin-left: 16px;
     text-align: center;
     color: $whiteColor;
     &.active {
@@ -341,14 +341,16 @@
       height: 120px;
     }
     &-title {
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
       position: relative;
-      font-size: 54px;
       color: $whiteColor;
       text-align: center;
       margin-top: 100px;
+      max-height: 80px;
       @include xb-xs-screen {
         margin-top: 46px;
-        font-size: 24px;
         font-weight: 600;
       }
     }

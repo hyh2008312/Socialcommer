@@ -1679,11 +1679,11 @@ textarea.mat-input-element {
   width: 100%;
   color: #fff;
   position: relative;
-  padding: 0 16px; }
+  padding: 0 32px; }
   @media screen and (max-width: 599px) {
     .xb-store-template__template-title {
       margin-top: 0;
-      padding: 0; } }
+      padding: 0 16; } }
 .xb-store-template__template-description {
   width: 100%;
   margin-top: 24px;
@@ -2150,6 +2150,8 @@ textarea.mat-input-element {
         .xb-store__details-close i {
           font-size: 24px;
           line-height: 24px; } }
+.xb-store__buttons-bg-1 {
+  color: #fff; }
 
 .xb-shop__store-template {
   width: 360px;

@@ -118,7 +118,7 @@ export class HomePageComponent implements OnInit {
       }
       self.blog = self.blog.concat(data.results);
       if(data.next == null) {
-        self.blog = false;
+        self.nextBlogPage = false;
       }
     });
   }

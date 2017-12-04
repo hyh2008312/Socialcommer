@@ -61,7 +61,7 @@
   }
 
   &__navigation {
-    width: 80px;
+    margin-left: 16px;
     text-align: center;
     color: $whiteColor;
     &.active {
@@ -190,16 +190,7 @@
       height: 120px;
     }
     &-title {
-      position: relative;
-      font-size: 54px;
-      color: $whiteColor;
-      text-align: center;
-      margin-top: 100px;
-      @include xb-xs-screen {
-        margin-top: 46px;
-        font-size: 24px;
-        font-weight: 600;
-      }
+
     }
     &-des {
       position: relative;

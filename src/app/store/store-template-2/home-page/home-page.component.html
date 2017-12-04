@@ -116,8 +116,9 @@
     <div class="xb-store-template__home-made" fxLayout="column" fxLayoutAlign="start center"
          [ngStyle]="{'background': 'url(' + imageHomeMade + ') center / auto auto ' }">
       <div class="xb-store-template__template-mask"></div>
-      <div class="xb-store-template__home-made-title">
-        Shop My Favorite Collections
+      <div class="xb-store-template__home-made-title ql-editor"
+           [innerHTML]="contextList.homeMadeTitle | safeHtml" *ngIf="contextList.homeMadeTitle">
+
       </div>
     </div>
     <!--产品列表-->

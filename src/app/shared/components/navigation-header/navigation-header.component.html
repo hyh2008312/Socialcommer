@@ -1,7 +1,12 @@
 <div class="xb-navigation-header" fxLayout="row" fxLayoutAlign="start center">
-  <div class="xb-navigation-header__margin-left" fxFlex>
-    <img class="xb-navigation-header__image xb-pointer" src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png"
-      routerLink="/">
+  <div class="xb-navigation-header__margin-left" fxFlex fxLayout="row" fxLayoutAlign="start center">
+    <div class="xb-navigation-header__margin-left-logo">
+      <img class="xb-navigation-header__image xb-pointer" src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png"
+           routerLink="/" width="140">
+      <div  class="xb-navigation-header__margin-left-badge">
+        Beta
+      </div>
+    </div>
   </div>
   <a class="xb-navigation-header__login" [ngClass]="{'xb-navigation-header__login-active': status}"
      routerLink="/cp/login" fxShow.xs="false">Log In</a>
@@ -12,9 +17,14 @@
 <div class="xb-navigation-header__mask"  *ngIf="isPopOpen" (click)="openPop()">
   <div class="xb-navigation-header__black" (click)="$event.stopPropagation()">
     <div class="container" fxLayout="row" fxLayoutAlign="start center">
-      <div class="xb-navigation-header__margin-left" fxFlex>
-        <img class="xb-navigation-header__image xb-pointer" src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png"
-             routerLink="/">
+      <div class="xb-navigation-header__margin-left" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-navigation-header__margin-left-logo">
+          <img class="xb-navigation-header__image xb-pointer" src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png"
+               routerLink="/" width="140">
+          <div  class="xb-navigation-header__margin-left-badge">
+            Beta
+          </div>
+        </div>
       </div>
       <i class="material-icons xb-navigation-header__menu" [ngClass]="{'xb-navigation-header__menu-active': status}"
          (click)="openPop()">close</i>

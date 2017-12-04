@@ -16,6 +16,7 @@ import {StoreEditComponent} from './store-edit/store-edit.component';
 import {ToDoListComponent} from './to-do-list/to-do-list.component';
 import {ProductCategoryComponent} from './product-category/product-category.component';
 import {BlogComponent} from './blog/blog.component';
+import {StoreFrontComponent} from './store-front/store-front.component';
 import {BlogCreateDialogComponent} from './blog-create-dialog/blog-create-dialog.component';
 import {BlogEditDialogComponent} from './blog-edit-dialog/blog-edit-dialog.component';
 
@@ -24,40 +25,43 @@ const routes: Routes = [
     path: '', component: ShopComponent,
     children: [
       {
-        path: 'store', component: StoreComponent,
-        children: [{
-          path: 'preview', component: StorePreviewComponent,
-          children: [
-            {
-              path: '',
-              loadChildren: 'app/shop/store-template-1/store-template-1.module#StoreTemplateOneModule'
-            },
-            {
-              path: '',
-              loadChildren: 'app/shop/store-template-2/store-template-2.module#StoreTemplateTwoModule'
-            },
-            {
-              path: '',
-              loadChildren: 'app/shop/store-template-3/store-template-3.module#StoreTemplateThreeModule'
-            }
-          ]
-        }, {
-          path: 'edit', component: StoreEditComponent,
-          children: [
-            {
-              path: '',
-              loadChildren: 'app/shop/store-edit-1/store-template-1.module#StoreTemplateOneModule'
-            },
-            {
-              path: '',
-              loadChildren: 'app/shop/store-edit-2/store-template-2.module#StoreTemplateTwoModule'
-            },
-            {
-              path: '',
-              loadChildren: 'app/shop/store-edit-3/store-template-3.module#StoreTemplateThreeModule'
-            }
-          ]
-        }]
+        path: 'store/settings', component: StoreComponent
+      }, {
+        path: 'store/templates', component: StoreFrontComponent,
+        children: [
+          {
+            path: 'preview', component: StorePreviewComponent,
+            children: [
+              {
+                path: '',
+                loadChildren: 'app/shop/store-template-1/store-template-1.module#StoreTemplateOneModule'
+              },
+              {
+                path: '',
+                loadChildren: 'app/shop/store-template-2/store-template-2.module#StoreTemplateTwoModule'
+              },
+              {
+                path: '',
+                loadChildren: 'app/shop/store-template-3/store-template-3.module#StoreTemplateThreeModule'
+              }
+            ]
+          }, {
+            path: 'edit', component: StoreEditComponent,
+            children: [
+              {
+                path: '',
+                loadChildren: 'app/shop/store-edit-1/store-template-1.module#StoreTemplateOneModule'
+              },
+              {
+                path: '',
+                loadChildren: 'app/shop/store-edit-2/store-template-2.module#StoreTemplateTwoModule'
+              },
+              {
+                path: '',
+                loadChildren: 'app/shop/store-edit-3/store-template-3.module#StoreTemplateThreeModule'
+              }
+            ]
+          }]
       }, {
         path: 'dashboard', component: DashboardComponent
       }, {
@@ -73,13 +77,13 @@ const routes: Routes = [
           }]
         }, {
           path: 'categories', component: ProductCategoryComponent
-        }]
-      }, {
-        path: 'products', component: FindProductsComponent,
-        children: [{
-          path: ':id', component: FindProductsAddProductComponent
         }, {
-          path: ':id/preview', component: FindProductsEditPreviewComponent,
+          path: 'items', component: FindProductsComponent,
+          children: [{
+            path: ':id', component: FindProductsAddProductComponent
+          }, {
+            path: ':id/preview', component: FindProductsEditPreviewComponent,
+          }]
         }]
       }, {
         path: 'blog', component: BlogComponent,

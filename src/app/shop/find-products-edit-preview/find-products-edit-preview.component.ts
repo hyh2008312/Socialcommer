@@ -230,7 +230,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate(['/shop/products']);
+    this.router.navigate(['/shop/listings/items']);
   }
 
   showTitleInput: boolean = false;

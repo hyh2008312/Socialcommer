@@ -27,15 +27,15 @@ export class StoreNavigationComponent implements OnInit {
     switch (this.type) {
       case 1:
         this.contents = [{
-          text: 'Home',
+          text: 'HOME',
           link: './',
           exact: true
         }, {
-          text: 'Products',
+          text: 'PRODUCTS',
           link: './products',
           exact: false
         } ,{
-          text: 'About Me',
+          text: 'ABOUT ME',
           link: './about_me',
           exact: true
         }
@@ -43,15 +43,15 @@ export class StoreNavigationComponent implements OnInit {
         break;
       case 2:
         this.contents = [{
-          text: 'Home',
+          text: 'HOME',
           link: '../',
           exact: true
         }, {
-          text: 'Products',
+          text: 'PRODUCTS',
           link: './',
           exact: false
         }, {
-          text: 'About Me',
+          text: 'ABOUT ME',
           link: '../about_me',
           exact: true
         }
@@ -59,15 +59,15 @@ export class StoreNavigationComponent implements OnInit {
         break;
       case 4:
         this.contents = [{
-          text: 'Home',
+          text: 'HOME',
           link: '../',
           exact: true
         }, {
-          text: 'Products',
+          text: 'PRODUCTS',
           link: '../products',
           exact: false
         }, {
-          text: 'About Me',
+          text: 'ABOUT ME',
           link: './',
           exact: true
         }
@@ -75,15 +75,15 @@ export class StoreNavigationComponent implements OnInit {
         break;
       default:
         this.contents = [{
-          text: 'Home',
+          text: 'HOME',
           link: './',
           exact: true
         }, {
-          text: 'Products',
+          text: 'PRODUCTS',
           link: './products',
           exact: false
         }, {
-          text: 'About Me',
+          text: 'ABOUT ME',
           link: './about_me',
           exact: true
         }

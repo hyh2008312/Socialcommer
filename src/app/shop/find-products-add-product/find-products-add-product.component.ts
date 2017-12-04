@@ -51,12 +51,12 @@ export class FindProductsAddProductComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate(['/shop/products']);
+    this.router.navigate(['/shop/listings/items']);
   }
 
   addEdit(): void {
     let id = this.activatedRoute.snapshot.params['id'];
-    this.router.navigate([`/shop/products/${id}/preview`]);
+    this.router.navigate([`/shop/listings/items/${id}/preview`]);
   }
 
 }

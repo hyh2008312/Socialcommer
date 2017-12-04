@@ -301,16 +301,16 @@ export class CatalogEditProductComponent implements OnInit {
         currency: this.storeCurrency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice,
+        amount: productForm.salePrice == ''? 0: productForm.salePrice,
         currency: this.storeCurrency
       };
     } else {
       storeProduct.product.originalPrice = {
-        amount: product.originalPrice.amount,
+        amount: productForm.originalPrice != '' ? productForm.originalPrice : 0,
         currency: product.originalPrice.currency
       };
       storeProduct.product.salePrice = {
-        amount: product.salePrice.amount,
+        amount: productForm.salePrice == ''? 0: productForm.salePrice,
         currency: product.salePrice.currency
       };
     }
@@ -351,16 +351,16 @@ export class CatalogEditProductComponent implements OnInit {
         currency: this.storeCurrency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice,
+        amount: productForm.salePrice == ''? 0: productForm.salePrice,
         currency: this.storeCurrency
       };
     } else {
       storeProduct.product.originalPrice = {
-        amount: product.originalPrice.amount,
+        amount: productForm.originalPrice != '' ? productForm.originalPrice : 0,
         currency: product.originalPrice.currency
       };
       storeProduct.product.salePrice = {
-        amount: product.salePrice.amount,
+        amount: productForm.salePrice == ''? 0: productForm.salePrice,
         currency: product.salePrice.currency
       };
     }
@@ -416,11 +416,11 @@ export class CatalogEditProductComponent implements OnInit {
       };
     } else {
       storeProduct.product.originalPrice = {
-        amount: product.originalPrice.amount,
+        amount: productForm.originalPrice != '' ? productForm.originalPrice : 0,
         currency: product.originalPrice.currency
       };
       storeProduct.product.salePrice = {
-        amount: product.salePrice.amount,
+        amount: productForm.salePrice == ''? 0: productForm.salePrice,
         currency: product.salePrice.currency
       };
     }

@@ -70,7 +70,7 @@
 
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
                  [hidden]="!aboutMeEdited">
-              <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
+              <quill-editor formControlName="aboutMeTag" (ngModelChange)="changeAboutMe(aboutMeTag)"
                             [options]="editorConfig"></quill-editor>
 
               <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
@@ -129,12 +129,20 @@
         </div>
       </div>
       <!--home-made-->
-      <div class="xb-store-template__home-made xb-template-2-edit__edit-border" fxLayout="column"
-           fxLayoutAlign="start center"
+      <div class="xb-store-template__home-made xb-template-2-edit__edit-border"
            [ngStyle]="{'background': 'url(' + imageHomeMade + ') center / auto 560px no-repeat' }">
         <div class="xb-store-template__template-mask"></div>
-        <div class="xb-store-template__home-made-title ">
-          Shop My Favorite Collections
+        <div class="xb-store-template__home-made-title xb-template-2-edit__edit-border ql-editor"
+             [innerHTML]="homeMadeTitle | safeHtml" [hidden]="homeMadeTitleEdited" (click)="editHomeMadeTitle()"></div>
+
+        <div class="xb-store-template__home-made-title xb-template-2-edit__edit-border"
+             [hidden]="!homeMadeTitleEdited">
+          <quill-editor formControlName="homeMadeTitle" [(ngModel)]="homeMadeTitle"
+                        [options]="editorConfig"></quill-editor>
+
+          <div class="xb-template-2-edit__edit-button" (click)="editHomeMadeTitle()">
+            CLICK TO SAVE
+          </div>
         </div>
         <div class="xb-template-2-edit__edit-button" (click)="editImageHomeMade()">
           CLICK TO CHANGE IMAGE
@@ -238,13 +246,13 @@
                                          [type]="uploadAboutType"></app-image-upload-preview-blog>
         </div>
         <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border ql-editor"
-             [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"></div>
+             [innerHTML]="aboutMeNewTag | safeHtml" [hidden]="aboutMeNewEdited" (click)="editAboutMeNew()"></div>
 
         <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
-             [hidden]="!aboutMeEdited">
-          <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
+             [hidden]="!aboutMeNewEdited">
+          <quill-editor formControlName="aboutMeNewTag" (ngModelChange)="changeAboutMe(aboutMeNewTag)"
                         [options]="editorConfig"></quill-editor>
-          <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
+          <div class="xb-template-2-edit__edit-button" (click)="editAboutMeNew()">
             CLICK TO SAVE
           </div>
         </div>

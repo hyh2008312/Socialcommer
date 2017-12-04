@@ -125,16 +125,7 @@ export class StoreComponent implements OnInit {
   }
 
   ngOnInit():void {
-    let self = this;
 
-    self.activatedRoute.queryParams.subscribe((data)=> {
-      if(data.tab == 'settings' ) {
-        self.selectedIndex = 1;
-      }
-      if(data.tab == 'templates') {
-        self.selectedIndex = 0;
-      }
-    });
   }
 
   changeStore(): void {

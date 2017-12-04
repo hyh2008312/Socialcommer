@@ -6,6 +6,8 @@ import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { StoreService } from '../store.service';
 import { Store } from '../store';
 
+import { ConstantService } from '../../shared/services/constant/constant.service';
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './store-main.component.html',
@@ -19,7 +21,8 @@ export class StoreMainComponent implements OnInit {
   constructor(
     private router:Router,
     private activatedRoute: ActivatedRoute,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private constantService: ConstantService
   ) {
 
   }
@@ -31,10 +34,12 @@ export class StoreMainComponent implements OnInit {
       if(data) {
         this.storeService.addStore(data);
         if(data.templateId == 1) {
+          window['templateType'] = 1;
           self.router.navigate([`/store/${storeName}/${data.templateId}`]);
           return;
         }
         if(data.uid > 1) {
+          window['templateType'] = data.uid;
           self.router.navigate([`/store/${storeName}/${data.uid}`]);
         }
       }

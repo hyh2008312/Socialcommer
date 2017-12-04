@@ -261,7 +261,7 @@ export class MainPageComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate(['/shop/store']);
+    this.router.navigate(['/shop/store/templates']);
   }
 
   submitTemplate() {
@@ -294,14 +294,15 @@ export class MainPageComponent implements OnInit {
         data.context = options.context;
         data.image = options.image;
         self.templateList.push(data);
+        self.shopService.setTemplateUId(3);
         self.shopService.createTemplate({
           storeId: self.store.id,
           templateId: data.id
         }).then((data) => {
-          self.shopService.settTemplateList(self.templateList);
+          self.shopService.setTemplateList(self.templateList);
         });
         self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/store']);
+        self.router.navigate(['/shop/store/templates']);
       });
     } else {
       let options = {
@@ -327,14 +328,15 @@ export class MainPageComponent implements OnInit {
         data.context = options.context;
         data.image = options.image;
         self.templateList.push(data);
+        self.shopService.setTemplateUId(3);
         self.shopService.createTemplate({
           storeId: self.store.id,
           templateId: data.id
         }).then((data) => {
-          self.shopService.settTemplateList(self.templateList);
+          self.shopService.setTemplateList(self.templateList);
         });
         self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/store']);
+        self.router.navigate(['/shop/store/templates']);
       });
     }
   }

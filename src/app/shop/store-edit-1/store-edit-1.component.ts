@@ -243,7 +243,7 @@ export class StoreEditComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate(['/shop/store']);
+    this.router.navigate(['/shop/store/templates']);
   }
 
   submitTemplate() {
@@ -271,8 +271,9 @@ export class StoreEditComponent implements OnInit {
         imageUrl: self.imageSrc,
         templateId: 1
       }).then((data) => {
+        self.shopService.setTemplateUId(1);
         self.openDialog(self.store.displayName);
-        self.router.navigate(['/shop/store']);
+        self.router.navigate(['/shop/store/templates']);
 
         self.userService.getUser().then((data)=> {
           self.userService.addUser(data);

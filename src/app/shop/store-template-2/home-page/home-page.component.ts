@@ -93,7 +93,6 @@ export class HomePageComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.text = data.description;
-        console.log("--->"+data)
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
