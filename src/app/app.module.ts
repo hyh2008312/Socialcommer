@@ -32,11 +32,7 @@ import { UserModule } from './shared/services/user/user.module';
     BrowserAnimationsModule,
     AuthenticationModule,
     UserModule,
-    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager ], {
-      pageTracking: {
-        excludedRoutes: [/\/[0-9]{4}\/[0-9]{2}\/[a-zA-Z0-9|\-]*/]
-      }
-    })
+    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager ])
   ],
   providers: [BaseApi, SystemConstant, DataApi, BlogCover,HttpClientModule],
   bootstrap: [AppComponent]
