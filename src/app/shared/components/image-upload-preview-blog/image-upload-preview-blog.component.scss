@@ -35,23 +35,19 @@
   }
 
   .popup-mask{
-    display: none;
     position: absolute;
     width: 100%;
     height: 100%;
     left: 0;
     top:0;
-    background-color: rgba(0, 0, 0, .38);
     .material-icons{
       margin-right: 8px;
       margin-top: 8px;
       color: $whiteColor;
     }
-  }
-
-  &:hover{
-    .popup-mask{
-      display: block;
+    &__bg{
+      position: relative;
+      z-index: 99999;
     }
   }
 
