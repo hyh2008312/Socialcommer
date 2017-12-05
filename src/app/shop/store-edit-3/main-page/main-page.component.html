@@ -2,7 +2,7 @@
   <div class="xb-store-template__store-bg">
     <div class="xb-store-template__container xb-store-template__content" fxLayout="row" fxLayoutAlign="start stretch">
       <div class="xb-store-template__left" fxFlex="none" fxShow.xs="false" fxLayout="column">
-        <div class="xb-store-template__store-name xb-shop__template-edit" [hidden]="nameEdited" (click)="editName()"
+        <div class="xb-store-template__store-name xb-shop__template-edit xb-pointer" [hidden]="nameEdited" (click)="editName()"
              [innerHTML]="nameTag | safeHtml">
         </div>
         <div class="xb-store-template__store-name xb-shop__template-edit" [hidden]="!nameEdited">
@@ -42,7 +42,7 @@
                     SAVE
                   </div>
                 </div>
-                <div class="xb-shop__template-title ql-editor" [hidden]="titleEdited" (click)="editTitle()"
+                <div class="xb-shop__template-title ql-editor xb-pointer" [hidden]="titleEdited" (click)="editTitle()"
                      [innerHTML]="titleTag | safeHtml">
                 </div>
                 <div class="xb-shop__template-title xb-shop__template-edit" [hidden]="!titleEdited">
@@ -52,7 +52,7 @@
                     CLICK TO SAVE
                   </div>
                 </div>
-                <div class="xb-shop__template-description ql-editor" [hidden]="descriptionEdited"
+                <div class="xb-shop__template-description ql-editor xb-pointer" [hidden]="descriptionEdited"
                      (click)="editDescription()"
                      [innerHTML]="descriptionTag | safeHtml">
                 </div>
@@ -152,7 +152,7 @@
               <app-image-upload-preview-blog [(previewImgFile)]="aboutMeSrc" [(previewImgSrc)]="aboutMeSrc"
                                              [type]="uploadAboutType"></app-image-upload-preview-blog>
             </div>
-            <div class="xb-store-template__about-user xb-shop__template-edit ql-editor" [hidden]="userEdited"
+            <div class="xb-store-template__about-user xb-shop__template-edit ql-editor xb-pointer" [hidden]="userEdited"
                  (click)="editUser()"
                  [innerHTML]="userTag | safeHtml">
             </div>
