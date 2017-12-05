@@ -1538,9 +1538,16 @@ textarea.mat-input-element {
   overflow-x: hidden;
   background-color: #fff;
   z-index: 500; }
+  .xb-template-2-edit__100vh {
+    min-height: 100vh;
+    background-color: white; }
   .xb-template-2-edit__container {
-    max-width: 1440px;
-    margin: auto; }
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto; }
   .xb-template-2-edit__edit-border {
     border: 1px solid #00bdd6; }
     .xb-template-2-edit__edit-border > input {
@@ -2097,6 +2104,7 @@ textarea.mat-input-element {
 .xb-store-template__collection-title {
   font-size: 48px;
   width: 100%;
+  margin-bottom: 30px;
   margin-top: 60px;
   text-align: center;
   color: rgba(0, 0, 0, 0.87);

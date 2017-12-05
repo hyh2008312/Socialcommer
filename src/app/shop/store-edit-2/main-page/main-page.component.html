@@ -174,97 +174,107 @@
     </div>
     <!--2 products-->
     <div [hidden]="viewIndex != 1">
-      <!--头部消息-->
-      <div class="xb-template-2-edit__container">
-        <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
-          <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-template-2-edit__100vh" fxLayout="row" fxLayoutAlign="start stretch">
+        <div fxFlex fxLayout="column">
+          <!--头部消息-->
+          <div class="xb-template-2-edit__container">
+            <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
+              <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
-            <div class="xb-template-2-edit__store-name xb-pointer xb-template-2-edit__edit-border " [ngStyle]="{'color':'black'}"
-                 [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
+                <div class="xb-template-2-edit__store-name xb-pointer xb-template-2-edit__edit-border "
+                     [ngStyle]="{'color':'black'}"
+                     [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
-            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
-                 [hidden]="!nameEdited">
-              <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
+                <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
+                     [hidden]="!nameEdited">
+                  <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
+                </div>
+                <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
+                                                      (routerChange)="changeViewIndex($event)"
+                                                      fxFlex></app-store-template-edit-2-navigation>
+              </div>
             </div>
-            <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
-                                                  (routerChange)="changeViewIndex($event)"
-                                                  fxFlex></app-store-template-edit-2-navigation>
-          </div>
-        </div>
 
-        <div class="xb-store-template__collection-title">
-          Products
-        </div>
-      </div>
-      <!--产品列表-->
-      <div class="xb-store-template__collection—product">
-        <div class="xb-store-template__collection—category" fxLayout="column" fxLayoutAlign="start start" fxShow="true"
-             fxShow.xs="false">
-          <app-store-template-edit-2-category fxFlexAlign="center" [(category)]="category" [categories]="categories"
-                                              (categoryChange)="changeCategory()"></app-store-template-edit-2-category>
-        </div>
-        <div>
-          <div class="xb-store-template__list-products md-margin-top-1">
-            <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
-              <app-store-item-card-edit *ngFor="let item of product"
-                                        fxFlex.xs="48" fxFlex.gt-xs="30"
-                                        [product]="item" [status]="1"></app-store-item-card-edit>
-              <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+            <div class="xb-store-template__collection-title">
+              Products
             </div>
           </div>
+          <!--产品列表-->
+          <div class="xb-store-template__collection—product" fxFlex="noshrink">
+            <div class="xb-store-template__collection—category" fxLayout="column" fxLayoutAlign="start start"
+                 fxShow="true"
+                 fxShow.xs="false">
+              <app-store-template-edit-2-category fxFlexAlign="center" [(category)]="category" [categories]="categories"
+                                                  (categoryChange)="changeCategory()"></app-store-template-edit-2-category>
+            </div>
+            <div>
+              <div class="xb-store-template__list-products md-margin-top-1">
+                <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+                  <app-store-item-card-edit *ngFor="let item of product"
+                                            fxFlex.xs="48" fxFlex.gt-xs="30"
+                                            [product]="item" [status]="1"></app-store-item-card-edit>
+                  <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--网页底部-->
+          <div>
+            <app-store-template-edit-2-store-foot [storeName]="store.name"></app-store-template-edit-2-store-foot>
+          </div>
         </div>
-      </div>
-      <!--网页底部-->
-      <div>
-        <app-store-template-edit-2-store-foot [storeName]="store.name"></app-store-template-edit-2-store-foot>
       </div>
     </div>
     <!--3 about me -->
     <div [hidden]="viewIndex != 2">
-      <div class="xb-template-2-edit__container">
-        <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
-          <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-template-2-edit__100vh" fxLayout="row" fxLayoutAlign="start stretch">
+        <div fxFlex fxLayout="column">
+          <div class="xb-template-2-edit__container">
+            <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
+              <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
-            <div class="xb-template-2-edit__store-name xb-pointer xb-template-2-edit__edit-border"
-                 [ngStyle]="{'color':'black'}"
-                 [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
+                <div class="xb-template-2-edit__store-name xb-pointer xb-template-2-edit__edit-border"
+                     [ngStyle]="{'color':'black'}"
+                     [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
-            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
-                 [hidden]="!nameEdited">
-              <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
+                <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
+                     [hidden]="!nameEdited">
+                  <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
+                </div>
+
+                <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
+                                                      (routerChange)="changeViewIndex($event)"
+                                                      fxFlex></app-store-template-edit-2-navigation>
+              </div>
             </div>
 
-            <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
-                                                  (routerChange)="changeViewIndex($event)"
-                                                  fxFlex></app-store-template-edit-2-navigation>
+            <div class="xb-store-template__collection-title">
+              About Me
+            </div>
+          </div>
+          <div class="xb-store-template__about-bg" fxFlex="noshrink">
+            <div class="xb-store-template__about-image-bg xb-template-2-edit__edit-border">
+              <app-image-upload-preview-blog [(previewImgFile)]="aboutMeCover" [(previewImgSrc)]="aboutMeCover"
+                                             [type]="uploadAboutType"></app-image-upload-preview-blog>
+            </div>
+            <div class="xb-store-template__introduce-one-describe xb-pointer xb-template-2-edit__edit-border ql-editor"
+                 [innerHTML]="aboutMeNewTag | safeHtml" [hidden]="aboutMeNewEdited" (click)="editAboutMeNew()"></div>
+
+            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
+                 [hidden]="!aboutMeNewEdited">
+              <quill-editor formControlName="aboutMeNewTag" [ngModel]="aboutMeNewTag"
+                            (ngModelChange)="changeAboutMe($event)"
+                            [options]="editorConfig"></quill-editor>
+              <div class="xb-template-2-edit__edit-button" (click)="editAboutMeNew()">
+                CLICK TO SAVE
+              </div>
+            </div>
+          </div>
+          <!--网页底部-->
+          <div>
+            <app-store-template-edit-2-store-foot [storeName]="store.name"></app-store-template-edit-2-store-foot>
           </div>
         </div>
-
-        <div class="xb-store-template__collection-title">
-          About me
-        </div>
-      </div>
-      <div class="xb-store-template__about-bg">
-        <div class="xb-store-template__about-image-bg xb-template-2-edit__edit-border">
-          <app-image-upload-preview-blog [(previewImgFile)]="aboutMeCover" [(previewImgSrc)]="aboutMeCover"
-                                         [type]="uploadAboutType"></app-image-upload-preview-blog>
-        </div>
-        <div class="xb-store-template__introduce-one-describe xb-pointer xb-template-2-edit__edit-border ql-editor"
-             [innerHTML]="aboutMeNewTag | safeHtml" [hidden]="aboutMeNewEdited" (click)="editAboutMeNew()"></div>
-
-        <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
-             [hidden]="!aboutMeNewEdited">
-          <quill-editor formControlName="aboutMeNewTag" [ngModel]="aboutMeNewTag"
-                        (ngModelChange)="changeAboutMe($event)"
-                        [options]="editorConfig"></quill-editor>
-          <div class="xb-template-2-edit__edit-button" (click)="editAboutMeNew()">
-            CLICK TO SAVE
-          </div>
-        </div>
-      </div>
-      <!--网页底部-->
-      <div>
-        <app-store-template-edit-2-store-foot [storeName]="store.name"></app-store-template-edit-2-store-foot>
       </div>
     </div>
   </form>
