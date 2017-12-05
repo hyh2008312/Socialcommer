@@ -271,6 +271,8 @@ export class MainPageComponent implements OnInit {
                   self.homeMadeDesTag = value.context.homeMadeDesTag != '' ? value.context.homeMadeDesTag : self.homeMadeDesTag;
                   self.homeMadeTitle = value.context.homeMadeTitle != '' ? value.context.homeMadeTitle : self.homeMadeTitle;
 
+
+
                   self.imageHomeMade = value.image.imageHomeMade;
                   self.bannerImageStr = value.image.bannerImageStr;
                   self.aboutMeCover = value.image.aboutMeCover;

@@ -7,7 +7,7 @@
         <div class="xb-store-template__template-mask"></div>
         <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
-          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
+          <div class="xb-template-2-edit__store-name xb-pointer xb-template-2-edit__edit-border"
                [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
           <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
@@ -27,7 +27,7 @@
             </div>
           </div>
 
-          <div class="xb-template-2-edit__store-title xb-template-2-edit__edit-border ql-editor"
+          <div class="xb-template-2-edit__store-title xb-pointer xb-template-2-edit__edit-border ql-editor"
                [innerHTML]="titleTag | safeHtml" [hidden]="titleEdited" (click)="editTitle()"></div>
           <div class="xb-template-2-edit__store-title xb-template-2-edit__edit-border" [hidden]="!titleEdited">
             <quill-editor formControlName="titleTag" [(ngModel)]="titleTag" [options]="editorConfig"></quill-editor>
@@ -36,7 +36,7 @@
             </div>
           </div>
 
-          <div class="xb-template-2-edit__store-description xb-template-2-edit__edit-border ql-editor"
+          <div class="xb-template-2-edit__store-description  xb-pointer xb-template-2-edit__edit-border ql-editor"
                [innerHTML]="descriptionTag | safeHtml" [hidden]="descriptionEdited" (click)="editDescription()"></div>
 
           <div class="xb-template-2-edit__store-description xb-template-2-edit__edit-border"
@@ -65,12 +65,12 @@
             <div class="xb-store-template__introduce-one-title">About Me</div>
             <div class="xb-store-template__introduce-title-line"></div>
 
-            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border ql-editor"
+            <div class="xb-store-template__introduce-one-describe xb-pointer xb-template-2-edit__edit-border ql-editor"
                  [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"></div>
 
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
                  [hidden]="!aboutMeEdited">
-              <quill-editor formControlName="aboutMeTag" (ngModelChange)="changeAboutMe($event)"
+              <quill-editor formControlName="aboutMeTag" [ngModel]="aboutMeTag" (ngModelChange)="changeAboutMe($event)"
                             [options]="editorConfig"></quill-editor>
 
               <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
@@ -86,11 +86,13 @@
             <div class="xb-store-template__introduce-one-top-image xb-template-2-edit__edit-border"
                  [ngStyle]="{'background': 'url(' + (aboutMeOneImageStr) + ') center / 100% 100% ' }"
             >
-              <app-image-upload-preview-two-template [(previewImgFile)]="aboutMeOneImageStr" [(previewImgSrc)]="aboutMeOneImageStr"
+              <app-image-upload-preview-two-template [(previewImgFile)]="aboutMeOneImageStr"
+                                                     [(previewImgSrc)]="aboutMeOneImageStr"
                                                      [type]="uploadAboutType"></app-image-upload-preview-two-template>
               <div class="xb-template-2-edit__image-position xb-template-2-edit__edit-border">
-                <app-image-upload-preview-two-template [(previewImgFile)]="aboutMeTwoImageStr" [(previewImgSrc)]="aboutMeTwoImageStr"
-                                               [type]="uploadAboutType"></app-image-upload-preview-two-template>
+                <app-image-upload-preview-two-template [(previewImgFile)]="aboutMeTwoImageStr"
+                                                       [(previewImgSrc)]="aboutMeTwoImageStr"
+                                                       [type]="uploadAboutType"></app-image-upload-preview-two-template>
               </div>
 
             </div>
@@ -101,10 +103,12 @@
             <div class="xb-store-template__introduce-two-bottom-image xb-template-2-edit__edit-border"
                  [ngStyle]="{'background': 'url(' + (homeMadeOneImageStr) + ') center / auto 100% ' }"
             >
-              <app-image-upload-preview-two-template [(previewImgFile)]="homeMadeOneImageStr" [(previewImgSrc)]="homeMadeOneImageStr"
+              <app-image-upload-preview-two-template [(previewImgFile)]="homeMadeOneImageStr"
+                                                     [(previewImgSrc)]="homeMadeOneImageStr"
                                                      [type]="uploadAboutType"></app-image-upload-preview-two-template>
               <div class="xb-template-2-edit__image-home-position xb-template-2-edit__edit-border">
-                <app-image-upload-preview-two-template [(previewImgFile)]="homeMadeTwoImageStr" [(previewImgSrc)]="homeMadeTwoImageStr"
+                <app-image-upload-preview-two-template [(previewImgFile)]="homeMadeTwoImageStr"
+                                                       [(previewImgSrc)]="homeMadeTwoImageStr"
                                                        [type]="uploadAboutType"></app-image-upload-preview-two-template>
               </div>
             </div>
@@ -113,7 +117,7 @@
 
 
           <div class="xb-store-template__introduce-two-bottom-right">
-            <div class="xb-store-template__introduce-two-describe xb-template-2-edit__edit-border ql-editor"
+            <div class="xb-store-template__introduce-two-describe  xb-pointer xb-template-2-edit__edit-border ql-editor"
                  [innerHTML]="homeMadeDesTag | safeHtml" [hidden]="homeMadeDesEdited" (click)="editHomeMadeDes()"></div>
 
             <div class="xb-store-template__introduce-two-describe xb-template-2-edit__edit-border"
@@ -132,7 +136,7 @@
       <div class="xb-store-template__home-made xb-template-2-edit__edit-border"
            [ngStyle]="{'background': 'url(' + imageHomeMade + ') center / 1920px auto no-repeat' }">
         <div class="xb-store-template__template-mask"></div>
-        <div class="xb-store-template__home-made-title xb-template-2-edit__edit-border ql-editor"
+        <div class="xb-store-template__home-made-title xb-pointer xb-template-2-edit__edit-border ql-editor"
              [innerHTML]="homeMadeTitle | safeHtml" [hidden]="homeMadeTitleEdited" (click)="editHomeMadeTitle()"></div>
 
         <div class="xb-store-template__home-made-title xb-template-2-edit__edit-border"
@@ -175,7 +179,7 @@
         <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
           <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
-            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border " [ngStyle]="{'color':'black'}"
+            <div class="xb-template-2-edit__store-name xb-pointer xb-template-2-edit__edit-border " [ngStyle]="{'color':'black'}"
                  [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
             <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
@@ -221,7 +225,7 @@
         <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
           <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
-            <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border"
+            <div class="xb-template-2-edit__store-name xb-pointer xb-template-2-edit__edit-border"
                  [ngStyle]="{'color':'black'}"
                  [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
@@ -245,12 +249,13 @@
           <app-image-upload-preview-blog [(previewImgFile)]="aboutMeCover" [(previewImgSrc)]="aboutMeCover"
                                          [type]="uploadAboutType"></app-image-upload-preview-blog>
         </div>
-        <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border ql-editor"
+        <div class="xb-store-template__introduce-one-describe xb-pointer xb-template-2-edit__edit-border ql-editor"
              [innerHTML]="aboutMeNewTag | safeHtml" [hidden]="aboutMeNewEdited" (click)="editAboutMeNew()"></div>
 
         <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
              [hidden]="!aboutMeNewEdited">
-          <quill-editor formControlName="aboutMeNewTag" (ngModelChange)="changeAboutMe($event)"
+          <quill-editor formControlName="aboutMeNewTag" [ngModel]="aboutMeNewTag"
+                        (ngModelChange)="changeAboutMe($event)"
                         [options]="editorConfig"></quill-editor>
           <div class="xb-template-2-edit__edit-button" (click)="editAboutMeNew()">
             CLICK TO SAVE
@@ -279,7 +284,8 @@
   </div>
 </div>
 <div class="xb-template-2-edit__background" *ngIf="imageHomeMadeEdited">
-  <div class="xb-store-template__detail-close" (click)="editImageHomeMade()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
+  <div class="xb-store-template__detail-close" (click)="editImageHomeMade()" fxShow="false" fxShow.sm="true"
+       fxShow.xs="true">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-store-template__detail">
@@ -293,10 +299,10 @@
   </div>
 </div>
 <div class="xb-template-2-edit__background" *ngIf="storeEdited">
-  <div class="xb-store-template__detail-close" (click)="editStore()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+  <div class="xb-store-template__detail-close" (click)="editStore()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
-  <div class="xb-store-template__detail" >
+  <div class="xb-store-template__detail">
     <div class="xb-store-template__detail-close" (click)="editStore()" fxShow="false" fxShow.gt-sm="true">
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
@@ -322,7 +328,7 @@
             Store Description
           </div>
           <mat-form-field class="xb-template-2-edit__width-100">
-            <textarea matInput  formControlName="description"></textarea>
+            <textarea matInput formControlName="description"></textarea>
           </mat-form-field>
           <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
             <div>
