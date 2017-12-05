@@ -38,6 +38,7 @@ import { CategoryEditDialogComponent } from "./category-edit-dialog/category-edi
 import { BlogCreateDialogComponent } from "./blog-create-dialog/blog-create-dialog.component";
 import { BlogEditDialogComponent } from "./blog-edit-dialog/blog-edit-dialog.component";
 import { BlogDeleteDialogComponent } from "./blog-delete-dialog/blog-delete-dialog.component";
+import { SettingsPasswordDialogComponent } from "./setting-password-dialog/setting-password-dialog.component"
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -90,7 +91,8 @@ import { SharedModule } from '../shared/shared.module';
     CategoryEditDialogComponent,
     BlogCreateDialogComponent,
     BlogEditDialogComponent,
-    BlogDeleteDialogComponent
+    BlogDeleteDialogComponent,
+    SettingsPasswordDialogComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
@@ -99,7 +101,8 @@ import { SharedModule } from '../shared/shared.module';
     CategoryCreateDialogComponent,
     CategoryDeleteDialogComponent,
     CategoryEditDialogComponent,
-    BlogDeleteDialogComponent
+    BlogDeleteDialogComponent,
+    SettingsPasswordDialogComponent
   ],
   providers: [
     ShopService,

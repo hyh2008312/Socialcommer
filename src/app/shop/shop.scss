@@ -932,6 +932,17 @@
     padding: 16px;
   }
 
+  &__setting-button{
+    line-height: 40px;
+    border-radius: 4px;
+    color: $primaryColor;
+    display: block;
+    cursor: pointer;
+    &:hover{
+      background-color: rgba(0,0,0,.12);
+    }
+  }
+
   &__pop-bg{
     position: relative;
     padding: 8px 0 8px 8px;
@@ -1020,6 +1031,16 @@
 
   &__margin-top{
     margin-top: 48px;
+  }
+
+  &__width-100{
+    width: 720px;
+    .mat-form-field{
+      width: 100%;
+    }
+    @include xb-xs-screen{
+      width: 100%;
+    }
   }
 }
 

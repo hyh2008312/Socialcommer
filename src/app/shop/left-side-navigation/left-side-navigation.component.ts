@@ -13,6 +13,7 @@ import { ShopService } from '../shop.service';
 export class LeftSideNavigationComponent implements OnInit {
 
   contents = [{
+    id: 0,
     icon: 'icon-pic-dashboard',
     text: 'Dashboard',
     subContent: [{
@@ -22,6 +23,7 @@ export class LeftSideNavigationComponent implements OnInit {
     router: './dashboard',
     isActive: false
   }, {
+    id: 1,
     icon: 'icon-pic-product',
     text: 'Listings',
     subContent: [{
@@ -39,6 +41,7 @@ export class LeftSideNavigationComponent implements OnInit {
     isActive: false,
     index: 0
   }, {
+    id: 2,
     icon: 'icon-pic-store',
     text: 'Store',
     subContent: [{
@@ -56,6 +59,7 @@ export class LeftSideNavigationComponent implements OnInit {
     isActive: false,
     index: 1
   }, {
+    id: 3,
     icon: 'icon-pic-blog',
     text: 'Blogs',
     subContent: [{
@@ -65,6 +69,7 @@ export class LeftSideNavigationComponent implements OnInit {
     router: './blog',
     isActive: false
   }, {
+    id: 4,
     icon: 'icon-ic-new-hand',
     text: 'To-do List',
     subContent: [{
@@ -74,6 +79,7 @@ export class LeftSideNavigationComponent implements OnInit {
     router: './toDoList',
     isActive: false
   }, {
+    id: 5,
     icon: 'icon-ic-pc-set',
     text: 'Account',
     subContent: [{
@@ -120,7 +126,9 @@ export class LeftSideNavigationComponent implements OnInit {
   changeSlide(obj:any, index: number) {
 
     for(let value of this.contents) {
-      value.isActive = false;
+      if(value.id != obj.id) {
+        value.isActive = false;
+      }
     }
     obj.isActive = !obj.isActive;
     if(obj.router) {

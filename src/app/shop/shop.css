@@ -2204,6 +2204,14 @@ textarea.mat-input-element {
   border-radius: 4px;
   overflow: hidden;
   padding: 16px; }
+.xb-shop__setting-button {
+  line-height: 40px;
+  border-radius: 4px;
+  color: #00bdd6;
+  display: block;
+  cursor: pointer; }
+  .xb-shop__setting-button:hover {
+    background-color: rgba(0, 0, 0, 0.12); }
 .xb-shop__pop-bg {
   position: relative;
   padding: 8px 0 8px 8px;
@@ -2273,6 +2281,13 @@ textarea.mat-input-element {
     color: rgba(0, 0, 0, 0.87); }
   .xb-share-dialog__margin-top {
     margin-top: 48px; }
+  .xb-share-dialog__width-100 {
+    width: 720px; }
+    .xb-share-dialog__width-100 .mat-form-field {
+      width: 100%; }
+    @media screen and (max-width: 599px) {
+      .xb-share-dialog__width-100 {
+        width: 100%; } }
 
 .xb-affiliate-dialog {
   padding: 56px;

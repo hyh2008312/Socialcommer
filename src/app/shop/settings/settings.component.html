@@ -49,6 +49,47 @@
           <mat-form-field class="xb-shop__width-100">
             <textarea matInput formControlName="biography"></textarea>
           </mat-form-field>
+          <div class="md-dark-secondary" *ngIf="false">
+            Connect Your Social Media with Your Store
+          </div>
+          <div fxLayout="column" *ngIf="false">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <div class="md-dark-secondary md-margin-right-2">
+                  Youtube URL:
+                </div>
+                <mat-form-field>
+                  <input matInput formControlName="youtube">
+                </mat-form-field>
+              </div>
+              <div class="md-margin-left-2" fxLayout="row" fxLayoutAlign="start center">
+                <div class="md-dark-secondary md-margin-right-2">
+                  Instagram URL:
+                </div>
+                <mat-form-field>
+                  <input matInput formControlName="instagram">
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <div class="md-dark-secondary md-margin-right-2">
+                  Facebook URL:
+                </div>
+                <mat-form-field>
+                  <input matInput formControlName="facebook" >
+                </mat-form-field>
+              </div>
+              <div class="md-margin-left-2" fxLayout="row" fxLayoutAlign="start center">
+                <div class="md-dark-secondary md-margin-right-2">
+                  Twitter URL:
+                </div>
+                <mat-form-field>
+                  <input matInput formControlName="twitter">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
         </form>
         <div class="md-dark-secondary">
           Profile Picture
@@ -61,7 +102,7 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Change Email Address">
+    <mat-tab label="Change Email Password">
       <div class="md-margin-top-2 xb-shop__setting-bg">
         <form class="md-margin-top-1" [formGroup]="emailForm" novalidate>
           <div class="md-dark-secondary">
@@ -74,53 +115,14 @@
             {{ formErrors['email'] }}
           </div>
         </form>
+        <div class="md-dark-secondary md-margin-top-1">
+          Email Address
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="md-margin-top-2 xb-shop__setting-button" (click)="passwordDialog()">CHANGE PASSWORD</div>
+        </div>
         <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
           <button mat-raised-button color="primary" (click)="changeEmail()">SAVE CHANGE</button>
-        </div>
-      </div>
-    </mat-tab>
-    <mat-tab label="Change Password">
-      <div class="md-margin-top-2 xb-shop__setting-bg">
-        <form class="md-margin-top-1" [formGroup]="settingForm" novalidate>
-          <div class="md-dark-secondary">
-            Current Password
-          </div>
-          <mat-form-field>
-            <input matInput type="password" formControlName="currentPassword">
-          </mat-form-field>
-
-          <div *ngIf="formErrors['currentPassword']" class="xb-input-error">
-            {{ formErrors['currentPassword'] }}
-          </div>
-
-          <div class="md-dark-secondary">
-            New Password
-          </div>
-          <mat-form-field>
-            <input matInput type="text" formControlName="password"
-                   validateEqual="confirmPassword"
-                   reverse="true">
-          </mat-form-field>
-          <div *ngIf="formErrors['password']" class="xb-input-error">
-            {{ formErrors['password'] }}
-          </div>
-
-          <div class="md-dark-secondary">
-            Confirm Password
-          </div>
-          <mat-form-field>
-            <input matInput type="text" formControlName="confirmPassword"
-                   validateEqual="password"
-                   reverse="false">
-          </mat-form-field>
-
-          <div *ngIf="formErrors['confirmPassword']" class="xb-input-error">
-            {{ formErrors['confirmPassword'] }}
-          </div>
-        </form>
-        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-          <button mat-raised-button color="primary"
-                  (click)="changePassword()">SAVE CHANGE</button>
         </div>
       </div>
     </mat-tab>

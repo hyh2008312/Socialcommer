@@ -41,7 +41,7 @@ export class BlogCreateDialogComponent implements OnInit {
       title: ['', [
         Validators.required
       ]],
-      context: ['Write down your moment']
+      context: ['']
     });
 
     this.blogForm.valueChanges.subscribe(data => this.onValueChanged(data));

@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ShopService } from '../shop.service';
-
+import { MatDialog } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { ShopService } from '../shop.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
 import { UserService } from  '../../shared/services/user/user.service';
 
 import { MatSnackBar } from '@angular/material';
 import { SnackBarSuccessComponent } from '../snack-bar-success/snack-bar-success.component';
+import { SettingsPasswordDialogComponent } from '../setting-password-dialog/setting-password-dialog.component'
 
 @Component({
   selector: 'app-settings',
@@ -17,11 +19,9 @@ import { SnackBarSuccessComponent } from '../snack-bar-success/snack-bar-success
 export class SettingsComponent implements OnInit {
 
   profileForm: FormGroup;
-  settingForm : FormGroup;
   emailForm: FormGroup;
 
   profileErr: any = false;
-  settingErr : any = false;
   emailErr: any = false;
 
   country: string;
@@ -36,7 +36,8 @@ export class SettingsComponent implements OnInit {
     private shopService: ShopService,
     private constant: ConstantService,
     private userService: UserService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {
 
     this.countries = this.constant.getCountries();
@@ -51,22 +52,11 @@ export class SettingsComponent implements OnInit {
       country: ['', [
         Validators.required
       ]],
-      biography: ['']
-    });
-
-    this.settingForm = this.fb.group({
-      currentPassword: ['', [
-        Validators.required,
-        Validators.minLength(6)
-      ]],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(6)
-      ]],
-      confirmPassword: ['', [
-        Validators.required,
-        Validators.minLength(6)
-      ]]
+      biography: [''],
+      youtube: [''],
+      instagram: [''],
+      facebook: [''],
+      twitter: ['']
     });
 
     this.emailForm = this.fb.group({
@@ -77,7 +67,6 @@ export class SettingsComponent implements OnInit {
     });
 
     this.profileForm.valueChanges.subscribe(data => this.onProfileFormValueChanged(data));
-    this.settingForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.emailForm.valueChanges.subscribe(data => this.onEmailFormValueChanged(data));
   }
 
@@ -88,7 +77,11 @@ export class SettingsComponent implements OnInit {
         firstName: data.firstName,
         lastName: data.lastName,
         country: data.country,
-        biography: data.biography
+        biography: data.biography,
+        youtube: '',
+        instagram: '',
+        facebook: '',
+        twitter: ''
       });
       self.previewImgSrcs = data.avatar;
       self.previewImgFile = data.avatar;
@@ -109,9 +102,6 @@ export class SettingsComponent implements OnInit {
     'firstName': '',
     'lastName': '',
     'country': '',
-    'currentPassword': '',
-    'password': '',
-    'confirmPassword': '',
     'email': ''
   };
   //错误对应的提示
@@ -124,19 +114,6 @@ export class SettingsComponent implements OnInit {
     },
     'country': {
       'required': 'This field is required.'
-    },
-    'currentPassword': {
-      'required': 'This field is required.',
-      'minlength': 'Password must contain at least 6 characters.'
-    },
-    'password': {
-      'required': 'This field is required.',
-      'minlength': 'Password must contain at least 6 characters.'
-    },
-    'confirmPassword':{
-      'required': 'This field is required.',
-      'minlength': 'ConfirmPassword must contain at least 6 characters.',
-      'validateEqual': 'ConfirmPassword is different from Password.'
     },
     'email':{
       'required': 'This field is required.',
@@ -161,26 +138,6 @@ export class SettingsComponent implements OnInit {
         const messages = this.validationMessages[field];
         //从errors里取出错误类型，再拼上该错误对应的信息
         for(const key in control.errors) {
-          this.formErrors[field] += messages[key] + '';
-          break;
-        }
-      }
-
-    }
-
-  }
-  onValueChanged(data) {
-
-    for (const field in this.formErrors) {
-      this.formErrors[field] = '';
-      //取到表单字段
-      const control = this.settingForm.get(field);
-      //表单字段已修改或无效
-      if (control && control.dirty && !control.valid) {
-        //取出对应字段可能的错误信息
-        const messages = this.validationMessages[field];
-        //从errors里取出错误类型，再拼上该错误对应的信息
-        for (const key in control.errors) {
           this.formErrors[field] += messages[key] + '';
           break;
         }
@@ -240,17 +197,13 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  changePassword():void {
-    if(!this.settingForm.valid) {
-      return;
-    }
+  passwordDialog() {
+    let dialogRef = this.dialog.open(SettingsPasswordDialogComponent, {
+      data: {}
+    });
 
-    let self = this;
-    self.shopService.changePassword({
-      currentPassword: this.settingForm.value.currentPassword,
-      password: this.settingForm.value.password
-    }).then((data) => {
-      self.openSnackBar();
+    dialogRef.afterClosed().subscribe(result => {
+
     });
   }
 

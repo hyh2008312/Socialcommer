@@ -8,18 +8,18 @@
     </div>
     <div class="xb-shop__mobile-dialog-inner">
       <form [formGroup]="blogForm" novalidate>
-        <div class="xb-shop__edit-title">Blog Cover <span class="xb-input-error xb-large-star">*</span></div>
+        <div class="xb-shop__edit-title">Blog Cover Image <span class="xb-input-error xb-large-star">*</span></div>
         <div class="md-margin-top-2">
           <app-image-upload-preview-blog [(previewImgFile)]="previewImgFile" [(previewImgSrc)]="previewImgSrc"></app-image-upload-preview-blog>
         </div>
-        <div class="md-margin-top-2 xb-shop__edit-title">Title <span class="xb-input-error xb-large-star">*</span></div>
+        <div class="md-margin-top-2 xb-shop__edit-title">Blog Title <span class="xb-input-error xb-large-star">*</span></div>
         <mat-form-field class="xb-shop__width-100">
           <input matInput formControlName="title">
         </mat-form-field>
         <div *ngIf="formErrors['title']" class="xb-input-error">
           {{ formErrors['title'] }}
         </div>
-        <div class="xb-shop__edit-title">Description <span class="xb-input-error xb-large-star">*</span></div>
+        <div class="xb-shop__edit-title">Write Blog Contents to Engage Your Visitors <span class="xb-input-error xb-large-star">*</span></div>
         <div class="md-margin-top-2">
           <quill-editor formControlName="context"
                         (ready)="onEditorCreated($event)"></quill-editor>
