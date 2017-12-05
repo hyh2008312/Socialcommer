@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild, OnChanges} from '@angular/core';
 import { ImageUploadPreviewService } from "./image-upload-preview.service";
 import { AngularCropperjsComponent } from 'angular-cropperjs';
 import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
@@ -38,6 +38,15 @@ export class ImageUploadPreviewComponent implements OnInit {
     }
   }
 
+  ngOnChanges() {
+    this.config = {
+      aspectRatio : this.ratio,
+      scalable: true,
+    }
+  }
+
+
+
   ngOnInit() {
   }
 
@@ -76,6 +85,7 @@ export class ImageUploadPreviewComponent implements OnInit {
     image.onload = function(){
       let width = image.width;
       let height = image.height;
+      console.log(width + "|" + height)
 
       that.s3UploaderService.upload({
         type: 'COLLECTOR_STORE_TEMPLATE',
