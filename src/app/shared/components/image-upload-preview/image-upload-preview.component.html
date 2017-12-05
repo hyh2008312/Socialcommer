@@ -15,7 +15,7 @@
     <angular-cropper #angularCropper [cropperOptions]="config" [imageUrl]="previewImgSrcs"></angular-cropper>
   </div>
   <div class="md-margin-top-2">
-    <button mat-raised-button color="primary" (click)="onCropped()">Save</button>
+    <button mat-raised-button color="primary" (click)="onCropped()">UPLOAD</button>
   </div>
 </div>
 <div class="md-margin-top-2" *ngIf="upload && croppedSrc">
@@ -23,7 +23,7 @@
     <img src="{{croppedSrc}}" >
   </div>
   <div class="md-margin-top-2">
-    <button mat-raised-button color="accent" >Uploading ...</button>
+    <button mat-raised-button color="accent" >UPLOADING ...</button>
   </div>
 </div>
 
