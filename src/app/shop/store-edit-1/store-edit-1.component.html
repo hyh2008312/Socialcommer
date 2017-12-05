@@ -13,13 +13,13 @@
             SAVE
           </div>
         </div>
-        <div class="xb-shop__template-name" [hidden]="nameEdited" (click)="editName()"
+        <div class="xb-shop__template-name xb-pointer" [hidden]="nameEdited" (click)="editName()"
              [innerHTML]="nameTag | safeHtml">
         </div>
         <div class="xb-shop__template-name xb-shop__template-edit" [hidden]="!nameEdited">
           <input formControlName="nameTag" [(ngModel)]="nameTag">
         </div>
-        <div class="xb-shop__template-title ql-editor" [hidden]="titleEdited" (click)="editTitle()"
+        <div class="xb-shop__template-title ql-editor xb-pointer" [hidden]="titleEdited" (click)="editTitle()"
              [innerHTML]="titleTag | safeHtml">
         </div>
         <div class="xb-shop__template-title xb-shop__template-edit" [hidden]="!titleEdited">
@@ -29,7 +29,7 @@
             CLICK TO SAVE
           </div>
         </div>
-        <div class="xb-shop__template-description ql-editor" [hidden]="descriptionEdited"
+        <div class="xb-shop__template-description ql-editor xb-pointer" [hidden]="descriptionEdited"
              (click)="editDescription()"
              [innerHTML]="descriptionTag | safeHtml">
         </div>
@@ -84,13 +84,13 @@
               <app-image-upload-header [(previewImgFile)]="previewImgFile" [(previewImgSrcs)]="previewImgSrcs"
               [larger]="true"></app-image-upload-header>
             </div>
-            <div class="xb-shop__template-user-name" [hidden]="userNameEdited" (click)="editUserName()"
+            <div class="xb-shop__template-user-name xb-pointer" [hidden]="userNameEdited" (click)="editUserName()"
                  [innerHTML]="userProfile.firstName | safeHtml">
             </div>
             <div class="xb-shop__template-user-name xb-shop__template-edit" [hidden]="!userNameEdited" >
               <input formControlName="name" [(ngModel)]="userProfile.firstName">
             </div>
-            <div class="xb-shop__template-user-country" [hidden]="userCountryEdited" (click)="editUserCountry()"
+            <div class="xb-shop__template-user-country xb-pointer" [hidden]="userCountryEdited" (click)="editUserCountry()"
                  [innerHTML]="userCountry | safeHtml">
             </div>
             <div class="xb-shop__template-user-country xb-shop__template-edit" [hidden]="!userCountryEdited" >
@@ -107,7 +107,7 @@
             <div class="xb-store__icons md-dark-third" fxShow.xs="false">
               <i class="iconfontXberts icon-pic-quota"></i>
             </div>
-            <div class="xb-shop__template-user ql-editor" [hidden]="userEdited"
+            <div class="xb-shop__template-user ql-editor xb-pointer" [hidden]="userEdited"
                  (click)="editUser()"
                  [innerHTML]="userTag | safeHtml">
             </div>
