@@ -147,7 +147,7 @@ export class MainPageComponent implements OnInit {
               private shopService: ShopService,
               private dialog: MatDialog) {
     this.viewIndex = 0;
-    this.ratio =1920/270 ;
+    this.ratio = 1920/270 ;
     let self = this;
     self.storeTemplateForm = self.fb.group({
       nameTag: [self.nameTag],
