@@ -12,6 +12,7 @@ export class ImageUploadPreviewComponent implements OnInit {
 
   @Input() previewImgFile;
   @Output() previewImgFileChange: EventEmitter<string> = new EventEmitter();
+  @Input() ratio = 1920 / 500;
 
   @ViewChild('angularCropper') public angularCropper: AngularCropperjsComponent;
 
@@ -21,6 +22,7 @@ export class ImageUploadPreviewComponent implements OnInit {
   croppedSrc: any = false;
   config: Object;
 
+
   file: any;
 
   public cropper : AngularCropperjsComponent;
@@ -29,8 +31,9 @@ export class ImageUploadPreviewComponent implements OnInit {
     private previewImageService: ImageUploadPreviewService,
     private s3UploaderService : S3UploaderService
   ) {
+    console.log("----->"+this.ratio);
     this.config = {
-      aspectRatio : 1920 / 500,
+      aspectRatio : this.ratio,
       scalable: true,
     }
   }

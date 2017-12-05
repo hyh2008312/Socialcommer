@@ -70,7 +70,7 @@
 
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
                  [hidden]="!aboutMeEdited">
-              <quill-editor formControlName="aboutMeTag" (ngModelChange)="changeAboutMe(aboutMeTag)"
+              <quill-editor formControlName="aboutMeTag" (ngModelChange)="changeAboutMe($event)"
                             [options]="editorConfig"></quill-editor>
 
               <div class="xb-template-2-edit__edit-button" (click)="editAboutMe()">
@@ -130,7 +130,7 @@
       </div>
       <!--home-made-->
       <div class="xb-store-template__home-made xb-template-2-edit__edit-border"
-           [ngStyle]="{'background': 'url(' + imageHomeMade + ') center / auto 560px no-repeat' }">
+           [ngStyle]="{'background': 'url(' + imageHomeMade + ') center / 1920px auto no-repeat' }">
         <div class="xb-store-template__template-mask"></div>
         <div class="xb-store-template__home-made-title xb-template-2-edit__edit-border ql-editor"
              [innerHTML]="homeMadeTitle | safeHtml" [hidden]="homeMadeTitleEdited" (click)="editHomeMadeTitle()"></div>
@@ -250,7 +250,7 @@
 
         <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
              [hidden]="!aboutMeNewEdited">
-          <quill-editor formControlName="aboutMeNewTag" (ngModelChange)="changeAboutMe(aboutMeNewTag)"
+          <quill-editor formControlName="aboutMeNewTag" (ngModelChange)="changeAboutMe($event)"
                         [options]="editorConfig"></quill-editor>
           <div class="xb-template-2-edit__edit-button" (click)="editAboutMeNew()">
             CLICK TO SAVE
@@ -287,7 +287,7 @@
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
     <div class="xb-template-2-edit__mobile-dialog-inner">
-      <app-image-upload-preview [(previewImgFile)]="imageHomeMade"
+      <app-image-upload-preview [(previewImgFile)]="imageHomeMade" [ratio]="ratio"
                                 (previewImgFileChange)="editImageHomeMade()"></app-image-upload-preview>
     </div>
   </div>

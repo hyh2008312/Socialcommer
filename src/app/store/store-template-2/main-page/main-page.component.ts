@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { StoreService } from '../../store.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {StoreService} from '../../store.service';
+import {Store} from '../../../shop/shop';
 
 @Component({
   selector: 'app-store-template-2',
@@ -9,20 +10,21 @@ import { StoreService } from '../../store.service';
 })
 
 export class MainPageComponent implements OnInit {
-
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private storeService: StoreService
-  ) {
+  public shareLink: string;
+  public text = '';
+  storeName:string;
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private storeService: StoreService) {
 
   }
-
-  ngOnInit():void {
-    let routerArray = this.router.url.split('/');
-    this.storeService.getStore(routerArray[2]).then((data) => {
-
-      this.storeService.addStore(data);
+  ngOnInit(): void {
+    let self = this ;
+    this.storeService.store.subscribe((data) => {
+      if(data) {
+        self.storeName = data.context? data.context.nameTag: data.name;
+        self.text = data.description;
+      }
     });
   }
 

@@ -38,6 +38,8 @@ export class HomePageComponent implements OnInit {
   imageList: any = {};
   ownerId: any;
 
+
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -50,10 +52,10 @@ export class HomePageComponent implements OnInit {
     let firstLoad = false;
 
     this.storeService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.store = data;
-        self.contextList = data.context?data.context: {};
-        self.imageList = data.image?data.image:{};
+        self.contextList = data.context ? data.context : {};
+        self.imageList = data.image ? data.image : {};
         self.text = data.description;
         self.ownerId = data.ownerId;
         self.storeService.addTitleDescription({
@@ -61,7 +63,7 @@ export class HomePageComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        if(data.category.length > 1) {
+        if (data.category.length > 1) {
           self.categories = [{name: 'All'}, ...data.category];
         } else {
           self.categories = [...data.category];
@@ -78,8 +80,6 @@ export class HomePageComponent implements OnInit {
 
       }
     });
-
-
 
 
   }
@@ -109,7 +109,7 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  jumpProductList():void{
+  jumpProductList(): void {
     this.router.navigate([`./store/${this.store.displayName}/2/products`]);
   }
 }

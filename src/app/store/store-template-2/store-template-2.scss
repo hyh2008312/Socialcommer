@@ -3,6 +3,12 @@
 
 .xb-store-template {
 
+
+  &__100vh{
+    min-height: 100vh;
+    background-color: white;
+  }
+
   &__width-1000{
     max-width: 1000px;
     margin-left: auto;
@@ -86,6 +92,8 @@
 
   &__introduce {
     max-width: 1200px;
+    width: 100%;
+    overflow-x: hidden;
     margin-left: auto;
     margin-right: auto;
     margin-top: 88px;
@@ -112,7 +120,7 @@
       color: rgba(0, 0, 0, 0.87);
     }
     &-title-line {
-      width: 70px;
+      width: 145px;
       background-color: rgba(0, 0, 0, 0.87);
       height: 2px;
     }
@@ -190,7 +198,13 @@
       height: 120px;
     }
     &-title {
-
+      position: relative;
+      margin-top: 100px;
+      @include xb-xs-screen {
+        font-size: 20px  !important;
+        font-weight: 600;
+        margin-top: 30px;
+      }
     }
     &-des {
       position: relative;
@@ -307,6 +321,7 @@
 
   &__buttons-bg {
     margin-top: 20px;
+    margin-bottom: 40px;
     > div {
       width: 224px;
       text-align: center;

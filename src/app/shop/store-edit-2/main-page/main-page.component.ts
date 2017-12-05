@@ -6,7 +6,7 @@ import {UserService} from '../../../shared/services/user/user.service';
 import {ShopService} from '../../shop.service';
 import {MatDialog} from '@angular/material';
 import {Store} from '../../shop';
-import { StoreShareDialogComponent } from "../../store-share-dialog/store-share-dialog.component";
+import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-dialog.component';
 
 @Component({
   selector: 'app-store-template-edit-2',
@@ -18,6 +18,7 @@ export class MainPageComponent implements OnInit {
   imageHomeMade: string = 'https://media.socialcommer.com/source/web/pic/pic-2-5.jpg';
 
   shareLink: string;
+  ratio: any;
 
   viewIndex: number;
   //定义字段
@@ -89,7 +90,7 @@ export class MainPageComponent implements OnInit {
   homeMadeTitleEdited: boolean = false;
   imageEdited: boolean = false;
   imageHomeMadeEdited: boolean = false;
-  storeEdited:boolean=false;
+  storeEdited: boolean = false;
 
   editImage() {
     this.imageEdited = !this.imageEdited;
@@ -135,6 +136,7 @@ export class MainPageComponent implements OnInit {
   changeAboutMe($event) {
     this.aboutMeTag = $event;
     this.aboutMeNewTag = $event;
+
   }
 
   constructor(private router: Router,
@@ -145,7 +147,7 @@ export class MainPageComponent implements OnInit {
               private shopService: ShopService,
               private dialog: MatDialog) {
     this.viewIndex = 0;
-
+    this.ratio =1920/270 ;
     let self = this;
     self.storeTemplateForm = self.fb.group({
       nameTag: [self.nameTag],
@@ -261,13 +263,13 @@ export class MainPageComponent implements OnInit {
                 if (value.uid == 2) {
 
                   self.templateId = value.id;
-                  self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
-                  self.titleTag = value.context.titleTag != ''? value.context.titleTag : self.titleTag;
-                  self.descriptionTag = value.context.descriptionTag != ''? value.context.descriptionTag : self.descriptionTag;
-                  self.aboutMeTag = value.context.aboutMeTag != ''? value.context.aboutMeTag : self.aboutMeTag;
-                  self.aboutMeNewTag = value.context.aboutMeNewTag != ''? value.context.aboutMeNewTag : self.aboutMeNewTag;
-                  self.homeMadeDesTag = value.context.homeMadeDesTag != ''? value.context.homeMadeDesTag : self.homeMadeDesTag;
-                  self.homeMadeTitle = value.context.homeMadeTitle != ''? value.context.homeMadeTitle : self.homeMadeTitle;
+                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
+                  self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
+                  self.descriptionTag = value.context.descriptionTag != '' ? value.context.descriptionTag : self.descriptionTag;
+                  self.aboutMeTag = value.context.aboutMeTag != '' ? value.context.aboutMeTag : self.aboutMeTag;
+                  self.aboutMeNewTag = value.context.aboutMeNewTag != '' ? value.context.aboutMeNewTag : self.aboutMeNewTag;
+                  self.homeMadeDesTag = value.context.homeMadeDesTag != '' ? value.context.homeMadeDesTag : self.homeMadeDesTag;
+                  self.homeMadeTitle = value.context.homeMadeTitle != '' ? value.context.homeMadeTitle : self.homeMadeTitle;
 
                   self.imageHomeMade = value.image.imageHomeMade;
                   self.bannerImageStr = value.image.bannerImageStr;
@@ -321,8 +323,8 @@ export class MainPageComponent implements OnInit {
 
   }
 
-  openNavigationDialog(event?:any) {
-    if(event) {
+  openNavigationDialog(event?: any) {
+    if (event) {
       this.changeViewIndex(event);
       return this.isDialogOpen = false;
     }
@@ -342,17 +344,17 @@ export class MainPageComponent implements OnInit {
   }
 
   submitTemplate() {
-    if(!this.storeForm.valid) {
+    if (!this.storeForm.valid) {
       this.storeEdited = true;
       return;
     }
-    if(!this.storeTemplateForm.valid) {
+    if (!this.storeTemplateForm.valid) {
       return;
     }
 
     let self = this;
 
-    if(!this.templateId) {
+    if (!this.templateId) {
       let options = {
         uid: 2,
         storeId: this.store.id,
@@ -360,19 +362,19 @@ export class MainPageComponent implements OnInit {
           nameTag: this.nameTag,
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
-          aboutMeTag:this.aboutMeTag,
-          aboutMeNewTag:this.aboutMeNewTag,
+          aboutMeTag: this.aboutMeTag,
+          aboutMeNewTag: this.aboutMeNewTag,
           homeMadeDesTag: this.homeMadeDesTag,
           homeMadeTitle: this.homeMadeTitle
         },
         image: {
           imageHomeMade: this.imageHomeMade,
-          bannerImageStr:this.bannerImageStr,
-          aboutMeCover:this.aboutMeCover,
-          aboutMeOneImageStr:this.aboutMeOneImageStr,
-          aboutMeTwoImageStr:this.aboutMeTwoImageStr,
-          homeMadeOneImageStr:this.homeMadeOneImageStr,
-          homeMadeTwoImageStr:this.homeMadeTwoImageStr,
+          bannerImageStr: this.bannerImageStr,
+          aboutMeCover: this.aboutMeCover,
+          aboutMeOneImageStr: this.aboutMeOneImageStr,
+          aboutMeTwoImageStr: this.aboutMeTwoImageStr,
+          homeMadeOneImageStr: this.homeMadeOneImageStr,
+          homeMadeTwoImageStr: this.homeMadeTwoImageStr,
         }
       };
       this.shopService.createMultiTemplate(options).then((data) => {
@@ -396,24 +398,24 @@ export class MainPageComponent implements OnInit {
           nameTag: this.nameTag,
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
-          aboutMeTag:this.aboutMeTag,
-          aboutMeNewTag:this.aboutMeNewTag,
+          aboutMeTag: this.aboutMeTag,
+          aboutMeNewTag: this.aboutMeNewTag,
           homeMadeDesTag: this.homeMadeDesTag,
           homeMadeTitle: this.homeMadeTitle
         },
         image: {
           imageHomeMade: this.imageHomeMade,
-          bannerImageStr:this.bannerImageStr,
-          aboutMeCover:this.aboutMeCover,
-          aboutMeOneImageStr:this.aboutMeOneImageStr,
-          aboutMeTwoImageStr:this.aboutMeTwoImageStr,
-          homeMadeOneImageStr:this.homeMadeOneImageStr,
-          homeMadeTwoImageStr:this.homeMadeTwoImageStr,
+          bannerImageStr: this.bannerImageStr,
+          aboutMeCover: this.aboutMeCover,
+          aboutMeOneImageStr: this.aboutMeOneImageStr,
+          aboutMeTwoImageStr: this.aboutMeTwoImageStr,
+          homeMadeOneImageStr: this.homeMadeOneImageStr,
+          homeMadeTwoImageStr: this.homeMadeTwoImageStr,
         }
       };
       this.shopService.updateMultiTemplate(options).then((data) => {
         let index = self.templateList.find((item) => {
-          if(item.id == data.id) {
+          if (item.id == data.id) {
             return true;
           }
         });
@@ -434,7 +436,7 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  openDialog(displayName?:any): void {
+  openDialog(displayName?: any): void {
     let dialogRef = this.dialog.open(StoreShareDialogComponent, {
       data: {
         shareLink: 'http://' + this.shareLink + displayName,
@@ -448,7 +450,7 @@ export class MainPageComponent implements OnInit {
   }
 
   changeStore() {
-    if(!this.storeForm.valid) {
+    if (!this.storeForm.valid) {
       return;
     }
 

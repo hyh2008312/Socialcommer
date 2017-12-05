@@ -13,6 +13,7 @@ import {Store} from '../../store';
 export class StoreListComponent implements OnInit {
 
   public categories: any = [];
+  contextList: any = {};
   public category: any = {
     id: null,
     name: ''
@@ -38,29 +39,34 @@ export class StoreListComponent implements OnInit {
   ngOnInit(): void {
     this.shareLink = window.location.href;
     let firstLoad = false;
-
+    let self = this;
     this.storeService.store.subscribe((data) => {
       if (data && !firstLoad) {
         firstLoad = true;
-        this.store = data;
-        this.storeService.addTitleDescription({
+        self.store = data;
+        self.contextList = data.context?data.context: {};
+        self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
           shareImage: data.imageUrl
         });
-        this.categories = [{name: 'All'}, ...data.category];
-        this.category = this.categories[0];
-        this.storeService.addStore(data);
+        self.categories = [{name: 'All'}, ...data.category];
+        self.category = this.categories[0];
+        self.storeService.addStore(data);
 
-        this.storeService.pageView({
+        self.storeService.pageView({
           pageType: 'store',
           viewTime: new Date().getTime(),
           storeId: data.id
         });
-        this.isClearData=false ;
-        this.queryProduct();
+        self.isClearData=false ;
+        self.queryProduct();
       }
     });
+  }
+  jumpList():void {
+    this.page++;
+    this.queryProduct();
   }
 
   changeCategory() {
