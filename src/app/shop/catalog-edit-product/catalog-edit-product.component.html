@@ -35,7 +35,7 @@
           </mat-chip-list>
         </mat-form-field>
         <div class="xb-shop__edit-title">Price</div>
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start">
+        <div *ngIf="isUser" fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start">
           <div fxLayout="row" fxLayoutAlign="start center">
             <span class="md-margin-right-1">{{storeCurrency | formatCurrency}}</span>
             <mat-form-field fxFlex >
