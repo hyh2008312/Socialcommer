@@ -297,20 +297,20 @@ export class CatalogEditProductComponent implements OnInit {
 
     if(this.isUser) {
       storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != null ? productForm.originalPrice : 0,
+        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
         currency: this.storeCurrency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice == null ? 0: productForm.salePrice,
+        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
         currency: this.storeCurrency
       };
     } else {
       storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != null ? productForm.originalPrice : 0,
+        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
         currency: product.originalPrice.currency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice == ''? 0: productForm.salePrice,
+        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
         currency: product.salePrice.currency
       };
     }
@@ -347,20 +347,20 @@ export class CatalogEditProductComponent implements OnInit {
 
     if(this.isUser) {
       storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != null ? productForm.originalPrice : 0,
+        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
         currency: this.storeCurrency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice == null ? 0: productForm.salePrice,
+        amount: productForm.salePrice,
         currency: this.storeCurrency
       };
     } else {
       storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != null ? productForm.originalPrice : 0,
+        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
         currency: product.originalPrice.currency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice == null ? 0: productForm.salePrice,
+        amount: productForm.salePrice,
         currency: product.salePrice.currency
       };
     }
@@ -407,7 +407,7 @@ export class CatalogEditProductComponent implements OnInit {
 
     if(this.isUser) {
       storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != null ? productForm.originalPrice : 0,
+        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
         currency: this.storeCurrency
       };
       storeProduct.product.salePrice = {
@@ -416,11 +416,11 @@ export class CatalogEditProductComponent implements OnInit {
       };
     } else {
       storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != null ? productForm.originalPrice : 0,
+        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
         currency: product.originalPrice.currency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice == null ? 0: productForm.salePrice,
+        amount: productForm.salePrice,
         currency: product.salePrice.currency
       };
     }

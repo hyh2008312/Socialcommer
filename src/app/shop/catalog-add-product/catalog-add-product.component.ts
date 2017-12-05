@@ -232,11 +232,11 @@ export class CatalogAddProductComponent implements OnInit {
       return;
     }
     storeProduct.product.originalPrice = {
-      amount: productForm.originalPrice != null ? productForm.originalPrice : 0,
+      amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
       currency: this.storeCurrency
     };
     storeProduct.product.salePrice = {
-      amount: productForm.salePrice != null ? productForm.salePrice : 0,
+      amount: productForm.salePrice,
       currency: this.storeCurrency
     };
     storeProduct.product.isDraft = false;
@@ -269,11 +269,11 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product.cover = [];
     storeProduct.product.cover = [...this.previewImgFile];
     storeProduct.product.originalPrice = {
-      amount: productForm.originalPrice == null ? 0: productForm.originalPrice,
+      amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
       currency: this.storeCurrency
     };
     storeProduct.product.salePrice = {
-      amount: productForm.salePrice == null ? 0: productForm.salePrice,
+      amount: productForm.salePrice,
       currency: this.storeCurrency
     };
     storeProduct.product.isDraft = true;
