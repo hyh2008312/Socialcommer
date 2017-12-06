@@ -1917,6 +1917,9 @@ textarea.mat-input-element {
   margin-top: 24px;
   background-color: #fff;
   display: block; }
+  .xb-store-template__details-buttons-color {
+    color: #fff;
+    display: block; }
 .xb-store-template__details ::-webkit-scrollbar {
   width: 0; }
 .xb-store-template__details-scroll {

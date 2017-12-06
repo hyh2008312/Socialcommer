@@ -3596,6 +3596,9 @@ textarea.mat-input-element {
     .xb-store__details-buttons {
       margin-top: 16px;
       background-color: #fff; }
+      .xb-store__details-buttons-color {
+        color: #fff;
+        display: block; }
     .xb-store__details-buttons-fixed {
       position: fixed;
       bottom: 0;

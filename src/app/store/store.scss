@@ -654,6 +654,10 @@
     &-buttons{
       margin-top: 16px;
       background-color: $whiteColor;
+      &-color{
+        color: $whiteColor;
+        display: block;
+      }
     }
     &-buttons-fixed{
       position: fixed;

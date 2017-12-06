@@ -512,6 +512,10 @@
       margin-top: 24px;
       background-color: $whiteColor;
       display: block;
+      &-color{
+        color: $whiteColor;
+        display: block;
+      }
     }
     ::-webkit-scrollbar {
       width: 0;

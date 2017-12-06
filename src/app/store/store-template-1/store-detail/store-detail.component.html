@@ -24,14 +24,15 @@
             {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
           </div>
         </div>
-        <a class="xb-store__details-buttons" fxLayout="column" href="{{product.purchaseUrl}}" target="_blank"
-           (click)="openLink()">
-          <button class="gtag-shop-detail-get-it-now-button" mat-raised-button color="primary">GET IT NOW</button>
-        </a>
-        <a fxHide.gt-xs class="xb-store__details-buttons-fixed" fxLayout="column" href="{{product.purchaseUrl}}" target="_blank"
-           (click)="openLink()" *ngIf="showButton">
-          <button class="gtag-shop-detail-get-it-now-button" mat-raised-button color="primary">GET IT NOW</button>
-        </a>
+        <div class="xb-store__details-buttons" fxLayout="column">
+          <button class="gtag-shop-detail-get-it-now-button" mat-raised-button color="primary" (click)="openLink()" >
+            <a class="xb-store__details-buttons-color" href="{{product.purchaseUrl}}" target="_blank">GET IT NOW</a></button>
+        </div>
+        <div fxHide.gt-xs class="xb-store__details-buttons-fixed" fxLayout="column"
+           *ngIf="showButton">
+          <button class="gtag-shop-detail-get-it-now-button" mat-raised-button color="primary" (click)="openLink()" >
+            <a class="xb-store__details-buttons-color" href="{{product.purchaseUrl}}" target="_blank">GET IT NOW</a></button>
+        </div>
         <div class="md-margin-top-2">
           <app-share-button [link]="shareLink" [text]="text"></app-share-button>
         </div>

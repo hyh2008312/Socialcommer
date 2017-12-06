@@ -21,10 +21,11 @@
           {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
         </div>
       </div>
-      <a class="xb-store-template__details-buttons" href="{{product.purchaseUrl}}" target="_blank"
-         (click)="openLink()">
-        <button class="gtag-shop-detail-get-it-now-button" mat-raised-button color="primary">GET IT NOW</button>
-      </a>
+      <div class="xb-store-template__details-buttons">
+        <button class="gtag-shop-detail-get-it-now-button" mat-raised-button color="primary" (click)="openLink()">
+          <a class="xb-store-template__details-buttons-color" href="{{product.purchaseUrl}}" target="_blank" >GET IT NOW </a>
+        </button>
+      </div>
       <div class="md-margin-top-2">
         <app-share-button [link]="shareLink" [text]="text"></app-share-button>
       </div>

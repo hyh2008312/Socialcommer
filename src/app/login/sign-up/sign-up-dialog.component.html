@@ -48,16 +48,16 @@
 
     <div fxLayout="column">
       <div class="md-align-center md-margin-top-2 md-margin-bottom-2">OR</div>
-      <button class="xb-login__facebook gtag-signup-facebook-btn" mat-raised-button (click)="facebookLogin('facebook')">
+      <button class="xb-login__facebook" mat-raised-button (click)="facebookLogin('facebook')">
         <div fxLayout="row" fxLayoutAlign="start center">
           <i class="iconfontXberts icon-ic-facebook"></i>
-          <span class="md-align-center" fxFlex>Continue with Facebook</span>
+          <span class="md-align-center gtag-signup-facebook-btn" fxFlex>Continue with Facebook</span>
         </div>
       </button>
-      <button class="xb-login__google gtag-signup-google-btn" mat-raised-button (click)="googleLogin('google')">
+      <button class="xb-login__google" mat-raised-button (click)="googleLogin('google')">
         <div fxLayout="row" fxLayoutAlign="start center">
           <i class="iconfontXberts icon-pic-google"></i>
-          <span class="md-align-center" fxFlex>Continue with Google</span>
+          <span class="md-align-center gtag-signup-google-btn" fxFlex>Continue with Google</span>
         </div>
       </button>
     </div>
