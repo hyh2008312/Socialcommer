@@ -86,6 +86,7 @@ export class StoreListComponent implements OnInit {
     };
     this.storeService.getProductList(options).then((data) => {
       if (this.isClearData) {
+        this.isClearData=false;
         this.product = [];
       }
       this.product = this.product.concat(data.results);
