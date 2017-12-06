@@ -318,6 +318,9 @@ export class CatalogEditProductComponent implements OnInit {
 
     if(this.tags[0]) {
       storeProduct.categoryName = this.tags[0].name;
+      if(storeProduct.categoryName.trim() == '') {
+        return;
+      }
     }
 
     let self = this;
@@ -428,6 +431,9 @@ export class CatalogEditProductComponent implements OnInit {
     storeProduct.isDraft = false;
     if(this.tags[0]) {
       storeProduct.categoryName = this.tags[0].name;
+      if(storeProduct.categoryName.trim() == '') {
+        return;
+      }
     } else {
       storeProduct.categoryName = '';
     }

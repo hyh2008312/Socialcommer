@@ -321,6 +321,10 @@ export class FindProductsEditPreviewComponent implements OnInit {
     let images = [];
     images.push(this.productCopy.cover);
 
+    if(this.tags[0] && this.tags[0].name.trim() == '') {
+      return;
+    }
+
     let storeProduct = {
       productId: this.productCopy.id,
       purchaseUrl : productForm.purchaseUrl,
@@ -333,7 +337,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       cover : [...images],
-      categoryName : this.tags[0]? this.tags[0].name : null,
+      categoryName : this.tags[0]? this.tags[0].name : '',
       product: {
         originalPrice : {
           amount: this.product.originalPriceAmount,

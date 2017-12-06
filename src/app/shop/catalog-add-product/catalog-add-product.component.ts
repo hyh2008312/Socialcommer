@@ -242,6 +242,9 @@ export class CatalogAddProductComponent implements OnInit {
     storeProduct.product.isDraft = false;
     if(this.tags[0]) {
       storeProduct.categoryName = this.tags[0].name;
+      if(storeProduct.categoryName.trim() == '') {
+        return;
+      }
     }
 
     this.shopService.createProduct(storeProduct).then((data) => {
