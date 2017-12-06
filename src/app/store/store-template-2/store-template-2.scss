@@ -4,6 +4,10 @@
 .xb-store-template {
 
 
+  &__buttons-color{
+        color: $whiteColor;
+        display: block;
+  }
   &__100vh{
     min-height: 100vh;
     background-color: white;
@@ -99,6 +103,7 @@
     margin-top: 88px;
 
     @include xb-xs-screen {
+      width: calc(100vw - 32px);
       margin-top: 32px;
       margin-left: 16px;
       margin-right: 16px;;
@@ -123,6 +128,9 @@
       width: 145px;
       background-color: rgba(0, 0, 0, 0.87);
       height: 2px;
+      @include xb-xs-screen{
+        width: 110px;
+      }
     }
 
     &-one {
@@ -611,6 +619,7 @@
     &—product {
       max-width: 1160px;
       margin-left: auto;
+      width: 100vw;
       margin-right: auto;
     }
 
@@ -783,6 +792,7 @@
       }
     }
     &-buttons {
+      display: block;
       background-color: #511a1a;
       border-radius: 4px;
       height: 40px;

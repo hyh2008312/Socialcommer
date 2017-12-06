@@ -1528,6 +1528,9 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.xb-store-template__buttons-color-color {
+  color: #fff;
+  display: block; }
 .xb-store-template__100vh {
   min-height: 100vh;
   background-color: white; }
@@ -1599,6 +1602,7 @@ textarea.mat-input-element {
   margin-top: 88px; }
   @media screen and (max-width: 599px) {
     .xb-store-template__introduce {
+      width: calc(100vw - 32px);
       margin-top: 32px;
       margin-left: 16px;
       margin-right: 16px; } }
@@ -1619,6 +1623,9 @@ textarea.mat-input-element {
     width: 145px;
     background-color: rgba(0, 0, 0, 0.87);
     height: 2px; }
+    @media screen and (max-width: 599px) {
+      .xb-store-template__introduce-title-line {
+        width: 110px; } }
   .xb-store-template__introduce-one-top-left {
     width: 400px;
     height: 320px;
@@ -1995,6 +2002,7 @@ textarea.mat-input-element {
 .xb-store-template__collection—product {
   max-width: 1160px;
   margin-left: auto;
+  width: 100vw;
   margin-right: auto; }
 .xb-store-template__collection-margin-right {
   margin-right: 40px; }
@@ -2147,6 +2155,7 @@ textarea.mat-input-element {
           margin-left: auto;
           margin-right: auto; } }
   .xb-store-template__detail-buttons {
+    display: block;
     background-color: #511a1a;
     border-radius: 4px;
     height: 40px;

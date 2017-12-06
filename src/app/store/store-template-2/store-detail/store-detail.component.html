@@ -1,4 +1,4 @@
-<div class="xb-store-template__detail-background" (click)="close()">
+<div class="xb-store-template__detail-background"  (click)="close()">
   <!--移动端关闭按钮-->
   <div class="xb-store-template__detail-close" (click)="close()" fxShow="false" fxShow.xs="true" >
     <i class="iconfontXberts icon-ic-close"></i>
@@ -28,17 +28,13 @@
             {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
           </div>
           <div class="xb-store-template__detail-buttons-bg" fxShow="true" fxShow.xs="false">
-            <a fxLayout="column" href="{{product.purchaseUrl}}" target="_blank"
-               (click)="openLink()">
-              <button class="xb-store-template__detail-buttons gtag-shop-detail-get-it-now-button">GET IT NOW</button>
-            </a>
+            <button class="gtag-shop-detail-get-it-now-button xb-store-template__detail-buttons"  (click)="openLink()" >
+              <a class="xb-store-template__buttons-color" href="{{product.purchaseUrl}}" target="_blank">GET IT NOW</a></button>
           </div>
         </div>
         <div class="xb-store-template__detail-buttons-bg" fxShow="false" fxShow.xs="true">
-          <a fxLayout="column" href="{{product.purchaseUrl}}" target="_blank"
-             (click)="openLink()">
-            <button class="xb-store-template__detail-buttons gtag-shop-detail-get-it-now-button">GET IT NOW</button>
-          </a>
+          <button class="gtag-shop-detail-get-it-now-button xb-store-template__detail-buttons"  (click)="openLink()" >
+            <a class="xb-store-template__buttons-color" href="{{product.purchaseUrl}}" target="_blank">GET IT NOW</a></button>
         </div>
         <div class="xb-store-template__detail-line" *ngIf="product.recommendation"></div>
         <div class="xb-store-template__detail-store-owner" *ngIf="product.recommendation">

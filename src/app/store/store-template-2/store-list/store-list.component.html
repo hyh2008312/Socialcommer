@@ -7,7 +7,7 @@
     </mat-sidenav>
     <!--头部消息-->
     <div class="xb-store-template__100vh" fxLayout="row" fxLayoutAlign="start stretch">
-      <div fxFlex fxLayout="column">
+      <div fxFlex fxLayout="column" fxLayoutAlign="start stretch">
         <div class="xb-store-template__collection-background">
           <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
             <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
@@ -31,7 +31,7 @@
           </div>
         </div>
         <!--产品列表-->
-        <div  fxFlex="noshrink">
+        <div class="xb-store-template__collection—product" fxFlex="noshrink">
           <div class="xb-store-template__collection—category" fxLayout="column" fxLayoutAlign="start start" fxShow="true"
                fxShow.xs="false">
             <app-store-template-2-category fxFlexAlign="center" [(category)]="category" [categories]="categories"
