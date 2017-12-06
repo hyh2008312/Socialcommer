@@ -236,7 +236,7 @@ export class CatalogAddProductComponent implements OnInit {
       currency: this.storeCurrency
     };
     storeProduct.product.salePrice = {
-      amount: productForm.salePrice,
+      amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
       currency: this.storeCurrency
     };
     storeProduct.product.isDraft = false;
@@ -273,7 +273,7 @@ export class CatalogAddProductComponent implements OnInit {
       currency: this.storeCurrency
     };
     storeProduct.product.salePrice = {
-      amount: productForm.salePrice,
+      amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
       currency: this.storeCurrency
     };
     storeProduct.product.isDraft = true;

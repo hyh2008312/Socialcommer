@@ -351,7 +351,7 @@ export class CatalogEditProductComponent implements OnInit {
         currency: this.storeCurrency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice,
+        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
         currency: this.storeCurrency
       };
     } else {
@@ -360,7 +360,7 @@ export class CatalogEditProductComponent implements OnInit {
         currency: product.originalPrice.currency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice,
+        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
         currency: product.salePrice.currency
       };
     }
@@ -411,7 +411,7 @@ export class CatalogEditProductComponent implements OnInit {
         currency: this.storeCurrency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice,
+        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
         currency: this.storeCurrency
       };
     } else {
@@ -420,7 +420,7 @@ export class CatalogEditProductComponent implements OnInit {
         currency: product.originalPrice.currency
       };
       storeProduct.product.salePrice = {
-        amount: productForm.salePrice,
+        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
         currency: product.salePrice.currency
       };
     }
