@@ -7,6 +7,8 @@ import { StoreTemplateRouter } from '../../config/app.constant';
 import { StoreService } from '../store.service';
 import { Store } from '../store';
 
+import { ConstantService } from '../../shared/services/constant/constant.service';
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './store-main.component.html',
@@ -16,7 +18,6 @@ import { Store } from '../store';
 export class StoreMainComponent implements OnInit {
 
   storeRouter: any;
-  store: any;
 
   constructor(
     private router:Router,
@@ -25,17 +26,12 @@ export class StoreMainComponent implements OnInit {
     private storeTemplateRouter: StoreTemplateRouter
   ) {
     this.storeRouter = this.storeTemplateRouter.router;
-
-    this.store = this.activatedRoute.snapshot.data['data'];
-
-
   }
 
   ngOnInit():void {
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
     let routerArray = this.router.url.split(storeName);
-    this.storeService.addStore(this.store);
     if(routerArray[1] != '') {
       let allRouter = routerArray[1].split('/');
       let uid = allRouter[1];
@@ -45,43 +41,53 @@ export class StoreMainComponent implements OnInit {
         lastRouter = routerArray[1].split('/' + uid + '/')[1];
         replaceRouter = lastRouter.split('/');
       }
-      if (this.store.templateId == 1) {
-        if(uid != this.store.templateId) {
-          if(replaceRouter.length > 0) {
-            if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[1][replaceRouter[0]]) {
-              self.router.navigate([`/store/${storeName}/${this.store.templateId}`]);
-            } else {
+      this.storeService.getStore(storeName).then((data) => {
+        if (data) {
+          this.storeService.addStore(data);
+          if (data.templateId == 1) {
+            if(uid != data.templateId) {
+              if(replaceRouter.length > 0) {
 
-              self.router.navigate([`/store/${storeName}/${this.store.templateId}/${lastRouter}`]);
-            }
-          } else {
-            self.router.navigate([`/store/${storeName}/${this.store.templateId}/${lastRouter}`]);
-          }
-        }
-      } else {
-        if(this.store.uid > 1) {
-          if(uid != this.store.uid) {
-            if(replaceRouter.length > 0) {
-              if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[this.store.uid - 1][replaceRouter[0]]) {
-                self.router.navigate([`/store/${storeName}/${this.store.uid}`]);
+                console.log(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[1][replaceRouter[0]])
+                if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[1][replaceRouter[0]]) {
+                  self.router.navigate([`/store/${storeName}/${data.templateId}`]);
+                } else {
+                  self.router.navigate([`/store/${storeName}/${data.templateId}/${lastRouter}`]);
+                }
               } else {
-                self.router.navigate([`/store/${storeName}/${this.store.uid}${lastRouter}`]);
+                self.router.navigate([`/store/${storeName}/${data.templateId}/${lastRouter}`]);
               }
-            } else {
-              self.router.navigate([`/store/${storeName}/${this.store.uid}${lastRouter}`]);
+            }
+            return;
+          }
+          if(data.uid > 1) {
+            if(uid != data.uid) {
+              if(replaceRouter.length > 0) {
+                if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[data.uid - 1][replaceRouter[0]]) {
+                  self.router.navigate([`/store/${storeName}/${data.uid}`]);
+                } else {
+                  self.router.navigate([`/store/${storeName}/${data.uid}/${lastRouter}`]);
+                }
+              } else {
+                self.router.navigate([`/store/${storeName}/${data.uid}/${lastRouter}`]);
+              }
             }
           }
         }
-      }
+      });
     } else {
-      if (this.store.templateId == 1) {
-        self.router.navigate([`/store/${storeName}/${this.store.templateId}`]);
-      } else {
-        if (this.store.uid > 1) {
-          self.router.navigate([`/store/${storeName}/${this.store.uid}`]);
+      this.storeService.getStore(storeName).then((data) => {
+        if (data) {
+          this.storeService.addStore(data);
+          if (data.templateId == 1) {
+            self.router.navigate([`/store/${storeName}/${data.templateId}`]);
+            return;
+          }
+          if (data.uid > 1) {
+            self.router.navigate([`/store/${storeName}/${data.uid}`]);
+          }
         }
-      }
-
+      });
     }
 
   }
