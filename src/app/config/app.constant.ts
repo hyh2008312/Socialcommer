@@ -31,3 +31,22 @@ export class BogDetail{
   originUrl: string = 'image/blog/details/';
   detail: string = 'mo';
 }
+
+export class StoreTemplateRouter{
+  router = [{
+    detail: true,
+    blog: false,
+    list: true,
+    about_me: false
+  }, {
+    detail: true,
+    blog: false,
+    list: true,
+    about_me: true
+  }, {
+    detail: true,
+    blog: true,
+    list: true,
+    about_me: true
+  }];
+}
