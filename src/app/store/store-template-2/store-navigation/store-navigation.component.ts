@@ -32,7 +32,7 @@ export class StoreNavigationComponent implements OnInit {
           exact: true
         }, {
           text: 'PRODUCTS',
-          link: './products',
+          link: './list',
           exact: false
         } ,{
           text: 'ABOUT ME',
@@ -64,7 +64,7 @@ export class StoreNavigationComponent implements OnInit {
           exact: true
         }, {
           text: 'PRODUCTS',
-          link: '../products',
+          link: '../list',
           exact: false
         }, {
           text: 'ABOUT ME',
@@ -80,7 +80,7 @@ export class StoreNavigationComponent implements OnInit {
           exact: true
         }, {
           text: 'PRODUCTS',
-          link: './products',
+          link: './list',
           exact: false
         }, {
           text: 'ABOUT ME',

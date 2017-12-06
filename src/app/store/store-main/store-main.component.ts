@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 
+import { StoreTemplateRouter } from '../../config/app.constant';
 import { StoreService } from '../store.service';
 import { Store } from '../store';
 
@@ -16,15 +17,15 @@ import { ConstantService } from '../../shared/services/constant/constant.service
 
 export class StoreMainComponent implements OnInit {
 
-  type: number = 1;
+  storeRouter: any;
 
   constructor(
     private router:Router,
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService,
-    private constantService: ConstantService
+    private storeTemplateRouter: StoreTemplateRouter
   ) {
-
+    this.storeRouter = this.storeTemplateRouter.router;
   }
 
   ngOnInit():void {
@@ -35,21 +36,41 @@ export class StoreMainComponent implements OnInit {
       let allRouter = routerArray[1].split('/');
       let uid = allRouter[1];
       let lastRouter = '';
+      let replaceRouter = [];
       if(allRouter.length > 2) {
-        lastRouter = routerArray[1].split('/' + uid)[1];
+        lastRouter = routerArray[1].split('/' + uid + '/')[1];
+        replaceRouter = lastRouter.split('/');
       }
       this.storeService.getStore(storeName).then((data) => {
         if (data) {
           this.storeService.addStore(data);
           if (data.templateId == 1) {
             if(uid != data.templateId) {
-              self.router.navigate([`/store/${storeName}/${data.templateId}${lastRouter}`]);
+              if(replaceRouter.length > 0) {
+
+                console.log(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[1][replaceRouter[0]])
+                if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[1][replaceRouter[0]]) {
+                  self.router.navigate([`/store/${storeName}/${data.templateId}`]);
+                } else {
+                  self.router.navigate([`/store/${storeName}/${data.templateId}/${lastRouter}`]);
+                }
+              } else {
+                self.router.navigate([`/store/${storeName}/${data.templateId}/${lastRouter}`]);
+              }
             }
             return;
           }
           if(data.uid > 1) {
             if(uid != data.uid) {
-              self.router.navigate([`/store/${storeName}/${data.uid}${lastRouter}`]);
+              if(replaceRouter.length > 0) {
+                if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[data.uid - 1][replaceRouter[0]]) {
+                  self.router.navigate([`/store/${storeName}/${data.uid}`]);
+                } else {
+                  self.router.navigate([`/store/${storeName}/${data.uid}/${lastRouter}`]);
+                }
+              } else {
+                self.router.navigate([`/store/${storeName}/${data.uid}/${lastRouter}`]);
+              }
             }
           }
         }

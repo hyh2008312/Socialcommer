@@ -63,10 +63,6 @@ export class StoreDetailComponent implements OnInit {
     });
   }
 
-  close():void {
-    this.router.navigate([`./store/${this.store.displayName}`]);
-  }
-
   openLink() {
     let id = this.activatedRouter.snapshot.params['id'];
     this.storeService.buttonClick({

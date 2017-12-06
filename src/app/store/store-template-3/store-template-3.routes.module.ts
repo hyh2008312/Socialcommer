@@ -14,9 +14,9 @@ const routes: Routes = [{
   children: [{
     path: '', component: HomePageComponent
   }, {
-    path: 'collection', component: StoreListComponent
+    path: 'list', component: StoreListComponent
   }, {
-    path: 'collection/:id', component: StoreDetailComponent
+    path: 'detail/:id', component: StoreDetailComponent
   }, {
     path: 'blog', component: StoreBlogComponent
   }, {

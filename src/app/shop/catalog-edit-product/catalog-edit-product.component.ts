@@ -3,7 +3,6 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { ENTER } from '@angular/cdk/keycodes';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { ShopService } from '../shop.service';
@@ -26,10 +25,6 @@ export class CatalogEditProductComponent implements OnInit {
   productForm : FormGroup;
   previewImgFile: any[] = [];
   previewImgSrcs: any[] = [];
-  visible: boolean = true;
-  selectable: boolean = true;
-  removable: boolean = true;
-  addOnBlur: boolean = true;
   relationId: number;
   productId: number;
   isUser: boolean = false;
@@ -51,9 +46,8 @@ export class CatalogEditProductComponent implements OnInit {
   public editor;
   public editorImageId = 'quillImage';
 
-  // Enter, comma
-  separatorKeysCodes = [ENTER, 188];
-  tags: any[] = [];
+  tags: any = '';
+  isCreateCategory: boolean = false;
 
   storeId: number;
   storeCurrency: string = 'USD';
@@ -74,6 +68,10 @@ export class CatalogEditProductComponent implements OnInit {
 
     this.productForm = this.fb.group({
       title: ['', [
+        Validators.required
+      ]],
+      tags: [],
+      categoryName: ['', [
         Validators.required
       ]],
       salePrice: ['', [
@@ -97,6 +95,7 @@ export class CatalogEditProductComponent implements OnInit {
   //存储错误信息
   formErrors = {
     'title': '',
+    'categoryName': '',
     'description': '',
     'salePrice':'',
     'purchaseUrl': '',
@@ -105,6 +104,9 @@ export class CatalogEditProductComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'title': {
+      'required': 'This field is required.'
+    },
+    'categoryName': {
       'required': 'This field is required.'
     },
     'description':{
@@ -134,12 +136,10 @@ export class CatalogEditProductComponent implements OnInit {
           let id = self.activatedRoute.snapshot.params['id'];
           self.shopService.getProduct(id).then((data) => {
 
-            self.tags.push({
-              id: data.categoryId,
-              name: data.categoryName
-            });
             self.productForm.setValue({
               title: data.title,
+              tags: '',
+              categoryName: data.categoryName,
               salePrice: data.salePriceAmount,
               originalPrice: data.originalPriceAmount,
               purchaseUrl: data.purchaseUrl,
@@ -215,50 +215,44 @@ export class CatalogEditProductComponent implements OnInit {
 
   }
 
+  showCreate() {
+    this.isCreateCategory = true;
+  }
 
-
-  add(event: MatChipInputEvent): void {
-    let input = event.input;
-    let _value = event.value;
+  add(value: any): void {
     let self = this;
 
     // Add our person
-    if ((_value || '').trim()) {
+    if ((value || '').trim()) {
       let isRepeat = false;
 
-      for(let value of self.category) {
-        if(value.name == _value) {
+      for(let item of self.category) {
+        if(item.name == value) {
           isRepeat = true;
-          this.tags.push({ id:value.id, name: _value.trim() });
+          this.productForm.patchValue({
+            categoryName:  value.trim()
+          });
+          this.isCreateCategory = false;
           break;
         }
       }
 
       if(!isRepeat) {
         self.shopService.createCategory({
-          categoryName: _value
+          categoryName: value
         }).then((data) => {
           if(data) {
+            self.productForm.patchValue({
+              categoryName:  data.name
+            });
+            self.isCreateCategory = false;
             self.category.unshift(data);
             self.userService.addUserCategory(self.category);
-            self.tags.push({ id:data.id, name: _value.trim() });
           }
         });
       }
     }
 
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-  }
-
-  remove(fruit: any): void {
-    let index = this.tags.indexOf(fruit);
-
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
   }
 
   close():void {
@@ -316,11 +310,9 @@ export class CatalogEditProductComponent implements OnInit {
     }
 
 
-    if(this.tags[0]) {
-      storeProduct.categoryName = this.tags[0].name;
-      if(storeProduct.categoryName.trim() == '') {
-        return;
-      }
+    storeProduct.categoryName = productForm.categoryName;
+    if(storeProduct.categoryName.trim() == '') {
+      return;
     }
 
     let self = this;
@@ -368,10 +360,7 @@ export class CatalogEditProductComponent implements OnInit {
       };
     }
     storeProduct.isDraft = true;
-    storeProduct.categoryName = '';
-    if(this.tags[0]) {
-      storeProduct.categoryName = this.tags[0].name;
-    }
+    storeProduct.categoryName = productForm.categoryName;
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {
@@ -429,13 +418,9 @@ export class CatalogEditProductComponent implements OnInit {
     }
 
     storeProduct.isDraft = false;
-    if(this.tags[0]) {
-      storeProduct.categoryName = this.tags[0].name;
-      if(storeProduct.categoryName.trim() == '') {
-        return;
-      }
-    } else {
-      storeProduct.categoryName = '';
+    storeProduct.categoryName = productForm.categoryName;
+    if(storeProduct.categoryName.trim() == '') {
+      return;
     }
 
     let self = this;

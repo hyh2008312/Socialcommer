@@ -57,19 +57,31 @@
         </div>
         <div class="xb-shop__edit-title md-margin-top-3">Category <span class="xb-input-error xb-large-star">*</span></div>
         <div [hidden]="!showCategoryInput" >
-          <mat-form-field class="xb-shop__width-100">
-            <mat-chip-list #chipList>
-              <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
-                        [removable]="removable" (remove)="remove(tag)">
-                {{tag.name}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input [matChipInputFor]="chipList"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     [matChipInputAddOnBlur]="addOnBlur"
-                     (matChipInputTokenEnd)="add($event)" />
-            </mat-chip-list>
-          </mat-form-field>
+          <div fxLayout="row" fxLayoutAlgin="start center" fxLayout.xs="column" fxLayoutAlgin.xs="start stretch">
+            <div fxLayout="row" fxLayoutAlgin="start center">
+              <mat-form-field>
+                <mat-select  formControlName="categoryName">
+                  <mat-option *ngFor="let item of category" [value]="item.name" >
+                    {{ item.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="md-margin-left-2">
+                <button mat-raised-button color="primary" (click)="showCreate()" *ngIf="!isCreateCategory">Add a New Category</button>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlgin="start center">
+              <mat-form-field *ngIf="isCreateCategory">
+                <input matInput formControlName="tags" [(ngModel)]="tags">
+              </mat-form-field>
+              <div class="md-margin-left-2">
+                <button type="button" mat-raised-button color="primary" (click)="add(tags)" *ngIf="isCreateCategory">Add</button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="formErrors['categoryName']" class="xb-input-error">
+            {{ formErrors['categoryName'] }}
+          </div>
           <div class="xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center" fxHide>
             <button mat-raised-button color="primary" (click)="showCategory()">SAVE</button>
             <div class="xb-shop__margin-left">
@@ -78,9 +90,9 @@
           </div>
         </div>
         <div class="xb-shop__margin-bottom-2 xb-pointer" [hidden]="showCategoryInput" (click)="showCategory()">
-          {{product.tags}}
+          {{product.categoryName}}
         </div>
-        <div class="xb-shop__edit-title">Add your affiliate link <span class="xb-input-error xb-large-star">*</span></div>
+        <div class="xb-shop__edit-title md-margin-top-2">Add your affiliate link <span class="xb-input-error xb-large-star">*</span></div>
         <mat-form-field class="xb-shop__width-100" >
           <input matInput formControlName="purchaseUrl">
         </mat-form-field>
