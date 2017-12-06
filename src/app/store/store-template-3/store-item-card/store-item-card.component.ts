@@ -23,7 +23,7 @@ export class StoreItemCardComponent implements OnInit {
     let link = '';
     switch (this.status) {
       case 0:
-        link = `/collection/${this.product.id}`;
+        link = `/detail/${this.product.id}`;
         break;
       case 1:
         link = `/${this.product.id}`;

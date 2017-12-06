@@ -701,6 +701,9 @@
         background-color: transparent;
         text-align: center;
       }
+      @include xb-xs-screen{
+        width: 100%;
+      }
     }
 
     &-title{
@@ -789,6 +792,9 @@
       cursor: pointer;
       z-index: 1;
       font-size: 14px;
+      @include xb-xs-screen{
+        padding: 0 16px;
+      }
     }
 
     &-button{

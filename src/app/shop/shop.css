@@ -2026,6 +2026,9 @@ textarea.mat-input-element {
     border: none;
     background-color: transparent;
     text-align: center; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__template-name {
+      width: 100%; } }
 .xb-shop__template-title {
   width: 100%;
   margin-top: 100px;
@@ -2100,6 +2103,9 @@ textarea.mat-input-element {
   cursor: pointer;
   z-index: 1;
   font-size: 14px; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__template-edit-button {
+      padding: 0 16px; } }
 .xb-shop__template-button {
   line-height: 40px;
   border-radius: 16px;

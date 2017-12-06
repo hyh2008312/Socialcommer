@@ -33,13 +33,16 @@ export class MainPageComponent implements OnInit {
 
   about: string = 'Thank you for visiting my store! Have a nice day.  ';
 
+  data: any;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService,
     private media: ObservableMedia
   ) {
-
+    this.store = this.activatedRoute.snapshot.data['data'];
+    console.log(this.store);
   }
 
   ngOnInit():void {

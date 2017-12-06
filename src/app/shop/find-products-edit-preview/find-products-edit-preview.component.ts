@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ENTER } from '@angular/cdk/keycodes';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { ShopService } from '../shop.service';
@@ -26,13 +25,9 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   public previewImg = [];
 
-  // Enter, comma
-  separatorKeysCodes = [ENTER, 188];
-  selectable: boolean = true;
-  removable: boolean = true;
-  addOnBlur: boolean = true;
+  tags: any = '';
+  isCreateCategory: boolean = false;
 
-  tags = [];
   category: any = [];
 
   public editor;
@@ -41,7 +36,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   product = {
     title: '',
-    tags: '',
+    categoryName: '',
     salePriceAmount: 0,
     salePriceCurrency: 'USD',
     originalPriceAmount: 0,
@@ -67,6 +62,10 @@ export class FindProductsEditPreviewComponent implements OnInit {
       title: ['', [
         Validators.required
       ]],
+      tags: [''],
+      categoryName: ['', [
+        Validators.required
+      ]],
       purchaseUrl: ['', [
         Validators.required
       ]],
@@ -84,6 +83,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
       self.productForm.setValue({
         title: data.title,
+        tags: '',
+        categoryName: data.category,
         purchaseUrl: '',
         recommendation: '',
         description: data.description
@@ -98,18 +99,13 @@ export class FindProductsEditPreviewComponent implements OnInit {
       }
 
       self.product.title = data.title;
-      self.product.tags = data.category;
+      self.product.categoryName = data.category;
       self.product.salePriceAmount = data.salePrice.amount;
       self.product.originalPriceAmount = data.originalPrice.amount;
       self.product.salePriceCurrency = data.salePrice.currency;
       self.product.originalPriceCurrency = data.originalPrice.currency;
 
       self.product.source = data.source;
-
-      self.tags.push({
-        id: null,
-        name: data.category
-      });
 
       self.previewImg.push(data.cover);
 
@@ -121,11 +117,18 @@ export class FindProductsEditPreviewComponent implements OnInit {
         self.storeId = data.id;
       }
     });
+
+    self.userService.userCategory.subscribe((data) => {
+      if(data) {
+        self.category = data;
+      }
+    });
   }
 
   //存储错误信息
   formErrors = {
     'title': '',
+    'category': '',
     'purchaseUrl': '',
     'recommendation': '',
     'description' : ''
@@ -133,6 +136,9 @@ export class FindProductsEditPreviewComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'title': {
+      'required': 'This field is required.'
+    },
+    'category': {
       'required': 'This field is required.'
     },
     'purchaseUrl': {
@@ -182,52 +188,46 @@ export class FindProductsEditPreviewComponent implements OnInit {
     });
   }
 
+  showCreate() {
+    this.isCreateCategory = true;
+  }
 
-  add(event: MatChipInputEvent): void {
-    let input = event.input;
-    let _value = event.value;
+  add(value: any): void {
     let self = this;
 
     // Add our person
-    if ((_value || '').trim()) {
+    if ((value || '').trim()) {
       let isRepeat = false;
 
-      for(let value of self.category) {
-        if(value.name == _value) {
+      for(let item of self.category) {
+        if(item.name == value) {
           isRepeat = true;
-          this.tags.push({ id:value.id, name: _value.trim() });
-          self.product.tags = _value.trim();
+          this.productForm.patchValue({
+            categoryName:  value.trim()
+          });
+          this.isCreateCategory = false;
           break;
         }
       }
 
       if(!isRepeat) {
         self.shopService.createCategory({
-          categoryName: _value
+          categoryName: value
         }).then((data) => {
           if(data) {
+            self.productForm.patchValue({
+              categoryName:  data.name
+            });
+            self.isCreateCategory = false;
             self.category.unshift(data);
             self.userService.addUserCategory(self.category);
-            self.tags.push({ id:data.id, name: _value.trim() });
-            self.product.tags = _value.trim();
           }
         });
       }
     }
 
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
   }
 
-  remove(fruit: any): void {
-    let index = this.tags.indexOf(fruit);
-
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
-  }
 
   close():void {
     this.router.navigate(['/shop/listings/items']);
@@ -247,11 +247,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   showCategory() {
     this.showCategoryInput = !this.showCategoryInput;
-    let tagArr = [];
-    for(let value of this.tags) {
-      tagArr.push(value.name);
-    }
-    this.product.tags = tagArr.join(',');
   }
 
   resetCategory() {
@@ -321,7 +316,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
     let images = [];
     images.push(this.productCopy.cover);
 
-    if(this.tags[0] && this.tags[0].name.trim() == '') {
+    if(productForm.categoryName.trim() == '') {
       return;
     }
 
@@ -337,7 +332,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       cover : [...images],
-      categoryName : this.tags[0]? this.tags[0].name : '',
+      categoryName : productForm.categoryName,
       product: {
         originalPrice : {
           amount: this.product.originalPriceAmount,
@@ -374,7 +369,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
       description : this.editorContent,
       title : productForm.title,
       cover : [...images],
-      categoryName : this.tags[0]? this.tags[0].name : '',
+      categoryName : productForm.categoryName,
       product: {
         originalPrice : {
           amount: this.product.originalPriceAmount,
