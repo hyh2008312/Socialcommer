@@ -19,6 +19,7 @@ export class StoreListComponent implements OnInit {
   };
   public shareLink: string;
   public text = '';
+  showButton: boolean = false;
 
   store: Store = new Store();
   page = 1;
@@ -60,6 +61,10 @@ export class StoreListComponent implements OnInit {
         self.queryProduct();
       }
     });
+  }
+
+  scrollChange($event) {
+    this.showButton = $event;
   }
 
   changeCategory() {

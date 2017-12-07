@@ -1,5 +1,6 @@
 <div class="xb-store__background" (click)="close()">
-  <div class="xb-store__details-bg-new" (click)="$event.stopPropagation();" appViewScroll (onScrollChange)="scrollChange($event)" [selector]="'xb-store__details-buttons'">
+  <div class="xb-store__details-bg-new" (click)="$event.stopPropagation();"
+       appViewScroll (onScrollChange)="scrollChange($event)" [selector]="'xb-store__details-buttons'">
     <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-sm="true">
       <i class="iconfontXberts icon-ic-close"></i>
     </div>

@@ -13,6 +13,7 @@ import { FormatCurrencyPipe }         from './pipes/format-currency/format-curre
 
 import { ViewResizeDirective }  from './directives/view-resize/view-resize.directive';
 import { ViewScrollDirective }  from './directives/view-srcoll/view-scroll.directive';
+import { ViewObjectScrollDirective }  from './directives/view-object-srcoll/view-object-scroll.directive';
 import { RepeatOrderDirective }  from './directives/repeat-order/repeat-order.directive';
 import { SocialShareDirective }  from './directives/social-share/social-share.directive';
 import { ValidateEqualDirective }  from './directives/validate-equal/validate-equal.directive';
@@ -122,6 +123,7 @@ let providers = {
     FormatCurrencyPipe,
     ViewResizeDirective,
     ViewScrollDirective,
+    ViewObjectScrollDirective,
     RepeatOrderDirective,
     SocialShareDirective,
     ValidateEqualDirective,
@@ -158,6 +160,7 @@ let providers = {
     FormatCurrencyPipe,
     ViewResizeDirective,
     ViewScrollDirective,
+    ViewObjectScrollDirective,
     RepeatOrderDirective,
     SocialShareDirective,
     ValidateEqualDirective,

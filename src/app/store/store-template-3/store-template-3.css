@@ -1802,6 +1802,13 @@ textarea.mat-input-element {
   font-weight: 600;
   margin-top: 72px;
   margin-bottom: 24px; }
+.xb-store-template__collection-fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #fff; }
 .xb-store-template__collection-container {
   margin: 0 64px;
   height: 215px; }
@@ -1926,6 +1933,10 @@ textarea.mat-input-element {
   height: 100vh;
   overflow: scroll; }
   @media screen and (max-width: 599px) {
+    .xb-store-template__details-scroll {
+      height: auto;
+      overflow: auto; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
     .xb-store-template__details-scroll {
       height: auto;
       overflow: auto; } }

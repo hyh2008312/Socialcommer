@@ -362,6 +362,15 @@
       margin-bottom: 24px;
     }
 
+    &-fixed{
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      background-color: $whiteColor;
+    }
+
     &-container{
       margin: 0 64px;
       height: 215px;
@@ -525,6 +534,11 @@
       overflow: scroll;
 
       @include xb-xs-screen{
+        height: auto;
+        overflow: auto;
+      }
+
+      @include xb-sm-screen{
         height: auto;
         overflow: auto;
       }

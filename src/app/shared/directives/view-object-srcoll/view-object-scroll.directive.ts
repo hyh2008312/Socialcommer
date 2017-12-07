@@ -1,10 +1,10 @@
 import {Directive,EventEmitter,ElementRef,HostListener,Output, Input, NgZone, AfterViewChecked } from '@angular/core';
 
 @Directive({
-  selector: '[appViewScroll]'
+  selector: '[appViewObjectScroll]'
 })
 
-export class ViewScrollDirective {
+export class ViewObjectScrollDirective {
 
   @Output() onScrollChange = new EventEmitter();
   @Input() selector: string = '';
@@ -23,14 +23,14 @@ export class ViewScrollDirective {
       return;
     }
     this.part = this.element.nativeElement.querySelector(`.${this.selector}`);
+    console.log(this.part)
   }
 
 
   @HostListener('mouseover') onMouseOver() {
     let self = this;
     this.ngZone.runOutsideAngular(() => {
-
-      if(self.element.nativeElement.scrollTop > self.part.offsetTop) {
+      if(self.part.getBoundingClientRect().top < 0) {
         self.scroll(true);
       } else {
         self.scroll(false);
@@ -45,7 +45,7 @@ export class ViewScrollDirective {
   @HostListener('touchmove') onTouchMove() {
     let self = this;
     this.ngZone.runOutsideAngular(() => {
-      if(self.element.nativeElement.scrollTop > self.part.offsetTop) {
+      if(self.part.getBoundingClientRect().top < 0) {
         self.scroll(true);
       } else {
         self.scroll(false);
