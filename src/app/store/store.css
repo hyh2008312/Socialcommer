@@ -3208,8 +3208,11 @@ textarea.mat-input-element {
     position: relative;
     font-size: 16px;
     color: rgba(0, 0, 0, 0.87);
-    line-height: 32px;
+    line-height: 48px;
     cursor: pointer; }
+    @media screen and (max-width: 599px) {
+      .xb-store__navigation {
+        line-height: 32px; } }
     .xb-store__navigation.active:after {
       content: ' ';
       position: absolute;
@@ -3220,6 +3223,14 @@ textarea.mat-input-element {
       background-color: #ffc500; }
     .xb-store__navigation-mobile {
       border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+    .xb-store__navigation-fixed {
+      position: fixed;
+      width: 100%;
+      left: 0;
+      top: 0;
+      background-color: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      z-index: 100; }
     .xb-store__navigation-bg {
       height: 48px; }
       .xb-store__navigation-bg ::-webkit-scrollbar {

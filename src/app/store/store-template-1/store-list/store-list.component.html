@@ -1,9 +1,14 @@
-<div class="xb-store" fxLayout="column">
+<div class="xb-store" fxLayout="column"
+     appViewObjectScroll (onScrollChange)="scrollChange($event)"
+     [selector]="'xb-store-template__collection-bg'">
   <div class="xb-store__nav" fxFlex="none">
-    <i class="material-icons md-dark-primary" (click)="back()">keyboard_arrow_left</i> {{store.nameTag || store.name}}
+    <i class="material-icons md--primary" (click)="back()">keyboard_arrow_left</i> {{store.nameTag || store.name}}
   </div>
   <div fxFlex="noshrink">
-    <div class="xb-store__navigation-mobile">
+    <div class="xb-store__navigation-mobile xb-store-template__collection-bg">
+      <app-store-navigation [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"></app-store-navigation>
+    </div>
+    <div class="xb-store__navigation-fixed" *ngIf="showButton" fxHide.gt-xs >
       <app-store-navigation [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"></app-store-navigation>
     </div>
     <div class="xb-store__content ">

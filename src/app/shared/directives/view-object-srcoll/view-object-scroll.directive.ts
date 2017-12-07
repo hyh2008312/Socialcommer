@@ -25,6 +25,17 @@ export class ViewObjectScrollDirective {
     this.part = this.element.nativeElement.querySelector(`.${this.selector}`);
   }
 
+  @HostListener('scroll') onScroll() {
+    console.log(111)
+    let self = this;
+    this.ngZone.runOutsideAngular(() => {
+      if(self.part.getBoundingClientRect().top < 0) {
+        self.scroll(true);
+      } else {
+        self.scroll(false);
+      }
+    });
+  }
 
   @HostListener('mouseover') onMouseOver() {
     let self = this;
@@ -38,7 +49,14 @@ export class ViewObjectScrollDirective {
   }
 
   @HostListener('touchstart') onTouchStart() {
-
+    let self = this;
+    this.ngZone.runOutsideAngular(() => {
+      if(self.part.getBoundingClientRect().top < 0) {
+        self.scroll(true);
+      } else {
+        self.scroll(false);
+      }
+    });
   }
 
   @HostListener('touchmove') onTouchMove() {
