@@ -297,6 +297,7 @@ export class StoreEditComponent implements OnInit {
 
     this.shopService.changeStore(store).then((data) => {
       self.storeEdited = false;
+      self.userService.addStore(data);
       self.submitTemplate();
     });
   }
