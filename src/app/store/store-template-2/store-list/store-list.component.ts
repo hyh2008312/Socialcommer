@@ -29,11 +29,16 @@ export class StoreListComponent implements OnInit {
   nextPage: boolean = true;
   product: any = [];
   isClearData: boolean = false;
+  showButton: boolean = false;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
 
+  }
+
+  scrollChange($event) {
+    this.showButton = $event;
   }
 
   ngOnInit(): void {
