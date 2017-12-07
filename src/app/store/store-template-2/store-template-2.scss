@@ -64,6 +64,7 @@
   &__100vh {
     min-height: 100vh;
     background-color: white;
+    overflow-x: hidden;
   }
 
   &__width-1000 {
