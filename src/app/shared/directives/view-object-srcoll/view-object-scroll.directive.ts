@@ -23,7 +23,6 @@ export class ViewObjectScrollDirective {
       return;
     }
     this.part = this.element.nativeElement.querySelector(`.${this.selector}`);
-    console.log(this.part)
   }
 
 
