@@ -29,11 +29,16 @@ export class StoreListComponent implements OnInit {
   nextPage: boolean = true;
   product: any = [];
   isClearData: boolean = false;
+  showButton: boolean = false;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
 
+  }
+
+  scrollChange($event) {
+    this.showButton = $event;
   }
 
   ngOnInit(): void {
@@ -44,7 +49,7 @@ export class StoreListComponent implements OnInit {
       if (data && !firstLoad) {
         firstLoad = true;
         self.store = data;
-        self.contextList = data.context?data.context: {};
+        self.contextList = data.context ? data.context : {};
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
@@ -59,12 +64,13 @@ export class StoreListComponent implements OnInit {
           viewTime: new Date().getTime(),
           storeId: data.id
         });
-        self.isClearData=false ;
+        self.isClearData = false;
         self.queryProduct();
       }
     });
   }
-  jumpList():void {
+
+  jumpList(): void {
     this.page++;
     this.queryProduct();
   }
@@ -72,6 +78,7 @@ export class StoreListComponent implements OnInit {
   changeCategory() {
     this.page = 1;
     this.isClearData = true;
+    this.showButton = false;
     this.nextPage = true;
     this.queryProduct();
   }
@@ -86,7 +93,7 @@ export class StoreListComponent implements OnInit {
     };
     this.storeService.getProductList(options).then((data) => {
       if (this.isClearData) {
-        this.isClearData=false;
+        this.isClearData = false;
         this.product = [];
       }
       this.product = this.product.concat(data.results);

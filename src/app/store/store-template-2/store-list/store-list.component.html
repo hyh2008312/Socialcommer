@@ -6,8 +6,14 @@
       </div>
     </mat-sidenav>
     <!--头部消息-->
-    <div class="xb-store-template__100vh" fxLayout="row" fxLayoutAlign="start stretch">
-      <div fxFlex fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="xb-store-template__100vh"
+         fxLayout="row" fxLayoutAlign="start stretch"
+         (onScrollChange)="scrollChange($event)"
+         (click)="$event.stopPropagation();" appViewObjectScroll
+         [selector]="'xb-store-template__top-category-app'"
+    >
+      <div
+        fxFlex fxLayout="column" fxLayoutAlign="start stretch">
         <div class="xb-store-template__collection-background">
           <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
             <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
@@ -37,7 +43,14 @@
             <app-store-template-2-category fxFlexAlign="center" [(category)]="category" [categories]="categories"
                                            (categoryChange)="changeCategory()"></app-store-template-2-category>
           </div>
-          <div fxShow="false" fxShow.xs="true">
+
+          <div class="xb-store-template__top-category-app" fxShow="false" fxShow.xs="true">
+            <app-store-template-2-category [(category)]="category" [categories]="categories"
+                                           (categoryChange)="changeCategory()"></app-store-template-2-category>
+          </div>
+
+          <div fxHide.gt-xs *ngIf="showButton" class="xb-store-template__top-category" fxShow="false"
+               fxShow.xs="true">
             <app-store-template-2-category [(category)]="category" [categories]="categories"
                                            (categoryChange)="changeCategory()"></app-store-template-2-category>
           </div>
