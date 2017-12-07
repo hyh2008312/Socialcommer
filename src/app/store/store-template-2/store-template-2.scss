@@ -3,27 +3,69 @@
 
 .xb-store-template {
 
-
-  &__buttons-color{
-        color: $whiteColor;
-        display: block;
+  &__details-bg-new{
+    @include xb-xs-screen{
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      background-color: $whiteColor;
+    }
   }
-  &__100vh{
+
+  &__detail-buttons-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 8px 16px;
+    width: 100%;
+    background-color: $whiteColor;
+    z-index: 1;
+    display: block;
+  }
+  &__nav {
+    height: 56px;
+    line-height: 56px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, .19);
+    position: relative;
+    @include text-overflow();
+    padding: 0 56px;
+    width: 100%;
+    text-align: center;
+
+    i {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 32px;
+      line-height: 32px;
+      padding: 12px;
+    }
+  }
+
+  &__buttons-color {
+    color: $whiteColor;
+    display: block;
+  }
+  &__100vh {
     min-height: 100vh;
     background-color: white;
   }
 
-  &__width-1000{
+  &__width-1000 {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     z-index: 100;
     position: relative;
-      @include xb-xs-screen{
-        padding: 0 16px;
-      }
+    @include xb-xs-screen {
+      padding: 0 16px;
+    }
   }
-
 
   &__top_container {
   }
@@ -128,7 +170,7 @@
       width: 145px;
       background-color: rgba(0, 0, 0, 0.87);
       height: 2px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         width: 110px;
       }
     }
@@ -209,8 +251,6 @@
       position: relative;
       margin-top: 100px;
       @include xb-xs-screen {
-        font-size: 20px  !important;
-        font-weight: 600;
         margin-top: 30px;
       }
     }
@@ -641,10 +681,6 @@
     @include xb-xs-screen {
       margin: 0;
       padding: 0;
-      width: 100vw;
-      height: calc(100vh - 56px);
-      overflow-y: scroll;
-      overflow-x: hidden;
     }
     &-background {
       position: absolute;

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { Store, Product, Image } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store, Product, Image} from '../../store';
 
 @Component({
   selector: 'app-store-template-2-store-detail',
@@ -19,21 +19,24 @@ export class StoreListDetailComponent implements OnInit {
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
+  showButton: boolean = false;
 
-  constructor(
-    public router: Router,
-    private activatedRouter: ActivatedRoute,
-    private storeService: StoreService
-  ) {
+  constructor(public router: Router,
+              private activatedRouter: ActivatedRoute,
+              private storeService: StoreService) {
     let self = this;
     this.storeService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.store = data;
       }
     });
   }
 
-  ngOnInit():void {
+  scrollChange($event) {
+    this.showButton = $event;
+  }
+
+  ngOnInit(): void {
     this.shareLink = window.location.href;
 
     let id = this.activatedRouter.snapshot.params['id'];
@@ -47,9 +50,9 @@ export class StoreListDetailComponent implements OnInit {
         shareImage: data.imageUrl
       });
       self.image = data.imageUrl;
-      if(data.imageUrl.length > 0) {
+      if (data.imageUrl.length > 0) {
         self.selectedImage = data.imageUrl[0];
-        for(let value of data.imageUrl) {
+        for (let value of data.imageUrl) {
           self.imageSources.push(value);
         }
       }
@@ -63,7 +66,7 @@ export class StoreListDetailComponent implements OnInit {
     });
   }
 
-  close():void {
+  close(): void {
     this.router.navigate([`./store/${this.store.displayName}/2/products`]);
   }
 

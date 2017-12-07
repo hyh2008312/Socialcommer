@@ -1528,7 +1528,45 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
-.xb-store-template__buttons-color-color {
+@media screen and (max-width: 599px) {
+  .xb-store-template__details-bg-new {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #fff; } }
+.xb-store-template__detail-buttons-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 8px 16px;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1;
+  display: block; }
+.xb-store-template__nav {
+  height: 56px;
+  line-height: 56px;
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.19);
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 56px;
+  width: 100%;
+  text-align: center; }
+  .xb-store-template__nav i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 32px;
+    line-height: 32px;
+    padding: 12px; }
+.xb-store-template__buttons-color {
   color: #fff;
   display: block; }
 .xb-store-template__100vh {
@@ -1682,8 +1720,6 @@ textarea.mat-input-element {
     margin-top: 100px; }
     @media screen and (max-width: 599px) {
       .xb-store-template__home-made-title {
-        font-size: 20px  !important;
-        font-weight: 600;
         margin-top: 30px; } }
   .xb-store-template__home-made-des {
     position: relative;
@@ -2018,11 +2054,7 @@ textarea.mat-input-element {
   @media screen and (max-width: 599px) {
     .xb-store-template__detail {
       margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: calc(100vh - 56px);
-      overflow-y: scroll;
-      overflow-x: hidden; } }
+      padding: 0; } }
   .xb-store-template__detail-background {
     position: absolute;
     left: 0;

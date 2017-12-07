@@ -318,7 +318,7 @@
     </div>
     <div class="xb-template-2-edit__mobile-dialog-inner">
       <div class="xb-template-2-edit__title-1">
-        Ready to Publish
+        Ready to Publish?
       </div>
       <div class="xb-template-2-edit__content-1">
         Make sure all these setting are correct before your store goes live!
@@ -340,6 +340,9 @@
           <mat-form-field class="xb-template-2-edit__width-100">
             <textarea matInput formControlName="description"></textarea>
           </mat-form-field>
+          <div *ngIf="formErrors['description']" class="xb-input-error">
+            {{ formErrors['description'] }}
+          </div>
           <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
             <div>
               https://www.socialcommer.net/store/

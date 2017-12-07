@@ -19,6 +19,7 @@ export class StoreDetailComponent implements OnInit {
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
+  showButton: boolean = false;
 
   constructor(
     public router: Router,
@@ -31,6 +32,10 @@ export class StoreDetailComponent implements OnInit {
         self.store = data;
       }
     });
+  }
+
+  scrollChange($event) {
+    this.showButton = $event;
   }
 
   ngOnInit():void {
