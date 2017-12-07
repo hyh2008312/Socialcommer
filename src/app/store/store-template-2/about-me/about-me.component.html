@@ -40,7 +40,7 @@
         </div>
         <!--网页底部-->
         <div>
-          <app-store-template-2-store-foot [storeName]="contextList.nameTag"></app-store-template-2-store-foot>
+          <app-store-template-2-store-foot [storeName]="(contextList.nameTag || store.name)"></app-store-template-2-store-foot>
         </div>
       </div>
     </div>
