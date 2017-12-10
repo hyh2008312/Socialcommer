@@ -2325,4 +2325,9 @@ textarea.mat-input-element {
   .xb-affiliate-dialog__margin-top {
     margin-top: 32px; }
 
+.xb-error {
+  height: calc(100vh - 56px);
+  overflow-y: scroll;
+  background-color: #fff; }
+
 /*# sourceMappingURL=shop.css.map */

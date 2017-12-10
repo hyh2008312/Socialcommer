@@ -130,7 +130,11 @@ export class LeftSideNavigationComponent implements OnInit {
         value.isActive = false;
       }
     }
-    obj.isActive = !obj.isActive;
+    if(obj.slide) {
+      obj.isActive = !obj.isActive;
+    } else {
+      obj.isActive = true;
+    }
     if(obj.router) {
       this.router.navigate([`${obj.router}`], {relativeTo: this.activatedRoute});
     }

@@ -26,7 +26,6 @@ export class ViewObjectScrollDirective {
   }
 
   @HostListener('scroll') onScroll() {
-    console.log(111)
     let self = this;
     this.ngZone.runOutsideAngular(() => {
       if(self.part.getBoundingClientRect().top < 0) {

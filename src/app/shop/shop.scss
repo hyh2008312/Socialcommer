@@ -1091,3 +1091,8 @@
   }
 }
 
+.xb-error{
+  height: calc(100vh - 56px);
+  overflow-y: scroll;
+  background-color: $whiteColor;
+}

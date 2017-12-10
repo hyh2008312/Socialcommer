@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {ShopComponent} from './shop/shop.component';
+import {ShopErrorComponent} from './shop-error/shop-error.component';
 import {StoreComponent} from './store/store.component';
 import {CatalogComponent} from './catalog/catalog.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
@@ -95,12 +96,14 @@ const routes: Routes = [
       }, {
         path: 'toDoList', component: ToDoListComponent
       }, {
+        path: 'error', component: ShopErrorComponent
+      }, {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'
       }, {
         path: '**',
-        redirectTo: 'dashboard',
+        redirectTo: 'error',
         pathMatch: 'full'
       }
     ]

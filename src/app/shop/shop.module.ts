@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ShopComponent } from './shop/shop.component';
+import { ShopErrorComponent } from './shop-error/shop-error.component';
 import { StoreComponent } from './store/store.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -92,7 +93,8 @@ import { SharedModule } from '../shared/shared.module';
     BlogCreateDialogComponent,
     BlogEditDialogComponent,
     BlogDeleteDialogComponent,
-    SettingsPasswordDialogComponent
+    SettingsPasswordDialogComponent,
+    ShopErrorComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
