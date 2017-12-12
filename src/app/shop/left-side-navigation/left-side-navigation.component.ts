@@ -76,7 +76,7 @@ export class LeftSideNavigationComponent implements OnInit {
       text: '',
       router: ''
     }],
-    router: './toDoList',
+    router: './todolist',
     isActive: false
   }, {
     id: 5,

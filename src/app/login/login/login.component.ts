@@ -109,12 +109,12 @@ export class LoginComponent implements OnInit {
         if(data && data.store && data.store.length>0) {
           self.userService.addStore(data.store[0]);
           if(data && data.isInvite) {
-            self.router.navigate(['shop/dashboard']);
+            self.router.navigate(['/shop/dashboard']);
           } else {
-            self.router.navigate(['cp/invitation']);
+            self.router.navigate(['/account/invitation']);
           }
         } else {
-          self.router.navigate(['cp/signUp'], {queryParams: {step: 1}});
+          self.router.navigate(['/account/signUp'], {queryParams: {step: 1}});
         }
 
       });
@@ -144,19 +144,19 @@ export class LoginComponent implements OnInit {
               self.userService.addUser(res.user);
               self.auth.inviteToken(res.user.isInvite);
               if(res.user.firstLogin) {
-                self.router.navigate(['cp/signUp'], {queryParams:{tab: 'settingProfile'}});
+                self.router.navigate(['/account/signUp'], {queryParams:{tab: 'settingProfile'}});
               } else {
                 if(res.user && res.user.store && res.user.store.length>0) {
                   self.userService.addStore(res.user.store[0]);
 
                   if(res.user && res.user.isInvite) {
-                    self.router.navigate(['shop/dashboard']);
+                    self.router.navigate(['/shop/dashboard']);
 
                   } else {
-                    self.router.navigate(['cp/invitation']);
+                    self.router.navigate(['/account/invitation']);
                   }
                 } else {
-                  self.router.navigate(['cp/signUp'], {queryParams: {step: 1}});
+                  self.router.navigate(['/account/signUp'], {queryParams: {step: 1}});
                 }
 
               }
@@ -187,19 +187,19 @@ export class LoginComponent implements OnInit {
                 self.userService.addUser(res.user);
                 self.auth.inviteToken(res.user.isInvite);
                 if(res.user.firstLogin) {
-                  self.router.navigate(['cp/signUp'], {queryParams:{tab: 'settingProfile'}});
+                  self.router.navigate(['/account/signUp'], {queryParams:{tab: 'settingProfile'}});
                 } else {
                   if(res.user && res.user.store && res.user.store.length>0) {
                     self.userService.addStore(res.user.store[0]);
 
                     if(res.user && res.user.isInvite) {
-                      self.router.navigate(['shop/dashboard']);
+                      self.router.navigate(['/shop/dashboard']);
 
                     } else {
-                      self.router.navigate(['cp/invitation']);
+                      self.router.navigate(['/account/invitation']);
                     }
                   } else {
-                    self.router.navigate(['cp/signUp'], {queryParams: {step: 1}});
+                    self.router.navigate(['/account/signUp'], {queryParams: {step: 1}});
                   }
                 }
               }

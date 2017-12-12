@@ -10,7 +10,7 @@ const routes: Routes = [
     component: AppComponent,
     children: [
       {
-        path: 'cp',
+        path: 'account',
         loadChildren: 'app/login/login.module#LoginModule'
       }, {
         path: 'shop',

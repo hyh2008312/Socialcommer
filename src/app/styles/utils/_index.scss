@@ -12,6 +12,25 @@ $warn: mat-palette($mat-red, 500);
 $theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);
 
+$dark-primary: mat-palette($mat-grey, 900);
+$dark-accent: mat-palette($mat-amber, A400);
+$dark-warn: mat-palette($mat-red, 500);
+$dark-theme: mat-light-theme($dark-primary, $dark-accent, $dark-warn);
+
+.unicorn-dark-theme {
+  @include angular-material-theme($dark-theme);
+  .mat-form-field-underline{
+    height: 2px;
+    background-color: #000;
+  }
+
+  .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+    color: #000;
+  }
+  .mat-option.mat-selected[_ngcontent-c4]:not(.mat-option-multiple):not(.mat-option-disabled){
+    background-color: rgba(0,0,0,.12);
+  }
+}
 
 .mat-raised-button:not([class*=mat-elevation-z]){
   @include box-shadow(none);

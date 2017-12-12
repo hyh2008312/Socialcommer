@@ -64,7 +64,7 @@ export class ResetPasswordConfirmComponent implements OnInit {
     'confirmPassword':{
       'required': 'This field is required.',
       'minlength': 'ConfirmPassword must contain at least 6 characters.',
-      'validateEqual': 'ConfirmPassword is different from Password.'
+      'validateEqual': 'Password does not match the Confirm Password.'
     }
   };
 
@@ -110,7 +110,7 @@ export class ResetPasswordConfirmComponent implements OnInit {
       password, uid, token
     }).then((data) => {
       self.close();
-      self.router.navigate(['/cp/login']);
+      self.router.navigate(['/account/login']);
     });
   }
 

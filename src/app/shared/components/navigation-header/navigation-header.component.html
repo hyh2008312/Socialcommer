@@ -9,8 +9,8 @@
     </div>
   </div>
   <a class="xb-navigation-header__login" [ngClass]="{'xb-navigation-header__login-active': status}"
-     routerLink="/cp/login" fxShow.xs="false">Log In</a>
-  <a class="md-margin-right-2 xb-navigation-header__button" routerLink="/cp/signUp" fxShow.xs="false">Sign Up</a>
+     routerLink="/account/login" fxShow.xs="false">Log In</a>
+  <a class="md-margin-right-2 xb-navigation-header__button" routerLink="/account/signUp" fxShow.xs="false">Sign Up</a>
   <i class="material-icons xb-navigation-header__menu" [ngClass]="{'xb-navigation-header__menu-active': status}"
      fxShow.gt-xs="false" (click)="openPop()">menu</i>
 </div>
@@ -30,10 +30,10 @@
          (click)="openPop()">close</i>
     </div>
   </div>
-  <div class="xb-navigation-header__list" routerLink="/cp/login">
+  <div class="xb-navigation-header__list" routerLink="/account/login">
     Log In
   </div>
-  <div class="xb-navigation-header__list" routerLink="/cp/signUp">
+  <div class="xb-navigation-header__list" routerLink="/account/signUp">
     Sign Up
   </div>
 </div>

@@ -1,0 +1,42 @@
+<div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start center">
+  <div fxLayout="row" fxLayoutAlign="start start" fxFlex="40">
+    <div class="xb-cart__item-image" fxFlex="none">
+      <img src="https://images-na.ssl-images-amazon.com/images/I/716Mg13ZLZL._SL1500_.jpg">
+    </div>
+    <div class="xb-cart__item-title">
+      AZPEN D100 Qi Wireless Charger Bluetooth 4.0 HiFi Speaker
+    </div>
+  </div>
+  <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center">
+    <div  fxLayout="row" fxLayoutAlign="start center">
+      <div class="md-margin-right-1">
+        <i class="material-icons xb-pointer">remove</i>
+      </div>
+      <mat-form-field class="xb-cart__item-input unicorn-dark-theme">
+        <input class="unicorn-dark-theme md-align-center" matInput [(ngModel)]="number">
+      </mat-form-field>
+      <div class="md-margin-left-1">
+        <i class="material-icons xb-pointer">add</i>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="15" fxLayout="column" fxLayoutAlign="start center">
+    <div class="xb-cart__item-sale">$ 30</div>
+    <div class="line-through md-dark-secondary xb-cart__item-original">$ 60</div>
+  </div>
+  <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field class="xb-cart__item-select unicorn-dark-theme" fxFlex="none">
+      <mat-select class="unicorn-dark-theme" [(ngModel)]="shipping" name="shipping">
+        <mat-option class="unicorn-dark-theme"  *ngFor="let item of shippingList" [value]="item.content">
+          {{ item.content }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="xb-cart__item-sale md-margin-left-2">$ 5</div>
+  </div>
+  <div fxFlex="5" fxLayout="row" fxLayoutAlign="end center">
+    <div class="xb-cart__icon xb-pointer">
+      <i class="material-icons md-dark-secondary">delete</i>
+    </div>
+  </div>
+</div>

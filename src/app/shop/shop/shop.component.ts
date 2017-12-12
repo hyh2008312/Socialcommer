@@ -69,7 +69,7 @@ export class ShopComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/cp/login']);
+    this.router.navigate(['/account/login']);
   }
 
 }

@@ -94,7 +94,7 @@ const routes: Routes = [
           path: ':id/edit', component: BlogEditDialogComponent
         }]
       }, {
-        path: 'toDoList', component: ToDoListComponent
+        path: 'todolist', component: ToDoListComponent
       }, {
         path: 'error', component: ShopErrorComponent
       }, {

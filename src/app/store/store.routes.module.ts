@@ -2,11 +2,15 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {StoreMainComponent} from './store-main/store-main.component';
-
+import {StoreCartMainComponent} from './store-cart/store-cart-main/store-cart-main.component';
 
 const routes: Routes = [{
   path: ':name', component: StoreMainComponent,
   children: [
+    {
+      path: 'cart',
+      loadChildren: 'app/store/store-cart/store-cart.module#StoreCartModule'
+    },
     {
       path: '1',
       loadChildren: 'app/store/store-template-1/store-template-1.module#StoreTemplateOneModule'

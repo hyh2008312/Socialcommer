@@ -1,0 +1,122 @@
+@import "../../styles/utils/_index";
+@import "../../styles/_variables";
+
+.xb-cart{
+  &__navigation{
+    height: 56px;
+    &-title{
+      font-size: 32px;
+      padding: 0 16px;
+    }
+
+    &-icon{
+      padding: 8px;
+      >i{
+        font-size: 24px;
+      }
+    }
+  }
+  &__bg{
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+
+  &__body{
+    overflow: hidden;
+
+    &-margin-right{
+      margin-right: 16px;
+    }
+  }
+
+  &__bill{
+    padding: 0 24px;
+    width: 224px;
+
+    &-title{
+      height: 54px;
+      font-size: 16px;
+      @include media();
+    }
+
+    &-left{
+      width: 100px;
+    }
+
+    &-margin-top-1{
+      margin-top: 16px;
+    }
+
+    &-margin-top-2{
+      margin-top: 32px;
+    }
+
+    &-margin-bottom{
+      margin-bottom: 24px;
+    }
+  }
+
+  &__product-title-bg{
+    height: 54px;
+    padding: 0 16px;
+  }
+
+  &__title{
+    font-size: 16px;
+    @include media();
+  }
+
+  &__product-list{
+    height: 112px;
+    margin: 0 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+
+  &__item{
+
+    .mat-form-field-underline{
+      background-color: #000;
+    }
+    &-image{
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin-right: 16px;
+      >img{
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%))
+      }
+    }
+
+    &-title{
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    &-input{
+      width: 48px;
+    }
+
+    &-select{
+      width: 80px;
+    }
+
+    &-sale{
+      font-size: 16px;
+      @include media();
+    }
+
+    &-original{
+      margin-top: 4px;
+    }
+  }
+
+}
+

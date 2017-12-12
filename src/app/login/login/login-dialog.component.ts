@@ -121,7 +121,7 @@ export class LoginDialogComponent implements OnInit {
 
           if(data && data.isInvite) {
             self.close();
-            self.router.navigate(['shop/dashboard']);
+            self.router.navigate(['/shop/dashboard']);
           } else {
             self.close();
             self.openInviteCode();
@@ -168,7 +168,7 @@ export class LoginDialogComponent implements OnInit {
 
                   if(res.user && res.user.isInvite) {
                     self.close();
-                    self.router.navigate(['shop/dashboard']);
+                    self.router.navigate(['/shop/dashboard']);
                   } else {
                     self.close();
                     self.openInviteCode();
@@ -213,7 +213,7 @@ export class LoginDialogComponent implements OnInit {
                     self.userService.addStore(res.user.store[0]);
                     if(res.user && res.user.isInvite) {
                       self.close();
-                      self.router.navigate(['shop/dashboard']);
+                      self.router.navigate(['/shop/dashboard']);
                     } else {
                       self.close();
                       self.openInviteCode();

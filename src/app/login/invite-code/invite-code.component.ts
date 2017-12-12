@@ -102,7 +102,7 @@ export class InviteCodeComponent implements OnInit {
       if(self.store) {
         self.router.navigate(['/shop/toDoList']);
       } else {
-        self.router.navigate(['cp/signUp'],{ queryParams: { step: 1 } });
+        self.router.navigate(['/account/signUp'],{ queryParams: { step: 1 } });
       }
     }).catch((data) => {
       self.inviteErr = data;

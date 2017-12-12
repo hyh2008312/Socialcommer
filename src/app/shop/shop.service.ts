@@ -691,8 +691,14 @@ export class ShopService {
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+      const err = body.error || body;
+      if(err.detail) {
+        errMsg = `${err.detail}`;
+      } else {
+        if(err.error) {
+          errMsg = "Sorry! Server is busy now!";
+        }
+      }
     } else {
       errMsg = error.msg ? error.msg : error.toString();
     }

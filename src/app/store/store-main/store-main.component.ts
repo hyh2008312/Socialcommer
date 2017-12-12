@@ -35,6 +35,7 @@ export class StoreMainComponent implements OnInit {
     if(routerArray[1] != '') {
       let allRouter = routerArray[1].split('/');
       let uid = allRouter[1];
+
       let lastRouter = '';
       let replaceRouter = [];
       if(allRouter.length > 2) {
@@ -45,10 +46,8 @@ export class StoreMainComponent implements OnInit {
         if (data) {
           this.storeService.addStore(data);
           if (data.templateId == 1) {
-            if(uid != data.templateId) {
+            if(uid != 'cart' && uid != data.templateId) {
               if(replaceRouter.length > 0) {
-
-                console.log(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[1][replaceRouter[0]])
                 if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[1][replaceRouter[0]]) {
                   self.router.navigate([`/store/${storeName}/${data.templateId}`]);
                 } else {
@@ -61,7 +60,7 @@ export class StoreMainComponent implements OnInit {
             return;
           }
           if(data.uid > 1) {
-            if(uid != data.uid) {
+            if(uid != 'cart' && uid != data.uid) {
               if(replaceRouter.length > 0) {
                 if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[data.uid - 1][replaceRouter[0]]) {
                   self.router.navigate([`/store/${storeName}/${data.uid}`]);

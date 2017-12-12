@@ -68,7 +68,7 @@ export class SettingsPasswordDialogComponent implements OnInit {
     'confirmPassword':{
       'required': 'This field is required.',
       'minlength': 'ConfirmPassword must contain at least 6 characters.',
-      'validateEqual': 'ConfirmPassword is different from Password.'
+      'validateEqual': 'Password does not match the Confirm Password.'
     }
   };
 
