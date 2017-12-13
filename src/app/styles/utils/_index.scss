@@ -27,8 +27,8 @@ $dark-theme: mat-light-theme($dark-primary, $dark-accent, $dark-warn);
   .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
     color: #000;
   }
-  .mat-option.mat-selected[_ngcontent-c4]:not(.mat-option-multiple):not(.mat-option-disabled){
-    background-color: rgba(0,0,0,.12);
+  .mat-option.mat-active{
+    background-color: rgba(0,0,0,.12) !important;
   }
 }
 

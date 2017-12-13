@@ -1,0 +1,363 @@
+<div class="xb-cart" fxLayout="column">
+  <div class="background-bg-white">
+    <div class="container">
+      <app-store-cart-header [homeLink]="homeLink"></app-store-cart-header>
+    </div>
+  </div>
+  <div class="background-bg-light xb-cart__body" fxFlex="noshrink">
+    <div class="container">
+      <div class="xb-cart__bg" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-cart__body-margin-right" fxFlex>
+          <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form"
+             fxLayout="column" fxLayoutAlign="start stretch">
+            <div class="xb-cart__title">
+              Contact Email
+            </div>
+            <div class="xb-cart__body-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center"
+                 fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+              <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                <input type="text" matInput placeholder="Email Address">
+              </mat-form-field>
+              <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                <input type="text" matInput placeholder="Confirm Email Address">
+              </mat-form-field>
+            </div>
+            <div class="xb-cart__title xb-cart__body-margin-top-1">
+              Shipping Address
+            </div>
+            <div class="xb-cart__body-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
+              <mat-form-field fxFlex="48">
+                <input type="text" matInput placeholder="First Name">
+              </mat-form-field>
+              <mat-form-field fxFlex="48">
+                <input type="text" matInput placeholder="Last Name">
+              </mat-form-field>
+            </div>
+            <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between center"
+               fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+              <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                <input type="text" matInput placeholder="Address Line1">
+              </mat-form-field>
+              <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                <input type="text" matInput placeholder="Address Line2(Optional)">
+              </mat-form-field>
+            </div>
+            <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between center"
+               fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+              <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                <input type="text" matInput placeholder="City">
+              </mat-form-field>
+              <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="48" class="xb-cart__width-100">
+                <mat-form-field fxFlex="46">
+                  <mat-select placeholder="Country" [(ngModel)]="country" name="country">
+                    <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.code">
+                      {{ country.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="46">
+                  <input type="text" matInput placeholder="State">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between center"
+               fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+              <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                <input type="text" matInput placeholder="Postal / Zip Code">
+              </mat-form-field>
+              <mat-form-field  fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                <input type="text" matInput placeholder="Phone Number">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="text-underline xb-pointer xb-bold" ><< back</div>
+            <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
+              <button mat-raised-button color="primary" >CONTINUE</button>
+            </div>
+          </div>
+          <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form"
+               fxLayout="column" fxLayoutAlign="start stretch">
+            <div class="xb-cart__title">
+              Pay Method
+            </div>
+            <div>
+              <mat-radio-group [ngModel]="payMethod" (ngModelChange)="changePayMethod($event)" fxLayout="row"
+                 fxLayout.xs="column">
+                <mat-radio-button class="xb-cart__body-margin-top-2 xb-cart__body-margin-right-1" *ngFor="let item of payMethodList" [value]="item.content" color="primary">
+                  {{ item.content }}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div *ngIf="payMethodItem.display" class="xb-cart__body-margin-top-2"
+                 fxLayout="row" fxLayoutAlign="space-between center"
+                 fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+              <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                <input type="text" matInput placeholder="Card Name">
+              </mat-form-field>
+              <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="48" class="xb-cart__width-100">
+                <mat-form-field fxFlex="46">
+                  <input type="text" matInput placeholder="MM/YY">
+                </mat-form-field>
+                <mat-form-field fxFlex="46">
+                  <input type="text" matInput placeholder="CVC">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="xb-cart__title xb-cart__body-margin-top-2">
+              Billing Address
+            </div>
+            <mat-radio-group [ngModel]="shippingMethod" (ngModelChange)="changeShippingMethod($event)" fxLayout="column">
+              <mat-radio-button class="xb-cart__body-margin-top-2"
+                                *ngFor="let item of shippingMethodList" [value]="item.content" color="primary">
+                {{ item.content }}
+              </mat-radio-button>
+            </mat-radio-group>
+            <div class="xb-cart__body-margin-top-2" *ngIf="shippingMethodItem.display" >
+              <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-form-field fxFlex="48">
+                  <input type="text" matInput placeholder="First Name">
+                </mat-form-field>
+                <mat-form-field fxFlex="48">
+                  <input type="text" matInput placeholder="Last Name">
+                </mat-form-field>
+              </div>
+              <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between center"
+                   fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+                <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                  <input type="text" matInput placeholder="Address Line1">
+                </mat-form-field>
+                <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                  <input type="text" matInput placeholder="Address Line2(Optional)">
+                </mat-form-field>
+              </div>
+              <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between center"
+                   fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+                <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                  <input type="text" matInput placeholder="City">
+                </mat-form-field>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="48" class="xb-cart__width-100">
+                  <mat-form-field fxFlex="46">
+                    <mat-select placeholder="Country" [(ngModel)]="country" name="country">
+                      <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.code">
+                        {{ country.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field fxFlex="46">
+                    <input type="text" matInput placeholder="State">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between center"
+                   fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+                <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                  <input type="text" matInput placeholder="Postal / Zip Code">
+                </mat-form-field>
+                <mat-form-field  fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
+                  <input type="text" matInput placeholder="Phone Number">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="text-underline xb-pointer xb-bold" ><< back</div>
+            <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
+              <button mat-raised-button color="primary" >COMPLETE ORDER</button>
+            </div>
+          </div>
+          <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form"
+               fxLayout="column" fxLayoutAlign="start stretch">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-cart__title">
+                Order Number
+              </div>
+              <div class="xb-cart__bill-margin-left">
+                11227865909758
+              </div>
+            </div>
+            <div class="md-margin-top-2 md-dark-secondary">
+              Your order had been placed successfully. The full tracking information will be sent to you via email,
+              once your order has been dispatched.
+            </div>
+            <div class="xb-cart__title xb-cart__body-margin-top-2">
+              Order Number
+            </div>
+            <div class="md-margin-top-2 md-dark-secondary">
+              Your shipment status and updates will be sent to <span>XXXXX@email.com</span>
+            </div>
+            <div class="xb-cart__title xb-cart__body-margin-top-2">
+              Custome Information
+            </div>
+            <div class="xb-cart__title md-margin-top-2">
+              Shipping Address
+            </div>
+            <div class="md-margin-top-3" fxLayout="column" >
+              <div fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  Name
+                </div>
+                <div>
+                  Taylor Swift
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  Address
+                </div>
+                <div>
+                  123 John Street, Prtland, OR 123456
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  Postal / Zip Code
+                </div>
+                <div>
+                  9078 1234 8897 2234
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  City
+                </div>
+                <div>
+                  John
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  State
+                </div>
+                <div>
+                  Portland
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  Phone Number
+                </div>
+                <div>
+                  123455677
+                </div>
+              </div>
+            </div>
+            <div class="xb-cart__title xb-cart__body-margin-top-2">
+              Billing Address
+            </div>
+            <div class="md-margin-top-3" fxLayout="column">
+              <div fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  Name
+                </div>
+                <div>
+                  Taylor Swift
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  Address
+                </div>
+                <div>
+                  123 John Street, Prtland, OR 123456
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  Postal / Zip Code
+                </div>
+                <div>
+                  9078 1234 8897 2234
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  City
+                </div>
+                <div>
+                  John
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  State
+                </div>
+                <div>
+                  Portland
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
+                  Phone Number
+                </div>
+                <div>
+                  123455677
+                </div>
+              </div>
+            </div>
+            <div class="xb-cart__body-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-cart__title">
+                Payment Method
+              </div>
+              <div class="xb-cart__bill-margin-left">Credit Card / Paypal</div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="column" fxHide.xs>
+          <div class="xb-cart__bill background-bg-white" fxHide.xs>
+            <div class="xb-cart__bill-title" fxLayout="row" fxLayoutAlign="start center">
+              Order Summery
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+              <div class="xb-cart__bill-left">
+                <div class="xb-cart__bill-margin-top-1">Subtotal</div>
+                <div class="xb-cart__bill-margin-top-1">Shipping</div>
+                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
+              </div>
+              <div>
+                <div class="xb-cart__bill-margin-top-1">$50</div>
+                <div class="xb-cart__bill-margin-top-1">$5</div>
+                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">$55</div>
+              </div>
+            </div>
+          </div>
+          <div class="md-margin-top-2 unicorn-dark-theme" fxLayout="column">
+            <button mat-raised-button color="primary" >CONTINUE SHOPPING</button>
+            <div class="text-underline xb-pointer md-margin-top-2 md-align-center xb-bold">
+              Contact Support
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="xb-cart__fixed-bottom background-bg-white" fxLayout="row" fxLayoutAlign="start center" fxHide.gt-xs>
+    <div class="xb-cart__fixed-bottom-dialog" *ngIf="isTotalDialogOpen">
+      <div fxLayout="row" fxLayoutAlign="start stretch">
+        <div>
+          <div>$50</div>
+          <div class="md-margin-top-3">$5</div>
+        </div>
+        <div class="md-margin-left-3">
+          <div>Subtotal</div>
+          <div class="md-margin-top-3">Shipping</div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex (click)="openDialog()">
+      <div class="xb-cart__item-sale md-margin-left-1">
+        $ 65
+      </div>
+      <div class="xb-cart__fixed-bottom-tri xb-cart__fixed-bottom-margin" *ngIf="!isTotalDialogOpen"></div>
+      <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>
+    </div>
+    <div class="unicorn-dark-theme" fxLayout="column">
+      <button mat-raised-button color="primary" >CONTINUE</button>
+    </div>
+  </div>
+  <div class="background-bg-white" fxHide.xs>
+    <div class="container">
+      <app-store-cart-footer></app-store-cart-footer>
+    </div>
+  </div>
+</div>

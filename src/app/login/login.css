@@ -2071,8 +2071,8 @@ input.mat-input-element {
   background-color: #000; }
 .unicorn-dark-theme .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
   color: #000; }
-.unicorn-dark-theme .mat-option.mat-selected[_ngcontent-c4]:not(.mat-option-multiple):not(.mat-option-disabled) {
-  background-color: rgba(0, 0, 0, 0.12); }
+.unicorn-dark-theme .mat-option.mat-active[_ngcontent-c2] {
+  background-color: rgba(0, 0, 0, 0.12) !important; }
 
 .mat-raised-button:not([class*=mat-elevation-z]) {
   -webkit-box-shadow: none;

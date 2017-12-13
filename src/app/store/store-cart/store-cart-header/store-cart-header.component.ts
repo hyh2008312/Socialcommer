@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,6 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class StoreCartHeaderComponent{
+
+  @Input() homeLink: string = '';
 
   constructor(
 

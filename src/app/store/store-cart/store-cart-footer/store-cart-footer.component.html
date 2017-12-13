@@ -1,27 +1,39 @@
 <div class="xb-cart__footer">
-  <div fxLayout="row" fxLayoutAlign="start start">
-    <div>
-      <div>Contact us</div>
-      <div>Any questions? Let us know in store at 24/6h Street, or call us on 0800 637 637</div>
+  <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div fxFlex="30">
+      <div class="xb-cart__footer-title">Contact us</div>
+      <div class="xb-cart__footer-content">Any questions? Let us know in store at 24/6h Street, or call us on 0800 637 637</div>
     </div>
-    <div>
-      <div>Links</div>
-      <div fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="start center">
-        <div class="xb-blog-detail__share md-margin-right-3">
+    <div fxFlex="15">
+      <div class="xb-cart__footer-title">Links</div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
+        <div class="xb-cart__footer-icons md-margin-right-3">
+          <i class="iconfontXberts icon-ic-youtube"></i>
+        </div>
+        <div class="xb-cart__footer-icons md-margin-right-3">
+          <i class="iconfontXberts icon-ic-Instagram"></i>
+        </div>
+        <div class="xb-cart__footer-icons md-margin-right-3">
           <i class="iconfontXberts icon-ic-facebook"></i>
         </div>
-        <div class="xb-blog-detail__share md-margin-right-3">
+        <div class="xb-cart__footer-icons md-margin-right-3">
           <i class="iconfontXberts icon-ic-twitter"></i>
         </div>
       </div>
     </div>
-    <div>
-      <div>Newsletter</div>
-      <input placeholder="email@example.com">
-      <button mat-raised-button>SUBSCRIBE</button>
+    <div fxFlex="25">
+      <div class="xb-cart__footer-title">Newsletter</div>
+      <div fxLayout="column" fxLayoutAlign="start stretch">
+        <mat-form-field class="unicorn-dark-theme xb-cart__width-100">
+          <input class="unicorn-dark-theme" matInput placeholder="email@example.com" >
+        </mat-form-field>
+        <div class="md-margin-top-1 unicorn-dark-theme">
+          <button mat-raised-button color="primary" >SUBSCRIBE</button>
+        </div>
+      </div>
     </div>
   </div>
-  <div>
-    © 2017 All rights reserved.  POWERED BY SocialCommer
+  <div class="xb-cart__footer-bottom-content" fxLayout="row" fxLayoutAlign="start center">
+    © 2017 All rights reserved.<span class="md-margin-left-3">POWERED BY SocialCommer</span>
   </div>
 </div>

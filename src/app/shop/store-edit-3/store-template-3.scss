@@ -341,12 +341,13 @@
   }
 
   &__about{
-    margin: 72px 120px;
+    position: relative;
+    padding: 72px 120px;
     @include xb-sm-screen{
-      margin: 72px 32px;
+      padding: 72px 32px;
     }
     @include xb-xs-screen{
-      margin: 0;
+      padding: 0;
     }
 
     &-title{
@@ -396,7 +397,9 @@
     }
 
     &-bottom{
+      position: relative;
       padding-bottom: 60px;
+      overflow: hidden;
       @include xb-xs-screen{
         padding-bottom: 0;
       }
@@ -601,16 +604,14 @@
 
   &__blog{
     &-content{
-      margin: 120px 0;
-      padding: 0 120px;
+      padding: 120px 120px;
+      position: relative;
       @include xb-sm-screen{
-        margin: 48px 0;
-        padding: 0 36px;
+        padding: 48px 36px;
       }
 
       @include xb-xs-screen{
-        margin: 48px 0;
-        padding: 0 16px;
+        padding: 48px 16px;
       }
     }
 

@@ -48,9 +48,6 @@
                 <div class="xb-shop__template-title xb-shop__template-edit" [hidden]="!titleEdited">
                   <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
                                 [options]="editorConfig"></quill-editor>
-                  <div class="xb-shop__template-edit-button" (click)="editTitle()">
-                    CLICK TO SAVE
-                  </div>
                 </div>
                 <div class="xb-shop__template-description ql-editor xb-pointer" [hidden]="descriptionEdited"
                      (click)="editDescription()"
@@ -59,9 +56,6 @@
                 <div class="xb-shop__template-description xb-shop__template-edit" [hidden]="!descriptionEdited">
                   <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
                                 [options]="editorConfig"></quill-editor>
-                  <div class="xb-shop__template-edit-button" (click)="editDescription()">
-                    CLICK TO SAVE
-                  </div>
                 </div>
               </div>
               <div class="xb-shop__template-edit-button" (click)="editImage()">
@@ -106,6 +100,14 @@
             </div>
           </div>
           <div class="xb-store-template__collection-bottom" [hidden]="viewIndex != 1">
+            <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-shop__template-button" (click)="close()">
+                CANCEL
+              </div>
+              <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
+                SAVE
+              </div>
+            </div>
             <div class="xb-store-template__collection-container">
               <div class="xb-store-template__collection-title" fxShow.xs="false">
                 COLLECTIONS
@@ -129,6 +131,14 @@
             </div>
           </div>
           <div class="xb-store-template__blog-content" [hidden]="viewIndex != 2">
+            <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-shop__template-button" (click)="close()">
+                CANCEL
+              </div>
+              <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
+                SAVE
+              </div>
+            </div>
             <div class="xb-store-template__blog-title">BLOG</div>
 
             <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
@@ -147,6 +157,14 @@
             </div>
           </div>
           <div class="xb-store-template__about" [hidden]="viewIndex != 3">
+            <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-shop__template-button" (click)="close()">
+                CANCEL
+              </div>
+              <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
+                SAVE
+              </div>
+            </div>
             <div class="xb-store-template__about-title">About Me</div>
             <div class="xb-store-template__about-image-bg xb-shop__template-edit" >
               <app-image-upload-preview-blog [(previewImgFile)]="aboutMeSrc" [(previewImgSrc)]="aboutMeSrc"
@@ -159,9 +177,6 @@
             <div class="xb-store-template__about-user xb-shop__template-edit" [hidden]="!userEdited">
               <quill-editor formControlName="userTag" [(ngModel)]="userTag"
                             [options]="editorConfig"></quill-editor>
-              <div class="xb-shop__template-edit-button" (click)="editUser()">
-                CLICK TO SAVE
-              </div>
             </div>
           </div>
         </div>

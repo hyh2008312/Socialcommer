@@ -25,9 +25,6 @@
         <div class="xb-shop__template-title xb-shop__template-edit" [hidden]="!titleEdited">
           <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
                         [options]="editorConfig"></quill-editor>
-          <div class="xb-shop__template-edit-button" (click)="editTitle()">
-            CLICK TO SAVE
-          </div>
         </div>
         <div class="xb-shop__template-description ql-editor xb-pointer" [hidden]="descriptionEdited"
              (click)="editDescription()"
@@ -36,18 +33,12 @@
         <div class="xb-shop__template-description xb-shop__template-edit" [hidden]="!descriptionEdited">
           <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
                         [options]="editorConfig"></quill-editor>
-          <div class="xb-shop__template-edit-button" (click)="editDescription()">
-            CLICK TO SAVE
-          </div>
         </div>
       </div>
       <div class="xb-store__store-buttons" fxShow="false" fxShow.gt-xs="true">
         <span>Shop Now</span>
         <br>
         <i class="material-icons">keyboard_arrow_down</i>
-      </div>
-      <div class="xb-shop__template-edit-button" (click)="editImage()">
-        CLICK TO CHANGE IMAGE
       </div>
     </div>
     <div>
@@ -114,9 +105,6 @@
             <div class="xb-shop__template-user xb-shop__template-edit" [hidden]="!userEdited">
               <quill-editor formControlName="userTag" [(ngModel)]="userTag"
                             [options]="editorConfig"></quill-editor>
-              <div class="xb-shop__template-edit-button" (click)="editUser()">
-                CLICK TO SAVE
-              </div>
             </div>
             <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
               <i class="iconfontXberts icon-pic-quota-2"></i>
