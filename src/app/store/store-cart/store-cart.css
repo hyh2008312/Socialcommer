@@ -2228,9 +2228,8 @@ textarea.mat-input-element {
       @media screen and (max-width: 599px) {
         .xb-cart__body-left-button {
           padding: 16px 16px 0; } }
-    @media screen and (max-width: 599px) {
-      .xb-cart__body-100 {
-        width: 100% !important; } }
+    .xb-cart__body-100 {
+      width: 100% !important; }
   .xb-cart__bill {
     padding: 0 24px;
     width: 224px; }
@@ -2243,11 +2242,11 @@ textarea.mat-input-element {
       @media screen and (max-width: 599px) {
         .xb-cart__bill-margin-left {
           margin-left: 24px; } }
-    .xb-cart__bill-left {
+    .xb-cart__bill-left-1 {
       width: 120px;
       margin-right: 32px; }
       @media screen and (max-width: 599px) {
-        .xb-cart__bill-left {
+        .xb-cart__bill-left-1 {
           margin-right: 16px; } }
     .xb-cart__bill-left {
       width: 100px; }

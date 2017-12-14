@@ -130,9 +130,7 @@
     }
 
     &-100{
-      @include xb-xs-screen{
-        width: 100% !important;
-      }
+      width: 100% !important;
     }
   }
 

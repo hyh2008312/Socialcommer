@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
 
 import { LoginService } from '../login.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
@@ -100,7 +101,8 @@ export class SignUpComponent {
     private auth: AuthenticationService,
     private routerInfo :ActivatedRoute,
     private userService: UserService,
-    public _auth: AuthService
+    public _auth: AuthService,
+    private angulartics2GoogleTagManager: Angulartics2GoogleTagManager
   ) {
     this.signUpGroup = this.fb.group({
       firstName: ['', Validators.required],
@@ -150,12 +152,14 @@ export class SignUpComponent {
     self.authSub = self.auth.isAuthorized().subscribe((auth) => {
       if(auth && this.routerInfo.snapshot.queryParams["step"] == 1) {
         self.step = 1;
+        self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
       }
     });
     self.currentUserSub = self.userService.currentUser.subscribe((data) => {
       if(data && self.routerInfo.snapshot.queryParams["tab"] == 'settingProfile') {
         self.step = 0;
         self.isFirstLogin = true;
+        self.angulartics2GoogleTagManager.pageTrack('/signup/basic-info');
 
         let country = '';
         self.countries.find((item: any) => {
@@ -259,6 +263,7 @@ export class SignUpComponent {
       self.service.login(loginObject).then((data)=>{
         self.auth.setAccessToken(data);
         self.step = 1;
+        self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
       });
     }).catch((data) => {
       self.signUpErr = data;
@@ -274,6 +279,7 @@ export class SignUpComponent {
     self.service.settingProfile(this.settingForm.value).then((data) => {
       self.settingErr = false;
       self.step = 1;
+      self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
     }).catch((data) => {
       self.settingErr = data;
     });
@@ -296,6 +302,7 @@ export class SignUpComponent {
               self.userService.addUser(res.user);
               if(res.user.firstLogin) {
                 self.isFirstLogin = res.user.firstLogin;
+                self.angulartics2GoogleTagManager.pageTrack('/signup/basic-info');
 
                 let country = '';
                 self.countries.find((item: any) => {
@@ -316,6 +323,7 @@ export class SignUpComponent {
                 });
               } else {
                 self.step = 1;
+                self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
               }
             }
           }).catch((res) => {
@@ -344,6 +352,8 @@ export class SignUpComponent {
               self.userService.addUser(res.user);
               if(res.user.firstLogin) {
                 self.isFirstLogin = res.user.firstLogin;
+                self.angulartics2GoogleTagManager.pageTrack('/signup/basic-info');
+
                 let country = '';
                 self.countries.find((item: any) => {
                   if(item.name == res.user.country) {
@@ -363,6 +373,7 @@ export class SignUpComponent {
                 });
               } else {
                 self.step = 1;
+                self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
               }
             }
           }).catch((res) => {
@@ -394,6 +405,7 @@ export class SignUpComponent {
           self.router.navigate(['shop/dashboard']);
         } else {
           self.step = 2;
+          self.angulartics2GoogleTagManager.pageTrack('/signup/complete');
         }
       });
     }).catch((data) => {

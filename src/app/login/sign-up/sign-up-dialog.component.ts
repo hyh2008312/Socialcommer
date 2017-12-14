@@ -2,6 +2,7 @@ import { Component, OnDestroy, Inject, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
 
 import { LoginService } from '../login.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
@@ -108,7 +109,8 @@ export class SignUpDialogComponent {
     private dialog: MatDialog,
     public _auth: AuthService,
     public dialogRef: MatDialogRef<SignUpDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private angulartics2GoogleTagManager: Angulartics2GoogleTagManager
   ) {
     this.signUpGroup = this.fb.group({
       firstName: ['', Validators.required],
@@ -158,12 +160,14 @@ export class SignUpDialogComponent {
     self.authSub = self.auth.isAuthorized().subscribe((auth) => {
       if(auth && self.data.step == 1) {
         self.step = 1;
+        self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
       }
     });
     self.currentUserSub = self.userService.currentUser.subscribe((data) => {
       if(data &&  self.data.tab == 'settingProfile') {
         self.step = 0;
         self.isFirstLogin = true;
+        self.angulartics2GoogleTagManager.pageTrack('/signup/basic-info');
 
         let country = '';
         self.countries.find((item: any) => {
@@ -267,6 +271,7 @@ export class SignUpDialogComponent {
       self.service.login(loginObject).then((data)=>{
         self.auth.setAccessToken(data);
         self.step = 1;
+        self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
       });
     }).catch((data) => {
       self.signUpErr = data;
@@ -282,6 +287,7 @@ export class SignUpDialogComponent {
     self.service.settingProfile(this.settingForm.value).then((data) => {
       self.settingErr = false;
       self.step = 1;
+      self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
     }).catch((data) => {
       self.settingErr = data;
     });
@@ -304,6 +310,7 @@ export class SignUpDialogComponent {
               self.userService.addUser(res.user);
               if(res.user.firstLogin) {
                 self.isFirstLogin = res.user.firstLogin;
+                self.angulartics2GoogleTagManager.pageTrack('/signup/basic-info');
 
                 let country = '';
                 self.countries.find((item: any) => {
@@ -324,6 +331,7 @@ export class SignUpDialogComponent {
                 });
               } else {
                 self.step = 1;
+                self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
               }
             }
           }).catch((res) => {
@@ -351,6 +359,8 @@ export class SignUpDialogComponent {
               self.userService.addUser(res.user);
               if(res.user.firstLogin) {
                 self.isFirstLogin = res.user.firstLogin;
+                self.angulartics2GoogleTagManager.pageTrack('/signup/basic-info');
+
                 let country = '';
                 self.countries.find((item: any) => {
                   if(item.name == res.user.country) {
@@ -370,6 +380,7 @@ export class SignUpDialogComponent {
                 });
               } else {
                 self.step = 1;
+                self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
               }
             }
           }).catch((res) => {
@@ -401,6 +412,7 @@ export class SignUpDialogComponent {
           self.router.navigate(['shop/dashboard']);
         } else {
           self.step = 2;
+          self.angulartics2GoogleTagManager.pageTrack('/signup/complete');
         }
 
       });
