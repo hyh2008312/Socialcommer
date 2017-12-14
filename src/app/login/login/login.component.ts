@@ -114,7 +114,7 @@ export class LoginComponent implements OnInit {
             self.router.navigate(['/account/invitation']);
           }
         } else {
-          self.router.navigate(['/account/signUp'], {queryParams: {step: 1}});
+          self.router.navigate(['/account/signup'], {queryParams: {step: 1}});
         }
 
       });
@@ -144,7 +144,7 @@ export class LoginComponent implements OnInit {
               self.userService.addUser(res.user);
               self.auth.inviteToken(res.user.isInvite);
               if(res.user.firstLogin) {
-                self.router.navigate(['/account/signUp'], {queryParams:{tab: 'settingProfile'}});
+                self.router.navigate(['/account/signup'], {queryParams:{tab: 'settingProfile'}});
               } else {
                 if(res.user && res.user.store && res.user.store.length>0) {
                   self.userService.addStore(res.user.store[0]);
@@ -156,7 +156,7 @@ export class LoginComponent implements OnInit {
                     self.router.navigate(['/account/invitation']);
                   }
                 } else {
-                  self.router.navigate(['/account/signUp'], {queryParams: {step: 1}});
+                  self.router.navigate(['/account/signup'], {queryParams: {step: 1}});
                 }
 
               }
@@ -187,7 +187,7 @@ export class LoginComponent implements OnInit {
                 self.userService.addUser(res.user);
                 self.auth.inviteToken(res.user.isInvite);
                 if(res.user.firstLogin) {
-                  self.router.navigate(['/account/signUp'], {queryParams:{tab: 'settingProfile'}});
+                  self.router.navigate(['/account/signup'], {queryParams:{tab: 'settingProfile'}});
                 } else {
                   if(res.user && res.user.store && res.user.store.length>0) {
                     self.userService.addStore(res.user.store[0]);
@@ -199,7 +199,7 @@ export class LoginComponent implements OnInit {
                       self.router.navigate(['/account/invitation']);
                     }
                   } else {
-                    self.router.navigate(['/account/signUp'], {queryParams: {step: 1}});
+                    self.router.navigate(['/account/signup'], {queryParams: {step: 1}});
                   }
                 }
               }
