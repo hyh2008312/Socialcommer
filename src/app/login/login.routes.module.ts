@@ -9,7 +9,7 @@ import { InviteCodeComponent } from "./invite-code/invite-code.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'signUp', component: SignUpComponent },
+  { path: 'signup', component: SignUpComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
   { path: 'invitation', component: InviteCodeComponent },
   { path: 'resetPassword/confirm/:uid/:token', component: ResetPasswordConfirmComponent  }
