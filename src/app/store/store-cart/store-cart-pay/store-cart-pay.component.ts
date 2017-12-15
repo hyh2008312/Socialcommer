@@ -150,7 +150,7 @@ export class StoreCartPayComponent implements OnInit{
     },
     'confirmEmail': {
       'required': 'This field is required.',
-      'validateEqual': 'Password does not match the Confirm Password.'
+      'validateEqual': 'Email does not match the Confirm Email.'
     },
     'firstName': {
       'required': 'This field is required.',
