@@ -6,18 +6,16 @@
   
   - Add bitbucket git remote
   
-        git remote add staging https://git.heroku.com/xberts-web-staging.git
-        git remote add prod https://git.heroku.com/xberts-mobile.git
+        git remote add staging https://heyh@bitbucket.org/xberts/xberts_web.git
+        git remote add prod https://heyh@bitbucket.org/xberts/xberts_web.git
         
 ### Update staging server
   - Push update
   
-        git push staging develop:master
+        git push prod master:master
         
 ### Update production server
-  - Push update
-  
-        git push heroku master
+  - Run 
         
 ## Build
 
