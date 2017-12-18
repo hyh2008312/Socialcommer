@@ -6,8 +6,8 @@
   
   - Add bitbucket git remote
   
-        git remote add staging https://heyh@bitbucket.org/xberts/xberts_web.git
-        git remote add prod https://heyh@bitbucket.org/xberts/xberts_web.git
+        git remote add staging https://heyh@bitbucket.org/xberts/web.git
+        git remote add prod https://heyh@bitbucket.org/xberts/web.git
         
 ### Update staging server
   - Push update
