@@ -110,6 +110,7 @@ export class MainPageComponent implements OnInit {
         self.userService.store.subscribe((data)=> {
           if(data) {
             self.store = data;
+            self.text = data.description;
             if(!firstLoad) {
               firstLoad = true;
 
@@ -135,6 +136,7 @@ export class MainPageComponent implements OnInit {
                 if(value.uid == 3) {
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
+                  self.storeName = value.context.nameTag != ''? value.context.nameTag: data.name;
                   self.titleTag = value.context.titleTag != ''? value.context.titleTag : self.titleTag;
                   self.descriptionTag = value.context.descriptionTag != ''? value.context.descriptionTag : self.descriptionTag;
                   self.userTag = value.context.userTag != ''? value.context.userTag : self.userTag;
