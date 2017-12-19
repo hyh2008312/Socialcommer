@@ -7,7 +7,7 @@ import { StoreCartPayComponent } from './store-cart-pay/store-cart-pay.component
 const routes: Routes = [{
   path: '', component: StoreCartMainComponent
 },{
-  path: 'pay', component: StoreCartPayComponent
+  path: 'checkout', component: StoreCartPayComponent
 }];
 
 @NgModule({

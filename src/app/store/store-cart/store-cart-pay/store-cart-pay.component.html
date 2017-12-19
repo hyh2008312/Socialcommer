@@ -129,7 +129,7 @@
             </div>
           </form>
           <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="text-underline xb-pointer xb-bold" ><< back</div>
+            <div class="text-underline xb-pointer xb-bold" ><< Back</div>
             <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
               <button mat-raised-button color="primary" >CONTINUE</button>
             </div>
@@ -162,10 +162,10 @@
                 </mat-form-field>
               </div>
             </div>
-            <div class="xb-cart__title xb-cart__body-margin-top-2">
+            <div class="xb-cart__title xb-cart__body-margin-top-2" *ngIf="payMethodItem.display">
               Billing Address
             </div>
-            <mat-radio-group [ngModel]="shippingMethod" (ngModelChange)="changeShippingMethod($event)" fxLayout="column">
+            <mat-radio-group *ngIf="payMethodItem.display" [ngModel]="shippingMethod" (ngModelChange)="changeShippingMethod($event)" fxLayout="column">
               <mat-radio-button class="xb-cart__body-margin-top-2"
                                 *ngFor="let item of shippingMethodList" [value]="item.content" color="primary">
                 {{ item.content }}
@@ -263,7 +263,7 @@
             </form>
           </div>
           <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="text-underline xb-pointer xb-bold" ><< back</div>
+            <div class="text-underline xb-pointer xb-bold" ><< Back</div>
             <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
               <button mat-raised-button color="primary" >COMPLETE ORDER</button>
             </div>
@@ -283,15 +283,12 @@
               once your order has been dispatched.
             </div>
             <div class="xb-cart__title xb-cart__body-margin-top-2">
-              Order Number
+              Order Tracking
             </div>
             <div class="md-margin-top-2 md-dark-secondary">
               Your shipment status and updates will be sent to <span>XXXXX@email.com</span>
             </div>
             <div class="xb-cart__title xb-cart__body-margin-top-2">
-              Custome Information
-            </div>
-            <div class="xb-cart__title md-margin-top-2">
               Shipping Address
             </div>
             <div class="md-margin-top-3" fxLayout="column" >
@@ -386,14 +383,6 @@
                 </div>
                 <div>
                   Portland
-                </div>
-              </div>
-              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-                <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
-                  Phone Number
-                </div>
-                <div>
-                  123455677
                 </div>
               </div>
             </div>
