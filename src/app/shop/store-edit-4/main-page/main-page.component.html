@@ -45,7 +45,7 @@
                                                       [(previewImgSrc)]="imageAdOne"
                                                       [type]="uploadAboutType"></app-image-upload-preview-four-template>
 
-              <div class="xb-4-template-home__ad-title xb-pointer" (click)="jumpCategory(0)">
+              <div class="xb-4-template-home__ad-title xb-pointer" (click)="jumpCategory(0)" *ngIf="adoneCategory.name">
                 {{adoneCategory.name}}
               </div>
             </div>
@@ -54,7 +54,7 @@
               <app-image-upload-preview-four-template [(previewImgFile)]="imageAdTwo"
                                                       [(previewImgSrc)]="imageAdTwo"
                                                       [type]="uploadAboutType"></app-image-upload-preview-four-template>
-              <div class="xb-4-template-home__ad-title xb-pointer" (click)="jumpCategory(1)">
+              <div class="xb-4-template-home__ad-title xb-pointer" (click)="jumpCategory(1)" *ngIf="adTwoCategory.name">
                 {{adTwoCategory.name}}
               </div>
             </div>
@@ -63,7 +63,8 @@
               <app-image-upload-preview-four-template [(previewImgFile)]="imageAdThree"
                                                       [(previewImgSrc)]="imageAdThree"
                                                       [type]="uploadAboutType"></app-image-upload-preview-four-template>
-              <div class="xb-4-template-home__ad-title xb-pointer" (click)="jumpCategory(2)">
+              <div class="xb-4-template-home__ad-title xb-pointer" (click)="jumpCategory(2)"
+                   *ngIf="adThreeCategory.name">
                 {{adThreeCategory.name}}
               </div>
             </div>
@@ -93,7 +94,7 @@
                                                [product]="item" [status]="0"></app-shop-item-product-card-edit-4>
           </div>
           <div class="xb-4-template-blog  xb-4-template__w960 ">
-            <div class="xb-4-template-blog__title">
+            <div class="xb-4-template-blog__title" *ngIf="isHaveBlog">
               BLOG
             </div>
             <div class="xb-4-template-blog__article" fxLayout="row" fxLayoutAlign="space-between start">
@@ -126,7 +127,7 @@
       <!-- 3.blog-->
       <div [hidden]="viewIndex != 2">
         <div class="xb-4-template-blog  xb-4-template__w960 ">
-          <div class="xb-4-template-blog__title">
+          <div class="xb-4-template-blog__title" *ngIf="isHaveBlog">
             BLOG
           </div>
           <div fxLayoutWrap class="xb-4-template-blog__article" fxLayout="row" fxLayoutAlign="space-between start">

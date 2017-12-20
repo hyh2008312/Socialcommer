@@ -484,6 +484,7 @@ export class MainPageComponent implements OnInit {
   }
 
   blog: any = [];
+  isHaveBlog=true;
 
   queryBlog(clearBlog?: boolean) {
     if (!this.ownerId) {
@@ -501,6 +502,7 @@ export class MainPageComponent implements OnInit {
         self.nextBlogPage = true;
       }
       self.blog = self.blog.concat(data.results);
+      self.isHaveBlog =self.blog.length != 0;
       if (data.next == null) {
         self.nextBlogPage = false;
       }

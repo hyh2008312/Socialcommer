@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {StoreService} from '../../store.service';
 import {Blog, Store} from '../../store';

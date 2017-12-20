@@ -26,11 +26,12 @@ export class StoreListComponent implements OnInit {
   nextPage: boolean = true;
   product: any = [];
   date: any;
-
+  isShowCategoryMenu = false ;
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
   }
+
 
   ngOnInit(): void {
     this.shareLink = window.location.href;
@@ -104,5 +105,9 @@ export class StoreListComponent implements OnInit {
 
   back(): void {
     this.router.navigate([`./store/${this.store.displayName}`]);
+  }
+
+  changeShowCategoryMenu():void{
+    this.isShowCategoryMenu=!this.isShowCategoryMenu;
   }
 }

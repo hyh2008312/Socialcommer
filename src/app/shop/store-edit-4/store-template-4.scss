@@ -99,6 +99,8 @@
     > input {
       border: none;
       font-size: 34px;
+      color: #e1ab18;
+      text-align: center;
       width: 100%;
       background-color: transparent;
     }
@@ -113,12 +115,11 @@
     position: relative;
   }
   &__title {
-    max-width: 960px;
-    min-width: 400px;
+    width: 960px;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    max-height: 80px;
     margin-top: 320px;
   }
   &__ad-bg {

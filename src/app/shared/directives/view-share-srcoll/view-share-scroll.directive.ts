@@ -33,11 +33,9 @@ export class ViewShareScrollDirective {
   onMouseOver() {
     let self = this;
     this.ngZone.runOutsideAngular(() => {
-
       let top = self.partDetail.getBoundingClientRect().height + self.partDetail.getBoundingClientRect().top
       let shareTop = self.partShare.getBoundingClientRect().top
-      console.log('----onMouseOver---->' + top);
-      if (top > 700 ) {
+      if (top > 700) {
         self.changedHiddenShare(false);
       } else {
         self.changedHiddenShare(true);
@@ -45,11 +43,11 @@ export class ViewShareScrollDirective {
     });
   }
 
+
   public setPositionOfShare(): void {
     let self = this;
     let width = self.partDetail.getBoundingClientRect().width + self.partDetail.getBoundingClientRect().left + 32;
     self.partShare.style.left = `${width}px`;
-    console.log('----setPositionOfShare---->' + width);
     self.changedHiddenShare(false);
   }
 
