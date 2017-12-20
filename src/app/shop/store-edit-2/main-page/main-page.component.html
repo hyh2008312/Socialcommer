@@ -6,7 +6,6 @@
            [ngStyle]="{'background': 'url(' + (bannerImageStr) + ') center / auto 640px no-repeat' }">
         <div class="xb-store-template__template-mask"></div>
         <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
-
           <div class="xb-template-2-edit__store-name xb-pointer xb-template-2-edit__edit-border"
                [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()"></div>
 
@@ -16,8 +15,6 @@
           </div>
           <app-store-template-edit-2-navigation fxFlex [navigationIndex]="viewIndex"
                                                 (routerChange)="changeViewIndex($event)"></app-store-template-edit-2-navigation>
-        </div>
-        <div class="xb-store__content-2">
           <div class="xb-template-2-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
             <div class="xb-template-2-edit__button" (click)="close()">
               CANCEL
@@ -26,6 +23,8 @@
               SAVE
             </div>
           </div>
+        </div>
+        <div class="xb-store__content-2">
 
           <div class="xb-template-2-edit__store-title xb-pointer xb-template-2-edit__edit-border ql-editor"
                [innerHTML]="titleTag | safeHtml" [hidden]="titleEdited" (click)="editTitle()"></div>
@@ -172,6 +171,14 @@
                 <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
                                                       (routerChange)="changeViewIndex($event)"
                                                       fxFlex></app-store-template-edit-2-navigation>
+                <div class="xb-template-2-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+                  <div class="xb-template-2-edit__button" (click)="close()">
+                    CANCEL
+                  </div>
+                  <div class="xb-template-2-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
+                    SAVE
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -225,6 +232,14 @@
                 <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
                                                       (routerChange)="changeViewIndex($event)"
                                                       fxFlex></app-store-template-edit-2-navigation>
+                <div class="xb-template-2-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+                  <div class="xb-template-2-edit__button" (click)="close()">
+                    CANCEL
+                  </div>
+                  <div class="xb-template-2-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
+                    SAVE
+                  </div>
+                </div>
               </div>
             </div>
 
