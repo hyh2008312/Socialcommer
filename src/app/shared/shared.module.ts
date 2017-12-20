@@ -78,6 +78,8 @@ import {
 
 import { GoogleClientId, FacebookClientId } from '../config/app.api';
 import {ImageUploadPreviewTwoTemplateComponent} from './components/image-upload-preview-two-template/image-upload-preview-two-template.component';
+import {ImageUploadPreviewFourTemplateComponent} from './components/image-upload-preview-four-template/image-upload-preview-four-template.component';
+import {ViewShareScrollDirective} from './directives/view-share-srcoll/view-share-scroll.directive';
 
 let providers = {
   "google": {
@@ -127,6 +129,7 @@ let providers = {
     RepeatOrderDirective,
     SocialShareDirective,
     ValidateEqualDirective,
+    ViewShareScrollDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
@@ -149,7 +152,8 @@ let providers = {
     ResetPasswordComponent,
     ResetPasswordConfirmComponent,
     InviteCodeComponent,
-    ImageUploadPreviewTwoTemplateComponent
+    ImageUploadPreviewTwoTemplateComponent,
+    ImageUploadPreviewFourTemplateComponent
 
 
   ],
@@ -162,6 +166,7 @@ let providers = {
     ViewScrollDirective,
     ViewObjectScrollDirective,
     RepeatOrderDirective,
+    ViewShareScrollDirective,
     SocialShareDirective,
     ValidateEqualDirective,
     UserAvatarComponent,
@@ -176,6 +181,7 @@ let providers = {
     ImagePreviewLoadingComponent,
     ImageUploadPreviewBlogComponent,
     ImageUploadPreviewTwoTemplateComponent,
+    ImageUploadPreviewFourTemplateComponent,
     LeftProductsImageComponent,
     ShareButtonComponent,
     StoreNavigationComponent,

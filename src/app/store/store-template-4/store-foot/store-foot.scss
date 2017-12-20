@@ -1,0 +1,41 @@
+@import "../../../styles/utils/_index";
+@import "../../../styles/_variables";
+
+.xb-store {
+  &__subscribe {
+    width: 342px;
+    height: 40px;
+    margin-top: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.12);;
+    margin-left: auto;
+    margin-right: auto;
+    &-line {
+      height: 1px;
+      margin-top: 32px;
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  &__subscribe-title {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+  }
+  &__share {
+    margin-top: 40px;
+  }
+  &__context {
+    font-size: 14px;
+    @include regular();
+    color: rgba(0, 0, 0, 0.54);
+    &_power {
+    margin-left: 24px;
+      @include xb-xs-screen{
+        margin-left: 0;
+        margin-top: 8px;
+      }
+    }
+  }
+}

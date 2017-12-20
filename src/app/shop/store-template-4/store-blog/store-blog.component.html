@@ -1,0 +1,12 @@
+<div class="xb-4-template-blog  xb-4-template__w960 ">
+  <div class="xb-4-template-blog__title">
+    BLOG
+  </div>
+  <div fxLayoutWrap class="xb-4-template-blog__article"  fxLayout="row" fxLayoutAlign="space-between start"
+       fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
+  >
+    <app-shop-item-blog-card-4 *ngFor="let item of blog"
+                               fxFlex.xs="48" fxFlex.gt-xs="45"
+                               [blog]="item" [status]="0"></app-shop-item-blog-card-4>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="xb-4-template-about xb-4-template__w960">
+  <div class="xb-4-template-about__image" >
+    <img [src]="imageList.aboutMeCover">
+  </div>
+  <div class="md-margin-top-2 " *ngIf="contextList.aboutMeTag == ''">
+    Thank you for visiting my store! Have a nice day.
+  </div>
+  <div class=" md-margin-left-2 md-margin-right-2 ql-editor md-margin-top-2"
+       [innerHTML]="contextList.aboutMeTag | safeHtml" *ngIf="contextList.aboutMeTag != ''">
+  </div>
+</div>

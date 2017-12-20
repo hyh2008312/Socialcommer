@@ -44,6 +44,10 @@ const routes: Routes = [
               {
                 path: '',
                 loadChildren: 'app/shop/store-template-3/store-template-3.module#StoreTemplateThreeModule'
+              },
+              {
+                path: '',
+                loadChildren: 'app/shop/store-template-4/store-template-4.module#StoreTemplateFourModule'
               }
             ]
           }, {
@@ -60,6 +64,10 @@ const routes: Routes = [
               {
                 path: '',
                 loadChildren: 'app/shop/store-edit-3/store-template-3.module#StoreTemplateThreeModule'
+              },
+              {
+                path: '',
+                loadChildren: 'app/shop/store-edit-4/store-template-4.module#StoreTemplateFourModule'
               }
             ]
           }]

@@ -1,0 +1,27 @@
+<div class="xb-4-template-collection xb-4-template__w960">
+  <div fxLayout="row" fxLayoutAlign="start stretch">
+    <div class="xb-4-template-collection__category" fxShow="true" fxShow.xs="false">
+      <app-shop-template-4-category
+        [(category)]="category" [categories]="categories"
+        (categoryChange)="changeCategory()"></app-shop-template-4-category>
+    </div>
+    <div class="xb-4-template-collection__product">
+      <div fxLayoutAlign="space-between start" fxLayout="row" fxLayoutWrap
+           fxLayoutGap.xs="16px"
+      >
+        <app-shop-item-product-card-4 *ngFor="let item of product"
+                                      fxFlex.xs="44" fxFlex.gt-xs="30"
+                                      [product]="item" [status]="1"></app-shop-item-product-card-4>
+        <div fxFlex.xs="44" fxFlex.gt-xs="30"></div>
+      </div>
+      <div class="xb-4-template-collection__more-button" fxLaout="row" fxLayoutAlign="center center"
+           (click)="jumpList()" *ngIf="nextPage && product.length > 0">
+        <div>
+          SEE MORE
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
