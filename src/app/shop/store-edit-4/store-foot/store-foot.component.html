@@ -1,16 +1,16 @@
 <div>
-  <div class="xb-store__subscribe-title">
+  <!--<div class="xb-store__subscribe-title">
     NEWSLETTER
   </div>
   <div class="xb-store__subscribe">
-  </div>
+  </div>-->
   <div class="xb-store__subscribe-line">
   </div>
   <div class="xb-store__share" fxLayout="column" fxLayoutAlign="start center">
     <app-share-template-4-button [link]="shareLink" [text]="text"></app-share-template-4-button>
     <div class="md-margin-top-2 md-margin-bottom-4" fxLayout="row" fxLayoutAlign="center center">
-      <div class="xb-store__context">© 2017 All Rights Reserved.</div>
-      <div class="xb-store__context xb-store__context_power"> POWERED BY SoCialCommer</div>
+      <div class="xb-store__context">© 2017 {{storeName}}. All Rights Reserved.</div>
+      <div class="xb-store__context xb-store__context_power  xb-pointer" routerLink="/"> POWERED BY SoCialCommer</div>
     </div>
   </div>
 </div>
