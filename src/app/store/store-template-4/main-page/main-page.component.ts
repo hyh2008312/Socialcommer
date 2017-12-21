@@ -33,4 +33,9 @@ export class MainPageComponent implements OnInit {
 
   }
 
+  isShowNav = false;
+
+  changeNavigationShow(isShowNavigation: any): void {
+    this.isShowNav = isShowNavigation;
+  }
 }

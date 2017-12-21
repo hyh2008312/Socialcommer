@@ -2147,6 +2147,12 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.xb-4-template__fixed-nav {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+  width: 100%; }
 .xb-4-template__mobile {
   position: relative; }
 .xb-4-template__menu {
@@ -2169,6 +2175,7 @@ textarea.mat-input-element {
   padding-left: 40px;
   padding-right: 40px;
   margin-top: 40px;
+  margin-bottom: 28px;
   height: 72px;
   text-align: center;
   line-height: 64px;
@@ -2362,15 +2369,12 @@ textarea.mat-input-element {
       font-weight: bold;
       line-height: 28px; }
   @media screen and (max-width: 599px) {
-    bo
     .xb-4-template-blog__detail-container {
       margin-top: 8px; } }
-  bo
   .xb-4-template-blog__detail-container > img {
     width: 100vw;
     max-height: 480px; }
     @media screen and (max-width: 599px) {
-      bo
       .xb-4-template-blog__detail-container > img {
         width: calc(100vw - 32px);
         margin-left: 16px;
@@ -2429,7 +2433,6 @@ textarea.mat-input-element {
   .xb-4-template-navigation.active {
     font-weight: bold; }
   .xb-4-template-navigation__container {
-    margin-top: 28px;
     height: 54px; }
   .xb-4-template-navigation__side-bg {
     height: 100vh;
