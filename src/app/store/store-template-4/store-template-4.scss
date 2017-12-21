@@ -138,6 +138,9 @@
     width: 100%;
     @include xb-xs-screen {
       margin-top: 54px;
+      margin-left: 16px;
+      margin-right: 16px;
+      width: calc(100vw - 32px);
     }
   }
   &__subtitle {
@@ -146,6 +149,11 @@
     position: relative;
     width: 100%;
     margin-top: 16px;
+    @include xb-xs-screen {
+      margin-left: 16px;
+      margin-right: 16px;
+      width: calc(100vw - 32px);
+    }
   }
 
   &__card {
