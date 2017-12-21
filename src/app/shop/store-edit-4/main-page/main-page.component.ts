@@ -28,9 +28,9 @@ export class MainPageComponent implements OnInit {
     'yourself and why you create this business. Show your customers that there are real people with ' +
     'interesting stories working behind the scenes.</div>';
 
-  productTitleTag = 'BEST SELLER';
+  productTitleTag = 'New Arrivals';
 
-  productDesTag = '<div> it\'s time to hit the trails.Here is our favourite gear for those long summer runs.</div>';
+  productDesTag = '<div> Discover The Best Daily Offers for Moms & Kids.</div>';
 
 
   uploadAboutType = 'COLLECTOR_STORE_TEMPLATE';
