@@ -1,4 +1,4 @@
-import {Input, Component, OnInit} from '@angular/core';
+import {Input, Component, OnInit,EventEmitter,Output} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,6 +11,7 @@ export class StoreItemBlogCardComponent implements OnInit {
 
   @Input() status: number = 0;
   @Input() blog: any = null;
+  @Output() scrollToTop = new EventEmitter();
 
   constructor(private router: Router) {
   }
@@ -28,6 +29,7 @@ export class StoreItemBlogCardComponent implements OnInit {
       case 1:
         link = `/blog/${this.blog.id}`;
         baseLink = baseLink.split('/blog')[0];
+        this.scrollToTop.emit(true);
         break;
 
     }

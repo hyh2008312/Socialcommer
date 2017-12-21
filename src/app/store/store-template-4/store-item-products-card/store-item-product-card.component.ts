@@ -12,6 +12,8 @@ export class StoreItemProductCardComponent implements OnInit {
 
   @Input() status: number = 0;
   @Input() product: any = null;
+  @Output() scrollToTop = new EventEmitter();
+
   constructor(private router: Router) {
   }
 
@@ -34,6 +36,7 @@ export class StoreItemProductCardComponent implements OnInit {
       case 3:
         link = `/detail/${this.product.id}`;
         baseLink = baseLink.split('/detail')[0];
+        this.scrollToTop.emit(true);
         break;
     }
 

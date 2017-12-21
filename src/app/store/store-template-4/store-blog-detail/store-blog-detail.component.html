@@ -1,4 +1,4 @@
-<div class="xb-4-template-blog__detail">
+<div class="xb-4-template-blog__detail" appViewScrollTop [ContainerSelector]="'mat-sidenav-content'">
   <div appViewShareScroll [detailSelector]="'xb-4-template-blog__detail-des'"
        [shareSelector]="'xb-4-template-blog__detail-share'"
        (changeHidden)="changeIsShowShare($event)"
@@ -37,7 +37,9 @@
         >
           <app-shop-item-blog-card-4 *ngFor="let item of bloglist"
                                      fxFlex.xs="48" fxFlex.gt-xs="45"
-                                     [blog]="item" [status]="1"></app-shop-item-blog-card-4>
+                                     [blog]="item" [status]="1"
+                                     (scrollToTop)="changeScrollToTop($event)"
+          ></app-shop-item-blog-card-4>
         </div>
       </div>
 

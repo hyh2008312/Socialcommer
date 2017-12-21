@@ -1,4 +1,4 @@
-<div class="xb-4-template-detail">
+<div class="xb-4-template-detail" appViewScrollTop [ContainerSelector]="'mat-sidenav-content'">
   <div class="xb-4-template-detail__container xb-4-template__w960">
     <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
       <div>
@@ -55,11 +55,12 @@
          fxLayoutWrap.xs>
       <app-shop-item-product-card-4 *ngFor="let item of relatedProduct"
                                     fxFlex.xs="48" fxFlex.gt-xs="22"
-                                    [product]="item" [status]="3">
+                                    [product]="item" [status]="3"
+                                    (scrollToTop)="changeScrollToTop($event)"
+      >
       </app-shop-item-product-card-4>
       <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
       <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
     </div>
   </div>
-
 </div>

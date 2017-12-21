@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Directive, OnInit, ViewChild} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {StoreService} from '../../store.service';
 import {Store, Product, Image} from '../../store';
 import {Subscription} from 'rxjs/Subscription';
+import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
 
 @Component({
   selector: 'app-shop-template-4-store-detail',
@@ -24,14 +25,15 @@ export class StoreDetailComponent implements OnInit {
   id: number;
   private sub: Subscription;
   isRequestRelated: boolean = true;
+  @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
               private storeService: StoreService) {
     let self = this;
     this.sub = this.activatedRouter.params.subscribe(params => {
-      console.log(params);
       self.id = params['id'];
+
       this.storeService.store.subscribe((data) => {
         if (data) {
           self.store = data;
@@ -63,7 +65,7 @@ export class StoreDetailComponent implements OnInit {
         shareImage: data.imageUrl
       });
       self.image = data.imageUrl;
-      self.imageSources=[] ;
+      self.imageSources = [];
       if (data.imageUrl.length > 0) {
         self.selectedImage = data.imageUrl[0];
         for (let value of data.imageUrl) {
@@ -79,7 +81,7 @@ export class StoreDetailComponent implements OnInit {
       });
       if (self.isRequestRelated) {
         self.queryProduct();
-        self.isRequestRelated= false;
+        self.isRequestRelated = false;
       }
     });
   }
@@ -111,4 +113,7 @@ export class StoreDetailComponent implements OnInit {
     });
   }
 
+  changeScrollToTop(isScroll: any): void {
+    this.scrollTopDirective.setScrollTop();
+  }
 }

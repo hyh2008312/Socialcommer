@@ -3,6 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {StoreService} from '../../store.service';
 import {Blog, Store} from '../../store';
 import {ViewShareScrollDirective} from '../../../shared/directives/view-share-srcoll/view-share-scroll.directive';
+import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
 
 @Component({
   selector: 'app-shop-template-4-store-blog-detail',
@@ -27,6 +28,7 @@ export class StoreBlogDetailComponent implements OnInit {
   id: number;
 
   @ViewChild(ViewShareScrollDirective) shareDirective: ViewShareScrollDirective;
+  @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
@@ -96,5 +98,9 @@ export class StoreBlogDetailComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  changeScrollToTop(isScroll: any): void {
+    this.scrollTopDirective.setScrollTop();
   }
 }

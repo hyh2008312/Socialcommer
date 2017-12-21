@@ -80,6 +80,7 @@ import { GoogleClientId, FacebookClientId } from '../config/app.api';
 import {ImageUploadPreviewTwoTemplateComponent} from './components/image-upload-preview-two-template/image-upload-preview-two-template.component';
 import {ImageUploadPreviewFourTemplateComponent} from './components/image-upload-preview-four-template/image-upload-preview-four-template.component';
 import {ViewShareScrollDirective} from './directives/view-share-srcoll/view-share-scroll.directive';
+import {ViewScrollTopDirective} from './directives/view-scroll-top/view-scroll-top.directive';
 
 let providers = {
   "google": {
@@ -130,6 +131,7 @@ let providers = {
     SocialShareDirective,
     ValidateEqualDirective,
     ViewShareScrollDirective,
+    ViewScrollTopDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
@@ -167,6 +169,7 @@ let providers = {
     ViewObjectScrollDirective,
     RepeatOrderDirective,
     ViewShareScrollDirective,
+    ViewScrollTopDirective,
     SocialShareDirective,
     ValidateEqualDirective,
     UserAvatarComponent,
