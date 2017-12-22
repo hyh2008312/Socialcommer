@@ -399,21 +399,27 @@
   padding: 0.4375em 0;
   border-top: 0.84375em solid transparent; }
 
-.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
   transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.001px);
   -ms-transform: translateY(-1.28125em) scale(0.75);
   width: 133.33333%; }
-.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-placeholder-wrapper
-.mat-form-field-placeholder {
-  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.001px);
-  -ms-transform: translateY(-1.28125em) scale(0.75);
-  width: 133.33333%; }
+.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper
+.mat-form-field-label {
+  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00101px);
+  -ms-transform: translateY(-1.28124em) scale(0.75);
+  width: 133.33334%; }
+.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper
+.mat-form-field-label {
+  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00102px);
+  -ms-transform: translateY(-1.28123em) scale(0.75);
+  width: 133.33335%; }
 
-.mat-form-field-placeholder-wrapper {
+.mat-form-field-label-wrapper {
   top: -0.84375em;
   padding-top: 0.84375em; }
 
-.mat-form-field-placeholder {
+.mat-form-field-label {
   top: 1.28125em; }
 
 .mat-form-field-underline {
@@ -443,7 +449,8 @@ input.mat-input-element {
 
 .mat-menu-item {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 16px; }
+  font-size: 16px;
+  font-weight: 400; }
 
 .mat-paginator,
 .mat-paginator-page-size .mat-select-trigger {
@@ -603,7 +610,12 @@ input.mat-input-element {
   text-decoration: none;
   position: relative;
   cursor: pointer;
-  outline: none; }
+  outline: none;
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-items: center; }
   .mat-option[disabled] {
     cursor: default; }
   [dir='rtl'] .mat-option {
@@ -626,7 +638,10 @@ input.mat-input-element {
       padding-right: 32px; }
 
 .mat-option-text {
-  display: inline-block; }
+  display: inline-block;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .mat-option-ripple {
   top: 0;
@@ -978,7 +993,8 @@ input.mat-input-element {
     color: rgba(0, 0, 0, 0.38); }
 
 :not(.mat-calendar-body-disabled):hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
-.cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+.cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
+.cdk-program-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
   background-color: rgba(0, 0, 0, 0.04); }
 
 .mat-calendar-body-selected {
@@ -1023,20 +1039,17 @@ input.mat-input-element {
   .mat-expansion-panel-header[aria-disabled='true'] .mat-expansion-panel-header-description {
     color: inherit; }
 
-.mat-form-field {
-  width: 200px; }
-
-.mat-form-field-placeholder {
+.mat-form-field-label {
   color: rgba(0, 0, 0, 0.54); }
 
 .mat-hint {
   color: rgba(0, 0, 0, 0.54); }
 
-.mat-focused .mat-form-field-placeholder {
+.mat-focused .mat-form-field-label {
   color: #00bcd4; }
-  .mat-focused .mat-form-field-placeholder.mat-accent {
+  .mat-focused .mat-form-field-label.mat-accent {
     color: #ffc400; }
-  .mat-focused .mat-form-field-placeholder.mat-warn {
+  .mat-focused .mat-form-field-label.mat-warn {
     color: #f44336; }
 
 .mat-focused .mat-form-field-required-marker {
@@ -1044,10 +1057,11 @@ input.mat-input-element {
 
 .mat-form-field-underline {
   background-color: rgba(0, 0, 0, 0.42); }
-  .mat-form-field-underline.mat-disabled {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.42) 33%, transparent 0%);
-    background-size: 4px 1px;
-    background-repeat: repeat-x; }
+
+.mat-form-field-disabled .mat-form-field-underline {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.42) 33%, transparent 0%);
+  background-size: 4px 1px;
+  background-repeat: repeat-x; }
 
 .mat-form-field-ripple {
   background-color: #00bcd4; }
@@ -1056,10 +1070,10 @@ input.mat-input-element {
   .mat-form-field-ripple.mat-warn {
     background-color: #f44336; }
 
-.mat-form-field-invalid .mat-form-field-placeholder {
+.mat-form-field-invalid .mat-form-field-label {
   color: #f44336; }
-  .mat-form-field-invalid .mat-form-field-placeholder.mat-accent,
-  .mat-form-field-invalid .mat-form-field-placeholder .mat-form-field-required-marker {
+  .mat-form-field-invalid .mat-form-field-label.mat-accent,
+  .mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
     color: #f44336; }
 .mat-form-field-invalid .mat-form-field-ripple {
   background-color: #f44336; }
@@ -1075,6 +1089,15 @@ input.mat-input-element {
   color: #f44336; }
 
 .mat-input-element:disabled {
+  color: rgba(0, 0, 0, 0.38); }
+
+.mat-input-element::placeholder {
+  color: rgba(0, 0, 0, 0.42); }
+.mat-input-element::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.42); }
+.mat-input-element::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.42); }
+.mat-input-element:-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.42); }
 
 .mat-list .mat-list-item, .mat-nav-list .mat-list-item, .mat-selection-list .mat-list-item {
@@ -1109,7 +1132,7 @@ input.mat-input-element {
   .mat-menu-item[disabled] {
     color: rgba(0, 0, 0, 0.38); }
 
-.mat-menu-item .mat-icon,
+.mat-menu-item .mat-icon:not([color]),
 .mat-menu-item-submenu-trigger::after {
   color: rgba(0, 0, 0, 0.54); }
 
@@ -1194,15 +1217,20 @@ input.mat-input-element {
 .mat-radio-button.mat-warn .mat-radio-ripple .mat-ripple-element {
   background-color: rgba(244, 67, 54, 0.26); }
 
-.mat-select-disabled .mat-select-value,
-.mat-select-arrow {
-  color: rgba(0, 0, 0, 0.54); }
-
 .mat-select-content, .mat-select-panel-done-animating {
   background: white; }
 
 .mat-select-value {
   color: rgba(0, 0, 0, 0.87); }
+
+.mat-select-placeholder {
+  color: rgba(0, 0, 0, 0.42); }
+
+.mat-select-disabled .mat-select-value {
+  color: rgba(0, 0, 0, 0.38); }
+
+.mat-select-arrow {
+  color: rgba(0, 0, 0, 0.54); }
 
 .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
   background: rgba(0, 0, 0, 0.12); }
@@ -1216,10 +1244,7 @@ input.mat-input-element {
 .mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
   color: #f44336; }
 .mat-form-field .mat-select.mat-select-disabled .mat-select-arrow {
-  color: rgba(0, 0, 0, 0.54); }
-
-.mat-select.mat-select-disabled .mat-select-arrow {
-  color: #f44336; }
+  color: rgba(0, 0, 0, 0.38); }
 
 .mat-drawer-container {
   background-color: #fafafa;
@@ -1412,6 +1437,8 @@ input.mat-input-element {
   border-color: white; }
 .mat-tab-group.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
   border-color: rgba(255, 255, 255, 0.4); }
+.mat-tab-group.mat-background-primary .mat-ripple-element, .mat-tab-nav-bar.mat-background-primary .mat-ripple-element {
+  background-color: rgba(255, 255, 255, 0.12); }
 .mat-tab-group.mat-background-accent .mat-tab-label:focus, .mat-tab-group.mat-background-accent .mat-tab-link:focus, .mat-tab-nav-bar.mat-background-accent .mat-tab-label:focus, .mat-tab-nav-bar.mat-background-accent .mat-tab-link:focus {
   background-color: rgba(255, 236, 179, 0.3); }
 .mat-tab-group.mat-background-accent .mat-tab-header, .mat-tab-group.mat-background-accent .mat-tab-links, .mat-tab-nav-bar.mat-background-accent .mat-tab-header, .mat-tab-nav-bar.mat-background-accent .mat-tab-links {
@@ -1424,6 +1451,8 @@ input.mat-input-element {
   border-color: rgba(0, 0, 0, 0.87); }
 .mat-tab-group.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
   border-color: rgba(0, 0, 0, 0.4); }
+.mat-tab-group.mat-background-accent .mat-ripple-element, .mat-tab-nav-bar.mat-background-accent .mat-ripple-element {
+  background-color: rgba(0, 0, 0, 0.12); }
 .mat-tab-group.mat-background-warn .mat-tab-label:focus, .mat-tab-group.mat-background-warn .mat-tab-link:focus, .mat-tab-nav-bar.mat-background-warn .mat-tab-label:focus, .mat-tab-nav-bar.mat-background-warn .mat-tab-link:focus {
   background-color: rgba(255, 205, 210, 0.3); }
 .mat-tab-group.mat-background-warn .mat-tab-header, .mat-tab-group.mat-background-warn .mat-tab-links, .mat-tab-nav-bar.mat-background-warn .mat-tab-header, .mat-tab-nav-bar.mat-background-warn .mat-tab-links {
@@ -1436,6 +1465,8 @@ input.mat-input-element {
   border-color: white; }
 .mat-tab-group.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
   border-color: rgba(255, 255, 255, 0.4); }
+.mat-tab-group.mat-background-warn .mat-ripple-element, .mat-tab-nav-bar.mat-background-warn .mat-ripple-element {
+  background-color: rgba(255, 255, 255, 0.12); }
 
 .mat-toolbar {
   background: whitesmoke;
@@ -1670,7 +1701,8 @@ input.mat-input-element {
   .mat-calendar-body-disabled > .unicorn-dark-theme .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
     color: rgba(0, 0, 0, 0.38); }
 .unicorn-dark-theme :not(.mat-calendar-body-disabled):hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
-.unicorn-dark-theme .cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+.unicorn-dark-theme .cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
+.unicorn-dark-theme .cdk-program-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
   background-color: rgba(0, 0, 0, 0.04); }
 .unicorn-dark-theme .mat-calendar-body-selected {
   background-color: #212121;
@@ -1703,36 +1735,34 @@ input.mat-input-element {
   .unicorn-dark-theme .mat-expansion-panel-header[aria-disabled='true'] .mat-expansion-panel-header-title,
   .unicorn-dark-theme .mat-expansion-panel-header[aria-disabled='true'] .mat-expansion-panel-header-description {
     color: inherit; }
-.unicorn-dark-theme .mat-form-field {
-  width: 200px; }
-.unicorn-dark-theme .mat-form-field-placeholder {
+.unicorn-dark-theme .mat-form-field-label {
   color: rgba(0, 0, 0, 0.54); }
 .unicorn-dark-theme .mat-hint {
   color: rgba(0, 0, 0, 0.54); }
-.unicorn-dark-theme .mat-focused .mat-form-field-placeholder {
+.unicorn-dark-theme .mat-focused .mat-form-field-label {
   color: #212121; }
-  .unicorn-dark-theme .mat-focused .mat-form-field-placeholder.mat-accent {
+  .unicorn-dark-theme .mat-focused .mat-form-field-label.mat-accent {
     color: #ffc400; }
-  .unicorn-dark-theme .mat-focused .mat-form-field-placeholder.mat-warn {
+  .unicorn-dark-theme .mat-focused .mat-form-field-label.mat-warn {
     color: #f44336; }
 .unicorn-dark-theme .mat-focused .mat-form-field-required-marker {
   color: #ffc400; }
 .unicorn-dark-theme .mat-form-field-underline {
   background-color: rgba(0, 0, 0, 0.42); }
-  .unicorn-dark-theme .mat-form-field-underline.mat-disabled {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.42) 33%, transparent 0%);
-    background-size: 4px 1px;
-    background-repeat: repeat-x; }
+.unicorn-dark-theme .mat-form-field-disabled .mat-form-field-underline {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.42) 33%, transparent 0%);
+  background-size: 4px 1px;
+  background-repeat: repeat-x; }
 .unicorn-dark-theme .mat-form-field-ripple {
   background-color: #212121; }
   .unicorn-dark-theme .mat-form-field-ripple.mat-accent {
     background-color: #ffc400; }
   .unicorn-dark-theme .mat-form-field-ripple.mat-warn {
     background-color: #f44336; }
-.unicorn-dark-theme .mat-form-field-invalid .mat-form-field-placeholder {
+.unicorn-dark-theme .mat-form-field-invalid .mat-form-field-label {
   color: #f44336; }
-  .unicorn-dark-theme .mat-form-field-invalid .mat-form-field-placeholder.mat-accent,
-  .unicorn-dark-theme .mat-form-field-invalid .mat-form-field-placeholder .mat-form-field-required-marker {
+  .unicorn-dark-theme .mat-form-field-invalid .mat-form-field-label.mat-accent,
+  .unicorn-dark-theme .mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
     color: #f44336; }
 .unicorn-dark-theme .mat-form-field-invalid .mat-form-field-ripple {
   background-color: #f44336; }
@@ -1745,6 +1775,14 @@ input.mat-input-element {
 .unicorn-dark-theme .mat-icon.mat-warn {
   color: #f44336; }
 .unicorn-dark-theme .mat-input-element:disabled {
+  color: rgba(0, 0, 0, 0.38); }
+.unicorn-dark-theme .mat-input-element::placeholder {
+  color: rgba(0, 0, 0, 0.42); }
+.unicorn-dark-theme .mat-input-element::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.42); }
+.unicorn-dark-theme .mat-input-element::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.42); }
+.unicorn-dark-theme .mat-input-element:-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.42); }
 .unicorn-dark-theme .mat-list .mat-list-item, .unicorn-dark-theme .mat-nav-list .mat-list-item, .unicorn-dark-theme .mat-selection-list .mat-list-item {
   color: rgba(0, 0, 0, 0.87); }
@@ -1771,7 +1809,7 @@ input.mat-input-element {
   color: rgba(0, 0, 0, 0.87); }
   .unicorn-dark-theme .mat-menu-item[disabled] {
     color: rgba(0, 0, 0, 0.38); }
-.unicorn-dark-theme .mat-menu-item .mat-icon,
+.unicorn-dark-theme .mat-menu-item .mat-icon:not([color]),
 .unicorn-dark-theme .mat-menu-item-submenu-trigger::after {
   color: rgba(0, 0, 0, 0.54); }
 .unicorn-dark-theme .mat-menu-item:hover:not([disabled]),
@@ -1840,13 +1878,16 @@ input.mat-input-element {
   background-color: #f44336; }
 .unicorn-dark-theme .mat-radio-button.mat-warn .mat-radio-ripple .mat-ripple-element {
   background-color: rgba(244, 67, 54, 0.26); }
-.unicorn-dark-theme .mat-select-disabled .mat-select-value,
-.unicorn-dark-theme .mat-select-arrow {
-  color: rgba(0, 0, 0, 0.54); }
 .unicorn-dark-theme .mat-select-content, .unicorn-dark-theme .mat-select-panel-done-animating {
   background: white; }
 .unicorn-dark-theme .mat-select-value {
   color: rgba(0, 0, 0, 0.87); }
+.unicorn-dark-theme .mat-select-placeholder {
+  color: rgba(0, 0, 0, 0.42); }
+.unicorn-dark-theme .mat-select-disabled .mat-select-value {
+  color: rgba(0, 0, 0, 0.38); }
+.unicorn-dark-theme .mat-select-arrow {
+  color: rgba(0, 0, 0, 0.54); }
 .unicorn-dark-theme .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
   background: rgba(0, 0, 0, 0.12); }
 .unicorn-dark-theme .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
@@ -1858,9 +1899,7 @@ input.mat-input-element {
 .unicorn-dark-theme .mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
   color: #f44336; }
 .unicorn-dark-theme .mat-form-field .mat-select.mat-select-disabled .mat-select-arrow {
-  color: rgba(0, 0, 0, 0.54); }
-.unicorn-dark-theme .mat-select.mat-select-disabled .mat-select-arrow {
-  color: #f44336; }
+  color: rgba(0, 0, 0, 0.38); }
 .unicorn-dark-theme .mat-drawer-container {
   background-color: #fafafa;
   color: rgba(0, 0, 0, 0.87); }
@@ -2024,6 +2063,8 @@ input.mat-input-element {
   border-color: rgba(255, 255, 255, 0.87); }
 .unicorn-dark-theme .mat-tab-group.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
   border-color: rgba(255, 255, 255, 0.4); }
+.unicorn-dark-theme .mat-tab-group.mat-background-primary .mat-ripple-element, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-primary .mat-ripple-element {
+  background-color: rgba(255, 255, 255, 0.12); }
 .unicorn-dark-theme .mat-tab-group.mat-background-accent .mat-tab-label:focus, .unicorn-dark-theme .mat-tab-group.mat-background-accent .mat-tab-link:focus, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-label:focus, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-link:focus {
   background-color: rgba(255, 236, 179, 0.3); }
 .unicorn-dark-theme .mat-tab-group.mat-background-accent .mat-tab-header, .unicorn-dark-theme .mat-tab-group.mat-background-accent .mat-tab-links, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-header, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-links {
@@ -2036,6 +2077,8 @@ input.mat-input-element {
   border-color: rgba(0, 0, 0, 0.87); }
 .unicorn-dark-theme .mat-tab-group.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
   border-color: rgba(0, 0, 0, 0.4); }
+.unicorn-dark-theme .mat-tab-group.mat-background-accent .mat-ripple-element, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-accent .mat-ripple-element {
+  background-color: rgba(0, 0, 0, 0.12); }
 .unicorn-dark-theme .mat-tab-group.mat-background-warn .mat-tab-label:focus, .unicorn-dark-theme .mat-tab-group.mat-background-warn .mat-tab-link:focus, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-label:focus, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-link:focus {
   background-color: rgba(255, 205, 210, 0.3); }
 .unicorn-dark-theme .mat-tab-group.mat-background-warn .mat-tab-header, .unicorn-dark-theme .mat-tab-group.mat-background-warn .mat-tab-links, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-header, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-links {
@@ -2048,6 +2091,8 @@ input.mat-input-element {
   border-color: white; }
 .unicorn-dark-theme .mat-tab-group.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
   border-color: rgba(255, 255, 255, 0.4); }
+.unicorn-dark-theme .mat-tab-group.mat-background-warn .mat-ripple-element, .unicorn-dark-theme .mat-tab-nav-bar.mat-background-warn .mat-ripple-element {
+  background-color: rgba(255, 255, 255, 0.12); }
 .unicorn-dark-theme .mat-toolbar {
   background: whitesmoke;
   color: rgba(0, 0, 0, 0.87); }
@@ -2072,7 +2117,7 @@ input.mat-input-element {
   background-color: #000; }
 .unicorn-dark-theme .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
   color: #000; }
-.unicorn-dark-theme .mat-option.mat-active[_ngcontent-c2] {
+.unicorn-dark-theme .mat-option.mat-active {
   background-color: rgba(0, 0, 0, 0.12) !important; }
 
 .mat-raised-button:not([class*=mat-elevation-z]) {
