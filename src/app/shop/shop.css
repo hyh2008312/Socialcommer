@@ -2193,6 +2193,16 @@ textarea.mat-input-element {
     font-size: 10px;
     border-radius: 2px;
     padding: 0 4px; }
+  .xb-shop__logo-button {
+    margin-left: 8px;
+    padding: 0 24px;
+    line-height: 40px;
+    font-size: 14px;
+    display: block;
+    border-radius: 4px;
+    color: #222; }
+    .xb-shop__logo-button:hover {
+      background-color: rgba(0, 0, 0, 0.12); }
 .xb-shop__bg-content {
   height: calc(100vh - 56px); }
 .xb-shop__avatar {

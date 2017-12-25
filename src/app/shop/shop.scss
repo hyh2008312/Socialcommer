@@ -15,6 +15,19 @@
       border-radius: 2px;
       padding: 0 4px;
     }
+
+    &-button{
+      margin-left: 8px;
+      padding: 0 24px;
+      line-height: 40px;
+      font-size: 14px;
+      display: block;
+      border-radius: 4px;
+      color: $blackColor;
+      &:hover{
+        background-color: rgba(0,0,0,.12);
+      }
+    }
   }
   &__bg-content{
     height: calc(100vh - 56px);

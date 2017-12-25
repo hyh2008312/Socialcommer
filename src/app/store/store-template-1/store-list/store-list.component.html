@@ -17,6 +17,10 @@
           fxFlex.xs="48" fxFlex.gt-xs="30"
           [product]="item" [status]="1"></app-store-item-card>
       </div>
+      <div class="md-margin-top-2 md-dark-secondary" fxLayout="row" fxLayoutAlign="center center"
+           *ngIf="categories.length<=0 && product.length <= 0">
+        There are no products available.
+      </div>
       <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
            (click)="jumpList()" *ngIf="nextPage && product.length > 0">
         <div>
