@@ -11,7 +11,7 @@
   overflow-x: hidden;
   background-color: $whiteColor;
   z-index: 500;
-  &__100vh{
+  &__100vh {
     min-height: 100vh;
     background-color: white;
   }
@@ -25,29 +25,29 @@
 
   }
 
-  &__edit-border{
+  &__edit-border {
     border: 1px solid $primaryColor;
-    >input{
+    > input {
       border: none;
       background-color: transparent;
 
     }
   }
-  &__image-position{
+  &__image-position {
     position: absolute;
     top: 200px;
     left: 360px;
     width: 200px;
     height: 240px;
   }
-  &__image-home-position{
+  &__image-home-position {
     width: 200px;
     height: 240px;
     position: absolute;
     top: -120px;
     left: -80px;
   }
-  &__edit-button{
+  &__edit-button {
     padding: 0 32px;
     line-height: 32px;
     position: absolute;
@@ -61,7 +61,7 @@
     z-index: 1;
     font-size: 14px;
   }
-  &__store-name{
+  &__store-name {
     height: 40px;
     line-height: 40px;
     text-align: center;
@@ -69,7 +69,7 @@
     padding-left: 8px;
     padding-right: 8px;
     color: $whiteColor;
-    >input{
+    > input {
       border: none;
       background-color: transparent;
       font-size: 24px;
@@ -77,18 +77,18 @@
       color: $whiteColor;
     }
   }
-  &__store-title{
+  &__store-title {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     color: $whiteColor;
     position: relative;
     margin-top: 144px;
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       margin-top: 0;
     }
   }
-  &__store-description{
+  &__store-description {
     @include media();
     color: $whiteColor;
     position: relative;
@@ -100,12 +100,12 @@
     z-index: 1;
   }
 
-  &__nav-right{
+  &__nav-right {
     position: absolute;
     top: 16px;
     right: 16px;
   }
-  &__button{
+  &__button {
     line-height: 40px;
     border-radius: 16px;
     background-color: $whiteColor;
@@ -114,7 +114,7 @@
     text-align: center;
     cursor: pointer;
   }
-  &__button-1{
+  &__button-1 {
     line-height: 40px;
     border-radius: 16px;
     background-color: $primaryColor;
@@ -124,7 +124,7 @@
     cursor: pointer;
   }
 
-  &__background{
+  &__background {
     position: absolute;
     left: 0;
     top: 0;
@@ -132,61 +132,66 @@
     width: 100vw;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, .7);
     z-index: 1000;
 
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       overflow-y: hidden;
     }
   }
 
-  &__mobile-dialog-inner{
-    @include xb-xs-screen{
+  &__mobile-dialog-inner {
+    @include xb-xs-screen {
       padding: 16px;
     }
-    @include xb-sm-screen{
+    @include xb-sm-screen {
       padding: 16px;
     }
   }
-  &__title-1{
+  &__title-1 {
     font-size: 24px;
     @include media();
     margin-bottom: 8px;
   }
-  &__content-1{
+  &__content-1 {
     margin-bottom: 24px;
   }
 
-  &__width-100{
+  &__width-100 {
     width: 100%;
   }
-  &__margin-top-48{
+  &__margin-top-48 {
     margin-top: 48px;
   }
 
 }
 
+.xb-store-template {
 
+  &__collection-no-goods {
+    margin-top: 105px;
+    text-align: center;
+  }
 
+  &__jump-button {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    > a {
+      width: 224px;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #501c19;
+      color: $whiteColor;
+      @include media();
 
+      @include xb-xs-screen {
+        line-height: 36px;
+      }
+    }
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .xb-store-template{
   &__left {
     text-align: center;
     max-width: 1200px;
@@ -304,11 +309,11 @@
         width: 480px;
         height: 320px;
         > img {
-         /* position: absolute;
-          top: 200px;
-          left: 360px;
-          width: 200px;
-          height: 240px;*/
+          /* position: absolute;
+           top: 200px;
+           left: 360px;
+           width: 200px;
+           height: 240px;*/
         }
       }
     }

@@ -10,8 +10,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 export class StoreFootComponent implements OnInit {
   @Input() storeName: string;
+  @Input() text: string;
   public shareLink: string;
-  public text:string;
 
   constructor() {
   }

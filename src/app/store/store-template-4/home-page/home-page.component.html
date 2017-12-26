@@ -43,9 +43,11 @@
     <app-shop-item-product-card-4 *ngFor="let item of product"
                                   fxFlex.xs="45" fxFlex.gt-xs="22"
                                   [product]="item" [status]="0"></app-shop-item-product-card-4>
+    <div fxFlex.xs="45" fxFlex.gt-xs="22"></div>
   </div>
+  <div class="xb-4-template__center md-margin-top-4" *ngIf="product.length == 0">There are no products available.</div>
   <div class="xb-4-template-collection__more-button" fxLaout="row" fxLayoutAlign="center center"
-       (click)="jumpProductList()">
+       (click)="jumpProductList()" *ngIf="product.length!=0">
     <div>
       SEE MORE
     </div>
@@ -62,8 +64,9 @@
                                  [blog]="item" [status]="0"></app-shop-item-blog-card-4>
     </div>
   </div>
+  <div class="xb-4-template__center md-margin-top-4" *ngIf="blog.length ==0">There are no blogs.</div>
   <div class="xb-4-template-collection__more-button" fxLaout="row" fxLayoutAlign="center center"
-       (click)="jumpBlogList()">
+       (click)="jumpBlogList()" *ngIf="blog.length!=0">
     <div>
       SEE MORE
     </div>

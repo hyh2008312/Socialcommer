@@ -23,7 +23,7 @@
           (routerChange)="changeViewIndex($event)" [navigationIndex]="viewIndex"></app-store-template-edit-4-navigation>
       </div>
       <!-- 1 home-->
-      <div [hidden]="viewIndex != 0">
+      <div [hidden]="viewIndex != 0" class="xb-4-template-content">
         <div class="xb-4-template-home">
           <div class="xb-4-template-home__background " fxLayout="column" fxLayoutAlign="start start"
                [ngStyle]="{'background': 'url(' + (imageBanner)   + ') center / auto 100% ' }">
@@ -48,6 +48,9 @@
               <div class="xb-4-template-home__ad-title xb-pointer" (click)="jumpCategory(0)" *ngIf="adoneCategory.name">
                 {{adoneCategory.name}}
               </div>
+              <div class="xb-4-template-home__ad-title xb-pointer" *ngIf="!adoneCategory.name">
+                <a routerLink="/shop/listings/categories" target="_blank">Add a Category</a>
+              </div>
             </div>
             <div class="xb-4-template-home__ad-item" fxLayout="column" fxLayoutAlign="start center"
                  [ngStyle]="{'background': 'url(' + (imageAdTwo)   + ') center / 100% 100% ' }">
@@ -56,6 +59,9 @@
                                                       [type]="uploadAboutType"></app-image-upload-preview-four-template>
               <div class="xb-4-template-home__ad-title xb-pointer" (click)="jumpCategory(1)" *ngIf="adTwoCategory.name">
                 {{adTwoCategory.name}}
+              </div>
+              <div class="xb-4-template-home__ad-title xb-pointer" *ngIf="!adTwoCategory.name">
+                <a routerLink="/shop/listings/categories" target="_blank">Add a Category</a>
               </div>
             </div>
             <div class="xb-4-template-home__ad-item" fxLayout="column" fxLayoutAlign="start center"
@@ -66,6 +72,9 @@
               <div class="xb-4-template-home__ad-title xb-pointer" (click)="jumpCategory(2)"
                    *ngIf="adThreeCategory.name">
                 {{adThreeCategory.name}}
+              </div>
+              <div class="xb-4-template-home__ad-title xb-pointer" *ngIf="!adThreeCategory.name">
+                <a routerLink="/shop/listings/categories" target="_blank">Add a Category</a>
               </div>
             </div>
           </div>
@@ -93,8 +102,17 @@
                                                fxFlex.xs="48" fxFlex.gt-xs="22"
                                                [product]="item" [status]="0"></app-shop-item-product-card-edit-4>
           </div>
+          <div class="xb-4-template-products__no-goods" *ngIf="homeProduct.length == 0">
+            <div>You haven't added any affiliate products yet.</div>
+            <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+            >
+              <a routerLink="/shop/listings/items" target="_blank">
+                Add Your First Product
+              </a>
+            </div>
+          </div>
           <div class="xb-4-template-blog  xb-4-template__w960 ">
-            <div class="xb-4-template-blog__title" *ngIf="isHaveBlog">
+            <div class="xb-4-template-blog__title">
               BLOG
             </div>
             <div class="xb-4-template-blog__article" fxLayout="row" fxLayoutAlign="space-between start">
@@ -102,11 +120,20 @@
                                               fxFlex.xs="48" fxFlex.gt-xs="45"
                                               [blog]="item" [status]="0"></app-shop-item-blog-card-edit-4>
             </div>
+            <div class="xb-4-template-products__no-goods" *ngIf="blog.length == 0">
+              <div>You haven't added any blog yet.</div>
+              <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+              >
+                <a routerLink="/shop/blog" target="_blank">
+                  Add Your First Blog
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <!-- 2.collections-->
-      <div [hidden]="viewIndex != 1">
+      <div [hidden]="viewIndex != 1" class="xb-4-template-content">
         <div class="xb-4-template-collection xb-4-template__w960">
           <div fxLayout="row" fxLayoutAlign="start stretch">
             <div class="xb-4-template-collection__category">
@@ -119,15 +146,24 @@
               <app-shop-item-product-card-edit-4 *ngFor="let item of product"
                                                  fxFlex.xs="48" fxFlex.gt-xs="28"
                                                  [product]="item" [status]="0"></app-shop-item-product-card-edit-4>
+              <div fxFlex.xs="48" fxFlex.gt-xs="28"></div>
+            </div>
+          </div>
+          <div class="xb-4-template-products__collection-no-goods" *ngIf="product.length == 0">
+            <div>You haven't added any affiliate products yet.</div>
+            <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+            >
+              <a routerLink="/shop/listings/items" target="_blank">
+                Add Your First Product
+              </a>
             </div>
           </div>
         </div>
       </div>
-
       <!-- 3.blog-->
-      <div [hidden]="viewIndex != 2">
+      <div [hidden]="viewIndex != 2" class="xb-4-template-content">
         <div class="xb-4-template-blog  xb-4-template__w960 ">
-          <div class="xb-4-template-blog__title" *ngIf="isHaveBlog">
+          <div class="xb-4-template-blog__title">
             BLOG
           </div>
           <div fxLayoutWrap class="xb-4-template-blog__article" fxLayout="row" fxLayoutAlign="space-between start">
@@ -136,15 +172,19 @@
                                             [blog]="item" [status]="0"></app-shop-item-blog-card-edit-4>
           </div>
         </div>
+        <div class="xb-4-template-products__collection-no-goods" *ngIf="blog.length == 0">
+          <div>You haven't added any blog yet.</div>
+          <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+          >
+            <a routerLink="/shop/blog" target="_blank">
+              Add Your First Blog
+            </a>
+          </div>
+        </div>
       </div>
       <!-- 4.about -->
-      <div [hidden]="viewIndex != 3">
+      <div [hidden]="viewIndex != 3" class="xb-4-template-content">
         <div class="xb-4-template-about xb-4-template__w960">
-          <div class="xb-4-template-about__image xb-pointer xb-4-template__edit-border">
-            <app-image-upload-preview-blog [(previewImgFile)]="aboutMeCover" [(previewImgSrc)]="aboutMeCover"
-                                           [type]="uploadAboutType"></app-image-upload-preview-blog>
-          </div>
-
           <!--about me-->
           <div class="xb-4-template-about__content xb-pointer xb-4-template__edit-border ql-editor"
                [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"
@@ -153,10 +193,13 @@
             <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
                           [options]="editorConfig"></quill-editor>
           </div>
-
+          <div class="xb-4-template-about__image xb-pointer xb-4-template__edit-border md-margin-top-4">
+            <app-image-upload-preview-blog [(previewImgFile)]="aboutMeCover" [(previewImgSrc)]="aboutMeCover"
+                                           [type]="uploadAboutType"></app-image-upload-preview-blog>
+          </div>
         </div>
       </div>
-      <app-shop-template-edit-4-store-foot [storeName]="nameTag" [text]="text" ></app-shop-template-edit-4-store-foot>
+      <app-shop-template-edit-4-store-foot [storeName]="nameTag" [text]="text"></app-shop-template-edit-4-store-foot>
     </div>
   </form>
 </div>

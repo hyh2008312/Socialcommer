@@ -12,6 +12,28 @@
   overflow-x: hidden;
   background-color: $whiteColor;
   z-index: 500;
+  &__jump-button {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    > a {
+      width: 224px;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #e1ab18;
+      color: $whiteColor;
+      @include media();
+
+      @include xb-xs-screen {
+        line-height: 36px;
+      }
+    }
+  }
+
+  &-content {
+    min-height: calc(100vh - 391px);
+  }
   &__detail {
     margin-top: 20px;
     margin-bottom: 56px;
@@ -106,6 +128,7 @@
     }
   }
 }
+
 // home
 .xb-4-template-home {
   margin-bottom: 100px;
@@ -143,8 +166,12 @@
     color: $whiteColor;
     font-size: 24px;
     @include light();
+    >a{
+      color: white;
+    }
   }
 }
+
 // home ->products
 .xb-4-template-products {
   margin-top: 88px;
@@ -216,7 +243,16 @@
     }
   }
 
+  &__no-goods {
+    margin-top: 32px;
+    text-align: center;
+  }
+  &__collection-no-goods {
+    margin-top: 105px;
+    text-align: center;
+  }
 }
+
 //home->blog
 .xb-4-template-blog {
   margin-top: 32px;
@@ -272,6 +308,7 @@
   }
 
 }
+
 //导航 navigation
 .xb-4-template-navigation {
   color: #e1ab18;
@@ -285,6 +322,7 @@
     height: 54px;
   }
 }
+
 // collections
 .xb-4-template-collection {
   margin-top: 24px;
@@ -293,6 +331,7 @@
   }
 
 }
+
 //分类 category
 .xb-4-template-category {
   border: 1px solid #e3e3e3;
@@ -318,6 +357,7 @@
     margin-bottom: 30px;
   }
 }
+
 // about
 .xb-4-template-about {
   margin-top: 24px;
@@ -328,6 +368,7 @@
     position: relative;
   }
 }
+
 //图片
 .xb-4-template-picture {
   &__background {
@@ -347,6 +388,7 @@
   }
 
 }
+
 // store
 .xb-4-template-store {
   &__title-1 {
@@ -365,6 +407,7 @@
   }
 
 }
+
 //edit
 .xb-4-template-edit {
 

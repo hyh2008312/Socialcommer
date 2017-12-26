@@ -3,6 +3,9 @@
 
 // main
 .xb-4-template {
+  &__center {
+    text-align: center;
+  }
   &__fixed-nav {
     position: fixed;
     top: 0;
@@ -34,6 +37,9 @@
     margin-right: auto;
     min-height: 100vh;
     height: 100vh;
+    &-content {
+      min-height: calc(100vh - 385px);
+    }
   }
   &__title {
     padding-left: 40px;
@@ -212,7 +218,7 @@
 
 //home->blog
 .xb-4-template-blog {
-  margin-top: 32px;
+  margin-top: 16px;
   &__article {
     margin-top: 16px;
     @include xb-xs-screen {
@@ -245,6 +251,9 @@
       height: 0;
       padding-bottom: 66.66%;
       overflow: hidden;
+      @include xb-xs-screen {
+        width: calc(100vw - 32px);
+      }
       > img {
         position: absolute;
         width: 100%;
@@ -275,12 +284,12 @@
   // blog-->detail
   &__detail {
     &-container {
+      text-align: center;
       @include xb-xs-screen {
         margin-top: 8px;
       }
       > img {
-        width: 100vw;
-        max-height: 480px;
+
         @include xb-xs-screen {
           width: calc(100vw - 32px);
           margin-left: 16px;
@@ -434,6 +443,10 @@
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-top: 8px solid black;
+  }
+  &__no-goods {
+    margin-top: 100px;
+    text-align: center;
   }
 }
 

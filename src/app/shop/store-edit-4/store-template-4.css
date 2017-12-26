@@ -2191,6 +2191,23 @@ textarea.mat-input-element {
   overflow-x: hidden;
   background-color: #fff;
   z-index: 500; }
+  .xb-4-template__jump-button {
+    margin-top: 20px;
+    margin-bottom: 40px; }
+    .xb-4-template__jump-button > a {
+      width: 224px;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #e1ab18;
+      color: #fff;
+      font-weight: 600; }
+      @media screen and (max-width: 599px) {
+        .xb-4-template__jump-button > a {
+          line-height: 36px; } }
+  .xb-4-template-content {
+    min-height: calc(100vh - 391px); }
   .xb-4-template__detail {
     margin-top: 20px;
     margin-bottom: 56px;
@@ -2310,6 +2327,8 @@ textarea.mat-input-element {
     color: #fff;
     font-size: 24px;
     font-weight: 300; }
+    .xb-4-template-home__ad-title > a {
+      color: white; }
 
 .xb-4-template-products {
   margin-top: 88px; }
@@ -2372,6 +2391,12 @@ textarea.mat-input-element {
       font-size: 14px;
       font-weight: 400;
       color: black; }
+  .xb-4-template-products__no-goods {
+    margin-top: 32px;
+    text-align: center; }
+  .xb-4-template-products__collection-no-goods {
+    margin-top: 105px;
+    text-align: center; }
 
 .xb-4-template-blog {
   margin-top: 32px; }

@@ -141,11 +141,22 @@
           <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
         </div>
         <div class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
-             (click)="jumpProductList()">
+             (click)="jumpProductList()" *ngIf="product.length!=0">
           <div>
             SEE MORE
           </div>
         </div>
+
+        <div class="xb-store-template__collection-no-goods" *ngIf="product.length == 0">
+          <div>You haven't added any affiliate products yet.</div>
+          <div class="xb-store-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+          >
+            <a routerLink="/shop/listings/items" target="_blank">
+              Add Your First Product
+            </a>
+          </div>
+        </div>
+
       </div>
       <div>
         <app-store-template-edit-2-store-foot [storeName]="store.name"></app-store-template-edit-2-store-foot>
@@ -202,6 +213,15 @@
                                             [product]="item" [status]="1"></app-store-item-card-edit>
                   <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
                 </div>
+              </div>
+            </div>
+            <div class="xb-store-template__collection-no-goods" *ngIf="product.length == 0">
+              <div>You haven't added any affiliate products yet.</div>
+              <div class="xb-store-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+              >
+                <a routerLink="/shop/listings/items" target="_blank">
+                  Add Your First Product
+                </a>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content appViewScrollTop [NavigateSelector]="'xb-4-template__float-nav'"
-  (isShowNavigation)="changeNavigationShow($event)"
+                       (isShowNavigation)="changeNavigationShow($event)"
   >
     <div class="xb-4-template__container ">
       <div class="xb-4-template__w960" fxLayout="row" fxLayoutAlign="center start" fxShow="true" fxShow.xs="false">
@@ -28,7 +28,9 @@
       <div class="xb-4-template__fixed-nav" fxShow="true" fxShow.xs="false" *ngIf="isShowNav">
         <app-shop-template-4-navigation></app-shop-template-4-navigation>
       </div>
-      <router-outlet></router-outlet>
+      <div class="xb-4-template__container-content">
+        <router-outlet></router-outlet>
+      </div>
       <app-shop-template-4-store-foot [storeName]="storeName" [text]="text"></app-shop-template-4-store-foot>
     </div>
   </mat-sidenav-content>

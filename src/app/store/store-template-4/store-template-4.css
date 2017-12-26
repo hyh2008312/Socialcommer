@@ -2181,6 +2181,8 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.xb-4-template__center {
+  text-align: center; }
 .xb-4-template__fixed-nav {
   position: fixed;
   top: 0;
@@ -2205,6 +2207,8 @@ textarea.mat-input-element {
   margin-right: auto;
   min-height: 100vh;
   height: 100vh; }
+  .xb-4-template__container-content {
+    min-height: calc(100vh - 385px); }
 .xb-4-template__title {
   padding-left: 40px;
   padding-right: 40px;
@@ -2359,7 +2363,7 @@ textarea.mat-input-element {
       color: black; }
 
 .xb-4-template-blog {
-  margin-top: 32px; }
+  margin-top: 16px; }
   .xb-4-template-blog__article {
     margin-top: 16px; }
     @media screen and (max-width: 599px) {
@@ -2390,6 +2394,9 @@ textarea.mat-input-element {
       height: 0;
       padding-bottom: 66.66%;
       overflow: hidden; }
+      @media screen and (max-width: 599px) {
+        .xb-4-template-blog__card-image {
+          width: calc(100vw - 32px); } }
       .xb-4-template-blog__card-image > img {
         position: absolute;
         width: 100%;
@@ -2410,12 +2417,11 @@ textarea.mat-input-element {
       font-size: 16px;
       font-weight: bold;
       line-height: 28px; }
-  @media screen and (max-width: 599px) {
-    .xb-4-template-blog__detail-container {
-      margin-top: 8px; } }
-  .xb-4-template-blog__detail-container > img {
-    width: 100vw;
-    max-height: 480px; }
+  .xb-4-template-blog__detail-container {
+    text-align: center; }
+    @media screen and (max-width: 599px) {
+      .xb-4-template-blog__detail-container {
+        margin-top: 8px; } }
     @media screen and (max-width: 599px) {
       .xb-4-template-blog__detail-container > img {
         width: calc(100vw - 32px);
@@ -2536,6 +2542,9 @@ textarea.mat-input-element {
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-top: 8px solid black; }
+  .xb-4-template-collection__no-goods {
+    margin-top: 100px;
+    text-align: center; }
 
 .xb-4-template-category {
   border: 1px solid #e3e3e3;
