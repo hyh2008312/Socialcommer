@@ -808,7 +808,6 @@
         line-height: 28px;
         @include regular();
         color: rgba(0, 0, 0, 0.87);
-        margin-bottom: 24px;
       }
 
     }
@@ -822,6 +821,7 @@
       }
       &-des {
         margin-top: 12px;
+        margin-bottom: 24px;
       }
     }
 
