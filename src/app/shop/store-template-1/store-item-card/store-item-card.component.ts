@@ -20,7 +20,16 @@ export class StoreItemCardComponent implements OnInit {
   }
 
   jumpLink() {
-
+    let link = '';
+    switch (this.status) {
+      case 0:
+        link = `/detail/${this.product.id}`;
+        break;
+      case 1:
+        link = `/${this.product.id}`;
+        break;
+    }
+    this.router.navigate([this.router.url + link]);
   }
 
 }

@@ -15,12 +15,67 @@ export class StoreDetailComponent implements OnInit {
   public shareLink: string;
   public text = '';
   store: Store = new Store();
-  product: Product = new Product();
+  product: any;
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
-
   showButton: boolean = false;
+
+  recommendation = 'Use this section to tell your customers why you pick this product.';
+
+  categoryName = 'Category Name';
+
+  description = "This is a brief paragraph that describes the product to entice buyers. If you're writing a product description, take some time to prewrite. Research your product and the audience so you know how to best sell the product. From there, write down the statement. Start with a great opening and then describe the product vividly in a couple of short sentences. When you're finished, reread the statement. Watch for cliche phrases and lengthy sentences and revise the statement as necessary."
+
+  productList = [{
+    id: 0,
+    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-1.jpg",
+    originalPriceAmount : 55.95,
+    originalPriceCurrency : "USD",
+    salePriceAmount : 39.30,
+    salePriceCurrency : "USD",
+    title : "Skin Care and Cosmetic Ingredients Dictionary. "
+  }, {
+    id: 1,
+    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-2.jpg",
+    originalPriceAmount : 39.00,
+    originalPriceCurrency : "USD",
+    salePriceAmount : 19.00,
+    salePriceCurrency : "USD",
+    title : "Mermaid Chunky Glitter Large 30g Jar COSMETIC GLITTER Festival Face Body"
+  },{
+    id: 2,
+    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-3.jpg",
+    originalPriceAmount : 39.00,
+    originalPriceCurrency : "USD",
+    salePriceAmount : 19.00,
+    salePriceCurrency : "USD",
+    title : "Black Markup Mirror 6 Inch 3x Magnification LED Light Two-Sided Table"
+  },{
+    id: 3,
+    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-4.jpg",
+    originalPriceAmount : 49.99,
+    originalPriceCurrency : "USD",
+    salePriceAmount : 19.99,
+    salePriceCurrency : "USD",
+    title : "Eyelash Dreamer Makeup Bag, Eyelash Dreamer, Makeup Bag, Makeup, Lash "
+  },{
+    id: 4,
+    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-5.jpg",
+    originalPriceAmount : 6.00,
+    originalPriceCurrency : "USD",
+    salePriceAmount : 4.99,
+    salePriceCurrency : "USD",
+    title : "E.l.f Hydrating Face Primer, 0.47 Fluid Ounce"
+  },{
+    id: 5,
+    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-6.jpg",
+    originalPriceAmount : 49.99,
+    originalPriceCurrency : "USD",
+    salePriceAmount : 35.99,
+    salePriceCurrency : "USD",
+    title : "The Best Organic Vitamin C Serum - [BIG 2-OZ Bottle] - Hyaluronic Acid, 20% C + E"
+  }];
 
   constructor(
     public router: Router,
@@ -39,30 +94,10 @@ export class StoreDetailComponent implements OnInit {
     this.shareLink = window.location.href;
 
     let id = this.activatedRouter.snapshot.params['id'];
-    let self = this;
-    this.storeService.getProduct(id).then((data) => {
-      self.product = data;
-      self.text = data.title;
-      self.storeService.addTitleDescription({
-        title: data.title,
-        description: data.description,
-        shareImage: data.imageUrl[0]
-      });
-      self.image = data.imageUrl;
-      if(data.imageUrl.length > 0) {
-        self.selectedImage = data.imageUrl[0];
-        for(let value of data.imageUrl) {
-          self.imageSources.push(value);
-        }
-      }
-
-      self.storeService.pageView({
-        pageType: 'product',
-        viewTime: new Date().getTime(),
-        productId: data.id,
-        storeId: data.storeId
-      });
-    });
+    this.product = this.productList[id];
+    this.image = [this.product.imageUrl];
+    this.selectedImage = this.product.imageUrl;
+    this.imageSources.push(this.product.imageUrl);
   }
 
   scrollChange($event) {
@@ -70,16 +105,11 @@ export class StoreDetailComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate([`./store/${this.store.displayName}`]);
+    this.router.navigate([`/shop/store/templates/preview/1`]);
   }
 
   openLink() {
     let id = this.activatedRouter.snapshot.params['id'];
-    this.storeService.buttonClick({
-      viewTime: new Date().getTime(),
-      relationId: id,
-      storeId: this.store.id
-    });
   }
 
 }

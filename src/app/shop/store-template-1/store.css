@@ -4728,11 +4728,11 @@ textarea.mat-input-element {
   background-color: #f1f1f1;
   overflow: hidden; }
 .xb-store__background {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: rgba(0, 0, 0, 0.7);
