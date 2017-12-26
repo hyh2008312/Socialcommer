@@ -15,7 +15,7 @@ export class StoreBlogDetailComponent implements OnInit {
 
   public shareLink: string;
   public text = '';
-  blog: Blog = new Blog;
+  blog: any;
   isHidden: boolean = true;
   sub: any;
   subOther: any
@@ -23,84 +23,49 @@ export class StoreBlogDetailComponent implements OnInit {
   store: Store = new Store();
   ownerId: any;
   page = 1;
-  bloglist: any = [];
   nextPage: boolean = true;
   id: number;
+  bloglist: any = [{
+    id: 0,
+    title: 'Blog Title',
+    modified: '2017-12-05T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/4/10.jpg',
+    context: 'Write an awesome blog to engage your customers and drive traffic to your store!',
+  }, {
+    id: 1,
+    title: 'Blog Title',
+    modified: '2017-12-05T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/4/11.jpg',
+    context: 'Write an awesome blog to engage your customers and drive traffic to your store!',
+  }, {
+    id: 2,
+    title: 'Blog Title',
+    modified: '2017-12-05T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/4/14.jpg',
+    context: 'Write an awesome blog to engage your customers and drive traffic to your store!',
+  }, {
+    id: 3,
+    title: 'Blog Title',
+    modified: '2017-12-05T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/4/13.jpg',
+    context: 'Write an awesome blog to engage your customers and drive traffic to your store!',
+  }];
 
   @ViewChild(ViewShareScrollDirective) shareDirective: ViewShareScrollDirective;
-  @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
               private storeService: StoreService) {
-    let self = this;
-    this.subOther = this.activatedRouter.params.subscribe(params => {
-      console.log(params);
-      self.id = params['id'];
-      this.storeService.getBlogDetail(self.id).then((data) => {
-        self.blog = data;
-        self.text = data.title;
-        self.shareDirective.setPositionOfShare();
-        self.storeService.addTitleDescription({
-          title: data.title,
-          description: data.description,
-          shareImage: data.cover
-        });
-
-        self.storeService.pageViewBlog({
-          viewTime: new Date().getTime(),
-          blogId: data.id
-        });
-      });
-    })
+    this.id = this.activatedRouter.snapshot.params['id'];
+    this.blog = this.bloglist[this.id];
+    this.text = this.blog.title;
   }
 
   changeIsShowShare(isShowShare: any) {
     this.isHidden = isShowShare;
   }
 
-
   ngOnInit(): void {
     this.shareLink = window.location.href;
-    let self = this;
-    self.sub = this.storeService.store.subscribe((data) => {
-      if (data) {
-        self.store = data;
-        self.ownerId = data.ownerId;
-        self.queryBlog();
-      }
-    });
-  }
-
-
-  queryBlog(clearBlog?: boolean) {
-    if (!this.ownerId) {
-      return;
-    }
-    let options = {
-      ownerId: this.ownerId,
-      page: this.page,
-      page_size: 2
-    };
-    let self = this;
-    self.storeService.getBlog(options).then((data) => {
-
-      if (clearBlog) {
-        self.bloglist = [];
-        self.nextPage = true;
-      }
-      self.bloglist = self.bloglist.concat(data.results);
-      if (data.next == null) {
-        self.nextPage = false;
-      }
-    });
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
-  changeScrollToTop(isScroll: any): void {
-    this.scrollTopDirective.setScrollTop();
   }
 }

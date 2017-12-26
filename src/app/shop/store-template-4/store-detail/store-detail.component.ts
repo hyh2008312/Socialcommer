@@ -3,8 +3,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {StoreService} from '../../store.service';
 import {Store, Product, Image} from '../../store';
-import {Subscription} from 'rxjs/Subscription';
-import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
 
 @Component({
   selector: 'app-shop-template-4-store-detail',
@@ -17,103 +15,81 @@ export class StoreDetailComponent implements OnInit {
   public shareLink: string;
   public text = '';
   store: Store = new Store();
-  product: Product = new Product();
+  product: any = {
+    id: 1,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    purchaseUrl: 'https://www.socialcommer.com/',
+    recommendation: 'Use this section to tell your customers why you recommend this product.',
+    description: 'This is a brief paragraph that describes the product to ' +
+    'entice buyers. If you\'re writing a product description, take some time to ' +
+    'prewrite. Research your product and the audience so you know how to best sell the' +
+    ' product. From there, write down the statement. Start with a great opening and then ' +
+    'describe the product vividly in a couple of short sentences. When you\'re finished, ' +
+    'reread the statement. Watch for cliche phrases and lengthy sentences and revise the' +
+    ' statement as necessary.',
+  };
   image: any = [];
   selectedImage: any = false;
-  imageSources: string[] = [];
-  relatedProduct: any = [];
+  imageSources: string[] = [
+    'https://media.socialcommer.com/source/web/template/4/4.jpg',
+    'https://media.socialcommer.com/source/web/template/4/5.jpg',
+    'https://media.socialcommer.com/source/web/template/4/8.jpg',
+    'https://media.socialcommer.com/source/web/template/4/9.jpg',
+    'https://media.socialcommer.com/source/web/template/4/6.jpg',
+    'https://media.socialcommer.com/source/web/template/4/7.jpg',
+  ];
   id: number;
-  private sub: Subscription;
-  isRequestRelated: boolean = true;
-  @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
+
+  relatedProduct: any = [{
+    id: 1,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/template/4/4.jpg'
+  }, {
+    id: 2,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/template/4/5.jpg'
+  }, {
+    id: 3,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/template/4/8.jpg'
+  }, {
+    id: 4,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/template/4/9.jpg'
+  }];
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
               private storeService: StoreService) {
     let self = this;
-    this.sub = this.activatedRouter.params.subscribe(params => {
-      self.id = params['id'];
 
-      this.storeService.store.subscribe((data) => {
-        if (data) {
-          self.store = data;
-          self.initData();
-        }
-      });
-    })
-
-
+    self.id = this.activatedRouter.snapshot.params['id'];
+    self.selectedImage = self.imageSources[self.id-1];
+    self.image = self.imageSources;
   }
 
   ngOnInit(): void {
     this.shareLink = window.location.href;
 
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
-  initData() {
-    let self = this;
-    this.storeService.getProduct(self.id).then((data) => {
-      self.product = data;
-      self.text = data.title;
-      self.storeService.addTitleDescription({
-        title: data.title,
-        description: data.description,
-        shareImage: data.imageUrl
-      });
-      self.image = data.imageUrl;
-      self.imageSources = [];
-      if (data.imageUrl.length > 0) {
-        self.selectedImage = data.imageUrl[0];
-        for (let value of data.imageUrl) {
-          self.imageSources.push(value);
-        }
-      }
-
-      self.storeService.pageView({
-        pageType: 'product',
-        viewTime: new Date().getTime(),
-        productId: data.id,
-        storeId: data.storeId
-      });
-      if (self.isRequestRelated) {
-        self.queryProduct();
-        self.isRequestRelated = false;
-      }
-    });
-  }
-
-  close(): void {
-    this.router.navigate([`./store/${this.store.displayName}/4`]);
-  }
-
-  openLink() {
-    let id = this.activatedRouter.snapshot.params['id'];
-    this.storeService.buttonClick({
-      viewTime: new Date().getTime(),
-      relationId: id,
-      storeId: this.store.id
-    });
-  }
-
-  queryProduct() {
-    let options = {
-      categoryId: this.product.categoryId,
-      storeId: this.store.id,
-      relationStatus: 'published',
-      page: 1,
-      page_size: 12
-    };
-    let self = this;
-    self.storeService.getProductList(options).then((data) => {
-      self.relatedProduct = self.relatedProduct.concat(data.results);
-    });
-  }
-
-  changeScrollToTop(isScroll: any): void {
-    this.scrollTopDirective.setScrollTop();
   }
 }

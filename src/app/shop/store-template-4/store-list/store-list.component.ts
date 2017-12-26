@@ -27,6 +27,7 @@ export class StoreListComponent implements OnInit {
   page = 1;
   nextPage: boolean = true;
   product: any = [{
+    id: 1,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -34,6 +35,7 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/4/4.jpg'
   }, {
+    id: 2,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -41,6 +43,7 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/4/5.jpg'
   }, {
+    id: 3,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -48,6 +51,7 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/4/8.jpg'
   }, {
+    id: 4,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -55,6 +59,7 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/4/9.jpg'
   }, {
+    id: 5,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -62,6 +67,7 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/4/6.jpg'
   }, {
+    id: 6,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -110,7 +116,4 @@ export class StoreListComponent implements OnInit {
   queryProduct() {
   }
 
-  back(): void {
-    this.router.navigate([`./store/${this.store.displayName}`]);
-  }
 }

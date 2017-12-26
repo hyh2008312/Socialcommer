@@ -14,21 +14,25 @@ export class StoreBlogComponent implements OnInit {
   public text: string;
 
   blog: any = [{
+    id:0,
     title: 'Blog Title',
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/4/10.jpg',
     context: 'Blog Description',
   }, {
+    id:1,
     title: 'Blog Title',
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/4/11.jpg',
     context: 'Blog Description ',
   }, {
+    id:2,
     title: 'Blog Title',
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/4/14.jpg',
     context: 'Blog Description',
   }, {
+    id:3,
     title: 'Blog Title',
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/4/13.jpg',

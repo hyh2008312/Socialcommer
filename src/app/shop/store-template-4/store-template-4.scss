@@ -264,12 +264,11 @@
   // blog-->detail
   &__detail {
     &-container {
+      text-align: center;
       @include xb-xs-screen {
         margin-top: 8px;
       }
       > img {
-        width: 100vw;
-        max-height: 480px;
         @include xb-xs-screen{
           width: calc(100vw - 32px);
           margin-left: 16px;

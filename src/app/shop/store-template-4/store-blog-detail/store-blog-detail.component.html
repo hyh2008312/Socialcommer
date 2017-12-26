@@ -16,7 +16,7 @@
       <div class="xb-4-template-blog__detail-des"
            [innerHTML]="blog.context | safeHtml">
       </div>
-      <div class="xb-4-template-blog__detail-share" [hidden]="isHidden">
+      <div class="xb-4-template-blog__detail-share" [hidden]="true">
         <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="12px">
           <div class="xb-4-template-blog__detail-share-item"
                appSocialShare [facebook]="{u: shareLink}">
@@ -37,7 +37,7 @@
         >
           <app-shop-item-blog-card-4 *ngFor="let item of bloglist"
                                      fxFlex.xs="48" fxFlex.gt-xs="45"
-                                     [blog]="item" [status]="1"
+                                     [blog]="item" [status]="3"
                                      (scrollToTop)="changeScrollToTop($event)"
           ></app-shop-item-blog-card-4>
         </div>

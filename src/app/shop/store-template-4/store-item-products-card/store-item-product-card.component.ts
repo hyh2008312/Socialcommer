@@ -21,14 +21,16 @@ export class StoreItemProductCardComponent implements OnInit {
 
   jumpLink() {
     let link = '';
+    let baseLink = this.router.url;
     switch (this.status) {
       case 0:
         link = `/detail/${this.product.id}`;
         break;
       case 1:
-        link = `/${this.product.id}`;
+        link = `/detail/${this.product.id}`;
+        baseLink = baseLink.split('/list')[0];
         break;
     }
-    this.router.navigate([this.router.url + link]);
+    this.router.navigate([baseLink + link]);
   }
 }
