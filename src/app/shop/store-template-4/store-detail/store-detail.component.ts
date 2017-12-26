@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import {Component, Directive, OnInit, ViewChild} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { Store, Product, Image } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store, Product, Image} from '../../store';
+import {Subscription} from 'rxjs/Subscription';
+import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
 
 @Component({
   selector: 'app-shop-template-4-store-detail',
@@ -19,37 +21,54 @@ export class StoreDetailComponent implements OnInit {
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
+  relatedProduct: any = [];
+  id: number;
+  private sub: Subscription;
+  isRequestRelated: boolean = true;
+  @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 
-  constructor(
-    public router: Router,
-    private activatedRouter: ActivatedRoute,
-    private storeService: StoreService
-  ) {
+  constructor(public router: Router,
+              private activatedRouter: ActivatedRoute,
+              private storeService: StoreService) {
     let self = this;
-    this.storeService.store.subscribe((data) => {
-      if(data) {
-        self.store = data;
-      }
-    });
+    this.sub = this.activatedRouter.params.subscribe(params => {
+      self.id = params['id'];
+
+      this.storeService.store.subscribe((data) => {
+        if (data) {
+          self.store = data;
+          self.initData();
+        }
+      });
+    })
+
+
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.shareLink = window.location.href;
 
-    let id = this.activatedRouter.snapshot.params['id'];
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  initData() {
     let self = this;
-    this.storeService.getProduct(id).then((data) => {
+    this.storeService.getProduct(self.id).then((data) => {
       self.product = data;
       self.text = data.title;
       self.storeService.addTitleDescription({
-        title: data.name,
+        title: data.title,
         description: data.description,
         shareImage: data.imageUrl
       });
       self.image = data.imageUrl;
-      if(data.imageUrl.length > 0) {
+      self.imageSources = [];
+      if (data.imageUrl.length > 0) {
         self.selectedImage = data.imageUrl[0];
-        for(let value of data.imageUrl) {
+        for (let value of data.imageUrl) {
           self.imageSources.push(value);
         }
       }
@@ -60,11 +79,15 @@ export class StoreDetailComponent implements OnInit {
         productId: data.id,
         storeId: data.storeId
       });
+      if (self.isRequestRelated) {
+        self.queryProduct();
+        self.isRequestRelated = false;
+      }
     });
   }
 
-  close():void {
-    this.router.navigate([`./store/${this.store.displayName}/2`]);
+  close(): void {
+    this.router.navigate([`./store/${this.store.displayName}/4`]);
   }
 
   openLink() {
@@ -76,4 +99,21 @@ export class StoreDetailComponent implements OnInit {
     });
   }
 
+  queryProduct() {
+    let options = {
+      categoryId: this.product.categoryId,
+      storeId: this.store.id,
+      relationStatus: 'published',
+      page: 1,
+      page_size: 12
+    };
+    let self = this;
+    self.storeService.getProductList(options).then((data) => {
+      self.relatedProduct = self.relatedProduct.concat(data.results);
+    });
+  }
+
+  changeScrollToTop(isScroll: any): void {
+    this.scrollTopDirective.setScrollTop();
+  }
 }

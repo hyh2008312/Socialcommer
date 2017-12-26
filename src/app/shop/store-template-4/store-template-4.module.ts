@@ -15,12 +15,12 @@ import {StoreService} from '../store.service';
 import {SharedModule} from '../../shared/shared.module';
 import {StoreFootComponent} from './store-foot/store-foot.component';
 import {StoreDetailPictureComponent} from './store-detail-picture/store-detail-picture.component';
-import {StoreListDetailComponent} from './store-detail/store-list-detail.component';
 import {StoreShareButtonComponent} from './store-share-button/store-share-button.component';
 import {StoreBlogComponent} from './store-blog/store-blog.component';
 import {StoreItemProductCardComponent} from './store-item-products-card/store-item-product-card.component';
 import {StoreItemBlogCardComponent} from './store-item-blog-card/store-item-blog-card.component';
 import {ShareTemplate4ButtonComponent} from './share-temlpate-4-button/share-template-4-button.component';
+import {StoreBlogDetailComponent} from './store-blog-detail/store-blog-detail.component';
 
 @NgModule({
   imports: [
@@ -39,12 +39,12 @@ import {ShareTemplate4ButtonComponent} from './share-temlpate-4-button/share-tem
     StoreNavigationComponent,
     StoreFootComponent,
     StoreDetailPictureComponent,
-    StoreListDetailComponent,
     StoreShareButtonComponent,
     StoreBlogComponent,
     StoreItemProductCardComponent,
     StoreItemBlogCardComponent,
-    ShareTemplate4ButtonComponent
+    ShareTemplate4ButtonComponent,
+    StoreBlogDetailComponent
   ],
   entryComponents: [],
   providers: [
