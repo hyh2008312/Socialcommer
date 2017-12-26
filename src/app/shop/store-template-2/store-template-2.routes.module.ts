@@ -9,7 +9,7 @@ import {StoreDetailComponent} from './store-detail/store-detail.component';
 import {StoreListDetailComponent} from './store-detail/store-list-detail.component';
 
 const routes: Routes = [{
-  path: '2', component: MainPageComponent,
+  path: '', component: MainPageComponent,
   children: [{
     path: '', component: HomePageComponent,
     children: [{

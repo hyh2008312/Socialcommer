@@ -10,7 +10,7 @@ import {StoreBlogComponent} from './store-blog/store-blog.component';
 import {StoreBlogDetailComponent} from './store-blog-detail/store-blog-detail.component';
 
 const routes: Routes = [{
-  path: '4', component: MainPageComponent,
+  path: '', component: MainPageComponent,
   children: [
     {
       path: '', component: HomePageComponent,
