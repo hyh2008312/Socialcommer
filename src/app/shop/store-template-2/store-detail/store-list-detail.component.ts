@@ -12,13 +12,72 @@ import { Store, Product, Image } from '../../store';
 
 export class StoreListDetailComponent implements OnInit {
 
+
   public shareLink: string;
   public text = '';
   store: Store = new Store();
-  product: Product = new Product();
+  product: any;
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
+  showButton:any = false;
+
+  recommendation = 'Use this section to tell your customers why you pick this product.';
+
+  categoryName = 'Category Name';
+
+  description = "This is a brief paragraph that describes the product to entice buyers. If you're writing a product description, take some time to prewrite. Research your product and the audience so you know how to best sell the product. From there, write down the statement. Start with a great opening and then describe the product vividly in a couple of short sentences. When you're finished, reread the statement. Watch for cliche phrases and lengthy sentences and revise the statement as necessary."
+
+
+  productList: any = [{
+    id: 0,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
+  }, {
+    id: 1,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-8.jpg'
+  }, {
+    id: 2,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-9.jpg'
+  }, {
+    id: 3,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-10.jpg'
+  }, {
+    id: 4,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-9.jpg'
+  }, {
+    id: 5,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
+  }];
 
   constructor(
     public router: Router,
@@ -37,43 +96,18 @@ export class StoreListDetailComponent implements OnInit {
     this.shareLink = window.location.href;
 
     let id = this.activatedRouter.snapshot.params['id'];
-    let self = this;
-    this.storeService.getProduct(id).then((data) => {
-      self.product = data;
-      self.text = data.title;
-      self.storeService.addTitleDescription({
-        title: data.name,
-        description: data.description,
-        shareImage: data.imageUrl
-      });
-      self.image = data.imageUrl;
-      if(data.imageUrl.length > 0) {
-        self.selectedImage = data.imageUrl[0];
-        for(let value of data.imageUrl) {
-          self.imageSources.push(value);
-        }
-      }
-
-      self.storeService.pageView({
-        pageType: 'product',
-        viewTime: new Date().getTime(),
-        productId: data.id,
-        storeId: data.storeId
-      });
-    });
+    this.product = this.productList[id];
+    this.image = [this.product.imageUrl];
+    this.selectedImage = this.product.imageUrl;
+    this.imageSources.push(this.product.imageUrl);
   }
 
   close():void {
-    this.router.navigate([`./store/${this.store.displayName}/2/products`]);
+    this.router.navigate([`/shop/store/templates/preview/2/list`]);
   }
 
   openLink() {
-    let id = this.activatedRouter.snapshot.params['id'];
-    this.storeService.buttonClick({
-      viewTime: new Date().getTime(),
-      relationId: id,
-      storeId: this.store.id
-    });
+
   }
 
 }

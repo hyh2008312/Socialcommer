@@ -124,8 +124,7 @@ export class MainPageComponent implements OnInit {
   jumpList():void {
 
     if(this.isMobile) {
-      let storeName = this.store.displayName;
-      this.router.navigate([`store/${storeName}/list`]);
+      this.router.navigate([`./list`], {relativeTo: this.activatedRoute});
     } else {
       this.page++;
       this.queryProduct();

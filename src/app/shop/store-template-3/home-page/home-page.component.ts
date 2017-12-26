@@ -28,6 +28,7 @@ export class HomePageComponent implements OnInit {
   nextPage: boolean = true;
   nextBlogPage: boolean = true;
   product: any = [{
+    id: 0,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -35,6 +36,7 @@ export class HomePageComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/3/12-pic.jpg'
   },{
+    id: 1,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -42,6 +44,7 @@ export class HomePageComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/3/07-pic.jpg'
   },{
+    id: 2,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -49,6 +52,7 @@ export class HomePageComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/3/13-pic.jpg'
   },{
+    id: 3,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -58,10 +62,12 @@ export class HomePageComponent implements OnInit {
   }];
 
   blog: any = [{
+    id: 0,
     title: 'Blog Title',
     cover: 'https://media.socialcommer.com/source/web/template/3/04-pic.jpg',
     context: 'Blog Description',
   },{
+    id: 1,
     title: 'Blog Title',
     cover: 'https://media.socialcommer.com/source/web/template/3/06-pic.jpg',
     context: 'Blog Description',

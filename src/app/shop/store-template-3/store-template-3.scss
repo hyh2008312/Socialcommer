@@ -529,8 +529,10 @@
 
     &-cover-bg{
       margin-top: 32px;
+      margin-right: 24px;
       @include xb-xs-screen{
         margin-top: 0;
+        margin-right: 0;
       }
     }
   }

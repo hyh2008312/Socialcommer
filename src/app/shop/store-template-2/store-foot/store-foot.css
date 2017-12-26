@@ -2206,7 +2206,8 @@ textarea.mat-input-element {
     margin-left: 16px; }
     @media screen and (max-width: 599px) {
       .xb-store__footer-margin-left {
-        margin-left: 0; } }
+        margin-left: 0;
+        text-align: center; } }
   .xb-store__footer-icons {
     position: absolute;
     right: 0;

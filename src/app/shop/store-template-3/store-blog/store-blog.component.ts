@@ -14,18 +14,22 @@ export class StoreBlogComponent implements OnInit {
   page = 1;
   nextPage: boolean = true;
   blog: any = [{
+    id: 0,
     title: 'Blog Title',
     cover: 'https://media.socialcommer.com/source/web/template/3/04-pic.jpg',
     context: 'Blog Description',
   },{
+    id: 1,
     title: 'Blog Title',
     cover: 'https://media.socialcommer.com/source/web/template/3/06-pic.jpg',
     context: 'Blog Description',
   },{
+    id: 2,
     title: 'Blog Title',
     cover: 'https://media.socialcommer.com/source/web/template/3/05-pic.jpg',
     context: 'Blog Description',
   },{
+    id: 3,
     title: 'Blog Title',
     cover: 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg',
     context: 'Blog Description',

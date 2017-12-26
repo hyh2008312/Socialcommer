@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { UserService } from  '../../../shared/services/user/user.service';
 import { StoreService } from '../../store.service';
 import { Store } from '../../store';
 
@@ -30,6 +31,7 @@ export class StoreListComponent implements OnInit {
   page = 1;
   nextPage: boolean = true;
   product = [{
+    id: 0,
     imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-1.jpg",
     originalPriceAmount : 55.95,
     originalPriceCurrency : "USD",
@@ -37,6 +39,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency : "USD",
     title : "Skin Care and Cosmetic Ingredients Dictionary. "
   }, {
+    id: 1,
     imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-2.jpg",
     originalPriceAmount : 39.00,
     originalPriceCurrency : "USD",
@@ -44,6 +47,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency : "USD",
     title : "Mermaid Chunky Glitter Large 30g Jar COSMETIC GLITTER Festival Face Body"
   },{
+    id: 2,
     imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-3.jpg",
     originalPriceAmount : 39.00,
     originalPriceCurrency : "USD",
@@ -51,6 +55,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency : "USD",
     title : "Black Markup Mirror 6 Inch 3x Magnification LED Light Two-Sided Table"
   },{
+    id: 3,
     imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-4.jpg",
     originalPriceAmount : 49.99,
     originalPriceCurrency : "USD",
@@ -58,6 +63,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency : "USD",
     title : "Eyelash Dreamer Makeup Bag, Eyelash Dreamer, Makeup Bag, Makeup, Lash "
   },{
+    id: 4,
     imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-5.jpg",
     originalPriceAmount : 6.00,
     originalPriceCurrency : "USD",
@@ -65,6 +71,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency : "USD",
     title : "E.l.f Hydrating Face Primer, 0.47 Fluid Ounce"
   },{
+    id: 5,
     imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-6.jpg",
     originalPriceAmount : 49.99,
     originalPriceCurrency : "USD",
@@ -76,13 +83,20 @@ export class StoreListComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private userService: UserService
   ) {
 
-    let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
-    this.storeService.getStore(storeName).then((data) => {
-      self.storeService.addStore(data);
+    self.userService.store.subscribe((data) => {
+      if( data ) {
+        self.storeService.getStore( data.displayName).then((data) => {
+          self.store = data;
+          self.text = data.description;
+          self.storeService.addStore(data);
+          self.queryProduct();
+        });
+      }
     });
   }
 
@@ -105,6 +119,6 @@ export class StoreListComponent implements OnInit {
   }
 
   back():void {
-    this.router.navigate([`./store/${this.store.displayName}`]);
+    this.router.navigate([`/shop/store/templates/preview/1`]);
   }
 }

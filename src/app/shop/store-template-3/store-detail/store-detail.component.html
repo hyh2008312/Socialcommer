@@ -1,7 +1,8 @@
 <div class="xb-store-template__details" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch"
      fxLayout.sm="column" fxLayoutAlign.sm="start stretch">
   <div class="xb-store-template__details-category-bg" fxHide.gt-sm>
-    <span class="xb-pointer" routerLink="../">COLLECTION</span>  /  <span class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>
+    <span class="xb-pointer" routerLink="../../list">COLLECTION</span>  /
+    <span class="xb-store-template__details-category">{{categoryName | uppercase}}</span></div>
   <div class="xb-store-template__details-cover-bg" fxFlexOrder.xs="0" fxFlexOrder.sm="0" fxFlexOrder="1">
     <app-shop-template-3-products-image-cover [images]="image" [selectedImage]="selectedImage"
                                                [imageSources]="imageSources"></app-shop-template-3-products-image-cover>
@@ -9,7 +10,7 @@
   <div class="xb-store-template__details-scroll" fxFlex.xs="none" fxFlex>
     <div class="xb-store-template__details-content">
       <div fxHide.xs fxHide.sm>
-        <span class="xb-pointer" routerLink="../">COLLECTION</span>  /  <span class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>
+        <span class="xb-pointer" routerLink="../../list">COLLECTION</span>  /  <span class="xb-store-template__details-category">{{ categoryName | uppercase}}</span></div>
       <div class="xb-store-template__details-title">{{product.title}}</div>
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
         <div class="xb-store-template__details-price md-margin-right-2">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
@@ -21,24 +22,23 @@
           {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
         </div>
       </div>
-      <a class="xb-store-template__details-buttons" href="{{product.purchaseUrl}}" target="_blank"
-         (click)="openLink()">
+      <a class="xb-store-template__details-buttons" >
         <button mat-raised-button color="primary">GET IT NOW</button>
       </a>
       <div class="md-margin-top-2">
         <app-share-button [link]="shareLink" [text]="text"></app-share-button>
       </div>
     </div>
-    <div class="xb-store-template__details-padding-top" *ngIf="product.recommendation">
+    <div class="xb-store-template__details-padding-top" *ngIf="recommendation">
       <div class="xb-store-template__details-title-1">Store Owner Says</div>
       <div class="md-margin-top-2 xb-store-template__content-text">
-        {{product.recommendation}}
+        {{recommendation}}
       </div>
     </div>
-    <div class="xb-store-template__details-description" *ngIf="product.description">
+    <div class="xb-store-template__details-description" *ngIf="description">
       <div class="xb-store-template__details-title-1">About the Product</div>
       <div class="ql-editor"
-           [innerHTML]="product.description | safeHtml"></div>
+           [innerHTML]="description | safeHtml"></div>
     </div>
   </div>
 </div>

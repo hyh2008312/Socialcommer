@@ -27,6 +27,7 @@ export class StoreListComponent implements OnInit {
   page = 1;
   nextPage: boolean = true;
   product: any = [{
+    id: 0,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -34,6 +35,7 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
   }, {
+    id: 1,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -41,6 +43,7 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-8.jpg'
   }, {
+    id: 2,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -48,6 +51,7 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-9.jpg'
   }, {
+    id: 3,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -55,6 +59,7 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-10.jpg'
   }, {
+    id: 4,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
@@ -62,14 +67,14 @@ export class StoreListComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-9.jpg'
   }, {
+    id: 5,
     title: 'Product Name',
     salePriceAmount: '12',
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
-  }
-  ];
+  }];
 
   isClearData: boolean = false;
 
@@ -102,7 +107,6 @@ export class StoreListComponent implements OnInit {
           storeId: data.id
         });
         this.isClearData=false ;
-        console.log( "-------->"+this.isClearData);
         this.queryProduct();
       }
     });
@@ -116,6 +120,6 @@ export class StoreListComponent implements OnInit {
   }
 
   back(): void {
-    this.router.navigate([`./store/${this.store.displayName}`]);
+    this.router.navigate([`/shop/store/templates/preview/2`]);
   }
 }

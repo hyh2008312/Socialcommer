@@ -11,7 +11,7 @@
       <div class="xb-blog-detail__image-bg">
         <img [src]="blog.cover" />
       </div>
-      <div class="xb-blog-detail__description"  [innerHTML]="blog.context | safeHtml"></div>
+      <div class="xb-blog-detail__description"  [innerHTML]="context | safeHtml"></div>
     </div>
     <div fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="start center">
       <div class="xb-blog-detail__share md-margin-right-3"

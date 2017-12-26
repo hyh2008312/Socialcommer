@@ -13,7 +13,27 @@ import { Store, Blog } from '../../store';
 export class StoreBlogDetailComponent implements OnInit {
   public shareLink: string;
   public text = '';
-  blog: Blog = new Blog;
+  blog: any;
+
+  context = 'Write an awesome blog to engage your customers and drive traffic to your store!';
+
+  blogList: any = [{
+    id: 0,
+    title: 'Blog Title',
+    cover: 'https://media.socialcommer.com/source/web/template/3/04-pic.jpg'
+  },{
+    id: 1,
+    title: 'Blog Title',
+    cover: 'https://media.socialcommer.com/source/web/template/3/06-pic.jpg'
+  },{
+    id: 2,
+    title: 'Blog Title',
+    cover: 'https://media.socialcommer.com/source/web/template/3/05-pic.jpg'
+  },{
+    id: 3,
+    title: 'Blog Title',
+    cover: 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg'
+  }];
 
   constructor(
     private router: Router,
@@ -27,21 +47,7 @@ export class StoreBlogDetailComponent implements OnInit {
     this.shareLink = window.location.href;
 
     let id = this.activatedRoute.snapshot.params['id'];
-    let self = this;
-    this.storeService.getBlogDetail(id).then((data) => {
-      self.blog = data;
-      self.text = data.title;
-      self.storeService.addTitleDescription({
-        title: data.title,
-        description: data.description,
-        shareImage: data.cover
-      });
-
-      self.storeService.pageViewBlog({
-        viewTime: new Date().getTime(),
-        blogId: data.id
-      });
-    });
+    this.blog = this.blogList[id];
   }
 
 

@@ -7,7 +7,6 @@ import { StoreItemCardComponent } from './store-item-card/store-item-card.compon
 import { StoreAvatarComponent } from './store-avatar/store-avatar.component';
 
 import { StoreTemplateOneRoutingModule } from './store-template-1.routes.module';
-import { StoreService } from '../store.service';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -29,9 +28,7 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   entryComponents: [
   ],
-  providers: [
-    StoreService
-  ]
+  providers: []
 })
 export class StoreTemplateOneModule { }
 

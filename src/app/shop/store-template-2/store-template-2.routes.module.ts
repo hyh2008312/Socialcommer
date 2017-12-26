@@ -9,14 +9,14 @@ import {StoreDetailComponent} from './store-detail/store-detail.component';
 import {StoreListDetailComponent} from './store-detail/store-list-detail.component';
 
 const routes: Routes = [{
-  path: '', component: MainPageComponent,
-  children: [{
-    path: '', component: HomePageComponent,
+    path: '', component: MainPageComponent,
     children: [{
-      path: 'detail/:id', component: StoreDetailComponent
+      path: '', component: HomePageComponent,
+      children: [{
+        path: 'detail/:id', component: StoreDetailComponent
     }]
   }, {
-    path: 'products', component: StoreListComponent,
+    path: 'list', component: StoreListComponent,
     children: [{
       path: ':id', component: StoreListDetailComponent
     }]

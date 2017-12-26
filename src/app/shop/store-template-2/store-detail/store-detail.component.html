@@ -14,7 +14,7 @@
                                   [imageSources]="imageSources"></app-shop-detail-picture>
       </div>
       <div class="xb-store-template__detail-content" fxFlex.xs="false" >
-        <div>{{product.categoryName}}</div>
+        <div>{{categoryName}}</div>
         <div class="xb-store-template__detail-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center" >
           <div class="xb-store-template__detail-price">{{product.salePriceAmount|currency: product.salePriceCurrency:
@@ -28,15 +28,13 @@
             {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
           </div>
           <div class="xb-store-template__detail-buttons-bg" fxShow="true" fxShow.xs="false">
-            <a fxLayout="column" href="{{product.purchaseUrl}}" target="_blank"
-               (click)="openLink()">
+            <a fxLayout="column">
               <button class="xb-store-template__detail-buttons">GET IT NOW</button>
             </a>
           </div>
         </div>
         <div class="xb-store-template__detail-buttons-bg" fxShow="false" fxShow.xs="true">
-          <a fxLayout="column" href="{{product.purchaseUrl}}" target="_blank"
-             (click)="openLink()">
+          <a fxLayout="column">
             <button class="xb-store-template__detail-buttons">GET IT NOW</button>
           </a>
         </div>
@@ -46,7 +44,7 @@
             Store Owner Says
           </div>
           <div class="xb-store-template__detail-store-owner-des">
-            {{product.recommendation}}
+            {{recommendation}}
           </div>
         </div>
         <div class="xb-store-template__detail-line"></div>
@@ -55,7 +53,7 @@
             About the product
           </div>
           <div class="xb-store-template__detail-product-des"
-               [innerHTML]="product.description | safeHtml">
+               [innerHTML]="description | safeHtml">
           </div>
         </div>
       </div>
