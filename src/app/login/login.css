@@ -2211,8 +2211,12 @@ textarea.mat-input-element {
   @media screen and (max-width: 599px) {
     .xb-login__auto {
       margin: 0 auto; } }
-.xb-login__width .mat-form-field {
+.xb-login__width {
   width: 100%; }
+  .xb-login__width-hidden {
+    overflow: hidden; }
+  .xb-login__width .mat-form-field {
+    width: 100%; }
 .xb-login__width-1 {
   width: 100px; }
 .xb-login__facebook {

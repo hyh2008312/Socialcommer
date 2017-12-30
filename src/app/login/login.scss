@@ -37,6 +37,10 @@
   }
 
   &__width{
+    width: 100%;
+    &-hidden{
+      overflow: hidden;
+    }
     .mat-form-field{
       width: 100%;
     }

@@ -151,9 +151,11 @@
             <div>
               https://www.socialcommer.com/store/
             </div>
-            <mat-form-field class="md-margin-left-2 xb-login__width" >
-              <input matInput formControlName="displayName">
-            </mat-form-field>
+            <div class="md-margin-left-2 xb-login__width-hidden" fxFlex>
+              <mat-form-field class="xb-login__width" >
+                <input matInput formControlName="displayName">
+              </mat-form-field>
+            </div>
           </div>
           <div *ngIf="formErrors['displayName']" class="xb-input-error">
             {{ formErrors['displayName'] }}
