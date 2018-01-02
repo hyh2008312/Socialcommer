@@ -1,0 +1,124 @@
+<div class="xb-4-template">
+  <form [formGroup]="storeTemplateForm" novalidate>
+    <div class="xb-4-template__container">
+      <!--header-->
+      <div class="xb-4-template__w960" fxShow="true" fxShow.xs="false">
+        <app-shop-template-5-navigation [categories]="categories"
+                                        (navigationChange)="changeNavigation($event)"
+                                        (categoryChange)="changeCategoryNavigation($event)"
+                                        [isCategory]="isCategory"></app-shop-template-5-navigation>
+      </div>
+      <!--home-->
+      <div [hidden]="viewIndex != 0" class="xb-4-template-content">
+        <div class="xb-4-template-home">
+          <div class="xb-4-template-home__background" fxLayout="column" fxLayoutAlign="start center"
+               [ngStyle]="{'background': 'url(' + (imageBanner)   + ') center / 100% auto ' }">
+            <div class="xb-4-template-home__title">
+              S T O R E N A M E
+            </div>
+            <div class="xb-4-template-home__des">
+              For living in the moment and looking into fall.
+            </div>
+          </div>
+          <div class="xb-4-template-home__about-store xb-4-template__w960" fxLayout="row"
+               fxLayoutAlign="start start">
+            <div class="xb-4-template-home__about-cover"
+                 [ngStyle]="{'background': 'url(' + (imageAboutCover)   + ') center / auto 100% ' }">
+              <div class="xb-4-template-home__about-title">Welcome to my store!</div>
+            </div>
+            <div class="xb-4-template-home__about-des" fxFlex>
+              <div class="xb-4-template-home__about-des-content">
+                World's best sun protection clothing long sleeve shirts for women! UPF 50+ offers the highest rated UV
+                sun
+                protection factor for clothing. SPF protection blocking 98% of UVA and UVB rays.
+                Luxurious, silky soft, cool, lightweight, antimicrobial fabric makes this the go-to longsleeve sun
+                protective
+                shirt!
+              </div>
+            </div>
+          </div>
+          <ng-container *ngFor="let category of categoryProduct ,let i=index">
+            <div class="xb-4-template-category xb-4-template__w960">
+              <div class="xb-4-template-category__title">
+                {{category.name | uppercase}}
+              </div>
+              <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
+                   fxLayoutGap.xs="16px"
+                   fxLayoutWrap>
+                <app-shop-item-product-card-5 *ngFor="let item of category.product"
+                                              fxFlex.xs="44" fxFlex.gt-xs="30"
+                                              [product]="item" [status]="0"></app-shop-item-product-card-5>
+                <div fxFlex.xs="44" fxFlex.gt-xs="30"></div>
+              </div>
+              <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+                   (click)="jumpToCategory()">
+                SEE MORE
+              </div>
+            </div>
+          </ng-container>
+          <div class="xb-4-template-home__blog-background" fxLayout="column" fxLayoutAlign="start center"
+               [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / 100% auto ' }">
+            <div class="xb-4-template-home__blog-title">
+              Blog
+            </div>
+            <div class="xb-4-template-home__blog-des">
+              For living in the moment and looking into fall.
+            </div>
+            <div class="xb-4-template-home__blog-see-more  xb-pointer" fxLayout="row" fxLayoutAlign="center center">
+              SEE MORE
+            </div>
+          </div>
+          <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row"
+               fxLayoutAlign="space-between start"
+               fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
+          >
+            <app-shop-item-blog-card-5 *ngFor="let item of homeBlog"
+                                       fxFlex.xs="48" fxFlex.gt-xs="48"
+                                       [blog]="item" [status]="1"></app-shop-item-blog-card-5>
+          </div>
+        </div>
+      </div>
+      <!--blog-->
+      <div [hidden]="viewIndex != 1" class="xb-4-template-content">
+        <div class="xb-4-template-blog">
+          <div class="xb-4-template-blog__title">
+            BLOG
+          </div>
+          <div fxLayoutWrap class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row"
+               fxLayoutAlign="space-between start"
+               fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
+          >
+            <app-shop-item-blog-card-two-5 *ngFor="let item of blog"
+                                           fxFlex.xs="48" fxFlex.gt-xs="100"
+                                           [blog]="item" [status]="1"></app-shop-item-blog-card-two-5>
+          </div>
+        </div>
+      </div>
+      <!--category-->
+      <div [hidden]="viewIndex != 2" class="xb-4-template-content">
+        <div class="xb-4-template-category__list ">
+          <div class="xb-4-template-category__title">
+            {{category.name }}
+          </div>
+          <div class="xb-4-template-collection__product xb-4-template__w960 " fxLayoutAlign="space-between start"
+               fxLayout="row"
+               fxLayoutGap.xs="16px"
+               fxLayoutWrap>
+            <app-shop-item-product-card-5 *ngFor="let item of product"
+                                          fxFlex.xs="44" fxFlex.gt-xs="31"
+                                          [product]="item" [status]="0"></app-shop-item-product-card-5>
+            <div fxFlex.xs="44" fxFlex.gt-xs="31"></div>
+          </div>
+          <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+               (click)="queryMoreProduct()" *ngIf="nextPage">
+            SEE MORE
+          </div>
+        </div>
+      </div>
+      <!--footer-->
+      <div class="xb-4-template__w960">
+        <app-shop-template-5-store-foot [storeName]="storeName" [text]="text"></app-shop-template-5-store-foot>
+      </div>
+    </div>
+  </form>
+</div>
