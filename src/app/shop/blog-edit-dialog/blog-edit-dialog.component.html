@@ -24,7 +24,7 @@
           <quill-editor formControlName="context"
                         (ready)="onEditorCreated($event)"></quill-editor>
           <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
-          <div *ngIf="formErrors['context']" class="xb-input-error md-margin-top-2">
+          <div *ngIf="formErrors['context']" class="xb-input-error md-margin-top-1">
             {{ formErrors['context'] }}
           </div>
         </div>
