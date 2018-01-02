@@ -63,6 +63,17 @@ export class StoreService {
     return _params;
   }
 
+  addProductToCart(storeName:any, product:any) {
+    localStorage.setItem(storeName, JSON.stringify(product));
+  }
+
+  getProductInCart(storeName:any): any {
+    if(localStorage && localStorage.getItem(storeName)) {
+      return JSON.parse(localStorage.getItem(storeName));
+    }
+    return [];
+  }
+
   getStore(name:string): Promise<Store> {
 
     let headers = new Headers({

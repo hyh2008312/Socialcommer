@@ -1,10 +1,10 @@
 <div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start center" fxHide.xs fxHide.sm>
   <div fxLayout="row" fxLayoutAlign="start start" fxFlex="40">
     <div class="xb-cart__item-image" fxFlex="none">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/716Mg13ZLZL._SL1500_.jpg">
+      <img [src]="product.imageUrl">
     </div>
     <div class="xb-cart__item-title">
-      AZPEN D100 Qi Wireless Charger Bluetooth 4.0 HiFi Speaker
+      {{product.title}}
     </div>
   </div>
   <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center">
@@ -13,7 +13,7 @@
         <i class="material-icons xb-pointer" >remove</i>
       </div>
       <mat-form-field class="xb-cart__item-input unicorn-dark-theme">
-        <input type="number" class="unicorn-dark-theme md-align-center" matInput [(ngModel)]="number" step="1" min="0">
+        <input type="number" class="unicorn-dark-theme md-align-center" matInput [(ngModel)]="product.number" step="1" min="0">
       </mat-form-field>
       <div class="md-margin-left-1 xb-cart__item-add" (click)="plusNumber()" fxFlex="none">
         <i class="material-icons xb-pointer" >add</i>
@@ -21,8 +21,10 @@
     </div>
   </div>
   <div fxFlex="15" fxLayout="column" fxLayoutAlign="start center">
-    <div class="xb-cart__item-sale">$ 30</div>
-    <div class="line-through md-dark-secondary xb-cart__item-original">$ 60</div>
+    <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
+    <div class="line-through md-dark-secondary xb-cart__item-original">
+      {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+    </div>
   </div>
   <div fxFlex="20" >
     <div class="unicorn-dark-theme" fxLayout="row" fxLayoutAlign="start center">
@@ -46,18 +48,20 @@
 </div>
 <div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start stretch" fxHide.gt-sm>
   <div class="xb-cart__item-image" fxFlex="none">
-    <img src="https://images-na.ssl-images-amazon.com/images/I/716Mg13ZLZL._SL1500_.jpg">
+    <img [src]="product.imageUrl">
   </div>
   <div *ngIf="!isEdit" fxFlex>
     <div class="xb-cart__item-title">
-      AZPEN D100 Qi Wireless Charger Bluetooth 4.0 HiFi Speaker
+      {{product.title}}
     </div>
     <div class="md-margin-top-2">
       {{shippingItem.content}} <span class="xb-cart__item-shipping">{{shippingItem.price}}</span>
     </div>
     <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-      <div class="xb-cart__item-sale">$ 30</div>
-      <div class="line-through md-dark-secondary xb-cart__item-original">$ 60</div>
+      <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
+      <div class="line-through md-dark-secondary xb-cart__item-original">
+        {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+      </div>
     </div>
   </div>
   <div *ngIf="isEdit" fxFlex fxLayout="column" fxLayoutAlign="center start">
@@ -88,7 +92,7 @@
       <i class="material-icons">delete</i>
     </div>
     <div class="md-margin-top-2">
-      × {{number}}
+      × {{product.number}}
     </div>
   </div>
   <div fxFlex="none" fxLayout="column" fxLayoutAlign="start center" *ngIf="isEdit">

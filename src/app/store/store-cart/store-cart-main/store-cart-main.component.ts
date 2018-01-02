@@ -15,6 +15,8 @@ export class StoreCartMainComponent implements OnInit{
 
   isTotalDialogOpen: boolean = false;
 
+  products: any;
+
   constructor(
     private storeService: StoreService
   ) {
@@ -28,6 +30,8 @@ export class StoreCartMainComponent implements OnInit{
       if(data) {
         let uid = data.templateId == 1? data.templateId:data.uid;
         self.homeLink = `/store/${data.displayName}/${uid}`;
+
+        self.products = self.storeService.getProductInCart(data.displayName);
       }
     });
   }

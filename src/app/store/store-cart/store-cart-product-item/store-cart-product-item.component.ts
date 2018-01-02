@@ -11,6 +11,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 export class StoreCartProductItemComponent{
 
   @Input() homeLink: string = '';
+  @Input() product: any;
 
   shipping = 'ePacket';
 
@@ -30,8 +31,6 @@ export class StoreCartProductItemComponent{
     subContent: '5 - 10 business days'
   }];
 
-  number = 1;
-
   isEdit: boolean = false;
   isDialogOpen: boolean = false;
 
@@ -40,12 +39,12 @@ export class StoreCartProductItemComponent{
   }
 
   plusNumber() {
-    this.number++;
+    this.product.number++;
   }
 
   minusNumber() {
-    if(this.number > 0) {
-      this.number--;
+    if(this.product.number > 0) {
+      this.product.number--;
     }
   }
 

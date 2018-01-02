@@ -26,8 +26,8 @@
 
               </div>
             </div>
-            <div class="xb-cart__product-list" *ngFor="let item of [0,1,2,3,4,5]">
-              <app-store-cart-product-item [homeLink]="homeLink"></app-store-cart-product-item>
+            <div class="xb-cart__product-list" *ngFor="let item of products">
+              <app-store-cart-product-item [homeLink]="homeLink" [product]="item"></app-store-cart-product-item>
             </div>
           </div>
           <div class="md-margin-left-2 md-margin-top-2 text-underline xb-pointer xb-bold"
