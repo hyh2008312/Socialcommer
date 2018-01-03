@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
@@ -12,6 +12,8 @@ export class StoreCartProductItemComponent{
 
   @Input() homeLink: string = '';
   @Input() product: any;
+  @Output() productChange = new EventEmitter<any>();
+  @Input() index: number = 0;
 
   shipping = 'ePacket';
 
@@ -40,11 +42,21 @@ export class StoreCartProductItemComponent{
 
   plusNumber() {
     this.product.number++;
+    this.productChange.emit({
+      type: 'edit',
+      product: this.product,
+      index: this.index
+    });
   }
 
   minusNumber() {
-    if(this.product.number > 0) {
+    if(this.product.number > 1) {
       this.product.number--;
+      this.productChange.emit({
+        type: 'edit',
+        product: this.product,
+        index: this.index
+      });
     }
   }
 
@@ -65,5 +77,27 @@ export class StoreCartProductItemComponent{
 
   openDialog() {
     this.isDialogOpen = !this.isDialogOpen;
+  }
+
+  delete() {
+    this.productChange.emit({
+      type: 'delete',
+      product: this.product,
+      index: this.index
+    });
+  }
+
+  numberChanges($event) {
+    if(typeof $event != "number" || $event <= 0) {
+      this.product.number = 1;
+    } else {
+      this.product.number = $event;
+    }
+
+    this.productChange.emit({
+      type: 'edit',
+      product: this.product,
+      index: this.index
+    });
   }
 }

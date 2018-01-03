@@ -81,6 +81,10 @@
     overflow: hidden;
   }
 
+  &__content-2{
+    width: 100%;
+  }
+
   &__store-name{
     margin-top: 72px;
     margin-bottom: 40px;
@@ -818,7 +822,16 @@
   }
 
   &__buttons-bg-1{
+    background-color: $primaryColor;
     color: $whiteColor;
+    line-height: 40px;
+    border-radius: 4px;
+    padding: 0 16px;
+    display: block;
+
+    &:hover{
+      opacity: .5;
+    }
   }
 }
 

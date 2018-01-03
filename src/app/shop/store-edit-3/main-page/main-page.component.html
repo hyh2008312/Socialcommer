@@ -33,7 +33,7 @@
             <div class="xb-store-template__banner xb-shop__template-edit" fxLayout="column" fxLayoutAlign="center center"
                  [ngStyle]="{'background': 'url(' + imageSrc + ') center / auto 100% ' }">
               <div class="xb-store-template__template-mask"></div>
-              <div class="xb-store__content-2">
+              <div class="xb-store-template__content-2">
                 <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
                   <div class="xb-shop__template-button" (click)="close()">
                     CANCEL
@@ -73,9 +73,7 @@
                 <div class="md-margin-top-4" *ngIf="categories.length <=0 && product.length <= 0" fxLayout="column" fxLayoutAlign="center center">
                   <div class="md-padding-top-2">You haven't added any affiliate products yet. </div>
                   <div class="md-margin-top-4" >
-                    <button mat-raised-button color="primary" >
-                      <a class="xb-store__buttons-bg-1" routerLink="/shop/listings/items" target="_blank">Add Your First Product</a>
-                    </button>
+                    <a class="xb-store__buttons-bg-1" routerLink="/shop/listings/items" target="_blank">Add Your First Product</a>
                   </div>
                 </div>
               </div>
@@ -91,9 +89,7 @@
                 <div class="md-margin-top-4" *ngIf="blog && blog.length <= 0" fxLayout="column" fxLayoutAlign="center center">
                   <div>You haven't added any blog yet. </div>
                   <div class="md-margin-top-2" >
-                    <button mat-raised-button color="primary" >
-                      <a class="xb-store__buttons-bg-1" routerLink="/shop/blog" target="_blank">Add Your First Blog</a>
-                    </button>
+                    <a class="xb-store__buttons-bg-1" routerLink="/shop/blog" target="_blank">Add Your First Blog</a>
                   </div>
                 </div>
               </div>
@@ -124,9 +120,7 @@
             <div class="md-margin-top-4" *ngIf="categories.length <=0 && product.length <= 0" fxLayout="column" fxLayoutAlign="center center">
               <div>You haven't added any affiliate products yet. </div>
               <div class="md-margin-top-4" >
-                <button mat-raised-button color="primary" >
-                  <a class="xb-store__buttons-bg-1" routerLink="/shop/products" target="_blank">Add Your First Product</a>
-                </button>
+                <a class="xb-store__buttons-bg-1" routerLink="/shop/products" target="_blank">Add Your First Product</a>
               </div>
             </div>
           </div>
@@ -150,9 +144,7 @@
             <div class="md-margin-top-4" *ngIf="blog && blog.length <= 0" fxLayout="column" fxLayoutAlign="center center">
               <div>You haven't added any blog yet. </div>
               <div class="md-margin-top-2" >
-                <button mat-raised-button color="primary" >
-                  <a class="xb-store__buttons-bg-1" routerLink="/shop/blog" target="_blank">Add Your First Blog</a>
-                </button>
+                <a class="xb-store__buttons-bg-1" routerLink="/shop/blog" target="_blank">Add Your First Blog</a>
               </div>
             </div>
           </div>
