@@ -27,12 +27,14 @@
         </div>
         <div class="xb-store__details-buttons" fxLayout="column">
           <button mat-raised-button color="primary" (click)="openLink()" >
-            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">GET IT NOW</a></button>
+            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button"
+               href="{{product.purchaseUrl}}" target="_blank">GET IT NOW</a></button>
         </div>
         <div fxHide.gt-xs class="xb-store__details-buttons-fixed" fxLayout="column"
            *ngIf="showButton">
           <button mat-raised-button color="primary" (click)="openLink()" >
-            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">GET IT NOW</a></button>
+            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button"
+               href="{{product.purchaseUrl}}" target="_blank">GET IT NOW</a></button>
         </div>
         <div class="md-margin-top-2">
           <app-share-button [link]="shareLink" [text]="text"></app-share-button>
