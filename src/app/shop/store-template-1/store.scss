@@ -776,7 +776,9 @@
       position: relative;
       padding: 0 16px;
       overflow: hidden;
+      margin-top: 24px;
       @include xb-xs-screen{
+        margin-top: 16px;
         padding: 0;
       }
     }

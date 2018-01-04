@@ -5007,7 +5007,8 @@ textarea.mat-input-element {
   color: #fff;
   position: relative;
   padding: 0 16px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-top: 24px; }
   @media screen and (max-width: 599px) {
     .xb-store__template-description {
       margin-top: 16px;
