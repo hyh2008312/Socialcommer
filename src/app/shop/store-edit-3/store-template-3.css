@@ -2907,9 +2907,7 @@ textarea.mat-input-element {
     text-align: center; }
 .xb-shop__template-title {
   border: 1px solid #00bdd6;
-  color: #fff;
   position: relative;
-  font-weight: 600;
   margin: 0 24px; }
   @media screen and (max-width: 599px) {
     .xb-shop__template-title {

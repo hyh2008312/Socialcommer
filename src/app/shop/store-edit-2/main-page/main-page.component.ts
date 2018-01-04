@@ -24,30 +24,30 @@ export class MainPageComponent implements OnInit {
   //定义字段
   nameTag = 'STORE NAME';
 
-  titleTag = '<div >Click here to edit the title</div>';
+  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Click here to edit the title</strong></p>';
 
-  descriptionTag = '<div>This was founded with starter site, a single page ' +
+  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">This was founded with starter site, a single page ' +
     'online storefront. All of the images and text on this page can be changed to personalize the site for brand ' +
-    'and to communicate your unique story to your customers.</div>';
+    'and to communicate your unique story to your customers.</strong></p>';
 
-  aboutMeTag = '<div> Here you let your customers get to know you. Tell them a little bit about ' +
+  aboutMeTag = '<p>Here you let your customers get to know you. Tell them a little bit about ' +
     'yourself and why you create this business. Show your customers that there are real people with ' +
-    'interesting stories working behind the scenes.</div>';
+    'interesting stories working behind the scenes.</p>';
 
-  aboutMeNewTag = '<div> Here you let your customers get to know you. Tell them a little bit about ' +
+  aboutMeNewTag = '<p>Here you let your customers get to know you. Tell them a little bit about ' +
     'yourself and why you create this business. Show your customers that there are real people with ' +
-    'interesting stories working behind the scenes.</div>';
+    'interesting stories working behind the scenes.</p>';
 
   aboutMeOneImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-2.jpg';
   aboutMeTwoImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-3.jpg';
   aboutMeCover = 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg';
 
-  homeMadeDesTag = '<div> Do you have a passion, hobby or life experience that inspired you to get started?' +
+  homeMadeDesTag = '<p>Do you have a passion, hobby or life experience that inspired you to get started?' +
     ' Do you have special skills that make you an expert in your field?  ' +
     'Helping customers feel connected to you and your purpose will' +
-    ' inspire more trust in your brand.</div>';
+    ' inspire more trust in your brand.</p>';
 
-  homeMadeTitle = '<div>Shop My Favorite Collections</div>';
+  homeMadeTitle = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Shop My Favorite Collections</strong></p>';
 
   homeMadeOneImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-4.jpg';
   homeMadeTwoImageStr = 'https://media.socialcommer.com/source/web/pic/pic-2-6.jpg';

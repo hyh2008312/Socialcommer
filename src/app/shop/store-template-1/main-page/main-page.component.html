@@ -7,13 +7,16 @@
     <div class="xb-store__template-mask"></div>
     <div class="xb-store__content-2">
       <div class="xb-store__template-name" fxShow.xs="false">
-        {{store.nameTag != '' ? store.nameTag : store.displayName}}
+        {{store.nameTag != '' ? store.nameTag : store.name}}
+      </div>
+      <div class="xb-store__template-title ql-editor" *ngIf="store.titleTag == ''">
+        <p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">{{store.name}}</strong></p>
       </div>
       <div class="ql-editor xb-store__template-title"
            [innerHTML]="store.titleTag| safeHtml"  *ngIf="store.titleTag != ''" >
       </div>
-      <div class="xb-store__store-description" *ngIf="store.descriptionTag == ''">
-        {{store.description}}
+      <div class="xb-store__template-description ql-editor" *ngIf="store.descriptionTag == ''">
+        <p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">{{store.description}}</strong></p>
       </div>
       <div class="xb-store__template-description ql-editor"
            [innerHTML]="store.descriptionTag | safeHtml" *ngIf="store.descriptionTag != ''">

@@ -202,15 +202,15 @@ export class MainPageComponent implements OnInit {
   };
 
   nameTag = 'STORE NAME';
-  titleTag = '<div class="xb-shop__template-title">Click here to edit the title</div>';
-  descriptionTag = '<div class="xb-shop__template-description">This was founded with starter site, a single page ' +
+  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Click here to edit the title</strong></p>';
+  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">This was founded with starter site, a single page ' +
     'online storefront. All of the images and text on this page can be changed to personalize the site for brand ' +
-    'and to communicate your unique story to your customers.</div>';
-  userTag = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this ' +
+    'and to communicate your unique story to your customers.</strong></p>';
+  userTag = '<p>Here you let your customers get to know you. Tell them a little bit about yourself and why you create this ' +
     'business. Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills' +
     ' or training that make you an expert in your field? Show your customers that there are real people with interesting ' +
     'stories working behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust ' +
-    'in your brand.';
+    'in your brand.</p>';
   imageSrc = 'https://media.socialcommer.com/source/web/template/3/15-pic.jpg';
   aboutMeSrc = 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg';
 

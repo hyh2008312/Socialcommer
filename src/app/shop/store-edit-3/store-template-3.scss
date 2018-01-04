@@ -952,9 +952,7 @@
 
     &-title{
       border: 1px solid $primaryColor;
-      color: $whiteColor;
       position: relative;
-      @include media();
       margin: 0 24px;
       @include xb-xs-screen{
         margin: 0 16px;

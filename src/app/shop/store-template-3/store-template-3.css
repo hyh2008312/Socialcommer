@@ -2245,6 +2245,8 @@ textarea.mat-input-element {
 .xb-store-template__content {
   min-height: 100vh;
   overflow: hidden; }
+.xb-store-template__content-2 {
+  width: 100%; }
 .xb-store-template__store-name {
   margin-top: 72px;
   margin-bottom: 40px;
@@ -2332,14 +2334,12 @@ textarea.mat-input-element {
       padding: 0 16px; } }
 .xb-store-template__template-description {
   width: 100%;
-  margin-top: 24px;
   color: #fff;
   position: relative;
   padding: 0 32px;
   overflow: hidden; }
   @media screen and (max-width: 599px) {
     .xb-store-template__template-description {
-      margin-top: 16px;
       padding: 0 16px; } }
 .xb-store-template__template-user {
   width: 100%;
@@ -2593,7 +2593,7 @@ textarea.mat-input-element {
   @media screen and (max-width: 599px) {
     .xb-store-template__details-cover-bg {
       margin-top: 0;
-      margin-right: 24px; } }
+      margin-right: 0; } }
 .xb-store-template__top-navigation {
   height: 54px;
   background-color: #f1f1f1; }

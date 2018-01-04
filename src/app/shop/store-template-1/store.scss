@@ -772,13 +772,11 @@
 
     &-description{
       width: 100%;
-      margin-top: 24px;
       color: $whiteColor;
       position: relative;
       padding: 0 16px;
       overflow: hidden;
       @include xb-xs-screen{
-        margin-top: 16px;
         padding: 0;
       }
     }

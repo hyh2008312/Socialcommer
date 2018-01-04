@@ -19,6 +19,8 @@ export class BlogCreateDialogComponent implements OnInit {
   previewImgFile: any = '';
   previewImgSrc: any = '';
 
+  hasPicture: boolean = false;
+
   // Editor
   public editor;
   public editorImageId = 'quillImage';
@@ -110,9 +112,15 @@ export class BlogCreateDialogComponent implements OnInit {
       return;
     }
     let self = this;
+    this.hasPicture = false;
     let blogForm = this.blogForm.value;
 
     blogForm.cover = this.previewImgFile;
+
+    if(blogForm.cover == '') {
+      this.hasPicture = true;
+      return;
+    }
 
     blogForm.status = 'published';
 
@@ -123,6 +131,7 @@ export class BlogCreateDialogComponent implements OnInit {
 
   createDraft() {
     let self = this;
+    this.hasPicture = false;
     let blogForm = this.blogForm.value;
 
     blogForm.cover = this.previewImgFile;
