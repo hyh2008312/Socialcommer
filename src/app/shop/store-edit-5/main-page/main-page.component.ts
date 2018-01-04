@@ -16,120 +16,29 @@ import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-di
 
 export class MainPageComponent implements OnInit {
   //测试数据
-  categoryProduct = [{
-    'id': 1,
-    'name': 'T-shirt',
-    'product': [
-      {
-        'id': 1,
-        'title': 'Product Name',
-        'salePriceAmount': '12',
-        'salePriceCurrency': 'USD',
-        'originalPriceAmount': '16',
-        'originalPriceCurrency': 'USD',
-        'imageUrl': 'https://media.socialcommer.com/source/web/template/5/fashion-1623089.jpg'
-      },
-      {
-        'id': 2,
-        'title': 'Product Name',
-        'salePriceAmount': '12',
-        'salePriceCurrency': 'USD',
-        'originalPriceAmount': '16',
-        'originalPriceCurrency': 'USD',
-        'imageUrl': 'https://media.socialcommer.com/source/web/template/5/fashion-1623090.jpg'
-      },
-      {
-        'id': 3,
-        'title': 'Product Name',
-        'salePriceAmount': '12',
-        'salePriceCurrency': 'USD',
-        'originalPriceAmount': '16',
-        'originalPriceCurrency': 'USD',
-        'imageUrl': 'https://media.socialcommer.com/source/web/template/5/fashion-1623086.jpg'
-      }
-    ]
-  }, {
-    'id': 2,
-    'name': 'shirt',
-    'product': [
-      {
-        'id': 1,
-        'title': 'Product Name',
-        'salePriceAmount': '12',
-        'salePriceCurrency': 'USD',
-        'originalPriceAmount': '16',
-        'originalPriceCurrency': 'USD',
-        'imageUrl': 'https://media.socialcommer.com/source/web/template/5/fashion-1623089.jpg'
-      },
-      {
-        'id': 2,
-        'title': 'Product Name',
-        'salePriceAmount': '12',
-        'salePriceCurrency': 'USD',
-        'originalPriceAmount': '16',
-        'originalPriceCurrency': 'USD',
-        'imageUrl': 'https://media.socialcommer.com/source/web/template/5/fashion-1623090.jpg'
-      },
-      {
-        'id': 3,
-        'title': 'Product Name',
-        'salePriceAmount': '12',
-        'salePriceCurrency': 'USD',
-        'originalPriceAmount': '16',
-        'originalPriceCurrency': 'USD',
-        'imageUrl': 'https://media.socialcommer.com/source/web/template/5/fashion-1623086.jpg'
-      }
-    ]
-  }, {
-    'id': 3,
-    'name': 'shoes',
-    'product': [
-      {
-        'id': 1,
-        'title': 'Product Name',
-        'salePriceAmount': '12',
-        'salePriceCurrency': 'USD',
-        'originalPriceAmount': '16',
-        'originalPriceCurrency': 'USD',
-        'imageUrl': 'https://media.socialcommer.com/source/web/template/5/fashion-1623089.jpg'
-      },
-      {
-        'id': 2,
-        'title': 'Product Name',
-        'salePriceAmount': '12',
-        'salePriceCurrency': 'USD',
-        'originalPriceAmount': '16',
-        'originalPriceCurrency': 'USD',
-        'imageUrl': 'https://media.socialcommer.com/source/web/template/5/fashion-1623090.jpg'
-      },
-      {
-        'id': 3,
-        'title': 'Product Name',
-        'salePriceAmount': '12',
-        'salePriceCurrency': 'USD',
-        'originalPriceAmount': '16',
-        'originalPriceCurrency': 'USD',
-        'imageUrl': 'https://media.socialcommer.com/source/web/template/5/fashion-1623086.jpg'
-      }
-    ]
-  }];
+  categoryProduct: any;
 
   shareLink: string;
   ratio: any;
+  ratioBanner: any;
   // 决定导航条的显示问题
   viewIndex: number = 0;  // 显示第几个
+
+  navigationIndex: number = 0;   // 导航栏上边的角标
   isCategory: boolean = false; // 开始显示是否为分类
 
 
   //定义字段
   nameTag = 'STORE NAME';
   titleTag = '<div >Click here to edit the title</div>';
-  aboutMeTitleTag = '<div> Here you let your customers get to know you. Tell them a little bit about ' +
+  desTag = '<div > For living in the moment and looking into fall.</div>';
+  aboutMeTitleTag = 'Welcome to my store!';
+  aboutMeDesTag = '<div> Here you let your customers get to know you. Tell them a little bit about ' +
     'yourself and why you create this business. Show your customers that there are real people with ' +
     'interesting stories working behind the scenes.</div>';
-  aboutMeDesTag = '';
-  blogTitleTag = 'Blog';
-  blogDesTag = '';
+
+  blogTitleTag = '<div >Click here to edit the blog title</div>';
+  blogDesTag = 'For living in the moment and looking into fall.';
 
   uploadAboutType = 'COLLECTOR_STORE_TEMPLATE';
   text = '';
@@ -137,13 +46,6 @@ export class MainPageComponent implements OnInit {
   imageBanner: string = 'https://media.socialcommer.com/source/web/template/5/people-2583848.jpg';
   imageAboutCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2593366.jpg';
   imageBlogCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2599856.jpg';
-
-
-  // 图片链接（第四套模版）(最后将其删除)
-  aboutMeCover = 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg';
-  imageAdOne: string = 'https://media.socialcommer.com/source/web/template/4/1.jpg';
-  imageAdTwo: string = 'https://media.socialcommer.com/source/web/template/4/2.jpg';
-  imageAdThree: string = 'https://media.socialcommer.com/source/web/template/4/3.jpg';
 
 
   public editorConfig = {
@@ -171,16 +73,25 @@ export class MainPageComponent implements OnInit {
   //标记是否可以进行编辑
   nameEdited: boolean = false;
   titleEdited: boolean = false;
-  productTitleEdit: boolean = false;
-  productDesEdit: boolean = false;
-  aboutMeEdited: boolean = false;
+  desEdited: boolean = false;
 
-  imageEdited: boolean = false;
-  imageHomeMadeEdited: boolean = false;
+
+  aboutMeTitleEdited: boolean = false;
+  aboutMeDesEdited: boolean = false;
+
+  blogTitleEdited: boolean = false;
+  blogDesEdited: boolean = false;
+
+  imageBannerEdited: boolean = false;
+  imageBlogCoverEdited: boolean = false;
   storeEdited: boolean = false;
 
-  editImage() {
-    this.imageEdited = !this.imageEdited;
+  editBannerImage() {
+    this.imageBannerEdited = !this.imageBannerEdited;
+  }
+
+  editBlogCoverImage() {
+    this.imageBlogCoverEdited = !this.imageBlogCoverEdited;
   }
 
   editName() {
@@ -191,22 +102,26 @@ export class MainPageComponent implements OnInit {
     this.titleEdited = !this.titleEdited;
   }
 
-  editProductTitle() {
-    this.productTitleEdit = !this.productTitleEdit;
+  editDes() {
+    this.desEdited = !this.desEdited;
   }
 
-  editProductDes() {
-    this.productDesEdit = !this.productDesEdit;
+  editAboutTitleMe() {
+    this.aboutMeTitleEdited = !this.aboutMeTitleEdited;
   }
 
-  editAboutMe() {
-    this.aboutMeEdited = !this.aboutMeEdited;
+  editAboutDesMe() {
+    this.aboutMeDesEdited = !this.aboutMeDesEdited;
   }
 
-
-  editImageHomeMade() {
-    this.imageHomeMadeEdited = !this.imageHomeMadeEdited;
+  editBlogTitle() {
+    this.blogTitleEdited = !this.blogTitleEdited;
   }
+
+  editBlogDes() {
+    this.blogDesEdited = !this.blogDesEdited;
+  }
+
 
   editStore() {
     this.storeEdited = !this.storeEdited;
@@ -221,12 +136,19 @@ export class MainPageComponent implements OnInit {
               private shopService: ShopService,
               private dialog: MatDialog) {
     this.viewIndex = 0;
-    this.ratio = 1920 / 270;
+    this.ratio = 1920 / 560;
+    this.ratioBanner = 1920 / 645;
     let self = this;
     self.storeTemplateForm = self.fb.group({
       nameTag: [self.nameTag],
       titleTag: [self.titleTag],
-      productTitleTag: [self.aboutMeDesTag],
+      desTag: [self.desTag],
+      aboutMeTitleTag: [self.aboutMeTitleTag],
+      aboutMeDesTag: [self.aboutMeDesTag],
+      blogTitleTag: [self.blogTitleTag],
+      blogDesTag: [self.blogDesTag],
+
+
     });
     self.storeForm = this.fb.group({
       name: ['', [
@@ -291,31 +213,18 @@ export class MainPageComponent implements OnInit {
   isDialogOpen: boolean = false;
 
 
-  adoneCategory: any = {
-    id: null,
-    name: ''
-  };
-  adTwoCategory: any = {
-    id: null,
-    name: ''
-  };
-  adThreeCategory: any = {
-    id: null,
-    name: ''
-  };
-
   public categories: any = [];
   public category: any = {
     id: null,
     name: ''
   };
+  public homeCategories: any = [];
 
   page = 1;
   nextPage: boolean = true;
   nextBlogPage: boolean = true;
   product: any = [];
   homeProduct: any = [];
-  isFirstHomeProduct: boolean = true;
 
   ngOnInit(): void {
     this.shareLink = window.location.host + '/store/';
@@ -343,21 +252,23 @@ export class MainPageComponent implements OnInit {
                 self.queryProduct();
                 self.queryBlog();
               });
-
+              self.shopService.getCategoryProduct(self.store.displayName).then((data) => {
+                self.categoryProduct = data;
+              });
               for (let value of self.templateList) {
                 if (value.uid == 5) {
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
                   self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
+                  self.desTag = value.context.desTag != '' ? value.context.desTag : self.desTag;
+                  self.aboutMeTitleTag = value.context.aboutMeTitleTag != '' ? value.context.aboutMeTitleTag : self.aboutMeTitleTag;
                   self.aboutMeDesTag = value.context.aboutMeDesTag != '' ? value.context.aboutMeDesTag : self.aboutMeDesTag;
                   self.blogTitleTag = value.context.blogTitleTag != '' ? value.context.blogTitleTag : self.blogTitleTag;
                   self.blogDesTag = value.context.blogDesTag != '' ? value.context.blogDesTag : self.blogDesTag;
-                  self.aboutMeTitleTag = value.context.aboutMeTitleTag != '' ? value.context.aboutMeTitleTag : self.aboutMeTitleTag;
 
-                  self.imageAdOne = value.image.imageAdOne;
-                  self.imageAdTwo = value.image.imageAdTwo;
-                  self.imageAdThree = value.image.imageAdThree;
-                  self.aboutMeCover = value.image.aboutMeCover;
+                  self.imageBanner = value.image.imageBanner;
+                  self.imageAboutCover = value.image.imageAboutCover;
+                  self.imageBlogCover = value.image.imageBlogCover;
                   break;
                 }
               }
@@ -372,21 +283,6 @@ export class MainPageComponent implements OnInit {
   changeCategory() {
     this.page = 1;
     this.queryProduct(true);
-  }
-
-
-  jumpCategory(index: number): void {
-    this.viewIndex = 1;
-    if (index == 0) {
-      this.category = this.adoneCategory;
-      this.changeCategory();
-    } else if (index == 1) {
-      this.category = this.adTwoCategory;
-      this.changeCategory();
-    } else if (index == 2) {
-      this.category = this.adThreeCategory;
-      this.changeCategory();
-    }
   }
 
 
@@ -406,13 +302,24 @@ export class MainPageComponent implements OnInit {
     this.viewIndex = index;
   }
 
-  changeNavigation(index): void {
+
+  jumpCategory(index: number): void {
     this.viewIndex = index;
+    this.isCategory = true;
+    this.category = this.categoryProduct[index];
+    this.changeCategory();
   }
 
-  changeCategoryNavigation(category) {
-    this.viewIndex = 2;
-    this.category = category;
+
+  changeNavigation(index): void {
+    this.viewIndex = index;
+    this.isCategory = false;
+  }
+
+  changeCategoryNavigation(categoryMain: any) {
+    this.isCategory = true;
+    this.viewIndex = categoryMain.index;
+    this.category = categoryMain.category;
     this.page = 1;
     this.queryProduct(true);
   }
@@ -474,6 +381,7 @@ export class MainPageComponent implements OnInit {
         context: {
           nameTag: this.nameTag,
           titleTag: this.titleTag,
+          desTag: this.desTag,
           aboutMeTitleTag: this.aboutMeTitleTag,
           aboutMeDesTag: this.aboutMeDesTag,
           blogTitleTag: this.blogTitleTag,
@@ -481,17 +389,15 @@ export class MainPageComponent implements OnInit {
         },
         image: {
           imageBanner: this.imageBanner,
-          aboutMeCover: this.aboutMeCover,
-          imageAdOne: this.imageAdOne,
-          imageAdTwo: this.imageAdTwo,
-          imageAdThree: this.imageAdThree,
+          imageAboutCover: this.imageAboutCover,
+          imageBlogCover: this.imageBlogCover,
         }
       };
       this.shopService.createMultiTemplate(options).then((data) => {
         data.context = options.context;
         data.image = options.image;
         self.templateList.push(data);
-        self.shopService.setTemplateUId(2);
+        self.shopService.setTemplateUId(5);
         self.shopService.createTemplate({
           storeId: self.store.id,
           templateId: data.id
@@ -507,16 +413,18 @@ export class MainPageComponent implements OnInit {
         context: {
           nameTag: this.nameTag,
           titleTag: this.titleTag,
+          desTag: this.desTag,
           aboutMeTitleTag: this.aboutMeTitleTag,
+          aboutMeDesTag: this.aboutMeDesTag,
           blogTitleTag: this.blogTitleTag,
           blogDesTag: this.blogDesTag,
         },
+
         image: {
           imageBanner: this.imageBanner,
-          aboutMeCover: this.aboutMeCover,
-          imageAdOne: this.imageAdOne,
-          imageAdTwo: this.imageAdTwo,
-          imageAdThree: this.imageAdThree,
+          imageAboutCover: this.imageAboutCover,
+          imageBlogCover: this.imageBlogCover,
+
         }
       };
       this.shopService.updateMultiTemplate(options).then((data) => {
@@ -529,7 +437,7 @@ export class MainPageComponent implements OnInit {
         data.context = options.context;
         data.image = options.image;
         self.templateList.push(data);
-        self.shopService.setTemplateUId(4);
+        self.shopService.setTemplateUId(5);
         self.shopService.createTemplate({
           storeId: self.store.id,
           templateId: data.id

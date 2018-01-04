@@ -401,7 +401,7 @@ export class MainPageComponent implements OnInit {
         data.context = options.context;
         data.image = options.image;
         self.templateList.push(data);
-        self.shopService.setTemplateUId(2);
+        self.shopService.setTemplateUId(4);
         self.shopService.createTemplate({
           storeId: self.store.id,
           templateId: data.id

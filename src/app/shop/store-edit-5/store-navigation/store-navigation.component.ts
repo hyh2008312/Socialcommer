@@ -31,15 +31,19 @@ export class StoreNavigationComponent implements OnInit {
   }
 
   changeNavigation(index: any) {
-    this.navigationIndex = index;
     this.isCategory = false;
+    this.navigationIndex = index;
     this.navigationChange.emit(this.navigationIndex)
 
   }
 
   changeCategoryNavigation(index: any) {
-    this.navigationIndex = index;
     this.isCategory = true;
-    this.categoryChange.emit(this.categories[index]);
+    this.navigationIndex = index;
+    let cate = {
+      'category': this.categories[index],
+      'index': index
+    };
+    this.categoryChange.emit(cate);
   }
 }

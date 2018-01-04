@@ -2178,16 +2178,11 @@ textarea.mat-input-element {
   .xb-4-template__title {
     padding-left: 40px;
     padding-right: 40px;
-    margin-top: 40px;
-    height: 72px;
-    text-align: center;
-    line-height: 64px;
-    margin-left: auto;
-    color: #e1ab18;
-    margin-right: auto;
-    border: 4px solid #e1ab18;
-    font-size: 34px;
-    font-weight: bold; }
+    height: 60px;
+    font-size: 24px;
+    font-family: Didot, Helvetica;
+    line-height: 58px;
+    margin-left: 24px; }
     @media screen and (max-width: 599px) {
       .xb-4-template__title {
         border: 2px solid #e1ab18;
@@ -2198,21 +2193,93 @@ textarea.mat-input-element {
         height: 40px;
         line-height: 36px;
         margin-top: 8px; } }
+  .xb-4-template__left-24px {
+    margin-left: 24px; }
+  .xb-4-template__edit-border {
+    border: 1px solid #00bdd6; }
+    .xb-4-template__edit-border > input {
+      border: none;
+      font-size: 24px;
+      width: auto;
+      height: 60px;
+      line-height: 58px;
+      font-family: Didot, Helvetica;
+      text-align: center;
+      background-color: transparent; }
+  .xb-4-template__detail {
+    margin-top: 20px;
+    margin-bottom: 56px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 40px 40px;
+    background-color: #fff; }
+    @media screen and (max-width: 599px) {
+      .xb-4-template__detail {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: calc(100vh - 56px);
+        overflow-y: scroll;
+        overflow-x: hidden; } }
+    .xb-4-template__detail-close {
+      position: absolute;
+      left: calc(100% + 24px);
+      top: 0;
+      color: #fff;
+      cursor: pointer; }
+      .xb-4-template__detail-close i {
+        font-size: 56px;
+        line-height: 56px; }
+      @media screen and (max-width: 599px) {
+        .xb-4-template__detail-close {
+          left: 50%;
+          top: calc(100% - 40px);
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%); }
+          .xb-4-template__detail-close i {
+            font-size: 24px;
+            line-height: 24px; } }
+      @media screen and (min-width: 600px) and (max-width: 959px) {
+        .xb-4-template__detail-close {
+          left: 50%;
+          top: calc(100% - 40px);
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%); }
+          .xb-4-template__detail-close i {
+            font-size: 24px;
+            line-height: 24px; } }
+  @media screen and (max-width: 599px) {
+    .xb-4-template__mobile-dialog-inner {
+      padding: 16px; } }
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    .xb-4-template__mobile-dialog-inner {
+      padding: 16px; } }
 
 .xb-4-template-home {
   background-color: #f1f1f1;
   padding-bottom: 100px; }
   .xb-4-template-home__background {
-    height: 645px; }
+    height: 645px;
+    position: relative; }
     @media screen and (max-width: 599px) {
       .xb-4-template-home__background {
         height: 320px; } }
   .xb-4-template-home__title {
-    font-size: 48px;
-    margin-top: 200px;
-    font-family: Didot, Helvetica;
+    width: 1000px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
     color: #fff;
-    font-weight: bold; }
+    margin-top: 200px; }
     @media screen and (max-width: 599px) {
       .xb-4-template-home__title {
         margin-top: 105px;
@@ -2220,38 +2287,36 @@ textarea.mat-input-element {
         min-width: 100px;
         width: calc(100vw - 64px); } }
   .xb-4-template-home__des {
-    font-family: Helvetica;
-    font-size: 24px;
+    width: 1000px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
     color: #fff;
     margin-top: 32px;
     font-weight: 400; }
   .xb-4-template-home__about-store {
     margin-top: 112px; }
   .xb-4-template-home__about-cover {
+    position: relative;
     width: 393px;
     height: 393px; }
   .xb-4-template-home__about-des {
     background-color: #fff;
     height: 393px; }
     .xb-4-template-home__about-des-content {
-      font-size: 16px;
       margin-top: 88px;
-      margin-left: 48px;
-      margin-right: 48px;
-      font-family: Helvetica;
-      font-weight: 400;
-      line-height: 28px; }
+      height: auto; }
   .xb-4-template-home__about-title {
-    font-family: Didot, Helvetica;
-    font-size: 48px;
-    font-weight: bold;
+    position: relative;
+    height: auto;
     color: #fff;
-    line-height: 64px;
     margin-top: 126px;
-    margin-left: 48px;
-    margin-right: 48px; }
+    margin-left: auto;
+    margin-right: auto; }
   .xb-4-template-home__blog-background {
     height: 560px;
+    position: relative;
     margin-top: 96px; }
     @media screen and (max-width: 599px) {
       .xb-4-template-home__blog-background {
@@ -2261,12 +2326,13 @@ textarea.mat-input-element {
     font-size: 48px;
     font-weight: bold;
     margin-top: 180px;
-    color: #fff; }
+    color: #fff;
+    position: relative; }
   .xb-4-template-home__blog-des {
     margin-top: 12px;
-    font-family: Helvetica;
-    font-size: 16px;
-    font-weight: 400;
+    height: auto;
+    position: relative;
+    width: 1000px;
     color: #fff; }
   .xb-4-template-home__blog-see-more {
     width: 160px;
@@ -2568,7 +2634,8 @@ textarea.mat-input-element {
     font-family: 'Didot';
     font-size: 24px;
     font-weight: bold;
-    color: black; }
+    color: black;
+    margin-left: 48px; }
 
 .xb-4-template-collection {
   margin-top: 24px; }
@@ -2681,7 +2748,7 @@ textarea.mat-input-element {
   line-height: 32px;
   position: absolute;
   left: 50%;
-  bottom: 100%;
+  top: 100%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
