@@ -48,6 +48,10 @@ const routes: Routes = [
               {
                 path: '4',
                 loadChildren: 'app/shop/store-template-4/store-template-4.module#StoreTemplateFourModule'
+              },
+              {
+                path: '5',
+                loadChildren: 'app/shop/store-template-5/store-template-5.module#StoreTemplateFiveModule'
               }
             ]
           }, {
@@ -68,6 +72,10 @@ const routes: Routes = [
               {
                 path: '',
                 loadChildren: 'app/shop/store-edit-4/store-template-4.module#StoreTemplateFourModule'
+              },
+              {
+                path: '',
+                loadChildren: 'app/shop/store-edit-5/store-template-5.module#StoreTemplateFiveModule'
               }
             ]
           }]

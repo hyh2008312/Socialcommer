@@ -1,0 +1,50 @@
+<div class="xb-4-template-home">
+  <div class="xb-4-template-home__background" fxLayout="column" fxLayoutAlign="start center"
+       [ngStyle]="{'background': 'url(' + (imageBanner)   + ') center / 100% auto ' }">
+    <div class="xb-4-template-home__title">
+      S T O R E N A M E
+    </div>
+    <div class="xb-4-template-home__des">
+      For living in the moment and looking into fall.
+    </div>
+  </div>
+  <div class="xb-4-template-home__about-store xb-4-template__w960" fxLayout="row"
+       fxLayoutAlign="start start">
+    <div class="xb-4-template-home__about-cover"
+         [ngStyle]="{'background': 'url(' + (imageAboutCover)   + ') center / auto 100% ' }">
+      <div class="xb-4-template-home__about-title">Welcome to my store!</div>
+    </div>
+    <div class="xb-4-template-home__about-des" fxFlex>
+      <div class="xb-4-template-home__about-des-content">
+        World's best sun protection clothing long sleeve shirts for women! UPF 50+ offers the highest rated UV sun
+        protection factor for clothing. SPF protection blocking 98% of UVA and UVB rays.
+        Luxurious, silky soft, cool, lightweight, antimicrobial fabric makes this the go-to longsleeve sun protective
+        shirt!
+      </div>
+    </div>
+  </div>
+  <ng-container *ngFor="let category of templateCategories">
+    <app-shop-template-category-card
+      [categoryId]="category.id" [categoryName]="category.name">
+    </app-shop-template-category-card>
+  </ng-container>
+  <div class="xb-4-template-home__blog-background" fxLayout="column" fxLayoutAlign="start center"
+       [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / 100% auto ' }">
+    <div class="xb-4-template-home__blog-title">
+      Blog
+    </div>
+    <div class="xb-4-template-home__blog-des">
+      For living in the moment and looking into fall.
+    </div>
+    <div class="xb-4-template-home__blog-see-more  xb-pointer" fxLayout="row" fxLayoutAlign="center center">
+      SEE MORE
+    </div>
+  </div>
+  <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row" fxLayoutAlign="space-between start"
+       fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
+  >
+    <app-shop-item-blog-card-5 *ngFor="let item of blog"
+                               fxFlex.xs="48" fxFlex.gt-xs="48"
+                               [blog]="item" [status]="1"></app-shop-item-blog-card-5>
+  </div>
+</div>

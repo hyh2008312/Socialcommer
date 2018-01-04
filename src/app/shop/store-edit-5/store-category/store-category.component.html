@@ -1,0 +1,20 @@
+<div class="xb-4-template-category">
+  <div class="xb-4-template-category__title">Categories</div>
+  <div class="" fxLayout="column" fxLayoutAlign="start start">
+    <div fxFlex="none" class="xb-4-template-category__name xb-pointer" *ngFor="let item of categories;let i = index;"
+         (click)="changeCategory(item)"
+         [ngClass]="{'active': item.name == category.name ,'xb-4-template-category__bottom_40': i == categories.length - 1 }">
+      <span>{{ item.name }}</span>
+    </div>
+  </div>
+ <!-- <div  class="xb-4-template-category__title">FEATURED</div>
+  <div  class="" fxLayout="column" fxLayoutAlign="start start">
+    <div fxFlex="none" class="xb-4-template-category__name xb-pointer" *ngFor="let item of features;let i = index;"
+         (click)="changeFeature(item)"
+         [ngClass]="{'active': item.name == feature.name ,'xb-4-template-category__bottom_40': i == features.length - 1}">
+      <span>{{ item.name }}</span>
+    </div>
+  </div>-->
+</div>
+
+

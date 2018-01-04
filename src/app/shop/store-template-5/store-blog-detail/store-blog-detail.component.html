@@ -1,0 +1,48 @@
+<div class="xb-4-template-blog__detail" appViewScrollTop [ContainerSelector]="'mat-sidenav-content'">
+  <div appViewShareScroll [detailSelector]="'xb-4-template-blog__detail-des'"
+       [shareSelector]="'xb-4-template-blog__detail-share'"
+       (changeHidden)="changeIsShowShare($event)"
+  >
+    <div class="xb-4-template-blog__detail-container">
+      <img src="{{blog.cover}}">
+    </div>
+    <div class="xb-4-template-blog__detail-content xb-4-template__w720">
+      <div class="xb-4-template-blog__detail-title">
+        {{blog.title}}
+      </div>
+      <div class="xb-4-template-blog__detail-time">
+        {{blog.modified | amDateFormat:'MMMM Do, YYYY'}}
+      </div>
+      <div class="xb-4-template-blog__detail-des"
+           [innerHTML]="blog.context | safeHtml">
+      </div>
+      <div class="xb-4-template-blog__detail-share" [hidden]="true">
+        <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="12px">
+          <div class="xb-4-template-blog__detail-share-item"
+               appSocialShare [facebook]="{u: shareLink}">
+            <i class="iconfontXberts icon-ic-facebook"></i>
+          </div>
+          <div class="xb-4-template-blog__detail-share-item "
+               appSocialShare [twitter]="{url: shareLink, text: text, hashtags: '' }">
+            <i class="iconfontXberts icon-ic-twitter"></i>
+          </div>
+        </div>
+      </div>
+      <div class="xb-4-template-blog  xb-4-template__w960 ">
+        <div class="xb-4-template-blog__title">
+          Related Blog
+        </div>
+        <div fxLayoutWrap class="xb-4-template-blog__article" fxLayout="row" fxLayoutAlign="space-between start"
+             fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
+        >
+          <app-shop-item-blog-card-5 *ngFor="let item of bloglist"
+                                     fxFlex.xs="48" fxFlex.gt-xs="45"
+                                     [blog]="item" [status]="3"
+                                     (scrollToTop)="changeScrollToTop($event)"
+          ></app-shop-item-blog-card-5>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
