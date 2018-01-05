@@ -12,10 +12,31 @@ import { Store } from '../../store';
 
 export class StoreListComponent implements OnInit {
 
-  public categories:any = [];
+  public categories:any = [{
+    id: 0,
+    name: 'All'
+  }, {
+    id: 0,
+    name: 'Daily Specials'
+  }, {
+    id: 0,
+    name: 'Headphones'
+  }, {
+    id: 0,
+    name: 'Camera'
+  }, {
+    id: 0,
+    name: 'Audio'
+  }, {
+    id: 0,
+    name: 'Wearable Tech'
+  }, {
+    id: 0,
+    name: 'Smart Home'
+  }];
   public category: any = {
     id: null,
-    name : ''
+    name: 'All'
   };
   public shareLink: string;
   public text = '';
@@ -74,8 +95,6 @@ export class StoreListComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.text = data.description;
-        self.categories = [{name: 'All'},...data.category];
-        self.category = self.categories[0];
         self.storeService.addStore(data);
       }
     });

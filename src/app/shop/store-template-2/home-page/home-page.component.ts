@@ -11,10 +11,31 @@ import {Store} from '../../store';
 })
 
 export class HomePageComponent implements OnInit {
-  public categories: any = [];
+  public categories:any = [{
+    id: 0,
+    name: 'All'
+  }, {
+    id: 0,
+    name: 'Daily Specials'
+  }, {
+    id: 0,
+    name: 'Bakery'
+  }, {
+    id: 0,
+    name: 'Breads'
+  }, {
+    id: 0,
+    name: 'Drinks'
+  }, {
+    id: 0,
+    name: 'Cookies'
+  }, {
+    id: 0,
+    name: 'Donuts'
+  }];
   public category: any = {
-    id: null,
-    name: ''
+    id: 0,
+    name : 'All'
   };
   public shareLink: string;
   public text = '';
@@ -103,12 +124,6 @@ export class HomePageComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        if (data.category.length > 1) {
-          self.categories = [{name: 'All'}, ...data.category];
-        } else {
-          self.categories = [...data.category];
-        }
-        self.category = self.categories[0];
         self.storeService.addStore(data);
 
         self.storeService.pageView({

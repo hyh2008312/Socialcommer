@@ -27,7 +27,7 @@ export class MainPageComponent implements OnInit {
   public categories:any = [];
   public category: any = {
     id: null,
-    name : ''
+    name : 'All'
   };
   public shareLink: string;
   public text = '';
@@ -381,6 +381,7 @@ export class MainPageComponent implements OnInit {
 
   queryProduct(clearProduct?:boolean) {
     if(this.categories.length <= 0) {
+      this.nextPage = false;
       return;
     }
     let options = {

@@ -79,6 +79,7 @@ export class HomePageComponent implements OnInit {
 
   queryProduct(clearProduct?:boolean) {
     if(this.categories.length <= 0) {
+      this.nextPage = false;
       return;
     }
     let options = {

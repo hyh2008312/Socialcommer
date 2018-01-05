@@ -11,10 +11,31 @@ import {Store} from '../../store';
 })
 
 export class HomePageComponent implements OnInit {
-  public categories: any = [];
+  public categories:any = [{
+    id: 0,
+    name: 'All'
+  }, {
+    id: 0,
+    name: 'Daily Specials'
+  }, {
+    id: 0,
+    name: 'For Baby'
+  }, {
+    id: 0,
+    name: 'For Girls'
+  }, {
+    id: 0,
+    name: 'For Boys'
+  }, {
+    id: 0,
+    name: 'Toys'
+  }, {
+    id: 0,
+    name: 'Games'
+  }];
   public category: any = {
     id: null,
-    name: ''
+    name: 'All'
   };
   public text = '';
 
