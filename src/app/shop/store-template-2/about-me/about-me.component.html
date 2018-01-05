@@ -29,8 +29,11 @@
       </div>
     </div>
     <div class="xb-store-template__about-bg">
-      <div class="xb-store-template__about-image-bg">
+      <div class="xb-store-template__about-image-bg" *ngIf="store.ownerAvatar">
         <img [src]="store.ownerAvatar">
+      </div>
+      <div class="xb-store-template__about-image-bg" *ngIf="!store.ownerAvatar">
+        <img [src]="aboutBanner">
       </div>
       <div class="md-margin-top-2 xb-store-template__about-user" *ngIf="store.userTag == ''">
         Thank you for visiting my store! Have a nice day.

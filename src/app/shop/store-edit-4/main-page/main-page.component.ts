@@ -23,7 +23,7 @@ export class MainPageComponent implements OnInit {
 
   //定义字段
   nameTag = 'STORE NAME';
-  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge">Click here to edit the title</strong></p>';
+  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Click here to edit the title</strong></p>';
   aboutMeTag = '<p>Here you let your customers get to know you. Tell them a little bit about ' +
     'yourself and why you create this business. Show your customers that there are real people with ' +
     'interesting stories working behind the scenes.</p>';
@@ -484,7 +484,7 @@ export class MainPageComponent implements OnInit {
   }
 
   blog: any = [];
-  isHaveBlog=true;
+  isHaveBlog = true;
 
   queryBlog(clearBlog?: boolean) {
     if (!this.ownerId) {
@@ -502,7 +502,7 @@ export class MainPageComponent implements OnInit {
         self.nextBlogPage = true;
       }
       self.blog = self.blog.concat(data.results);
-      self.isHaveBlog =self.blog.length != 0;
+      self.isHaveBlog = self.blog.length != 0;
       if (data.next == null) {
         self.nextBlogPage = false;
       }
