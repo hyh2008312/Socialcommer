@@ -12,10 +12,31 @@ import {Store} from '../../store';
 
 export class StoreListComponent implements OnInit {
 
-  public categories: any = [];
+  public categories:any = [{
+    id: 0,
+    name: 'All'
+  }, {
+    id: 0,
+    name: 'Daily Specials'
+  }, {
+    id: 0,
+    name: 'For Baby'
+  }, {
+    id: 0,
+    name: 'For Girls'
+  }, {
+    id: 0,
+    name: 'For Boys'
+  }, {
+    id: 0,
+    name: 'Toys'
+  }, {
+    id: 0,
+    name: 'Games'
+  }];
   public category: any = {
     id: null,
-    name: ''
+    name: 'All'
   };
   public shareLink: string;
   public text = 'Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business.'
@@ -96,8 +117,6 @@ export class StoreListComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        this.categories = [{name: 'All'}, ...data.category];
-        this.category = this.categories[0];
         this.storeService.addStore(data);
 
         this.storeService.pageView({

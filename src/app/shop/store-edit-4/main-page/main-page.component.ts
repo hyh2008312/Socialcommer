@@ -23,14 +23,14 @@ export class MainPageComponent implements OnInit {
 
   //定义字段
   nameTag = 'STORE NAME';
-  titleTag = '<div >Click here to edit the title</div>';
-  aboutMeTag = '<div> Here you let your customers get to know you. Tell them a little bit about ' +
+  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge">Click here to edit the title</strong></p>';
+  aboutMeTag = '<p>Here you let your customers get to know you. Tell them a little bit about ' +
     'yourself and why you create this business. Show your customers that there are real people with ' +
-    'interesting stories working behind the scenes.</div>';
+    'interesting stories working behind the scenes.</p>';
 
-  productTitleTag = 'New Arrivals';
+  productTitleTag = '<p class="ql-align-center"><strong class="ql-size-large">New Arrivals</strong></p>';
 
-  productDesTag = '<div> Discover The Best Daily Offers for Moms & Kids.</div>';
+  productDesTag = '<p class="ql-align-center">Discover The Best Daily Offers for Moms & Kids.</p>';
 
 
   uploadAboutType = 'COLLECTOR_STORE_TEMPLATE';

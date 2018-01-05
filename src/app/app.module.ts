@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app.routes.module';
 
 import { AppComponent } from './app.component';
 
-import { BaseApi, SystemConstant, DataApi } from './config/app.api';
+import { BaseApi, SystemConstant, DataApi, SupportApi } from './config/app.api';
 import { BlogCover} from './config/app.constant';
 
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -34,7 +34,7 @@ import { UserModule } from './shared/services/user/user.module';
     UserModule,
     Angulartics2Module.forRoot([ Angulartics2GoogleTagManager ])
   ],
-  providers: [BaseApi, SystemConstant, DataApi, BlogCover,HttpClientModule],
+  providers: [BaseApi, SystemConstant, DataApi, SupportApi, BlogCover, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

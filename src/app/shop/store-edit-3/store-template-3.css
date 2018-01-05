@@ -2254,6 +2254,8 @@ textarea.mat-input-element {
 .xb-store-template__content {
   min-height: 100vh;
   overflow: hidden; }
+.xb-store-template__content-2 {
+  width: 100%; }
 .xb-store-template__store-name {
   margin-top: 72px;
   margin-bottom: 40px;
@@ -2812,7 +2814,14 @@ textarea.mat-input-element {
           font-size: 24px;
           line-height: 24px; } }
 .xb-store__buttons-bg-1 {
-  color: #fff; }
+  background-color: #00bdd6;
+  color: #fff;
+  line-height: 40px;
+  border-radius: 4px;
+  padding: 0 16px;
+  display: block; }
+  .xb-store__buttons-bg-1:hover {
+    opacity: .5; }
 
 .xb-shop__store-template {
   width: 360px;
@@ -2898,9 +2907,7 @@ textarea.mat-input-element {
     text-align: center; }
 .xb-shop__template-title {
   border: 1px solid #00bdd6;
-  color: #fff;
   position: relative;
-  font-weight: 600;
   margin: 0 24px; }
   @media screen and (max-width: 599px) {
     .xb-shop__template-title {

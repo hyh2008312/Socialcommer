@@ -28,6 +28,9 @@
             {{ formErrors['context'] }}
           </div>
         </div>
+        <div *ngIf="hasPicture" class="xb-input-error md-margin-top-1">
+          Your picture is still uploading. Please wait a bit!
+        </div>
         <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
           <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
           <div class="md-margin-left-2">

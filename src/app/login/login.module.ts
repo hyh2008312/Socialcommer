@@ -6,7 +6,6 @@ import { SignUpComponent } from "./sign-up/sign-up.component";
 
 import { LoginRoutingModule } from './login.routes.module';
 import { LoginService } from './login.service';
-import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -22,8 +21,7 @@ import { SharedModule } from '../shared/shared.module';
     SignUpComponent,
   ],
   providers: [
-    LoginService,
-    AuthenticationService
+    LoginService
   ]
 })
 export class LoginModule { }

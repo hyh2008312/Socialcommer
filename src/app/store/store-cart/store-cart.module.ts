@@ -7,6 +7,8 @@ import { StoreCartProductItemComponent } from './store-cart-product-item/store-c
 
 import { StoreCartRoutingModule } from './store-cart.routes.module';
 
+import { StoreCartService } from './store-cart.service';
+
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
@@ -26,7 +28,9 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   entryComponents: [
   ],
-  providers: []
+  providers: [
+    StoreCartService
+  ]
 })
 export class StoreCartModule { }
 

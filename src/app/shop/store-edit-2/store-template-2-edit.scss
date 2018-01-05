@@ -182,7 +182,7 @@
       line-height: 40px;
       border-radius: 4px;
       cursor: pointer;
-      background-color: #501c19;
+      background-color: $primaryColor;
       color: $whiteColor;
       @include media();
 

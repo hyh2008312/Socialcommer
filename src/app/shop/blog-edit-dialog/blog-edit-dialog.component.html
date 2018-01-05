@@ -28,6 +28,9 @@
             {{ formErrors['context'] }}
           </div>
         </div>
+        <div *ngIf="hasPicture" class="xb-input-error md-margin-top-1">
+          Your picture is still uploading. Please wait a bit!
+        </div>
         <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="tab == 'published'">
           <button mat-raised-button color="primary" (click)="create()">SAVE</button>
           <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
@@ -37,7 +40,7 @@
         <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="tab == 'draft'">
           <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
           <div class="md-margin-left-2">
-            <button mat-button color="primary" (click)="createDraft()">SAVE AS DRAFT</button>
+            <button mat-button color="primary" (click)="createDraft()">SAVE DRAFT</button>
           </div>
           <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
             <button mat-button color="primary" (click)="close()">CLOSE</button>

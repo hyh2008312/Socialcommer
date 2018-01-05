@@ -27,6 +27,8 @@ export class BlogEditDialogComponent implements OnInit {
   previewImgFile: any;
   previewImgSrc: any;
 
+  hasPicture: boolean = false;
+
   tab: string = '';
 
   // Editor
@@ -138,10 +140,17 @@ export class BlogEditDialogComponent implements OnInit {
       return;
     }
     let id = this.activatedRoute.snapshot.params['id'];
+    this.hasPicture = false;
     let blogForm = this.blogForm.value;
 
     blogForm.id = id;
     blogForm.cover = this.previewImgFile;
+
+    if(blogForm.cover == '') {
+      this.hasPicture = true;
+      return;
+    }
+
     blogForm.status = 'published';
 
     let self = this;
@@ -152,6 +161,7 @@ export class BlogEditDialogComponent implements OnInit {
 
   createDraft() {
     let id = this.activatedRoute.snapshot.params['id'];
+    this.hasPicture = false;
     let blogForm = this.blogForm.value;
 
     blogForm.id = id;

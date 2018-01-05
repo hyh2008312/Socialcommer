@@ -4,7 +4,7 @@
       <app-store-cart-header [homeLink]="homeLink"></app-store-cart-header>
     </div>
   </div>
-  <div class="background-bg-light xb-cart__body" fxFlex="noshrink">
+  <div class="background-bg-light xb-cart__body" fxFlex="noshrink" *ngIf="products && products.length > 0">
     <div class="container">
       <div class="xb-cart__bg" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-cart__body-margin-right" fxFlex>
@@ -17,7 +17,7 @@
                 Quantity
               </div>
               <div class="xb-cart__title" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
-                Price
+                Unit Price
               </div>
               <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
                 Shipping
@@ -26,8 +26,9 @@
 
               </div>
             </div>
-            <div class="xb-cart__product-list" *ngFor="let item of products">
-              <app-store-cart-product-item [homeLink]="homeLink" [product]="item"></app-store-cart-product-item>
+            <div class="xb-cart__product-list" *ngFor="let item of products;let i = index;">
+              <app-store-cart-product-item [homeLink]="homeLink" [product]="item" [index]="i"
+                                           (productChange)="productEdit($event)"></app-store-cart-product-item>
             </div>
           </div>
           <div class="md-margin-left-2 md-margin-top-2 text-underline xb-pointer xb-bold"
@@ -45,20 +46,21 @@
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
               </div>
               <div>
-                <div class="xb-cart__bill-margin-top-1">$50</div>
+                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice|currency: currency: true }}</div>
                 <div class="xb-cart__bill-margin-top-1">$5</div>
-                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">$55</div>
+                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">{{totalPrice|currency: currency: true }}</div>
               </div>
             </div>
           </div>
           <div class="md-margin-top-2 unicorn-dark-theme" fxLayout="column">
-            <button mat-raised-button color="primary" >CHECKOUT</button>
+            <button mat-raised-button color="primary" (click)="checkout()">CHECKOUT</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="xb-cart__none background-bg-light" fxLayout="column" fxLayoutAlign="center center" fxFlex="noshrink" >
+  <div class="xb-cart__none background-bg-light" fxLayout="column" fxLayoutAlign="center center" fxFlex="noshrink"
+    *ngIf="products && products.length == 0">
     <div class="xb-cart__none-image">
       <i class="iconfontXberts icon-ic-cart"></i>
     </div>
@@ -68,11 +70,15 @@
               routerLink="{{homeLink}}">CONTINUE SHOPPING</button>
     </div>
   </div>
+  <div class="xb-cart__none background-bg-light" fxLayout="column" fxLayoutAlign="center center" fxFlex="noshrink"
+       *ngIf="!products">
+
+  </div>
   <div class="xb-cart__fixed-bottom background-bg-white" fxLayout="row" fxLayoutAlign="start center" fxHide.gt-xs>
     <div class="xb-cart__fixed-bottom-dialog" *ngIf="isTotalDialogOpen">
       <div fxLayout="row" fxLayoutAlign="start stretch">
         <div>
-          <div>$50</div>
+          <div>{{subTotalPrice|currency: currency: true }}</div>
           <div class="md-margin-top-3">$5</div>
         </div>
         <div class="md-margin-left-3">
@@ -83,13 +89,13 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex (click)="openDialog()">
       <div class="xb-cart__item-sale md-margin-left-1">
-        $ 65
+        {{totalPrice|currency: currency: true }}
       </div>
       <div class="xb-cart__fixed-bottom-tri xb-cart__fixed-bottom-margin" *ngIf="!isTotalDialogOpen"></div>
       <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>
     </div>
     <div class="unicorn-dark-theme" fxLayout="column">
-      <button mat-raised-button color="primary" >CHECKOUT</button>
+      <button mat-raised-button color="primary" (click)="checkout()">CHECKOUT</button>
     </div>
   </div>
   <div class="background-bg-white" fxHide.xs>

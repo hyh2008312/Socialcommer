@@ -19,7 +19,22 @@ export class MainPageComponent implements OnInit {
     name: 'All'
   }, {
     id: 0,
-    name: 'Electronics'
+    name: 'Daily Specials'
+  }, {
+    id: 0,
+    name: 'Bakery'
+  }, {
+    id: 0,
+    name: 'Breads'
+  }, {
+    id: 0,
+    name: 'Drinks'
+  }, {
+    id: 0,
+    name: 'Cookies'
+  }, {
+    id: 0,
+    name: 'Donuts'
   }];
   public category: any = {
     id: 0,

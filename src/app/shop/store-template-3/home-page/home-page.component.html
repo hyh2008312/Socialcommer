@@ -2,18 +2,20 @@
   <div class="xb-store-template__banner" fxLayout="column" fxLayoutAlign="center center"
        [ngStyle]="{'background': 'url(' + baseImageUrl + ') center / auto 100% ' }">
     <div class="xb-store-template__template-mask"></div>
-    <div class="xb-store__content-2">
+    <div class="xb-store-template__content-2">
       <div class="ql-editor xb-store-template__template-title"
-           [innerHTML]="contextList.titleTag | safeHtml"  *ngIf="contextList.titleTag" >
+           [innerHTML]="contextList.titleTag | safeHtml"  *ngIf="contextList.titleTag && contextList.titleTag != ''" >
       </div>
       <div class="ql-editor xb-store-template__template-title"
-           [innerHTML]="store.titleTag | safeHtml"  *ngIf="!contextList.titleTag" >
+           *ngIf="!contextList.titleTag || contextList.titleTag == ''" >
+        <p class="ql-align-center"><strong class="ql-size-huge"  style="color: rgb(255, 255, 255);">{{store.name}}</strong></p>
       </div>
       <div class="xb-store-template__template-description ql-editor"
-           [innerHTML]="contextList.descriptionTag | safeHtml" *ngIf="contextList.descriptionTag">
+           [innerHTML]="contextList.descriptionTag | safeHtml" *ngIf="contextList.descriptionTag && contextList.descriptionTag != ''">
       </div>
       <div class="ql-editor xb-store-template__template-title"
-           [innerHTML]="store.descriptionTag | safeHtml"  *ngIf="!contextList.descriptionTag" >
+           *ngIf="!contextList.descriptionTag || contextList.descriptionTag == ''" >
+        <p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">{{store.description}}</strong></p>
       </div>
     </div>
   </div>
@@ -25,6 +27,11 @@
           [product]="item" [status]="0"></app-shop-item-card>
         <div fxFlex="49" fxFlex.xs="100"></div>
       </div>
+      <div *ngIf="product.length > 0" class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center">
+        <div (click)="jumpToCollection()">
+          SEE MORE
+        </div>
+      </div>
     </div>
     <div class="xb-store-template__blog-content">
       <div class="xb-store-template__blog-title">BLOG</div>
@@ -34,6 +41,11 @@
                              fxFlex="45" fxFlex.xs="100"
                              [blog]="item" [status]="0"></app-shop-template-3-store-blog-card>
         <div fxFlex="49" fxFlex.xs="100"></div>
+      </div>
+      <div *ngIf="blog.length > 0" class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center">
+        <div (click)="jumpToBlog()">
+          SEE MORE
+        </div>
       </div>
     </div>
   </div>

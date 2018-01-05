@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { StoreService } from '../../store.service';
+import { StoreCartService } from '../store-cart.service';
 
 @Component({
   selector: 'app-store-cart-main',
@@ -15,10 +16,21 @@ export class StoreCartMainComponent implements OnInit{
 
   isTotalDialogOpen: boolean = false;
 
+  storeId: any = '';
+
+  currency: string = 'USD';
+
   products: any;
 
+  displayName: any = '';
+
+  subTotalPrice: number = 0;
+
+  totalPrice: number = 0;
+
   constructor(
-    private storeService: StoreService
+    private storeService: StoreService,
+    private storeCartService: StoreCartService
   ) {
 
   }
@@ -30,14 +42,67 @@ export class StoreCartMainComponent implements OnInit{
       if(data) {
         let uid = data.templateId == 1? data.templateId:data.uid;
         self.homeLink = `/store/${data.displayName}/${uid}`;
-
-        self.products = self.storeService.getProductInCart(data.displayName);
+        self.storeId = data.id;
+        self.currency = data.currency;
+        self.displayName = data.displayName;
+        self.products = self.storeService.getProductInCart(self.displayName);
+        self.calculatePrice();
       }
     });
   }
 
   openDialog() {
     this.isTotalDialogOpen = !this.isTotalDialogOpen;
+  }
+
+  productEdit($event) {
+    switch ($event.type) {
+      case 'edit':
+        this.products[$event.index] = $event.product;
+        break;
+      case 'delete':
+        this.products.splice($event.index, 1);
+        break;
+    }
+    this.calculatePrice();
+    this.storeService.addProductToCart(this.displayName,this.products);
+  }
+
+  calculatePrice() {
+    let price = 0;
+    for(let item of this.products) {
+      if(typeof item.number == 'number' && item.number > 0) {
+        price += item.number * item.salePriceAmount;
+      }
+    }
+
+    this.subTotalPrice = price;
+    this.totalPrice = this.subTotalPrice;
+  }
+
+  checkout() {
+    let lines = [];
+    for(let item of this.products) {
+      lines.push({
+        goodsId: item.id,
+        quantity: item.number,
+        variantId: item.id
+      })
+    }
+
+    let cart = {
+      storeId: this.storeId,
+      currency: this.currency,
+      totalInclTax: 0,
+      totalExclTax: 0,
+      shippingInclTax:0,
+      shippingExclTax: 0,
+      lines
+    };
+
+    this.storeCartService.createOrder(cart).then((data) => {
+      console.log(data)
+    })
   }
 
 }

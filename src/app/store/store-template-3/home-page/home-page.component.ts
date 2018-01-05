@@ -79,6 +79,7 @@ export class HomePageComponent implements OnInit {
 
   queryProduct(clearProduct?:boolean) {
     if(this.categories.length <= 0) {
+      this.nextPage = false;
       return;
     }
     let options = {
@@ -121,5 +122,13 @@ export class HomePageComponent implements OnInit {
         self.nextBlogPage = false;
       }
     });
+  }
+
+  jumpToCollection() {
+    this.router.navigate(['./list'],{relativeTo: this.activatedRoute});
+  }
+
+  jumpToBlog() {
+    this.router.navigate(['./blog'],{relativeTo: this.activatedRoute});
   }
 }
