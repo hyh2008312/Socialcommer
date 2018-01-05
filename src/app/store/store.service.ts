@@ -121,6 +121,22 @@ export class StoreService {
       .then(response => response.json())
       .catch(this.handleError);
   }
+  // 获取每个分类以及分类下的产品
+  getCategoryProduct(name: string): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.baseUrl.url}stores/${name}/goods/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
 
   getBlog(blog: any): Promise<any>  {
     let headers = new Headers({

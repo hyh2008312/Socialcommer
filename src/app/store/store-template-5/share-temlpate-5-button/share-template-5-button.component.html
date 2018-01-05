@@ -1,0 +1,18 @@
+
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div class="xb-social-share__store md-margin-right-2 gtag-shop-detail-share-button-facebook"
+       fxLayout="row" fxLayoutAlign="center center"
+       appSocialShare  [facebook]="{u: link}">
+    <i class="iconfontXberts icon-ic-facebook"></i>
+  </div>
+  <div class="xb-social-share__store md-margin-right-2 gtag-shop-detail-share-button-twitter"
+       fxLayout="row" fxLayoutAlign="center center"
+       appSocialShare [twitter]="{url: link, text: text, hashtags: '' }">
+    <i class="iconfontXberts icon-ic-twitter"></i>
+  </div>
+  <div class="xb-social-share__store gtag-shop-detail-share-button-google"
+       fxLayout="row" fxLayoutAlign="center center"
+       appSocialShare  [googlePlus]="{url: link}">
+    <i class="iconfontXberts icon-google"></i>
+  </div>
+</div>

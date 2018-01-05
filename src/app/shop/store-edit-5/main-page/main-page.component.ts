@@ -43,9 +43,11 @@ export class MainPageComponent implements OnInit {
   uploadAboutType = 'COLLECTOR_STORE_TEMPLATE';
   text = '';
   //第五套模版需要数据
-  imageBanner: string = 'https://media.socialcommer.com/source/web/template/5/people-2583848.jpg';
+  //imageBanner: string = 'https://media.socialcommer.com/source/web/template/5/people-2583848.jpg';
+  imageBanner: string = 'https://media.socialcommer.com/source/store/template/5da77c3f-0abe-40d2-b07d-a385d1fa5771.jpg';
   imageAboutCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2593366.jpg';
-  imageBlogCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2599856.jpg';
+  //imageBlogCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2599856.jpg';
+  imageBlogCover: string = 'https://media.socialcommer.com/source/store/template/61424fc9-f460-4689-8cf6-64d6c193b663.jpg';
 
 
   public editorConfig = {
