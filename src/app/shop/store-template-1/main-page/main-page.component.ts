@@ -22,19 +22,16 @@ export class MainPageComponent implements OnInit {
     name: 'Daily Specials'
   }, {
     id: 0,
-    name: 'Bakery'
+    name: 'Skin Care'
   }, {
     id: 0,
-    name: 'Breads'
+    name: 'Hair Care'
   }, {
     id: 0,
-    name: 'Drinks'
+    name: 'Fragrance'
   }, {
     id: 0,
-    name: 'Cookies'
-  }, {
-    id: 0,
-    name: 'Donuts'
+    name: 'Tools'
   }];
   public category: any = {
     id: 0,
