@@ -441,4 +441,12 @@ export class MainPageComponent implements OnInit {
     this.viewIndex = index;
   }
 
+  jumpToCollection() {
+    this.viewIndex = 1;
+  }
+
+  jumpToBlog() {
+    this.viewIndex = 2;
+  }
+
 }

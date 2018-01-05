@@ -23,6 +23,11 @@
            *ngIf="categories.length<=0 && product.length <= 0">
         There are no products available.
       </div>
+      <div *ngIf="product.length > 0" class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center">
+        <div (click)="jumpToCollection()">
+          SEE MORE
+        </div>
+      </div>
     </div>
     <div class="xb-store-template__blog-content">
       <div class="xb-store-template__blog-title">BLOG</div>
@@ -36,6 +41,11 @@
       <div class="md-margin-top-4 md-dark-secondary" fxLayout="row" fxLayoutAlign="center center"
            *ngIf="!nextBlogPage && blog.length == 0">
         There are no blogs.
+      </div>
+      <div *ngIf="blog.length > 0" class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center">
+        <div (click)="jumpToBlog()">
+          SEE MORE
+        </div>
       </div>
     </div>
   </div>

@@ -122,4 +122,12 @@ export class HomePageComponent implements OnInit {
       }
     });
   }
+
+  jumpToCollection() {
+    this.router.navigate(['./list'],{relativeTo: this.activatedRoute});
+  }
+
+  jumpToBlog() {
+    this.router.navigate(['./blog'],{relativeTo: this.activatedRoute});
+  }
 }

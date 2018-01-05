@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, OnDestroy, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, OnDestroy, EventEmitter, Input} from '@angular/core';
 import { Router, NavigationStart } from  '@angular/router';
 
 @Component({
@@ -9,6 +9,7 @@ import { Router, NavigationStart } from  '@angular/router';
 
 export class StoreNavigationComponent implements OnInit {
 
+  @Input() navigationIndex = 0;
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
 
   routerObservable: any;
@@ -23,7 +24,6 @@ export class StoreNavigationComponent implements OnInit {
     text: 'ABOUT ME'
   }];
 
-  navigationIndex = 0;
 
   constructor(
     private router: Router
