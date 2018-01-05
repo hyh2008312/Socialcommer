@@ -21,7 +21,7 @@
       line-height: 40px;
       border-radius: 4px;
       cursor: pointer;
-      background-color: #e1ab18;
+      background-color: $primaryColor;
       color: $whiteColor;
       @include media();
 
