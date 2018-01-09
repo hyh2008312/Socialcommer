@@ -31,7 +31,7 @@ export class StoreNavigationComponent implements OnInit {
     self.routerObservable = self.router.events
       .subscribe((event) => {
         if (event instanceof NavigationStart) { // 当导航成功结束时执行
-          self.routerChange.emit(true);
+          self.routerChange.emit();
         }
       });
   }

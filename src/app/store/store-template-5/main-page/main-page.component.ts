@@ -12,6 +12,8 @@ export class MainPageComponent implements OnInit {
   text: string = '';
   categories: any;
 
+  isShowMenu: boolean = false;
+
   constructor(private storeService: StoreService) {
   }
 
@@ -27,5 +29,14 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnDestroy() {
+  }
+
+  changeShowMenu() {
+    this.isShowMenu = !this.isShowMenu;
+  }
+
+  closeShowMenu() {
+    this.isShowMenu = false;
+
   }
 }

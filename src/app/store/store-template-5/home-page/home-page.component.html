@@ -1,15 +1,12 @@
 <div class="xb-4-template-home">
   <div class="xb-4-template-home__background" fxLayout="column" fxLayoutAlign="start center"
        [ngStyle]="{'background': 'url(' + (imageList.imageBanner)   + ') center / auto 100% ' }">
-    <div class="xb-4-template-home__title ql-editor"
-         [innerHTML]="contextList.titleTag | safeHtml">
-    </div>
     <div class="xb-4-template-home__des ql-editor"
          [innerHTML]="contextList.desTag | safeHtml">
     </div>
   </div>
   <div class="xb-4-template-home__about-store xb-4-template__w960" fxLayout="row"
-       fxLayoutAlign="start start">
+       fxLayoutAlign="start start" fxLayout.xs="column">
     <div class="xb-4-template-home__about-cover"
          [ngStyle]="{'background': 'url(' + (imageList.imageAboutCover)   + ') center / auto 100% ' }">
       <div class="xb-4-template-home__about-title ql-editor"
@@ -31,9 +28,9 @@
            fxLayoutGap.xs="16px"
            fxLayoutWrap>
         <app-shop-item-product-card-5 *ngFor="let item of category.relations"
-                                      fxFlex.xs="44" fxFlex.gt-xs="30"
+                                      fxFlex.xs="100" fxFlex.gt-xs="30"
                                       [product]="item" [status]="0"></app-shop-item-product-card-5>
-        <div fxFlex.xs="44" fxFlex.gt-xs="30"></div>
+        <div fxFlex.xs="100" fxFlex.gt-xs="30"></div>
       </div>
       <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
            (click)="jumpCategory(category.id)">
@@ -61,7 +58,7 @@
                                fxFlex.xs="48" fxFlex.gt-xs="48"
                                [blog]="item" [status]="0"></app-shop-item-blog-card-5>
   </div>
-  <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+  <div class="xb-4-template-category__see-more xb-pointer md-margin-top-4" fxLayout="row" fxLayoutAlign="center center"
        (click)="jumpBlogList()">
     SEE MORE
   </div>

@@ -35,12 +35,12 @@ export class StoreDetailComponent implements OnInit {
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [
-    'https://media.socialcommer.com/source/web/template/4/4.jpg',
-    'https://media.socialcommer.com/source/web/template/4/5.jpg',
-    'https://media.socialcommer.com/source/web/template/4/8.jpg',
-    'https://media.socialcommer.com/source/web/template/4/9.jpg',
-    'https://media.socialcommer.com/source/web/template/4/6.jpg',
-    'https://media.socialcommer.com/source/web/template/4/7.jpg',
+    'https://media.socialcommer.com/source/web/template/5/fashion-1623089.jpg',
+    'https://media.socialcommer.com/source/web/template/5/fashion-1623090.jpg',
+    'https://media.socialcommer.com/source/web/template/5/fashion-1623086.jpg',
+    'https://media.socialcommer.com/source/web/template/5/fashion-1623083.jpg',
+    'https://media.socialcommer.com/source/web/template/5/fashion-1623091.jpg',
+    'https://media.socialcommer.com/source/web/template/5/fashion-1623087.jpg'
   ];
   id: number;
 
@@ -68,15 +68,8 @@ export class StoreDetailComponent implements OnInit {
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/4/8.jpg'
-  }, {
-    id: 4,
-    title: 'Product Name',
-    salePriceAmount: '12',
-    salePriceCurrency: 'USD',
-    originalPriceAmount: '16',
-    originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/4/9.jpg'
-  }];
+  }
+  ];
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
@@ -84,8 +77,8 @@ export class StoreDetailComponent implements OnInit {
     let self = this;
 
     self.id = this.activatedRouter.snapshot.params['id'];
-    self.selectedImage = self.imageSources[self.id-1];
-    self.image = self.imageSources;
+    self.selectedImage = self.imageSources[self.id - 1]; //根据id找图片
+    self.image.push(self.selectedImage);
   }
 
   ngOnInit(): void {

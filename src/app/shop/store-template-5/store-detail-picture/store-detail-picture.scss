@@ -4,9 +4,9 @@
 .xb-image-display{
 
   &__left{
-    width: 90px;
+    width: 78px;
     margin-top: 16px;
-    padding-bottom: 90px;
+    padding-bottom: 78px;
     height: 0;
     overflow: hidden;
     position: relative;
@@ -21,14 +21,14 @@
     }
 
     &-bg{
-      width: 420px;
-      height: 90px;
+      width: 480px;
+      height: 96px;
       @include xb-sm-screen{
         width: 60px;
       }
     }
     &.active{
-      border: 1px solid $orangeColor;
+      border: 1px solid black;
     }
     @include xb-sm-screen{
       width: 60px;
@@ -42,7 +42,7 @@
     }
   }
   &__top{
-    width: 420px;
+    width: 480px;
     padding-bottom: 100%;
     height: 0;
     overflow: hidden;

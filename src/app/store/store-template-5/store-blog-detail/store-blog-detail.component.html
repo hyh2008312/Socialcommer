@@ -1,15 +1,20 @@
 <div class="xb-4-template-blog__detail xb-4-template__container-content">
-  <div class="xb-4-template-blog__detail-title">
+  <div class="xb-4-template-blog__detail-title" fxShow="true" fxShow.xs="false" >
     {{blog.title}}
   </div>
-  <div class="xb-4-template-blog__detail-time">
+  <div class="xb-4-template-blog__detail-time" fxShow="true" fxShow.xs="false">
     {{blog.modified | amDateFormat:'MMMM Do, YYYY'}}
   </div>
   <div class="xb-4-template-blog__detail-container">
     <img src="{{blog.cover}}">
   </div>
+  <div class="xb-4-template-blog__detail-title" fxShow="false" fxShow.xs="true" >
+    {{blog.title}}
+  </div>
+  <div class="xb-4-template-blog__detail-time" fxShow="false" fxShow.xs="true">
+    {{blog.modified | amDateFormat:'MMMM Do, YYYY'}}
+  </div>
   <div class="xb-4-template-blog__detail-content xb-4-template__w720">
-
     <div class="xb-4-template-blog__detail-des"
          [innerHTML]="blog.context | safeHtml">
     </div>

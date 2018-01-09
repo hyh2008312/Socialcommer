@@ -3,10 +3,18 @@
     BLOG
   </div>
   <div fxLayoutWrap class="xb-4-template-blog__article xb-4-template__w960"  fxLayout="row" fxLayoutAlign="space-between start"
-       fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
-  >
+   fxShow="true" fxShow.xs="false">
     <app-shop-item-blog-card-two-5 *ngFor="let item of blog"
                                fxFlex.xs="48" fxFlex.gt-xs="100"
                                [blog]="item" [status]="1"></app-shop-item-blog-card-two-5>
   </div>
+
+  <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="column" fxLayoutAlign="start center"
+       fxLayoutWrap fxShow="false" fxShow.xs="true"
+  >
+    <app-shop-item-blog-card-5 *ngFor="let item of blog"
+                               fxFlex.xs="48" fxFlex.gt-xs="48"
+                               [blog]="item" [status]="1"></app-shop-item-blog-card-5>
+  </div>
+
 </div>

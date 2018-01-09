@@ -12,7 +12,6 @@ import {UserService} from '../../../shared/services/user/user.service';
 export class MainPageComponent implements OnInit {
   storeName: string = '';
   text: string = '';
-  categories:any ;
   constructor(
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService,
@@ -29,7 +28,6 @@ export class MainPageComponent implements OnInit {
         self.storeService.getStore( data.displayName).then((data) => {
           self.text = data.description;
           self.storeName =data.context.nameTag;
-          self.categories = data.category;
           self.storeService.addStore(data);
         });
       }

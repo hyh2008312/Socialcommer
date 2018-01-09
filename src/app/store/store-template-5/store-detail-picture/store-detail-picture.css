@@ -2212,6 +2212,8 @@ textarea.mat-input-element {
 .xb-image-display__slide {
   width: calc(100vw - 32px);
   height: calc(100vw - 32px);
+  margin-left: auto;
+  margin-right: auto;
   position: relative; }
   .xb-image-display__slide > span {
     position: absolute;
