@@ -3,7 +3,7 @@
 
 // main
 .xb-4-template {
-  &__nav-close{
+  &__nav-close {
     position: absolute;
     top: 11px;
     font-size: 24px;
@@ -29,6 +29,7 @@
     background-color: white;
     z-index: 5;
     width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     &-navigation-fixed {
       position: absolute;
       top: 56px;
@@ -70,7 +71,6 @@
     padding-right: 16px;
     height: 56px;
     line-height: 56px;
-
   }
   &__left-24px {
     margin-left: 24px;
@@ -344,6 +344,9 @@
         > img {
           position: absolute;
           width: 100%;
+          left: 50%;
+          top: 50%;
+          @include transform(translate(-50%, -50%));
         }
       }
     }
@@ -357,6 +360,9 @@
       font-family: Didot, Helvetica;
       @include text-overflow();
       width: 100%;
+      @include xb-xs-screen {
+        width: 265px;
+      }
       text-align: center;
     }
     &-price {
@@ -628,7 +634,7 @@
   }
 
   &__side-bg {
-    width:100vw;
+    width: 100vw;
     background-color: black;
   }
   &__side-flex {
@@ -654,7 +660,55 @@
     color: black;
     margin-left: 48px;
   }
-
+  &__more {
+    @include regular();
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    font-family: Helvetica;
+    cursor: pointer;
+    &-bold {
+      font-weight: bold;
+    }
+    &-bg {
+      position: relative;
+    }
+    &-category {
+      position: absolute;
+      top: 40px;
+      background-color: white;
+      padding-left: 16px;
+      padding-right: 16px;
+      left: -25px;
+    }
+    &-flex{
+      @include regular();
+      text-align: center;
+      font-size: 16px;
+      font-family: Helvetica;
+      height: 40px;
+      line-height: 40px;
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+  &__up-triangle {
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 8px solid black;
+  }
+  &__down-triangle {
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 8px solid black;
+  }
 }
 
 //collections
@@ -670,6 +724,20 @@
       width: calc(100vw - 32px);
       margin-left: auto;
       margin-right: auto;
+    }
+  }
+
+  &__product-scroll {
+    width: 100%;
+    position: relative;
+    overflow-x: scroll;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 16px;
+    &-no-bar {
+      ::-webkit-scrollbar {
+        height: 0;
+      }
     }
   }
 
