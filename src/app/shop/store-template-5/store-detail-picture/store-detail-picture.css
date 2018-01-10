@@ -2186,7 +2186,7 @@ textarea.mat-input-element {
     .xb-image-display__margin-bottom {
       margin-bottom: 5px; } }
 .xb-image-display__top {
-  width: 420px;
+  width: 480px;
   padding-bottom: 100%;
   height: 0;
   overflow: hidden;
@@ -2211,7 +2211,10 @@ textarea.mat-input-element {
 .xb-image-display__slide {
   width: calc(100vw - 32px);
   height: calc(100vw - 32px);
-  position: relative; }
+  position: relative;
+  overflow-y: hidden;
+  margin-left: auto;
+  margin-right: auto; }
   .xb-image-display__slide > span {
     position: absolute;
     font-size: 12px;

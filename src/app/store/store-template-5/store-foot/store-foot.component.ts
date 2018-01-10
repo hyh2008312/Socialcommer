@@ -11,6 +11,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class StoreFootComponent implements OnInit {
   @Input() storeName: string;
   @Input() text: string;
+  @Input() contactUsTag: string;
   public shareLink: string;
 
   constructor() {

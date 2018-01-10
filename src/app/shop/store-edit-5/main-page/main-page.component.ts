@@ -16,7 +16,7 @@ import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-di
 
 export class MainPageComponent implements OnInit {
   //测试数据
-  categoryProduct: any;
+  categoryProduct: any = [];
 
   shareLink: string;
   ratio: any;
@@ -30,23 +30,23 @@ export class MainPageComponent implements OnInit {
 
   //定义字段
   nameTag = 'STORE NAME';
-  titleTag = '<div >Click here to edit the title</div>';
-  desTag = '<div > For living in the moment and looking into fall.</div>';
-  aboutMeTitleTag = 'Welcome to my store!';
-  aboutMeDesTag = '<div> Here you let your customers get to know you. Tell them a little bit about ' +
-    'yourself and why you create this business. Show your customers that there are real people with ' +
-    'interesting stories working behind the scenes.</div>';
+  contactUsTag = '<p>Any questions? Let us know in store at 24/6h Street, or call us on 0800 xxx 637<p>'
+  desTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">' +
+    'We bring you the best style inspirations and outfit ideas!</strong></p>';
 
-  blogTitleTag = '<div >Click here to edit the blog title</div>';
-  blogDesTag = 'For living in the moment and looking into fall.';
+  aboutMeTitleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">' +
+    'Welcome to my store!</strong></p>';
+  aboutMeDesTag = '<div> Confucius once said that “everything has its beauty but not everyone sees it”.This definitely does not apply to our range of tops and shirts!<br>' +
+    '<br>Our range of eco-friendly,nature inspired clothes is the result of countless hours of work. Made of high quality bamboo viscose,we believe that style should be accessible to anyone.</div>';
+
+  blogDesTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">' +
+    'The latest fashion trends, styles and inspirations.</strong></p>';
 
   uploadAboutType = 'COLLECTOR_STORE_TEMPLATE';
   text = '';
   //第五套模版需要数据
-  //imageBanner: string = 'https://media.socialcommer.com/source/web/template/5/people-2583848.jpg';
   imageBanner: string = 'https://media.socialcommer.com/source/store/template/5da77c3f-0abe-40d2-b07d-a385d1fa5771.jpg';
   imageAboutCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2593366.jpg';
-  //imageBlogCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2599856.jpg';
   imageBlogCover: string = 'https://media.socialcommer.com/source/store/template/61424fc9-f460-4689-8cf6-64d6c193b663.jpg';
 
 
@@ -74,14 +74,13 @@ export class MainPageComponent implements OnInit {
 
   //标记是否可以进行编辑
   nameEdited: boolean = false;
-  titleEdited: boolean = false;
   desEdited: boolean = false;
 
 
   aboutMeTitleEdited: boolean = false;
   aboutMeDesEdited: boolean = false;
 
-  blogTitleEdited: boolean = false;
+  contactUsEdited: boolean = false;
   blogDesEdited: boolean = false;
 
   imageBannerEdited: boolean = false;
@@ -100,10 +99,6 @@ export class MainPageComponent implements OnInit {
     this.nameEdited = !this.nameEdited;
   }
 
-  editTitle() {
-    this.titleEdited = !this.titleEdited;
-  }
-
   editDes() {
     this.desEdited = !this.desEdited;
   }
@@ -116,8 +111,8 @@ export class MainPageComponent implements OnInit {
     this.aboutMeDesEdited = !this.aboutMeDesEdited;
   }
 
-  editBlogTitle() {
-    this.blogTitleEdited = !this.blogTitleEdited;
+  editContactUsTitle() {
+    this.contactUsEdited = !this.contactUsEdited;
   }
 
   editBlogDes() {
@@ -143,11 +138,10 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.storeTemplateForm = self.fb.group({
       nameTag: [self.nameTag],
-      titleTag: [self.titleTag],
+      contactUsTag: [self.contactUsTag],
       desTag: [self.desTag],
       aboutMeTitleTag: [self.aboutMeTitleTag],
       aboutMeDesTag: [self.aboutMeDesTag],
-      blogTitleTag: [self.blogTitleTag],
       blogDesTag: [self.blogDesTag],
 
 
@@ -261,11 +255,10 @@ export class MainPageComponent implements OnInit {
                 if (value.uid == 5) {
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
-                  self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
+                  self.contactUsTag = value.context.contactUsTag != '' ? value.context.contactUsTag : self.contactUsTag;
                   self.desTag = value.context.desTag != '' ? value.context.desTag : self.desTag;
                   self.aboutMeTitleTag = value.context.aboutMeTitleTag != '' ? value.context.aboutMeTitleTag : self.aboutMeTitleTag;
                   self.aboutMeDesTag = value.context.aboutMeDesTag != '' ? value.context.aboutMeDesTag : self.aboutMeDesTag;
-                  self.blogTitleTag = value.context.blogTitleTag != '' ? value.context.blogTitleTag : self.blogTitleTag;
                   self.blogDesTag = value.context.blogDesTag != '' ? value.context.blogDesTag : self.blogDesTag;
 
                   self.imageBanner = value.image.imageBanner;
@@ -382,11 +375,10 @@ export class MainPageComponent implements OnInit {
         storeId: this.store.id,
         context: {
           nameTag: this.nameTag,
-          titleTag: this.titleTag,
+          contactUsTag: this.contactUsTag,
           desTag: this.desTag,
           aboutMeTitleTag: this.aboutMeTitleTag,
           aboutMeDesTag: this.aboutMeDesTag,
-          blogTitleTag: this.blogTitleTag,
           blogDesTag: this.blogDesTag,
         },
         image: {
@@ -414,11 +406,10 @@ export class MainPageComponent implements OnInit {
         id: this.templateId,
         context: {
           nameTag: this.nameTag,
-          titleTag: this.titleTag,
+          contactUsTag: this.contactUsTag,
           desTag: this.desTag,
           aboutMeTitleTag: this.aboutMeTitleTag,
           aboutMeDesTag: this.aboutMeDesTag,
-          blogTitleTag: this.blogTitleTag,
           blogDesTag: this.blogDesTag,
         },
 

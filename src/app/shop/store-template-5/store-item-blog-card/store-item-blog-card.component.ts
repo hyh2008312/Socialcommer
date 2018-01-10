@@ -19,16 +19,8 @@ export class StoreItemBlogCardComponent implements OnInit {
   }
 
   jumpLink() {
-    let link = '';
-    if (this.status != 3) {
-      switch (this.status) {
-        case 0:
-          link = `/blog/${this.blog.id}`;
-          break;
-        case 1:
-          link = `/${this.blog.id}`;
-          break;
-      }
+    let link = `/blog/${this.blog.id}`;
+    if (this.status === 1) {
       this.router.navigate([this.router.url + link]);
     }
   }

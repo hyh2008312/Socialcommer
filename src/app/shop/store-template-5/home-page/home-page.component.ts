@@ -202,13 +202,13 @@ export class HomePageComponent implements OnInit {
   nextPage: boolean = true;
 
   blog: any = [{
-    id: 1,
+    id: 0,
     title: 'Top 5 Spiritual Retreats',
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/5/people-2584125.jpg',
     context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
   }, {
-    id: 2,
+    id: 1,
     title: 'Top 5 Spiritual Retreats',
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/5/people-2603521.jpg',

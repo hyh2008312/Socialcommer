@@ -12,6 +12,7 @@ import {UserService} from '../../../shared/services/user/user.service';
 export class MainPageComponent implements OnInit {
   storeName: string = '';
   text: string = '';
+  isShowMenu: boolean = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService,
@@ -35,6 +36,14 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnDestroy() {
+
+  }
+  changeShowMenu() {
+    this.isShowMenu = !this.isShowMenu;
+  }
+
+  closeShowMenu() {
+    this.isShowMenu = false;
 
   }
 

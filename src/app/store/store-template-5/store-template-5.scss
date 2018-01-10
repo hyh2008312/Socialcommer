@@ -152,6 +152,9 @@
 .xb-4-template-home {
   background-color: #f1f1f1;
   padding-bottom: 100px;
+  @include xb-xs-screen{
+    padding-bottom: 60px;
+  }
   &__background {
     height: 645px;
     position: relative;
@@ -189,7 +192,7 @@
   &__about-store {
     margin-top: 112px;
     @include xb-xs-screen {
-      margin-top: 16px;
+      margin-top: 40px;
     }
   }
   &__about-cover {
@@ -475,15 +478,20 @@
       background-color: white;
     }
     &-container {
-      text-align: center;
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 32%;
+      overflow: hidden;
       @include xb-xs-screen {
+        padding-bottom: 55%;
       }
       > img {
-        @include xb-xs-screen {
-          /*width: calc(100vw - 32px);
-          margin-left: 16px;
-          margin-right: 16px;*/
-        }
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
       }
     }
     &-content {

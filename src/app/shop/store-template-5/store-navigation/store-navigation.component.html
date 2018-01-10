@@ -1,4 +1,5 @@
-<div class="xb-4-template-navigation__container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px"
+<div class="xb-4-template-navigation__container" appViewScrollTop [ContainerSelector]="'xb-store__background'"
+     fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px"
      fxShow="true" fxShow.xs="false">
   <div class="xb-4-template-navigation__store-name">STORE NAME</div>
   <div class="xb-4-template-navigation xb-pointer" *ngFor="let value of contents"
@@ -10,10 +11,14 @@
     {{category.name | uppercase}}
   </div>
 </div>
-
-<!--<div class="xb-4-template-navigation__side-bg" fxShow="false" fxShow.xs="true">
+<div class="xb-4-template-navigation__side-bg" fxShow="false" fxShow.xs="true"
+     fxLayout="column" fxLayoutAlign="start center">
   <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let value of contents"
        routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
     {{value.text}}
   </div>
-</div>-->
+  <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let category of templateCategories"
+       [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
+    {{category.name | uppercase}}
+  </div>
+</div>

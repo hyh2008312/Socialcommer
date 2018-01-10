@@ -26,10 +26,7 @@ export class StoreBlogDetailComponent implements OnInit {
   bloglist: any = [];
   nextPage: boolean = true;
   id: number;
-
-  @ViewChild(ViewShareScrollDirective) shareDirective: ViewShareScrollDirective;
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
-
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
               private storeService: StoreService) {
@@ -40,7 +37,6 @@ export class StoreBlogDetailComponent implements OnInit {
       this.storeService.getBlogDetail(self.id).then((data) => {
         self.blog = data;
         self.text = data.title;
-        self.shareDirective.setPositionOfShare();
         self.storeService.addTitleDescription({
           title: data.title,
           description: data.description,

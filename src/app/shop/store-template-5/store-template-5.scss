@@ -3,6 +3,11 @@
 
 // main
 .xb-4-template {
+  &__nav-close {
+    position: absolute;
+    top: 11px;
+    font-size: 24px;
+  }
   &__mobile {
     position: relative;
   }
@@ -161,7 +166,7 @@
       font-size: 16px;
       @include regular();
       color: $whiteColor;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 8px;
         margin-left: 24px;
         margin-right: 24px;
@@ -259,6 +264,9 @@
       @include text-overflow();
       width: 100%;
       text-align: center;
+      @include xb-xs-screen {
+        width: 265px;
+      }
     }
     &-price {
       font-size: 16px;
@@ -281,7 +289,7 @@
 .xb-4-template-blog {
   padding-top: 64px;
   background-color: #f1f1f1;
-  @include xb-xs-screen{
+  @include xb-xs-screen {
     padding-top: 32px;
   }
   &__article {
@@ -350,7 +358,7 @@
       font-family: Didot, Helvetica;
       margin-top: 8px;
     }
-    &-more{
+    &-more {
       font-size: 14px;
       font-family: Helvetica;
       font-weight: bold;
@@ -361,49 +369,68 @@
   }
   // blog-->detail
   &__detail {
+    background-color: #f1f1f1;
+    padding-bottom: 40px;
     &-container {
-      text-align: center;
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 40%;
+      overflow: hidden;
       @include xb-xs-screen {
-        margin-top: 8px;
+        padding-bottom: 55%;
       }
       > img {
-        @include xb-xs-screen {
-          width: calc(100vw - 32px);
-          margin-left: 16px;
-          margin-right: 16px;
-        }
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
       }
     }
     &-content {
-
     }
     &-title {
-      margin-top: 32px;
+      padding-top: 64px;
       font-size: 34px;
       font-weight: bold;
       line-height: 48px;
       text-align: center;
+      font-family: Didot, Helvetica;
       @include xb-xs-screen {
         text-align: left;
         font-size: 24px;
-        line-height: 36px;
+        font-family: Didot, Helvetica;
+        font-weight: bold;
+        padding-top: 16px;
+        line-height: 32px;
         margin-left: 16px;
         margin-right: 16px;
       }
     }
     &-time {
-      margin-top: 12px;
+      margin-top: 24px;
       font-size: 14px;
       @include regular();
       text-align: center;
+      font-family: Helvetica;
+      margin-bottom: 40px;
       color: rgba(0, 0, 0, 0.54);
       @include xb-xs-screen {
         text-align: left;
+        margin-top: 12px;
         margin-left: 16px;
+        margin-bottom: 0;
       }
     }
     &-des {
       margin-top: 32px;
+      @include xb-xs-screen {
+        margin-top: 24px;
+        font-family: Helvetica;
+        font-size: 14px;
+        @include regular();
+      }
       line-height: 24px;
       margin-left: 16px;
       margin-right: 16px;
@@ -517,13 +544,16 @@
   }
 
   &__side-bg {
-    height: 100vh;
-    margin-left: 16px;
+    width: 100vw;
+    background-color: black;
   }
   &__side-flex {
-    font-size: 24px;
-    height: 56px;
-    line-height: 56px;
+    font-size: 14px;
+    height: 48px;
+    color: white;
+    line-height: 48px;
+    width: 100%;
+    text-align: center;
     &.active {
       font-weight: bold;
     }
@@ -557,6 +587,19 @@
       margin-right: auto;
     }
   }
+  &__product-scroll {
+    width: 100%;
+    position: relative;
+    overflow-x: scroll;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 16px;
+    &-no-bar {
+      ::-webkit-scrollbar {
+        height: 0;
+      }
+    }
+  }
 
 }
 
@@ -570,7 +613,7 @@
     padding-top: 64px;
     padding-bottom: 32px;
     background-color: #f1f1f1;
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       padding-top: 32px;
       padding-bottom: 20px;
     }
@@ -715,6 +758,10 @@
   padding-top: 64px;
   background-color: #f1f1f1;
   overflow-x: hidden;
+  @include xb-xs-screen {
+    padding-top: 0;
+    background-color: white;
+  }
   &__container {
   }
   &__content {
@@ -729,22 +776,27 @@
       overflow-y: visible;
       margin-top: 16px;
       margin-left: 16px;
+      padding-left: 0;
+      padding-right: 0;
       margin-right: 16px;
     }
   }
   &__title {
     font-size: 24px;
     font-weight: bold;
-    line-height: 32px;
+    line-height: 36px;
+    font-family: Didot, Helvetica;
   }
   &__price {
-    font-size: 16px;
+    font-size: 24px;
+    font-family: Didot, Helvetica;
     font-weight: bold;
   }
   &__original-price {
     font-size: 16px;
-    margin-left: 40px;
-    @include regular();
+    margin-left: 16px;
+    font-family: Didot, Helvetica;
+    font-weight: bold;
   }
   &__buy-buttons {
     display: block;
@@ -756,11 +808,6 @@
     color: $whiteColor;
     font-size: 14px;
     @include media();
-    @include xb-xs-screen {
-      width: calc(100vw - 32px);
-      margin-left: auto;
-      margin-right: auto;
-    }
   }
   &__line {
     margin-top: 24px;
@@ -769,7 +816,6 @@
   }
   &__store-owner {
     margin-top: 32px;
-    padding-bottom: 40px;
     &-title {
       font-weight: bold;
       font-size: 24px;
@@ -787,12 +833,19 @@
     }
   }
   &__recommend {
+    @include xb-xs-screen {
+      background-color: #f1f1f1;
+    }
     &-title {
       margin-top: 95px;
       font-size: 24px;
       font-weight: bold;
       text-align: center;
       font-family: Didot, Helvetica;
+      @include xb-xs-screen {
+        margin-top: 0;
+        padding-top: 40px;
+      }
     }
   }
   &__buttons_bg {

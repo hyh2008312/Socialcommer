@@ -28,7 +28,7 @@ export class StoreItemProductCardComponent implements OnInit {
         break;
       case 1:
         link = `/detail/${this.product.id}`;
-        baseLink = baseLink.split('/list')[0];
+        baseLink = baseLink.split('/category')[0];
         break;
     }
     this.router.navigate([baseLink + link]);

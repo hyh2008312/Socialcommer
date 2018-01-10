@@ -7,13 +7,16 @@
     <div fxFlex="15">
       <div class="xb-store__footer-title">Links</div>
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
-        <div class="xb-store__footer-icons md-margin-right-3">
-          <i class="iconfontXberts icon-ic-Instagram"></i>
+        <div class="xb-store__footer-icons xb-pointer gtag-shop-detail-share-button-google"
+             appSocialShare  [googlePlus]="{url: shareLink}">
+          <i class="iconfontXberts icon-google"></i>
         </div>
-        <div class="xb-store__footer-icons md-margin-right-3">
+        <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+             appSocialShare  [facebook]="{u: shareLink}">
           <i class="iconfontXberts icon-ic-facebook"></i>
         </div>
-        <div class="xb-store__footer-icons md-margin-right-3">
+        <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+             appSocialShare [twitter]="{url: shareLink, text: text, hashtags: '' }">
           <i class="iconfontXberts icon-ic-twitter"></i>
         </div>
       </div>

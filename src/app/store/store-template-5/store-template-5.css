@@ -2274,6 +2274,9 @@ textarea.mat-input-element {
 .xb-4-template-home {
   background-color: #f1f1f1;
   padding-bottom: 100px; }
+  @media screen and (max-width: 599px) {
+    .xb-4-template-home {
+      padding-bottom: 60px; } }
   .xb-4-template-home__background {
     height: 645px;
     position: relative; }
@@ -2309,7 +2312,7 @@ textarea.mat-input-element {
     margin-top: 112px; }
     @media screen and (max-width: 599px) {
       .xb-4-template-home__about-store {
-        margin-top: 16px; } }
+        margin-top: 40px; } }
   .xb-4-template-home__about-cover {
     position: relative;
     width: 393px;
@@ -2560,12 +2563,24 @@ textarea.mat-input-element {
       .xb-4-template-blog__detail {
         background-color: white; } }
     .xb-4-template-blog__detail-container {
-      text-align: center; }
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 32%;
+      overflow: hidden; }
       @media screen and (max-width: 599px) {
-        .xb-4-template-blog__detail-container > img {
-          /*width: calc(100vw - 32px);
-          margin-left: 16px;
-          margin-right: 16px;*/ } }
+        .xb-4-template-blog__detail-container {
+          padding-bottom: 55%; } }
+      .xb-4-template-blog__detail-container > img {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
     .xb-4-template-blog__detail-title {
       padding-top: 64px;
       font-family: Didot, Helvetica;

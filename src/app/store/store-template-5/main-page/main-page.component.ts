@@ -14,6 +14,8 @@ export class MainPageComponent implements OnInit {
 
   isShowMenu: boolean = false;
 
+  contactUsTag: string = '';
+
   constructor(private storeService: StoreService) {
   }
 
@@ -22,6 +24,7 @@ export class MainPageComponent implements OnInit {
     self.storeService.store.subscribe((data) => {
       if (data) {
         self.storeName = data.context ? data.context.nameTag : data.name;
+        self.contactUsTag = data.context ? data.context.contactUsTag : '';
         self.text = data.description;
         self.categories = data.category;
       }
