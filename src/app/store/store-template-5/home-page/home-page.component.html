@@ -1,15 +1,12 @@
 <div class="xb-4-template-home">
   <div class="xb-4-template-home__background" fxLayout="column" fxLayoutAlign="start center"
        [ngStyle]="{'background': 'url(' + (imageList.imageBanner)   + ') center / auto 100% ' }">
-    <div class="xb-4-template-home__title ql-editor"
-         [innerHTML]="contextList.titleTag | safeHtml">
-    </div>
     <div class="xb-4-template-home__des ql-editor"
          [innerHTML]="contextList.desTag | safeHtml">
     </div>
   </div>
   <div class="xb-4-template-home__about-store xb-4-template__w960" fxLayout="row"
-       fxLayoutAlign="start start">
+       fxLayoutAlign="start start" fxLayout.xs="column" fxShow="true" fxShow.xs="false">
     <div class="xb-4-template-home__about-cover"
          [ngStyle]="{'background': 'url(' + (imageList.imageAboutCover)   + ') center / auto 100% ' }">
       <div class="xb-4-template-home__about-title ql-editor"
@@ -28,13 +25,22 @@
         {{category.name | uppercase}}
       </div>
       <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
-           fxLayoutGap.xs="16px"
+           fxLayoutGap.xs="16px" fxShow="true" fxShow.xs="false"
            fxLayoutWrap>
         <app-shop-item-product-card-5 *ngFor="let item of category.relations"
-                                      fxFlex.xs="44" fxFlex.gt-xs="30"
+                                      fxFlex.xs="100" fxFlex.gt-xs="30"
                                       [product]="item" [status]="0"></app-shop-item-product-card-5>
-        <div fxFlex.xs="44" fxFlex.gt-xs="30"></div>
+        <div fxFlex.xs="100" fxFlex.gt-xs="30"></div>
       </div>
+      <div  class="xb-4-template-collection__product-scroll-no-bar" fxShow="false" fxShow.xs="true">
+        <div class="xb-4-template-collection__product-scroll" fxLayoutAlign="start start" fxLayout="row"
+             fxLayoutGap.xs="16px" >
+          <app-shop-item-product-card-5 *ngFor="let item of category.relations"
+                                        fxFlex.xs="80" [product]="item" [status]="0"></app-shop-item-product-card-5>
+        </div>
+      </div>
+
+
       <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
            (click)="jumpCategory(category.id)">
         SEE MORE
@@ -50,7 +56,7 @@
          [innerHTML]="contextList.blogDesTag | safeHtml">
     </div>
     <div class="xb-4-template-home__blog-see-more  xb-pointer" fxLayout="row" fxLayoutAlign="center center"
-    (click)="jumpBlogList()">
+         (click)="jumpBlogList()">
       VIEW ALL POSTS
     </div>
   </div>
@@ -61,8 +67,22 @@
                                fxFlex.xs="48" fxFlex.gt-xs="48"
                                [blog]="item" [status]="0"></app-shop-item-blog-card-5>
   </div>
-  <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+  <div class="xb-4-template-category__see-more xb-pointer md-margin-top-4" fxLayout="row" fxLayoutAlign="center center"
        (click)="jumpBlogList()">
     SEE MORE
+  </div>
+  <div class="xb-4-template-home__about-store xb-4-template__w960" fxLayout="row"
+       fxLayoutAlign="start start" fxLayout.xs="column" fxShow="false" fxShow.xs="true">
+    <div class="xb-4-template-home__about-cover"
+         [ngStyle]="{'background': 'url(' + (imageList.imageAboutCover)   + ') center / auto 100% ' }">
+      <div class="xb-4-template-home__about-title ql-editor"
+           [innerHTML]="contextList.aboutMeTitleTag | safeHtml">
+      </div>
+    </div>
+    <div class="xb-4-template-home__about-des" fxFlex>
+      <div class="xb-4-template-home__about-des-content  ql-editor"
+           [innerHTML]="contextList.aboutMeDesTag | safeHtml">
+      </div>
+    </div>
   </div>
 </div>

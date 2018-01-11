@@ -1,21 +1,21 @@
 /*
 Error: Invalid GBK character "\xE4"
-        on line 483 of store-template-5.scss
+        on line 563 of store-template-5.scss
 
-478:       position: relative;
-479:     }
-480:   }
-481: }
-482: 
-483: //blog与首页的想区分
-484: .xb-4-template-blog-two {
-485:   margin-top: 32px;
-486:   &__card {
-487:     display: block;
-488:     width: 720px;
+558:       position: relative;
+559:     }
+560:   }
+561: }
+562: 
+563: //blog与首页的想区分
+564: .xb-4-template-blog-two {
+565:   margin-top: 32px;
+566:   &__card {
+567:     display: block;
+568:     width: 720px;
 
 Backtrace:
-store-template-5.scss:483
+store-template-5.scss:563
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/util.rb:1300:in `rescue in block in find_encoding_error'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/util.rb:1297:in `block in find_encoding_error'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/util.rb:1296:in `each'
@@ -42,4 +42,4 @@ D:/Ruby/Ruby23-x64/bin/scss:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid GBK character \"\xE4\"\A         on line 483 of store-template-5.scss\A \A 478:       position: relative;\A 479:     }\A 480:   }\A 481: }\A 482: \A 483: //blog与首页的想区分\A 484: .xb-4-template-blog-two {\A 485:   margin-top: 32px;\A 486:   &__card {\A 487:     display: block;\A 488:     width: 720px;"; }
+  content: "Error: Invalid GBK character \"\xE4\"\A         on line 563 of store-template-5.scss\A \A 558:       position: relative;\A 559:     }\A 560:   }\A 561: }\A 562: \A 563: //blog与首页的想区分\A 564: .xb-4-template-blog-two {\A 565:   margin-top: 32px;\A 566:   &__card {\A 567:     display: block;\A 568:     width: 720px;"; }

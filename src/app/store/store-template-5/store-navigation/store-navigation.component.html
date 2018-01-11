@@ -1,19 +1,39 @@
-<div class="xb-4-template-navigation__container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px"
+<div class="xb-4-template-navigation__container" appViewScrollTop [ContainerSelector]="'xb-4-template__container'"fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px"
      fxShow="true" fxShow.xs="false">
   <div class="xb-4-template-navigation__store-name">{{storeName}}</div>
   <div class="xb-4-template-navigation xb-pointer" *ngFor="let value of contents"
        routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
     {{value.text}}
   </div>
-  <div class="xb-4-template-navigation xb-pointer" *ngFor="let category of categories"
+  <div class="xb-4-template-navigation xb-pointer" *ngFor="let category of showCategory"
        [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
     {{category.name | uppercase}}
   </div>
+  <div class="xb-4-template-navigation__more-bg" *ngIf="isShowMore">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-4-template-navigation__more"
+           (click)="changeShowMoreCategory()">MORE
+      </div>
+      <div class="xb-4-template-navigation__up-triangle" *ngIf="isShowMoreCategory"></div>
+      <div class="xb-4-template-navigation__down-triangle" *ngIf="!isShowMoreCategory"></div>
+    </div>
+    <div class="xb-4-template-navigation__more-category" *ngIf="isShowMoreCategory">
+      <div class="xb-4-template-navigation__more-flex xb-pointer" *ngFor="let category of moreCategory"
+           [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
+        {{category.name | uppercase}}
+      </div>
+    </div>
+  </div>
 </div>
 
-<!--<div class="xb-4-template-navigation__side-bg" fxShow="false" fxShow.xs="true">
+<div class="xb-4-template-navigation__side-bg" fxShow="false" fxShow.xs="true"
+     fxLayout="column" fxLayoutAlign="start center">
   <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let value of contents"
        routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
     {{value.text}}
   </div>
-</div>-->
+  <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let category of categories"
+       [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
+    {{category.name | uppercase}}
+  </div>
+</div>

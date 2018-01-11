@@ -3,6 +3,11 @@
 
 // main
 .xb-4-template {
+  &__nav-close {
+    position: absolute;
+    top: 11px;
+    font-size: 24px;
+  }
   &__mobile {
     position: relative;
   }
@@ -27,28 +32,15 @@
     margin-right: auto;
   }
   &__title {
-    padding-left: 40px;
-    padding-right: 40px;
-    margin-top: 40px;
-    height: 72px;
-    text-align: center;
-    line-height: 64px;
-    margin-left: auto;
-    color: #e1ab18;
-    margin-right: auto;
-    border: 4px solid #e1ab18;
-    font-size: 34px;
+    font-size: 16px;
     font-weight: bold;
-    @include xb-xs-screen {
-      border: 2px solid #e1ab18;
-      border-radius: 4px;
-      font-size: 16px;
-      padding-left: 16px;
-      padding-right: 16px;
-      height: 40px;
-      line-height: 36px;
-      margin-top: 8px;
-    }
+    color: black;
+    font-family: Didot, Helvetica;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 56px;
+    line-height: 56px;
+
   }
 
 }
@@ -78,21 +70,46 @@
   }
   &__des {
     font-family: Helvetica;
-    font-size: 24px;
+    font-size: 48px;
+    max-width: 1000px;
+    text-align: center;
     color: $whiteColor;
-    margin-top: 32px;
+    margin-top: 200px;
     @include regular();
+    @include xb-xs-screen {
+      margin-top: 120px;
+      font-family: Helvetica;
+      font-size: 24px;
+      @include regular();
+      color: $whiteColor;
+      line-height: 32px;
+      text-align: center;
+    }
   }
   &__about-store {
     margin-top: 112px;
+    @include xb-xs-screen {
+      margin-top: 16px;
+    }
   }
   &__about-cover {
     width: 393px;
     height: 393px;
+    @include xb-xs-screen {
+      width: calc(100vw - 32px);
+      height: calc(100vw - 32px);
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   &__about-des {
     background-color: $whiteColor;
     height: 393px;
+    @include xb-xs-screen {
+      width: calc(100vw - 32px);
+      margin-left: auto;
+      margin-right: auto;
+    }
     &-content {
       font-size: 16px;
       margin-top: 88px;
@@ -101,6 +118,9 @@
       font-family: Helvetica;
       @include regular();
       line-height: 28px;
+      @include xb-xs-screen {
+        margin: 32px 16px;
+      }
     }
   }
   &__about-title {
@@ -112,6 +132,14 @@
     margin-top: 126px;
     margin-left: 48px;
     margin-right: 48px;
+    @include xb-xs-screen {
+      font-size: 34px;
+      line-height: 48px;
+      margin-top: 96px;
+      margin-left: 24px;
+      margin-right: 24px;
+      text-align: center;
+    }
   }
   &__blog {
     &-background {
@@ -127,6 +155,10 @@
       font-weight: bold;
       margin-top: 180px;
       color: $whiteColor;
+      @include xb-xs-screen {
+        margin-top: 96px;
+        font-size: 34px;
+      }
     }
     &-des {
       margin-top: 12px;
@@ -134,6 +166,12 @@
       font-size: 16px;
       @include regular();
       color: $whiteColor;
+      @include xb-xs-screen {
+        margin-top: 8px;
+        margin-left: 24px;
+        margin-right: 24px;
+        text-align: center;
+      }
     }
     &-see-more {
       width: 160px;
@@ -226,6 +264,9 @@
       @include text-overflow();
       width: 100%;
       text-align: center;
+      @include xb-xs-screen {
+        width: 265px;
+      }
     }
     &-price {
       font-size: 16px;
@@ -248,6 +289,9 @@
 .xb-4-template-blog {
   padding-top: 64px;
   background-color: #f1f1f1;
+  @include xb-xs-screen {
+    padding-top: 32px;
+  }
   &__article {
     margin-top: 48px;
     @include xb-xs-screen {
@@ -264,6 +308,7 @@
     text-align: center;
     @include xb-xs-screen {
       text-align: center;
+      font-size: 34px;
     }
   }
   &__card {
@@ -313,52 +358,79 @@
       font-family: Didot, Helvetica;
       margin-top: 8px;
     }
+    &-more {
+      font-size: 14px;
+      font-family: Helvetica;
+      font-weight: bold;
+      color: black;
+      margin-top: 16px;
+      margin-bottom: 40px;
+    }
   }
   // blog-->detail
   &__detail {
+    background-color: #f1f1f1;
+    padding-bottom: 40px;
     &-container {
-      text-align: center;
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 40%;
+      overflow: hidden;
       @include xb-xs-screen {
-        margin-top: 8px;
+        padding-bottom: 55%;
       }
       > img {
-        @include xb-xs-screen {
-          width: calc(100vw - 32px);
-          margin-left: 16px;
-          margin-right: 16px;
-        }
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
       }
     }
     &-content {
-
     }
     &-title {
-      margin-top: 32px;
+      padding-top: 64px;
       font-size: 34px;
       font-weight: bold;
       line-height: 48px;
       text-align: center;
+      font-family: Didot, Helvetica;
       @include xb-xs-screen {
         text-align: left;
         font-size: 24px;
-        line-height: 36px;
+        font-family: Didot, Helvetica;
+        font-weight: bold;
+        padding-top: 16px;
+        line-height: 32px;
         margin-left: 16px;
         margin-right: 16px;
       }
     }
     &-time {
-      margin-top: 12px;
+      margin-top: 24px;
       font-size: 14px;
       @include regular();
       text-align: center;
+      font-family: Helvetica;
+      margin-bottom: 40px;
       color: rgba(0, 0, 0, 0.54);
       @include xb-xs-screen {
         text-align: left;
+        margin-top: 12px;
         margin-left: 16px;
+        margin-bottom: 0;
       }
     }
     &-des {
       margin-top: 32px;
+      @include xb-xs-screen {
+        margin-top: 24px;
+        font-family: Helvetica;
+        font-size: 14px;
+        @include regular();
+      }
       line-height: 24px;
       margin-left: 16px;
       margin-right: 16px;
@@ -440,7 +512,7 @@
       margin-top: 24px;
     }
     &-info {
-     margin-left: 24px;
+      margin-left: 24px;
     }
     &-publish {
       font-family: Didot, Helvetica;
@@ -452,7 +524,7 @@
     &-view {
       font-family: Helvetica;
       font-size: 14px;
-      @include regular() ;
+      @include regular();
       margin-top: 32px;
     }
   }
@@ -472,13 +544,16 @@
   }
 
   &__side-bg {
-    height: 100vh;
-    margin-left: 16px;
+    width: 100vw;
+    background-color: black;
   }
   &__side-flex {
-    font-size: 24px;
-    height: 56px;
-    line-height: 56px;
+    font-size: 14px;
+    height: 48px;
+    color: white;
+    line-height: 48px;
+    width: 100%;
+    text-align: center;
     &.active {
       font-weight: bold;
     }
@@ -512,22 +587,45 @@
       margin-right: auto;
     }
   }
+  &__product-scroll {
+    width: 100%;
+    position: relative;
+    overflow-x: scroll;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 16px;
+    &-no-bar {
+      ::-webkit-scrollbar {
+        height: 0;
+      }
+    }
+  }
 
 }
 
 //分类category
 .xb-4-template-category {
   margin-top: 72px;
+  @include xb-xs-screen {
+    margin-top: 40px;
+  }
   &__list {
     padding-top: 64px;
     padding-bottom: 32px;
     background-color: #f1f1f1;
+    @include xb-xs-screen {
+      padding-top: 32px;
+      padding-bottom: 20px;
+    }
   }
   &__title {
     font-family: Didot, Helvetica;
     font-size: 48px;
     font-weight: bold;
     text-align: center;
+    @include xb-xs-screen {
+      font-size: 28px;
+    }
   }
 
   &__see-more {
@@ -657,39 +755,52 @@
 
 //product --detail
 .xb-4-template-detail {
-  margin-top: 24px;
+  padding-top: 64px;
+  background-color: #f1f1f1;
   overflow-x: hidden;
+  @include xb-xs-screen {
+    padding-top: 0;
+    background-color: white;
+  }
   &__container {
   }
   &__content {
     overflow-y: scroll;
     height: 576px;
-    margin-left: 16px;
+    background-color: white;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-left: 40px;
     @include xb-xs-screen {
       height: 100%;
       overflow-y: visible;
       margin-top: 16px;
       margin-left: 16px;
+      padding-left: 0;
+      padding-right: 0;
       margin-right: 16px;
     }
   }
   &__title {
     font-size: 24px;
     font-weight: bold;
-    line-height: 32px;
+    line-height: 36px;
+    font-family: Didot, Helvetica;
   }
   &__price {
-    font-size: 16px;
+    font-size: 24px;
+    font-family: Didot, Helvetica;
     font-weight: bold;
   }
   &__original-price {
     font-size: 16px;
-    margin-left: 40px;
-    @include regular();
+    margin-left: 16px;
+    font-family: Didot, Helvetica;
+    font-weight: bold;
   }
   &__buy-buttons {
     display: block;
-    background-color: #e1ab18;
+    background-color: black;
     border-radius: 4px;
     height: 40px;
     width: 132px;
@@ -697,11 +808,6 @@
     color: $whiteColor;
     font-size: 14px;
     @include media();
-    @include xb-xs-screen {
-      width: calc(100vw - 32px);
-      margin-left: auto;
-      margin-right: auto;
-    }
   }
   &__line {
     margin-top: 24px;
@@ -712,7 +818,9 @@
     margin-top: 32px;
     &-title {
       font-weight: bold;
-      font-size: 16px;
+      font-size: 24px;
+      color: black;
+      font-family: Didot, Helvetica;
     }
     &-des {
       margin-top: 24px;
@@ -725,10 +833,19 @@
     }
   }
   &__recommend {
+    @include xb-xs-screen {
+      background-color: #f1f1f1;
+    }
     &-title {
-      margin-top: 80px;
+      margin-top: 95px;
       font-size: 24px;
       font-weight: bold;
+      text-align: center;
+      font-family: Didot, Helvetica;
+      @include xb-xs-screen {
+        margin-top: 0;
+        padding-top: 40px;
+      }
     }
   }
   &__buttons_bg {

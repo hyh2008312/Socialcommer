@@ -1,27 +1,29 @@
-<div class="xb-4-template-detail" appViewScrollTop [ContainerSelector]="'mat-sidenav-content'">
+<div class="xb-4-template-detail">
   <div class="xb-4-template-detail__container xb-4-template__w960">
     <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
       <div>
         <app-shop-detail-5-picture [images]="image" [selectedImage]="selectedImage"
-                                   [imageSources]="imageSources"></app-shop-detail-5-picture>
+                                   [imageSources]="image"></app-shop-detail-5-picture>
       </div>
       <div class="xb-4-template-detail__content" fxFlex.xs="false">
         <div class="xb-4-template-detail__title md-margin-top-1">{{product.title}}</div>
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center"
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center"
              fxLayout.xs="column" fxLayoutAlign.xs="start start">
-          <div fxLayout="row" fxLayoutAlign="start start">
-            <div class="xb-4-template-detail__price">{{product.salePriceAmount|currency: product.salePriceCurrency:
-              true }}
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-4-template-detail__price">{{product.salePriceAmount|currency:
+              product.salePriceCurrency:true}}
             </div>
             <div class="xb-4-template-detail__original-price line-through "
                  *ngIf="product.originalPriceAmount > 0">
               {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
             </div>
           </div>
-          <div class="xb-4-template-detail__buttons_bg">
+        </div>
+        <div class="md-margin-top-3 xb-4-template-detail__buttons_bg">
+          <a href="{{product.purchaseUrl}}" target="_blank"
+             (click)="openLink()">
             <button class="xb-4-template-detail__buy-buttons">GET IT NOW</button>
-          </div>
-
+          </a>
         </div>
         <div class="xb-4-template-detail__line" *ngIf="product.recommendation"></div>
         <div class="xb-4-template-detail__store-owner">
@@ -37,7 +39,7 @@
           <div class="xb-4-template-detail__store-owner-title">
             About the Product
           </div>
-          <div class="md-margin-top-2"
+          <div class="md-margin-top-2 xb-4-template-detail__store-owner-des"
                [innerHTML]="product.description | safeHtml">
           </div>
         </div>
@@ -50,14 +52,12 @@
     </div>
     <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start" fxLayout="row"
          fxLayoutWrap.xs>
-      <app-shop-item-product-card-5 *ngFor="let item of relatedProduct"
-                                    fxFlex.xs="48" fxFlex.gt-xs="22"
+      <app-shop-item-product-card-5 *ngFor="let item of recommedProducts"
+                                    fxFlex.xs="100" fxFlex.gt-xs="31"
                                     [product]="item" [status]="3"
-                                    (scrollToTop)="changeScrollToTop($event)"
-      >
+                                    (scrollToTop)="changeScrollToTop($event)">
       </app-shop-item-product-card-5>
-      <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
-      <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
+      <div fxFlex.xs="100" fxFlex.gt-xs="31"></div>
     </div>
   </div>
 </div>

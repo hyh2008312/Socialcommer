@@ -5,5 +5,5 @@
   <div class="xb-4-template-blog__card-date">{{blog.modified | amDateFormat:'MMMM Do, YYYY'}}</div>
   <div class="xb-4-template-blog__card-title">{{blog.title}}</div>
   <div class="xb-4-template-blog__card-context">{{blog.context}}</div>
-
+  <div class="xb-4-template-blog__card-more xb-pointer" (click)="jumpLink()" fxShow="false" fxShow.xs="true">Read More -></div>
 </div>

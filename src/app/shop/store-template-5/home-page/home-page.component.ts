@@ -18,18 +18,182 @@ export class HomePageComponent implements OnInit {
   };
   templateCategories =
     [
-      {id: 1, name: 't-shirt'},
-      {id: 2, name: 'shoes'},
-      {id: 3, name: 'skirt'}
+      {
+        id: 1, name: 'Daily Specials',
+        relations: [{
+          id: 1,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623089.jpg'
+        }, {
+          id: 2,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623090.jpg'
+        }, {
+          id: 3,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623086.jpg'
+        }]
+
+      },
+      {
+        id: 2, name: 'Dresses',
+        relations: [{
+          id: 4,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/dresses_03.jpg'
+        }, {
+          id: 5,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/dresses_02.jpg'
+        }, {
+          id: 6,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/dresses_01.jpg'
+        }]
+      },
+      {
+        id: 3, name: 'Skirts',
+        relations: [{
+          id: 7,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/skirts_01.jpg'
+        }, {
+          id: 8,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/skirts_02.jpg'
+        }, {
+          id: 9,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/skirts_03.jpg'
+        }]
+      },
+      {
+        id: 4, name: 'Jeans',
+        relations: [{
+          id: 10,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/jeans_03.jpg'
+        }, {
+          id: 11,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/jeans_02.jpg'
+        }, {
+          id: 12,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/jeans_01.jpg'
+        }]
+      },
+      {
+        id: 5, name: 'Shoes',
+        relations: [{
+          id: 13,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/shoes_03.jpg'
+        }, {
+          id: 14,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/shoes_02.jpg'
+        }, {
+          id: 15,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/shoes_01.jpg'
+        }]
+      },
+      {
+        id: 6, name: 'Handbags',
+        relations: [{
+          id: 16,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/handbags_03.jpg'
+        }, {
+          id: 17,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/handbags_02.jpg'
+        }, {
+          id: 18,
+          title: 'Product Name',
+          salePriceAmount: '12',
+          salePriceCurrency: 'USD',
+          originalPriceAmount: '16',
+          originalPriceCurrency: 'USD',
+          imageUrl: 'https://media.socialcommer.com/source/web/template/5/handbags_01.jpg'
+        }]
+      }
     ];
 
 
   public text = '';
 
-  //imageBanner: string = 'https://media.socialcommer.com/source/web/template/5/people-2583848.jpg';
   imageBanner: string = 'https://media.socialcommer.com/source/store/template/5da77c3f-0abe-40d2-b07d-a385d1fa5771.jpg';
   imageAboutCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2593366.jpg';
-  //imageBlogCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2599856.jpg';
   imageBlogCover: string = 'https://media.socialcommer.com/source/store/template/61424fc9-f460-4689-8cf6-64d6c193b663.jpg';
 
 
@@ -38,13 +202,13 @@ export class HomePageComponent implements OnInit {
   nextPage: boolean = true;
 
   blog: any = [{
-    id: 1,
+    id: 0,
     title: 'Top 5 Spiritual Retreats',
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/5/people-2584125.jpg',
     context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
   }, {
-    id: 2,
+    id: 1,
     title: 'Top 5 Spiritual Retreats',
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/5/people-2603521.jpg',
@@ -74,6 +238,15 @@ export class HomePageComponent implements OnInit {
         });
       }
     });*/
+  }
+
+  jumpCategory(categoryId: number): void {
+    this.router.navigate(['./category',categoryId], {relativeTo: this.activatedRoute},
+    );
+  }
+
+  jumpBlogList(): void {
+    this.router.navigate(['./blog'], {relativeTo: this.activatedRoute});
   }
 
 }

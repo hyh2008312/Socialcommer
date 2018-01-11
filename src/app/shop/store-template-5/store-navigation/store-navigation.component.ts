@@ -1,6 +1,6 @@
-import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 import {NavigationStart, Router} from '@angular/router';
-
+import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
 @Component({
   selector: 'app-shop-template-5-navigation',
   templateUrl: './store-navigation.component.html',
@@ -12,7 +12,16 @@ export class StoreNavigationComponent implements OnInit {
   @Input() type: number;
   @Input() categories: any;
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
-  templateCategories = [{id: 1, name: 't-shirt'}, {id: 2, name: 'shoes'}, {id: 3, name: 'skirt'}];
+  @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
+  templateCategories =
+    [
+      {id: 1, name: 'Daily Specials'},
+      {id: 2, name: 'Dresses'},
+      {id: 3, name: 'Skirts'},
+      {id: 4, name: 'Jeans'},
+      {id: 5, name: 'Shoes'},
+      {id: 6, name: 'Handbags'},
+    ];
   routerObservable: any;
   contents = [{
     text: 'HOME',
@@ -36,6 +45,8 @@ export class StoreNavigationComponent implements OnInit {
       .subscribe((event) => {
         if (event instanceof NavigationStart) { // 当导航成功结束时执行
           self.routerChange.emit(true);
+          if (this.scrollTopDirective)
+            this.scrollTopDirective.setScrollTop();
         }
       });
   }

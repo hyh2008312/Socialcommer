@@ -1,4 +1,4 @@
-<div class="xb-4-template-detail" appViewScrollTop [ContainerSelector]="'mat-sidenav-content'">
+<div class="xb-4-template-detail">
   <div class="xb-4-template-detail__container xb-4-template__w960">
     <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
       <div>
@@ -26,11 +26,11 @@
           </a>
         </div>
         <div class="xb-4-template-detail__line" *ngIf="product.recommendation"></div>
-        <div class="xb-4-template-detail__store-owner">
-          <div class="xb-4-template-detail__store-owner-title" *ngIf="product.recommendation">
+        <div class="xb-4-template-detail__store-owner" *ngIf="product.recommendation">
+          <div class="xb-4-template-detail__store-owner-title" >
             Store Owner Says
           </div>
-          <div class="xb-4-template-detail__store-owner-des" *ngIf="product.recommendation">
+          <div class="xb-4-template-detail__store-owner-des" >
             {{product.recommendation}}
           </div>
         </div>
@@ -53,12 +53,12 @@
     <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start" fxLayout="row"
          fxLayoutWrap.xs>
       <app-shop-item-product-card-5 *ngFor="let item of relatedProduct"
-                                    fxFlex.xs="44" fxFlex.gt-xs="31"
+                                    fxFlex.xs="100" fxFlex.gt-xs="31"
                                     [product]="item" [status]="2"
                                     (scrollToTop)="changeScrollToTop($event)"
       >
       </app-shop-item-product-card-5>
-      <div fxFlex.xs="44" fxFlex.gt-xs="31"></div>
+      <div fxFlex.xs="100" fxFlex.gt-xs="31"></div>
     </div>
   </div>
 </div>

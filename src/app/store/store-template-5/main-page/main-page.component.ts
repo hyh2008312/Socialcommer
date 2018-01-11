@@ -12,6 +12,10 @@ export class MainPageComponent implements OnInit {
   text: string = '';
   categories: any;
 
+  isShowMenu: boolean = false;
+
+  contactUsTag: string = '';
+
   constructor(private storeService: StoreService) {
   }
 
@@ -20,6 +24,7 @@ export class MainPageComponent implements OnInit {
     self.storeService.store.subscribe((data) => {
       if (data) {
         self.storeName = data.context ? data.context.nameTag : data.name;
+        self.contactUsTag = data.context ? data.context.contactUsTag : '';
         self.text = data.description;
         self.categories = data.category;
       }
@@ -27,5 +32,14 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnDestroy() {
+  }
+
+  changeShowMenu() {
+    this.isShowMenu = !this.isShowMenu;
+  }
+
+  closeShowMenu() {
+    this.isShowMenu = false;
+
   }
 }

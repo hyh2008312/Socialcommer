@@ -13,7 +13,27 @@
   background-color: $whiteColor;
   z-index: 500;
 
+  &__jump-button {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    > a {
+      width: 224px;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: $primaryColor;
+      color: $whiteColor;
+      @include media();
+
+      @include xb-xs-screen {
+        line-height: 36px;
+      }
+    }
+  }
+
   &-content {
+    background-color: #f1f1f1;
     min-height: calc(100vh - 408px);
   }
 
@@ -168,7 +188,7 @@
     margin-right: auto;
     position: relative;
     color: $whiteColor;
-    margin-top: 32px;
+    margin-top: 230px;
     @include regular();
   }
   &__about-store {
@@ -246,6 +266,16 @@
 // home ->products
 .xb-4-template-products {
   margin-top: 88px;
+
+  &__no-goods {
+    margin-top: 32px;
+    text-align: center;
+  }
+  &__collection-no-goods {
+    margin-top: 105px;
+    text-align: center;
+  }
+
   @include xb-xs-screen {
     margin-top: 24px;
   }
@@ -821,6 +851,34 @@
   &__buttons_bg {
     @include xb-xs-screen {
       margin-top: 16px;
+    }
+  }
+}
+
+.xb-store__footer {
+  padding: 64px 16px 0;
+
+  &-title {
+    font-size: 24px;
+    @include media();
+    font-family: Didot, Helvetica;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
+  &-content {
+  }
+
+  &-bottom-content {
+    font-size: 14px;
+    color: rgba(0, 0, 0, .54);
+    height: 54px;
+    margin-top: 72px;
+  }
+
+  &-icons {
+    i {
+      font-size: 24px;
     }
   }
 }

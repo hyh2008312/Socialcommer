@@ -15,7 +15,7 @@ export class StoreBlogComponent implements OnInit {
   blog: any = [{
     id: 0,
     title: 'Top 5 Spiritual Retreats',
-    authorFirstName:'LuZhenQiang',
+    authorFirstName:'Richard Davies',
     vcount: 23,
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/5/people-2584125.jpg',
@@ -23,7 +23,7 @@ export class StoreBlogComponent implements OnInit {
   }, {
     id: 1,
     title: 'Top 5 Spiritual Retreats',
-    authorFirstName:'LuZhenQiang',
+    authorFirstName:'Richard Davies',
     vcount: 23,
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/5/people-2603521.jpg',
@@ -31,7 +31,7 @@ export class StoreBlogComponent implements OnInit {
   }, {
     id: 2,
     title: 'Top 5 Spiritual Retreats',
-    authorFirstName:'LuZhenQiang',
+    authorFirstName:'Richard Davies',
     vcount: 23,
     modified: '2017-12-05T10:08:41.058593Z',
     cover: 'https://media.socialcommer.com/source/web/template/5/two-girls-1828539.jpg',

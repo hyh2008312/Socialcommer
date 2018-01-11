@@ -31,13 +31,6 @@
         <div class="xb-4-template-home">
           <div class="xb-4-template-home__background" fxLayout="column" fxLayoutAlign="start center"
                [ngStyle]="{'background': 'url(' + (imageBanner)   + ') center / auto 100% ' }">
-            <div class="xb-4-template-home__title xb-pointer xb-4-template__edit-border ql-editor"
-                 [innerHTML]="titleTag | safeHtml" [hidden]="titleEdited" (click)="editTitle()">
-            </div>
-            <div class="xb-4-template-home__title xb-4-template__edit-border" [hidden]="!titleEdited">
-              <quill-editor formControlName="titleTag" [(ngModel)]="titleTag" [options]="editorConfig"></quill-editor>
-            </div>
-
             <div class="xb-4-template-home__des xb-pointer xb-4-template__edit-border ql-editor"
                  [innerHTML]="desTag | safeHtml" [hidden]="desEdited" (click)="editDes()">
             </div>
@@ -47,7 +40,6 @@
             <div class="xb-4-template-edit__banner-button" (click)="editBannerImage()">
               CLICK TO CHANGE IMAGE
             </div>
-
           </div>
           <div class="xb-4-template-home__about-store xb-4-template__w960" fxLayout="row"
                fxLayoutAlign="start start">
@@ -93,6 +85,15 @@
               </div>
             </div>
           </ng-container>
+          <div class="xb-4-template-products__collection-no-goods" *ngIf="categoryProduct.length == 0">
+            <div>You haven't added any affiliate products yet.</div>
+            <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+            >
+              <a routerLink="/shop/listings/items" target="_blank">
+                Add Your First Product
+              </a>
+            </div>
+          </div>
           <div class="xb-4-template-home__blog-background" fxLayout="column" fxLayoutAlign="start center"
                [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / auto 100% ' }">
 
@@ -123,6 +124,15 @@
                                        fxFlex.xs="48" fxFlex.gt-xs="48"
                                        [blog]="item" [status]="1"></app-shop-item-blog-card-5>
           </div>
+          <div class="xb-4-template-products__collection-no-goods" *ngIf="homeBlog.length == 0">
+            <div>You haven't added any blog yet.</div>
+            <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+            >
+              <a routerLink="/shop/listings/items" target="_blank">
+                Add Your First Blog
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <!--blog-->
@@ -133,11 +143,19 @@
           </div>
           <div fxLayoutWrap class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row"
                fxLayoutAlign="space-between start"
-               fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
-          >
+               fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
             <app-shop-item-blog-card-two-5 *ngFor="let item of blog"
                                            fxFlex.xs="48" fxFlex.gt-xs="100"
                                            [blog]="item" [status]="1"></app-shop-item-blog-card-two-5>
+          </div>
+          <div class="xb-4-template-products__collection-no-goods" *ngIf="blog.length == 0">
+            <div>You haven't added any blog yet.</div>
+            <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+            >
+              <a routerLink="/shop/listings/items" target="_blank">
+                Add Your First Blog
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -145,7 +163,7 @@
       <div [hidden]="!isCategory" class="xb-4-template-content">
         <div class="xb-4-template-category__list ">
           <div class="xb-4-template-category__title">
-            {{category.name }}
+            {{category?.name }}
           </div>
           <div class="xb-4-template-collection__product xb-4-template__w960 " fxLayoutAlign="space-between start"
                fxLayout="row"
@@ -164,7 +182,51 @@
       </div>
       <!--footer-->
       <div class="xb-4-template__w960">
-        <app-shop-template-5-store-foot [storeName]="storeName" [text]="text"></app-shop-template-5-store-foot>
+        <div class="xb-store__footer">
+          <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="30">
+              <div class="xb-store__footer-title">Contact us</div>
+              <div class="xb-store__footer-content xb-pointer xb-4-template__edit-border ql-editor"
+                   [innerHTML]="contactUsTag | safeHtml" [hidden]="contactUsEdited" (click)="editContactUsTitle()">
+              </div>
+              <div class="xb-store__footer-content xb-4-template__edit-border" [hidden]="!contactUsEdited">
+                <quill-editor formControlName="contactUsTag" [(ngModel)]="contactUsTag" [options]="editorConfig"></quill-editor>
+              </div>
+            </div>
+            <div fxFlex="15">
+              <div class="xb-store__footer-title">Links</div>
+              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
+                <div class="xb-store__footer-icons xb-pointer gtag-shop-detail-share-button-google"
+                     appSocialShare  [googlePlus]="{url: link}">
+                  <i class="iconfontXberts icon-google"></i>
+                </div>
+                <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+                     appSocialShare  [facebook]="{u: link}">
+                  <i class="iconfontXberts icon-ic-facebook"></i>
+                </div>
+                <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+                     appSocialShare [twitter]="{url: link, text: text, hashtags: '' }">
+                  <i class="iconfontXberts icon-ic-twitter"></i>
+                </div>
+              </div>
+            </div>
+            <div fxFlex="25">
+              <div class="xb-store__footer-title">Newsletter</div>
+              <div fxLayout="column" fxLayoutAlign="start stretch">
+                <mat-form-field class="unicorn-dark-theme xb-store__width-100">
+                  <input class="unicorn-dark-theme" matInput placeholder="email@example.com" >
+                </mat-form-field>
+                <div class="md-margin-top-1 unicorn-dark-theme">
+                  <button mat-raised-button color="primary" >SUBSCRIBE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="xb-store__footer-bottom-content" fxLayout="row" fxLayoutAlign="start center">
+            © 2017 All rights reserved.<span class="md-margin-left-3">POWERED BY SocialCommer</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </form>
