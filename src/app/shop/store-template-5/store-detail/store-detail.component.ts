@@ -261,4 +261,8 @@ export class StoreDetailComponent implements OnInit {
     this.shareLink = window.location.href;
 
   }
+
+  openLink() {
+
+  }
 }
