@@ -34,13 +34,6 @@ export class ViewScrollTopDirective {
     }
   }
 
-  @HostListener('mouseover')
-  onMouseOver() {
-    let self = this;
-    this.ngZone.runOutsideAngular(() => {
-    });
-  }
-
   @HostListener('scroll')
   onScroll() {
     let self = this;
