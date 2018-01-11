@@ -28,7 +28,7 @@ export class HomePageComponent implements OnInit {
   product: any = [];
   blog: any = [];
   ownerId: any;
-  categoryProduct: any;
+  categoryProduct: any=[];
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,

@@ -588,11 +588,8 @@
     }
   }
   &__product-scroll {
-    width: 100%;
     position: relative;
     overflow-x: scroll;
-    padding-left: 16px;
-    padding-right: 16px;
     margin-top: 16px;
     &-no-bar {
       ::-webkit-scrollbar {

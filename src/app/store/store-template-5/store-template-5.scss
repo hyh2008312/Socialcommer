@@ -3,6 +3,12 @@
 
 // main
 .xb-4-template {
+  &__top-100{
+    margin-top: 100px;
+  }
+  &__center {
+    text-align: center;
+  }
   &__nav-close {
     position: absolute;
     top: 11px;
@@ -737,11 +743,8 @@
   }
 
   &__product-scroll {
-    width: 100%;
     position: relative;
     overflow-x: scroll;
-    padding-left: 16px;
-    padding-right: 16px;
     margin-top: 16px;
     &-no-bar {
       ::-webkit-scrollbar {
