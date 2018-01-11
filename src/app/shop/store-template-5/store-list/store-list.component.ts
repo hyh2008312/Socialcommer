@@ -12,7 +12,7 @@ export class StoreListComponent implements OnInit, OnDestroy {
   @Input() storeName: string;
   public shareLink: string;
   public text: string;
-  product: any =[
+  product: any = [
     {
       id: 1, name: 'Daily Specials',
       relations: [{
@@ -45,146 +45,146 @@ export class StoreListComponent implements OnInit, OnDestroy {
     {
       id: 2, name: 'Dresses',
       relations: [{
-        id: 1,
+        id: 4,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623083.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/dresses_03.jpg'
       }, {
-        id: 2,
+        id: 5,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623091.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/dresses_02.jpg'
       }, {
-        id: 3,
+        id: 6,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623087.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/dresses_01.jpg'
       }]
     },
     {
       id: 3, name: 'Skirts',
       relations: [{
-        id: 1,
+        id: 7,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623089.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/skirts_01.jpg'
       }, {
-        id: 2,
+        id: 8,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623090.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/skirts_02.jpg'
       }, {
-        id: 3,
+        id: 9,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623086.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/skirts_03.jpg'
       }]
     },
     {
       id: 4, name: 'Jeans',
       relations: [{
-        id: 1,
+        id: 10,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623089.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/jeans_03.jpg'
       }, {
-        id: 2,
+        id: 11,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623090.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/jeans_02.jpg'
       }, {
-        id: 3,
+        id: 12,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623086.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/jeans_01.jpg'
       }]
     },
     {
       id: 5, name: 'Shoes',
       relations: [{
-        id: 1,
+        id: 13,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623089.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/shoes_03.jpg'
       }, {
-        id: 2,
+        id: 14,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623090.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/shoes_02.jpg'
       }, {
-        id: 3,
+        id: 15,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623086.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/shoes_01.jpg'
       }]
     },
     {
       id: 6, name: 'Handbags',
       relations: [{
-        id: 1,
+        id: 16,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623089.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/handbags_03.jpg'
       }, {
-        id: 2,
+        id: 17,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623090.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/handbags_02.jpg'
       }, {
-        id: 3,
+        id: 18,
         title: 'Product Name',
         salePriceAmount: '12',
         salePriceCurrency: 'USD',
         originalPriceAmount: '16',
         originalPriceCurrency: 'USD',
-        imageUrl: 'https://media.socialcommer.com/source/web/template/5/fashion-1623086.jpg'
+        imageUrl: 'https://media.socialcommer.com/source/web/template/5/handbags_01.jpg'
       }]
     }
   ];
 
-  categoryProduct:any=[];
+  categoryProduct: any = [];
 
   id: number;
   categoryName: string;
@@ -197,7 +197,6 @@ export class StoreListComponent implements OnInit, OnDestroy {
       this.id = params['id'];
       this.categoryName = this.product[this.id - 1].name;
       this.categoryProduct = this.product[this.id - 1].relations;
-
     });
   }
 
