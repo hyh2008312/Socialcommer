@@ -192,9 +192,9 @@ export class HomePageComponent implements OnInit {
 
   public text = '';
 
-  imageBanner: string = 'https://media.socialcommer.com/source/store/template/5da77c3f-0abe-40d2-b07d-a385d1fa5771.jpg';
-  imageAboutCover: string = 'https://media.socialcommer.com/source/web/template/5/people-2593366.jpg';
-  imageBlogCover: string = 'https://media.socialcommer.com/source/store/template/61424fc9-f460-4689-8cf6-64d6c193b663.jpg';
+  imageBanner: string = 'https://media.socialcommer.com/source/web/template/5/banner_1.jpg';
+  imageAboutCover: string = 'https://media.socialcommer.com/source/web/template/5/about_2.jpg';
+  imageBlogCover: string = 'https://media.socialcommer.com/source/web/template/5/blog_3.jpg';
 
 
   store: Store = new Store();
