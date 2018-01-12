@@ -125,7 +125,7 @@ export class LoginService {
     let options = new RequestOptions({headers:headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store_create/`;
+    const url = `${this.baseUrl.url}store/create/`;
 
     return this.http.post(url, JSON.stringify(object), options)
       .toPromise()

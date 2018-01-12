@@ -2,11 +2,11 @@
 
   <div fxLayout="row" fxLayoutAlign="start stretch">
     <div class="xb-shop__products-left-bg">
-      <div class="xb-shop__products-title-1">By Affiliate Channel:</div>
-      <app-products-sort [(selectedSort)]="selectedSource" [sorts]="sources"
+      <div class="xb-shop__products-title-1" *ngIf="false">By Affiliate Channel:</div>
+      <app-products-sort [(selectedSort)]="selectedSource" [sorts]="sources" *ngIf="false"
          (selectedSortChange)="onSelectedChange($event)"></app-products-sort>
 
-      <div class="xb-shop__products-title-1 md-margin-top-3" *ngIf="categories.length>0">By Product Category:</div>
+      <div class="xb-shop__products-title-1" *ngIf="categories.length>0">By Product Category:</div>
       <div fxLayout="column">
         <mat-checkbox class="md-margin-top-1" *ngFor="let category of categories;"
                       (change)="onCheckedChange(category,1)" [(ngModel)]="category.checked">
@@ -39,7 +39,7 @@
             <form class="xb-shop__products-search" [formGroup]="searchForm"
                   fxLayout="row" fxLayoutAlign="start center" >
               <i class="material-icons">search</i>
-              <input type="text" formControlName="searchKey" [(ngModel)]="searchKey" (keyup.enter)="getProductList(isSearch)"/>
+              <input type="text" formControlName="searchKey" [(ngModel)]="searchKey" (keyup.enter)="getSupplyProductList(isSearch)"/>
               <div class="xb-shop__products-search-close" fxLayout="row" fxLayoutAlign="center center"
                    *ngIf="searchKey != ''" (click)="clearSearchKey()">
                 <i class="material-icons">close</i>

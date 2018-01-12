@@ -2181,6 +2181,9 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
  * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
@@ -2337,9 +2340,11 @@ textarea.mat-input-element {
   color: #fff;
   position: relative;
   padding: 0 32px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-top: 24px; }
   @media screen and (max-width: 599px) {
     .xb-store-template__template-description {
+      margin-top: 16px;
       padding: 0 16px; } }
 .xb-store-template__template-user {
   width: 100%;

@@ -66,9 +66,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
       categoryName: ['', [
         Validators.required
       ]],
-      purchaseUrl: ['', [
-        Validators.required
-      ]],
       recommendation: [''],
       description: ['', Validators.required]
     });
@@ -79,35 +76,24 @@ export class FindProductsEditPreviewComponent implements OnInit {
   ngOnInit():void {
     let id = this.activatedRoute.snapshot.params['id'];
     let self = this;
-    self.shopService.getRecommendProduct({id}).then((data) => {
+    self.shopService.getSupplyProductDetail({id}).then((data) => {
 
       self.productForm.setValue({
         title: data.title,
         tags: '',
-        categoryName: data.category,
-        purchaseUrl: '',
+        categoryName: data.categories[0].name,
         recommendation: '',
         description: data.description
       });
 
-      let feature = '';
-      if(data.features) {
-        for(let value of data.features) {
-          feature += `<p>${value}</p><br>`;
-        }
-        self.editorContent = `<div>${feature}</div>`;
-      }
+      self.editorContent = data.description;
 
       self.product.title = data.title;
-      self.product.categoryName = data.category;
-      self.product.salePriceAmount = data.salePrice.amount;
-      self.product.originalPriceAmount = data.originalPrice.amount;
-      self.product.salePriceCurrency = data.salePrice.currency;
-      self.product.originalPriceCurrency = data.originalPrice.currency;
+      self.product.categoryName = data.categories[0].name;
+      self.product.salePriceAmount = self.getLowestPrice(data.variants).saleUnitPrice;
+      self.product.originalPriceAmount = self.getLowestPrice(data.variants).unitPrice;
 
-      self.product.source = data.source;
-
-      self.previewImg.push(data.cover);
+      self.previewImg.push(data.mainImage);
 
       self.productCopy = data;
     });
@@ -238,7 +224,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
   showDescriptionEditor: boolean = false;
 
   showTitle() {
-    this.showTitleInput = !this.showTitleInput;
+    //this.showTitleInput = !this.showTitleInput;
   }
 
   resetTitle() {
@@ -258,7 +244,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
   }
 
   showDescription() {
-    this.showDescriptionEditor = !this.showDescriptionEditor;
+    //this.showDescriptionEditor = !this.showDescriptionEditor;
   }
 
   resetDescription() {
@@ -307,14 +293,41 @@ export class FindProductsEditPreviewComponent implements OnInit {
     })
   }
 
+  getLowestPrice(variants): any {
+    let price: any = {
+      saleUnitPrice : variants[0],
+      unitPrice : variants[0]
+    };
+
+    let unitPriceArray = [];
+
+    for(let i=0;i<variants.length;i++){
+      if(variants[i].saleUnitPrice <=  price.saleUnitPrice){
+        price.saleUnitPrice = variants[i].saleUnitPrice;
+      }
+    }
+
+    for(let value of variants) {
+      if(value.saleUnitPrice == price.saleUnitPrice) {
+        unitPriceArray.push(value.unitPrice);
+      }
+    }
+
+    for(let value of unitPriceArray) {
+      if(value <=  price.unitPrice){
+        price.unitPrice = value;
+      }
+    }
+
+    return price;
+  }
+
   create() {
     if(!this.productForm.valid) {
       return;
     }
 
     let productForm = this.productForm.value;
-    let images = [];
-    images.push(this.productCopy.cover);
 
     if(productForm.categoryName.trim() == '') {
       return;
@@ -322,31 +335,12 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
     let storeProduct = {
       productId: this.productCopy.id,
-      purchaseUrl : productForm.purchaseUrl,
-      storeId : this.storeId,
-      isCustomer : true,
       recommendation : productForm.recommendation,
-      isDraft : false,
-      status : 'on',
-      isUser : true,
-      description : this.editorContent,
-      title : productForm.title,
-      cover : [...images],
-      categoryName : productForm.categoryName,
-      product: {
-        originalPrice : {
-          amount: this.product.originalPriceAmount,
-          currency: this.product.originalPriceCurrency
-        },
-        salePrice : {
-          amount: this.product.salePriceAmount,
-          currency: this.product.salePriceCurrency
-        }
-      }
+      categoryName : productForm.categoryName
     };
 
     let self = this;
-    this.shopService.createProduct(storeProduct).then((data) => {
+    this.shopService.createSupplyProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'published'}, replaceUrl: true});
     });
   }
@@ -354,50 +348,20 @@ export class FindProductsEditPreviewComponent implements OnInit {
   createDraft() {
     let productForm = this.productForm.value;
 
-    let images = [];
-    images.push(this.productCopy.cover);
-
     let storeProduct = {
       productId: this.productCopy.id,
-      purchaseUrl : productForm.purchaseUrl,
-      storeId : this.storeId,
-      isCustomer : true,
       recommendation : productForm.recommendation,
-      isDraft : true,
-      status : 'off',
-      isUser : true,
-      description : this.editorContent,
-      title : productForm.title,
-      cover : [...images],
       categoryName : productForm.categoryName,
-      product: {
-        originalPrice : {
-          amount: this.product.originalPriceAmount,
-          currency: this.product.originalPriceCurrency
-        },
-        salePrice : {
-          amount: this.product.salePriceAmount,
-          currency: this.product.salePriceCurrency
-        }
-      }
     };
 
     let self = this;
-    this.shopService.createProduct(storeProduct).then((data) => {
+    this.shopService.createSupplyProduct(storeProduct).then((data) => {
       self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'draft'}, replaceUrl: true});
     });
   }
 
   openDialog() {
-    let dialogRef = this.dialog.open(ProductAffiliateLinkDialogComponent, {
-      data: {
-        source: this.product.source
-      }
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-
-    });
   }
 
 }

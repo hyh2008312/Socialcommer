@@ -60,7 +60,7 @@ export class FindProductsComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.getProductList();
+    this.getSupplyProductList();
 
     let self = this;
     self.userService.pubCategory.subscribe((data) => {
@@ -83,7 +83,7 @@ export class FindProductsComponent implements OnInit {
   changePage(event, type) {
     this.pageSize = event.pageSize;
     this.productIndex = event.pageIndex + 1;
-    this.getProductList();
+    this.getSupplyProductList();
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -108,8 +108,8 @@ export class FindProductsComponent implements OnInit {
     }
 
     this.selectedChips.push({name : event, type: 0});
-    this.getCategoryList();
-    this.getProductList();
+    //this.getCategoryList();
+    this.getSupplyProductList();
   }
 
   onCheckedChange(event, type:number) {
@@ -124,7 +124,7 @@ export class FindProductsComponent implements OnInit {
     if(event.checked) {
       this.selectedChips.push({type: type, ...event});
     }
-    this.getProductList();
+    this.getSupplyProductList();
 
   }
 
@@ -151,7 +151,7 @@ export class FindProductsComponent implements OnInit {
         this.categories[_index].checked = false;
         break;
     }
-    this.getProductList();
+    this.getSupplyProductList();
   }
 
   getProductList(isSearch?: any) {
@@ -170,6 +170,29 @@ export class FindProductsComponent implements OnInit {
     self.shopService.getRecommendProductList({
       cats,
       source,
+      page: this.productIndex,
+      page_size: this.pageSize,
+      q: this.searchKey
+    }).then((data) => {
+
+      if(isSearch == false) {
+        self.isSearch = true;
+      }
+      self.length = data.count;
+
+      self.productList = data.results;
+    })
+  }
+
+  getSupplyProductList(isSearch?: any) {
+    let cats = [];
+    for(let value of this.selectedChips) {
+      cats.push(value.id);
+    }
+
+    let self = this;
+    self.shopService.getSupplyProductList({
+      cats,
       page: this.productIndex,
       page_size: this.pageSize,
       q: this.searchKey

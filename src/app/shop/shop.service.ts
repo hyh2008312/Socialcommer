@@ -6,14 +6,18 @@ import {Subject, BehaviorSubject} from 'rxjs';
 
 import {StoreProduct, Email, Store} from './shop';
 
-import {BaseApi} from '../config/app.api';
+import {BaseApi, SupportApi} from '../config/app.api';
 import {AuthenticationService} from '../shared/services/authentication/authentication.service';
 
 @Injectable()
 export class ShopService {
 
-  constructor(private http: Http, private baseUrl: BaseApi, private auth: AuthenticationService) {
-  }
+  constructor(
+    private http: Http,
+    private baseUrl: BaseApi,
+    private auth: AuthenticationService,
+    private supportApi: SupportApi
+  ) {}
 
   createAuthorizationHeader(headers: Headers) {
 
@@ -702,6 +706,72 @@ export class ShopService {
     return this.http.delete(url, options)
       .toPromise()
       .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+
+  getSupplyCategory(): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.supportApi.url}product/category/list/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getSupplyProductList(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.supportApi.url}product/store/list/?${this.serializeParams(product)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getSupplyProductDetail(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.supportApi.url}product/detail/${product.id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  createSupplyProduct(product: any): Promise<StoreProduct> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.supportApi.url}store/goods/create/`;
+
+    return this.http.post(url, product, options)
+      .toPromise()
+      .then(response => response.json() as StoreProduct)
       .catch(this.handleError);
   }
 

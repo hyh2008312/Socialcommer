@@ -13,19 +13,18 @@
           [imageSources]="imageSources" *ngIf="imageSources.length > 0"></app-left-products-image>
       </div>
       <div class="xb-store__details-content" fxFlex>
-        <div>{{product.category}}</div>
+        <div>{{category}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price">{{salePrice.amount|currency: salePrice.currency: true}}</div>
-          <div class="line-through md-margin-left-2" *ngIf="originalPrice.amount > 0">{{originalPrice.amount|currency: originalPrice.currency: true }}</div>
-          <div class="xb-store__details-sale md-margin-left-2" *ngIf="originalPrice.amount > 0">
-            {{salePrice.amount|saleDiscount:originalPrice.amount}} OFF
+          <div class="xb-store__details-price">{{salePrice |currency: currency: true}}</div>
+          <div class="line-through md-margin-left-2" *ngIf="originalPrice > 0">
+            {{originalPrice|currency: currency: true }}</div>
+          <div class="xb-store__details-sale md-margin-left-2" *ngIf="originalPrice > 0">
+            {{salePrice|saleDiscount:originalPrice}} OFF
           </div>
         </div>
         <div class="xb-store__details-buttons" fxLayout="column">
           <button mat-raised-button color="primary" (click)="addEdit()">Add To Store</button>
-          <a class="text-underline xb-pointer md-dark-primary md-margin-top-1"
-             href="{{product.purchaseUrl}}" target="_blank">Click to see its original detail page</a>
         </div>
       </div>
     </div>

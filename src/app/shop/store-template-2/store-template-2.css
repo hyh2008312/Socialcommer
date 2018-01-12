@@ -2182,6 +2182,9 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 .xb-store-template__left {
   text-align: center;
   max-width: 1200px;
@@ -2836,7 +2839,8 @@ textarea.mat-input-element {
       color: rgba(0, 0, 0, 0.87);
       font-weight: 600; }
     .xb-store-template__detail-product-des {
-      margin-top: 12px; }
+      margin-top: 12px;
+      margin-bottom: 24px; }
 .xb-store-template__side_container {
   width: calc(100vw - 64px);
   padding-top: 20px;

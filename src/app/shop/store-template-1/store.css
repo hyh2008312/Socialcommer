@@ -2181,6 +2181,9 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 .padding {
   padding: 5px 10px; }
 
@@ -4362,6 +4365,9 @@ textarea.mat-input-element {
     min-width: 100vw; } }
 
 .mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
+.mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
 .xb-social-share {

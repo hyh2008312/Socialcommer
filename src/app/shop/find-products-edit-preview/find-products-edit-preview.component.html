@@ -8,13 +8,13 @@
     </div>
     <div class="xb-shop__mobile-dialog-inner">
       <form [formGroup]="productForm" novalidate>
-        <div class="xb-shop__edit-title">Product Picture</div>
-        <div class="xb-shop__margin-bottom-2">
+        <div class="xb-shop__edit-title" *ngIf="false">Product Picture</div>
+        <div class="xb-shop__margin-bottom-2" *ngIf="false">
           <app-image-preview-multi [previewImg]="previewImg"></app-image-preview-multi>
           <div class="md-margin-top-1">* The first picture will be defaulted as cover image.</div>
         </div>
-        <div class="xb-shop__edit-title">Product Title</div>
-        <div [hidden]="!showTitleInput" >
+        <div class="xb-shop__edit-title" *ngIf="false">Product Title</div>
+        <div [hidden]="!showTitleInput" *ngIf="false">
           <mat-form-field class="xb-shop__width-100">
             <input matInput formControlName="title" [(ngModel)]="product.title">
           </mat-form-field>
@@ -28,19 +28,19 @@
             </div>
           </div>
         </div>
-        <div class="xb-shop__margin-bottom-2 xb-pointer" [hidden]="showTitleInput" (click)="showTitle()">
+        <div class="xb-shop__margin-bottom-2" [hidden]="showTitleInput">
           {{product.title}}
         </div>
-        <div class="xb-shop__edit-title">Price</div>
-        <div class="xb-shop__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-shop__edit-title" *ngIf="false">Price</div>
+        <div class="xb-shop__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center" *ngIf="false">
           <div class="xb-store__details-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true}}</div>
           <div class="line-through md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
             {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
           <div class="xb-store__details-sale md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
             {{product.salePriceAmount | saleDiscount:product.originalPriceAmount}} OFF</div>
         </div>
-        <div class="xb-shop__edit-title">Description</div>
-        <div class="md-margin-top-2" [hidden]="!showDescriptionEditor">
+        <div class="xb-shop__edit-title" *ngIf="false">Description</div>
+        <div class="md-margin-top-2" [hidden]="!showDescriptionEditor" *ngIf="false">
           <quill-editor [(ngModel)]="editorContent" formControlName="description"
                         (ready)="onEditorCreated($event)"></quill-editor>
           <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
@@ -52,11 +52,11 @@
           </div>
         </div>
         <div class="ql-editor ql-container xb-shop__margin-bottom-2 xb-pointer" [hidden]="showDescriptionEditor"
-              (click)="showDescription()">
+              (click)="showDescription()" *ngIf="false">
           <div [innerHTML]="editorContent | safeHtml"></div>
         </div>
         <div class="xb-shop__edit-title md-margin-top-3">Category <span class="xb-input-error xb-large-star">*</span></div>
-        <div [hidden]="!showCategoryInput" >
+        <div>
           <div fxLayout="row" fxLayoutAlgin="start center" fxLayout.xs="column" fxLayoutAlgin.xs="start stretch">
             <div fxLayout="row" fxLayoutAlgin="start center">
               <mat-form-field>
@@ -67,7 +67,7 @@
                 </mat-select>
               </mat-form-field>
               <div class="md-margin-left-2">
-                <button mat-raised-button color="primary" (click)="showCreate()" *ngIf="!isCreateCategory">Add a New Category</button>
+                <button mat-raised-button color="primary" (click)="showCreate()" >Add a New Category</button>
               </div>
             </div>
             <div fxLayout="row" fxLayoutAlgin="start center">
@@ -89,17 +89,9 @@
             </div>
           </div>
         </div>
-        <div class="xb-shop__margin-bottom-2 xb-pointer" [hidden]="showCategoryInput" (click)="showCategory()">
+        <div class="xb-shop__margin-bottom-2 xb-pointer" [hidden]="showCategoryInput" (click)="showCategory()" *ngIf="false">
           {{product.categoryName}}
         </div>
-        <div class="xb-shop__edit-title md-margin-top-2">Add your affiliate link <span class="xb-input-error xb-large-star">*</span></div>
-        <mat-form-field class="xb-shop__width-100" >
-          <input matInput formControlName="purchaseUrl">
-        </mat-form-field>
-        <div *ngIf="formErrors['purchaseUrl']" class="xb-input-error">
-          {{ formErrors['purchaseUrl'] }}
-        </div>
-        <div class="text-underline xb-pointer" (click)="openDialog()">How to get your affiliate link?</div>
         <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product (optional)</div>
         <mat-form-field class="xb-shop__width-100">
         <textarea matInput value="Your opinion is very important to your audiences"

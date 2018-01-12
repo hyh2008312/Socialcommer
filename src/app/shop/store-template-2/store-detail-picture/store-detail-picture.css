@@ -2181,6 +2181,9 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) + .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.mat-chip:not(.mat-basic-chip) {
+  margin: 0 8px 3px 0; }
+
 .xb-image-display__left {
   width: 90px;
   margin-top: 16px;

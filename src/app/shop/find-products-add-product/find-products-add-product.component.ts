@@ -11,9 +11,11 @@ import { RecommendProduct, Image, OriginalPrice, SalePrice} from '../shop';
 
 export class FindProductsAddProductComponent implements OnInit {
 
-  product: RecommendProduct = new RecommendProduct();
-  originalPrice: OriginalPrice = new OriginalPrice();
-  salePrice: SalePrice = new SalePrice();
+  product: any;
+  category: any;
+  originalPrice: any;
+  salePrice: any;
+  currency: string = 'USD';
   image: any = [];
   selectedImage: any = '';
   imageSources: string[] = [];
@@ -32,21 +34,16 @@ export class FindProductsAddProductComponent implements OnInit {
     let id = this.activatedRoute.snapshot.params['id'];
 
     let self = this;
-    self.shopService.getRecommendProduct({id}).then((data) => {
+    self.shopService.getSupplyProductDetail({id}).then((data) => {
       self.product = data;
-      self.originalPrice = data.originalPrice;
-      self.salePrice = data.salePrice;
-      self.image.push(data.cover);
-      self.selectedImage = data.cover;
-      self.imageSources.push(data.cover);
+      self.category = data.categories[0].name;
+      self.originalPrice = self.getLowestPrice(data.variants).unitPrice;
+      self.salePrice =  self.getLowestPrice(data.variants).saleUnitPrice;
+      self.image.push(data.mainImage);
+      self.selectedImage = data.mainImage;
+      self.imageSources.push(data.mainImage);
 
-      let feature = '';
-      if(data.features) {
-        for(let value of data.features) {
-          feature += `<p>${value}</p><br>`;
-        }
-        self.description = `<div>${feature}</div>`;
-      }
+      self.description = data.description;
     });
   }
 
@@ -57,6 +54,35 @@ export class FindProductsAddProductComponent implements OnInit {
   addEdit(): void {
     let id = this.activatedRoute.snapshot.params['id'];
     this.router.navigate([`/shop/listings/items/${id}/preview`]);
+  }
+
+  getLowestPrice(variants): any {
+    let price: any = {
+      saleUnitPrice : variants[0],
+      unitPrice : variants[0]
+    };
+
+    let unitPriceArray = [];
+
+    for(let i=0;i<variants.length;i++){
+      if(variants[i].saleUnitPrice <=  price.saleUnitPrice){
+        price.saleUnitPrice = variants[i].saleUnitPrice;
+      }
+    }
+
+    for(let value of variants) {
+      if(value.saleUnitPrice == price.saleUnitPrice) {
+        unitPriceArray.push(value.unitPrice);
+      }
+    }
+
+    for(let value of unitPriceArray) {
+      if(value <=  price.unitPrice){
+        price.unitPrice = value;
+      }
+    }
+
+    return price;
   }
 
 }
