@@ -67,7 +67,7 @@
                 </mat-select>
               </mat-form-field>
               <div class="md-margin-left-2">
-                <button mat-raised-button color="primary" (click)="showCreate()" >Add a New Category</button>
+                <button mat-raised-button color="primary" (click)="showCreate()" *ngIf="!isCreateCategory">Add a New Category</button>
               </div>
             </div>
             <div fxLayout="row" fxLayoutAlgin="start center">

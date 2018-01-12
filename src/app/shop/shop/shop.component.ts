@@ -32,22 +32,22 @@ export class ShopComponent implements OnInit {
 
           let templateId = data.store[0].templateId;
 
-          self.shopService.getMultiTemplate({
-            storeId: data.store[0].id
-          }).then((data) => {
-            self.shopService.setTemplateList(data);
-
-            let index = data.find((item) => {
-              if(templateId == item.id) {
-                self.shopService.setTemplateUId(item.uid);
-                return true;
-              }
-            });
-
-            if(index < 0) {
-              self.shopService.setTemplateUId(1);
-            }
-          })
+          //self.shopService.getMultiTemplate({
+          //  storeId: data.store[0].id
+          //}).then((data) => {
+          //  self.shopService.setTemplateList(data);
+          //
+          //  let index = data.find((item) => {
+          //    if(templateId == item.id) {
+          //      self.shopService.setTemplateUId(item.uid);
+          //      return true;
+          //    }
+          //  });
+          //
+          //  if(index < 0) {
+          //    self.shopService.setTemplateUId(1);
+          //  }
+          //});
         }
       }
     });

@@ -82,7 +82,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}category/`;
+    const url = `${this.baseUrl.url}store/category/list/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -99,7 +99,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}category/`;
+    const url = `${this.baseUrl.url}store/category/create/`;
 
     return this.http.post(url, category, options)
       .toPromise()
