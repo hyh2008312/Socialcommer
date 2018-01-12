@@ -718,7 +718,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.supportApi.url}product/category/list/`;
+    const url = `${this.baseUrl.url}product/category/list/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -734,7 +734,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.supportApi.url}product/store/list/?${this.serializeParams(product)}`;
+    const url = `${this.baseUrl.url}product/store/list/?${this.serializeParams(product)}`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -750,7 +750,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.supportApi.url}product/detail/${product.id}/`;
+    const url = `${this.baseUrl.url}product/detail/${product.id}/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -767,7 +767,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.supportApi.url}store/goods/create/`;
+    const url = `${this.baseUrl.url}store/goods/create/`;
 
     return this.http.post(url, product, options)
       .toPromise()
