@@ -116,7 +116,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/?${this.serializeParams(product)}`;
+    const url = `${this.baseUrl.url}store/goods/list/?${this.serializeParams(product)}`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -150,7 +150,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/${id}/`;
+    const url = `${this.baseUrl.url}store/goods/detail/${id}/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -201,7 +201,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/${product.id}/`;
+    const url = `${this.baseUrl.url}store/goods/detail/${product.id}/`;
 
     return this.http.delete(url, options)
       .toPromise()
@@ -218,7 +218,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/${product.id}/`;
+    const url = `${this.baseUrl.url}store/goods/detail/${product.id}/`;
 
     return this.http.put(url, product, options)
       .toPromise()
@@ -235,24 +235,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/relation/on/${product.id}/`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  unpublishProduct(product: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}store/relation/off/${product.id}/`;
+    const url = `${this.baseUrl.url}store/goods/upordown/${product.id}/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -710,7 +693,7 @@ export class ShopService {
   }
 
 
-  getSupplyCategory(): Promise<any> {
+  getSupplyCategory(category?:any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -718,7 +701,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}product/category/list/`;
+    const url = `${this.baseUrl.url}product/category/list/?${this.serializeParams(category)}`;
 
     return this.http.get(url, options)
       .toPromise()

@@ -27,6 +27,7 @@ export class CatalogEditProductComponent implements OnInit {
   previewImgSrcs: any[] = [];
   relationId: number;
   productId: number;
+  title: string = '';
   isUser: boolean = false;
 
   product = {
@@ -67,25 +68,12 @@ export class CatalogEditProductComponent implements OnInit {
   ) {
 
     this.productForm = this.fb.group({
-      title: ['', [
-        Validators.required
-      ]],
-      tags: [],
       categoryName: ['', [
         Validators.required
       ]],
-      salePrice: ['', [
-        Validators.required
-      ]],
-      originalPrice: [''],
-      purchaseUrl: ['', [
-        Validators.required
-      ]],
+      tags: [''],
       recommendation: ['', [
         Validators.maxLength(1000)
-      ]],
-      description: ['', [
-        Validators.required
       ]]
     });
 
@@ -94,28 +82,12 @@ export class CatalogEditProductComponent implements OnInit {
 
   //存储错误信息
   formErrors = {
-    'title': '',
     'categoryName': '',
-    'description': '',
-    'salePrice':'',
-    'purchaseUrl': '',
     'recommendation': ''
   };
   //错误对应的提示
   validationMessages = {
-    'title': {
-      'required': 'This field is required.'
-    },
     'categoryName': {
-      'required': 'This field is required.'
-    },
-    'description':{
-      'required': 'This field is required.'
-    },
-    'salePrice':{
-      'required': 'This field is required.'
-    },
-    'purchaseUrl': {
       'required': 'This field is required.'
     },
     'recommendation':{
@@ -137,31 +109,15 @@ export class CatalogEditProductComponent implements OnInit {
           self.shopService.getProduct(id).then((data) => {
 
             self.productForm.setValue({
-              title: data.title,
-              tags: '',
               categoryName: data.categoryName,
-              salePrice: data.salePriceAmount,
-              originalPrice: data.originalPriceAmount,
-              purchaseUrl: data.purchaseUrl,
-              recommendation: data.recommendation,
-              description: data.description
+              tags: '',
+              recommendation: data.recommendation
             });
 
-            for(let value of data.imageUrl) {
-              self.previewImgFile.push(value);
-              self.previewImgSrcs.push(value);
-            }
+            self.title = data.title;
 
-            self.relationId = data.id;
+            self.productId = data.id;
 
-            self.productId = data.productId;
-
-            self.isUser = data.isUser;
-
-            self.product.originalPrice.amount = data.originalPriceAmount;
-            self.product.originalPrice.currency = data.originalPriceCurrency;
-            self.product.salePrice.amount = data.salePriceAmount;
-            self.product.salePrice.currency = data.salePriceCurrency;
           });
 
         }
@@ -268,47 +224,11 @@ export class CatalogEditProductComponent implements OnInit {
 
     let productForm = this.productForm.value;
 
-    let storeProduct = new StoreProduct();
-    storeProduct.id = this.relationId;
-    storeProduct.purchaseUrl = productForm.purchaseUrl;
-    storeProduct.storeId = this.storeId;
-    storeProduct.isCustomer = true;
-    storeProduct.recommendation = productForm.recommendation;
-    storeProduct.isDraft = false;
-    storeProduct.status = 'on';
+    let storeProduct = productForm;
 
-    let product = new Product();
+    storeProduct.id = this.productId;
 
-    storeProduct.product = product;
-    storeProduct.description = productForm.description;
-    storeProduct.title = productForm.title;
-    storeProduct.cover = [];
-    storeProduct.cover = [...this.previewImgFile];
-    if(storeProduct.cover.length <= 0) {
-      this.hasPicture = true;
-      return;
-    }
-
-    if(this.isUser) {
-      storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
-        currency: this.storeCurrency
-      };
-      storeProduct.product.salePrice = {
-        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
-        currency: this.storeCurrency
-      };
-    } else {
-      storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
-        currency: product.originalPrice.currency
-      };
-      storeProduct.product.salePrice = {
-        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
-        currency: product.salePrice.currency
-      };
-    }
-
+    storeProduct.status = 'published';
 
     storeProduct.categoryName = productForm.categoryName;
     if(storeProduct.categoryName.trim() == '') {
@@ -324,43 +244,11 @@ export class CatalogEditProductComponent implements OnInit {
   createDraft() {
     let productForm = this.productForm.value;
 
-    let storeProduct = new StoreProduct();
-    storeProduct.id = this.relationId;
-    storeProduct.purchaseUrl = productForm.purchaseUrl;
-    storeProduct.storeId = this.storeId;
-    storeProduct.isCustomer = true;
-    storeProduct.recommendation = productForm.recommendation;
-    storeProduct.isDraft = true;
+    let storeProduct = productForm;
 
-    let product = new Product();
+    storeProduct.id = this.productId;
 
-    storeProduct.product = product;
-    storeProduct.description =  productForm.description;
-    storeProduct.title = productForm.title;
-    storeProduct.cover = [];
-    storeProduct.cover = [...this.previewImgFile];
-
-    if(this.isUser) {
-      storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
-        currency: this.storeCurrency
-      };
-      storeProduct.product.salePrice = {
-        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
-        currency: this.storeCurrency
-      };
-    } else {
-      storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
-        currency: product.originalPrice.currency
-      };
-      storeProduct.product.salePrice = {
-        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
-        currency: product.salePrice.currency
-      };
-    }
-    storeProduct.isDraft = true;
-    storeProduct.categoryName = productForm.categoryName;
+    storeProduct.status = 'draft';
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {
@@ -372,53 +260,12 @@ export class CatalogEditProductComponent implements OnInit {
     if(!this.productForm.valid) {
       return;
     }
-    this.hasPicture = false;
     let productForm = this.productForm.value;
 
-    let storeProduct = new StoreProduct();
-    storeProduct.id = this.relationId;
-    storeProduct.productId = this.productId;
-    storeProduct.purchaseUrl = productForm.purchaseUrl;
-    storeProduct.storeId = this.storeId;
-    storeProduct.isCustomer = false;
-    storeProduct.recommendation = productForm.recommendation;
-    storeProduct.isDraft = false;
+    let storeProduct = productForm;
 
-    let product = new Product();
+    storeProduct.id = this.productId;
 
-    storeProduct.product = product;
-    storeProduct.description = productForm.description;
-    storeProduct.title = productForm.title;
-    storeProduct.cover = [];
-    storeProduct.cover = [...this.previewImgFile];
-
-    if(storeProduct.cover.length <= 0) {
-      this.hasPicture = true;
-      return;
-    }
-
-    if(this.isUser) {
-      storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
-        currency: this.storeCurrency
-      };
-      storeProduct.product.salePrice = {
-        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
-        currency: this.storeCurrency
-      };
-    } else {
-      storeProduct.product.originalPrice = {
-        amount: productForm.originalPrice != '' && productForm.originalPrice != null ? productForm.originalPrice : 0,
-        currency: product.originalPrice.currency
-      };
-      storeProduct.product.salePrice = {
-        amount: productForm.salePrice != '' && productForm.salePrice != null ? productForm.salePrice : 0,
-        currency: product.salePrice.currency
-      };
-    }
-
-    storeProduct.isDraft = false;
-    storeProduct.categoryName = productForm.categoryName;
     if(storeProduct.categoryName.trim() == '') {
       return;
     }

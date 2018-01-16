@@ -14,6 +14,7 @@ export class StoreCartProductItemComponent{
   @Input() product: any;
   @Output() productChange = new EventEmitter<any>();
   @Input() index: number = 0;
+  @Input() shippingList: any;
 
   shipping = 'ePacket';
 

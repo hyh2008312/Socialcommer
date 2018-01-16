@@ -8,17 +8,20 @@
     </div>
     <div class="xb-shop__mobile-dialog-inner">
       <form [formGroup]="productForm" novalidate>
-        <div class="xb-shop__edit-title">Product Picture <span class="xb-input-error xb-large-star">*</span></div>
-        <div class="md-margin-top-2">
+        <div class="xb-shop__edit-title" *ngIf="false">Product Picture <span class="xb-input-error xb-large-star">*</span></div>
+        <div class="md-margin-top-2" *ngIf="false">
           <app-image-upload-preview-multi [(previewImgFile)]="previewImgFile" [(previewImgSrcs)]="previewImgSrcs"></app-image-upload-preview-multi>
           <div class="md-margin-top-1">* The first picture will be defaulted as cover image.</div>
         </div>
-        <div class="md-margin-top-2 xb-shop__edit-title">Product Title <span class="xb-input-error xb-large-star">*</span></div>
-        <mat-form-field class="xb-shop__width-100">
+        <div class="md-margin-top-2 xb-shop__edit-title" *ngIf="false">Product Title <span class="xb-input-error xb-large-star">*</span></div>
+        <mat-form-field class="xb-shop__width-100" *ngIf="false">
           <input matInput formControlName="title">
         </mat-form-field>
         <div *ngIf="formErrors['title']" class="xb-input-error">
           {{ formErrors['title'] }}
+        </div>
+        <div class="xb-shop__margin-bottom-2" >
+          {{title}}
         </div>
         <div class="md-margin-top-2 xb-shop__edit-title">Category <span class="xb-input-error xb-large-star">*</span></div>
         <div fxLayout="row" fxLayoutAlgin="start center" fxLayout.xs="column" fxLayoutAlgin.xs="start stretch">
@@ -46,8 +49,8 @@
         <div *ngIf="formErrors['categoryName']" class="xb-input-error">
           {{ formErrors['categoryName'] }}
         </div>
-        <div class="md-margin-top-2 xb-shop__edit-title">Price</div>
-        <div *ngIf="isUser" fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start">
+        <div class="md-margin-top-2 xb-shop__edit-title" *ngIf="false">Price</div>
+        <div *ngIf="isUser && false" fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start">
           <div fxLayout="row" fxLayoutAlign="start center">
             <span class="md-margin-right-1">{{storeCurrency | formatCurrency}}</span>
             <mat-form-field fxFlex >
@@ -63,7 +66,7 @@
             <span class="md-margin-left-2">{{storeCurrency}}</span>
           </div>
         </div>
-        <div *ngIf="!isUser" class="xb-shop__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+        <div *ngIf="!isUser && false" class="xb-shop__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-store__details-price">{{product.salePrice.amount | currency: product.salePrice.currency: true}}</div>
           <div class="line-through md-margin-left-2" *ngIf="product.originalPrice.amount > 0">
             {{product.originalPrice.amount | currency: product.originalPrice.currency: true }}</div>
@@ -76,8 +79,8 @@
         <div *ngIf="formErrors['originalPrice']" class="xb-input-error">
           {{ formErrors['originalPrice'] }}
         </div>
-        <div class="xb-shop__edit-title">Description <span class="xb-input-error xb-large-star">*</span></div>
-        <div class="md-margin-top-2">
+        <div class="xb-shop__edit-title" *ngIf="false">Description <span class="xb-input-error xb-large-star">*</span></div>
+        <div class="md-margin-top-2" *ngIf="false">
           <quill-editor formControlName="description"
                         (ready)="onEditorCreated($event)"></quill-editor>
           <input id="{{editorImageId}}" type="file" (change)="addPicture($event)" hidden />
@@ -85,14 +88,14 @@
             {{ formErrors['description'] }}
           </div>
         </div>
-        <div class="xb-shop__edit-title md-margin-top-2">Add your affiliate link <span class="xb-input-error xb-large-star">*</span></div>
-        <mat-form-field class="xb-shop__width-100" >
+        <div class="xb-shop__edit-title md-margin-top-2" *ngIf="false">Add your affiliate link <span class="xb-input-error xb-large-star">*</span></div>
+        <mat-form-field class="xb-shop__width-100" *ngIf="false">
           <input matInput formControlName="purchaseUrl">
         </mat-form-field>
         <div *ngIf="formErrors['purchaseUrl']" class="xb-input-error">
           {{ formErrors['purchaseUrl'] }}
         </div>
-        <div class="text-underline xb-pointer" (click)="openDialog()">How to get your affiliate link?</div>
+        <div class="text-underline xb-pointer" *ngIf="false" (click)="openDialog()">How to get your affiliate link?</div>
         <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product (optional)</div>
         <mat-form-field class="xb-shop__width-100">
           <textarea matInput value="Your opinion is very important to your audiences" formControlName="recommendation"></textarea>
@@ -106,15 +109,6 @@
         </div>
         <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="tab == 'publish'">
           <button mat-raised-button color="primary" (click)="create()">SAVE</button>
-          <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
-            <button mat-button color="primary" (click)="close()">CLOSE</button>
-          </div>
-        </div>
-        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="tab == 'draft'">
-          <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>
-          <div class="md-margin-left-2">
-            <button mat-button color="primary" (click)="createDraft()">SAVE DRAFT</button>
-          </div>
           <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
             <button mat-button color="primary" (click)="close()">CLOSE</button>
           </div>

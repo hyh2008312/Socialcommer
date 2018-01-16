@@ -6,6 +6,21 @@
   </div>
   <div class="background-bg-light xb-cart__body" fxFlex="noshrink" *ngIf="products && products.length > 0">
     <div class="container">
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="md-margin-left-2 text-underline xb-pointer xb-bold"
+             routerLink="{{homeLink}}"><< Continue Shopping</div>
+        <div class="unicorn-dark-theme" fxLayoutAlign="start center">
+          Ship to:
+          <mat-form-field class="md-margin-left-2 xb-cart__width-1">
+            <mat-select name="country" placeholder="Select a Country" [ngModel]="countryId"
+                        (ngModelChange)="changeShipping($event)">
+              <mat-option *ngFor="let item of countries" [value]="item.id">
+                {{ item.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
       <div class="xb-cart__bg" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-cart__body-margin-right" fxFlex>
           <div class="background-bg-white" >
@@ -31,8 +46,6 @@
                                            (productChange)="productEdit($event)"></app-store-cart-product-item>
             </div>
           </div>
-          <div class="md-margin-left-2 md-margin-top-2 text-underline xb-pointer xb-bold"
-               routerLink="{{homeLink}}"><< Continue Shopping</div>
         </div>
         <div fxLayout="column" fxHide.xs>
           <div class="xb-cart__bill background-bg-white" fxHide.xs>
@@ -65,10 +78,6 @@
       <i class="iconfontXberts icon-ic-cart"></i>
     </div>
     <div class="xb-cart__none-title">Your shopping cart is empty now</div>
-    <div class="md-margin-top-2 unicorn-dark-theme" fxLayout="column">
-      <button mat-raised-button color="primary"
-              routerLink="{{homeLink}}">CONTINUE SHOPPING</button>
-    </div>
   </div>
   <div class="xb-cart__none background-bg-light" fxLayout="column" fxLayoutAlign="center center" fxFlex="noshrink"
        *ngIf="!products">

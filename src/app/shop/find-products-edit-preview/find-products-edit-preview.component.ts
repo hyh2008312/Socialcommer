@@ -345,21 +345,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
     });
   }
 
-  createDraft() {
-    let productForm = this.productForm.value;
-
-    let storeProduct = {
-      productId: this.productCopy.id,
-      recommendation : productForm.recommendation,
-      categoryName : productForm.categoryName,
-    };
-
-    let self = this;
-    this.shopService.createSupplyProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'draft'}, replaceUrl: true});
-    });
-  }
-
   openDialog() {
 
   }

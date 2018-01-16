@@ -64,7 +64,7 @@ export class ProductCategoryComponent implements OnInit {
     let page = this.categoryIndex;
 
     let self = this;
-    self.shopService.getCategory({
+    self.shopService.getSupplyCategory({
       page: page,
       page_size: this.pageSize
     }).then((data) => {

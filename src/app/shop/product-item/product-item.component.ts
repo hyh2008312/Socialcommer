@@ -65,7 +65,7 @@ export class ProductItemComponent implements OnInit {
   unpublish() {
     let self = this;
 
-    self.shopService.unpublishProduct(this.product).then((data) => {
+    self.shopService.publishProduct(this.product).then((data) => {
       self.productChange.emit({
         product: self.product,
         event: 'unpublish',
@@ -82,9 +82,6 @@ export class ProductItemComponent implements OnInit {
         tab = 'publish';
         break;
       case 1:
-        tab = 'draft';
-        break;
-      case 2:
         tab = 'unpublish';
         break;
     }

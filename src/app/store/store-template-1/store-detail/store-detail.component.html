@@ -16,25 +16,23 @@
         <div>{{product.categoryName}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
+          <div class="xb-store__details-price">{{product.salePrice |currency: currency: true }}</div>
           <div class="line-through md-margin-left-2"
-               *ngIf="product.originalPriceAmount > 0 && product.salePriceAmount != product.originalPriceAmount">
-            {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+               *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">
+            {{product.originalPrice|currency: currency: true }}</div>
           <div class="xb-store__details-sale md-margin-left-2"
-               *ngIf="product.originalPriceAmount > 0 && product.salePriceAmount != product.originalPriceAmount">
-            {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
+               *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">
+            {{product.salePrice|saleDiscount:product.originalPrice}} OFF
           </div>
         </div>
         <div class="xb-store__details-buttons" fxLayout="column">
           <button mat-raised-button color="primary" (click)="openLink()" >
-            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button"
-               href="{{product.purchaseUrl}}" target="_blank">GET IT NOW</a></button>
+            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">GET IT NOW</a></button>
         </div>
         <div fxHide.gt-xs class="xb-store__details-buttons-fixed" fxLayout="column"
            *ngIf="showButton">
           <button mat-raised-button color="primary" (click)="openLink()" >
-            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button"
-               href="{{product.purchaseUrl}}" target="_blank">GET IT NOW</a></button>
+            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">GET IT NOW</a></button>
         </div>
         <div class="md-margin-top-2">
           <app-share-button [link]="shareLink" [text]="text"></app-share-button>

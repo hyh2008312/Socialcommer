@@ -82,7 +82,7 @@ export class StoreService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}store/relation/?${this.serializeParams(product)}`;
+    const url = `${this.baseUrl.url}store/goods/category/?${this.serializeParams(product)}`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -98,7 +98,7 @@ export class StoreService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}store/relation/${id}/`;
+    const url = `${this.baseUrl.url}goods/detail/${id}/`;
 
     return this.http.get(url, options)
       .toPromise()

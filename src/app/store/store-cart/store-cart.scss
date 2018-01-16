@@ -10,6 +10,10 @@
     width: 100%;
   }
 
+  &__width-1{
+    width: 160px;
+  }
+
   &__none{
     padding: 120px 0;
     @include xb-xs-screen{
@@ -71,7 +75,7 @@
   }
 
   &__bg{
-    margin-top: 64px;
+    margin-top: 16px;
     margin-bottom: 64px;
     @include xb-xs-screen{
       margin-top: 16px;

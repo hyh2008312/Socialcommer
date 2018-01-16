@@ -221,7 +221,7 @@ export class FindProductsComponent implements OnInit {
         })
       }
 
-    })
+    });
   }
 
 }

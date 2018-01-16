@@ -1,20 +1,20 @@
 <div class="xb-shop__product-item" fxLayout="row" fxLayoutAlign="start center">
   <div class="xb-shop__product-image" fxFlex="none">
-    <img [src]="product.imageUrl">
+    <img [src]="product.mainImage">
   </div>
   <div class="xb-shop__product-title md-margin-right-2" fxFlex="35">{{product.title}}</div>
   <div class="xb-shop__product-id md-margin-right-2" fxFlex="12">#{{product.id}}</div>
   <div class="xb-shop__product-category md-margin-right-2" fxFlex="15">{{product.categoryName}}</div>
-  <div class="xb-shop__product-time md-margin-right-2" fxFlex="12">{{product.modifiedTime | amDateFormat:'MMMM Do, YYYY'}}</div>
+  <div class="xb-shop__product-time md-margin-right-2" fxFlex="12">{{product.modified | amDateFormat:'MMMM Do, YYYY'}}</div>
   <div class="xb-shop__product-price md-margin-right-2" fxFlex="15">
-    <div class="xb-shop__product-price-sale">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
+    <div class="xb-shop__product-price-sale">{{product.salePrice|currency: storeCurrency: true }}</div>
     <div class="line-through" *ngIf="product.originalPriceAmount>0">
-      {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+      {{product.originalPrice|currency: storeCurrency: true }}
     </div>
   </div>
   <div class="xb-shop__product-action-buttons md-margin-right-2" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
     <button mat-button color="primary" (click)="edit()">Edit</button>
-    <button mat-button color="primary" *ngIf="status == 2" (click)="publish()">Publish</button>
+    <button mat-button color="primary" *ngIf="status == 1" (click)="publish()">Publish</button>
     <button mat-button color="primary" *ngIf="status == 0" (click)="unpublish()">Unpublish</button>
     <button mat-button color="primary" (click)="delete()">Delete</button>
   </div>

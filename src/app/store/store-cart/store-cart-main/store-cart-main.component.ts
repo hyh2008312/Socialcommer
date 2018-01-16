@@ -20,7 +20,13 @@ export class StoreCartMainComponent implements OnInit{
 
   currency: string = 'USD';
 
+  countries: Object[];
+
+  countryId: number = 1;
+
   products: any;
+
+  shippingList: any;
 
   displayName: any = '';
 
@@ -47,6 +53,10 @@ export class StoreCartMainComponent implements OnInit{
         self.displayName = data.displayName;
         self.products = self.storeService.getProductInCart(self.displayName);
         self.calculatePrice();
+        self.storeCartService.getCountryList().then((data) => {
+          self.countries = data;
+          self.changeShipping(this.countries[0].id);
+        });
       }
     });
   }
@@ -68,6 +78,24 @@ export class StoreCartMainComponent implements OnInit{
     this.storeService.addProductToCart(this.displayName,this.products);
   }
 
+  changeShipping($event) {
+    this.countryId = $event;
+    let pid = '';
+    let pidArray = [];
+    for(let value of this.products) {
+      pidArray.push(value.id);
+    }
+    pid = pidArray.join(',');
+    let obj = {
+      cid: this.countryId,
+      pid
+    };
+
+    this.storeCartService.getShippingList(obj).then((data) => {
+      this.shippingList = data;
+    });
+  }
+
   calculatePrice() {
     let price = 0;
     for(let item of this.products) {
@@ -86,7 +114,7 @@ export class StoreCartMainComponent implements OnInit{
       lines.push({
         goodsId: item.id,
         quantity: item.number,
-        variantId: item.id
+        variantId: item.sku
       })
     }
 

@@ -20,8 +20,6 @@ export class CatalogComponent implements OnInit {
 
   productPublished: any = false;
   productPublishedIndex = 1;
-  productDraft: any = false;
-  productDraftIndex = 1;
   productUnpublished: any = false;
   productUnpublishedIndex = 1;
 
@@ -55,12 +53,8 @@ export class CatalogComponent implements OnInit {
             self.selectedIndex = 0;
             self.changeProducts({index: self.selectedIndex});
           }
-          if(data.tab == 'draft') {
-            self.selectedIndex = 1;
-            self.changeProducts({index: self.selectedIndex});
-          }
           if(data.tab == 'unpublished') {
-            self.selectedIndex = 2;
+            self.selectedIndex = 1;
             self.changeProducts({index: self.selectedIndex});
           }
           if(data.tab == null) {
@@ -82,12 +76,8 @@ export class CatalogComponent implements OnInit {
                   self.selectedIndex = 0;
                   self.changeProducts({index: self.selectedIndex});
                 }
-                if(data.tab == 'draft') {
-                  self.selectedIndex = 1;
-                  self.changeProducts({index: self.selectedIndex});
-                }
                 if(data.tab == 'unpublished') {
-                  self.selectedIndex = 2;
+                  self.selectedIndex = 1;
                   self.changeProducts({index: self.selectedIndex});
                 }
                 if(data.tab == null) {
@@ -122,9 +112,6 @@ export class CatalogComponent implements OnInit {
         this.productPublishedIndex = event.pageIndex + 1;
           break;
       case 1:
-        this.productDraftIndex = event.pageIndex + 1;
-          break;
-      case 2:
         this.productUnpublishedIndex = event.pageIndex + 1;
           break;
     }
@@ -148,10 +135,6 @@ export class CatalogComponent implements OnInit {
     let page = this.productPublishedIndex;
     switch (event.index) {
       case 1:
-        relationStatus = 'draft';
-        page = this.productDraftIndex;
-          break;
-      case 2:
         relationStatus = 'unpublished';
         page = this.productUnpublishedIndex;
           break;
@@ -161,17 +144,13 @@ export class CatalogComponent implements OnInit {
 
     let self = this;
     self.shopService.getProductList({
-      storeId: this.storeId,
-      relationStatus: relationStatus,
+      status: relationStatus,
       page: page,
       page_size: this.pageSize
     }).then((data) => {
       self.length = data.count;
       switch (event.index) {
         case 1:
-          self.productDraft = data.results;
-          break;
-        case 2:
           self.productUnpublished = data.results;
           break;
         default:
@@ -195,13 +174,6 @@ export class CatalogComponent implements OnInit {
         }
         break;
       case 1:
-        switch(event.event) {
-          case 'delete':
-            this.productDraft.splice(event.index,1);
-            break;
-        }
-        break;
-      case 2:
         switch(event.event) {
           case 'delete':
             this.productUnpublished.splice(event.index,1);

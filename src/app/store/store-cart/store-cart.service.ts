@@ -5,14 +5,14 @@ import { Title, Meta } from '@angular/platform-browser';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from  'rxjs/observable';
 import{ Subject, BehaviorSubject } from 'rxjs';
-import { SupportApi } from '../../config/app.api';
+import { BaseApi } from '../../config/app.api';
 
 @Injectable()
 export class StoreCartService {
 
   constructor(
     private http: Http,
-    private supportApi: SupportApi,
+    private baseApi: BaseApi,
     private jsonp : Jsonp,
     private titleService: Title,
     private metaService: Meta
@@ -61,9 +61,43 @@ export class StoreCartService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.supportApi.url}order/create/`;
+    const url = `${this.baseApi.url}order/create/`;
 
     return this.http.post(url, cart, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getCountryList(): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}address/country/list/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getShippingList(obj): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}shipping/car/list/?${this.serializeParams(obj)}`;
+
+    return this.http.get(url, options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);

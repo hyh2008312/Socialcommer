@@ -103,9 +103,8 @@ export class MainPageComponent implements OnInit {
       return;
     }
     let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
-      relationStatus: 'published',
+      cat: this.category.id,
+      store: this.store.id,
       page: this.page,
       page_size: 12
     };

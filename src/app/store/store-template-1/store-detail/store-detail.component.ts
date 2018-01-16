@@ -14,11 +14,14 @@ export class StoreDetailComponent implements OnInit {
 
   public shareLink: string;
   public text = '';
+  currency: string = 'USD';
   store: Store = new Store();
   product: Product = new Product();
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
+
+  sku: string = '';
 
   showButton: boolean = false;
 
@@ -46,15 +49,10 @@ export class StoreDetailComponent implements OnInit {
       self.storeService.addTitleDescription({
         title: data.title,
         description: data.description,
-        shareImage: data.imageUrl[0]
+        shareImage: ''
       });
-      self.image = data.imageUrl;
-      if(data.imageUrl.length > 0) {
-        self.selectedImage = data.imageUrl[0];
-        for(let value of data.imageUrl) {
-          self.imageSources.push(value);
-        }
-      }
+
+      self.sku = data.variants[0].sku;
 
       self.storeService.pageView({
         pageType: 'product',
@@ -81,32 +79,33 @@ export class StoreDetailComponent implements OnInit {
       storeId: this.store.id
     });
 
-    //let product:any = this.storeService.getProductInCart(this.store.displayName);
-    //
-    //let index = product.findIndex((item) => {
-    //  if(item.id == this.product.id) {
-    //    return true;
-    //  }
-    //});
-    //
-    //if(index > -1) {
-    //  product[index].number++;
-    //} else {
-    //  product.unshift({
-    //    id : this.product.id,
-    //    imageUrl : this.product.imageUrl,
-    //    originalPriceAmount : this.product.originalPriceAmount,
-    //    originalPriceCurrency : this.product.originalPriceCurrency,
-    //    salePriceAmount : this.product.salePriceAmount,
-    //    salePriceCurrency : this.product.salePriceCurrency,
-    //    number : 1,
-    //    title : this.product.title
-    //  });
-    //}
-    //
-    //this.storeService.addProductToCart(this.store.displayName, product);
-    //
-    //this.router.navigate([`./store/${this.store.displayName}/cart`]);
+    let product:any = this.storeService.getProductInCart(this.store.displayName);
+
+    let index = product.findIndex((item) => {
+      if(item.id == this.product.productId) {
+        return true;
+      }
+    });
+
+    if(index > -1) {
+      product[index].number++;
+    } else {
+      product.unshift({
+        id : this.product.productId,
+        imageUrl : this.product.imageUrl,
+        originalPriceAmount : this.product.originalPrice,
+        originalPriceCurrency : this.currency,
+        salePriceAmount : this.product.salePrice,
+        salePriceCurrency : this.currency,
+        number : 1,
+        sku: this.sku,
+        title : this.product.title
+      });
+    }
+
+    this.storeService.addProductToCart(this.store.displayName, product);
+
+    this.router.navigate([`./store/${this.store.displayName}/cart`]);
   }
 
 }

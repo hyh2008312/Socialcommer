@@ -8,11 +8,11 @@
     <div class="xb-shop__card-content" fxLayout="column">
       <div class="xb-shop__card-title xb-pointer" routerLink="/shop/listings/items/{{product.id}}">{{product.title}}</div>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
-        <div class="xb-shop__card-price">{{getLowestPrice(product.variants).saleUnitPrice|currency: currency: true}}</div>
-        <div class="line-through md-margin-left-1" *ngIf="getLowestPrice(product.variants).unitPrice> 0">
-          {{getLowestPrice(product.variants).unitPrice|currency: currency: true }}</div>
-        <div class="xb-shop__card-sale md-margin-left-1" *ngIf="getLowestPrice(product.variants).unitPrice > 0">
-          {{getLowestPrice(product.variants).saleUnitPrice|saleDiscount:getLowestPrice(product.variants).unitPrice}} OFF</div>
+        <div class="xb-shop__card-price">{{product.saleUnitPrice|currency: currency: true}}</div>
+        <div class="line-through md-margin-left-1" *ngIf="product.unitPrice> 0">
+          {{product.unitPrice|currency: currency: true }}</div>
+        <div class="xb-shop__card-sale md-margin-left-1" *ngIf="product.unitPrice > 0">
+          {{product.saleUnitPrice|saleDiscount:product.unitPrice}} OFF</div>
       </div>
       <div class="xb-shop__card-action md-margin-top-2">
         <div fxLayout="column">

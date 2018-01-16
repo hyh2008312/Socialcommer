@@ -11,7 +11,7 @@ import { RecommendProduct, Image, OriginalPrice, SalePrice} from '../shop';
 
 export class FindProductsAddProductComponent implements OnInit {
 
-  product: any;
+  product: any = {};
   category: any;
   originalPrice: any;
   salePrice: any;

@@ -2190,6 +2190,8 @@ textarea.mat-input-element {
   overflow-x: hidden; }
   .xb-cart__width-100 {
     width: 100%; }
+  .xb-cart__width-1 {
+    width: 160px; }
   .xb-cart__none {
     padding: 120px 0; }
     @media screen and (max-width: 599px) {
@@ -2235,7 +2237,7 @@ textarea.mat-input-element {
           .xb-cart__navigation-icon-left {
             padding: 16px 8px 16px 8px; } }
   .xb-cart__bg {
-    margin-top: 64px;
+    margin-top: 16px;
     margin-bottom: 64px; }
     @media screen and (max-width: 599px) {
       .xb-cart__bg {
