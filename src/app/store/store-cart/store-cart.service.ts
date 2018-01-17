@@ -86,6 +86,23 @@ export class StoreCartService {
       .catch(this.handleError);
   }
 
+  getStateList(country:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}address/state/${country.cid}/list/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   getShippingList(obj): Promise<any> {
 
     let headers = new Headers({
@@ -101,6 +118,97 @@ export class StoreCartService {
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
+  }
+
+  createMail(mail:any) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}mail/create/`;
+
+    return this.http.post(url, mail, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  createShippingAddress(address:any) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}order/shipping/address/create/`;
+
+    return this.http.post(url, address, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getShippingAddress(address:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}address/shipping/${address.id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  createBillingAddress(address:any) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}address/billing/create/`;
+
+    return this.http.post(url, address, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getBillingAddress(address:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}address/billing/${address.id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+
+  addOrder(order:any) {
+    localStorage.setItem('order', JSON.stringify(order));
+  }
+
+  getOrder(): any {
+    if(localStorage && localStorage.getItem('order')) {
+      return JSON.parse(localStorage.getItem('order'));
+    }
+    return {};
   }
 
   private handleError (error: Response | any) {

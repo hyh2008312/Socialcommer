@@ -39,6 +39,8 @@ export class StoreCartMainComponent implements OnInit{
   totalPrice: number = 0;
 
   constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private storeService: StoreService,
     private storeCartService: StoreCartService
   ) {
@@ -140,8 +142,13 @@ export class StoreCartMainComponent implements OnInit{
       lines
     };
 
+    let self = this;
     this.storeCartService.createOrder(cart).then((data) => {
-      console.log(data)
+      console.log(data);
+      self.storeService.addProductToCart(self.displayName, []);
+      self.storeCartService.addOrder(data);
+
+      self.router.navigate([`./checkout`], {relativeTo: this.activatedRoute});
     });
   }
 

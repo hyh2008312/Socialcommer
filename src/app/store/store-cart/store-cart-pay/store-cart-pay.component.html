@@ -8,133 +8,140 @@
     <div class="container">
       <div class="xb-cart__bg" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-cart__body-margin-right" fxFlex>
-          <form class="unicorn-dark-theme background-bg-white xb-cart__body-left-form"
-             fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="stepOneForm" novalidate>
-            <div class="xb-cart__title">
-              Contact Email
-            </div>
-            <div class="xb-cart__body-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start"
-                 fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
-              <div fxFlex="48" fxFlex.xs="none" >
-                <mat-form-field class="xb-cart__body-100">
-                  <input type="text" matInput placeholder="Email Address" formControlName="email"
-                         validateEqual="confirmEmail"
-                         reverse="true">
-                </mat-form-field>
-                <div *ngIf="formErrors['email']" class="xb-input-error">
-                  {{ formErrors['email'] }}
-                </div>
+          <form *ngIf="step == 0" [formGroup]="stepOneForm" novalidate>
+            <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form"
+                 fxLayout="column" fxLayoutAlign="start stretch" >
+              <div class="xb-cart__title">
+                Contact Email
               </div>
-              <div fxFlex="48" fxFlex.xs="none" >
-                <mat-form-field class="xb-cart__body-100">
-                  <input type="text" matInput placeholder="Confirm Email Address" formControlName="confirmEmail"
-                         validateEqual="email"
-                         reverse="false">
-                </mat-form-field>
-                <div *ngIf="formErrors['confirmEmail']" class="xb-input-error">
-                  {{ formErrors['confirmEmail'] }}
-                </div>
-              </div>
-            </div>
-            <div class="xb-cart__title xb-cart__body-margin-top-1">
-              Shipping Address
-            </div>
-            <div class="xb-cart__body-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start">
-              <div fxFlex="48">
-                <mat-form-field class="xb-cart__body-100">
-                  <input type="text" matInput placeholder="First Name" formControlName="firstName">
-                </mat-form-field>
-                <div *ngIf="formErrors['firstName']" class="xb-input-error">
-                  {{ formErrors['firstName'] }}
-                </div>
-              </div>
-              <div fxFlex="48">
-                <mat-form-field class="xb-cart__body-100">
-                  <input type="text" matInput placeholder="Last Name" formControlName="lastName">
-                </mat-form-field>
-                <div *ngIf="formErrors['lastName']" class="xb-input-error">
-                  {{ formErrors['lastName'] }}
-                </div>
-              </div>
-            </div>
-            <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between start"
-               fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
-              <div fxFlex="48" fxFlex.xs="none">
-                <mat-form-field class="xb-cart__body-100">
-                  <input type="text" matInput placeholder="Address Line1" formControlName="Address1">
-                </mat-form-field>
-                <div *ngIf="formErrors['Address1']" class="xb-input-error">
-                  {{ formErrors['Address1'] }}
-                </div>
-              </div>
-              <div fxFlex="48" fxFlex.xs="none">
-                <mat-form-field class="xb-cart__body-100">
-                  <input type="text" matInput placeholder="Address Line2(Optional)" formControlName="Address2">
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between start"
-               fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
-              <div fxFlex="48" fxFlex.xs="none">
-                <mat-form-field class="xb-cart__body-100">
-                  <input type="text" matInput placeholder="City" formControlName="city">
-                </mat-form-field>
-                <div *ngIf="formErrors['city']" class="xb-input-error">
-                  {{ formErrors['city'] }}
-                </div>
-              </div>
-              <div fxFlex="48" fxFlex.xs="none">
-                <div fxLayout="row" fxLayoutAlign="space-between start" class="xb-cart__width-100">
-                  <div fxFlex="46">
-                    <mat-form-field class="xb-cart__body-100">
-                      <mat-select placeholder="Country" name="country" formControlName="country">
-                        <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.code">
-                          {{ country.name }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <div *ngIf="formErrors['country']" class="xb-input-error">
-                      {{ formErrors['country'] }}
-                    </div>
+              <div class="xb-cart__body-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start"
+                   fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+                <div fxFlex="48" fxFlex.xs="none" >
+                  <mat-form-field class="xb-cart__body-100">
+                    <input type="text" matInput placeholder="Email Address" formControlName="emailAddress"
+                           validateEqual="confirmEmail"
+                           reverse="true">
+                  </mat-form-field>
+                  <div *ngIf="formErrors['emailAddress']" class="xb-input-error">
+                    {{ formErrors['emailAddress'] }}
                   </div>
-                  <div fxFlex="46">
-                    <mat-form-field class="xb-cart__body-100">
-                      <input type="text" matInput placeholder="State" formControlName="state">
-                    </mat-form-field>
-                    <div *ngIf="formErrors['state']" class="xb-input-error">
-                      {{ formErrors['state'] }}
-                    </div>
+                </div>
+                <div fxFlex="48" fxFlex.xs="none" >
+                  <mat-form-field class="xb-cart__body-100">
+                    <input type="text" matInput placeholder="Confirm Email Address" formControlName="confirmEmail"
+                           validateEqual="email"
+                           reverse="false">
+                  </mat-form-field>
+                  <div *ngIf="formErrors['confirmEmail']" class="xb-input-error">
+                    {{ formErrors['confirmEmail'] }}
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between start"
-               fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
-              <div fxFlex="48" fxFlex.xs="none" >
-                <mat-form-field class="xb-cart__body-100">
-                  <input type="text" matInput placeholder="Postal / Zip Code" formControlName="postal">
-                </mat-form-field>
-                <div *ngIf="formErrors['postal']" class="xb-input-error">
-                  {{ formErrors['postal'] }}
+              <div class="xb-cart__title xb-cart__body-margin-top-1">
+                Shipping Address
+              </div>
+              <div class="xb-cart__body-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start">
+                <div fxFlex="48">
+                  <mat-form-field class="xb-cart__body-100">
+                    <input type="text" matInput placeholder="First Name" formControlName="firstName">
+                  </mat-form-field>
+                  <div *ngIf="formErrors['firstName']" class="xb-input-error">
+                    {{ formErrors['firstName'] }}
+                  </div>
+                </div>
+                <div fxFlex="48">
+                  <mat-form-field class="xb-cart__body-100">
+                    <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+                  </mat-form-field>
+                  <div *ngIf="formErrors['lastName']" class="xb-input-error">
+                    {{ formErrors['lastName'] }}
+                  </div>
                 </div>
               </div>
-              <div fxFlex="48" fxFlex.xs="none">
-                <mat-form-field  class="xb-cart__body-100">
-                  <input type="text" matInput placeholder="Phone Number" formControlName="phone">
-                </mat-form-field>
-                <div *ngIf="formErrors['phone']" class="xb-input-error">
-                  {{ formErrors['phone'] }}
+              <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between start"
+                   fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+                <div fxFlex="48" fxFlex.xs="none">
+                  <mat-form-field class="xb-cart__body-100">
+                    <input type="text" matInput placeholder="Address Line1" formControlName="line1">
+                  </mat-form-field>
+                  <div *ngIf="formErrors['line1']" class="xb-input-error">
+                    {{ formErrors['line1'] }}
+                  </div>
                 </div>
+                <div fxFlex="48" fxFlex.xs="none">
+                  <mat-form-field class="xb-cart__body-100">
+                    <input type="text" matInput placeholder="Address Line2(Optional)" formControlName="line2">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between start"
+                   fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+                <div fxFlex="48" fxFlex.xs="none">
+                  <mat-form-field class="xb-cart__body-100">
+                    <input type="text" matInput placeholder="City" formControlName="city">
+                  </mat-form-field>
+                  <div *ngIf="formErrors['city']" class="xb-input-error">
+                    {{ formErrors['city'] }}
+                  </div>
+                </div>
+                <div fxFlex="48" fxFlex.xs="none">
+                  <div fxLayout="row" fxLayoutAlign="space-between start" class="xb-cart__width-100">
+                    <div fxFlex="46">
+                      <mat-form-field class="xb-cart__body-100">
+                        <mat-select placeholder="Country" name="country" formControlName="countryId"
+                                    (ngModelChange)="changeShippingState($event)">
+                          <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.id">
+                            {{ country.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div *ngIf="formErrors['country']" class="xb-input-error">
+                        {{ formErrors['country'] }}
+                      </div>
+                    </div>
+                    <div fxFlex="46">
+                      <mat-form-field class="xb-cart__body-100">
+                        <mat-select placeholder="State" name="state" formControlName="stateId">
+                          <mat-option class="unicorn-dark-theme" *ngFor="let state of states" [value]="state.id">
+                            {{ state.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div *ngIf="formErrors['stateId']" class="xb-input-error">
+                        {{ formErrors['stateId'] }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="xb-cart__body-margin-top" fxLayout="row" fxLayoutAlign="space-between start"
+                   fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+                <div fxFlex="48" fxFlex.xs="none" >
+                  <mat-form-field class="xb-cart__body-100">
+                    <input type="text" matInput placeholder="Postal / Zip Code" formControlName="postcode">
+                  </mat-form-field>
+                  <div *ngIf="formErrors['postcode']" class="xb-input-error">
+                    {{ formErrors['postcode'] }}
+                  </div>
+                </div>
+                <div fxFlex="48" fxFlex.xs="none">
+                  <mat-form-field  class="xb-cart__body-100">
+                    <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber">
+                  </mat-form-field>
+                  <div *ngIf="formErrors['phoneNumber']" class="xb-input-error">
+                    {{ formErrors['phoneNumber'] }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="step == 0">
+              <div class="text-underline xb-pointer xb-bold" ><< Back</div>
+              <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
+                <button mat-raised-button color="primary" (click)="continue()">CONTINUE</button>
               </div>
             </div>
           </form>
-          <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="text-underline xb-pointer xb-bold" ><< Back</div>
-            <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
-              <button mat-raised-button color="primary" >CONTINUE</button>
-            </div>
-          </div>
-          <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form"
+          <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form" *ngIf="step == 1"
                fxLayout="column" fxLayoutAlign="start stretch">
             <div class="xb-cart__title">
               Pay Method
@@ -197,15 +204,15 @@
                    fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
                 <div fxFlex="48" fxFlex.xs="none">
                   <mat-form-field class="xb-cart__body-100">
-                    <input type="text" matInput placeholder="Address Line1" formControlName="Address1">
+                    <input type="text" matInput placeholder="Address Line1" formControlName="line1">
                   </mat-form-field>
-                  <div *ngIf="formErrors['Address1']" class="xb-input-error">
-                    {{ formErrors['Address1'] }}
+                  <div *ngIf="formErrors['line1']" class="xb-input-error">
+                    {{ formErrors['line1'] }}
                   </div>
                 </div>
                 <div fxFlex="48" fxFlex.xs="none">
                   <mat-form-field class="xb-cart__body-100">
-                    <input type="text" matInput placeholder="Address Line2(Optional)" formControlName="Address2">
+                    <input type="text" matInput placeholder="Address Line2(Optional)" formControlName="line2">
                   </mat-form-field>
                 </div>
               </div>
@@ -223,22 +230,22 @@
                   <div fxLayout="row" fxLayoutAlign="space-between start" class="xb-cart__width-100">
                     <div fxFlex="46">
                       <mat-form-field class="xb-cart__body-100">
-                        <mat-select placeholder="Country" name="country" formControlName="country">
+                        <mat-select placeholder="Country" name="country" formControlName="countryId">
                           <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.code">
                             {{ country.name }}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
-                      <div *ngIf="formErrors['country']" class="xb-input-error">
-                        {{ formErrors['country'] }}
+                      <div *ngIf="formErrors['countryId']" class="xb-input-error">
+                        {{ formErrors['countryId'] }}
                       </div>
                     </div>
                     <div fxFlex="46">
                       <mat-form-field class="xb-cart__body-100">
-                        <input type="text" matInput placeholder="State" formControlName="state">
+                        <input type="text" matInput placeholder="State" formControlName="stateId">
                       </mat-form-field>
-                      <div *ngIf="formErrors['state']" class="xb-input-error">
-                        {{ formErrors['state'] }}
+                      <div *ngIf="formErrors['stateId']" class="xb-input-error">
+                        {{ formErrors['stateId'] }}
                       </div>
                     </div>
                   </div>
@@ -248,30 +255,30 @@
                    fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
                 <div fxFlex="48" fxFlex.xs="none" >
                   <mat-form-field class="xb-cart__body-100">
-                    <input type="text" matInput placeholder="Postal / Zip Code" formControlName="postal">
+                    <input type="text" matInput placeholder="Postal / Zip Code" formControlName="postcode">
                   </mat-form-field>
-                  <div *ngIf="formErrors['postal']" class="xb-input-error">
-                    {{ formErrors['postal'] }}
+                  <div *ngIf="formErrors['postcode']" class="xb-input-error">
+                    {{ formErrors['postcode'] }}
                   </div>
                 </div>
                 <div fxFlex="48" fxFlex.xs="none">
                   <mat-form-field  class="xb-cart__body-100">
-                    <input type="text" matInput placeholder="Phone Number" formControlName="phone">
+                    <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber">
                   </mat-form-field>
-                  <div *ngIf="formErrors['phone']" class="xb-input-error">
-                    {{ formErrors['phone'] }}
+                  <div *ngIf="formErrors['phoneNumber']" class="xb-input-error">
+                    {{ formErrors['phoneNumber'] }}
                   </div>
                 </div>
               </div>
             </form>
           </div>
-          <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="step == 1">
             <div class="text-underline xb-pointer xb-bold" ><< Back</div>
             <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
               <button mat-raised-button color="primary" >COMPLETE ORDER</button>
             </div>
           </div>
-          <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form"
+          <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form" *ngIf="step == 2"
                fxLayout="column" fxLayoutAlign="start stretch">
             <div fxLayout="row" fxLayoutAlign="start center">
               <div class="xb-cart__title">
@@ -426,9 +433,10 @@
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
               </div>
               <div>
-                <div class="xb-cart__bill-margin-top-1">$50</div>
-                <div class="xb-cart__bill-margin-top-1">$5</div>
-                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">$55</div>
+                <div class="xb-cart__bill-margin-top-1">{{order.totalExclTax|currency: order.currency: true }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{order.shippingExclTax|currency: order.currency: true }}</div>
+                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">
+                  {{totalPrice|currency: order.currency: true}}</div>
               </div>
             </div>
           </div>

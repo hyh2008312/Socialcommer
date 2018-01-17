@@ -67,6 +67,7 @@ export class StoreCartProductItemComponent{
   }
 
   changeShipping($event) {
+    this.isDialogOpen = false;
     this.shipping = $event;
     this.productChange.emit({
       type: 'edit',

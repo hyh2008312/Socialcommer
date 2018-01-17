@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { StoreService } from '../../store.service';
+import { StoreCartService } from '../store-cart.service';
 import { ConstantService } from  '../../../shared/services/constant/constant.service';
 
 @Component({
@@ -13,6 +14,11 @@ import { ConstantService } from  '../../../shared/services/constant/constant.ser
 })
 
 export class StoreCartPayComponent implements OnInit{
+
+  order: any;
+  totalPrice: number = 0;
+
+  step = 0;
 
   stepOneForm : FormGroup;
   stepTwoForm : FormGroup;
@@ -56,14 +62,17 @@ export class StoreCartPayComponent implements OnInit{
   constructor(
     overlayContainer: OverlayContainer,
     private storeService: StoreService,
+    private storeCartService: StoreCartService,
     private constant: ConstantService,
     private fb: FormBuilder
   ) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
-    this.countries = this.constant.getCountries();
+    this.storeCartService.getCountryList().then((data) => {
+      this.countries = data;
+    });
 
     this.stepOneForm = this.fb.group({
-      email: ['', [
+      emailAddress: ['', [
         Validators.required
       ]],
       confirmEmail: ['', [
@@ -75,23 +84,23 @@ export class StoreCartPayComponent implements OnInit{
       lastName: ['', [
         Validators.required
       ]],
-      Address1: ['', [
+      line1: ['', [
         Validators.required
       ]],
-      Address2: [''],
+      line2: [''],
       city: ['', [
         Validators.required
       ]],
-      country: ['', [
+      countryId: ['', [
         Validators.required
       ]],
-      state: ['', [
+      stateId: ['', [
         Validators.required
       ]],
-      postal: ['', [
+      postcode: ['', [
         Validators.required
       ]],
-      phone: ['', [
+      phoneNumber: ['', [
         Validators.required
       ]]
     });
@@ -103,10 +112,10 @@ export class StoreCartPayComponent implements OnInit{
       lastName: ['', [
         Validators.required
       ]],
-      Address1: ['', [
+      line1: ['', [
         Validators.required
       ]],
-      Address2: [''],
+      line2: [''],
       city: ['', [
         Validators.required
       ]],
@@ -116,10 +125,10 @@ export class StoreCartPayComponent implements OnInit{
       state: ['', [
         Validators.required
       ]],
-      postal: ['', [
+      postcode: ['', [
         Validators.required
       ]],
-      phone: ['', [
+      phoneNumber: ['', [
         Validators.required
       ]]
     });
@@ -127,25 +136,32 @@ export class StoreCartPayComponent implements OnInit{
     this.stepOneForm.valueChanges.subscribe(data => this.onValueChanged(data, this.stepOneForm));
 
     this.stepTwoForm.valueChanges.subscribe(data => this.onValueChanged(data, this.stepTwoForm));
+
+    this.order = this.storeCartService.getOrder();
+    this.totalPrice = parseFloat(this.order.totalExclTax) + parseFloat(this.order.shippingExclTax);
+
+    if(this.order.shippingAddress) {
+      this.stepOneForm.setValue(this.order.shippingAddress);
+    }
   }
 
 
   //存储错误信息
   formErrors = {
-    'email': '',
+    'emailAddress': '',
     'confirmEmail': '',
     'firstName': '',
     'lastName': '',
-    'Address1': '',
+    'line1': '',
     'city': '',
-    'country': '',
-    'state': '',
-    'postal': '',
-    'phone': ''
+    'countryId': '',
+    'stateId': '',
+    'postcode': '',
+    'phoneNumber': ''
   };
   //错误对应的提示
   validationMessages = {
-    'email': {
+    'emailAddress': {
       'required': 'This field is required.',
     },
     'confirmEmail': {
@@ -158,22 +174,22 @@ export class StoreCartPayComponent implements OnInit{
     'lastName': {
       'required': 'This field is required.',
     },
-    'Address1': {
+    'line1': {
       'required': 'This field is required.',
     },
     'city': {
       'required': 'This field is required.',
     },
-    'country': {
+    'countryId': {
       'required': 'This field is required.',
     },
-    'state': {
+    'stateId': {
       'required': 'This field is required.',
     },
-    'postal': {
+    'postcode': {
       'required': 'This field is required.',
     },
-    'phone': {
+    'phoneNumber': {
       'required': 'This field is required.',
     }
   };
@@ -232,6 +248,28 @@ export class StoreCartPayComponent implements OnInit{
         break;
       }
     }
+  }
+
+  changeShippingState($event) {
+    let cid = $event;
+    this.storeCartService.getStateList({
+      cid
+    }).then((data)=> {
+      this.states = data;
+    })
+  }
+
+  continue() {
+    if(!this.stepOneForm.valid) {
+      return;
+    }
+    let stepOneObject = this.stepOneForm.value;
+    stepOneObject.orderId = this.order.number;
+    this.storeCartService.createShippingAddress(stepOneObject).then((data) => {
+      this.order.emailAddress = data.emailAddress;
+      this.order.shippingAddress = data;
+      this.storeCartService.addOrder('order',this.order);
+    });
   }
 
   openDialog() {

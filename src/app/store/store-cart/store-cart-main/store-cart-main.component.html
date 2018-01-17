@@ -7,9 +7,10 @@
   <div class="background-bg-light xb-cart__body" fxFlex="noshrink" *ngIf="products && products.length > 0">
     <div class="container">
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="md-margin-left-2 text-underline xb-pointer xb-bold"
+        <div class="md-margin-left-2 text-underline xb-pointer xb-bold" fxHide.xs
              routerLink="{{homeLink}}"><< Continue Shopping</div>
-        <div class="unicorn-dark-theme" fxLayoutAlign="start center">
+        <div fxHide.gt-xs></div>
+        <div class="unicorn-dark-theme md-margin-right-2" fxLayoutAlign="start center">
           Ship to:
           <mat-form-field class="md-margin-left-2 xb-cart__width-1">
             <mat-select name="country" placeholder="Select a Country" [ngModel]="countryId"
