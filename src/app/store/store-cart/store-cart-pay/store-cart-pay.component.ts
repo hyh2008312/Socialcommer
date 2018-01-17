@@ -270,7 +270,7 @@ export class StoreCartPayComponent implements OnInit{
     this.storeCartService.createShippingAddress(stepOneObject).then((data) => {
       this.order.emailAddress = data.emailAddress;
       this.order.shippingAddress = data;
-      this.storeCartService.addOrder('order',this.order);
+      this.storeCartService.addOrder(this.order);
     });
   }
 
