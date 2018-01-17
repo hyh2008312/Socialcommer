@@ -134,7 +134,6 @@ export class StoreCartMainComponent implements OnInit{
 
     let cart = {
       storeId: this.storeId,
-      currency: this.currency,
       totalInclTax: 0,
       totalExclTax: 0,
       shippingInclTax:0,
