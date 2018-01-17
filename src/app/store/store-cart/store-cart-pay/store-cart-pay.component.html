@@ -454,8 +454,8 @@
     <div class="xb-cart__fixed-bottom-dialog" *ngIf="isTotalDialogOpen">
       <div fxLayout="row" fxLayoutAlign="start stretch">
         <div>
-          <div>$50</div>
-          <div class="md-margin-top-3">$5</div>
+          <div>{{order.totalExclTax|currency: order.currency: true }}</div>
+          <div class="md-margin-top-3">{{order.shippingExclTax|currency: order.currency: true }}</div>
         </div>
         <div class="md-margin-left-3">
           <div>Subtotal</div>
@@ -465,13 +465,13 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex (click)="openDialog()">
       <div class="xb-cart__item-sale md-margin-left-1">
-        $ 65
+        {{totalPrice|currency: order.currency: true}}
       </div>
       <div class="xb-cart__fixed-bottom-tri xb-cart__fixed-bottom-margin" *ngIf="!isTotalDialogOpen"></div>
       <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>
     </div>
     <div class="unicorn-dark-theme" fxLayout="column">
-      <button mat-raised-button color="primary" >CONTINUE</button>
+      <button mat-raised-button color="primary"  (click)="continue()">CONTINUE</button>
     </div>
   </div>
   <div class="background-bg-white" fxHide.xs>

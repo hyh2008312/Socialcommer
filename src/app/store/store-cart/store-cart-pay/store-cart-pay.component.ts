@@ -140,6 +140,7 @@ export class StoreCartPayComponent implements OnInit{
     this.stepTwoForm.valueChanges.subscribe(data => this.onValueChanged(data, this.stepTwoForm));
 
     this.order = this.storeCartService.getOrder();
+    console.log(this.order)
     this.totalPrice = parseFloat(this.order.totalExclTax) + parseFloat(this.order.shippingExclTax);
 
     if(this.order.shippingAddress) {
@@ -266,7 +267,7 @@ export class StoreCartPayComponent implements OnInit{
       return;
     }
     let stepOneObject = this.stepOneForm.value;
-    stepOneObject.orderId = this.order.number;
+    stepOneObject.orderId = this.order.id;
     this.storeCartService.createShippingAddress(stepOneObject).then((data) => {
       this.order.emailAddress = data.emailAddress;
       this.order.shippingAddress = data;
