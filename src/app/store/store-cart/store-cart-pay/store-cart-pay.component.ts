@@ -27,7 +27,9 @@ export class StoreCartPayComponent implements OnInit{
 
   isTotalDialogOpen: boolean = false;
 
-  countries: Object[];
+  countries: any;
+
+  states: any;
 
   payMethod: string = 'Credit Card';
 
