@@ -21,7 +21,7 @@ export class StoreDetailComponent implements OnInit {
   selectedImage: any = false;
   imageSources: string[] = [];
 
-  sku: string = '';
+  variantId: any = '';
 
   showButton: boolean = false;
 
@@ -52,7 +52,7 @@ export class StoreDetailComponent implements OnInit {
         shareImage: ''
       });
 
-      self.sku = data.variants[0].sku;
+      self.variantId = data.variants[0].id;
 
       self.storeService.pageView({
         pageType: 'product',
@@ -98,7 +98,7 @@ export class StoreDetailComponent implements OnInit {
         salePriceAmount : this.product.salePrice,
         salePriceCurrency : this.currency,
         number : 1,
-        sku: this.sku,
+        variantId: this.variantId,
         title : this.product.title
       });
     }

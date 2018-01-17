@@ -32,14 +32,16 @@
       <mat-form-field class="xb-cart__item-select" fxFlex="none">
         <mat-select [ngModel]="shipping" name="shipping"
           (valueChange)="changeShipping($event)">
-          <mat-option class="unicorn-dark-theme"  *ngFor="let item of shippingList" [value]="item.content">
-            {{ item.content }}
+          <mat-option class="unicorn-dark-theme"  *ngFor="let item of shippingLists" [value]="item">
+            {{ item.shippingName }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <div class="xb-cart__item-sale md-margin-left-2">{{shippingItem.price}}</div>
+      <div class="xb-cart__item-sale md-margin-left-2">
+        {{shipping.priceItem == 0 ? 'Free': shipping.priceItem|currency: product.originalPriceCurrency: true }}
+      </div>
     </div>
-    <div class="md-dark-secondary">{{shippingItem.subContent}}</div>
+    <div class="md-dark-secondary">{{shipping.shippingTimeMin}} - {{shipping.shippingTimeMax}} business days</div>
   </div>
   <div fxFlex="5" fxLayout="row" fxLayoutAlign="end center">
     <div class="xb-cart__icon xb-pointer">
@@ -55,8 +57,8 @@
     <div class="xb-cart__item-title">
       {{product.title}}
     </div>
-    <div class="md-margin-top-2">
-      {{shippingItem.content}} <span class="xb-cart__item-shipping">{{shippingItem.price}}</span>
+    <div class="md-margin-top-2" *ngIf="shipping">
+      {{shipping.shippingName}} <span class="xb-cart__item-shipping">{{shipping.priceItem}}</span>
     </div>
     <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
       <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: currency: true }}</div>
@@ -78,12 +80,14 @@
         <i class="material-icons xb-pointer" (click)="plusNumber()">add</i>
       </div>
     </div>
-    <div fxLayout="row" fxLayoutAlign="start end" class="md-margin-top-2 md-margin-bottom-1">
+    <div *ngIf="shipping" fxLayout="row" fxLayoutAlign="start end" class="md-margin-top-2 md-margin-bottom-1">
       <div class="xb-cart__item-select xb-cart__item-select-mobile" (click)="openDialog()">
-        {{shippingItem.content}}
+        {{shipping.shippingName}}
         <span class="xb-cart__item-select-tri"></span>
       </div>
-      <div class="xb-cart__item-sale md-margin-left-2">{{shippingItem.price}}</div>
+      <div class="xb-cart__item-sale md-margin-left-2">
+        {{shipping.priceItem == 0 ? 'Free': shipping.priceItem|currency: product.originalPriceCurrency: true }}
+      </div>
     </div>
   </div>
   <div fxFlex="none" fxLayout="column" fxLayoutAlign="center center" *ngIf="!isEdit">
@@ -107,15 +111,17 @@
   fxHide.gt-sm>
   <div class="unicorn-dark-theme background-bg-white" (click)="$event.stopPropagation()">
     <mat-radio-group [ngModel]="shipping" (ngModelChange)="changeShipping($event)" fxLayout="column">
-      <mat-radio-button class="xb-cart__dialog-list" *ngFor="let item of shippingList" [value]="item.content" color="primary">
+      <mat-radio-button class="xb-cart__dialog-list" *ngFor="let item of shippingLists" [value]="item.content" color="primary">
         <div fxLayout="column">
           <div fxLayout="row" fxLayoutAlign="start center">
-            <span>{{ item.content }}</span>
+            <span>{{ item.shippingName }}</span>
             <div class="md-margin-left-2 xb-cart__item-sale">
-              {{item.price}}
+              {{shipping.priceItem == 0 ? 'Free': shipping.priceItem|currency: product.originalPriceCurrency: true }}
             </div>
           </div>
-          <div class="md-dark-secondary xb-cart__dialog-margin-top">{{item.subContent}}</div>
+          <div class="md-dark-secondary xb-cart__dialog-margin-top">
+            {{shipping.shippingTimeMin}} - {{shipping.shippingTimeMax}} business days
+          </div>
         </div>
       </mat-radio-button>
     </mat-radio-group>

@@ -20,7 +20,7 @@ export class StoreCartMainComponent implements OnInit{
 
   currency: string = 'USD';
 
-  countries: Object[];
+  countries: any[];
 
   countryId: number = 1;
 
@@ -31,6 +31,10 @@ export class StoreCartMainComponent implements OnInit{
   displayName: any = '';
 
   subTotalPrice: number = 0;
+
+  shippingTotalPrice: number = 0;
+
+  shippingItem: any = {};
 
   totalPrice: number = 0;
 
@@ -52,10 +56,10 @@ export class StoreCartMainComponent implements OnInit{
         self.currency = data.currency;
         self.displayName = data.displayName;
         self.products = self.storeService.getProductInCart(self.displayName);
-        self.calculatePrice();
         self.storeCartService.getCountryList().then((data) => {
           self.countries = data;
           self.changeShipping(this.countries[0].id);
+          self.calculatePrice();
         });
       }
     });
@@ -69,9 +73,11 @@ export class StoreCartMainComponent implements OnInit{
     switch ($event.type) {
       case 'edit':
         this.products[$event.index] = $event.product;
+        this.shippingItem[$event.product.id] = $event.shippingPrice;
         break;
       case 'delete':
         this.products.splice($event.index, 1);
+        delete this.shippingItem[$event.product.id];
         break;
     }
     this.calculatePrice();
@@ -98,14 +104,19 @@ export class StoreCartMainComponent implements OnInit{
 
   calculatePrice() {
     let price = 0;
+    let shippingPrice = 0;
     for(let item of this.products) {
       if(typeof item.number == 'number' && item.number > 0) {
         price += item.number * item.salePriceAmount;
+        if(this.shippingItem[item.id]) {
+          shippingPrice += parseFloat(this.shippingItem[item.id].priceItem);
+        }
       }
     }
 
     this.subTotalPrice = price;
-    this.totalPrice = this.subTotalPrice;
+    this.shippingTotalPrice = shippingPrice;
+    this.totalPrice = this.subTotalPrice + this.shippingTotalPrice;
   }
 
   checkout() {
@@ -114,8 +125,9 @@ export class StoreCartMainComponent implements OnInit{
       lines.push({
         goodsId: item.id,
         quantity: item.number,
-        variantId: item.sku
-      })
+        variantId: item.variantId,
+        shippingPriceId : this.shippingItem[item.id].id
+      });
     }
 
     let cart = {
@@ -130,7 +142,7 @@ export class StoreCartMainComponent implements OnInit{
 
     this.storeCartService.createOrder(cart).then((data) => {
       console.log(data)
-    })
+    });
   }
 
 }

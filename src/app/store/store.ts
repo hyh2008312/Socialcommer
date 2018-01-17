@@ -44,6 +44,9 @@ export class Product {
   source : string;
   tags : string;
   title: string;
+  productId: number;
+  originalPrice: string;
+  salePrice: string;
 }
 
 export class Blog{

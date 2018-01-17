@@ -16,23 +16,15 @@ export class StoreCartProductItemComponent{
   @Input() index: number = 0;
   @Input() shippingList: any;
 
-  shipping = 'ePacket';
+  shippingLists: any;
 
-  shippingItem = {
-    content: 'ePacket',
-    price: '$ 5',
-    subContent: '2 - 3 business days'
+  shipping:any = {
+    id: '',
+    shippingName: '',
+    shippingTimeMin: 0,
+    shippingTimeMax: 0,
+    priceItem: 0
   };
-
-  shippingList = [{
-    content: 'ePacket',
-    price: '$ 5',
-    subContent: '2 - 3 business days'
-  },{
-    content: 'DHL',
-    price: 'Free',
-    subContent: '5 - 10 business days'
-  }];
 
   isEdit: boolean = false;
   isDialogOpen: boolean = false;
@@ -41,11 +33,19 @@ export class StoreCartProductItemComponent{
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
   }
 
+  ngOnChanges() {
+    if(this.shippingList) {
+      this.shippingLists = this.shippingList[this.product.id];
+      this.changeShipping(this.shippingLists[0]);
+    }
+  }
+
   plusNumber() {
     this.product.number++;
     this.productChange.emit({
       type: 'edit',
       product: this.product,
+      shippingPrice: this.shipping,
       index: this.index
     });
   }
@@ -56,6 +56,7 @@ export class StoreCartProductItemComponent{
       this.productChange.emit({
         type: 'edit',
         product: this.product,
+        shippingPrice: this.shipping,
         index: this.index
       });
     }
@@ -66,14 +67,13 @@ export class StoreCartProductItemComponent{
   }
 
   changeShipping($event) {
-    for(let value of this.shippingList) {
-      if(value.content == $event) {
-        this.shipping = $event;
-        this.shippingItem = value;
-        this.isDialogOpen = false;
-        break;
-      }
-    }
+    this.shipping = $event;
+    this.productChange.emit({
+      type: 'edit',
+      product: this.product,
+      shippingPrice: this.shipping,
+      index: this.index
+    });
   }
 
   openDialog() {
@@ -84,6 +84,7 @@ export class StoreCartProductItemComponent{
     this.productChange.emit({
       type: 'delete',
       product: this.product,
+      shippingPrice: this.shipping,
       index: this.index
     });
   }
@@ -98,6 +99,7 @@ export class StoreCartProductItemComponent{
     this.productChange.emit({
       type: 'edit',
       product: this.product,
+      shippingPrice: this.shipping,
       index: this.index
     });
   }
