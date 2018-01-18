@@ -29,7 +29,7 @@
                 <div fxFlex="48" fxFlex.xs="none" >
                   <mat-form-field class="xb-cart__body-100">
                     <input type="text" matInput placeholder="Confirm Email Address" formControlName="confirmEmail"
-                           validateEqual="email"
+                           validateEqual="emailAddress"
                            reverse="false">
                   </mat-form-field>
                   <div *ngIf="formErrors['confirmEmail']" class="xb-input-error">
@@ -95,8 +95,8 @@
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
-                      <div *ngIf="formErrors['country']" class="xb-input-error">
-                        {{ formErrors['country'] }}
+                      <div *ngIf="formErrors['countryId']" class="xb-input-error">
+                        {{ formErrors['countryId'] }}
                       </div>
                     </div>
                     <div fxFlex="46">
@@ -135,7 +135,7 @@
               </div>
             </div>
             <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="step == 0">
-              <div class="text-underline xb-pointer xb-bold" ><< Back</div>
+              <div></div>
               <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
                 <button mat-raised-button color="primary" (click)="continue()">CONTINUE</button>
               </div>
@@ -143,6 +143,7 @@
           </form>
           <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form" *ngIf="step == 1"
                fxLayout="column" fxLayoutAlign="start stretch">
+            <div></div>
             <div class="xb-cart__title">
               Pay Method
             </div>
@@ -161,16 +162,19 @@
                  fxLayout="row" fxLayoutAlign="space-between center"
                  fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
               <mat-form-field fxFlex="48" fxFlex.xs="none" class="xb-cart__body-100">
-                <input type="text" matInput placeholder="Card Number">
+                <input type="text" matInput placeholder="Card Number" [(ngModel)]="cardNumber" maxlength="20">
               </mat-form-field>
               <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="48" class="xb-cart__width-100">
                 <mat-form-field fxFlex="46">
-                  <input type="text" matInput placeholder="MM/YY">
+                  <input type="text" matInput placeholder="MM/YY" [(ngModel)]="expiryDate" maxlength="5">
                 </mat-form-field>
                 <mat-form-field fxFlex="46">
-                  <input type="text" matInput placeholder="CVC">
+                  <input type="text" matInput placeholder="CVC" [(ngModel)]="cvc" maxlength="4">
                 </mat-form-field>
               </div>
+            </div>
+            <div *ngIf="cardMessage" class="xb-input-error">
+              {{ cardMessage }}
             </div>
             <div class="xb-cart__title xb-cart__body-margin-top-2" *ngIf="payMethodItem.display">
               Billing Address
@@ -230,8 +234,9 @@
                   <div fxLayout="row" fxLayoutAlign="space-between start" class="xb-cart__width-100">
                     <div fxFlex="46">
                       <mat-form-field class="xb-cart__body-100">
-                        <mat-select placeholder="Country" name="country" formControlName="countryId">
-                          <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.code">
+                        <mat-select placeholder="Country" name="country" formControlName="countryId"
+                                    (ngModelChange)="changeBillingState($event)">
+                          <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.id">
                             {{ country.name }}
                           </mat-option>
                         </mat-select>
@@ -242,7 +247,11 @@
                     </div>
                     <div fxFlex="46">
                       <mat-form-field class="xb-cart__body-100">
-                        <input type="text" matInput placeholder="State" formControlName="stateId">
+                        <mat-select placeholder="State" name="state" formControlName="stateId">
+                          <mat-option class="unicorn-dark-theme" *ngFor="let state of statesBilling" [value]="state.id">
+                            {{ state.name }}
+                          </mat-option>
+                        </mat-select>
                       </mat-form-field>
                       <div *ngIf="formErrors['stateId']" class="xb-input-error">
                         {{ formErrors['stateId'] }}
@@ -261,21 +270,13 @@
                     {{ formErrors['postcode'] }}
                   </div>
                 </div>
-                <div fxFlex="48" fxFlex.xs="none">
-                  <mat-form-field  class="xb-cart__body-100">
-                    <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber">
-                  </mat-form-field>
-                  <div *ngIf="formErrors['phoneNumber']" class="xb-input-error">
-                    {{ formErrors['phoneNumber'] }}
-                  </div>
-                </div>
               </div>
             </form>
           </div>
           <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="step == 1">
-            <div class="text-underline xb-pointer xb-bold" ><< Back</div>
+            <div class="text-underline xb-pointer xb-bold" (click)="back()"><< Back</div>
             <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
-              <button mat-raised-button color="primary" >COMPLETE ORDER</button>
+              <button mat-raised-button color="primary" (click)="save()">COMPLETE ORDER</button>
             </div>
           </div>
           <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form" *ngIf="step == 2"
@@ -441,7 +442,7 @@
             </div>
           </div>
           <div class="md-margin-top-2 unicorn-dark-theme" fxLayout="column">
-            <button mat-raised-button color="primary" >CONTINUE SHOPPING</button>
+            <button mat-raised-button color="primary" routerLink="{{homeLink}}">CONTINUE SHOPPING</button>
             <div class="text-underline xb-pointer md-margin-top-2 md-align-center xb-bold">
               Contact Support
             </div>

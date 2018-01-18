@@ -38,8 +38,8 @@ export class ValidateEqualDirective implements Validator{
 
     // 反向查询且值相等
     if (target && self === target.value && this.isReverse) {
-      delete target.errors['validateEqual'];
-      if (!Object.keys(target.errors).length) target.setErrors(null);
+      if (target.errors != null) delete target.errors['validateEqual'];
+      if (target.errors != null && !Object.keys(target.errors).length) target.setErrors(null);
     }
 
     // 反向查询且值不相等

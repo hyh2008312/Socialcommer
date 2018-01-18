@@ -90,18 +90,20 @@ export class StoreCartMainComponent implements OnInit{
     this.countryId = $event;
     let pid = '';
     let pidArray = [];
-    for(let value of this.products) {
-      pidArray.push(value.id);
-    }
-    pid = pidArray.join(',');
-    let obj = {
-      cid: this.countryId,
-      pid
-    };
+    if(this.products && this.products.length > 0) {
+      for(let value of this.products) {
+        pidArray.push(value.id);
+      }
+      pid = pidArray.join(',');
+      let obj = {
+        cid: this.countryId,
+        pid
+      };
 
-    this.storeCartService.getShippingList(obj).then((data) => {
-      this.shippingList = data;
-    });
+      this.storeCartService.getShippingList(obj).then((data) => {
+        this.shippingList = data;
+      });
+    }
   }
 
   calculatePrice() {

@@ -31,6 +31,8 @@ export class StoreCartPayComponent implements OnInit{
 
   states: any;
 
+  statesBilling: any;
+
   payMethod: string = 'Credit Card';
 
   payMethodItem = {
@@ -41,9 +43,6 @@ export class StoreCartPayComponent implements OnInit{
   payMethodList = [{
     content: 'Credit Card',
     display: true
-  }, {
-    content: 'Paypal',
-    display: false
   }];
 
   shippingMethod: string = 'Same as shipping address';
@@ -60,6 +59,13 @@ export class StoreCartPayComponent implements OnInit{
     content: 'Use a different billing address',
     display: true
   }];
+
+  cardNumber: any;
+  expiryDate: any = '';
+  cvc: any;
+  cardMessage: any = false;
+
+  stripeToken: string = '';
 
   constructor(
     overlayContainer: OverlayContainer,
@@ -121,16 +127,13 @@ export class StoreCartPayComponent implements OnInit{
       city: ['', [
         Validators.required
       ]],
-      country: ['', [
+      countryId: ['', [
         Validators.required
       ]],
-      state: ['', [
+      stateId: ['', [
         Validators.required
       ]],
       postcode: ['', [
-        Validators.required
-      ]],
-      phoneNumber: ['', [
         Validators.required
       ]]
     });
@@ -140,11 +143,37 @@ export class StoreCartPayComponent implements OnInit{
     this.stepTwoForm.valueChanges.subscribe(data => this.onValueChanged(data, this.stepTwoForm));
 
     this.order = this.storeCartService.getOrder();
-    console.log(this.order)
     this.totalPrice = parseFloat(this.order.totalExclTax) + parseFloat(this.order.shippingExclTax);
 
     if(this.order.shippingAddress) {
-      this.stepOneForm.setValue(this.order.shippingAddress);
+      this.stepOneForm.patchValue({
+        emailAddress: this.order.emailAddress,
+        confirmEmail: this.order.emailAddress,
+        firstName: this.order.shippingAddress.firstName,
+        lastName: this.order.shippingAddress.lastName,
+        line1: this.order.shippingAddress.line1,
+        line2: this.order.shippingAddress.line2,
+        city: this.order.shippingAddress.city,
+        countryId: this.order.shippingAddress.country.id,
+        stateId: this.order.shippingAddress.state.id,
+        postcode: this.order.shippingAddress.postcode,
+        phoneNumber: this.order.shippingAddress.phoneNumber,
+      });
+      this.stepTwoForm.setValue({
+        firstName: this.order.shippingAddress.firstName,
+        lastName: this.order.shippingAddress.lastName,
+        line1: this.order.shippingAddress.line1,
+        line2: this.order.shippingAddress.line2,
+        city: this.order.shippingAddress.city,
+        countryId: this.order.shippingAddress.country.id,
+        stateId: this.order.shippingAddress.state.id,
+        postcode: this.order.shippingAddress.postcode
+      });
+      this.changeBillingState(this.order.shippingAddress.country.id);
+      this.changeShippingState(this.order.shippingAddress.country.id);
+      if(this.order.shippingAddress.id) {
+        this.step = 1;
+      }
     }
   }
 
@@ -251,6 +280,19 @@ export class StoreCartPayComponent implements OnInit{
         break;
       }
     }
+    if($event == 'Same as shipping address') {
+      this.stepTwoForm.setValue({
+        firstName: this.order.shippingAddress.firstName,
+        lastName: this.order.shippingAddress.lastName,
+        line1: this.order.shippingAddress.line1,
+        line2: this.order.shippingAddress.line2,
+        city: this.order.shippingAddress.city,
+        countryId: this.order.shippingAddress.country.id,
+        stateId: this.order.shippingAddress.state.id,
+        postcode: this.order.shippingAddress.postcode
+      });
+      this.changeBillingState(this.order.shippingAddress.country.id);
+    }
   }
 
   changeShippingState($event) {
@@ -262,17 +304,78 @@ export class StoreCartPayComponent implements OnInit{
     })
   }
 
+  changeBillingState($event) {
+    let cid = $event;
+    this.storeCartService.getStateList({
+      cid
+    }).then((data)=> {
+      this.statesBilling = data;
+    })
+  }
+
+
   continue() {
     if(!this.stepOneForm.valid) {
       return;
     }
+    if(this.order.shippingAddress) {
+      this.step = 1;
+      return;
+    }
     let stepOneObject = this.stepOneForm.value;
     stepOneObject.orderId = this.order.id;
-    this.storeCartService.createShippingAddress(stepOneObject).then((data) => {
-      this.order.emailAddress = data.emailAddress;
-      this.order.shippingAddress = data;
-      this.storeCartService.addOrder(this.order);
+    let self = this;
+    self.storeCartService.createShippingAddress(stepOneObject).then((data) => {
+      self.step = 1;
+      self.order = data;
+      self.storeCartService.addOrder(this.order);
     });
+  }
+
+
+
+  save() {
+    let pattern = /^\d{1,2}\/\d{2}/;
+    if(!this.expiryDate.match(pattern)) {
+      this.cardMessage = "Your card's expiration year is invalid.";
+      return
+    }
+    let expiryMonth = this.expiryDate.split('/')[0];
+    let expiryYear = '';
+    if(this.expiryDate.split('/')[1]) {
+      expiryYear = this.expiryDate.split('/')[1];
+    }
+
+    if(!this.stepTwoForm.valid) {
+      return;
+    }
+
+
+    let self = this;
+
+    let order = this.stepTwoForm.value;
+
+    (<any>window).Stripe.card.createToken({
+      number: self.cardNumber,
+      exp_month: expiryMonth,
+      exp_year: expiryYear,
+      cvc: self.cvc
+    }, (status: number, response: any) => {
+      if (status === 200) {
+        self.cardMessage = false;
+        order.token = response.id;
+        order.orderId = self.order.id;
+        self.storeCartService.createPayment(order).then((data) => {
+          console.log(data)
+        });
+      } else {
+        this.cardMessage = response.error.message;
+      }
+    });
+  }
+
+  back() {
+    this.step = 0;
   }
 
   openDialog() {

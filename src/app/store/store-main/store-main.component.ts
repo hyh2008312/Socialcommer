@@ -32,7 +32,7 @@ export class StoreMainComponent implements OnInit {
     let storeName = this.activatedRoute.snapshot.params['name'];
     let self = this;
     let routerArray = this.router.url.split(storeName);
-    if(routerArray[1] != '') {
+    if(routerArray[1] && routerArray[1] != '') {
       let allRouter = routerArray[1].split('/');
       let uid = allRouter[1];
 

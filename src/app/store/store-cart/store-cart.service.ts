@@ -199,6 +199,21 @@ export class StoreCartService {
       .catch(this.handleError);
   }
 
+  createPayment(payment:any) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}order/payment/create/`;
+
+    return this.http.post(url, payment, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
 
   addOrder(order:any) {
     localStorage.setItem('order', JSON.stringify(order));
