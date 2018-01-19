@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class StoreCartHeaderComponent{
 
   @Input() homeLink: string = '';
+  @Input() cartLink: string = '';
 
   constructor(
 

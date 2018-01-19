@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -48,7 +48,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthenticationService,
     private userService: UserService,
-    public _auth: AuthService
+    public _auth: AuthService,
+    private changeDetectorRef:ChangeDetectorRef
   ) {
     this.loginGroup = this.fb.group({
       username: ['', [
@@ -160,6 +161,8 @@ export class LoginComponent implements OnInit {
                 }
 
               }
+              self.changeDetectorRef.markForCheck();
+              self.changeDetectorRef.detectChanges();
             }
           });
         }
@@ -202,6 +205,8 @@ export class LoginComponent implements OnInit {
                     self.router.navigate(['/account/signup'], {queryParams: {step: 1}});
                   }
                 }
+                self.changeDetectorRef.markForCheck();
+                self.changeDetectorRef.detectChanges();
               }
             });
           }

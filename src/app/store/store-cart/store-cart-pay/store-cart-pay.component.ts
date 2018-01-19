@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, NgZone, ChangeDetectorRef} from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -32,6 +32,8 @@ export class StoreCartPayComponent implements OnInit{
   states: any;
 
   statesBilling: any;
+
+  displayName: string = '';
 
   payMethod: string = 'Credit Card';
 
@@ -67,19 +69,29 @@ export class StoreCartPayComponent implements OnInit{
 
   stripeToken: string = '';
 
+  cartLink: string = '';
+
+  shippingAddressList: any;
+
   constructor(
     overlayContainer: OverlayContainer,
     private storeService: StoreService,
     private storeCartService: StoreCartService,
     private constant: ConstantService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private changeDetectorRef:ChangeDetectorRef
   ) {
+    if((<any>window).Stripe) {
+      (<any>window).Stripe.setPublishableKey('pk_test_4moMjkGVqC9OkgfZAzkotlZn');
+    }
+
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
     this.storeCartService.getCountryList().then((data) => {
       this.countries = data;
     });
 
     this.stepOneForm = this.fb.group({
+      isSaveAddress: [true],
       emailAddress: ['', [
         Validators.required
       ]],
@@ -143,7 +155,12 @@ export class StoreCartPayComponent implements OnInit{
     this.stepTwoForm.valueChanges.subscribe(data => this.onValueChanged(data, this.stepTwoForm));
 
     this.order = this.storeCartService.getOrder();
+    this.shippingAddressList = this.storeCartService.getShippingAddress();
     this.totalPrice = parseFloat(this.order.totalExclTax) + parseFloat(this.order.shippingExclTax);
+
+    this.stepOneForm.patchValue({
+      isSaveAddress: this.shippingAddressList.isSaveAddress
+    });
 
     if(this.order.shippingAddress) {
       this.stepOneForm.patchValue({
@@ -174,7 +191,26 @@ export class StoreCartPayComponent implements OnInit{
       if(this.order.shippingAddress.id) {
         this.step = 1;
       }
+      return;
     }
+
+    if(this.shippingAddressList.id && this.shippingAddressList.isSaveAddress) {
+      this.stepOneForm.patchValue({
+        emailAddress: this.shippingAddressList.emailAddress,
+        confirmEmail: this.shippingAddressList.emailAddress,
+        firstName: this.shippingAddressList.firstName,
+        lastName: this.shippingAddressList.lastName,
+        line1: this.shippingAddressList.line1,
+        line2: this.shippingAddressList.line2,
+        city: this.shippingAddressList.city,
+        countryId: this.shippingAddressList.country.id,
+        stateId: this.shippingAddressList.state.id,
+        postcode: this.shippingAddressList.postcode,
+        phoneNumber: this.shippingAddressList.phoneNumber,
+      });
+      this.changeShippingState(this.shippingAddressList.country.id);
+    }
+
   }
 
 
@@ -258,6 +294,8 @@ export class StoreCartPayComponent implements OnInit{
       if(data) {
         let uid = data.templateId == 1? data.templateId:data.uid;
         self.homeLink = `/store/${data.displayName}/${uid}`;
+        self.cartLink = `/store/${data.displayName}/cart`;
+        self.displayName = data.displayName;
       }
     });
   }
@@ -328,7 +366,27 @@ export class StoreCartPayComponent implements OnInit{
     self.storeCartService.createShippingAddress(stepOneObject).then((data) => {
       self.step = 1;
       self.order = data;
-      self.storeCartService.addOrder(this.order);
+      self.storeCartService.addOrder(self.order);
+      let shippingAddress = data.shippingAddress;
+      shippingAddress.emailAddress = data.emailAddress;
+      self.storeCartService.addOrder(self.order);
+      console.log(stepOneObject.isSaveAddress);
+      if(stepOneObject.isSaveAddress) {
+        shippingAddress.isSaveAddress = true;
+        self.storeCartService.addShippingAddress(shippingAddress);
+      }
+
+      self.stepTwoForm.setValue({
+        firstName: self.order.shippingAddress.firstName,
+        lastName: self.order.shippingAddress.lastName,
+        line1: self.order.shippingAddress.line1,
+        line2: self.order.shippingAddress.line2,
+        city: self.order.shippingAddress.city,
+        countryId: self.order.shippingAddress.country.id,
+        stateId: self.order.shippingAddress.state.id,
+        postcode: self.order.shippingAddress.postcode
+      });
+      self.changeBillingState(self.order.shippingAddress.country.id);
     });
   }
 
@@ -366,7 +424,12 @@ export class StoreCartPayComponent implements OnInit{
         order.token = response.id;
         order.orderId = self.order.id;
         self.storeCartService.createPayment(order).then((data) => {
-          console.log(data)
+          self.step = 2;
+          self.order = data;
+          self.storeCartService.addOrder({});
+          self.storeService.addProductToCart(self.displayName, []);
+          self.changeDetectorRef.markForCheck();
+          self.changeDetectorRef.detectChanges();
         });
       } else {
         this.cardMessage = response.error.message;

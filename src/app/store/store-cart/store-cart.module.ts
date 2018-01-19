@@ -8,6 +8,7 @@ import { StoreCartProductItemComponent } from './store-cart-product-item/store-c
 import { StoreCartRoutingModule } from './store-cart.routes.module';
 
 import { StoreCartService } from './store-cart.service';
+import { CanActive } from './can-active.service';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -29,7 +30,8 @@ import { SharedModule } from '../../shared/shared.module';
   entryComponents: [
   ],
   providers: [
-    StoreCartService
+    StoreCartService,
+    CanActive
   ]
 })
 export class StoreCartModule { }

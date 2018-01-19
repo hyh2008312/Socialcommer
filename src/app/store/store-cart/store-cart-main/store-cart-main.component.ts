@@ -145,10 +145,7 @@ export class StoreCartMainComponent implements OnInit{
 
     let self = this;
     this.storeCartService.createOrder(cart).then((data) => {
-      console.log(data);
-      self.storeService.addProductToCart(self.displayName, []);
       self.storeCartService.addOrder(data);
-
       self.router.navigate([`./checkout`], {relativeTo: this.activatedRoute});
     });
   }

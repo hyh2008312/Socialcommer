@@ -10,7 +10,7 @@
     Store Name
   </div>
   <div fxFlex fxHide.xs></div>
-  <div class="xb-cart__navigation-icon">
-    <i class="iconfontXberts icon-ic-cart"></i>
+  <div class="xb-cart__navigation-icon" *ngIf="cartLink != ''">
+    <i class="iconfontXberts icon-ic-cart xb-pointer" routerLink="{{cartLink}}"></i>
   </div>
 </div>

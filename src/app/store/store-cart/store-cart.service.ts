@@ -150,7 +150,7 @@ export class StoreCartService {
       .catch(this.handleError);
   }
 
-  getShippingAddress(address:any): Promise<any> {
+  getShippingAddressItem(address:any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -222,6 +222,18 @@ export class StoreCartService {
   getOrder(): any {
     if(localStorage && localStorage.getItem('order')) {
       return JSON.parse(localStorage.getItem('order'));
+    }
+    return {};
+  }
+
+
+  addShippingAddress(shippingAddress:any) {
+    localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress));
+  }
+
+  getShippingAddress(): any {
+    if(localStorage && localStorage.getItem('shippingAddress')) {
+      return JSON.parse(localStorage.getItem('shippingAddress'));
     }
     return {};
   }
