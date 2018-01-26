@@ -12,6 +12,10 @@ const routes: Routes = [{
       loadChildren: 'app/store/store-cart/store-cart.module#StoreCartModule'
     },
     {
+      path: 'order',
+      loadChildren: 'app/store/order-tracking/order-tracking.module#OrderTrackingModule'
+    },
+    {
       path: '1',
       loadChildren: 'app/store/store-template-1/store-template-1.module#StoreTemplateOneModule'
     },

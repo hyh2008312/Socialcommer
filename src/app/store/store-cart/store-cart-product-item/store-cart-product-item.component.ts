@@ -20,6 +20,7 @@ export class StoreCartProductItemComponent{
 
   shipping:any = {
     id: '',
+    type: 'Free',
     shippingName: '',
     shippingTimeMin: 0,
     shippingTimeMax: 0,

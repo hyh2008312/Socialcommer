@@ -72,7 +72,7 @@ a.xb2-nostyle-link {
   font-weight: 500;
 }
 $directions: left top right bottom;
-$sizes: 0 1 2 3 4;
+$sizes: 0 1 2 3 4 5;
 @each $direction in $directions {
   @each $size in $sizes {
     .md-margin-#{$direction}-#{$size} {

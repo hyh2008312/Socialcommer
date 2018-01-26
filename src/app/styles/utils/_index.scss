@@ -32,6 +32,15 @@ $dark-theme: mat-light-theme($dark-primary, $dark-accent, $dark-warn);
   }
 }
 
+
+.unicorn-dark-theme-1 {
+  @include angular-material-theme($dark-theme);
+  .mat-raised-button {
+    line-height: 32px;
+    border-radius: 4px;
+  }
+}
+
 .mat-raised-button:not([class*=mat-elevation-z]){
   @include box-shadow(none);
 }

@@ -1,0 +1,16 @@
+<div class="xb-order-tracking__navigation" fxLayout="row" fxLayoutAlign="start center">
+  <div class="xb-cart__navigation-icon-left" fxHide.gt-xs>
+    <i class="material-icons">menu</i>
+  </div>
+  <div class="xb-order-tracking__navigation-title xb-pointer" routerLink="{{homeLink}}" fxHide.xs>
+    Store Name
+  </div>
+  <div class="xb-order-tracking__navigation-title xb-pointer"
+       fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs fxFlex>
+    Store Name
+  </div>
+  <div fxFlex fxHide.xs></div>
+  <div class="xb-order-tracking__navigation-icon" *ngIf="cartLink != ''">
+    <i class="iconfontXberts icon-ic-cart xb-pointer" routerLink="{{cartLink}}"></i>
+  </div>
+</div>

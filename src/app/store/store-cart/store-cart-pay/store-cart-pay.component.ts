@@ -15,8 +15,9 @@ import { ConstantService } from  '../../../shared/services/constant/constant.ser
 
 export class StoreCartPayComponent implements OnInit{
 
+  storeId: number = 0;
+
   order: any;
-  totalPrice: number = 0;
 
   step = 0;
 
@@ -73,6 +74,12 @@ export class StoreCartPayComponent implements OnInit{
 
   shippingAddressList: any;
 
+  products: any;
+
+  subTotalPrice: number = 0;
+  shippingTotalPrice: number = 0;
+  totalPrice: number = 0;
+
   constructor(
     overlayContainer: OverlayContainer,
     private storeService: StoreService,
@@ -85,7 +92,14 @@ export class StoreCartPayComponent implements OnInit{
       (<any>window).Stripe.setPublishableKey('pk_test_4moMjkGVqC9OkgfZAzkotlZn');
     }
 
+    this.storeService.store.subscribe((data) => {
+      if(data) {
+        this.storeId = data.id;
+      }
+    });
+
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
+
     this.storeCartService.getCountryList().then((data) => {
       this.countries = data;
     });
@@ -155,8 +169,10 @@ export class StoreCartPayComponent implements OnInit{
     this.stepTwoForm.valueChanges.subscribe(data => this.onValueChanged(data, this.stepTwoForm));
 
     this.order = this.storeCartService.getOrder();
+    this.products = this.order.lines;
+    this.calculatePrice();
+
     this.shippingAddressList = this.storeCartService.getShippingAddress();
-    this.totalPrice = parseFloat(this.order.totalExclTax) + parseFloat(this.order.shippingExclTax);
 
     this.stepOneForm.patchValue({
       isSaveAddress: this.shippingAddressList.isSaveAddress
@@ -212,7 +228,6 @@ export class StoreCartPayComponent implements OnInit{
     }
 
   }
-
 
   //存储错误信息
   formErrors = {
@@ -351,6 +366,22 @@ export class StoreCartPayComponent implements OnInit{
     })
   }
 
+  calculatePrice() {
+    let price = 0;
+    let shippingPrice = 0;
+    for(let item of this.products) {
+      if(typeof item.number == 'number' && item.number > 0) {
+        price += item.number * item.salePriceAmount;
+        if(item.shippingPrice.priceItem) {
+          shippingPrice += parseFloat(item.shippingPrice.priceItem) * item.number;
+        }
+      }
+    }
+
+    this.subTotalPrice = price;
+    this.shippingTotalPrice = shippingPrice;
+    this.totalPrice = this.subTotalPrice + this.shippingTotalPrice;
+  }
 
   continue() {
     if(!this.stepOneForm.valid) {
@@ -361,18 +392,38 @@ export class StoreCartPayComponent implements OnInit{
       return;
     }
     let stepOneObject = this.stepOneForm.value;
-    stepOneObject.orderId = this.order.id;
+
+    let lines = [];
+    for(let item of this.products) {
+      lines.push({
+        goodsId: item.id,
+        quantity: item.number,
+        variantId: item.variantId,
+        shippingPriceId : item.shippingPrice.id
+      });
+    }
+
+    stepOneObject.storeId = this.storeId;
+    stepOneObject.totalInclTax = 0;
+    stepOneObject.totalExclTax = 0;
+    stepOneObject.shippingInclTax = 0;
+    stepOneObject.shippingExclTax = 0;
+    stepOneObject.lines = lines;
+
     let self = this;
-    self.storeCartService.createShippingAddress(stepOneObject).then((data) => {
+    self.storeCartService.createOrder(stepOneObject).then((data) => {
       self.step = 1;
+      let lines = self.order.lines;
       self.order = data;
+      self.order.lines = lines;
       self.storeCartService.addOrder(self.order);
       let shippingAddress = data.shippingAddress;
       shippingAddress.emailAddress = data.emailAddress;
-      self.storeCartService.addOrder(self.order);
-      console.log(stepOneObject.isSaveAddress);
       if(stepOneObject.isSaveAddress) {
         shippingAddress.isSaveAddress = true;
+        self.storeCartService.addShippingAddress(shippingAddress);
+      } else {
+        shippingAddress.isSaveAddress = false;
         self.storeCartService.addShippingAddress(shippingAddress);
       }
 
@@ -390,8 +441,6 @@ export class StoreCartPayComponent implements OnInit{
     });
   }
 
-
-
   save() {
     let pattern = /^\d{1,2}\/\d{2}/;
     if(!this.expiryDate.match(pattern)) {
@@ -407,7 +456,6 @@ export class StoreCartPayComponent implements OnInit{
     if(!this.stepTwoForm.valid) {
       return;
     }
-
 
     let self = this;
 

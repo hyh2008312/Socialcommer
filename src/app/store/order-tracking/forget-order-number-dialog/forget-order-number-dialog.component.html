@@ -1,0 +1,32 @@
+<div class="sc-order-dialog unicorn-dark-theme">
+  <div class="sc-order-dialog__close" (click)="close()" >
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div [hidden]="modified">
+    <div class="sc-order-dialog__title">
+      Enter your email address you used to place your order to recover all orders placed in the last 60 days.
+    </div>
+    <form [formGroup]="orderForm" novalidate>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex>
+          <input type="text" matInput placeholder="Email Address" formControlName="emailAddress">
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="checkoutEmail()">SUBMIT</button>
+      <div class="md-margin-left-2">
+        <button mat-button color="primary" (click)="close()">CANCEL</button>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="">
+    <div class="sc-order-dialog__title" fxLayout="row" fxLayoutAlign="start start">
+      <i class="iconfontXberts icon-pic-finish sc-order-dialog__icons"></i>
+      <div class="md-margin-left-2">Please check your email for the order information!</div>
+    </div>
+    <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="close()">OK</button>
+    </div>
+  </div>
+</div>

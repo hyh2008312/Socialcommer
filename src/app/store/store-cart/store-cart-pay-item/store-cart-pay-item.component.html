@@ -1,0 +1,61 @@
+<div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start center" fxHide.xs fxHide.sm>
+  <div fxLayout="row" fxLayoutAlign="start start" fxFlex="40">
+    <div class="xb-cart__item-image" fxFlex="none">
+      <img [src]="product.imageUrl">
+    </div>
+    <div class="xb-cart__item-title">
+      {{product.title}}
+    </div>
+  </div>
+  <div fxFlex="20" fxLayout="column" fxLayoutAlign="center center">
+    {{product.number}}
+  </div>
+  <div fxFlex="15" fxLayout="column" fxLayoutAlign="start center">
+    <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
+    <div class="line-through md-dark-secondary xb-cart__item-original">
+      {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+    </div>
+  </div>
+  <div fxFlex="25"  fxLayout="column" fxLayoutAlign="start center">
+    <div class="unicorn-dark-theme" fxLayout="row" fxLayoutAlign="start center">
+      <div>{{ product.shippingPrice.type }}&nbsp;Shipping</div>
+      <div class="xb-cart__item-sale md-margin-left-2">
+        {{product.shippingPrice.priceItem == 0 ? '': product.shippingPrice.priceItem | currency: product.shippingPrice.originalPriceCurrency: true }}
+      </div>
+    </div>
+    <div class="md-dark-secondary md-margin-top-1">{{product.shippingPrice.shippingTimeMin}} - {{product.shippingPrice.shippingTimeMax}} business days</div>
+  </div>
+</div>
+<div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start stretch" fxHide.gt-sm>
+  <div class="xb-cart__item-image" fxFlex="none">
+    <img [src]="product.imageUrl">
+  </div>
+  <div *ngIf="!isEdit" fxFlex>
+    <div class="xb-cart__item-title">
+      {{product.title}}
+    </div>
+    <div class="md-margin-top-2" *ngIf="shipping">
+      {{product.shippingPrice.type}} Shipping
+      <span class="xb-cart__item-shipping md-margin-left-1">
+        {{product.shippingPrice.priceItem == 0 ? '': product.shippingPrice.priceItem|currency: product.originalPriceCurrency: true }}
+      </span>
+    </div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: currency: true }}</div>
+      <div class="line-through md-dark-secondary xb-cart__item-original">
+        {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+      </div>
+    </div>
+  </div>
+  <div fxFlex="none" fxLayout="column" fxLayoutAlign="center center" >
+    <div class="xb-cart__item-icon xb-pointer">
+      &nbsp;
+    </div>
+    <div class="xb-cart__item-icon xb-pointer md-margin-top-2">
+      &nbsp;
+    </div>
+    <div class="md-margin-top-2">
+      × {{product.number}}
+    </div>
+  </div>
+</div>

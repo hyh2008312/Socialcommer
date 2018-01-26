@@ -1,0 +1,48 @@
+<div class="sc-order-dialog unicorn-dark-theme">
+  <div class="sc-order-dialog__close" (click)="close()" >
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div>
+    <div class="xb-order-tracking__title-1">
+      Tracking Information
+    </div>
+    <div class="md-margin-top-2">
+      please note there may be no tracking information available for some international sipping methods.
+    </div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="center center">
+      <div class="xb-order-tracking__shipping-process-bg" fxLayout="column" fxLayoutAlign="center center"  fxFlex="none">
+        <div class="xb-order-tracking__shipping-process-circle active">1</div>
+        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text active">Processing</div>
+      </div>
+      <div class="xb-order-tracking__shipping-process-line"></div>
+      <div class="xb-order-tracking__shipping-process-bg" fxLayout="column" fxLayoutAlign="center center"  fxFlex="none">
+        <div class="xb-order-tracking__shipping-process-circle">2</div>
+        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text">Shipping</div>
+      </div>
+      <div class="xb-order-tracking__shipping-process-line"></div>
+      <div class="xb-order-tracking__shipping-process-bg" fxLayout="column" fxLayoutAlign="center center" fxFlex="none">
+        <div class="xb-order-tracking__shipping-process-circle">3</div>
+        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text">Delivered by Oct 4,2016</div>
+      </div>
+    </div>
+    <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="start start">
+      <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Product</div>
+      <div class="md-margin-left-3">PearlsOnly - Heart 9-10mm AA Quality Freshwater 925 Sterling</div>
+    </div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+      <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Shipping Carrier</div>
+      <div class="md-margin-left-3">EMS</div>
+    </div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+      <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Tracking Number</div>
+      <div class="md-margin-left-3">r799967080766080807</div>
+    </div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+      <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Tracking URL</div>
+      <a class="md-margin-left-3 text-underline xb-bold">View Details</a>
+    </div>
+    <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="close()">CLOSE</button>
+    </div>
+  </div>
+</div>

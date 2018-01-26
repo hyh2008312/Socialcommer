@@ -51,6 +51,10 @@ export class StoreEditComponent implements OnInit {
   countries: Object[];
   userCountry: string = '';
 
+  templateList: any = [];
+  templateId: any = false;
+  ownerId: any;
+
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
@@ -87,38 +91,52 @@ export class StoreEditComponent implements OnInit {
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
     let firstLoad = false;
-    self.userService.store.subscribe((data)=> {
-      if(data) {
-        self.store = data;
-        if(!firstLoad) {
-          firstLoad = true;
-          self.nameTag = self.store.nameTag != ''? self.store.nameTag : self.nameTag;
-          self.titleTag = self.store.titleTag != ''? self.store.titleTag : self.titleTag;
-          self.descriptionTag = self.store.descriptionTag != ''? self.store.descriptionTag : self.descriptionTag;
-          self.userTag = self.store.descriptionTag != ''? self.store.userTag : self.userTag;
-          self.storeForm.setValue({
-            name: self.store.name,
-            description : self.store.description,
-            displayName: self.store.displayName
-          });
 
-          if(self.store.imageUrl != '') {
-            self.imageSrc = self.store.imageUrl;
-          }
+    self.shopService.templateList.subscribe((data) => {
+      if (data) {
+        self.templateList = data;
+        self.userService.store.subscribe((data)=> {
+          if(data) {
+            self.store = data;
+            if(!firstLoad) {
+              firstLoad = true;
 
-          self.shopService.getFrontStore(self.store.displayName).then((data) => {
-            if(data.category.length > 1) {
-              self.categories = [{name: 'All'}, ...data.category];
-            } else {
-              self.categories = [...data.category];
+              self.storeForm.setValue({
+                name: self.store.name,
+                description : self.store.description,
+                displayName: self.store.displayName
+              });
+
+              self.shopService.getFrontStore(self.store.displayName).then((data) => {
+                self.ownerId = data.ownerId;
+                if(data.category.length > 1) {
+                  self.categories = [{name: 'All'}, ...data.category];
+                } else {
+                  self.categories = [...data.category];
+                }
+
+                self.category = self.categories[0];
+                self.queryProduct(false);
+              });
+
+              for (let value of self.templateList) {
+                if (value.uid == 1) {
+
+                  self.templateId = value.id;
+                  self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
+                  self.titleTag = value.context.titleTag != ''? value.context.titleTag : self.titleTag;
+                  self.descriptionTag = value.context.descriptionTag != ''? value.context.descriptionTag : self.descriptionTag;
+                  self.userTag = value.context.descriptionTag != ''? value.context.userTag : self.userTag;
+
+                  self.imageSrc = value.image.imageSrc;
+                  break;
+                }
+              }
             }
-
-            self.category = self.categories[0];
-            self.queryProduct(false);
-          });
-        }
+          }
+        })
       }
-    })
+    });
 
   }
 
@@ -249,40 +267,78 @@ export class StoreEditComponent implements OnInit {
   }
 
   submitTemplate() {
-    if(!this.storeForm.valid) {
+    if (!this.storeForm.valid) {
       this.storeEdited = true;
       return;
     }
-    if(!this.storeTemplateForm.valid) {
+    if (!this.storeTemplateForm.valid) {
       return;
     }
 
-    let user = this.userProfile;
-    user.avatar = this.previewImgFile;
     let self = this;
-    this.shopService.changeUserProfile(user).then((data) => {
 
-      let option = self.storeTemplateForm.value;
-
-      self.shopService.createTemplate({
-        storeId: self.store.id,
-        nameTag: option.nameTag,
-        titleTag: option.titleTag,
-        userTag: option.userTag,
-        descriptionTag: option.descriptionTag,
-        imageUrl: self.imageSrc,
-        templateId: 1
-      }).then((data) => {
+    if (!this.templateId) {
+      let options = {
+        uid: 1,
+        storeId: this.store.id,
+        context: {
+          nameTag: this.nameTag,
+          titleTag: this.titleTag,
+          descriptionTag: this.descriptionTag,
+          userTag: this.userTag
+        },
+        image: {
+          imageSrc: this.imageSrc
+        }
+      };
+      this.shopService.createMultiTemplate(options).then((data) => {
+        data.context = options.context;
+        data.image = options.image;
+        self.templateList.push(data);
         self.shopService.setTemplateUId(1);
-        self.openDialog(self.store.displayName);
-        self.router.navigate(['/shop/store/templates']);
-
-        self.userService.getUser().then((data)=> {
-          self.userService.addUser(data);
-          self.userService.addStore(data.store[0]);
+        self.shopService.createTemplate({
+          storeId: self.store.id,
+          templateId: data.id
+        }).then((data) => {
+          self.shopService.setTemplateList(self.templateList);
         });
-      })
-    });
+        self.openDialog(`${self.store.displayName}`);
+        self.router.navigate(['/shop/store/templates']);
+      });
+    } else {
+      let options = {
+        id: this.templateId,
+        context: {
+          nameTag: this.nameTag,
+          titleTag: this.titleTag,
+          descriptionTag: this.descriptionTag,
+          userTag: this.userTag
+        },
+        image: {
+          imageSrc: this.imageSrc
+        }
+      };
+      this.shopService.updateMultiTemplate(options).then((data) => {
+        let index = self.templateList.find((item) => {
+          if (item.id == data.id) {
+            return true;
+          }
+        });
+        self.templateList.splice(index, 1);
+        data.context = options.context;
+        data.image = options.image;
+        self.templateList.push(data);
+        self.shopService.setTemplateUId(1);
+        self.shopService.createTemplate({
+          storeId: self.store.id,
+          templateId: data.id
+        }).then((data) => {
+          self.shopService.setTemplateList(self.templateList);
+        });
+        self.openDialog(`${self.store.displayName}`);
+        self.router.navigate(['/shop/store/templates']);
+      });
+    }
 
   }
 

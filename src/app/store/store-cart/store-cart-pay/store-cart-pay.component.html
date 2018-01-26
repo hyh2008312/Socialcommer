@@ -134,6 +134,25 @@
                 </div>
               </div>
             </div>
+            <div class="md-margin-top-2 background-bg-white xb-cart__body-left-form" fxLayout="column" fxLayoutAlign="start stretch" >
+              <div class="xb-cart__product-title-bg" fxLayout="row" fxLayoutAlign="start center" fxHide.xs>
+                <div class="xb-cart__title" fxFlex="40">
+                  Product
+                </div>
+                <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+                  Quantity
+                </div>
+                <div class="xb-cart__title" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+                  Unit Price
+                </div>
+                <div class="xb-cart__title" fxFlex="25" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+                  Shipping
+                </div>
+              </div>
+              <div class="xb-cart__product-list" *ngFor="let item of products;let i = index;">
+                <app-store-cart-pay-item [product]="item"></app-store-cart-pay-item>
+              </div>
+            </div>
             <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="start center" *ngIf="step == 0">
               <div class="text-underline xb-pointer xb-bold" routerLink="{{cartLink}}" fxHide.xs><< Back</div>
               <div class="md-margin-right-2 unicorn-dark-theme" fxFlex fxLayout="row" fxLayoutAlign="end center">
@@ -462,8 +481,8 @@
     <div class="xb-cart__fixed-bottom-dialog" *ngIf="isTotalDialogOpen">
       <div fxLayout="row" fxLayoutAlign="start stretch">
         <div>
-          <div>{{order.totalExclTax|currency: (order.currency | uppercase): true }}</div>
-          <div class="md-margin-top-3">{{order.shippingExclTax|currency: (order.currency | uppercase): true }}</div>
+          <div>{{subTotalPrice|currency: (order.currency | uppercase): true }}</div>
+          <div class="md-margin-top-3">{{shippingTotalPrice|currency: (order.currency | uppercase): true }}</div>
         </div>
         <div class="md-margin-left-3">
           <div>Subtotal</div>

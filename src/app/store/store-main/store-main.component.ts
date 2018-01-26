@@ -45,46 +45,29 @@ export class StoreMainComponent implements OnInit {
       this.storeService.getStore(storeName).then((data) => {
         if (data) {
           this.storeService.addStore(data);
-          if (data.templateId == 1) {
-            if(uid != 'cart' && uid != data.templateId) {
-              if(replaceRouter.length > 0) {
-                if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[1][replaceRouter[0]]) {
-                  self.router.navigate([`/store/${storeName}/${data.templateId}`]);
-                } else {
-                  self.router.navigate([`/store/${storeName}/${data.templateId}/${lastRouter}`]);
-                }
-              } else {
-                self.router.navigate([`/store/${storeName}/${data.templateId}/${lastRouter}`]);
-              }
-            }
-            return;
-          }
-          if(data.uid > 1) {
-            if(uid != 'cart' && uid != data.uid) {
-              if(replaceRouter.length > 0) {
-                if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[data.uid - 1][replaceRouter[0]]) {
-                  self.router.navigate([`/store/${storeName}/${data.uid}`]);
-                } else {
-                  self.router.navigate([`/store/${storeName}/${data.uid}/${lastRouter}`]);
-                }
+          if(uid != 'cart' && uid != 'order' && uid != data.uid) {
+            if(replaceRouter.length > 0) {
+              if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[data.uid - 1][replaceRouter[0]]) {
+                self.router.navigate([`/store/${storeName}/${data.uid}`]);
               } else {
                 self.router.navigate([`/store/${storeName}/${data.uid}/${lastRouter}`]);
               }
+            } else {
+              self.router.navigate([`/store/${storeName}/${data.uid}/${lastRouter}`]);
             }
           }
         }
       });
     } else {
-      this.storeService.getStore(storeName).then((data) => {
+      self.storeService.getStore(storeName).then((data) => {
         if (data) {
-          this.storeService.addStore(data);
-          if (data.templateId == 1) {
-            self.router.navigate([`/store/${storeName}/${data.templateId}`]);
-            return;
-          }
-          if (data.uid > 1) {
+          self.storeService.addStore(data);
+          if(data.uid) {
             self.router.navigate([`/store/${storeName}/${data.uid}`]);
+          } else {
+            self.router.navigate([`/store/${storeName}/1`]);
           }
+
         }
       });
     }

@@ -4,6 +4,7 @@ import { StoreCartPayComponent } from './store-cart-pay/store-cart-pay.component
 import { StoreCartHeaderComponent } from './store-cart-header/store-cart-header.component';
 import { StoreCartFooterComponent } from './store-cart-footer/store-cart-footer.component';
 import { StoreCartProductItemComponent } from './store-cart-product-item/store-cart-product-item.component';
+import { StoreCartPayItemComponent } from './store-cart-pay-item/store-cart-pay-item.component';
 
 import { StoreCartRoutingModule } from './store-cart.routes.module';
 
@@ -25,7 +26,8 @@ import { SharedModule } from '../../shared/shared.module';
     StoreCartPayComponent,
     StoreCartHeaderComponent,
     StoreCartFooterComponent,
-    StoreCartProductItemComponent
+    StoreCartProductItemComponent,
+    StoreCartPayItemComponent
   ],
   entryComponents: [
   ],

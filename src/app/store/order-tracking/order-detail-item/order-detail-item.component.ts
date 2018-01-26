@@ -1,0 +1,97 @@
+import { Input, Output, Component, OnInit, OnChanges, EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { OrderTrackingService } from '../order-tracking.service';
+
+import { ChangeShippingAddressDialogComponent } from '../change-shipping-address-dialog/change-shipping-address-dialog.component';
+import { CancelItemDialogComponent } from '../cancel-item-dialog/cancel-item-dialog.component';
+import { TrackingInformationDialogComponent } from '../tracking-information-dialog/tracking-information-dialog.component';
+import { ReturnRequestDialogComponent } from '../return-request-dialog/return-request-dialog.component';
+
+@Component({
+  selector: 'app-order-detail-item',
+  templateUrl: './order-detail-item.component.html',
+  styleUrls: ['../_order-tracking.scss']
+})
+
+export class OrderDetailItemComponent implements OnInit {
+
+  @Input() status: number = 0;
+  @Input() order: any;
+  @Input() index: number = 0;
+  @Output() productChange = new EventEmitter<any>();
+
+  currency:string = 'USD';
+
+  totalAmount: number = 0;
+
+  constructor(
+    private orderTrackingService: OrderTrackingService,
+    private router: Router,
+    private dialog: MatDialog,
+    overlayContainer: OverlayContainer
+  ) {
+    overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  ngOnChanges() {
+    if(this.order) {
+      this.totalAmount = parseFloat(this.order.priceExclTax) + parseFloat(this.order.shippingExclTax);
+    }
+  }
+
+  cancelItem() {
+    let dialogRef = this.dialog.open(CancelItemDialogComponent, {
+      data: {
+        order: this.order
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  changeShippingAddress() {
+    let dialogRef = this.dialog.open(ChangeShippingAddressDialogComponent, {
+      data: {
+        order: this.order
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  trackingInformation() {
+    let dialogRef = this.dialog.open(TrackingInformationDialogComponent, {
+      data: {
+        order: this.order
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  returnItem() {
+    let dialogRef = this.dialog.open(ReturnRequestDialogComponent, {
+      data: {
+        order: this.order
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+}

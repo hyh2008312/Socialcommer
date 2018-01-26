@@ -113,7 +113,7 @@ export class StoreCartMainComponent implements OnInit{
       if(typeof item.number == 'number' && item.number > 0) {
         price += item.number * item.salePriceAmount;
         if(this.shippingItem[item.id]) {
-          shippingPrice += parseFloat(this.shippingItem[item.id].priceItem);
+          shippingPrice += parseFloat(this.shippingItem[item.id].priceItem) * item.number;
         }
       }
     }
@@ -124,17 +124,17 @@ export class StoreCartMainComponent implements OnInit{
   }
 
   checkout() {
-    let lines = [];
-    for(let item of this.products) {
-      lines.push({
-        goodsId: item.id,
-        quantity: item.number,
-        variantId: item.variantId,
-        shippingPriceId : this.shippingItem[item.id].id
-      });
+    if(this.products.length == 0 || !this.products) {
+      return;
     }
 
-    let cart = {
+    let lines = [];
+    for(let item of this.products) {
+      item.shippingPrice = this.shippingItem[item.id];
+      lines.push(item);
+    }
+
+    let order = {
       storeId: this.storeId,
       totalInclTax: 0,
       totalExclTax: 0,
@@ -143,11 +143,8 @@ export class StoreCartMainComponent implements OnInit{
       lines
     };
 
-    let self = this;
-    this.storeCartService.createOrder(cart).then((data) => {
-      self.storeCartService.addOrder(data);
-      self.router.navigate([`./checkout`], {relativeTo: this.activatedRoute});
-    });
+    this.storeCartService.addOrder(order);
+    this.router.navigate([`./checkout`], {relativeTo: this.activatedRoute});
   }
 
 }

@@ -1,0 +1,71 @@
+<div class="sc-order-dialog unicorn-dark-theme">
+  <div class="sc-order-dialog__close" (click)="close()" >
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <form [formGroup]="orderReturnForm" novalidate>
+    <div class="xb-order-tracking__title-1">
+      Submit a Return Request
+    </div>
+    <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start start">
+      <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Product</div>
+      <div class="md-margin-left-4">PearlsOnly - Heart 9-10mm AA Quality Freshwater 925 Sterling</div>
+    </div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+      <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Tracking Number</div>
+      <div class="md-margin-left-4">r799967080766080807</div>
+    </div>
+    <div class="xb-order-tracking__detail-title-1 md-margin-top-5">
+      Return Quantity
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div class="md-margin-right-1">
+        <i class="material-icons xb-pointer" (click)="minusNumber()">remove</i>
+      </div>
+      <div>{{productQuantity}}</div>
+      <div class="md-margin-left-1">
+        <i class="material-icons xb-pointer" (click)="plusNumber()">add</i>
+      </div>
+    </div>
+    <div class="xb-order-tracking__detail-title-1 md-margin-top-5">
+      Specify Your Return Request Type
+    </div>
+    <mat-radio-group class="md-margin-top-2" formControlName="type" fxLayout="row">
+      <mat-radio-button class="md-margin-right-5" *ngFor="let item of requestTypeList" [value]="item" color="primary">
+        {{item}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div class="xb-order-tracking__detail-title-1 md-margin-top-5">
+      Why Are You Returning This?
+    </div>
+    <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex>
+        <mat-select name="reason" placeholder="Select a Reason for Return" formControlName="reason">
+          <mat-option class="md-align-center" *ngFor="let item of reasonList" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="xb-order-tracking__detail-title-1 md-margin-top-5">
+      Comment
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field fxFlex>
+        <textarea matInput formControlName="comment" placeholder="Please describe in detail"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="xb-order-tracking__detail-title-1 md-margin-top-5">
+      Attachment
+    </div>
+    <div class="md-margin-top-2">
+      <app-order-attachment-upload [(previewImgFile)]="previewImgFile" [(previewImgSrcs)]="previewImgSrcs"></app-order-attachment-upload>
+    </div>
+    <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start center">
+      Have a Question?
+      <div class="text-underline xb-bold">View Our Return Policy</div>
+    </div>
+    <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="close()">CLOSE</button>
+    </div>
+  </form>
+</div>

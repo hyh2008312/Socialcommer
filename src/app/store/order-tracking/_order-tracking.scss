@@ -1,0 +1,413 @@
+@import "../../styles/utils/_index";
+@import "../../styles/_variables";
+
+.xb-order-tracking{
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &__navigation{
+    height: 56px;
+    &-title{
+      font-size: 32px;
+      padding: 0 16px;
+      @include media();
+      font-family: Didot, Helvetica;
+
+      @include xb-xs-screen{
+        font-size: 16px;
+        padding: 0;
+        @include text-overflow();
+      }
+    }
+
+    &-icon{
+      padding: 8px;
+      >i{
+        font-size: 24px;
+      }
+      @include xb-xs-screen{
+        padding: 16px 16px 16px 8px;
+      }
+
+      &-left{
+        padding: 8px;
+        >i{
+          font-size: 24px;
+        }
+        @include xb-xs-screen{
+          padding: 16px 8px 16px 8px;
+        }
+      }
+    }
+  }
+
+  &__footer{
+    padding: 64px 16px 0;
+
+    &-title{
+      font-size: 24px;
+      @include media();
+      font-family: Didot, Helvetica;
+      line-height: 24px;
+      margin-bottom: 16px;
+    }
+
+    &-content{
+      font-size: 14px;
+      line-height: 28px;
+    }
+
+    &-bottom-content{
+      font-size: 14px;
+      color: rgba(0,0,0,.54);
+      height: 54px;
+      margin-top: 72px;
+    }
+
+    &-icons{
+      i{
+        font-size: 24px;
+      }
+    }
+  }
+
+  &__title{
+    font-size: 34px;
+    @include media();
+    margin-top: 48px;
+    text-align: center;
+  }
+
+  &__title-1{
+    font-size: 24px;
+    @include media();
+  }
+
+  &__title-2{
+    font-size: 16px;
+    @include media();
+    text-align: center;
+  }
+
+  &__title-3{
+    font-size: 14px;
+    @include media();
+  }
+
+  &__container{
+    padding: 32px 40px 40px;
+    margin: auto;
+    max-width: 760px;
+    width: 100%;
+    background-color: $whiteColor;
+    border-radius: 4px;
+  }
+
+  &__container-1{
+    padding: 32px 16px 48px;
+    background-color: $whiteColor;
+    border-radius: 4px;
+  }
+
+  &__container-2{
+    padding: 32px 16px;
+    background-color: $whiteColor;
+    border-radius: 4px;
+  }
+
+  &__container-3{
+    padding: 32px 40px 48px;
+    background-color: $whiteColor;
+    border-radius: 4px;
+  }
+
+  &__border-bottom{
+    border-bottom: 1px solid rgba(0,0,0,.12);
+  }
+
+  &__height-1{
+    height: 56px;
+  }
+
+  &__height-2{
+    height: 64px;
+  }
+
+  &__height-3{
+    height: 48px;
+  }
+
+  &__margin-right{
+    margin-right: 65px;
+  }
+
+  &__margin-right-1{
+    margin-right: 48px;
+  }
+
+  &__width{
+    max-width: 1000px;
+  }
+
+  &__line-height{
+    line-height: 24px;
+  }
+
+  &__detail{
+
+    &-image{
+      width: 120px;
+      height: 120px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-right: 16px;
+      position: relative;
+      border: 1px solid rgba(0,0,0,.12);
+
+      >img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+    }
+
+    &-border-top{
+      border-top: 1px solid rgba(0,0,0,.12);
+    }
+
+    &-border-bottom{
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      &:last-child{
+        border-bottom: none;
+      }
+    }
+
+    &-container{
+      padding: 32px 16px 48px;
+      background-color: $whiteColor;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    &-container-padding{
+      padding: 32px 16px 0;
+      background-color: $whiteColor;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    &-container-1{
+      padding: 0 8px;
+    }
+
+    &-container-2{
+      max-width: 800px;
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      padding-right: 16px;
+    }
+
+    &-container-3{
+      height: 64px;
+      padding: 0 16px;
+    }
+
+    &-container-4{
+      height: 56px;
+    }
+
+    &-title{
+      font-size: 24px;
+      @include media();
+    }
+
+    &-title-1{
+      font-size: 16px;
+      @include media();
+    }
+
+    &-title-2{
+      font-size: 14px;
+      @include media();
+    }
+
+    &-title-3{
+      font-size: 16px;
+    }
+
+    &-margin-top{
+      margin-top: 32px;
+    }
+
+    &-margin-top-1{
+      margin-top: 24px;
+    }
+
+    &-bill-left{
+      width: 165px;
+      margin-right: 32px;
+      text-align: right;
+      @include media();
+    }
+
+    &-bill-left-1{
+      width: 185px;
+      margin-right: 32px;
+      text-align: right;
+      @include media();
+    }
+
+    &-tracking-left{
+      width: 135px;
+      margin-right: 32px;
+      text-align: right;
+      @include media();
+    }
+
+    &-tracking-left-1{
+      width: 120px;
+      margin-right: 32px;
+      text-align: right;
+      @include media();
+    }
+
+    &-margin-right{
+      margin-right: 16px;
+    }
+
+    &-margin-left{
+      margin-left: 48px;
+    }
+
+    &-margin-left-1{
+      margin-left: 8px;
+    }
+
+    &-margin-bottom{
+      margin-bottom: 48px;
+    }
+
+    &-color{
+      color: $orangeColor;
+    }
+
+    &-width{
+      width: 320px;
+    }
+
+    &-width-1{
+      width: 180px;
+    }
+
+    &-width-2{
+      width: 80px;
+    }
+
+    &-width-3{
+      width: 192px;
+    }
+
+    &-height{
+      height: 80px;
+    }
+
+  }
+
+  &__shipping-process{
+    &-circle{
+      background-color: rgba(0,0,0,.19);
+      font-size: 16px;
+      @include media();
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 48px;
+
+      &.active{
+        background-color: #f3bc20;
+      }
+    }
+
+    &-bg{
+      width: 48px;
+    }
+
+    &-text{
+      white-space: nowrap;
+      @include media();
+      color: rgba(0,0,0,.38);
+
+      &.active{
+        color: $blackColor;
+      }
+    }
+
+    &-line{
+      width: 150px;
+      height: 1px;
+      background-color: rgba(0,0,0,.38);
+      margin-bottom: 24px;
+    }
+
+    &-text-1{
+      width: 120px;
+      @include media();
+      color: rgba(0,0,0,.38);
+      text-align: right;
+    }
+  }
+
+}
+
+.sc-order-dialog{
+
+  padding: 40px 40px 48px;
+  max-width: 660px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+  background-color: $whiteColor;
+  border-radius: 4px;
+  @include xb-xs-screen{
+    padding: 40px 16px;
+  }
+
+  &__close{
+    position: absolute;
+    left: calc(100% - 36px);
+    top: 12px;
+    color: $blackColor;
+    cursor: pointer;
+    i{
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+    }
+  }
+
+  &__icons{
+    font-size: 24px;
+  }
+
+  &__title{
+    font-size: 24px;
+    line-height: 32px;
+    @include media();
+  }
+
+  &__content{
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+    @include regular();
+  }
+
+  &__margin-top{
+    margin-top: 24px;
+  }
+
+
+}

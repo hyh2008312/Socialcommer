@@ -1,0 +1,40 @@
+<div class="sc-order-dialog unicorn-dark-theme">
+  <div class="sc-order-dialog__close" (click)="close()" >
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div [hidden]="modified">
+    <div class="xb-order-tracking__title-1">
+      Cancel Item
+    </div>
+    <div class="md-margin-top-2">
+      please note cancellation is not guaranteed. The supplier may already be processing and pacing your order
+      for shipment.
+    </div>
+    <form [formGroup]="orderForm" novalidate>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex>
+          <mat-select name="reason" placeholder="Pleas select a Cancellation Reason" formControlName="reason">
+            <mat-option class="md-align-center" *ngFor="let item of reasons" [value]="item.name">
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="cancelItem()">SUBMIT</button>
+      <div class="md-margin-left-2">
+        <button mat-button color="primary" (click)="close()">CANCEL</button>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="">
+    <div class="sc-order-dialog__title" fxLayout="row" fxLayoutAlign="start start">
+      <i class="iconfontXberts icon-pic-finish sc-order-dialog__icons"></i>
+      <div class="md-margin-left-2">Your cancellation request has been submitted!</div>
+    </div>
+    <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" (click)="close()">OK</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,250 @@
+<div class="xb-order-tracking" fxLayout="column">
+  <div class="background-bg-white">
+    <div class="container">
+      <app-store-cart-header [homeLink]="homeLink"></app-store-cart-header>
+    </div>
+  </div>
+  <div class="background-bg-light" fxFlex="noshrink" >
+    <div class="container">
+      <div class="xb-order-tracking__detail-title-3 md-margin-top-4" fxLayout="row" fxLayoutAlign="start center">
+        <div>View Your Orders</div> > <div class="xb-bold">View Return Progress</div>
+      </div>
+      <div class="xb-order-tracking__title">
+        Return Progress
+      </div>
+      <div class="md-margin-top-4 md-margin-bottom-4">
+        <div class="xb-order-tracking__container-3">
+          <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="48">
+              <div class="unicorn-dark-theme-1" fxLayout="row" fxLayoutAlign="start center">
+                <div class="md-margin-right-5 xb-order-tracking__title-2">
+                  Return Request
+                </div>
+                <div>
+                  <button mat-raised-button color="primary" (click)="editRequest()">Cancel Request</button>
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Product</div>
+                <div class="md-margin-left-3">PearlsOnly - Heart 9-10mm AA Quality Freshwater 925 Sterling</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Order Number</div>
+                <div class="md-margin-left-3">41342354363635</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Request Type</div>
+                <div class="md-margin-left-3">Return for Refund</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Return Reason</div>
+                <div class="md-margin-left-3">PearlsOnly - Heart 9-10mm AA Quality Freshwater 925 Sterling</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Comments</div>
+                <div class="md-margin-left-3">PearlsOnly - Heart 9-10mm AA Quality Freshwater 925 Sterling</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Attachment</div>
+                <div class="md-margin-left-3">
+                  <app-order-attachment-preview></app-order-attachment-preview>
+                </div>
+              </div>
+            </div>
+            <div fxFlex="48">
+              <div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Authorized
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Instruction
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step1:</div>
+                    <div>
+                      Print the following Return Authorization Number and put it into your returned package.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step2:</div>
+                    <div>
+                      Send your returned package back to the following Return Address within 5 business days.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step3:</div>
+                    <div>
+                      We will process the refund or exchange within 3 business days upon receiving your package.
+                    </div>
+                  </div>
+                  <div>
+                    Please note that if you return an item without a RAN number, your return request may be rejected!
+                  </div>
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Authorization Number(RAN)
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  2312412341343
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Shipping Address
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div>650 Castro Street Ste. 120-458,</div>
+                  <div>Mountain View, CA 94041</div>
+                  <div>United States</div>
+                  <div>Phone Number:+086 79807856780</div>
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div>
+                    If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                    to get help from our customer service team.
+                  </div>
+                  <div>
+                    Please note that the deadline for filling a claim for this order is
+                    <span class="xb-bold">March 25, 2018</span>.
+                  </div>
+                  <div>Mountain View, CA 94041</div>
+                </div>
+                <div class="unicorn-dark-theme md-margin-top-4">
+                  <button mat-raised-button color="primary">File a Claim</button>
+                </div>
+              </div>
+              <div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Denied
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Reason for Return Denied
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Print the following Return Authorizatin Number and put it into your returned package.
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div>
+                    If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                    to get help from our customer service team.
+                  </div>
+                  <div>
+                    Please note that the deadline for filling a claim for this order is
+                    <span class="xb-bold">March 25, 2018</span>.
+                  </div>
+                </div>
+                <div class="md-margin-top-4">
+                  Tell us about your claim:
+                </div>
+                <div class="unicorn-dark-theme" fxLayout="row" fxLayoutAlign="start center">
+                  <mat-form-field fxFlex>
+                    <textarea matInput placeholder="Please describe in detail"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="unicorn-dark-theme md-margin-top-3">
+                  <button mat-raised-button color="primary">File a Claim</button>
+                </div>
+              </div>
+              <div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Denied
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Reason for Return Denied
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Print the following Return Authorizatin Number and put it into your returned package.
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="xb-order-tracking__line-height">
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Date Filed</div>
+                    <div class="md-margin-left-3">January 2nd, 2018</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Status</div>
+                    <div class="md-margin-left-3">Claim Submitted</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Description</div>
+                    <div class="md-margin-left-3">Print the following Return Authorization Number and put it into your
+                      returned package.</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Result</div>
+                    <div class="md-margin-left-3">Your claim has been filed! Our customer service team will contact
+                      you shortly</div>
+                  </div>
+                  <div class="md-margin-top-2">
+                    If the problem is resolve before our investigation is complete, your can withdraw your claim.
+                    Please note that withdrawn claims cannot be reopened any more.
+                  </div>
+                </div>
+                <div class="unicorn-dark-theme md-margin-top-3">
+                  <button mat-raised-button color="primary">Withdraw Claim</button>
+                </div>
+              </div>
+              <div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Denied
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Reason for Return Denied
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Print the following Return Authorizatin Number and put it into your returned package.
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="xb-order-tracking__line-height">
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Date Filed</div>
+                    <div class="md-margin-left-3">January 2nd, 2018</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Status</div>
+                    <div class="md-margin-left-3">Claim Withdrawn</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Description</div>
+                    <div class="md-margin-left-3">Print the following Return Authorization Number and put it into your
+                      returned package.</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Result</div>
+                    <div class="md-margin-left-3">You had withdrawn your claim.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="background-bg-white" fxHide.xs>
+    <div class="container">
+      <app-store-cart-footer></app-store-cart-footer>
+    </div>
+  </div>
+</div>
