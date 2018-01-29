@@ -14,6 +14,9 @@ export class ViewYourOrderComponent{
 
   order: any;
 
+  emailAddress: any;
+  trackingNumber: any;
+
   totalPrice: number = 0;
 
   subscription: any;
@@ -23,6 +26,8 @@ export class ViewYourOrderComponent{
   ) {
     this.subscription = this.orderTrackingService.order.subscribe((data) => {
       this.order = data;
+      this.emailAddress = data.emailAddress;
+      this.trackingNumber = data.number;
       this.totalPrice = parseFloat(this.order.totalExclTax) + parseFloat(this.order.shippingExclTax);
     });
   }

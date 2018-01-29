@@ -28,8 +28,6 @@ export class CancelItemDialogComponent implements OnInit {
     name: "Other"
   }];
 
-  modified: boolean = false;
-
   constructor(
     public dialogRef: MatDialogRef<CancelItemDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -50,7 +48,20 @@ export class CancelItemDialogComponent implements OnInit {
   }
 
   cancelItem() {
-
+    if(this.orderForm.invalid) {
+      return;
+    }
+    let order = {
+      id: this.data.order.id,
+      number: this.data.number,
+      email: this.data.email,
+      reason: this.orderForm.value.reason
+    };
+    let self = this;
+    self.orderTrackingService.cancelOrder(order).then((data) => {
+      self.data.isCancel = true;
+      self.data.order = data;
+    });
   }
 
 }

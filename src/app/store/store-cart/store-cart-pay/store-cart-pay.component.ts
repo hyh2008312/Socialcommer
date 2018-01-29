@@ -169,6 +169,7 @@ export class StoreCartPayComponent implements OnInit{
     this.stepTwoForm.valueChanges.subscribe(data => this.onValueChanged(data, this.stepTwoForm));
 
     this.order = this.storeCartService.getOrder();
+    console.log(this.order)
     this.products = this.order.lines;
     this.calculatePrice();
 
@@ -370,10 +371,10 @@ export class StoreCartPayComponent implements OnInit{
     let price = 0;
     let shippingPrice = 0;
     for(let item of this.products) {
-      if(typeof item.number == 'number' && item.number > 0) {
-        price += item.number * item.salePriceAmount;
-        if(item.shippingPrice.priceItem) {
-          shippingPrice += parseFloat(item.shippingPrice.priceItem) * item.number;
+      if(typeof item.quantity == 'number' && item.quantity > 0) {
+        price += item.quantity * item.unitPriceExclTax;
+        if(item.shippingExclTax) {
+          shippingPrice += parseFloat(item.shippingExclTax) * item.quantity;
         }
       }
     }
@@ -392,7 +393,7 @@ export class StoreCartPayComponent implements OnInit{
       return;
     }
     let stepOneObject = this.stepOneForm.value;
-
+    stepOneObject.orderId = this.order.id;
     let lines = [];
     for(let item of this.products) {
       lines.push({
@@ -411,11 +412,9 @@ export class StoreCartPayComponent implements OnInit{
     stepOneObject.lines = lines;
 
     let self = this;
-    self.storeCartService.createOrder(stepOneObject).then((data) => {
+    self.storeCartService.createShippingAddress(stepOneObject).then((data) => {
       self.step = 1;
-      let lines = self.order.lines;
       self.order = data;
-      self.order.lines = lines;
       self.storeCartService.addOrder(self.order);
       let shippingAddress = data.shippingAddress;
       shippingAddress.emailAddress = data.emailAddress;
@@ -440,6 +439,8 @@ export class StoreCartPayComponent implements OnInit{
       self.changeBillingState(self.order.shippingAddress.country.id);
     });
   }
+
+
 
   save() {
     let pattern = /^\d{1,2}\/\d{2}/;

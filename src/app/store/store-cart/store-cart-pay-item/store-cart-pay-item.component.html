@@ -8,21 +8,16 @@
     </div>
   </div>
   <div fxFlex="20" fxLayout="column" fxLayoutAlign="center center">
-    {{product.number}}
+    {{product.quantity}}
   </div>
-  <div fxFlex="15" fxLayout="column" fxLayoutAlign="start center">
-    <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
-    <div class="line-through md-dark-secondary xb-cart__item-original">
-      {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
-    </div>
+  <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center">
+    <div class="xb-cart__item-sale">{{product.unitPriceExclTax|currency: (product.currency|uppercase): true }}</div>
   </div>
-  <div fxFlex="25"  fxLayout="column" fxLayoutAlign="start center">
-    <div class="unicorn-dark-theme" fxLayout="row" fxLayoutAlign="start center">
-      <div>{{ product.shippingPrice.type }}&nbsp;Shipping</div>
-      <div class="xb-cart__item-sale md-margin-left-2">
-        {{product.shippingPrice.priceItem == 0 ? '': product.shippingPrice.priceItem | currency: product.shippingPrice.originalPriceCurrency: true }}
-      </div>
+  <div fxFlex="25"  fxLayout="column" fxLayoutAlign="center end">
+    <div class="xb-cart__item-sale">
+      {{product.shippingExclTax == 0 ? '': product.shippingExclTax | currency: (product.currency|uppercase): true }}
     </div>
+    <div class="md-margin-top-1">{{ product.shippingPrice.type }}&nbsp;Shipping</div>
     <div class="md-dark-secondary md-margin-top-1">{{product.shippingPrice.shippingTimeMin}} - {{product.shippingPrice.shippingTimeMax}} business days</div>
   </div>
 </div>
@@ -30,21 +25,18 @@
   <div class="xb-cart__item-image" fxFlex="none">
     <img [src]="product.imageUrl">
   </div>
-  <div *ngIf="!isEdit" fxFlex>
+  <div fxFlex>
     <div class="xb-cart__item-title">
       {{product.title}}
     </div>
-    <div class="md-margin-top-2" *ngIf="shipping">
+    <div class="md-margin-top-2">
       {{product.shippingPrice.type}} Shipping
       <span class="xb-cart__item-shipping md-margin-left-1">
-        {{product.shippingPrice.priceItem == 0 ? '': product.shippingPrice.priceItem|currency: product.originalPriceCurrency: true }}
+        {{product.shippingExclTax == 0 ? '': product.shippingExclTax | currency: (product.currency|uppercase): true }}
       </span>
     </div>
     <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-      <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: currency: true }}</div>
-      <div class="line-through md-dark-secondary xb-cart__item-original">
-        {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
-      </div>
+      <div class="xb-cart__item-sale">{{product.unitPriceExclTax|currency: (product.currency|uppercase): true }}</div>
     </div>
   </div>
   <div fxFlex="none" fxLayout="column" fxLayoutAlign="center center" >
@@ -55,7 +47,7 @@
       &nbsp;
     </div>
     <div class="md-margin-top-2">
-      × {{product.number}}
+      × {{product.quantity}}
     </div>
   </div>
 </div>

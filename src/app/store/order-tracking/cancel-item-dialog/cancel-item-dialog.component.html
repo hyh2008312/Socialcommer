@@ -2,7 +2,7 @@
   <div class="sc-order-dialog__close" (click)="close()" >
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
-  <div [hidden]="modified">
+  <div *ngIf="!data.isCancel">
     <div class="xb-order-tracking__title-1">
       Cancel Item
     </div>
@@ -28,7 +28,7 @@
       </div>
     </div>
   </div>
-  <div [hidden]="">
+  <div *ngIf="data.isCancel">
     <div class="sc-order-dialog__title" fxLayout="row" fxLayoutAlign="start start">
       <i class="iconfontXberts icon-pic-finish sc-order-dialog__icons"></i>
       <div class="md-margin-left-2">Your cancellation request has been submitted!</div>

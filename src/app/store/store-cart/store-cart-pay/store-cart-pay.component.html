@@ -142,10 +142,10 @@
                 <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
                   Quantity
                 </div>
-                <div class="xb-cart__title" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+                <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
                   Unit Price
                 </div>
-                <div class="xb-cart__title" fxFlex="25" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+                <div class="xb-cart__title md-align-right" fxFlex="25" fxLaout="column" fxHide.sm>
                   Shipping
                 </div>
               </div>
@@ -159,9 +159,6 @@
                 <mat-checkbox formControlName="isSaveAddress" color="primary">
                   Save this address for future purchases
                 </mat-checkbox>
-              </div>
-              <div class="unicorn-dark-theme" fxLayout="row" fxHide.xs fxLayoutAlign="space-between center">
-                <button mat-raised-button color="primary" (click)="continue()">CONTINUE</button>
               </div>
             </div>
           </form>
@@ -299,9 +296,6 @@
           </div>
           <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="space-between center" *ngIf="step == 1">
             <div class="text-underline xb-pointer xb-bold" (click)="back()"><< Back</div>
-            <div class="unicorn-dark-theme" fxLayout="column" fxHide.xs>
-              <button mat-raised-button color="primary" (click)="save()">COMPLETE ORDER</button>
-            </div>
           </div>
           <div class="unicorn-dark-theme background-bg-white xb-cart__body-left-form" *ngIf="step == 2"
                fxLayout="column" fxLayoutAlign="start stretch">
@@ -445,7 +439,7 @@
                 Payment Method
               </div>
             </div>
-            <div class="md-margin-top-3">Credit Card</div>
+            <div class="md-margin-top-3">{{order.cardBrand}}  {{order.cardLast4}}</div>
           </div>
         </div>
         <div fxLayout="column" fxHide.xs>
@@ -460,18 +454,19 @@
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
               </div>
               <div>
-                <div class="xb-cart__bill-margin-top-1">{{order.totalExclTax|currency: (order.currency | uppercase): true }}</div>
-                <div class="xb-cart__bill-margin-top-1">{{order.shippingExclTax|currency: (order.currency | uppercase): true }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice|currency: (order.currency | uppercase): true }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice|currency: (order.currency | uppercase): true }}</div>
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">
                   {{totalPrice|currency: (order.currency | uppercase): true}}</div>
               </div>
             </div>
           </div>
           <div class="md-margin-top-2 unicorn-dark-theme" fxLayout="column">
-            <button mat-raised-button color="primary" routerLink="{{homeLink}}">CONTINUE SHOPPING</button>
-            <div class="text-underline xb-pointer md-margin-top-2 md-align-center xb-bold">
-              Contact Support
-            </div>
+            <button mat-raised-button color="primary" *ngIf="step == 0" (click)="continue()">NEXT</button>
+            <button mat-raised-button color="primary" (click)="save()" *ngIf="step == 1">COMPLETE ORDER</button>
+            <button mat-raised-button color="primary"  *ngIf="step == 2">
+              CONTACT SUPPORT
+            </button>
           </div>
         </div>
       </div>

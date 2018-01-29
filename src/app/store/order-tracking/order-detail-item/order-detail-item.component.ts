@@ -20,6 +20,8 @@ export class OrderDetailItemComponent implements OnInit {
 
   @Input() status: number = 0;
   @Input() order: any;
+  @Input() email: any;
+  @Input() number: any;
   @Input() index: number = 0;
   @Output() productChange = new EventEmitter<any>();
 
@@ -49,12 +51,22 @@ export class OrderDetailItemComponent implements OnInit {
   cancelItem() {
     let dialogRef = this.dialog.open(CancelItemDialogComponent, {
       data: {
-        order: this.order
+        order: this.order,
+        email: this.email,
+        number: this.number,
+        isCancel: false
       }
     });
 
+    let self = this;
     dialogRef.afterClosed().subscribe(result => {
-
+      if(dialogRef.componentInstance.data.isCancel == true) {
+        self.productChange.emit({
+          index: self.index,
+          order: self.order,
+          event: 'cancel'
+        });
+      }
     });
   }
 

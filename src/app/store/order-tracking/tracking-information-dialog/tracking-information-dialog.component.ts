@@ -14,13 +14,24 @@ export class TrackingInformationDialogComponent implements OnInit {
 
   orderFormErr: any = false;
 
-  modified: boolean = false;
+  status: number = 0;
 
   constructor(
     public dialogRef: MatDialogRef<TrackingInformationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private orderTrackingService: OrderTrackingService
   ) {
+    switch (this.data.order.status) {
+      case 'Unfulfilled':
+        this.status = 1;
+        break;
+      case 'Fulfilled':
+        this.status = 2;
+        if(this.data.order.isArrival) {
+          this.status = 3;
+        }
+        break;
+    }
   }
 
   ngOnInit():void {

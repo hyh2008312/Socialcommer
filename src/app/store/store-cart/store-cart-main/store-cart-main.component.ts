@@ -124,17 +124,17 @@ export class StoreCartMainComponent implements OnInit{
   }
 
   checkout() {
-    if(this.products.length == 0 || !this.products) {
-      return;
-    }
-
     let lines = [];
     for(let item of this.products) {
-      item.shippingPrice = this.shippingItem[item.id];
-      lines.push(item);
+      lines.push({
+        goodsId: item.id,
+        quantity: item.number,
+        variantId: item.variantId,
+        shippingPriceId : this.shippingItem[item.id].id
+      });
     }
 
-    let order = {
+    let cart = {
       storeId: this.storeId,
       totalInclTax: 0,
       totalExclTax: 0,
@@ -143,8 +143,11 @@ export class StoreCartMainComponent implements OnInit{
       lines
     };
 
-    this.storeCartService.addOrder(order);
-    this.router.navigate([`./checkout`], {relativeTo: this.activatedRoute});
+    let self = this;
+    this.storeCartService.createOrder(cart).then((data) => {
+      self.storeCartService.addOrder(data);
+      self.router.navigate([`./checkout`], {relativeTo: this.activatedRoute});
+    });
   }
 
 }

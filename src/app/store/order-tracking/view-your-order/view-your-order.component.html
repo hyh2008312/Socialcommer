@@ -72,7 +72,7 @@
             </div>
           </div>
           <div class="xb-order-tracking__detail-border-bottom" *ngFor="let order of item.lines">
-            <app-order-detail-item [order]="order"></app-order-detail-item>
+            <app-order-detail-item [order]="order" [email]="emailAddress" [number]="trackingNumber"></app-order-detail-item>
           </div>
         </div>
       </div>
