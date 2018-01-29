@@ -17,11 +17,11 @@
     <div class="xb-order-tracking__detail-title-1 md-margin-top-5">
       Return Quantity
     </div>
-    <div fxLayout="row" fxLayoutAlign="start center">
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
       <div class="md-margin-right-1">
         <i class="material-icons xb-pointer" (click)="minusNumber()">remove</i>
       </div>
-      <div>{{productQuantity}}</div>
+      <div class="xb-order-tracking__shipping-process-border-bottom">{{productQuantity}}</div>
       <div class="md-margin-left-1">
         <i class="material-icons xb-pointer" (click)="plusNumber()">add</i>
       </div>
@@ -30,8 +30,8 @@
       Specify Your Return Request Type
     </div>
     <mat-radio-group class="md-margin-top-2" formControlName="type" fxLayout="row">
-      <mat-radio-button class="md-margin-right-5" *ngFor="let item of requestTypeList" [value]="item" color="primary">
-        {{item}}
+      <mat-radio-button class="md-margin-right-5" *ngFor="let item of requestTypeList" [value]="item.code" color="primary">
+        {{item.name}}
       </mat-radio-button>
     </mat-radio-group>
     <div class="xb-order-tracking__detail-title-1 md-margin-top-5">
@@ -51,7 +51,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="start center">
       <mat-form-field fxFlex>
-        <textarea matInput formControlName="comment" placeholder="Please describe in detail"></textarea>
+        <textarea matInput formControlName="comments" placeholder="Please describe in detail"></textarea>
       </mat-form-field>
     </div>
     <div class="xb-order-tracking__detail-title-1 md-margin-top-5">
@@ -65,7 +65,7 @@
       <div class="text-underline xb-bold">View Our Return Policy</div>
     </div>
     <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
-      <button mat-raised-button color="primary" (click)="close()">CLOSE</button>
+      <button mat-raised-button color="primary" (click)="returnRequest()">SUBMIT</button>
     </div>
   </form>
 </div>

@@ -169,7 +169,6 @@ export class StoreCartPayComponent implements OnInit{
     this.stepTwoForm.valueChanges.subscribe(data => this.onValueChanged(data, this.stepTwoForm));
 
     this.order = this.storeCartService.getOrder();
-    console.log(this.order)
     this.products = this.order.lines;
     this.calculatePrice();
 

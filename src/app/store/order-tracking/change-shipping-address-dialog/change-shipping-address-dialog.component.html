@@ -2,7 +2,7 @@
   <div class="sc-order-dialog__close" (click)="close()" >
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
-  <div [hidden]="modified">
+  <div *ngIf="!data.isAddressChange">
     <form [formGroup]="shippingForm" novalidate>
       <div class="xb-order-tracking__title-1 md-margin-top-2">Change Shipping Address</div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
@@ -19,12 +19,12 @@
       </div>
       <div fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field fxFlex>
-          <input type="text" matInput placeholder="Address Line1" formControlName="addressLine1">
+          <input type="text" matInput placeholder="Address Line1" formControlName="line1">
         </mat-form-field>
       </div>
       <div fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field fxFlex>
-          <input type="text" matInput placeholder="Address Line2" formControlName="addressLine2">
+          <input type="text" matInput placeholder="Address Line2" formControlName="line2">
         </mat-form-field>
       </div>
       <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -35,8 +35,9 @@
         </div>
         <div fxFlex="46" fxLayout="row" fxLayoutAlign="start center">
           <mat-form-field fxFlex>
-            <mat-select name="country" placeholder="Country" formControlName="country">
-              <mat-option class="md-align-center" *ngFor="let item of countries" [value]="item.code">
+            <mat-select name="country" placeholder="Country" formControlName="countryId"
+                        (ngModelChange)="changeShippingState($event)">
+              <mat-option class="md-align-center" *ngFor="let item of countries" [value]="item.id">
                 {{ item.name }}
               </mat-option>
             </mat-select>
@@ -46,8 +47,8 @@
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <div fxFlex="46" fxLayout="row" fxLayoutAlign="start center">
           <mat-form-field fxFlex>
-            <mat-select name="state" placeholder="State / Province / Region" formControlName="state">
-              <mat-option class="md-align-center" *ngFor="let item of states" [value]="item.code">
+            <mat-select name="state" placeholder="State / Province / Region" formControlName="stateId">
+              <mat-option class="md-align-center" *ngFor="let item of states" [value]="item.id">
                 {{ item.name }}
               </mat-option>
             </mat-select>
@@ -55,26 +56,26 @@
         </div>
         <div fxFlex="46" fxLayout="row" fxLayoutAlign="start center">
           <mat-form-field fxFlex>
-            <input type="text" matInput placeholder="Postal / ZIP Code" formControlName="code">
+            <input type="text" matInput placeholder="Postal / ZIP Code" formControlName="postcode">
           </mat-form-field>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field fxFlex>
-          <input type="text" matInput placeholder="Phone Number" formControlName="phone">
+          <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber">
         </mat-form-field>
       </div>
       <div class="xb-italic">Note: You can only change the shipping address before your item has been shipped,
         Please contact supplier or shipping carrier for help.</div>
     </form>
     <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
-      <button mat-raised-button color="primary">SAVE</button>
+      <button mat-raised-button color="primary" (click)="changeAddress()">SAVE</button>
       <div class="md-margin-left-2">
         <button mat-button color="primary" (click)="close()">CANCEL</button>
       </div>
     </div>
   </div>
-  <div>
+  <div *ngIf="data.isAddressChange">
     <div class="sc-order-dialog__title" fxLayout="row" fxLayoutAlign="start start">
       <i class="iconfontXberts icon-pic-finish sc-order-dialog__icons"></i>
       <div class="md-margin-left-2">You shipping address has been successfully updated!</div>

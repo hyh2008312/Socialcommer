@@ -26,23 +26,27 @@
               </div>
               <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
                 <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Product</div>
-                <div class="md-margin-left-3">PearlsOnly - Heart 9-10mm AA Quality Freshwater 925 Sterling</div>
+                <div class="md-margin-left-3">{{returnOrder.title}}</div>
               </div>
               <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
                 <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Order Number</div>
-                <div class="md-margin-left-3">41342354363635</div>
+                <div class="md-margin-left-3">{{returnOrder.number}}</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Return Quantity</div>
+                <div class="md-margin-left-3">{{returnOrder.quantity}}</div>
               </div>
               <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
                 <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Request Type</div>
-                <div class="md-margin-left-3">Return for Refund</div>
+                <div class="md-margin-left-3">Return for {{returnOrder.type == 'Refund'? 'Refund': 'Item Exchange'}}</div>
               </div>
               <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
                 <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Return Reason</div>
-                <div class="md-margin-left-3">PearlsOnly - Heart 9-10mm AA Quality Freshwater 925 Sterling</div>
+                <div class="md-margin-left-3">{{returnOrder.reason}}</div>
               </div>
               <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
                 <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Comments</div>
-                <div class="md-margin-left-3">PearlsOnly - Heart 9-10mm AA Quality Freshwater 925 Sterling</div>
+                <div class="md-margin-left-3">{{returnOrder.comments}}</div>
               </div>
               <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
                 <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Attachment</div>
@@ -52,7 +56,41 @@
               </div>
             </div>
             <div fxFlex="48">
-              <div>
+              <div *ngIf="returnOrder.status == 'Pending'">
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Requested
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Instruction
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step1:</div>
+                    <div>
+                      Print the following Return Authorization Number and put it into your returned package.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step2:</div>
+                    <div>
+                      Send your returned package back to the following Return Address within 5 business days.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step3:</div>
+                    <div>
+                      We will process the refund or exchange within 3 business days upon receiving your package.
+                    </div>
+                  </div>
+                  <div>
+                    Please note that if you return an item without a RAN number, your return request may be rejected!
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="returnOrder.status == 'Authorized'">
                 <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
                   Return Status
                 </div>
@@ -89,7 +127,7 @@
                   Return Authorization Number(RAN)
                 </div>
                 <div class="md-margin-top-1 xb-order-tracking__line-height">
-                  2312412341343
+                  {{returnOrder.ran}}
                 </div>
                 <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
                   Return Shipping Address
@@ -110,7 +148,7 @@
                   </div>
                   <div>
                     Please note that the deadline for filling a claim for this order is
-                    <span class="xb-bold">March 25, 2018</span>.
+                    <span class="xb-bold">{{returnOrder.complainDeadline}}</span>.
                   </div>
                   <div>Mountain View, CA 94041</div>
                 </div>
@@ -118,7 +156,7 @@
                   <button mat-raised-button color="primary">File a Claim</button>
                 </div>
               </div>
-              <div>
+              <div *ngIf="returnOrder.status == 'Denied' && !returnOrder.isComplain">
                 <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
                   Return Status
                 </div>
@@ -156,7 +194,7 @@
                   <button mat-raised-button color="primary">File a Claim</button>
                 </div>
               </div>
-              <div>
+              <div *ngIf="returnOrder.status == 'Denied' && returnOrder.isComplain">
                 <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
                   Return Status
                 </div>
@@ -200,7 +238,7 @@
                   <button mat-raised-button color="primary">Withdraw Claim</button>
                 </div>
               </div>
-              <div>
+              <div *ngIf="returnOrder.status == 'Denied' && returnOrder.isComplain">
                 <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
                   Return Status
                 </div>

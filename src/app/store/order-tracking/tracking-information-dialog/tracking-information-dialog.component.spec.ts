@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthorizeReturnDialogComponent } from './authorize-return-dialog.component';
+import { TrackingInformationDialogComponent } from './tracking-information-dialog.component';
 
-describe('AuthorizeReturnDialogComponent', () => {
-  let component: AuthorizeReturnDialogComponent;
-  let fixture: ComponentFixture<AuthorizeReturnDialogComponent>;
+describe('TrackingInformationDialogComponent', () => {
+  let component: TrackingInformationDialogComponent;
+  let fixture: ComponentFixture<TrackingInformationDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthorizeReturnDialogComponent ]
+      declarations: [ TrackingInformationDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthorizeReturnDialogComponent);
+    fixture = TestBed.createComponent(TrackingInformationDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

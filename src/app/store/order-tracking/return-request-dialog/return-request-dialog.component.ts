@@ -18,9 +18,15 @@ export class ReturnRequestDialogComponent implements OnInit {
 
   modified: boolean = false;
 
-  requestTypeList: any = ['Return for Refund', 'Return for Item Exchange'];
+  requestTypeList: any = [{
+    code: 'Refund',
+    name: 'Return for Refund'
+  }, {
+    code: 'Exchange',
+    name: 'Return for Item Exchange'
+  }];
 
-  productQuantity: number = 2;
+  productQuantity: number = 0;
 
   reasonList: any = [
     'Package Arrived Damaged',
@@ -39,11 +45,12 @@ export class ReturnRequestDialogComponent implements OnInit {
     private fb: FormBuilder,
     private orderTrackingService: OrderTrackingService
   ) {
+    this.productQuantity = this.data.order.quantity;
+
     this.orderReturnForm = this.fb.group({
       type: ['', Validators.required],
       reason: ['', Validators.required],
-      comment: ['', Validators.required],
-      attachment: ['', Validators.required]
+      comments: ['', Validators.required]
     });
   }
 
@@ -61,8 +68,26 @@ export class ReturnRequestDialogComponent implements OnInit {
     }
   }
   plusNumber(): void {
-    if(this.productQuantity < 2) {
+    if(this.productQuantity < this.data.order.quantity) {
       this.productQuantity++;
     }
+  }
+
+  returnRequest() {
+    if(this.orderReturnForm.invalid) {
+      return;
+    }
+
+    let order = this.orderReturnForm.value;
+    order.id = this.data.order.id;
+    order.number = this.data.number;
+    order.email = this.data.email;
+    order.quantity = this.productQuantity;
+    let self = this;
+    self.orderTrackingService.returnRequest(order).then((data) => {
+      self.data.isReturn = true;
+      self.data.order = data;
+      self.close();
+    });
   }
 }

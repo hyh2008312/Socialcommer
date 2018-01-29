@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ConstantService } from  '../../../shared/services/constant/constant.service';
 
 import { OrderTrackingService } from '../order-tracking.service';
 
@@ -23,30 +22,71 @@ export class ChangeShippingAddressDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ChangeShippingAddressDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
-    private constantService: ConstantService
+    private orderTrackingService: OrderTrackingService
   ) {
+
+    this.orderTrackingService.getCountryList().then((data) => {
+      this.countries = data;
+    });
     this.shippingForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      addressLine1: ['', Validators.required],
-      addressLine2: ['', Validators.required],
+      line1: ['', Validators.required],
+      line2: ['', Validators.required],
       city: ['', Validators.required],
-      country: ['', Validators.required],
-      state: ['', Validators.required],
-      code: ['', Validators.required],
-      phone: ['', Validators.required]
+      countryId: ['', Validators.required],
+      stateId: ['', Validators.required],
+      postcode: ['', Validators.required],
+      phoneNumber: ['', Validators.required]
     });
 
-    this.countries = this.constantService.getCountries();
-    this.states = this.constantService.getCountries();
+    if(this.data.order.shippingAddress) {
+      this.shippingForm.patchValue({
+        firstName: this.data.order.shippingAddress.firstName,
+        lastName: this.data.order.shippingAddress.lastName,
+        line1: this.data.order.shippingAddress.line1,
+        line2: this.data.order.shippingAddress.line2,
+        city: this.data.order.shippingAddress.city,
+        countryId: this.data.order.shippingAddress.country.id,
+        stateId: this.data.order.shippingAddress.state.id,
+        postcode: this.data.order.shippingAddress.postcode,
+        phoneNumber: this.data.order.shippingAddress.phoneNumber,
+      });
+      this.changeShippingState(this.data.order.shippingAddress.country.id);
+    }
   }
 
   ngOnInit():void {
 
   }
 
+  changeShippingState($event) {
+    let cid = $event;
+    this.orderTrackingService.getStateList({
+      cid
+    }).then((data)=> {
+      this.states = data;
+    });
+  }
+
   close():void {
     this.dialogRef.close();
+  }
+
+  changeAddress() {
+    if(this.shippingForm.invalid) {
+      return;
+    }
+    let order = this.shippingForm.value;
+    order.id = this.data.order.id;
+    order.email = this.data.email;
+    order.number = this.data.number;
+
+    let self = this;
+    self.orderTrackingService.changeAddress(order).then((data) => {
+      self.data.isAddressChange = true;
+      self.data.order = data;
+    });
   }
 
 }

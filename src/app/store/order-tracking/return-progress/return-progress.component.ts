@@ -15,6 +15,9 @@ import { ReturnRequestDialogComponent } from '../return-request-dialog/return-re
 
 export class ReturnProgressComponent{
 
+  returnOrder: any;
+  subscription: any;
+
   claimGroup : FormGroup;
 
   loginErr : any = false;
@@ -34,9 +37,30 @@ export class ReturnProgressComponent{
   constructor(
     private fb: FormBuilder,
     private orderTrackingService: OrderTrackingService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private activatedRoute: ActivatedRoute
   ) {
 
+    let id = this.activatedRoute.snapshot.params['id'];
+    let self = this;
+    self.subscription = this.orderTrackingService.order.subscribe((data) => {
+
+      if(data) {
+        let email = data.emailAddress;
+        let number = data.number;
+
+        let returnOrder = {
+          id,
+          email,
+          number
+        };
+        self.orderTrackingService.getReturnProgress(returnOrder).then((data) => {
+          self.returnOrder = data;
+          console.log(data);
+        });
+      }
+
+    });
   }
 
   /**
@@ -75,5 +99,8 @@ export class ReturnProgressComponent{
     });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 }

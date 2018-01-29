@@ -1,4 +1,4 @@
-<div class="unicorn-dark-theme-1 md-margin-top-2"  fxLayout="row" fxLayoutAlign="start center">
+<div class="unicorn-dark-theme-1 md-margin-top-2"  fxLayout="row" fxLayoutAlign="start start">
   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex>
     <div fxLayout="row" fxLayoutAlign="start stretch">
       <div class="xb-order-tracking__detail-width xb-order-tracking__detail-margin-right" fxLayout="row" fxLayoutAlign="start stretch" fxFlex="none">
@@ -34,7 +34,16 @@
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
            fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Unfulfilled'">Processing</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
-           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled'">Shipped</div>
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled' && !order.returnOrder">Shipped</div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled' && order.returnOrder
+           && order.returnOrder.status == 'Pending'">Return Requested</div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled' && order.returnOrder
+           && order.returnOrder.status == 'Authorized'">Return Authorized</div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled' && order.returnOrder
+           && order.returnOrder.status == 'Denied'">Return Denied</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
            fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Canceled'">
         {{order.cancelSource != null? order.cancelSource + ' ' + order.status: 'Payment ' + order.status}}</div>
@@ -65,33 +74,82 @@
         </div>
       </div>
     </div>
-    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled'">
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled' && !order.returnOrder">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div class="md-dark-secondary xb-bold">
+        Shipping Method
+      </div>
+      <div class="md-margin-left-3" *ngIf="order.shippingPrice">
+        {{order.shippingPrice.shippingName}}
+      </div>
+    </div>
+    <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+      <div class="md-dark-secondary xb-bold">
+        Processing & Packing
+      </div>
+      <div class="md-margin-left-3">
+        1-5 business days
+      </div>
+    </div>
+    <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+      <div class="md-dark-secondary xb-bold">
+        Estimated Delivery
+      </div>
+      <div class="md-margin-left-3" *ngIf="order.shippingPrice">
+        {{order.shippingPrice.shippingTimeMin}}-{{order.shippingPrice.shippingTimeMax}} days after order shipped
+      </div>
+    </div>
+  </div>
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled' && order.returnOrder
+      && order.returnOrder.status == 'Pending'">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="md-dark-secondary xb-bold">
-          Shipping Method
+          Requested on
         </div>
         <div class="md-margin-left-3" *ngIf="order.shippingPrice">
-          {{order.shippingPrice.shippingName}}
+          {{order.returnOrder.created | amDateFormat:'MMMM Do, YYYY'}}
         </div>
       </div>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
-        <div class="md-dark-secondary xb-bold">
-          Processing & Packing
-        </div>
-        <div class="md-margin-left-3">
-          1-5 business days
-        </div>
-      </div>
-      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
-        <div class="md-dark-secondary xb-bold">
-          Estimated Delivery
-        </div>
-        <div class="md-margin-left-3" *ngIf="order.shippingPrice">
-          {{order.shippingPrice.shippingTimeMin}}-{{order.shippingPrice.shippingTimeMax}} days after order shipped
+        <div class="md-dark-secondary">
+          Note: You have request a return. if you haven't received any response within 3 business days, you can
+          file a claim.
         </div>
       </div>
     </div>
-    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Fulfilled'">
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled' && order.returnOrder
+      && order.returnOrder.status == 'Authorized'">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary xb-bold">
+          Authorized on
+        </div>
+        <div class="md-margin-left-3" *ngIf="order.shippingPrice">
+          {{order.returnOrder.created | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary">
+          Note: Please follow the return instructions to ship your item back before {{order.return_deadline | amDateFormat:'MMMM Do, YYYY'}}.
+        </div>
+      </div>
+    </div>
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled' && order.returnOrder
+      && order.returnOrder.status == 'Denied'">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary xb-bold">
+          Denied on
+        </div>
+        <div class="md-margin-left-3" *ngIf="order.shippingPrice">
+          {{order.returnOrder.created | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary">
+          Note: Your return request was denied, please check out the reason or file a claim.
+        </div>
+      </div>
+    </div>
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Fulfilled' && !order.isArrival">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="md-dark-secondary xb-bold">
           Shipping Method
@@ -105,13 +163,29 @@
           Estimated Delivery
         </div>
         <div class="md-margin-left-3" *ngIf="order.shippingPrice">
-          {{order.shippingPrice.shippingTimeMin}}-{{order.shippingPrice.shippingTimeMax}} days after order shipped
+          {{order.arrivalDate | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+    </div>
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Fulfilled' && order.isArrival">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary xb-bold">
+          Delivery on
+        </div>
+        <div class="md-margin-left-3" *ngIf="order.shippingPrice">
+          {{order.arrivalDate | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1"  fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary">
+          Note: You have request a return {{order.return_deadline | amDateFormat:'MMMM Do, YYYY'}} if you're not satisfied
+          with your order.
         </div>
       </div>
     </div>
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
-       fxLayout="column" fxLayoutAlign="center stretch" *ngIf="false">
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="false">
     <button mat-raised-button color="primary">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" (click)="changeShippingAddress()">Change Shipping Address</button>
@@ -127,13 +201,16 @@
     </div>
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
-       fxLayout="column" fxLayoutAlign="center stretch" *ngIf="order.status == 'Canceled'">
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Canceled'">
     <button mat-raised-button color="primary">Contact Supplier</button>
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
-       fxLayout="column" fxLayoutAlign="center stretch" *ngIf="order.status == 'Unfulfilled'">
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Unfulfilled'">
     <button mat-raised-button color="primary">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
+      <button mat-raised-button color="accent" (click)="changeShippingAddress()">Change Shipping Address</button>
+    </div>
+    <div class="md-margin-top-1" fxLayout="column">
       <button mat-raised-button color="accent" (click)="trackingInformation()">Tracking Your Package</button>
     </div>
     <div class="md-margin-top-1" fxLayout="column">
@@ -141,13 +218,21 @@
     </div>
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
-       fxLayout="column" fxLayoutAlign="center stretch" *ngIf="order.status == 'Fulfilled'">
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Fulfilled' && !order.returnOrder">
     <button mat-raised-button color="primary">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" (click)="trackingInformation()">Tracking Your Package</button>
     </div>
     <div class="md-margin-top-1" fxLayout="column">
       <button mat-raised-button color="accent" (click)="returnItem()">Return Item</button>
+    </div>
+  </div>
+  <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Fulfilled' && order.returnOrder
+       && order.returnOrder.status == 'Pending'">
+    <button mat-raised-button color="primary">Contact Supplier</button>
+    <div class="md-margin-top-2" fxLayout="column">
+      <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
     </div>
   </div>
 </div>

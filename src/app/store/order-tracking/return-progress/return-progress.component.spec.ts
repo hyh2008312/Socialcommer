@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StoreCartFooterComponent } from './store-cart-footer.component';
+import { ReturnRequestDialogComponent } from './return-progress.component';
 
-describe('StoreCartFooterComponent', () => {
-  let component: StoreCartFooterComponent;
-  let fixture: ComponentFixture<StoreCartFooterComponent>;
+describe('ReturnRequestDialogComponent', () => {
+  let component: ReturnRequestDialogComponent;
+  let fixture: ComponentFixture<ReturnRequestDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StoreCartFooterComponent ]
+      declarations: [ ReturnRequestDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StoreCartFooterComponent);
+    fixture = TestBed.createComponent(ReturnRequestDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

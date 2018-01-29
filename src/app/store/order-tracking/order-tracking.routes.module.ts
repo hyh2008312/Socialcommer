@@ -14,7 +14,9 @@ const routes: Routes = [{
   component: ViewYourOrderComponent,
   canActivate: [ CanActive ]
 }, {
-  path: 'progress/:id', component: ReturnProgressComponent
+  path: 'progress/:id',
+  component: ReturnProgressComponent,
+  canActivate: [ CanActive ]
 }];
 
 @NgModule({

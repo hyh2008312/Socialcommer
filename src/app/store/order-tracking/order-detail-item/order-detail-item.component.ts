@@ -61,6 +61,7 @@ export class OrderDetailItemComponent implements OnInit {
     let self = this;
     dialogRef.afterClosed().subscribe(result => {
       if(dialogRef.componentInstance.data.isCancel == true) {
+        self.order = dialogRef.componentInstance.data.order;
         self.productChange.emit({
           index: self.index,
           order: self.order,
@@ -73,12 +74,23 @@ export class OrderDetailItemComponent implements OnInit {
   changeShippingAddress() {
     let dialogRef = this.dialog.open(ChangeShippingAddressDialogComponent, {
       data: {
-        order: this.order
+        order: this.order,
+        email: this.email,
+        number: this.number,
+        isAddressChange: false
       }
     });
 
+    let self = this;
     dialogRef.afterClosed().subscribe(result => {
-
+      if(dialogRef.componentInstance.data.isAddressChange == true) {
+        self.order = dialogRef.componentInstance.data.order;
+        self.productChange.emit({
+          index: self.index,
+          order: self.order,
+          event: 'change address'
+        });
+      }
     });
   }
 
@@ -97,12 +109,23 @@ export class OrderDetailItemComponent implements OnInit {
   returnItem() {
     let dialogRef = this.dialog.open(ReturnRequestDialogComponent, {
       data: {
-        order: this.order
+        order: this.order,
+        email: this.email,
+        number: this.number,
+        isReturn: false
       }
     });
 
+    let self = this;
     dialogRef.afterClosed().subscribe(result => {
-
+      if(dialogRef.componentInstance.data.isReturn == true) {
+        self.order = dialogRef.componentInstance.data.order;
+        self.productChange.emit({
+          index: self.index,
+          order: self.order,
+          event: 'return request'
+        });
+      }
     });
   }
 

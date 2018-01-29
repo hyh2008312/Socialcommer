@@ -60,6 +60,40 @@ export class OrderTrackingService {
       .catch(this.handleError);
   }
 
+  changeAddress(order:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}order/customer/modify/address/${order.id}/`;
+
+    return this.http.put(url, order, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getReturnProgress(order:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}order/customer/review/return/${order.id}/`;
+
+    return this.http.put(url, order, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   cancelOrder(order): Promise<any> {
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -70,6 +104,55 @@ export class OrderTrackingService {
     const url = `${this.baseApi.url}order/customer/cancel/${order.id}/`;
 
     return this.http.put(url, order, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  returnRequest(order): Promise<any> {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}order/customer/return/${order.id}/`;
+
+    return this.http.put(url, order, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getCountryList(): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}address/country/list/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getStateList(country:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}address/state/${country.cid}/list/`;
+
+    return this.http.get(url, options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
