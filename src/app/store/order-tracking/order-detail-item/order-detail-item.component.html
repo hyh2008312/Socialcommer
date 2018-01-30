@@ -29,20 +29,17 @@
         </div>
       </div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
-           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status != 'Canceled'
-           && order.status != 'Unfulfilled' && order.status != 'Fulfilled'">{{order.status}}</div>
-      <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
            fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Unfulfilled'">Processing</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
-           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled' && !order.returnOrder">Shipped</div>
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled'">Shipped</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
-           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled' && order.returnOrder
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Return' && order.returnOrder
            && order.returnOrder.status == 'Pending'">Return Requested</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
-           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled' && order.returnOrder
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Return' && order.returnOrder
            && order.returnOrder.status == 'Authorized'">Return Authorized</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
-           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled' && order.returnOrder
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Return' && order.returnOrder
            && order.returnOrder.status == 'Denied'">Return Denied</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
            fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Canceled'">
@@ -74,7 +71,7 @@
         </div>
       </div>
     </div>
-    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled' && !order.returnOrder">
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled'">
     <div fxLayout="row" fxLayoutAlign="start center">
       <div class="md-dark-secondary xb-bold">
         Shipping Method
@@ -100,7 +97,7 @@
       </div>
     </div>
   </div>
-    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled' && order.returnOrder
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Return' && order.returnOrder
       && order.returnOrder.status == 'Pending'">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="md-dark-secondary xb-bold">
@@ -117,7 +114,7 @@
         </div>
       </div>
     </div>
-    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled' && order.returnOrder
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Return' && order.returnOrder
       && order.returnOrder.status == 'Authorized'">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="md-dark-secondary xb-bold">
@@ -133,8 +130,8 @@
         </div>
       </div>
     </div>
-    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Unfulfilled' && order.returnOrder
-      && order.returnOrder.status == 'Denied'">
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Return' && order.returnOrder
+      && order.returnOrder.status == 'Deny'">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="md-dark-secondary xb-bold">
           Denied on
@@ -218,7 +215,7 @@
     </div>
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
-       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Fulfilled' && !order.returnOrder">
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Fulfilled'">
     <button mat-raised-button color="primary">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" (click)="trackingInformation()">Tracking Your Package</button>
@@ -228,8 +225,16 @@
     </div>
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
-       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Fulfilled' && order.returnOrder
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
        && order.returnOrder.status == 'Pending'">
+    <button mat-raised-button color="primary">Contact Supplier</button>
+    <div class="md-margin-top-2" fxLayout="column">
+      <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+    </div>
+  </div>
+  <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Denied'">
     <button mat-raised-button color="primary">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>

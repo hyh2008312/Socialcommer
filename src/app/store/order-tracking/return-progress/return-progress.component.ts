@@ -15,7 +15,7 @@ import { ReturnRequestDialogComponent } from '../return-request-dialog/return-re
 
 export class ReturnProgressComponent{
 
-  returnOrder: any;
+  returnOrder: any = {};
   subscription: any;
 
   claimGroup : FormGroup;
@@ -56,7 +56,6 @@ export class ReturnProgressComponent{
         };
         self.orderTrackingService.getReturnProgress(returnOrder).then((data) => {
           self.returnOrder = data;
-          console.log(data);
         });
       }
 

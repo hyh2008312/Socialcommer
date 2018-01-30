@@ -13,6 +13,7 @@ import { OrderTrackingService } from '../order-tracking.service';
 export class ChangeShippingAddressDialogComponent implements OnInit {
 
   shippingForm : FormGroup;
+  shippingFormErr: any = false;
   countries:any;
   states: any;
 
@@ -40,6 +41,8 @@ export class ChangeShippingAddressDialogComponent implements OnInit {
       phoneNumber: ['', Validators.required]
     });
 
+    this.shippingForm.valueChanges.subscribe(data => this.onValueChanged(data, this.shippingForm));
+
     if(this.data.order.shippingAddress) {
       this.shippingForm.patchValue({
         firstName: this.data.order.shippingAddress.firstName,
@@ -57,6 +60,70 @@ export class ChangeShippingAddressDialogComponent implements OnInit {
   }
 
   ngOnInit():void {
+
+  }
+
+  //存储错误信息
+  formErrors = {
+    'firstName': '',
+    'lastName': '',
+    'line1': '',
+    'city': '',
+    'countryId': '',
+    'stateId': '',
+    'postcode': '',
+    'phoneNumber': ''
+  };
+  //错误对应的提示
+  validationMessages = {
+    'firstName': {
+      'required': 'This field is required.',
+    },
+    'lastName': {
+      'required': 'This field is required.',
+    },
+    'line1': {
+      'required': 'This field is required.',
+    },
+    'city': {
+      'required': 'This field is required.',
+    },
+    'countryId': {
+      'required': 'This field is required.',
+    },
+    'stateId': {
+      'required': 'This field is required.',
+    },
+    'postcode': {
+      'required': 'This field is required.',
+    },
+    'phoneNumber': {
+      'required': 'This field is required.',
+    }
+  };
+
+  /**
+   * 表单值改变时，重新校验
+   * @param data
+   */
+  onValueChanged(data, form) {
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      //取到表单字段
+      const control = form.get(field);
+      //表单字段已修改或无效
+      if (control && control.dirty && !control.valid) {
+        //取出对应字段可能的错误信息
+        const messages = this.validationMessages[field];
+        //从errors里取出错误类型，再拼上该错误对应的信息
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + '';
+          break;
+        }
+      }
+
+    }
 
   }
 
@@ -84,8 +151,11 @@ export class ChangeShippingAddressDialogComponent implements OnInit {
 
     let self = this;
     self.orderTrackingService.changeAddress(order).then((data) => {
+      self.shippingFormErr = false;
       self.data.isAddressChange = true;
       self.data.order = data;
+    }).catch((data) => {
+      self.shippingFormErr = data;
     });
   }
 

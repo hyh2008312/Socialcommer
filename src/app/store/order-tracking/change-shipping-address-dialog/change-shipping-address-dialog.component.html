@@ -5,16 +5,29 @@
   <div *ngIf="!data.isAddressChange">
     <form [formGroup]="shippingForm" novalidate>
       <div class="xb-order-tracking__title-1 md-margin-top-2">Change Shipping Address</div>
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="46">
-          <mat-form-field fxFlex>
-            <input type="text" matInput placeholder="First Name" formControlName="firstName">
-          </mat-form-field>
+      <div *ngIf="shippingFormErr" class="xb-input-error md-margin-top-2">
+        {{ shippingFormErr }}
+      </div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start">
+        <div fxFlex="46">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex>
+              <input type="text" matInput placeholder="First Name" formControlName="firstName">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['firstName']" class="xb-input-error">
+            {{ formErrors['firstName'] }}
+          </div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="46">
-          <mat-form-field fxFlex>
-            <input type="text" matInput placeholder="Last Name" formControlName="lastName">
-          </mat-form-field>
+        <div fxFlex="46">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex>
+              <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['lastName']" class="xb-input-error">
+            {{ formErrors['lastName'] }}
+          </div>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="start center">
@@ -22,48 +35,74 @@
           <input type="text" matInput placeholder="Address Line1" formControlName="line1">
         </mat-form-field>
       </div>
+      <div *ngIf="formErrors['line1']" class="xb-input-error">
+        {{ formErrors['line1'] }}
+      </div>
       <div fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field fxFlex>
           <input type="text" matInput placeholder="Address Line2" formControlName="line2">
         </mat-form-field>
       </div>
       <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="46">
-          <mat-form-field fxFlex>
-            <input type="text" matInput placeholder="City" formControlName="city">
-          </mat-form-field>
+        <div fxFlex="46">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex>
+              <input type="text" matInput placeholder="City" formControlName="city">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['city']" class="xb-input-error">
+            {{ formErrors['city'] }}
+          </div>
         </div>
-        <div fxFlex="46" fxLayout="row" fxLayoutAlign="start center">
-          <mat-form-field fxFlex>
-            <mat-select name="country" placeholder="Country" formControlName="countryId"
-                        (ngModelChange)="changeShippingState($event)">
-              <mat-option class="md-align-center" *ngFor="let item of countries" [value]="item.id">
-                {{ item.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        <div fxFlex="46" >
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex>
+              <mat-select name="country" placeholder="Country" formControlName="countryId"
+                          (ngModelChange)="changeShippingState($event)">
+                <mat-option class="md-align-center" *ngFor="let item of countries" [value]="item.id">
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['countryId']" class="xb-input-error">
+            {{ formErrors['countryId'] }}
+          </div>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div fxFlex="46" fxLayout="row" fxLayoutAlign="start center">
-          <mat-form-field fxFlex>
-            <mat-select name="state" placeholder="State / Province / Region" formControlName="stateId">
-              <mat-option class="md-align-center" *ngFor="let item of states" [value]="item.id">
-                {{ item.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        <div fxFlex="46">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex>
+              <mat-select name="state" placeholder="State / Province / Region" formControlName="stateId">
+                <mat-option class="md-align-center" *ngFor="let item of states" [value]="item.id">
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['stateId']" class="xb-input-error">
+            {{ formErrors['stateId'] }}
+          </div>
         </div>
-        <div fxFlex="46" fxLayout="row" fxLayoutAlign="start center">
-          <mat-form-field fxFlex>
-            <input type="text" matInput placeholder="Postal / ZIP Code" formControlName="postcode">
-          </mat-form-field>
+        <div fxFlex="46">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field fxFlex>
+              <input type="text" matInput placeholder="Postal / ZIP Code" formControlName="postcode">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['postcode']" class="xb-input-error">
+            {{ formErrors['postcode'] }}
+          </div>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field fxFlex>
           <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber">
         </mat-form-field>
+      </div>
+      <div *ngIf="formErrors['phoneNumber']" class="xb-input-error">
+        {{ formErrors['phoneNumber'] }}
       </div>
       <div class="xb-italic">Note: You can only change the shipping address before your item has been shipped,
         Please contact supplier or shipping carrier for help.</div>
