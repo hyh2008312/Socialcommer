@@ -1,0 +1,22 @@
+<div class="xb-4-template-category xb-4-template__w960" [ngStyle]="{'margin-top':0}">
+  <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
+       [ngStyle]="{'background': 'url(' + (categoryBanner)   + ') center / auto 100% ' ,
+           'background-attachment': 'fixed'}">
+    <div class="xb-4-template-home__category-mask"></div>
+    <div class="xb-4-template-home__category-name">
+      {{categoryName}}
+    </div>
+  </div>
+  <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
+       fxLayoutWrap>
+    <app-shop-item-product-card-5 *ngFor="let item of categoryProduct"
+                                  fxFlex.gt-xs="25" fxFlex.xs="50" [product]="item"
+                                  [status]="1"></app-shop-item-product-card-5>
+  </div>
+  <div class="xb-4-template-category__see-more md-margin-bottom-4 xb-pointer"
+       fxLayout="row" fxLayoutAlign="center center">
+    SEE MORE
+  </div>
+</div>
+
+

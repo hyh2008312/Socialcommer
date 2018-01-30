@@ -1,0 +1,327 @@
+<div class="xb-4-template">
+  <form [formGroup]="storeTemplateForm" novalidate>
+    <div class="xb-4-template__container">
+      <!--header-->
+      <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-4-template-edit__button" (click)="close()">
+          CANCEL
+        </div>
+        <div class="xb-4-template-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
+          SAVE
+        </div>
+      </div>
+      <div class="xb-4-template__box-shadow" fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-4-template__title xb-4-template__edit-border"
+             [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()">
+        </div>
+        <div class="xb-4-template__left-24px xb-4-template__edit-border"
+             [hidden]="!nameEdited">
+          <input formControlName="nameTag" [(ngModel)]="nameTag">
+        </div>
+        <div class="md-margin-left-4" fxShow="true" fxShow.xs="false" fxLayout="row" fxLayoutAlign="start center">
+          <app-shop-template-5-navigation [categories]="categories"
+                                          [navigationIndex]="viewIndex"
+                                          (navigationChange)="changeNavigation($event)"
+                                          (categoryChange)="changeCategoryNavigation($event)"
+                                          [isCategory]="isCategory"></app-shop-template-5-navigation>
+        </div>
+      </div>
+      <!--home-->
+      <div [hidden]="viewIndex != 0 || isCategory" class="xb-4-template-content">
+        <div class="xb-4-template-home">
+          <div class="xb-4-template-home__background xb-4-template__w960" fxLayout="column"
+               fxLayoutAlign="start center">
+            <div class="xb-4-template-home__background-w1200px">
+              <div class="xb-4-template-home__title xb-4-template__edit-border">
+                <quill-editor formControlName="titleTag" [(ngModel)]="titleTag" [options]="editorConfig"></quill-editor>
+              </div>
+              <div class="xb-4-template-home__des xb-4-template__edit-border">
+                <quill-editor formControlName="desTag" [(ngModel)]="desTag" [options]="editorConfig"></quill-editor>
+              </div>
+              <div class="xb-4-template-home__banner-image xb-4-template__edit-border">
+                <app-image-upload-preview-four-template [(previewImgFile)]="imageBanner"
+                                                        [(previewImgSrc)]="imageBanner"
+                                                        [type]="uploadAboutType"></app-image-upload-preview-four-template>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngFor="let category of categoryProduct ,let i=index">
+            <div class="xb-4-template-category">
+              <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
+                   [ngStyle]="{'background': 'url(' + (category.imageCategoryPicture)   + ') center / auto 100% '}">
+                <div class="xb-4-template-home__category-mask"></div>
+                <div formArrayName="categoryInfoList">
+                  <div [formGroupName]="i">
+                    <div class="xb-4-template-home__category-subtitle xb-4-template__w960 xb-4-template__edit-border">
+                      <quill-editor formControlName="title" [(ngModel)]="tempCategoryList[i].title"
+                                    [options]="editorConfig"></quill-editor>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="xb-4-template-edit__banner-button" (click)="openUpdateCategoryImage(category.id)">
+                  CLICK TO CHANGE IMAGE
+                </div>
+              </div>
+              <div class="xb-4-template-home__category-name">
+                {{category?.name| makeFirstLetterBig }}
+              </div>
+              <div class="xb-4-template-collection__product xb-4-template__w960" fxLayoutAlign="space-between start"
+                   fxLayout="row"
+                   fxLayoutGap.xs="16px"
+                   fxLayoutWrap>
+                <app-shop-item-product-card-5 *ngFor="let item of category.relations"
+                                              fxFlex="25"
+                                              [product]="item" [status]="0"></app-shop-item-product-card-5>
+                <div fxFlex="25"></div>
+                <div fxFlex="25"></div>
+                <div fxFlex="25"></div>
+              </div>
+              <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+                   (click)="jumpCategory(i)">
+                SEE MORE
+              </div>
+            </div>
+          </ng-container>
+          <div class="xb-4-template-products__collection-no-goods" *ngIf="categoryProduct.length == 0">
+            <div>You haven't added any affiliate products yet.</div>
+            <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+            >
+              <a routerLink="/shop/listings/items" target="_blank">
+                Add Your First Product
+              </a>
+            </div>
+          </div>
+
+          <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
+               [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / auto 100% '}">
+            <div class="xb-4-template-home__category-mask"></div>
+            <div class="xb-4-template-home__blog-name xb-4-template__edit-border">
+              <quill-editor formControlName="blogDesTag" [(ngModel)]="blogDesTag"
+                            [options]="editorConfig"></quill-editor>
+            </div>
+            <div class="xb-4-template-edit__banner-button" (click)="editBlogCoverImage()">
+              CLICK TO CHANGE IMAGE
+            </div>
+          </div>
+          <div class="xb-4-template-home__category-name">Blog</div>
+          <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row"
+               fxLayoutAlign="space-between start"
+               fxLayoutWrap
+               fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
+          >
+            <app-shop-item-blog-card-5 *ngFor="let item of homeBlog"
+                                       fxFlex.xs="48" fxFlex.gt-xs="50"
+                                       [blog]="item" [status]="1"></app-shop-item-blog-card-5>
+            <div fxFlex="50"></div>
+          </div>
+          <div class="xb-4-template-products__collection-no-goods" *ngIf="homeBlog.length == 0">
+            <div>You haven't added any blog yet.</div>
+            <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+            >
+              <a routerLink="/shop/blog" target="_blank">
+                Add Your First Blog
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--blog-->
+      <div [hidden]="viewIndex != 1 || isCategory" class="xb-4-template-content">
+        <div class="xb-4-template-blog">
+          <div class="xb-4-template__w960" fxLayout="row" fxLayoutAlign="start start"
+               fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px" fxLayoutWrap>
+            <app-shop-item-blog-card-5 *ngFor="let item of blog"
+                                       fxFlex.xs="48" fxFlex.gt-xs="50"
+                                       [blog]="item" [status]="1"></app-shop-item-blog-card-5>
+          </div>
+          <div class="xb-4-template-products__collection-no-goods" *ngIf="blog.length == 0">
+            <div>You haven't added any blog yet.</div>
+            <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+            >
+              <a routerLink="/shop/blog" target="_blank">
+                Add Your First Blog
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--category-->
+      <div [hidden]="!isCategory" class="xb-4-template-content">
+        <div>
+          <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
+               [ngStyle]="{'background': 'url(' + (category?.imageCategoryPicture)   + ') center / auto 100% ','margin-top':0}">
+            <div class="xb-4-template-home__category-mask"></div>
+            <div class="xb-4-template-home__category-subtitle xb-4-template__w960 xb-4-template__edit-border">
+              <quill-editor formControlName="categoryTitle" [ngModel]="categoryTitle"
+                            (ngModelChange)="changeCategoryTitle($event)"
+                            [options]="editorConfig"></quill-editor>
+            </div>
+
+            <div class="xb-4-template-edit__banner-button" (click)="openUpdateCategoryImage(category.id)">
+              CLICK TO CHANGE IMAGE
+            </div>
+          </div>
+          <div class="xb-4-template-collection__product xb-4-template__w960" fxLayoutAlign="space-between start"
+               fxLayout="row"
+               fxLayoutGap.xs="16px"
+               fxLayoutWrap>
+            <app-shop-item-product-card-5 *ngFor="let item of product"
+                                          fxFlex="25"
+                                          [product]="item" [status]="0"></app-shop-item-product-card-5>
+            <div fxFlex="25"></div>
+            <div fxFlex="25"></div>
+            <div fxFlex="25"></div>
+          </div>
+          <div class="xb-4-template-category__see-more xb-pointer md-margin-bottom-4" fxLayout="row"
+               fxLayoutAlign="center center"
+               (click)="queryMoreProduct()" *ngIf="nextPage">
+            SEE MORE
+          </div>
+        </div>
+      </div>
+      <!--footer-->
+      <div>
+        <div class="xb-store__footer__pink-line"></div>
+        <div class="xb-store__footer xb-4-template__w960">
+          <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="30">
+              <div class="xb-store__footer-title">Contact us</div>
+              <div class="xb-store__footer-content xb-pointer xb-4-template__edit-border ql-editor"
+                   [innerHTML]="contactUsTag | safeHtml" [hidden]="contactUsEdited" (click)="editContactUsTitle()">
+              </div>
+              <div class="xb-store__footer-content xb-4-template__edit-border" [hidden]="!contactUsEdited">
+                <quill-editor formControlName="contactUsTag" [(ngModel)]="contactUsTag"
+                              [options]="editorConfig"></quill-editor>
+              </div>
+            </div>
+            <div fxFlex="15">
+              <div class="xb-store__footer-title">Links</div>
+              <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
+                <div class="xb-store__footer-icons xb-pointer gtag-shop-detail-share-button-google"
+                     appSocialShare [googlePlus]="{url: shareLink}">
+                  <i class="iconfontXberts icon-google"></i>
+                </div>
+                <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+                     appSocialShare [facebook]="{u: shareLink}">
+                  <i class="iconfontXberts icon-ic-facebook"></i>
+                </div>
+                <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+                     appSocialShare [twitter]="{url: shareLink, text: text, hashtags: '' }">
+                  <i class="iconfontXberts icon-ic-twitter"></i>
+                </div>
+              </div>
+            </div>
+            <div fxFlex="25">
+              <!-- <div class="xb-store__footer-title">Newsletter</div>
+               <div fxLayout="column" fxLayoutAlign="start stretch">
+                 <mat-form-field class="unicorn-dark-theme xb-store__width-100">
+                   <input class="unicorn-dark-theme" matInput placeholder="email@example.com">
+                 </mat-form-field>
+                 <div class="md-margin-top-1 unicorn-dark-theme">
+                   <button mat-raised-button color="primary">SUBSCRIBE</button>
+                 </div>
+               </div>-->
+            </div>
+          </div>
+          <div class="xb-store__footer-bottom-content" fxLayout="row" fxLayoutAlign="center center">
+            © 2017 All rights reserved.<span class="md-margin-left-3">POWERED BY SocialCommer</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<ng-container *ngFor="let category of categoryProduct ,let i=index">
+  <div class="xb-4-template-picture__background" *ngIf="isOpenUploadCategoryPicture && (category.id == cagegoryId)">
+    <div class="xb-4-template__detail-close" (click)="closeUpdateCategoryImage(false,'')" fxShow="false"
+         fxShow.sm="true"
+         fxShow.xs="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-4-template__detail">
+      <div class="xb-4-template__detail-close" (click)="closeUpdateCategoryImage(false,'')" fxShow="false"
+           fxShow.gt-sm="true">
+        <i class="iconfontXberts icon-ic-close"></i>
+      </div>
+      <div class="xb-4-template__mobile-dialog-inner">
+        <app-image-upload-preview [ratio]="ratioBanner"
+                                  (previewImgFileChange)="closeUpdateCategoryImage(true,$event)"></app-image-upload-preview>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div class="xb-4-template-picture__background" *ngIf="imageBlogCoverEdited">
+  <div class="xb-store-template__detail-close" (click)="editBlogCoverImage()" fxShow="false" fxShow.sm="true"
+       fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-4-template__detail">
+    <div class="xb-4-template__detail-close" (click)="editBlogCoverImage()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-4-template__mobile-dialog-inner">
+      <app-image-upload-preview [(previewImgFile)]="imageBlogCover" [ratio]="ratio"
+                                (previewImgFileChange)="editBlogCoverImage()"></app-image-upload-preview>
+    </div>
+  </div>
+</div>
+<div class="xb-4-template-picture__background" *ngIf="storeEdited">
+  <div class="xb-4-template__detail-close" (click)="editStore()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-4-template__detail">
+    <div class="xb-4-template__detail-close" (click)="editStore()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-4-template__mobile-dialog-inner">
+      <div class="xb-4-template-store__title-1">
+        Ready to Publish?
+      </div>
+      <div class="xb-4-template-store__content-1">
+        Make sure all these setting are correct before your store goes live!
+      </div>
+      <form [formGroup]="storeForm" novalidate>
+        <div class="md-margin-top-2 md-margin-right-2" fxLayout="column">
+          <div class="md-dark-secondary">
+            Store Name
+          </div>
+          <mat-form-field>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <div *ngIf="formErrors['name']" class="xb-input-error">
+            {{ formErrors['name'] }}
+          </div>
+          <div class="md-dark-secondary">
+            Store Description
+          </div>
+          <mat-form-field class="xb-4-template-store__width-100">
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+          <div *ngIf="formErrors['description']" class="xb-input-error">
+            {{ formErrors['description'] }}
+          </div>
+          <div class="md-dark-secondary">
+            Your Store Url
+          </div>
+          <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+            <div>
+              https://www.socialcommer.net/store/
+            </div>
+            <mat-form-field class="md-margin-left-2 xb-shop__width-1">
+              <input matInput formControlName="displayName">
+            </mat-form-field>
+          </div>
+          <div *ngIf="formErrors['displayName']" class="xb-input-error">
+            {{ formErrors['displayName'] }}
+          </div>
+          <div class="xb-4-template-store__margin-top-48" fxLayout="row" fxLayoutAlign="start center">
+            <button mat-raised-button color="primary" (click)="changeStore()">PUBLISH</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

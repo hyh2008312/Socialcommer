@@ -1,0 +1,98 @@
+<div class="xb-4-template-home">
+  <div class="xb-4-template-home__background xb-4-template__w960" fxLayout="column" fxLayoutAlign="start center">
+    <div class="xb-4-template-home__background-w1200px">
+      <div class="xb-4-template-home__title ql-editor"
+           [innerHTML]="contextList.titleTag | safeHtml">
+      </div>
+      <div class="xb-4-template-home__des ql-editor"
+           [innerHTML]="contextList.desTag | safeHtml">
+      </div>
+      <div class="xb-4-template-home__banner-image">
+        <img [src]="imageList.imageBanner">
+      </div>
+    </div>
+  </div>
+  <ng-container *ngFor="let category of categoryProduct ,let i=index">
+    <div class="xb-4-template-category">
+      <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center" fxShow="true"
+           fxShow.xs="false"
+           [ngStyle]="{'background': 'url(' + (category.imageCategoryPicture)   + ') center / auto 100% '}">
+        <div class="xb-4-template-home__category-mask"></div>
+        <div class="xb-4-template-home__category-subtitle xb-4-template__w960 ql-editor"
+             [innerHTML]="category.categoryTitle | safeHtml">
+        </div>
+
+      </div>
+      <div class="xb-4-template-home__category-banner-mobile" fxLayout="row" fxLayoutAlign="center center"
+           fxShow="false" fxShow.xs="true"
+           [ngStyle]="{'background': 'url(' + (category.imageCategoryPicture)   + ') center / auto 100% '}">
+        <div class="xb-4-template-home__category-mask"></div>
+        <div class="xb-4-template-home__category-subtitle xb-4-template__w960 ql-editor"
+             [innerHTML]="category.categoryTitle | safeHtml">
+        </div>
+      </div>
+      <div class="xb-4-template-home__category-name">
+        {{category.name | makeFirstLetterBig }}
+      </div>
+      <div class="xb-4-template-collection__product xb-4-template__w960" fxLayoutAlign="space-between start"
+           fxLayout="row" fxShow="true" fxShow.xs="false"
+           fxLayoutWrap>
+        <app-shop-item-product-card-5 *ngFor="let item of category.relations"
+                                      fxFlex.xs="50" fxFlex.gt-xs="25"
+                                      [product]="item" [status]="0"></app-shop-item-product-card-5>
+        <div fxFlex.xs="50" fxFlex.gt-xs="25"></div>
+        <div fxFlex.xs="50" fxFlex.gt-xs="25"></div>
+        <div fxFlex.xs="50" fxFlex.gt-xs="25"></div>
+      </div>
+      <div class="xb-4-template-collection__product xb-4-template__w960" fxLayoutAlign="space-between start"
+           fxLayout="row"
+           fxLayoutWrap fxShow="false" fxShow.xs="true">
+        <ng-container *ngFor="let item of category.relations ;let i=index">
+          <app-shop-item-product-card-5 *ngIf="i<4"
+                                        fxFlex="50" [product]="item" [status]="0"></app-shop-item-product-card-5>
+        </ng-container>
+      </div>
+
+
+      <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+           (click)="jumpCategory(category.id)">
+        SEE MORE
+      </div>
+    </div>
+  </ng-container>
+  <div class="xb-4-template__center xb-4-template__top-100" *ngIf="isShowEmptyData">There are no products
+    available.
+  </div>
+  <div class="xb-4-template-home__category-banner xb-4-template-home__category-fixed" fxLayout="row"
+       fxLayoutAlign="center center" fxShow="true" fxShow.xs="false"
+       [ngStyle]="{'background': 'url(' + (imageList.imageBlogCover) + ') center / auto 100% '}">
+    <div class="xb-4-template-home__category-mask"></div>
+    <div class="xb-4-template-home__blog-title ql-editor"
+         [innerHTML]="contextList.blogDesTag | safeHtml">
+    </div>
+  </div>
+  <div class="xb-4-template-home__category-banner-mobile" fxLayout="row" fxLayoutAlign="center center" fxShow="false"
+       fxShow.xs="true"
+       [ngStyle]="{'background': 'url(' + (imageList.imageBlogCover)   + ') center / auto 100% '}">
+    <div class="xb-4-template-home__category-mask"></div>
+    <div class="xb-4-template-home__blog-title ql-editor"
+         [innerHTML]="contextList.blogDesTag | safeHtml">
+    </div>
+  </div>
+  <div class="xb-4-template-home__category-name" *ngIf="blog.length!=0">
+    Blog
+  </div>
+  <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row" fxLayoutAlign="space-between start"
+       fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px" fxLayoutWrap>
+    <app-shop-item-blog-card-5 *ngFor="let item of blog"
+                               fxFlex.xs="100" fxFlex.gt-xs="50"
+                               [blog]="item" [status]="0"></app-shop-item-blog-card-5>
+    <div fxFlex.xs="100" fxFlex.gt-xs="50"></div>
+  </div>
+  <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row"
+       fxLayoutAlign="center center"
+       fxLayoutAlign.xs="center center"
+       (click)="jumpBlogList()" *ngIf="blog.length !=0">
+    SEE MORE
+  </div>
+</div>

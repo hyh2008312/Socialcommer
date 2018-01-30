@@ -34,6 +34,10 @@ const routes: Routes = [{
     {
       path: '5',
       loadChildren: 'app/store/store-template-5/store-template-5.module#StoreTemplateFiveModule'
+    },
+    {
+      path: '6',
+      loadChildren: 'app/store/store-template-6/store-template-6.module#StoreTemplateSixModule'
     }
   ]
 }];

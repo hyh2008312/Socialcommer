@@ -56,7 +56,8 @@
     <div class="xb-4-template-home__blog-des">
       The latest fashion trends, styles and inspirations.
     </div>
-    <div class="xb-4-template-home__blog-see-more  xb-pointer" fxLayout="row" fxLayoutAlign="center center">
+    <div class="xb-4-template-home__blog-see-more  xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+         (click)="jumpBlogList()">
       VIEW ALL POSTS
     </div>
   </div>
@@ -66,5 +67,9 @@
     <app-shop-item-blog-card-5 *ngFor="let item of blog"
                                fxFlex.xs="48" fxFlex.gt-xs="48"
                                [blog]="item" [status]="1"></app-shop-item-blog-card-5>
+  </div>
+  <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+       (click)="jumpBlogList()">
+    SEE MORE
   </div>
 </div>

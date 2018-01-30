@@ -14,7 +14,7 @@ export class StoreNavigationComponent implements OnInit {
   @Input() navigationIndex = 0;
   @Input() isCategory = false;
   contents = [{
-    name: 'HOME',
+    name: 'DISCOVER',
   }, {
     name: 'BLOG',
   }];
