@@ -74,9 +74,12 @@
               <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
                    fxLayoutGap.xs="16px"
                    fxLayoutWrap>
-                <app-shop-item-product-card-5 *ngFor="let item of category.relations"
-                                              fxFlex.xs="44" fxFlex.gt-xs="30"
-                                              [product]="item" [status]="0"></app-shop-item-product-card-5>
+                <ng-container *ngFor="let item of category.relations ; let i=index">
+                  <app-shop-item-product-card-5
+                    *ngIf="i<3"
+                    fxFlex.xs="44" fxFlex.gt-xs="30"
+                    [product]="item" [status]="0"></app-shop-item-product-card-5>
+                </ng-container>
                 <div fxFlex.xs="44" fxFlex.gt-xs="30"></div>
               </div>
               <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
@@ -190,18 +193,19 @@
                    [innerHTML]="contactUsTag | safeHtml" [hidden]="contactUsEdited" (click)="editContactUsTitle()">
               </div>
               <div class="xb-store__footer-content xb-4-template__edit-border" [hidden]="!contactUsEdited">
-                <quill-editor formControlName="contactUsTag" [(ngModel)]="contactUsTag" [options]="editorConfig"></quill-editor>
+                <quill-editor formControlName="contactUsTag" [(ngModel)]="contactUsTag"
+                              [options]="editorConfig"></quill-editor>
               </div>
             </div>
             <div fxFlex="15">
               <div class="xb-store__footer-title">Links</div>
               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
                 <div class="xb-store__footer-icons xb-pointer gtag-shop-detail-share-button-google"
-                     appSocialShare  [googlePlus]="{url: shareLink}">
+                     appSocialShare [googlePlus]="{url: shareLink}">
                   <i class="iconfontXberts icon-google"></i>
                 </div>
                 <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
-                     appSocialShare  [facebook]="{u: shareLink}">
+                     appSocialShare [facebook]="{u: shareLink}">
                   <i class="iconfontXberts icon-ic-facebook"></i>
                 </div>
                 <div class="xb-store__footer-icons xb-pointer md-margin-left-3"

@@ -1,6 +1,7 @@
 import {Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 import {NavigationStart, Router} from '@angular/router';
 import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
+
 @Component({
   selector: 'app-shop-template-5-navigation',
   templateUrl: './store-navigation.component.html',
@@ -24,7 +25,7 @@ export class StoreNavigationComponent implements OnInit {
     ];
   routerObservable: any;
   contents = [{
-    text: 'HOME',
+    text: 'DISCOVER',
     link: './',
     exact: true
   }, {

@@ -14,19 +14,16 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
   @Input() type: number;
   @Input() categories: any;
   @Input() storeName: string;
+  @Input() isHaveBlog: boolean;  //控制blog是否显示
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 
-  isShowMore: boolean = false; // 是否显示more的按钮
+  isShowMore: boolean = false; //1.是否显示more的按钮 2.控制blog显示的位置(导航或者more里边)
   isShowMoreCategory: boolean = false;
   routerObservable: any;
   contents = [{
-    text: 'HOME',
+    text: 'DISCOVER',
     link: './',
-    exact: true
-  }, {
-    text: 'BLOG',
-    link: './blog',
     exact: true
   }];
   showCategory: any = [];
@@ -42,13 +39,13 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
     if (self.categories != null && self.categories.length != 0) {
       if (self.isFirstLoad) {
         self.isFirstLoad = false;
-        if (self.categories.length <= 6) {
+        if (self.categories.length <= 5) {
           self.showCategory = self.categories;
           self.isShowMore = false;
         } else {
           self.isShowMore = true;
           for (let i = 0; i < self.categories.length; i++) {
-            if (i <= 4) {
+            if (i <= 3) {
               self.showCategory.push(self.categories[i]);
             } else {
               self.moreCategory.push(self.categories[i])
@@ -81,6 +78,10 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
 
   changeShowMoreCategory(): void {
     this.isShowMoreCategory = !this.isShowMoreCategory;
+  }
+
+  hiddenShowMoreCategory(): void {
+    this.isShowMoreCategory = false;
   }
 
 }

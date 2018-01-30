@@ -1,0 +1,12 @@
+<div class="xb-4-template-navigation__container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="32px">
+  <div class="xb-4-template-navigation xb-pointer" *ngFor="let value of contents ;let i=index"
+       [ngClass]="{active: ((i == navigationIndex) && !isCategory)}" (click)="changeNavigation(i)">
+    {{value.name}}
+  </div>
+  <div class="xb-4-template-navigation xb-pointer" *ngFor="let category of categories ; let i=index"
+       [ngClass]="{active: ((i == navigationIndex) && isCategory)}" (click)="changeCategoryNavigation(i)">
+    {{category.name | uppercase}}
+  </div>
+</div>
+
+

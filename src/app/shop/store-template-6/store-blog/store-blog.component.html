@@ -1,0 +1,12 @@
+<div class="xb-4-template-blog">
+  <div class="xb-4-template__w960 xb-4-template-blog__article" fxLayout="row" fxLayoutAlign="start start"
+       fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px" fxLayoutWrap>
+    <app-shop-item-blog-card-6 *ngFor="let item of blog"
+                               fxFlex.xs="48" fxFlex.gt-xs="50"
+                               [blog]="item" [status]="2"></app-shop-item-blog-card-6>
+  </div>
+  <div class="xb-4-template-category__see-more xb-pointer md-margin-bottom-4"
+       fxLayout="row" fxLayoutAlign="center center">
+    SEE MORE
+  </div>
+</div>

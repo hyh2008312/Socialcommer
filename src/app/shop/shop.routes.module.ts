@@ -52,6 +52,10 @@ const routes: Routes = [
               {
                 path: '5',
                 loadChildren: 'app/shop/store-template-5/store-template-5.module#StoreTemplateFiveModule'
+              },
+              {
+                path: '6',
+                loadChildren: 'app/shop/store-template-6/store-template-6.module#StoreTemplateSixModule'
               }
             ]
           }, {
@@ -76,6 +80,10 @@ const routes: Routes = [
               {
                 path: '',
                 loadChildren: 'app/shop/store-edit-5/store-template-5.module#StoreTemplateFiveModule'
+              },
+              {
+                path: '',
+                loadChildren: 'app/shop/store-edit-6/store-template-6.module#StoreTemplateSixModule'
               }
             ]
           }]

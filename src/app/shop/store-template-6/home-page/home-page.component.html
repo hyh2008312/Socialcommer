@@ -1,0 +1,90 @@
+<div class="xb-4-template-home">
+  <div class="xb-4-template-home__background" fxLayout="column" fxLayoutAlign="start center">
+    <div class="xb-4-template-home__title" fxLayout="row" fxLayoutAlign="center start">
+      <p class="xb-4-template-home__title-one-word">Holiday</p>
+      <p class="xb-4-template-home__title-two-word">&nbsp;Design</p>
+    </div>
+    <div class="xb-4-template-home__des">
+      Spruce up your home and save big with our unique collections of the everyday.<br>Shop the best daily deals and
+      offers.
+    </div>
+    <div class="xb-4-template-home__banner-image" fxShow="true" fxShow.xs="false">
+      <img [src]="imageBanner">
+    </div>
+  </div>
+  <ng-container *ngFor="let category of templateCategories ,let i=index">
+    <div class="xb-4-template-category xb-4-template__w960">
+      <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
+           fxShow="true" fxShow.xs="false"
+           [ngStyle]="{'background': 'url(' + (category.imageCategory)   + ') center / auto 100% ' ,
+           'background-attachment': 'fixed'}">
+        <div class="xb-4-template-home__category-mask"></div>
+        <div class="xb-4-template-home__category-name">
+          {{category.name}}
+        </div>
+      </div>
+      <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
+           fxShow="false" fxShow.xs="true"
+           [ngStyle]="{'background': 'url(' + (category.imageCategory)   + ') center / auto 100% '}">
+        <div class="xb-4-template-home__category-mask"></div>
+        <div class="xb-4-template-home__category-name">
+          {{category.name}}
+        </div>
+      </div>
+      <div class="xb-4-template-home__category-subtitle">
+        {{category.name | makeFirstLetterBig}}
+      </div>
+      <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
+           fxLayoutWrap fxShow="true" fxShow.xs="false">
+        <app-shop-item-product-card-5 *ngFor="let item of category.relations"
+                                      fxFlex="25" [product]="item" [status]="0"></app-shop-item-product-card-5>
+        <div fxFlex="25"></div>
+        <div fxFlex="25"></div>
+        <div fxFlex="25"></div>
+      </div>
+      <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
+           fxLayoutWrap fxShow="false" fxShow.xs="true">
+        <ng-container *ngFor="let item of category.relations ;let i=index">
+          <app-shop-item-product-card-5 *ngIf="i<4"
+                                        fxFlex="50" [product]="item" [status]="0"></app-shop-item-product-card-5>
+        </ng-container>
+      </div>
+      <div class="xb-4-template-category__see-more xb-pointer md-margin-bottom-4" (click)="jumpCategory(category.id)"
+           fxLayout="row" fxLayoutAlign="center center">
+        SEE MORE
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
+       fxShow="true" fxShow.xs="false"
+       [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / auto 100% ' ,
+           'background-attachment': 'fixed'}">
+    <div class="xb-4-template-home__category-mask"></div>
+    <div class="xb-4-template-home__category-name">
+      BLOG
+    </div>
+  </div>
+
+  <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
+       fxShow="false" fxShow.xs="true"
+       [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / auto 100% '}">
+    <div class="xb-4-template-home__category-mask"></div>
+    <div class="xb-4-template-home__category-name">
+      BLOG
+    </div>
+  </div>
+  <div class="xb-4-template-home__category-subtitle">
+    Blog
+  </div>
+  <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row" fxLayoutAlign="start start"
+       fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px" fxLayoutWrap>
+    <app-shop-item-blog-card-6 *ngFor="let item of blog"
+                               fxFlex.xs="48" fxFlex.gt-xs="50"
+                               [blog]="item" [status]="1"></app-shop-item-blog-card-6>
+  </div>
+  <div class="xb-4-template-category__see-more xb-pointer md-margin-bottom-4" (click)="jumpBlogList()"
+       fxLayout="row" fxLayoutAlign="center center">
+    SEE MORE
+  </div>
+</div>

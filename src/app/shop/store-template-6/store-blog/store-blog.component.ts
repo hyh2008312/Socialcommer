@@ -1,0 +1,73 @@
+import {Component, OnInit, Input} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+
+
+@Component({
+  selector: 'app-shop-template-6-store-blog',
+  templateUrl: './store-blog.component.html',
+  styleUrls: ['../_store-template-6.scss']
+})
+
+export class StoreBlogComponent implements OnInit {
+  @Input() storeName: string;
+  public shareLink: string;
+  public text: string;
+  blog: any = [{
+    id: 0,
+    title: 'FLORENCE KNOLL IN METROPOLIS MAGAZINE',
+    modified: '2017-12-25T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/6/10430_z,0.jpg',
+    context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
+  }, {
+    id: 1,
+    title: 'FLORENCE KNOLL IN METROPOLIS MAGAZINE',
+    modified: '2017-12-25T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/6/12866_z,0.jpg',
+    context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
+  }, {
+    id: 2,
+    title: 'FLORENCE KNOLL IN METROPOLIS MAGAZINE',
+    modified: '2017-12-25T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/6/13389_z,0.jpg',
+    context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
+  }, {
+    id: 3,
+    title: 'FLORENCE KNOLL IN METROPOLIS MAGAZINE',
+    modified: '2017-12-25T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/6/13427_z.jpg',
+    context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
+  }, {
+    id: 4,
+    title: 'FLORENCE KNOLL IN METROPOLIS MAGAZINE',
+    modified: '2017-12-25T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/6/6179_z.jpg',
+    context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
+  }, {
+    id: 5,
+    title: 'FLORENCE KNOLL IN METROPOLIS MAGAZINE',
+    modified: '2017-12-25T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/6/6290_z,1.jpg',
+    context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
+  }, {
+    id: 6,
+    title: 'FLORENCE KNOLL IN METROPOLIS MAGAZINE',
+    modified: '2017-12-25T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/6/bertoia-diamond-chair.jpg',
+    context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
+  }, {
+    id: 7,
+    title: 'FLORENCE KNOLL IN METROPOLIS MAGAZINE',
+    modified: '2017-12-25T10:08:41.058593Z',
+    cover: 'https://media.socialcommer.com/source/web/template/6/florence-knoll-sofa-barcelona-coffee-table-5616_z.jpg',
+    context: 'Machine washable sun protection clothing for easy care. Perfect after a jog in the park, hiking, yoga, yard work, or anytime you are out in the sun.',
+  }
+  ];
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    this.shareLink = window.location.href;
+
+  }
+}

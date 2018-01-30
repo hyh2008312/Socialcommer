@@ -81,6 +81,8 @@ import {ImageUploadPreviewTwoTemplateComponent} from './components/image-upload-
 import {ImageUploadPreviewFourTemplateComponent} from './components/image-upload-preview-four-template/image-upload-preview-four-template.component';
 import {ViewShareScrollDirective} from './directives/view-share-srcoll/view-share-scroll.directive';
 import {ViewScrollTopDirective} from './directives/view-scroll-top/view-scroll-top.directive';
+import {ViewModifyBodyStyleDirective} from "./directives/view-modify-body-style/view-modify-body-style.directive";
+import {MakeFirstLetterBigPipe} from 'app/shared/pipes/make-first-letter-big/make-first-letter-big.pipe';
 
 let providers = {
   "google": {
@@ -124,6 +126,7 @@ let providers = {
     SaleDiscountPipe,
     SafeUrlPipe,
     FormatCurrencyPipe,
+    MakeFirstLetterBigPipe,
     ViewResizeDirective,
     ViewScrollDirective,
     ViewObjectScrollDirective,
@@ -132,6 +135,7 @@ let providers = {
     ValidateEqualDirective,
     ViewShareScrollDirective,
     ViewScrollTopDirective,
+    ViewModifyBodyStyleDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,
@@ -164,6 +168,7 @@ let providers = {
     SaleDiscountPipe,
     SafeUrlPipe,
     FormatCurrencyPipe,
+    MakeFirstLetterBigPipe,
     ViewResizeDirective,
     ViewScrollDirective,
     ViewObjectScrollDirective,
@@ -172,6 +177,7 @@ let providers = {
     ViewScrollTopDirective,
     SocialShareDirective,
     ValidateEqualDirective,
+    ViewModifyBodyStyleDirective,
     UserAvatarComponent,
     UserBadgeComponent,
     UserFollowComponent,

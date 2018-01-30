@@ -1,0 +1,60 @@
+<div class="xb-4-template-navigation__container" appModifyBodyStyle fxLayout="row"
+     fxLayoutAlign="start center" fxLayoutGap="24px"
+     fxShow="true" fxShow.xs="false">
+  <div class="xb-4-template-navigation__store-name" [ngStyle]="{'padding-right':'80px'}">{{storeName}}</div>
+  <ng-container *ngFor="let value of contents">
+    <div class="xb-4-template-navigation xb-pointer" (click)="hiddenShowMoreCategory()"
+         routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
+      {{value.text}}
+    </div>
+  </ng-container>
+  <ng-container *ngFor="let category of showCategory">
+    <div class="xb-4-template-navigation xb-pointer" (click)="hiddenShowMoreCategory()"
+         [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
+      {{category.name | uppercase}}
+    </div>
+  </ng-container>
+  <div class="xb-4-template-navigation xb-pointer"
+       *ngIf="!isShowMore && isHaveBlog"
+       routerLink="./blog" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': true}">
+    BLOG
+  </div>
+  <div class="xb-4-template-navigation__more-bg" *ngIf="isShowMore">
+    <div fxLayout="row" fxLayoutAlign="start center" class="xb-pointer" (click)="changeShowMoreCategory()">
+      <div class="xb-4-template-navigation__more">MORE
+      </div>
+      <div class="xb-4-template-navigation__up-triangle" *ngIf="isShowMoreCategory"></div>
+      <div class="xb-4-template-navigation__down-triangle" *ngIf="!isShowMoreCategory"></div>
+    </div>
+    <div class="xb-4-template-navigation__more-category" *ngIf="isShowMoreCategory">
+      <ng-container *ngFor="let category of moreCategory ; let i=index">
+        <div class="xb-4-template-navigation__more-flex xb-pointer" (click)="hiddenShowMoreCategory()"
+             [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
+          {{category.name | uppercase}}
+        </div>
+      </ng-container>
+      <div class="xb-4-template-navigation__more-flex xb-pointer" (click)="hiddenShowMoreCategory()"
+           *ngIf="isShowMore && isHaveBlog"
+           routerLink="./blog" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': true}">
+        BLOG
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="xb-4-template-navigation__side-bg" fxShow="false" fxShow.xs="true"
+     fxLayout="column" fxLayoutAlign="start center">
+  <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let value of contents"
+       routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
+    {{value.text}}
+  </div>
+  <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let category of categories"
+       [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
+    {{category.name | uppercase}}
+  </div>
+  <div class="xb-4-template-navigation__side-flex xb-pointer"
+       *ngIf="isHaveBlog"
+       routerLink="./blog" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': true}">
+    BLOG
+  </div>
+</div>
