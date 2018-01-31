@@ -21,17 +21,22 @@ export class TrackingInformationDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private orderTrackingService: OrderTrackingService
   ) {
-    switch (this.data.order.status) {
-      case 'Unfulfilled':
-        this.status = 1;
-        break;
-      case 'Fulfilled':
-        this.status = 2;
-        if(this.data.order.isArrival) {
-          this.status = 3;
-        }
-        break;
+    if(this.data.order.returnOrder) {
+
+    } else {
+      switch (this.data.order.status) {
+        case 'Unfulfilled':
+          this.status = 1;
+          break;
+        case 'Fulfilled':
+          this.status = 2;
+          if(this.data.order.isArrival) {
+            this.status = 3;
+          }
+          break;
+      }
     }
+
   }
 
   ngOnInit():void {

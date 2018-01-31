@@ -29,6 +29,8 @@ export class OrderDetailItemComponent implements OnInit {
 
   totalAmount: number = 0;
 
+  netPaymentAmount: number = 0;
+
   constructor(
     private orderTrackingService: OrderTrackingService,
     private router: Router,
@@ -44,7 +46,12 @@ export class OrderDetailItemComponent implements OnInit {
 
   ngOnChanges() {
     if(this.order) {
-      this.totalAmount = parseFloat(this.order.priceExclTax) + parseFloat(this.order.shippingExclTax);
+      this.totalAmount = (parseFloat(this.order.priceExclTax) + parseFloat(this.order.shippingExclTax)) * this.order.quantity;
+      if(this.order.returnOrder) {
+        if(this.order.returnOrder.status == 'Partially Refunded' || this.order.returnOrder.status == 'Refunded') {
+          this.netPaymentAmount = this.totalAmount - this.order.refundAmount;
+        }
+      }
     }
   }
 

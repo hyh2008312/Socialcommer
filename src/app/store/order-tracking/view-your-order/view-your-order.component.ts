@@ -13,6 +13,7 @@ import { OrderTrackingService } from '../order-tracking.service';
 export class ViewYourOrderComponent{
 
   order: any;
+  created: any;
 
   emailAddress: any;
   trackingNumber: any;
@@ -26,6 +27,7 @@ export class ViewYourOrderComponent{
   ) {
     this.subscription = this.orderTrackingService.order.subscribe((data) => {
       this.order = data;
+      this.created = data.lines[0].created;
       this.emailAddress = data.emailAddress;
       this.trackingNumber = data.number;
       this.totalPrice = parseFloat(this.order.totalExclTax) + parseFloat(this.order.shippingExclTax);

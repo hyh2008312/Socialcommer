@@ -19,12 +19,22 @@
             <div class="md-margin-top-1 md-align-right md-dark-secondary xb-bold">Shipping:</div>
             <div class="md-margin-top-1 md-align-right md-dark-secondary xb-bold">Tax:</div>
             <div class="md-margin-top-1 md-align-right md-dark-secondary xb-bold">Total:</div>
+            <div *ngIf="order.status == 'Return' && order.returnOrder
+           && (order.returnOrder.status == 'Partially Refunded' || order.returnOrder.status == 'Refunded')">
+              <div class="md-margin-top-1 md-align-right md-dark-secondary xb-bold">Refunded:</div>
+              <div class="md-margin-top-1 md-align-right md-dark-secondary xb-bold">Net Payment:</div>
+            </div>
           </div>
           <div class="md-margin-left-2">
             <div>{{order.priceExclTax| currency: currency: true}}</div>
             <div class="md-margin-top-1">{{order.shippingExclTax| currency: currency: true}}</div>
             <div class="md-margin-top-1">$0</div>
             <div class="md-margin-top-1">{{totalAmount | currency: currency: true}}</div>
+            <div *ngIf="order.status == 'Return' && order.returnOrder
+           && (order.returnOrder.status == 'Partially Refunded' || order.returnOrder.status == 'Refunded')">
+              <div class="md-margin-top-1">{{order.refundAmount | currency: currency: true}}</div>
+              <div class="md-margin-top-1">{{netPaymentAmount | currency: currency: true}}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -42,9 +52,24 @@
            fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Return' && order.returnOrder
            && order.returnOrder.status == 'Denied'">Return Denied</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Return' && order.returnOrder
+           && order.returnOrder.status == 'Exchanged'">Exchanged Item Shipped</div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
            fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Canceled'">
         {{order.cancelSource != null? order.cancelSource + ' ' + order.status: 'Payment ' + order.status}}</div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
+           fxLayout="column" fxLayoutAlign="center center"
+           *ngIf="order.status == 'Return' && order.returnOrder
+           && order.returnOrder.status == 'Partially Refunded'">
+        Partially Refunded</div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
+           fxLayout="column" fxLayoutAlign="center center"
+           *ngIf="order.status == 'Return' && order.returnOrder
+           && order.returnOrder.status == 'Refunded'">
+        Refunded</div>
+
     </div>
+
     <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Canceled'">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="md-dark-secondary xb-bold">
@@ -121,7 +146,7 @@
           Authorized on
         </div>
         <div class="md-margin-left-3" *ngIf="order.shippingPrice">
-          {{order.returnOrder.created | amDateFormat:'MMMM Do, YYYY'}}
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
         </div>
       </div>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
@@ -131,18 +156,35 @@
       </div>
     </div>
     <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Return' && order.returnOrder
-      && order.returnOrder.status == 'Deny'">
+      && order.returnOrder.status == 'Denied'">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="md-dark-secondary xb-bold">
           Denied on
         </div>
         <div class="md-margin-left-3" *ngIf="order.shippingPrice">
-          {{order.returnOrder.created | amDateFormat:'MMMM Do, YYYY'}}
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
         </div>
       </div>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
         <div class="md-dark-secondary">
           Note: Your return request was denied, please check out the reason or file a claim.
+        </div>
+      </div>
+    </div>
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Return' && order.returnOrder
+      && order.returnOrder.status == 'Exchanged'">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary xb-bold">
+          Exchanged Item Shipped on
+        </div>
+        <div class="md-margin-left-3" *ngIf="order.shippingPrice">
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary">
+          Note: Your exchanged item has been shipped, please track your package. If you're still not satisfied
+          with the result, you can file a claim.
         </div>
       </div>
     </div>
@@ -180,7 +222,42 @@
         </div>
       </div>
     </div>
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Partially Refunded'">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary xb-bold">
+          Refunded on:
+        </div>
+        <div class="md-margin-left-3">
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary">
+          Note: Your order has been partially refunded, if you're still not satisfied width the result, you can file a claim.
+        </div>
+      </div>
+    </div>
+    <div class="md-margin-top-2 md-margin-bottom-2" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Refunded'">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary xb-bold">
+          Refunded on:
+        </div>
+        <div class="md-margin-left-3">
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary">
+          Note: Your order has been fully refunded.
+        </div>
+      </div>
+    </div>
+
   </div>
+
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="false">
     <button mat-raised-button color="primary">Contact Supplier</button>
@@ -240,4 +317,40 @@
       <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
     </div>
   </div>
+  <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Authorized'">
+    <button mat-raised-button color="primary">Contact Supplier</button>
+    <div class="md-margin-top-2" fxLayout="column">
+      <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+    </div>
+  </div>
+  <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Exchanged'">
+    <button mat-raised-button color="primary">Contact Supplier</button>
+    <div class="md-margin-top-2" fxLayout="column">
+      <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+    </div>
+    <div class="md-margin-top-1" fxLayout="column">
+      <button mat-raised-button color="accent" (click)="trackingInformation()">Tracking Your Package</button>
+    </div>
+  </div>
+  <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Partially Refunded'">
+    <button mat-raised-button color="primary">Contact Supplier</button>
+    <div class="md-margin-top-2" fxLayout="column">
+      <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+    </div>
+  </div>
+  <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Refunded'">
+    <button mat-raised-button color="primary">Contact Supplier</button>
+    <div class="md-margin-top-2" fxLayout="column">
+      <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+    </div>
+  </div>
+
 </div>
