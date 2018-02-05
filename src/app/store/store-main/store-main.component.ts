@@ -45,7 +45,7 @@ export class StoreMainComponent implements OnInit {
       this.storeService.getStore(storeName).then((data) => {
         if (data) {
           this.storeService.addStore(data);
-          if(uid != 'cart' && uid != 'order' && uid != data.uid) {
+          if(uid != 'cart' && uid != 'order' && uid!='message' && uid != data.uid) {
             if(replaceRouter.length > 0) {
               if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[data.uid - 1][replaceRouter[0]]) {
                 self.router.navigate([`/store/${storeName}/${data.uid}`]);

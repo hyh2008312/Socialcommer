@@ -7,7 +7,7 @@
       {{message.direction ? customerName : supplierName}}
     </div>
     <div class="xb-customer-service-detail__message-date">
-      {{message.created}}
+      {{message.created | amDateFormat:'MMMM Do, YYYY' }}
     </div>
   </div>
   <div class="xb-customer-service-detail__message-description">

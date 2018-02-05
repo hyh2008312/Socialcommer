@@ -24,18 +24,25 @@ export class StoreMessageMainComponent implements OnInit {
 
   isMessageEmpty: boolean = false;
   replayPlaceholder: any = 'Tell us about your issue';
-
-  isNoMessage: boolean = true;
-
+  // 两个条件一个是消息是否为空，一个是消息是否进行了关闭
+  isNoMessage: boolean = false;
+  //这个问题是否解决
+  isClose: boolean = false;
   customerMessage: any;
-  ticketTitle: string = 'Message';
 
   //message列表的消息
   messageList: any = [];
-  //这个问题是否解决
-  isClose: boolean = false;
+
   //这个问题状态
   status: any = '';
+
+
+  lineId: any = 3;
+  OrderNumber = 1754301234;
+  customerEmail = 'luzhenqiang@xberts.cn';
+
+  submitTitle: string = 'SUBMIT';
+
 
   constructor(private fb: FormBuilder,
               private storeMessage: StoreMessageService) {
@@ -56,47 +63,50 @@ export class StoreMessageMainComponent implements OnInit {
       return;
     }
     let options = {
-      number: 1720886145,
-      email: 'hyh2017312@gmail.com',
+      number: this.OrderNumber,
+      email: this.customerEmail,
       context: this.replyMessage
     };
-    this.storeMessage.submitIssue(options, 60).then((data) => {
+    this.storeMessage.submitIssue(options, this.lineId).then((data) => {
       this.customerMessage = data;
       this.messageList = data.communication.messages;
       this.status = data.communication.status;
       this.judgeMessageIsClose();
       this.judgeMessageIsEmpty();
+      this.updateWord();
       this.replyMessage = '';
     })
   }
 
   /*请求私信消息*/
   requestMessage() {
-    let lineId = 60;
     let options = {
-      number: 1720886145,
-      email: 'hyh2017312@gmail.com',
+      number: this.OrderNumber,
+      email: this.customerEmail,
     };
-    this.storeMessage.requestMessage(options, lineId).then((data) => {
+    this.storeMessage.requestMessage(options, this.lineId).then((data) => {
       this.customerMessage = data;
       this.status = data.communication.status;
       this.messageList = data.communication.messages;
       this.judgeMessageIsClose();
       this.judgeMessageIsEmpty();
+      this.updateWord();
 
     });
   }
 
   /*点击解决问题，关闭问题*/
   requestCloseMessage() {
-    let lineId = 60;
+
     let options = {
-      number: 1720886145,
-      email: 'hyh2017312@gmail.com',
+      number: this.OrderNumber,
+      email: this.customerEmail,
     };
-    this.storeMessage.requestCloseMessage(options, lineId).then((data) => {
+    this.storeMessage.requestCloseMessage(options, this.lineId).then((data) => {
       this.status = 'Closed';
       this.judgeMessageIsClose();
+      this.judgeMessageIsEmpty();
+      this.updateWord();
     });
   }
 
@@ -104,13 +114,19 @@ export class StoreMessageMainComponent implements OnInit {
   judgeMessageIsEmpty() {
     if (this.messageList.length > 0) {
       this.isNoMessage = true;
-      this.ticketTitle = 'Message';
-      this.replayPlaceholder = 'Leave a reply';
     } else {
       this.isNoMessage = false;
-      this.ticketTitle = 'Submit a Ticket';
-      this.replayPlaceholder = 'Tell us about your issue';
+    }
+  }
 
+  // 修改按钮的状态和文字
+  updateWord() {
+    if (!this.isClose || !this.isNoMessage) {
+      this.replayPlaceholder = 'Tell us about your issue';
+      this.submitTitle = 'SUBMIT';
+    } else {
+      this.replayPlaceholder = 'Leave a reply';
+      this.submitTitle = 'REPLY';
     }
   }
 

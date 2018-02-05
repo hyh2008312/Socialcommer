@@ -3,51 +3,65 @@
   <div [ngStyle]="{'background-color':'#eeeeee','padding-bottom':'165px'}">
     <div class="xb-customer-service-detail xb-customer-service__w960px">
       <div class="md-padding-top-3">
-        <span class="xb-pointer xb-customer-service-detail__nav-title xb-customer-service__regular" routerLink="../../">Customer Support Tickets</span>
+        <span class="xb-pointer xb-customer-service-detail__nav-title xb-customer-service__regular" routerLink="../../">View Your Orders</span>
         <span class="xb-customer-service__bold">></span>
-        <span class="xb-customer-service-detail__nav-title xb-customer-service__bold">View Details</span>
+        <span class="xb-customer-service-detail__nav-title xb-customer-service__bold">Contact Supplier</span>
       </div>
       <div class="xb-customer-service-detail__content" fxLayout="row" fxLayoutAlign="space-between start">
         <div class="xb-customer-service-detail__content-left">
-          <div class="xb-customer-service-detail__content-left-message" fxLayout="row"
-               fxLayoutAlign="space-between center">
-            <div class="xb-customer-service-detail__content-left-title">{{ticketTitle}}</div>
-            <div fxLayout="row" fxLayoutAlign="start start" *ngIf="isNoMessage">
-              <div class="xb-customer-service-detail__content-left-status-title">Ticket Status</div>
-              <div class="xb-customer-service-detail__content-left-status">{{status}}
+          <div [ngStyle]="{'background-color':'white','padding-bottom':'40px'}">
+            <div class="xb-customer-service-detail__content-left-message" fxLayout="row"
+                 fxLayoutAlign="space-between center" *ngIf="isNoMessage">
+              <div class="xb-customer-service-detail__content-left-title">Message</div>
+              <div fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-customer-service-detail__content-left-status-title">Ticket Status</div>
+                <div class="xb-customer-service-detail__content-left-status">{{status}}
+                </div>
               </div>
             </div>
-          </div>
-          <ng-container *ngFor="let message of messageList">
-            <app-customer-service-message [message]="message"
-                                          [customerName]="customerMessage?.communication.customerName"
-                                          [supplierName]="customerMessage?.communication.supplier.name">
-            </app-customer-service-message>
-          </ng-container>
-          <div class="xb-customer-service-detail__content-left-line" *ngIf="isNoMessage"></div>
-          <div class="xb-customer-service-detail__content-left-reply"
-               [ngStyle]="{'margin-top':isNoMessage?'40px':0}">
-            <form [formGroup]="replyMessageForm">
-              <div fxLayout="row" fxLayoutAlign="start center">
-                <mat-form-field fxFlex>
+            <ng-container *ngFor="let message of messageList">
+              <app-customer-service-message [message]="message"
+                                            [customerName]="customerMessage?.communication.customerName"
+                                            [supplierName]="customerMessage?.communication.supplier.name">
+              </app-customer-service-message>
+            </ng-container>
+            <div class="xb-customer-service-detail__content-left-line" *ngIf="isNoMessage"></div>
+            <div class="xb-customer-service-detail__content-left-message" fxLayout="row"
+                 fxLayoutAlign="space-between center" *ngIf="!isClose || !isNoMessage">
+              <div class="xb-customer-service-detail__content-left-title">Submit a Ticket</div>
+            </div>
+            <div class="xb-customer-service-detail__content-left-reply"
+                 [ngStyle]="{'margin-top':!isClose || !isNoMessage?0:'32px'}">
+              <form [formGroup]="replyMessageForm">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <mat-form-field fxFlex>
               <textarea matInput placeholder="{{replayPlaceholder}}" formControlName="replyMessage"
                         [ngModel]="replyMessage" (ngModelChange)="changeMessageStatus($event)"></textarea>
-                </mat-form-field>
+                  </mat-form-field>
+                </div>
+              </form>
+            </div>
+            <div class="xb-customer-service-detail__content-left-bottom" fxLayout="row"
+                 fxLayoutAlign="space-between center">
+              <div class="xb-customer-service-detail__content-left-warn">
+                Expected Response Time: 2-3 business days.
               </div>
-            </form>
-          </div>
-          <div class="xb-customer-service-detail__content-left-bottom" fxLayout="row"
-               fxLayoutAlign="space-between center">
-            <div class="xb-customer-service-detail__content-left-warn">
-              Expected Response Time:2-3 business days.
-            </div>
-            <div class="xb-customer-service-detail__content-left-submit"
-                 (click)="submitCustomerService()"
-                 [ngClass]="{'xb-customer-service-detail__content-left-submit-black':isMessageEmpty}">
-              SUBMIT
+              <div class="xb-customer-service-detail__content-left-submit"
+                   (click)="submitCustomerService()"
+                   [ngClass]="{'xb-customer-service-detail__content-left-submit-black':isMessageEmpty}">
+                {{submitTitle}}
+              </div>
             </div>
           </div>
-
+          <div [ngStyle]="{'margin-top':'40px'}" fxLayout="row" fxLayoutAlign="center start" *ngIf="isClose">
+            <div fxLayout="column" fxLayoutAlign="start center">
+              <div class="xb-customer-service-detail__resolved-one">Is your issue resolved?</div>
+              <div class="xb-customer-service-detail__resolved-two md-margin-top-1">Make your issue resolved so that we know!</div>
+              <div class="xb-customer-service-detail__resolved-button"
+                   (click)="requestCloseMessage()">Issue Resolved
+              </div>
+            </div>
+          </div>
         </div>
         <div class="xb-customer-service-detail__content-right">
           <div class="xb-customer-service-detail__content-right-title">
@@ -73,15 +87,8 @@
           </div>
         </div>
       </div>
-      <div [ngStyle]="{'margin-top':'40px'}" fxLayout="row" fxLayoutAlign="center start" *ngIf="isClose">
-        <div fxLayout="column" fxLayoutAlign="start center">
-          <div class="xb-customer-service-detail__resolved-one">Is your issue resolved?</div>
-          <div class="xb-customer-service-detail__resolved-two">Make your issue resolved so that we know!</div>
-          <div class="xb-customer-service-detail__resolved-button"
-               (click)="requestCloseMessage()">Issue Resolved
-          </div>
-        </div>
-      </div>
+
+
     </div>
   </div>
   <app-store-message-footer></app-store-message-footer>
