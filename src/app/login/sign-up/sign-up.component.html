@@ -134,7 +134,7 @@
               {{ formErrors['name'] }}
             </div>
             <mat-form-field>
-              <mat-select placeholder="Store Currency"  name="currency" formControlName="currency">
+              <mat-select placeholder="Store Currency" name="currency" formControlName="currency">
                 <mat-option *ngFor="let currency of currencies" [value]="currency.code">
                   {{ currency.name }}
                 </mat-option>
@@ -142,6 +142,16 @@
             </mat-form-field>
             <div *ngIf="formErrors['currency']" class="xb-input-error">
               {{ formErrors['currency'] }}
+            </div>
+            <mat-form-field>
+              <mat-select placeholder="Store Country" [(ngModel)]="countryId" name="countryId" formControlName="countryId">
+                <mat-option *ngFor="let country of storeCountryList" [value]="country.id">
+                  {{ country.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="formErrors['countryId']" class="xb-input-error">
+              {{ formErrors['countryId'] }}
             </div>
           </div>
           <div class="md-dark-secondary">
