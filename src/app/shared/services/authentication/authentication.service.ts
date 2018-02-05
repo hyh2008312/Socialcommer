@@ -23,7 +23,8 @@ export class AuthenticationService implements AuthService {
   }
 
   public isAuthorized(): Observable<boolean> {
-    const isAuthorized: boolean = !!localStorage.getItem('accessToken') && !!localStorage.getItem('inviteToken');
+    //const isAuthorized: boolean = !!localStorage.getItem('accessToken') && !!localStorage.getItem('inviteToken');
+    const isAuthorized: boolean = !!localStorage.getItem('accessToken');
 
     return Observable.of(isAuthorized);
   }

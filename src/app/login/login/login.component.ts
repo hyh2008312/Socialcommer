@@ -107,7 +107,7 @@ export class LoginComponent implements OnInit {
       self.userService.getUser().then((data) => {
         self.userService.addUser(data);
         self.auth.inviteToken(data.isInvite);
-        if(data && data.store && data.store.length>0) {
+       /* if(data && data.store && data.store.length>0) {
           self.userService.addStore(data.store[0]);
           if(data && data.isInvite) {
             self.router.navigate(['/shop/dashboard']);
@@ -116,8 +116,8 @@ export class LoginComponent implements OnInit {
           }
         } else {
           self.router.navigate(['/account/signup'], {queryParams: {step: 1}});
-        }
-
+        }*/
+        self.router.navigate(['/shop/dashboard']);
       });
     }).catch((data) => {
       self.loginErr = data;
