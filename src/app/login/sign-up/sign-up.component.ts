@@ -28,6 +28,7 @@ export class SignUpComponent {
   public systemConstant: SystemConstant = new SystemConstant();
 
   country: string;
+  storeCountryList: any[];
   currency: string;
   storeName: any;
 
@@ -123,6 +124,7 @@ export class SignUpComponent {
         Validators.required,
         Validators.pattern('^[a-z0-9\.-]*$')
       ]],
+      countryId: ['', Validators.required],
       socialMediaLink: ['', Validators.required]
     });
 
@@ -139,6 +141,11 @@ export class SignUpComponent {
     });
 
     this.countries = this.constant.getCountries();
+
+    this.service.getCountryList().then((data) => {
+      this.storeCountryList = data;
+    });
+
     this.currencies = this.constant.getCurrencies();
 
     this.signUpGroup.valueChanges.subscribe(data => this.onSignUpGroupValueChanged(data));
@@ -390,12 +397,6 @@ export class SignUpComponent {
     }
 
     let self = this;
-
-    let socialMediaLink = this.storeForm.value.socialMediaLink;
-
-    self.service.setSocialMediaLink({
-      socialMediaLink
-    });
 
     self.service.createStore(this.storeForm.value).then((data)=>{
       self.userService.getUser().then((data) => {
