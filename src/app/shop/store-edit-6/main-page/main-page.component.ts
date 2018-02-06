@@ -75,7 +75,6 @@ export class MainPageComponent implements OnInit {
 
   closeUpdateCategoryImage(isHaveData: boolean, imageString: any) {
     this.isOpenUploadCategoryPicture = false;
-    console.log('imageString----->' + imageString);
     if (isHaveData) {
       this.category.imageCategoryPicture = imageString;
       for (let i = 0; i < this.categoryProduct.length; i++) {
@@ -295,7 +294,7 @@ export class MainPageComponent implements OnInit {
                 self.queryBlog();
               });
               for (let value of self.templateList) {
-                if (value.uid == 6) {
+                if (value.templateId == 6) {
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
                   self.contactUsTag = value.context.contactUsTag != '' ? value.context.contactUsTag : self.contactUsTag;
@@ -304,13 +303,13 @@ export class MainPageComponent implements OnInit {
                   self.aboutMeTitleTag = value.context.aboutMeTitleTag != '' ? value.context.aboutMeTitleTag : self.aboutMeTitleTag;
                   self.aboutMeDesTag = value.context.aboutMeDesTag != '' ? value.context.aboutMeDesTag : self.aboutMeDesTag;
                   self.blogDesTag = value.context.blogDesTag != '' ? value.context.blogDesTag : self.blogDesTag;
-                  self.textCategoryList = value.context.tempCategoryList
+                  self.textCategoryList = value.context.tempCategoryList;
 
 
-                  self.imageBanner = value.image.imageBanner;
-                  self.imageAboutCover = value.image.imageAboutCover;
-                  self.imageBlogCover = value.image.imageBlogCover;
-                  self.categoryImageList = value.image.categoryImageList; // 放置列表分类的图集,和分类信息
+                  self.imageBanner = value.images.imageBanner;
+                  self.imageAboutCover = value.images.imageAboutCover;
+                  self.imageBlogCover = value.images.imageBlogCover;
+                  self.categoryImageList = value.images.categoryImageList; // 放置列表分类的图集,和分类信息
                   break;
                 }
               }
@@ -448,8 +447,8 @@ export class MainPageComponent implements OnInit {
       return;
     }
     let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
+      cat: this.category.id,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 8
@@ -492,12 +491,12 @@ export class MainPageComponent implements OnInit {
       let aa = {
         'id': self.categoryProduct[i].id,
         'imageCategoryPicture': self.categoryProduct[i].imageCategoryPicture
-      }
+      };
       self.CategoryInformation.push(aa)
     }
     if (!this.templateId) {
       let options = {
-        uid: 6,
+        templateId: 6,
         storeId: this.store.id,
         context: {
           nameTag: this.nameTag,
@@ -509,7 +508,7 @@ export class MainPageComponent implements OnInit {
           blogDesTag: this.blogDesTag,
           tempCategoryList: this.tempCategoryList,
         },
-        image: {
+        images: {
           imageBanner: this.imageBanner,
           imageAboutCover: this.imageAboutCover,
           imageBlogCover: this.imageBlogCover,
@@ -518,12 +517,12 @@ export class MainPageComponent implements OnInit {
       };
       this.shopService.createMultiTemplate(options).then((data) => {
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(6);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
@@ -544,7 +543,7 @@ export class MainPageComponent implements OnInit {
           tempCategoryList: this.tempCategoryList,
         },
 
-        image: {
+        images: {
           imageBanner: this.imageBanner,
           imageAboutCover: this.imageAboutCover,
           imageBlogCover: this.imageBlogCover,
@@ -559,12 +558,12 @@ export class MainPageComponent implements OnInit {
         });
         self.templateList.splice(index, 1);
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(6);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });

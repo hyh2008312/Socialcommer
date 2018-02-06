@@ -83,8 +83,8 @@ export class StoreListComponent implements OnInit, OnDestroy {
 
   queryProduct(clearCategory?: boolean) {
     let options = {
-      categoryId: this.id,
-      storeId: this.store.id,
+      cat: this.id,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 12

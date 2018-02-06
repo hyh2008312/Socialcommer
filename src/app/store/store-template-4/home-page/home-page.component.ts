@@ -48,7 +48,7 @@ export class HomePageComponent implements OnInit {
       if (data) {
         self.store = data;
         self.contextList = data.context ? data.context : {};
-        self.imageList = data.image ? data.image : {};
+        self.imageList = data.images ? data.images : {};
         self.text = data.description;
         self.ownerId = data.ownerId;
         self.storeService.addTitleDescription({
@@ -140,8 +140,7 @@ export class HomePageComponent implements OnInit {
         categoryId = this.selectCategoryThree.id;
         break;
     }
-    this.router.navigate(['./list'], {queryParams: {'categoryId': categoryId}, relativeTo: this.activatedRoute},
-    );
+    this.router.navigate(['./list'], {queryParams: {'categoryId': categoryId}, relativeTo: this.activatedRoute});
   }
 
   jumpProductList(): void {

@@ -66,7 +66,7 @@ export class StoreListComponent implements OnInit, OnDestroy {
   }
 
   setCategoryImagePicture(): void {
-    this.categoryInfo = this.store.image.categoryImageList;
+    this.categoryInfo = this.store.images.categoryImageList;
     if (this.categoryInfo.length > 0) {
       for (let i = 0; i < this.categoryInfo.length; i++) {
         if (this.id === this.categoryInfo[i].id) {
@@ -128,8 +128,8 @@ export class StoreListComponent implements OnInit, OnDestroy {
 
   queryProduct(clearCategory?: boolean) {
     let options = {
-      categoryId: this.id,
-      storeId: this.store.id,
+      cat: this.id,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 8

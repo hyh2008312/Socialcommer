@@ -30,24 +30,12 @@ export class ShopComponent implements OnInit {
         if(data.store && data.store.length> 0) {
           self.storeName = data.store[0].displayName;
 
-          let templateId = data.store[0].templateId;
+          let templateId = data.store[0].template.templateId;
+          self.shopService.setTemplateUId(templateId);
 
-          //self.shopService.getMultiTemplate({
-          //  storeId: data.store[0].id
-          //}).then((data) => {
-          //  self.shopService.setTemplateList(data);
-          //
-          //  let index = data.find((item) => {
-          //    if(templateId == item.id) {
-          //      self.shopService.setTemplateUId(item.uid);
-          //      return true;
-          //    }
-          //  });
-          //
-          //  if(index < 0) {
-          //    self.shopService.setTemplateUId(1);
-          //  }
-          //});
+          self.shopService.getMultiTemplate().then((data) => {
+            self.shopService.setTemplateList(data);
+          });
         }
       }
     });
@@ -62,6 +50,10 @@ export class ShopComponent implements OnInit {
 
     self.shopService.getSupplyCategory().then((data) => {
       self.userService.addPubCategory(data);
+    });
+
+    self.shopService.getCountryList().then((data) => {
+      self.userService.addCountryList(data);
     });
 
   }

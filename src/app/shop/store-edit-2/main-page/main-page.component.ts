@@ -260,7 +260,7 @@ export class MainPageComponent implements OnInit {
                 self.queryProduct();
               });
               for (let value of self.templateList) {
-                if (value.uid == 2) {
+                if (value.templateId == 2) {
 
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
@@ -271,15 +271,13 @@ export class MainPageComponent implements OnInit {
                   self.homeMadeDesTag = value.context.homeMadeDesTag != '' ? value.context.homeMadeDesTag : self.homeMadeDesTag;
                   self.homeMadeTitle = value.context.homeMadeTitle != '' ? value.context.homeMadeTitle : self.homeMadeTitle;
 
-
-
-                  self.imageHomeMade = value.image.imageHomeMade;
-                  self.bannerImageStr = value.image.bannerImageStr;
-                  self.aboutMeCover = value.image.aboutMeCover;
-                  self.aboutMeOneImageStr = value.image.aboutMeOneImageStr;
-                  self.aboutMeTwoImageStr = value.image.aboutMeTwoImageStr;
-                  self.homeMadeOneImageStr = value.image.homeMadeOneImageStr;
-                  self.homeMadeTwoImageStr = value.image.homeMadeTwoImageStr;
+                  self.imageHomeMade = value.images.imageHomeMade;
+                  self.bannerImageStr = value.images.bannerImageStr;
+                  self.aboutMeCover = value.images.aboutMeCover;
+                  self.aboutMeOneImageStr = value.images.aboutMeOneImageStr;
+                  self.aboutMeTwoImageStr = value.images.aboutMeTwoImageStr;
+                  self.homeMadeOneImageStr = value.images.homeMadeOneImageStr;
+                  self.homeMadeTwoImageStr = value.images.homeMadeTwoImageStr;
                   break;
                 }
               }
@@ -302,8 +300,8 @@ export class MainPageComponent implements OnInit {
       return;
     }
     let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
+      cat: this.category.id,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 6
@@ -358,7 +356,7 @@ export class MainPageComponent implements OnInit {
 
     if (!this.templateId) {
       let options = {
-        uid: 2,
+        templateId: 2,
         storeId: this.store.id,
         context: {
           nameTag: this.nameTag,
@@ -369,7 +367,7 @@ export class MainPageComponent implements OnInit {
           homeMadeDesTag: this.homeMadeDesTag,
           homeMadeTitle: this.homeMadeTitle
         },
-        image: {
+        images: {
           imageHomeMade: this.imageHomeMade,
           bannerImageStr: this.bannerImageStr,
           aboutMeCover: this.aboutMeCover,
@@ -381,12 +379,12 @@ export class MainPageComponent implements OnInit {
       };
       this.shopService.createMultiTemplate(options).then((data) => {
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(2);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
@@ -405,7 +403,7 @@ export class MainPageComponent implements OnInit {
           homeMadeDesTag: this.homeMadeDesTag,
           homeMadeTitle: this.homeMadeTitle
         },
-        image: {
+        images: {
           imageHomeMade: this.imageHomeMade,
           bannerImageStr: this.bannerImageStr,
           aboutMeCover: this.aboutMeCover,
@@ -423,12 +421,12 @@ export class MainPageComponent implements OnInit {
         });
         self.templateList.splice(index, 1);
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(2);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });

@@ -25,6 +25,8 @@ export class StoreComponent implements OnInit {
   currency: string;
   currencies: Object[];
 
+  countries: any[];
+
   checked: boolean;
 
   selectedIndex: number = 0;
@@ -45,6 +47,9 @@ export class StoreComponent implements OnInit {
       ]],
       description: [''],
       currency: ['', [
+        Validators.required
+      ]],
+      countryId: ['', [
         Validators.required
       ]],
       displayName: ['', [
@@ -68,18 +73,26 @@ export class StoreComponent implements OnInit {
         self.storeForm.setValue({
           name: store.name,
           description : store.description,
+          countryId: store.country.id,
           currency: store.currency,
           displayName: store.displayName,
           status: status
         });
       }
     });
+
+    self.userService.countryList.subscribe((data) => {
+      if(data) {
+        this.countries = data;
+      }
+    })
   }
 
   //存储错误信息
   formErrors = {
     'name': '',
     'currency': '',
+    'countryId': '',
     'displayName':'',
     'status': ''
   };
@@ -89,6 +102,9 @@ export class StoreComponent implements OnInit {
       'required': 'This field is required.'
     },
     'currency': {
+      'required': 'This field is required.'
+    },
+    'countryId': {
       'required': 'This field is required.'
     },
     'displayName':{

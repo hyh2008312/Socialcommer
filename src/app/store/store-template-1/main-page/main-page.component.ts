@@ -22,6 +22,8 @@ export class MainPageComponent implements OnInit {
   public text = '';
 
   baseImageUrl: string = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
+  contextList: any = {};
+  imageList: any = {};
 
   store: Store = new Store();
   page = 1;
@@ -50,6 +52,8 @@ export class MainPageComponent implements OnInit {
     self.storeService.store.subscribe((data) => {
       if(data) {
         self.store = data;
+        self.contextList = data.context ? data.context : {};
+        self.imageList = data.images ? data.images : {};
         self.text = data.description;
         self.storeService.addTitleDescription({
           title: data.name,

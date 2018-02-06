@@ -3,20 +3,20 @@
     {{store.nameTag || store.name}}
   </div>
   <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center"
-       [ngStyle]="{'background': 'url(' + (store.imageUrl == ''? baseImageUrl:store.imageUrl) + ') center / auto 100% ' }">
+       [ngStyle]="{'background': 'url(' + (imageList.imageSrc == ''? baseImageUrl:imageList.imageSrc) + ') center / auto 100% ' }">
     <div class="xb-store__template-mask"></div>
     <div class="xb-store__content-2">
       <div class="xb-store__template-name" fxShow.xs="false">
-        {{store.nameTag != '' ? store.nameTag : store.name}}
+        {{contextList.nameTag != '' ? contextList.nameTag : store.name}}
       </div>
       <div class="ql-editor xb-store__template-title"
-           [innerHTML]="store.titleTag| safeHtml"  *ngIf="store.titleTag != ''" >
+           [innerHTML]="contextList.titleTag| safeHtml"  *ngIf="contextList.titleTag != ''" >
       </div>
-      <div class="xb-store__store-description" *ngIf="store.descriptionTag == ''">
+      <div class="xb-store__store-description" *ngIf="contextList.descriptionTag == ''">
         {{store.description}}
       </div>
       <div class="xb-store__template-description ql-editor"
-           [innerHTML]="store.descriptionTag | safeHtml" *ngIf="store.descriptionTag != ''">
+           [innerHTML]="contextList.descriptionTag | safeHtml" *ngIf="contextList.descriptionTag != ''">
       </div>
     </div>
     <div class="xb-store__store-buttons" fxShow="false" fxShow.gt-xs="true">

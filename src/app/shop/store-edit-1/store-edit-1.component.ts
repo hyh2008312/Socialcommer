@@ -120,7 +120,7 @@ export class StoreEditComponent implements OnInit {
               });
 
               for (let value of self.templateList) {
-                if (value.uid == 1) {
+                if (value.templateId == 1) {
 
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
@@ -128,7 +128,7 @@ export class StoreEditComponent implements OnInit {
                   self.descriptionTag = value.context.descriptionTag != ''? value.context.descriptionTag : self.descriptionTag;
                   self.userTag = value.context.descriptionTag != ''? value.context.userTag : self.userTag;
 
-                  self.imageSrc = value.image.imageSrc;
+                  self.imageSrc = value.images.imageSrc;
                   break;
                 }
               }
@@ -158,8 +158,6 @@ export class StoreEditComponent implements OnInit {
         }
       }
     });
-
-    self.shopService.getStore()
 
   }
 
@@ -279,7 +277,7 @@ export class StoreEditComponent implements OnInit {
 
     if (!this.templateId) {
       let options = {
-        uid: 1,
+        templateId: 1,
         storeId: this.store.id,
         context: {
           nameTag: this.nameTag,
@@ -287,18 +285,18 @@ export class StoreEditComponent implements OnInit {
           descriptionTag: this.descriptionTag,
           userTag: this.userTag
         },
-        image: {
+        images: {
           imageSrc: this.imageSrc
         }
       };
       this.shopService.createMultiTemplate(options).then((data) => {
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(1);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
@@ -314,7 +312,7 @@ export class StoreEditComponent implements OnInit {
           descriptionTag: this.descriptionTag,
           userTag: this.userTag
         },
-        image: {
+        images: {
           imageSrc: this.imageSrc
         }
       };
@@ -326,12 +324,12 @@ export class StoreEditComponent implements OnInit {
         });
         self.templateList.splice(index, 1);
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(1);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
@@ -370,8 +368,8 @@ export class StoreEditComponent implements OnInit {
       return;
     }
     let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
+      cat: this.category.id,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 12

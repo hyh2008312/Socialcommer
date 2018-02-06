@@ -16,6 +16,27 @@ export class UserService {
   store: Subject<Store> = new BehaviorSubject<Store>(null);
   userCategory: Subject<any> = new BehaviorSubject<any>(null);
   pubCategory: Subject<any> = new BehaviorSubject<any>(null);
+  countryList: Subject<any> = new BehaviorSubject<any>(null);
+
+  public addUser(newUser: User): void {
+    this.currentUser.next(newUser);
+  }
+
+  public addStore(newStore: Store): void {
+    this.store.next(newStore);
+  }
+
+  public addUserCategory(newCategory: any): void {
+    this.userCategory.next(newCategory);
+  }
+
+  public addPubCategory(newCategory: any): void {
+    this.pubCategory.next(newCategory);
+  }
+
+  public addCountryList(newCountryList: any): void {
+    this.countryList.next(newCountryList);
+  }
 
   constructor(
     private http: Http,
@@ -53,21 +74,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  public addUser(newUser: User): void {
-    this.currentUser.next(newUser);
-  }
 
-  public addStore(newStore: Store): void {
-    this.store.next(newStore);
-  }
-
-  public addUserCategory(newCategory: any): void {
-    this.userCategory.next(newCategory);
-  }
-
-  public addPubCategory(newCategory: any): void {
-    this.pubCategory.next(newCategory);
-  }
 
   private handleError (error: Response | any) {
     let errMsg: string;

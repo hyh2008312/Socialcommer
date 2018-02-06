@@ -261,9 +261,9 @@ export class MainPageComponent implements OnInit {
                   self.aboutMeDesTag = value.context.aboutMeDesTag != '' ? value.context.aboutMeDesTag : self.aboutMeDesTag;
                   self.blogDesTag = value.context.blogDesTag != '' ? value.context.blogDesTag : self.blogDesTag;
 
-                  self.imageBanner = value.image.imageBanner;
-                  self.imageAboutCover = value.image.imageAboutCover;
-                  self.imageBlogCover = value.image.imageBlogCover;
+                  self.imageBanner = value.images.imageBanner;
+                  self.imageAboutCover = value.images.imageAboutCover;
+                  self.imageBlogCover = value.images.imageBlogCover;
                   break;
                 }
               }
@@ -330,8 +330,8 @@ export class MainPageComponent implements OnInit {
       return;
     }
     let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
+      cat: this.category.id,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 6
@@ -371,7 +371,7 @@ export class MainPageComponent implements OnInit {
 
     if (!this.templateId) {
       let options = {
-        uid: 5,
+        templateId: 5,
         storeId: this.store.id,
         context: {
           nameTag: this.nameTag,
@@ -381,7 +381,7 @@ export class MainPageComponent implements OnInit {
           aboutMeDesTag: this.aboutMeDesTag,
           blogDesTag: this.blogDesTag,
         },
-        image: {
+        images: {
           imageBanner: this.imageBanner,
           imageAboutCover: this.imageAboutCover,
           imageBlogCover: this.imageBlogCover,
@@ -389,12 +389,12 @@ export class MainPageComponent implements OnInit {
       };
       this.shopService.createMultiTemplate(options).then((data) => {
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(5);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
@@ -413,7 +413,7 @@ export class MainPageComponent implements OnInit {
           blogDesTag: this.blogDesTag,
         },
 
-        image: {
+        images: {
           imageBanner: this.imageBanner,
           imageAboutCover: this.imageAboutCover,
           imageBlogCover: this.imageBlogCover,
@@ -428,12 +428,12 @@ export class MainPageComponent implements OnInit {
         });
         self.templateList.splice(index, 1);
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(5);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });

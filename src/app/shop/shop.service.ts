@@ -252,7 +252,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/list/`;
+    const url = `${this.baseUrl.url}store/create/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -269,7 +269,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store_create/${store.id}/`;
+    const url = `${this.baseUrl.url}store/update/${store.id}/`;
 
     return this.http.put(url, store, options)
       .toPromise()
@@ -388,9 +388,9 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}store/template/`;
+    const url = `${this.baseUrl.url}store/update/template/`;
 
-    return this.http.post(url, store, options)
+    return this.http.put(url, store, options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
@@ -405,15 +405,15 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}store/template_list/`;
+    const url = `${this.baseUrl.url}store/template/list/`;
 
-    return this.http.post(url, store, options)
+    return this.http.put(url, store, options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
   }
 
-  getMultiTemplate(template: any): Promise<any> {
+  getMultiTemplate(): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -422,7 +422,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}store/template_list/?${this.serializeParams(template)}`;
+    const url = `${this.baseUrl.url}store/update/template/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -439,7 +439,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}store/template_detail/${store.id}/`;
+    const url = `${this.baseUrl.url}store/template/list/${store.id}/`;
 
     return this.http.put(url, store, options)
       .toPromise()
@@ -455,7 +455,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}store/relation/?${this.serializeParams(product)}`;
+    const url = `${this.baseUrl.url}store/goods/category/?${this.serializeParams(product)}`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -755,6 +755,22 @@ export class ShopService {
     return this.http.post(url, product, options)
       .toPromise()
       .then(response => response.json() as StoreProduct)
+      .catch(this.handleError);
+  }
+
+  getCountryList(): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseUrl.url}address/country/list/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

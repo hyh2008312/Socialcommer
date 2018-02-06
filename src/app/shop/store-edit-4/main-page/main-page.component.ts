@@ -269,7 +269,7 @@ export class MainPageComponent implements OnInit {
                 self.queryBlog();
               });
               for (let value of self.templateList) {
-                if (value.uid == 4) {
+                if (value.templateId == 4) {
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
                   self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
@@ -277,11 +277,11 @@ export class MainPageComponent implements OnInit {
                   self.productDesTag = value.context.productDesTag != '' ? value.context.productDesTag : self.productDesTag;
                   self.aboutMeTag = value.context.aboutMeTag != '' ? value.context.aboutMeTag : self.aboutMeTag;
 
-                  self.imageBanner = value.image.imageBanner;
-                  self.imageAdOne = value.image.imageAdOne;
-                  self.imageAdTwo = value.image.imageAdTwo;
-                  self.imageAdThree = value.image.imageAdThree;
-                  self.aboutMeCover = value.image.aboutMeCover;
+                  self.imageBanner = value.images.imageBanner;
+                  self.imageAdOne = value.images.imageAdOne;
+                  self.imageAdTwo = value.images.imageAdTwo;
+                  self.imageAdThree = value.images.imageAdThree;
+                  self.aboutMeCover = value.images.aboutMeCover;
                   break;
                 }
               }
@@ -318,8 +318,8 @@ export class MainPageComponent implements OnInit {
       return;
     }
     let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
+      cat: this.category.id,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 6
@@ -380,7 +380,7 @@ export class MainPageComponent implements OnInit {
 
     if (!this.templateId) {
       let options = {
-        uid: 4,
+        templateId: 4,
         storeId: this.store.id,
         context: {
           nameTag: this.nameTag,
@@ -389,7 +389,7 @@ export class MainPageComponent implements OnInit {
           productTitleTag: this.productTitleTag,
           productDesTag: this.productDesTag,
         },
-        image: {
+        images: {
           imageBanner: this.imageBanner,
           aboutMeCover: this.aboutMeCover,
           imageAdOne: this.imageAdOne,
@@ -399,12 +399,12 @@ export class MainPageComponent implements OnInit {
       };
       this.shopService.createMultiTemplate(options).then((data) => {
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(4);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
@@ -421,7 +421,7 @@ export class MainPageComponent implements OnInit {
           productTitleTag: this.productTitleTag,
           productDesTag: this.productDesTag,
         },
-        image: {
+        images: {
           imageBanner: this.imageBanner,
           aboutMeCover: this.aboutMeCover,
           imageAdOne: this.imageAdOne,
@@ -437,12 +437,12 @@ export class MainPageComponent implements OnInit {
         });
         self.templateList.splice(index, 1);
         data.context = options.context;
-        data.image = options.image;
+        data.images = options.images;
         self.templateList.push(data);
         self.shopService.setTemplateUId(4);
         self.shopService.createTemplate({
           storeId: self.store.id,
-          templateId: data.id
+          storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });

@@ -34,6 +34,19 @@
               {{ formErrors['currency'] }}
             </div>
             <div class="md-dark-secondary">
+              Store Country
+            </div>
+            <mat-form-field>
+              <mat-select name="country" formControlName="countryId">
+                <mat-option *ngFor="let country of countries" [value]="country.id">
+                  {{ country.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="formErrors['countryId']" class="xb-input-error">
+              {{ formErrors['countryId'] }}
+            </div>
+            <div class="md-dark-secondary">
               Your Store URL
             </div>
             <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">

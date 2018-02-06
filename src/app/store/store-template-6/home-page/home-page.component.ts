@@ -49,7 +49,7 @@ export class HomePageComponent implements OnInit {
       if (data) {
         self.store = data;
         self.contextList = data.context ? data.context : {};
-        self.imageList = data.image ? data.image : {};
+        self.imageList = data.images ? data.images : {};
         self.categoryInfoList = data.context.tempCategoryList;
         self.text = data.description;
         self.ownerId = data.ownerId;
@@ -142,8 +142,7 @@ export class HomePageComponent implements OnInit {
   }
 
   jumpCategory(categoryId: number): void {
-    this.router.navigate(['./category', categoryId], {relativeTo: this.activatedRoute},
-    );
+    this.router.navigate(['./category', categoryId], {relativeTo: this.activatedRoute});
   }
 
   jumpBlogList(): void {

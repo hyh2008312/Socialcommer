@@ -83,8 +83,8 @@ export class StoreListComponent implements OnInit {
 
   queryProduct() {
     let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
+      cat: this.category.id,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 12

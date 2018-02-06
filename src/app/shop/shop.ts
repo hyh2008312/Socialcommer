@@ -99,6 +99,8 @@ export class Store{
   imageUrl: any;
   status: any;
   currency: string;
+  countryId: number;
+  country: any;
 
   uid: any;
   templateId: any;

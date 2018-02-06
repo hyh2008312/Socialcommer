@@ -45,15 +45,15 @@ export class StoreMainComponent implements OnInit {
       this.storeService.getStore(storeName).then((data) => {
         if (data) {
           this.storeService.addStore(data);
-          if(uid != 'cart' && uid != 'order' && uid!='message' && uid != data.uid) {
+          if(uid != 'cart' && uid != 'order' && uid!='message' && uid != data.templateId) {
             if(replaceRouter.length > 0) {
               if(self.storeRouter[parseInt(uid)-1][replaceRouter[0]] != self.storeRouter[data.uid - 1][replaceRouter[0]]) {
-                self.router.navigate([`/store/${storeName}/${data.uid}`]);
+                self.router.navigate([`/store/${storeName}/${data.templateId}`]);
               } else {
-                self.router.navigate([`/store/${storeName}/${data.uid}/${lastRouter}`]);
+                self.router.navigate([`/store/${storeName}/${data.templateId}/${lastRouter}`]);
               }
             } else {
-              self.router.navigate([`/store/${storeName}/${data.uid}/${lastRouter}`]);
+              self.router.navigate([`/store/${storeName}/${data.templateId}/${lastRouter}`]);
             }
           }
         }
@@ -63,7 +63,7 @@ export class StoreMainComponent implements OnInit {
         if (data) {
           self.storeService.addStore(data);
           if(data.uid) {
-            self.router.navigate([`/store/${storeName}/${data.uid}`]);
+            self.router.navigate([`/store/${storeName}/${data.templateId}`]);
           } else {
             self.router.navigate([`/store/${storeName}/1`]);
           }

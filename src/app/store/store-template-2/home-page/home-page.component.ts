@@ -55,7 +55,7 @@ export class HomePageComponent implements OnInit {
       if (data) {
         self.store = data;
         self.contextList = data.context ? data.context : {};
-        self.imageList = data.image ? data.image : {};
+        self.imageList = data.images ? data.images : {};
         self.text = data.description;
         self.ownerId = data.ownerId;
         self.storeService.addTitleDescription({
@@ -90,8 +90,8 @@ export class HomePageComponent implements OnInit {
       return;
     }
     let options = {
-      categoryId: this.category.id,
-      storeId: this.store.id,
+      cat: this.category.id,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 6
