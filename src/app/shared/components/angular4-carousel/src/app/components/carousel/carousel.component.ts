@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ViewChild, forwardRef } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter, OnDestroy, ViewChild, forwardRef } from '@angular/core';
 import 'rxjs/add/operator/takeWhile';
 
 import { CarouselService, ICarouselConfig, WindowWidthService } from '../../services';
@@ -32,6 +32,11 @@ export class CarouselComponent implements OnInit, OnDestroy {
   constructor(private carouselService: CarouselService, private windowWidthService: WindowWidthService) { }
 
   ngOnInit() {
+    //this.initData();
+  }
+
+  ngOnChanges() {
+    this.ngOnDestroy();
     this.initData();
   }
 

@@ -114,7 +114,7 @@ export class StoreService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}store/goods/detail/${id}/`;
+    const url = `${this.baseUrl.url}store/customer/goods/detail/${id}/`;
 
     return this.http.get(url, options)
       .toPromise()

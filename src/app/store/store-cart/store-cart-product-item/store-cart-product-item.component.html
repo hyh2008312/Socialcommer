@@ -1,10 +1,17 @@
 <div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start center" fxHide.xs fxHide.sm>
-  <div fxLayout="row" fxLayoutAlign="start start" fxFlex="40">
+  <div fxLayout="row" fxLayoutAlign="start stretch" fxFlex="40">
     <div class="xb-cart__item-image" fxFlex="none">
       <img [src]="product.imageUrl">
     </div>
-    <div class="xb-cart__item-title">
-      {{product.title}}
+    <div fxLayout="column" fxLayoutAlign="space-between stretch">
+      <div class="xb-cart__item-title">
+        {{product.title}}
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-margin-right-2" *ngFor="let item of product.variant.attributeValues;">
+          {{item.value}}
+        </div>
+      </div>
     </div>
   </div>
   <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center">

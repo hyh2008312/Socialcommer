@@ -51,10 +51,10 @@ export class StoreDetailComponent implements OnInit {
         description: data.description,
         shareImage: data.imageUrl
       });
-      self.image = data.imageUrl;
-      if(data.imageUrl.length > 0) {
-        self.selectedImage = data.imageUrl[0];
-        for(let value of data.imageUrl) {
+      self.image = data.mainImage;
+      if(data.mainImage.length > 0) {
+        self.selectedImage = data.mainImage[0];
+        for(let value of data.mainImage) {
           self.imageSources.push(value);
         }
       }

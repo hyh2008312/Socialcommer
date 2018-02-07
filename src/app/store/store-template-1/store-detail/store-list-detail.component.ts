@@ -52,6 +52,14 @@ export class StoreListDetailComponent implements OnInit {
         shareImage: ''
       });
 
+      self.image = data.images;
+      if(data.images.length > 0) {
+        self.selectedImage = data.images[0];
+        for(let value of data.images) {
+          self.imageSources.push(value);
+        }
+      }
+
       self.variantId = data.variants[0].id;
 
       self.storeService.pageView({
