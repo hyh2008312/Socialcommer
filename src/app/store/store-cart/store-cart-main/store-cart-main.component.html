@@ -101,8 +101,8 @@
       <div class="xb-cart__item-sale md-margin-left-1">
         {{totalPrice|currency: (currency|uppercase): true }}
       </div>
-      <div class="xb-cart__fixed-bottom-tri xb-cart__fixed-bottom-margin" *ngIf="!isTotalDialogOpen"></div>
-      <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>
+      <div class="xb-cart__fixed-bottom-tri xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>
+      <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="!isTotalDialogOpen"></div>
     </div>
     <div class="unicorn-dark-theme" fxLayout="column">
       <button mat-raised-button color="primary" (click)="checkout()">CHECKOUT</button>

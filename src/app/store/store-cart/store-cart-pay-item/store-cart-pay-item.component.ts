@@ -18,7 +18,7 @@ export class StoreCartPayItemComponent{
   }
 
   ngOnChanges() {
-
+    console.log(this.product)
   }
 
 }

@@ -690,6 +690,7 @@
       margin-right: 40px;
       cursor: pointer;
       @include text-overflow();
+      border: 2px solid transparent;
       &.active{
         @include media();
         border: 2px solid #ffc400;

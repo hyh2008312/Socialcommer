@@ -6210,7 +6210,8 @@ textarea.mat-input-element {
       cursor: pointer;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap; }
+      white-space: nowrap;
+      border: 2px solid transparent; }
       .xb-store__details-text.active {
         font-weight: 600;
         border: 2px solid #ffc400; }

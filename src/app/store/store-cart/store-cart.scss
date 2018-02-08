@@ -203,6 +203,9 @@
     &:last-child{
       border-bottom: none;
     }
+    @include xb-xs-screen{
+      height: auto;
+    }
   }
 
   &__item{

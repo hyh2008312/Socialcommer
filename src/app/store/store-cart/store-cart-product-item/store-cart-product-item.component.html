@@ -56,7 +56,7 @@
     </div>
   </div>
 </div>
-<div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start stretch" fxHide.gt-sm>
+<div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start start" fxHide.gt-sm>
   <div class="xb-cart__item-image" fxFlex="none">
     <img [src]="product.imageUrl">
   </div>
@@ -64,13 +64,18 @@
     <div class="xb-cart__item-title">
       {{product.title}}
     </div>
-    <div class="md-margin-top-2" *ngIf="shipping">
+    <div class="md-margin-top-1"  fxLayout="row" fxLayoutAlign="start center">
+      <div class="md-margin-right-2" *ngFor="let item of product.variant.attributeValues;">
+        {{item.value}}
+      </div>
+    </div>
+    <div class="md-margin-top-1" *ngIf="shipping">
       {{shipping.type}} Shipping
       <span class="xb-cart__item-shipping md-margin-left-1">
         {{shipping.priceItem == 0 ? '': shipping.priceItem|currency: product.originalPriceCurrency: true }}
       </span>
     </div>
-    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+    <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
       <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: currency: true }}</div>
       <div class="line-through md-dark-secondary xb-cart__item-original">
         {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
@@ -101,11 +106,11 @@
     </div>
   </div>
   <div fxFlex="none" fxLayout="column" fxLayoutAlign="center center" *ngIf="!isEdit">
-    <div class="xb-cart__item-icon xb-pointer">
-      <i class="material-icons" (click)="onEdit()">edit</i>
+    <div class="xb-cart__item-icon xb-pointer" (click)="onEdit()">
+      <i class="material-icons" >edit</i>
     </div>
-    <div class="xb-cart__item-icon xb-pointer md-margin-top-2">
-      <i class="material-icons" (click)="delete()">delete</i>
+    <div class="xb-cart__item-icon xb-pointer md-margin-top-2" (click)="delete()">
+      <i class="material-icons" >delete</i>
     </div>
     <div class="md-margin-top-2">
       × {{product.number}}
