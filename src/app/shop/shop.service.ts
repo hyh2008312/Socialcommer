@@ -12,12 +12,11 @@ import {AuthenticationService} from '../shared/services/authentication/authentic
 @Injectable()
 export class ShopService {
 
-  constructor(
-    private http: Http,
-    private baseUrl: BaseApi,
-    private auth: AuthenticationService,
-    private supportApi: SupportApi
-  ) {}
+  constructor(private http: Http,
+              private baseUrl: BaseApi,
+              private auth: AuthenticationService,
+              private supportApi: SupportApi) {
+  }
 
   createAuthorizationHeader(headers: Headers) {
 
@@ -439,7 +438,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}store/template/list/${store.id}/`;
+    const url = `${this.baseUrl.url}store/template/detail/${store.id}/`;
 
     return this.http.put(url, store, options)
       .toPromise()
@@ -693,7 +692,7 @@ export class ShopService {
   }
 
 
-  getSupplyCategory(category?:any): Promise<any> {
+  getSupplyCategory(category?: any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -764,7 +763,7 @@ export class ShopService {
       'Content-Type': 'application/json'
     });
 
-    let options = new RequestOptions({headers:headers});
+    let options = new RequestOptions({headers: headers});
 
     const url = `${this.baseUrl.url}address/country/list/`;
 

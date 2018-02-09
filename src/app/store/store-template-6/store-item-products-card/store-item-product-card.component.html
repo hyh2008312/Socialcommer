@@ -1,15 +1,17 @@
 <div class="xb-4-template-products__card">
   <div class="xb-pointer" (click)="jumpLink()">
     <div class="xb-4-template-products__card-image">
-      <a >
-        <img [src]="product.imageUrl">
+      <a>
+        <img [src]="product.mainImage">
       </a>
     </div>
     <div class="xb-4-template-products__card-content" fxLayout="column" fxLayoutAlign="start center">
       <div class="xb-4-template-products__card-title">{{product.title}}</div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-      <div class="xb-4-template-products__card-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
-      <div class="xb-4-template-products__card-original line-through " *ngIf="product.originalPriceAmount > 0">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+        <div class="xb-4-template-products__card-price">{{product.salePrice |currency: currency:true }}</div>
+        <div class="xb-4-template-products__card-original line-through " *ngIf="product.originalPrice > 0">
+          {{product.originalPrice|currency: currency: true }}
+        </div>
       </div>
     </div>
   </div>

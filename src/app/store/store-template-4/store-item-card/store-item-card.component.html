@@ -2,7 +2,7 @@
   <div class="xb-pointer">
     <div class="xb-store-template__card-image">
       <a >
-        <img [src]="product.imageUrl">
+        <img [src]="product.mainImage">
       </a>
     </div>
     <div class="xb-store-template__card-content" fxLayout="column" fxLayoutAlign="center center">
@@ -10,8 +10,8 @@
         <div  fxLayout="row" fxLayoutAlign="start center"
            fxLayout.xs="column" fxLayoutAlign.xs="start start">
         <div fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store-template__card-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
-          <div class="xb-store-template__card-original line-through md-margin-left-1" *ngIf="product.originalPriceAmount > 0">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+          <div class="xb-store-template__card-price">{{product.salePrice |currency: currency:true }} </div>
+          <div class="xb-store-template__card-original line-through md-margin-left-1" *ngIf="product.originalPrice > 0">{{product.originalPrice|currency: currency: true }}</div>
         </div>
       </div>
     </div>

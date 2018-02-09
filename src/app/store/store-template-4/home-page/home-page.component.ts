@@ -85,8 +85,8 @@ export class HomePageComponent implements OnInit {
 
   queryProduct(clearProduct?: boolean) {
     let options = {
-      categoryId: null,
-      storeId: this.store.id,
+      cat: null,
+      store: this.store.id,
       relationStatus: 'published',
       page: this.page,
       page_size: 6
