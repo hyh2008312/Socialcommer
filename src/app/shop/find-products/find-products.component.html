@@ -1,62 +1,70 @@
-<div class="md-padding-top-2 md-padding-left-2 md-padding-right-2 background-bg-white" >
+<div class="background-bg-light" >
+  <div>
+    <div class="xb-shop__products-title-bg"
+         fxLayout="row" fxLayoutAlign="space-between center"
+         fxLayout.sm="column" fxLayoutAlign.sm="start start"
+         fxLayout.xs="column" fxLayoutAlign.xs="start start">
+      <div>
+        <div class="xb-shop__products-title">Profitable Dropship Products Available to Sell</div>
+        <div class="xb-shop__products-title-1">All products are dropshipped by verified suppliers in 5 days with 30 day return guarantee!</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <form class="xb-shop__products-search" [formGroup]="searchForm"
+              fxLayout="row" fxLayoutAlign="start center" >
 
-  <div fxLayout="row" fxLayoutAlign="start stretch">
-    <div class="xb-shop__products-left-bg">
-      <div class="xb-shop__products-title-1" *ngIf="false">By Affiliate Channel:</div>
-      <app-products-sort [(selectedSort)]="selectedSource" [sorts]="sources" *ngIf="false"
-         (selectedSortChange)="onSelectedChange($event)"></app-products-sort>
-
-      <div class="xb-shop__products-title-1" *ngIf="categories.length>0">By Product Category:</div>
-      <div fxLayout="column">
-        <mat-checkbox class="md-margin-top-1" *ngFor="let category of categories;"
-                      (change)="onCheckedChange(category,1)" [(ngModel)]="category.checked">
-          {{ category.name }}
-        </mat-checkbox>
+          <input type="text" placeholder="Search product" formControlName="searchKey"
+                 [(ngModel)]="searchKey" (keyup.enter)="getSupplyProductList(isSearch)"/>
+          <div class="xb-shop__products-search-close" fxLayout="row" fxLayoutAlign="center center"
+               *ngIf="searchKey != ''" (click)="clearSearchKey()">
+            <i class="material-icons">close</i>
+          </div>
+          <i class="material-icons xb-pointer" (click)="getSupplyProductList(isSearch)">search</i>
+        </form>
       </div>
     </div>
-    <div fxFlex>
-      <div class="xb-shop__products-title" fxLayout="row" fxLayoutAlign="start center">
-        <a routerLink="../products">Listings</a>&nbsp;&nbsp;>&nbsp;&nbsp;Search affiliate products
+    <div class="xb-shop__products-title-bg-1" fxLayout="row" fxLayoutAlign="start center">
+      <div>
+        <app-shop-find-product-category [(category)]="category" [categories]="categories"
+                                       (categoryChange)="changeCategory($event)"></app-shop-find-product-category>
       </div>
-      <div class="md-margin-top-3">
-        <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+    </div>
+    <div class="md-padding-left-2 md-padding-right-2">
+      <div class="md-margin-top-5">
+        <div fxLayout="row" fxLayoutAlign="start center">
           <div fxFlex>
-            <div [hidden]="selectedChips.length <= 0">
-              <mat-chip-list class="md-margin-bottom-4" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-                <mat-chip *ngFor="let sort of selectedChips" [selectable]="selectable" [removable]="removable" (remove)="remove(sort)">
-                  {{sort.name}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-              </mat-chip-list>
-            </div>
             <div class="xb-shop__products-title-2" *ngIf="searchKey != '' && isSearch">
-              <span class="xb-shop__products-search-result">{{length}}</span>
-              {{length > 1? 'Results':'Result'}} for
-              <span class="xb-shop__products-search-result">{{searchKey}}</span>
+              {{length}} {{length > 1? 'Results':'Result'}} for
+              "<span class="xb-shop__products-search-result">{{searchKey}}</span>"
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="start center">
-            <form class="xb-shop__products-search" [formGroup]="searchForm"
-                  fxLayout="row" fxLayoutAlign="start center" >
-              <i class="material-icons">search</i>
-              <input type="text" formControlName="searchKey" [(ngModel)]="searchKey" (keyup.enter)="getSupplyProductList(isSearch)"/>
-              <div class="xb-shop__products-search-close" fxLayout="row" fxLayoutAlign="center center"
-                   *ngIf="searchKey != ''" (click)="clearSearchKey()">
-                <i class="material-icons">close</i>
-              </div>
-            </form>
+          <div class="xb-shop__products-padding-right unicorn-theme" fxLayout="row" fxLayoutAlign="start center">
+            <div class="md-margin-right-2">Sort by</div>
+            <mat-form-field class="xb-shop__products-sort">
+              <mat-select [ngModel]="sort" name="sort" (valueChange)="changeSort($event)">
+                <mat-option *ngFor="let item of sortList" [value]="item.value">
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="md-margin-left-4 md-margin-right-2">Ship To</div>
+            <mat-form-field class="xb-shop__products-sort">
+              <mat-select [(ngModel)]="countryId" name="country">
+                <mat-option *ngFor="let item of countryList" [value]="item.id">
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
-
       </div>
-      <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+      <div class="xb-shop__products-none" fxLayout="row" fxLayoutAlign="center center"
            *ngIf="productList && productList.length <= 0">
         <div fxLayout="column" fxLayoutAlign="center center">
           <img src="https://media.socialcommer.com/source/web/pic/pic-none-01.png">
           <span class="md-dark-secondary">Please try again with different search keywords.</span>
         </div>
       </div>
-      <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="24px">
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="20px">
         <app-product-item-card *ngFor="let product of productList" [product]="product"></app-product-item-card>
       </div>
       <mat-paginator [length]="length"
@@ -65,7 +73,6 @@
                      (page)="changePage($event)"
                      *ngIf="productList && productList.length > 0">
       </mat-paginator>
-
     </div>
   </div>
 </div>

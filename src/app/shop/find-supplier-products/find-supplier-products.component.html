@@ -1,0 +1,47 @@
+<div class="background-bg-light" >
+  <div>
+    <div class="md-padding-left-2 md-padding-right-2">
+      <div class="md-margin-top-4"><span class="xb-pointer" routerLink="/shop/listings/items">Add Items</span> > <span class="xb-bold">Alex Sandra</span></div>
+      <div class="xb-shop__title md-margin-top-3 md-align-center">Alex Sandra</div>
+      <div class="md-margin-top-3">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <div class="unicorn-theme" fxLayout="row" fxLayoutAlign="start center">
+            <div class="md-margin-right-2">Filter By</div>
+            <mat-form-field class="xb-shop__products-sort">
+              <mat-select [(ngModel)]="categoryId" name="category" (valueChange)="categoryChange($event)">
+                <mat-option *ngFor="let item of categories" [value]="item.id">
+                  {{ item.data.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="md-margin-right-2 md-margin-left-5">Sort by</div>
+            <mat-form-field class="xb-shop__products-sort">
+              <mat-select [(ngModel)]="sort" name="sort" (valueChange)="sortChange($event)">
+                <mat-option *ngFor="let item of sortList" [value]="item.value">
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="xb-shop__products-none" fxLayout="row" fxLayoutAlign="center center"
+           *ngIf="productList && productList.length <= 0">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <img src="https://media.socialcommer.com/source/web/pic/pic-none-01.png">
+          <span class="md-dark-secondary">Please try again with different search keywords.</span>
+        </div>
+      </div>
+      <div class="md-margin-top-5" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="20px">
+        <app-product-item-card *ngFor="let product of productList" [product]="product" [supplier]="true"></app-product-item-card>
+      </div>
+      <mat-paginator [length]="length"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="pageSizeOptions"
+                     (page)="changePage($event)"
+                     *ngIf="productList && productList.length > 0">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

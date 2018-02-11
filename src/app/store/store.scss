@@ -637,6 +637,7 @@
       color: rgba(0,0,0,.54);
       width: 54px;
       margin-right: 24px;
+      margin-top: 6px;
       @include xb-xs-screen{
         width: auto;
         margin-right: 0;
@@ -658,6 +659,13 @@
       @include media();
       color: rgba(0,0,0,.54);
       width: 120px;
+      margin-right: 32px;
+    }
+
+    &-left-part-2{
+      @include media();
+      color: rgba(0,0,0,.54);
+      width: 135px;
       margin-right: 32px;
     }
 

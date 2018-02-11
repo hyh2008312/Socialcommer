@@ -38,7 +38,7 @@ export class ViewScrollTopDirective {
   onScroll() {
     let self = this;
     this.ngZone.runOutsideAngular(() => {
-      if (self.NavigateDetail.getBoundingClientRect().top < 0) {
+      if (self.NavigateDetail && self.NavigateDetail.getBoundingClientRect().top < 0) {
         self.isShowNavigation.emit(true);
       } else {
         self.isShowNavigation.emit(false);

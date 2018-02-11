@@ -701,7 +701,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}product/category/list/?${this.serializeParams(category)}`;
+    const url = `${this.baseUrl.url}product/category/create/`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -716,8 +716,43 @@ export class ShopService {
     });
 
     let options = new RequestOptions({headers: headers});
+    this.createAuthorizationHeader(headers);
 
     const url = `${this.baseUrl.url}product/store/list/?${this.serializeParams(product)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getSupplyProductRecommendList(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}product/recommend/list/?${this.serializeParams(product)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  getProductListBySupply(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}product/supplier/store/list/?${this.serializeParams(product)}`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -732,6 +767,7 @@ export class ShopService {
     });
 
     let options = new RequestOptions({headers: headers});
+    this.createAuthorizationHeader(headers);
 
     const url = `${this.baseUrl.url}product/detail/${product.id}/`;
 

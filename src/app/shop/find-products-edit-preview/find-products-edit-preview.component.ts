@@ -41,12 +41,15 @@ export class FindProductsEditPreviewComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: 0,
     originalPriceCurrency: 'USD',
-    source: ''
+    source: '',
+    supplierId: 0
   };
 
   // Reset product
   productCopy: any;
   storeId: number;
+
+  isSupplierEdit = false;
 
   constructor(
     public router: Router,
@@ -75,6 +78,9 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   ngOnInit():void {
     let id = this.activatedRoute.snapshot.params['id'];
+    if(this.activatedRoute.parent.snapshot.params['supplierId']) {
+      this.isSupplierEdit = true;
+    }
     let self = this;
     self.shopService.getSupplyProductDetail({id}).then((data) => {
 
@@ -90,12 +96,14 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
       self.product.title = data.title;
       self.product.categoryName = data.categories[0].name;
-      self.product.salePriceAmount = self.getLowestPrice(data.variants).saleUnitPrice;
-      self.product.originalPriceAmount = self.getLowestPrice(data.variants).unitPrice;
+      self.product.salePriceAmount = data.saleUnitPrice;
+      self.product.originalPriceAmount = data.unitPrice;
+      self.product.supplierId = data.supplierId;
 
       self.previewImg.push(data.mainImage);
 
       self.productCopy = data;
+
     });
 
     self.userService.store.subscribe((data) => {
@@ -216,7 +224,11 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
 
   close():void {
-    this.router.navigate(['/shop/listings/items']);
+    if(!this.isSupplierEdit) {
+      this.router.navigate(['/shop/listings/items/']);
+    } else {
+      this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`])
+    }
   }
 
   showTitleInput: boolean = false;

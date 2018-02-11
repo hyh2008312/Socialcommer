@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ENTER } from '@angular/cdk/keycodes';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 import { ShopService } from '../shop.service';
 import { UserService } from  '../../shared/services/user/user.service';
@@ -9,21 +10,36 @@ import { UserService } from  '../../shared/services/user/user.service';
 @Component({
   selector: 'app-find-products',
   templateUrl: './find-products.component.html',
-  styleUrls: ['../shop.scss']
+  styleUrls: ['./_find-products.scss']
 })
 
 export class FindProductsComponent implements OnInit {
 
   searchForm: FormGroup;
 
-  sortsList = [];
-  sources = ['Amazon.in', 'Amazon.com'];
+  sort: any = '';
+  sortList = [{
+    name: 'Newest Arrivals',
+    value: ''
+  }, {
+    name: 'Commission High to Low',
+    value: 'commission'
+  }, {
+    name: 'Price: Low to High',
+    value: 'price_low'
+  }, {
+    name: 'Price: High to Low',
+    value: 'price_high'
+  }];
+
+  countryId: any = 1;
+  countryList: any = [];
+
+  category: any = {
+    id: null,
+    data: {name: 'All'}
+  };
   categories:any = [];
-
-  selectedSource: string;
-
-  public currentIndex: number = 1;
-  public selectedChips = [];
 
   selectable: boolean = true;
   removable: boolean = true;
@@ -41,18 +57,24 @@ export class FindProductsComponent implements OnInit {
 
   isSearch: boolean = false;
 
-  searchCount: number = 0;
-
   constructor(
     private shopService: ShopService,
     private userService: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    overlayContainer: OverlayContainer
   ) {
+    overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
     this.searchForm = this.fb.group({
       searchKey: ['']
     });
 
     this.searchForm.valueChanges.subscribe(data => this.onValueChanged(data));
+
+    this.userService.countryList.subscribe((data) => {
+      if(data) {
+        this.countryList = data;
+      }
+    });
   }
 
   onValueChanged(data) {
@@ -65,12 +87,18 @@ export class FindProductsComponent implements OnInit {
     let self = this;
     self.userService.pubCategory.subscribe((data) => {
       if(data) {
-        for (let value of data) {
-          self.categories.push({
-            checked: false,
-            ...value
-          });
+        self.categories.push({
+          id: null,
+          data: {name: 'Featured'}
+        });
+        self.categories.push({
+          id: null,
+          data: {name: 'All'}
+        });
+        for(let item of data) {
+          self.categories.push(item);
         }
+
       }
     });
   }
@@ -90,112 +118,24 @@ export class FindProductsComponent implements OnInit {
     this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
   }
 
-  onSelectedChange(event) {
-
-    let isChange = false;
-    for(let item of this.sources) {
-      let index = this.selectedChips.findIndex((elem)=>{
-        return elem.name == item;
-      });
-
-      if (index >= 0) {
-        isChange = true;
-        break;
-      }
-    }
-    if(isChange) {
-      this.selectedChips = [];
-    }
-
-    this.selectedChips.push({name : event, type: 0});
-    //this.getCategoryList();
-    this.getSupplyProductList();
-  }
-
-  onCheckedChange(event, type:number) {
-
-    let index = this.selectedChips.findIndex((item)=>{
-      return item.name == event.name;
-    });
-    if (index >= 0) {
-      this.selectedChips.splice(index, 1);
-    }
-
-    if(event.checked) {
-      this.selectedChips.push({type: type, ...event});
-    }
-    this.getSupplyProductList();
-
-  }
-
-  remove(sort:any): void {
-
-    let index = this.selectedChips.findIndex((item)=>{
-      return item.name == sort.name;
-    });
-
-    if (index >= 0) {
-      this.selectedChips.splice(index, 1);
-    }
-
-    switch(sort.type) {
-      case 0:
-        this.selectedSource = null;
-        this.selectedChips = [];
-        this.categories = [];
-        break;
-      case 1:
-        let _index = this.categories.findIndex((item)=>{
-          return item.name == sort.name;
-        });
-        this.categories[_index].checked = false;
-        break;
-    }
-    this.getSupplyProductList();
-  }
-
-  getProductList(isSearch?: any) {
-    let cats = [];
-    let source = [];
-    for(let value of this.selectedChips) {
-      if(value.type == 0) {
-        source.push(value.name);
-      }
-      if(value.type == 1) {
-        cats.push(value.id);
-      }
-    }
-
-    let self = this;
-    self.shopService.getRecommendProductList({
-      cats,
-      source,
-      page: this.productIndex,
-      page_size: this.pageSize,
-      q: this.searchKey
-    }).then((data) => {
-
-      if(isSearch == false) {
-        self.isSearch = true;
-      }
-      self.length = data.count;
-
-      self.productList = data.results;
-    })
-  }
-
   getSupplyProductList(isSearch?: any) {
-    let cats = [];
-    for(let value of this.selectedChips) {
-      cats.push(value.id);
+    let cat = [];
+
+    if(this.category && this.category.id) {
+      cat = this.category.id;
+    }
+    if(isSearch != null) {
+      cat = null;
+      this.category = false;
     }
 
     let self = this;
     self.shopService.getSupplyProductList({
-      cats,
+      cat,
       page: this.productIndex,
       page_size: this.pageSize,
-      q: this.searchKey
+      q: this.searchKey,
+      sort: this.sort
     }).then((data) => {
 
       if(isSearch == false) {
@@ -204,24 +144,17 @@ export class FindProductsComponent implements OnInit {
       self.length = data.count;
 
       self.productList = data.results;
-    })
+    });
   }
 
-  getCategoryList() {
+  changeCategory($event) {
+    this.category = $event;
+    this.getSupplyProductList();
+  }
 
-    this.shopService.getSubCategory({
-      source: this.selectedSource.toLocaleLowerCase()
-    }).then((data) => {
-      this.categories = [];
-      for(let value of data) {
-        this.categories.push({
-          id: value.objectUrlId,
-          name: value.name,
-          checked: false
-        })
-      }
-
-    });
+  changeSort($event) {
+    this.sort = $event;
+    this.getSupplyProductList();
   }
 
 }

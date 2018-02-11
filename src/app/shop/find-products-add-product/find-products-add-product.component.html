@@ -1,4 +1,4 @@
-<div class="xb-store__background" (click)="close()">
+<div class="xb-store__background" (click)="close()" appViewScrollTop [ContainerSelector]="'xb-store__background'">
   <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
@@ -6,32 +6,136 @@
     <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-sm="true">
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
-    <div class="xb-store__details-padding-bottom" fxLayout="row" fxLayoutAlign="start start"
+    <div class="xb-shop__padding-bottom" fxLayout="row" fxLayoutAlign="start start"
          fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
       <div class="xb-store__details-margin-right">
-        <app-left-products-image [images]="image" [selectedImage]="selectedImage"
-          [imageSources]="imageSources" *ngIf="imageSources.length > 0"></app-left-products-image>
+        <app-left-products-image [images]="image" [selectedImage]="selectedImage"  *ngIf="imageSources.length > 0"
+                                 [imageSources]="imageSources" [insertImage]="insertImage"></app-left-products-image>
       </div>
       <div class="xb-store__details-content" fxFlex>
         <div>{{category}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price">{{salePrice |currency: currency: true}}</div>
-          <div class="line-through md-margin-left-2" *ngIf="originalPrice > 0">
+          <div class="xb-store__details-price">{{salePrice |currency: currency: true }}</div>
+          <div class="line-through md-margin-left-2"
+               *ngIf="originalPrice > 0 && salePrice != originalPrice">
             {{originalPrice|currency: currency: true }}</div>
-          <div class="xb-store__details-sale md-margin-left-2" *ngIf="originalPrice > 0">
-            {{salePrice|saleDiscount:originalPrice}} OFF
+          <div class="xb-store__details-sale md-margin-left-2"
+               *ngIf="originalPrice > 0 && salePrice != originalPrice">
+            {{ salePrice|saleDiscount:originalPrice}} OFF
+          </div>
+        </div>
+        <div class="xb-store__details-margin-top-2">
+          <div class="xb-store__details-margin-top" *ngFor="let item of variantList;let i = index;"
+               fxLayout="row" fxLayoutAlign="start start"
+               fxLayout.xs="column" fxLayoutAlign="start start">
+            <div class="xb-store__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">{{item.name}}</div>
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+              <div *ngFor="let value of item.value;let j = index;">
+                <div class="xb-store__details-image" [ngClass]="{'active':value.isSelected}"
+                     *ngIf="value.image" (click)="selectVariant(value, item)">
+                  <img [src]="value.image" />
+                </div>
+                <div *ngIf="!value.image" class="xb-store__details-text"
+                     [ngClass]="{'active':value.isSelected}"(click)="selectVariant(value, item)">
+                  {{value.value}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="xb-store__details-margin-top" fxLayout="row" fxLayoutAlign="start center"
+               fxLayout.xs="column" fxLayoutAlign.xs="start start" *ngIf="isCanBuy">
+            <div class="xb-store__details-left-part">Quantity</div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="md-margin-right-2 xb-store__details-item-add" (click)="plusNumber()" fxFlex="none">
+                <i class="material-icons xb-pointer" >add</i>
+              </div>
+              <div class="xb-store__details-item-input" fxFlex>
+                <input type="number" [(ngModel)]="number" step="1" min="0">
+              </div>
+              <div class="md-margin-left-2 xb-store__details-item-add" (click)="minusNumber()" fxFlex="none">
+                <i class="material-icons xb-pointer" >remove</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xb-store__details-bg" fxLayout="column" fxLayoutAlign="start stretch">
+          <div fxLayout="row" fxLayoutAlign="start start">
+            <div class="xb-store__details-left-part-2">Your Commission</div>
+            <div>{{commission|currency: currency: true }}</div>
+          </div>
+          <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
+            <div class="xb-store__details-left-part-2">Supplier</div>
+            <div class="text-underline xb-bold xb-pointer" routerLink="/shop/listings/items/supplier/{{product.supplierId}}/">{{supplierName}}</div>
           </div>
         </div>
         <div class="xb-store__details-buttons" fxLayout="column">
-          <button mat-raised-button color="primary" (click)="addEdit()">Add To Store</button>
+          <button mat-raised-button color="primary" (click)="addEdit()" *ngIf="!isAdded">Add To Store</button>
+          <button mat-raised-button color="primary" disabled *ngIf="isAdded">Added</button>
         </div>
       </div>
     </div>
-    <div class="xb-store__details-description" *ngIf="description">
-      <div class="xb-store__details-title">Description</div>
-      <div class="md-margin-top-2 ql-editor"
-           [innerHTML]="description | safeHtml"></div>
+    <div class="xb-shop__tab-scroll">
+      <div class="xb-shop__tab-bg" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-shop__tab" [ngClass]="{'active': tabNumber == 0}"
+          (click)="changeTab(0);">Product Description</div>
+        <div class="xb-shop__tab" [ngClass]="{'active': tabNumber == 1}"
+             (click)="changeTab(1);">Shipping Policy</div>
+        <div class="xb-shop__tab" [ngClass]="{'active': tabNumber == 2}"
+             (click)="changeTab(2);">Return Policy</div>
+      </div>
+    </div>
+    <div class="xb-shop__content" *ngIf="tabNumber == 0">
+      <div class="ql-editor" [innerHTML]="description | safeHtml"></div>
+    </div>
+    <div class="xb-shop__content" *ngIf="tabNumber == 1">
+      <div class="md-dark-secondary">Shipping Availability</div>
+      <div class="xb-shop__margin-top">United States</div>
+      <div class="md-dark-secondary md-margin-top-3">Ships In</div>
+      <div class="xb-shop__margin-top">2 - 5 business days</div>
+      <div class="md-dark-secondary md-margin-top-3">Shipping Method:</div>
+      <div class="xb-shop__margin-top">
+        <div class="xb-shop__text" *ngFor="let item of shipping">
+          {{item.type}} Shipping {{item.shippingTimeMin}} -
+          {{item.shippingTimeMax}} days{{item.type != 'Free'? ', ' + (item.priceItem|currency: currency:true):''}}
+        </div>
+      </div>
+    </div>
+    <div class="xb-shop__content" *ngIf="tabNumber == 2">
+      <div class="xb-shop__title">What is the Return Policy?</div>
+      <div class="xb-shop__text xb-shop__margin-top">You may request a refund or exchange on any item that is not as described within 30 days of delivery,
+        and you will receive a full refund or a replacement for the returned item once we receive the package.</div>
+      <div class="xb-shop__text xb-shop__margin-top">Please note that any shipping fee of the returned package will not be included in the refund. The customer
+        will be responsible for the return shipping cost.</div>
+      <div class="xb-shop__text xb-shop__margin-top">If your order arrives incomplete, damaged or defective, please send us a photo of the damage by contacting
+        our customer support within 3 days of receiving the shipment. If you do not report this to us within 3 day
+        period, we mey not be able to honor your claim.</div>
+
+      <div class="xb-bold xb-shop__margin-top xb-shop__text">The following conditions are not eligible for refund
+        or exchange:</div>
+      <div class="xb-shop__text">·Returns received after 30 days of delivery.</div>
+      <div class="xb-shop__text">·Returned items received in worn or incomplete condition.</div>
+      <div class="xb-shop__text">The refunds can only be issued to your original payment method.</div>
+
+      <div class="xb-shop__title md-margin-top-3 xb-shop__margin-top">How dose the Return Policy Work?</div>
+      <div class="xb-shop__text">Step1: Go to My Order section and access your order history width your email and order number.</div>
+      <div class="xb-shop__text">Step2: Select the item you want to return and initial your return request.</div>
+      <div class="xb-shop__text">Step3: Our customer service will process your request and send you a Return Authorization Number and
+        return shipping address.</div>
+      <div class="xb-shop__text">Step4: Please include the RAN number into your package and send them back to our warehouse.</div>
+      <div class="xb-shop__text">Step5: We will process the refund or exchange within 5 business days once we receive the returned package.</div>
+    </div>
+    <div class="xb-shop__title-1 md-align-center md-margin-top-5">Related Products</div>
+    <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap
+      fxHide.xs>
+      <app-product-item-card *ngFor="let product of productList" [product]="product" [supplier]="isSupplierDetail"
+        [isRecommend]="true" fxFlex="32"></app-product-item-card>
+      <div fxFlex="32"></div>
+    </div>
+    <div class="md-margin-top-4 xb-shop__recommend-content" fxLayout="column" fxLayoutAlign="start stretch"
+         fxHide.gt-xs>
+      <app-product-item-card *ngFor="let product of productList" [product]="product" [supplier]="isSupplierDetail"
+        [isRecommend]="true"></app-product-item-card>
     </div>
   </div>
 </div>

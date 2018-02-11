@@ -6,6 +6,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { FindProductsComponent } from "./find-products/find-products.component";
+import { FindSupplierProductsComponent } from "./find-supplier-products/find-supplier-products.component";
 import { CatalogAddProductComponent } from "./catalog-add-product/catalog-add-product.component";
 import { CatalogEditProductComponent } from "./catalog-edit-product/catalog-edit-product.component";
 import { FindProductsAddProductComponent } from "./find-products-add-product/find-products-add-product.component";
@@ -29,6 +30,7 @@ import { CategoryItemComponent } from './category-item/category-item.component';
 import { CategoryTitleComponent } from './category-title/category-title.component';
 import { BlogItemComponent } from './blog-item/blog-item.component';
 import { BlogTitleComponent } from './blog-title/blog-title.component';
+import { FindProductCategoryComponent } from './find-product-category/find-product-category.component';
 
 import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
 import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
@@ -94,7 +96,9 @@ import { SharedModule } from '../shared/shared.module';
     BlogEditDialogComponent,
     BlogDeleteDialogComponent,
     SettingsPasswordDialogComponent,
-    ShopErrorComponent
+    ShopErrorComponent,
+    FindProductCategoryComponent,
+    FindSupplierProductsComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
