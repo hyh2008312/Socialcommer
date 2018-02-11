@@ -261,7 +261,7 @@
 
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="false">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" (click)="changeShippingAddress()">Change Shipping Address</button>
     </div>
@@ -277,11 +277,11 @@
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Canceled'">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Unfulfilled'">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" (click)="changeShippingAddress()">Change Shipping Address</button>
     </div>
@@ -294,7 +294,7 @@
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Fulfilled'">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" (click)="trackingInformation()">Tracking Your Package</button>
     </div>
@@ -305,7 +305,7 @@
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
        && order.returnOrder.status == 'Pending'">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
     </div>
@@ -313,7 +313,7 @@
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
        && order.returnOrder.status == 'Denied'">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
     </div>
@@ -321,7 +321,7 @@
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
        && order.returnOrder.status == 'Authorized'">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
     </div>
@@ -329,7 +329,7 @@
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
        && order.returnOrder.status == 'Exchanged'">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
     </div>
@@ -340,7 +340,7 @@
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
        && order.returnOrder.status == 'Partially Refunded'">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
     </div>
@@ -348,7 +348,7 @@
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
        && order.returnOrder.status == 'Refunded'">
-    <button mat-raised-button color="primary">Contact Supplier</button>
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
     <div class="md-margin-top-2" fxLayout="column">
       <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
     </div>

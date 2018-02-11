@@ -16,10 +16,6 @@ const routes: Routes = [{
       loadChildren: 'app/store/order-tracking/order-tracking.module#OrderTrackingModule'
     },
     {
-      path: 'message',
-      loadChildren: 'app/store/store-message/store-message.module#StoreMessageModule'
-    },
-    {
       path: '1',
       loadChildren: 'app/store/store-template-1/store-template-1.module#StoreTemplateOneModule'
     },
