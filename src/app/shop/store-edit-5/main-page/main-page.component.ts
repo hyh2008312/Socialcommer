@@ -227,30 +227,30 @@ export class MainPageComponent implements OnInit {
     let self = this;
     let firstLoad = false;
     self.shopService.templateList.subscribe((data) => {
-      if (data) {
-        self.templateList = data;
-        self.userService.store.subscribe((data) => {
-          if (data) {
-            self.store = data;
-            self.text = data.description;
-            if (!firstLoad) {
-              firstLoad = true;
-              self.storeForm.setValue({
-                name: self.store.name,
-                description: self.store.description,
-                displayName: self.store.displayName
-              });
+      self.templateList = data;
+      self.userService.store.subscribe((data) => {
+        if (data) {
+          self.store = data;
+          self.text = data.description;
+          if (!firstLoad) {
+            firstLoad = true;
+            self.storeForm.setValue({
+              name: self.store.name,
+              description: self.store.description,
+              displayName: self.store.displayName
+            });
 
-              self.shopService.getFrontStore(self.store.displayName).then((data) => {
-                self.ownerId = data.ownerId;
-                self.categories = [...data.category];
-                self.category = self.categories[0];
-                self.queryProduct();
-                self.queryBlog();
-              });
-              self.shopService.getCategoryProduct(self.store.displayName).then((data) => {
-                self.categoryProduct = data;
-              });
+            self.shopService.getFrontStore(self.store.displayName).then((data) => {
+              self.ownerId = data.ownerId;
+              self.categories = [...data.category];
+              self.category = self.categories[0];
+              self.queryProduct();
+              self.queryBlog();
+            });
+            self.shopService.getCategoryProduct(self.store.displayName).then((data) => {
+              self.categoryProduct = data;
+            });
+            if (self.templateList != null) {
               for (let value of self.templateList) {
                 if (value.uid == 5) {
                   self.templateId = value.id;
@@ -267,11 +267,10 @@ export class MainPageComponent implements OnInit {
                   break;
                 }
               }
-
             }
           }
-        })
-      }
+        }
+      })
     })
   }
 

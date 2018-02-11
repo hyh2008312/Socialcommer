@@ -6,16 +6,15 @@
          (mouseleave)="changeAnimationState()"
     >
       <a>
-        <img [src]="product.imageUrl">
+        <img [src]="product.mainImage">
       </a>
     </div>
     <div class="xb-4-template-products__card-content" fxLayout="column" fxLayoutAlign="start center">
       <div class="xb-4-template-products__card-title">{{product.title}}</div>
-      <div class="xb-4-template-products__card-price">{{product.salePriceAmount|currency: product.salePriceCurrency:
-        true }}
+      <div class="xb-4-template-products__card-price">{{product.salePrice |currency: currency:true }}
       </div>
-      <div class="xb-4-template-products__card-original line-through " *ngIf="product.originalPriceAmount > 0">
-        {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+      <div class="xb-4-template-products__card-original line-through " *ngIf="product.originalPrice > 0">
+        {{product.originalPrice|currency: currency: true }}
       </div>
     </div>
   </div>

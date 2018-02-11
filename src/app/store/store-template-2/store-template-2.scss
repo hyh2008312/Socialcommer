@@ -821,7 +821,7 @@
       }
     }
     &-buttons-bg {
-      margin-left: 32px;
+      margin-top: 25px;
       > a {
         height: 40px;
         width: 132px;
@@ -927,6 +927,119 @@
     @include xb-xs-screen {
       margin-top: 16px;
       padding: 0 15px 40px;
+    }
+  }
+
+}
+
+.xb-store-template {
+  &__car {
+    &-margin-top{
+      margin-top: 24px;
+      @include xb-xs-screen{
+        margin-top: 32px;
+      }
+    }
+
+    &-margin-top-1{
+      margin-top: 12px;
+      @include xb-xs-screen{
+        margin-top: 0px;
+      }
+    }
+
+    &-margin-top-2{
+      margin-top: 20px;
+      @include xb-xs-screen{
+        margin-top: 0;
+      }
+    }
+
+    &-left-part{
+      @include media();
+      color: rgba(0,0,0,.54);
+      width: 54px;
+      margin-right: 24px;
+      @include xb-xs-screen{
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    &-bg{
+      margin-top: 40px;
+      background-color: #efefef;
+      border-radius: 4px;
+      padding: 24px;
+      @include xb-xs-screen{
+        margin-top: 32px;
+      }
+    }
+
+    &-left-part-1{
+      @include media();
+      color: rgba(0,0,0,.54);
+      width: 120px;
+      margin-right: 32px;
+    }
+
+    &-image{
+      width: 54px;
+      height: 54px;
+      position: relative;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #dedede;
+      overflow: hidden;
+      cursor: pointer;
+      >img{
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+      &.active{
+        border: 2px solid #ffc400;
+      }
+    }
+
+    &-text{
+      font-size: 16px;
+      color: rgba(0,0,0,.87);
+      padding: 0 8px;
+      line-height: 32px;
+      margin-right: 40px;
+      cursor: pointer;
+      @include text-overflow();
+      &.active{
+        @include media();
+        border: 2px solid #ffc400;
+      }
+    }
+
+    &-item{
+
+      &-input{
+        border: 1px solid #dedede;
+        border-radius: 2px;
+        input{
+          width: 100%;
+          line-height: 40px;
+          font-size: 16px;
+          border: none;
+          text-align: center;
+          padding: 0;
+        }
+      }
+
+      &-add{
+        >i{
+          display: block;
+          user-select: none;
+        }
+      }
     }
   }
 

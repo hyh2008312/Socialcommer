@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { ShopService } from '../shop.service';
-import { UserService } from  '../../shared/services/user/user.service';
-import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
+import {ShopService} from '../shop.service';
+import {UserService} from '../../shared/services/user/user.service';
+import {AuthenticationService} from '../../shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-shop',
@@ -17,31 +17,30 @@ export class ShopComponent implements OnInit {
   storeName: any = false;
   isPopOpen: boolean = false;
 
-  constructor(
-    private userService: UserService,
-    private shopService: ShopService,
-    private authenticationService: AuthenticationService,
-    private router: Router
-  ) {
+  constructor(private userService: UserService,
+              private shopService: ShopService,
+              private authenticationService: AuthenticationService,
+              private router: Router) {
     let self = this;
     self.userService.currentUser.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.avatar = data.avatar;
-        if(data.store && data.store.length> 0) {
+        if (data.store && data.store.length > 0) {
           self.storeName = data.store[0].displayName;
-
-          let templateId = data.store[0].template.templateId;
-          self.shopService.setTemplateUId(templateId);
-
+          if (data.store[0].template != null) {
+            let templateId = data.store[0].template.templateId;
+            self.shopService.setTemplateUId(templateId);
+          }
           self.shopService.getMultiTemplate().then((data) => {
             self.shopService.setTemplateList(data);
           });
+
         }
       }
     });
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     let self = this;
 
     self.shopService.getCategoryList().then((data) => {
