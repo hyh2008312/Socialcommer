@@ -37,7 +37,7 @@ export class AboutMeComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.contextList = data.context? data.context: {};
-        self.imageList = data.image? data.image: {};
+        self.imageList = data.images? data.images: {};
         self.text = data.description;
       }
     });

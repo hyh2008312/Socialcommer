@@ -56,7 +56,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/3/12-pic.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/12-pic.jpg'
   },{
     id: 1,
     title: 'Product Name',
@@ -64,7 +64,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/3/07-pic.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/07-pic.jpg'
   },{
     id: 2,
     title: 'Product Name',
@@ -72,7 +72,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/3/13-pic.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/13-pic.jpg'
   },{
     id: 3,
     title: 'Product Name',
@@ -80,7 +80,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/3/14-pic.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/14-pic.jpg'
   }];
 
   blog: any = [{
@@ -116,7 +116,7 @@ export class HomePageComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.contextList = data.context? data.context: {};
-        self.imageList = data.image? data.image: {};
+        self.imageList = data.images? data.images: {};
         self.text = data.description;
         self.ownerId = data.ownerId;
         self.storeService.addStore(data);

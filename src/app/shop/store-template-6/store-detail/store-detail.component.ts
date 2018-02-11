@@ -54,7 +54,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/176TR-2_F2_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/176TR-2_F2_FZ.jpg'
         },
         {
           id: 2,
@@ -63,7 +63,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/174T-O_2_VBO_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/174T-O_2_VBO_FZ.jpg'
         },
         {
           id: 3,
@@ -72,7 +72,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/311-(BCI)_F2_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/311-(BCI)_F2_FZ.jpg'
         },
         {
           id: 4,
@@ -81,7 +81,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/85T32M-TARC_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/85T32M-TARC_FZ.jpg'
         }
       ]
     },
@@ -95,7 +95,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/dresses_03.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/dresses_03.jpg'
         },
         {
           id: 2,
@@ -104,7 +104,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/dresses_02.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/dresses_02.jpg'
         },
         {
           id: 3,
@@ -113,7 +113,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/dresses_01.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/dresses_01.jpg'
         }
       ]
     },
@@ -126,7 +126,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/skirts_01.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/skirts_01.jpg'
         },
         {
           id: 2,
@@ -135,7 +135,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/skirts_02.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/skirts_02.jpg'
         },
         {
           id: 3,
@@ -144,7 +144,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/skirts_03.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/skirts_03.jpg'
         }
       ]
     },
@@ -157,7 +157,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/jeans_03.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/jeans_03.jpg'
         },
         {
           id: 2,
@@ -166,7 +166,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/jeans_02.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/jeans_02.jpg'
         },
         {
           id: 3,
@@ -175,7 +175,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/jeans_01.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/jeans_01.jpg'
         }
       ]
     },
@@ -188,7 +188,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/shoes_03.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/shoes_03.jpg'
         },
         {
           id: 2,
@@ -197,7 +197,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/shoes_02.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/shoes_02.jpg'
         },
         {
           id: 3,
@@ -206,7 +206,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/shoes_01.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/shoes_01.jpg'
         }
       ]
     },
@@ -219,7 +219,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/handbags_03.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/handbags_03.jpg'
         },
         {
           id: 2,
@@ -228,7 +228,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/handbags_02.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/handbags_02.jpg'
         },
         {
           id: 3,
@@ -237,7 +237,7 @@ export class StoreDetailComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/5/handbags_01.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/5/handbags_01.jpg'
         }
       ]
     }

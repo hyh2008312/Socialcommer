@@ -51,7 +51,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/3/12-pic.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/12-pic.jpg'
   },{
     id: 1,
     title: 'Product Name',
@@ -59,7 +59,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/3/07-pic.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/07-pic.jpg'
   },{
     id: 2,
     title: 'Product Name',
@@ -67,7 +67,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/3/13-pic.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/13-pic.jpg'
   },{
     id: 3,
     title: 'Product Name',
@@ -75,7 +75,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/3/14-pic.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/14-pic.jpg'
   }];
 
   constructor(

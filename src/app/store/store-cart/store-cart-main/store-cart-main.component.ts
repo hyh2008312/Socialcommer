@@ -38,6 +38,8 @@ export class StoreCartMainComponent implements OnInit{
 
   totalPrice: number = 0;
 
+  cartErr: any = false;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -52,7 +54,7 @@ export class StoreCartMainComponent implements OnInit{
 
     self.storeService.store.subscribe((data) => {
       if(data) {
-        let uid = data.templateId == 1? data.templateId:data.uid;
+        let uid = data.templateId;
         self.homeLink = `/store/${data.displayName}/${uid}`;
         self.storeId = data.id;
         self.currency = data.currency;
@@ -145,8 +147,11 @@ export class StoreCartMainComponent implements OnInit{
 
     let self = this;
     this.storeCartService.createOrder(cart).then((data) => {
+      self.cartErr = false;
       self.storeCartService.addOrder(data);
       self.router.navigate([`./checkout`], {relativeTo: this.activatedRoute});
+    }).catch((data) => {
+      self.cartErr = data;
     });
   }
 

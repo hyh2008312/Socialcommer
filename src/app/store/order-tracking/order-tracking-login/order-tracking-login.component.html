@@ -1,7 +1,7 @@
 <div class="xb-order-tracking" fxLayout="column">
   <div class="background-bg-white">
     <div class="container">
-      <app-store-cart-header [homeLink]="homeLink"></app-store-cart-header>
+      <app-store-cart-header></app-store-cart-header>
     </div>
   </div>
   <div class="background-bg-light" fxFlex="noshrink" >
@@ -11,11 +11,15 @@
       </div>
       <div class="md-margin-top-4 md-margin-bottom-4" fxLayout="row" FxLayoutAlign="center start">
         <div class="xb-order-tracking__container unicorn-dark-theme">
-          <div class="xb-order-tracking__title-1">Tracking Your Order Status</div>
+          <div class="xb-order-tracking__title-1">Track Your Orders & Contact Support</div>
           <div class="md-margin-top-2">
-            To check your order status, update shipping information or cancel an order, enter your order number and
-            the email address you used during checkout.
+            Please enter your Order Tracking Number and the Email Address you used during checkout to get help with your order.
           </div>
+          <div class="md-margin-top-1"><span class="xb-bold">·</span> Track Your Order Status</div>
+          <div><span class="xb-bold">·</span> Change Your Shipping Address</div>
+          <div><span class="xb-bold">·</span> Cancel an Order</div>
+          <div><span class="xb-bold">·</span> View Order Details</div>
+          <div><span class="xb-bold">·</span> Contact Customer Support</div>
           <form class="md-margin-top-3" fxLayout="column" fxLayoutAlign="start start" [formGroup]="loginGroup" (ngSubmit)="login()" novalidate>
             <div class="xb-input-error md-margin-bottom-2" *ngIf="loginErr">{{loginErr}}</div>
             <mat-form-field>
@@ -25,13 +29,13 @@
               {{ formErrors['email'] }}
             </div>
             <mat-form-field>
-              <input matInput type="text" placeholder="Enter Your Order Number" formControlName="number">
+              <input matInput type="text" placeholder="Enter Your Order Tracking Number" formControlName="number">
             </mat-form-field>
             <div *ngIf="formErrors['number']" class="xb-input-error">
               {{ formErrors['number'] }}
             </div>
             <div class="md-margin-bottom-3">
-              <a class="text-underline md-dark-primary xb-pointer" (click)="forgetOrderNumber()">Forgot Your Order Number?</a>
+              <a class="text-underline md-dark-primary xb-pointer" (click)="forgetOrderNumber()">Forgot Your Order Tracking Number?</a>
             </div>
             <div class="md-margin-top-1">
               <button mat-raised-button color="primary" type="submit">

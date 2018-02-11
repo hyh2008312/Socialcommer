@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/421-L_C_U_(K162)_K16220___FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/421-L_C_U_(K162)_K16220___FZ.jpg'
         }, {
           id: 2,
           title: 'Product Name',
@@ -37,7 +37,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/421L-C_K_(K2026)_K20268___FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/421L-C_K_(K2026)_K20268___FZ.jpg'
         }, {
           id: 3,
           title: 'Product Name',
@@ -45,7 +45,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/1715L-N___(K0154)_K105413_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/1715L-N___(K0154)_K105413_FZ.jpg'
         },
         {
           id: 4,
@@ -54,7 +54,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/1709Y-N___(K1617)_K16174_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/1709Y-N___(K1617)_K16174_FZ.jpg'
         }, {
           id: 5,
           title: 'Product Name',
@@ -62,7 +62,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/2165RC-AP___(K1206)_K12062_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/2165RC-AP___(K1206)_K12062_FZ.jpg'
         }, {
           id: 6,
           title: 'Product Name',
@@ -70,7 +70,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/196625-(WWW)_W_W_W_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/196625-(WWW)_W_W_W_FZ.jpg'
         }, {
           id: 7,
           title: 'Product Name',
@@ -78,7 +78,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/WL21S-111G_(K1882)_K18828_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/WL21S-111G_(K1882)_K18828_FZ.jpg'
         }, {
           id: 8,
           title: 'Product Name',
@@ -86,7 +86,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/KL3-(kLOUNGE)_KLF01_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/KL3-(kLOUNGE)_KLF01_FZ.jpg'
         }
       ]
     },
@@ -102,7 +102,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/176TR-2_F2_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/176TR-2_F2_FZ.jpg'
         }, {
           id: 10,
           title: 'Product Name',
@@ -110,7 +110,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/174T-O_2_VBO_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/174T-O_2_VBO_FZ.jpg'
         }, {
           id: 11,
           title: 'Product Name',
@@ -118,7 +118,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/311-(BCI)_F2_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/311-(BCI)_F2_FZ.jpg'
         },
         {
           id: 12,
@@ -127,7 +127,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/85T32M-TARC_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/85T32M-TARC_FZ.jpg'
         }, {
           id: 13,
           title: 'Product Name',
@@ -135,7 +135,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/Thumb_arena_880,3.png'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/Thumb_arena_880,3.png'
         }, {
           id: 14,
           title: 'Product Name',
@@ -143,7 +143,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/Thumb_face-off-880,3.png'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/Thumb_face-off-880,3.png'
         },
         {
           id: 15,
@@ -152,7 +152,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/DUrso_hightable880,10.png'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/DUrso_hightable880,10.png'
         }, {
           id: 16,
           title: 'Product Name',
@@ -160,7 +160,7 @@ export class HomePageComponent implements OnInit {
           salePriceCurrency: 'USD',
           originalPriceAmount: '16',
           originalPriceCurrency: 'USD',
-          imageUrl: 'https://media.socialcommer.com/source/web/template/6/87-(BCI)_F2_FZ.jpg'
+          mainImage: 'https://media.socialcommer.com/source/web/template/6/87-(BCI)_F2_FZ.jpg'
         }
       ]
     }
@@ -227,8 +227,7 @@ export class HomePageComponent implements OnInit {
   }
 
   jumpCategory(categoryId: number): void {
-    this.router.navigate(['./category', categoryId], {relativeTo: this.activatedRoute},
-    );
+    this.router.navigate(['./category', categoryId], {relativeTo: this.activatedRoute});
   }
 
   jumpBlogList(): void {

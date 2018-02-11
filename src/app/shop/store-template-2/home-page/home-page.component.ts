@@ -51,6 +51,8 @@ export class HomePageComponent implements OnInit {
   imageOwnerEleven: string = 'https://media.socialcommer.com/source/web/pic/pic-2-11.jpg';
 
   store: Store = new Store();
+  contextList: any = {};
+  imageList: any = {};
   page = 1;
   nextPage: boolean = true;
   product: any = [{
@@ -60,7 +62,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/blog/cover/1c4078ad-f91f-46c4-bd13-a3d75e578f06.jpg'
+    mainImage: 'https://media.socialcommer.com/source/blog/cover/1c4078ad-f91f-46c4-bd13-a3d75e578f06.jpg'
   }, {
     id: 1,
     title: 'Product Name',
@@ -68,7 +70,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-8.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/pic/pic-2-8.jpg'
   }, {
     id: 2,
     title: 'Product Name',
@@ -76,7 +78,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-9.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/pic/pic-2-9.jpg'
   }, {
     id: 3,
     title: 'Product Name',
@@ -84,7 +86,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-10.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/pic/pic-2-10.jpg'
   }, {
     id: 4,
     title: 'Product Name',
@@ -92,7 +94,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/blog/cover/84e6476b-bc20-45eb-8501-62b9a9a96f0d.jpg'
+    mainImage: 'https://media.socialcommer.com/source/blog/cover/84e6476b-bc20-45eb-8501-62b9a9a96f0d.jpg'
   }, {
     id: 5,
     title: 'Product Name',
@@ -100,7 +102,7 @@ export class HomePageComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
   }];
 
 
@@ -119,6 +121,8 @@ export class HomePageComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.text = data.description;
+        self.contextList = data.context? data.context: {};
+        self.imageList = data.images? data.images: {};
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,

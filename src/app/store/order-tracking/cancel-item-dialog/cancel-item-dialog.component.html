@@ -20,6 +20,9 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div *ngIf="formErrors['reason']" class="xb-input-error">
+        {{ formErrors['reason'] }}
+      </div>
     </form>
     <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
       <button mat-raised-button color="primary" (click)="cancelItem()">SUBMIT</button>

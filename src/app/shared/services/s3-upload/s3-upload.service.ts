@@ -39,6 +39,25 @@ export class S3UploaderService {
 
   }
 
+  serializeParams(params) {
+
+    let array = [];
+
+    for (const key in params) {
+      if(Array.isArray(params[key])) {
+        if(params[key].length > 0) {
+          let item = params[key].join(',');
+          array.push(key + '=' + item);
+        }
+      } else {
+        if(params[key] != undefined) {
+          array.push(key + '=' + params[key]);
+        }
+      }
+    }
+
+    return array.join('&');
+  }
 
   private getPostOptions(): RequestOptions {
 
@@ -99,6 +118,17 @@ export class S3UploaderService {
     formData.append('file', file);
 
     return this.http.post(postParams.url, formData)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  formatImage(file: any): Promise<any> {
+
+    let options = new RequestOptions();
+    const url = `${this.baseUrl.formatUrl}image/upload/done/?${this.serializeParams(file)}`;
+
+    return this.http.get(url, options)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);

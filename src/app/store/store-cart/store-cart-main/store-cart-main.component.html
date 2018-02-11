@@ -47,6 +47,9 @@
                                            (productChange)="productEdit($event)" [shippingList]="shippingList"></app-store-cart-product-item>
             </div>
           </div>
+          <div *ngIf="cartErr" class="xb-input-error md-margin-top-2">
+            {{ cartErr }}
+          </div>
         </div>
         <div fxLayout="column" fxHide.xs>
           <div class="xb-cart__bill background-bg-white" fxHide.xs>

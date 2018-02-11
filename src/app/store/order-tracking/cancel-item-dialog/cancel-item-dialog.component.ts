@@ -37,6 +37,44 @@ export class CancelItemDialogComponent implements OnInit {
     this.orderForm = this.fb.group({
       reason: ['', Validators.required]
     });
+
+    this.orderForm.valueChanges.subscribe(data => this.onValueChanged(data));
+  }
+
+  //存储错误信息
+  formErrors = {
+    'reason': ''
+  };
+  //错误对应的提示
+  validationMessages = {
+    'reason': {
+      'required': 'This field is required.'
+    }
+  };
+
+  /**
+   * 表单值改变时，重新校验
+   * @param data
+   */
+  onValueChanged(data) {
+
+    for (const field in this.formErrors) {
+      this.formErrors[field] = '';
+      //取到表单字段
+      const control = this.orderForm.get(field);
+      //表单字段已修改或无效
+      if (control && control.dirty && !control.valid) {
+        //取出对应字段可能的错误信息
+        const messages = this.validationMessages[field];
+        //从errors里取出错误类型，再拼上该错误对应的信息
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + '';
+          break;
+        }
+      }
+
+    }
+
   }
 
   ngOnInit():void {

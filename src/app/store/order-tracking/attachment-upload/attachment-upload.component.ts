@@ -65,13 +65,16 @@ export class AttachmentUploadComponent implements OnInit {
         let height = image.height;
 
         that.s3UploaderService.upload({
-          type: 'COLLECTOR_USER_AVATAR',
+          type: 'annex',
           fileName: file.name,
-          use: 'avatar',
+          use: 'cover',
           width: width,
           height: height
         }).then((data) => {
           that.previewImgFile = data.url + '/' + data.key;
+
+          let key = data.key.split('source/annex/')[1];
+
           that.s3UploaderService.uploadToS3(file, data).subscribe((event) => {
             // Via this API, you get access to the raw event stream.
             // Look for upload progress events.

@@ -21,7 +21,7 @@ export class Store {
   uid: any;
   templateId: any;
   context: any;
-  image: any;
+  images: any;
 
   displayName: string;
 }

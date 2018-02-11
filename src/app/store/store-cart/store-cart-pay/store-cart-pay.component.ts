@@ -307,7 +307,7 @@ export class StoreCartPayComponent implements OnInit{
 
     self.storeService.store.subscribe((data) => {
       if(data) {
-        let uid = data.templateId == 1? data.templateId:data.uid;
+        let uid = data.templateId;
         self.homeLink = `/store/${data.displayName}/${uid}`;
         self.cartLink = `/store/${data.displayName}/cart`;
         self.displayName = data.displayName;

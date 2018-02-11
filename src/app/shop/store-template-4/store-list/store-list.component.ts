@@ -54,7 +54,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/4/4.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/4/4.jpg'
   }, {
     id: 2,
     title: 'Product Name',
@@ -62,7 +62,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/4/5.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/4/5.jpg'
   }, {
     id: 3,
     title: 'Product Name',
@@ -70,7 +70,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/4/8.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/4/8.jpg'
   }, {
     id: 4,
     title: 'Product Name',
@@ -78,7 +78,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/4/9.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/4/9.jpg'
   }, {
     id: 5,
     title: 'Product Name',
@@ -86,7 +86,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/4/6.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/4/6.jpg'
   }, {
     id: 6,
     title: 'Product Name',
@@ -94,7 +94,7 @@ export class StoreListComponent implements OnInit {
     salePriceCurrency: 'USD',
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
-    imageUrl: 'https://media.socialcommer.com/source/web/template/4/7.jpg'
+    mainImage: 'https://media.socialcommer.com/source/web/template/4/7.jpg'
   }];
   isClearData: boolean = false;
 
