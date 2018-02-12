@@ -1,14 +1,14 @@
-import { Input, Output, Component, OnInit, OnChanges, EventEmitter} from '@angular/core';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import {Input, Output, Component, OnInit, OnChanges, EventEmitter} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
 
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { OrderTrackingService } from '../order-tracking.service';
+import {OverlayContainer} from '@angular/cdk/overlay';
+import {OrderTrackingService} from '../order-tracking.service';
 
-import { ChangeShippingAddressDialogComponent } from '../change-shipping-address-dialog/change-shipping-address-dialog.component';
-import { CancelItemDialogComponent } from '../cancel-item-dialog/cancel-item-dialog.component';
-import { TrackingInformationDialogComponent } from '../tracking-information-dialog/tracking-information-dialog.component';
-import { ReturnRequestDialogComponent } from '../return-request-dialog/return-request-dialog.component';
+import {ChangeShippingAddressDialogComponent} from '../change-shipping-address-dialog/change-shipping-address-dialog.component';
+import {CancelItemDialogComponent} from '../cancel-item-dialog/cancel-item-dialog.component';
+import {TrackingInformationDialogComponent} from '../tracking-information-dialog/tracking-information-dialog.component';
+import {ReturnRequestDialogComponent} from '../return-request-dialog/return-request-dialog.component';
 
 @Component({
   selector: 'app-order-detail-item',
@@ -25,30 +25,30 @@ export class OrderDetailItemComponent implements OnInit {
   @Input() index: number = 0;
   @Output() productChange = new EventEmitter<any>();
 
-  currency:string = 'USD';
+  currency: string = 'USD';
 
   totalAmount: number = 0;
 
   netPaymentAmount: number = 0;
 
-  constructor(
-    private orderTrackingService: OrderTrackingService,
-    private router: Router,
-    private dialog: MatDialog,
-    overlayContainer: OverlayContainer
-  ) {
+  constructor(private orderTrackingService: OrderTrackingService,
+              private router: Router,
+              private  activatedRoute: ActivatedRoute,
+              private dialog: MatDialog,
+              overlayContainer: OverlayContainer) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
   }
 
   ngOnInit(): void {
 
+
   }
 
   ngOnChanges() {
-    if(this.order) {
+    if (this.order) {
       this.totalAmount = (parseFloat(this.order.priceExclTax) + parseFloat(this.order.shippingExclTax)) * this.order.quantity;
-      if(this.order.returnOrder) {
-        if(this.order.returnOrder.status == 'Partially Refunded' || this.order.returnOrder.status == 'Refunded') {
+      if (this.order.returnOrder) {
+        if (this.order.returnOrder.status == 'Partially Refunded' || this.order.returnOrder.status == 'Refunded') {
           this.netPaymentAmount = this.totalAmount - this.order.refundAmount;
         }
       }
@@ -67,7 +67,7 @@ export class OrderDetailItemComponent implements OnInit {
 
     let self = this;
     dialogRef.afterClosed().subscribe(result => {
-      if(dialogRef.componentInstance.data.isCancel == true) {
+      if (dialogRef.componentInstance.data.isCancel == true) {
         self.order = dialogRef.componentInstance.data.order;
         self.productChange.emit({
           index: self.index,
@@ -90,7 +90,7 @@ export class OrderDetailItemComponent implements OnInit {
 
     let self = this;
     dialogRef.afterClosed().subscribe(result => {
-      if(dialogRef.componentInstance.data.isAddressChange == true) {
+      if (dialogRef.componentInstance.data.isAddressChange == true) {
         self.order = dialogRef.componentInstance.data.order;
         self.productChange.emit({
           index: self.index,
@@ -125,7 +125,7 @@ export class OrderDetailItemComponent implements OnInit {
 
     let self = this;
     dialogRef.afterClosed().subscribe(result => {
-      if(dialogRef.componentInstance.data.isReturn == true) {
+      if (dialogRef.componentInstance.data.isReturn == true) {
         self.order = dialogRef.componentInstance.data.order;
         self.productChange.emit({
           index: self.index,
@@ -134,6 +134,15 @@ export class OrderDetailItemComponent implements OnInit {
         });
       }
     });
+  }
+
+  // 跳转到私信列表
+  jumpCustomerService() {
+    let url = this.router.url;
+    this.router.navigate(['../message'], {
+      queryParams: {'lineId': this.order.id, 'OrderNumber': this.number, 'customerEmail': this.email},
+      relativeTo: this.activatedRoute
+    })
   }
 
 }

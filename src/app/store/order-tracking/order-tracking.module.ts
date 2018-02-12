@@ -24,6 +24,9 @@ import { OrderTrackingService } from './order-tracking.service';
 import { CanActive } from './can-active.service';
 
 import { SharedModule } from '../../shared/shared.module';
+import {StoreMessageService} from "./store-message.service";
+import {StoreMessageMainComponent} from "./store-message-main/store-message-main.component";
+import {CustomerServiceMessageComponent} from "./customer-service-message/customer-service-message.component";
 
 @NgModule({
   imports: [
@@ -47,7 +50,9 @@ import { SharedModule } from '../../shared/shared.module';
     AttachmentUploadComponent,
     ReturnRequestDialogComponent,
     AttachmentPreviewComponent,
-    ReturnProgressComponent
+    ReturnProgressComponent,
+    StoreMessageMainComponent,
+    CustomerServiceMessageComponent
   ],
   entryComponents: [
     ForgetOrderNumberDialogComponent,
@@ -58,6 +63,7 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   providers: [
     OrderTrackingService,
+    StoreMessageService,
     CanActive
   ]
 })
