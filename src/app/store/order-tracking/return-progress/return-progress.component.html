@@ -17,7 +17,7 @@
           <div fxLayout="row" fxLayoutAlign="space-between start">
             <div fxFlex="48">
               <div class="unicorn-dark-theme-1" fxLayout="row" fxLayoutAlign="start center">
-                <div class="md-margin-right-5 xb-order-tracking__title-2">
+                <div class="md-margin-right-3 xb-order-tracking__title-2">
                   Return Request
                 </div>
                 <div>
@@ -50,8 +50,11 @@
               </div>
               <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
                 <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Attachment</div>
-                <div class="md-margin-left-3">
-                  <app-order-attachment-preview></app-order-attachment-preview>
+                <div class="md-margin-left-3" fxLayout="row" fxLayoutAlign="start start">
+                  <div fxLayout="column">
+                    <app-order-attachment-preview [previewImgSrcs]="returnOrder.annex"></app-order-attachment-preview>
+                    <div class="md-align-center md-margin-top-1">{{annexName}}</div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -64,6 +64,7 @@
       Have a Question?
       <div class="text-underline xb-bold">View Our Return Policy</div>
     </div>
+    <div class="xb-input-error md-margin-top-2" *ngIf="orderReturnFormErr">{{orderReturnFormErr}}</div>
     <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
       <button mat-raised-button color="primary" (click)="returnRequest()">SUBMIT</button>
     </div>

@@ -83,11 +83,19 @@ export class ReturnRequestDialogComponent implements OnInit {
     order.number = this.data.number;
     order.email = this.data.email;
     order.quantity = this.productQuantity;
+    order.annex = this.previewImgFile;
+    if(!order.annex || order.annex == '') {
+      this.orderReturnFormErr = 'Your picture is still uploading. Please wait a bit!';
+      return;
+    }
     let self = this;
     self.orderTrackingService.returnRequest(order).then((data) => {
+      self.orderReturnFormErr = false;
       self.data.isReturn = true;
       self.data.order = data;
       self.close();
+    }).catch((data) => {
+      self.orderReturnFormErr = data;
     });
   }
 }

@@ -65,11 +65,11 @@
           <div class="xb-store__icons md-dark-third" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota"></i>
           </div>
-          <div class="md-margin-top-2 xb-store__content-text" *ngIf="store.userTag == ''">
+          <div class="md-margin-top-2 xb-store__content-text" *ngIf="contextList.userTag == ''">
             Thank you for visiting my store! Have a nice day.
           </div>
           <div class="xb-store__template-user ql-editor"
-               [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">
+               [innerHTML]="contextList.userTag | safeHtml" *ngIf="contextList.userTag != ''">
           </div>
           <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota-2"></i>
@@ -93,7 +93,7 @@
   </div>
   <div class="xb-store__footer">
     <div fxLayout="column" fxLayoutAlign="center center">
-      <div class="xb-store__footer-margin-left">© 2017 {{store.nameTag || store.name}}. All rights reserved.</div>
+      <div class="xb-store__footer-margin-left">© 2017 {{contextList.nameTag || store.name}}. All rights reserved.</div>
       <div class="xb-store__footer-margin-top" fxLayout="row" fxLayoutAlign="center center"
            fxLayout.xs="column" fxLayoutAlign.xs="center center">
         <img class="xb-store__footer-margin-top-1 xb-pointer"

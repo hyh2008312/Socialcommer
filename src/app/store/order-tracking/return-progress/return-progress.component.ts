@@ -16,6 +16,7 @@ import { ReturnRequestDialogComponent } from '../return-request-dialog/return-re
 export class ReturnProgressComponent{
 
   returnOrder: any = {};
+  annexName: any = '';
   subscription: any;
 
   claimGroup : FormGroup;
@@ -56,6 +57,9 @@ export class ReturnProgressComponent{
         };
         self.orderTrackingService.getReturnProgress(returnOrder).then((data) => {
           self.returnOrder = data;
+          if(self.returnOrder.annex) {
+            self.annexName = self.returnOrder.annex.split('/source/annex/')[1];
+          }
         });
       }
 
