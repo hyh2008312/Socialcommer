@@ -62,7 +62,7 @@ export class StoreMainComponent implements OnInit {
       self.storeService.getStore(storeName).then((data) => {
         if (data) {
           self.storeService.addStore(data);
-          if(data.uid) {
+          if(data.templateId) {
             self.router.navigate([`/store/${storeName}/${data.templateId}`]);
           } else {
             self.router.navigate([`/store/${storeName}/1`]);
