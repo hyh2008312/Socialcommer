@@ -7,32 +7,42 @@
       </div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center"
            fxLayout.xs="column" fxLayoutAlign.xs="start stretch" fxLayoutWrap>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex.gt-sm="24" fxFlex.sm="48" fxFlex.xs="100">
-          <i class="iconfontXberts icon-pic-view" ></i>
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+          <i class="iconfontXberts icon-pic-earning" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.viewTotal}}</div>
-          <div>Total Views</div>
+          <div>Total Earning</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2" fxFlex.gt-sm="24" fxFlex.sm="48" fxFlex.xs="100">
-          <i class="iconfontXberts icon-pic-victor" ></i>
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+          <i class="iconfontXberts icon-pic-cart1" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.visitorTotal}}</div>
+          <div>Total Orders</div>
+        </div>
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+          <i class="iconfontXberts icon-pic-sales" ></i>
+          <div class="xb-shop__dashboard-number">{{storeStatistic.clickTotal}}</div>
+          <div class="">Total Sales</div>
+        </div>
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+          <i class="iconfontXberts icon-pic-view1" ></i>
+          <div class="xb-shop__dashboard-number">{{storeStatistic.listingTotal}}</div>
+          <div>Total Pageviews</div>
+        </div>
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-5" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+          <i class="iconfontXberts icon-pic-group" ></i>
+          <div class="xb-shop__dashboard-number">{{storeStatistic.listingTotal}}</div>
           <div>Total Visitors</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3" fxFlex.gt-sm="24" fxFlex.sm="48" fxFlex.xs="100">
-          <i class="iconfontXberts icon-pic-cart" ></i>
-          <div class="xb-shop__dashboard-number">{{storeStatistic.clickTotal}}</div>
-          <div class="">Total Click-to-Buy</div>
-        </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4" fxFlex.gt-sm="24" fxFlex.sm="48" fxFlex.xs="100">
-          <i class="iconfontXberts icon-pic-shop" ></i>
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-6" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+          <i class="iconfontXberts icon-pic-rate" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.listingTotal}}</div>
-          <div>Listings</div>
+          <div>Conversion Rate</div>
         </div>
       </div>
     </div>
   </div>
   <div class="md-margin-right-2">
     <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-      <div class="xb-shop__dashboard-number xb-bold xb-shop__dashboard-margin-right">Reports</div>
+      <div class="xb-shop__dashboard-number xb-bold xb-shop__dashboard-margin-right">Top Selling Products</div>
       <app-catalog-time-select [time]="timeStatistic" (timeChange)="getProduct($event)" [times]="times"></app-catalog-time-select>
     </div>
     <div class="md-margin-top-2 ">

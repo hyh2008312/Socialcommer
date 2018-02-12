@@ -1,0 +1,82 @@
+@import "../../styles/utils/_index";
+@import "../../styles/_variables";
+
+.xb-shop{
+  &__dashboard{
+    &-card{
+      border-radius: 10px;
+      padding: 28px 0 28px 28px;
+      color: $whiteColor;
+      margin-bottom: 32px;
+      overflow: hidden;
+      position: relative;
+
+      >i{
+        position: absolute;
+        color: $whiteColor;
+        font-size: 64px;
+        line-height: 64px;
+        right: 28px;
+        top: 24px;
+      }
+
+      @include xb-xs-screen{
+        margin-bottom: 16px;
+      }
+    }
+
+    &-number{
+      font-size: 34px;
+      line-height: 34px;
+      margin-bottom: 4px;
+    }
+
+    &-title{
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 8px;
+
+      @include media();
+    }
+
+    &-margin-right{
+      margin-right: 54px;
+    }
+
+    &-color-1{
+      background-color: $navigationColor;
+    }
+    &-color-2{
+      background-color: $primaryColor;
+    }
+    &-color-3{
+      background-color: $orangeColor;
+    }
+    &-color-4{
+       background-color: $successColor;
+    }
+    &-color-5{
+      background-color: $purpleColor;
+    }
+    &-color-6{
+      background-color: $redColor;
+    }
+
+    &-content{
+      border-top: 1px solid rgba(0,0,0,.12);
+    }
+
+    &-margin-right{
+      margin-right: 56px;
+    }
+
+    &-table{
+      span{
+        line-height: 28px;
+        height: 28px;
+        max-width: 100%;
+        @include text-overflow();
+      }
+    }
+  }
+}

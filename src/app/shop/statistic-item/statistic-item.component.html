@@ -1,14 +1,14 @@
 <div class="xb-shop__statistic" fxLayout="row" fxLayoutAlign="start center">
-  <div class="md-margin-right-2" fxFlex="10">#{{data.id}}</div>
-  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="35">{{data.title}}</div>
+  <div class="md-margin-right-2" fxFlex="35">{{data.title}}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">{{data.title}}</div>
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">{{data.category}}</div>
-  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="12" *ngIf="data.originalPriceAmount > 0">
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15" *ngIf="data.originalPriceAmount > 0">
     {{data.originalPriceAmount|currency: data.originalPriceCurrency: true }}
   </div>
-  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="12" *ngIf="data.originalPriceAmount == 0">
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15" *ngIf="data.originalPriceAmount == 0">
     -
   </div>
-  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="12">{{data.salePriceAmount|currency: data.salePriceCurrency: true }}</div>
-  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="10">{{data.viewTotal}}</div>
-  <div class="xb-shop__statistic-text" fxFlex="10">{{data.clickTotal}}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">{{data.salePriceAmount|currency: data.salePriceCurrency: true }}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">{{data.viewTotal}}</div>
+  <div class="xb-shop__statistic-text" fxFlex="15">{{data.clickTotal}}</div>
 </div>

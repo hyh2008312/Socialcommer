@@ -1,27 +1,29 @@
 /*
-Error: Invalid CSS after "$accentColor: ": expected expression (e.g. 1px, bold), was "#"
-        on line 2 of ../../../styles/utils/_color.scss
+Error: Invalid CSS after "$purpleColor": expected ":", was "$redColor: #e53..."
+        on line 7 of ../../../styles/utils/_color.scss
         from line 2 of ../../../styles/utils/_index.scss
         from line 1 of store-share-button.component.scss
 
-1: $primaryColor: #00bdd6;
-2: $accentColor: #
-3: $dangerColor: #e53935;
-4: $strikingColor: #ff4081;
-5: $successColor: #42ab34;
-6: $orangeColor: #ffc500;
-7: $navigationColor: #3f52b4;
+2: $dangerColor: #e53935;
+3: $strikingColor: #ff4081;
+4: $successColor: #42ab34;
+5: $orangeColor: #ffc500;
+6: $purpleColor
+7: $redColor: #e53715;
+8: $navigationColor: #3f52b4;
+9: $facebookColor:#4267b1;
+10: $linkedinColor: #0077b5;
+11: $twitterColor:#1a8bf0;
+12: $googleColor:#ec4033;
 
 Backtrace:
-../../../styles/utils/_color.scss:2
+../../../styles/utils/_color.scss:7
 ../../../styles/utils/_index.scss:2
 store-share-button.component.scss:1
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
-D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/lexer.rb:229:in `expected!'
-D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/parser.rb:710:in `assert_expr'
-D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/script/parser.rb:75:in `parse'
-D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1063:in `sass_script'
-D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:630:in `variable'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1137:in `expected'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1132:in `tok!'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:628:in `variable'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:684:in `block_child'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:677:in `block_contents'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:125:in `stylesheet'
@@ -83,4 +85,4 @@ D:/Ruby/Ruby23-x64/bin/scss:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"$accentColor: \": expected expression (e.g. 1px, bold), was \"#\"\A         on line 2 of ../../../styles/utils/_color.scss\A         from line 2 of ../../../styles/utils/_index.scss\A         from line 1 of store-share-button.component.scss\A \A 1: $primaryColor: #00bdd6;\A 2: $accentColor: #\A 3: $dangerColor: #e53935;\A 4: $strikingColor: #ff4081;\A 5: $successColor: #42ab34;\A 6: $orangeColor: #ffc500;\A 7: $navigationColor: #3f52b4;"; }
+  content: "Error: Invalid CSS after \"$purpleColor\": expected \":\", was \"$redColor: #e53...\"\A         on line 7 of ../../../styles/utils/_color.scss\A         from line 2 of ../../../styles/utils/_index.scss\A         from line 1 of store-share-button.component.scss\A \A 2: $dangerColor: #e53935;\A 3: $strikingColor: #ff4081;\A 4: $successColor: #42ab34;\A 5: $orangeColor: #ffc500;\A 6: $purpleColor\A 7: $redColor: #e53715;\A 8: $navigationColor: #3f52b4;\A 9: $facebookColor:#4267b1;\A 10: $linkedinColor: #0077b5;\A 11: $twitterColor:#1a8bf0;\A 12: $googleColor:#ec4033;"; }

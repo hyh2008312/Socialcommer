@@ -1,25 +1,33 @@
 /*
-Error: Invalid CSS after "$dangerColor": expected selector or at-rule, was ": #e53935;"
-        on line 3 of ../../../styles/utils/_color.scss
+Error: Invalid CSS after "$purpleC": expected ":", was "$redColor: #e53..."
+        on line 7 of ../../../styles/utils/_color.scss
         from line 2 of ../../../styles/utils/_index.scss
         from line 1 of store-blog-card.scss
 
-1: $primaryColor: #00bdd6;
-2: $accentColor: 
-3: $dangerColor: #e53935;
-4: $strikingColor: #ff4081;
-5: $successColor: #42ab34;
-6: $orangeColor: #ffc500;
-7: $navigationColor: #3f52b4;
-8: $facebookColor:#4267b1;
+2: $dangerColor: #e53935;
+3: $strikingColor: #ff4081;
+4: $successColor: #42ab34;
+5: $orangeColor: #ffc500;
+6: $purpleC
+7: $redColor: #e53715;
+8: $navigationColor: #3f52b4;
+9: $facebookColor:#4267b1;
+10: $linkedinColor: #0077b5;
+11: $twitterColor:#1a8bf0;
+12: $googleColor:#ec4033;
 
 Backtrace:
-../../../styles/utils/_color.scss:3
+../../../styles/utils/_color.scss:7
 ../../../styles/utils/_index.scss:2
 store-blog-card.scss:1
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1137:in `expected'
-D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:42:in `parse'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1132:in `tok!'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:628:in `variable'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:684:in `block_child'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:677:in `block_contents'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:125:in `stylesheet'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:41:in `parse'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:406:in `_to_tree'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:312:in `to_tree'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:326:in `block in visit_import'
@@ -77,4 +85,4 @@ D:/Ruby/Ruby23-x64/bin/scss:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"$dangerColor\": expected selector or at-rule, was \": #e53935;\"\A         on line 3 of ../../../styles/utils/_color.scss\A         from line 2 of ../../../styles/utils/_index.scss\A         from line 1 of store-blog-card.scss\A \A 1: $primaryColor: #00bdd6;\A 2: $accentColor: \A 3: $dangerColor: #e53935;\A 4: $strikingColor: #ff4081;\A 5: $successColor: #42ab34;\A 6: $orangeColor: #ffc500;\A 7: $navigationColor: #3f52b4;\A 8: $facebookColor:#4267b1;"; }
+  content: "Error: Invalid CSS after \"$purpleC\": expected \":\", was \"$redColor: #e53...\"\A         on line 7 of ../../../styles/utils/_color.scss\A         from line 2 of ../../../styles/utils/_index.scss\A         from line 1 of store-blog-card.scss\A \A 2: $dangerColor: #e53935;\A 3: $strikingColor: #ff4081;\A 4: $successColor: #42ab34;\A 5: $orangeColor: #ffc500;\A 6: $purpleC\A 7: $redColor: #e53715;\A 8: $navigationColor: #3f52b4;\A 9: $facebookColor:#4267b1;\A 10: $linkedinColor: #0077b5;\A 11: $twitterColor:#1a8bf0;\A 12: $googleColor:#ec4033;"; }
