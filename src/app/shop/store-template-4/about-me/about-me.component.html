@@ -5,7 +5,7 @@
   <div class=" md-margin-left-2 md-margin-right-2 ql-editor md-margin-top-2"
        [innerHTML]="store.context.aboutMeTag | safeHtml" *ngIf="store.context && store.context.aboutMeTag && store.context.aboutMeTag != ''">
   </div>
-  <div class="xb-4-template-about__image md-margin-top-4" *ngIf="store.image">
+  <div class="xb-4-template-about__image md-margin-top-4" *ngIf="store.images">
     <img [src]="store.images.aboutMeCover">
   </div>
 </div>
