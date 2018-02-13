@@ -144,7 +144,7 @@
               {{ formErrors['currency'] }}
             </div>
             <mat-form-field>
-              <mat-select placeholder="Store Country" [(ngModel)]="countryId" name="countryId" formControlName="countryId">
+              <mat-select placeholder="Your Shipping Destination" [(ngModel)]="countryId" name="countryId" formControlName="countryId">
                 <mat-option *ngFor="let country of storeCountryList" [value]="country.id">
                   {{ country.name }}
                 </mat-option>

@@ -24,6 +24,10 @@
     background-position: center;
     background-size: auto 110%;
     background-repeat: no-repeat;
+    @include xb-xs-screen{
+      height: auto;
+      padding-bottom: 56px;
+    }
   }
 
   &__navigation {
@@ -51,6 +55,8 @@
       margin-top: 120px;
       @include xb-xs-screen {
         font-size: 24px;
+        line-height: 32px;
+        margin-top: 56px;
       }
     }
   }
