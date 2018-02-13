@@ -4,7 +4,7 @@ import { ICarouselConfig, AnimationConfig } from '../../../shared/components/ang
 @Component({
   selector: 'app-store-template-3-products-image-cover',
   templateUrl: './products-image-cover.component.html',
-  styleUrls: ['./products-image-cover.scss']
+  styleUrls: ['./_products-image-cover.scss']
 })
 
 
@@ -13,6 +13,7 @@ export class ProductsImageCoverComponent implements OnInit {
   @Input() public images:any = [];
   @Input() public selectedImage: any;
   @Input() public imageSources: string[] = [];
+  @Input() insertImage: any = false;
 
 
   public config: ICarouselConfig = {
@@ -34,7 +35,7 @@ export class ProductsImageCoverComponent implements OnInit {
   ngOnInit():void {
 
   }
-  @Input() insertImage: any = false;
+
   ngOnChanges() {
     if(this.insertImage) {
       this.selectedImage = this.insertImage;
