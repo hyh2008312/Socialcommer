@@ -14,6 +14,7 @@ export class StoreDetailComponent implements OnInit {
 
   public shareLink: string;
   public text = '';
+  currency: string = 'USD';
   store: Store = new Store();
   product: any = {};
   image: any = [];
