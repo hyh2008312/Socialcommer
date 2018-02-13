@@ -6,8 +6,7 @@
   width: 100vw;
   overflow-y: scroll;
   &__left-2{
-    margin-left: 8px;
-    overflow: hidden;
+    margin-left: 20px;
   }
   &__banner {
     height: 368px;
@@ -35,7 +34,7 @@
       display: block;
     }
     &-title {
-      font-size: 56px;
+      font-size: 48px;
       font-weight: 300;
       color: $whiteColor;
       text-align: center;

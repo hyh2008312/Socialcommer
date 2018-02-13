@@ -14,6 +14,7 @@ export class ProductsImageCoverComponent implements OnInit {
   @Input() public selectedImage: any;
   @Input() public imageSources: string[] = [];
 
+
   public config: ICarouselConfig = {
     verifyBeforeLoad: true,
     log: false,
@@ -32,6 +33,25 @@ export class ProductsImageCoverComponent implements OnInit {
 
   ngOnInit():void {
 
+  }
+  @Input() insertImage: any = false;
+  ngOnChanges() {
+    if(this.insertImage) {
+      this.selectedImage = this.insertImage;
+      this.slideNumber = 0;
+      this.config = {
+        verifyBeforeLoad: true,
+        log: false,
+        animation: true,
+        animationType: AnimationConfig.SLIDE,
+        autoplay: true,
+        autoplayDelay: 5000,
+        stopAutoplayMinWidth: 0
+      };
+    }
+    if(this.insertImage == null){
+      this.selectedImage = this.imageSources[0];
+    }
   }
 
   selectImage(image: any) {
