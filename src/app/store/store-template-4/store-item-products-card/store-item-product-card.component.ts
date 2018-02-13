@@ -32,6 +32,7 @@ export class StoreItemProductCardComponent implements OnInit {
   @Input() status: number = 0;
   @Input() product: any = null;
   @Output() scrollToTop = new EventEmitter();
+  currency: string = 'USD';
 
   constructor(private router: Router) {
   }
