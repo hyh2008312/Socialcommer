@@ -6,7 +6,7 @@ import { SignUpDialogComponent } from '../../../login/sign-up/sign-up-dialog.com
 @Component({
   selector: 'app-navigation-header',
   templateUrl: './navigation-header.component.html',
-  styleUrls: ['./navigation-header.scss']
+  styleUrls: ['./_navigation-header.scss']
 })
 
 export class NavigationHeaderComponent implements OnInit {

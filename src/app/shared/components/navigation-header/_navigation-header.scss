@@ -2,10 +2,17 @@
 @import "../../../styles/_variables";
 
 .xb-navigation-header{
-  height: 56px;
+  height: 72px;
+
+  @include xb-xs-screen{
+    height: 56px;
+  }
 
   &__image{
     width: 180px;
+    @include xb-xs-screen{
+      width: 140px;
+    }
   }
 
   &__margin-left{
@@ -36,15 +43,21 @@
   }
 
   &__button{
-    font-size: 14px;
-    color: $whiteColor;
-    background-color: $primaryColor;
+    font-size: 16px;
+    color: $primaryColor;
+    border: 1px solid $primaryColor;
     line-height: 40px;
     text-align: center;
     border-radius: 20px;
     width: 100px;
     display: block;
     margin-left: 32px;
+    @include box-shadow(0 0 2px 0 $primaryColor);
+
+    &:hover{
+      color: $whiteColor;
+      background-color: $primaryColor;
+    }
 
     @include xb-xs-screen{
       line-height: 36px;
@@ -54,12 +67,9 @@
   }
 
   &__menu{
-    color: $whiteColor;
+    color: $primaryColor;
     padding: 16px;
-
-    &-active{
-      color: $primaryColor;
-    }
+    font-size: 24px;
   }
 
   &__mask{

@@ -2,7 +2,7 @@
   <div class="xb-navigation-header__margin-left" fxFlex fxLayout="row" fxLayoutAlign="start center">
     <div class="xb-navigation-header__margin-left-logo">
       <img class="xb-navigation-header__image xb-pointer" src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png"
-           routerLink="/" width="140">
+           routerLink="/">
       <div  class="xb-navigation-header__margin-left-badge">
         Beta
       </div>
@@ -11,8 +11,8 @@
   <a class="xb-navigation-header__login" [ngClass]="{'xb-navigation-header__login-active': status}"
      routerLink="/account/login" fxShow.xs="false">Log In</a>
   <a class="md-margin-right-2 xb-navigation-header__button" routerLink="/account/signup" fxShow.xs="false">Sign Up</a>
-  <i class="material-icons xb-navigation-header__menu" [ngClass]="{'xb-navigation-header__menu-active': status}"
-     fxShow.gt-xs="false" (click)="openPop()">menu</i>
+  <i class="iconfontXberts icon-pic-per xb-navigation-header__menu xb-pointer"
+     fxShow.gt-xs="false" (click)="openPop()"></i>
 </div>
 <div class="xb-navigation-header__mask"  *ngIf="isPopOpen" (click)="openPop()">
   <div class="xb-navigation-header__black" (click)="$event.stopPropagation()">
@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <i class="material-icons xb-navigation-header__menu" [ngClass]="{'xb-navigation-header__menu-active': status}"
+      <i class="material-icons xb-navigation-header__menu xb-pointer" [ngClass]="{'xb-navigation-header__menu-active': status}"
          (click)="openPop()">close</i>
     </div>
   </div>

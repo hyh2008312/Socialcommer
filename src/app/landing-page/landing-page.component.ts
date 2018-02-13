@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.scss']
+  styleUrls: ['./_landing-page.scss']
 })
 
 export class LandingPageComponent implements OnInit {

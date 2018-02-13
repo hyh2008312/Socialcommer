@@ -4,6 +4,15 @@
 html {
   position: relative;
   min-height: 100%;
+  ::-webkit-scrollbar {
+    width: 1px;
+  }
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    @include box-shadow(0 0 0 2px rgba(0,0,0,.19));
+    background-color: rgba(0,0,0,.19);
+  }
 }
 
 body {
@@ -20,16 +29,6 @@ body {
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-  ::-webkit-scrollbar {
-    width: 1px;
-  }
-  ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    @include box-shadow(0 0 0 2px rgba(0,0,0,.19));
-    background-color: rgba(0,0,0,.19);
-  }
 
 }
 

@@ -7384,6 +7384,15 @@ textarea.mat-input-element {
 html {
   position: relative;
   min-height: 100%; }
+  html ::-webkit-scrollbar {
+    width: 1px; }
+  html ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.19);
+    background-color: rgba(0, 0, 0, 0.19); }
 
 body {
   /* padding bottom by footer height */
@@ -7398,15 +7407,6 @@ body {
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent; }
-  body ::-webkit-scrollbar {
-    width: 1px; }
-  body ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.19);
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.19);
-    background-color: rgba(0, 0, 0, 0.19); }
 
 * {
   outline: none;
