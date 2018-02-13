@@ -1,21 +1,28 @@
-<div class="xb-store-template__details" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch"
+<div class="xb-store-template__details" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column"
+     fxLayoutAlign.xs="start stretch"
      fxLayout.sm="column" fxLayoutAlign.sm="start stretch">
   <div class="xb-store-template__details-category-bg" fxHide.gt-sm>
-    <span class="xb-pointer" routerLink="../../list">COLLECTION</span>  /  <span class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>
+    <span class="xb-pointer" routerLink="../../list">COLLECTION</span> / <span
+    class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>
   <div class="xb-store-template__details-cover-bg" fxFlexOrder.xs="0" fxFlexOrder.sm="0" fxFlexOrder="1">
     <app-store-template-3-products-image-cover [images]="image" [selectedImage]="selectedImage"
-                                               [imageSources]="imageSources"></app-store-template-3-products-image-cover>
+                                               [imageSources]="imageSources"
+                                               [insertImage]="insertImage"></app-store-template-3-products-image-cover>
   </div>
-  <div class="xb-store-template__details-scroll" fxFlex.xs="none"  fxFlex.sm="none" fxFlex>
+  <div class="xb-store-template__details-scroll" fxFlex.xs="none" fxFlex.sm="none" fxFlex>
     <div class="xb-store-template__details-content">
       <div fxHide.xs fxHide.sm>
-        <span class="xb-pointer" routerLink="../../list">COLLECTION</span>  /  <span class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>
+        <span class="xb-pointer" routerLink="../../list">COLLECTION</span> / <span
+        class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>
       <div class="xb-store-template__details-title">{{product.title}}</div>
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
-        <div class="xb-store-template__details-price md-margin-right-2">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
+        <div class="xb-store-template__details-price md-margin-right-2">{{product.salePriceAmount|currency:
+          product.salePriceCurrency: true }}
+        </div>
         <div class="line-through  md-dark-secondary md-margin-right-2"
              *ngIf="product.originalPriceAmount > 0 && product.salePriceAmount != product.originalPriceAmount">
-          {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+          {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+        </div>
         <div class="xb-store-template__details-sale"
              *ngIf="product.originalPriceAmount > 0 && product.salePriceAmount != product.originalPriceAmount">
           {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
@@ -23,7 +30,8 @@
       </div>
       <div class="xb-store-template__details-buttons">
         <button mat-raised-button color="primary" (click)="openLink()">
-          <a class="xb-store-template__details-buttons-color gtag-shop-detail-get-it-now-button" href="{{product.purchaseUrl}}" target="_blank" >GET IT NOW </a>
+          <a class="xb-store-template__details-buttons-color gtag-shop-detail-get-it-now-button"
+             href="{{product.purchaseUrl}}" target="_blank">GET IT NOW </a>
         </button>
       </div>
       <div class="md-margin-top-2">

@@ -35,7 +35,7 @@
       display: block;
     }
     &-title {
-      font-size: 56px;
+      font-size: 48px;
       font-weight: 300;
       color: $whiteColor;
       text-align: center;
@@ -50,6 +50,7 @@
     margin-right: auto;
     margin-left: auto;
     max-width: 686px;
+    padding-bottom: 100px;
     width: 100%;
     @include xb-xs-screen{
       padding: 0 16px;

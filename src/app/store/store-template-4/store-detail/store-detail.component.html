@@ -3,7 +3,8 @@
     <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
       <div>
         <app-shop-detail-4-picture [images]="image" [selectedImage]="selectedImage"
-                                   [imageSources]="imageSources"></app-shop-detail-4-picture>
+                                   [imageSources]="imageSources"
+                                   [insertImage]="insertImage"></app-shop-detail-4-picture>
       </div>
       <div class="xb-4-template-detail__content" fxFlex.xs="false">
         <div class="xb-4-template-detail__title md-margin-top-1">{{product.title}}</div>
@@ -72,11 +73,11 @@
           </div>
         </div>
         <div class="xb-4-template-detail__buttons_bg md-margin-top-3">
-          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy" >
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy">
             <button class="xb-4-template-detail__buy-buttons" (click)="openLink()">ADD TO CART</button>
           </a>
           <a class="gtag-shop-detail-get-it-now-button" *ngIf="!isCanBuy">
-            <button class="xb-4-template-detail__buy-buttons" [disabled]="true" >OUT OF STOCK</button>
+            <button class="xb-4-template-detail__buy-buttons" [disabled]="true">OUT OF STOCK</button>
           </a>
         </div>
         <div class="xb-4-template-detail__line" *ngIf="product.recommendation"></div>
