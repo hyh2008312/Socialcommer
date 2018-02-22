@@ -54,7 +54,7 @@
             </button>
           </div>
         </form>
-        <div fxLayout="column">
+        <div fxLayout="column" fxHide>
           <div class="md-align-center md-margin-top-2 md-margin-bottom-2" >OR</div>
           <button class="xb-login__facebook" mat-raised-button (click)="facebookLogin('facebook')">
             <div fxLayout="row" fxLayoutAlign="start center">
@@ -69,7 +69,7 @@
             </div>
           </button>
         </div>
-        <div>Already have an account?
+        <div class="md-margin-top-2">Already have an account?
           <a class="text-underline md-dark-primary md-margin-left-1" routerLink="/account/login">Log In</a>
         </div>
       </div>
