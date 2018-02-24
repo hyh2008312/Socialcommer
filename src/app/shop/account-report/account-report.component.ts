@@ -19,13 +19,13 @@ export class AccountReportComponent implements OnInit {
 
   date: any = 7;
   dateList = [{
-    name: 'last 7 days',
+    name: 'Last 7 Days',
     value: 7
   }, {
-    name: 'last 30 days',
+    name: 'Last 30 Days',
     value: 30
   }, {
-    name: 'last 90 days',
+    name: 'Last 90 Days',
     value: 90
   }, {
     name: 'Year to Date',
@@ -50,8 +50,11 @@ export class AccountReportComponent implements OnInit {
     value: 360
   }];
 
-  transactionStatus: any = 7;
+  transactionStatus: any = 0;
   transactionStatusList = [{
+    name: 'All Status',
+    value: 0
+  }, {
     name: 'Processing',
     value: 7
   }, {
@@ -62,8 +65,11 @@ export class AccountReportComponent implements OnInit {
     value: 90
   }];
 
-  refundStatus: any = 7;
+  refundStatus: any = 0;
   refundStatusList = [{
+    name: 'All Status',
+    value: 0
+  }, {
     name: 'Refunded',
     value: 7
   }, {
