@@ -159,14 +159,20 @@ export class SignUpComponent {
     self.authSub = self.auth.isAuthorized().subscribe((auth) => {
       if(this.routerInfo.snapshot.queryParams["step"] == 1) {
         self.step = 1;
-        self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
+        self.angulartics2GoogleTagManager.eventTrack('VirtualPageview',{
+          'virtualPageURL': '/signup/store-setup',
+          'virtualPageTitle': 'Signup - Store Setup'
+        });
       }
     });
     self.currentUserSub = self.userService.currentUser.subscribe((data) => {
       if(data && self.routerInfo.snapshot.queryParams["tab"] == 'settingProfile') {
         self.step = 0;
         self.isFirstLogin = true;
-        self.angulartics2GoogleTagManager.pageTrack('/signup/basic-info');
+        self.angulartics2GoogleTagManager.eventTrack('VirtualPageview',{
+          'virtualPageURL': '/signup/basic-info',
+          'virtualPageTitle': 'Signup - Basic Info'
+        });
 
         let country = '';
         self.countries.find((item: any) => {
@@ -270,7 +276,10 @@ export class SignUpComponent {
       self.service.login(loginObject).then((data)=>{
         self.auth.setAccessToken(data);
         self.step = 1;
-        self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
+        self.angulartics2GoogleTagManager.eventTrack('VirtualPageview',{
+          'virtualPageURL': '/signup/store-setup',
+          'virtualPageTitle': 'Signup - Store Setup'
+        });
       });
     }).catch((data) => {
       self.signUpErr = data;
@@ -286,7 +295,10 @@ export class SignUpComponent {
     self.service.settingProfile(this.settingForm.value).then((data) => {
       self.settingErr = false;
       self.step = 1;
-      self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
+      self.angulartics2GoogleTagManager.eventTrack('VirtualPageview',{
+        'virtualPageURL': '/signup/store-setup',
+        'virtualPageTitle': 'Signup - Store Setup'
+      });
     }).catch((data) => {
       self.settingErr = data;
     });
@@ -309,7 +321,10 @@ export class SignUpComponent {
               self.userService.addUser(res.user);
               if(res.user.firstLogin) {
                 self.isFirstLogin = res.user.firstLogin;
-                self.angulartics2GoogleTagManager.pageTrack('/signup/basic-info');
+                self.angulartics2GoogleTagManager.eventTrack('VirtualPageview',{
+                  'virtualPageURL': '/signup/basic-info',
+                  'virtualPageTitle': 'Signup - Basic Info'
+                });
 
                 let country = '';
                 self.countries.find((item: any) => {
@@ -331,6 +346,10 @@ export class SignUpComponent {
               } else {
                 self.step = 1;
                 self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
+                self.angulartics2GoogleTagManager.eventTrack('VirtualPageview',{
+                  'virtualPageURL': '/signup/store-setup',
+                  'virtualPageTitle': 'Signup - Store Setup'
+                });
               }
             }
           }).catch((res) => {
@@ -359,7 +378,10 @@ export class SignUpComponent {
               self.userService.addUser(res.user);
               if(res.user.firstLogin) {
                 self.isFirstLogin = res.user.firstLogin;
-                self.angulartics2GoogleTagManager.pageTrack('/signup/basic-info');
+                self.angulartics2GoogleTagManager.eventTrack('VirtualPageview',{
+                  'virtualPageURL': '/signup/basic-info',
+                  'virtualPageTitle': 'Signup - Basic Info'
+                });
 
                 let country = '';
                 self.countries.find((item: any) => {
@@ -380,7 +402,10 @@ export class SignUpComponent {
                 });
               } else {
                 self.step = 1;
-                self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
+                self.angulartics2GoogleTagManager.eventTrack('VirtualPageview',{
+                  'virtualPageURL': '/signup/store-setup',
+                  'virtualPageTitle': 'Signup - Store Setup'
+                });
               }
             }
           }).catch((res) => {
@@ -406,7 +431,10 @@ export class SignUpComponent {
           self.router.navigate(['shop/dashboard']);
         } else {
           self.step = 2;
-          self.angulartics2GoogleTagManager.pageTrack('/signup/complete');
+          self.angulartics2GoogleTagManager.eventTrack('VirtualPageview',{
+            'virtualPageURL': '/signup/complete',
+            'virtualPageTitle': 'Signup - Complete'
+          });
         }
       });
     }).catch((data) => {

@@ -41,7 +41,17 @@ import { CategoryEditDialogComponent } from "./category-edit-dialog/category-edi
 import { BlogCreateDialogComponent } from "./blog-create-dialog/blog-create-dialog.component";
 import { BlogEditDialogComponent } from "./blog-edit-dialog/blog-edit-dialog.component";
 import { BlogDeleteDialogComponent } from "./blog-delete-dialog/blog-delete-dialog.component";
-import { SettingsPasswordDialogComponent } from "./setting-password-dialog/setting-password-dialog.component"
+import { SettingsPasswordDialogComponent } from "./setting-password-dialog/setting-password-dialog.component";
+
+import { AccountBalanceComponent } from "./account-balance/account-balance.component";
+import { AccountBalanceWithdrawMoneyDialogComponent } from "./account-balance-withdraw-money-dialog/account-balance-withdraw-money-dialog.component";
+import { AccountItemComponent } from "./account-item/account-item.component";
+import { AccountPaymentSettingComponent } from "./account-payment-setting/account-payment-setting.component";
+import { AccountTitleComponent } from "./account-title/account-title.component";
+
+import { AccountReportComponent } from  "./account-report/account-report.component";
+import { AccountReportTitleComponent } from "./account-report-title/account-report-title.component";
+import { AccountReportItemComponent } from "./account-report-item/account-report-item.component";
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -50,11 +60,7 @@ import { StoreService } from './store.service';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 
 import { SharedModule } from '../shared/shared.module';
-import {AccountBalanceComponent} from "./account-balance/account-balance.component";
-import {AccountBalanceWithdrawMoneyDialogComponent} from "./account-balance-withdraw-money-dialog/account-balance-withdraw-money-dialog.component";
-import {AccountItemComponent} from "./account-item/account-item.component";
-import {AccountPaymentSettingComponent} from "./account-payment-setting/account-payment-setting.component";
-import {AccountTitleComponent} from "./account-title/account-title.component";
+
 
 @NgModule({
   imports: [
@@ -108,9 +114,10 @@ import {AccountTitleComponent} from "./account-title/account-title.component";
     AccountBalanceWithdrawMoneyDialogComponent,
     AccountItemComponent,
     AccountPaymentSettingComponent,
-    AccountTitleComponent
-
-
+    AccountTitleComponent,
+    AccountReportComponent,
+    AccountReportTitleComponent,
+    AccountReportItemComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,

@@ -23,6 +23,7 @@ import {BlogCreateDialogComponent} from './blog-create-dialog/blog-create-dialog
 import {BlogEditDialogComponent} from './blog-edit-dialog/blog-edit-dialog.component';
 import {AccountBalanceComponent} from "./account-balance/account-balance.component";
 import {AccountPaymentSettingComponent} from "./account-payment-setting/account-payment-setting.component";
+import {AccountReportComponent} from  "./account-report/account-report.component";
 
 const routes: Routes = [
   {
@@ -132,9 +133,11 @@ const routes: Routes = [
         path: 'account',
         children: [
           {
+            path: 'report', component: AccountReportComponent
+          }, {
             path: 'balance', component: AccountBalanceComponent
           }, {
-            path: 'paymentSetting', component: AccountPaymentSettingComponent
+            path: 'paymentsetting', component: AccountPaymentSettingComponent
           }
         ]
       },

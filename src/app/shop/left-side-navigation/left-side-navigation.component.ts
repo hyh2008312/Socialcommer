@@ -73,11 +73,14 @@ export class LeftSideNavigationComponent implements OnInit {
     icon: 'icon-pic-product',
     text: 'Payment',
     subContent: [{
+      text: 'Report',
+      router: './account/report'
+    }, {
       text: 'Balance',
       router: './account/balance'
     }, {
       text: 'Setting',
-      router: './account/paymentSetting'
+      router: './account/paymentsetting'
     }],
     router: null,
     slide: true,
