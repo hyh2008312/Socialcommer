@@ -133,11 +133,9 @@ export class AccountReportComponent implements OnInit {
     let page = this.salesIndex;
     switch (event.index) {
       case 1:
-        relationStatus = 'unpublished';
         page = this.transactionIndex;
         break;
       case 2:
-        relationStatus = 'unpublished';
         page = this.refundIndex;
         break;
       default:
@@ -153,13 +151,13 @@ export class AccountReportComponent implements OnInit {
       self.length = data.count;
       switch (event.index) {
         case 1:
-          self.transaction = data.results;
+          self.transaction = [...data.results];
           break;
         case 2:
-          self.refund = data.results;
+          self.refund = [...data.results];
           break;
         default:
-          self.sales = data.results;
+          self.sales = [...data.results];
           break;
       }
 
