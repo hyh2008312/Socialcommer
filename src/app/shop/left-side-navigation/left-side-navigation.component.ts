@@ -1,8 +1,8 @@
-import { Input, Component, OnInit} from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import {Input, Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 
-import { ShopService } from '../shop.service';
+import {ShopService} from '../shop.service';
 
 @Component({
   selector: 'app-left-side-navigation',
@@ -70,52 +70,67 @@ export class LeftSideNavigationComponent implements OnInit {
     isActive: false
   }, {
     id: 4,
-    icon: 'icon-ic-new-hand',
-    text: 'To-do List',
+    icon: 'icon-pic-product',
+    text: 'Payment',
     subContent: [{
-      text: '',
-      router: ''
+      text: 'Balance',
+      router: './account/balance'
+    }, {
+      text: 'Setting',
+      router: './account/paymentSetting'
     }],
-    router: './todolist',
-    isActive: false
-  }, {
-    id: 5,
-    icon: 'icon-ic-pc-set',
-    text: 'Account',
-    subContent: [{
-      text: '',
-      router: ''
-    }],
-    router: './settings',
-    isActive: false
-  }];
+    router: null,
+    slide: true,
+    isActive: false,
+    index: 0
+  },
+    {
+      id: 5,
+      icon: 'icon-ic-new-hand',
+      text: 'To-do List',
+      subContent: [{
+        text: '',
+        router: ''
+      }],
+      router: './todolist',
+      isActive: false
+    }, {
+      id: 6,
+      icon: 'icon-ic-pc-set',
+      text: 'Account',
+      subContent: [{
+        text: '',
+        router: ''
+      }],
+      router: './settings',
+      isActive: false
+    }];
 
   editRouter: string = './store/templates/edit';
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private shopService: ShopService
-  ) { }
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private shopService: ShopService) {
+  }
 
   ngOnInit(): void {
     let self = this;
     this.shopService.templateUid.subscribe((data) => {
-      if(data) {
-        self.editRouter = './store/templates/edit' + (data==1? '' : '/' + data);
+      if (data) {
+        self.editRouter = './store/templates/edit' + (data == 1 ? '' : '/' + data);
       }
     });
     let url = this.router.routerState.snapshot['url'].split('/shop');
-    for(let value of this.contents) {
-      if(!value.router) {
-        for( let item of value.subContent) {
-          if(url[1] && item.router && item.router != '' && item.router.split('.')[1] == url[1]) {
+    for (let value of this.contents) {
+      if (!value.router) {
+        for (let item of value.subContent) {
+          if (url[1] && item.router && item.router != '' && item.router.split('.')[1] == url[1]) {
             value.isActive = true;
             break;
           }
         }
       } else {
-        if(url[1] && value.router && value.router != '' && value.router.split('.')[1] == url[1]) {
+        if (url[1] && value.router && value.router != '' && value.router.split('.')[1] == url[1]) {
           value.isActive = true;
           break;
         }
@@ -123,19 +138,19 @@ export class LeftSideNavigationComponent implements OnInit {
     }
   }
 
-  changeSlide(obj:any, index: number) {
+  changeSlide(obj: any, index: number) {
 
-    for(let value of this.contents) {
-      if(value.id != obj.id) {
+    for (let value of this.contents) {
+      if (value.id != obj.id) {
         value.isActive = false;
       }
     }
-    if(obj.slide) {
+    if (obj.slide) {
       obj.isActive = !obj.isActive;
     } else {
       obj.isActive = true;
     }
-    if(obj.router) {
+    if (obj.router) {
       this.router.navigate([`${obj.router}`], {relativeTo: this.activatedRoute});
     }
   }

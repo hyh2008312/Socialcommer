@@ -21,6 +21,8 @@ import {BlogComponent} from './blog/blog.component';
 import {StoreFrontComponent} from './store-front/store-front.component';
 import {BlogCreateDialogComponent} from './blog-create-dialog/blog-create-dialog.component';
 import {BlogEditDialogComponent} from './blog-edit-dialog/blog-edit-dialog.component';
+import {AccountBalanceComponent} from "./account-balance/account-balance.component";
+import {AccountPaymentSettingComponent} from "./account-payment-setting/account-payment-setting.component";
 
 const routes: Routes = [
   {
@@ -125,7 +127,18 @@ const routes: Routes = [
         }, {
           path: ':id/edit', component: BlogEditDialogComponent
         }]
-      }, {
+      },
+      {
+        path: 'account',
+        children: [
+          {
+            path: 'balance', component: AccountBalanceComponent
+          }, {
+            path: 'paymentSetting', component: AccountPaymentSettingComponent
+          }
+        ]
+      },
+      {
         path: 'todolist', component: ToDoListComponent
       }, {
         path: 'error', component: ShopErrorComponent

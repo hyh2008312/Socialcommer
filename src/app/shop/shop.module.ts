@@ -50,6 +50,11 @@ import { StoreService } from './store.service';
 import { AuthenticationService } from '../shared/services/authentication/authentication.service';
 
 import { SharedModule } from '../shared/shared.module';
+import {AccountBalanceComponent} from "./account-balance/account-balance.component";
+import {AccountBalanceWithdrawMoneyDialogComponent} from "./account-balance-withdraw-money-dialog/account-balance-withdraw-money-dialog.component";
+import {AccountItemComponent} from "./account-item/account-item.component";
+import {AccountPaymentSettingComponent} from "./account-payment-setting/account-payment-setting.component";
+import {AccountTitleComponent} from "./account-title/account-title.component";
 
 @NgModule({
   imports: [
@@ -98,7 +103,14 @@ import { SharedModule } from '../shared/shared.module';
     SettingsPasswordDialogComponent,
     ShopErrorComponent,
     FindProductCategoryComponent,
-    FindSupplierProductsComponent
+    FindSupplierProductsComponent,
+    AccountBalanceComponent,
+    AccountBalanceWithdrawMoneyDialogComponent,
+    AccountItemComponent,
+    AccountPaymentSettingComponent,
+    AccountTitleComponent
+
+
   ],
   entryComponents: [
     StoreShareDialogComponent,
@@ -108,7 +120,8 @@ import { SharedModule } from '../shared/shared.module';
     CategoryDeleteDialogComponent,
     CategoryEditDialogComponent,
     BlogDeleteDialogComponent,
-    SettingsPasswordDialogComponent
+    SettingsPasswordDialogComponent,
+    AccountBalanceWithdrawMoneyDialogComponent
   ],
   providers: [
     ShopService,
