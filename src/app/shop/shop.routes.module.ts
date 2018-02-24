@@ -131,17 +131,15 @@ const routes: Routes = [
       },
       {
         path: 'account',
-        children: [
-          {
-            path: 'report', component: AccountReportComponent
-          }, {
+        children: [{
             path: 'balance', component: AccountBalanceComponent
           }, {
             path: 'paymentsetting', component: AccountPaymentSettingComponent
           }
         ]
-      },
-      {
+      },{
+        path: 'report', component: AccountReportComponent
+      }, {
         path: 'todolist', component: ToDoListComponent
       }, {
         path: 'error', component: ShopErrorComponent

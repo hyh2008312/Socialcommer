@@ -70,12 +70,9 @@ export class LeftSideNavigationComponent implements OnInit {
     isActive: false
   }, {
     id: 4,
-    icon: 'icon-pic-product',
+    icon: 'icon-pic-paid',
     text: 'Payment',
     subContent: [{
-      text: 'Report',
-      router: './account/report'
-    }, {
       text: 'Balance',
       router: './account/balance'
     }, {
@@ -86,9 +83,18 @@ export class LeftSideNavigationComponent implements OnInit {
     slide: true,
     isActive: false,
     index: 0
-  },
-    {
-      id: 5,
+  }, {
+    id: 5,
+    icon: 'icon-pic-report',
+    text: 'Reports',
+    subContent: [{
+      text: '',
+      router: ''
+    }],
+    router:  './report',
+    isActive: false
+  }, {
+      id: 6,
       icon: 'icon-ic-new-hand',
       text: 'To-do List',
       subContent: [{
@@ -98,7 +104,7 @@ export class LeftSideNavigationComponent implements OnInit {
       router: './todolist',
       isActive: false
     }, {
-      id: 6,
+      id: 7,
       icon: 'icon-ic-pc-set',
       text: 'Account',
       subContent: [{

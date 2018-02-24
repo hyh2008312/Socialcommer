@@ -53,7 +53,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <div class="xb-shop__products-margin-left md-margin-right-2">Sort By</div>
+        <div class="xb-shop__products-margin-left md-margin-right-2">Order Status</div>
         <mat-form-field class="xb-shop__products-sort">
           <mat-select [ngModel]="transactionStatus" name="transactionStatus" (valueChange)="changeSort($event, 2, 1)">
             <mat-option *ngFor="let item of transactionStatusList" [value]="item.value">
@@ -95,7 +95,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <div class="xb-shop__products-margin-left md-margin-right-2">Sort By</div>
+        <div class="xb-shop__products-margin-left md-margin-right-2">Refund Status</div>
         <mat-form-field class="xb-shop__products-sort">
           <mat-select [ngModel]="refundStatus" name="Refund Status" (valueChange)="changeSort($event, 3, 2)">
             <mat-option *ngFor="let item of refundStatusList" [value]="item.value">
