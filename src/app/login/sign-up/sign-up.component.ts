@@ -157,7 +157,7 @@ export class SignUpComponent {
   ngOnInit() {
     let self = this;
     self.authSub = self.auth.isAuthorized().subscribe((auth) => {
-      if(auth && this.routerInfo.snapshot.queryParams["step"] == 1) {
+      if(this.routerInfo.snapshot.queryParams["step"] == 1) {
         self.step = 1;
         self.angulartics2GoogleTagManager.pageTrack('/signup/store-setup');
       }
