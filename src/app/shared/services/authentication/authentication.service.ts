@@ -28,6 +28,12 @@ export class AuthenticationService implements AuthService {
     return Observable.of(isAuthorized);
   }
 
+  public isOnlyAuthorized(): Observable<boolean> {
+    const isAuthorized: boolean = !!localStorage.getItem('accessToken');
+
+    return Observable.of(isAuthorized);
+  }
+
   public setAccessToken(data: any): void {
     this.logout();
     localStorage.setItem('accessToken', data.access_token);

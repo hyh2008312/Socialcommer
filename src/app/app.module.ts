@@ -32,7 +32,11 @@ import { UserModule } from './shared/services/user/user.module';
     BrowserAnimationsModule,
     AuthenticationModule,
     UserModule,
-    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager ])
+    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager], {
+      pageTracking: {
+        autoTrackVirtualPages: true
+      }
+    })
   ],
   providers: [BaseApi, SystemConstant, DataApi, SupportApi, BlogCover, HttpClientModule],
   bootstrap: [AppComponent]
