@@ -72,11 +72,28 @@ export class StoreDetailComponent implements OnInit {
     let self = this;
     this.storeService.getProduct(self.id).then((data) => {
       self.product = data;
+      let pid = self.product.productId;
+      self.storeService.getShippingList({
+        cid: self.store.country.id,
+        pid
+      }).then((data) => {
+        let priceItem: any = false;
+        for(let item of data[pid]) {
+          if(!priceItem) {
+            priceItem = item.priceItem;
+          }
+          if(priceItem >= item.priceItem) {
+            self.shippingTimeMax = item.shippingTimeMax;
+            self.shippingTimeMin = item.shippingTimeMin;
+            priceItem = item.priceItem;
+          }
+        }
+      });
       self.text = data.title;
       self.storeService.addTitleDescription({
         title: data.title,
         description: data.description,
-        shareImage: data.imageUrl
+        shareImage: data.images[0]
       });
 
       self.insertImage = false;
@@ -109,14 +126,6 @@ export class StoreDetailComponent implements OnInit {
 
       self.salePrice = data.salePrice;
       self.originalPrice = data.originalPrice;
-
-      for (let item of data.shippingPrices) {
-        if (item.type == 'Free') {
-          self.shippingTimeMax = item.shippingTimeMax;
-          self.shippingTimeMin = item.shippingTimeMin;
-          break;
-        }
-      }
 
 
       self.storeService.pageView({

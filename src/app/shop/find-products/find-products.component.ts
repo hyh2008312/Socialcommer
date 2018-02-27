@@ -92,6 +92,10 @@ export class FindProductsComponent implements OnInit {
           data: {name: 'Featured'}
         });
         self.categories.push({
+          id: 'special',
+          data: {name: 'Promotional Offers'}
+        });
+        self.categories.push({
           id: null,
           data: {name: 'All'}
         });

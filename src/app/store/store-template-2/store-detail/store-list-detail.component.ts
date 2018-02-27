@@ -38,14 +38,7 @@ export class StoreListDetailComponent implements OnInit {
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
-              private storeService: StoreService) {
-    let self = this;
-    this.storeService.store.subscribe((data) => {
-      if (data) {
-        self.store = data;
-      }
-    });
-  }
+              private storeService: StoreService) {}
 
   scrollChange($event) {
     this.showButton = $event;
@@ -56,49 +49,63 @@ export class StoreListDetailComponent implements OnInit {
 
     let id = this.activatedRouter.snapshot.params['id'];
     let self = this;
-    this.storeService.getProduct(id).then((data) => {
-      self.product = data;
-      self.text = data.title;
-      self.storeService.addTitleDescription({
-        title: data.title,
-        description: data.description,
-        shareImage: data.imageUrl
-      });
+    this.storeService.store.subscribe((data) => {
+      if (data) {
+        self.store = data;
+        self.storeService.getProduct(id).then((data) => {
+          self.product = data;
+          let pid = self.product.productId;
+          self.storeService.getShippingList({
+            cid: self.store.country.id,
+            pid
+          }).then((data) => {
+            let priceItem: any = false;
+            for(let item of data[pid]) {
+              if(!priceItem) {
+                priceItem = item.priceItem;
+              }
+              if(priceItem >= item.priceItem) {
+                self.shippingTimeMax = item.shippingTimeMax;
+                self.shippingTimeMin = item.shippingTimeMin;
+                priceItem = item.priceItem;
+              }
+            }
+          });
+          self.text = data.title;
+          self.storeService.addTitleDescription({
+            title: data.title,
+            description: data.description,
+            shareImage: data.images[0]
+          });
 
 
-      self.image = data.images;
-      if (data.images.length > 0) {
-        self.selectedImage = data.images[0];
-        for (let value of data.images) {
-          self.imageSources.push(value);
-        }
+          self.image = data.images;
+          if (data.images.length > 0) {
+            self.selectedImage = data.images[0];
+            for (let value of data.images) {
+              self.imageSources.push(value);
+            }
+          }
+
+          self.arrangeVariant(data);
+
+          self.variantId = data.variants[0].id;
+          self.variant = data.variants[0];
+          self.isCanBuy = data.variants[0].isCanBuy;
+
+          self.salePrice = data.salePrice;
+          self.originalPrice = data.originalPrice;
+
+          self.storeService.pageView({
+            pageType: 'product',
+            viewTime: new Date().getTime(),
+            productId: data.id,
+            storeId: data.storeId
+          });
+        });
       }
-
-      self.arrangeVariant(data);
-
-      self.variantId = data.variants[0].id;
-      self.variant = data.variants[0];
-      self.isCanBuy = data.variants[0].isCanBuy;
-
-      self.salePrice = data.salePrice;
-      self.originalPrice = data.originalPrice;
-
-      for (let item of data.shippingPrices) {
-        if (item.type == 'Free') {
-          self.shippingTimeMax = item.shippingTimeMax;
-          self.shippingTimeMin = item.shippingTimeMin;
-          break;
-        }
-      }
-
-
-      self.storeService.pageView({
-        pageType: 'product',
-        viewTime: new Date().getTime(),
-        productId: data.id,
-        storeId: data.storeId
-      });
     });
+
   }
 
   close(): void {
