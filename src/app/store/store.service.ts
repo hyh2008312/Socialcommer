@@ -18,6 +18,12 @@ export class StoreService {
     this.store.next(newStore);
   }
 
+  cart: Subject<any> = new BehaviorSubject<any>(null);
+
+  public addCart(any: any): void {
+    this.cart.next(any);
+  }
+
   constructor(
     private http: Http,
     private baseUrl: BaseApi,
@@ -65,6 +71,7 @@ export class StoreService {
 
   addProductToCart(storeName:any, product:any) {
     localStorage.setItem(storeName, JSON.stringify(product));
+    this.addCart(product);
   }
 
   getProductInCart(storeName:any): any {

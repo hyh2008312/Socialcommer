@@ -5,6 +5,9 @@ import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { StoreService } from '../../store.service';
 import { Store } from '../../store';
 
+import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
+
 @Component({
   selector: 'app-store-template-1',
   templateUrl: './main-page.component.html',
@@ -35,6 +38,8 @@ export class MainPageComponent implements OnInit {
 
   about: string = 'Thank you for visiting my store! Have a nice day.  ';
 
+  productNumber: number = 0;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -52,6 +57,8 @@ export class MainPageComponent implements OnInit {
     self.storeService.store.subscribe((data) => {
       if(data) {
         self.store = data;
+        self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
+
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
@@ -74,6 +81,15 @@ export class MainPageComponent implements OnInit {
         });
 
         self.queryProduct();
+      }
+    });
+
+    self.storeService.cart.subscribe((data) => {
+      if(data && data.length>0) {
+        self.productNumber = 0;
+        for(let item of data) {
+          self.productNumber += parseInt(item.number);
+        }
       }
     });
 

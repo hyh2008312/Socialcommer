@@ -3517,7 +3517,6 @@ textarea.mat-input-element {
   font-weight: 600; }
   @media screen and (max-width: 599px) {
     .xb-store-template__store-name {
-      margin-left: 15px;
       font-size: 16px; } }
 .xb-store-template__store-description {
   margin-top: 24px; }
@@ -4175,7 +4174,7 @@ textarea.mat-input-element {
   height: 48px;
   font-size: 14px;
   line-height: 48px;
-  text-align: center;
+  margin-left: 24px;
   color: #fff; }
   .xb-store-template__side-flex.active {
     font-weight: 600; }
@@ -4278,13 +4277,18 @@ textarea.mat-input-element {
   display: block;
   user-select: none; }
 
+.xb-store-template__cart-position {
+  position: relative; }
+  @media screen and (max-width: 599px) {
+    .xb-store-template__cart-position {
+      margin-right: 16px; } }
 .xb-store-template__cart-icon {
   font-size: 24px;
   color: white;
   position: relative; }
 .xb-store-template__cart-order-and-cart {
   position: absolute;
-  right: 0; }
+  right: 24px; }
 .xb-store-template__cart-circle {
   width: 16px;
   height: 16px;
