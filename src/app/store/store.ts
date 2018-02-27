@@ -17,6 +17,7 @@ export class Store {
   imageUrl: any = [];
   status: any;
   currency: string;
+  country: any;
 
   uid: any;
   templateId: any;

@@ -44,6 +44,10 @@ export class FindProductsAddProductComponent implements OnInit {
   sub: any;
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 
+  countryId: number = 1;
+
+  countryList: any[] = [];
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -82,8 +86,6 @@ export class FindProductsAddProductComponent implements OnInit {
           self.variantId = data.variants[0].id;
           self.variant = data.variants[0];
 
-          self.shipping = data.shippingPrices;
-
           let pid = data.id;
           self.shopService.getSupplyProductRecommendList({
             pid
@@ -94,6 +96,11 @@ export class FindProductsAddProductComponent implements OnInit {
 
         });
       }
+    });
+
+    this.shopService.getCountryList().then((data) => {
+      this.countryList = data;
+      this.changeShipping(this.countryId);
     });
   }
 
@@ -259,5 +266,15 @@ export class FindProductsAddProductComponent implements OnInit {
     return variant;
   }
 
+  changeShipping($event) {
+    let pid = this.activatedRoute.snapshot.params['id'];
+    let obj = {
+      cid: $event,
+      pid
+    };
 
+    this.shopService.getShippingList(obj).then((data) => {
+      this.shipping = [...data[pid]];
+    });
+  }
 }

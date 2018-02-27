@@ -66,7 +66,7 @@ export class ImageUploadHeaderComponent implements OnInit {
         let height = image.height;
 
         that.s3UploaderService.upload({
-          type: 'COLLECTOR_USER_AVATAR',
+          type: 'avatar',
           fileName: file.name,
           use: 'avatar',
           width: width,

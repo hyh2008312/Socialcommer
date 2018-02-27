@@ -19,7 +19,9 @@
       border-bottom: 2px solid $primaryColor;
     }
     &-bg{
-      overflow-x: scroll;
+      @include xb-xs-screen{
+        overflow-x: scroll;
+      }
     }
 
     &-scroll{
@@ -62,6 +64,10 @@
     @include xb-xs-screen{
       padding: 0 16px;
     }
+  }
+
+  &__width{
+    width: 200px;
   }
 
 }

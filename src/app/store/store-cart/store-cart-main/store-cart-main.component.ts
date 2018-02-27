@@ -60,11 +60,8 @@ export class StoreCartMainComponent implements OnInit{
         self.currency = data.currency;
         self.displayName = data.displayName;
         self.products = self.storeService.getProductInCart(self.displayName);
-        self.storeCartService.getCountryList().then((data) => {
-          self.countries = data;
-          self.changeShipping(this.countries[0].id);
-          self.calculatePrice();
-        });
+        self.changeShipping(data.country.id);
+        self.calculatePrice();
       }
     });
   }

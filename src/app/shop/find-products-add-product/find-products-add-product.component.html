@@ -75,7 +75,13 @@
     </div>
     <div class="xb-shop__content" *ngIf="tabNumber == 1">
       <div class="md-dark-secondary">Shipping Availability</div>
-      <div class="xb-shop__margin-top">United States</div>
+      <div class="xb-shop__margin-top xb-shop__width" fxLayout="row" fxLayout="start center">
+        <mat-select [ngModel]="countryId" name="country" (valueChange)="changeShipping($event)">
+          <mat-option *ngFor="let item of countryList" [value]="item.id">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+      </div>
       <div class="md-dark-secondary md-margin-top-3">Ships In</div>
       <div class="xb-shop__margin-top">2 - 5 business days</div>
       <div class="md-dark-secondary md-margin-top-3">Shipping Method:</div>

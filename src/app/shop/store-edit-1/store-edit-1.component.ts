@@ -275,6 +275,9 @@ export class StoreEditComponent implements OnInit {
 
     let self = this;
 
+    self.userProfile.avatar = this.previewImgFile;
+    self.shopService.changeUserProfile(self.userProfile);
+
     if (!this.templateId) {
       let options = {
         templateId: 1,
