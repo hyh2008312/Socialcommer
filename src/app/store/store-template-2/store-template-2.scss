@@ -121,6 +121,7 @@
 
   &__nav_container {
     margin-left: 44px;
+    position: relative;
   }
 
   &__navigation {
@@ -129,6 +130,28 @@
     color: $whiteColor;
     &.active {
       @include media();
+    }
+    &-icon {
+      font-size: 24px;
+      color: white;
+      position: relative;
+    }
+    &-order-and-cart {
+      position: absolute;
+      right: 0;
+    }
+    &-circle {
+      width: 16px;
+      height: 16px;
+      background: red;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      border-radius: 8px;
+      color: white;
+      font-size: 12px;
+      position: absolute;
+      right: -11px;
+      top: 0;
     }
   }
   &__right {
@@ -934,57 +957,57 @@
 
 .xb-store-template {
   &__car {
-    &-margin-top{
+    &-margin-top {
       margin-top: 24px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 32px;
       }
     }
 
-    &-margin-top-1{
+    &-margin-top-1 {
       margin-top: 12px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 0px;
       }
     }
 
-    &-margin-top-2{
+    &-margin-top-2 {
       margin-top: 20px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 0;
       }
     }
 
-    &-left-part{
+    &-left-part {
       @include media();
-      color: rgba(0,0,0,.54);
+      color: rgba(0, 0, 0, .54);
       width: 54px;
       margin-right: 24px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         width: auto;
         margin-right: 0;
         margin-bottom: 12px;
       }
     }
 
-    &-bg{
+    &-bg {
       margin-top: 40px;
       background-color: #efefef;
       border-radius: 4px;
       padding: 24px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 32px;
       }
     }
 
-    &-left-part-1{
+    &-left-part-1 {
       @include media();
-      color: rgba(0,0,0,.54);
+      color: rgba(0, 0, 0, .54);
       width: 120px;
       margin-right: 32px;
     }
 
-    &-image{
+    &-image {
       width: 54px;
       height: 54px;
       position: relative;
@@ -993,38 +1016,38 @@
       border: 1px solid #dedede;
       overflow: hidden;
       cursor: pointer;
-      >img{
+      > img {
         position: absolute;
         width: 100%;
         left: 50%;
         top: 50%;
         @include transform(translate(-50%, -50%));
       }
-      &.active{
+      &.active {
         border: 2px solid #ffc400;
       }
     }
 
-    &-text{
+    &-text {
       font-size: 16px;
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
       padding: 0 8px;
       line-height: 32px;
       margin-right: 40px;
       cursor: pointer;
       @include text-overflow();
-      &.active{
+      &.active {
         @include media();
         border: 2px solid #ffc400;
       }
     }
 
-    &-item{
+    &-item {
 
-      &-input{
+      &-input {
         border: 1px solid #dedede;
         border-radius: 2px;
-        input{
+        input {
           width: 100%;
           line-height: 40px;
           font-size: 16px;
@@ -1034,8 +1057,8 @@
         }
       }
 
-      &-add{
-        >i{
+      &-add {
+        > i {
           display: block;
           user-select: none;
         }
@@ -1043,4 +1066,29 @@
     }
   }
 
+}
+
+.xb-store-template__cart{
+  &-icon {
+    font-size: 24px;
+    color: white;
+    position: relative;
+  }
+  &-order-and-cart {
+    position: absolute;
+    right: 0;
+  }
+  &-circle {
+    width: 16px;
+    height: 16px;
+    background: red;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    right: -11px;
+    top: 0;
+  }
 }

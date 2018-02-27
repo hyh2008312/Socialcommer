@@ -245,14 +245,14 @@ export class MainPageComponent implements OnInit {
               self.categories = [...data.category];
               self.category = self.categories[0];
               self.queryProduct();
-              self.queryBlog();
+              //self.queryBlog();
             });
-            self.shopService.getCategoryProduct(self.store.displayName).then((data) => {
+            /*self.shopService.getCategoryProduct(self.store.displayName).then((data) => {
               self.categoryProduct = data;
-            });
+            });*/
             if (self.templateList != null) {
               for (let value of self.templateList) {
-                if (value.uid == 5) {
+                if (value.templateId == 5) {
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
                   self.contactUsTag = value.context.contactUsTag != '' ? value.context.contactUsTag : self.contactUsTag;

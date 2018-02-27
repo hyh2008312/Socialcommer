@@ -47,6 +47,39 @@
       @include regular();
     }
   }
+  &__wenhao {
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+    &—word {
+      height: 24px;
+      width: 336px;
+      color: black;
+      font-size: 14px;
+      padding-left: 16px;
+      background-color: #dedede;
+      line-height: 24px;
+      font-weight: 400;
+    }
+    &-content {
+      position: absolute;
+      z-index: 5;
+      right: -106px;
+    }
+    &-triangle-up {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 7px solid #dedede;
+      margin-left: 157px;
+    }
+    &-bg {
+      margin-left: 5px;
+      position: relative;
+    }
+  }
 }
 
 .xb-account-navigation {
