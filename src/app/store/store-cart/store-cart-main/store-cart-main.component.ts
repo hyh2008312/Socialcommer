@@ -22,6 +22,8 @@ export class StoreCartMainComponent implements OnInit{
 
   countries: any[];
 
+  countryName: any = '';
+
   countryId: number = 1;
 
   products: any;
@@ -60,6 +62,7 @@ export class StoreCartMainComponent implements OnInit{
         self.currency = data.currency;
         self.displayName = data.displayName;
         self.products = self.storeService.getProductInCart(self.displayName);
+        self.countryName = data.country.name;
         self.changeShipping(data.country.id);
         self.calculatePrice();
       }
