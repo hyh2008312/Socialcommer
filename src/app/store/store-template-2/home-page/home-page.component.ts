@@ -39,7 +39,6 @@ export class HomePageComponent implements OnInit {
   ownerId: any;
 
 
-
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -111,5 +110,9 @@ export class HomePageComponent implements OnInit {
 
   jumpProductList(): void {
     this.router.navigate([`./store/${this.store.displayName}/2/list`]);
+  }
+
+  jumpOrderList(): void {
+    this.router.navigate([`./store/${this.store.displayName}/order`]);
   }
 }

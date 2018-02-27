@@ -1,4 +1,5 @@
-import {Component, OnInit, OnDestroy, Input} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-store-template-2-navigation',
@@ -9,10 +10,11 @@ import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 export class StoreNavigationComponent implements OnInit {
   @Input() isBlack = false;
   @Input() type: number;
+  @Output() jumpOrder = new EventEmitter<boolean>();
   contents: any;
 
-  constructor() {
-
+  constructor(public  router: Router,
+              public activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -21,6 +23,10 @@ export class StoreNavigationComponent implements OnInit {
 
   ngOnDestroy() {
 
+  }
+
+  jumpToOrderList(): void {
+    this.jumpOrder.emit(true);
   }
 
   initDate() {
@@ -34,7 +40,7 @@ export class StoreNavigationComponent implements OnInit {
           text: 'PRODUCTS',
           link: './list',
           exact: false
-        } ,{
+        }, {
           text: 'ABOUT ME',
           link: './about_me',
           exact: true

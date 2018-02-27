@@ -104,4 +104,7 @@ export class StoreListComponent implements OnInit {
   back(): void {
     this.router.navigate([`./store/${this.store.displayName}`]);
   }
+  jumpOrderList(): void {
+    this.router.navigate([`./store/${this.store.displayName}/order`]);
+  }
 }

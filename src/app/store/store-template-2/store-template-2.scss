@@ -100,7 +100,6 @@
     color: $whiteColor;
     @include media();
     @include xb-xs-screen {
-      margin-left: 15px;
       font-size: 16px;
     }
   }
@@ -930,7 +929,7 @@
     height: 48px;
     font-size: 14px;
     line-height: 48px;
-    text-align: center;
+    margin-left: 24px;
     color: $whiteColor;
     &.active {
       @include media();
@@ -1069,6 +1068,12 @@
 }
 
 .xb-store-template__cart{
+  &-position{
+    position: relative;
+    @include xb-xs-screen{
+      margin-right: 16px;
+    }
+  }
   &-icon {
     font-size: 24px;
     color: white;
@@ -1076,7 +1081,7 @@
   }
   &-order-and-cart {
     position: absolute;
-    right: 0;
+    right: 24px;
   }
   &-circle {
     width: 16px;

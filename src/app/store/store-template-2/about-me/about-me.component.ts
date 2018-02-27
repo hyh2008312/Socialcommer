@@ -35,4 +35,7 @@ export class AboutMeComponent implements OnInit {
       }
     });
   }
+  jumpOrderList(): void {
+    this.router.navigate([`./store/${this.store.displayName}/order`]);
+  }
 }

@@ -1,7 +1,13 @@
-<div class="xb-store" >
+<div class="xb-store">
+
+
   <div class="xb-store__nav" fxShow="false" fxShow.xs="show">
     {{store.nameTag || store.name}}
   </div>
+
+
+
+
   <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center"
        [ngStyle]="{'background': 'url(' + (imageList.imageSrc == ''? baseImageUrl:imageList.imageSrc) + ') center / auto 100% ' }">
     <div class="xb-store__template-mask"></div>
@@ -10,7 +16,7 @@
         {{contextList.nameTag != '' ? contextList.nameTag : store.name}}
       </div>
       <div class="ql-editor xb-store__template-title"
-           [innerHTML]="contextList.titleTag| safeHtml"  *ngIf="contextList.titleTag != ''" >
+           [innerHTML]="contextList.titleTag| safeHtml" *ngIf="contextList.titleTag != ''">
       </div>
       <div class="xb-store__store-description" *ngIf="contextList.descriptionTag == ''">
         {{store.description}}
@@ -24,11 +30,20 @@
       <br>
       <i class="material-icons">keyboard_arrow_down</i>
     </div>
+    <div class="xb-store-template__cart-container" fxShow="true" fxShow.xs="false">
+      <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
+        <i class="iconfontXberts icon-pic-order1 xb-store-template__cart-icon md-margin-right-4"></i>
+        <div class="xb-store-template__cart-position">
+          <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"></i>
+          <div class="xb-store-template__cart-circle">5</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div>
     <div class="xb-store__title">My Collections</div>
     <app-store-navigation [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"
-      fxShow="true" fxShow.xs="false" *ngIf="categories.length > 0"></app-store-navigation>
+                          fxShow="true" fxShow.xs="false" *ngIf="categories.length > 0"></app-store-navigation>
     <div class="xb-store__content xb-store__border-bottom">
       <div class="md-dark-secondary" fxLayout="row" fxLayoutAlign="center center"
            *ngIf="categories.length<=0 && product.length <= 0">
@@ -36,8 +51,8 @@
       </div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
         <app-store-item-card *ngFor="let item of product"
-          fxFlex.xs="48" fxFlex.gt-xs="30"
-          [product]="item" [status]="0"></app-store-item-card>
+                             fxFlex.xs="48" fxFlex.gt-xs="30"
+                             [product]="item" [status]="0"></app-store-item-card>
         <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
       </div>
       <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
@@ -57,7 +72,8 @@
       <div class="xb-store__title">About Me</div>
       <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
         <div class="xb-store__content-left" fxFlex="none">
-          <app-store-template-1-store-avatar [avatar]="store.ownerAvatar" [name]="store.ownerFirstName"></app-store-template-1-store-avatar>
+          <app-store-template-1-store-avatar [avatar]="store.ownerAvatar"
+                                             [name]="store.ownerFirstName"></app-store-template-1-store-avatar>
           <div class="md-subhead md-margin-top-2">{{store.ownerFirstName}}</div>
           <div class="md-margin-top-1">{{store.ownerCountry}}</div>
         </div>
@@ -71,7 +87,8 @@
           <div class="xb-store__template-user ql-editor"
                [innerHTML]="contextList.userTag | safeHtml" *ngIf="contextList.userTag != ''">
           </div>
-          <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
+          <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start"
+               fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota-2"></i>
           </div>
         </div>
@@ -105,7 +122,7 @@
       </div>
     </div>
     <div class="xb-store__footer-icons" fxLayout="row" fxLayoutAlign="end center"
-      fxLayoutAlign.xs="center center">
+         fxLayoutAlign.xs="center center">
       <app-share-button [link]="shareLink" [text]="text" [style]="{'store':true}"></app-share-button>
     </div>
   </div>

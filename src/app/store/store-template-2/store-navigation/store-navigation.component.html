@@ -9,7 +9,8 @@
     <i class="iconfontXberts icon-pic-order1 xb-store-template__cart-icon md-margin-right-4"
        [style.color]="isBlack?'#555555':'white'"></i>
     <div style="position: relative">
-      <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [style.color]="isBlack?'#555555':'white'"></i>
+      <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"
+         [style.color]="isBlack?'#555555':'white'"></i>
       <div class="xb-store-template__cart-circle">5</div>
     </div>
   </div>
@@ -17,8 +18,10 @@
 
 <div class="xb-store-template__side-bg" fxShow="false" fxShow.xs="true">
   <div class="xb-store-template__side-flex xb-pointer" *ngFor="let value of contents"
-       [style.color]="isBlack?'black':'white'"
        routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
     {{value.text}}
+  </div>
+  <div class="xb-store-template__side-flex xb-pointer" (click)="jumpToOrderList()">
+    MY ORDER
   </div>
 </div>
