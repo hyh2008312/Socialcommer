@@ -14,10 +14,10 @@
   }
 
   &__banner{
-    height: 840px;
+    height: 720px;
     background-image: url("https://media.socialcommer.com/source/web/pic/banner-1.jpg");
     background-position: center;
-    background-size: auto 841px;
+    background-size: auto 720px;
     background-repeat: repeat;
 
     @include xb-xs-screen{
@@ -54,7 +54,7 @@
       font-size: 60px;
       line-height: 80px;
       color: $whiteColor;
-      margin-top: 216px;
+      margin-top: 110px;
       @include light();
 
       @include xb-xs-screen{
