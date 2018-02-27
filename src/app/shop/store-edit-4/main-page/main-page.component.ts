@@ -430,7 +430,7 @@ export class MainPageComponent implements OnInit {
         }
       };
       this.shopService.updateMultiTemplate(options).then((data) => {
-        let index = self.templateList.find((item) => {
+        let index = self.templateList.findIndex((item) => {
           if (item.id == data.id) {
             return true;
           }
