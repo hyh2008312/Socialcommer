@@ -74,7 +74,7 @@ export class SignUpComponent {
       'required': 'This field is required.'
     },
     'password':{
-      'required': 'This field is required.'
+      'required': 'The  password cannot be blank.'
     },
     'country':{
       'required': 'Password is required.'

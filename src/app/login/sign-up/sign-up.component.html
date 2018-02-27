@@ -7,7 +7,7 @@
     </div>
     <div  fxFlex="noshrink" fxLayout="row" fxLayoutAlign="center center">
       <div class="xb-login__container xb-login__auto" fxLayout="column" *ngIf="step == 0 && !isFirstLogin">
-        <div class="xb-login__login-title">Sign Up For Free</div>
+        <div class="xb-login__login-title">Get Started For Free</div>
         <div class="xb-login__error md-margin-bottom-2" *ngIf="signUpErr">{{signUpErr}}</div>
         <form [formGroup]="signUpGroup" (ngSubmit)="signUp()" novalidate>
           <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -144,7 +144,7 @@
               {{ formErrors['currency'] }}
             </div>
             <mat-form-field>
-              <mat-select placeholder="Your Shipping Destination" [(ngModel)]="countryId" name="countryId" formControlName="countryId">
+              <mat-select placeholder="Choose Your Target Market" [(ngModel)]="countryId" name="countryId" formControlName="countryId">
                 <mat-option *ngFor="let country of storeCountryList" [value]="country.id">
                   {{ country.name }}
                 </mat-option>
