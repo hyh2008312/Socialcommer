@@ -14,7 +14,7 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
   @Input() type: number;
   @Input() categories: any;
   @Input() storeName: string;
-  @Input() productNumber: string; //购物车数量
+  @Input() productNumber: number = 0; //购物车数量
   @Input() displayName: string; //店铺的链接名
   @Input() isHaveBlog: boolean;  //控制blog是否显示
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
