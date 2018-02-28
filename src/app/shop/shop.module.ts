@@ -31,6 +31,7 @@ import { CategoryTitleComponent } from './category-title/category-title.componen
 import { BlogItemComponent } from './blog-item/blog-item.component';
 import { BlogTitleComponent } from './blog-title/blog-title.component';
 import { FindProductCategoryComponent } from './find-product-category/find-product-category.component';
+import { BonusItemComponent } from "./bonus-item/bonus-item.component";
 
 import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
 import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
@@ -117,7 +118,8 @@ import { SharedModule } from '../shared/shared.module';
     AccountTitleComponent,
     AccountReportComponent,
     AccountReportTitleComponent,
-    AccountReportItemComponent
+    AccountReportItemComponent,
+    BonusItemComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
