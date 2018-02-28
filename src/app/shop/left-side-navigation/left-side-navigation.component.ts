@@ -70,7 +70,7 @@ export class LeftSideNavigationComponent implements OnInit {
     isActive: false
   }, {
     id: 4,
-    icon: 'icon-pic-paid',
+    icon: 'icon-pic-earning',
     text: 'Payment',
     subContent: [{
       text: 'Balance',
