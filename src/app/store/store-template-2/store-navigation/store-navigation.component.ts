@@ -10,7 +10,8 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 export class StoreNavigationComponent implements OnInit {
   @Input() isBlack = false;
   @Input() type: number;
-  @Output() jumpOrder = new EventEmitter<boolean>();
+  @Input() productNumber: number = 0;
+  @Input() displayName: string;
   contents: any;
 
   constructor(public  router: Router,
@@ -25,8 +26,12 @@ export class StoreNavigationComponent implements OnInit {
 
   }
 
-  jumpToOrderList(): void {
-    this.jumpOrder.emit(true);
+  jumpCart(): void {
+    this.router.navigate([`./store/${this.displayName}/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
   }
 
   initDate() {

@@ -37,7 +37,8 @@ export class HomePageComponent implements OnInit {
   contextList: any = {};
   imageList: any = {};
   ownerId: any;
-
+  productNumber: number = 0;
+  displayName:string ;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -53,6 +54,8 @@ export class HomePageComponent implements OnInit {
     this.storeService.store.subscribe((data) => {
       if (data) {
         self.store = data;
+        self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
+        self.displayName = data.displayName ;
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
@@ -77,6 +80,15 @@ export class HomePageComponent implements OnInit {
 
         self.queryProduct();
 
+      }
+    });
+
+    self.storeService.cart.subscribe((data) => {
+      if(data && data.length>0) {
+        self.productNumber = 0;
+        for(let item of data) {
+          self.productNumber += parseInt(item.number);
+        }
       }
     });
 
@@ -112,7 +124,11 @@ export class HomePageComponent implements OnInit {
     this.router.navigate([`./store/${this.store.displayName}/2/list`]);
   }
 
-  jumpOrderList(): void {
-    this.router.navigate([`./store/${this.store.displayName}/order`]);
+  jumpCart(): void {
+    this.router.navigate([`./store/${this.displayName}/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
   }
 }

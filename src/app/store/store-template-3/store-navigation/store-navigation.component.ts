@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, OnDestroy, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, OnDestroy, EventEmitter, Input} from '@angular/core';
 import { Router, NavigationStart } from  '@angular/router';
 
 @Component({
@@ -10,6 +10,8 @@ import { Router, NavigationStart } from  '@angular/router';
 export class StoreNavigationComponent implements OnInit {
 
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
+
+  @Input() displayName:string ;
 
   routerObservable: any;
 
@@ -51,6 +53,10 @@ export class StoreNavigationComponent implements OnInit {
     if(this.routerObservable) {
       this.routerObservable.unsubscribe();
     }
+  }
+
+  jumpOrderList():void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
   }
 
 }

@@ -30,6 +30,8 @@ export class StoreListComponent implements OnInit {
   product: any = [];
   isClearData: boolean = false;
   showButton: boolean = false;
+  productNumber: number = 0;
+  displayName: string;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -49,7 +51,9 @@ export class StoreListComponent implements OnInit {
       if (data && !firstLoad) {
         firstLoad = true;
         self.store = data;
-        self.contextList = data.context?data.context: {};
+        self.displayName = data.displayName;
+        self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
+        self.contextList = data.context ? data.context : {};
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
@@ -64,12 +68,21 @@ export class StoreListComponent implements OnInit {
           viewTime: new Date().getTime(),
           storeId: data.id
         });
-        self.isClearData=false ;
+        self.isClearData = false;
         self.queryProduct();
       }
     });
+    self.storeService.cart.subscribe((data) => {
+      if (data && data.length > 0) {
+        self.productNumber = 0;
+        for (let item of data) {
+          self.productNumber += parseInt(item.number);
+        }
+      }
+    });
   }
-  jumpList():void {
+
+  jumpList(): void {
     this.page++;
     this.queryProduct();
   }
@@ -91,7 +104,7 @@ export class StoreListComponent implements OnInit {
     };
     this.storeService.getProductList(options).then((data) => {
       if (this.isClearData) {
-        this.isClearData=false;
+        this.isClearData = false;
         this.product = [];
       }
       this.product = this.product.concat(data.results);
@@ -104,7 +117,12 @@ export class StoreListComponent implements OnInit {
   back(): void {
     this.router.navigate([`./store/${this.store.displayName}`]);
   }
-  jumpOrderList(): void {
-    this.router.navigate([`./store/${this.store.displayName}/order`]);
+
+  jumpCart(): void {
+    this.router.navigate([`./store/${this.displayName}/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
   }
 }

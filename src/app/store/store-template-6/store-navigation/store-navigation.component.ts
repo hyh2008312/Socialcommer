@@ -14,6 +14,8 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
   @Input() type: number;
   @Input() categories: any;
   @Input() storeName: string;
+  @Input() productNumber: string; //购物车数量
+  @Input() displayName: string; //店铺的链接名
   @Input() isHaveBlog: boolean;  //控制blog是否显示
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
   @ViewChild(ViewModifyBodyStyleDirective) scrollTopDirective: ViewModifyBodyStyleDirective;
@@ -82,5 +84,13 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
 
   hiddenShowMoreCategory(): void {
     this.isShowMoreCategory = false;
+  }
+
+  jumpMMCart(): void {
+    this.router.navigate([`./store/${this.displayName}/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
   }
 }

@@ -39,6 +39,7 @@ export class MainPageComponent implements OnInit {
   about: string = 'Thank you for visiting my store! Have a nice day.  ';
 
   productNumber: number = 0;
+  displayName:string ;
 
   constructor(
     private router: Router,
@@ -58,7 +59,7 @@ export class MainPageComponent implements OnInit {
       if(data) {
         self.store = data;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
-
+        self.displayName = data.displayName ;
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
@@ -143,6 +144,13 @@ export class MainPageComponent implements OnInit {
 
   ngOnDestroy() {
     this.queryMedia.unsubscribe();
+  }
+  jumpCart(): void {
+    this.router.navigate([`./store/${this.displayName}/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
   }
 
 }

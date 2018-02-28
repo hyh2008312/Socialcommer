@@ -2,7 +2,7 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push">
       <div class="xb-store-template__side_container">
-        <app-store-template-2-navigation [type]="4" (jumpOrder)="jumpOrderList()"></app-store-template-2-navigation>
+        <app-store-template-2-navigation [type]="4" [displayName]="displayName"></app-store-template-2-navigation>
       </div>
     </mat-sidenav>
     <div class="xb-store-template__100vh" fxLayout="row" fxLayoutAlign="start stretch">
@@ -13,7 +13,8 @@
               <div class="xb-store-template__category-store-name" fxFlex="none">
                 {{contextList.nameTag}}
               </div>
-              <app-store-template-2-navigation [isBlack]="true" [type]="4" fxFlex></app-store-template-2-navigation>
+              <app-store-template-2-navigation [isBlack]="true" [type]="4" [displayName]="displayName"
+                                               [productNumber]="productNumber" fxFlex></app-store-template-2-navigation>
             </div>
           </div>
           <!--手机移动端界面显示-->
@@ -24,9 +25,11 @@
             <div class="xb-store-template__store-name" [ngStyle]="{'color': 'black'}">
               {{contextList.nameTag}}
             </div>
-            <div class="xb-store-template__cart-position">
+            <div class="xb-store-template__cart-position" (click)="jumpCart()">
               <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color': 'black'}"></i>
-              <div class="xb-store-template__cart-circle">5</div>
+              <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+                productNumber}}
+              </div>
             </div>
           </div>
 
@@ -44,7 +47,8 @@
         </div>
         <!--网页底部-->
         <div>
-          <app-store-template-2-store-foot [storeName]="(contextList.nameTag || store.name)"></app-store-template-2-store-foot>
+          <app-store-template-2-store-foot
+            [storeName]="(contextList.nameTag || store.name)"></app-store-template-2-store-foot>
         </div>
       </div>
     </div>

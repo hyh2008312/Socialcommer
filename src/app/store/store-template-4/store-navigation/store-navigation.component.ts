@@ -10,6 +10,7 @@ import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 export class StoreNavigationComponent implements OnInit {
   @Input() isBlack = false;
   @Input() type: number;
+  @Input() displayName:string ;
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
 
   routerObservable: any;
@@ -52,6 +53,13 @@ export class StoreNavigationComponent implements OnInit {
     if(this.routerObservable) {
       this.routerObservable.unsubscribe();
     }
+  }
+  jumpCart(): void {
+    this.router.navigate([`./store/${this.displayName}/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
   }
 
 }

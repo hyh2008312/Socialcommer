@@ -2,18 +2,19 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push" fxShow="false" fxShow.xs="true">
       <div class="xb-store-template__side_container">
-        <app-store-template-2-navigation (jumpOrder)="jumpOrderList()"></app-store-template-2-navigation>
+        <app-store-template-2-navigation [displayName]="displayName"></app-store-template-2-navigation>
       </div>
     </mat-sidenav>
     <!--banner图-->
-    <div class="xb-store-template__banner "
+    <div class="xb-store-template__banner"
          [ngStyle]="{'background': 'url(' + (imageList.bannerImageStr == ''? baseImageUrl:imageList.bannerImageStr) + ') center / auto 640px no-repeat ' }">
       <div class="xb-store-template__template-mask"></div>
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center" fxShow="true" fxShow.xs="false">
         <div class="xb-store-template__store-name ql-editor"
              [innerHTML]="contextList.nameTag | safeHtml" *ngIf="contextList.nameTag">
         </div>
-        <app-store-template-2-navigation fxFlex></app-store-template-2-navigation>
+        <app-store-template-2-navigation [productNumber]="productNumber" [displayName]="displayName"
+                                         fxFlex></app-store-template-2-navigation>
       </div>
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
            fxShow.xs="true">
@@ -22,9 +23,11 @@
         <div class="xb-store-template__store-name">
           {{contextList.nameTag}}
         </div>
-        <div class="xb-store-template__cart-position">
+        <div class="xb-store-template__cart-position" (click)="jumpCart()">
           <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"></i>
-          <div class="xb-store-template__cart-circle">5</div>
+          <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+            productNumber}}
+          </div>
         </div>
       </div>
 

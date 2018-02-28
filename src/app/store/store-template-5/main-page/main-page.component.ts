@@ -1,5 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {StoreService} from '../../store.service';
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-shop-template-5',
@@ -18,20 +19,33 @@ export class MainPageComponent implements OnInit {
   ownerId: any;
   blog: any = [];
   isHaveBlog: boolean = true;
+  productNumber: number = 0;
+  displayName: string;
 
-  constructor(private storeService: StoreService) {
+  constructor(private storeService: StoreService,
+              private  router: Router) {
   }
 
   ngOnInit(): void {
     let self = this;
     self.storeService.store.subscribe((data) => {
       if (data) {
+        self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.storeName = data.context ? data.context.nameTag : data.name;
+        self.displayName = data.displayName;
         self.contactUsTag = data.context ? data.context.contactUsTag : '';
         self.text = data.description;
         self.categories = data.category;
         self.ownerId = data.ownerId;
         self.queryBlog();
+      }
+    });
+    self.storeService.cart.subscribe((data) => {
+      if (data && data.length > 0) {
+        self.productNumber = 0;
+        for (let item of data) {
+          self.productNumber += parseInt(item.number);
+        }
       }
     });
   }
@@ -46,6 +60,7 @@ export class MainPageComponent implements OnInit {
   closeShowMenu() {
     this.isShowMenu = false;
   }
+
   queryBlog() {
     if (!this.ownerId) {
       return;
@@ -61,9 +76,17 @@ export class MainPageComponent implements OnInit {
       console.log('--length--->' + self.blog.length);
       if (self.blog.length > 0) {
         self.isHaveBlog = true;
-      }else {
+      } else {
         self.isHaveBlog = false;
       }
     });
+  }
+
+  jumpCart(): void {
+    this.router.navigate([`./store/${this.displayName}/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
   }
 }
