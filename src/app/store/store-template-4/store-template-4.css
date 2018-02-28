@@ -3447,7 +3447,8 @@ textarea.mat-input-element {
   background-color: white;
   width: 100%; }
 .xb-4-template__mobile {
-  position: relative; }
+  width: 100vw;
+  height: 56px; }
 .xb-4-template__menu {
   position: absolute;
   top: 16px; }
@@ -3469,14 +3470,11 @@ textarea.mat-input-element {
 .xb-4-template__title {
   padding-left: 40px;
   padding-right: 40px;
-  margin-top: 40px;
-  margin-bottom: 28px;
+  margin: 40px auto 28px;
   height: 72px;
   text-align: center;
   line-height: 64px;
-  margin-left: auto;
   color: #e1ab18;
-  margin-right: auto;
   border: 4px solid #e1ab18;
   font-size: 34px;
   font-weight: bold; }
@@ -3489,11 +3487,15 @@ textarea.mat-input-element {
       padding-right: 16px;
       height: 40px;
       line-height: 36px;
-      margin-top: 8px; } }
+      margin-top: 0;
+      margin-bottom: 0; } }
 
 .xb-4-template-home {
   margin-bottom: 100px;
   margin-top: 24px; }
+  @media screen and (max-width: 599px) {
+    .xb-4-template-home {
+      margin-top: 0; } }
   .xb-4-template-home__background {
     height: 640px;
     position: relative; }
@@ -4062,5 +4064,43 @@ textarea.mat-input-element {
 .xb-store-template__car-item-add > i {
   display: block;
   user-select: none; }
+
+.xb-4-template__cart-order {
+  height: 54px;
+  background-color: rgba(0, 0, 0, 0.12); }
+  .xb-4-template__cart-order-word {
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    height: 54px;
+    line-height: 54px;
+    cursor: pointer; }
+
+.xb-store-template__cart-position {
+  position: relative; }
+  @media screen and (max-width: 599px) {
+    .xb-store-template__cart-position {
+      margin-right: 24px; } }
+.xb-store-template__cart-icon {
+  font-size: 24px;
+  color: #e1ab18;
+  position: relative;
+  cursor: pointer; }
+.xb-store-template__cart-order-and-cart {
+  position: absolute;
+  right: 24px; }
+.xb-store-template__cart-circle {
+  width: 16px;
+  height: 16px;
+  background: red;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  right: -11px;
+  top: 0;
+  text-align: center; }
 
 /*# sourceMappingURL=store-template-4.css.map */

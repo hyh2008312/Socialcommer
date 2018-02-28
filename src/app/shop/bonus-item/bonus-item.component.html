@@ -3,5 +3,5 @@
   <div class="md-align-center" fxFlex="25">{{item.bonus | currency: currency: true}}</div>
   <div class="md-align-center" fxFlex="25">{{item.sales | currency: currency: true}}</div>
   <div class="md-align-center" fxFlex="25">{{monthSale | currency: currency: true}}</div>
-  <div class="md-align-center" fxFlex="25">{{(item.sales - monthSale > 0? item.sales - monthSale: 0) | currency: currency: true}}</div>
+  <div class="md-align-center" fxFlex="25">{{(item.sales - monthSale > 0? item.sales - monthSale: 'Achieved') | currency: currency: true}}</div>
 </div>

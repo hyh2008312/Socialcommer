@@ -4285,6 +4285,7 @@ textarea.mat-input-element {
 .xb-store-template__cart-icon {
   font-size: 24px;
   color: white;
+  cursor: pointer;
   position: relative; }
 .xb-store-template__cart-order-and-cart {
   position: absolute;
