@@ -25,6 +25,12 @@
       }
     }
 
+    &-width{
+      max-width: 800px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
     &-number{
       font-size: 34px;
       line-height: 34px;
