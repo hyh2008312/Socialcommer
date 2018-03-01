@@ -18,7 +18,8 @@ export class AboutComponent implements OnInit {
   text: string;
   productNumber: number = 0;
   displayName: string;
-
+  ownerFirstName: string;
+  ownerLastName: string;
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -35,6 +36,8 @@ export class AboutComponent implements OnInit {
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
         self.displayName = data.displayName ;
+        self.ownerFirstName = data.ownerFirstName;
+        self.ownerLastName = data.ownerLastName;
       }
     });
     self.storeService.cart.subscribe((data) => {

@@ -22,11 +22,11 @@
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center center">
-    <div class="xb-store-template__footer-word">Why Shop With Us</div>
-    <div class="xb-store-template__footer-word md-margin-left-4">FAQ</div>
+    <div class="xb-store-template__footer-word" (click)="jumpAbout()">Why Shop With Us</div>
+    <div class="xb-store-template__footer-word md-margin-left-4" (click)="jumpFaq()">FAQ</div>
   </div>
-  <div  class="md-margin-top-1 md-margin-bottom-4" fxLayout="row" fxLayoutAlign="center center">
-    <div class="xb-store-template__footer-word md-margin-left-4">Shipping Policy</div>
-    <div class="xb-store-template__footer-word md-margin-left-4">Return Policy</div>
+  <div class="md-margin-top-1 md-margin-bottom-4" fxLayout="row" fxLayoutAlign="center center">
+    <div class="xb-store-template__footer-word md-margin-left-4" (click)="jumpPrivacy()">Privacy Policy</div>
+    <div class="xb-store-template__footer-word md-margin-left-4" (click)="jumpReturn()">Return Policy</div>
   </div>
 </div>

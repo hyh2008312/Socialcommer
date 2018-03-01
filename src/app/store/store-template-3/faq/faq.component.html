@@ -1,0 +1,22 @@
+<div class="xb-store-template__about">
+  <div class="xb-store-template__about-title">About Me</div>
+  <div class="xb-store-template__about-image-bg">
+    <img [src]="imageList.aboutMeSrc">
+  </div>
+  <div class="md-margin-top-2 xb-store__content-text" *ngIf="!contextList.userTag">
+    Thank you for visiting my store! Have a nice day.
+  </div>
+  <div class="xb-store-template__about-user ql-editor md-margin-top-2"
+       [innerHTML]="contextList.userTag | safeHtml" *ngIf="contextList.userTag">
+  </div>
+  <div class="md-margin-bottom-2" fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="start center">
+    <div class="xb-store-template__footer-share md-margin-right-3 md-margin-left-2"
+         appSocialShare  [facebook]="{u: shareLink}">
+      <i class="iconfontXberts icon-ic-facebook"></i>
+    </div>
+    <div class="xb-store-template__footer-share md-margin-right-3"
+         appSocialShare [twitter]="{url: shareLink, text: text, hashtags: '' }">
+      <i class="iconfontXberts icon-ic-twitter"></i>
+    </div>
+  </div>
+</div>
