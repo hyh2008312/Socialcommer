@@ -1,6 +1,6 @@
 <div class="xb-shop__statistic" fxLayout="row" fxLayoutAlign="start center">
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="20">{{category.name}}</div>
-  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="35">{{category.count || 0}}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="35">{{category.goodsCount || 0}}</div>
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="25">{{category.created | amDateFormat:'MMMM Do, YYYY'}}</div>
   <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
     <button mat-button color="primary" (click)="editCategory()">Edit</button>

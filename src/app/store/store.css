@@ -7554,6 +7554,11 @@ textarea.mat-input-element {
     color: rgba(255, 255, 255, 0.5);
     font-size: 16px;
     position: relative; }
+    .xb-store__footer-word {
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.54); }
     .xb-store__footer-margin-top {
       margin-top: 16px; }
       @media screen and (max-width: 599px) {

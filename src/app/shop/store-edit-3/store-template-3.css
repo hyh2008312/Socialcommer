@@ -3438,6 +3438,9 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+  background-color: transparent; }
+
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
  * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`

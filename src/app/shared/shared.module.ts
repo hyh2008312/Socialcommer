@@ -72,7 +72,8 @@ import {
   MatCheckboxModule,
   MatPaginatorModule,
   MatSnackBarModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatProgressBarModule
 } from '@angular/material';
 
 
@@ -119,7 +120,8 @@ let providers = {
     MatPaginatorModule,
     MatSnackBarModule,
     Angular2SocialLoginModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatProgressBarModule
   ],
   declarations: [
     SafeHtmlPipe,
@@ -226,7 +228,8 @@ let providers = {
     MatCheckboxModule,
     MatPaginatorModule,
     MatSnackBarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatProgressBarModule
   ],
   providers: [
     FollowService,

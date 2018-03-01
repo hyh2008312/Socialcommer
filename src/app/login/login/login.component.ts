@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
 
   token: any;
 
+  showLoading: boolean = false;
+  loadingValue: any = 0;
+  color: string = 'Accent';
+
   //存储错误信息
   formErrors = {
     'username': '',
@@ -101,6 +105,9 @@ export class LoginComponent implements OnInit {
 
     let self = this;
     let _setLogin = false;
+    this.loadingValue = 0;
+    this.showLoading = true;
+    this.load();
     self.service.login(this.loginGroup.value).then((data) => {
       self.loginErr = false;
       self.auth.setAccessToken(data);
@@ -110,12 +117,21 @@ export class LoginComponent implements OnInit {
         if(data && data.store && data.store.length>0) {
           self.userService.addStore(data.store[0]);
           if(data && data.isInvite) {
-            self.router.navigate(['/shop/dashboard']);
+            self.router.navigate(['/shop/dashboard']).then((data) => {
+              self.showLoading = false;
+              self.loadingValue = 0;
+            });
           } else {
-            self.router.navigate(['/account/invitation']);
+            self.router.navigate(['/account/invitation']).then((data) => {
+              self.showLoading = false;
+              self.loadingValue = 0;
+            });
           }
         } else {
-          self.router.navigate(['/account/signup'], {queryParams: {step: 1}});
+          self.router.navigate(['/account/signup'], {queryParams: {step: 1}}).then((data) => {
+            self.showLoading = false;
+            self.loadingValue = 0;
+          });
         }
       });
     }).catch((data) => {
@@ -223,5 +239,16 @@ export class LoginComponent implements OnInit {
     if(this.facebookLoginSub) {
       this.facebookLoginSub.unsubscribe();
     }
+  }
+
+  private load() {
+    if(this.loadingValue < 100) {
+      this.loadingValue++;
+    } else {
+      return;
+    }
+
+    requestAnimationFrame(() => this.load());
+
   }
 }
