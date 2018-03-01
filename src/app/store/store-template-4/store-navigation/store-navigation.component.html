@@ -1,4 +1,5 @@
-<div class="xb-4-template-navigation__container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="48px"
+<div class="xb-4-template-navigation__container" appViewScrollTop [ContainerSelector]="'mat-sidenav-content'"
+     fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="48px"
      fxShow="true" fxShow.xs="false">
   <div class="xb-4-template-navigation xb-pointer" *ngFor="let value of contents"
        routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
