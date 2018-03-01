@@ -21,7 +21,7 @@
         </mat-form-field>
       </div>
       <div class="md-margin-top-2 ">
-        <app-shop-account-report-title></app-shop-account-report-title>
+        <app-shop-account-report-title [status]="0"></app-shop-account-report-title>
       </div>
       <div class="md-margin-top-2 xb-shop__product-bg" fxLayout="column">
         <div class="xb-shop__product-list" *ngFor="let item of sales;let i = index;">
@@ -63,7 +63,7 @@
         </mat-form-field>
       </div>
       <div class="md-margin-top-2 ">
-        <app-shop-account-report-title></app-shop-account-report-title>
+        <app-shop-account-report-title [status]="1"></app-shop-account-report-title>
       </div>
       <div class="md-margin-top-2 xb-shop__product-bg" fxLayout="column">
         <div class="xb-shop__product-list" *ngFor="let item of transaction;let i = index;" >
@@ -105,11 +105,11 @@
         </mat-form-field>
       </div>
       <div class="md-margin-top-2 ">
-        <app-shop-account-report-title></app-shop-account-report-title>
+        <app-shop-account-report-title [status]="2"></app-shop-account-report-title>
       </div>
       <div class="md-margin-top-2 xb-shop__product-bg" fxLayout="column">
         <div class="xb-shop__product-list" *ngFor="let item of refund;let i = index;" >
-          <app-shop-account-report-item [status]="1" [product]="item" [index]="i"
+          <app-shop-account-report-item [status]="2" [product]="item" [index]="i"
                                         [page]="refundIndex" [pageSize]="pageSize"></app-shop-account-report-item>
         </div>
         <mat-paginator [length]="length"

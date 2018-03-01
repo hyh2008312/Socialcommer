@@ -8,19 +8,20 @@
 
   <div class="xb-shop__toDo-content" fxLayout="row" fxLayoutAlign="center center"
        fxLayout.xs="column" fxLayoutAlign.xs="start stretch" fxLayoutWrap>
-    <div class="xb-shop__toDo-card" fxLayout="column" fxLayoutAlign="start center">
-      <img src="https://media.socialcommer.com/source/web/pic/pic-join.jpg">
-      <div>Join an affiliate program</div>
+    <div class="xb-shop__toDo-card " fxLayout="column" fxLayoutAlign="start center"
+         routerLink="/shop/listings/items">
+      <img src="https://media.socialcommer.com/source/web/pic/ic-list.jpg">
+      <div>Add Products to Sell</div>
     </div>
     <div class="xb-shop__toDo-card xb-shop__toDo-margin-left" fxLayout="column" fxLayoutAlign="start center"
-         routerLink="/shop/listings/items">
-      <img src="https://media.socialcommer.com/source/web/pic/pic-listings.jpg">
-      <div>Add your product listings</div>
-    </div>
-    <div class="xb-shop__toDo-card xb-shop__toDo-margin-left-1" fxLayout="column" fxLayoutAlign="start center"
          routerLink="{{editRouter}}">
       <img src="https://media.socialcommer.com/source/web/pic/pic-store.jpg">
-      <div>Edit & publish your store</div>
+      <div>Edit Your Storefront</div>
+    </div>
+    <div class="xb-shop__toDo-card xb-shop__toDo-margin-left-1" fxLayout="column" fxLayoutAlign="start center"
+         routerLink="/shop/blog">
+      <img src="https://media.socialcommer.com/source/web/pic/ic-blog.jpg">
+      <div>Create Viral Blog Post</div>
     </div>
   </div>
 </div>

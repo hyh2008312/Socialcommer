@@ -1,0 +1,28 @@
+@charset "UTF-8";
+@import "../../styles/utils/_index";
+@import "../../styles/_variables";
+
+.xb-shop{
+  &__product{
+    position: relative;
+
+    &-navigation{
+      height: 64px;
+      background-color: $whiteColor;
+      padding: 0 16px;
+      border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+
+
+    &-title-1{
+      font-size: 14px;
+      @include media();
+      color: rgba(0,0,0,.87);
+    }
+
+  }
+}
+
+
+
+

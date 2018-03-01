@@ -7,7 +7,7 @@ import {Input, Output, Component, OnInit} from '@angular/core';
 })
 
 export class AccountReportTitleComponent implements OnInit {
-  @Input() status: number = 1;
+  @Input() status: number = 0;
 
   constructor() {
   }

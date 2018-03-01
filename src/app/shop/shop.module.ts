@@ -31,6 +31,7 @@ import { CategoryTitleComponent } from './category-title/category-title.componen
 import { BlogItemComponent } from './blog-item/blog-item.component';
 import { BlogTitleComponent } from './blog-title/blog-title.component';
 import { FindProductCategoryComponent } from './find-product-category/find-product-category.component';
+import { BonusTitleComponent } from "./bonus-title/bonus-title.component";
 import { BonusItemComponent } from "./bonus-item/bonus-item.component";
 
 import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
@@ -119,6 +120,7 @@ import { SharedModule } from '../shared/shared.module';
     AccountReportComponent,
     AccountReportTitleComponent,
     AccountReportItemComponent,
+    BonusTitleComponent,
     BonusItemComponent
   ],
   entryComponents: [

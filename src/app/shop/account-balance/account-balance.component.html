@@ -3,30 +3,30 @@
     <div class="xb-account-balance__title">Summary</div>
   </div>
   <div class="xb-account-balance__summary md-margin-top-2">
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
         <div class="xb-account-balance__title">$ 1324.54</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Total Earning</div>
       </div>
-      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
         <div class="xb-account-balance__title">$ 850.52</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Commissions Earned</div>
       </div>
-      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
         <div class="xb-account-balance__title">$ 500.00</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Bonus Earned</div>
       </div>
-    </div>
-    <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="space-around center">
-      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
         <div class="xb-account-balance__title">$ 500.00</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Total Withdrawals</div>
       </div>
-      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33">
+    </div>
+    <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start center">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
         <div class="xb-account-balance__title">$ 500.00</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Available Balance</div>
       </div>
-      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="33">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
         <div class="xb-account-balance__title">$ 325.54</div>
         <div fxLayout="row" fxLayoutAlign="start start">
           <div class="xb-account-balance__summary-word md-margin-top-2">Pending Balance</div>
@@ -35,7 +35,7 @@
                (mouseleave)="changeShowTip(false)"></i>
             <div class="xb-account-balance__wenhao-content" *ngIf="isShowTip">
               <div class="xb-account-balance__wenhao-triangle-up"></div>
-              <div class="xb-account-balance__wenhao—word" style="padding-left: 9px;">
+              <div class="xb-account-balance__wenhao-word">
                 These transactions are not yet eligible for payment.
               </div>
             </div>

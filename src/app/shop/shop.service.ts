@@ -89,6 +89,23 @@ export class ShopService {
       .catch(this.handleError);
   }
 
+  getProductCategoryList(category): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/category/list/?${this.serializeParams(category)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   createCategory(category: any): Promise<any> {
 
     let headers = new Headers({
@@ -566,7 +583,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}relation/category/`;
+    const url = `${this.baseUrl.url}store/category/create/`;
 
     return this.http.post(url, category, options)
       .toPromise()
@@ -583,7 +600,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}relation/category/${category.id}/`;
+    const url = `${this.baseUrl.url}store/category/create/${category.id}/`;
 
     return this.http.delete(url, options)
       .toPromise()
@@ -600,7 +617,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}relation/category/${category.id}/`;
+    const url = `${this.baseUrl.url}store/category/create/${category.id}/`;
 
     return this.http.put(url, category, options)
       .toPromise()

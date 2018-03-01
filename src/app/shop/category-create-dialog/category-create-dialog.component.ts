@@ -23,7 +23,7 @@ export class CategoryCreateDialogComponent implements OnInit {
   ) {
 
     this.categoryForm = this.fb.group({
-      name: ['', [
+      categoryName: ['', [
         Validators.required
       ]]
     });
@@ -34,11 +34,11 @@ export class CategoryCreateDialogComponent implements OnInit {
 
   //存储错误信息
   formErrors = {
-    'name': ''
+    'categoryName': ''
   };
   //错误对应的提示
   validationMessages = {
-    'name': {
+    'categoryName': {
       'required': 'This field is required.'
     }
   };

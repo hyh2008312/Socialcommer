@@ -46,7 +46,7 @@ export class AccountReportComponent implements OnInit {
     name: 'Conversion',
     value: 360
   }, {
-    name: 'Total Commission',
+    name: 'Commissions Earned',
     value: 360
   }];
 
