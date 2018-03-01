@@ -1,0 +1,70 @@
+<div fxLayout="column" class="xb-store-about" fxLayoutAlign="start stretch">
+  <div>
+    <div class="xb-store-about__navigation" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="xb-store-about__store-name xb-pointer" (click)="jumpStore()">
+        {{contextList.nameTag != '' ? contextList.nameTag : store.name}}
+      </div>
+      <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
+        <i class="iconfontXberts icon-pic-order1 xb-store-template__cart-icon md-margin-right-4"
+           (click)="jumpOrder()"></i>
+        <div class="xb-store-template__cart-position" (click)="jumpCart()">
+          <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"></i>
+          <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+            productNumber}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="xb-store-about__content" fxFlex>
+    <div class="xb-store-about__content-title">Return Policy</div>
+    <div class="xb-store-about__content-subtitle md-margin-top-3">What is the Return Policy?</div>
+    <div class="xb-store-about__content-des md-margin-top-1">
+      You may request a refund or exchange on any item that is not as described within 30 days of delivery, and you will
+      receive a full refund or a replacement for the returned item once we receive the package. <br>
+      Please note that any shipping fee of the returned package will not be included in the refund. The customer will be
+      responsible for the return shipping cost.<br>
+      If your order arrives incomplete, damaged or defective, please send us a photo of the damage by contacting our
+      customer support within 3 days of receiving the shipment. If you do not report this to us within the 3 day period,
+      we may not be able to honor your claim. <br>
+      The following conditions are not eligible for refund or exchange: 
+      <ul>
+        <li>
+          Returns received after 30 days of delivery.
+        </li>
+        <li>
+          Returned items received in worn or incomplete condition.
+        </li>
+      </ul>
+      The refunds can only be issued to your original payment method.
+    </div>
+
+    <div class="xb-store-about__content-subtitle md-margin-top-3">How does the Return Policy Work?</div>
+    <div class="xb-store-about__content-des md-margin-top-2">
+      Step1:  Go to My Order section and access your order history with your email and order number.<br>
+      Step2: Select the item you want to return and initial your return request.<br>
+      Step3: Our customer service will process your request and send you a Return Authorization Number and return
+      shipping address.<br>
+      Step4: Please include the RAN number into your package and send them back to our warehouse.<br>
+      Step5: We will process the refund or exchange within 5 business days once we receive the returned package.
+    </div>
+  </div>
+  <div class="xb-store-about__footer">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div class="xb-store-about__footer-margin-left">© 2018 {{contextList.nameTag || store.name}}. All rights
+        reserved.
+      </div>
+      <div class="xb-store-about__footer-margin-top" fxLayout="row" fxLayoutAlign="center center"
+           fxLayout.xs="column" fxLayoutAlign.xs="center center">
+        <div class="xb-store-about__footer-word" (click)="jumpAbout()">Why Shop With Us</div>
+        <div class="xb-store-about__footer-word md-margin-left-4" (click)="jumpFaq()">FAQ</div>
+        <div class="xb-store-about__footer-word md-margin-left-4" (click)="jumpPrivacy()">Privacy Policy</div>
+        <div class="xb-store-about__footer-word md-margin-left-4" (click)="jumpReturn()">Return Policy</div>
+      </div>
+    </div>
+    <div class="xb-store-about__footer-icons" fxLayout="row" fxLayoutAlign="end center"
+         fxLayoutAlign.xs="center center">
+      <app-share-button [link]="shareLink" [text]="text" [style]="{'store':true}"></app-share-button>
+    </div>
+  </div>
+</div>
