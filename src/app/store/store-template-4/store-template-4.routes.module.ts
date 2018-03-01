@@ -7,6 +7,10 @@ import {AboutMeComponent} from './about-me/about-me.component';
 import {StoreDetailComponent} from './store-detail/store-detail.component';
 import {StoreBlogComponent} from './store-blog/store-blog.component';
 import {StoreBlogDetailComponent} from './store-blog-detail/store-blog-detail.component';
+import {AboutComponent} from "./about/about.component";
+import {FaqComponent} from "./faq/faq.component";
+import {PrivacyComponent} from "./privacy/privacy.component";
+import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
 
 const routes: Routes = [{
   path: '', component: MainPageComponent,
@@ -28,7 +32,17 @@ const routes: Routes = [{
     },
     {
       path: 'about_me', component: AboutMeComponent
-    }]
+    }, {
+      path: 'about', component: AboutComponent
+    }, {
+      path: 'privacy', component: PrivacyComponent
+    }, {
+      path: 'faq', component: FaqComponent
+    }, {
+      path: 'return', component: ReturnPolicyComponent
+    }
+
+  ]
 }
 ];
 

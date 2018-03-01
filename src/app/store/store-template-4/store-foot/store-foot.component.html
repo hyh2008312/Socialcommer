@@ -13,10 +13,10 @@
       <div class="xb-store__context xb-store__context_power xb-pointer" routerLink="/"> POWERED BY SocialCommer</div>
     </div>
     <div class="md-margin-top-2 md-margin-bottom-4" fxLayout="row" fxLayoutAlign="start center">
-      <div class="xb-store-word">Why Shop With Us</div>
-      <div class="xb-store-word md-margin-left-3">FAQ</div>
-      <div class="xb-store-word md-margin-left-3">Shipping Policy</div>
-      <div class="xb-store-word md-margin-left-3">Return Policy</div>
+      <div class="xb-store-word" (click)="jumpAbout()">Why Shop With Us</div>
+      <div class="xb-store-word md-margin-left-3" (click)="jumpFaq()">FAQ</div>
+      <div class="xb-store-word md-margin-left-3" (click)="jumpPrivacy()">Privacy Policy</div>
+      <div class="xb-store-word md-margin-left-3" (click)="jumpReturn()">Return Policy</div>
     </div>
   </div>
 </div>
