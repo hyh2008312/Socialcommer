@@ -632,7 +632,7 @@ export class ShopService {
     this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}statistics/blog/?${this.serializeParams(blog)}`;
+    const url = `${this.baseUrl.url}blog/list/?${this.serializeParams(blog)}`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -666,7 +666,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}blog/`;
+    const url = `${this.baseUrl.url}blog/list/`;
 
     return this.http.post(url, blog, options)
       .toPromise()

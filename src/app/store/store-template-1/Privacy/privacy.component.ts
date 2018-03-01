@@ -59,12 +59,6 @@ export class PrivacyComponent implements OnInit {
           shareImage: data.imageUrl
         });
 
-        self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
-        });
-
       }
     });
 

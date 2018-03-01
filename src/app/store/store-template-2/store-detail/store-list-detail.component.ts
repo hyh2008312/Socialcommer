@@ -97,10 +97,12 @@ export class StoreListDetailComponent implements OnInit {
           self.originalPrice = data.originalPrice;
 
           self.storeService.pageView({
-            pageType: 'product',
-            viewTime: new Date().getTime(),
-            productId: data.id,
-            storeId: data.storeId
+            pt: 'goods',
+            vt: new Date().getTime(),
+            gid: data.id,
+            pid: data.productId,
+            suid: data.supplierId,
+            sid: data.storeId
           });
         });
       }

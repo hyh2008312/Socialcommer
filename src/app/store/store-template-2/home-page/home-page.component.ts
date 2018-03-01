@@ -73,9 +73,9 @@ export class HomePageComponent implements OnInit {
         self.category = self.categories[0];
 
         self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
+          pt: 'store',
+          vt: new Date().getTime(),
+          sid: data.id
         });
 
         self.queryProduct();

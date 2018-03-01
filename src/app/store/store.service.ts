@@ -178,7 +178,7 @@ export class StoreService {
 
   pageView(statistics): Promise<any> {
 
-    const url = `${this.dataUrl.url}data/upload/page_view`;
+    const url = `${this.dataUrl.url}collect/page_view`;
 
     return this.http.get(url,{search: this.serializeParamsJSONP(statistics)})
       .toPromise()
@@ -198,7 +198,7 @@ export class StoreService {
 
   pageViewBlog(statistics): Promise<any> {
 
-    const url = `${this.dataUrl.url}data/upload/blog_click`;
+    const url = `${this.dataUrl.url}collect/blog/page_view`;
 
     return this.http.get(url,{search: this.serializeParamsJSONP(statistics)})
       .toPromise()
