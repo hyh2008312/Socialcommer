@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {MainPageComponent} from './main-page/main-page.component';
 import {HomePageComponent} from './home-page/home-page.component';
-import {AboutMeComponent} from './about-me/about-me.component';
 import {StoreCategoryComponent} from './store-category/store-category.component';
 import {StoreDetailComponent} from './store-detail/store-detail.component';
 
@@ -22,6 +21,10 @@ import {StoreBlogDetailComponent} from './store-blog-detail/store-blog-detail.co
 import {StoreCategoryCardComponent} from './store-category-card/store-category-card.component';
 import {StoreListComponent} from './store-list/store-list.component';
 import {StoreItemBlogCardTwoComponent} from './store-item-blog-card-two/store-item-blog-card-two.component';
+import {AboutComponent} from "./about/about.component";
+import {FaqComponent} from "./faq/faq.component";
+import {PrivacyComponent} from "./privacy/privacy.component";
+import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
 
 @NgModule({
   imports: [
@@ -32,7 +35,6 @@ import {StoreItemBlogCardTwoComponent} from './store-item-blog-card-two/store-it
   declarations: [
     MainPageComponent,
     HomePageComponent,
-    AboutMeComponent,
     StoreCategoryCardComponent,
     StoreCategoryComponent,
     StoreDetailComponent,
@@ -46,7 +48,11 @@ import {StoreItemBlogCardTwoComponent} from './store-item-blog-card-two/store-it
     ShareTemplate5ButtonComponent,
     StoreBlogDetailComponent,
     StoreListComponent,
-    StoreItemBlogCardTwoComponent
+    StoreItemBlogCardTwoComponent,
+    AboutComponent,
+    FaqComponent,
+    PrivacyComponent,
+    ReturnPolicyComponent
   ],
   entryComponents: [],
   providers: [
