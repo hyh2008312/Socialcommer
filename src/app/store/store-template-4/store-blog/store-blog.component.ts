@@ -27,6 +27,13 @@ export class StoreBlogComponent implements OnInit {
       if (data) {
         self.store = data;
         self.ownerId = data.ownerId;
+
+        self.storeService.pageView({
+          pt: 'store',
+          vt: new Date().getTime(),
+          sid: data.id
+        });
+
         self.queryBlog();
       }
     });

@@ -54,6 +54,7 @@ export class StoreDetailComponent implements OnInit {
     this.storeService.store.subscribe((data) => {
       if(data) {
         self.store = data;
+        let storeId = data.id;
         this.storeService.getProduct(id).then((data) => {
           self.product = data;
           let pid = self.product.productId;
@@ -103,7 +104,7 @@ export class StoreDetailComponent implements OnInit {
             gid: data.id,
             pid: data.productId,
             suid: data.supplierId,
-            sid: data.storeId
+            sid: storeId
           });
         });
 

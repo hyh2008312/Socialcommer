@@ -72,9 +72,9 @@ export class HomePageComponent implements OnInit {
           self.selectCategoryThree = data.category[data.category.length - 1];
         }
         self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
+          pt: 'store',
+          vt: new Date().getTime(),
+          sid: data.id
         });
 
         self.queryProduct();

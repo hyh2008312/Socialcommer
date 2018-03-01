@@ -7,7 +7,7 @@ import { Store, Blog } from '../../store';
 @Component({
   selector: 'app-store-template-3-store-blog-detail',
   templateUrl: './store-blog-detail.component.html',
-  styleUrls: ['./store-blog-detail.scss']
+  styleUrls: ['./_store-blog-detail.scss']
 })
 
 export class StoreBlogDetailComponent implements OnInit {
@@ -25,23 +25,36 @@ export class StoreBlogDetailComponent implements OnInit {
 
   ngOnInit():void {
     this.shareLink = window.location.href;
-
-    let id = this.activatedRoute.snapshot.params['id'];
     let self = this;
-    this.storeService.getBlogDetail(id).then((data) => {
-      self.blog = data;
-      self.text = data.title;
-      self.storeService.addTitleDescription({
-        title: data.title,
-        description: data.description,
-        shareImage: data.cover
-      });
+    this.storeService.store.subscribe((data) => {
+      if(data) {
+        let storeId = data.id;
+        self.storeService.pageView({
+          pt: 'store',
+          vt: new Date().getTime(),
+          sid: storeId
+        });
+        let id = this.activatedRoute.snapshot.params['id'];
 
-      self.storeService.pageViewBlog({
-        viewTime: new Date().getTime(),
-        blogId: data.id
-      });
+        this.storeService.getBlogDetail(id).then((data) => {
+          self.blog = data;
+          self.text = data.title;
+          self.storeService.addTitleDescription({
+            title: data.title,
+            description: data.description,
+            shareImage: data.cover
+          });
+
+          self.storeService.pageViewBlog({
+            vt: new Date().getTime(),
+            bid: data.id,
+            sid: storeId
+          });
+        });
+      }
     });
+
+
   }
 
 

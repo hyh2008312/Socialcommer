@@ -63,9 +63,9 @@ export class StoreListComponent implements OnInit {
         self.storeService.addStore(data);
 
         self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
+          pt: 'store',
+          vt: new Date().getTime(),
+          sid: data.id
         });
         self.queryProduct();
       }

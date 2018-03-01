@@ -98,7 +98,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/category/list/?${this.serializeParams(category)}`;
+    const url = `${this.baseUrl.url}store/store/category/list/?${this.serializeParams(category)}`;
 
     return this.http.get(url, options)
       .toPromise()
