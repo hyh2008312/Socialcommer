@@ -152,5 +152,19 @@ export class MainPageComponent implements OnInit {
   jumpOrder(): void {
     this.router.navigate([`./store/${this.displayName}/order`]);
   }
+  jumpPrivacy(): void {
+    this.router.navigate([`./store/${this.displayName}/1/privacy`]);
+  }
+
+  jumpReturn(): void {
+    this.router.navigate([`./store/${this.displayName}/1/return`]);
+  }
+
+  jumpFaq(): void {
+    this.router.navigate([`./store/${this.displayName}/1/faq`]);
+  }
+  jumpAbout(): void {
+    this.router.navigate([`./store/${this.displayName}/1/about`]);
+  }
 
 }
