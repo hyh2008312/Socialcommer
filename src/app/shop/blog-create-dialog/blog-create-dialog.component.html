@@ -19,7 +19,7 @@
         <div *ngIf="formErrors['title']" class="xb-input-error">
           {{ formErrors['title'] }}
         </div>
-        <div class="xb-shop__edit-title">Write Blog Contents to Engage Your Visitors <span class="xb-input-error xb-large-star">*</span></div>
+        <div class="xb-shop__edit-title">Blog Contents<span class="xb-input-error xb-large-star">*</span></div>
         <div class="md-margin-top-2">
           <quill-editor formControlName="context"
                         (ready)="onEditorCreated($event)"></quill-editor>
@@ -29,7 +29,7 @@
           </div>
         </div>
         <div *ngIf="hasPicture" class="xb-input-error md-margin-top-1">
-          Your picture is still uploading. Please wait a bit!
+          Please upload your blog cover image!
         </div>
         <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
           <button mat-raised-button color="primary" (click)="create()">PUBLISH</button>

@@ -4,7 +4,7 @@
     <button mat-raised-button color="accent" (click)="openToggle()">
       <div fxLayout="row" fxLayoutAlign="start center">
         <i class="material-icons">add</i>
-        <span class="md-margin-left-1">Add Affiliate Product</span>
+        <span class="md-margin-left-1"> Add More Items</span>
       </div>
     </button>
     <div class="xb-shop__product-button-list" *ngIf="showToggles">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <mat-tab-group color="accent" (selectedTabChange)="changeProducts($event)"  [(selectedIndex)]="selectedIndex">
-    <mat-tab label="Published">
+    <mat-tab label="Published Items">
       <div class="md-margin-top-2 ">
         <app-product-title></app-product-title>
       </div>

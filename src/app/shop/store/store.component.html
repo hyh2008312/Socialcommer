@@ -1,85 +1,84 @@
 <div class="xb-shop__product md-padding-right-2 md-padding-top-2 md-padding-left-2">
   <div class="xb-shop__header"></div>
-  <mat-tab-group color="accent" [(selectedIndex)]="selectedIndex">
-    <mat-tab label="Store Settings">
-      <div class="md-margin-top-2 xb-shop__setting-bg">
-        <form [formGroup]="storeForm" (ngSubmit)="changeStore()" novalidate>
-          <div class="md-margin-top-1" fxLayout="column">
-            <div class="md-dark-secondary">
-              Store Name
-            </div>
-            <mat-form-field>
-              <input matInput formControlName="name">
-            </mat-form-field>
-            <div *ngIf="formErrors['name']" class="xb-input-error">
-              {{ formErrors['name'] }}
-            </div>
-            <div class="md-dark-secondary">
-              Store Description
-            </div>
-            <mat-form-field class="xb-shop__width-100">
-              <textarea matInput  formControlName="description"></textarea>
-            </mat-form-field>
-            <div class="md-dark-secondary">
-              Store Currency
-            </div>
-            <mat-form-field>
-              <mat-select name="currency" formControlName="currency">
-                <mat-option *ngFor="let currency of currencies" [value]="currency.code">
-                  {{ currency.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div *ngIf="formErrors['currency']" class="xb-input-error">
-              {{ formErrors['currency'] }}
-            </div>
-            <div class="md-dark-secondary">
-              Store Country
-            </div>
-            <mat-form-field>
-              <mat-select name="country" formControlName="countryId">
-                <mat-option *ngFor="let country of countries" [value]="country.id">
-                  {{ country.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div *ngIf="formErrors['countryId']" class="xb-input-error">
-              {{ formErrors['countryId'] }}
-            </div>
-            <div class="md-dark-secondary">
-              Your Store URL
-            </div>
-            <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
-              <div>
-                https://www.socialcommer.com/store/
-              </div>
-              <mat-form-field class="md-margin-left-2 xb-shop__width-1">
-                <input matInput formControlName="displayName">
-              </mat-form-field>
-            </div>
-            <div *ngIf="formErrors['displayName']" class="xb-input-error">
-              {{ formErrors['displayName'] }}
-            </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
-              <div class="md-dark-secondary">
-                Store Status
-              </div>
-              <span class="md-margin-left-2 md-margin-right-2">Close</span>
-              <mat-slide-toggle
-                color="primary" formControlName="status">
-              </mat-slide-toggle>
-              <span class="md-margin-left-2 md-margin-right-2">Open</span>
-            </div>
-            <div *ngIf="formErrors['status']" class="xb-input-error">
-              {{ formErrors['status'] }}
-            </div>
-            <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
-              <button mat-raised-button color="primary" type="submit">SAVE CHANGE</button>
-            </div>
+  <div class="xb-category__title-1" fxLayout="row" fxLayoutAlign="start center">
+    Store Settings
+  </div>
+  <div class="md-margin-top-2 xb-shop__setting-bg">
+    <form [formGroup]="storeForm" (ngSubmit)="changeStore()" novalidate>
+      <div class="md-margin-top-1" fxLayout="column">
+        <div class="md-dark-secondary">
+          Store Name
+        </div>
+        <mat-form-field>
+          <input matInput formControlName="name">
+        </mat-form-field>
+        <div *ngIf="formErrors['name']" class="xb-input-error">
+          {{ formErrors['name'] }}
+        </div>
+        <div class="md-dark-secondary">
+          Store Description
+        </div>
+        <mat-form-field class="xb-shop__width-100">
+          <textarea matInput  formControlName="description"></textarea>
+        </mat-form-field>
+        <div class="md-dark-secondary">
+          Store Currency
+        </div>
+        <mat-form-field>
+          <mat-select name="currency" formControlName="currency">
+            <mat-option *ngFor="let currency of currencies" [value]="currency.code">
+              {{ currency.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="formErrors['currency']" class="xb-input-error">
+          {{ formErrors['currency'] }}
+        </div>
+        <div class="md-dark-secondary">
+          Store Country
+        </div>
+        <mat-form-field>
+          <mat-select name="country" formControlName="countryId">
+            <mat-option *ngFor="let country of countries" [value]="country.id">
+              {{ country.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="formErrors['countryId']" class="xb-input-error">
+          {{ formErrors['countryId'] }}
+        </div>
+        <div class="md-dark-secondary">
+          Your Store URL
+        </div>
+        <div class="md-margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+          <div>
+            https://www.socialcommer.com/store/
           </div>
-        </form>
+          <mat-form-field class="md-margin-left-2 xb-shop__width-1">
+            <input matInput formControlName="displayName">
+          </mat-form-field>
+        </div>
+        <div *ngIf="formErrors['displayName']" class="xb-input-error">
+          {{ formErrors['displayName'] }}
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="md-dark-secondary">
+            Store Status
+          </div>
+          <span class="md-margin-left-2 md-margin-right-2">Close</span>
+          <mat-slide-toggle
+            color="primary" formControlName="status">
+          </mat-slide-toggle>
+          <span class="md-margin-left-2 md-margin-right-2">Open</span>
+        </div>
+        <div *ngIf="formErrors['status']" class="xb-input-error">
+          {{ formErrors['status'] }}
+        </div>
+        <div class="xb-shop__margin-top" fxLayout="row" fxLayoutAlign="start center">
+          <button mat-raised-button color="primary" type="submit">SAVE CHANGE</button>
+        </div>
       </div>
-    </mat-tab>
-  </mat-tab-group>
+    </form>
+  </div>
 </div>
 <router-outlet></router-outlet>

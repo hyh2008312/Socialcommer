@@ -1,11 +1,22 @@
-<div class="xb-shop__product-navigation" fxLayout="row" fxLayoutAlign="start center">
+<div class="xb-shop__product-navigation" fxLayout="row" fxLayoutAlign="start center" *ngIf="status==0">
   <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="40">
     Blog Title
   </div>
   <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="20"
-       fxLayout="column" fxLayoutAlign="center center">Views</div>
+       fxLayout="column" fxLayoutAlign="center center">Total Views</div>
   <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="20"
-       fxLayout="column" fxLayoutAlign="center center">Date</div>
+       fxLayout="column" fxLayoutAlign="center center">Published Date</div>
+  <div class="xb-shop__product-title-1" fxFlex="20"
+       fxLayout="column" fxLayoutAlign="start center">Action</div>
+</div>
+<div class="xb-shop__product-navigation" fxLayout="row" fxLayoutAlign="start center" *ngIf="status==1">
+  <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="40">
+    Blog Title
+  </div>
+  <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="20"
+       fxLayout="column" fxLayoutAlign="center center">Total Views</div>
+  <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="20"
+       fxLayout="column" fxLayoutAlign="center center">Saved Date</div>
   <div class="xb-shop__product-title-1" fxFlex="20"
        fxLayout="column" fxLayoutAlign="start center">Action</div>
 </div>

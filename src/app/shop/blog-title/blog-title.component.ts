@@ -8,6 +8,8 @@ import { Input, Output, Component, OnInit} from '@angular/core';
 
 export class BlogTitleComponent implements OnInit {
 
+  @Input() status: number = 0;
+
   constructor(
   ) { }
 

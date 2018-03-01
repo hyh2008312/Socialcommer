@@ -172,8 +172,8 @@
     }
 
     &-image{
-      width: 160px;
-      height: 160px;
+      width: 120px;
+      height: 120px;
       border-radius: 4px;
       overflow: hidden;
       margin-right: 16px;
@@ -188,7 +188,7 @@
       }
     }
     &-width{
-      width: 160px;
+      width: 120px;
       margin-right: 16px;
     }
 
@@ -994,6 +994,23 @@
     height: 56px;
     position: relative;
     z-index: 1;
+  }
+
+  &__title-1{
+    min-width: 160px;
+    line-height: 48px;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+    @include media();
+    color: rgba(0,0,0,.87);
+  }
+
+  &__title-2{
+    font-size: 24px;
+    line-height: 48px;
+    position: relative;
+    color: rgba(0,0,0,.54);
   }
 }
 

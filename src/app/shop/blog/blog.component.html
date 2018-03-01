@@ -4,14 +4,14 @@
     <button mat-raised-button color="accent" >
       <div fxLayout="row" fxLayoutAlign="start center" routerLink="../blog/create">
         <i class="material-icons">add</i>
-        <span class="md-margin-left-1">Write a Blog Post</span>
+        <span class="md-margin-left-1">Create a Blog Post</span>
       </div>
     </button>
   </div>
   <mat-tab-group color="accent" (selectedTabChange)="changeBlog($event)"  [(selectedIndex)]="selectedIndex">
-    <mat-tab label="Published" >
+    <mat-tab label="Published Posts" >
       <div class="md-margin-top-2 ">
-        <app-blog-title></app-blog-title>
+        <app-blog-title [status]="0"></app-blog-title>
       </div>
       <div class="md-margin-top-2">
         <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of blog;let i = index;">
@@ -35,9 +35,9 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Drafts">
+    <mat-tab label="Saved Drafts">
       <div class="md-margin-top-2 ">
-        <app-blog-title></app-blog-title>
+        <app-blog-title [status]="1"></app-blog-title>
       </div>
       <div class="md-margin-top-2">
         <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of blog;let i = index;">

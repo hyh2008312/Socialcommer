@@ -31,7 +31,7 @@ export class ProductItemComponent implements OnInit {
     self.userService.store.subscribe((data) => {
       if(data) {
         self.storeId = data.id;
-        self.storeCurrency = data.currency;
+        self.storeCurrency = data.currency.toUpperCase();
       }
     });
   }

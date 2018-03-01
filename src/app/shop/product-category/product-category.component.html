@@ -1,5 +1,8 @@
 <div class="xb-shop__product md-padding-top-2 md-padding-right-2 md-padding-left-2 md-margin-bottom-2">
   <div class="xb-shop__header"></div>
+  <div class="xb-category__title-1" fxLayout="row" fxLayoutAlign="start center">
+    Manage Your Categories
+  </div>
   <div class="xb-shop__product-buttons md-padding-bottom-1">
     <button mat-raised-button color="accent" >
       <div fxLayout="row" fxLayoutAlign="start center" (click)="openDialog()">
@@ -8,29 +11,25 @@
       </div>
     </button>
   </div>
-  <mat-tab-group color="accent">
-    <mat-tab label="Manage Your Categories">
-      <div class="md-margin-top-2 ">
-        <app-category-title></app-category-title>
+  <div class="md-margin-top-2 ">
+    <app-category-title></app-category-title>
+  </div>
+  <div class="md-margin-top-2">
+    <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of category;let i = index;">
+      <app-category-item [category]="item" [index]="i" (categoryChange)="categoryChange($event)"></app-category-item>
+    </div>
+    <mat-paginator [length]="length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="changePage($event, 0)"
+                   *ngIf="category && category.length > 0">
+    </mat-paginator>
+    <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+         *ngIf="category && category.length <= 0">
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <img src="https://media.xberts.com/collector/source/web/pic/pic-no-product.png">
+        <span class="md-dark-secondary">You haven't published any categories yet.</span>
       </div>
-      <div class="md-margin-top-2">
-        <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of category;let i = index;">
-          <app-category-item [category]="item" [index]="i" (categoryChange)="categoryChange($event)"></app-category-item>
-        </div>
-        <mat-paginator [length]="length"
-                       [pageSize]="pageSize"
-                       [pageSizeOptions]="pageSizeOptions"
-                       (page)="changePage($event, 0)"
-                       *ngIf="category && category.length > 0">
-        </mat-paginator>
-        <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
-             *ngIf="category && category.length <= 0">
-          <div fxLayout="column" fxLayoutAlign="center center">
-            <img src="https://media.xberts.com/collector/source/web/pic/pic-no-product.png">
-            <span class="md-dark-secondary">You haven't published any categories yet.</span>
-          </div>
-        </div>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+    </div>
+  </div>
 </div>
