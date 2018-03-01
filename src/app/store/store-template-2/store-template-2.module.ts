@@ -16,6 +16,10 @@ import {StoreFootComponent} from './store-foot/store-foot.component';
 import {StoreDetailPictureComponent} from './store-detail-picture/store-detail-picture.component';
 import {StoreListDetailComponent} from './store-detail/store-list-detail.component';
 import {StoreShareButtonComponent} from './store-share-button/store-share-button.component';
+import {AboutComponent} from "./about/about.component";
+import {PrivacyComponent} from "./privacy/privacy.component";
+import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
+import {FaqComponent} from './faq/faq.component';
 
 @NgModule({
   imports: [
@@ -35,7 +39,11 @@ import {StoreShareButtonComponent} from './store-share-button/store-share-button
     StoreFootComponent,
     StoreDetailPictureComponent,
     StoreListDetailComponent,
-    StoreShareButtonComponent
+    StoreShareButtonComponent,
+    AboutComponent,
+    PrivacyComponent,
+    ReturnPolicyComponent,
+    FaqComponent
   ],
   entryComponents: [],
   providers: []

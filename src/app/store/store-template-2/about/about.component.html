@@ -1,0 +1,89 @@
+<div>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push">
+      <div class="xb-store-template__side_container">
+        <app-store-template-2-navigation [type]="5" [displayName]="displayName"></app-store-template-2-navigation>
+      </div>
+    </mat-sidenav>
+    <div class="xb-store-template__100vh" fxLayout="row" fxLayoutAlign="start stretch">
+      <div fxFlex fxLayout="column">
+        <div class="xb-store-template__collection-background" [ngStyle]="{'background-color':'white','height':'100px'}">
+          <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
+            <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-store-template__category-store-name" fxFlex="none">
+                {{contextList.nameTag}}
+              </div>
+              <app-store-template-2-navigation [isBlack]="true" [type]="5" [displayName]="displayName"
+                                               [productNumber]="productNumber" fxFlex></app-store-template-2-navigation>
+            </div>
+          </div>
+          <!--手机移动端界面显示-->
+          <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
+               fxShow.xs="true">
+            <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-left':'16px'}"
+               (click)="sidenav.open()">menu</i>
+            <div class="xb-store-template__store-name" [ngStyle]="{'color': 'black'}">
+              {{contextList.nameTag}}
+            </div>
+            <div class="xb-store-template__cart-position" (click)="jumpCart()">
+              <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color': 'black'}"></i>
+              <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+                productNumber}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xb-store-template__about-bg">
+          <div class="xb-store-about__content">
+            <div class="xb-store-about__content-title">Why Shop With Us</div>
+            <div class="xb-store-about__content-subtitle md-margin-top-3">Welcome!</div>
+            <div class="xb-store-about__content-des md-margin-top-1">This online store is run by
+              <span>{{ownerFirstName}} {{ownerLastName}}</span> and powered by SocialCommer with
+              the aim of providing you with the best
+              product recommendations!
+            </div>
+            <div class="xb-store-about__content-subtitle md-margin-top-3">SocialCommer’s Authorized Store</div>
+            <div class="xb-store-about__content-des md-margin-top-1">
+              The store {{contextList.nameTag || store.name}} is a member of SocialCommer’s Global Seller Network – which is the
+              leading ecommerce platform for brands and influencers. All the merchandises are authorized to sell by SocialCommer
+              and they’re 100% authentic
+              and genuine!
+            </div>
+            <div class="xb-store-about__content-subtitle md-margin-top-3">Why Shop With Us?</div>
+            <div class="xb-store-about__content-subtitle-2 md-margin-top-1">Incredibly Affordable Price</div>
+            <div class="xb-store-about__content-des">
+              We source all the products directly from brands and manufacturers.
+              By cutting out the middle man, you get the best price!
+            </div>
+            <div class="xb-store-about__content-subtitle-2 md-margin-top-2">Strict Quality Standards</div>
+            <div class="xb-store-about__content-des">
+              We set a strict qualification standard for our suppliers, so you never have to worry about the product quality.
+            </div>
+            <div class="xb-store-about__content-subtitle-2 md-margin-top-2">Customer Satisfaction Guarantee</div>
+            <div class="xb-store-about__content-des">
+              You may return all items purchased from our store within 30 days of delivery.
+            </div>
+            <div class="xb-store-about__content-subtitle-2 md-margin-top-2">Exclusive Limited-Time Offers</div>
+            <div class="xb-store-about__content-des">
+              We offer lightning deals and group buying offers every week to help you save big.
+            </div>
+            <div class="xb-store-about__content-subtitle-2 md-margin-top-2">Dedicated Customer Support</div>
+            <div class="xb-store-about__content-des">
+              Our customer service team will respond to your issues within 1-2 business days.
+            </div>
+            <div class="xb-store-about__content-subtitle-2 md-margin-top-2">Protecting Your Privacy</div>
+            <div class="xb-store-about__content-des">
+              We respect and protect our customer’s privacy. For more information, please see our Privacy Policy.
+            </div>
+          </div>
+        </div>
+        <!--网页底部-->
+        <div>
+          <app-store-template-2-store-foot
+            [displayName]="displayName"
+            [storeName]="(contextList.nameTag || store.name)"></app-store-template-2-store-foot>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-container>
+</div>

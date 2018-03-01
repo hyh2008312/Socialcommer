@@ -84,6 +84,22 @@ export class StoreNavigationComponent implements OnInit {
         }
         ];
         break;
+      case 5:
+        this.contents = [{
+          text: 'HOME',
+          link: '../',
+          exact: true
+        }, {
+          text: 'PRODUCTS',
+          link: '../list',
+          exact: false
+        }, {
+          text: 'ABOUT ME',
+          link: '../about_me',
+          exact: true
+        }
+        ];
+        break;
       default:
         this.contents = [{
           text: 'HOME',

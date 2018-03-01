@@ -1,0 +1,80 @@
+<div>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push">
+      <div class="xb-store-template__side_container">
+        <app-store-template-2-navigation [type]="5" [displayName]="displayName"></app-store-template-2-navigation>
+      </div>
+    </mat-sidenav>
+    <div class="xb-store-template__100vh" fxLayout="row" fxLayoutAlign="start stretch">
+      <div fxFlex fxLayout="column">
+        <div class="xb-store-template__collection-background" [ngStyle]="{'background-color':'white','height':'100px'}">
+          <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
+            <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-store-template__category-store-name" fxFlex="none">
+                {{contextList.nameTag}}
+              </div>
+              <app-store-template-2-navigation [isBlack]="true" [type]="5" [displayName]="displayName"
+                                               [productNumber]="productNumber" fxFlex></app-store-template-2-navigation>
+            </div>
+          </div>
+          <!--手机移动端界面显示-->
+          <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
+               fxShow.xs="true">
+            <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-left':'16px'}"
+               (click)="sidenav.open()">menu</i>
+            <div class="xb-store-template__store-name" [ngStyle]="{'color': 'black'}">
+              {{contextList.nameTag}}
+            </div>
+            <div class="xb-store-template__cart-position" (click)="jumpCart()">
+              <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color': 'black'}"></i>
+              <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+                productNumber}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xb-store-template__about-bg">
+          <div class="xb-store-about__content">
+            <div class="xb-store-about__content-title">Return Policy</div>
+            <div class="xb-store-about__content-subtitle md-margin-top-3">What is the Return Policy?</div>
+            <div class="xb-store-about__content-des md-margin-top-1">
+              You may request a refund or exchange on any item that is not as described within 30 days of delivery, and you will
+              receive a full refund or a replacement for the returned item once we receive the package. <br>
+              Please note that any shipping fee of the returned package will not be included in the refund. The customer will be
+              responsible for the return shipping cost.<br>
+              If your order arrives incomplete, damaged or defective, please send us a photo of the damage by contacting our
+              customer support within 3 days of receiving the shipment. If you do not report this to us within the 3 day period,
+              we may not be able to honor your claim. <br>
+              The following conditions are not eligible for refund or exchange: 
+              <ul>
+                <li>
+                  Returns received after 30 days of delivery.
+                </li>
+                <li>
+                  Returned items received in worn or incomplete condition.
+                </li>
+              </ul>
+              The refunds can only be issued to your original payment method.
+            </div>
+
+            <div class="xb-store-about__content-subtitle md-margin-top-3">How does the Return Policy Work?</div>
+            <div class="xb-store-about__content-des md-margin-top-2">
+              Step1:  Go to My Order section and access your order history with your email and order number.<br>
+              Step2: Select the item you want to return and initial your return request.<br>
+              Step3: Our customer service will process your request and send you a Return Authorization Number and return
+              shipping address.<br>
+              Step4: Please include the RAN number into your package and send them back to our warehouse.<br>
+              Step5: We will process the refund or exchange within 5 business days once we receive the returned package.
+            </div>
+          </div>
+        </div>
+        <!--网页底部-->
+        <div>
+          <app-store-template-2-store-foot
+            [displayName]="displayName"
+            [storeName]="(contextList.nameTag || store.name)"></app-store-template-2-store-foot>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-container>
+</div>
