@@ -34,15 +34,21 @@
           </div>
         </div>
         <div class="xb-store-template__about-bg">
-          <div class="xb-store-about__content">
+          <div class="xb-store-about__content" fxShow="true" fxShow.xs="false">
             <div class="xb-store-about__content-title">FAQ</div>
             <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start start">
               <div class="xb-store-about__faq-left" fxFlex="none">
-                <div class="xb-store-about__faq-left-title" [ngClass]="{'active':questionNumber===1}" (click)="changeQuestionNumber(1)">My Order FAQs</div>
-                <div class="xb-store-about__faq-left-title" [ngClass]="{'active':questionNumber===2}" (click)="changeQuestionNumber(2)">Shipping FAQs</div>
-                <div class="xb-store-about__faq-left-title" [ngClass]="{'active':questionNumber===3}" (click)="changeQuestionNumber(3)">Return & Exchange FAQs
+                <div class="xb-store-about__faq-left-title" [ngClass]="{'active':questionNumber===1}"
+                     (click)="changeQuestionNumber(1)">My Order FAQs
                 </div>
-                <div class="xb-store-about__faq-left-title" [ngClass]="{'active':questionNumber===4}" (click)="changeQuestionNumber(4)">Customer Support FAQs
+                <div class="xb-store-about__faq-left-title" [ngClass]="{'active':questionNumber===2}"
+                     (click)="changeQuestionNumber(2)">Shipping FAQs
+                </div>
+                <div class="xb-store-about__faq-left-title" [ngClass]="{'active':questionNumber===3}"
+                     (click)="changeQuestionNumber(3)">Return & Exchange FAQs
+                </div>
+                <div class="xb-store-about__faq-left-title" [ngClass]="{'active':questionNumber===4}"
+                     (click)="changeQuestionNumber(4)">Customer Support FAQs
                 </div>
               </div>
               <div class="xb-store-about__faq-right">
@@ -169,7 +175,135 @@
                 </div>
               </div>
             </div>
-
+          </div>
+          <div class="xb-store-about__content" [ngStyle]="{'padding-left':'16px','padding-right':'16px'}" fxShow="false"
+               fxShow.xs="true">
+            <div class="xb-store-about__content-title">FAQ</div>
+            <div>
+              <div class="xb-store-about__mobile-title">My Order FAQs</div>
+              <div class="xb-store-about__content-subtitle">How do I check on the status of my order?</div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                Once your order is placed, you will get an order confirmation email including an “Order Tracking Number”.
+                <br>
+                Click on My Order on the menu bar, and enter your Order Tracking Number and email address to access your
+                order information.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">My order status is still under processing, when
+                will it be shipped?
+              </div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                It takes between 1-5 business days for your items to be packed and shipped. You will receive an email
+                notification from us when your order is shipped.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">Can I change the shipping address after placing
+                an order?
+              </div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                Yes, you can change your shipping address before the order has shipped. Please note that it’s no longer
+                possible to change the address once your order has shipped.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">Can I cancel my order after I place it?
+              </div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                If you want to cancel your order, please go to “My Order” section. For any items that haven’t been shipped,
+                a “Cancel Order” button will appear. After clicking this button, your order will be canceled and no charges
+                will occur.
+              </div>
+            </div>
+            <div>
+              <div class="xb-store-about__mobile-title">Shipping FAQs</div>
+              <div class="xb-store-about__content-subtitle">How can I track my package?</div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                If you want to check the delivery status of your package, you can find the tracking information by visiting
+                “My Order” page. You will also receive a shipping notification email from us, in which contains your order
+                tracking information.<br>
+                Please note, for some free shipping items, there may not be tracking information available.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">How much do you charge for shipping?</div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                The shipping cost varies depending on the size, weight and destination of your order. We will strive to pick
+                the best shipping methods for you.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">Where does my order ship from?</div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                We source products from brands and manufacturers from across the world, so your order could ship from a
+                variety of locations depending on the suppliers.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">What if I received a shipping email but the
+                tracking link doesn’t work?
+              </div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                Emails get sent as soon as your package is shipped. Please allow 12-24 hours for the shipping carriers to
+                update the tracking status in their system.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">Will my package be charged custom duty and
+                import charges?
+              </div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                In some cases, you may be charged for handling fees and taxes as your order passes through customs. Any
+                charge on a package must be paid by the recipient. We have no control over these changes and cannot predict
+                the amount of it, as customs and taxation policies vary widely from country to country.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">What if my order arrives incomplete, damaged, or
+                defective?
+              </div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                We offer full refund or free exchange for any incomplete, damaged or defective orders. If you encountered
+                these issues, please go to “My Order” section right away where you can contact our customer support team.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">What if my order has not arrived by the expected
+                delivery date?
+              </div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                Sometimes there will be a few days’ delay for some orders, please do not worry if the tracking records are
+                normal and updating.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">What if my package say it’s been delivered but I
+                don’t have it?
+              </div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                Once your package is marked as delivered by the shipping carrier, we’re no longer responsible for any lost
+                or stolen goods. But if the parcel turns out missing, we will issue a full refund to you.
+              </div>
+            </div>
+            <div>
+              <div class="xb-store-about__mobile-title">Return & Exchange FAQs</div>
+              <div class="xb-store-about__content-subtitle">What is your return policy?</div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                You may return any item within 30 days of delivery. We will issue you a full refund or send you a new
+                replacement once we receive your returned package. Please note that any returned items must be in an unused
+                condition.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">How do I return my package?</div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                <span class="xb-bold">Step1:</span> Initiate your return request under “My Order” section.<br>
+                <span class="xb-bold">Step2:</span> Customer service will send you a RAN (Return Authorization Number).<br>
+                <span class="xb-bold">Step3:</span> You pack up the item and ship it back to a specific warehouse
+                address.<br>
+                <span class="xb-bold">Step4:</span> Once your package is returned, we will send you the refund or exchanged
+                item within 3
+                business days.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">Do you cover the shipping fee for item return?
+              </div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                Please note that any shipping fee of the returned package will not be included in the refund.
+              </div>
+              <div class="xb-store-about__content-subtitle md-margin-top-3">Where is my refund?</div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                You can check the refund status by visiting “My Order” page and checking the specific order. Your refund
+                will be sent to your original payment method. Please allow 3-7 business days for the refund to appear in
+                your account.
+              </div>
+            </div>
+            <div>
+              <div class="xb-store-about__mobile-title">Customer Support FAQs</div>
+              <div class="xb-store-about__content-subtitle">How to get help with my order?</div>
+              <div class="xb-store-about__content-des md-margin-top-1">
+                For assistance, please go to “My Order” section where you can access your order information and contact our
+                customer support. Please make sure to have order tracking number and email address.
+              </div>
+            </div>
 
           </div>
         </div>
