@@ -23,7 +23,7 @@ export class ToDoListComponent implements OnInit {
     let self = this;
     self.shopService.templateUid.subscribe((data) => {
       if(data) {
-        self.editRouter = '/shop/store/templates/edit' + (data==1? '' : '/' + data);
+        self.editRouter = '/shop/templates/edit' + (data==1? '' : '/' + data);
       }
     });
 

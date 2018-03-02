@@ -48,9 +48,6 @@ export class LeftSideNavigationComponent implements OnInit {
       text: 'Edit Store',
       router: null
     }, {
-      text: 'Templates',
-      router: './store/templates'
-    }, {
       text: 'Settings',
       router: './store/settings'
     }],
@@ -94,26 +91,36 @@ export class LeftSideNavigationComponent implements OnInit {
     router:  './report',
     isActive: false
   }, {
-      id: 6,
-      icon: 'icon-ic-new-hand',
-      text: 'To-do List',
-      subContent: [{
-        text: '',
-        router: ''
-      }],
-      router: './todolist',
-      isActive: false
-    }, {
-      id: 7,
-      icon: 'icon-ic-pc-set',
-      text: 'Account',
-      subContent: [{
-        text: '',
-        router: ''
-      }],
-      router: './settings',
-      isActive: false
-    }];
+    id: 6,
+    icon: 'icon-ic-new-hand',
+    text: 'Templates',
+    subContent: [{
+      text: '',
+      router: ''
+    }],
+    router: './templates',
+    isActive: false
+  }, {
+    id: 7,
+    icon: 'icon-ic-new-hand',
+    text: 'To-do List',
+    subContent: [{
+      text: '',
+      router: ''
+    }],
+    router: './todolist',
+    isActive: false
+  }, {
+    id: 8,
+    icon: 'icon-ic-pc-set',
+    text: 'Account',
+    subContent: [{
+      text: '',
+      router: ''
+    }],
+    router: './settings',
+    isActive: false
+  }];
 
   editRouter: string = './store/templates/edit';
 
@@ -126,7 +133,7 @@ export class LeftSideNavigationComponent implements OnInit {
     let self = this;
     this.shopService.templateUid.subscribe((data) => {
       if (data) {
-        self.editRouter = './store/templates/edit' + (data == 1 ? '' : '/' + data);
+        self.editRouter = './templates/edit' + (data == 1 ? '' : '/' + data);
       }
     });
     let url = this.router.routerState.snapshot['url'].split('/shop');

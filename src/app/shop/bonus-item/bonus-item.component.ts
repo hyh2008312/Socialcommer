@@ -10,7 +10,7 @@ import {UserService} from  '../../shared/services/user/user.service';
 
 export class BonusItemComponent implements OnInit {
 
-  @Input() monthSale: any = 2400;
+  @Input() monthSale: any = 3000;
 
   mySale: any = 0;
 

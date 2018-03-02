@@ -32,7 +32,7 @@ const routes: Routes = [
       {
         path: 'store/settings', component: StoreComponent
       }, {
-        path: 'store/templates', component: StoreFrontComponent,
+        path: 'templates', component: StoreFrontComponent,
         children: [
           {
             path: 'preview', component: StorePreviewComponent,

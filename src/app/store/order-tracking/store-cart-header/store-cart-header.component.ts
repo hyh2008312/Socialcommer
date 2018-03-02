@@ -12,10 +12,11 @@ import { StoreService } from '../../store.service';
 export class StoreCartHeaderComponent{
 
   homeLink: string = '';
-  @Input() productNumber: number;
+  productNumber: number;
   displayName: string = '';
 
   constructor(
+    private router: Router,
     private storeService: StoreService
   ) {
 
@@ -24,6 +25,15 @@ export class StoreCartHeaderComponent{
         let uid = data.templateId;
         this.homeLink = `/store/${data.displayName}/${uid}`;
         this.displayName = data.displayName;
+      }
+    });
+
+    this.storeService.cart.subscribe((data) => {
+      if (data && data.length > 0) {
+        this.productNumber = 0;
+        for (let item of data) {
+          this.productNumber += parseInt(item.number);
+        }
       }
     });
   }

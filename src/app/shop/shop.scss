@@ -879,7 +879,7 @@
       border-radius: 10px;
       cursor: pointer;
       background-color: $whiteColor;
-      margin-bottom: 16px;
+      margin: 16px;
       &:hover{
         @include box-shadow(0 0 3px 0 rgba(0,0,0,.19))
       }

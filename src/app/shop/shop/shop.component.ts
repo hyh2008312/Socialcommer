@@ -30,11 +30,12 @@ export class ShopComponent implements OnInit {
           if (data.store[0].template != null) {
             let templateId = data.store[0].template.templateId;
             self.shopService.setTemplateUId(templateId);
+          } else {
+            self.shopService.setTemplateUId(5);
           }
           self.shopService.getMultiTemplate().then((data) => {
             self.shopService.setTemplateList(data);
           });
-
         }
       }
     });

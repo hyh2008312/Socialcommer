@@ -364,7 +364,7 @@ export class MainPageComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate(['/shop/store/templates']);
+    this.router.navigate(['/shop/dashboard']);
   }
 
   submitTemplate() {
@@ -409,7 +409,7 @@ export class MainPageComponent implements OnInit {
           self.shopService.setTemplateList(self.templateList);
         });
         self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/store/templates']);
+        self.router.navigate(['/shop/dashboard']);
       });
     } else {
       let options = {
@@ -447,7 +447,7 @@ export class MainPageComponent implements OnInit {
           self.shopService.setTemplateList(self.templateList);
         });
         self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/store/templates']);
+        self.router.navigate(['/shop/dashboard']);
       });
     }
   }
