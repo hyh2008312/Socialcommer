@@ -16,6 +16,7 @@ export class FaqComponent implements OnInit {
   store: Store = new Store();
   contextList: any = {};
   imageList: any = {};
+  questionNumber: number = 1;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -47,5 +48,8 @@ export class FaqComponent implements OnInit {
 
       }
     });
+  }
+  changeQuestionNumber(num: number): void {
+    this.questionNumber = num;
   }
 }
