@@ -18,7 +18,7 @@ export class StoreBlogDetailComponent implements OnInit {
   blog: Blog = new Blog;
   isHidden: boolean = true;
   sub: any;
-  subOther: any
+  subOther: any;
 
   store: Store = new Store();
   ownerId: any;

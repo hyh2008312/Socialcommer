@@ -27,6 +27,13 @@ export class StoreBlogComponent implements OnInit {
       if (data) {
         self.store = data;
         self.ownerId = data.ownerId;
+
+        self.storeService.pageView({
+          pt: 'store',
+          vt: new Date().getTime(),
+          sid: data.id
+        });
+
         self.queryBlog();
       }
     });
@@ -49,7 +56,7 @@ export class StoreBlogComponent implements OnInit {
         self.nextPage = true;
       }
       self.blog = self.blog.concat(data.results);
-      if (data.next == null) {
+      if(data.next == null) {
         self.nextPage = false;
       } else {
         self.nextPage = true;

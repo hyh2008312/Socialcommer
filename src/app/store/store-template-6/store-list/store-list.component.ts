@@ -54,9 +54,9 @@ export class StoreListComponent implements OnInit, OnDestroy {
               shareImage: data.imageUrl
             });
             self.storeService.pageView({
-              pageType: 'store',
-              viewTime: new Date().getTime(),
-              storeId: data.id
+              pt: 'store',
+              vt: new Date().getTime(),
+              sid: data.id
             });
             self.queryProduct();
           }

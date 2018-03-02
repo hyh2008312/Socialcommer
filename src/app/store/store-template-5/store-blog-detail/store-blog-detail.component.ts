@@ -18,7 +18,7 @@ export class StoreBlogDetailComponent implements OnInit {
   blog: Blog = new Blog;
   isHidden: boolean = true;
   sub: any;
-  subOther: any
+  subOther: any;
 
   store: Store = new Store();
   ownerId: any;
@@ -31,24 +31,38 @@ export class StoreBlogDetailComponent implements OnInit {
               private activatedRouter: ActivatedRoute,
               private storeService: StoreService) {
     let self = this;
-    this.subOther = this.activatedRouter.params.subscribe(params => {
-      console.log(params);
-      self.id = params['id'];
-      this.storeService.getBlogDetail(self.id).then((data) => {
-        self.blog = data;
-        self.text = data.title;
-        self.storeService.addTitleDescription({
-          title: data.title,
-          description: data.description,
-          shareImage: data.cover
+    self.sub = this.storeService.store.subscribe((data) => {
+      if (data) {
+        self.store = data;
+        let storeId = data.id;
+        self.storeService.pageView({
+          pt: 'store',
+          vt: new Date().getTime(),
+          sid: storeId
         });
+        self.ownerId = data.ownerId;
+        self.queryBlog();
+        self.subOther = this.activatedRouter.params.subscribe(params => {
+          self.id = params['id'];
+          this.storeService.getBlogDetail(self.id).then((data) => {
+            self.blog = data;
+            self.text = data.title;
+            self.storeService.addTitleDescription({
+              title: data.title,
+              description: data.description,
+              shareImage: data.cover
+            });
 
-        self.storeService.pageViewBlog({
-          viewTime: new Date().getTime(),
-          blogId: data.id
+            self.storeService.pageViewBlog({
+              vt: new Date().getTime(),
+              bid: data.id,
+              sid: storeId
+            });
+          });
         });
-      });
-    })
+      }
+    });
+
   }
 
   changeIsShowShare(isShowShare: any) {
@@ -58,14 +72,6 @@ export class StoreBlogDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.shareLink = window.location.href;
-    let self = this;
-    self.sub = this.storeService.store.subscribe((data) => {
-      if (data) {
-        self.store = data;
-        self.ownerId = data.ownerId;
-        self.queryBlog();
-      }
-    });
   }
 
 

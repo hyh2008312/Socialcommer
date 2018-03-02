@@ -56,9 +56,9 @@ export class HomePageComponent implements OnInit {
           shareImage: data.imageUrl
         });
         self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
+          pt: 'store',
+          vt: new Date().getTime(),
+          sid: data.id
         });
 
       }
