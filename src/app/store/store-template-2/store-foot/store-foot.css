@@ -1,22 +1,26 @@
 /*
-Error: Invalid CSS after "...ress-bar-buffer": expected "{", was ""
-        on line 142 of ../../../styles/utils/_index.scss
+Error: Invalid CSS after "$accen": expected ":", was "$dangerColor: #..."
+        on line 3 of ../../../styles/utils/_color.scss
+        from line 2 of ../../../styles/utils/_index.scss
         from line 1 of store-foot.scss
 
-137: }
-138: .mat-chip:not(.mat-basic-chip){
-139:   margin: 0 8px 3px 0;
-140: }
-141: .mat-progress-bar.mat-accent .mat-progress-bar-buffer
+1: $primaryColor: #00bdd6;
+2: $accen
+3: $dangerColor: #e53935;
+4: $strikingColor: #ff4081;
+5: $successColor: #42ab34;
+6: $orangeColor: #ffc500;
+7: $purpleColor: #663fb5;
+8: $redColor: #e53715;
 
 Backtrace:
-../../../styles/utils/_index.scss:142
+../../../styles/utils/_color.scss:3
+../../../styles/utils/_index.scss:2
 store-foot.scss:1
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1137:in `expected'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1132:in `tok!'
-D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:665:in `block'
-D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:658:in `ruleset'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:628:in `variable'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:684:in `block_child'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:677:in `block_contents'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:125:in `stylesheet'
@@ -24,6 +28,19 @@ D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:406:in `_to_tree'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:312:in `to_tree'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:326:in `block in visit_import'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:88:in `block in with_import'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:88:in `with_import'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:328:in `block (2 levels) in visit_import'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:328:in `map'
+D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:328:in `block in visit_import'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:88:in `block in with_import'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:88:in `with_import'
@@ -65,4 +82,4 @@ D:/Ruby/Ruby23-x64/bin/scss:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"...ress-bar-buffer\": expected \"{\", was \"\"\A         on line 142 of ../../../styles/utils/_index.scss\A         from line 1 of store-foot.scss\A \A 137: }\A 138: .mat-chip:not(.mat-basic-chip){\A 139:   margin: 0 8px 3px 0;\A 140: }\A 141: .mat-progress-bar.mat-accent .mat-progress-bar-buffer"; }
+  content: "Error: Invalid CSS after \"$accen\": expected \":\", was \"$dangerColor: #...\"\A         on line 3 of ../../../styles/utils/_color.scss\A         from line 2 of ../../../styles/utils/_index.scss\A         from line 1 of store-foot.scss\A \A 1: $primaryColor: #00bdd6;\A 2: $accen\A 3: $dangerColor: #e53935;\A 4: $strikingColor: #ff4081;\A 5: $successColor: #42ab34;\A 6: $orangeColor: #ffc500;\A 7: $purpleColor: #663fb5;\A 8: $redColor: #e53715;"; }

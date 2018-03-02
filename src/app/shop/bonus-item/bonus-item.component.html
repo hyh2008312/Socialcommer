@@ -1,7 +1,34 @@
-<div class="xb-bonus__item" fxLayout="row" fxLayoutAlign="start center"
-     *ngFor="let item of bonusList;">
-  <div class="md-align-center" fxFlex="20">{{item.bonus | currency: currency: true}}</div>
-  <div class="md-align-center" fxFlex="25">{{item.sales | currency: currency: true}}</div>
-  <div class="md-align-center" fxFlex="25">{{monthSale | currency: currency: true}}</div>
-  <div class="md-align-center" fxFlex="30">{{(item.sales - monthSale > 0? item.sales - monthSale: 'Achieved') | currency: currency: true}}</div>
+<div class="xb-bonus__bg">
+  <div class="xb-bonus__item-bg" >
+    <ng-container *ngFor="let item of bonusList;let i = index;" >
+      <div class="xb-bonus__item xb-bonus__item-{{i}}" fxLayout="row" fxLayoutAlign="start center" *ngIf="i >= targetIndex;">
+        <div class="xb-bonus__item-{{i}}-line" fxFlex></div>
+        <div class="xb-bonus__sales" fxLayout="column" fxLayoutAlign="start center" fxFlex="none">
+          <i class="iconfontXberts icon-pic-lock" *ngIf="item.sales > monthSale "></i>
+          <i class="iconfontXberts icon-pic-unlock" *ngIf="item.sales <= monthSale "></i>
+          <div class="xb-bonus__text-1 xb-bold md-margin-top-1">{{item.bonus|currency:currency:true}}</div>
+          <div class="xb-bonus__text" fxLayout="column" fxLayoutAlign="start center" >
+            Bonus
+          </div>
+          <div class="xb-bonus__line-1"></div>
+          <div class="xb-bonus__text-1 xb-bold md-margin-top-1">{{item.sales|currency:currency:true}}</div>
+          <div class="xb-bonus__text" fxLayout="column" fxLayoutAlign="start center">
+            Target
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="xb-bonus__target" fxLayout="row" fxLayoutAlign="start start">
+      <div class="xb-bonus__target-line" fxFlex></div>
+      <div class="xb-bonus__sales" fxLayout="column" fxLayoutAlign="start center" fxFlex="none">
+        <div class="xb-bonus__target-line-1"></div>
+        <div class="xb-bonus__text" fxLayout="row" fxLayoutAlign="start center">
+          <span class="md-margin-left-1 xb-bold">{{monthSale|currency:currency:true}}</span>
+        </div>
+        <div class="xb-bonus__text-1">Month-to-Date Sales</div>
+      </div>
+    </div>
+  </div>
+
 </div>
