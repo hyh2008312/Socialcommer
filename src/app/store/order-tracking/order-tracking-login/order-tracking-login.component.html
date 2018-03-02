@@ -13,7 +13,7 @@
         <div class="xb-order-tracking__container unicorn-dark-theme">
           <div class="xb-order-tracking__title-1">Track Your Orders & Contact Support</div>
           <div class="md-margin-top-2">
-            Please enter your Order Tracking Number and the Email Address you used during checkout to get help with your order.
+            Please enter your Guest Order Number and the Email Address you used during checkout to get help with your order.
           </div>
           <div class="md-margin-top-1"><span class="xb-bold">·</span> Track Your Order Status</div>
           <div><span class="xb-bold">·</span> Change Your Shipping Address</div>
@@ -29,7 +29,7 @@
               {{ formErrors['email'] }}
             </div>
             <mat-form-field>
-              <input matInput type="text" placeholder="Enter Your Order Tracking Number" formControlName="number">
+              <input matInput type="text" placeholder="Enter Your Guest Order Number" formControlName="number">
             </mat-form-field>
             <div *ngIf="formErrors['number']" class="xb-input-error">
               {{ formErrors['number'] }}
