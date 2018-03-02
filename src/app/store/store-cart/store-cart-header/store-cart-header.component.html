@@ -1,21 +1,21 @@
-<div class="xb-order-tracking__navigation" fxLayout="row" fxLayoutAlign="start center">
+<div class="xb-cart__navigation" fxLayout="row" fxLayoutAlign="start center">
   <div class="xb-cart__navigation-icon-left" fxHide.gt-xs>
     <i class="material-icons">menu</i>
   </div>
-  <div class="xb-order-tracking__navigation-title xb-pointer" routerLink="{{homeLink}}" fxHide.xs>
+  <div class="xb-cart__navigation-title xb-pointer" routerLink="{{homeLink}}" fxHide.xs>
     Store Name
   </div>
-  <div class="xb-order-tracking__navigation-title xb-pointer"
+  <div class="xb-cart__navigation-title xb-pointer"
        fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs fxFlex>
     Store Name
   </div>
   <div fxFlex></div>
-  <div class="xb-order-tracking__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
-    <i class="iconfontXberts icon-pic-order1 xb-order-tracking__icon md-margin-right-4"
+  <div class="xb-cart__order-and-cart" fxLayout="row" fxLayoutAlign="start center">
+    <i class="iconfontXberts icon-pic-order1 xb-cart__icon md-margin-right-4"
        (click)="jumpOrder()"></i>
-    <div class="xb-order-tracking__position" (click)="jumpCart()">
-      <i class="iconfontXberts icon-pic-cart1 xb-order-tracking__icon"></i>
-      <div class="xb-order-tracking__circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+    <div class="xb-cart__position" (click)="jumpCart()">
+      <i class="iconfontXberts icon-pic-cart1 xb-cart__icon"></i>
+      <div class="xb-cart__circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
         productNumber}}
       </div>
     </div>
