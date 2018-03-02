@@ -9,8 +9,15 @@
        fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs fxFlex>
     Store Name
   </div>
-  <div fxFlex fxHide.xs></div>
-  <div class="xb-order-tracking__navigation-icon" *ngIf="cartLink != ''">
-    <i class="iconfontXberts icon-ic-cart xb-pointer" routerLink="{{cartLink}}"></i>
+  <div fxFlex></div>
+  <div class="xb-order-tracking__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
+    <i class="iconfontXberts icon-pic-order1 xb-order-tracking__icon md-margin-right-4"
+       (click)="jumpOrder()"></i>
+    <div class="xb-order-tracking__position" (click)="jumpCart()">
+      <i class="iconfontXberts icon-pic-cart1 xb-order-tracking__icon"></i>
+      <div class="xb-order-tracking__circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+        productNumber}}
+      </div>
+    </div>
   </div>
 </div>

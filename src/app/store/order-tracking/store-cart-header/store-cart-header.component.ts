@@ -12,7 +12,8 @@ import { StoreService } from '../../store.service';
 export class StoreCartHeaderComponent{
 
   homeLink: string = '';
-  @Input() cartLink: string = '';
+  @Input() productNumber: number;
+  displayName: string = '';
 
   constructor(
     private storeService: StoreService
@@ -22,9 +23,17 @@ export class StoreCartHeaderComponent{
       if(data) {
         let uid = data.templateId;
         this.homeLink = `/store/${data.displayName}/${uid}`;
+        this.displayName = data.displayName;
       }
     });
   }
 
+  jumpCart(): void {
+    this.router.navigate([`./store/${this.displayName}/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
+  }
 
 }
