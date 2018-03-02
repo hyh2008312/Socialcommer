@@ -18,11 +18,6 @@ import { RepeatOrderDirective }  from './directives/repeat-order/repeat-order.di
 import { SocialShareDirective }  from './directives/social-share/social-share.directive';
 import { ValidateEqualDirective }  from './directives/validate-equal/validate-equal.directive';
 
-import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
-import { UserBadgeComponent } from './components/user-badge/user-badge.component';
-import { UserFollowComponent } from './components/user-follow/user-follow.component';
-import { ScorePointsComponent } from './components/score-points/score-points.component';
-import { ArticlesDetailHeaderComponent } from './components/articles-detail-header/articles-detail-header.component';
 import { ImageUploadPreviewComponent } from './components/image-upload-preview/image-upload-preview.component';
 import { ImageUploadPreviewMultiComponent } from './components/image-upload-preview-multi/image-upload-preview-multi.component';
 import { ImagePreviewMultiComponent } from './components/image-preview-multi/image-preview-multi.component';
@@ -36,8 +31,6 @@ import { StoreNavigationComponent } from './components/store-navigation/store-na
 import { NavigationHeaderComponent } from './components/navigation-header/navigation-header.component';
 import { BottomFooterComponent } from './components/bottom-footer/bottom-footer.component';
 
-import { FollowService } from './components/user-follow/user-follow.service';
-import { ArticlesDetailHeaderService } from './components/articles-detail-header/articles-detail-header.service';
 import { ImageUploadPreviewService } from './components/image-upload-preview/image-upload-preview.service';
 import { ConstantService } from './services/constant/constant.service';
 import { S3UploaderService } from './services/s3-upload/s3-upload.service';
@@ -138,11 +131,6 @@ let providers = {
     ViewShareScrollDirective,
     ViewScrollTopDirective,
     ViewModifyBodyStyleDirective,
-    UserAvatarComponent,
-    UserBadgeComponent,
-    UserFollowComponent,
-    ScorePointsComponent,
-    ArticlesDetailHeaderComponent,
     ImageUploadPreviewComponent,
     ImageUploadPreviewMultiComponent,
     ImagePreviewMultiComponent,
@@ -180,11 +168,6 @@ let providers = {
     SocialShareDirective,
     ValidateEqualDirective,
     ViewModifyBodyStyleDirective,
-    UserAvatarComponent,
-    UserBadgeComponent,
-    UserFollowComponent,
-    ScorePointsComponent,
-    ArticlesDetailHeaderComponent,
     ImageUploadPreviewComponent,
     ImageUploadPreviewMultiComponent,
     ImagePreviewMultiComponent,
@@ -232,8 +215,6 @@ let providers = {
     MatProgressBarModule
   ],
   providers: [
-    FollowService,
-    ArticlesDetailHeaderService,
     ImageUploadPreviewService,
     ConstantService,
     S3UploaderService,

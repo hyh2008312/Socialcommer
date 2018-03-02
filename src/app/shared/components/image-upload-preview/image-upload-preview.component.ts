@@ -6,7 +6,7 @@ import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
 @Component({
   selector: 'app-image-upload-preview',
   templateUrl: './image-upload-preview.component.html',
-  styleUrls: ['./image-upload-preview.component.css']
+  styleUrls: ['./_image-upload-preview.component.scss']
 })
 export class ImageUploadPreviewComponent implements OnInit {
 

@@ -7,7 +7,7 @@ import { HttpEventType, HttpResponse} from "@angular/common/http";
 @Component({
   selector: 'app-image-upload-header',
   templateUrl: './image-upload-header.component.html',
-  styleUrls: ['./image-upload-header.component.css']
+  styleUrls: ['./_image-upload-header.component.scss']
 })
 export class ImageUploadHeaderComponent implements OnInit {
 

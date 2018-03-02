@@ -7,7 +7,7 @@ import { HttpEventType, HttpResponse } from "@angular/common/http";
 @Component({
   selector: 'app-image-upload-preview-two-template',
   templateUrl: './image-upload-preview-two-template.component.html',
-  styleUrls: ['./image-upload-preview-two-template.component.css'],
+  styleUrls: ['./_image-upload-preview-two-template.component.scss'],
   providers: [S3UploaderService]
 })
 export class ImageUploadPreviewTwoTemplateComponent implements OnInit {

@@ -4,7 +4,7 @@ import {Component, Input} from '@angular/core';
 @Component({
   selector: 'app-image-preview-multi',
   templateUrl: './image-preview-multi.component.html',
-  styleUrls: ['./image-preview-multi.component.css']
+  styleUrls: ['./_image-preview-multi.component.scss']
 })
 export class ImagePreviewMultiComponent {
 

@@ -95,6 +95,7 @@
   height: 56px;
   background-color: #F9F9F9;
   margin-top: 16px;
+  padding: 0 16px;
   &__title {
     font-size: 16px;
     font-weight: bold;
@@ -105,9 +106,12 @@
 
 .xb-account-item {
   height: 96px;
-  padding: 12px 0;
+  padding: 0 16px;
   background-color: $whiteColor;
-  border-bottom: 1px solid rgba(0,0,0,.12);
+  &__container{
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+  }
   &__title {
     font-size: 14px;
   }
