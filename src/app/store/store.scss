@@ -944,6 +944,9 @@
 .xb-store-template__cart {
   &-position {
     position: relative;
+    @include xb-xs-screen {
+      margin-right: 24px;
+    }
   }
   &-container {
     width: 1200px;
@@ -976,5 +979,132 @@
     right: -11px;
     top: 0;
     text-align: center;
+  }
+}
+
+//导航 navigation
+.xb-4-template-navigation {
+  @include regular();
+  text-align: center;
+  font-size: 16px;
+  font-family: Helvetica;
+  &.active {
+    font-weight: bold;
+  }
+  &__navigation-fixed {
+    position: absolute;
+    top: 56px;
+  }
+  &__title {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    font-family: Didot, Helvetica;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 56px;
+    line-height: 56px;
+  }
+  &__nav-close {
+    font-size: 24px;
+  }
+  &__mobile {
+    position: fixed;
+    background-color: white;
+    z-index: 5;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    &-navigation-fixed {
+      position: absolute;
+      top: 56px;
+    }
+  }
+  &__container {
+    height: 72px;
+    max-width: 1280px;
+    position: relative;
+    padding-left: 64px;
+  }
+
+  &__side-bg {
+    width: 100vw;
+    background-color: black;
+  }
+  &__side-flex {
+    font-size: 14px;
+    height: 48px;
+    color: white;
+    line-height: 48px;
+    width: 100%;
+    text-align: center;
+    &.active {
+      font-weight: bold;
+    }
+  }
+  &__side_container {
+    width: calc(100vw - 56px);
+    padding-top: 20px;
+    background-color: #f9f9f9;
+  }
+  &__store-name {
+    font-family: 'Didot';
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    padding-right: 50px;
+  }
+  &__more {
+    @include regular();
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    font-family: Helvetica;
+    cursor: pointer;
+    &-bold {
+      font-weight: bold;
+    }
+    &-bg {
+      position: relative;
+    }
+    &-category {
+      position: absolute;
+      top: 40px;
+      z-index: 5;
+      background-color: white;
+      left: -15px;
+      width: 220px;
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+    }
+    &-flex {
+      @include regular();
+      font-size: 16px;
+      font-family: Helvetica;
+      height: 40px;
+      padding-left: 16px;
+      line-height: 40px;
+      &.active {
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+    }
+  }
+  &__up-triangle {
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 8px solid black;
+  }
+  &__down-triangle {
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 8px solid black;
   }
 }
