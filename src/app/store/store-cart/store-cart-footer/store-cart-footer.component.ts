@@ -12,7 +12,6 @@ import { StoreService } from '../../store.service';
 export class StoreCartFooterComponent{
 
   @Input() text: string;
-  @Input() contactUsTag: string = '';
   shareLink: string;
   displayName: string;
 
