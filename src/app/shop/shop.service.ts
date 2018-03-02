@@ -535,7 +535,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}statistics/store/${store.id}/?${this.serializeParams(store)}`;
+    const url = `${this.baseUrl.url}dashboard/store/data/?${this.serializeParams(store)}`;
 
     return this.http.get(url, options)
       .toPromise()

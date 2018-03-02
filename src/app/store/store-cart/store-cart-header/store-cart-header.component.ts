@@ -14,6 +14,7 @@ export class StoreCartHeaderComponent{
   homeLink: string = '';
   productNumber: number;
   displayName: string = '';
+  storeName: string = '';
 
   constructor(
     private router: Router,
@@ -23,6 +24,7 @@ export class StoreCartHeaderComponent{
     this.storeService.store.subscribe((data) => {
       if(data) {
         let uid = data.templateId;
+        this.storeName = data.name;
         this.homeLink = `/store/${data.displayName}/${uid}`;
         this.displayName = data.displayName;
       }

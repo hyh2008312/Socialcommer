@@ -3,16 +3,16 @@
     <i class="material-icons">menu</i>
   </div>
   <div class="xb-order-tracking__navigation-title xb-pointer" routerLink="{{homeLink}}" fxHide.xs>
-    Store Name
+    {{storeName}}
   </div>
   <div class="xb-order-tracking__navigation-title xb-pointer"
        fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs fxFlex>
-    Store Name
+    {{storeName}}
   </div>
-  <div fxFlex></div>
+  <div fxFlex fxHide.xs></div>
   <div class="xb-order-tracking__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
     <i class="iconfontXberts icon-pic-order1 xb-order-tracking__icon md-margin-right-4"
-       (click)="jumpOrder()"></i>
+       (click)="jumpOrder()" fxHide.xs></i>
     <div class="xb-order-tracking__position" (click)="jumpCart()">
       <i class="iconfontXberts icon-pic-cart1 xb-order-tracking__icon"></i>
       <div class="xb-order-tracking__circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
