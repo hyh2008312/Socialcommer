@@ -73,8 +73,7 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.storeService.getBlog(options).then((data) => {
       self.blog = self.blog.concat(data.results);
-      console.log('--length--->' + self.blog.length);
-      if (self.blog.length > 0) {
+      if(self.blog.length > 0) {
         self.isHaveBlog = true;
       } else {
         self.isHaveBlog = false;

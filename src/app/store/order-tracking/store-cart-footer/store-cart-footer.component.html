@@ -1,39 +1,39 @@
-<div class="xb-order-tracking__footer">
-  <div fxLayout="row" fxLayoutAlign="space-between start">
+<div class="xb-store__footer">
+  <div fxLayout="row" fxLayoutAlign="space-between start" fxLayout.xs="column">
     <div fxFlex="30">
-      <div class="xb-order-tracking__footer-title">Contact us</div>
-      <div class="xb-order-tracking__footer-content">Any questions? Let us know in store at 24/6h Street, or call us on 0800 637 637</div>
+      <div class="xb-store__footer-title">Contact us</div>
+      <div class="ql-editor"
+           [innerHTML]="contactUsTag | safeHtml">
+      </div>
     </div>
     <div fxFlex="15">
-      <div class="xb-order-tracking__footer-title">Links</div>
+      <div class="xb-store__footer-title">Links</div>
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
-        <div class="xb-order-tracking__footer-icons md-margin-right-3">
-          <i class="iconfontXberts icon-ic-youtube"></i>
+        <div class="xb-store__footer-icons xb-pointer gtag-shop-detail-share-button-google"
+             appSocialShare [googlePlus]="{url: shareLink}">
+          <i class="iconfontXberts icon-google"></i>
         </div>
-        <div class="xb-order-tracking__footer-icons md-margin-right-3">
-          <i class="iconfontXberts icon-ic-Instagram"></i>
-        </div>
-        <div class="xb-order-tracking__footer-icons md-margin-right-3">
+        <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+             appSocialShare [facebook]="{u: shareLink}">
           <i class="iconfontXberts icon-ic-facebook"></i>
         </div>
-        <div class="xb-order-tracking__footer-icons md-margin-right-3">
+        <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+             appSocialShare [twitter]="{url: shareLink, text: text, hashtags: '' }">
           <i class="iconfontXberts icon-ic-twitter"></i>
         </div>
       </div>
     </div>
     <div fxFlex="25">
-      <div class="xb-order-tracking__footer-title">Newsletter</div>
-      <div fxLayout="column" fxLayoutAlign="start stretch">
-        <mat-form-field class="unicorn-dark-theme xb-order-tracking__width-100">
-          <input class="unicorn-dark-theme" matInput placeholder="email@example.com" >
-        </mat-form-field>
-        <div class="md-margin-top-1 unicorn-dark-theme">
-          <button mat-raised-button color="primary" >SUBSCRIBE</button>
-        </div>
-      </div>
+      <div class="xb-store__footer-title">About</div>
+      <div class="xb-store__footer-word" (click)="jumpAbout()">Why Shop With Us</div>
+      <div class="xb-store__footer-word md-margin-top-1" (click)="jumpFaq()">FAQ</div>
+      <div class="xb-store__footer-word md-margin-top-1" (click)="jumpPrivacy()">Privacy Policy</div>
+      <div class="xb-store__footer-word md-margin-top-1" (click)="jumpReturn()">Return Policy</div>
     </div>
   </div>
-  <div class="xb-order-tracking__footer-bottom-content" fxLayout="row" fxLayoutAlign="start center">
-    © 2017 All rights reserved.<span class="md-margin-left-3">POWERED BY SocialCommer</span>
+  <div class="xb-store__footer-bottom-content" fxLayout="row" fxLayoutAlign="start center"
+       fxLayout.xs="column" fxLayoutAlign.xs="start start">
+    <div>© 2018 All rights reserved.</div>
+    <div class="xb-store__footer-bottom-content-left xb-pointer" routerLink="/">POWERED BY SocialCommer</div>
   </div>
 </div>

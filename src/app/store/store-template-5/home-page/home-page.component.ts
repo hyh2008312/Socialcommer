@@ -53,7 +53,7 @@ export class HomePageComponent implements OnInit {
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
-          shareImage: data.imageUrl
+          shareImage: false
         });
         self.storeService.pageView({
           pt: 'store',
