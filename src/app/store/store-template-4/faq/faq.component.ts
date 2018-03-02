@@ -18,6 +18,7 @@ export class FaqComponent implements OnInit {
   text: string;
   ownerFirstName: string;
   ownerLastName: string;
+  questionNumber: number = 1;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -37,5 +38,8 @@ export class FaqComponent implements OnInit {
         self.ownerLastName = data.ownerLastName;
       }
     });
+  }
+  changeQuestionNumber(num: number): void {
+    this.questionNumber = num;
   }
 }

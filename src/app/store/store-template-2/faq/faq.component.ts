@@ -18,6 +18,7 @@ export class FaqComponent implements OnInit {
   text: string;
   productNumber: number = 0;
   displayName: string;
+  questionNumber: number = 1;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -53,5 +54,8 @@ export class FaqComponent implements OnInit {
 
   jumpOrder(): void {
     this.router.navigate([`./store/${this.displayName}/order`]);
+  }
+  changeQuestionNumber(num: number): void {
+    this.questionNumber = num;
   }
 }

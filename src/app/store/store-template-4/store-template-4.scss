@@ -842,6 +842,25 @@
   min-height: 100vh;
   height: 100vh;
   overflow: scroll;
+  &__faq {
+    &-left {
+      border: 1px solid #e3e3e3;
+      border-radius: 4px;
+      padding: 16px 16px 16px 16px;
+      &-title {
+        font-size: 16px;
+        @include regular();
+        cursor: pointer;
+        line-height: 40px;
+        &.active {
+          font-weight: bold;
+        }
+      }
+    }
+    &-right {
+      margin-left: 32px;
+    }
+  }
   &__content {
     max-width: 1000px;
     margin-left: auto;
@@ -855,7 +874,7 @@
       font-weight: bold;
     }
     &-subtitle {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: bold;
     }
     &-subtitle-2 {

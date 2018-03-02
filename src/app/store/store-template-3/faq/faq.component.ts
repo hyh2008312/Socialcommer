@@ -16,6 +16,7 @@ export class FaqComponent implements OnInit {
   public text = '';
   contextList: any = {};
   imageList: any = {};
+  questionNumber: number = 1;
 
   constructor(
     private router: Router,
@@ -35,6 +36,9 @@ export class FaqComponent implements OnInit {
 
   ngOnInit():void {
     this.shareLink = window.location.href;
-
   }
+  changeQuestionNumber(num: number): void {
+    this.questionNumber = num;
+  }
+
 }

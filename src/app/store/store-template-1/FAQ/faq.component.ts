@@ -32,6 +32,8 @@ export class FaqComponent implements OnInit {
   ownerFirstName: string;
   ownerLastName: string;
 
+  questionNumber: number = 1;
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
@@ -81,6 +83,7 @@ export class FaqComponent implements OnInit {
   jumpOrder(): void {
     this.router.navigate([`./store/${this.displayName}/order`]);
   }
+
   jumpAbout(): void {
     this.router.navigate([`./store/${this.displayName}/1/about`]);
   }
@@ -96,8 +99,13 @@ export class FaqComponent implements OnInit {
   jumpFaq(): void {
     this.router.navigate([`./store/${this.displayName}/1/faq`]);
   }
+
   jumpStore(): void {
     this.router.navigate([`./store/${this.displayName}/1`]);
+  }
+
+  changeQuestionNumber(num: number): void {
+    this.questionNumber = num;
   }
 
 }
