@@ -1,0 +1,10 @@
+<div class="xb-4-template-navigation__side-bg"
+     fxLayout="column" fxLayoutAlign="start center">
+  <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let value of contents"
+       routerLink="{{value.link}}" [routerLinkActive]="['active']">
+    {{value.text}}
+  </div>
+  <div class="xb-4-template-navigation__side-flex md-margin-top-2" (click)="jumpOrder()">
+    My Order
+  </div>
+</div>

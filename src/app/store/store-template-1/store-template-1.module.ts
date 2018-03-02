@@ -13,6 +13,7 @@ import {AboutComponent} from "./About/about.component";
 import {PrivacyComponent} from "./Privacy/privacy.component";
 import {ReturnPolicyComponent} from "./Return-Policy/return-policy.component";
 import {FaqComponent} from "./FAQ/faq.component";
+import {StoreNavigationComponent} from "./store-navigation/store-navigation.component";
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {FaqComponent} from "./FAQ/faq.component";
     AboutComponent,
     PrivacyComponent,
     ReturnPolicyComponent,
-    FaqComponent
+    FaqComponent,
+    StoreNavigationComponent
   ],
   entryComponents: [],
   providers: []

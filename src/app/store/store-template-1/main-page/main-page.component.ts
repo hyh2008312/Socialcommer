@@ -1,25 +1,25 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 
-import { StoreService } from '../../store.service';
-import { Store } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store} from '../../store';
 
 import 'rxjs/add/observable/of';
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-store-template-1',
   templateUrl: './main-page.component.html',
-  styleUrls: ['../../store.scss','../../../shop/shop.scss']
+  styleUrls: ['../../store.scss', '../../../shop/shop.scss']
 })
 
 export class MainPageComponent implements OnInit {
 
-  public categories:any = [];
+  public categories: any = [];
   public category: any = {
     id: null,
-    name : ''
+    name: ''
   };
   public shareLink: string;
   public text = '';
@@ -39,27 +39,28 @@ export class MainPageComponent implements OnInit {
   about: string = 'Thank you for visiting my store! Have a nice day.  ';
 
   productNumber: number = 0;
-  displayName:string ;
+  displayName: string;
+  isShowMenu: boolean = false;
+  storeName: string = '';
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private storeService: StoreService,
-    private media: ObservableMedia
-  ) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private storeService: StoreService,
+              private media: ObservableMedia) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.shareLink = window.location.href;
 
     let self = this;
     let routerArray = this.router.url.split('/');
     self.storeService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.store = data;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
-        self.displayName = data.displayName ;
+        self.displayName = data.displayName;
+        self.storeName = data.context ? data.context.nameTag : data.name;
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
@@ -68,7 +69,7 @@ export class MainPageComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        if(data.category.length > 1) {
+        if (data.category.length > 1) {
           self.categories = [{name: 'All'}, ...data.category];
         } else {
           self.categories = [...data.category];
@@ -86,9 +87,9 @@ export class MainPageComponent implements OnInit {
     });
 
     self.storeService.cart.subscribe((data) => {
-      if(data && data.length>0) {
+      if (data && data.length > 0) {
         self.productNumber = 0;
-        for(let item of data) {
+        for (let item of data) {
           self.productNumber += parseInt(item.number);
         }
       }
@@ -96,7 +97,7 @@ export class MainPageComponent implements OnInit {
 
     self.queryMedia = this.media.asObservable()
       .subscribe((data) => {
-        if(data.mqAlias == 'xs') {
+        if (data.mqAlias == 'xs') {
           self.isMobile = true;
         } else {
           self.isMobile = false;
@@ -104,9 +105,9 @@ export class MainPageComponent implements OnInit {
       });
   }
 
-  jumpList():void {
+  jumpList(): void {
 
-    if(this.isMobile) {
+    if (this.isMobile) {
       this.router.navigate([`store/${this.store.displayName}/1/list`]);
     } else {
       this.page++;
@@ -119,8 +120,8 @@ export class MainPageComponent implements OnInit {
     this.queryProduct(true);
   }
 
-  queryProduct(clearProduct?:boolean) {
-    if(this.categories.length <= 0) {
+  queryProduct(clearProduct?: boolean) {
+    if (this.categories.length <= 0) {
       return;
     }
     let options = {
@@ -130,13 +131,13 @@ export class MainPageComponent implements OnInit {
       page_size: 12
     };
     let self = this;
-    self.storeService.getProductList(options).then((data)=>{
-      if(clearProduct) {
+    self.storeService.getProductList(options).then((data) => {
+      if (clearProduct) {
         self.product = [];
         self.nextPage = true;
       }
       self.product = self.product.concat(data.results);
-      if(data.next == null) {
+      if (data.next == null) {
         self.nextPage = false;
       }
     });
@@ -145,6 +146,7 @@ export class MainPageComponent implements OnInit {
   ngOnDestroy() {
     this.queryMedia.unsubscribe();
   }
+
   jumpCart(): void {
     this.router.navigate([`./store/${this.displayName}/cart`]);
   }
@@ -152,6 +154,7 @@ export class MainPageComponent implements OnInit {
   jumpOrder(): void {
     this.router.navigate([`./store/${this.displayName}/order`]);
   }
+
   jumpPrivacy(): void {
     this.router.navigate([`./store/${this.displayName}/1/privacy`]);
   }
@@ -163,8 +166,18 @@ export class MainPageComponent implements OnInit {
   jumpFaq(): void {
     this.router.navigate([`./store/${this.displayName}/1/faq`]);
   }
+
   jumpAbout(): void {
     this.router.navigate([`./store/${this.displayName}/1/about`]);
   }
+
+  changeShowMenu() {
+    this.isShowMenu = !this.isShowMenu;
+  }
+
+  closeShowMenu() {
+    this.isShowMenu = false;
+  }
+
 
 }
