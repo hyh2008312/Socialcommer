@@ -11,7 +11,7 @@
     <div class="xb-shop__card-content" fxLayout="column">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="xb-shop__card-commission">
-          Commission: {{commission|currency: currency: true}}
+          Commission: {{commission + '%'}}
         </div>
       </div>
       <div class="xb-shop__card-title xb-pointer" (click)="jumpLink()">{{product.title}}</div>

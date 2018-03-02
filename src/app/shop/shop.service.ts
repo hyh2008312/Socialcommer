@@ -532,7 +532,7 @@ export class ShopService {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
-
+    this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers: headers});
 
     const url = `${this.baseUrl.url}dashboard/store/data/?${this.serializeParams(store)}`;
@@ -548,10 +548,10 @@ export class ShopService {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
-
+    this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}statistics/product/?${this.serializeParams(product)}`;
+    const url = `${this.baseUrl.url}dashboard/goods/top/?${this.serializeParams(product)}`;
 
     return this.http.get(url, options)
       .toPromise()

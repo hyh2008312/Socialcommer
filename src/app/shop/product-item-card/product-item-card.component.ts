@@ -50,7 +50,7 @@ export class ProductItemCardComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.commission = this.product.commissionRate* this.product.saleUnitPrice / 100;
+    this.commission = this.product.commissionRate;
   }
 
   jumpLink() {

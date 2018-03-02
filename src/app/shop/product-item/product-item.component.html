@@ -11,7 +11,7 @@
       {{product.originalPrice|currency: storeCurrency: true }}
     </div>
   </div>
-  <div class="xb-shop__product-price md-margin-right-2" fxFlex="10">{{product.commissionRate * product.salePrice / 100}}</div>
+  <div class="xb-shop__product-price md-margin-right-2" fxFlex="10">{{product.commissionRate + '%'}}</div>
   <div class="xb-shop__product-action-buttons md-margin-right-2" fxLayout="column" fxLayoutAlign="center center" fxFlex="15">
     <button mat-button color="primary" (click)="edit()">Edit</button>
     <button mat-button color="primary" *ngIf="status == 1" (click)="publish()">Publish</button>

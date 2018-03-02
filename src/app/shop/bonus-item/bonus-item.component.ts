@@ -10,7 +10,7 @@ import {UserService} from  '../../shared/services/user/user.service';
 
 export class BonusItemComponent implements OnInit {
 
-  @Input() monthSale: any = 3000;
+  @Input() monthSale: any = 500;
 
   mySale: any = 0;
 
@@ -52,7 +52,7 @@ export class BonusItemComponent implements OnInit {
   }
 
   paintTarget() {
-    if(this.mySale < this.monthSale) {
+    if(this.mySale < this.monthSale - 60) {
       this.mySale += (this.monthSale / 60);
     } else {
       let target = this.elementRef.nativeElement.querySelector('.xb-bonus__target');
@@ -70,7 +70,7 @@ export class BonusItemComponent implements OnInit {
     let index = -1;
     for(let i = 0; i <= this.bonusList.length-1; i++) {
       let sale = this.bonusList[i].sales;
-      if(this.monthSale <= sale) {
+      if(this.monthSale < sale) {
         break;
       }
       index++;

@@ -42,24 +42,6 @@ export class DashboardComponent implements OnInit {
   productStatistic: any = false;
   productStatisticPage: number = 1;
 
-  // MatPaginator Inputs
-  length:number = 0;
-  pageSize = 12;
-  pageSizeOptions = [6, 12];
-
-  // MatPaginator Output
-  changePage(event) {
-    this.pageSize = event.pageSize;
-
-    this.productStatisticPage = event.pageIndex + 1;
-
-    this.getProduct();
-  }
-
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  }
-
   constructor(
     private shopService: ShopService,
     private userService: UserService
@@ -103,10 +85,7 @@ export class DashboardComponent implements OnInit {
 
     let self = this;
     this.shopService.getProductStatistics({
-      store: this.storeId,
-      day: this.productDay,
-      page: page,
-      page_size: this.pageSize
+      day: this.productDay
     }).then((data) => {
       self.length = data.count;
       self.productStatistic = [...data.results];

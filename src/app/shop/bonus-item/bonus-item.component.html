@@ -20,11 +20,11 @@
     </ng-container>
 
     <div class="xb-bonus__target" fxLayout="row" fxLayoutAlign="start start">
-      <div class="xb-bonus__target-line" fxFlex></div>
+      <div class="xb-bonus__target-line" fxFlex [ngClass]="{'xb-bonus__target-shadow': monthSale>0}"></div>
       <div class="xb-bonus__sales" fxLayout="column" fxLayoutAlign="start center" fxFlex="none">
         <div class="xb-bonus__target-line-1"></div>
         <div class="xb-bonus__text" fxLayout="row" fxLayoutAlign="start center">
-          <span class="md-margin-left-1 xb-bold">{{monthSale|currency:currency:true}}</span>
+          <span class="xb-bold">{{monthSale|currency:currency:true}}</span>
         </div>
         <div class="xb-bonus__text-1">Month-to-Date Sales</div>
       </div>
