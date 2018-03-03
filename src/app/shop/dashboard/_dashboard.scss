@@ -86,4 +86,14 @@
       }
     }
   }
+
+  &-none{
+    padding: 96px 0;
+    background-color: $whiteColor;
+    border-radius: 4px;
+    span{
+      margin-top: 16px;
+      @include media();
+    }
+  }
 }

@@ -87,7 +87,7 @@ export class DashboardComponent implements OnInit {
     this.shopService.getProductStatistics({
       day: this.productDay
     }).then((data) => {
-      self.productStatistic = [...data.results];
+      self.productStatistic = [...data];
     });
   }
 }

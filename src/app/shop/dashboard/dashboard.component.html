@@ -59,9 +59,9 @@
     </div>
     <div class="md-margin-top-2" >
       <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of productStatistic;let i = index;" >
-        <app-statistic-item [data]="item"></app-statistic-item>
+        <app-statistic-item [data]="item" [index]="i"></app-statistic-item>
       </div>
-      <div class="xb-shop__product-none" fxLayout="row" fxLayoutAlign="center center"
+      <div class="xb-shop__none" fxLayout="row" fxLayoutAlign="center center"
            *ngIf="productStatistic && productStatistic.length <= 0">
         <div fxLayout="column" fxLayoutAlign="center center">
           <img src="https://media.socialcommer.com/source/web/pic/pic-no-data.png">
