@@ -25,7 +25,6 @@ export class StoreCartFooterComponent{
       if(data) {
         this.uid = data.templateId;
         this.displayName = data.displayName;
-        this.homeLink = `/store/${this.displayName}/${this.uid}`;
       }
     });
   }
