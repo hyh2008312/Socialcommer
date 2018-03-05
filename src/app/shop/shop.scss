@@ -515,7 +515,7 @@
 
   &__store{
     &-template{
-      width: 360px;
+      width: 320px;
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;
@@ -794,7 +794,7 @@
       border-radius: 10px;
       cursor: pointer;
       background-color: $whiteColor;
-      margin: 16px;
+      margin: 32px;
       &:hover{
         @include box-shadow(0 0 3px 0 rgba(0,0,0,.19))
       }

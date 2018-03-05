@@ -3801,7 +3801,7 @@ textarea.mat-input-element {
   .xb-shop__mobile-dialog-inner {
     padding: 16px; } }
 .xb-shop__store-template {
-  width: 360px;
+  width: 320px;
   position: relative;
   overflow: hidden;
   margin-bottom: 24px;
@@ -4021,7 +4021,7 @@ textarea.mat-input-element {
   border-radius: 10px;
   cursor: pointer;
   background-color: #fff;
-  margin: 16px; }
+  margin: 32px; }
   .xb-shop__toDo-card:hover {
     -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
