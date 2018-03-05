@@ -105,7 +105,7 @@ export class StoreListDetailComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate([`/shop/store/templates/preview/1/list`]);
+    this.router.navigate([`/shop/templates/preview/1/list`]);
   }
 
   openLink() {

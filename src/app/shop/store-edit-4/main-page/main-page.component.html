@@ -2,11 +2,7 @@
   <form [formGroup]="storeTemplateForm" novalidate>
     <div class="xb-4-template__container">
       <div class="xb-4-template__w960">
-        <div class="xb-4-template__title xb-4-template__edit-border"
-             [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()">
-        </div>
-        <div class="xb-4-template__title xb-4-template__edit-border"
-             [hidden]="!nameEdited">
+        <div class="xb-4-template__title xb-4-template__edit-border">
           <input formControlName="nameTag" [(ngModel)]="nameTag">
         </div>
       </div>
@@ -27,10 +23,7 @@
         <div class="xb-4-template-home">
           <div class="xb-4-template-home__background " fxLayout="column" fxLayoutAlign="start start"
                [ngStyle]="{'background': 'url(' + (imageBanner)   + ') center / auto 100% ' }">
-            <div class="xb-4-template-home__title xb-pointer xb-4-template__edit-border ql-editor"
-                 [innerHTML]="titleTag | safeHtml" [hidden]="titleEdited" (click)="editTitle()">
-            </div>
-            <div class="xb-4-template-home__title xb-4-template__edit-border" [hidden]="!titleEdited">
+            <div class="xb-4-template-home__title xb-4-template__edit-border">
               <quill-editor formControlName="titleTag" [(ngModel)]="titleTag" [options]="editorConfig"></quill-editor>
             </div>
             <div class="xb-4-template-edit__banner-button" (click)="editImage()">
@@ -82,18 +75,12 @@
                fxLayoutWrap>
             <div class="xb-4-template-products__text" fxLayout="column" fxLayoutAlign="start center">
               <!--product title-->
-              <div class="xb-4-template-products__title xb-pointer xb-4-template__edit-border ql-editor"
-                   [innerHTML]="productTitleTag | safeHtml" [hidden]="productTitleEdit" (click)="editProductTitle()"
-              ></div>
-              <div class="xb-4-template-products__title xb-4-template__edit-border" [hidden]="!productTitleEdit">
+              <div class="xb-4-template-products__title xb-4-template__edit-border">
                 <quill-editor formControlName="productTitleTag" [(ngModel)]="productTitleTag"
                               [options]="editorConfig"></quill-editor>
               </div>
               <!--product subtitle-->
-              <div class="xb-4-template-products__subtitle xb-pointer xb-4-template__edit-border ql-editor"
-                   [innerHTML]="productDesTag | safeHtml" [hidden]="productDesEdit" (click)="editProductDes()"
-              ></div>
-              <div class="xb-4-template-products__subtitle xb-4-template__edit-border" [hidden]="!productDesEdit">
+              <div class="xb-4-template-products__subtitle xb-4-template__edit-border">
                 <quill-editor formControlName="productDesTag" [(ngModel)]="productDesTag"
                               [options]="editorConfig"></quill-editor>
               </div>
@@ -189,10 +176,7 @@
       <div [hidden]="viewIndex != 3" class="xb-4-template-content">
         <div class="xb-4-template-about xb-4-template__w960">
           <!--about me-->
-          <div class="xb-4-template-about__content xb-pointer xb-4-template__edit-border ql-editor"
-               [innerHTML]="aboutMeTag | safeHtml" [hidden]="aboutMeEdited" (click)="editAboutMe()"
-          ></div>
-          <div class="xb-4-template-about__content xb-4-template__edit-border" [hidden]="!aboutMeEdited">
+          <div class="xb-4-template-about__content xb-4-template__edit-border">
             <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
                           [options]="editorConfig"></quill-editor>
           </div>

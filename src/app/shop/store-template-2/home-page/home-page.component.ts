@@ -7,11 +7,11 @@ import {Store} from '../../store';
 @Component({
   selector: 'app-shop-template-2-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['../store-template-2.scss']
+  styleUrls: ['../_store-template-2.scss']
 })
 
 export class HomePageComponent implements OnInit {
-  public categories:any = [{
+  public categories: any = [{
     id: 0,
     name: 'All'
   }, {
@@ -35,7 +35,7 @@ export class HomePageComponent implements OnInit {
   }];
   public category: any = {
     id: 0,
-    name : 'All'
+    name: 'All'
   };
   public shareLink: string;
   public text = '';
@@ -105,6 +105,14 @@ export class HomePageComponent implements OnInit {
     mainImage: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
   }];
 
+  nameTag = 'STORE NAME';
+
+  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Store title</strong></p>';
+
+  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">This was founded with starter site, a single page ' +
+    'online storefront. All of the images and text on this page can be changed to personalize the site for brand ' +
+    'and to communicate your unique story to your customers.</strong></p>';
+
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -121,29 +129,21 @@ export class HomePageComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.text = data.description;
-        self.contextList = data.context? data.context: {};
-        self.imageList = data.images? data.images: {};
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
           shareImage: data.imageUrl
         });
-        self.storeService.addStore(data);
-
         self.storeService.pageView({
           pageType: 'store',
           viewTime: new Date().getTime(),
           storeId: data.id
         });
-        self.queryProduct();
       }
     });
   }
 
-  queryProduct(clearProduct?: boolean) {
-  }
-
   jumpProductList(): void {
-    this.router.navigate([`/shop/store/templates/preview/2/list`]);
+    this.router.navigate([`/shop/templates/preview/2/list`]);
   }
 }

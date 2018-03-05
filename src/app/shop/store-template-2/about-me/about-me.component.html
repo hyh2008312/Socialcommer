@@ -9,7 +9,7 @@
       <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
         <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-store-template__category-store-name" fxFlex="none">
-            Store Name
+            STORE NAME
           </div>
           <app-shop-template-2-navigation [isBlack]="true" [type]="4" fxFlex></app-shop-template-2-navigation>
         </div>
@@ -18,7 +18,7 @@
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
            fxShow.xs="true">
         <div class="xb-store-template__store-name" [ngStyle]="{'color': 'black'}">
-          Store Name
+          STORE NAME
         </div>
         <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-right':'16px'}"
            (click)="sidenav.open()">menu</i>
@@ -35,11 +35,10 @@
       <div class="xb-store-template__about-image-bg" *ngIf="!store.ownerAvatar">
         <img [src]="aboutBanner">
       </div>
-      <div class="md-margin-top-2 xb-store-template__about-user" *ngIf="store.userTag == ''">
-        Thank you for visiting my store! Have a nice day.
-      </div>
-      <div class="xb-store__template-user md-margin-left-2 md-margin-right-2 ql-editor md-margin-top-2"
-           [innerHTML]="store.userTag | safeHtml" *ngIf="store.userTag != ''">
+      <div class="xb-store__template-user md-margin-left-2 md-margin-right-2 md-margin-top-2">
+        <span [ngStyle]="{'font-size':'24px'}">Here you </span> let your customers get to know you. Tell them a
+        little bit about yourself and why you create this
+        business. Show your customers that there are real people with interesting stories working behind the scenes.
       </div>
     </div>
     <!--网页底部-->

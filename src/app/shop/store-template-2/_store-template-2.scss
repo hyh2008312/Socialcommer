@@ -211,7 +211,6 @@
 
       @include xb-xs-screen {
         margin-top: 16px;
-        padding: 0 16px 40px;
       }
 
       @include xb-sm-screen {
@@ -278,6 +277,7 @@
       font-size: 24px;
       height: 40px;
       line-height: 40px;
+      text-align: center;
       @include media();
       overflow: hidden;
     }
@@ -511,6 +511,8 @@
       @include xb-xs-screen {
         margin-top: 16px;
         padding: 0 16px;
+        margin-left: 0;
+        margin-right: 0;
       }
     }
 
@@ -865,4 +867,135 @@
     }
   }
 
+}
+
+.xb-store-about {
+  min-height: 100vh;
+  height: 100vh;
+  overflow: scroll;
+  &__mobile-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    font-weight: bold;
+  }
+  &__faq {
+    &-left {
+      border: 1px solid #e3e3e3;
+      border-radius: 4px;
+      padding: 16px 16px 16px 16px;
+      &-title {
+        font-size: 16px;
+        @include regular();
+        cursor: pointer;
+        line-height: 40px;
+        &.active {
+          font-weight: bold;
+        }
+      }
+    }
+    &-right {
+      margin-left: 32px;
+    }
+  }
+  &__content {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-bottom: 64px;
+    &-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    &-subtitle {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    &-subtitle-2 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    &-des {
+      font-size: 16px;
+      line-height: 28px;
+      color: #000;
+      font-weight: 300;
+    }
+
+  }
+
+  &__store-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__navigation {
+    max-width: 1000px;
+    height: 56px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__footer {
+    padding: 40px 0;
+    background-color: #252525;
+    color: rgba(255, 255, 255, .5);
+    font-size: 16px;
+    position: relative;
+
+    &-word {
+      font-size: 12px;
+      @include regular();
+      cursor: pointer;
+      color: rgba(255, 255, 255, .54);
+    }
+
+    &-margin-top {
+      margin-top: 16px;
+      @include xb-xs-screen {
+        margin-top: 8px;
+      }
+    }
+
+    &-margin-top-1 {
+      margin-top: 8px;
+      @include xb-xs-screen {
+        margin-top: 0;
+      }
+    }
+
+    &-margin-top-2 {
+      margin-top: 0;
+      @include xb-xs-screen {
+        margin-top: 8px;
+      }
+    }
+
+    &-margin-left {
+      margin-left: 16px;
+      @include xb-xs-screen {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
+
+    &-icons {
+      position: absolute;
+      right: 0;
+      bottom: 40px;
+      margin-right: 10vw;
+
+      @include xb-xs-screen {
+        position: relative;
+        bottom: 0;
+        margin-right: 0;
+        margin-top: 12px;
+      }
+    }
+  }
 }

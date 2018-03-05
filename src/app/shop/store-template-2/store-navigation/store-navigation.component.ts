@@ -3,7 +3,7 @@ import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 @Component({
   selector: 'app-shop-template-2-navigation',
   templateUrl: './store-navigation.component.html',
-  styleUrls: ['../store-template-2.scss']
+  styleUrls: ['../_store-template-2.scss']
 })
 
 export class StoreNavigationComponent implements OnInit {
