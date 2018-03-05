@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   // 区分不同的布局界面 1：体现金额不足的提示  2.正常的体现界面  3.去添加银行卡
-  status: number = 2;
+  status: number = 1;
   money: number;
 
   constructor(public dialogRef: MatDialogRef<AccountBalanceWithdrawMoneyDialogComponent>,
@@ -23,5 +23,9 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
 
   close(): void {
     this.dialogRef.close();
+  }
+
+  submitMoney(): void {
+
   }
 }

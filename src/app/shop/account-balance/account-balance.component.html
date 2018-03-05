@@ -5,29 +5,29 @@
   <div class="xb-account-balance__summary md-margin-top-2">
     <div fxLayout="row" fxLayoutAlign="start center">
       <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
-        <div class="xb-account-balance__title">$ 1324.54</div>
+        <div class="xb-account-balance__title">$0</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Total Earning</div>
       </div>
       <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
-        <div class="xb-account-balance__title">$ 850.52</div>
+        <div class="xb-account-balance__title">$0</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Commissions Earned</div>
       </div>
       <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
-        <div class="xb-account-balance__title">$ 500.00</div>
+        <div class="xb-account-balance__title">$0</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Bonus Earned</div>
       </div>
       <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
-        <div class="xb-account-balance__title">$ 500.00</div>
+        <div class="xb-account-balance__title">$0</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Total Withdrawals</div>
       </div>
     </div>
     <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start center">
       <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
-        <div class="xb-account-balance__title">$ 500.00</div>
+        <div class="xb-account-balance__title">$0</div>
         <div class="xb-account-balance__summary-word md-margin-top-2">Available Balance</div>
       </div>
       <div fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
-        <div class="xb-account-balance__title">$ 325.54</div>
+        <div class="xb-account-balance__title">$0</div>
         <div fxLayout="row" fxLayoutAlign="start start">
           <div class="xb-account-balance__summary-word md-margin-top-2">Pending Balance</div>
           <div class="xb-account-balance__wenhao-bg md-margin-top-2">
@@ -53,13 +53,13 @@
   </div>
   <div class="xb-account-balance__title xb-account__margin-top-48 md-padding-left-2">Payment History</div>
   <app-account-title></app-account-title>
-  <ng-container *ngFor="let a of [1,2,3,4,5]">
+  <ng-container *ngFor="let a of []">
     <div [ngStyle]="{'background-color':'white'}">
       <app-account-item></app-account-item>
       <div class="xb-account-item__line"></div>
     </div>
   </ng-container>
-  <div [ngStyle]="{'background-color':'white'}">
+  <div *ngIf="false"  [ngStyle]="{'background-color':'white'}">
     <mat-paginator [length]="length"
                    [pageSize]="pageSize"
                    [pageSizeOptions]="pageSizeOptions">

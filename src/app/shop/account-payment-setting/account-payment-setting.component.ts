@@ -20,7 +20,7 @@ export class AccountPaymentSettingComponent implements OnInit {
   pageSize = 12;
   pageSizeOptions = [6, 12];
 
-  paypalEmail: any = 'Luzhenqiang@xberts.com';
+  paypalEmail: any = '';
   paypalEmailForm: FormGroup;
   //是否有paypal的电子邮箱
   isHavePaypal: boolean = true;
