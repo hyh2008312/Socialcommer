@@ -40,7 +40,6 @@ export class DashboardComponent implements OnInit {
 
   storeStatistic: StoreStatistic = new StoreStatistic();
   productStatistic: any = false;
-  productStatisticPage: number = 1;
 
   constructor(
     private shopService: ShopService,
@@ -80,8 +79,6 @@ export class DashboardComponent implements OnInit {
     if(event) {
       this.productDay = event.day;
     }
-
-    let page = this.productStatisticPage;
 
     let self = this;
     this.shopService.getProductStatistics({
