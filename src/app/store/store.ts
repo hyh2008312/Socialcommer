@@ -8,6 +8,8 @@ export class Store {
   ownerCountry: string;
   ownerFirstName: string;
   ownerLastName: string;
+  firstName: string;
+  lastName: string;
   ownerBiography: string;
   category: any;
   nameTag: any = '';
