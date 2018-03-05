@@ -11,6 +11,8 @@ export class StoreItemCardPreviewComponent implements OnInit {
   @Input() status: number = 0;
   @Input() product: any = null;
 
+  currency = 'USD';
+
   constructor(
   ) {}
 
