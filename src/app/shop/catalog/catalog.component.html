@@ -1,16 +1,12 @@
 <div class="xb-shop__product md-padding-top-2 md-padding-right-2 md-padding-left-2 md-margin-bottom-2">
   <div class="xb-shop__header"></div>
   <div class="xb-shop__product-buttons md-padding-bottom-1" (mouseleave)="closeToggle()">
-    <button mat-raised-button color="accent" (click)="openToggle()">
+    <button mat-raised-button color="accent" routerLink="../items">
       <div fxLayout="row" fxLayoutAlign="start center">
         <i class="material-icons">add</i>
         <span class="md-margin-left-1"> Add More Items</span>
       </div>
     </button>
-    <div class="xb-shop__product-button-list" *ngIf="showToggles">
-      <a class="md-padding-left-2 xb-pointer" fxLayout="row" fxLayoutAlign="start center"
-         routerLink="../items">Search Products</a>
-    </div>
   </div>
   <mat-tab-group color="accent" (selectedTabChange)="changeProducts($event)"  [(selectedIndex)]="selectedIndex">
     <mat-tab label="Published Items">
