@@ -6,7 +6,7 @@
     display: block;
     width: 250px;
     position: relative;
-    margin-bottom: 20px;
+    margin: 0 10px 20px;
     border-radius: 4px;
     @include resetBorder();
     background-color: $whiteColor;
