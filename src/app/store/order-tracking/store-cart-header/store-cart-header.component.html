@@ -1,6 +1,10 @@
 <div class="xb-order-tracking__navigation" fxLayout="row" fxLayoutAlign="start center">
-  <div class="xb-order-tracking__navigation-icon-left" fxHide.gt-xs>
+  <div class="xb-order-tracking__navigation-icon-left" fxHide.gt-xs *ngIf="!isNavigationShow" (click)="changeShowMenu()">
     <i class="material-icons">menu</i>
+  </div>
+
+  <div class="xb-order-tracking__navigation-icon-left" fxHide.gt-xs *ngIf="isNavigationShow" (click)="changeShowMenu()">
+    <i class="iconfontXberts icon-ic-close" ></i>
   </div>
   <div class="xb-order-tracking__navigation-title xb-pointer" routerLink="{{homeLink}}" fxHide.xs>
     {{storeName}}
@@ -18,6 +22,17 @@
       <div class="xb-order-tracking__circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
         productNumber}}
       </div>
+    </div>
+  </div>
+</div>
+<div class="xb-order-tracking__navigation-fixed" *ngIf="isNavigationShow">
+  <div class="xb-order-tracking__side-bg" fxShow="false" fxShow.xs="true"
+       fxLayout="column" fxLayoutAlign="start center" >
+    <div class="xb-order-tracking__side-flex" routerLink="{{homeLink}}" >
+      HOME
+    </div>
+    <div class="xb-order-tracking__side-flex" (click)="jumpOrder()">
+      MY ORDER
     </div>
   </div>
 </div>

@@ -16,7 +16,7 @@ export class StoreCartProductItemComponent{
   @Input() index: number = 0;
   @Input() shippingList: any;
 
-  shippingLists: any;
+  shippingLists: any=[];
 
   shipping:any = {
     id: '',
@@ -36,8 +36,10 @@ export class StoreCartProductItemComponent{
 
   ngOnChanges() {
     if(this.shippingList) {
-      this.shippingLists = this.shippingList[this.product.id];
-      this.changeShipping(this.shippingLists[0]);
+      if(this.shippingList[this.product.id]) {
+        this.shippingLists = this.shippingList[this.product.id];
+        this.changeShipping(this.shippingLists[0]);
+      }
     }
   }
 
@@ -69,13 +71,15 @@ export class StoreCartProductItemComponent{
 
   changeShipping($event) {
     this.isDialogOpen = false;
-    this.shipping = $event;
-    this.productChange.emit({
-      type: 'edit',
-      product: this.product,
-      shippingPrice: this.shipping,
-      index: this.index
-    });
+    if($event) {
+      this.shipping = $event;
+      this.productChange.emit({
+        type: 'edit',
+        product: this.product,
+        shippingPrice: this.shipping,
+        index: this.index
+      });
+    }
   }
 
   openDialog() {

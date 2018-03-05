@@ -15,6 +15,7 @@ export class StoreCartHeaderComponent{
   productNumber: number;
   displayName: string = '';
   storeName: string = '';
+  isNavigationShow: boolean = false;
 
   constructor(
     private router: Router,
@@ -46,6 +47,10 @@ export class StoreCartHeaderComponent{
 
   jumpOrder(): void {
     this.router.navigate([`./store/${this.displayName}/order`]);
+  }
+
+  changeShowMenu() {
+    this.isNavigationShow = !this.isNavigationShow;
   }
 
 }

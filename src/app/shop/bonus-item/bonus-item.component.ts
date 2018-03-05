@@ -40,7 +40,7 @@ export class BonusItemComponent implements OnInit {
     this.userService.store.subscribe((data) => {
       if(data) {
         this.currency = data.currency.toUpperCase();
-        if(this.currency == 'INR') {
+        if(data.country.code == 'IN') {
           this.bonusList =[{
             bonus: 300,
             sales: 3000

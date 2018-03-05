@@ -46,8 +46,8 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <div class="md-margin-left-4 md-margin-right-2">Ship To</div>
-            <mat-form-field class="xb-shop__products-sort">
+            <div class="md-margin-left-4 md-margin-right-2" fxHide>Ship To</div>
+            <mat-form-field class="xb-shop__products-sort" fxHide>
               <mat-select [(ngModel)]="countryId" name="country">
                 <mat-option *ngFor="let item of countryList" [value]="item.id">
                   {{ item.name }}

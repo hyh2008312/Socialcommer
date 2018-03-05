@@ -818,7 +818,7 @@ export class ShopService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}address/country/list/`;
+    const url = `${this.baseUrl.url}address/country/ship/list/`;
 
     return this.http.get(url, options)
       .toPromise()
