@@ -16,6 +16,8 @@ export class AboutComponent implements OnInit {
   store: Store = new Store();
   contextList: any = {};
   imageList: any = {};
+  ownerFirstName: string = '';
+  ownerLastName: string = '';
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -34,6 +36,8 @@ export class AboutComponent implements OnInit {
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
+        self.ownerFirstName = data.firstName;
+        self.ownerLastName = data.lastName;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,

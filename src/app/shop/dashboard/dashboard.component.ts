@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
 
   storeId: number;
 
-  storeStatistic: StoreStatistic = new StoreStatistic();
+  storeStatistic: any = {};
   productStatistic: any = false;
 
   constructor(

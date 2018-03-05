@@ -402,4 +402,9 @@ export class StoreEditComponent implements OnInit {
 
     });
   }
+
+  jumpAbout() {}
+  jumpFaq() {}
+  jumpPrivacy() {}
+  jumpReturn() {}
 }

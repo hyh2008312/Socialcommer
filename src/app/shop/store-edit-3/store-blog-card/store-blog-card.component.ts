@@ -13,6 +13,8 @@ export class StoreBlogCardComponent implements OnInit {
   @Input() blog:any = [];
   @Input() status: number = 0;
 
+  currency = 'USD';
+
   constructor(
     private router: Router
   ) {
