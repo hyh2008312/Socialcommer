@@ -7,7 +7,7 @@ import { Store, Product, Image } from '../../store';
 @Component({
   selector: 'app-shop-template-2-store-list-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../store-template-2.scss']
+  styleUrls: ['../_store-template-2.scss']
 })
 
 export class StoreListDetailComponent implements OnInit {
@@ -103,7 +103,7 @@ export class StoreListDetailComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate([`/shop/store/templates/preview/2/list`]);
+    this.router.navigate([`/shop/templates/preview/2/list`]);
   }
 
   openLink() {

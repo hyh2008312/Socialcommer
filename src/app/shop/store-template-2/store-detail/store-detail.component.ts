@@ -7,7 +7,7 @@ import { Store, Product, Image } from '../../store';
 @Component({
   selector: 'app-shop-template-2-store-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../store-template-2.scss']
+  styleUrls: ['../_store-template-2.scss']
 })
 
 export class StoreDetailComponent implements OnInit {
@@ -101,7 +101,7 @@ export class StoreDetailComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate([`/shop/store/templates/preview/2`]);
+    this.router.navigate([`/shop/templates/preview/2`]);
   }
 
   openLink() {

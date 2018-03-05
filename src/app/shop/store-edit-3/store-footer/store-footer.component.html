@@ -2,7 +2,7 @@
   <div class="xb-store-template__footer-margin-top xb-store-template__footer-margin-bottom"
        fxLayout="row" fxLayoutAlign="center center">
     <div class="xb-store-template__footer-share md-margin-right-3"
-         appSocialShare  [facebook]="{u: link}">
+         appSocialShare [facebook]="{u: link}">
       <i class="iconfontXberts icon-ic-facebook"></i>
     </div>
     <div class="xb-store-template__footer-share md-margin-right-3"
@@ -10,11 +10,22 @@
       <i class="iconfontXberts icon-ic-twitter"></i>
     </div>
     <div class="xb-store-template__footer-share"
-         appSocialShare  [googlePlus]="{url: link}">
+         appSocialShare [googlePlus]="{url: link}">
       <i class="iconfontXberts icon-google"></i>
     </div>
   </div>
-  <div class="xb-store-template__footer-text xb-store-template__footer-margin-bottom-1" fxHide.gt-xs>© 2017 {{name}}. All rights reserved.</div>
-  <div class="xb-store-template__footer-text xb-store-template__footer-margin-bottom-1" fxHide.xs>© 2017 {{name}}. <br> All rights reserved.</div>
-  <div class="xb-store-template__footer-text xb-store-template__footer-margin-bottom xb-pointer" routerLink="/">POWERED BY SocialCommer</div>
+  <div class="xb-store-template__footer-text xb-store-template__footer-margin-bottom-1" fxHide.gt-xs>© 2018 {{name}}.
+    All rights reserved.
+  </div>
+  <div class="xb-store-template__footer-text xb-store-template__footer-margin-bottom-1" fxHide.xs>© 2018 {{name}}. <br>
+    All rights reserved.
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div class="xb-store-template__footer-word">Why Shop With Us</div>
+    <div class="xb-store-template__footer-word md-margin-left-4">FAQ</div>
+  </div>
+  <div class="md-margin-top-1 md-margin-bottom-4" fxLayout="row" fxLayoutAlign="center center">
+    <div class="xb-store-template__footer-word md-margin-left-4">Privacy Policy</div>
+    <div class="xb-store-template__footer-word md-margin-left-4">Return Policy</div>
+  </div>
 </div>

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-shop-item-card',
   templateUrl: './store-item-card.component.html',
-  styleUrls: ['../store-template-2.scss']
+  styleUrls: ['../_store-template-2.scss']
 })
 
 export class StoreItemCardComponent implements OnInit {
