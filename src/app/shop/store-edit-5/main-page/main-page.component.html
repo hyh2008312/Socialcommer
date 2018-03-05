@@ -47,20 +47,13 @@
               <app-image-upload-preview-four-template [(previewImgFile)]="imageAboutCover"
                                                       [(previewImgSrc)]="imageAboutCover"
                                                       [type]="uploadAboutType"></app-image-upload-preview-four-template>
-              <div class="xb-4-template-home__about-title xb-pointer xb-4-template__edit-border ql-editor"
-                   [innerHTML]="aboutMeTitleTag | safeHtml" [hidden]="aboutMeTitleEdited" (click)="editAboutTitleMe()">
-              </div>
-              <div class="xb-4-template-home__about-title xb-4-template__edit-border" [hidden]="!aboutMeTitleEdited">
+              <div class="xb-4-template-home__about-title xb-4-template__edit-border">
                 <quill-editor formControlName="aboutMeTitleTag" [(ngModel)]="aboutMeTitleTag"
                               [options]="editorConfig"></quill-editor>
               </div>
             </div>
-            <div class="xb-4-template-home__about-des" fxFlex>
-              <div class="xb-4-template-home__about-des-content xb-pointer xb-4-template__edit-border ql-editor"
-                   [innerHTML]="aboutMeDesTag | safeHtml" [hidden]="aboutMeDesEdited" (click)="editAboutDesMe()">
-              </div>
-              <div class="xb-4-template-home__about-des-content xb-4-template__edit-border"
-                   [hidden]="!aboutMeDesEdited">
+            <div class="xb-4-template-home__about-des" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+              <div class="xb-4-template-home__about-des-content xb-4-template__edit-border">
                 <quill-editor formControlName="aboutMeDesTag" [(ngModel)]="aboutMeDesTag"
                               [options]="editorConfig"></quill-editor>
               </div>
@@ -74,7 +67,7 @@
               <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
                    fxLayoutGap.xs="16px"
                    fxLayoutWrap>
-                <ng-container *ngFor="let item of category.relations ; let i=index">
+                <ng-container *ngFor="let item of category.goods ; let i=index">
                   <app-shop-item-product-card-5
                     *ngIf="i<3"
                     fxFlex.xs="44" fxFlex.gt-xs="30"
@@ -188,13 +181,10 @@
         <div class="xb-store__footer">
           <div fxLayout="row" fxLayoutAlign="space-between start">
             <div fxFlex="30">
-              <div class="xb-store__footer-title">Contact us</div>
-              <div class="xb-store__footer-content xb-pointer xb-4-template__edit-border ql-editor"
-                   [innerHTML]="contactUsTag | safeHtml" [hidden]="contactUsEdited" (click)="editContactUsTitle()">
-              </div>
-              <div class="xb-store__footer-content xb-4-template__edit-border" [hidden]="!contactUsEdited">
-                <quill-editor formControlName="contactUsTag" [(ngModel)]="contactUsTag"
-                              [options]="editorConfig"></quill-editor>
+              <div class="xb-store__footer-title">Contact Support</div>
+              <div class="xb-store__footer-content">If you need any help, please go to My Order section on the
+                navigation bar where you can access your order
+                information and contact our customer support!
               </div>
             </div>
             <div fxFlex="15">
@@ -215,19 +205,15 @@
               </div>
             </div>
             <div fxFlex="25">
-              <!--<div class="xb-store__footer-title">Newsletter</div>
-              <div fxLayout="column" fxLayoutAlign="start stretch">
-                <mat-form-field class="unicorn-dark-theme xb-store__width-100">
-                  <input class="unicorn-dark-theme" matInput placeholder="email@example.com" >
-                </mat-form-field>
-                <div class="md-margin-top-1 unicorn-dark-theme">
-                  <button mat-raised-button color="primary" >SUBSCRIBE</button>
-                </div>
-              </div>-->
+              <div class="xb-store__footer-title">About</div>
+              <div class="xb-store__footer-word">Why Shop With Us</div>
+              <div class="xb-store__footer-word md-margin-top-1">FAQ</div>
+              <div class="xb-store__footer-word md-margin-top-1">Privacy Policy</div>
+              <div class="xb-store__footer-word md-margin-top-1">Return Policy</div>
             </div>
           </div>
           <div class="xb-store__footer-bottom-content" fxLayout="row" fxLayoutAlign="start center">
-            © 2017 All rights reserved.<span class="md-margin-left-3">POWERED BY SocialCommer</span>
+            © 2018 All rights reserved.<span class="md-margin-left-3">POWERED BY SocialCommer</span>
           </div>
         </div>
 

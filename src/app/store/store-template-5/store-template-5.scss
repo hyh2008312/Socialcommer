@@ -214,13 +214,13 @@
   &__about-des {
     background-color: $whiteColor;
     height: 393px;
+    max-width: 607px;
     @include xb-xs-screen {
       width: calc(100vw - 32px);
       margin-left: auto;
       margin-right: auto;
     }
     &-content {
-      margin-top: 88px;
       margin-left: 48px;
       margin-right: 48px;
       @include xb-xs-screen {

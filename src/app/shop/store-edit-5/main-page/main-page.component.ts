@@ -30,7 +30,6 @@ export class MainPageComponent implements OnInit {
 
   //定义字段
   nameTag = 'STORE NAME';
-  contactUsTag = '<p>Any questions? Let us know in store at 24/6h Street, or call us on 0800 xxx 637<p>'
   desTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">' +
     'We bring you the best style inspirations and outfit ideas!</strong></p>';
 
@@ -138,7 +137,6 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.storeTemplateForm = self.fb.group({
       nameTag: [self.nameTag],
-      contactUsTag: [self.contactUsTag],
       desTag: [self.desTag],
       aboutMeTitleTag: [self.aboutMeTitleTag],
       aboutMeDesTag: [self.aboutMeDesTag],
@@ -159,6 +157,7 @@ export class MainPageComponent implements OnInit {
     });
 
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
+
   }
 
   /**
@@ -227,51 +226,52 @@ export class MainPageComponent implements OnInit {
     let self = this;
     let firstLoad = false;
     self.shopService.templateList.subscribe((data) => {
-      self.templateList = data;
-      self.userService.store.subscribe((data) => {
-        if (data) {
-          self.store = data;
-          self.text = data.description;
-          if (!firstLoad) {
-            firstLoad = true;
-            self.storeForm.setValue({
-              name: self.store.name,
-              description: self.store.description,
-              displayName: self.store.displayName
-            });
+      if (data) {
+        self.templateList = data;
+        self.userService.store.subscribe((data) => {
+          if (data) {
+            self.store = data;
+            self.text = data.description;
+            if (!firstLoad) {
+              firstLoad = true;
+              self.storeForm.setValue({
+                name: self.store.name,
+                description: self.store.description,
+                displayName: self.store.displayName
+              });
 
-            self.shopService.getFrontStore(self.store.displayName).then((data) => {
-              self.ownerId = data.ownerId;
-              self.categories = [...data.category];
-              self.category = self.categories[0];
-              self.queryProduct();
-              //self.queryBlog();
-            });
-            /*self.shopService.getCategoryProduct(self.store.displayName).then((data) => {
-              self.categoryProduct = data;
-            });*/
-            if (self.templateList != null) {
-              for (let value of self.templateList) {
-                if (value.templateId == 5) {
-                  self.templateId = value.id;
-                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
-                  self.contactUsTag = value.context.contactUsTag != '' ? value.context.contactUsTag : self.contactUsTag;
-                  self.desTag = value.context.desTag != '' ? value.context.desTag : self.desTag;
-                  self.aboutMeTitleTag = value.context.aboutMeTitleTag != '' ? value.context.aboutMeTitleTag : self.aboutMeTitleTag;
-                  self.aboutMeDesTag = value.context.aboutMeDesTag != '' ? value.context.aboutMeDesTag : self.aboutMeDesTag;
-                  self.blogDesTag = value.context.blogDesTag != '' ? value.context.blogDesTag : self.blogDesTag;
+              self.shopService.getFrontStore(self.store.displayName).then((data) => {
+                self.ownerId = data.ownerId;
+                self.categories = [...data.category];
+                self.category = self.categories[0];
+                self.queryProduct();
+                self.queryBlog();
+              });
+              self.shopService.getCategoryProduct(self.store.displayName).then((data) => {
+                self.categoryProduct = data;
+              });
+              if (self.templateList != null) {
+                for (let value of self.templateList) {
+                  if (value.templateId == 5) {
+                    self.templateId = value.id;
+                    self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
+                    self.desTag = value.context.desTag != '' ? value.context.desTag : self.desTag;
+                    self.aboutMeTitleTag = value.context.aboutMeTitleTag != '' ? value.context.aboutMeTitleTag : self.aboutMeTitleTag;
+                    self.aboutMeDesTag = value.context.aboutMeDesTag != '' ? value.context.aboutMeDesTag : self.aboutMeDesTag;
+                    self.blogDesTag = value.context.blogDesTag != '' ? value.context.blogDesTag : self.blogDesTag;
 
-                  self.imageBanner = value.images.imageBanner;
-                  self.imageAboutCover = value.images.imageAboutCover;
-                  self.imageBlogCover = value.images.imageBlogCover;
-                  break;
+                    self.imageBanner = value.images.imageBanner;
+                    self.imageAboutCover = value.images.imageAboutCover;
+                    self.imageBlogCover = value.images.imageBlogCover;
+                    break;
+                  }
                 }
               }
             }
           }
-        }
-      })
-    })
+        })
+      }
+    });
   }
 
   changeCategory() {
@@ -374,7 +374,6 @@ export class MainPageComponent implements OnInit {
         storeId: this.store.id,
         context: {
           nameTag: this.nameTag,
-          contactUsTag: this.contactUsTag,
           desTag: this.desTag,
           aboutMeTitleTag: this.aboutMeTitleTag,
           aboutMeDesTag: this.aboutMeDesTag,
@@ -405,7 +404,6 @@ export class MainPageComponent implements OnInit {
         id: this.templateId,
         context: {
           nameTag: this.nameTag,
-          contactUsTag: this.contactUsTag,
           desTag: this.desTag,
           aboutMeTitleTag: this.aboutMeTitleTag,
           aboutMeDesTag: this.aboutMeDesTag,
