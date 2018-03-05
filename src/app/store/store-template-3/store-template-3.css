@@ -3438,6 +3438,12 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+  background-color: transparent; }
+
+.mat-progress-bar {
+  height: 2px; }
+
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
  * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
@@ -3983,8 +3989,14 @@ textarea.mat-input-element {
   text-align: center; }
 .xb-store-template__footer-margin-top {
   margin-top: 50px; }
+  @media screen and (max-width: 599px) {
+    .xb-store-template__footer-margin-top {
+      margin-top: 32px; } }
 .xb-store-template__footer-margin-bottom {
   margin-bottom: 40px; }
+  @media screen and (max-width: 599px) {
+    .xb-store-template__footer-margin-bottom {
+      margin-bottom: 16px; } }
 .xb-store-template__footer-margin-bottom-1 {
   margin-bottom: 12px; }
 .xb-store-template__blog-content {
@@ -4027,5 +4039,104 @@ textarea.mat-input-element {
   right: -11px;
   top: 0;
   text-align: center; }
+
+.xb-store-about {
+  min-height: 100vh;
+  height: 100vh;
+  overflow: scroll; }
+  .xb-store-about__mobile-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    font-weight: bold; }
+  .xb-store-about__faq-left {
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    padding: 16px 16px 16px 16px; }
+    .xb-store-about__faq-left-title {
+      font-size: 16px;
+      font-weight: 400;
+      cursor: pointer;
+      line-height: 40px; }
+      .xb-store-about__faq-left-title.active {
+        font-weight: bold; }
+  .xb-store-about__faq-right {
+    margin-left: 32px; }
+  .xb-store-about__content {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-bottom: 64px; }
+    .xb-store-about__content-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold; }
+    .xb-store-about__content-subtitle {
+      font-size: 18px;
+      font-weight: bold; }
+    .xb-store-about__content-subtitle-2 {
+      font-size: 18px;
+      font-weight: bold; }
+    .xb-store-about__content-des {
+      font-size: 16px;
+      line-height: 28px;
+      color: #000;
+      font-weight: 300; }
+  .xb-store-about__store-name {
+    font-size: 18px;
+    font-weight: bold; }
+  .xb-store-about__navigation {
+    max-width: 1000px;
+    height: 56px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-left: auto;
+    margin-right: auto; }
+  .xb-store-about__footer {
+    padding: 40px 0;
+    background-color: #252525;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    position: relative; }
+    .xb-store-about__footer-word {
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.54); }
+    .xb-store-about__footer-margin-top {
+      margin-top: 16px; }
+      @media screen and (max-width: 599px) {
+        .xb-store-about__footer-margin-top {
+          margin-top: 8px; } }
+    .xb-store-about__footer-margin-top-1 {
+      margin-top: 8px; }
+      @media screen and (max-width: 599px) {
+        .xb-store-about__footer-margin-top-1 {
+          margin-top: 0; } }
+    .xb-store-about__footer-margin-top-2 {
+      margin-top: 0; }
+      @media screen and (max-width: 599px) {
+        .xb-store-about__footer-margin-top-2 {
+          margin-top: 8px; } }
+    .xb-store-about__footer-margin-left {
+      margin-left: 16px; }
+      @media screen and (max-width: 599px) {
+        .xb-store-about__footer-margin-left {
+          margin-left: 0;
+          text-align: center; } }
+    .xb-store-about__footer-icons {
+      position: absolute;
+      right: 0;
+      bottom: 40px;
+      margin-right: 10vw; }
+      @media screen and (max-width: 599px) {
+        .xb-store-about__footer-icons {
+          position: relative;
+          bottom: 0;
+          margin-right: 0;
+          margin-top: 12px; } }
 
 /*# sourceMappingURL=store-template-3.css.map */
