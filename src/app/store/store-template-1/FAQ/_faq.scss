@@ -5,6 +5,12 @@
   min-height: 100vh;
   height: 100vh;
   overflow: scroll;
+  &__footer-margin-left {
+    margin-left: 32px;
+    @include xb-xs-screen {
+      margin-left: 0;
+    }
+  }
   &__mobile-title {
     text-align: center;
     font-size: 20px;

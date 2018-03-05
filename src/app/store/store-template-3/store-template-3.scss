@@ -707,10 +707,16 @@
 
     &-margin-top {
       margin-top: 50px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
     }
 
     &-margin-bottom {
       margin-bottom: 40px;
+      @include xb-xs-screen {
+        margin-bottom: 16px;
+      }
     }
 
     &-margin-bottom-1 {
@@ -771,6 +777,7 @@
     text-align: center;
   }
 }
+
 .xb-store-about {
   min-height: 100vh;
   height: 100vh;

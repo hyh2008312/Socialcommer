@@ -5,6 +5,12 @@
   min-height: 100vh;
   height: 100vh;
   overflow: scroll;
+  &__footer-margin-left {
+    margin-left: 32px;
+    @include xb-xs-screen {
+      margin-left: 0;
+    }
+  }
   &__content {
     max-width: 1000px;
     margin-left: auto;

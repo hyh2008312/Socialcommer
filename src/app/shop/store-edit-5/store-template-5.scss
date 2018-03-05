@@ -201,10 +201,11 @@
   }
   &__about-des {
     background-color: $whiteColor;
+    max-width: 607px;
     height: 393px;
+    overflow-y: scroll;
     &-content {
-      margin-top: 88px;
-      height: auto;
+      width: 100%;
     }
   }
   &__about-title {
@@ -428,6 +429,8 @@
       font-size: 24px;
       font-weight: bold;
       line-height: 32px;
+      max-height: 64px;
+      overflow-y: hidden;
       font-family: Didot, Helvetica;
       margin-top: 8px;
     }
@@ -857,6 +860,13 @@
 
 .xb-store__footer {
   padding: 64px 16px 0;
+
+  &-word {
+    font-size: 14px;
+    @include regular();
+    cursor: pointer;
+    color: black;
+  }
 
   &-title {
     font-size: 24px;
