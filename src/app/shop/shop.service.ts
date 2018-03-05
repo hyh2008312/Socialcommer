@@ -600,7 +600,7 @@ export class ShopService {
     let options = new RequestOptions({headers: headers});
     this.createAuthorizationHeader(headers);
 
-    const url = `${this.baseUrl.url}store/category/create/${category.id}/`;
+    const url = `${this.baseUrl.url}store/category/detail/${category.id}/`;
 
     return this.http.delete(url, options)
       .toPromise()

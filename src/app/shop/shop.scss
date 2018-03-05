@@ -515,7 +515,7 @@
 
   &__store{
     &-template{
-      width: 360px;
+      width: 320px;
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;
@@ -794,7 +794,7 @@
       border-radius: 10px;
       cursor: pointer;
       background-color: $whiteColor;
-      margin: 16px;
+      margin: 32px;
       &:hover{
         @include box-shadow(0 0 3px 0 rgba(0,0,0,.19))
       }
@@ -806,11 +806,36 @@
         margin-top: 56px;
       }
 
-      >div{
+      &-text{
         font-size: 24px;
         margin-top: 24px;
         @include media();
         text-align: center;
+      }
+
+      &-text-1{
+        font-size: 14px;
+        line-height: 40px;
+        margin-top: 16px;
+        text-align: center;
+        border-radius: 4px;
+        border: 1px solid $primaryColor;
+        color: $primaryColor;
+        padding: 0 24px;
+        min-width: 120px;
+      }
+
+      &-text-2{
+        font-size: 14px;
+        line-height: 40px;
+        margin-top: 16px;
+        text-align: center;
+        border-radius: 4px;
+        border: 1px solid $primaryColor;
+        color: $whiteColor;
+        background: $primaryColor;
+        padding: 0 24px;
+        min-width: 120px;
       }
     }
 

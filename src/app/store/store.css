@@ -3438,6 +3438,12 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+  background-color: transparent; }
+
+.mat-progress-bar {
+  height: 2px; }
+
 .padding {
   padding: 5px 10px; }
 
@@ -6878,6 +6884,12 @@ textarea.mat-input-element {
 .mat-chip:not(.mat-basic-chip) {
   margin: 0 8px 3px 0; }
 
+.mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+  background-color: transparent; }
+
+.mat-progress-bar {
+  height: 2px; }
+
 .xb-social-share {
   width: 40px;
   height: 40px;
@@ -6915,6 +6927,11 @@ textarea.mat-input-element {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100vh; }
+  .xb-store__footer-margin-left {
+    margin-left: 32px; }
+    @media screen and (max-width: 599px) {
+      .xb-store__footer-margin-left {
+        margin-left: 0; } }
   .xb-store__nav {
     height: 56px;
     line-height: 56px;
@@ -7656,6 +7673,9 @@ textarea.mat-input-element {
 
 .xb-store-template__cart-position {
   position: relative; }
+  @media screen and (max-width: 599px) {
+    .xb-store-template__cart-position {
+      margin-right: 24px; } }
 .xb-store-template__cart-container {
   width: 1200px;
   margin-left: auto;
@@ -7684,5 +7704,108 @@ textarea.mat-input-element {
   right: -11px;
   top: 0;
   text-align: center; }
+
+.xb-4-template-navigation {
+  font-weight: 400;
+  text-align: center;
+  font-size: 16px;
+  font-family: Helvetica; }
+  .xb-4-template-navigation.active {
+    font-weight: bold; }
+  .xb-4-template-navigation__navigation-fixed {
+    position: absolute;
+    top: 56px; }
+  .xb-4-template-navigation__title {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    font-family: Didot, Helvetica;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 56px;
+    line-height: 56px; }
+  .xb-4-template-navigation__nav-close {
+    font-size: 24px; }
+  .xb-4-template-navigation__mobile {
+    position: fixed;
+    background-color: white;
+    z-index: 5;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+    .xb-4-template-navigation__mobile-navigation-fixed {
+      position: absolute;
+      top: 56px; }
+  .xb-4-template-navigation__container {
+    height: 72px;
+    max-width: 1280px;
+    position: relative;
+    padding-left: 64px; }
+  .xb-4-template-navigation__side-bg {
+    width: 100vw;
+    background-color: black; }
+  .xb-4-template-navigation__side-flex {
+    font-size: 14px;
+    height: 48px;
+    color: white;
+    line-height: 48px;
+    width: 100%;
+    text-align: center; }
+    .xb-4-template-navigation__side-flex.active {
+      font-weight: bold; }
+  .xb-4-template-navigation__side_container {
+    width: calc(100vw - 56px);
+    padding-top: 20px;
+    background-color: #f9f9f9; }
+  .xb-4-template-navigation__store-name {
+    font-family: 'Didot';
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    padding-right: 50px; }
+  .xb-4-template-navigation__more {
+    font-weight: 400;
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    font-family: Helvetica;
+    cursor: pointer; }
+    .xb-4-template-navigation__more-bold {
+      font-weight: bold; }
+    .xb-4-template-navigation__more-bg {
+      position: relative; }
+    .xb-4-template-navigation__more-category {
+      position: absolute;
+      top: 40px;
+      z-index: 5;
+      background-color: white;
+      left: -15px;
+      width: 220px;
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+    .xb-4-template-navigation__more-flex {
+      font-weight: 400;
+      font-size: 16px;
+      font-family: Helvetica;
+      height: 40px;
+      padding-left: 16px;
+      line-height: 40px; }
+      .xb-4-template-navigation__more-flex.active {
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.04); }
+      .xb-4-template-navigation__more-flex:hover {
+        background-color: rgba(0, 0, 0, 0.04); }
+  .xb-4-template-navigation__up-triangle {
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 8px solid black; }
+  .xb-4-template-navigation__down-triangle {
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 8px solid black; }
 
 /*# sourceMappingURL=store.css.map */

@@ -151,13 +151,13 @@ export class AccountReportComponent implements OnInit {
       self.length = data.count;
       switch (event.index) {
         case 1:
-          self.transaction = [...data.results];
+          self.transaction = [];
           break;
         case 2:
-          self.refund = [...data.results];
+          self.refund = [];
           break;
         default:
-          self.sales = [...data.results];
+          self.sales = [];
           break;
       }
 
