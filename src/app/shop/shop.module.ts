@@ -54,6 +54,7 @@ import { AccountTitleComponent } from "./account-title/account-title.component";
 import { AccountReportComponent } from  "./account-report/account-report.component";
 import { AccountReportTitleComponent } from "./account-report-title/account-report-title.component";
 import { AccountReportItemComponent } from "./account-report-item/account-report-item.component";
+import { StoreAvatarComponent } from "./store-avatar/store-avatar.component";
 
 import { ShopRoutingModule } from './shop.routes.module';
 
@@ -121,7 +122,8 @@ import { SharedModule } from '../shared/shared.module';
     AccountReportTitleComponent,
     AccountReportItemComponent,
     BonusTitleComponent,
-    BonusItemComponent
+    BonusItemComponent,
+    StoreAvatarComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,

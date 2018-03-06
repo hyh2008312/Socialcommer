@@ -14,6 +14,7 @@ import {AuthenticationService} from '../../shared/services/authentication/authen
 export class ShopComponent implements OnInit {
 
   avatar: any = false;
+  firstName: any = '';
   storeName: any = false;
   isPopOpen: boolean = false;
 
@@ -25,6 +26,7 @@ export class ShopComponent implements OnInit {
     self.userService.currentUser.subscribe((data) => {
       if (data) {
         self.avatar = data.avatar;
+        self.firstName = data.firstName;
         if (data.store && data.store.length > 0) {
           self.storeName = data.store[0].displayName;
           if (data.store[0].template != null) {

@@ -13,8 +13,9 @@
     </div>
   </div>
   <div class="xb-shop__pop-bg" fxLayout="row" fxLayoutAlign="start center">
-    <i *ngIf="!avatar" class="iconfontXberts icon-ic-user xb-shop__icons md-dark-secondary"></i>
-    <img *ngIf="avatar" class="xb-shop__avatar" src="{{avatar}}" />
+    <div class="xb-shop__avatar">
+      <app-shop-store-avatar [avatar]="avatar" [name]="firstName"></app-shop-store-avatar>
+    </div>
     <div class="xb-shop__pop-bg-list">
       <div routerLink="./settings">Settings</div>
       <div (click)="logout()">Logout</div>

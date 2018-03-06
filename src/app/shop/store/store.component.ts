@@ -23,7 +23,7 @@ export class StoreComponent implements OnInit {
   storeErr: any = false;
 
   currency: string;
-  currencies: Object[];
+  currencies: any[];
 
   countries: any[];
 

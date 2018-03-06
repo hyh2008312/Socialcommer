@@ -543,22 +543,6 @@ export class ShopService {
       .catch(this.handleError);
   }
 
-  getStoreStatistics(store: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-    let options = new RequestOptions({headers: headers});
-
-    const url = `${this.baseUrl.url}dashboard/store/data/?${this.serializeParams(store)}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
   getSaleMonthly(): Promise<any> {
 
     let headers = new Headers({

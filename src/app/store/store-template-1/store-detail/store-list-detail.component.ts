@@ -53,6 +53,7 @@ export class StoreListDetailComponent implements OnInit {
     this.storeService.store.subscribe((data) => {
       if(data) {
         self.store = data;
+        self.currency = data.currency.toUpperCase();
         let storeId = data.id;
         this.storeService.getProduct(id).then((data) => {
           self.product = data;
