@@ -55,9 +55,9 @@
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
               </div>
               <div>
-                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice|currency: (currency|uppercase): true }}</div>
-                <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice|currency: (currency|uppercase): true }}</div>
-                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">{{totalPrice|currency: (currency|uppercase): true }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
+                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">{{totalPrice | exchangeCurrency:(currency|uppercase) |currency: (currency|uppercase): true }}</div>
               </div>
             </div>
           </div>
@@ -83,8 +83,8 @@
     <div class="xb-cart__fixed-bottom-dialog" *ngIf="isTotalDialogOpen">
       <div fxLayout="row" fxLayoutAlign="start stretch">
         <div>
-          <div>{{subTotalPrice|currency: (currency|uppercase): true }}</div>
-          <div class="md-margin-top-3">{{shippingTotalPrice|currency: (currency|uppercase): true }}</div>
+          <div>{{subTotalPrice | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
+          <div class="md-margin-top-3">{{shippingTotalPrice | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
         </div>
         <div class="md-margin-left-3">
           <div>Subtotal</div>
@@ -94,7 +94,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex (click)="openDialog()">
       <div class="xb-cart__item-sale md-margin-left-1">
-        {{totalPrice|currency: (currency|uppercase): true }}
+        {{totalPrice | exchangeCurrency:(currency|uppercase) |currency: (currency|uppercase): true }}
       </div>
       <div class="xb-cart__fixed-bottom-tri xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>
       <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="!isTotalDialogOpen"></div>

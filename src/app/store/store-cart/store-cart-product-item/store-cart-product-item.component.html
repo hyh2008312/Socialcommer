@@ -29,9 +29,10 @@
     </div>
   </div>
   <div fxFlex="15" fxLayout="column" fxLayoutAlign="start center">
-    <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
+    <div class="xb-cart__item-sale">
+      {{product.salePriceAmount | exchangeCurrency:product.salePriceCurrency |currency: product.salePriceCurrency: true }}</div>
     <div class="line-through md-dark-secondary xb-cart__item-original">
-      {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+      {{product.originalPriceAmount | exchangeCurrency:product.salePriceCurrency |currency: product.salePriceCurrency: true }}
     </div>
   </div>
   <div fxFlex="20"  fxLayout="column" fxLayoutAlign="center center">
@@ -45,7 +46,7 @@
         </mat-select>
       </mat-form-field>
       <div class="xb-cart__item-sale md-margin-left-2">
-        {{shipping.priceItem == 0 ? '': shipping.priceItem|currency: product.originalPriceCurrency: true }}
+        {{shipping.priceItem == 0 ? '': shipping.priceItem | exchangeCurrency:product.salePriceCurrency |currency: product.salePriceCurrency: true }}
       </div>
     </div>
     <div class="md-dark-secondary">{{shipping.shippingTimeMin}} - {{shipping.shippingTimeMax}} business days</div>
@@ -74,13 +75,13 @@
         {{shipping.type}} Shipping
       </span>
       <span class="xb-cart__item-shipping md-margin-left-1">
-        {{shipping.priceItem == 0 ? '': shipping.priceItem|currency: product.originalPriceCurrency: true }}
+        {{shipping.priceItem == 0 ? '': shipping.priceItem | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency: true }}
       </span>
     </div>
     <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
-      <div class="xb-cart__item-sale">{{product.salePriceAmount|currency: currency: true }}</div>
+      <div class="xb-cart__item-sale">{{product.salePriceAmount | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency: true }}</div>
       <div class="line-through md-dark-secondary xb-cart__item-original">
-        {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+        {{product.originalPriceAmount | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency: true }}
       </div>
     </div>
   </div>
@@ -103,7 +104,7 @@
         <span class="xb-cart__item-select-tri"></span>
       </div>
       <div class="xb-cart__item-sale md-margin-left-2">
-        {{shipping.priceItem == 0 ? '': shipping.priceItem|currency: product.originalPriceCurrency: true }}
+        {{shipping.priceItem == 0 ? '': shipping.priceItem | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency: true }}
       </div>
     </div>
   </div>
@@ -133,7 +134,7 @@
           <div fxLayout="row" fxLayoutAlign="start center">
             <span>{{ item.type }} Shipping</span>
             <div class="md-margin-left-2 xb-cart__item-sale">
-              {{item.priceItem == 0 ? '': item.priceItem|currency: product.originalPriceCurrency: true }}
+              {{item.priceItem == 0 ? '': item.priceItem | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency: true }}
             </div>
           </div>
           <div class="md-dark-secondary xb-cart__dialog-margin-top">

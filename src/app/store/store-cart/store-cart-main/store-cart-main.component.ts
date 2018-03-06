@@ -142,6 +142,7 @@ export class StoreCartMainComponent implements OnInit{
       totalExclTax: 0,
       shippingInclTax:0,
       shippingExclTax: 0,
+      currency: this.currency,
       lines
     };
 

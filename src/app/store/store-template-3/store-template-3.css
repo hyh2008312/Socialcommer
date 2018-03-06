@@ -4139,4 +4139,51 @@ textarea.mat-input-element {
           margin-right: 0;
           margin-top: 12px; } }
 
+.xb-store-about-shop__title {
+  margin-top: 40px;
+  font-size: 48px;
+  font-weight: bold;
+  color: black;
+  text-align: center; }
+  @media screen and (max-width: 599px) {
+    .xb-store-about-shop__title {
+      font-size: 34px; } }
+.xb-store-about-shop__title_sub {
+  font-size: 24px;
+  font-weight: 300;
+  color: black;
+  margin-top: 32px;
+  text-align: center; }
+  @media screen and (max-width: 599px) {
+    .xb-store-about-shop__title_sub {
+      font-size: 14px; } }
+.xb-store-about-shop__magtop144 {
+  margin-top: 80px; }
+  @media screen and (max-width: 599px) {
+    .xb-store-about-shop__magtop144 {
+      margin-top: 32px; } }
+.xb-store-about-shop__magtop24px {
+  margin-top: 0; }
+  @media screen and (max-width: 599px) {
+    .xb-store-about-shop__magtop24px {
+      margin-top: 24px; } }
+.xb-store-about-shop__magtop48 {
+  margin-top: 48px; }
+.xb-store-about-shop__16sizeBold {
+  font-size: 16px;
+  font-weight: bold; }
+.xb-store-about-shop__14sizeBold {
+  font-size: 14px;
+  font-weight: bold;
+  color: black; }
+.xb-store-about-shop__14sizeLight {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px; }
+.xb-store-about-shop__item {
+  max-width: 450px; }
+.xb-store-about-shop__icon {
+  font-size: 32px;
+  color: black; }
+
 /*# sourceMappingURL=store-template-3.css.map */
