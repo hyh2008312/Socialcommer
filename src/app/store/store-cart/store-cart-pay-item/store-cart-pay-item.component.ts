@@ -12,13 +12,14 @@ export class StoreCartPayItemComponent{
 
   @Input() product: any;
   @Output() productChange = new EventEmitter<any>();
+  @Input() currency: any = '';
 
   constructor() {
 
   }
 
   ngOnChanges() {
-    console.log(this.product)
+
   }
 
 }

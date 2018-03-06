@@ -87,16 +87,8 @@
                 <div fxFlex="48" fxFlex.xs="none">
                   <div fxLayout="row" fxLayoutAlign="space-between start" class="xb-cart__width-100">
                     <div fxFlex="46">
-                      <mat-form-field class="xb-cart__body-100">
-                        <mat-select placeholder="Country" name="country" formControlName="countryId"
-                                    (ngModelChange)="changeShippingState($event)">
-                          <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.id">
-                            {{ country.name }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      <div *ngIf="formErrors['countryId']" class="xb-input-error">
-                        {{ formErrors['countryId'] }}
+                      <div class="md-margin-top-2">
+                        {{countryName}}
                       </div>
                     </div>
                     <div fxFlex="46">
@@ -118,7 +110,7 @@
                    fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
                 <div fxFlex="48" fxFlex.xs="none" >
                   <mat-form-field class="xb-cart__body-100">
-                    <input type="text" matInput placeholder="Postal / Zip Code" formControlName="postcode">
+                    <input type="text" matInput placeholder="{{postCodeName}}" formControlName="postcode">
                   </mat-form-field>
                   <div *ngIf="formErrors['postcode']" class="xb-input-error">
                     {{ formErrors['postcode'] }}
@@ -150,7 +142,7 @@
                 </div>
               </div>
               <div class="xb-cart__product-list" *ngFor="let item of products;let i = index;">
-                <app-store-cart-pay-item [product]="item"></app-store-cart-pay-item>
+                <app-store-cart-pay-item [product]="item" [currency]="order.currency"></app-store-cart-pay-item>
               </div>
             </div>
             <div class="xb-cart__body-left-button" fxLayout="row" fxLayoutAlign="start center" *ngIf="step == 0">
@@ -254,17 +246,7 @@
                 <div fxFlex="48" fxFlex.xs="none">
                   <div fxLayout="row" fxLayoutAlign="space-between start" class="xb-cart__width-100">
                     <div fxFlex="46">
-                      <mat-form-field class="xb-cart__body-100">
-                        <mat-select placeholder="Country" name="country" formControlName="countryId"
-                                    (ngModelChange)="changeBillingState($event)">
-                          <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.id">
-                            {{ country.name }}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      <div *ngIf="formErrors['countryId']" class="xb-input-error">
-                        {{ formErrors['countryId'] }}
-                      </div>
+                      <div class="md-margin-top-2">{{countryName}}</div>
                     </div>
                     <div fxFlex="46">
                       <mat-form-field class="xb-cart__body-100">
@@ -285,7 +267,7 @@
                    fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
                 <div fxFlex="48" fxFlex.xs="none" >
                   <mat-form-field class="xb-cart__body-100">
-                    <input type="text" matInput placeholder="Postal / Zip Code" formControlName="postcode">
+                    <input type="text" matInput placeholder="{{postCodeName}}" formControlName="postcode">
                   </mat-form-field>
                   <div *ngIf="formErrors['postcode']" class="xb-input-error">
                     {{ formErrors['postcode'] }}
@@ -356,7 +338,7 @@
               </div>
               <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
                 <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
-                  Postal / Zip Code
+                  {{postCodeName}}
                 </div>
                 <div>
                   {{order.shippingAddress.postcode}}
@@ -419,7 +401,7 @@
               </div>
               <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
                 <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
-                  Postal / Zip Code
+                  {{postCodeName}}
                 </div>
                 <div>
                   {{order.billingAddress.postcode}}
@@ -454,10 +436,10 @@
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
               </div>
               <div>
-                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice|currency: (order.currency | uppercase): true }}</div>
-                <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice|currency: (order.currency | uppercase): true }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase): true }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase): true }}</div>
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">
-                  {{totalPrice|currency: (order.currency | uppercase): true}}</div>
+                  {{totalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase): true}}</div>
               </div>
             </div>
           </div>
@@ -476,8 +458,8 @@
     <div class="xb-cart__fixed-bottom-dialog" *ngIf="isTotalDialogOpen">
       <div fxLayout="row" fxLayoutAlign="start stretch">
         <div>
-          <div>{{subTotalPrice|currency: (order.currency | uppercase): true }}</div>
-          <div class="md-margin-top-3">{{shippingTotalPrice|currency: (order.currency | uppercase): true }}</div>
+          <div>{{subTotalPrice | exchangeCurrency:(order.currency|uppercase)|currency: (order.currency | uppercase): true }}</div>
+          <div class="md-margin-top-3">{{shippingTotalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase): true }}</div>
         </div>
         <div class="md-margin-left-3">
           <div>Subtotal</div>
@@ -487,7 +469,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex (click)="openDialog()">
       <div class="xb-cart__item-sale md-margin-left-1">
-        {{totalPrice|currency: (order.currency| uppercase): true}}
+        {{totalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency| uppercase): true}}
       </div>
       <div class="xb-cart__fixed-bottom-tri xb-cart__fixed-bottom-margin" *ngIf="!isTotalDialogOpen"></div>
       <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>

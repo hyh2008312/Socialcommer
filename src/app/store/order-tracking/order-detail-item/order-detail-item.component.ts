@@ -52,6 +52,7 @@ export class OrderDetailItemComponent implements OnInit {
           this.netPaymentAmount = this.totalAmount - this.order.refundAmount;
         }
       }
+      this.currency = this.order.currency.toUpperCase();
     }
   }
 

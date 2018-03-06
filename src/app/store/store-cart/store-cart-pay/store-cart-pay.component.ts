@@ -79,6 +79,10 @@ export class StoreCartPayComponent implements OnInit{
   subTotalPrice: number = 0;
   shippingTotalPrice: number = 0;
   totalPrice: number = 0;
+  postCodeName: string = 'Postal / Zip Code';
+
+  countryName: string = '';
+  countryId: any = 1;
 
   constructor(
     overlayContainer: OverlayContainer,
@@ -95,6 +99,8 @@ export class StoreCartPayComponent implements OnInit{
     this.storeService.store.subscribe((data) => {
       if(data) {
         this.storeId = data.id;
+        this.countryId = data.country.id;
+        this.countryName = data.country.name;
       }
     });
 
@@ -125,9 +131,6 @@ export class StoreCartPayComponent implements OnInit{
       city: ['', [
         Validators.required
       ]],
-      countryId: ['', [
-        Validators.required
-      ]],
       stateId: ['', [
         Validators.required
       ]],
@@ -151,9 +154,6 @@ export class StoreCartPayComponent implements OnInit{
       ]],
       line2: [''],
       city: ['', [
-        Validators.required
-      ]],
-      countryId: ['', [
         Validators.required
       ]],
       stateId: ['', [
@@ -187,7 +187,6 @@ export class StoreCartPayComponent implements OnInit{
         line1: this.order.shippingAddress.line1,
         line2: this.order.shippingAddress.line2,
         city: this.order.shippingAddress.city,
-        countryId: this.order.shippingAddress.country.id,
         stateId: this.order.shippingAddress.state.id,
         postcode: this.order.shippingAddress.postcode,
         phoneNumber: this.order.shippingAddress.phoneNumber,
@@ -198,12 +197,11 @@ export class StoreCartPayComponent implements OnInit{
         line1: this.order.shippingAddress.line1,
         line2: this.order.shippingAddress.line2,
         city: this.order.shippingAddress.city,
-        countryId: this.order.shippingAddress.country.id,
         stateId: this.order.shippingAddress.state.id,
         postcode: this.order.shippingAddress.postcode
       });
-      this.changeBillingState(this.order.shippingAddress.country.id);
-      this.changeShippingState(this.order.shippingAddress.country.id);
+      this.changeBillingState(this.countryId);
+      this.changeShippingState(this.countryId);
       if(this.order.shippingAddress.id) {
         this.step = 1;
       }
@@ -219,12 +217,11 @@ export class StoreCartPayComponent implements OnInit{
         line1: this.shippingAddressList.line1,
         line2: this.shippingAddressList.line2,
         city: this.shippingAddressList.city,
-        countryId: this.shippingAddressList.country.id,
         stateId: this.shippingAddressList.state.id,
         postcode: this.shippingAddressList.postcode,
         phoneNumber: this.shippingAddressList.phoneNumber,
       });
-      this.changeShippingState(this.shippingAddressList.country.id);
+      this.changeShippingState(this.countryId);
     }
 
   }
@@ -237,7 +234,6 @@ export class StoreCartPayComponent implements OnInit{
     'lastName': '',
     'line1': '',
     'city': '',
-    'countryId': '',
     'stateId': '',
     'postcode': '',
     'phoneNumber': ''
@@ -261,9 +257,6 @@ export class StoreCartPayComponent implements OnInit{
       'required': 'This field is required.',
     },
     'city': {
-      'required': 'This field is required.',
-    },
-    'countryId': {
       'required': 'This field is required.',
     },
     'stateId': {
@@ -340,11 +333,10 @@ export class StoreCartPayComponent implements OnInit{
         line1: this.order.shippingAddress.line1,
         line2: this.order.shippingAddress.line2,
         city: this.order.shippingAddress.city,
-        countryId: this.order.shippingAddress.country.id,
         stateId: this.order.shippingAddress.state.id,
         postcode: this.order.shippingAddress.postcode
       });
-      this.changeBillingState(this.order.shippingAddress.country.id);
+      this.changeBillingState(this.countryId);
     }
   }
 
@@ -392,6 +384,7 @@ export class StoreCartPayComponent implements OnInit{
       return;
     }
     let stepOneObject = this.stepOneForm.value;
+    stepOneObject.countryId = this.countryId;
     stepOneObject.orderId = this.order.id;
     let lines = [];
     for(let item of this.products) {
@@ -431,11 +424,10 @@ export class StoreCartPayComponent implements OnInit{
         line1: self.order.shippingAddress.line1,
         line2: self.order.shippingAddress.line2,
         city: self.order.shippingAddress.city,
-        countryId: self.order.shippingAddress.country.id,
         stateId: self.order.shippingAddress.state.id,
         postcode: self.order.shippingAddress.postcode
       });
-      self.changeBillingState(self.order.shippingAddress.country.id);
+      self.changeBillingState(self.countryId);
     });
   }
 
@@ -460,6 +452,7 @@ export class StoreCartPayComponent implements OnInit{
     let self = this;
 
     let order = this.stepTwoForm.value;
+    order.countryId = this.countryId;
 
     (<any>window).Stripe.card.createToken({
       number: self.cardNumber,
