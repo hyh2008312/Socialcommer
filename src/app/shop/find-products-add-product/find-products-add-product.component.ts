@@ -3,6 +3,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { ShopService } from '../shop.service';
 import { RecommendProduct, Image, OriginalPrice, SalePrice} from '../shop';
 import { ViewScrollTopDirective } from '../../shared/directives/view-scroll-top/view-scroll-top.directive';
+import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-find-products-add-product',
@@ -42,16 +43,18 @@ export class FindProductsAddProductComponent implements OnInit {
   isSupplierDetail: boolean = false;
 
   sub: any;
+  storeSub: any;
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 
   countryId: number = 1;
 
-  countryList: any[] = [];
+  country: string = '';
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private shopService: ShopService
+    private shopService: ShopService,
+    private userService: UserService
   ) {
     let self = this;
     if(self.activatedRoute.parent.snapshot.params['supplierId']) {
@@ -98,9 +101,12 @@ export class FindProductsAddProductComponent implements OnInit {
       }
     });
 
-    this.shopService.getCountryList().then((data) => {
-      this.countryList = data;
-      this.changeShipping(this.countryId);
+    this.storeSub = this.userService.store.subscribe((data) => {
+      if(data) {
+        this.countryId = data.country.id;
+        this.currency = data.currency.toUpperCase();
+        this.country = data.country.name;
+      }
     });
   }
 
@@ -110,6 +116,7 @@ export class FindProductsAddProductComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    this.storeSub.unsubscribe();
   }
 
   changeTab($event) {

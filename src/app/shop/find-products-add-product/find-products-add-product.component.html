@@ -16,10 +16,10 @@
         <div>{{category}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price">{{salePrice |currency: currency: true }}</div>
+          <div class="xb-store__details-price">{{salePrice | exchangeCurrency:currency |currency: currency: true }}</div>
           <div class="line-through md-margin-left-2"
                *ngIf="originalPrice > 0 && salePrice != originalPrice">
-            {{originalPrice|currency: currency: true }}</div>
+            {{originalPrice | exchangeCurrency:currency |currency: currency: true }}</div>
           <div class="xb-store__details-sale md-margin-left-2"
                *ngIf="originalPrice > 0 && salePrice != originalPrice">
             {{ salePrice|saleDiscount:originalPrice}} OFF
@@ -47,7 +47,7 @@
         <div class="xb-store__details-bg" fxLayout="column" fxLayoutAlign="start stretch">
           <div fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store__details-left-part-2">Your Commission</div>
-            <div>{{commission|currency: currency: true }}</div>
+            <div>{{commission | exchangeCurrency:currency |currency: currency: true }}</div>
           </div>
           <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store__details-left-part-2">Supplier</div>
@@ -76,11 +76,7 @@
     <div class="xb-shop__content" *ngIf="tabNumber == 1">
       <div class="md-dark-secondary">Shipping Availability</div>
       <div class="xb-shop__margin-top xb-shop__width" fxLayout="row" fxLayout="start center">
-        <mat-select [ngModel]="countryId" name="country" (valueChange)="changeShipping($event)">
-          <mat-option *ngFor="let item of countryList" [value]="item.id">
-            {{ item.name }}
-          </mat-option>
-        </mat-select>
+        {{country}}
       </div>
       <div class="md-dark-secondary md-margin-top-3">Ships In</div>
       <div class="xb-shop__margin-top">2 - 5 business days</div>
@@ -88,7 +84,7 @@
       <div class="xb-shop__margin-top">
         <div class="xb-shop__text" *ngFor="let item of shipping">
           {{item.type}} Shipping {{item.shippingTimeMin}} -
-          {{item.shippingTimeMax}} days{{item.type != 'Free'? ', ' + (item.priceItem|currency: currency:true):''}}
+          {{item.shippingTimeMax}} days{{item.type != 'Free'? ', ' + (item.priceItem | exchangeCurrency:currency |currency: currency:true):''}}
         </div>
       </div>
     </div>

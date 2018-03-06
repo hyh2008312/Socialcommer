@@ -1,4 +1,4 @@
-import {Input, Output, Component, OnInit, EventEmitter, ElementRef, AfterViewInit} from '@angular/core';
+import {Input, Output, Component, OnInit, EventEmitter, ElementRef, OnChanges} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {UserService} from  '../../shared/services/user/user.service';
 
@@ -10,7 +10,7 @@ import {UserService} from  '../../shared/services/user/user.service';
 
 export class BonusItemComponent implements OnInit {
 
-  @Input() monthSale: any = 500;
+  @Input() monthSale: any = 0;
 
   mySale: any = 0;
 
@@ -66,8 +66,10 @@ export class BonusItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit() {
-    this.paintTarget();
+  ngOnChanges() {
+    if(this.monthSale != 0) {
+      this.paintTarget();
+    }
   }
 
   paintTarget() {

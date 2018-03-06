@@ -1,7 +1,9 @@
 <div class="xb-shop__statistic" fxLayout="row" fxLayoutAlign="start center">
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="5">{{index+1}}</div>
   <div class="md-margin-right-2" fxFlex="35">{{data.title}}</div>
-  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">{{data.saleUnitPrice|currency:currency:true}</div>
+  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">
+    {{data.saleUnitPrice | exchangeCurrency:currency |currency:currency:true}
+  </div>
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">
     {{data.viewTotal}}
   </div>

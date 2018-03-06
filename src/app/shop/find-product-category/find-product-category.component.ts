@@ -32,7 +32,6 @@ export class FindProductCategoryComponent implements OnInit {
   }
 
   hideCategory(item) {
-    console.log(item)
     for(let value of this.hideCategoryList) {
       if(item.data.name == value){
         return false;

@@ -41,6 +41,8 @@ export class DashboardComponent implements OnInit {
   storeStatistic: any = {};
   productStatistic: any = false;
 
+  monthlySale: any = 0;
+
   constructor(
     private shopService: ShopService,
     private userService: UserService
@@ -57,6 +59,8 @@ export class DashboardComponent implements OnInit {
         self.getStore();
 
         self.getProduct();
+
+        self.getMonthlySale();
       }
     });
 
@@ -85,6 +89,13 @@ export class DashboardComponent implements OnInit {
       day: this.productDay
     }).then((data) => {
       self.productStatistic = [...data];
+    });
+  }
+
+  getMonthlySale() {
+    let self = this;
+    this.shopService.getSaleMonthly().then((data) => {
+      self.monthlySale = data.sellTotal;
     });
   }
 }
