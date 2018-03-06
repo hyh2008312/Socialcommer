@@ -4,6 +4,12 @@
 .xb-store__footer{
   padding: 0 16px ;
 
+  &-word {
+    font-size: 14px;
+    @include regular();
+    cursor: pointer;
+  }
+
   &-title{
     font-size: 24px;
     @include media();

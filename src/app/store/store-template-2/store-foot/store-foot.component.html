@@ -1,6 +1,10 @@
 <div class="xb-store__footer">
   <div fxLayout="column" fxLayoutAlign="center center">
-    <div class="xb-store__footer-margin-left">© 2018 {{storeName}}. All rights reserved.</div>
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start center">
+      <div class="xb-store__footer-margin-left">© 2018 {{storeName}}.</div>
+      <div class="xb-store__footer-margin-left">All rights reserved.</div>
+    </div>
+
     <div class="xb-store__footer-margin-top" fxLayout="row" fxLayoutAlign="center center"
          fxLayout.xs="column" fxLayoutAlign.xs="center center">
       <div class="xb-store__footer-word" (click)="jumpAbout()">Why Shop With Us</div>
