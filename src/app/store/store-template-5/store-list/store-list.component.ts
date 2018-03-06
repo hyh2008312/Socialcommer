@@ -6,7 +6,7 @@ import {Store} from '../../store';
 @Component({
   selector: 'app-shop-template-5-store-list',
   templateUrl: './store-list.component.html',
-  styleUrls: ['../store-template-5.scss']
+  styleUrls: ['../_store-template-5.scss']
 })
 
 export class StoreListComponent implements OnInit, OnDestroy {

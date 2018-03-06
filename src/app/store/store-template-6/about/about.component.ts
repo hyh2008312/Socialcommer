@@ -36,19 +36,13 @@ export class AboutComponent implements OnInit {
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
-        self.ownerFirstName = data.firstName;
-        self.ownerLastName = data.lastName;
+        self.ownerFirstName = data.ownerFirstName;
+        self.ownerLastName = data.ownerLastName;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
           shareImage: data.imageUrl
         });
-        self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
-        });
-
       }
     });
   }

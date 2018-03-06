@@ -9,7 +9,7 @@ import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top
 @Component({
   selector: 'app-shop-template-5-store-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../store-template-5.scss']
+  styleUrls: ['../_store-template-5.scss']
 })
 
 export class StoreDetailComponent implements OnInit {

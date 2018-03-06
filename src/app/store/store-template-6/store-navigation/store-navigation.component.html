@@ -1,7 +1,7 @@
 <div class="xb-4-template-navigation__container" appModifyBodyStyle fxLayout="row"
-     fxLayoutAlign="center center" fxLayoutGap="24px"
+     fxLayoutAlign="start center" fxLayoutGap="24px"
      fxShow="true" fxShow.xs="false">
-  <div class="xb-4-template-navigation__store-name" [ngStyle]="{'padding-right':'80px'}">{{storeName}}</div>
+  <div class="xb-4-template-navigation__store-name" [ngStyle]="{'padding-right':'56px'}">{{storeName}}</div>
   <ng-container *ngFor="let value of contents">
     <div class="xb-4-template-navigation xb-pointer" (click)="hiddenShowMoreCategory()"
          routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">

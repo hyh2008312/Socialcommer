@@ -25,9 +25,7 @@ export class ReturnPolicyComponent implements OnInit {
 
   ngOnInit(): void {
     this.shareLink = window.location.href;
-
     let self = this;
-
     this.storeService.store.subscribe((data) => {
       if (data) {
         self.store = data;
@@ -39,12 +37,6 @@ export class ReturnPolicyComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
-        });
-
       }
     });
   }

@@ -2,8 +2,8 @@
 @import "../../../styles/utils/_index";
 @import "../../../styles/_variables";
 
-.xb-store__footer{
-  padding: 0 16px ;
+.xb-store__footer {
+  padding: 0 16px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -13,12 +13,12 @@
     cursor: pointer;
     color: black;
   }
-  &__pink-line{
+  &__pink-line {
     height: 4px;
     background-color: #ee4b80;
   }
 
-  &-title{
+  &-title {
     font-size: 24px;
     @include media();
     color: #ee4b80;
@@ -27,22 +27,24 @@
     margin-bottom: 16px;
   }
 
-  &-content{
+  &-content {
     font-size: 14px;
     line-height: 28px;
   }
 
-  &-bottom-content{
+  &-bottom-content {
     font-size: 14px;
-    color: rgba(0,0,0,.54);
+    color: rgba(0, 0, 0, .54);
     height: 54px;
-    margin-top: 72px;
-    @include xb-xs-screen{
+    margin-top: 18px;
+    margin-bottom: 18px;
+    @include xb-xs-screen {
       margin-top: 32px;
+      margin-bottom: 8px;
     }
-    &-left{
+    &-left {
       margin-left: 24px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-left: 0;
         margin-top: 12px;
         margin-bottom: 32px;
@@ -50,8 +52,8 @@
     }
   }
 
-  &-icons{
-    i{
+  &-icons {
+    i {
       font-size: 24px;
     }
   }

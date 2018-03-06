@@ -10,15 +10,11 @@
           SAVE
         </div>
       </div>
-      <div class="" fxLayout="row" fxLayoutAlign="start center">
-        <div class="xb-4-template__title xb-4-template__edit-border"
-             [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()">
-        </div>
-        <div class="xb-4-template__left-24px xb-4-template__edit-border"
-             [hidden]="!nameEdited">
+      <div class="xb-4-template__1200px" fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-4-template__left-24px xb-4-template__edit-border">
           <input formControlName="nameTag" [(ngModel)]="nameTag">
         </div>
-        <div class="md-margin-left-4" fxShow="true" fxShow.xs="false" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-margin-left-4"  fxLayout="row" fxLayoutAlign="start center">
           <app-shop-template-5-navigation [categories]="categories"
                                           [navigationIndex]="viewIndex"
                                           (navigationChange)="changeNavigation($event)"
@@ -43,7 +39,7 @@
           </div>
           <div class="xb-4-template-home__about-store xb-4-template__w960" fxLayout="row"
                fxLayoutAlign="start start">
-            <div class="xb-4-template-home__about-cover">
+            <div class="xb-4-template-home__about-cover xb-4-template__edit-border">
               <app-image-upload-preview-four-template [(previewImgFile)]="imageAboutCover"
                                                       [(previewImgSrc)]="imageAboutCover"
                                                       [type]="uploadAboutType"></app-image-upload-preview-four-template>
@@ -188,7 +184,7 @@
               </div>
             </div>
             <div fxFlex="15">
-              <div class="xb-store__footer-title">Links</div>
+              <div class="xb-store__footer-title">Share</div>
               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
                 <div class="xb-store__footer-icons xb-pointer gtag-shop-detail-share-button-google"
                      appSocialShare [googlePlus]="{url: shareLink}">
