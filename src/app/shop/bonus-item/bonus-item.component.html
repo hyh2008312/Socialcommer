@@ -6,12 +6,12 @@
         <div class="xb-bonus__sales" fxLayout="column" fxLayoutAlign="start center" fxFlex="none">
           <i class="iconfontXberts icon-pic-lock" *ngIf="item.sales > monthSale "></i>
           <i class="iconfontXberts icon-pic-unlock" *ngIf="item.sales <= monthSale "></i>
-          <div class="xb-bonus__text-1 xb-bold md-margin-top-1">{{item.bonus|currency:currency:true}}</div>
+          <div class="xb-bonus__text-1 xb-bold md-margin-top-1">{{item.bonus |currency:currency:true}}</div>
           <div class="xb-bonus__text" fxLayout="column" fxLayoutAlign="start center" >
             Bonus
           </div>
           <div class="xb-bonus__line-1"></div>
-          <div class="xb-bonus__text-1 xb-bold md-margin-top-1">{{item.sales|currency:currency:true}}</div>
+          <div class="xb-bonus__text-1 xb-bold md-margin-top-1">{{item.sales |currency:currency:true}}</div>
           <div class="xb-bonus__text" fxLayout="column" fxLayoutAlign="start center">
             Target Sales
           </div>
@@ -24,7 +24,7 @@
       <div class="xb-bonus__sales" fxLayout="column" fxLayoutAlign="start center" fxFlex="none">
         <div class="xb-bonus__target-line-1"></div>
         <div class="xb-bonus__text" fxLayout="row" fxLayoutAlign="start center">
-          <span class="xb-bold">{{monthSale|currency:currency:true}}</span>
+          <span class="xb-bold">{{monthSale |currency:currency:true}}</span>
         </div>
         <div class="xb-bonus__text-1">Month-to-Date Sales</div>
       </div>

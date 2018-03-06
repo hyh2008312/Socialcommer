@@ -10,6 +10,7 @@ import { SafeHtmlPipe }         from './pipes/safe-html/safe-html.pipe';
 import { SafeUrlPipe }         from './pipes/safe-url/safe-url.pipe';
 import { SaleDiscountPipe }         from './pipes/sale-discount/sale-discount.pipe';
 import { FormatCurrencyPipe }         from './pipes/format-currency/format-currency.pipe';
+import { ExchangeCurrencyPipe }  from './pipes/exchange-currency/exchange-currency.pipe';
 
 import { ViewResizeDirective }  from './directives/view-resize/view-resize.directive';
 import { ViewScrollDirective }  from './directives/view-srcoll/view-scroll.directive';
@@ -122,6 +123,7 @@ let providers = {
     SafeUrlPipe,
     FormatCurrencyPipe,
     MakeFirstLetterBigPipe,
+    ExchangeCurrencyPipe,
     ViewResizeDirective,
     ViewScrollDirective,
     ViewObjectScrollDirective,
@@ -159,6 +161,7 @@ let providers = {
     SafeUrlPipe,
     FormatCurrencyPipe,
     MakeFirstLetterBigPipe,
+    ExchangeCurrencyPipe,
     ViewResizeDirective,
     ViewScrollDirective,
     ViewObjectScrollDirective,

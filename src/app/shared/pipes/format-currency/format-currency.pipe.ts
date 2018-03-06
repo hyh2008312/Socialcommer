@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ConstantService } from '../../services/constant/constant.service'
+import { ConstantService } from '../../services/constant/constant.service';
 
 @Pipe({
   name: 'formatCurrency'

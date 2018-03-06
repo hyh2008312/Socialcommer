@@ -57,7 +57,6 @@ export class SignUpComponent {
     'password' : '',
     'country' : '',
     'name': '',
-    'currency': '',
     'displayName' : '',
     'socialMediaLink': ''
   };
@@ -80,9 +79,6 @@ export class SignUpComponent {
       'required': 'Password is required.'
     },
     'name': {
-      'required': 'This field is required.'
-    },
-    'currency': {
       'required': 'This field is required.'
     },
     'displayName': {
@@ -119,7 +115,6 @@ export class SignUpComponent {
 
     this.storeForm = this.fb.group({
       name: ['', Validators.required],
-      currency: ['', Validators.required],
       displayName: ['', [
         Validators.required,
         Validators.pattern('^[a-z0-9\.-]*$')
@@ -423,6 +418,24 @@ export class SignUpComponent {
     )
   }
 
+  setCurrency(countryId) {
+    let countryCode = 'US';
+
+    for(let country of this.storeCountryList) {
+      if(countryId == country.id) {
+        countryCode = country.code;
+        break;
+      }
+    }
+
+    for(let item of this.constant.getCurrencies()) {
+      if(item.country == countryCode) {
+        return item.code;
+      }
+    }
+
+  }
+
   complete() {
     if(!this.storeForm.valid) {
       return;
@@ -430,7 +443,11 @@ export class SignUpComponent {
 
     let self = this;
 
-    self.service.createStore(this.storeForm.value).then((data)=>{
+    let store = this.storeForm.value;
+
+    store.currency = this.setCurrency(store.countryId);
+
+    self.service.createStore(store).then((data)=>{
       self.userService.getUser().then((data) => {
         self.userService.addUser(data);
         self.userService.addStore(data.store[0]);

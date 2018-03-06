@@ -251,13 +251,13 @@ export class ConstantService {
 
   getCurrencies() {
     return  [
-      { code: 'usd', name: 'USD', currency: '$'},
-      { code: 'inr', name: 'INR', currency: '₹' },
-      { code: 'gbp', name: 'GBP', currency: '￡' },
-      { code: 'eur', name: 'EUR', currency: '€' },
-      { code: 'aud', name: 'AUD', currency: 'AU$' },
-      { code: 'sgd', name: 'SGD', currency: 'SG$' },
-      { code: 'cny', name: 'RMB', currency: '¥' }
+      { code: 'usd', name: 'USD', currency: '$', country: 'US'},
+      { code: 'inr', name: 'INR', currency: '₹', country: 'IN'},
+      { code: 'gbp', name: 'GBP', currency: '￡', country: 'GB'},
+      { code: 'eur', name: 'EUR', currency: '€', country: 'EU'},
+      { code: 'aud', name: 'AUD', currency: 'AU$', country: 'AU'},
+      { code: 'sgd', name: 'SGD', currency: 'SG$', country: 'SG'},
+      { code: 'cny', name: 'RMB', currency: '¥', country: 'RM'}
     ];
   }
 

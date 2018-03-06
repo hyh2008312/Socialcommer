@@ -90,36 +90,6 @@ export class LeftSideNavigationComponent implements OnInit {
     }],
     router:  './report',
     isActive: false
-  }, {
-    id: 6,
-    icon: 'icon-pic-template',
-    text: 'Templates',
-    subContent: [{
-      text: '',
-      router: ''
-    }],
-    router: './templates',
-    isActive: false
-  }, {
-    id: 7,
-    icon: 'icon-ic-new-hand',
-    text: 'To-do List',
-    subContent: [{
-      text: '',
-      router: ''
-    }],
-    router: './todolist',
-    isActive: false
-  }, {
-    id: 8,
-    icon: 'icon-ic-pc-set',
-    text: 'Account',
-    subContent: [{
-      text: '',
-      router: ''
-    }],
-    router: './settings',
-    isActive: false
   }];
 
   editRouter: string = './store/templates/edit';

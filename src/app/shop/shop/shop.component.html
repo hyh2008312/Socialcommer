@@ -6,15 +6,18 @@
         Beta
       </div>
     </div>
-    <div class="md-margin-left-4 md-dark-primary" >
-      <a class="md-dark-primary xb-shop__logo-button" routerLink="/store/{{storeName}}" target="_blank">View Storefront</a>
+    <div class="md-margin-left-4 md-dark-primary" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-shop__logo-button" routerLink="./todolist">To-do List</div>
+      <div class="xb-shop__logo-button" routerLink="./templates">Store Templates</div>
+      <a class="md-dark-primary xb-shop__logo-button" routerLink="/store/{{storeName}}" target="_blank"> Visit Storefront</a>
     </div>
   </div>
   <div class="xb-shop__pop-bg" fxLayout="row" fxLayoutAlign="start center">
     <i *ngIf="!avatar" class="iconfontXberts icon-ic-user xb-shop__icons md-dark-secondary"></i>
     <img *ngIf="avatar" class="xb-shop__avatar" src="{{avatar}}" />
-    <div class="xb-shop__pop-bg-list" (click)="logout()">
-      Logout
+    <div class="xb-shop__pop-bg-list">
+      <div routerLink="./settings">Settings</div>
+      <div (click)="logout()">Logout</div>
     </div>
   </div>
 </mat-toolbar>
