@@ -7,7 +7,7 @@ import {Store} from '../../store';
 @Component({
   selector: 'app-shop-template-5-about',
   templateUrl: './return-policy.component.html',
-  styleUrls: ['../store-template-5.scss']
+  styleUrls: ['../_store-template-5.scss']
 })
 
 export class ReturnPolicyComponent implements OnInit {
@@ -41,12 +41,6 @@ export class ReturnPolicyComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
-        });
-
       }
     });
   }

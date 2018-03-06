@@ -7,7 +7,7 @@ import {Store} from '../../store';
 @Component({
   selector: 'app-shop-template-5-about',
   templateUrl: './faq.component.html',
-  styleUrls: ['../store-template-5.scss']
+  styleUrls: ['../_store-template-5.scss']
 })
 
 export class FaqComponent implements OnInit {
@@ -41,11 +41,6 @@ export class FaqComponent implements OnInit {
           title: data.name,
           description: data.description,
           shareImage: data.imageUrl
-        });
-        self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
         });
 
       }
