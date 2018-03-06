@@ -89,15 +89,11 @@ export class FindProductsComponent implements OnInit {
       if(data) {
         self.categories.push({
           id: null,
-          data: {name: 'Featured'}
+          data: {name: 'All'}
         });
         self.categories.push({
           id: 'special',
           data: {name: 'Promotional Offers'}
-        });
-        self.categories.push({
-          id: null,
-          data: {name: 'All'}
         });
         for(let item of data) {
           self.categories.push(item);

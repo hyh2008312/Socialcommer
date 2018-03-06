@@ -10,7 +10,7 @@ import {UserService} from  '../../shared/services/user/user.service';
 
 export class BonusItemComponent implements OnInit {
 
-  @Input() monthSale: any = 0;
+  @Input() monthSale: any = 500;
 
   mySale: any = 0;
 
@@ -40,7 +40,8 @@ export class BonusItemComponent implements OnInit {
     this.userService.store.subscribe((data) => {
       if(data) {
         this.currency = data.currency.toUpperCase();
-        if(data.country.code == 'IN') {
+        if(this.currency == 'INR') {
+          this.monthSale = this.monthSale * 65.4;
           this.bonusList =[{
             bonus: 300,
             sales: 3000

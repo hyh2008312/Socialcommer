@@ -3458,19 +3458,18 @@ textarea.mat-input-element {
     padding: 0 4px; }
   .xb-shop__logo-button {
     margin-left: 8px;
-    padding: 0 24px;
-    line-height: 40px;
-    font-size: 14px;
+    padding: 0 16px;
+    line-height: 56px;
+    font-size: 16px;
     display: block;
     border-radius: 4px;
-    color: #222; }
-    .xb-shop__logo-button:hover {
-      background-color: rgba(0, 0, 0, 0.12); }
+    color: #222;
+    cursor: pointer; }
 .xb-shop__bg-content {
   height: calc(100vh - 56px); }
 .xb-shop__avatar {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%; }
 .xb-shop__icons {
   width: 40px;
@@ -3805,7 +3804,8 @@ textarea.mat-input-element {
   position: relative;
   overflow: hidden;
   margin-bottom: 24px;
-  margin-right: 24px;
+  margin-left: 12px;
+  margin-right: 12px;
   border-radius: 2px;
   -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
   -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
@@ -4015,7 +4015,7 @@ textarea.mat-input-element {
 .xb-shop__toDo-content {
   margin-top: 56px; }
 .xb-shop__toDo-card {
-  width: 320px;
+  width: 350px;
   height: 270px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 10px;
@@ -4112,8 +4112,9 @@ textarea.mat-input-element {
     top: 100%;
     padding: 0 16px;
     line-height: 36px;
+    width: 120px;
     text-align: center;
-    background-color: #eee;
+    background-color: #fff;
     border-radius: 2px;
     -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
     -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
@@ -4121,6 +4122,8 @@ textarea.mat-input-element {
     font-size: 16px;
     z-index: 100;
     display: none; }
+    .xb-shop__pop-bg-list div:hover {
+      background-color: rgba(0, 0, 0, 0.12); }
   .xb-shop__pop-bg:hover .xb-shop__pop-bg-list {
     display: block; }
 

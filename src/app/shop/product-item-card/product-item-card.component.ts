@@ -1,4 +1,4 @@
-import { Input, Component, OnInit, OnChanges} from '@angular/core';
+import { Input, Component, OnInit, OnDestroy, OnChanges} from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import {
   trigger,
@@ -7,6 +7,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-product-item-card',
@@ -35,12 +36,21 @@ export class ProductItemCardComponent implements OnInit {
   currency: string = 'USD';
   commission: any = 0;
 
+  sub: any;
+
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private userService: UserService
+  ) {
+    this.sub = this.userService.store.subscribe((data) => {
+      if(data) {
+        this.currency = data.currency.toUpperCase();
+      }
+    });
+  }
 
   ngOnInit(): void {
-
+    this.sub.unsubscribe();
   }
 
   animationState = 'inactive';
@@ -49,6 +59,9 @@ export class ProductItemCardComponent implements OnInit {
     this.animationState = this.animationState === 'active' ? 'inactive' : 'active';
   }
 
+  ngOnDestroy() {
+
+  }
   ngOnChanges() {
     this.commission = this.product.commissionRate;
   }

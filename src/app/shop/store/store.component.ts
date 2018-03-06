@@ -46,9 +46,6 @@ export class StoreComponent implements OnInit {
         Validators.required
       ]],
       description: [''],
-      currency: ['', [
-        Validators.required
-      ]],
       countryId: ['', [
         Validators.required
       ]],
@@ -74,10 +71,11 @@ export class StoreComponent implements OnInit {
           name: store.name,
           description : store.description,
           countryId: store.country.id,
-          currency: store.currency,
           displayName: store.displayName,
           status: status
         });
+
+        self.currency = store.currency;
       }
     });
 
@@ -91,7 +89,6 @@ export class StoreComponent implements OnInit {
   //存储错误信息
   formErrors = {
     'name': '',
-    'currency': '',
     'countryId': '',
     'displayName':'',
     'status': ''
@@ -99,9 +96,6 @@ export class StoreComponent implements OnInit {
   //错误对应的提示
   validationMessages = {
     'name': {
-      'required': 'This field is required.'
-    },
-    'currency': {
       'required': 'This field is required.'
     },
     'countryId': {
@@ -144,6 +138,24 @@ export class StoreComponent implements OnInit {
 
   }
 
+  setCurrency(countryId) {
+    let countryCode = 'US';
+
+    for(let country of this.countries) {
+      if(countryId == country.id) {
+        countryCode = country.code;
+        break;
+      }
+    }
+
+    for(let item of this.currencies) {
+      if(item.country == countryCode) {
+        this.currency = item.code;
+      }
+    }
+
+  }
+
   changeStore(): void {
     if(!this.storeForm.valid) {
       return;
@@ -153,6 +165,7 @@ export class StoreComponent implements OnInit {
 
     let store = this.storeForm.value;
     store.id = this.store.id;
+    store.currency = this.currency;
     let self = this;
 
     this.shopService.changeStore(store).then((data) => {
