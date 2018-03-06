@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { Router, ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ENTER } from '@angular/cdk/keycodes';
@@ -61,7 +62,8 @@ export class FindProductsComponent implements OnInit {
     private shopService: ShopService,
     private userService: UserService,
     private fb: FormBuilder,
-    overlayContainer: OverlayContainer
+    overlayContainer: OverlayContainer,
+    private activatedRoute: ActivatedRoute
   ) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
     this.searchForm = this.fb.group({
@@ -75,6 +77,10 @@ export class FindProductsComponent implements OnInit {
         this.countryList = data;
       }
     });
+
+    this.activatedRoute.url.subscribe((data) => {
+      this.getSupplyProductList();
+    });
   }
 
   onValueChanged(data) {
@@ -82,7 +88,6 @@ export class FindProductsComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.getSupplyProductList();
 
     let self = this;
     self.userService.pubCategory.subscribe((data) => {
@@ -93,7 +98,7 @@ export class FindProductsComponent implements OnInit {
         });
         self.categories.push({
           id: 'special',
-          data: {name: 'Promotional Offers'}
+          data: {name: 'Special Offers'}
         });
         for(let item of data) {
           self.categories.push(item);

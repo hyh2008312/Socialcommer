@@ -13,18 +13,18 @@
           <div class="xb-store-template__car-left-part">Price</div>
           <div fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-4-template-detail__price" *ngIf="!salePrice">
-              {{product?.salePrice |currency: currency:true }}
+              {{product?.salePrice | exchangeCurrency:currency |currency: currency:true }}
             </div>
             <div class="xb-4-template-detail__price" *ngIf="salePrice">
-              {{ salePrice |currency: currency: true }}
+              {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
             </div>
             <div class="xb-4-template-detail__original-price line-through "
                  *ngIf="!originalPrice && product?.originalPrice > 0 && product?.salePrice != product?.originalPrice">
-              {{product?.originalPrice|currency: currency: true }}
+              {{product?.originalPrice | exchangeCurrency:currency |currency: currency: true }}
             </div>
             <div class="xb-4-template-detail__original-price line-through "
                  *ngIf="originalPrice && originalPrice > 0 && salePrice != originalPrice">
-              {{ originalPrice|currency: currency: true }}
+              {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
             </div>
           </div>
         </div>

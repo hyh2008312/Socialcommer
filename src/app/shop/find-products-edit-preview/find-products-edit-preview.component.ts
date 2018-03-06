@@ -84,10 +84,9 @@ export class FindProductsEditPreviewComponent implements OnInit {
     let self = this;
     self.shopService.getSupplyProductDetail({id}).then((data) => {
 
-      self.productForm.setValue({
+      self.productForm.patchValue({
         title: data.title,
         tags: '',
-        categoryName: data.categories[0].name,
         recommendation: '',
         description: data.description
       });
@@ -227,7 +226,7 @@ export class FindProductsEditPreviewComponent implements OnInit {
     if(!this.isSupplierEdit) {
       this.router.navigate(['/shop/listings/items/']);
     } else {
-      this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`])
+      this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`]);
     }
   }
 
@@ -352,8 +351,12 @@ export class FindProductsEditPreviewComponent implements OnInit {
     };
 
     let self = this;
-    this.shopService.createSupplyProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'published'}, replaceUrl: true});
+    self.shopService.createSupplyProduct(storeProduct).then((data) => {
+      if(!self.isSupplierEdit) {
+        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  });
+      } else {
+        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false });
+      }
     });
   }
 

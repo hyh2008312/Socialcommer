@@ -3470,7 +3470,8 @@ textarea.mat-input-element {
 .xb-shop__avatar {
   width: 36px;
   height: 36px;
-  border-radius: 50%; }
+  border-radius: 50%;
+  position: relative; }
 .xb-shop__icons {
   width: 40px;
   height: 40px;
@@ -4110,7 +4111,6 @@ textarea.mat-input-element {
     position: absolute;
     right: 0;
     top: 100%;
-    padding: 0 16px;
     line-height: 36px;
     width: 120px;
     text-align: center;

@@ -1,5 +1,5 @@
 <div class="xb-bonus-dialog">
-  <div class="xb-bonus-dialog_close" (click)="close()" >
+  <div class="xb-bonus-dialog__close" (click)="close()" >
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-bonus-dialog__title">
@@ -8,41 +8,41 @@
   <div class="xb-bonus-dialog__title-1">
     The higher sales target you reach, the higher bonus you earn!
   </div>
-  <div>
+  <div *ngIf="storeCurrency == 'USD'">
     <div>
-      	Earn $50 bonus for reaching $500 in sales within the current month
+      Earn $50 bonus for reaching $500 in sales within the current month
     </div>
     <div>
-      	Earn $150 bonus for reaching $1000 in sales within the current month
+      Earn $150 bonus for reaching $1000 in sales within the current month
     </div>
     <div>
-      	Earn $350 bonus for reaching $2000 in sales within the current month
+      Earn $350 bonus for reaching $2000 in sales within the current month
     </div>
     <div>
-      	Earn $600 bonus for reaching $3000 in sales within the current month
+      Earn $600 bonus for reaching $3000 in sales within the current month
     </div>
     <div>
-      	Earn $1000 bonus for reaching $4000 in sales within the current month
-    </div>
-  </div>
-  <div>
-    <div>
-      	Earn Rs. 300 bonus for reaching Rs. 3000 in sales within the current month
-    </div>
-    <div>
-      	Earn Rs. 900 bonus for reaching Rs. 6000 in sales within the current month
-    </div>
-    <div>
-      Earn Rs. 1750 bonus for reaching Rs. 10000 in sales within the current month
-    </div>
-    <div>
-      	Earn Rs. 3000 bonus for reaching Rs. 15000 in sales within the current month
-    </div>
-    <div>
-      	Earn Rs. 5000 bonus for reaching Rs. 20000 in sales within the current month
+      Earn $1000 bonus for reaching $4000 in sales within the current month
     </div>
   </div>
-  <div>
+  <div *ngIf="storeCurrency == 'INR'">
+    <div>
+      Earn Rs. 300 bonus for reaching Rs. 3000 in sales within the current month
+    </div>
+    <div>
+      Earn Rs. 900 bonus for reaching Rs. 6000 in sales within the current month
+    </div>
+    <div>
+      Earn Rs. 1750 bonus for reaching Rs. 10000 in sales within the current month
+    </div>
+    <div>
+      Earn Rs. 3000 bonus for reaching Rs. 15000 in sales within the current month
+    </div>
+    <div>
+      Earn Rs. 5000 bonus for reaching Rs. 20000 in sales within the current month
+    </div>
+  </div>
+  <div class="md-margin-top-2 xb-bold">
     * Please note this doesn’t include any canceled and refunded orders.
   </div>
   <div class="xb-bonus-dialog__title-1">How can I check my total bonus? </div>
@@ -70,7 +70,7 @@
     Your bonus will be calculated into your total earnings, so you can withdraw your bonus from your available
     balance. The money will be deposited into your selected payment method.
   </div>
-  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-    <button mat-raised-button color="primary" (click)="close()">OK</button>
+  <div class="xb-bonus-dialog__margin-top" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" (click)="close()">GOT IT!</button>
   </div>
 </div>

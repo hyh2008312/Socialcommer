@@ -17,6 +17,7 @@ export class FindSupplierProductsComponent implements OnInit {
 
 
   sort: any = '';
+  supplierName: any = '';
   sortList = [{
     name: 'Newest Arrivals',
     value: ''
@@ -100,6 +101,8 @@ export class FindSupplierProductsComponent implements OnInit {
       self.length = data.count;
 
       self.productList = data.results;
+
+      self.supplierName = self.productList[0].supplierName;
     });
   }
 

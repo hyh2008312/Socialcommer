@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../shop.service';
 import { StoreStatistic } from '../shop';
 import { UserService } from  '../../shared/services/user/user.service';
+import { MatDialog } from "@angular/material";
+
+import { BonusTipsDialogComponent } from '../bonus-tips-dialog/bonus-tips-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -45,7 +48,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private shopService: ShopService,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) {
 
   }
@@ -96,6 +100,14 @@ export class DashboardComponent implements OnInit {
     let self = this;
     this.shopService.getSaleMonthly().then((data) => {
       self.monthlySale = data.sellTotal;
+    });
+  }
+
+  openBonusTipDialog() {
+    let dialogRef = this.dialog.open(BonusTipsDialogComponent, {});
+
+    dialogRef.afterClosed().subscribe(result => {
+
     });
   }
 }

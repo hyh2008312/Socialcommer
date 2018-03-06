@@ -83,7 +83,7 @@
       <div class="md-dark-secondary md-margin-top-3">Shipping Method:</div>
       <div class="xb-shop__margin-top">
         <div class="xb-shop__text" *ngFor="let item of shipping">
-          {{item.type}} Shipping {{item.shippingTimeMin}} -
+          {{item.type}} Shipping, {{item.shippingTimeMin}} -
           {{item.shippingTimeMax}} days{{item.type != 'Free'? ', ' + (item.priceItem | exchangeCurrency:currency |currency: currency:true):''}}
         </div>
       </div>

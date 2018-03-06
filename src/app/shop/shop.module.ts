@@ -44,6 +44,7 @@ import { BlogCreateDialogComponent } from "./blog-create-dialog/blog-create-dial
 import { BlogEditDialogComponent } from "./blog-edit-dialog/blog-edit-dialog.component";
 import { BlogDeleteDialogComponent } from "./blog-delete-dialog/blog-delete-dialog.component";
 import { SettingsPasswordDialogComponent } from "./setting-password-dialog/setting-password-dialog.component";
+import { BonusTipsDialogComponent } from "./bonus-tips-dialog/bonus-tips-dialog.component"
 
 import { AccountBalanceComponent } from "./account-balance/account-balance.component";
 import { AccountBalanceWithdrawMoneyDialogComponent } from "./account-balance-withdraw-money-dialog/account-balance-withdraw-money-dialog.component";
@@ -123,7 +124,8 @@ import { SharedModule } from '../shared/shared.module';
     AccountReportItemComponent,
     BonusTitleComponent,
     BonusItemComponent,
-    StoreAvatarComponent
+    StoreAvatarComponent,
+    BonusTipsDialogComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
@@ -134,7 +136,8 @@ import { SharedModule } from '../shared/shared.module';
     CategoryEditDialogComponent,
     BlogDeleteDialogComponent,
     SettingsPasswordDialogComponent,
-    AccountBalanceWithdrawMoneyDialogComponent
+    AccountBalanceWithdrawMoneyDialogComponent,
+    BonusTipsDialogComponent
   ],
   providers: [
     ShopService,
