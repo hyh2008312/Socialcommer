@@ -6,25 +6,32 @@
                                    [imageSources]="imageSources"
                                    [insertImage]="insertImage"></app-shop-detail-5-picture>
       </div>
-      <div class="xb-4-template-detail__content">
+      <div id="xb-6-detail-top" class="xb-4-template-detail__content" fxFlex>
         <div class="xb-4-template-detail__title md-margin-top-1">{{product?.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center"
              fxLayout.xs="column" fxLayoutAlign.xs="start start">
           <div class="xb-store-template__car-left-part">Price</div>
           <div fxLayout="row" fxLayoutAlign="start start">
-            <div class="xb-4-template-detail__price" *ngIf="!salePrice">
-              {{product?.salePrice |currency: currency:true }}
+            <div class="xb-4-template-detail__price" *ngIf="!isHaveVariant">
+              {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
             </div>
-            <div class="xb-4-template-detail__price" *ngIf="salePrice">
-              {{salePrice |currency: currency:true }}
+
+            <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && isPriceRange">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency:true }} - {{maxSalePrice |
+              exchangeCurrency:currency |currency: currency:true }}
+            </div>
+
+            <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && !isPriceRange">
+              {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+            </div>
+
+            <div class="xb-4-template-detail__original-price line-through "
+                 *ngIf="!isHaveVariant && salePrice != originalPrice ">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
             </div>
             <div class="xb-4-template-detail__original-price line-through "
-                 *ngIf="!originalPrice && product?.originalPrice > 0 && product?.salePrice != product?.originalPrice">
-              {{product?.originalPrice|currency: currency: true }}
-            </div>
-            <div class="xb-4-template-detail__original-price line-through "
-                 *ngIf="originalPrice && originalPrice > 0 && salePrice != originalPrice">
-              {{ originalPrice|currency: currency: true }}
+                 *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
             </div>
           </div>
         </div>
@@ -67,14 +74,15 @@
         <div class="xb-store-template__car-bg" fxLayout="column" fxLayoutAlign="start stretch">
           <div fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store-template__car-left-part-1">Estimate Delivery</div>
-            <div>{{shippingTimeMin}} - {{shippingTimeMax}} days</div>
+            <div>{{shippingTimeMin}}-{{shippingTimeMax}} days</div>
           </div>
           <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store-template__car-left-part-1">Return Policy</div>
-            <div>30 day returns</div>
+            <div class="xb-4-template__return-policy" (click)="jumpReturn()">30 day returns</div>
           </div>
         </div>
         <div class="md-margin-top-3 xb-4-template-detail__buttons_bg">
+          <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-bottom-2"> {{cartWarn}}</div>
           <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy">
             <button class="xb-4-template-detail__buy-buttons" (click)="openLink()">ADD TO CART</button>
           </a>

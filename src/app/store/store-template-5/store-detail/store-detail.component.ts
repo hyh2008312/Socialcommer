@@ -41,6 +41,24 @@ export class StoreDetailComponent implements OnInit {
   shippingTimeMin: number = 0;
   shippingTimeMax: number = 0;
 
+  //变体的改版
+  minSalePrice: number = 0;
+  maxSalePrice: number = 0;
+  //保存价格的列表（按照顺序）
+  salePriceList: any = [];
+  isSelectSize: boolean = false;
+  isSelectColor: boolean = false;
+  isPriceRange: boolean = true;
+  // 不能添加购物车时的提示
+  cartWarn: string = '';
+  isShowCartWarn: boolean = false;
+  // 选择的变体是否有效
+  isSelectInvalid: boolean = false;
+  // 是否有变体
+  isHaveVariant: boolean = false;
+  //链接上的店铺的名称
+  displayName: string = '';
+
 
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 
@@ -50,11 +68,11 @@ export class StoreDetailComponent implements OnInit {
     let self = this;
     this.sub = this.activatedRouter.params.subscribe(params => {
       self.id = params['id'];
-
       this.storeService.store.subscribe((data) => {
         if (data) {
           self.store = data;
           self.currency = data.currency.toUpperCase();
+          self.displayName = data.displayName;
           self.initData();
         }
       });
@@ -82,11 +100,11 @@ export class StoreDetailComponent implements OnInit {
         pid
       }).then((data) => {
         let priceItem: any = false;
-        for(let item of data[pid]) {
-          if(!priceItem) {
+        for (let item of data[pid]) {
+          if (!priceItem) {
             priceItem = item.priceItem;
           }
-          if(priceItem >= item.priceItem) {
+          if (priceItem >= item.priceItem) {
             self.shippingTimeMax = item.shippingTimeMax;
             self.shippingTimeMin = item.shippingTimeMin;
             priceItem = item.priceItem;
@@ -107,7 +125,7 @@ export class StoreDetailComponent implements OnInit {
       self.selectedVariant = {};
       self.salePrice = 0;
       self.originalPrice = 0;
-      self.isCanBuy = false;
+      self.isCanBuy = true;
       self.number = 1;
       self.shippingTimeMin = 0;
       self.shippingTimeMax = 0;
@@ -115,6 +133,18 @@ export class StoreDetailComponent implements OnInit {
       self.selectedImage = false;
       self.imageSources = [];
       self.image = data.images;
+
+      // 初始化选择变体的数据
+      self.minSalePrice = 0;
+      self.maxSalePrice = 0;
+      self.salePriceList = [];  // 保存价格的列表（按照顺序）
+      self.isSelectSize = false;
+      self.isSelectColor = false;
+      self.isPriceRange = true;
+
+      self.cartWarn = '';
+      self.isShowCartWarn = false;
+
       if (data.images.length > 0) {
         self.selectedImage = data.images[0];
         for (let value of data.images) {
@@ -122,14 +152,16 @@ export class StoreDetailComponent implements OnInit {
         }
       }
 
-      self.arrangeVariant(data);
-
-      self.variantId = data.variants[0].id;
-      self.variant = data.variants[0];
-      self.isCanBuy = data.variants[0].isCanBuy;
-
-      self.salePrice = data.salePrice;
-      self.originalPrice = data.originalPrice;
+      this.isHaveVariant = data.attributes.length > 0;
+      if (this.isHaveVariant) {
+        self.arrangeVariant(data);
+      } else {
+        this.variantId = this.product.variants[0].id;
+        this.salePrice = this.product.salePrice;
+        this.originalPrice = this.product.originalPrice;
+        this.isCanBuy = this.product.variants[0].isCanBuy;
+        this.variant = this.product.variants[0];
+      }
 
       self.storeService.pageView({
         pt: 'goods',
@@ -166,18 +198,48 @@ export class StoreDetailComponent implements OnInit {
 
   changeScrollToTop(isScroll: any): void {
     this.scrollTopDirective.setScrollTop();
+
   }
 
   openLink() {
+    // 2类变体
+    if (this.variantList.length === 2) {
+      if (!this.isSelectSize) {
+        this.cartWarn = 'Please select a size.';
+        this.isShowCartWarn = true;
+        return;
+      }
+      if (!this.isSelectColor) {
+        this.isShowCartWarn = true;
+        this.cartWarn = 'Please select a color.';
+        return;
+      }
+    }
+    // 1类变体
+    if (this.variantList.length === 1) {
+      if (this.variantList[0].name == 'Size') {
+        if (!this.isSelectSize) {
+          this.cartWarn = 'Please select a size.';
+          this.isShowCartWarn = true;
+          return;
+        }
+      } else if (this.variantList[0].name == 'Color') {
+        if (!this.isSelectColor) {
+          this.cartWarn = 'Please select a color.';
+          this.isShowCartWarn = true;
+          return;
+        }
+      }
+    }
+
+    if (this.isSelectInvalid) {
+      this.cartWarn = 'Oops! This option is currently unavailable. Please choose another option!';
+      this.isShowCartWarn = true;
+      return;
+    }
+
     let id = this.activatedRouter.snapshot.params['id'];
-    this.storeService.buttonClick({
-      viewTime: new Date().getTime(),
-      relationId: id,
-      storeId: this.store.id
-    });
-
     let product: any = this.storeService.getProductInCart(this.store.displayName);
-
     let index = product.findIndex((item) => {
       if (item.variantId == this.variantId) {
         return true;
@@ -202,8 +264,6 @@ export class StoreDetailComponent implements OnInit {
     }
 
     this.storeService.addProductToCart(this.store.displayName, product);
-
-    //this.router.navigate([`./store/${this.store.displayName}/cart`]);
   }
 
   arrangeVariant(data) {
@@ -236,9 +296,28 @@ export class StoreDetailComponent implements OnInit {
       }
       this.variantList.push(variant);
     }
+    // 对价格进行排序为了筛选最低价和最高价
+    if (data.variants) {
+      let list = data.variants.map((data) => {
+        return parseFloat(data.saleUnitPrice);
+      });
+      this.salePriceList = list.sort(function (x, y) {
+        if (x < y) {
+          return -1;
+        }
+        if (x > y) {
+          return 1;
+        }
+        return 0;
+      });
+      this.minSalePrice = this.salePriceList[0];
+      this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1];
+    }
   }
 
   selectVariant(value, item) {
+    this.isShowCartWarn = false;
+    this.isSelectInvalid = false;
     let isSelected = value.isSelected;
     for (let itm of item.value) {
       itm.isSelected = false;
@@ -250,12 +329,13 @@ export class StoreDetailComponent implements OnInit {
         this.insertImage = value.image;
       }
       this.selectVariant[id] = value.value;
-      if (this.checkIsVariant()) {
-        this.variantId = this.checkIsVariant()[0].id;
-        this.salePrice = this.checkIsVariant()[0].saleUnitPrice;
-        this.originalPrice = this.checkIsVariant()[0].unitPrice;
-        this.isCanBuy = this.checkIsVariant()[0].isCanBuy;
-        this.variant = this.checkIsVariant()[0];
+      let mVariant = this.checkIsVariant();
+      if (mVariant && mVariant.length > 0) {
+        this.variantId = mVariant[0].id;
+        this.salePrice = mVariant[0].saleUnitPrice;
+        this.originalPrice = mVariant[0].unitPrice;
+        this.isCanBuy = mVariant[0].isCanBuy;
+        this.variant = mVariant[0];
       } else {
         this.variantId = this.product.variants[0].id;
         this.salePrice = this.product.salePrice;
@@ -274,10 +354,34 @@ export class StoreDetailComponent implements OnInit {
       this.isCanBuy = this.product.variants[0].isCanBuy;
       this.variant = this.product.variants[0];
     }
-
+    //判断有没有选择变体（两者）
+    let count = 0;
+    for (let item of this.variantList) {
+      if (item.name == 'Size') {
+        this.isSelectSize = false;
+        for (let i of item.value) {
+          if (i.isSelected) {
+            count++;
+            this.isSelectSize = true;
+            break;
+          }
+        }
+      } else if (item.name == 'Color') {
+        this.isSelectColor = false;
+        for (let i of item.value) {
+          if (i.isSelected) {
+            count++;
+            this.isSelectColor = true;
+            break;
+          }
+        }
+      }
+    }
+    // 判断是否显示价格范围
+    this.isPriceRange = !(count == this.variantList.length);
   }
 
-  checkIsVariant() {
+  checkIsVariant(): any {
     let variant = [...this.product.variants];
     for (let prop in this.selectedVariant) {
       if (!this.selectVariant[prop]) {
@@ -305,6 +409,7 @@ export class StoreDetailComponent implements OnInit {
         }
       }
     }
+    this.isSelectInvalid = variant.length === 0;
     return variant;
   }
 
@@ -316,5 +421,9 @@ export class StoreDetailComponent implements OnInit {
 
   plusNumber() {
     this.number++;
+  }
+
+  jumpReturn(): void {
+    this.router.navigate([`./store/${this.displayName}/5/return`]);
   }
 }

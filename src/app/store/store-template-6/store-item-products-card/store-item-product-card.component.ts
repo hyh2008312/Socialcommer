@@ -11,7 +11,7 @@ export class StoreItemProductCardComponent implements OnInit {
 
   @Input() status: number = 0;
   @Input() product: any = null;
-  currency:string = 'USD';
+  currency: string = 'USD';
 
   constructor(private router: Router) {
   }
@@ -34,6 +34,9 @@ export class StoreItemProductCardComponent implements OnInit {
       case 2:
         link = `/detail/${this.product.id}`;
         baseLink = baseLink.split('/detail')[0];
+        if (document.getElementById('xb-6-detail-top')) {
+          document.getElementById('xb-6-detail-top').scrollTop = 0;
+        }
         break;
     }
     this.router.navigate([baseLink + link]);

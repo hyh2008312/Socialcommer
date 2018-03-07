@@ -3,6 +3,18 @@
 
 .xb-store-template {
 
+
+  &__return-policy {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__red{
+    color:red;
+  }
+
   &__top-category {
     position: fixed;
     top: 0;
@@ -101,6 +113,7 @@
     @include media();
     @include xb-xs-screen {
       font-size: 16px;
+      @include text-overflow();
     }
   }
   &__store-description {

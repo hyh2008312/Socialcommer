@@ -8,6 +8,17 @@
 
 .xb-store-template {
 
+  &__return-policy {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__red{
+    color:red;
+  }
+
   &__dialog {
     position: absolute;
     left: 0;
@@ -673,7 +684,9 @@
     background-color: #f1f1f1;
 
     &-title {
-      font-size: 24px;
+      font-size: 16px;
+      padding-left: 16px;
+      padding-right: 16px;
       text-align: center;
       @include media();
       @include text-overflow();
@@ -908,6 +921,7 @@
     }
   }
 }
+
 .xb-store-about-shop {
   &__title {
     margin-top: 40px;
@@ -936,9 +950,9 @@
       margin-top: 32px;
     }
   }
-  &__magtop24px{
+  &__magtop24px {
     margin-top: 0;
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       margin-top: 24px;
     }
   }

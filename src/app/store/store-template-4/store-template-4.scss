@@ -3,6 +3,16 @@
 
 // main
 .xb-4-template {
+  &__return-policy {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__red{
+    color:red;
+  }
   &__center {
     text-align: center;
   }
@@ -63,6 +73,8 @@
       line-height: 36px;
       margin-top: 0;
       margin-bottom: 0;
+      max-width: 200px;
+      @include text-overflow();
     }
   }
 
