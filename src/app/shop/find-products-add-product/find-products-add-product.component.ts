@@ -106,6 +106,7 @@ export class FindProductsAddProductComponent implements OnInit {
         this.countryId = data.country.id;
         this.currency = data.currency.toUpperCase();
         this.country = data.country.name;
+        this.changeShipping(this.countryId);
       }
     });
   }

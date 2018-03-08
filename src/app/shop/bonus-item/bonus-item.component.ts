@@ -40,25 +40,6 @@ export class BonusItemComponent implements OnInit {
     this.userService.store.subscribe((data) => {
       if(data) {
         this.currency = data.currency.toUpperCase();
-        if(this.currency == 'INR') {
-          this.monthSale = this.monthSale * 65.4;
-          this.bonusList =[{
-            bonus: 300,
-            sales: 3000
-          }, {
-            bonus: 900,
-            sales: 6000
-          }, {
-            bonus: 1750,
-            sales: 10000
-          }, {
-            bonus: 3000,
-            sales: 15000
-          }, {
-            bonus: 5000,
-            sales: 20000
-          }];
-        }
       }
     });
   }
@@ -68,6 +49,25 @@ export class BonusItemComponent implements OnInit {
 
   ngOnChanges() {
     if(this.monthSale != 0) {
+      if(this.currency == 'INR') {
+        this.monthSale = this.monthSale * 65.4;
+        this.bonusList =[{
+          bonus: 300,
+          sales: 3000
+        }, {
+          bonus: 900,
+          sales: 6000
+        }, {
+          bonus: 1750,
+          sales: 10000
+        }, {
+          bonus: 3000,
+          sales: 15000
+        }, {
+          bonus: 5000,
+          sales: 20000
+        }];
+      }
       this.paintTarget();
     }
   }

@@ -37,7 +37,7 @@
   </div>
   <div fxFlex="20"  fxLayout="column" fxLayoutAlign="center center">
     <div class="unicorn-dark-theme" fxLayout="row" fxLayoutAlign="space-between center">
-      <mat-form-field class="xb-cart__item-select" fxFlex="none">
+      <mat-form-field class="xb-cart__item-select" fxFlex>
         <mat-select [ngModel]="shipping" name="shipping"
           (valueChange)="changeShipping($event)">
           <mat-option class="unicorn-dark-theme"  *ngFor="let item of shippingLists" [value]="item">
@@ -45,11 +45,9 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <div class="xb-cart__item-sale md-margin-left-2">
-        {{shipping.priceItem == 0 ? '': shipping.priceItem | exchangeCurrency:product.salePriceCurrency |currency: product.salePriceCurrency: true }}
-      </div>
     </div>
-    <div class="md-dark-secondary">{{shipping.shippingTimeMin}} - {{shipping.shippingTimeMax}} business days</div>
+    <div class="xb-cart__item-select-text xb-bold">{{shipping.priceItem | exchangeCurrency:product.salePriceCurrency |currency: product.salePriceCurrency: true }}</div>
+    <div class="md-margin-top-1">{{shipping.shippingTimeMin}}-{{shipping.shippingTimeMax}} days</div>
   </div>
   <div fxFlex="5" fxLayout="row" fxLayoutAlign="end center">
     <div class="xb-cart__icon xb-pointer">
@@ -98,14 +96,15 @@
         <i class="material-icons xb-pointer" >add</i>
       </div>
     </div>
-    <div *ngIf="shipping" fxLayout="row" fxLayoutAlign="start end" class="md-margin-top-2 md-margin-bottom-1">
+    <div *ngIf="shipping" class="md-margin-top-2">
       <div class="xb-cart__item-select xb-cart__item-select-mobile" (click)="openDialog()">
         {{shipping.type}} Shipping
         <span class="xb-cart__item-select-tri"></span>
       </div>
-      <div class="xb-cart__item-sale md-margin-left-2">
-        {{shipping.priceItem == 0 ? '': shipping.priceItem | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency: true }}
+      <div class="xb-cart__item-sale md-margin-top-1">
+        {{shipping.priceItem | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency: true }}
       </div>
+      <div class="md-margin-top-1">{{shipping.shippingTimeMin}}-{{shipping.shippingTimeMax}} days</div>
     </div>
   </div>
   <div fxFlex="none" fxLayout="column" fxLayoutAlign="center center" *ngIf="!isEdit">
@@ -138,7 +137,7 @@
             </div>
           </div>
           <div class="md-dark-secondary xb-cart__dialog-margin-top">
-            {{item.shippingTimeMin}} - {{item.shippingTimeMax}} business days
+            {{item.shippingTimeMin}}-{{item.shippingTimeMax}} days
           </div>
         </div>
       </mat-radio-button>

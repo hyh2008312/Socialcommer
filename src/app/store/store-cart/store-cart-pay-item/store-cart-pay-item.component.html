@@ -21,7 +21,7 @@
       {{product.shippingExclTax == 0 ? '': product.shippingExclTax | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}
     </div>
     <div class="md-margin-top-1">{{ product.shippingPrice.type }}&nbsp;Shipping</div>
-    <div class="md-dark-secondary md-margin-top-1">{{product.shippingPrice.shippingTimeMin}} - {{product.shippingPrice.shippingTimeMax}} business days</div>
+    <div class="md-dark-secondary md-margin-top-1">{{product.shippingPrice.shippingTimeMin}} - {{product.shippingPrice.shippingTimeMax}} days</div>
   </div>
 </div>
 <div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start stretch" fxHide.gt-sm>

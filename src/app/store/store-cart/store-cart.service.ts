@@ -199,14 +199,29 @@ export class StoreCartService {
       .catch(this.handleError);
   }
 
-  createPayment(payment:any) {
+  createStripePayment(payment:any) {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseApi.url}order/payment/create/`;
+    const url = `${this.baseApi.url}order/payment/stripe/create/`;
+
+    return this.http.post(url, payment, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  createPaypalPayment(payment:any) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}order/payment/paypal/create/`;
 
     return this.http.post(url, payment, options)
       .toPromise()

@@ -46,6 +46,9 @@ export class StoreCartPayComponent implements OnInit{
   payMethodList = [{
     content: 'Credit Card',
     display: true
+  }, {
+    content: 'Paypal',
+    display: false
   }];
 
   shippingMethod: string = 'Same as shipping address';
@@ -81,8 +84,7 @@ export class StoreCartPayComponent implements OnInit{
   totalPrice: number = 0;
   postCodeName: string = 'Postal / Zip Code';
 
-  countryName: string = '';
-  countryId: any = 1;
+  phoneCode: string = '+1';
 
   constructor(
     overlayContainer: OverlayContainer,
@@ -99,16 +101,20 @@ export class StoreCartPayComponent implements OnInit{
     this.storeService.store.subscribe((data) => {
       if(data) {
         this.storeId = data.id;
-        this.countryId = data.country.id;
-        this.countryName = data.country.name;
+        this.countries = [];
+        this.countries.push(data.country);
+        if(data.country.code == 'IN') {
+          this.postCodeName = 'Pincode';
+          this.phoneCode = '+91';
+          this.payMethodList = [{
+            content: 'Credit Card',
+            display: true
+          }];
+        }
       }
     });
 
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
-
-    this.storeCartService.getCountryList().then((data) => {
-      this.countries = data;
-    });
 
     this.stepOneForm = this.fb.group({
       isSaveAddress: [true],
@@ -129,6 +135,9 @@ export class StoreCartPayComponent implements OnInit{
       ]],
       line2: [''],
       city: ['', [
+        Validators.required
+      ]],
+      countryId: ['', [
         Validators.required
       ]],
       stateId: ['', [
@@ -154,6 +163,9 @@ export class StoreCartPayComponent implements OnInit{
       ]],
       line2: [''],
       city: ['', [
+        Validators.required
+      ]],
+      countryId: ['', [
         Validators.required
       ]],
       stateId: ['', [
@@ -187,6 +199,7 @@ export class StoreCartPayComponent implements OnInit{
         line1: this.order.shippingAddress.line1,
         line2: this.order.shippingAddress.line2,
         city: this.order.shippingAddress.city,
+        countryId: this.order.shippingAddress.country.id,
         stateId: this.order.shippingAddress.state.id,
         postcode: this.order.shippingAddress.postcode,
         phoneNumber: this.order.shippingAddress.phoneNumber,
@@ -197,11 +210,12 @@ export class StoreCartPayComponent implements OnInit{
         line1: this.order.shippingAddress.line1,
         line2: this.order.shippingAddress.line2,
         city: this.order.shippingAddress.city,
+        countryId: this.order.shippingAddress.country.id,
         stateId: this.order.shippingAddress.state.id,
         postcode: this.order.shippingAddress.postcode
       });
-      this.changeBillingState(this.countryId);
-      this.changeShippingState(this.countryId);
+      this.changeBillingState(this.order.shippingAddress.country.id);
+      this.changeShippingState(this.order.shippingAddress.country.id);
       if(this.order.shippingAddress.id) {
         this.step = 1;
       }
@@ -217,12 +231,14 @@ export class StoreCartPayComponent implements OnInit{
         line1: this.shippingAddressList.line1,
         line2: this.shippingAddressList.line2,
         city: this.shippingAddressList.city,
+        countryId: this.shippingAddressList.country.id,
         stateId: this.shippingAddressList.state.id,
         postcode: this.shippingAddressList.postcode,
         phoneNumber: this.shippingAddressList.phoneNumber,
       });
-      this.changeShippingState(this.countryId);
+      this.changeShippingState(this.shippingAddressList.country.id);
     }
+
 
   }
 
@@ -234,6 +250,7 @@ export class StoreCartPayComponent implements OnInit{
     'lastName': '',
     'line1': '',
     'city': '',
+    'countryId': '',
     'stateId': '',
     'postcode': '',
     'phoneNumber': ''
@@ -257,6 +274,9 @@ export class StoreCartPayComponent implements OnInit{
       'required': 'This field is required.',
     },
     'city': {
+      'required': 'This field is required.',
+    },
+    'countryId': {
       'required': 'This field is required.',
     },
     'stateId': {
@@ -313,6 +333,11 @@ export class StoreCartPayComponent implements OnInit{
       if(value.content == $event) {
         this.payMethod = $event;
         this.payMethodItem = value;
+        if($event == 'Paypal') {
+          if((<any>window).paypal) {
+            this.renderPaypal();
+          }
+        }
         break;
       }
     }
@@ -333,11 +358,13 @@ export class StoreCartPayComponent implements OnInit{
         line1: this.order.shippingAddress.line1,
         line2: this.order.shippingAddress.line2,
         city: this.order.shippingAddress.city,
+        countryId: this.order.shippingAddress.country.id,
         stateId: this.order.shippingAddress.state.id,
         postcode: this.order.shippingAddress.postcode
       });
-      this.changeBillingState(this.countryId);
+      this.changeBillingState(this.order.shippingAddress.country.id);
     }
+
   }
 
   changeShippingState($event) {
@@ -384,7 +411,6 @@ export class StoreCartPayComponent implements OnInit{
       return;
     }
     let stepOneObject = this.stepOneForm.value;
-    stepOneObject.countryId = this.countryId;
     stepOneObject.orderId = this.order.id;
     let lines = [];
     for(let item of this.products) {
@@ -424,10 +450,11 @@ export class StoreCartPayComponent implements OnInit{
         line1: self.order.shippingAddress.line1,
         line2: self.order.shippingAddress.line2,
         city: self.order.shippingAddress.city,
+        countryId: self.order.shippingAddress.country.id,
         stateId: self.order.shippingAddress.state.id,
         postcode: self.order.shippingAddress.postcode
       });
-      self.changeBillingState(self.countryId);
+      self.changeBillingState(self.order.shippingAddress.country.id);
     });
   }
 
@@ -452,7 +479,6 @@ export class StoreCartPayComponent implements OnInit{
     let self = this;
 
     let order = this.stepTwoForm.value;
-    order.countryId = this.countryId;
 
     (<any>window).Stripe.card.createToken({
       number: self.cardNumber,
@@ -464,7 +490,7 @@ export class StoreCartPayComponent implements OnInit{
         self.cardMessage = false;
         order.token = response.id;
         order.orderId = self.order.id;
-        self.storeCartService.createPayment(order).then((data) => {
+        self.storeCartService.createStripePayment(order).then((data) => {
           self.step = 2;
           self.order = data;
           self.storeCartService.addOrder({});
@@ -484,6 +510,79 @@ export class StoreCartPayComponent implements OnInit{
 
   openDialog() {
     this.isTotalDialogOpen = !this.isTotalDialogOpen;
+  }
+
+  renderPaypal() {
+    let self = this;
+    // Render the PayPal button
+    (<any>window).paypal.Button.render({
+
+      // Set your environment
+
+      env: 'sandbox', // sandbox | production
+
+      // Specify the style of the button
+
+      style: {
+        size:  'responsive',    // small | medium | large | responsive
+        shape: 'rect',     // pill | rect
+        color: 'black',     // gold | blue | silver | black
+        tagline: false
+      },
+
+      funding: {
+        allowed: [ (<any>window).paypal.FUNDING.CREDIT ]
+      },
+
+      // PayPal Client IDs - replace with your own
+      // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+      client: {
+        sandbox:    'Af-kyV4ftoN28QqYXMbOzSjYUfkMxbaAb7gMmtESJR-mTsl6KFBsnAwQiOJnGbxFz_GfYpJYBSaLDsnI'
+      },
+
+      // Wait for the PayPal button to be clicked
+
+      payment: function(data, actions) {
+
+        // Set up a payment and make credit the landing page
+
+        return actions.payment.create({
+          payment: {
+            transactions: [
+              {
+                amount: { total: self.totalPrice, currency: self.order.currency.toUpperCase() }
+              }
+            ]
+          }
+        });
+      },
+
+      // Wait for the payment to be authorized by the customer
+
+      onAuthorize: function(data, actions) {
+        return actions.payment.execute().then(function() {
+          let order:any = {};
+          order.payerID = data.payerID;
+          order.paymentID = data.paymentID;
+          order.paymentToken = data.paymentToken;
+          order.orderID = data.orderID;
+          order.orderId = self.order.id;
+          order.paymentAmount = self.totalPrice;
+          order.paymentCurrency = self.order.currency;
+
+          self.storeCartService.createPaypalPayment(order).then((data) => {
+            self.step = 2;
+            self.order = data;
+            self.storeCartService.addOrder({});
+            self.storeService.addProductToCart(self.displayName, []);
+            self.changeDetectorRef.markForCheck();
+            self.changeDetectorRef.detectChanges();
+          });
+        });
+      }
+
+    }, '#paypal-button-container');
   }
 
 }

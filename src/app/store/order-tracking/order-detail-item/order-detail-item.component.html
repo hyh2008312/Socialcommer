@@ -27,14 +27,14 @@
             </div>
           </div>
           <div class="md-margin-left-2">
-            <div>{{order.priceExclTax| currency: currency: true}}</div>
-            <div class="md-margin-top-1">{{order.shippingExclTax| currency: currency: true}}</div>
+            <div>{{order.priceExclTax | exchangeCurrency:currency | currency: currency: true}}</div>
+            <div class="md-margin-top-1">{{order.shippingExclTax | exchangeCurrency:currency | currency: currency: true}}</div>
             <div class="md-margin-top-1">$0</div>
-            <div class="md-margin-top-1">{{totalAmount | currency: currency: true}}</div>
+            <div class="md-margin-top-1">{{totalAmount | exchangeCurrency:currency | currency: currency: true}}</div>
             <div *ngIf="order.status == 'Return' && order.returnOrder
            && (order.returnOrder.status == 'Partially Refunded' || order.returnOrder.status == 'Refunded')">
-              <div class="md-margin-top-1">{{order.refundAmount | currency: currency: true}}</div>
-              <div class="md-margin-top-1">{{netPaymentAmount | currency: currency: true}}</div>
+              <div class="md-margin-top-1">{{order.refundAmount | exchangeCurrency:currency | currency: currency: true}}</div>
+              <div class="md-margin-top-1">{{netPaymentAmount | exchangeCurrency:currency | currency: currency: true}}</div>
             </div>
           </div>
         </div>

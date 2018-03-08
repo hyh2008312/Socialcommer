@@ -87,8 +87,16 @@
                 <div fxFlex="48" fxFlex.xs="none">
                   <div fxLayout="row" fxLayoutAlign="space-between start" class="xb-cart__width-100">
                     <div fxFlex="46">
-                      <div class="md-margin-top-2">
-                        {{countryName}}
+                      <mat-form-field class="xb-cart__body-100">
+                        <mat-select placeholder="Country" name="country" formControlName="countryId"
+                                    (ngModelChange)="changeShippingState($event)">
+                          <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.id">
+                            {{ country.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div *ngIf="formErrors['countryId']" class="xb-input-error">
+                        {{ formErrors['countryId'] }}
                       </div>
                     </div>
                     <div fxFlex="46">
@@ -116,12 +124,15 @@
                     {{ formErrors['postcode'] }}
                   </div>
                 </div>
-                <div fxFlex="48" fxFlex.xs="none">
-                  <mat-form-field  class="xb-cart__body-100">
-                    <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber">
-                  </mat-form-field>
-                  <div *ngIf="formErrors['phoneNumber']" class="xb-input-error">
-                    {{ formErrors['phoneNumber'] }}
+                <div fxFlex="48" fxFlex.xs="none" fxLayout="row" fxLayoutAlign="start center">
+                  <div class="md-margin-right-1">{{phoneCode + ' -'}}</div>
+                  <div>
+                    <mat-form-field  class="xb-cart__body-100">
+                      <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber">
+                    </mat-form-field>
+                    <div *ngIf="formErrors['phoneNumber']" class="xb-input-error">
+                      {{ formErrors['phoneNumber'] }}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -163,12 +174,15 @@
             <div>
               <mat-radio-group [ngModel]="payMethod" (ngModelChange)="changePayMethod($event)" fxLayout="row"
                  fxLayout.xs="column">
-                <mat-radio-button class="xb-cart__body-margin-top-2 xb-cart__body-margin-right-1" *ngFor="let item of payMethodList" [value]="item.content" color="primary">
+                <mat-radio-button class="xb-cart__body-margin-top-2 xb-cart__body-margin-right-1"
+                                  *ngFor="let item of payMethodList"
+
+                                  [value]="item.content" color="primary">
                   {{ item.content }}
                 </mat-radio-button>
               </mat-radio-group>
             </div>
-            <div *ngIf="!payMethodItem.display" class="xb-cart__body-margin-top-2 md-dark-secondary">
+            <div [hidden]="payMethodItem.display" class="xb-cart__body-margin-top-2 md-dark-secondary">
               Please enter you detailed payment information after submitting your order.
             </div>
             <div *ngIf="payMethodItem.display" class="xb-cart__body-margin-top-2"
@@ -246,7 +260,17 @@
                 <div fxFlex="48" fxFlex.xs="none">
                   <div fxLayout="row" fxLayoutAlign="space-between start" class="xb-cart__width-100">
                     <div fxFlex="46">
-                      <div class="md-margin-top-2">{{countryName}}</div>
+                      <mat-form-field class="xb-cart__body-100">
+                        <mat-select placeholder="Country" name="country" formControlName="countryId"
+                                    (ngModelChange)="changeBillingState($event)">
+                          <mat-option class="unicorn-dark-theme" *ngFor="let country of countries" [value]="country.id">
+                            {{ country.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div *ngIf="formErrors['countryId']" class="xb-input-error">
+                        {{ formErrors['countryId'] }}
+                      </div>
                     </div>
                     <div fxFlex="46">
                       <mat-form-field class="xb-cart__body-100">
@@ -357,7 +381,7 @@
                   Phone Number
                 </div>
                 <div>
-                  {{order.shippingAddress.phoneNumber}}
+                  {{phoneCode + ' - '}}{{order.shippingAddress.phoneNumber}}
                 </div>
               </div>
             </div>
@@ -445,7 +469,13 @@
           </div>
           <div class="md-margin-top-2 unicorn-dark-theme" fxLayout="column">
             <button mat-raised-button color="primary" *ngIf="step == 0" (click)="continue()">NEXT</button>
-            <button mat-raised-button color="primary" (click)="save()" *ngIf="step == 1">COMPLETE ORDER</button>
+            <button mat-raised-button color="primary" (click)="save()" *ngIf="step == 1 && payMethodItem.display" >COMPLETE ORDER</button>
+            <div class="xb-cart__order-button" [ngClass]="{'xb-cart__order-button-hidden': step != 1 || payMethodItem.display}" >
+              <div class="xb-cart__order-button-text">
+                PAY WITH PAYPAL
+              </div>
+              <div class="xb-cart__order-button-inner" id="paypal-button-container" ></div>
+            </div>
             <button mat-raised-button color="primary"  *ngIf="step == 2">
               CONTACT SUPPORT
             </button>

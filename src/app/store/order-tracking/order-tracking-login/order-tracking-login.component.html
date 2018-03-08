@@ -7,18 +7,19 @@
   <div class="background-bg-light" fxFlex="noshrink" >
     <div class="">
       <div class="xb-order-tracking__title">
-        Order Tracking
+        View Your Order
       </div>
       <div class="md-margin-top-4 md-margin-bottom-4" fxLayout="row" FxLayoutAlign="center start">
         <div class="xb-order-tracking__container unicorn-dark-theme">
-          <div class="xb-order-tracking__title-1">Track Your Orders & Contact Support</div>
-          <div class="md-margin-top-2">
-            Please enter your Guest Order Number and the Email Address you used during checkout to get help with your order.
+          <div class="md-margin-top-2 xb-bold">
+            Please enter the email you used to place your order and the Guest Order Number to access your order information.
           </div>
-          <div class="md-margin-top-1"><span class="xb-bold">·</span> Track Your Order Status</div>
-          <div><span class="xb-bold">·</span> Change Your Shipping Address</div>
-          <div><span class="xb-bold">·</span> Cancel an Order</div>
+          <div class="md-margin-top-1">
+            For each order, you can:
+          </div>
           <div><span class="xb-bold">·</span> View Order Details</div>
+          <div><span class="xb-bold">·</span> Check Your Order Status</div>
+          <div><span class="xb-bold">·</span> Change Your Order</div>
           <div><span class="xb-bold">·</span> Contact Customer Support</div>
           <form class="md-margin-top-3" fxLayout="column" fxLayoutAlign="start start" [formGroup]="loginGroup" (ngSubmit)="login()" novalidate>
             <div class="xb-input-error md-margin-bottom-2" *ngIf="loginErr">{{loginErr}}</div>

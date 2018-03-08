@@ -28,6 +28,8 @@ export class StoreCartHeaderComponent{
         this.storeName = data.name;
         this.homeLink = `/store/${data.displayName}/${uid}`;
         this.displayName = data.displayName;
+        let products = this.storeService.getProductInCart(this.displayName);
+        this.storeService.addProductToCart(this.displayName,products);
       }
     });
 
