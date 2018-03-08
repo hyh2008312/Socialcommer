@@ -28,7 +28,9 @@ export class HomePageComponent implements OnInit {
   product: any = [];
   blog: any = [];
   ownerId: any;
-  categoryProduct: any=[];
+  categoryProduct: any = [];
+
+  isHaveBlog: boolean = false;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -88,6 +90,7 @@ export class HomePageComponent implements OnInit {
         self.nextBlogPage = true;
       }
       self.blog = self.blog.concat(data.results);
+      this.isHaveBlog = !(data.count === 0);
       if (data.next == null) {
         self.nextBlogPage = false;
       }
@@ -95,7 +98,7 @@ export class HomePageComponent implements OnInit {
   }
 
   jumpCategory(categoryId: number): void {
-    this.router.navigate(['./category',categoryId], {relativeTo: this.activatedRoute});
+    this.router.navigate(['./category', categoryId], {relativeTo: this.activatedRoute});
   }
 
   jumpBlogList(): void {

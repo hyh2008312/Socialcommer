@@ -1,6 +1,7 @@
 <div class="xb-4-template-home">
   <div class="xb-4-template-home__background" fxLayout="column" fxLayoutAlign="start center"
        [ngStyle]="{'background': 'url(' + (imageList.imageBanner)   + ') center / auto 100% ' }">
+    <div class="xb-4-template__mask"></div>
     <div class="xb-4-template-home__des ql-editor"
          [innerHTML]="contextList.desTag | safeHtml">
     </div>
@@ -51,7 +52,9 @@
   </ng-container>
   <div class="xb-4-template__center xb-4-template__top-100" *ngIf="categoryProduct.length == 0">There are no products available.</div>
   <div class="xb-4-template-home__blog-background" fxLayout="column" fxLayoutAlign="start center"
+       *ngIf="isHaveBlog"
        [ngStyle]="{'background': 'url(' + (imageList.imageBlogCover)   + ') center / auto 100% ' }">
+    <div class="xb-4-template__mask"></div>
     <div class="xb-4-template-home__blog-title">
       Blog
     </div>
@@ -64,15 +67,13 @@
     </div>
   </div>
   <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row" fxLayoutAlign="space-between start"
-       fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
-  >
+       fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
     <app-shop-item-blog-card-5 *ngFor="let item of blog"
                                fxFlex.xs="48" fxFlex.gt-xs="48"
                                [blog]="item" [status]="0"></app-shop-item-blog-card-5>
   </div>
-  <div class="xb-4-template__center md-margin-top-4" *ngIf="blog.length ==0">There are no blogs.</div>
   <div class="xb-4-template-category__see-more xb-pointer md-margin-top-4" fxLayout="row" fxLayoutAlign="center center"
-       (click)="jumpBlogList()" *ngIf="blog.length !=0">
+       (click)="jumpBlogList()" *ngIf="isHaveBlog">
     SEE MORE
   </div>
   <div class="xb-4-template-home__about-store xb-4-template__w960" fxLayout="row"

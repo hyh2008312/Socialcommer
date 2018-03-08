@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
   blog: any = [];
 
   ownerId: any;
-
+  isHaveBlog:boolean =false ;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -118,6 +118,7 @@ export class HomePageComponent implements OnInit {
         self.nextBlogPage = true;
       }
       self.blog = self.blog.concat(data.results);
+      this.isHaveBlog = !(data.count === 0);
       if(data.next == null) {
         self.nextBlogPage = false;
       }
