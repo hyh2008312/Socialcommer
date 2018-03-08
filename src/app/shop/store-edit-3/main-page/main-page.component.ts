@@ -263,7 +263,7 @@ export class MainPageComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate(['/shop/dashboard']);
+    this.router.navigate(['/shop/store/settings']);
   }
 
   submitTemplate() {

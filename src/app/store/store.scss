@@ -6,6 +6,17 @@
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100vh;
+
+  &__return-policy {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__red {
+    color: red;
+  }
+
   &__footer-margin-left {
     margin-left: 32px;
     @include xb-xs-screen {

@@ -4,6 +4,16 @@
 
 // main
 .xb-4-template {
+  &__return-policy {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__red{
+    color:#ee4b80;
+  }
   &__top-100 {
     margin-top: 100px;
   }
@@ -66,7 +76,7 @@
     }
   }
   &__title {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: bold;
     color: #ee4b80;
     font-family: Helvetica;
@@ -74,6 +84,8 @@
     padding-right: 16px;
     height: 56px;
     line-height: 56px;
+    max-width: 205px;
+    @include text-overflow();
   }
   &__left-24px {
     margin-left: 24px;
@@ -1484,9 +1496,9 @@
       margin-top: 32px;
     }
   }
-  &__magtop24px{
+  &__magtop24px {
     margin-top: 0;
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       margin-top: 24px;
     }
   }

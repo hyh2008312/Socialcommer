@@ -34,6 +34,9 @@ export class StoreItemProductCardComponent implements OnInit {
       case 2:
         link = `/detail/${this.product.id}`;
         baseLink = baseLink.split('/detail')[0];
+        if (document.getElementById('xb-5-detail-top')) {
+          document.getElementById('xb-5-detail-top').scrollTop = 0;
+        }
         break;
     }
     this.router.navigate([baseLink + link]);

@@ -16,20 +16,34 @@
         <div>{{product.categoryName}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price" *ngIf="!salePrice">{{product.salePrice |currency: currency: true }}</div>
-          <div class="xb-store__details-price" *ngIf="salePrice">{{salePrice |currency: currency: true }}</div>
+          <div class="xb-store__details-price" *ngIf="!isHaveVariant">
+            {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+          </div>
+
+          <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange">
+            {{minSalePrice | exchangeCurrency:currency |currency: currency:true }} - {{maxSalePrice |
+            exchangeCurrency:currency |currency: currency:true }}
+          </div>
+
+          <div class="xb-store__details-price" *ngIf="isHaveVariant && !isPriceRange">
+            {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+          </div>
+
           <div class="line-through md-margin-left-2"
-               *ngIf="!originalPrice && product.originalPrice > 0 && product.salePrice != product.originalPrice">
-            {{product.originalPrice|currency: currency: true }}</div>
+               *ngIf="!isHaveVariant && salePrice != originalPrice ">
+            {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
+          </div>
           <div class="line-through md-margin-left-2"
-               *ngIf="originalPrice && originalPrice > 0 && salePrice != originalPrice">
-            {{originalPrice|currency: currency: true }}</div>
+               *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
+            {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
+          </div>
+
           <div class="xb-store__details-sale md-margin-left-2"
-               *ngIf="!salePrice && product.originalPrice > 0 && product.salePrice != product.originalPrice">
-            {{ product.salePrice|saleDiscount:product.originalPrice}} OFF
+               *ngIf="!isHaveVariant && salePrice != originalPrice ">
+            {{ salePrice|saleDiscount:originalPrice}} OFF
           </div>
           <div class="xb-store__details-sale md-margin-left-2"
-               *ngIf="!salePrice && originalPrice > 0 && salePrice != originalPrice">
+               *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
             {{ salePrice|saleDiscount:originalPrice}} OFF
           </div>
         </div>
@@ -70,14 +84,15 @@
         <div class="xb-store__details-bg" fxLayout="column" fxLayoutAlign="start stretch">
           <div fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store__details-left-part-1">Estimate Delivery</div>
-            <div>{{shippingTimeMin}} - {{shippingTimeMax}} days</div>
+            <div>{{shippingTimeMin}}-{{shippingTimeMax}} days</div>
           </div>
           <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store__details-left-part-1">Return Policy</div>
-            <div>30 day returns</div>
+            <div class="xb-store__return-policy" (click)="jumpReturn()">30 day returns</div>
           </div>
         </div>
         <div class="md-margin-top-3" fxLayout="column">
+          <div *ngIf="isShowCartWarn" class="xb-store__red md-margin-bottom-2"> {{cartWarn}}</div>
           <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">ADD TO CART</a></button>
           <button mat-raised-button color="primary"  [disabled]="true" *ngIf="!isCanBuy">
@@ -97,20 +112,34 @@
         <div>{{product.categoryName}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price" *ngIf="!salePrice">{{product.salePrice |currency: currency: true }}</div>
-          <div class="xb-store__details-price" *ngIf="salePrice">{{salePrice |currency: currency: true }}</div>
+          <div class="xb-store__details-price" *ngIf="!isHaveVariant">
+            {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+          </div>
+
+          <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange">
+            {{minSalePrice | exchangeCurrency:currency |currency: currency:true }} - {{maxSalePrice |
+            exchangeCurrency:currency |currency: currency:true }}
+          </div>
+
+          <div class="xb-store__details-price" *ngIf="isHaveVariant && !isPriceRange">
+            {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+          </div>
+
           <div class="line-through md-margin-left-2"
-               *ngIf="!originalPrice && product.originalPrice > 0 && product.salePrice != product.originalPrice">
-            {{product.originalPrice|currency: currency: true }}</div>
+               *ngIf="!isHaveVariant && salePrice != originalPrice ">
+            {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
+          </div>
           <div class="line-through md-margin-left-2"
-               *ngIf="originalPrice && originalPrice > 0 && salePrice != originalPrice">
-            {{originalPrice|currency: currency: true }}</div>
+               *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
+            {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
+          </div>
+
           <div class="xb-store__details-sale md-margin-left-2"
-               *ngIf="!salePrice && product.originalPrice > 0 && product.salePrice != product.originalPrice">
-            {{ product.salePrice|saleDiscount:product.originalPrice}} OFF
+               *ngIf="!isHaveVariant && salePrice != originalPrice ">
+            {{ salePrice|saleDiscount:originalPrice}} OFF
           </div>
           <div class="xb-store__details-sale md-margin-left-2"
-               *ngIf="!salePrice && originalPrice > 0 && salePrice != originalPrice">
+               *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
             {{ salePrice|saleDiscount:originalPrice}} OFF
           </div>
         </div>
@@ -151,14 +180,15 @@
         <div class="xb-store__details-bg" fxLayout="column" fxLayoutAlign="start stretch">
           <div fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store__details-left-part-1">Estimate Delivery</div>
-            <div>{{shippingTimeMin}} - {{shippingTimeMax}} days</div>
+            <div>{{shippingTimeMin}}-{{shippingTimeMax}} days</div>
           </div>
           <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store__details-left-part-1">Return Policy</div>
-            <div>30 day returns</div>
+            <div class="xb-store__return-policy" (click)="jumpReturn()">30 day returns</div>
           </div>
         </div>
         <div class="xb-store__details-buttons" fxLayout="column">
+          <div *ngIf="isShowCartWarn" class="xb-store__red md-margin-bottom-2"> {{cartWarn}}</div>
           <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">ADD TO CART</a></button>
           <button mat-raised-button color="primary"  [disabled]="true" *ngIf="!isCanBuy">
