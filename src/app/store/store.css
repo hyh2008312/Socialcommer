@@ -7487,7 +7487,7 @@ textarea.mat-input-element {
         -o-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%); }
       .xb-store__details-image.active {
-        border: 2px solid #ffc400; }
+        border: 2px solid #00bdd6; }
     .xb-store__details-text {
       font-size: 16px;
       color: rgba(0, 0, 0, 0.87);
@@ -7501,7 +7501,7 @@ textarea.mat-input-element {
       border: 2px solid transparent; }
       .xb-store__details-text.active {
         font-weight: 600;
-        border: 2px solid #ffc400; }
+        border: 2px solid #00bdd6; }
     .xb-store__details-item-input {
       border: 1px solid #dedede;
       border-radius: 2px; }
