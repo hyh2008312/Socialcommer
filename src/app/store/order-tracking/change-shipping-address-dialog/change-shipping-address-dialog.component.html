@@ -88,7 +88,7 @@
         <div fxFlex="46">
           <div fxLayout="row" fxLayoutAlign="start center">
             <mat-form-field fxFlex>
-              <input type="text" matInput placeholder="Postal / ZIP Code" formControlName="postcode">
+              <input type="text" matInput placeholder="{{postCodeName}}" formControlName="postcode">
             </mat-form-field>
           </div>
           <div *ngIf="formErrors['postcode']" class="xb-input-error">
@@ -97,6 +97,7 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-margin-right-1">{{phoneCode + ' -'}}</div>
         <mat-form-field fxFlex>
           <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber">
         </mat-form-field>

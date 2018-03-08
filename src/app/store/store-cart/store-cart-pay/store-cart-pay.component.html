@@ -385,10 +385,10 @@
                 </div>
               </div>
             </div>
-            <div class="xb-cart__title xb-cart__body-margin-top-2">
+            <div class="xb-cart__title xb-cart__body-margin-top-2" *ngIf="order.paymentType == 'Stripe'">
               Billing Address
             </div>
-            <div class="md-margin-top-3" fxLayout="column">
+            <div class="md-margin-top-3" fxLayout="column" *ngIf="order.paymentType == 'Stripe'">
               <div fxLayout="row" fxLayoutAlign="start start">
                 <div class="md-dark-secondary xb-cart__bill-left-1" fxFlex="none">
                   Name
@@ -445,7 +445,8 @@
                 Payment Method
               </div>
             </div>
-            <div class="md-margin-top-3">****{{order.cardLast4}}/{{order.cardBrand}}</div>
+            <div class="md-margin-top-3" *ngIf="order.paymentType == 'Stripe'">****{{order.cardLast4}}/{{order.cardBrand}}</div>
+            <div class="md-margin-top-3" *ngIf="order.paymentType == 'Paypal'">Paypal</div>
           </div>
         </div>
         <div fxLayout="column" fxHide.xs>
@@ -457,11 +458,13 @@
               <div class="xb-cart__bill-left">
                 <div class="xb-cart__bill-margin-top-1">Subtotal</div>
                 <div class="xb-cart__bill-margin-top-1">Shipping</div>
+                <div class="xb-cart__bill-margin-top-1">Tax</div>
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
               </div>
               <div>
                 <div class="xb-cart__bill-margin-top-1">{{subTotalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase): true }}</div>
                 <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase): true }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{0 | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase): true }}</div>
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">
                   {{totalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase): true}}</div>
               </div>
@@ -470,15 +473,15 @@
           <div class="md-margin-top-2 unicorn-dark-theme" fxLayout="column">
             <button mat-raised-button color="primary" *ngIf="step == 0" (click)="continue()">NEXT</button>
             <button mat-raised-button color="primary" (click)="save()" *ngIf="step == 1 && payMethodItem.display" >COMPLETE ORDER</button>
+            <button mat-raised-button color="primary"  *ngIf="step == 2">
+              CONTACT SUPPORT
+            </button>
             <div class="xb-cart__order-button" [ngClass]="{'xb-cart__order-button-hidden': step != 1 || payMethodItem.display}" >
               <div class="xb-cart__order-button-text">
                 PAY WITH PAYPAL
               </div>
               <div class="xb-cart__order-button-inner" id="paypal-button-container" ></div>
             </div>
-            <button mat-raised-button color="primary"  *ngIf="step == 2">
-              CONTACT SUPPORT
-            </button>
           </div>
         </div>
       </div>

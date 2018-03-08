@@ -52,11 +52,13 @@
               <div class="xb-cart__bill-left">
                 <div class="xb-cart__bill-margin-top-1">Subtotal</div>
                 <div class="xb-cart__bill-margin-top-1">Shipping</div>
+                <div class="xb-cart__bill-margin-top-1">Tax</div>
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
               </div>
               <div>
                 <div class="xb-cart__bill-margin-top-1">{{subTotalPrice | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
                 <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{0 | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">{{totalPrice | exchangeCurrency:(currency|uppercase) |currency: (currency|uppercase): true }}</div>
               </div>
             </div>
@@ -86,10 +88,12 @@
         <div>
           <div>{{subTotalPrice | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
           <div class="md-margin-top-3">{{shippingTotalPrice | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
+          <div class="md-margin-top-3">{{0 | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}</div>
         </div>
         <div class="md-margin-left-3">
           <div>Subtotal</div>
           <div class="md-margin-top-3">Shipping</div>
+          <div class="md-margin-top-3">Tax</div>
         </div>
       </div>
     </div>

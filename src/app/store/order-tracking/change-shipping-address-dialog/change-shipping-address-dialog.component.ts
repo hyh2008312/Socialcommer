@@ -19,6 +19,9 @@ export class ChangeShippingAddressDialogComponent implements OnInit {
 
   modified: boolean = false;
 
+  postCodeName: string = 'Postal / Zip Code';
+  phoneCode: string = '+1';
+
   constructor(
     public dialogRef: MatDialogRef<ChangeShippingAddressDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -27,7 +30,7 @@ export class ChangeShippingAddressDialogComponent implements OnInit {
   ) {
 
     this.orderTrackingService.getCountryList().then((data) => {
-      this.countries = data;
+
     });
     this.shippingForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -44,6 +47,12 @@ export class ChangeShippingAddressDialogComponent implements OnInit {
     this.shippingForm.valueChanges.subscribe(data => this.onValueChanged(data, this.shippingForm));
 
     if(this.data.order.shippingAddress) {
+      this.countries = [];
+      this.countries.push(this.data.order.shippingAddress.country);
+      if(this.data.order.shippingAddress.country.code == 'IN') {
+        this.postCodeName = 'Pincode';
+        this.phoneCode = '+91';
+      }
       this.shippingForm.patchValue({
         firstName: this.data.order.shippingAddress.firstName,
         lastName: this.data.order.shippingAddress.lastName,

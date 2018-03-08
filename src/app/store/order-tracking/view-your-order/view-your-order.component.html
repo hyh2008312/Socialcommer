@@ -41,19 +41,19 @@
         <div class="xb-order-tracking__height-2 xb-order-tracking__width xb-order-tracking__border-bottom"
              fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-order-tracking__margin-right" fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
-            {{order.totalExclTax|currency:(order.currency|uppercase):true}}
+            {{order.totalExclTax | exchangeCurrency:(order.currency|uppercase)|currency:(order.currency|uppercase):true}}
           </div>
           <div class="xb-order-tracking__margin-right" fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
-            {{order.shippingExclTax|currency:(order.currency|uppercase):true}}
+            {{order.shippingExclTax | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase):true}}
           </div>
           <div class="xb-order-tracking__margin-right" fxFlex="15" fxLayout="row" fxLayoutAlign="center center">
-            $0
+            {{0 | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase):true}}
           </div>
           <div class="xb-order-tracking__margin-right" fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
-            {{totalPrice|currency:(order.currency|uppercase):true}}
+            {{totalPrice | exchangeCurrency:(order.currency|uppercase) | currency:(order.currency|uppercase):true}}
           </div>
           <div fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
-            papal / Credit Card
+            {{order.paymentType == 'Paypal'? 'Paypal': 'Credit Card'}}
           </div>
         </div>
       </div>
