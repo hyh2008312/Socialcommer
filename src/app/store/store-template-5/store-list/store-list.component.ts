@@ -19,6 +19,7 @@ export class StoreListComponent implements OnInit, OnDestroy {
   store: Store = new Store();
   page = 1;
   nextPage: boolean = false;
+  currency: string = 'USD';
 
 
   constructor(private router: Router,
@@ -36,6 +37,7 @@ export class StoreListComponent implements OnInit, OnDestroy {
           if (data) {
             self.store = data;
             self.text = data.description;
+            self.currency = data.currency.toUpperCase();
             self.storeService.addTitleDescription({
               title: data.name,
               description: data.description,
@@ -98,7 +100,7 @@ export class StoreListComponent implements OnInit, OnDestroy {
       self.product = self.product.concat(data.results);
       if (data.next == null) {
         self.nextPage = false;
-      }else {
+      } else {
         self.nextPage = true;
       }
     });

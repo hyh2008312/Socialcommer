@@ -24,6 +24,7 @@ export class StoreDetailComponent implements OnInit {
   selectedImage: any = false;
   imageSources: string[] = [];
   relatedProduct: any = [];
+  relatedProductList: any = [];
   id: number;
   private sub: Subscription;
   isRequestRelated: boolean = true;
@@ -104,11 +105,11 @@ export class StoreDetailComponent implements OnInit {
         pid
       }).then((data) => {
         let priceItem: any = false;
-        for(let item of data[pid]) {
-          if(!priceItem) {
+        for (let item of data[pid]) {
+          if (!priceItem) {
             priceItem = item.priceItem;
           }
-          if(priceItem >= item.priceItem) {
+          if (priceItem >= item.priceItem) {
             self.shippingTimeMax = item.shippingTimeMax;
             self.shippingTimeMin = item.shippingTimeMin;
             priceItem = item.priceItem;
@@ -178,7 +179,14 @@ export class StoreDetailComponent implements OnInit {
       if (self.isRequestRelated) {
         self.queryProduct();
         self.isRequestRelated = false;
+      } else {
+        if (self.relatedProductList.length > 0) {
+          self.relatedProduct = self.relatedProductList.filter((data) => {
+            return self.id != data.id;
+          });
+        }
       }
+
     });
   }
 
@@ -196,7 +204,12 @@ export class StoreDetailComponent implements OnInit {
     };
     let self = this;
     self.storeService.getProductList(options).then((data) => {
-      self.relatedProduct = self.relatedProduct.concat(data.results);
+      if (data.count > 1) {
+        self.relatedProductList = data.results;
+        self.relatedProduct = data.results.filter((data) => {
+          return self.id != data.id;
+        });
+      }
     });
   }
 
@@ -271,7 +284,7 @@ export class StoreDetailComponent implements OnInit {
 
     this.storeService.addProductToCart(this.store.displayName, product);
 
-      let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
+    let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
       data: {
         displayName: this.displayName
       }

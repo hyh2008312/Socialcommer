@@ -11,8 +11,8 @@ export class StoreItemCardComponent implements OnInit {
 
   @Input() status: number = 0;
   @Input() product: any = null;
+  @Input() currency: any = 'USD';
 
-  currency = 'USD';
 
   constructor(
     private router: Router

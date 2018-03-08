@@ -73,7 +73,7 @@
         </div>
         <div class="xb-store-template__car-bg" fxLayout="column" fxLayoutAlign="start stretch">
           <div fxLayout="row" fxLayoutAlign="start start">
-            <div class="xb-store-template__car-left-part-1">Estimate Delivery</div>
+            <div class="xb-store-template__car-left-part-1">Estimated Delivery</div>
             <div>{{shippingTimeMin}}-{{shippingTimeMax}} days</div>
           </div>
           <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
@@ -119,6 +119,7 @@
       <app-shop-item-product-card-5 *ngFor="let item of relatedProduct"
                                     fxFlex.xs="48" fxFlex.gt-xs="25"
                                     [product]="item" [status]="2"
+                                    [currency]="currency"
                                     (scrollToTop)="changeScrollToTop($event)"></app-shop-item-product-card-5>
       <div fxFlex.xs="48" fxFlex.gt-xs="25"></div>
       <div fxFlex.xs="48" fxFlex.gt-xs="25"></div>

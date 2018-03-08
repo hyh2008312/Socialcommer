@@ -133,6 +133,7 @@
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
         <app-store-item-card *ngFor="let item of product"
                              fxFlex.xs="48" fxFlex.gt-xs="30"
+                             [currency]="currency"
                              [product]="item" [status]="0"></app-store-item-card>
         <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
       </div>

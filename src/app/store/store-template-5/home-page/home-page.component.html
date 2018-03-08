@@ -31,6 +31,7 @@
         <ng-container  *ngFor="let item of category.goods ; let i=index">
         <app-shop-item-product-card-5 *ngIf="i<3"
                                       fxFlex.xs="100" fxFlex.gt-xs="30"
+                                      [currency]="currency"
                                       [product]="item" [status]="0"></app-shop-item-product-card-5>
         </ng-container>
         <div fxFlex.xs="100" fxFlex.gt-xs="30"></div>
@@ -39,6 +40,7 @@
         <div class="xb-4-template-collection__product-scroll" fxLayoutAlign="start start" fxLayout="row">
           <app-shop-item-product-card-5 *ngFor="let item of category.goods ;let i=index" class="md-margin-left-2"
                                         [ngClass]="{'md-padding-right-2':i==category.goods.length-1}"
+                                        [currency]="currency"
                                         fxFlex.xs="80" [product]="item" [status]="0"></app-shop-item-product-card-5>
         </div>
       </div>

@@ -32,6 +32,7 @@ export class StoreListComponent implements OnInit {
   showButton: boolean = false;
   productNumber: number = 0;
   displayName: string;
+  currency:string='USD';
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
