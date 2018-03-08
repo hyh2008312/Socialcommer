@@ -5,6 +5,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
 import {MatDialog} from "@angular/material";
+import { UserService } from  '../../shared/services/user/user.service';
+
 import {AccountBalanceWithdrawMoneyDialogComponent} from "../account-balance-withdraw-money-dialog/account-balance-withdraw-money-dialog.component";
 
 @Component({
@@ -20,17 +22,32 @@ export class AccountBalanceComponent implements OnInit {
   pageSize = 12;
   pageSizeOptions = [6, 12];
   isShowTip: boolean = false;
+  currency: string = 'USD';
 
-  constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
-              public dialog: MatDialog,
-              private fb: FormBuilder) {
+  sub: any;
 
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog,
+    private fb: FormBuilder,
+    private userService: UserService
+  ) {
+    this.sub = this.userService.store.subscribe((data) => {
+      if(data) {
+        this.currency = data.currency.toUpperCase();
+      }
+    });
   }
 
   ngOnInit(): void {
 
   }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
   //是否进行显示 tip
   changeShowTip(isShow: boolean): void {
     this.isShowTip = isShow;

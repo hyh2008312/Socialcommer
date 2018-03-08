@@ -45,6 +45,7 @@ export class DashboardComponent implements OnInit {
   productStatistic: any = false;
 
   monthlySale: any = 0;
+  currency: string = 'USD';
 
   constructor(
     private shopService: ShopService,
@@ -59,6 +60,8 @@ export class DashboardComponent implements OnInit {
     this.userService.store.subscribe((data) => {
       if(data) {
         self.storeId = data.id;
+
+        self.currency = data.currency.toUpperCase();
 
         self.getStore();
 

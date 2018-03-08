@@ -2,7 +2,7 @@ import {Component, OnInit, Inject} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-
+import { UserService } from  '../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-account-balance-withdraw-money-dialog',
@@ -14,15 +14,25 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   status: number = 1;
   money: number;
   balanceForm: FormGroup;
+  sub: any;
+  currency: string = 'USD';
 
-  constructor(public dialogRef: MatDialogRef<AccountBalanceWithdrawMoneyDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              private fb: FormBuilder
+  constructor(
+    public dialogRef: MatDialogRef<AccountBalanceWithdrawMoneyDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private fb: FormBuilder,
+    private userService: UserService
   ) {
     this.balanceForm = this.fb.group({
       paypalAccount: ['', [
         Validators.required
       ]]
+    });
+
+    this.sub = this.userService.store.subscribe((data) => {
+      if(data) {
+        this.currency = data.currency.toUpperCase();
+      }
     });
   }
 

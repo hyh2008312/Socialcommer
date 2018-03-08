@@ -19,7 +19,7 @@
         </div>
         <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-sales" ></i>
-          <div class="xb-shop__dashboard-number">{{storeStatistic.totalSales ? storeStatistic.totalSales: 0}}</div>
+          <div class="xb-shop__dashboard-number">{{storeStatistic.totalSales ? (storeStatistic.totalSales | exchangeCurrency:currency|currency:currency:true) : 0}}</div>
           <div class="">Total Sales</div>
         </div>
         <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">

@@ -5,7 +5,10 @@
       <div class="xb-account-money-dialog__14bold xb-account-money-dialog__color54">
         Available balance
       </div>
-      <div class="xb-account-money-dialog__14regular md-margin-left-4">$0</div>
+      <div class="xb-account-money-dialog__14regular md-margin-left-4">
+        {{0 | exchangeCurrency:currency|currency:currency:true}}
+        {{currency == 'INR'? '($0:00)':''}}
+      </div>
     </div>
     <div class="xb-account-money-dialog__payment md-margin-top-3">Payment Information</div>
     <div>
