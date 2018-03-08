@@ -39,6 +39,7 @@
            fxLayoutWrap>
         <app-shop-item-product-card-5 *ngFor="let item of category.goods"
                                       fxFlex.xs="50" fxFlex.gt-xs="25"
+                                      [currency]="currency"
                                       [product]="item" [status]="0"></app-shop-item-product-card-5>
         <div fxFlex.xs="50" fxFlex.gt-xs="25"></div>
         <div fxFlex.xs="50" fxFlex.gt-xs="25"></div>
@@ -49,6 +50,7 @@
            fxLayoutWrap fxShow="false" fxShow.xs="true">
         <ng-container *ngFor="let item of category.goods ;let i=index">
           <app-shop-item-product-card-5 *ngIf="i<4"
+                                        [currency]="currency"
                                         fxFlex="50" [product]="item" [status]="0"></app-shop-item-product-card-5>
         </ng-container>
       </div>

@@ -15,6 +15,7 @@
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
         <app-store-item-card *ngFor="let item of product"
           fxFlex.xs="48" fxFlex.gt-xs="30"
+           [currency]="currency"
           [product]="item" [status]="1"></app-store-item-card>
       </div>
       <div class="md-margin-top-2 md-dark-secondary" fxLayout="row" fxLayoutAlign="center center"

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { Store } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store} from '../../store';
 
 @Component({
   selector: 'app-store-template-3-store-list',
@@ -12,10 +12,10 @@ import { Store } from '../../store';
 
 export class StoreListComponent implements OnInit {
 
-  public categories:any = [];
+  public categories: any = [];
   public category: any = {
     id: null,
-    name : ''
+    name: ''
   };
   public shareLink: string;
   public text = '';
@@ -25,30 +25,30 @@ export class StoreListComponent implements OnInit {
   page = 1;
   nextPage: boolean = true;
   product: any = [];
+  currency: string = 'USD';
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private storeService: StoreService
-  ) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private storeService: StoreService) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.shareLink = window.location.href;
     let self = this;
     let firstLoad = false;
     this.storeService.store.subscribe((data) => {
-      if(data && !firstLoad) {
+      if (data && !firstLoad) {
         firstLoad = true;
         self.store = data;
         self.text = data.description;
+        self.currency = data.currency.toUpperCase();
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
           shareImage: data.imageUrl
         });
-        self.categories = [{name: 'All'},...data.category];
+        self.categories = [{name: 'All'}, ...data.category];
         self.category = self.categories[0];
         self.storeService.addStore(data);
 
@@ -72,12 +72,12 @@ export class StoreListComponent implements OnInit {
     this.queryProduct(true);
   }
 
-  jumpList():void {
+  jumpList(): void {
     this.page++;
     this.queryProduct();
   }
 
-  queryProduct(clearCategory?:boolean) {
+  queryProduct(clearCategory?: boolean) {
     let options = {
       cat: this.category.id,
       store: this.store.id,
@@ -86,19 +86,19 @@ export class StoreListComponent implements OnInit {
       page_size: 12
     };
     let self = this;
-    self.storeService.getProductList(options).then((data)=>{
-      if(clearCategory) {
+    self.storeService.getProductList(options).then((data) => {
+      if (clearCategory) {
         self.product = [];
         self.nextPage = true;
       }
       self.product = self.product.concat(data.results);
-      if(data.next == null) {
+      if (data.next == null) {
         self.nextPage = false;
       }
     });
   }
 
-  back():void {
+  back(): void {
     this.router.navigate([`./store/${this.store.displayName}`]);
   }
 }

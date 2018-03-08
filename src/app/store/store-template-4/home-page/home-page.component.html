@@ -41,6 +41,7 @@
     </div>
     <app-shop-item-product-card-4 *ngFor="let item of product"
                                   fxFlex.xs="45" fxFlex.gt-xs="22"
+                                  [currency]="currency"
                                   [product]="item" [status]="0"></app-shop-item-product-card-4>
     <div fxFlex.xs="45" fxFlex.gt-xs="22"></div>
     <div fxFlex.xs="45" fxFlex.gt-xs="22"></div>

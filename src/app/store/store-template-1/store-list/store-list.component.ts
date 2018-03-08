@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { Store } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store} from '../../store';
 
 @Component({
   selector: 'app-store-list',
@@ -12,36 +12,37 @@ import { Store } from '../../store';
 
 export class StoreListComponent implements OnInit {
 
-  public categories:any = [];
+  public categories: any = [];
   public category: any = {
     id: null,
-    name : ''
+    name: ''
   };
   public shareLink: string;
   public text = '';
-  showButton:boolean = false;
+  showButton: boolean = false;
 
   store: Store = new Store();
   page = 1;
   nextPage: boolean = true;
   product: any = [];
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private storeService: StoreService
-  ) {
+  currency: string = 'USD';
+
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private storeService: StoreService) {
     let self = this;
     self.storeService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.store = data;
         self.text = data.description;
+        self.currency = data.currency.toUpperCase();
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
           shareImage: data.imageUrl
         });
-        if(data.category.length > 1) {
+        if (data.category.length > 1) {
           self.categories = [{name: 'All'}, ...data.category];
         } else {
           self.categories = [...data.category];
@@ -59,7 +60,7 @@ export class StoreListComponent implements OnInit {
     });
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.shareLink = window.location.href;
   }
 
@@ -72,8 +73,8 @@ export class StoreListComponent implements OnInit {
     this.queryProduct(true);
   }
 
-  queryProduct(clearProduct?:boolean) {
-    if(this.categories.length <= 0) {
+  queryProduct(clearProduct?: boolean) {
+    if (this.categories.length <= 0) {
       return;
     }
     let options = {
@@ -83,24 +84,24 @@ export class StoreListComponent implements OnInit {
       page_size: 12
     };
     let self = this;
-    self.storeService.getProductList(options).then((data)=>{
-      if(clearProduct) {
+    self.storeService.getProductList(options).then((data) => {
+      if (clearProduct) {
         this.product = [];
         this.nextPage = true;
       }
       self.product = self.product.concat(data.results);
-      if(data.next == null) {
+      if (data.next == null) {
         self.nextPage = false;
       }
     });
   }
 
-  jumpList():void {
+  jumpList(): void {
     this.page++;
     this.queryProduct();
   }
 
-  back():void {
+  back(): void {
     this.router.navigate([`./store/${this.store.displayName}/1`]);
   }
 }

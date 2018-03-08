@@ -29,6 +29,8 @@ export class StoreListComponent implements OnInit, OnDestroy {
   //默认的图片的模版
   defaultPicture: string = 'https://media.socialcommer.com/source/web/template/6/wall-416060.jpg';
 
+  currency:string='USD';
+
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -46,6 +48,7 @@ export class StoreListComponent implements OnInit, OnDestroy {
           if (data) {
             self.store = data;
             self.text = data.description;
+            self.currency=data.currency.toUpperCase();
             self.categoryName = self.getCategoryName();
             self.setCategoryImagePicture();
             self.storeService.addTitleDescription({

@@ -33,6 +33,7 @@ export class HomePageComponent implements OnInit {
 
   ownerId: any;
   isHaveBlog:boolean =false ;
+  currency :string = 'USD';
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -53,6 +54,7 @@ export class HomePageComponent implements OnInit {
         self.imageList = data.images?data.images:{};
         self.text = data.description;
         self.ownerId = data.ownerId;
+        self.currency = data.currency.toUpperCase();
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,

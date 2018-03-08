@@ -42,6 +42,7 @@ export class MainPageComponent implements OnInit {
   displayName: string;
   isShowMenu: boolean = false;
   storeName: string = '';
+  currency: string = 'USD';
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -58,6 +59,7 @@ export class MainPageComponent implements OnInit {
     self.storeService.store.subscribe((data) => {
       if (data) {
         self.store = data;
+        self.currency = data.currency.toUpperCase();
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.displayName = data.displayName;
         self.storeName = data.context ? data.context.nameTag : data.name;

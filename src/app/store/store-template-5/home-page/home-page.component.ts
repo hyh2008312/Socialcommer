@@ -31,6 +31,7 @@ export class HomePageComponent implements OnInit {
   categoryProduct: any = [];
 
   isHaveBlog: boolean = false;
+  currency: string = 'USD';
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -46,6 +47,7 @@ export class HomePageComponent implements OnInit {
     this.storeService.store.subscribe((data) => {
       if (data) {
         self.store = data;
+        self.currency=data.currency.toUpperCase();
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
         self.text = data.description;

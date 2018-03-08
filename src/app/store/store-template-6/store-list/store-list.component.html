@@ -22,6 +22,7 @@
        fxLayoutWrap>
     <app-shop-item-product-card-5 *ngFor="let item of product"
                                   fxFlex.xs="45" fxFlex.gt-xs="25"
+                                  [currency]="currency"
                                   [product]="item" [status]="1"></app-shop-item-product-card-5>
     <div fxFlex.xs="45" fxFlex.gt-xs="25"></div>
     <div fxFlex.xs="45" fxFlex.gt-xs="25"></div>

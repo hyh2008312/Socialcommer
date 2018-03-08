@@ -40,6 +40,8 @@ export class HomePageComponent implements OnInit {
   productNumber: number = 0;
   displayName:string ;
 
+  currency:string = 'USD';
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -54,6 +56,7 @@ export class HomePageComponent implements OnInit {
     this.storeService.store.subscribe((data) => {
       if (data) {
         self.store = data;
+        self.currency = data.currency.toUpperCase();
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.displayName = data.displayName ;
         self.contextList = data.context ? data.context : {};

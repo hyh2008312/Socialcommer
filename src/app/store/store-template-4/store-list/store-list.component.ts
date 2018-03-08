@@ -27,6 +27,7 @@ export class StoreListComponent implements OnInit {
   product: any = [];
   date: any;
   isShowCategoryMenu = false ;
+  currency:string='USD';
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -45,6 +46,7 @@ export class StoreListComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.text = data.description;
+        self.currency = data.currency.toUpperCase();
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
