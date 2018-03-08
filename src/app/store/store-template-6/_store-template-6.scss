@@ -1250,7 +1250,7 @@
         @include transform(translate(-50%, -50%));
       }
       &.active {
-        border: 2px solid #ffc400;
+        border: 2px solid #ee4b80;
       }
     }
 
@@ -1264,7 +1264,7 @@
       @include text-overflow();
       &.active {
         @include media();
-        border: 2px solid #ffc400;
+        border: 2px solid #ee4b80;
       }
     }
 
@@ -1530,3 +1530,4 @@
   }
 
 }
+

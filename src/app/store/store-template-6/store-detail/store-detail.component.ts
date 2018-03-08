@@ -5,6 +5,8 @@ import {StoreService} from '../../store.service';
 import {Store, Product, Image} from '../../store';
 import {Subscription} from 'rxjs/Subscription';
 import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
+import {AddCartSuccessDialogComponent} from "../add-cart-success-dialog/add-cart-success-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-shop-template-5-store-detail',
@@ -62,6 +64,7 @@ export class StoreDetailComponent implements OnInit {
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
+              private dialog: MatDialog,
               private storeService: StoreService) {
     let self = this;
     this.sub = this.activatedRouter.params.subscribe(params => {
@@ -260,6 +263,14 @@ export class StoreDetailComponent implements OnInit {
     }
 
     this.storeService.addProductToCart(this.store.displayName, product);
+
+    let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
+      data: {
+        displayName: this.displayName
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   arrangeVariant(data) {
