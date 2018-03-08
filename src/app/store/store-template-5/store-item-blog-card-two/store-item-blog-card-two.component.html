@@ -8,9 +8,9 @@
   </div>
 
   <div class="xb-4-template-blog-two__card-info">
-    <div class="xb-4-template-blog-two__card-publish">{{blog.authorFirstName}}</div>
+    <div class="xb-4-template-blog-two__card-publish">By {{blog.authorFirstName}} {{blog.authorLastName}}</div>
     <div class="xb-4-template-blog-two__card-date">{{blog.modified | amDateFormat:'MMMM Do, YYYY'}}</div>
-    <div class="xb-4-template-blog-two__card-view">{{blog.vcount}} view</div>
+    <div class="xb-4-template-blog-two__card-view" *ngIf="false">{{blog.vcount}} view</div>
   </div>
 </div>
 
