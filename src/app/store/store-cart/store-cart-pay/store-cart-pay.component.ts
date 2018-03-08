@@ -7,6 +7,9 @@ import { StoreService } from '../../store.service';
 import { StoreCartService } from '../store-cart.service';
 import { ConstantService } from  '../../../shared/services/constant/constant.service';
 
+import { SystemConstant } from '../../../config/app.api';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-store-cart-pay',
   templateUrl: './store-cart-pay.component.html',
@@ -92,10 +95,11 @@ export class StoreCartPayComponent implements OnInit{
     private storeCartService: StoreCartService,
     private constant: ConstantService,
     private fb: FormBuilder,
-    private changeDetectorRef:ChangeDetectorRef
+    private changeDetectorRef:ChangeDetectorRef,
+    private systemConstant: SystemConstant
   ) {
     if((<any>window).Stripe) {
-      (<any>window).Stripe.setPublishableKey('pk_test_4moMjkGVqC9OkgfZAzkotlZn');
+      (<any>window).Stripe.setPublishableKey(this.systemConstant.stripeToken);
     }
 
     this.storeService.store.subscribe((data) => {
@@ -514,12 +518,13 @@ export class StoreCartPayComponent implements OnInit{
 
   renderPaypal() {
     let self = this;
+    let env = environment.production === true? 'production': 'sandbox';
     // Render the PayPal button
     (<any>window).paypal.Button.render({
 
       // Set your environment
 
-      env: 'sandbox', // sandbox | production
+      env: env, // sandbox | production
 
       // Specify the style of the button
 
@@ -538,7 +543,8 @@ export class StoreCartPayComponent implements OnInit{
       // Create a PayPal app: https://developer.paypal.com/developer/applications/create
 
       client: {
-        sandbox:    'Af-kyV4ftoN28QqYXMbOzSjYUfkMxbaAb7gMmtESJR-mTsl6KFBsnAwQiOJnGbxFz_GfYpJYBSaLDsnI'
+        sandbox: 'Af-kyV4ftoN28QqYXMbOzSjYUfkMxbaAb7gMmtESJR-mTsl6KFBsnAwQiOJnGbxFz_GfYpJYBSaLDsnI',
+        production: ''
       },
 
       // Wait for the PayPal button to be clicked
