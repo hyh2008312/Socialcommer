@@ -3,6 +3,16 @@
 
 // main
 .xb-4-template {
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+  }
+
   &__return-policy {
     cursor: pointer;
     &:hover {
@@ -10,8 +20,8 @@
     }
   }
 
-  &__red{
-    color:red;
+  &__red {
+    color: red;
   }
 
   &__top-100 {
@@ -88,7 +98,7 @@
     height: 56px;
     line-height: 56px;
     max-width: 240px;
-    @include text-overflow() ;
+    @include text-overflow();
   }
   &__left-24px {
     margin-left: 24px;
@@ -289,6 +299,7 @@
       }
     }
     &-see-more {
+      position: relative;
       width: 160px;
       height: 48px;
       margin-top: 24px;
@@ -1107,7 +1118,7 @@
         @include transform(translate(-50%, -50%));
       }
       &.active {
-        border: 2px solid #ffc400;
+        border: 2px solid black;
       }
     }
 
@@ -1121,7 +1132,7 @@
       @include text-overflow();
       &.active {
         @include media();
-        border: 2px solid #ffc400;
+        border: 2px solid black;
       }
     }
 
@@ -1221,7 +1232,7 @@
     padding-left: 32px;
     padding-right: 32px;
     margin-bottom: 64px;
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       padding-left: 16px;
       padding-right: 16px;
       margin-bottom: 0;
@@ -1384,5 +1395,55 @@
     color: black;
   }
 
+}
+
+// 添加购物车成功时的弹框
+.xb-store-cart-dialog {
+  width: 640px;
+  padding-bottom: 64px;
+  background-color: white;
+  @include xb-xs-screen {
+    width: calc(100vw - 32px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__content {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 40px;
+    @include xb-xs-screen {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    &-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: black;
+      line-height: 40px;
+      @include xb-xs-screen {
+        font-size: 16px;
+        line-height: 28px;
+      }
+    }
+    &-button {
+      width: 258px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      height: 48px;
+      color: black;
+      line-height: 48px;
+      cursor: pointer;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 4px;
+      border: 1px solid black;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
 }
 

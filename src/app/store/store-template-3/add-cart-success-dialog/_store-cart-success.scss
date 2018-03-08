@@ -1,0 +1,52 @@
+@charset "UTF-8";
+@import "../../../styles/utils/_index";
+@import "../../../styles/_variables";
+// 添加购物车成功时的弹框
+.xb-store-cart-dialog {
+  width: 640px;
+  padding-bottom: 64px;
+  background-color: white;
+  @include xb-xs-screen {
+    width: calc(100vw - 32px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__content {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 40px;
+    @include xb-xs-screen {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    &-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: black;
+      line-height: 40px;
+      @include xb-xs-screen {
+        font-size: 16px;
+        line-height: 28px;
+      }
+    }
+    &-button {
+      width: 258px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      height: 48px;
+      color: #6446c3;
+      line-height: 48px;
+      cursor: pointer;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 4px;
+      border: 1px solid #6446c3;
+      &:hover {
+        background-color: #6446c3;
+        color: white;
+      }
+    }
+  }
+}

@@ -14,6 +14,7 @@ import {PrivacyComponent} from "./Privacy/privacy.component";
 import {ReturnPolicyComponent} from "./Return-Policy/return-policy.component";
 import {FaqComponent} from "./FAQ/faq.component";
 import {StoreNavigationComponent} from "./store-navigation/store-navigation.component";
+import {AddCartSuccessDialogComponent} from "./add-cart-success-dialog/add-cart-success-dialog.component";
 
 @NgModule({
   imports: [
@@ -32,9 +33,12 @@ import {StoreNavigationComponent} from "./store-navigation/store-navigation.comp
     PrivacyComponent,
     ReturnPolicyComponent,
     FaqComponent,
-    StoreNavigationComponent
+    StoreNavigationComponent,
+    AddCartSuccessDialogComponent
   ],
-  entryComponents: [],
+  entryComponents: [
+    AddCartSuccessDialogComponent
+  ],
   providers: []
 })
 export class StoreTemplateOneModule {

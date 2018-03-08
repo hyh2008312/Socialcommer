@@ -3,6 +3,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {StoreService} from '../../store.service';
 import {Store, Product, Image} from '../../store';
+import {AddCartSuccessDialogComponent} from "../add-cart-success-dialog/add-cart-success-dialog.component";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-store-template-2-store-detail',
@@ -60,6 +62,7 @@ export class StoreDetailComponent implements OnInit {
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
+              private dialog: MatDialog,
               private storeService: StoreService) {
 
   }
@@ -206,6 +209,16 @@ export class StoreDetailComponent implements OnInit {
     }
 
     this.storeService.addProductToCart(this.store.displayName, product);
+
+      let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
+      data: {
+        displayName: this.displayName
+      }
+    });
+    let self = this;
+    dialogRef.afterClosed().subscribe(result => {
+    });
+
   }
 
   arrangeVariant(data) {

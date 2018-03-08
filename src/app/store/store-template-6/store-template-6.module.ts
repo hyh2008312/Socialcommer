@@ -25,6 +25,7 @@ import {AboutComponent} from "./about/about.component";
 import {FaqComponent} from "./faq/faq.component";
 import {PrivacyComponent} from "./privacy/privacy.component";
 import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
+import {AddCartSuccessDialogComponent} from "./add-cart-success-dialog/add-cart-success-dialog.component";
 
 @NgModule({
   imports: [
@@ -52,9 +53,12 @@ import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
     AboutComponent,
     FaqComponent,
     PrivacyComponent,
-    ReturnPolicyComponent
+    ReturnPolicyComponent,
+    AddCartSuccessDialogComponent
   ],
-  entryComponents: [],
+  entryComponents: [
+    AddCartSuccessDialogComponent
+  ],
   providers: [
   ]
 })

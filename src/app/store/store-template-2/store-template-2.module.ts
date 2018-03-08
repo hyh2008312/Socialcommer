@@ -20,6 +20,7 @@ import {AboutComponent} from "./about/about.component";
 import {PrivacyComponent} from "./privacy/privacy.component";
 import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
 import {FaqComponent} from './faq/faq.component';
+import {AddCartSuccessDialogComponent} from "./add-cart-success-dialog/add-cart-success-dialog.component";
 
 @NgModule({
   imports: [
@@ -43,9 +44,12 @@ import {FaqComponent} from './faq/faq.component';
     AboutComponent,
     PrivacyComponent,
     ReturnPolicyComponent,
-    FaqComponent
+    FaqComponent,
+    AddCartSuccessDialogComponent
   ],
-  entryComponents: [],
+  entryComponents: [
+    AddCartSuccessDialogComponent
+  ],
   providers: []
 })
 export class StoreTemplateTwoModule {
