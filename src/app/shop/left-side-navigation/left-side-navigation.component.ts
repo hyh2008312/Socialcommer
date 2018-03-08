@@ -72,9 +72,6 @@ export class LeftSideNavigationComponent implements OnInit {
     subContent: [{
       text: 'Balance',
       router: './account/balance'
-    }, {
-      text: 'Setting',
-      router: './account/paymentsetting'
     }],
     router: null,
     slide: true,

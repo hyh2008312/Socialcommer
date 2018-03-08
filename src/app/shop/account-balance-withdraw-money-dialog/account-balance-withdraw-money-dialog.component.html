@@ -1,6 +1,6 @@
 <div class="xb-account-money-dialog">
   <div [hidden]="!(status===1)">
-    <div class="xb-account-money-dialog__title">Withdraw Money</div>
+    <div class="xb-account-money-dialog__title md-align-center">Withdraw Money</div>
     <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start start">
       <div class="xb-account-money-dialog__14bold xb-account-money-dialog__color54">
         Available balance
@@ -9,10 +9,15 @@
     </div>
     <div class="xb-account-money-dialog__payment md-margin-top-3">Payment Information</div>
     <div>
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
-        <div class="xb-account-money-dialog__payment-name">Paypal Account</div>
-        <div class="xb-account-money-dialog__payment-content"></div>
+      <div class="xb-account-payment-settings__left-note">
+        Note: Currently we only support Paypal as our payment option (Pay in USD).
+        <br>Bank account payment methods will be available soon!
       </div>
+      <form class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start" [formGroup]="balanceForm" novalidate>
+        <mat-form-field >
+          <input matInput placeholder="Paypal Account" formControlName="paypalAccount">
+        </mat-form-field>
+      </form>
     </div>
     <div class="xb-account-money-dialog__payment md-margin-top-4">Withdraw Amount</div>
     <div class="xb-account-money-dialog__14regular md-margin-top-3">The fund can only be withdrawn when your available

@@ -12,9 +12,17 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   // 区分不同的布局界面 1：体现金额不足的提示  2.正常的体现界面  3.去添加银行卡
   status: number = 1;
   money: number;
+  balanceForm: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<AccountBalanceWithdrawMoneyDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private fb: FormBuilder
+  ) {
+    this.balanceForm = this.fb.group({
+      paypalAccount: ['', [
+        Validators.required
+      ]]
+    });
   }
 
   ngOnInit(): void {

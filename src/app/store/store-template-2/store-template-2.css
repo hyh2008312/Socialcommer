@@ -3445,6 +3445,12 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.xb-store-template__return-policy {
+  cursor: pointer; }
+  .xb-store-template__return-policy:hover {
+    text-decoration: underline; }
+.xb-store-template__red {
+  color: red; }
 .xb-store-template__top-category {
   position: fixed;
   top: 0;
@@ -3523,7 +3529,10 @@ textarea.mat-input-element {
   font-weight: 600; }
   @media screen and (max-width: 599px) {
     .xb-store-template__store-name {
-      font-size: 16px; } }
+      font-size: 16px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; } }
 .xb-store-template__store-description {
   margin-top: 24px; }
   @media screen and (max-width: 599px) {

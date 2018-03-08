@@ -3442,7 +3442,7 @@ textarea.mat-input-element {
   background-color: transparent; }
 
 .mat-progress-bar {
-  height: 2px; }
+  height: 4px; }
 
 .padding {
   padding: 5px 10px; }
@@ -6888,7 +6888,7 @@ textarea.mat-input-element {
   background-color: transparent; }
 
 .mat-progress-bar {
-  height: 2px; }
+  height: 4px; }
 
 .xb-social-share {
   width: 40px;
@@ -6927,6 +6927,12 @@ textarea.mat-input-element {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100vh; }
+  .xb-store__return-policy {
+    cursor: pointer; }
+    .xb-store__return-policy:hover {
+      text-decoration: underline; }
+  .xb-store__red {
+    color: red; }
   .xb-store__footer-margin-left {
     margin-left: 32px; }
     @media screen and (max-width: 599px) {

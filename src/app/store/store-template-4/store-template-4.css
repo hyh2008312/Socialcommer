@@ -3442,8 +3442,14 @@ textarea.mat-input-element {
   background-color: transparent; }
 
 .mat-progress-bar {
-  height: 2px; }
+  height: 4px; }
 
+.xb-4-template__return-policy {
+  cursor: pointer; }
+  .xb-4-template__return-policy:hover {
+    text-decoration: underline; }
+.xb-4-template__red {
+  color: red; }
 .xb-4-template__center {
   text-align: center; }
 .xb-4-template__fixed-nav {
@@ -3494,7 +3500,11 @@ textarea.mat-input-element {
       height: 40px;
       line-height: 36px;
       margin-top: 0;
-      margin-bottom: 0; } }
+      margin-bottom: 0;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; } }
 
 .xb-4-template-home {
   margin-bottom: 100px;

@@ -3442,7 +3442,7 @@ textarea.mat-input-element {
   background-color: transparent; }
 
 .mat-progress-bar {
-  height: 2px; }
+  height: 4px; }
 
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
@@ -3464,6 +3464,12 @@ textarea.mat-input-element {
 .mat-raised-button.mat-primary {
   background-color: #6446c3; }
 
+.xb-store-template__return-policy {
+  cursor: pointer; }
+  .xb-store-template__return-policy:hover {
+    text-decoration: underline; }
+.xb-store-template__red {
+  color: red; }
 .xb-store-template__dialog {
   position: absolute;
   left: 0;
@@ -3964,7 +3970,9 @@ textarea.mat-input-element {
   height: 54px;
   background-color: #f1f1f1; }
   .xb-store-template__top-navigation-title {
-    font-size: 24px;
+    font-size: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
     text-align: center;
     font-weight: 600;
     overflow: hidden;
