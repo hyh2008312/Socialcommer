@@ -136,11 +136,8 @@ export class BlogEditDialogComponent implements OnInit {
   }
 
   create() {
-    if(!this.blogForm.valid) {
-      return;
-    }
+
     let id = this.activatedRoute.snapshot.params['id'];
-    this.hasPicture = false;
     let blogForm = this.blogForm.value;
 
     blogForm.id = id;
@@ -150,6 +147,11 @@ export class BlogEditDialogComponent implements OnInit {
       this.hasPicture = true;
       return;
     }
+    if(!this.blogForm.valid) {
+      return;
+    }
+
+    this.hasPicture = false;
 
     blogForm.status = 'published';
 

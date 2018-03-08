@@ -52,7 +52,12 @@ export class ProductItemComponent implements OnInit {
   publish() {
     let self = this;
 
-    self.shopService.publishProduct(this.product).then((data) => {
+    let product = {
+      id: this.product.id,
+      status: 'published'
+    };
+
+    self.shopService.publishProduct(product).then((data) => {
       self.productChange.emit({
         product: data,
         event: 'publish',
@@ -65,7 +70,12 @@ export class ProductItemComponent implements OnInit {
   unpublish() {
     let self = this;
 
-    self.shopService.publishProduct(this.product).then((data) => {
+    let product = {
+      id: this.product.id,
+      status: 'unpublished'
+    };
+
+    self.shopService.publishProduct(product).then((data) => {
       self.productChange.emit({
         product: self.product,
         event: 'unpublish',

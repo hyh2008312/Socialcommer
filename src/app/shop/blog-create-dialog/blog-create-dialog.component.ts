@@ -108,11 +108,6 @@ export class BlogCreateDialogComponent implements OnInit {
   }
 
   create() {
-    if(!this.blogForm.valid) {
-      return;
-    }
-    let self = this;
-    this.hasPicture = false;
     let blogForm = this.blogForm.value;
 
     blogForm.cover = this.previewImgFile;
@@ -121,6 +116,11 @@ export class BlogCreateDialogComponent implements OnInit {
       this.hasPicture = true;
       return;
     }
+    if(!this.blogForm.valid) {
+      return;
+    }
+    this.hasPicture = false;
+    let self = this;
 
     blogForm.status = 'published';
 

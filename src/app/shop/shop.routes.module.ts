@@ -130,13 +130,7 @@ const routes: Routes = [
         }]
       },
       {
-        path: 'account',
-        children: [{
-            path: 'balance', component: AccountBalanceComponent
-          }, {
-            path: 'paymentsetting', component: AccountPaymentSettingComponent
-          }
-        ]
+        path: 'account',component: AccountBalanceComponent
       },{
         path: 'report', component: AccountReportComponent
       }, {

@@ -34,7 +34,7 @@ export class StoreBlogComponent implements OnInit {
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
-          shareImage: data.imageUrl[0]
+          shareImage: false
         });
 
         self.storeService.pageView({

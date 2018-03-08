@@ -26,15 +26,16 @@
         <div class="md-margin-top-2 xb-shop__edit-title">Category <span class="xb-input-error xb-large-star">*</span></div>
         <div fxLayout="row" fxLayoutAlgin="start center" fxLayout.xs="column" fxLayoutAlgin.xs="start stretch">
           <div fxLayout="row" fxLayoutAlgin="start center">
-            <mat-form-field>
+            <mat-form-field class="md-margin-right-2">
               <mat-select  formControlName="categoryName">
                 <mat-option *ngFor="let item of category" [value]="item.name" >
                   {{ item.name }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <div class="md-margin-left-2">
-              <button mat-raised-button color="primary" (click)="showCreate()" *ngIf="!isCreateCategory">Add a New Category</button>
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!isCreateCategory" >
+              <div class="md-margin-right-2" >OR</div>
+              <button mat-raised-button color="primary" (click)="showCreate()" >Add New Category</button>
             </div>
           </div>
           <div fxLayout="row" fxLayoutAlgin="start center">
