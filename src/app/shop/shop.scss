@@ -875,7 +875,8 @@
   }
 
   &__statistic{
-    height: 48px;
+    min-height: 48px;
+    padding: 12px 0;
     &-text{
       text-align: center;
       overflow: hidden;
@@ -883,14 +884,6 @@
       @include text-overflow();
     }
 
-    &-bg{
-      cursor: pointer;
-      height: 48px;
-      padding: 0 16px;
-      &:hover{
-        background-color: rgba(0,0,0,.08);
-      }
-    }
   }
 
   &__setting-bg{

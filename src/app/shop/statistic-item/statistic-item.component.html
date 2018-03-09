@@ -2,7 +2,7 @@
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="5">{{index+1}}</div>
   <div class="md-margin-right-2" fxFlex="35">{{data.title}}</div>
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">
-    {{data.saleUnitPrice | exchangeCurrency:currency |currency:currency:true}
+    {{data.saleUnitPrice | exchangeCurrency:currency |currency:currency:true}}
   </div>
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">
     {{data.viewTotal}}
@@ -11,5 +11,5 @@
     {{data.totalQuantity}}
   </div>
   <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">{{data.conversionRate + '%'}}</div>
-  <div class="xb-shop__statistic-text md-margin-right-2" fxFlex="15">{{data.totalSales}}</div>
+  <div class="xb-shop__statistic-text" fxFlex="15">{{data.totalSales| exchangeCurrency:currency |currency:currency:true}}</div>
 </div>

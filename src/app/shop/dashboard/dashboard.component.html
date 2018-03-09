@@ -9,7 +9,7 @@
            fxLayout.xs="column" fxLayoutAlign.xs="start stretch" fxLayoutWrap>
         <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-earning" ></i>
-          <div class="xb-shop__dashboard-number">{{storeStatistic.totalEarning ? storeStatistic.totalEarning: 0}}</div>
+          <div class="xb-shop__dashboard-number">{{storeStatistic.totalEarning ? (storeStatistic.totalEarning | exchangeCurrency:currency|currency:currency:true) : 0}}</div>
           <div>Total Earning</div>
         </div>
         <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
@@ -59,9 +59,6 @@
       <app-statistic-title></app-statistic-title>
     </div>
     <div class="md-margin-top-2 md-margin-bottom-2" >
-      <div class="xb-shop__product-list xb-shop__statistic-bg" *ngFor="let item of productStatistic;let i = index;" >
-        <app-statistic-item [data]="item" [index]="i"></app-statistic-item>
-      </div>
       <div class="xb-shop__none" fxLayout="row" fxLayoutAlign="center center"
            *ngIf="productStatistic && productStatistic.length <= 0">
         <div fxLayout="column" fxLayoutAlign="center center">
@@ -70,6 +67,11 @@
           <div class="md-margin-top-3">
             <button mat-raised-button color="primary" routerLink="/shop/listings/items">Add Your First Product</button>
           </div>
+        </div>
+      </div>
+      <div class="xb-shop__statistic-bg" *ngFor="let item of productStatistic;let i = index;" >
+        <div class="xb-shop__statistic-inner-container" >
+          <app-statistic-item [data]="item" [index]="i"></app-statistic-item>
         </div>
       </div>
     </div>
