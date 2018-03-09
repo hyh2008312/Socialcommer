@@ -32,7 +32,7 @@
           <span class="md-dark-secondary">There's no product under this category.</span>
         </div>
       </div>
-      <div class="md-margin-top-5" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="20px">
+      <div class="md-margin-top-5" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
         <app-product-item-card *ngFor="let product of productList" [product]="product" [supplier]="true"></app-product-item-card>
       </div>
       <mat-paginator [length]="length"
