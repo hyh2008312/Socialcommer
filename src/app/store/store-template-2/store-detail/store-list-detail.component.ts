@@ -193,6 +193,7 @@ export class StoreListDetailComponent implements OnInit {
     } else {
       product.unshift({
         id: this.product.productId,
+        goodsId: this.product.id,
         imageUrl: this.insertImage ? this.insertImage : this.imageSources[0],
         originalPriceAmount: this.originalPrice,
         originalPriceCurrency: this.currency,

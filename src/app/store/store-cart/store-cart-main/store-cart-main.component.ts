@@ -129,7 +129,7 @@ export class StoreCartMainComponent implements OnInit{
     let lines = [];
     for(let item of this.products) {
       lines.push({
-        goodsId: item.id,
+        goodsId: item.goodsId,
         quantity: item.number,
         variantId: item.variantId,
         shippingPriceId : this.shippingItem[item.id].id
