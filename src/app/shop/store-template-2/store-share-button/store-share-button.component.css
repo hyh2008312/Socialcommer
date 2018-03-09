@@ -3444,6 +3444,10 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.mat-paginator-increment {
+  width: 12px;
+  height: 12px; }
+
 .xb-social-share__store {
   width: 32px;
   height: 32px;

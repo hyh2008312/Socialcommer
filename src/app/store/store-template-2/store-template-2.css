@@ -3445,6 +3445,10 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.mat-paginator-increment {
+  width: 12px;
+  height: 12px; }
+
 .xb-store-template__return-policy {
   cursor: pointer; }
   .xb-store-template__return-policy:hover {
@@ -4242,7 +4246,7 @@ textarea.mat-input-element {
 .xb-store-template__car-left-part-1 {
   font-weight: 600;
   color: rgba(0, 0, 0, 0.54);
-  width: 120px;
+  width: 130px;
   margin-right: 32px; }
 .xb-store-template__car-image {
   width: 54px;
@@ -4264,7 +4268,7 @@ textarea.mat-input-element {
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
   .xb-store-template__car-image.active {
-    border: 2px solid #ffc400; }
+    border: 2px solid #501c19; }
 .xb-store-template__car-text {
   font-size: 16px;
   color: rgba(0, 0, 0, 0.87);
@@ -4277,7 +4281,7 @@ textarea.mat-input-element {
   white-space: nowrap; }
   .xb-store-template__car-text.active {
     font-weight: 600;
-    border: 2px solid #ffc400; }
+    border: 2px solid #501c19; }
 .xb-store-template__car-item-input {
   border: 1px solid #dedede;
   border-radius: 2px; }

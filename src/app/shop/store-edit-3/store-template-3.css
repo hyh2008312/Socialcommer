@@ -3444,6 +3444,10 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.mat-paginator-increment {
+  width: 12px;
+  height: 12px; }
+
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
  * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`

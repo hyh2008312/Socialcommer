@@ -3446,6 +3446,11 @@ textarea.mat-input-element {
 
 .xb-shop__logo {
   position: relative; }
+  .xb-shop__logo-bg {
+    height: 56px;
+    padding: 0 16px;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .xb-shop__logo-badge {
     position: absolute;
     top: -2px;
@@ -3457,14 +3462,16 @@ textarea.mat-input-element {
     border-radius: 2px;
     padding: 0 4px; }
   .xb-shop__logo-button {
-    margin-left: 8px;
-    padding: 0 16px;
+    position: relative;
+    margin: 0 16px;
     line-height: 56px;
     font-size: 16px;
     display: block;
-    border-radius: 4px;
-    color: #222;
+    font-weight: 600;
+    color: #00bdd6;
     cursor: pointer; }
+    .xb-shop__logo-button.active {
+      border-bottom: 2px solid #00bdd6; }
 .xb-shop__bg-content {
   height: calc(100vh - 56px); }
 .xb-shop__avatar {
