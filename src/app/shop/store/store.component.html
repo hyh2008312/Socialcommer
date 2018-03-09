@@ -19,12 +19,9 @@
           Store Description
         </div>
         <mat-form-field class="xb-shop__width-100">
-          <textarea matInput  formControlName="description"></textarea>
+          <textarea matInput  formControlName="description" matTextareaAutosize matAutosizeMinRows="1"
+                    matAutosizeMaxRows="3"></textarea>
         </mat-form-field>
-        <div class="md-dark-secondary">
-          Store Currency
-        </div>
-        <div class="md-margin-top-2 md-margin-bottom-2">{{currency|uppercase}}</div>
         <div class="md-dark-secondary">
           Target Market
         </div>
@@ -38,6 +35,10 @@
         <div *ngIf="formErrors['countryId']" class="xb-input-error">
           {{ formErrors['countryId'] }}
         </div>
+        <div class="md-dark-secondary">
+          Store Currency
+        </div>
+        <div class="md-margin-top-2 md-margin-bottom-2">{{currency|uppercase}}</div>
         <div class="md-dark-secondary">
           Your Store URL
         </div>

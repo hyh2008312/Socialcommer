@@ -109,6 +109,21 @@ export class OrderTrackingService {
       .catch(this.handleError);
   }
 
+  forgetOrderNumber(order): Promise<any> {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}order/get/numbers/?${this.serializeParams(order)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   returnRequest(order): Promise<any> {
     let headers = new Headers({
       'Content-Type': 'application/json'

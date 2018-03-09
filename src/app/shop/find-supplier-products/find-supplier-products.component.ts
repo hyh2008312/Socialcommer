@@ -38,8 +38,8 @@ export class FindSupplierProductsComponent implements OnInit {
   // MatPaginator Inputs
   productIndex: number = 1;
   length:number = 0;
-  pageSize = 15;
-  pageSizeOptions = [15, 30];
+  pageSize = 36;
+  pageSizeOptions = [36];
 
   // Product list
   productList: any = false;

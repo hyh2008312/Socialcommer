@@ -47,7 +47,8 @@
             About Me
           </div>
           <mat-form-field class="xb-shop__width-100">
-            <textarea matInput formControlName="biography"></textarea>
+            <textarea matInput formControlName="biography" matTextareaAutosize matAutosizeMinRows="1"
+                      matAutosizeMaxRows="3"></textarea>
           </mat-form-field>
           <div class="md-dark-secondary" *ngIf="false">
             Connect Your Social Media with Your Store
