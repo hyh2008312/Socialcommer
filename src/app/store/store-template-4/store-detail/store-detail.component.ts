@@ -39,7 +39,7 @@ export class StoreDetailComponent implements OnInit {
   selectedVariant: any = {};
   salePrice: any = 0;
   originalPrice: any = 0;
-  isCanBuy: boolean = false;
+  isCanBuy: boolean = true;
   number: any = 1;
   shippingTimeMin: number = 0;
   shippingTimeMax: number = 0;
