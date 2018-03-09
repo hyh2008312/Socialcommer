@@ -242,7 +242,7 @@ export class LoginComponent implements OnInit {
   }
 
   private load() {
-    if(this.loadingValue < 100) {
+    if(this.loadingValue < 90) {
       this.loadingValue++;
     } else {
       return;
