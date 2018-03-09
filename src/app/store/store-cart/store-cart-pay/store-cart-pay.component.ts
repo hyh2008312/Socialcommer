@@ -544,7 +544,7 @@ export class StoreCartPayComponent implements OnInit{
 
       client: {
         sandbox: 'Af-kyV4ftoN28QqYXMbOzSjYUfkMxbaAb7gMmtESJR-mTsl6KFBsnAwQiOJnGbxFz_GfYpJYBSaLDsnI',
-        production: ''
+        production: 'ATpTx_ixxJIgayCDMSEDC8owVo2U0aYPzzxlzQvyEG07Z_ctrq9pp85RByHPoNLAxNC3E_i6fp7i6M9s'
       },
 
       // Wait for the PayPal button to be clicked
