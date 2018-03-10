@@ -89,6 +89,8 @@ export class StoreCartPayComponent implements OnInit{
 
   phoneCode: string = '+1';
 
+  stepOneFormError: any = false;
+
   constructor(
     overlayContainer: OverlayContainer,
     private storeService: StoreService,
@@ -249,7 +251,6 @@ export class StoreCartPayComponent implements OnInit{
   //存储错误信息
   formErrors = {
     'emailAddress': '',
-    'confirmEmail': '',
     'firstName': '',
     'lastName': '',
     'line1': '',
@@ -263,10 +264,6 @@ export class StoreCartPayComponent implements OnInit{
   validationMessages = {
     'emailAddress': {
       'required': 'This field is required.',
-    },
-    'confirmEmail': {
-      'required': 'This field is required.',
-      'validateEqual': 'Email does not match the Confirm Email.'
     },
     'firstName': {
       'required': 'This field is required.',
@@ -408,6 +405,7 @@ export class StoreCartPayComponent implements OnInit{
 
   continue() {
     if(!this.stepOneForm.valid) {
+      this.stepOneFormError = 'Please enter all the required information.';
       return;
     }
     if(this.order.shippingAddress) {
@@ -435,6 +433,7 @@ export class StoreCartPayComponent implements OnInit{
 
     let self = this;
     self.storeCartService.createShippingAddress(stepOneObject).then((data) => {
+      self.stepOneFormError = false;
       self.step = 1;
       self.order = data;
       self.storeCartService.addOrder(self.order);
@@ -587,7 +586,7 @@ export class StoreCartPayComponent implements OnInit{
         });
       }
 
-    }, '#paypal-button-container');
+    }, '.paypal-button-container');
   }
 
 }

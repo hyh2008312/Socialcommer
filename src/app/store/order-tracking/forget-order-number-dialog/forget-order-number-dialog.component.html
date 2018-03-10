@@ -4,13 +4,22 @@
   </div>
   <div [hidden]="modified">
     <div class="sc-order-dialog__title">
-      Enter your email address you used to place your order to recover all orders placed in the last 60 days.
+      Enter the email address you used to place your order to recover all orders placed in the last 60 days.
+    </div>
+    <div *ngIf="orderFormErr" class="xb-input-error md-margin-top-2">
+      {{orderFormErr}}
     </div>
     <form [formGroup]="orderForm" novalidate>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
         <mat-form-field fxFlex>
           <input type="text" matInput placeholder="Email Address" formControlName="email">
         </mat-form-field>
+      </div>
+      <div *ngIf="orderForm.get('email').invalid && (orderForm.get('email').dirty ||
+                    orderForm.get('email').touched)" class="xb-input-error">
+        <div *ngIf="orderForm.get('email').hasError('required')">
+          This field is required.
+        </div>
       </div>
     </form>
     <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">

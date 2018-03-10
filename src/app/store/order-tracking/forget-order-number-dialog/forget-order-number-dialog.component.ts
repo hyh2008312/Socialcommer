@@ -56,7 +56,10 @@ export class ForgetOrderNumberDialogComponent implements OnInit {
     let order: any = this.orderForm.value;
     order.sid = this.store.id;
     this.orderTrackingService.forgetOrderNumber(order).then((data) => {
+      self.orderFormErr = false;
       self.modified = true;
+    }).catch((data) => {
+      self.orderFormErr = data;
     });
   }
 

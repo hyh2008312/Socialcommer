@@ -25,7 +25,8 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   ) {
     this.balanceForm = this.fb.group({
       paypalAccount: ['', [
-        Validators.required
+        Validators.required,
+        Validators.email
       ]]
     });
 
@@ -44,7 +45,11 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  submitMoney(): void {
+  confirm(): void {
+    this.status = 2;
+  }
 
+  back() {
+    this.status = 1;
   }
 }
