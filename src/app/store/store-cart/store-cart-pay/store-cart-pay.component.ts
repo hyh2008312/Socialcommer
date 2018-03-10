@@ -10,6 +10,10 @@ import { ConstantService } from  '../../../shared/services/constant/constant.ser
 import { SystemConstant } from '../../../config/app.api';
 import { environment } from '../../../../environments/environment';
 
+import { MatDialog } from '@angular/material';
+import { StoreRequireDialogComponent } from '../store-require-dialog/store-require-dialog.component';
+import { StoreErrorDialogComponent } from '../store-error-dialog/store-error-dialog.component';
+
 @Component({
   selector: 'app-store-cart-pay',
   templateUrl: './store-cart-pay.component.html',
@@ -98,7 +102,8 @@ export class StoreCartPayComponent implements OnInit{
     private constant: ConstantService,
     private fb: FormBuilder,
     private changeDetectorRef:ChangeDetectorRef,
-    private systemConstant: SystemConstant
+    private systemConstant: SystemConstant,
+    private dialog: MatDialog
   ) {
     if((<any>window).Stripe) {
       (<any>window).Stripe.setPublishableKey(this.systemConstant.stripeToken);
@@ -403,9 +408,12 @@ export class StoreCartPayComponent implements OnInit{
     this.totalPrice = this.subTotalPrice + this.shippingTotalPrice;
   }
 
-  continue() {
+  continue(mobile?:any) {
     if(!this.stepOneForm.valid) {
       this.stepOneFormError = 'Please enter all the required information.';
+      if(mobile) {
+        this.fieldRequired();
+      }
       return;
     }
     if(this.order.shippingAddress) {
@@ -461,7 +469,26 @@ export class StoreCartPayComponent implements OnInit{
     });
   }
 
+  fieldRequired() {
+    let dialogRef = this.dialog.open(StoreRequireDialogComponent, {
+      data: {}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  stockRequired() {
+    let dialogRef = this.dialog.open(StoreErrorDialogComponent, {
+      data: {},
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
 
   save() {
     let pattern = /^\d{1,2}\/\d{2}/;
@@ -500,6 +527,8 @@ export class StoreCartPayComponent implements OnInit{
           self.storeService.addProductToCart(self.displayName, []);
           self.changeDetectorRef.markForCheck();
           self.changeDetectorRef.detectChanges();
+        }).catch(()=>{
+          self.stockRequired();
         });
       } else {
         this.cardMessage = response.error.message;
@@ -582,11 +611,85 @@ export class StoreCartPayComponent implements OnInit{
             self.storeService.addProductToCart(self.displayName, []);
             self.changeDetectorRef.markForCheck();
             self.changeDetectorRef.detectChanges();
+          }).catch(()=>{
+            self.stockRequired();
           });
         });
       }
 
-    }, '.paypal-button-container');
+    }, '#paypal-button-container');
+
+    // Render the PayPal button
+    (<any>window).paypal.Button.render({
+
+      // Set your environment
+
+      env: env, // sandbox | production
+
+      // Specify the style of the button
+
+      style: {
+        size:  'responsive',    // small | medium | large | responsive
+        shape: 'rect',     // pill | rect
+        color: 'black',     // gold | blue | silver | black
+        tagline: false
+      },
+
+      funding: {
+        allowed: [ (<any>window).paypal.FUNDING.CREDIT ]
+      },
+
+      // PayPal Client IDs - replace with your own
+      // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+      client: {
+        sandbox: 'Af-kyV4ftoN28QqYXMbOzSjYUfkMxbaAb7gMmtESJR-mTsl6KFBsnAwQiOJnGbxFz_GfYpJYBSaLDsnI',
+        production: 'ATpTx_ixxJIgayCDMSEDC8owVo2U0aYPzzxlzQvyEG07Z_ctrq9pp85RByHPoNLAxNC3E_i6fp7i6M9s'
+      },
+
+      // Wait for the PayPal button to be clicked
+
+      payment: function(data, actions) {
+
+        // Set up a payment and make credit the landing page
+
+        return actions.payment.create({
+          payment: {
+            transactions: [
+              {
+                amount: { total: self.totalPrice, currency: self.order.currency.toUpperCase() }
+              }
+            ]
+          }
+        });
+      },
+
+      // Wait for the payment to be authorized by the customer
+
+      onAuthorize: function(data, actions) {
+        return actions.payment.execute().then(function() {
+          let order:any = {};
+          order.payerID = data.payerID;
+          order.paymentID = data.paymentID;
+          order.paymentToken = data.paymentToken;
+          order.orderId = self.order.id;
+          order.paymentAmount = self.totalPrice;
+          order.paymentCurrency = self.order.currency;
+
+          self.storeCartService.createPaypalPayment(order).then((data) => {
+            self.step = 2;
+            self.order = data;
+            self.storeCartService.addOrder({});
+            self.storeService.addProductToCart(self.displayName, []);
+            self.changeDetectorRef.markForCheck();
+            self.changeDetectorRef.detectChanges();
+          }).catch(()=>{
+            self.stockRequired();
+          });
+        });
+      }
+
+    }, '#paypal-button-container-1');
   }
 
 }

@@ -10,10 +10,10 @@
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center"
            fxLayout.xs="column" fxLayoutAlign.xs="start start">
         <div fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__card-price">{{product.salePrice |currency: currency: true }}</div>
+          <div class="xb-store__card-price">{{product.salePrice | exchangeCurrency:currency | currency: currency: true }}</div>
           <div class="line-through md-margin-left-1"
                *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">
-            {{product.originalPrice|currency: currency: true }}</div>
+            {{product.originalPrice | exchangeCurrency:currency | currency: currency: true }}</div>
         </div>
         <div fxShow.xs="false" class="xb-store__card-sale xb-store__card-margin"
              *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">

@@ -3442,7 +3442,20 @@ textarea.mat-input-element {
   background-color: transparent; }
 
 .mat-progress-bar {
-  height: 2px; }
+  height: 4px; }
+
+.mat-paginator-decrement, .mat-paginator-increment {
+  width: 12px !important;
+  height: 12px !important;
+  border-color: #222 !important; }
+
+.mat-paginator-range-label {
+  font-size: 16px;
+  color: #222; }
+
+.mat-paginator-page-size {
+  display: none !important;
+  color: #222; }
 
 .xb-cart {
   height: 100vh;
@@ -3464,7 +3477,7 @@ textarea.mat-input-element {
         .xb-cart__none-image > i {
           font-size: 96px; } }
     .xb-cart__none-title {
-      margin-top: 64px; }
+      margin-top: 32px; }
       @media screen and (max-width: 599px) {
         .xb-cart__none-title {
           margin-top: 40px; } }
@@ -3614,7 +3627,8 @@ textarea.mat-input-element {
   .xb-cart__item-input {
     width: 48px; }
   .xb-cart__item-select {
-    width: 80px !important; }
+    margin-top: -16px;
+    width: 140px !important; }
     .xb-cart__item-select-mobile {
       position: relative;
       border-bottom: 2px solid;
@@ -3634,6 +3648,8 @@ textarea.mat-input-element {
       position: absolute;
       right: 0;
       top: 11px; }
+    .xb-cart__item-select-text {
+      margin-top: -8px; }
   .xb-cart__item-button {
     padding: 0;
     min-width: 56px; }
@@ -3790,6 +3806,7 @@ textarea.mat-input-element {
     .xb-cart__order-button-text {
       width: 100%;
       font-size: 14px;
+      padding: 0 16px;
       line-height: 40px;
       font-weight: 600;
       text-align: center;
@@ -3804,5 +3821,37 @@ textarea.mat-input-element {
       height: 40px;
       z-index: 1;
       opacity: 0; }
+
+.sc-order-dialog {
+  padding: 40px 40px 48px;
+  max-width: 660px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+  background-color: #fff;
+  border-radius: 4px; }
+  @media screen and (max-width: 599px) {
+    .sc-order-dialog {
+      padding: 40px 16px; } }
+  .sc-order-dialog__close {
+    position: absolute;
+    left: calc(100% - 36px);
+    top: 12px;
+    color: #222;
+    cursor: pointer; }
+    .sc-order-dialog__close i {
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 600; }
+  .sc-order-dialog__content {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+    font-weight: 400; }
+  .sc-order-dialog__margin-top {
+    margin-top: 24px; }
+  .sc-order-dialog__color {
+    color: #222; }
 
 /*# sourceMappingURL=store-cart.css.map */

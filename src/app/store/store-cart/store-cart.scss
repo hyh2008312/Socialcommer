@@ -488,6 +488,7 @@
     &-text{
       width: 100%;
       font-size: 14px;
+      padding: 0 16px;
       line-height: 40px;
       @include media();
       text-align: center;
@@ -507,3 +508,46 @@
   }
 }
 
+.sc-order-dialog{
+
+  padding: 40px 40px 48px;
+  max-width: 660px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+  background-color: $whiteColor;
+  border-radius: 4px;
+  @include xb-xs-screen{
+    padding: 40px 16px;
+  }
+
+  &__close{
+    position: absolute;
+    left: calc(100% - 36px);
+    top: 12px;
+    color: $blackColor;
+    cursor: pointer;
+    i{
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+    }
+  }
+
+  &__content{
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+    @include regular();
+  }
+
+  &__margin-top{
+    margin-top: 24px;
+  }
+
+  &__color{
+    color: $blackColor;
+  }
+
+}

@@ -15,8 +15,9 @@ export class StoreRequireDialogComponent implements OnInit{
     public dialogRef: MatDialogRef<StoreRequireDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
   }
+
+  ngOnInit() {}
 
   close():void {
     this.dialogRef.close();

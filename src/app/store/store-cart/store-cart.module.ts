@@ -5,6 +5,8 @@ import { StoreCartHeaderComponent } from './store-cart-header/store-cart-header.
 import { StoreCartFooterComponent } from './store-cart-footer/store-cart-footer.component';
 import { StoreCartProductItemComponent } from './store-cart-product-item/store-cart-product-item.component';
 import { StoreCartPayItemComponent } from './store-cart-pay-item/store-cart-pay-item.component';
+import { StoreRequireDialogComponent } from './store-require-dialog/store-require-dialog.component';
+import { StoreErrorDialogComponent } from './store-error-dialog/store-error-dialog.component';
 
 import { StoreCartRoutingModule } from './store-cart.routes.module';
 
@@ -27,9 +29,13 @@ import { SharedModule } from '../../shared/shared.module';
     StoreCartHeaderComponent,
     StoreCartFooterComponent,
     StoreCartProductItemComponent,
-    StoreCartPayItemComponent
+    StoreCartPayItemComponent,
+    StoreRequireDialogComponent,
+    StoreErrorDialogComponent
   ],
   entryComponents: [
+    StoreRequireDialogComponent,
+    StoreErrorDialogComponent
   ],
   providers: [
     StoreCartService,

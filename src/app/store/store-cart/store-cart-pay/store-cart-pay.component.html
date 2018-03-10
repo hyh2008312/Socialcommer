@@ -488,7 +488,7 @@
               <div class="xb-cart__order-button-text">
                 PAY WITH PAYPAL
               </div>
-              <div class="xb-cart__order-button-inner paypal-button-container" ></div>
+              <div class="xb-cart__order-button-inner" id="paypal-button-container" ></div>
             </div>
           </div>
         </div>
@@ -516,19 +516,16 @@
       <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>
     </div>
     <div class="unicorn-dark-theme" fxLayout="column" >
-      <button mat-raised-button color="primary" *ngIf="step == 0" (click)="continue()">NEXT</button>
-      <div *ngIf="stepOneFormError" class="xb-input-error md-margin-top-2">
-        {{ stepOneFormError }}
-      </div>
+      <button mat-raised-button color="primary" *ngIf="step == 0" (click)="continue(true)">NEXT</button>
       <button mat-raised-button color="primary" (click)="save()" *ngIf="step == 1 && payMethodItem.display" >COMPLETE ORDER</button>
       <button mat-raised-button color="primary"  *ngIf="step == 2">
         CONTACT SUPPORT
       </button>
-      <div class="xb-cart__order-button" [ngClass]="{'xb-cart__order-button-hidden': step != 1 || payMethodItem.display}" >
+      <div class="xb-cart__order-button" [hidden]="step != 1 || payMethodItem.display" >
         <div class="xb-cart__order-button-text">
           PAY WITH PAYPAL
         </div>
-        <div class="xb-cart__order-button-inner paypal-button-container" ></div>
+        <div class="xb-cart__order-button-inner" id="paypal-button-container-1"></div>
       </div>
     </div>
   </div>
