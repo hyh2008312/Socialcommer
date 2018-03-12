@@ -2,12 +2,23 @@
   <div class="xb-store__subscribe-line"></div>
   <div class="xb-store__share" fxLayout="column" fxLayoutAlign="start center">
     <app-share-template-4-button [link]="shareLink" [text]="text"></app-share-template-4-button>
-    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center" fxHide="false" fxHide.xs="true">
       <div class="xb-store-word" (click)="jumpAbout()">Why Shop With Us</div>
       <div class="xb-store-word md-margin-left-2" (click)="jumpFaq()">FAQ</div>
       <div class="xb-store-word md-margin-left-2" (click)="jumpPrivacy()">Privacy Policy</div>
       <div class="xb-store-word md-margin-left-2" (click)="jumpReturn()">Return Policy</div>
     </div>
+    <div class="md-margin-top-2" fxHide="true" fxHide.xs="false">
+      <div fxLayout="row" fxLayoutAlign="center start">
+        <div class="xb-store-word" (click)="jumpAbout()">Why Shop With Us</div>
+        <div class="xb-store-word md-margin-left-2" (click)="jumpFaq()">FAQ</div>
+      </div>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="center start">
+        <div class="xb-store-word" (click)="jumpPrivacy()">Privacy Policy</div>
+        <div class="xb-store-word md-margin-left-2" (click)="jumpReturn()">Return Policy</div>
+      </div>
+    </div>
+
     <div class="md-margin-top-1 md-margin-bottom-4" fxLayout="row" fxLayoutAlign="center center"
          fxLayout.xs="column" fxLayoutAlign.xs="start center">
       <div class="xb-store__context">© 2018 {{storeName}}. All Rights Reserved.</div>

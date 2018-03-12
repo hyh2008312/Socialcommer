@@ -581,9 +581,7 @@
 
   &__footer{
     &-word {
-      font-size: 12px;
       @include regular();
-      cursor: pointer;
       color: rgba(0, 0, 0, .54);
     }
     &-share{

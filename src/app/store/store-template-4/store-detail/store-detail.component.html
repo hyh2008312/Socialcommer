@@ -16,9 +16,14 @@
               {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
             </div>
 
-            <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && isPriceRange">
+            <div class="xb-4-template-detail__price"
+                 *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
               {{minSalePrice | exchangeCurrency:currency |currency: currency:true }} - {{maxSalePrice |
               exchangeCurrency:currency |currency: currency:true }}
+            </div>
+            <div class="xb-4-template-detail__price"
+                 *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency:true }}
             </div>
 
             <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && !isPriceRange">
@@ -79,6 +84,10 @@
           <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store-template__car-left-part-1">Return Policy</div>
             <div class="xb-4-template__return-policy" (click)="jumpReturn()">30 day returns</div>
+          </div>
+          <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
+            <div class="xb-store-template__car-left-part-1">Shipping Availability</div>
+            <div>United States  /  India</div>
           </div>
         </div>
         <div class="xb-4-template-detail__buttons_bg md-margin-top-3">

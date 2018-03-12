@@ -9,10 +9,7 @@
     font-size: 16px;
     position: relative;
     &-word {
-      font-size: 12px;
       @include regular();
-      cursor: pointer;
-      color: rgba(255, 255, 255, .54);
     }
     &-margin-top {
       margin-top: 16px;
