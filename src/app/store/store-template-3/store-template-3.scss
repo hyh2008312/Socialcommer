@@ -15,8 +15,8 @@
     }
   }
 
-  &__red{
-    color:red;
+  &__red {
+    color: red;
   }
 
   &__dialog {
@@ -608,7 +608,7 @@
     &-left-part-1 {
       @include media();
       color: rgba(0, 0, 0, .54);
-      width: 130px;
+      width: 145px;
       margin-right: 32px;
     }
 
@@ -700,10 +700,12 @@
 
   &__footer {
     &-word {
-      font-size: 12px;
       @include regular();
       cursor: pointer;
       color: rgba(0, 0, 0, .54);
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     &-share {
