@@ -46,7 +46,7 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   }
 
   confirm(): void {
-    this.status = 2;
+    //this.status = 2;
   }
 
   back() {
@@ -54,6 +54,6 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   }
 
   complete() {
-    this.status = 2;
+    this.status = 3;
   }
 }
