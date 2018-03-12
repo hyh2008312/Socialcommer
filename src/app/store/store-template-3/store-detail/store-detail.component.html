@@ -22,9 +22,14 @@
             {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
           </div>
 
-          <div class="xb-store-template__details-price" *ngIf="isHaveVariant && isPriceRange">
+          <div class="xb-store-template__details-price"
+               *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
             {{minSalePrice | exchangeCurrency:currency |currency: currency:true }} - {{maxSalePrice |
             exchangeCurrency:currency |currency: currency:true }}
+          </div>
+          <div class="xb-store-template__details-price"
+               *ngIf="isHaveVariant && isPriceRange && minSalePrice == maxSalePrice">
+            {{minSalePrice | exchangeCurrency:currency |currency: currency:true }}
           </div>
 
           <div class="xb-store-template__details-price" *ngIf="isHaveVariant && !isPriceRange">

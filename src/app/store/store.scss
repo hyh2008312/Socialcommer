@@ -828,10 +828,12 @@
     position: relative;
 
     &-word {
-      font-size: 12px;
       @include regular();
       cursor: pointer;
       color: rgba(255, 255, 255, .54);
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     &-margin-top {

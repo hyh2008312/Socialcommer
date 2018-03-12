@@ -132,13 +132,22 @@
   </div>
   <div class="xb-store__footer">
     <div fxLayout="column" fxLayoutAlign="center center">
-      <div class="xb-store__footer-margin-left">© 2018 {{contextList.nameTag || store.name}}. All rights reserved.</div>
       <div class="xb-store__footer-margin-top" fxLayout="row" fxLayoutAlign="center center"
            fxLayout.xs="column" fxLayoutAlign.xs="center center">
         <div class="xb-store__footer-word" (click)="jumpAbout()">Why Shop With Us</div>
         <div class="xb-store__footer-word xb-store__footer-margin-left" (click)="jumpFaq()">FAQ</div>
         <div class="xb-store__footer-word xb-store__footer-margin-left" (click)="jumpPrivacy()">Privacy Policy</div>
         <div class="xb-store__footer-word xb-store__footer-margin-left" (click)="jumpReturn()">Return Policy</div>
+      </div>
+      <div class="md-margin-top-1">© 2018 {{contextList.nameTag || store.name}}. All rights reserved.</div>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="center center"
+           fxLayout.xs="column" fxLayoutAlign.xs="center center">
+        <img class="xb-store__footer-margin-top-1 xb-pointer"
+             src="https://media.xberts.com/collector/source/web/pic/pic-power.png"
+             routerLink="/">
+        <img class="xb-store__footer-margin-left xb-store__footer-margin-top-2 xb-pointer"
+             src="https://media.xberts.com/collector/source/web/pic/pic-foot-logo.png"
+             routerLink="/">
       </div>
     </div>
     <div class="xb-store__footer-icons" fxLayout="row" fxLayoutAlign="end center"
