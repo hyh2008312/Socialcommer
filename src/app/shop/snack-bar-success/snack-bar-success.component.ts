@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 
-import {} from '';
-
 @Component({
   selector: 'app-snack-bar-success',
   templateUrl: './snack-bar-success.component.html',
-  styleUrls: ['./snack-bar-success.scss']
+  styleUrls: ['./_snack-bar-success.scss']
 })
 
 export class SnackBarSuccessComponent implements OnInit {

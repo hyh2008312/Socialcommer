@@ -35,6 +35,7 @@ import { BonusTitleComponent } from "./bonus-title/bonus-title.component";
 import { BonusItemComponent } from "./bonus-item/bonus-item.component";
 
 import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
+import { SnackItemBarSuccessComponent } from './snack-item-bar-success/snack-item-bar-success.component';
 import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
 import { ProductAffiliateLinkDialogComponent } from "./product-affiliate-link-dialog/product-affiliate-link-dialog.component";
 import { CategoryCreateDialogComponent } from "./category-create-dialog/category-create-dialog.component";
@@ -125,7 +126,8 @@ import { SharedModule } from '../shared/shared.module';
     BonusTitleComponent,
     BonusItemComponent,
     StoreAvatarComponent,
-    BonusTipsDialogComponent
+    BonusTipsDialogComponent,
+    SnackItemBarSuccessComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
@@ -137,7 +139,8 @@ import { SharedModule } from '../shared/shared.module';
     BlogDeleteDialogComponent,
     SettingsPasswordDialogComponent,
     AccountBalanceWithdrawMoneyDialogComponent,
-    BonusTipsDialogComponent
+    BonusTipsDialogComponent,
+    SnackItemBarSuccessComponent
   ],
   providers: [
     ShopService,

@@ -34,7 +34,7 @@ export class StoreCartHeaderComponent{
     });
 
     this.storeService.cart.subscribe((data) => {
-      if (data && data.length > 0) {
+      if (data) {
         this.productNumber = 0;
         for (let item of data) {
           this.productNumber += parseInt(item.number);

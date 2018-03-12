@@ -3,7 +3,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { ShopService } from '../shop.service';
 import { Product, StoreProduct } from '../shop';
@@ -13,6 +13,7 @@ import { ImageUploadPreviewService } from "../../shared/components/image-upload-
 import { S3UploaderService } from "../../shared/services/s3-upload/s3-upload.service";
 
 import { ProductAffiliateLinkDialogComponent } from "../product-affiliate-link-dialog/product-affiliate-link-dialog.component";
+import { SnackItemBarSuccessComponent } from '../snack-item-bar-success/snack-item-bar-success.component';
 
 @Component({
   selector: 'app-catalog-edit-product',
@@ -64,7 +65,8 @@ export class CatalogEditProductComponent implements OnInit {
     private activatedRoute : ActivatedRoute,
     public previewImageService: ImageUploadPreviewService,
     public s3UploaderService: S3UploaderService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
 
     this.productForm = this.fb.group({
@@ -237,7 +239,9 @@ export class CatalogEditProductComponent implements OnInit {
 
     let self = this;
     this.shopService.changeProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'published'}, replaceUrl: true});
+      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'published'}, replaceUrl: true}).then(() => {
+        self.openSnackBar();
+      });
     });
   }
 
@@ -252,7 +256,9 @@ export class CatalogEditProductComponent implements OnInit {
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'draft'}, replaceUrl: true});
+      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'draft'}, replaceUrl: true}).then(() => {
+        self.openSnackBar();
+      });
     });
   }
 
@@ -272,7 +278,9 @@ export class CatalogEditProductComponent implements OnInit {
 
     let self = this;
     self.shopService.changeProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'unpublished'}, replaceUrl: true});
+      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'unpublished'}, replaceUrl: true}).then(() => {
+        self.openSnackBar();
+      });
     });
   }
 
@@ -320,6 +328,13 @@ export class CatalogEditProductComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
+    });
+  }
+
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackItemBarSuccessComponent, {
+      duration: 1500,
+      verticalPosition: 'top'
     });
   }
 }

@@ -25,7 +25,7 @@ export class LeftSideNavigationComponent implements OnInit {
   }, {
     id: 1,
     icon: 'icon-pic-product',
-    text: 'Listings',
+    text: 'Products',
     subContent: [{
       text: 'Add Items',
       router: './listings/items'

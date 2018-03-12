@@ -3444,6 +3444,19 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.mat-paginator-decrement, .mat-paginator-increment {
+  width: 12px !important;
+  height: 12px !important;
+  border-color: #222 !important; }
+
+.mat-paginator-range-label {
+  font-size: 16px;
+  color: #222; }
+
+.mat-paginator-page-size {
+  display: none !important;
+  color: #222; }
+
 .xb-loading {
   width: 100%;
   position: fixed;
@@ -3598,5 +3611,37 @@ textarea.mat-input-element {
 .xb-login__image {
   max-width: 300px;
   margin-bottom: 40px; }
+
+.sc-login-dialog {
+  padding: 40px 40px 48px;
+  max-width: 660px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+  background-color: #fff;
+  border-radius: 4px; }
+  @media screen and (max-width: 599px) {
+    .sc-login-dialog {
+      padding: 40px 16px; } }
+  .sc-login-dialog__close {
+    position: absolute;
+    left: calc(100% - 36px);
+    top: 12px;
+    color: #222;
+    cursor: pointer; }
+    .sc-login-dialog__close i {
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 600; }
+  .sc-login-dialog__content {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+    font-weight: 400; }
+  .sc-login-dialog__margin-top {
+    margin-top: 24px; }
+  .sc-login-dialog__color {
+    color: #222; }
 
 /*# sourceMappingURL=login.css.map */

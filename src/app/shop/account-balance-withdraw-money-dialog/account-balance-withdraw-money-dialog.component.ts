@@ -52,4 +52,8 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   back() {
     this.status = 1;
   }
+
+  complete() {
+    this.status = 2;
+  }
 }

@@ -44,7 +44,8 @@
 
   &__button{
     font-size: 16px;
-    color: $primaryColor;
+    color: $whiteColor;
+    background-color: $primaryColor;
     border: 1px solid $primaryColor;
     line-height: 40px;
     text-align: center;
@@ -53,11 +54,6 @@
     display: block;
     margin-left: 32px;
     @include box-shadow(0 0 2px 0 $primaryColor);
-
-    &:hover{
-      color: $whiteColor;
-      background-color: $primaryColor;
-    }
 
     @include xb-xs-screen{
       line-height: 36px;

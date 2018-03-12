@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 
 import { ShopService } from '../shop.service';
 import { UserService } from  '../../shared/services/user/user.service';
@@ -12,6 +12,7 @@ import { S3UploaderService } from "../../shared/services/s3-upload/s3-upload.ser
 import { StoreProduct } from '../shop';
 
 import { ProductAffiliateLinkDialogComponent } from "../product-affiliate-link-dialog/product-affiliate-link-dialog.component";
+import { SnackItemBarSuccessComponent } from '../snack-item-bar-success/snack-item-bar-success.component';
 
 @Component({
   selector: 'app-find-products-edit-preview',
@@ -59,7 +60,8 @@ export class FindProductsEditPreviewComponent implements OnInit {
     private userService: UserService,
     private previewImageService: ImageUploadPreviewService,
     private s3UploaderService: S3UploaderService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
     this.productForm = this.fb.group({
       title: ['', [
@@ -353,15 +355,26 @@ export class FindProductsEditPreviewComponent implements OnInit {
     let self = this;
     self.shopService.createSupplyProduct(storeProduct).then((data) => {
       if(!self.isSupplierEdit) {
-        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  });
+        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  }).then(() => {
+          self.openSnackBar();
+        });
       } else {
-        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false });
+        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false }).then(() => {
+          self.openSnackBar();
+        });
       }
     });
   }
 
   openDialog() {
 
+  }
+
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackItemBarSuccessComponent, {
+      duration: 1500,
+      verticalPosition: 'top'
+    });
   }
 
 }

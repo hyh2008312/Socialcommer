@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ResetPasswordSuccessDialogComponent } from "../rest-password-success-dialog/rest-password-success-dialog.component";
 
 @Component({
   selector: 'app-reset-password',
@@ -20,7 +21,8 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private dialog: MatDialog
   ) {
     this.resetForm = this.fb.group({
       email: ['', [
@@ -78,6 +80,7 @@ export class ResetPasswordComponent implements OnInit {
     let self = this;
     this.loginService.resetPassword(this.resetForm.value).then((data)=> {
       self.step = 1;
+      self.resetPasswordSuccessDialog();
     }).catch((data) => {
       self.resetErr = data;
     });
@@ -87,5 +90,15 @@ export class ResetPasswordComponent implements OnInit {
     if(this.dialogRef) {
       this.dialogRef.close();
     }
+  }
+
+  resetPasswordSuccessDialog() {
+    let dialogRef = this.dialog.open(ResetPasswordSuccessDialogComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 }
