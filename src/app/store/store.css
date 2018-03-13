@@ -3444,6 +3444,19 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.mat-paginator-decrement, .mat-paginator-increment {
+  width: 12px !important;
+  height: 12px !important;
+  border-color: #222 !important; }
+
+.mat-paginator-range-label {
+  font-size: 16px;
+  color: #222; }
+
+.mat-paginator-page-size {
+  display: none !important;
+  color: #222; }
+
 .padding {
   padding: 5px 10px; }
 
@@ -6890,6 +6903,19 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.mat-paginator-decrement, .mat-paginator-increment {
+  width: 12px !important;
+  height: 12px !important;
+  border-color: #222 !important; }
+
+.mat-paginator-range-label {
+  font-size: 16px;
+  color: #222; }
+
+.mat-paginator-page-size {
+  display: none !important;
+  color: #222; }
+
 .xb-social-share {
   width: 40px;
   height: 40px;
@@ -7460,7 +7486,7 @@ textarea.mat-input-element {
     .xb-store__details-left-part-1 {
       font-weight: 600;
       color: rgba(0, 0, 0, 0.54);
-      width: 120px;
+      width: 145px;
       margin-right: 32px; }
     .xb-store__details-left-part-2 {
       font-weight: 600;
@@ -7578,10 +7604,11 @@ textarea.mat-input-element {
     font-size: 16px;
     position: relative; }
     .xb-store__footer-word {
-      font-size: 12px;
       font-weight: 400;
       cursor: pointer;
       color: rgba(255, 255, 255, 0.54); }
+      .xb-store__footer-word:hover {
+        text-decoration: underline; }
     .xb-store__footer-margin-top {
       margin-top: 16px; }
       @media screen and (max-width: 599px) {

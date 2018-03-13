@@ -3444,6 +3444,19 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.mat-paginator-decrement, .mat-paginator-increment {
+  width: 12px !important;
+  height: 12px !important;
+  border-color: #222 !important; }
+
+.mat-paginator-range-label {
+  font-size: 16px;
+  color: #222; }
+
+.mat-paginator-page-size {
+  display: none !important;
+  color: #222; }
+
 .xb-store__footer {
   padding: 40px 0;
   background-color: #252525;
@@ -3451,10 +3464,10 @@ textarea.mat-input-element {
   font-size: 16px;
   position: relative; }
   .xb-store__footer-word {
-    font-size: 12px;
     font-weight: 400;
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.54); }
+    cursor: pointer; }
+    .xb-store__footer-word:hover {
+      text-decoration: underline; }
   .xb-store__footer-margin-top {
     margin-top: 16px; }
     @media screen and (max-width: 599px) {

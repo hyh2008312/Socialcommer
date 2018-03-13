@@ -7,7 +7,7 @@
       </div>
       <div class="xb-account-money-dialog__14regular md-margin-left-4">
         {{0 | exchangeCurrency:currency|currency:currency:true}}
-        {{currency == 'INR'? '(Estimated in $0:00)':''}}
+        {{currency == 'INR'? '(Estimated in $0.00)':''}}
       </div>
     </div>
     <div class="xb-account-money-dialog__payment md-margin-top-3">Payment Information</div>
@@ -36,11 +36,11 @@
     </div>
     <div class="xb-account-money-dialog__payment md-margin-top-4">Withdraw Amount</div>
     <div class="xb-account-money-dialog__14regular md-margin-top-3">The fund can only be withdrawn when your available
-      balance reaches $10.
+      balance reaches $50.
     </div>
     <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="end start">
       <div class="md-margin-right-2">
-        <button mat-raised-button color="primary" (click)="confirm()">Withdraw Now</button>
+        <button mat-raised-button color="primary" disabled="disabled" (click)="confirm()">Withdraw Now</button>
       </div>
       <button mat-button color="primary" (click)="close()">Cancel</button>
     </div>

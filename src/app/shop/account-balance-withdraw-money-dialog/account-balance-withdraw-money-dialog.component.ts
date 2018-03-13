@@ -16,6 +16,7 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   balanceForm: FormGroup;
   sub: any;
   currency: string = 'USD';
+  disabled: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<AccountBalanceWithdrawMoneyDialogComponent>,

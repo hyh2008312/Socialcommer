@@ -3444,6 +3444,19 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.mat-paginator-decrement, .mat-paginator-increment {
+  width: 12px !important;
+  height: 12px !important;
+  border-color: #222 !important; }
+
+.mat-paginator-range-label {
+  font-size: 16px;
+  color: #222; }
+
+.mat-paginator-page-size {
+  display: none !important;
+  color: #222; }
+
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
  * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
@@ -3911,7 +3924,7 @@ textarea.mat-input-element {
 .xb-store-template__details-left-part-1 {
   font-weight: 600;
   color: rgba(0, 0, 0, 0.54);
-  width: 120px;
+  width: 145px;
   margin-right: 32px; }
 .xb-store-template__details-left-part-2 {
   font-weight: 600;
@@ -3983,10 +3996,11 @@ textarea.mat-input-element {
     font-size: 24px;
     line-height: 24px; }
 .xb-store-template__footer-word {
-  font-size: 12px;
   font-weight: 400;
   cursor: pointer;
   color: rgba(0, 0, 0, 0.54); }
+  .xb-store-template__footer-word:hover {
+    text-decoration: underline; }
 .xb-store-template__footer-share {
   cursor: pointer; }
   .xb-store-template__footer-share i {

@@ -3444,6 +3444,19 @@ textarea.mat-input-element {
 .mat-progress-bar {
   height: 4px; }
 
+.mat-paginator-decrement, .mat-paginator-increment {
+  width: 12px !important;
+  height: 12px !important;
+  border-color: #222 !important; }
+
+.mat-paginator-range-label {
+  font-size: 16px;
+  color: #222; }
+
+.mat-paginator-page-size {
+  display: none !important;
+  color: #222; }
+
 .xb-4-template__return-policy {
   cursor: pointer; }
   .xb-4-template__return-policy:hover {
@@ -4031,7 +4044,7 @@ textarea.mat-input-element {
 .xb-store-template__car-left-part-1 {
   font-weight: 600;
   color: rgba(0, 0, 0, 0.54);
-  width: 120px;
+  width: 145px;
   margin-right: 32px; }
 .xb-store-template__car-image {
   width: 54px;
@@ -4053,7 +4066,7 @@ textarea.mat-input-element {
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
   .xb-store-template__car-image.active {
-    border: 2px solid #ffc400; }
+    border: 2px solid #e1ab18; }
 .xb-store-template__car-text {
   font-size: 16px;
   color: rgba(0, 0, 0, 0.87);
@@ -4066,7 +4079,7 @@ textarea.mat-input-element {
   white-space: nowrap; }
   .xb-store-template__car-text.active {
     font-weight: 600;
-    border: 2px solid #ffc400; }
+    border: 2px solid #e1ab18; }
 .xb-store-template__car-item-input {
   border: 1px solid #dedede;
   border-radius: 2px; }
