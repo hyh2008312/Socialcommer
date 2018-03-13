@@ -9,11 +9,6 @@
       </div>
     </div>
     <div class="xb-shop__card-content" fxLayout="column">
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <div class="xb-shop__card-commission">
-          Commission: {{commission + '%'}}
-        </div>
-      </div>
       <div class="xb-shop__card-title xb-pointer" (click)="jumpLink()">{{product.title}}</div>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center" *ngIf="currency != 'INR'">
         <div class="xb-shop__card-price">{{product.saleUnitPrice | exchangeCurrency:currency | currency: currency: true}}</div>
@@ -31,6 +26,11 @@
         <div fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-shop__card-sale md-margin-top-1" *ngIf="product.unitPrice > 0">
             {{product.saleUnitPrice|saleDiscount:product.unitPrice}} OFF</div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-shop__card-commission">
+          Sales Commission: {{commission + '%'}}
         </div>
       </div>
       <div class="xb-shop__card-action md-margin-top-2" *ngIf="!isRecommend">

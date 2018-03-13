@@ -600,7 +600,8 @@ export class StoreCartPayComponent implements OnInit{
           order.payerID = data.payerID;
           order.paymentID = data.paymentID;
           order.paymentToken = data.paymentToken;
-          order.orderId = self.order.number;
+          order.number = self.order.number;
+          order.orderId = self.order.id;
           order.paymentAmount = self.totalPrice;
           order.paymentCurrency = self.order.currency;
 
@@ -672,7 +673,8 @@ export class StoreCartPayComponent implements OnInit{
           order.payerID = data.payerID;
           order.paymentID = data.paymentID;
           order.paymentToken = data.paymentToken;
-          order.orderId = self.order.number;
+          order.number = self.order.number;
+          order.orderId = self.order.id;
           order.paymentAmount = self.totalPrice;
           order.paymentCurrency = self.order.currency;
 
