@@ -10,6 +10,14 @@
        [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
     {{category.name | uppercase}}
   </div>
+  <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
+    <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"
+       (click)="jumpOrder()"></i>
+    <div class="xb-store-template__cart-position" (click)="jumpCart()">
+      <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"></i>
+      <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+': productNumber}}</div>
+    </div>
+  </div>
 </div>
 <div class="xb-4-template-navigation__side-bg" fxShow="false" fxShow.xs="true"
      fxLayout="column" fxLayoutAlign="start center">

@@ -21,6 +21,10 @@ import {StoreItemProductCardComponent} from './store-item-products-card/store-it
 import {StoreItemBlogCardComponent} from './store-item-blog-card/store-item-blog-card.component';
 import {ShareTemplate4ButtonComponent} from './share-temlpate-4-button/share-template-4-button.component';
 import {StoreBlogDetailComponent} from './store-blog-detail/store-blog-detail.component';
+import {OrderTrackingLoginComponent} from "./order-tracking-login/order-tracking-login.component";
+import {StoreCartFooterComponent} from "./store-cart-footer/store-cart-footer.component";
+import {StoreCartHeaderComponent} from "./store-cart-header/store-cart-header.component";
+import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.component";
 
 @NgModule({
   imports: [
@@ -44,7 +48,11 @@ import {StoreBlogDetailComponent} from './store-blog-detail/store-blog-detail.co
     StoreItemProductCardComponent,
     StoreItemBlogCardComponent,
     ShareTemplate4ButtonComponent,
-    StoreBlogDetailComponent
+    StoreBlogDetailComponent,
+    OrderTrackingLoginComponent,
+    StoreCartFooterComponent,
+    StoreCartHeaderComponent,
+    StoreCartMainComponent,
   ],
   entryComponents: [],
   providers: [

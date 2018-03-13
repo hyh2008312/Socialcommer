@@ -55,4 +55,12 @@ export class StoreNavigationComponent implements OnInit {
     }
   }
 
+  jumpCart(): void {
+    this.router.navigate([`/shop/templates/preview/6/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`/shop/templates/preview/6/order`]);
+  }
+
 }

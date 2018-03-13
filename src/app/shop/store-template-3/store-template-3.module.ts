@@ -18,6 +18,10 @@ import { StoreTemplateThreeRoutingModule } from './store-template-3.routes.modul
 import { StoreService } from '../store.service';
 
 import { SharedModule } from '../../shared/shared.module';
+import {OrderTrackingLoginComponent} from "./order-tracking-login/order-tracking-login.component";
+import {StoreCartFooterComponent} from "./store-cart-footer/store-cart-footer.component";
+import {StoreCartHeaderComponent} from "./store-cart-header/store-cart-header.component";
+import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.component";
 
 @NgModule({
   imports: [
@@ -40,7 +44,11 @@ import { SharedModule } from '../../shared/shared.module';
     ProductsImageCoverComponent,
     StoreBlogCardComponent,
     StoreBlogComponent,
-    StoreBlogDetailComponent
+    StoreBlogDetailComponent,
+    OrderTrackingLoginComponent,
+    StoreCartFooterComponent,
+    StoreCartHeaderComponent,
+    StoreCartMainComponent
   ],
   entryComponents: [
   ],

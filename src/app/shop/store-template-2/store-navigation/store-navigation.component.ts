@@ -1,4 +1,5 @@
 import {Component, OnInit, OnDestroy, Input} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shop-template-2-navigation',
@@ -9,9 +10,10 @@ import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 export class StoreNavigationComponent implements OnInit {
   @Input() isBlack = false;
   @Input() type: number;
+  @Input() productNumber: number = 0;
   contents: any;
 
-  constructor() {
+  constructor(private  router: Router) {
 
   }
 
@@ -34,7 +36,7 @@ export class StoreNavigationComponent implements OnInit {
           text: 'PRODUCTS',
           link: './list',
           exact: false
-        } ,{
+        }, {
           text: 'ABOUT ME',
           link: './about_me',
           exact: true
@@ -90,5 +92,14 @@ export class StoreNavigationComponent implements OnInit {
         ];
     }
   }
+
+  jumpCart(): void {
+    this.router.navigate([`/shop/templates/preview/2/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`/shop/templates/preview/2/order`]);
+  }
+
 
 }

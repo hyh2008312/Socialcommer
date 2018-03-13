@@ -1,0 +1,39 @@
+<div class="xb-cart__navigation" fxLayout="row" fxLayoutAlign="start center">
+  <div class="xb-cart__navigation-icon-left" fxHide.gt-xs *ngIf="!isNavigationShow" (click)="changeShowMenu()">
+    <i class="material-icons">menu</i>
+  </div>
+
+  <div class="xb-cart__navigation-icon-left" fxHide.gt-xs *ngIf="isNavigationShow" (click)="changeShowMenu()">
+    <i class="iconfontXberts icon-ic-close" ></i>
+  </div>
+  <div class="xb-cart__navigation-title xb-pointer" routerLink="{{homeLink}}" fxHide.xs>
+    {{storeName}}
+  </div>
+  <div class="xb-cart__navigation-title xb-pointer"
+       fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs fxFlex>
+    {{storeName}}
+  </div>
+  <div fxFlex fxHide.xs></div>
+  <div class="xb-cart__order-and-cart" fxLayout="row" fxLayoutAlign="start center">
+    <i class="iconfontXberts icon-pic-per xb-cart__icon md-margin-right-4"
+       (click)="jumpOrder()" fxHide.xs></i>
+    <div class="xb-cart__position" (click)="jumpCart()">
+      <i class="iconfontXberts icon-pic-cart1 xb-cart__icon"></i>
+      <div class="xb-cart__circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+        productNumber}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="xb-cart__navigation-fixed" *ngIf="isNavigationShow">
+  <div class="xb-cart__side-bg" fxShow="false" fxShow.xs="true"
+       fxLayout="column" fxLayoutAlign="start center" >
+    <div class="xb-cart__side-flex" routerLink="{{homeLink}}" >
+      HOME
+    </div>
+    <div class="xb-cart__side-flex" (click)="jumpOrder()">
+      MY ORDER
+    </div>
+  </div>
+</div>
+

@@ -5,6 +5,17 @@
     </div>
   </mat-sidenav>
   <div class="xb-4-template__container">
+    <div class="xb-4-template__cart-order" fxShow="true" fxShow.xs="false">
+      <div class="xb-4-template__w960" fxLayout="row" fxLayoutAlign="end start">
+        <div class="xb-4-template__cart-order-word  md-margin-right-4" (click)="jumpOrder()">VIEW YOUR ORDER</div>
+        <div (click)="jumpCart()" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-4-template__cart-order-word">CART</div>
+          <div class="xb-4-template__cart-order-word" *ngIf="productNumber > 0">&nbsp;&nbsp;({{productNumber > 99 ?
+            '99+': productNumber}})
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="xb-4-template__w960" fxLayout="row" fxLayoutAlign="center start" fxShow="true" fxShow.xs="false">
       <div class="xb-4-template__title "
            [innerHTML]="storeName | safeHtml">

@@ -9,6 +9,10 @@ import { StoreAvatarComponent } from './store-avatar/store-avatar.component';
 import { StoreTemplateOneRoutingModule } from './store-template-1.routes.module';
 
 import { SharedModule } from '../../shared/shared.module';
+import {StoreCartFooterComponent} from "./store-cart-footer/store-cart-footer.component";
+import {StoreCartHeaderComponent} from "./store-cart-header/store-cart-header.component";
+import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.component";
+import {OrderTrackingLoginComponent} from "./order-tracking-login/order-tracking-login.component";
 
 @NgModule({
   imports: [
@@ -24,7 +28,11 @@ import { SharedModule } from '../../shared/shared.module';
     StoreDetailComponent,
     StoreListDetailComponent,
     StoreItemCardComponent,
-    StoreAvatarComponent
+    StoreAvatarComponent,
+    StoreCartFooterComponent,
+    StoreCartHeaderComponent,
+    StoreCartMainComponent,
+    OrderTrackingLoginComponent
   ],
   entryComponents: [
   ],

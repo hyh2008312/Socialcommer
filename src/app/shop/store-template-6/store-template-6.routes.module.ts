@@ -7,6 +7,8 @@ import {StoreDetailComponent} from './store-detail/store-detail.component';
 import {StoreBlogComponent} from './store-blog/store-blog.component';
 import {StoreBlogDetailComponent} from './store-blog-detail/store-blog-detail.component';
 import {StoreListComponent} from './store-list/store-list.component';
+import {OrderTrackingLoginComponent} from "./order-tracking-login/order-tracking-login.component";
+import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.component";
 
 const routes: Routes = [{
   path: '', component: MainPageComponent,
@@ -27,6 +29,10 @@ const routes: Routes = [{
       path: 'category/:id', component: StoreListComponent
     },
   ]
+}, {
+  path: 'cart', component: StoreCartMainComponent
+}, {
+  path: 'order', component: OrderTrackingLoginComponent
 }, {
   path: '',
   redirectTo: ''
