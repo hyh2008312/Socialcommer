@@ -31,4 +31,7 @@
        [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
     {{category.name | uppercase}}
   </div>
+  <div class="xb-4-template-navigation__side-flex" (click)="jumpOrder()">
+    VIEW YOUR ORDER
+  </div>
 </div>

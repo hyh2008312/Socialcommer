@@ -4,6 +4,8 @@
 // main
 .xb-4-template {
   &__mobile {
+    width: 100vw;
+    height: 56px;
     position: relative;
   }
   &__menu {
@@ -47,7 +49,7 @@
       padding-right: 16px;
       height: 40px;
       line-height: 36px;
-      margin-top: 8px;
+      margin-top: 0;
     }
   }
 
@@ -57,6 +59,9 @@
 .xb-4-template-home {
   margin-bottom: 100px;
   margin-top: 24px;
+  @include xb-xs-screen {
+    margin-top: 0;
+  }
   &__background {
     height: 640px;
     position: relative;
@@ -269,7 +274,7 @@
         margin-top: 8px;
       }
       > img {
-        @include xb-xs-screen{
+        @include xb-xs-screen {
           width: calc(100vw - 32px);
           margin-left: 16px;
           margin-right: 16px;
@@ -285,7 +290,7 @@
       font-weight: bold;
       line-height: 48px;
       text-align: center;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         text-align: left;
         font-size: 24px;
         line-height: 36px;
@@ -299,7 +304,7 @@
       @include regular();
       text-align: center;
       color: rgba(0, 0, 0, 0.54);
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         text-align: left;
         margin-left: 16px;
       }
@@ -354,7 +359,7 @@
     margin-left: 16px;
   }
   &__side-flex {
-    font-size: 24px;
+    font-size: 18px;
     height: 56px;
     line-height: 56px;
     &.active {
@@ -603,6 +608,7 @@
     }
   }
 }
+
 .xb-4-template__cart-order {
   height: 54px;
   background-color: rgba(0, 0, 0, .12);
@@ -613,5 +619,38 @@
     height: 54px;
     line-height: 54px;
     cursor: pointer;
+  }
+}
+
+.xb-store-template__cart {
+  &-position {
+    position: relative;
+    @include xb-xs-screen {
+      margin-right: 24px;
+    }
+  }
+  &-icon {
+    font-size: 24px;
+    color: #e1ab18;
+    position: relative;
+    cursor: pointer;
+  }
+  &-order-and-cart {
+    position: absolute;
+    right: 24px;
+  }
+  &-circle {
+    width: 16px;
+    height: 16px;
+    background: red;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    right: -11px;
+    top: 0;
+    text-align: center;
   }
 }

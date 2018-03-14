@@ -8,12 +8,18 @@
     box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.19);
   }
   &__nav-close {
-    position: absolute;
-    top: 11px;
     font-size: 24px;
   }
   &__mobile {
-    position: relative;
+    position: fixed;
+    background-color: white;
+    z-index: 5;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    &-navigation-fixed {
+      position: absolute;
+      top: 56px;
+    }
   }
   &__menu {
     position: absolute;

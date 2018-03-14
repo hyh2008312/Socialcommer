@@ -4,7 +4,7 @@
   </div>
 
   <div class="xb-cart__navigation-icon-left" fxHide.gt-xs *ngIf="isNavigationShow" (click)="changeShowMenu()">
-    <i class="iconfontXberts icon-ic-close" ></i>
+    <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-cart__navigation-title xb-pointer" routerLink="{{homeLink}}" fxHide.xs>
     {{storeName}}
@@ -27,12 +27,12 @@
 </div>
 <div class="xb-cart__navigation-fixed" *ngIf="isNavigationShow">
   <div class="xb-cart__side-bg" fxShow="false" fxShow.xs="true"
-       fxLayout="column" fxLayoutAlign="start center" >
-    <div class="xb-cart__side-flex" routerLink="{{homeLink}}" >
+       fxLayout="column" fxLayoutAlign="start center">
+    <div class="xb-cart__side-flex" routerLink="{{homeLink}}">
       HOME
     </div>
     <div class="xb-cart__side-flex" (click)="jumpOrder()">
-      MY ORDER
+      VIEW YOUR ORDER
     </div>
   </div>
 </div>

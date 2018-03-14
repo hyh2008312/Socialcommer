@@ -18,7 +18,7 @@ export class AboutComponent implements OnInit {
   imageList: any = {};
   ownerFirstName: string = '';
   ownerLastName: string = '';
-
+  returnDays: string = '30';
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -38,6 +38,12 @@ export class AboutComponent implements OnInit {
         self.text = data.description;
         self.ownerFirstName = data.ownerFirstName;
         self.ownerLastName = data.ownerLastName;
+        let countryCode = data.country.code;
+        if (countryCode == 'US') {
+          self.returnDays = '30';
+        } else if (countryCode == 'IN') {
+          self.returnDays = '10';
+        }
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,

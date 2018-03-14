@@ -104,7 +104,7 @@
       <div *ngIf="questionNumber===3">
         <div class="xb-store-about__content-subtitle">What is your return policy?</div>
         <div class="xb-store-about__content-des md-margin-top-1">
-          You may return any item within 30 days of delivery. We will issue you a full refund or send you a new
+          You may return any item within {{returnDays}} days of delivery. We will issue you a full refund or send you a new
           replacement once we receive your returned package. Please note that any returned items must be in an unused
           condition.
         </div>
@@ -234,7 +234,7 @@
     <div class="xb-store-about__mobile-title">Return & Exchange FAQs</div>
     <div class="xb-store-about__content-subtitle">What is your return policy?</div>
     <div class="xb-store-about__content-des md-margin-top-1">
-      You may return any item within 30 days of delivery. We will issue you a full refund or send you a new
+      You may return any item within {{returnDays}} days of delivery. We will issue you a full refund or send you a new
       replacement once we receive your returned package. Please note that any returned items must be in an unused
       condition.
     </div>

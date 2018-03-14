@@ -61,6 +61,12 @@ export class StoreDetailComponent implements OnInit {
   displayName: string = '';
 
 
+//退换货的天数
+  returnDays: string = '30 day returns';
+
+  //快递的国家
+  deliveryCountry: string = 'United States';
+
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 
   constructor(public router: Router,
@@ -76,6 +82,14 @@ export class StoreDetailComponent implements OnInit {
           self.store = data;
           self.currency = data.currency.toUpperCase();
           self.displayName = data.displayName;
+          let countryCode = data.country.code;
+          if (countryCode == 'US') {
+            self.returnDays = '30 day returns';
+            self.deliveryCountry = 'United States';
+          } else if (countryCode == 'IN') {
+            self.returnDays = '10 day returns';
+            self.deliveryCountry = 'India';
+          }
           self.initData();
         }
       });

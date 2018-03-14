@@ -109,7 +109,7 @@ export class MainPageComponent implements OnInit {
   userTag = '<p>Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business. Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training that make you an expert in your field? Show your customers that there are real people with interesting stories working behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust in your brand.</p>';
   imageSrc = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
 
-
+  isShowMenu: boolean = false;
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
@@ -153,5 +153,11 @@ export class MainPageComponent implements OnInit {
   jumpOrder(): void {
     this.router.navigate([`/shop/templates/preview/1/order`]);
   }
+  changeShowMenu() {
+    this.isShowMenu = !this.isShowMenu;
+  }
 
+  closeShowMenu() {
+    this.isShowMenu = false;
+  }
 }

@@ -33,9 +33,9 @@ export class StoreNavigationComponent implements OnInit {
 
 
   constructor(public router: Router) {
-
   }
-  ngOnInit():void {
+
+  ngOnInit(): void {
     let self = this;
     self.routerObservable = self.router.events
       .subscribe((event) => {
@@ -46,9 +46,12 @@ export class StoreNavigationComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if(this.routerObservable) {
+    if (this.routerObservable) {
       this.routerObservable.unsubscribe();
     }
   }
 
+  jumpOrder(): void {
+    this.router.navigate([`/shop/templates/preview/4/order`]);
+  }
 }

@@ -20,8 +20,10 @@
 
 <div class="xb-store-template__side-bg" fxShow="false" fxShow.xs="true">
   <div class="xb-store-template__side-flex xb-pointer" *ngFor="let value of contents"
-       [style.color]="isBlack?'black':'white'"
        routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
     {{value.text}}
+  </div>
+  <div class="xb-store-template__side-flex" (click)="jumpOrder()">
+     VIEW YOUR ORDER
   </div>
 </div>

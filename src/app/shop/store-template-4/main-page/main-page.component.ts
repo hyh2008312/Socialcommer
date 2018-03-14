@@ -10,7 +10,7 @@ import {UserService} from '../../../shared/services/user/user.service';
 })
 
 export class MainPageComponent implements OnInit {
-  storeName: string = '';
+  storeName: string = 'STORE NAME';
   text: string = '';
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -24,10 +24,8 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.userService.store.subscribe((data) => {
       if (data) {
-        self.storeName = data.name;
         self.storeService.getStore(data.displayName).then((data) => {
           self.text = data.description;
-          self.storeName = data.name;
         });
       }
     });

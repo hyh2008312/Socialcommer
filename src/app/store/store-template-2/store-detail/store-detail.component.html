@@ -97,11 +97,11 @@
             </div>
             <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
               <div class="xb-store-template__car-left-part-1">Return Policy</div>
-              <div class="xb-store-template__return-policy" (click)="jumpReturn()">30 day returns</div>
+              <div class="xb-store-template__return-policy" (click)="jumpReturn()">{{returnDays}}</div>
             </div>
             <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
               <div class="xb-store-template__car-left-part-1">Shipping Availability</div>
-              <div>United States  /  India</div>
+              <div>{{deliveryCountry}}</div>
             </div>
           </div>
           <div class="xb-store-template__detail-buttons-bg" fxShow="true" fxShow.xs="false">

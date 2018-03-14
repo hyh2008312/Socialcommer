@@ -1,6 +1,6 @@
 <div>
   <mat-sidenav-container [ngStyle]="{'background-color':'white'}">
-    <mat-sidenav #sidenav mode="push" position="end">
+    <mat-sidenav #sidenav mode="push">
       <div class="xb-store-template__side_container">
         <app-shop-template-2-navigation [type]="4"></app-shop-template-2-navigation>
       </div>
@@ -17,11 +17,17 @@
       <!--手机移动端界面显示-->
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
            fxShow.xs="true">
+        <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-right':'16px'}"
+           (click)="sidenav.open()">menu</i>
         <div class="xb-store-template__store-name" [ngStyle]="{'color': 'black'}">
           STORE NAME
         </div>
-        <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-right':'16px'}"
-           (click)="sidenav.open()">menu</i>
+        <div class="xb-store-template__cart-position" (click)="jumpCart()">
+          <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color': 'black'}"></i>
+          <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+            productNumber}}
+          </div>
+        </div>
       </div>
 
       <div class="xb-store-template__collection-title">

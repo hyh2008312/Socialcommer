@@ -16,7 +16,7 @@ export class ReturnPolicyComponent implements OnInit {
   store: Store = new Store();
   contextList: any = {};
   imageList: any = {};
-
+  returnDays: string = '30';
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -32,6 +32,12 @@ export class ReturnPolicyComponent implements OnInit {
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
+        let countryCode = data.country.code;
+        if (countryCode == 'US') {
+          self.returnDays = '30';
+        } else if (countryCode == 'IN') {
+          self.returnDays = '10';
+        }
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,

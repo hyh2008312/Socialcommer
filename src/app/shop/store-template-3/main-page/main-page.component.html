@@ -7,7 +7,9 @@
       <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4" (click)="jumpOrder()"></i>
       <div style="position: relative" (click)="jumpCart()">
         <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"></i>
-        <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+': productNumber}}</div>
+        <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+          productNumber}}
+        </div>
       </div>
     </div>
     <div fxFlex="noshrink">
@@ -23,8 +25,14 @@
       <div class="xb-store-template__top-navigation-title" fxFlex>
         {{storeName}}
       </div>
+      <div class="xb-store-template__cart-position" (click)="jumpCart()">
+        <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color':'black'}"></i>
+        <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+          productNumber}}
+        </div>
+      </div>
     </div>
-    <div class="xb-store-template__dialog" *ngIf="isDialogOpen" fxShow.gt-xs="false" >
+    <div class="xb-store-template__dialog" *ngIf="isDialogOpen" fxShow.gt-xs="false">
       <div class="xb-store-template__top-navigation" fxLayout="row" fxLayoutAlign="end center">
         <i class="material-icons" (click)="openDialog()">close</i>
       </div>
@@ -34,7 +42,8 @@
       <router-outlet></router-outlet>
     </div>
     <div class="background-light-gray">
-      <app-shop-template-3-store-footer [text]="text" [name]="storeName" fxShow.gt-xs="false"></app-shop-template-3-store-footer>
+      <app-shop-template-3-store-footer [text]="text" [name]="storeName"
+                                        fxShow.gt-xs="false"></app-shop-template-3-store-footer>
     </div>
   </div>
 </div>

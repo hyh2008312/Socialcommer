@@ -34,6 +34,9 @@ export class FaqComponent implements OnInit {
 
   questionNumber: number = 1;
 
+  //退换货的天数
+  returnDays: string = '30';
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
@@ -52,6 +55,12 @@ export class FaqComponent implements OnInit {
         self.displayName = data.displayName;
         self.ownerFirstName = data.ownerFirstName;
         self.ownerLastName = data.ownerLastName;
+        let countryCode = data.country.code;
+        if (countryCode == 'US') {
+          self.returnDays = '30';
+        } else if (countryCode == 'IN') {
+          self.returnDays = '10';
+        }
         self.contextList = data.context ? data.context : {};
         self.text = data.description;
         self.storeService.addTitleDescription({

@@ -58,6 +58,12 @@ export class StoreDetailComponent implements OnInit {
   //链接上的店铺的名称
   displayName: string = '';
 
+  //退换货的天数
+  returnDays: string = '30 day returns';
+
+  //快递的国家
+  deliveryCountry: string = 'United States';
+
 
 
   constructor(public router: Router,
@@ -81,6 +87,14 @@ export class StoreDetailComponent implements OnInit {
         self.store = data;
         self.currency = data.currency.toUpperCase();
         self.displayName = data.displayName;
+        let countryCode = data.country.code;
+        if (countryCode == 'US') {
+          self.returnDays = '30 day returns';
+          self.deliveryCountry = 'United States';
+        } else if (countryCode == 'IN') {
+          self.returnDays = '10 day returns';
+          self.deliveryCountry = 'India';
+        }
         let storeId = data.id;
         self.storeService.getProduct(id).then((data) => {
           self.product = data;

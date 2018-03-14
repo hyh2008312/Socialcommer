@@ -1,14 +1,18 @@
 <div class="xb-4-template__container">
-  <div class="xb-4-template__mobile" fxShow="false" fxShow.xs="true">
-    <i class="material-icons xb-pointer xb-4-template__menu" *ngIf="!isShowMenu"
+  <div class="xb-4-template__mobile" fxShow="false" fxShow.xs="true" fxLayout="row" fxLayoutAlign="start center">
+    <i class="material-icons xb-pointer" *ngIf="!isShowMenu"
        [ngStyle]="{'color': 'black','margin-left':'16px'}" (click)="changeShowMenu()">menu</i>
     <i class="iconfontXberts icon-ic-close xb-4-template__nav-close" *ngIf="isShowMenu"
        [ngStyle]="{'color': 'black','margin-left':'16px'}" (click)="changeShowMenu()"></i>
 
-    <div fxLayout="row" fxLayoutAlign="center start">
+    <div fxLayout="row" fxLayoutAlign="center start" fxFlex>
       <div class="xb-4-template__title ">
         {{storeName}}
       </div>
+    </div>
+    <div class="xb-store-template__cart-position" (click)="jumpCart()">
+      <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"></i>
+      <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+': productNumber}}</div>
     </div>
     <div class="xb-4-template__mobile-navigation-fixed" fxShow="false" fxShow.xs="true" *ngIf="isShowMenu">
       <app-shop-template-5-navigation (routerChange)="closeShowMenu()">

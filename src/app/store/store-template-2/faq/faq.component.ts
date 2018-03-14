@@ -19,7 +19,8 @@ export class FaqComponent implements OnInit {
   productNumber: number = 0;
   displayName: string;
   questionNumber: number = 1;
-
+//退换货的天数
+  returnDays: string = '30';
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -36,6 +37,12 @@ export class FaqComponent implements OnInit {
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
         self.displayName = data.displayName ;
+        let countryCode = data.country.code;
+        if (countryCode == 'US') {
+          self.returnDays = '30';
+        } else if (countryCode == 'IN') {
+          self.returnDays = '10';
+        }
       }
     });
     self.storeService.cart.subscribe((data) => {
