@@ -1,8 +1,11 @@
 import { Input, Output, Component, OnInit,EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { ShopService } from '../shop.service';
 import { UserService } from  '../../shared/services/user/user.service';
+
+import { ProductShareDialogComponent } from "../product-share-dialog/product-share-dialog.component";
 
 @Component({
   selector: 'app-product-item',
@@ -19,11 +22,14 @@ export class ProductItemComponent implements OnInit {
 
   storeId;
   storeCurrency = 'USD';
+  displayName = '';
+  templateId = 5;
 
   constructor(
     private shopService: ShopService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +38,8 @@ export class ProductItemComponent implements OnInit {
       if(data) {
         self.storeId = data.id;
         self.storeCurrency = data.currency.toUpperCase();
+        self.displayName = data.displayName;
+        self.templateId = data.template?data.template.templateId:5;
       }
     });
   }
@@ -82,6 +90,19 @@ export class ProductItemComponent implements OnInit {
         status: self.status,
         index: self.index
       })
+    });
+  }
+
+  promote() {
+    let dialogRef = this.dialog.open(ProductShareDialogComponent, {
+      data: {
+        shareLink: `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${this.product.id}` + ''+ this.product.id,
+        text: this.product.title
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
     });
   }
 
