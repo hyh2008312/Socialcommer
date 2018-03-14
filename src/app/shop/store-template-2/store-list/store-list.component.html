@@ -1,6 +1,6 @@
 <div>
   <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="push" position="end">
+    <mat-sidenav #sidenav mode="push">
       <div class="xb-store-template__side_container">
         <app-shop-template-2-navigation [type]="2"></app-shop-template-2-navigation>
       </div>
@@ -18,11 +18,20 @@
       <!--手机mobile的导航-->
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
            fxShow.xs="true">
+
+        <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-right':'16px'}"
+           (click)="sidenav.open()">menu</i>
+
         <div class="xb-store-template__store-name" [ngStyle]="{'color': 'black'}">
           STORE NAME
         </div>
-        <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-right':'16px'}"
-           (click)="sidenav.open()">menu</i>
+
+        <div class="xb-store-template__cart-position" (click)="jumpCart()">
+          <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color': 'black'}"></i>
+          <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+            productNumber}}
+          </div>
+        </div>
       </div>
       <div class="xb-store-template__collection-title">
         Products
@@ -33,18 +42,18 @@
       <div class="xb-store-template__collection—category" fxLayout="column" fxLayoutAlign="start start" fxShow="true"
            fxShow.xs="false">
         <app-shop-template-2-category fxFlexAlign="center" [(category)]="category" [categories]="categories"
-                                       (categoryChange)="changeCategory()"></app-shop-template-2-category>
+                                      (categoryChange)="changeCategory()"></app-shop-template-2-category>
       </div>
       <div fxShow="false" fxShow.xs="true">
         <app-shop-template-2-category [(category)]="category" [categories]="categories"
-                                       (categoryChange)="changeCategory()"></app-shop-template-2-category>
+                                      (categoryChange)="changeCategory()"></app-shop-template-2-category>
       </div>
       <div>
         <div class="xb-store-template__list-products md-margin-top-1">
-          <div  fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+          <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
             <app-shop-item-card *ngFor="let item of product"
-                                 fxFlex.xs="48" fxFlex.gt-xs="30"
-                                 [product]="item" [status]="1"></app-shop-item-card>
+                                fxFlex.xs="48" fxFlex.gt-xs="30"
+                                [product]="item" [status]="1"></app-shop-item-card>
             <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
           </div>
         </div>

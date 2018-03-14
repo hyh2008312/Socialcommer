@@ -141,4 +141,7 @@ export class StoreListComponent implements OnInit {
   back(): void {
     this.router.navigate([`/shop/store/templates/preview/2`]);
   }
+  jumpCart(): void {
+    this.router.navigate([`/shop/templates/preview/2/cart`]);
+  }
 }

@@ -1,6 +1,28 @@
 <div class="xb-store">
-  <div class="xb-store__nav" fxShow="false" fxShow.xs="show">
-    {{nameTag}}
+  <div class="xb-4-template-navigation__mobile" fxShow="false" fxShow.xs="true" fxLayout="row"
+       fxLayoutAlign="start center">
+    <i class="material-icons xb-pointer" *ngIf="!isShowMenu"
+       [ngStyle]="{'color': 'black','margin-left':'16px'}" (click)="changeShowMenu()">menu</i>
+
+    <i class="iconfontXberts icon-ic-close xb-4-template-navigation__nav-close" *ngIf="isShowMenu"
+       [ngStyle]="{'color': 'black','margin-left':'16px'}" (click)="changeShowMenu()"></i>
+
+    <div fxLayout="row" fxLayoutAlign="center start" fxFlex>
+      <div class="xb-4-template-navigation__title ">
+        {{nameTag}}
+      </div>
+    </div>
+    <div class="xb-store-template__cart-position" (click)="jumpCart()">
+      <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color':'black'}"></i>
+      <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+        productNumber}}
+      </div>
+    </div>
+    <div class="xb-4-template-navigation__navigation-fixed" fxShow="false" fxShow.xs="true" *ngIf="isShowMenu">
+      <app-shop-template-1-navigation (routerChange)="closeShowMenu()"
+                                       [displayName]="displayName"
+                                       [storeName]="storeName"></app-shop-template-1-navigation>
+    </div>
   </div>
   <div class="xb-store__banner" fxLayout="column" fxLayoutAlign.xs="center center"
        [ngStyle]="{'background': 'url(' + baseImageUrl + ') center / auto 100% ' }">

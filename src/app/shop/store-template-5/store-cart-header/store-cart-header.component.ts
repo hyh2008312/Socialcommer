@@ -25,5 +25,12 @@ export class StoreCartHeaderComponent {
     this.isNavigationShow = !this.isNavigationShow;
   }
 
+  jumpCart(): void {
+    this.router.navigate([`/shop/templates/preview/5/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`/shop/templates/preview/5/order`]);
+  }
 
 }

@@ -32,7 +32,7 @@ export class StoreListComponent implements OnInit {
   nextPage: boolean = true;
   product = [{
     id: 0,
-    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-1.jpg",
+    mainImage : "https://media.xberts.com/collector/source/web/templats/01-pic-1.jpg",
     originalPriceAmount : 55.95,
     originalPriceCurrency : "USD",
     salePriceAmount : 39.30,
@@ -40,7 +40,7 @@ export class StoreListComponent implements OnInit {
     title : "Skin Care and Cosmetic Ingredients Dictionary. "
   }, {
     id: 1,
-    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-2.jpg",
+    mainImage : "https://media.xberts.com/collector/source/web/templats/01-pic-2.jpg",
     originalPriceAmount : 39.00,
     originalPriceCurrency : "USD",
     salePriceAmount : 19.00,
@@ -48,7 +48,7 @@ export class StoreListComponent implements OnInit {
     title : "Mermaid Chunky Glitter Large 30g Jar COSMETIC GLITTER Festival Face Body"
   },{
     id: 2,
-    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-3.jpg",
+    mainImage : "https://media.xberts.com/collector/source/web/templats/01-pic-3.jpg",
     originalPriceAmount : 39.00,
     originalPriceCurrency : "USD",
     salePriceAmount : 19.00,
@@ -56,7 +56,7 @@ export class StoreListComponent implements OnInit {
     title : "Black Markup Mirror 6 Inch 3x Magnification LED Light Two-Sided Table"
   },{
     id: 3,
-    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-4.jpg",
+    mainImage : "https://media.xberts.com/collector/source/web/templats/01-pic-4.jpg",
     originalPriceAmount : 49.99,
     originalPriceCurrency : "USD",
     salePriceAmount : 19.99,
@@ -64,7 +64,7 @@ export class StoreListComponent implements OnInit {
     title : "Eyelash Dreamer Makeup Bag, Eyelash Dreamer, Makeup Bag, Makeup, Lash "
   },{
     id: 4,
-    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-5.jpg",
+    mainImage : "https://media.xberts.com/collector/source/web/templats/01-pic-5.jpg",
     originalPriceAmount : 6.00,
     originalPriceCurrency : "USD",
     salePriceAmount : 4.99,
@@ -72,7 +72,7 @@ export class StoreListComponent implements OnInit {
     title : "E.l.f Hydrating Face Primer, 0.47 Fluid Ounce"
   },{
     id: 5,
-    imageUrl : "https://media.xberts.com/collector/source/web/templats/01-pic-6.jpg",
+    mainImage : "https://media.xberts.com/collector/source/web/templats/01-pic-6.jpg",
     originalPriceAmount : 49.99,
     originalPriceCurrency : "USD",
     salePriceAmount : 35.99,
@@ -119,6 +119,6 @@ export class StoreListComponent implements OnInit {
   }
 
   back():void {
-    this.router.navigate([`/shop/store/templates/preview/1`]);
+    this.router.navigate([`/shop/templates/preview/1`]);
   }
 }

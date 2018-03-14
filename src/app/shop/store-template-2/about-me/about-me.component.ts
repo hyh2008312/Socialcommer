@@ -34,4 +34,7 @@ export class AboutMeComponent implements OnInit {
       }
     });
   }
+  jumpCart(): void {
+    this.router.navigate([`/shop/templates/preview/2/cart`]);
+  }
 }

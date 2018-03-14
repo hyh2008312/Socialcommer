@@ -134,16 +134,15 @@ export class HomePageComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        self.storeService.pageView({
-          pageType: 'store',
-          viewTime: new Date().getTime(),
-          storeId: data.id
-        });
       }
     });
   }
 
   jumpProductList(): void {
     this.router.navigate([`/shop/templates/preview/2/list`]);
+  }
+
+  jumpCart(): void {
+    this.router.navigate([`/shop/templates/preview/2/cart`]);
   }
 }

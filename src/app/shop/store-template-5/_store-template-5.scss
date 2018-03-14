@@ -17,7 +17,16 @@
     font-size: 24px;
   }
   &__mobile {
-    position: relative;
+    position: fixed;
+    background-color: white;
+    z-index: 5;
+    width: 100%;
+    top: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    &-navigation-fixed {
+      position: absolute;
+      top: 56px;
+    }
   }
   &__menu {
     position: absolute;
@@ -62,6 +71,7 @@
     position: relative;
     @include xb-xs-screen {
       height: 320px;
+      margin-top: 56px;
     }
   }
   &__title {
@@ -626,7 +636,7 @@
     padding-bottom: 32px;
     background-color: #f1f1f1;
     @include xb-xs-screen {
-      padding-top: 32px;
+      padding-top: 88px;
       padding-bottom: 20px;
     }
   }
