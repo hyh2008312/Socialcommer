@@ -5,7 +5,6 @@
   &-word {
     @include regular();
     cursor: pointer;
-    color: rgba(0, 0, 0, .54);
     &:hover {
       text-decoration: underline;
     }

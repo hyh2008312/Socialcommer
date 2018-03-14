@@ -1,4 +1,11 @@
-<div fxLayout="column">
+<div class="xb-store-template__footer" fxLayout="column">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div class="xb-store-template__footer-word">Why Shop With Us</div>
+    <div class="xb-store-template__footer-word">FAQ</div>
+    <div class="xb-store-template__footer-word">Privacy Policy</div>
+    <div class="xb-store-template__footer-word">Return Policy</div>
+  </div>
+
   <div class="xb-store-template__footer-margin-top xb-store-template__footer-margin-bottom"
        fxLayout="row" fxLayoutAlign="center center">
     <div class="xb-store-template__footer-share md-margin-right-3"
@@ -9,26 +16,25 @@
          appSocialShare [twitter]="{url: link, text: text, hashtags: '' }">
       <i class="iconfontXberts icon-ic-twitter"></i>
     </div>
-    <div class="xb-store-template__footer-share"
+    <div class="xb-store-template__footer-share md-margin-right-3"
          appSocialShare [googlePlus]="{url: link}">
       <i class="iconfontXberts icon-google"></i>
     </div>
+    <div class="xb-store-template__footer-share gtag-shop-detail-share-button-whatsapp"
+         appSocialShare [whatsApp]="{text: text + ' '+ link}">
+      <i class="iconfontXberts icon-ic-social-whatsapp"></i>
+    </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <div class="xb-store-template__footer-word">Why Shop With Us</div>
-    <div class="xb-store-template__footer-word md-margin-left-4">FAQ</div>
-  </div>
-  <div class="md-margin-top-1 md-margin-bottom-1" fxLayout="row" fxLayoutAlign="center center">
-    <div class="xb-store-template__footer-word">Privacy Policy</div>
-    <div class="xb-store-template__footer-word md-margin-left-4">Return Policy</div>
-  </div>
+
   <div class="xb-store-template__footer-text xb-store-template__footer-margin-bottom-1" fxHide.gt-xs>© 2018 {{name}}.
     All rights reserved.
   </div>
   <div class="xb-store-template__footer-text xb-store-template__footer-margin-bottom-1" fxHide.xs>© 2018 {{name}}. <br>
     All rights reserved.
   </div>
+
   <div class="xb-store-template__footer-text xb-store-template__footer-margin-bottom xb-pointer" routerLink="/">POWERED
     BY SocialCommer
   </div>
 </div>
+

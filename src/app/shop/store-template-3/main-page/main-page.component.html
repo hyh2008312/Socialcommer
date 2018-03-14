@@ -13,7 +13,7 @@
       </div>
     </div>
     <div fxFlex="noshrink">
-      <app-shop-template-3-navigation></app-shop-template-3-navigation>
+      <app-shop-template-3-navigation [isMobile]='false'></app-shop-template-3-navigation>
     </div>
     <app-shop-template-3-store-footer [text]="text" [name]="storeName"></app-shop-template-3-store-footer>
   </div>
@@ -36,7 +36,8 @@
       <div class="xb-store-template__top-navigation" fxLayout="row" fxLayoutAlign="end center">
         <i class="material-icons" (click)="openDialog()">close</i>
       </div>
-      <app-shop-template-3-navigation (routerChange)="openDialog($event)"></app-shop-template-3-navigation>
+      <app-shop-template-3-navigation [isMobile]='true'
+                                      (routerChange)="openDialog($event)"></app-shop-template-3-navigation>
     </div>
     <div fxFlex="noshrink">
       <router-outlet></router-outlet>

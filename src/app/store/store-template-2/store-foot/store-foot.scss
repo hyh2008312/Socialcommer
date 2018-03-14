@@ -3,23 +3,31 @@
 
 .xb-store {
   &__footer {
-    &-word {
-      @include regular();
-      cursor: pointer;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-    padding: 40px 0;
+    padding: 32px 0;
     background-color: #252525;
     color: rgba(255, 255, 255, .5);
     font-size: 16px;
     position: relative;
+    &-mgtop56{
+      margin-top: 56px;
+    }
+    &-right{
+      font-size: 14px;
+      @include regular();
+      color: rgba(255,255,255,.38);
+    }
 
-    &-margin-top {
-      margin-top: 16px;
-      @include xb-xs-screen {
-        margin-top: 8px;
+
+    &-word {
+      font-size: 14px;
+      @include regular();
+      cursor: pointer;
+      color: white;
+      &:hover {
+        text-decoration: underline;
+      }
+      @include xb-xs-screen{
+        line-height: 32px;
       }
     }
 
@@ -38,23 +46,17 @@
     }
 
     &-margin-left {
-      margin-left: 16px;
+      margin-left: 48px;
       @include xb-xs-screen {
         margin-left: 0;
+        text-align: center;
       }
     }
 
     &-icons {
-      position: absolute;
-      right: 0;
-      bottom: 40px;
-      margin-right: 10vw;
-
+      margin-top: 24px;
       @include xb-xs-screen {
-        position: relative;
-        bottom: 0;
-        margin-right: 0;
-        margin-top: 12px;
+
       }
     }
   }
