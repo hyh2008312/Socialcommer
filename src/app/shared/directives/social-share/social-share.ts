@@ -22,3 +22,7 @@ export class PinterestParams {
   media: string;
   description: string;
 }
+
+export class WhatsAppParams {
+  text: string;
+}

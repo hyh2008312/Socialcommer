@@ -91,7 +91,7 @@
     <div class="xb-shop__content" *ngIf="tabNumber == 2">
       <div class="xb-shop__title">What is the Return Policy?</div>
       <div class="xb-shop__text xb-shop__margin-top">Your customer can request a refund or exchange on any item
-        that is not as described within 30 days of delivery, and they will receive a full refund or a replacement
+        that is not as described within {{currency == 'INR'? '10' : 30}} days of delivery, and they will receive a full refund or a replacement
         for the returned item once we receive the package.</div>
       <div class="xb-shop__text xb-shop__margin-top">Please note that any shipping fee of the returned package
         will not be included in the refund. The customer will be responsible for the return shipping cost.</div>

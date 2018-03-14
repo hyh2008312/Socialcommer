@@ -44,6 +44,8 @@
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
            fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Fulfilled'">Shipped</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
+           fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Completed'">Delivered</div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
            fxLayout="column" fxLayoutAlign="center center" *ngIf="order.status == 'Return' && order.returnOrder
            && order.returnOrder.status == 'Pending'">Return Requested</div>
       <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
@@ -300,6 +302,13 @@
     </div>
     <div class="md-margin-top-1" fxLayout="column">
       <button mat-raised-button color="accent" (click)="returnItem()">Return Item</button>
+    </div>
+  </div>
+  <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Completed'">
+    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+    <div class="md-margin-top-2" fxLayout="column">
+      <button mat-raised-button color="accent" (click)="trackingInformation()">Tracking Your Package</button>
     </div>
   </div>
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"

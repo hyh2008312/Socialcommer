@@ -9,7 +9,7 @@
   color: $whiteColor;
 
   &__margin-left{
-    margin-left: 48px;
+    margin-left: 24px;
 
     @include xb-xs-screen{
       margin-left: 16px;
@@ -22,6 +22,10 @@
 
   &__twitter{
     background-color: $twitterColor;
+  }
+
+  &__whatsapp{
+    background-color: $whatsAppColor;
   }
 
   >i{

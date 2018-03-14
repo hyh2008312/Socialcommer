@@ -1,5 +1,5 @@
 import { Input, Directive , HostListener } from '@angular/core';
-import { FacebookParams, TwitterParams, GooglePlusParams, PinterestParams, LinkedinParams } from './social-share';
+import { FacebookParams, TwitterParams, GooglePlusParams, PinterestParams, LinkedinParams, WhatsAppParams } from './social-share';
 
 @Directive({
   selector: '[appSocialShare]'
@@ -11,6 +11,7 @@ export class SocialShareDirective {
   @Input() googlePlus : GooglePlusParams;
   @Input() pinterest : PinterestParams;
   @Input() linkedIn : LinkedinParams;
+  @Input() whatsApp : WhatsAppParams;
   @Input() shareWidth: string;
   @Input() shareHeight: string;
 
@@ -49,11 +50,10 @@ export class SocialShareDirective {
       isLink: true
     },
     whatsapp: {
-      shareUrl: 'whatsapp://send',
+      shareUrl: 'https://api.whatsapp.com/send',
       /*params: {
        text: this.title + ' ' + this.url
        },*/
-      isLink: true
     },
     telegram: {
       shareUrl: 'tg://msg_url',
@@ -283,6 +283,11 @@ export class SocialShareDirective {
     if(this.linkedIn){
       _sharer = this.sharers['linkedin'];
       _sharer.params = this.linkedIn;
+    }
+
+    if(this.whatsApp) {
+      _sharer = this.sharers['whatsapp'];
+      _sharer.params = this.whatsApp;
     }
 
     return _sharer;
