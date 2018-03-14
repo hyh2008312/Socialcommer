@@ -17,7 +17,8 @@ export class FaqComponent implements OnInit {
   contextList: any = {};
   imageList: any = {};
   questionNumber: number = 1;
-
+//退换货的天数
+  returnDays: string = '30';
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -27,6 +28,12 @@ export class FaqComponent implements OnInit {
     this.storeService.store.subscribe((data) => {
       if(data) {
         self.store = data;
+        let countryCode = data.country.code;
+        if (countryCode == 'US') {
+          self.returnDays = '30';
+        } else if (countryCode == 'IN') {
+          self.returnDays = '10';
+        }
         self.contextList = data.context?data.context: {};
         self.imageList = data.images? data.images: {};
         self.text = data.description;

@@ -18,6 +18,8 @@ export class AboutComponent implements OnInit {
   text: string;
   ownerFirstName: string;
   ownerLastName: string;
+  //退换货的天数
+  returnDays: string = '30';
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -35,6 +37,12 @@ export class AboutComponent implements OnInit {
         self.text = data.description;
         self.ownerFirstName = data.ownerFirstName;
         self.ownerLastName = data.ownerLastName;
+        let countryCode = data.country.code;
+        if (countryCode == 'US') {
+          self.returnDays = '30';
+        } else if (countryCode == 'IN') {
+          self.returnDays = '10';
+        }
       }
     });
   }

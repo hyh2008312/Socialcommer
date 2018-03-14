@@ -1,8 +1,8 @@
-import { Component, OnInit, ElementRef,ViewChild} from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { Store, Product, Image } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store, Product, Image} from '../../store';
 import {AddCartSuccessDialogComponent} from "../add-cart-success-dialog/add-cart-success-dialog.component";
 import {MatDialog} from "@angular/material";
 
@@ -18,7 +18,7 @@ export class StoreDetailComponent implements OnInit {
   public text = '';
   currency: string = 'USD';
   store: Store = new Store();
-  product: any= {};
+  product: any = {};
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
@@ -60,23 +60,36 @@ export class StoreDetailComponent implements OnInit {
   //链接上的店铺的名称
   displayName: string = '';
 
-  constructor(
-    public router: Router,
-    private activatedRouter: ActivatedRoute,
-    private dialog: MatDialog,
-    private storeService: StoreService
-  ) {}
+  //退换货的天数
+  returnDays: string = '30 day returns';
 
-  ngOnInit():void {
+  //快递的国家
+  deliveryCountry: string = 'United States';
+
+  constructor(public router: Router,
+              private activatedRouter: ActivatedRoute,
+              private dialog: MatDialog,
+              private storeService: StoreService) {
+  }
+
+  ngOnInit(): void {
     this.shareLink = window.location.href;
 
     let id = this.activatedRouter.snapshot.params['id'];
     let self = this;
     this.storeService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.store = data;
         self.currency = data.currency.toUpperCase();
         self.displayName = data.displayName;
+        let countryCode = data.country.code;
+        if (countryCode == 'US') {
+          self.returnDays = '30 day returns';
+          self.deliveryCountry = 'United States';
+        } else if (countryCode == 'IN') {
+          self.returnDays = '10 day returns';
+          self.deliveryCountry = 'India';
+        }
         let storeId = data.id;
         this.storeService.getProduct(id).then((data) => {
           self.product = data;
@@ -86,11 +99,11 @@ export class StoreDetailComponent implements OnInit {
             pid
           }).then((data) => {
             let priceItem: any = false;
-            for(let item of data[pid]) {
-              if(!priceItem) {
+            for (let item of data[pid]) {
+              if (!priceItem) {
                 priceItem = item.priceItem;
               }
-              if(priceItem >= item.priceItem) {
+              if (priceItem >= item.priceItem) {
                 self.shippingTimeMax = item.shippingTimeMax;
                 self.shippingTimeMin = item.shippingTimeMin;
                 priceItem = item.priceItem;
@@ -105,9 +118,9 @@ export class StoreDetailComponent implements OnInit {
           });
 
           self.image = data.images;
-          if(data.images.length > 0) {
+          if (data.images.length > 0) {
             self.selectedImage = data.images[0];
-            for(let value of data.images) {
+            for (let value of data.images) {
               self.imageSources.push(value);
             }
           }
@@ -142,7 +155,7 @@ export class StoreDetailComponent implements OnInit {
     this.showButton = $event;
   }
 
-  close():void {
+  close(): void {
     this.router.navigate([`./store/${this.store.displayName}/1`]);
   }
 
@@ -212,7 +225,7 @@ export class StoreDetailComponent implements OnInit {
 
     this.storeService.addProductToCart(this.store.displayName, product);
 
-      let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
+    let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
       data: {
         displayName: this.displayName
       }
