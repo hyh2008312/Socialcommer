@@ -6,7 +6,7 @@ import {UserService} from '../../../shared/services/user/user.service';
 @Component({
   selector: 'app-shop-template-4',
   templateUrl: './main-page.component.html',
-  styleUrls: ['../store-template-4.scss']
+  styleUrls: ['../_store-template-4.scss']
 })
 
 export class MainPageComponent implements OnInit {
@@ -15,6 +15,7 @@ export class MainPageComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
+              private router: Router,
               private userService: UserService) {
 
   }
@@ -30,6 +31,14 @@ export class MainPageComponent implements OnInit {
         });
       }
     });
+  }
+
+  jumpCart(): void {
+    this.router.navigate([`/shop/templates/preview/4/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`/shop/templates/preview/4/order`]);
   }
 
   ngOnDestroy() {

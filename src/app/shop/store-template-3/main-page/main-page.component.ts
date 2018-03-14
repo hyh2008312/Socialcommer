@@ -1,34 +1,32 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { StoreService } from '../../store.service';
-import { UserService } from  '../../../shared/services/user/user.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {StoreService} from '../../store.service';
+import {UserService} from '../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-shop-template-3',
   templateUrl: './main-page.component.html',
-  styleUrls: ['../store-template-3.scss']
+  styleUrls: ['../_store-template-3.scss']
 })
 
 export class MainPageComponent implements OnInit {
 
-  storeName: string = '';
+  storeName: string = 'STORE NAME';
   isDialogOpen: boolean = false;
   text: string = '';
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private storeService: StoreService,
-    private userService: UserService
-  ) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private storeService: StoreService,
+              private userService: UserService) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     let self = this;
     self.userService.store.subscribe((data) => {
-      if( data ) {
-        self.storeService.getStore( data.displayName).then((data) => {
-          self.storeName = data.context? data.context.nameTag:data.name;
+      if (data) {
+        self.storeService.getStore(data.displayName).then((data) => {
           self.text = data.description;
           self.storeService.addStore(data);
         });
@@ -41,11 +39,19 @@ export class MainPageComponent implements OnInit {
 
   }
 
-  openDialog(event?:any) {
-    if(event) {
+  openDialog(event?: any) {
+    if (event) {
       return this.isDialogOpen = false;
     }
     this.isDialogOpen = !this.isDialogOpen;
+  }
+
+  jumpCart(): void {
+    this.router.navigate([`/shop/templates/preview/3/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`/shop/templates/preview/3/order`]);
   }
 
 }

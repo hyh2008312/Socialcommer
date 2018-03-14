@@ -3,6 +3,14 @@
 
 // main
 .xb-4-template {
+  &__mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+  }
   &__nav-close {
     position: absolute;
     top: 11px;
@@ -51,6 +59,7 @@
   padding-bottom: 100px;
   &__background {
     height: 645px;
+    position: relative;
     @include xb-xs-screen {
       height: 320px;
     }
@@ -61,6 +70,7 @@
     font-family: Didot, Helvetica;
     color: $whiteColor;
     font-weight: bold;
+    position: relative;
     @include xb-xs-screen {
       margin-top: 105px;
       text-align: center;
@@ -69,6 +79,7 @@
     }
   }
   &__des {
+    position: relative;
     font-family: Helvetica;
     font-size: 48px;
     max-width: 1000px;
@@ -145,6 +156,7 @@
     &-background {
       height: 560px;
       margin-top: 96px;
+      position: relative;
       @include xb-xs-screen {
         height: 320px;
       }
@@ -155,6 +167,7 @@
       font-weight: bold;
       margin-top: 180px;
       color: $whiteColor;
+      position: relative;
       @include xb-xs-screen {
         margin-top: 96px;
         font-size: 34px;
@@ -166,6 +179,7 @@
       font-size: 16px;
       @include regular();
       color: $whiteColor;
+      position: relative;
       @include xb-xs-screen {
         margin-top: 8px;
         margin-left: 24px;
@@ -174,6 +188,7 @@
       }
     }
     &-see-more {
+      position: relative;
       width: 160px;
       height: 48px;
       margin-top: 24px;
@@ -801,7 +816,6 @@
     border-radius: 4px;
     height: 40px;
     width: 132px;
-    cursor: pointer;
     color: $whiteColor;
     font-size: 14px;
     @include media();
@@ -852,3 +866,35 @@
   }
 }
 
+.xb-store-template__cart {
+  &-position {
+    position: relative;
+    @include xb-xs-screen {
+      margin-right: 24px;
+    }
+  }
+  &-icon {
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+    position: relative;
+  }
+  &-order-and-cart {
+    position: absolute;
+    right: 32px;
+  }
+  &-circle {
+    width: 16px;
+    height: 16px;
+    background: red;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    right: -11px;
+    top: 0;
+    text-align: center;
+  }
+}

@@ -603,4 +603,15 @@
     }
   }
 }
-
+.xb-4-template__cart-order {
+  height: 54px;
+  background-color: rgba(0, 0, 0, .12);
+  &-word {
+    font-size: 14px;
+    @include regular();
+    color: black;
+    height: 54px;
+    line-height: 54px;
+    cursor: pointer;
+  }
+}

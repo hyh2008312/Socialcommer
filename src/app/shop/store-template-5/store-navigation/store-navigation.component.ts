@@ -5,7 +5,7 @@ import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top
 @Component({
   selector: 'app-shop-template-5-navigation',
   templateUrl: './store-navigation.component.html',
-  styleUrls: ['../store-template-5.scss']
+  styleUrls: ['../_store-template-5.scss']
 })
 
 export class StoreNavigationComponent implements OnInit {
@@ -56,6 +56,14 @@ export class StoreNavigationComponent implements OnInit {
     if (this.routerObservable) {
       this.routerObservable.unsubscribe();
     }
+  }
+
+  jumpCart(): void {
+    this.router.navigate([`/shop/templates/preview/5/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`/shop/templates/preview/5/order`]);
   }
 
 }

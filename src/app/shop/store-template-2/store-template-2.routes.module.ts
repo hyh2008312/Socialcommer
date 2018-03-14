@@ -7,13 +7,15 @@ import {StoreListComponent} from './store-list/store-list.component';
 import {AboutMeComponent} from './about-me/about-me.component';
 import {StoreDetailComponent} from './store-detail/store-detail.component';
 import {StoreListDetailComponent} from './store-detail/store-list-detail.component';
+import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.component";
+import {OrderTrackingLoginComponent} from "./order-tracking-login/order-tracking-login.component";
 
 const routes: Routes = [{
-    path: '', component: MainPageComponent,
+  path: '', component: MainPageComponent,
+  children: [{
+    path: '', component: HomePageComponent,
     children: [{
-      path: '', component: HomePageComponent,
-      children: [{
-        path: 'detail/:id', component: StoreDetailComponent
+      path: 'detail/:id', component: StoreDetailComponent
     }]
   }, {
     path: 'list', component: StoreListComponent,
@@ -24,8 +26,12 @@ const routes: Routes = [{
     path: 'about_me', component: AboutMeComponent
   }]
 }, {
+  path: 'cart', component: StoreCartMainComponent
+}, {
+  path: 'order', component: OrderTrackingLoginComponent
+}, {
   path: '',
-  redirectTo: '2'
+  redirectTo: ''
 }];
 
 @NgModule({

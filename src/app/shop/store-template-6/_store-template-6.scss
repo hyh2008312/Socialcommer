@@ -874,7 +874,6 @@
     border-radius: 4px;
     height: 40px;
     width: 132px;
-    cursor: pointer;
     color: $whiteColor;
     font-size: 14px;
     @include media();
@@ -920,3 +919,35 @@
   }
 }
 
+.xb-store-template__cart {
+  &-position {
+    position: relative;
+    @include xb-xs-screen {
+      margin-right: 24px;
+    }
+  }
+  &-icon {
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+    position: relative;
+  }
+  &-order-and-cart {
+    position: absolute;
+    right: 32px;
+  }
+  &-circle {
+    width: 16px;
+    height: 16px;
+    background: red;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    right: -11px;
+    top: 0;
+    text-align: center;
+  }
+}

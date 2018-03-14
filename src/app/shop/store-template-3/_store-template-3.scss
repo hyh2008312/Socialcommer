@@ -610,3 +610,34 @@
     }
   }
 }
+.xb-store-template__cart {
+  &-position {
+    position: relative;
+    @include xb-xs-screen {
+      margin-right: 16px;
+    }
+  }
+  &-icon {
+    font-size: 24px;
+    color: rgba(0, 0, 0, .54);
+    cursor: pointer;
+    position: relative;
+  }
+  &-order-and-cart {
+    margin-bottom: 32px;
+  }
+  &-circle {
+    width: 16px;
+    height: 16px;
+    background: red;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    right: -11px;
+    top: 0;
+    text-align: center;
+  }
+}

@@ -7,7 +7,7 @@ import { Store } from '../../store';
 @Component({
   selector: 'app-shop-template-3-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['../store-template-3.scss']
+  styleUrls: ['../_store-template-3.scss']
 })
 
 export class HomePageComponent implements OnInit {
@@ -97,6 +97,14 @@ export class HomePageComponent implements OnInit {
 
   ownerId: any;
 
+  nameTag = 'STORE NAME';
+  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">STORE TITLE</strong></p>';
+  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">This was founded with starter site, a single page ' +
+    'online storefront. All of the images and text on this page can be changed to personalize the site for brand ' +
+    'and to communicate your unique story to your customers.</strong></p>';
+
+
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -118,9 +126,6 @@ export class HomePageComponent implements OnInit {
         self.contextList = data.context? data.context: {};
         self.imageList = data.images? data.images: {};
         self.text = data.description;
-        self.ownerId = data.ownerId;
-        self.storeService.addStore(data);
-
       }
     });
   }
