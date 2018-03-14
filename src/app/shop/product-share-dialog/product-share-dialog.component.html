@@ -5,7 +5,12 @@
   <div class="xb-share-dialog__content xb-bold">
     Promote this product by sharing it with your friends or followers!
   </div>
-  <div class="xb-share-dialog__margin-top">
-    <app-share-button-row [link]="data.shareLink" [text]="data.text"></app-share-button-row>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field fxFlex>
+      <input matInput [(ngModel)]="text">
+    </mat-form-field>
+  </div>
+  <div class="md-margin-top-2">
+    <app-share-button-row [link]="data.shareLink" [text]="text + data.text"></app-share-button-row>
   </div>
 </div>

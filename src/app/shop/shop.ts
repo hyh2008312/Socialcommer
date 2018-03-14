@@ -101,6 +101,7 @@ export class Store{
   currency: string;
   countryId: number;
   country: any;
+  template: any;
 
   uid: any;
   templateId: any;

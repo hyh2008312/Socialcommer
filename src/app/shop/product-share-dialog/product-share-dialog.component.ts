@@ -9,6 +9,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class ProductShareDialogComponent implements OnInit {
 
+  text: string = '';
+
   constructor(
     public dialogRef: MatDialogRef<ProductShareDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
