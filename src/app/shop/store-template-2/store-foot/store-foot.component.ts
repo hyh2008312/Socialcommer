@@ -9,7 +9,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 
 export class StoreFootComponent implements OnInit {
-  @Input() storeName: string;
+  @Input() storeName: string = 'Store Name';
   public shareLink: string;
   public text:string;
 

@@ -4,8 +4,6 @@
 .xb-store {
   &-word {
     @include regular();
-    cursor: pointer;
-    color: rgba(0, 0, 0, .54);
   }
   &__subscribe {
     width: 342px;

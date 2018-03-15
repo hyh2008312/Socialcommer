@@ -699,10 +699,15 @@
   }
 
   &__footer {
+    @include xb-xs-screen {
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
     &-word {
+      font-size: 14px;
       @include regular();
+      line-height: 32px;
       cursor: pointer;
-      color: rgba(0, 0, 0, .54);
       &:hover {
         text-decoration: underline;
       }
@@ -716,19 +721,21 @@
       }
     }
     &-text {
+      font-size: 14px;
+      @include regular();
       color: rgba(0, 0, 0, .54);
       text-align: center;
     }
 
     &-margin-top {
-      margin-top: 50px;
+      margin-top: 24px;
       @include xb-xs-screen {
-        margin-top: 32px;
+        margin-top: 24px;
       }
     }
 
     &-margin-bottom {
-      margin-bottom: 40px;
+      margin-bottom: 48px;
       @include xb-xs-screen {
         margin-bottom: 16px;
       }
