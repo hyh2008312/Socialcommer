@@ -7,8 +7,9 @@ import { ShopService } from '../shop.service';
 import { ConstantService } from  '../../shared/services/constant/constant.service';
 import { UserService } from  '../../shared/services/user/user.service';
 
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog} from '@angular/material';
 import { SnackBarSuccessComponent } from '../snack-bar-success/snack-bar-success.component';
+import { StoreStatusChangeDialogComponent } from "../store-status-change-dialog/store-status-change-dialog.component";
 
 @Component({
   selector: 'app-store',
@@ -29,7 +30,7 @@ export class StoreComponent implements OnInit {
 
   checked: boolean;
 
-  selectedIndex: number = 0;
+  status: any = true;
 
   constructor(
     private constantService : ConstantService,
@@ -37,7 +38,8 @@ export class StoreComponent implements OnInit {
     private userService : UserService,
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+  private dialog: MatDialog
   ) {
     this.currencies = this.constantService.getCurrencies();
 
@@ -52,9 +54,7 @@ export class StoreComponent implements OnInit {
       displayName: ['', [
         Validators.required
       ]],
-      status: [false, [
-        Validators.required
-      ]]
+      status: ['']
     });
 
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -66,14 +66,15 @@ export class StoreComponent implements OnInit {
         let store = data;
         self.store = store;
 
-        let status = store.status == 'open'? true: false;
         self.storeForm.setValue({
           name: store.name,
           description : store.description,
           countryId: store.country.id,
           displayName: store.displayName,
-          status: status
+          status: store.status == 'open'? true: false
         });
+
+        this.status = store.status == 'open'? true: false;
 
         self.currency = store.currency;
       }
@@ -90,8 +91,7 @@ export class StoreComponent implements OnInit {
   formErrors = {
     'name': '',
     'countryId': '',
-    'displayName':'',
-    'status': ''
+    'displayName':''
   };
   //错误对应的提示
   validationMessages = {
@@ -102,9 +102,6 @@ export class StoreComponent implements OnInit {
       'required': 'This field is required.'
     },
     'displayName':{
-      'required': 'This field is required.'
-    },
-    'status':{
       'required': 'This field is required.'
     }
   };
@@ -161,10 +158,9 @@ export class StoreComponent implements OnInit {
       return;
     }
 
-    this.storeForm.value.status = this.storeForm.value.status? 'open': 'close';
-
     let store = this.storeForm.value;
     store.id = this.store.id;
+    store.status = this.status? 'open': 'close';
     store.currency = this.currency;
     let self = this;
 
@@ -179,6 +175,31 @@ export class StoreComponent implements OnInit {
       duration: 1000,
       verticalPosition: 'top'
     });
+  }
+
+  statusDialog() {
+    let dialogRef = this.dialog.open(StoreStatusChangeDialogComponent, {
+      data: {
+        status : this.status
+      }
+    });
+
+    let self = this;
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(dialogRef.componentInstance.data.status == true) {
+        this.storeForm.patchValue({
+          status: dialogRef.componentInstance.data.status
+        });
+      }
+    });
+  }
+
+  changeStatus($event) {
+    this.status = $event;
+    if(!this.status) {
+      this.statusDialog();
+    }
   }
 
 }

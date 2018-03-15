@@ -47,6 +47,7 @@ import { BlogDeleteDialogComponent } from "./blog-delete-dialog/blog-delete-dial
 import { SettingsPasswordDialogComponent } from "./setting-password-dialog/setting-password-dialog.component";
 import { BonusTipsDialogComponent } from "./bonus-tips-dialog/bonus-tips-dialog.component";
 import { ProductShareDialogComponent } from "./product-share-dialog/product-share-dialog.component";
+import { StoreStatusChangeDialogComponent } from "./store-status-change-dialog/store-status-change-dialog.component";
 
 import { AccountBalanceComponent } from "./account-balance/account-balance.component";
 import { AccountBalanceWithdrawMoneyDialogComponent } from "./account-balance-withdraw-money-dialog/account-balance-withdraw-money-dialog.component";
@@ -129,7 +130,8 @@ import { SharedModule } from '../shared/shared.module';
     StoreAvatarComponent,
     BonusTipsDialogComponent,
     SnackItemBarSuccessComponent,
-    ProductShareDialogComponent
+    ProductShareDialogComponent,
+    StoreStatusChangeDialogComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
@@ -143,7 +145,8 @@ import { SharedModule } from '../shared/shared.module';
     AccountBalanceWithdrawMoneyDialogComponent,
     BonusTipsDialogComponent,
     SnackItemBarSuccessComponent,
-    ProductShareDialogComponent
+    ProductShareDialogComponent,
+    StoreStatusChangeDialogComponent
   ],
   providers: [
     ShopService,

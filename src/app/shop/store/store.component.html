@@ -16,7 +16,7 @@
           {{ formErrors['name'] }}
         </div>
         <div class="md-dark-secondary">
-          Store Description
+          Store Description (Used for social media sharing and search optimization)
         </div>
         <mat-form-field class="xb-shop__width-100">
           <textarea matInput  formControlName="description" matTextareaAutosize matAutosizeMinRows="1"
@@ -57,11 +57,11 @@
           <div class="md-dark-secondary">
             Store Status
           </div>
-          <span class="md-margin-left-2 md-margin-right-2">Close</span>
+          <span class="md-margin-left-2 md-margin-right-2">Inactive</span>
           <mat-slide-toggle
-            color="primary" formControlName="status">
+            color="primary" formControlName="status" (ngModelChange)="changeStatus($event)">
           </mat-slide-toggle>
-          <span class="md-margin-left-2 md-margin-right-2">Open</span>
+          <span class="md-margin-left-2 md-margin-right-2">Active</span>
         </div>
         <div *ngIf="formErrors['status']" class="xb-input-error">
           {{ formErrors['status'] }}

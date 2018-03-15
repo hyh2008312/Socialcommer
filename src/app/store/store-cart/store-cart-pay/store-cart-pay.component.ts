@@ -7,7 +7,7 @@ import { StoreService } from '../../store.service';
 import { StoreCartService } from '../store-cart.service';
 import { ConstantService } from  '../../../shared/services/constant/constant.service';
 
-import { SystemConstant } from '../../../config/app.api';
+import { SystemConstant, BaseApi } from '../../../config/app.api';
 import { environment } from '../../../../environments/environment';
 
 import { MatDialog } from '@angular/material';
@@ -103,7 +103,8 @@ export class StoreCartPayComponent implements OnInit{
     private fb: FormBuilder,
     private changeDetectorRef:ChangeDetectorRef,
     private systemConstant: SystemConstant,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private baseApi: BaseApi
   ) {
     if((<any>window).Stripe) {
       (<any>window).Stripe.setPublishableKey(this.systemConstant.stripeToken);
@@ -575,47 +576,41 @@ export class StoreCartPayComponent implements OnInit{
         production: 'ATpTx_ixxJIgayCDMSEDC8owVo2U0aYPzzxlzQvyEG07Z_ctrq9pp85RByHPoNLAxNC3E_i6fp7i6M9s'
       },
 
-      // Wait for the PayPal button to be clicked
+      // payment() is called when the button is clicked
+      payment: function() {
 
-      payment: function(data, actions) {
+        // Set up a url on your server to create the payment
+        var CREATE_URL = `${self.baseApi.url}order/payment/paypal/create/`;
 
-        // Set up a payment and make credit the landing page
+        let data = {
+          orderId: self.order.id
+        };
 
-        return actions.payment.create({
-          payment: {
-            transactions: [
-              {
-                amount: { total: self.totalPrice, currency: self.order.currency.toUpperCase() }
-              }
-            ]
-          }
-        });
+        // Make a call to your server to set up the payment
+        return paypal.request.post(CREATE_URL, data)
+          .then(function(res) {
+            return res.paymentID;
+          });
       },
 
-      // Wait for the payment to be authorized by the customer
-
+      // onAuthorize() is called when the buyer approves the payment
       onAuthorize: function(data, actions) {
-        return actions.payment.execute().then(function() {
-          let order:any = {};
-          order.payerID = data.payerID;
-          order.paymentID = data.paymentID;
-          order.paymentToken = data.paymentToken;
-          order.number = self.order.number;
-          order.orderId = self.order.id;
-          order.paymentAmount = self.totalPrice;
-          order.paymentCurrency = self.order.currency;
 
-          self.storeCartService.createPaypalPayment(order).then((data) => {
-            self.step = 2;
-            self.order = data;
-            self.storeCartService.addOrder({});
-            self.storeService.addProductToCart(self.displayName, []);
-            self.changeDetectorRef.markForCheck();
-            self.changeDetectorRef.detectChanges();
-          }).catch(()=>{
-            self.stockRequired();
+        // Set up a url on your server to execute the payment
+        var EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
+
+        // Set up the data you need to pass to your server
+        var data = {
+          orderId: self.order.id,
+          paymentId: data.paymentID,
+          payerId: data.payerID
+        };
+
+        // Make a call to your server to execute the payment
+        return paypal.request.post(EXECUTE_URL, data)
+          .then(function (res) {
+            window.alert('Payment Complete!');
           });
-        });
       }
 
     }, '#paypal-button-container');
@@ -648,47 +643,41 @@ export class StoreCartPayComponent implements OnInit{
         production: 'ATpTx_ixxJIgayCDMSEDC8owVo2U0aYPzzxlzQvyEG07Z_ctrq9pp85RByHPoNLAxNC3E_i6fp7i6M9s'
       },
 
-      // Wait for the PayPal button to be clicked
+      // payment() is called when the button is clicked
+      payment: function() {
 
-      payment: function(data, actions) {
+        // Set up a url on your server to create the payment
+        var CREATE_URL = `${self.baseApi.url}order/payment/paypal/create/`;
 
-        // Set up a payment and make credit the landing page
+        let data = {
+          orderId: self.order.id
+        };
 
-        return actions.payment.create({
-          payment: {
-            transactions: [
-              {
-                amount: { total: self.totalPrice, currency: self.order.currency.toUpperCase() }
-              }
-            ]
-          }
-        });
+        // Make a call to your server to set up the payment
+        return paypal.request.post(CREATE_URL, data)
+          .then(function(res) {
+            return res.paymentID;
+          });
       },
 
-      // Wait for the payment to be authorized by the customer
-
+      // onAuthorize() is called when the buyer approves the payment
       onAuthorize: function(data, actions) {
-        return actions.payment.execute().then(function() {
-          let order:any = {};
-          order.payerID = data.payerID;
-          order.paymentID = data.paymentID;
-          order.paymentToken = data.paymentToken;
-          order.number = self.order.number;
-          order.orderId = self.order.id;
-          order.paymentAmount = self.totalPrice;
-          order.paymentCurrency = self.order.currency;
 
-          self.storeCartService.createPaypalPayment(order).then((data) => {
-            self.step = 2;
-            self.order = data;
-            self.storeCartService.addOrder({});
-            self.storeService.addProductToCart(self.displayName, []);
-            self.changeDetectorRef.markForCheck();
-            self.changeDetectorRef.detectChanges();
-          }).catch(()=>{
-            self.stockRequired();
+        // Set up a url on your server to execute the payment
+        var EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
+
+        // Set up the data you need to pass to your server
+        var data = {
+          orderId: self.order.id,
+          paymentId: data.paymentID,
+          payerId: data.payerID
+        };
+
+        // Make a call to your server to execute the payment
+        return paypal.request.post(EXECUTE_URL, data)
+          .then(function (res) {
+            window.alert('Payment Complete!');
           });
-        });
       }
 
     }, '#paypal-button-container-1');
