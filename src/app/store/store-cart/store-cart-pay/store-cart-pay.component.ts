@@ -582,7 +582,7 @@ export class StoreCartPayComponent implements OnInit{
         // Set up a url on your server to create the payment
         var CREATE_URL = `${self.baseApi.url}order/payment/paypal/create/`;
 
-        let data = {
+        let data:any = {
           orderId: self.order.id
         };
 
@@ -649,7 +649,7 @@ export class StoreCartPayComponent implements OnInit{
         // Set up a url on your server to create the payment
         var CREATE_URL = `${self.baseApi.url}order/payment/paypal/create/`;
 
-        let data = {
+        let data:any = {
           orderId: self.order.id
         };
 
