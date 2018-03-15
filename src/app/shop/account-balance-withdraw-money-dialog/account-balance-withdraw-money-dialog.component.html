@@ -10,40 +10,53 @@
         {{currency == 'INR'? '(Estimated in $0.00)':''}}
       </div>
     </div>
-    <div class="xb-account-money-dialog__payment md-margin-top-3">Payment Information</div>
-    <div>
-      <div class="xb-account-payment-settings__left-note">
-        Please enter your payment information to get paid.
+    <form [formGroup]="balanceForm" novalidate>
+      <div class="xb-account-money-dialog__payment md-margin-top-3">Payment Information</div>
+      <div >
+        <div class="xb-account-payment-settings__left-note">
+          Please enter your payment information to get paid.
+        </div>
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+          <mat-form-field >
+            <input matInput placeholder="Paypal Account Email" formControlName="email">
+          </mat-form-field>
+        </div>
+        <div *ngIf="balanceForm.get('email').invalid && (balanceForm.get('email').dirty ||
+                      balanceForm.get('email').touched)" class="xb-input-error">
+          <div *ngIf="balanceForm.get('email').hasError('required')">
+            This field is required.
+          </div>
+          <div *ngIf="balanceForm.get('email').hasError('email')">
+            Please make sure your Paypal email address is correct!
+          </div>
+        </div>
+        <div class="xb-account-payment-settings__left-note">
+          Note: Currently we only support Paypal as our payment option (Pay in USD).
+          <br>Bank account payment methods will be available soon!
+        </div>
       </div>
-      <form class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start" [formGroup]="balanceForm" novalidate>
+      <div class="xb-account-money-dialog__payment md-margin-top-4">Withdraw Amount</div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
         <mat-form-field >
-          <input matInput placeholder="Paypal Account Email" formControlName="paypalAccount">
+          <input matInput formControlName="paypalAmount">
         </mat-form-field>
-      </form>
-      <div *ngIf="balanceForm.get('paypalAccount').invalid && (balanceForm.get('paypalAccount').dirty ||
-                    balanceForm.get('paypalAccount').touched)" class="xb-input-error">
-        <div *ngIf="balanceForm.get('paypalAccount').hasError('required')">
+      </div>
+      <div *ngIf="balanceForm.get('amount').invalid && (balanceForm.get('amount').dirty ||
+                      balanceForm.get('amount').touched)" class="xb-input-error">
+        <div *ngIf="balanceForm.get('amount').hasError('required')">
           This field is required.
         </div>
-        <div *ngIf="balanceForm.get('paypalAccount').hasError('email')">
-          Please make sure your Paypal email address is correct!
+      </div>
+      <div class="xb-account-money-dialog__14regular">The fund can only be withdrawn when your available
+        balance reaches $50.
+      </div>
+      <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="end start">
+        <div class="md-margin-right-2">
+          <button mat-raised-button color="primary" disabled="disabled" type="submit" (click)="confirm()">Withdraw Now</button>
         </div>
+        <button mat-button color="primary" (click)="close()" type="button">Cancel</button>
       </div>
-      <div class="xb-account-payment-settings__left-note">
-        Note: Currently we only support Paypal as our payment option (Pay in USD).
-        <br>Bank account payment methods will be available soon!
-      </div>
-    </div>
-    <div class="xb-account-money-dialog__payment md-margin-top-4">Withdraw Amount</div>
-    <div class="xb-account-money-dialog__14regular md-margin-top-3">The fund can only be withdrawn when your available
-      balance reaches $50.
-    </div>
-    <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="end start">
-      <div class="md-margin-right-2">
-        <button mat-raised-button color="primary" disabled="disabled" (click)="confirm()">Withdraw Now</button>
-      </div>
-      <button mat-button color="primary" (click)="close()">Cancel</button>
-    </div>
+    </form>
   </div>
   <div [hidden]="!(status===2)">
     <div class="xb-account-money-dialog__title">Confirm Your Payment Information</div>

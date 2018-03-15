@@ -28,6 +28,8 @@ export class ReturnRequestDialogComponent implements OnInit {
 
   productQuantity: number = 0;
 
+  isRefund: boolean = true;
+
   reasonList: any = [
     'Package Arrived Damaged',
     'Package Arrived Incomplete',
@@ -70,6 +72,15 @@ export class ReturnRequestDialogComponent implements OnInit {
   plusNumber(): void {
     if(this.productQuantity < this.data.order.quantity) {
       this.productQuantity++;
+    }
+  }
+
+  changeNumber($event) {
+    if($event == 'Refund') {
+      this.isRefund = true;
+      this.productQuantity = this.data.order.quantity;
+    } else {
+      this.isRefund = false;
     }
   }
 

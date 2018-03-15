@@ -3459,8 +3459,7 @@ textarea.mat-input-element {
 
 .xb-store-word {
   font-weight: 400;
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.54); }
+  cursor: pointer; }
   .xb-store-word:hover {
     text-decoration: underline; }
 .xb-store__subscribe {

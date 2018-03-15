@@ -25,9 +25,12 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
     private userService: UserService
   ) {
     this.balanceForm = this.fb.group({
-      paypalAccount: ['', [
+      email: ['', [
         Validators.required,
         Validators.email
+      ]],
+      amount: ['', [
+        Validators.required
       ]]
     });
 
