@@ -587,7 +587,7 @@ export class StoreCartPayComponent implements OnInit{
         };
 
         // Make a call to your server to set up the payment
-        return paypal.request.post(CREATE_URL, data)
+        return (<any>window).paypal.request.post(CREATE_URL, data)
           .then(function(res) {
             return res.paymentID;
           });
@@ -607,7 +607,7 @@ export class StoreCartPayComponent implements OnInit{
         };
 
         // Make a call to your server to execute the payment
-        return paypal.request.post(EXECUTE_URL, data)
+        return (<any>window).paypal.request.post(EXECUTE_URL, data)
           .then(function (res) {
             window.alert('Payment Complete!');
           });
@@ -654,7 +654,7 @@ export class StoreCartPayComponent implements OnInit{
         };
 
         // Make a call to your server to set up the payment
-        return paypal.request.post(CREATE_URL, data)
+        return (<any>window).paypal.request.post(CREATE_URL, data)
           .then(function(res) {
             return res.paymentID;
           });
@@ -674,7 +674,7 @@ export class StoreCartPayComponent implements OnInit{
         };
 
         // Make a call to your server to execute the payment
-        return paypal.request.post(EXECUTE_URL, data)
+        return (<any>window).paypal.request.post(EXECUTE_URL, data)
           .then(function (res) {
             window.alert('Payment Complete!');
           });
