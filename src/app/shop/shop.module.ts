@@ -16,7 +16,8 @@ import { StoreEditComponent } from "./store-edit/store-edit.component";
 import { ToDoListComponent } from "./to-do-list/to-do-list.component";
 import { ProductCategoryComponent } from "./product-category/product-category.component";
 import { BlogComponent } from "./blog/blog.component";
-import { StoreFrontComponent } from './store-front/store-front.component';
+import { StoreFrontComponent } from "./store-front/store-front.component";
+import { AccountBalancePendingComponent } from "./account-balance-pending/account-balance-pending.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
 import { CatalogTimeSelectComponent } from "./catalog-time-select/catalog-time-select.component";
@@ -33,6 +34,8 @@ import { BlogTitleComponent } from './blog-title/blog-title.component';
 import { FindProductCategoryComponent } from './find-product-category/find-product-category.component';
 import { BonusTitleComponent } from "./bonus-title/bonus-title.component";
 import { BonusItemComponent } from "./bonus-item/bonus-item.component";
+import { AccountBalancePendingItemComponent } from "./account-balance-pending-item/account-balance-pending-item.component";
+import { AccountBalancePendingTitleComponent } from "./account-balance-pending-title/account-balance-pending-title.component";
 
 import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
 import { SnackItemBarSuccessComponent } from './snack-item-bar-success/snack-item-bar-success.component';
@@ -131,7 +134,10 @@ import { SharedModule } from '../shared/shared.module';
     BonusTipsDialogComponent,
     SnackItemBarSuccessComponent,
     ProductShareDialogComponent,
-    StoreStatusChangeDialogComponent
+    StoreStatusChangeDialogComponent,
+    AccountBalancePendingComponent,
+    AccountBalancePendingItemComponent,
+    AccountBalancePendingTitleComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,

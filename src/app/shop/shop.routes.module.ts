@@ -24,6 +24,7 @@ import {BlogEditDialogComponent} from './blog-edit-dialog/blog-edit-dialog.compo
 import {AccountBalanceComponent} from "./account-balance/account-balance.component";
 import {AccountPaymentSettingComponent} from "./account-payment-setting/account-payment-setting.component";
 import {AccountReportComponent} from  "./account-report/account-report.component";
+import { AccountBalancePendingComponent } from "./account-balance-pending/account-balance-pending.component";
 
 const routes: Routes = [
   {
@@ -130,7 +131,12 @@ const routes: Routes = [
         }]
       },
       {
-        path: 'account',component: AccountBalanceComponent
+        path: 'account',
+        children: [{
+          path: '', component: AccountBalanceComponent
+        }, {
+          path: 'pendingbalance', component: AccountBalancePendingComponent
+        }]
       },{
         path: 'report', component: AccountReportComponent
       }, {
