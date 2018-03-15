@@ -600,14 +600,14 @@ export class StoreCartPayComponent implements OnInit{
         var EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
 
         // Set up the data you need to pass to your server
-        let data: any = {
+        let params: any = {
           orderId: self.order.id,
           paymentId: data.paymentID,
           payerId: data.payerID
         };
 
         // Make a call to your server to execute the payment
-        return (<any>window).paypal.request.post(EXECUTE_URL, data)
+        return (<any>window).paypal.request.post(EXECUTE_URL, params)
           .then(function (res) {
             window.alert('Payment Complete!');
           });
@@ -667,14 +667,14 @@ export class StoreCartPayComponent implements OnInit{
         var EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
 
         // Set up the data you need to pass to your server
-        let data: any = {
+        let params: any = {
           orderId: self.order.id,
           paymentId: data.paymentID,
           payerId: data.payerID
         };
 
         // Make a call to your server to execute the payment
-        return (<any>window).paypal.request.post(EXECUTE_URL, data)
+        return (<any>window).paypal.request.post(EXECUTE_URL, params)
           .then(function (res) {
             window.alert('Payment Complete!');
           });
