@@ -117,6 +117,7 @@
         <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
           <app-store-item-card-edit *ngFor="let item of product"
                                     fxFlex.xs="48" fxFlex.gt-xs="30"
+                                    (productId)="jumpGoodsDetail($event)"
                                     [product]="item" [status]="0"></app-store-item-card-edit>
           <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
         </div>
@@ -342,5 +343,10 @@
       </form>
     </div>
   </div>
+</div>
+<div *ngIf="goodsDetail">
+  <app-store-template-2-store-edit-detail [productId]="selectProductId"
+                                          (closeDetail)="changeGoodsDetail()">
+  </app-store-template-2-store-edit-detail>
 </div>
 

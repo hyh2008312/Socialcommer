@@ -849,9 +849,30 @@ export class ShopService {
     });
     this.createAuthorizationHeader(headers);
 
-    let options = new RequestOptions({headers:headers});
+    let options = new RequestOptions({headers: headers});
 
     const url = `${this.baseUrl.url}shipping/car/list/?${this.serializeParams(obj)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  /**
+   * 获取商品的详情（与前端相同的接口）
+   * @param id  商品的ID
+   * @returns {Promise<any>}
+   */
+  getProductDetail(id: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.baseUrl.url}store/customer/goods/detail/${id}/`;
 
     return this.http.get(url, options)
       .toPromise()

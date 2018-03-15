@@ -1,4 +1,4 @@
-import { Input, Component, OnInit} from '@angular/core';
+import {Input, Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,7 @@ export class StoreItemProductCardComponent implements OnInit {
   @Input() status: number = 0;
   @Input() product: any = null;
   currency = 'USD';
+  @Output() public productId: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private router: Router
@@ -20,18 +21,10 @@ export class StoreItemProductCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  jumpLink() {
-    let link = '';
-    let baseLink = this.router.url;
-    switch (this.status) {
-      case 0:
-        link = `/detail/${this.product.id}`;
-        break;
-      case 1:
-        link = `/detail/${this.product.id}`;
-        baseLink = baseLink.split('/list')[0];
-        break;
+  jumpProductDetail() {
+    if (this.status === 3) {
+      return;
     }
-    this.router.navigate([baseLink + link]);
+    this.productId.emit(this.product.id);
   }
 }

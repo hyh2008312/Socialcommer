@@ -7,7 +7,7 @@ import {Store} from '../../store';
 @Component({
   selector: 'app-shop-template-4-about',
   templateUrl: './return-policy.component.html',
-  styleUrls: ['../store-template-4.scss']
+  styleUrls: ['../_store-template-4.scss']
 })
 
 export class ReturnPolicyComponent implements OnInit {

@@ -60,6 +60,7 @@
                 <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="space-around start" fxLayoutWrap>
                   <app-shop-item-card *ngFor="let item of product"
                                       fxFlex="49" fxFlex.xs="100"
+                                      (productId)="jumpGoodsDetail($event)"
                                       [product]="item" [status]="0"></app-shop-item-card>
                   <div fxFlex="49" fxFlex.xs="100"></div>
                 </div>
@@ -122,6 +123,7 @@
             <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutWrap>
               <app-shop-item-card *ngFor="let item of product"
                                   fxFlex="49" fxFlex.xs="100"
+                                  (productId)="jumpGoodsDetail($event)"
                                   [product]="item" [status]="1"></app-shop-item-card>
               <div fxFlex="49" fxFlex.xs="100"></div>
             </div>
@@ -176,6 +178,11 @@
               <quill-editor formControlName="userTag" [(ngModel)]="userTag"
                             [options]="editorConfig"></quill-editor>
             </div>
+          </div>
+          <div [hidden]="viewIndex != 4">
+            <app-store-template-3-store-edit-detail
+              [productId]="selectProductId" (closeDetail)="changeGoodsDetail($event)">
+            </app-store-template-3-store-edit-detail>
           </div>
         </div>
         <div class="background-light-gray">

@@ -85,9 +85,10 @@
                               [options]="editorConfig"></quill-editor>
               </div>
             </div>
-            <app-shop-item-product-card-edit-4 *ngFor="let item of homeProduct"
+            <app-shop-item-product-card-4 *ngFor="let item of homeProduct"
                                                fxFlex.xs="48" fxFlex.gt-xs="22"
-                                               [product]="item" [status]="0"></app-shop-item-product-card-edit-4>
+                                               (productId)="jumpGoodsDetail($event)"
+                                               [product]="item" [status]="0"></app-shop-item-product-card-4>
             <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
             <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
             <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
@@ -133,9 +134,10 @@
             </div>
             <div class="xb-4-template-collection__product md-margin-left-2" fxLayoutAlign="space-between start"
                  fxLayout="row" fxLayoutWrap>
-              <app-shop-item-product-card-edit-4 *ngFor="let item of product"
+              <app-shop-item-product-card-4 *ngFor="let item of product"
                                                  fxFlex.xs="48" fxFlex.gt-xs="28"
-                                                 [product]="item" [status]="0"></app-shop-item-product-card-edit-4>
+                                                 (productId)="jumpGoodsDetail($event)"
+                                                 [product]="item" [status]="0"></app-shop-item-product-card-4>
               <div fxFlex.xs="48" fxFlex.gt-xs="28"></div>
             </div>
           </div>
@@ -186,6 +188,12 @@
           </div>
         </div>
       </div>
+
+      <div [hidden]="viewIndex != 4" class="xb-4-template-content">
+        <app-shop-template-4-store-edit-detail [productId]="selectProductId">
+        </app-shop-template-4-store-edit-detail>
+      </div>
+
       <app-shop-template-edit-4-store-foot [storeName]="nameTag" [text]="text"></app-shop-template-edit-4-store-foot>
     </div>
   </form>

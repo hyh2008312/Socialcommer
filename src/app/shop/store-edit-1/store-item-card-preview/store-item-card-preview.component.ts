@@ -1,4 +1,4 @@
-import { Input, Component, OnInit} from '@angular/core';
+import {Input, Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-store-item-card-preview',
@@ -10,13 +10,18 @@ export class StoreItemCardPreviewComponent implements OnInit {
 
   @Input() status: number = 0;
   @Input() product: any = null;
+  @Output() public productId: EventEmitter<any> = new EventEmitter();
 
   currency = 'USD';
 
-  constructor(
-  ) {}
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  jumpProductDetail() {
+    this.productId.emit(this.product.id);
   }
 
 }

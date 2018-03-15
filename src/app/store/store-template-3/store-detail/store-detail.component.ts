@@ -9,7 +9,7 @@ import {MatDialog} from "@angular/material";
 @Component({
   selector: 'app-store-template-3-store-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../store-template-3.scss']
+  styleUrls: ['../_store-template-3.scss']
 })
 
 export class StoreDetailComponent implements OnInit {

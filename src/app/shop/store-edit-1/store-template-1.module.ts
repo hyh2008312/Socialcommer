@@ -6,6 +6,7 @@ import { StoreTemplateOneRoutingModule } from './store-template-1.routes.module'
 import { StoreService } from '../store.service';
 
 import { SharedModule } from '../../shared/shared.module';
+import {StoreDetailComponent} from "./store-detail/store-detail.component";
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   declarations: [
     StoreEditComponent,
-    StoreItemCardPreviewComponent
+    StoreItemCardPreviewComponent,
+    StoreDetailComponent
   ],
   entryComponents: [
   ],

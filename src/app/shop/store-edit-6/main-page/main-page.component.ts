@@ -635,5 +635,17 @@ export class MainPageComponent implements OnInit {
       }
     });
   }
+// 跳转到商品详情页
+  selectProductId: any;
+  goodsDetail: boolean = false;
 
+  jumpGoodsDetail(productId: any) {
+    this.selectProductId = productId;
+    this.changeGoodsDetail(2);
+  }
+
+  changeGoodsDetail(viewNum: number) {
+    this.viewIndex = viewNum;
+    this.isCategory=false ;
+  }
 }

@@ -147,7 +147,7 @@ export class MainPageComponent implements OnInit {
               private shopService: ShopService,
               private dialog: MatDialog) {
     this.viewIndex = 0;
-    this.ratio = 1920/270 ;
+    this.ratio = 1920 / 270;
     let self = this;
     self.storeTemplateForm = self.fb.group({
       nameTag: [self.nameTag],
@@ -465,6 +465,19 @@ export class MainPageComponent implements OnInit {
       self.userService.addStore(data);
       self.submitTemplate();
     });
+  }
+
+
+  // 跳转到商品详情页
+  selectProductId: any;
+  goodsDetail: boolean = false;
+  jumpGoodsDetail(productId: any) {
+    this.selectProductId = productId;
+    this.changeGoodsDetail();
+  }
+
+  changeGoodsDetail() {
+    this.goodsDetail = !this.goodsDetail;
   }
 
 }

@@ -12,7 +12,7 @@ import {
 @Component({
   selector: 'app-shop-item-product-card-4',
   templateUrl: './store-item-product-card.component.html',
-  styleUrls: ['../store-template-4.scss'],
+  styleUrls: ['../_store-template-4.scss'],
   animations: [
     trigger('goodsState', [
       state('inactive', style({

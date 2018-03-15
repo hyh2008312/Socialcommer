@@ -72,6 +72,7 @@
                    fxLayoutWrap>
                 <app-shop-item-product-card-5 *ngFor="let item of category.goods"
                                               fxFlex="25"
+                                              (productId)="jumpGoodsDetail($event)"
                                               [product]="item" [status]="0"></app-shop-item-product-card-5>
                 <div fxFlex="25"></div>
                 <div fxFlex="25"></div>
@@ -146,6 +147,12 @@
           </div>
         </div>
       </div>
+      <!--goods_detail-->
+      <div [hidden]="viewIndex != 2 || isCategory" class="xb-4-template-content">
+        <app-shop-template-6-store-edit-detail
+          [productId]="selectProductId"
+        ></app-shop-template-6-store-edit-detail>
+      </div>
       <!--category-->
       <div [hidden]="!isCategory" class="xb-4-template-content">
         <div>
@@ -168,6 +175,7 @@
                fxLayoutWrap>
             <app-shop-item-product-card-5 *ngFor="let item of product"
                                           fxFlex="25"
+                                          (productId)="jumpGoodsDetail($event)"
                                           [product]="item" [status]="0"></app-shop-item-product-card-5>
             <div fxFlex="25"></div>
             <div fxFlex="25"></div>

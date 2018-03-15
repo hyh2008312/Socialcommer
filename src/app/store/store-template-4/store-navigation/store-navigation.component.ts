@@ -5,7 +5,7 @@ import {ViewScrollTopDirective} from "../../../shared/directives/view-scroll-top
 @Component({
   selector: 'app-shop-template-4-navigation',
   templateUrl: './store-navigation.component.html',
-  styleUrls: ['../store-template-4.scss']
+  styleUrls: ['../_store-template-4.scss']
 })
 
 export class StoreNavigationComponent implements OnInit {

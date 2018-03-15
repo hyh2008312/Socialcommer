@@ -1,10 +1,10 @@
 <div class="xb-store-template__card">
   <div class="xb-pointer">
     <div class="xb-store-template__card-image">
-      <a (click)="jumpLink()">
+      <a (click)="jumpProductDetail()">
         <img [src]="product.mainImage">
       </a>
-      <div class="xb-store-template__card-content" fxLayout="column" fxLayoutAlign="center center" (click)="jumpLink()">
+      <div class="xb-store-template__card-content" fxLayout="column" fxLayoutAlign="center center" (click)="jumpProductDetail()">
         <div class="xb-store-template__card-title">{{product.title}}</div>
         <div>
           <div class="xb-store-template__card-price">{{product.salePrice|currency: product.currency: true }}</div>

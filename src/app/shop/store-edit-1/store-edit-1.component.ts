@@ -1,25 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { UserProfile,Store } from '../shop';
+import {UserProfile, Store} from '../shop';
 
-import { UserService } from  '../../shared/services/user/user.service';
-import { ShopService } from '../shop.service';
-import { ConstantService } from  '../../shared/services/constant/constant.service';
+import {UserService} from '../../shared/services/user/user.service';
+import {ShopService} from '../shop.service';
+import {ConstantService} from '../../shared/services/constant/constant.service';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { StoreShareDialogComponent } from "../store-share-dialog/store-share-dialog.component";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {StoreShareDialogComponent} from "../store-share-dialog/store-share-dialog.component";
 
 @Component({
   selector: 'app-store-edit-1',
   templateUrl: './store-edit-1.component.html',
-  styleUrls: ['../../store/store.scss','../shop.scss']
+  styleUrls: ['../../store/store.scss', '../shop.scss']
 })
 
 export class StoreEditComponent implements OnInit {
 
-  public categories:any = [];
+  public categories: any = [];
   public category: any = {};
   public shareLink: string;
   public text = '';
@@ -33,10 +33,10 @@ export class StoreEditComponent implements OnInit {
     modules: {
       toolbar: [
         ['bold', 'italic'],
-        [{ 'align': [] }],
-        [{ 'color': [] }],
-        [{ 'font': [] }],
-        [{ 'size': ['small', false, 'large', 'huge'] }],
+        [{'align': []}],
+        [{'color': []}],
+        [{'font': []}],
+        [{'size': ['small', false, 'large', 'huge']}],
         ['link'],
         ['clean']
       ]
@@ -55,14 +55,13 @@ export class StoreEditComponent implements OnInit {
   templateId: any = false;
   ownerId: any;
 
-  constructor(
-    private userService: UserService,
-    private fb: FormBuilder,
-    private router: Router,
-    private shopService: ShopService,
-    private constant: ConstantService,
-    private dialog: MatDialog
-  ) {
+
+  constructor(private userService: UserService,
+              private fb: FormBuilder,
+              private router: Router,
+              private shopService: ShopService,
+              private constant: ConstantService,
+              private dialog: MatDialog) {
 
     this.countries = this.constant.getCountries();
 
@@ -95,21 +94,21 @@ export class StoreEditComponent implements OnInit {
     self.shopService.templateList.subscribe((data) => {
       if (data) {
         self.templateList = data;
-        self.userService.store.subscribe((data)=> {
-          if(data) {
+        self.userService.store.subscribe((data) => {
+          if (data) {
             self.store = data;
-            if(!firstLoad) {
+            if (!firstLoad) {
               firstLoad = true;
 
               self.storeForm.setValue({
                 name: self.store.name,
-                description : self.store.description,
+                description: self.store.description,
                 displayName: self.store.displayName
               });
 
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
-                if(data.category.length > 1) {
+                if (data.category.length > 1) {
                   self.categories = [{name: 'All'}, ...data.category];
                 } else {
                   self.categories = [...data.category];
@@ -123,10 +122,10 @@ export class StoreEditComponent implements OnInit {
                 if (value.templateId == 1) {
 
                   self.templateId = value.id;
-                  self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
-                  self.titleTag = value.context.titleTag != ''? value.context.titleTag : self.titleTag;
-                  self.descriptionTag = value.context.descriptionTag != ''? value.context.descriptionTag : self.descriptionTag;
-                  self.userTag = value.context.descriptionTag != ''? value.context.userTag : self.userTag;
+                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
+                  self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
+                  self.descriptionTag = value.context.descriptionTag != '' ? value.context.descriptionTag : self.descriptionTag;
+                  self.userTag = value.context.descriptionTag != '' ? value.context.userTag : self.userTag;
 
                   self.imageSrc = value.images.imageSrc;
                   break;
@@ -140,7 +139,7 @@ export class StoreEditComponent implements OnInit {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
 
     this.shareLink = window.location.host + '/store/';
 
@@ -151,8 +150,8 @@ export class StoreEditComponent implements OnInit {
       self.previewImgSrcs = data.avatar;
       self.previewImgFile = data.avatar;
 
-      for(let value of self.constant.getCountries()) {
-        if(value.code == data.country) {
+      for (let value of self.constant.getCountries()) {
+        if (value.code == data.country) {
           self.userCountry = value.name;
           break;
         }
@@ -164,7 +163,7 @@ export class StoreEditComponent implements OnInit {
   //存储错误信息
   formErrors = {
     'name': '',
-    'displayName':'',
+    'displayName': '',
     'description': ''
   };
   //错误对应的提示
@@ -172,10 +171,10 @@ export class StoreEditComponent implements OnInit {
     'name': {
       'required': 'This field is required.'
     },
-    'displayName':{
+    'displayName': {
       'required': 'This field is required.'
     },
-    'description':{
+    'description': {
       'required': 'This field is required.'
     }
   };
@@ -259,6 +258,7 @@ export class StoreEditComponent implements OnInit {
   editStore() {
     this.storeEdited = !this.storeEdited;
   }
+
 
   close() {
     this.router.navigate(['/shop/store/settings']);
@@ -344,7 +344,7 @@ export class StoreEditComponent implements OnInit {
   }
 
   changeStore() {
-    if(!this.storeForm.valid) {
+    if (!this.storeForm.valid) {
       return;
     }
 
@@ -366,8 +366,8 @@ export class StoreEditComponent implements OnInit {
     this.queryProduct(true);
   }
 
-  queryProduct(clearProduct?:boolean)  {
-    if(this.categories.length <= 0) {
+  queryProduct(clearProduct?: boolean) {
+    if (this.categories.length <= 0) {
       return;
     }
     let options = {
@@ -378,19 +378,19 @@ export class StoreEditComponent implements OnInit {
       page_size: 12
     };
     let self = this;
-    self.shopService.getTemplateProductList(options).then((data)=>{
-      if(clearProduct) {
+    self.shopService.getTemplateProductList(options).then((data) => {
+      if (clearProduct) {
         this.product = [];
         this.nextPage = true;
       }
       self.product = self.product.concat(data.results);
-      if(data.next == null) {
+      if (data.next == null) {
         self.nextPage = false;
       }
     });
   }
 
-  openDialog(displayName?:any): void {
+  openDialog(displayName?: any): void {
     let dialogRef = this.dialog.open(StoreShareDialogComponent, {
       data: {
         shareLink: 'http://' + this.shareLink + displayName,
@@ -403,8 +403,15 @@ export class StoreEditComponent implements OnInit {
     });
   }
 
-  jumpAbout() {}
-  jumpFaq() {}
-  jumpPrivacy() {}
-  jumpReturn() {}
+  // 跳转到商品详情页
+  selectProductId: any;
+  goodsDetail: boolean = false;
+  jumpGoodsDetail(productId: any) {
+    this.selectProductId = productId;
+    this.changeGoodsDetail();
+  }
+
+  changeGoodsDetail() {
+    this.goodsDetail = !this.goodsDetail;
+  }
 }

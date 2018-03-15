@@ -11,7 +11,7 @@ import {AddCartSuccessDialogComponent} from "../add-cart-success-dialog/add-cart
 @Component({
   selector: 'app-shop-template-4-store-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../store-template-4.scss']
+  styleUrls: ['../_store-template-4.scss']
 })
 
 export class StoreDetailComponent implements OnInit {

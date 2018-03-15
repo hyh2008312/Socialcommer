@@ -1,35 +1,112 @@
-<div class="xb-4-template-detail" appViewScrollTop [ContainerSelector]="'mat-sidenav-content'">
+<div class="xb-4-template-detail">
   <div class="xb-4-template-detail__container xb-4-template__w960">
     <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
       <div>
         <app-shop-detail-5-picture [images]="image" [selectedImage]="selectedImage"
-                                   [imageSources]="imageSources"></app-shop-detail-5-picture>
+                                   [imageSources]="imageSources"
+                                   [insertImage]="insertImage"></app-shop-detail-5-picture>
       </div>
-      <div class="xb-4-template-detail__content" fxFlex.xs="false">
-        <div class="xb-4-template-detail__title md-margin-top-1">{{product.title}}</div>
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center"
+      <div id="xb-5-detail-top" class="xb-4-template-detail__content" fxFlex.xs="false">
+        <div class="xb-4-template-detail__title md-margin-top-1">{{product?.title}}</div>
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center"
              fxLayout.xs="column" fxLayoutAlign.xs="start start">
+          <div class="xb-store-template__car-left-part">Price</div>
           <div fxLayout="row" fxLayoutAlign="start start">
-            <div class="xb-4-template-detail__price">{{product.salePriceAmount|currency: product.salePriceCurrency:
-              true }}
+
+            <div class="xb-4-template-detail__price" *ngIf="!isHaveVariant">
+              {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+            </div>
+
+            <div class="xb-4-template-detail__price"
+                 *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice ">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency:true }} - {{maxSalePrice |
+              exchangeCurrency:currency |currency: currency:true }}
+            </div>
+            <div class="xb-4-template-detail__price"
+                 *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency:true }}
+            </div>
+
+            <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && !isPriceRange">
+              {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+            </div>
+
+            <div class="xb-4-template-detail__original-price line-through "
+                 *ngIf="!isHaveVariant && salePrice != originalPrice ">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
             </div>
             <div class="xb-4-template-detail__original-price line-through "
-                 *ngIf="product.originalPriceAmount > 0">
-              {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+                 *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
             </div>
           </div>
-          <div class="xb-4-template-detail__buttons_bg">
-            <button class="xb-4-template-detail__buy-buttons">GET IT NOW</button>
-          </div>
-
         </div>
-        <div class="xb-4-template-detail__line" *ngIf="product.recommendation"></div>
-        <div class="xb-4-template-detail__store-owner">
-          <div class="xb-4-template-detail__store-owner-title" *ngIf="product.recommendation">
+        <div class="xb-store-template__car-margin-top-2">
+          <div class="xb-store-template__car-margin-top" *ngFor="let item of variantList;let i = index;"
+               fxLayout="row" fxLayoutAlign="start start"
+               fxLayout.xs="column" fxLayoutAlign="start start">
+            <div class="xb-store-template__car-left-part"
+                 [ngClass]="{'xb-store-template__car-margin-top-1':item.id == 2}">{{item.name}}
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+              <div *ngFor="let value of item.value;let j = index;">
+                <div class="xb-store-template__car-image" [ngClass]="{'active':value.isSelected}"
+                     *ngIf="value.image" [ngStyle]="{'cursor':'initial'}">
+                  <img [src]="value.image"/>
+                </div>
+                <div *ngIf="!value.image" class="xb-store-template__car-text"
+                     [ngClass]="{'active':value.isSelected}" [ngStyle]="{'cursor':'initial'}">
+                  {{value.value}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="xb-store-template__car-margin-top" fxLayout="row" fxLayoutAlign="start center"
+               fxLayout.xs="column" fxLayoutAlign.xs="start start" *ngIf="isCanBuy">
+            <div class="xb-store-template__car-left-part">Quantity</div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="md-margin-right-2 xb-store-template__car-item-add" fxFlex="none">
+                <i class="material-icons">add</i>
+              </div>
+              <div class="xb-store-template__car-item-input" fxFlex>
+                <input type="number" [(ngModel)]="number" step="1" min="0">
+              </div>
+              <div class="md-margin-left-2 xb-store-template__car-item-add"  fxFlex="none">
+                <i class="material-icons">remove</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xb-store-template__car-bg" fxLayout="column" fxLayoutAlign="start stretch">
+          <div fxLayout="row" fxLayoutAlign="start start">
+            <div class="xb-store-template__car-left-part-1">Estimated Delivery</div>
+            <div>{{shippingTimeMin}}-{{shippingTimeMax}} days</div>
+          </div>
+          <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
+            <div class="xb-store-template__car-left-part-1">Return Policy</div>
+            <div class="xb-4-template__return-policy" [ngStyle]="{'cursor':'initial'}">{{returnDays}}</div>
+          </div>
+          <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start start">
+            <div class="xb-store-template__car-left-part-1">Shipping Availability</div>
+            <div>{{deliveryCountry}}</div>
+          </div>
+        </div>
+        <div class="md-margin-top-3 xb-4-template-detail__buttons_bg">
+          <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-bottom-2"> {{cartWarn}}</div>
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy">
+            <button class="xb-4-template-detail__buy-buttons" [ngStyle]="{'cursor':'initial'}">ADD TO CART</button>
+          </a>
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="!isCanBuy">
+            <button class="xb-4-template-detail__buy-buttons" [ngStyle]="{'cursor':'initial'}" [disabled]="true">OUT OF STOCK</button>
+          </a>
+        </div>
+        <div class="xb-4-template-detail__line" *ngIf="product?.recommendation"></div>
+        <div class="xb-4-template-detail__store-owner" *ngIf="product?.recommendation">
+          <div class="xb-4-template-detail__store-owner-title">
             Store Owner Says
           </div>
-          <div class="xb-4-template-detail__store-owner-des" *ngIf="product.recommendation">
-            {{product.recommendation}}
+          <div class="xb-4-template-detail__store-owner-des">
+            {{product?.recommendation}}
           </div>
         </div>
         <div class="xb-4-template-detail__line"></div>
@@ -38,7 +115,7 @@
             About the Product
           </div>
           <div class="md-margin-top-2"
-               [innerHTML]="product.description | safeHtml">
+               [innerHTML]="product?.description | safeHtml">
           </div>
         </div>
       </div>
@@ -46,18 +123,17 @@
   </div>
   <div class="xb-4-template-detail__recommend xb-4-template__w960">
     <div class="xb-4-template-detail__recommend-title md-margin-left-1">
-      Related Product
+      Related Products
     </div>
     <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start" fxLayout="row"
          fxLayoutWrap.xs>
-      <app-shop-item-product-card-5 *ngFor="let item of relatedProduct"
-                                    fxFlex.xs="48" fxFlex.gt-xs="22"
+      <app-shop-item-product-card-5
+        *ngFor="let item of relatedProduct"
+                                    fxFlex.xs="100" fxFlex.gt-xs="31"
                                     [product]="item" [status]="3"
-                                    (scrollToTop)="changeScrollToTop($event)"
-      >
+                                    (scrollToTop)="changeScrollToTop($event)">
       </app-shop-item-product-card-5>
-      <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
-      <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
+      <div fxFlex.xs="100" fxFlex.gt-xs="31"></div>
     </div>
   </div>
 </div>

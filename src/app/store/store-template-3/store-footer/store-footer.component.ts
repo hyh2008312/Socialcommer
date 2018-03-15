@@ -4,7 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-store-template-3-store-footer',
   templateUrl: './store-footer.component.html',
-  styleUrls: ['../store-template-3.scss']
+  styleUrls: ['../_store-template-3.scss']
 })
 
 export class StoreFooterComponent implements OnInit {

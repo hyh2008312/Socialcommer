@@ -17,6 +17,7 @@ import {ShareTemplate5ButtonComponent} from './share-temlpate-5-button/share-tem
 import {StoreCategoryCardComponent} from './store-category-card/store-category-card.component';
 import {StoreListComponent} from './store-list/store-list.component';
 import {StoreItemBlogCardTwoComponent} from './store-item-blog-card-two/store-item-blog-card-two.component';
+import {StoreDetailComponent} from "./store-detail/store-detail.component";
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import {StoreItemBlogCardTwoComponent} from './store-item-blog-card-two/store-it
     StoreItemBlogCardComponent,
     ShareTemplate5ButtonComponent,
     StoreListComponent,
-    StoreItemBlogCardTwoComponent
+    StoreItemBlogCardTwoComponent,
+    StoreDetailComponent
   ],
   entryComponents: [],
   providers: [

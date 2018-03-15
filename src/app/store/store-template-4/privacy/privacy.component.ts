@@ -7,7 +7,7 @@ import {Store} from '../../store';
 @Component({
   selector: 'app-shop-template-4-privacy',
   templateUrl: './privacy.component.html',
-  styleUrls: ['../store-template-4.scss']
+  styleUrls: ['../_store-template-4.scss']
 })
 
 export class PrivacyComponent implements OnInit {

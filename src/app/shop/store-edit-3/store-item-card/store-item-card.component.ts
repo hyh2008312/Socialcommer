@@ -1,4 +1,4 @@
-import { Input, Component, OnInit} from '@angular/core';
+import {Input, Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ export class StoreItemCardComponent implements OnInit {
 
   @Input() status: number = 0;
   @Input() product: any = null;
-
+  @Output() public productId: EventEmitter<any> = new EventEmitter();
   currency = 'USD';
 
   constructor(
@@ -21,8 +21,8 @@ export class StoreItemCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  jumpLink() {
-
+  jumpProductDetail() {
+    this.productId.emit(this.product.id);
   }
 
 }

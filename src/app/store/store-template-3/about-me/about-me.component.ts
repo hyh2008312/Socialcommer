@@ -7,7 +7,7 @@ import { Store } from '../../store';
 @Component({
   selector: 'app-store-template-3-about-me',
   templateUrl: './about-me.component.html',
-  styleUrls: ['../store-template-3.scss']
+  styleUrls: ['../_store-template-3.scss']
 })
 
 export class AboutMeComponent implements OnInit {

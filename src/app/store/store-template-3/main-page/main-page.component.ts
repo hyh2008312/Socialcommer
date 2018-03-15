@@ -5,7 +5,7 @@ import { StoreService } from '../../store.service';
 @Component({
   selector: 'app-store-template-3',
   templateUrl: './main-page.component.html',
-  styleUrls: ['../store-template-3.scss']
+  styleUrls: ['../_store-template-3.scss']
 })
 
 export class MainPageComponent implements OnInit {

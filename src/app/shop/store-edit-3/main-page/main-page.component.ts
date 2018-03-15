@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { StoreService } from '../../store.service';
-import { ShopService } from '../../shop.service';
-import { UserService } from  '../../../shared/services/user/user.service';
+import {StoreService} from '../../store.service';
+import {ShopService} from '../../shop.service';
+import {UserService} from '../../../shared/services/user/user.service';
 
-import { UserProfile,Store } from '../../shop';
+import {UserProfile, Store} from '../../shop';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { StoreShareDialogComponent } from "../../store-share-dialog/store-share-dialog.component";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {StoreShareDialogComponent} from "../../store-share-dialog/store-share-dialog.component";
 
 @Component({
   selector: 'app-shop-template-3',
@@ -24,10 +24,10 @@ export class MainPageComponent implements OnInit {
   storeName: string = '';
   isDialogOpen: boolean = false;
 
-  public categories:any = [];
+  public categories: any = [];
   public category: any = {
     id: null,
-    name : 'All'
+    name: 'All'
   };
   public shareLink: string;
   public text = '';
@@ -47,10 +47,10 @@ export class MainPageComponent implements OnInit {
     modules: {
       toolbar: [
         ['bold', 'italic'],
-        [{ 'align': [] }],
-        [{ 'color': [] }],
-        [{ 'font': [] }],
-        [{ 'size': ['small', false, 'large', 'huge'] }],
+        [{'align': []}],
+        [{'color': []}],
+        [{'font': []}],
+        [{'size': ['small', false, 'large', 'huge']}],
         ['link'],
         ['clean']
       ]
@@ -66,15 +66,13 @@ export class MainPageComponent implements OnInit {
   templateId: any = false;
   templateList: any = [];
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private storeService: StoreService,
-    private fb: FormBuilder,
-    private userService: UserService,
-    private shopService: ShopService,
-    private dialog: MatDialog
-  ) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private storeService: StoreService,
+              private fb: FormBuilder,
+              private userService: UserService,
+              private shopService: ShopService,
+              private dialog: MatDialog) {
     let self = this;
     self.storeTemplateForm = self.fb.group({
       nameTag: [self.nameTag],
@@ -100,29 +98,29 @@ export class MainPageComponent implements OnInit {
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.shareLink = window.location.host + '/store/';
     let self = this;
     let firstLoad = false;
     self.shopService.templateList.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.templateList = data;
-        self.userService.store.subscribe((data)=> {
-          if(data) {
+        self.userService.store.subscribe((data) => {
+          if (data) {
             self.store = data;
             self.text = data.description;
-            if(!firstLoad) {
+            if (!firstLoad) {
               firstLoad = true;
 
               self.storeForm.setValue({
                 name: self.store.name,
-                description : self.store.description,
+                description: self.store.description,
                 displayName: self.store.displayName
               });
 
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
-                if(data.category.length > 1) {
+                if (data.category.length > 1) {
                   self.categories = [{name: 'All'}, ...data.category];
                 } else {
                   self.categories = [...data.category];
@@ -132,14 +130,14 @@ export class MainPageComponent implements OnInit {
                 self.queryBlog();
               });
 
-              for(let value of self.templateList) {
-                if(value.templateId == 3) {
+              for (let value of self.templateList) {
+                if (value.templateId == 3) {
                   self.templateId = value.id;
-                  self.nameTag = value.context.nameTag != ''? value.context.nameTag : self.nameTag;
-                  self.storeName = value.context.nameTag != ''? value.context.nameTag: data.name;
-                  self.titleTag = value.context.titleTag != ''? value.context.titleTag : self.titleTag;
-                  self.descriptionTag = value.context.descriptionTag != ''? value.context.descriptionTag : self.descriptionTag;
-                  self.userTag = value.context.userTag != ''? value.context.userTag : self.userTag;
+                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
+                  self.storeName = value.context.nameTag != '' ? value.context.nameTag : data.name;
+                  self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
+                  self.descriptionTag = value.context.descriptionTag != '' ? value.context.descriptionTag : self.descriptionTag;
+                  self.userTag = value.context.userTag != '' ? value.context.userTag : self.userTag;
 
                   self.imageSrc = value.images.imageSrc;
                   self.aboutMeSrc = value.images.aboutMeSrc;
@@ -160,7 +158,7 @@ export class MainPageComponent implements OnInit {
   //存储错误信息
   formErrors = {
     'name': '',
-    'displayName':'',
+    'displayName': '',
     'description': ''
   };
   //错误对应的提示
@@ -168,10 +166,10 @@ export class MainPageComponent implements OnInit {
     'name': {
       'required': 'This field is required.'
     },
-    'displayName':{
+    'displayName': {
       'required': 'This field is required.'
     },
-    'description':{
+    'description': {
       'required': 'This field is required.'
     }
   };
@@ -267,17 +265,17 @@ export class MainPageComponent implements OnInit {
   }
 
   submitTemplate() {
-    if(!this.storeForm.valid) {
+    if (!this.storeForm.valid) {
       this.storeEdited = true;
       return;
     }
-    if(!this.storeTemplateForm.valid) {
+    if (!this.storeTemplateForm.valid) {
       return;
     }
 
     let self = this;
 
-    if(!this.templateId) {
+    if (!this.templateId) {
       let options = {
         templateId: 3,
         storeId: this.store.id,
@@ -322,7 +320,7 @@ export class MainPageComponent implements OnInit {
       };
       this.shopService.updateMultiTemplate(options).then((data) => {
         let index = self.templateList.findIndex((item) => {
-          if(item.id == data.id) {
+          if (item.id == data.id) {
             return true;
           }
         });
@@ -344,7 +342,7 @@ export class MainPageComponent implements OnInit {
   }
 
   changeStore() {
-    if(!this.storeForm.valid) {
+    if (!this.storeForm.valid) {
       return;
     }
 
@@ -366,7 +364,7 @@ export class MainPageComponent implements OnInit {
     this.queryProduct(true);
   }
 
-  openDialog(displayName?:any): void {
+  openDialog(displayName?: any): void {
     let dialogRef = this.dialog.open(StoreShareDialogComponent, {
       data: {
         shareLink: 'http://' + this.shareLink + displayName,
@@ -379,8 +377,8 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  queryProduct(clearProduct?:boolean) {
-    if(this.categories.length <= 0) {
+  queryProduct(clearProduct?: boolean) {
+    if (this.categories.length <= 0) {
       this.nextPage = false;
       return;
     }
@@ -392,20 +390,20 @@ export class MainPageComponent implements OnInit {
       page_size: 4
     };
     let self = this;
-    self.storeService.getProductList(options).then((data)=>{
-      if(clearProduct) {
+    self.storeService.getProductList(options).then((data) => {
+      if (clearProduct) {
         self.product = [];
         self.nextPage = true;
       }
       self.product = self.product.concat(data.results);
-      if(data.next == null) {
+      if (data.next == null) {
         self.nextPage = false;
       }
     });
   }
 
-  queryBlog(clearBlog?:boolean) {
-    if(!this.ownerId) {
+  queryBlog(clearBlog?: boolean) {
+    if (!this.ownerId) {
       return;
     }
     let options = {
@@ -414,13 +412,13 @@ export class MainPageComponent implements OnInit {
       page_size: 2
     };
     let self = this;
-    self.storeService.getBlog(options).then((data)=>{
-      if(clearBlog) {
+    self.storeService.getBlog(options).then((data) => {
+      if (clearBlog) {
         self.blog = [];
         self.nextBlogPage = true;
       }
       self.blog = self.blog.concat(data.results);
-      if(data.next == null) {
+      if (data.next == null) {
         self.nextBlogPage = false;
       }
     });
@@ -430,8 +428,8 @@ export class MainPageComponent implements OnInit {
 
   }
 
-  openNavigationDialog(event?:any) {
-    if(event) {
+  openNavigationDialog(event?: any) {
+    if (event) {
       this.changeViewPort(event);
       return this.isDialogOpen = false;
     }
@@ -448,6 +446,19 @@ export class MainPageComponent implements OnInit {
 
   jumpToBlog() {
     this.viewIndex = 2;
+  }
+
+  // 跳转到商品详情页
+  selectProductId: any;
+  goodsDetail: boolean = false;
+
+  jumpGoodsDetail(productId: any) {
+    this.selectProductId = productId;
+    this.changeGoodsDetail(4);
+  }
+
+  changeGoodsDetail(viewNum: number) {
+    this.viewIndex = viewNum;
   }
 
 }

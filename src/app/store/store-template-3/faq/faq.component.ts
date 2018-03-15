@@ -7,7 +7,7 @@ import { Store } from '../../store';
 @Component({
   selector: 'app-store-template-3-faq',
   templateUrl: './faq.component.html',
-  styleUrls: ['../store-template-3.scss']
+  styleUrls: ['../_store-template-3.scss']
 })
 
 export class FaqComponent implements OnInit {
