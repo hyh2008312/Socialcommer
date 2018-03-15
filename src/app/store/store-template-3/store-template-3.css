@@ -3995,10 +3995,15 @@ textarea.mat-input-element {
     padding: 8px;
     font-size: 24px;
     line-height: 24px; }
+@media screen and (max-width: 599px) {
+  .xb-store-template__footer {
+    margin-top: 24px;
+    margin-bottom: 16px; } }
 .xb-store-template__footer-word {
+  font-size: 14px;
   font-weight: 400;
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.54); }
+  line-height: 32px;
+  cursor: pointer; }
   .xb-store-template__footer-word:hover {
     text-decoration: underline; }
 .xb-store-template__footer-share {
@@ -4007,15 +4012,17 @@ textarea.mat-input-element {
     font-size: 24px;
     line-height: 24px; }
 .xb-store-template__footer-text {
+  font-size: 14px;
+  font-weight: 400;
   color: rgba(0, 0, 0, 0.54);
   text-align: center; }
 .xb-store-template__footer-margin-top {
-  margin-top: 50px; }
+  margin-top: 24px; }
   @media screen and (max-width: 599px) {
     .xb-store-template__footer-margin-top {
-      margin-top: 32px; } }
+      margin-top: 24px; } }
 .xb-store-template__footer-margin-bottom {
-  margin-bottom: 40px; }
+  margin-bottom: 48px; }
   @media screen and (max-width: 599px) {
     .xb-store-template__footer-margin-bottom {
       margin-bottom: 16px; } }

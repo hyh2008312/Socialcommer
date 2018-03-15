@@ -6927,6 +6927,8 @@ textarea.mat-input-element {
     background-color: #1a8bf0; }
   .xb-social-share__google {
     background-color: #ec4033; }
+  .xb-social-share__whatsapp {
+    background-color: #2cbfa5; }
   .xb-social-share > i {
     font-size: 24px;
     line-height: 24px;
@@ -6943,7 +6945,7 @@ textarea.mat-input-element {
     height: 24px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.3); }
+    background-color: white; }
     .xb-social-share__store > i {
       font-size: 16px;
       line-height: 16px;
@@ -7486,8 +7488,8 @@ textarea.mat-input-element {
     .xb-store__details-left-part-1 {
       font-weight: 600;
       color: rgba(0, 0, 0, 0.54);
-      width: 145px;
-      margin-right: 32px; }
+      width: 138px;
+      margin-right: 14px; }
     .xb-store__details-left-part-2 {
       font-weight: 600;
       color: rgba(0, 0, 0, 0.54);
@@ -7598,22 +7600,27 @@ textarea.mat-input-element {
       z-index: 1;
       display: block; }
   .xb-store__footer {
-    padding: 40px 0;
+    padding: 32px 0;
     background-color: #252525;
     color: rgba(255, 255, 255, 0.5);
     font-size: 16px;
     position: relative; }
+    .xb-store__footer-mgtop56 {
+      margin-top: 56px; }
+    .xb-store__footer-right {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.38); }
     .xb-store__footer-word {
+      font-size: 14px;
       font-weight: 400;
       cursor: pointer;
-      color: rgba(255, 255, 255, 0.54); }
+      color: white; }
       .xb-store__footer-word:hover {
         text-decoration: underline; }
-    .xb-store__footer-margin-top {
-      margin-top: 16px; }
       @media screen and (max-width: 599px) {
-        .xb-store__footer-margin-top {
-          margin-top: 8px; } }
+        .xb-store__footer-word {
+          line-height: 32px; } }
     .xb-store__footer-margin-top-1 {
       margin-top: 8px; }
       @media screen and (max-width: 599px) {
@@ -7625,22 +7632,13 @@ textarea.mat-input-element {
         .xb-store__footer-margin-top-2 {
           margin-top: 8px; } }
     .xb-store__footer-margin-left {
-      margin-left: 16px; }
+      margin-left: 48px; }
       @media screen and (max-width: 599px) {
         .xb-store__footer-margin-left {
           margin-left: 0;
           text-align: center; } }
     .xb-store__footer-icons {
-      position: absolute;
-      right: 0;
-      bottom: 40px;
-      margin-right: 10vw; }
-      @media screen and (max-width: 599px) {
-        .xb-store__footer-icons {
-          position: relative;
-          bottom: 0;
-          margin-right: 0;
-          margin-top: 12px; } }
+      margin-top: 24px; }
   .xb-store__template-mask {
     position: absolute;
     left: 0;

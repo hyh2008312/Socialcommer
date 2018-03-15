@@ -158,9 +158,10 @@ export class StoreComponent implements OnInit {
       return;
     }
 
+    this.storeForm.value.status = this.storeForm.value.status? 'open': 'close';
+
     let store = this.storeForm.value;
     store.id = this.store.id;
-    store.status = this.status? 'open': 'close';
     store.currency = this.currency;
     let self = this;
 

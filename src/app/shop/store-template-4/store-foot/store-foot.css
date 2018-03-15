@@ -3458,9 +3458,7 @@ textarea.mat-input-element {
   color: #222; }
 
 .xb-store-word {
-  font-weight: 400;
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.54); }
+  font-weight: 400; }
 .xb-store__subscribe {
   width: 342px;
   height: 40px;
