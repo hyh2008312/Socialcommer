@@ -600,7 +600,7 @@ export class StoreCartPayComponent implements OnInit{
         var EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
 
         // Set up the data you need to pass to your server
-        var data = {
+        let data: any = {
           orderId: self.order.id,
           paymentId: data.paymentID,
           payerId: data.payerID
@@ -667,7 +667,7 @@ export class StoreCartPayComponent implements OnInit{
         var EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
 
         // Set up the data you need to pass to your server
-        var data = {
+        let data: any = {
           orderId: self.order.id,
           paymentId: data.paymentID,
           payerId: data.payerID
