@@ -3,6 +3,8 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { Headers,RequestOptions } from '@angular/http';
+
 import { StoreService } from '../../store.service';
 import { StoreCartService } from '../store-cart.service';
 import { ConstantService } from  '../../../shared/services/constant/constant.service';
@@ -587,8 +589,11 @@ export class StoreCartPayComponent implements OnInit{
         };
 
         // Make a call to your server to set up the payment
-        return (<any>window).paypal.request.post(CREATE_URL, data)
-          .then(function(res) {
+        return (<any>window).paypal.request({
+          method: 'post',
+          url: CREATE_URL,
+          json: data
+        }).then(function(res) {
             return res.paymentID;
           });
       },
@@ -607,8 +612,11 @@ export class StoreCartPayComponent implements OnInit{
         };
 
         // Make a call to your server to execute the payment
-        return (<any>window).paypal.request.post(EXECUTE_URL, params)
-          .then(function (res) {
+        return (<any>window).paypal.request({
+          method: 'post',
+          url: EXECUTE_URL,
+          json: params
+        }).then(function (res) {
             window.alert('Payment Complete!');
           });
       }
@@ -654,8 +662,11 @@ export class StoreCartPayComponent implements OnInit{
         };
 
         // Make a call to your server to set up the payment
-        return (<any>window).paypal.request.post(CREATE_URL, data)
-          .then(function(res) {
+        return (<any>window).paypal.request({
+          method: 'post',
+          url: CREATE_URL,
+          json: data
+        }).then(function(res) {
             return res.paymentID;
           });
       },
@@ -674,8 +685,11 @@ export class StoreCartPayComponent implements OnInit{
         };
 
         // Make a call to your server to execute the payment
-        return (<any>window).paypal.request.post(EXECUTE_URL, params)
-          .then(function (res) {
+        return (<any>window).paypal.request({
+          method: 'post',
+          url: EXECUTE_URL,
+          json: params
+        }).then(function (res) {
             window.alert('Payment Complete!');
           });
       }
