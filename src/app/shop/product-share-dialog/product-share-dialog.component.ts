@@ -9,13 +9,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class ProductShareDialogComponent implements OnInit {
 
-  text: string = '';
+  text: string = 'Don’t miss out on this new product in my store: ';
 
   constructor(
     public dialogRef: MatDialogRef<ProductShareDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
+    this.text = this.text + this.data.text;
   }
 
   ngOnInit():void {
