@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit {
   storeName: string = 'STORE NAME';
   isDialogOpen: boolean = false;
   text: string = '';
+  productNumber:number=0;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,

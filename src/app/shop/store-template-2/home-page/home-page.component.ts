@@ -112,7 +112,7 @@ export class HomePageComponent implements OnInit {
   descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">This was founded with starter site, a single page ' +
     'online storefront. All of the images and text on this page can be changed to personalize the site for brand ' +
     'and to communicate your unique story to your customers.</strong></p>';
-
+  productNumber:number=0;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,

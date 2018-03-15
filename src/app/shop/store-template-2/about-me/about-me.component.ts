@@ -13,7 +13,7 @@ import { Store } from '../../store';
 export class AboutMeComponent implements OnInit {
   store: Store = new Store();
   aboutBanner:string = 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg';
-
+  productNumber:number=0;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,

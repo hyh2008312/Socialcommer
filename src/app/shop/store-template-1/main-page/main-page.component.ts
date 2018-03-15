@@ -99,7 +99,7 @@ export class MainPageComponent implements OnInit {
 
   queryMedia: any;
   isMobile: boolean = false;
-
+  productNumber:number=0;
   about: string = 'Thank you for visiting my store! Have a nice day.  ';
 
 
