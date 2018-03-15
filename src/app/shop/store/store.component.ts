@@ -30,7 +30,7 @@ export class StoreComponent implements OnInit {
 
   checked: boolean;
 
-  status: any = true;
+  status: any = false;
 
   constructor(
     private constantService : ConstantService,
@@ -192,14 +192,17 @@ export class StoreComponent implements OnInit {
         this.storeForm.patchValue({
           status: dialogRef.componentInstance.data.status
         });
+        this.status = dialogRef.componentInstance.data.status;
       }
     });
   }
 
   changeStatus($event) {
-    this.status = $event;
-    if(!this.status) {
-      this.statusDialog();
+    if($event != this.status) {
+      this.status = $event;
+      if(!this.status) {
+        this.statusDialog();
+      }
     }
   }
 
