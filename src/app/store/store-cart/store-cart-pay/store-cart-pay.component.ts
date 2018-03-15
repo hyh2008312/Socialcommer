@@ -594,8 +594,8 @@ export class StoreCartPayComponent implements OnInit{
           url: CREATE_URL,
           json: data
         }).then(function(res) {
-            return res.paymentID;
-          });
+          return res.paymentID = res.paymentId;
+        });
       },
 
       // onAuthorize() is called when the buyer approves the payment
@@ -667,7 +667,7 @@ export class StoreCartPayComponent implements OnInit{
           url: CREATE_URL,
           json: data
         }).then(function(res) {
-            return res.paymentID;
+            return res.paymentID = res.paymentId;
           });
       },
 
