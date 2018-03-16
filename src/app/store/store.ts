@@ -20,6 +20,7 @@ export class Store {
   status: any;
   currency: string;
   country: any;
+  template: any;
 
   uid: any;
   templateId: any;

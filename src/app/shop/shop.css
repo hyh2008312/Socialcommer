@@ -4021,7 +4021,7 @@ textarea.mat-input-element {
   background-color: rgba(0, 0, 0, 0.3); }
 .xb-shop__toDo-title {
   margin-top: 64px;
-  font-size: 48px;
+  font-size: 42px;
   line-height: 1;
   text-align: center;
   font-weight: 600;
@@ -4141,6 +4141,32 @@ textarea.mat-input-element {
       background-color: rgba(0, 0, 0, 0.12); }
   .xb-shop__pop-bg:hover .xb-shop__pop-bg-list {
     display: block; }
+.xb-shop__loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden; }
+  .xb-shop__loading-close {
+    position: absolute;
+    right: 56px;
+    top: 56px;
+    color: #fff;
+    cursor: pointer; }
+    .xb-shop__loading-close i {
+      font-size: 56px; }
+  .xb-shop__loading-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
 
 .xb-category__title {
   height: 56px;

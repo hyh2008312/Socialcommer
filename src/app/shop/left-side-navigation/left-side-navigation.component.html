@@ -1,3 +1,6 @@
+<div class="xb-loading" *ngIf="showLoading">
+  <mat-progress-bar [mode]="determinate" [value]="loadingValue" color="accent"></mat-progress-bar>
+</div>
 <div class="xb-shop__left-navigation" fxFlex>
   <div class="xb-shop__left-navigation-bg">
     <ng-container *ngFor="let content of contents; let i = index;">

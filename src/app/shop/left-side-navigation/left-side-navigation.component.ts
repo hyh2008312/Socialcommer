@@ -1,5 +1,5 @@
-import {Input, Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
+import {Input, Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute, NavigationStart, NavigationEnd} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 
 import {ShopService} from '../shop.service';
@@ -87,7 +87,13 @@ export class LeftSideNavigationComponent implements OnInit {
     isActive: false
   }];
 
-  editRouter: string = './store/templates/edit';
+  showLoading: boolean = false;
+  loadingValue: any = 0;
+
+  editRouter: string = '/shop/templates/edit';
+
+  sub: any;
+  sub1: any;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -96,9 +102,9 @@ export class LeftSideNavigationComponent implements OnInit {
 
   ngOnInit(): void {
     let self = this;
-    this.shopService.templateUid.subscribe((data) => {
+    this.sub = this.shopService.templateUid.subscribe((data) => {
       if (data) {
-        self.editRouter = './templates/edit' + (data == 1 ? '' : '/' + data);
+        self.editRouter = '/shop/templates/edit' + (data == 1 ? '' : '/' + data);
       }
     });
     let url = this.router.routerState.snapshot['url'].split('/shop');
@@ -117,10 +123,25 @@ export class LeftSideNavigationComponent implements OnInit {
         }
       }
     }
+
+    this.sub1 = this.router.events.subscribe((s) => {
+      if(s instanceof NavigationStart) {
+        if(s.url.split('?')[0] == this.editRouter) {
+          this.showLoading = true;
+          this.loadingValue = 0;
+          this.load();
+        }
+      }
+      if(s instanceof NavigationEnd) {
+        this.showLoading = false;
+        this.loadingValue = 0;
+      }
+    });
   }
 
   changeSlide(obj: any, index: number) {
-
+    this.showLoading = false;
+    this.loadingValue = 0;
     for (let value of this.contents) {
       if (value.id != obj.id) {
         value.isActive = false;
@@ -136,4 +157,19 @@ export class LeftSideNavigationComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+    this.sub1.unsubscribe();
+  }
+
+  private load() {
+    if(this.loadingValue < 90) {
+      this.loadingValue++;
+    } else {
+      return;
+    }
+
+    requestAnimationFrame(() => this.load());
+
+  }
 }

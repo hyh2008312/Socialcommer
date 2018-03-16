@@ -67,7 +67,8 @@ import {
   MatPaginatorModule,
   MatSnackBarModule,
   MatSidenavModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 
@@ -115,7 +116,8 @@ let providers = {
     MatSnackBarModule,
     Angular2SocialLoginModule,
     MatSidenavModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     SafeHtmlPipe,
@@ -215,7 +217,8 @@ let providers = {
     MatPaginatorModule,
     MatSnackBarModule,
     MatSidenavModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     ImageUploadPreviewService,

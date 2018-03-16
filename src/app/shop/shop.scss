@@ -780,7 +780,7 @@
   &__toDo{
     &-title{
       margin-top: 64px;
-      font-size: 48px;
+      font-size: 42px;
       line-height: 1;
       text-align: center;
       @include media();
@@ -936,6 +936,35 @@
       #{$parent}-list{
         display: block;
       }
+    }
+  }
+
+  &__loading{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.8);
+    overflow: hidden;
+
+    &-close{
+      position: absolute;
+      right: 56px;
+      top: 56px;
+      color: $whiteColor;
+      cursor: pointer;
+      i{
+        font-size: 56px;
+      }
+    }
+
+    &-text{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: $whiteColor;
+      @include transform(translate(-50%, -50%));
     }
   }
 }

@@ -1,14 +1,6 @@
 @import "../styles/utils/_index";
 @import "../styles/_variables";
 
-.xb-loading{
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999999;
-}
-
 .xb-login{
   &__container{
     max-width: 400px;
