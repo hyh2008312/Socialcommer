@@ -33,11 +33,16 @@
         </div>
       </div>
       <div class="md-margin-top-5" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
-        <app-product-item-card *ngFor="let product of productList" [product]="product" [supplier]="true"></app-product-item-card>
-        <div class="xb-shop__width"></div>
-        <div class="xb-shop__width"></div>
-        <div class="xb-shop__width"></div>
-        <div class="xb-shop__width"></div>
+        <app-product-item-card *ngFor="let product of productList" [product]="product" [supplier]="true" fxFlex.xs="100" fxFlex.sm="32"
+                               fxFlex.gt-sm="24"></app-product-item-card>
+        <div fxFlex.xs="100" fxFlex.sm="32"
+             fxFlex.gt-sm="24"></div>
+        <div fxFlex.xs="100" fxFlex.sm="32"
+             fxFlex.gt-sm="24"></div>
+        <div fxFlex.xs="100" fxFlex.sm="32"
+             fxFlex.gt-sm="24"></div>
+        <div fxFlex.xs="100" fxFlex.sm="32"
+             fxFlex.gt-sm="24"></div>
       </div>
       <mat-paginator [length]="length"
                      [pageSize]="pageSize"
