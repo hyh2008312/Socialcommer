@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewChecked} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
@@ -18,9 +18,7 @@ import {StoreShareDialogComponent} from "../../store-share-dialog/store-share-di
 })
 
 export class MainPageComponent implements OnInit {
-
   viewIndex: number = 0;
-
   storeName: string = '';
   isDialogOpen: boolean = false;
 
@@ -138,7 +136,17 @@ export class MainPageComponent implements OnInit {
                   self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
                   self.descriptionTag = value.context.descriptionTag != '' ? value.context.descriptionTag : self.descriptionTag;
                   self.userTag = value.context.userTag != '' ? value.context.userTag : self.userTag;
-
+                  if (value.context.blogFlag) {
+                    self.blogFlag = value.context.blogFlag;
+                  } else {
+                    self.blogFlag = 1;
+                  }
+                  // 对于显示和隐藏进行设定
+                  if (self.blogFlag == 1 || self.blogFlag == 2) {
+                    self.isShowBlog = true;
+                  } else {
+                    self.isShowBlog = false;
+                  }
                   self.imageSrc = value.images.imageSrc;
                   self.aboutMeSrc = value.images.aboutMeSrc;
                   break;
@@ -150,8 +158,6 @@ export class MainPageComponent implements OnInit {
         })
       }
     })
-
-
   }
 
 
@@ -284,6 +290,7 @@ export class MainPageComponent implements OnInit {
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           userTag: this.userTag,
+          blogFlag: this.blogFlag
         },
         images: {
           imageSrc: this.imageSrc,
@@ -312,6 +319,7 @@ export class MainPageComponent implements OnInit {
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           userTag: this.userTag,
+          blogFlag: this.blogFlag
         },
         images: {
           imageSrc: this.imageSrc,
@@ -460,5 +468,24 @@ export class MainPageComponent implements OnInit {
   changeGoodsDetail(viewNum: number) {
     this.viewIndex = viewNum;
   }
+
+
+  //设定一个变量，用来保存是否显示还是隐藏blog.
+  // 1.表示未设定这个功能 2.表示显示（true） 3表示隐藏(false)
+  blogFlag: number = 1;
+
+  //是否需要显示blog(用户自己设定)
+  isShowBlog: boolean = true;
+
+  changeIsShowBlog(isShow: boolean) {
+    this.isShowBlog = isShow;
+    if (isShow) {
+      this.blogFlag = 2;
+    } else {
+      this.blogFlag = 3;
+    }
+  }
+
+
 
 }

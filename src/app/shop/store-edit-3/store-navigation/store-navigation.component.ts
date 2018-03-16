@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, OnDestroy, EventEmitter, Input} from '@angular/core';
-import { Router, NavigationStart } from  '@angular/router';
+import {Component, OnInit, Output, OnDestroy, EventEmitter, Input} from '@angular/core';
+import {Router, NavigationStart} from '@angular/router';
 
 @Component({
   selector: 'app-shop-template-3-navigation',
@@ -10,6 +10,8 @@ import { Router, NavigationStart } from  '@angular/router';
 export class StoreNavigationComponent implements OnInit {
 
   @Input() navigationIndex = 0;
+  @Input() isNavigationHaveBlog = true;
+
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
 
   routerObservable: any;
@@ -25,13 +27,11 @@ export class StoreNavigationComponent implements OnInit {
   }];
 
 
-  constructor(
-    private router: Router
-  ) {
+  constructor(private router: Router) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
 
   }
 
@@ -43,5 +43,4 @@ export class StoreNavigationComponent implements OnInit {
     this.navigationIndex = index;
     this.routerChange.emit(index);
   }
-
 }

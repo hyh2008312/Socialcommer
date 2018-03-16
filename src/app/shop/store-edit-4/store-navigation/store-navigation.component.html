@@ -1,8 +1,10 @@
 <div class="xb-4-template-navigation__container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="48px"
      fxShow="true" fxShow.xs="false">
-  <div class="xb-4-template-navigation xb-pointer" *ngFor="let value of contents;let i=index"
-       [ngClass]="{active: i == navigationIndex}" (click)="changeNavigation(i)" >
-    {{value.text}}
-  </div>
+  <ng-container *ngFor="let value of contents;let i=index">
+    <div class="xb-4-template-navigation xb-pointer" *ngIf=" !(i==2 && !isNavigationHaveBlog)"
+         [ngClass]="{active: i == navigationIndex}" (click)="changeNavigation(i)">
+      {{value.text}}
+    </div>
+  </ng-container>
 </div>
 
