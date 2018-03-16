@@ -25,7 +25,7 @@ export class AccountBalanceComponent implements OnInit {
   paymentListIndex = 1;
 
   // MatPaginator Inputs
-  length: number = 32;
+  length: number = 0;
   pageSize = 12;
   pageSizeOptions = [6, 12];
   isShowTip: boolean = false;
@@ -96,6 +96,7 @@ export class AccountBalanceComponent implements OnInit {
     };
 
     this.shopService.getPaymentHistory(params).then((data) => {
+      this.length = data.count;
       this.paymentList = [...data.results];
     });
   }
