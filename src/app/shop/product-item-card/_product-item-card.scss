@@ -4,15 +4,12 @@
 .xb-shop{
   &__card{
     display: block;
-    width: 250px;
+    width: 100%;
     position: relative;
     margin: 0 10px 20px;
     border-radius: 4px;
     @include resetBorder();
     background-color: $whiteColor;
-    @include xb-xs-screen{
-      width: 100%;
-    }
 
     &-image{
       padding-bottom: 100%;
