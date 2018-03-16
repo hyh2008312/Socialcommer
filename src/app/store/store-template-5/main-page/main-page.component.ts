@@ -16,6 +16,7 @@ export class MainPageComponent implements OnInit {
   isShowMenu: boolean = false;
 
   contactUsTag: string = '';
+
   ownerId: any;
   blog: any = [];
   isHaveBlog: boolean = true;

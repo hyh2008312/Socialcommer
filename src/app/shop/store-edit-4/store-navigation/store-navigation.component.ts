@@ -4,13 +4,14 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-store-template-edit-4-navigation',
   templateUrl: './store-navigation.component.html',
-  styleUrls: ['../store-template-4.scss']
+  styleUrls: ['../_store-template-4.scss']
 })
 
 export class StoreNavigationEditFourComponent implements OnInit {
   @Output() public routerChange: EventEmitter<number> = new EventEmitter();
 
   @Input() navigationIndex = 0;
+  @Input() isNavigationHaveBlog = true;
 
 
   contents = [

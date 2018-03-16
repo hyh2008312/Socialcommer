@@ -4,7 +4,7 @@ import {NavigationStart, Router} from '@angular/router';
 @Component({
   selector: 'app-shop-template-5-navigation',
   templateUrl: './store-navigation.component.html',
-  styleUrls: ['../store-template-5.scss']
+  styleUrls: ['../_store-template-5.scss']
 })
 
 export class StoreNavigationComponent implements OnInit {

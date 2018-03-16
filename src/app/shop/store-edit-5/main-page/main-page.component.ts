@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {StoreService} from '../../store.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -11,10 +11,10 @@ import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-di
 @Component({
   selector: 'app-store-template-edit-2',
   templateUrl: './main-page.component.html',
-  styleUrls: ['../store-template-5.scss']
+  styleUrls: ['../_store-template-5.scss']
 })
 
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, AfterViewInit {
   //测试数据
   categoryProduct: any = [];
 
@@ -502,6 +502,7 @@ export class MainPageComponent implements OnInit {
       }
     });
   }
+
   // 跳转到商品详情页
   selectProductId: any;
   goodsDetail: boolean = false;
@@ -513,6 +514,12 @@ export class MainPageComponent implements OnInit {
 
   changeGoodsDetail(viewNum: number) {
     this.viewIndex = viewNum;
-    this.isCategory=false ;
+    this.isCategory = false;
+  }
+
+  ngAfterViewInit() {
+    if (document.getElementById('xb-5-template-to-top')) {
+      document.getElementById('xb-5-template-to-top').scrollTop = 0;
+    }
   }
 }

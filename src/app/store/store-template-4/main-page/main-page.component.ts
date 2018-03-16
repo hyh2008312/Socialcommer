@@ -15,6 +15,14 @@ export class MainPageComponent implements OnInit {
   productNumber: number = 0;
   displayName:string ;
 
+
+  ownerId: any;
+  blog: any = [];
+  isHaveBlog: boolean = true;
+  showBlogFlag: number = 1;
+  //是否显示根据两者条件
+  isBlog: boolean = false;
+
   constructor(private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
               private router:Router,
@@ -30,6 +38,11 @@ export class MainPageComponent implements OnInit {
         self.storeName = data.context ? data.context.nameTag : data.name;
         self.text = data.description;
         self.displayName = data.displayName ;
+        if (data.context && data.context.blogFlag) {
+          self.showBlogFlag = data.context.blogFlag;
+        }
+        self.ownerId = data.ownerId;
+        self.queryBlog();
       }
     });
     self.storeService.cart.subscribe((data) => {
@@ -45,6 +58,36 @@ export class MainPageComponent implements OnInit {
   ngOnDestroy() {
 
   }
+
+  queryBlog() {
+    if (!this.ownerId) {
+      return;
+    }
+    let options = {
+      ownerId: this.ownerId,
+      page: 1,
+      page_size: 1
+    };
+    let self = this;
+    self.storeService.getBlog(options).then((data) => {
+        self.blog = self.blog.concat(data.results);
+        if (self.blog.length > 0) {
+          self.isHaveBlog = true;
+        } else {
+          self.isHaveBlog = false;
+        }
+        // 当为1：未设定 2 显示 3 不显示
+        if (self.showBlogFlag == 1) {
+          self.isBlog = self.isHaveBlog;
+        } else if (self.showBlogFlag == 2) {
+          self.isBlog = true;
+        } else if (self.showBlogFlag == 3) {
+          self.isBlog = false;
+        }
+      }
+    );
+  }
+
 
   isShowNav = false;
 

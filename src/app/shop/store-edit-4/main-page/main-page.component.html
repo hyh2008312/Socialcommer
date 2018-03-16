@@ -1,22 +1,37 @@
-<div class="xb-4-template">
+<div id="xb-4-template-to-top"  class="xb-4-template">
   <form [formGroup]="storeTemplateForm" novalidate>
     <div class="xb-4-template__container">
+      <div class="xb-4-template__cancel-sava">
+        <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-4-template-edit__button" (click)="close()">
+            CANCEL
+          </div>
+          <div class="xb-4-template-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
+            SAVE
+          </div>
+        </div>
+        <div class="xb-4-template-edit__left">
+          <div class="xb-4-template-edit__button-2" *ngIf="!isShowBlog" (click)="changeIsShowBlog(true)">
+            ADD BLOG SECTION
+          </div>
+        </div>
+        <div class="xb-4-template-edit__left" *ngIf="isShowBlog" (click)="changeIsShowBlog(false)">
+          <div class="xb-4-template-edit__button-2">
+            HIDE BLOG SECTION
+          </div>
+        </div>
+
+      </div>
       <div class="xb-4-template__w960">
         <div class="xb-4-template__title xb-4-template__edit-border">
           <input formControlName="nameTag" [(ngModel)]="nameTag">
         </div>
       </div>
-      <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
-        <div class="xb-4-template-edit__button" (click)="close()">
-          CANCEL
-        </div>
-        <div class="xb-4-template-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
-          SAVE
-        </div>
-      </div>
+
       <div class="xb-4-template__w960">
         <app-store-template-edit-4-navigation
-          (routerChange)="changeViewIndex($event)" [navigationIndex]="viewIndex"></app-store-template-edit-4-navigation>
+          (routerChange)="changeViewIndex($event)" [navigationIndex]="viewIndex"
+          [isNavigationHaveBlog]="isShowBlog"></app-store-template-edit-4-navigation>
       </div>
       <!-- 1 home-->
       <div [hidden]="viewIndex != 0" class="xb-4-template-content">
@@ -86,9 +101,9 @@
               </div>
             </div>
             <app-shop-item-product-card-4 *ngFor="let item of homeProduct"
-                                               fxFlex.xs="48" fxFlex.gt-xs="22"
-                                               (productId)="jumpGoodsDetail($event)"
-                                               [product]="item" [status]="0"></app-shop-item-product-card-4>
+                                          fxFlex.xs="48" fxFlex.gt-xs="22"
+                                          (productId)="jumpGoodsDetail($event)"
+                                          [product]="item" [status]="0"></app-shop-item-product-card-4>
             <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
             <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
             <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
@@ -102,7 +117,7 @@
               </a>
             </div>
           </div>
-          <div class="xb-4-template-blog  xb-4-template__w960 ">
+          <div class="xb-4-template-blog  xb-4-template__w960" *ngIf="isShowBlog">
             <div class="xb-4-template-blog__title">
               BLOG
             </div>
@@ -135,9 +150,9 @@
             <div class="xb-4-template-collection__product md-margin-left-2" fxLayoutAlign="space-between start"
                  fxLayout="row" fxLayoutWrap>
               <app-shop-item-product-card-4 *ngFor="let item of product"
-                                                 fxFlex.xs="48" fxFlex.gt-xs="28"
-                                                 (productId)="jumpGoodsDetail($event)"
-                                                 [product]="item" [status]="0"></app-shop-item-product-card-4>
+                                            fxFlex.xs="48" fxFlex.gt-xs="28"
+                                            (productId)="jumpGoodsDetail($event)"
+                                            [product]="item" [status]="0"></app-shop-item-product-card-4>
               <div fxFlex.xs="48" fxFlex.gt-xs="28"></div>
             </div>
           </div>

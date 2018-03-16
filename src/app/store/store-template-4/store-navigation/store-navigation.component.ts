@@ -12,6 +12,7 @@ export class StoreNavigationComponent implements OnInit {
   @Input() isBlack = false;
   @Input() type: number;
   @Input() displayName: string;
+  @Input() isShowBlog: boolean = false;
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
   routerObservable: any;

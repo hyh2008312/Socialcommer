@@ -12,6 +12,15 @@
   overflow-x: hidden;
   background-color: $whiteColor;
   z-index: 500;
+
+  &__cancel-sava{
+    position: relative;
+    height: 72px;
+    background-color: rgba(0,0,0,.21);
+  }
+
+
+
   &__jump-button {
     margin-top: 20px;
     margin-bottom: 40px;
@@ -413,7 +422,22 @@
   &__nav-right {
     position: absolute;
     top: 16px;
-    right: 16px;
+    right: 48px;
+  }
+  &__left {
+    position: absolute;
+    top: 16px;
+    left: 48px;
+  }
+  //是否编辑blog的页面
+  &__button-2 {
+    line-height: 40px;
+    border-radius: 16px;
+    background-color: #ffc400;
+    color: black;
+    width: 186px;
+    text-align: center;
+    cursor: pointer;
   }
 
   &__button {

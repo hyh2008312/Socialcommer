@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, OnDestroy, EventEmitter, Input} from '@angular/core';
-import { Router, NavigationStart } from  '@angular/router';
+import {Router, NavigationStart} from '@angular/router';
 
 @Component({
   selector: 'app-store-template-3-navigation',
@@ -11,7 +11,9 @@ export class StoreNavigationComponent implements OnInit {
 
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
 
-  @Input() displayName:string ;
+  @Input() displayName: string;
+  @Input() isShowBlog: boolean = false;
+
 
   routerObservable: any;
 
@@ -33,13 +35,11 @@ export class StoreNavigationComponent implements OnInit {
     exact: true
   }];
 
-  constructor(
-    private router: Router
-  ) {
+  constructor(private router: Router) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     let self = this;
     self.routerObservable = self.router.events
       .subscribe((event) => {
@@ -50,12 +50,12 @@ export class StoreNavigationComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if(this.routerObservable) {
+    if (this.routerObservable) {
       this.routerObservable.unsubscribe();
     }
   }
 
-  jumpOrderList():void {
+  jumpOrderList(): void {
     this.router.navigate([`./store/${this.displayName}/order`]);
   }
 

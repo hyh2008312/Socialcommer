@@ -1,17 +1,23 @@
 <div class="xb-4-template-navigation__container" appViewScrollTop [ContainerSelector]="'mat-sidenav-content'"
      fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="48px"
      fxShow="true" fxShow.xs="false">
-  <div class="xb-4-template-navigation xb-pointer" *ngFor="let value of contents"
-       routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
-    {{value.text}}
-  </div>
+  <ng-container *ngFor="let value of contents">
+    <div class="xb-4-template-navigation xb-pointer"
+         *ngIf="!(value.text == 'BLOG' && !isShowBlog)"
+         routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
+      {{value.text}}
+    </div>
+  </ng-container>
 </div>
 
 <div class="xb-4-template-navigation__side-bg" fxShow="false" fxShow.xs="true">
-  <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let value of contents"
-       routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
-    {{value.text}}
-  </div>
+  <ng-container *ngFor="let value of contents">
+    <div class="xb-4-template-navigation__side-flex xb-pointer"
+         *ngIf="!(value.text == 'BLOG' && !isShowBlog)"
+         routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
+      {{value.text}}
+    </div>
+  </ng-container>
   <div class="xb-4-template-navigation__side-flex" (click)="jumpOrder()">
     VIEW YOUR ORDER
   </div>

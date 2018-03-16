@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {StoreService} from '../../store.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -11,10 +11,10 @@ import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-di
 @Component({
   selector: 'app-store-template-edit-2',
   templateUrl: './main-page.component.html',
-  styleUrls: ['../store-template-4.scss']
+  styleUrls: ['../_store-template-4.scss']
 })
 
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, AfterViewInit {
 
   shareLink: string;
   ratio: any;
@@ -271,12 +271,22 @@ export class MainPageComponent implements OnInit {
               for (let value of self.templateList) {
                 if (value.templateId == 4) {
                   self.templateId = value.id;
-                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
                   self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
                   self.productTitleTag = value.context.productTitleTag != '' ? value.context.productTitleTag : self.productTitleTag;
                   self.productDesTag = value.context.productDesTag != '' ? value.context.productDesTag : self.productDesTag;
                   self.aboutMeTag = value.context.aboutMeTag != '' ? value.context.aboutMeTag : self.aboutMeTag;
-
+                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
+                  if (value.context.blogFlag) {
+                    self.blogFlag = value.context.blogFlag;
+                  } else {
+                    self.blogFlag = 1;
+                  }
+                  // 对于显示和隐藏进行设定
+                  if (self.blogFlag == 1 || self.blogFlag == 2) {
+                    self.isShowBlog = true;
+                  } else {
+                    self.isShowBlog = false;
+                  }
                   self.imageBanner = value.images.imageBanner;
                   self.imageAdOne = value.images.imageAdOne;
                   self.imageAdTwo = value.images.imageAdTwo;
@@ -388,6 +398,7 @@ export class MainPageComponent implements OnInit {
           aboutMeTag: this.aboutMeTag,
           productTitleTag: this.productTitleTag,
           productDesTag: this.productDesTag,
+          blogFlag: this.blogFlag
         },
         images: {
           imageBanner: this.imageBanner,
@@ -420,6 +431,7 @@ export class MainPageComponent implements OnInit {
           aboutMeTag: this.aboutMeTag,
           productTitleTag: this.productTitleTag,
           productDesTag: this.productDesTag,
+          blogFlag: this.blogFlag
         },
         images: {
           imageBanner: this.imageBanner,
@@ -508,6 +520,7 @@ export class MainPageComponent implements OnInit {
       }
     });
   }
+
   // 跳转到商品详情页
   selectProductId: any;
   goodsDetail: boolean = false;
@@ -519,5 +532,27 @@ export class MainPageComponent implements OnInit {
 
   changeGoodsDetail(viewNum: number) {
     this.viewIndex = viewNum;
+  }
+
+  //设定一个变量，用来保存是否显示还是隐藏blog.
+  // 1.表示未设定这个功能 2.表示显示（true） 3表示隐藏(false)
+  blogFlag: number = 1;
+
+  //是否需要显示blog(用户自己设定)
+  isShowBlog: boolean = true;
+
+  changeIsShowBlog(isShow: boolean) {
+    this.isShowBlog = isShow;
+    if (isShow) {
+      this.blogFlag = 2;
+    } else {
+      this.blogFlag = 3;
+    }
+  }
+
+  ngAfterViewInit() {
+    if (document.getElementById('xb-4-template-to-top')) {
+      document.getElementById('xb-4-template-to-top').scrollTop = 0;
+    }
   }
 }
