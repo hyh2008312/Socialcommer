@@ -897,6 +897,23 @@ export class ShopService {
       .catch(this.handleError);
   }
 
+  getPaymentHistory(params): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.baseUrl.url}payment/store/payment/history/?${this.serializeParams(params)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {

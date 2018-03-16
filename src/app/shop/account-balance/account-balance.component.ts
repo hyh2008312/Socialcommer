@@ -21,6 +21,9 @@ export class AccountBalanceComponent implements OnInit {
 
   summary: any = {};
 
+  paymentList: any;
+  paymentListIndex = 1;
+
   // MatPaginator Inputs
   length: number = 32;
   pageSize = 12;
@@ -49,8 +52,19 @@ export class AccountBalanceComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  // MatPaginator Output
+  changePage(event) {
+    this.pageSize = event.pageSize;
+    this.paymentListIndex = event.pageIndex + 1;
+    this.changePaymentHistory();
+  }
 
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
+
+  ngOnInit(): void {
+    this.changePaymentHistory();
   }
 
   ngOnDestroy() {
@@ -72,6 +86,17 @@ export class AccountBalanceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+    });
+  }
+
+  changePaymentHistory() {
+    let params = {
+      page: this.paymentListIndex,
+      page_size: this.pageSize
+    };
+
+    this.shopService.getPaymentHistory(params).then((data) => {
+      console.log(data);
     });
   }
 }

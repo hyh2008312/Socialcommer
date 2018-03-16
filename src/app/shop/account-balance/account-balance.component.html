@@ -49,18 +49,18 @@
   </div>
   <div class="xb-account-balance__title xb-account__margin-top-48 md-padding-left-2">Payment History</div>
   <app-account-title></app-account-title>
-  <ng-container *ngFor="let a of []">
+  <ng-container *ngFor="let item of paymentList">
     <div [ngStyle]="{'background-color':'white'}">
-      <app-account-item></app-account-item>
+      <app-account-item [item]="item"></app-account-item>
       <div class="xb-account-item__line"></div>
     </div>
   </ng-container>
-  <div *ngIf="false"  [ngStyle]="{'background-color':'white'}">
-    <mat-paginator [length]="length"
-                   [pageSize]="pageSize"
-                   [pageSizeOptions]="pageSizeOptions">
-    </mat-paginator>
-  </div>
+  <mat-paginator [length]="length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="changePage($event)"
+                 *ngIf="paymentList && paymentList.length > 0">
+  </mat-paginator>
   <div *ngIf="true" class="xb-account-balance__none" fxLayout="row" fxLayoutAlign="center center">
     <div fxLayout="column" fxLayoutAlign="center center">
       <img src="https://media.xberts.com/collector/source/web/pic/pic-no-product.png">

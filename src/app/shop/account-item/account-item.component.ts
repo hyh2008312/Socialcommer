@@ -9,7 +9,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 
 export class AccountItemComponent implements OnInit {
-  @Input() product: any;
+  @Input() item: any;
 
 
   constructor(private router: Router,
