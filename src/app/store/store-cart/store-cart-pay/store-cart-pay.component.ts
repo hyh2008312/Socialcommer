@@ -616,9 +616,14 @@ export class StoreCartPayComponent implements OnInit{
           method: 'post',
           url: EXECUTE_URL,
           json: params
-        }).then(function (res) {
-            window.alert('Payment Complete!');
-          });
+        }).then(function (data) {
+          self.step = 2;
+          self.order = data;
+          self.storeCartService.addOrder({});
+          self.storeService.addProductToCart(self.displayName, []);
+          self.changeDetectorRef.markForCheck();
+          self.changeDetectorRef.detectChanges();
+        });
       }
 
     }, '#paypal-button-container');
@@ -689,8 +694,13 @@ export class StoreCartPayComponent implements OnInit{
           method: 'post',
           url: EXECUTE_URL,
           json: params
-        }).then(function (res) {
-            window.alert('Payment Complete!');
+        }).then(function (data) {
+          self.step = 2;
+          self.order = data;
+          self.storeCartService.addOrder({});
+          self.storeService.addProductToCart(self.displayName, []);
+          self.changeDetectorRef.markForCheck();
+          self.changeDetectorRef.detectChanges();
           });
       }
 
