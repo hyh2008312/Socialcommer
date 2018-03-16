@@ -24,19 +24,32 @@
           {{title}}
         </div>
         <div class="md-margin-top-2 xb-shop__edit-title">Category <span class="xb-input-error xb-large-star">*</span></div>
-        <div fxLayout="row" fxLayoutAlgin="start center" fxLayout.xs="column" fxLayoutAlgin.xs="start stretch">
-          <div fxLayout="row" fxLayoutAlgin="start center">
-            <mat-form-field class="md-margin-right-2">
-              <mat-select  formControlName="categoryName">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start stretch" *ngIf="category.length > 0">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-form-field class="md-margin-right-2" >
+              <mat-select placeholder="Select a Category" formControlName="categoryName">
                 <mat-option *ngFor="let item of category" [value]="item.name" >
                   {{ item.name }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!isCreateCategory" >
-              <div class="md-margin-right-2" >OR</div>
-              <button mat-raised-button color="primary" (click)="showCreate()" >Add New Category</button>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!isCreateCategory" >
+            <div class="md-margin-right-2" >OR</div>
+            <button mat-raised-button color="primary" (click)="showCreate()" >Add New Category</button>
+          </div>
+          <div fxLayout="row" fxLayoutAlgin="start center">
+            <mat-form-field *ngIf="isCreateCategory">
+              <input matInput formControlName="tags" [(ngModel)]="tags">
+            </mat-form-field>
+            <div class="md-margin-left-2">
+              <button type="button" mat-raised-button color="primary" (click)="add(tags)" *ngIf="isCreateCategory">Add</button>
             </div>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start stretch" *ngIf="category.length == 0">
+          <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!isCreateCategory" >
+            <button mat-raised-button color="primary" (click)="showCreate()" >Add New Category</button>
           </div>
           <div fxLayout="row" fxLayoutAlgin="start center">
             <mat-form-field *ngIf="isCreateCategory">
