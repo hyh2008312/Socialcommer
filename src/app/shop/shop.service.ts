@@ -880,7 +880,7 @@ export class ShopService {
       .catch(this.handleError);
   }
 
-  getPaymentSummary(id: any): Promise<any> {
+  getPaymentSummary(): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
