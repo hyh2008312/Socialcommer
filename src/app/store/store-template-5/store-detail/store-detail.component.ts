@@ -278,7 +278,7 @@ export class StoreDetailComponent implements OnInit {
       product[index].number += this.number;
     } else {
       product.unshift({
-        id: this.product.id,
+        id: this.product.productId,
         goodsId: this.product.id,
         imageUrl: this.insertImage ? this.insertImage : this.imageSources[0],
         originalPriceAmount: this.originalPrice,
