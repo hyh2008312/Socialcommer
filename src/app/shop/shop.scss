@@ -524,17 +524,20 @@
 
   &__store{
     &-template{
-      width: 320px;
+      width: 100%;
+      padding-bottom: 112.5%;
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;
-      margin-left: 12px;
-      margin-right: 12px;
-      @include resetBorder();
+      border: 1px solid $primaryColor;
+      border-radius: 4px;
 
       >img{
         display: block;
         width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
       }
 
       $parent: &;
@@ -794,7 +797,7 @@
     }
 
     &-content{
-      margin-top: 56px;
+      margin-top: 48px;
     }
 
     &-card{
@@ -804,7 +807,7 @@
       border-radius: 10px;
       cursor: pointer;
       background-color: $whiteColor;
-      margin: 32px;
+      margin: 0 32px 32px;
       &:hover{
         @include box-shadow(0 0 3px 0 rgba(0,0,0,.19))
       }

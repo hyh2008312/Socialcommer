@@ -3821,19 +3821,19 @@ textarea.mat-input-element {
   .xb-shop__mobile-dialog-inner {
     padding: 16px; } }
 .xb-shop__store-template {
-  width: 320px;
+  width: 100%;
+  padding-bottom: 112.5%;
   position: relative;
   overflow: hidden;
   margin-bottom: 24px;
-  margin-left: 12px;
-  margin-right: 12px;
-  border-radius: 2px;
-  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-  -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
+  border: 1px solid #00bdd6;
+  border-radius: 4px; }
   .xb-shop__store-template > img {
     display: block;
-    width: 100%; }
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0; }
   .xb-shop__store-template-cover {
     display: none !important;
     position: absolute;
@@ -4034,7 +4034,7 @@ textarea.mat-input-element {
   font-weight: 400;
   color: rgba(0, 0, 0, 0.87); }
 .xb-shop__toDo-content {
-  margin-top: 56px; }
+  margin-top: 48px; }
 .xb-shop__toDo-card {
   width: 350px;
   height: 270px;
@@ -4042,7 +4042,7 @@ textarea.mat-input-element {
   border-radius: 10px;
   cursor: pointer;
   background-color: #fff;
-  margin: 32px; }
+  margin: 0 32px 32px; }
   .xb-shop__toDo-card:hover {
     -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
