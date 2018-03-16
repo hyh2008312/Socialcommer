@@ -96,7 +96,7 @@ export class AccountBalanceComponent implements OnInit {
     };
 
     this.shopService.getPaymentHistory(params).then((data) => {
-      console.log(data);
+      this.paymentList = [...data.results];
     });
   }
 }
