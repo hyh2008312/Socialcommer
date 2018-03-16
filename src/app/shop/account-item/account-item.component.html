@@ -1,18 +1,18 @@
 <div class="xb-account-item" fxLayout="row" fxLayoutAlign="start center">
   <div class="xb-account-item__title  md-padding-left-2" fxFlex="20"
        fxLayout="row" fxLayoutAlign="center center">
-    November 1st,2018
+    {{item.created | amDateFormat:'MMMM Do, YYYY'}}
   </div>
   <div class="xb-account-item__title" fxFlex
        fxLayout="row" fxLayoutAlign="center center">
-    Withdraw to your bank account
+    {{item.activity}}
   </div>
   <div class="xb-account-item__title" fxFlex="20"
        fxLayout="row" fxLayoutAlign="center center">
-    + $100.00
+    + {{item.amount | exchangeCurrency:currency | currency:currency: true}}
   </div>
   <div class="xb-account-item__title" fxFlex="20"
        fxLayout="row" fxLayoutAlign="center center">
-    $500.50
+    {{item.availableBalance | exchangeCurrency:currency | currency:currency: true}}
   </div>
 </div>

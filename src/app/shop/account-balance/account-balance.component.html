@@ -61,7 +61,7 @@
                  (page)="changePage($event)"
                  *ngIf="paymentList && paymentList.length > 0">
   </mat-paginator>
-  <div *ngIf="true" class="xb-account-balance__none" fxLayout="row" fxLayoutAlign="center center">
+  <div *ngIf="paymentList && paymentList.length == 0" class="xb-account-balance__none" fxLayout="row" fxLayoutAlign="center center">
     <div fxLayout="column" fxLayoutAlign="center center">
       <img src="https://media.xberts.com/collector/source/web/pic/pic-no-product.png">
       <span class="md-dark-secondary">There’s no payment history to show.</span>
