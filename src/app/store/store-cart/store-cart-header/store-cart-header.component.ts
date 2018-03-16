@@ -26,6 +26,9 @@ export class StoreCartHeaderComponent{
       if(data) {
         let uid = data.templateId;
         this.storeName = data.name;
+        if(data.template && data.template.context.nameTag) {
+          this.storeName = data.template.context.nameTag;
+        }
         this.homeLink = `/store/${data.displayName}/${uid}`;
         this.displayName = data.displayName;
       }
