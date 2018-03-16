@@ -2,12 +2,13 @@
   <div class="xb-share-dialog__close" (click)="close()" >
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
-  <div class="xb-share-dialog__content xb-bold">
-    Promote this product by sharing it with your friends or followers!
+  <div class="xb-share-dialog__title">
+    Promote this product by sharing on social media!
   </div>
   <div fxLayout="row" fxLayoutAlign="start center">
     <mat-form-field fxFlex>
-      <input matInput [(ngModel)]="text">
+      <textarea matInput [(ngModel)]="text" matTextareaAutosize matAutosizeMinRows="1"
+                matAutosizeMaxRows="3"></textarea>
     </mat-form-field>
   </div>
   <div class="md-margin-top-2">
