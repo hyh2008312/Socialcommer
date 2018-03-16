@@ -7,6 +7,8 @@ import 'rxjs/add/operator/map';
 import {MatDialog} from "@angular/material";
 import { UserService } from  '../../shared/services/user/user.service';
 
+import { ShopService } from "../shop.service";
+
 import {AccountBalanceWithdrawMoneyDialogComponent} from "../account-balance-withdraw-money-dialog/account-balance-withdraw-money-dialog.component";
 
 @Component({
@@ -16,6 +18,8 @@ import {AccountBalanceWithdrawMoneyDialogComponent} from "../account-balance-wit
 })
 
 export class AccountBalanceComponent implements OnInit {
+
+  summary: any = {};
 
   // MatPaginator Inputs
   length: number = 32;
@@ -31,12 +35,17 @@ export class AccountBalanceComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private shopService: ShopService
   ) {
     this.sub = this.userService.store.subscribe((data) => {
       if(data) {
         this.currency = data.currency.toUpperCase();
       }
+    });
+
+    this.shopService.getPaymentSummary().then((data) => {
+      this.summary = data;
     });
   }
 
