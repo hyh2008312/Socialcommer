@@ -23,6 +23,11 @@ export class MainPageComponent implements OnInit {
   productNumber: number = 0;
   displayName: string;
 
+
+  showBlogFlag: number = 1;
+  //是否显示根据两者条件
+  isBlog: boolean = false;
+
   constructor(private storeService: StoreService,
               private  router: Router) {
   }
@@ -37,6 +42,9 @@ export class MainPageComponent implements OnInit {
         self.contactUsTag = data.context ? data.context.contactUsTag : '';
         self.text = data.description;
         self.categories = data.category;
+        if (data.context && data.context.blogFlag) {
+          self.showBlogFlag = data.context.blogFlag;
+        }
         self.ownerId = data.ownerId;
         self.queryBlog();
       }
@@ -78,6 +86,15 @@ export class MainPageComponent implements OnInit {
         self.isHaveBlog = true;
       } else {
         self.isHaveBlog = false;
+      }
+
+      // 当为1：未设定 2 显示 3 不显示
+      if (self.showBlogFlag == 1) {
+        self.isBlog = self.isHaveBlog;
+      } else if (self.showBlogFlag == 2) {
+        self.isBlog = true;
+      } else if (self.showBlogFlag == 3) {
+        self.isBlog = false;
       }
     });
   }

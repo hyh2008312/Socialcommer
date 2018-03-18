@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {StoreService} from '../../store.service';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -15,7 +15,7 @@ import {CategoryInfoDao} from './CategoryInfoDao';
   styleUrls: ['../_store-template-6.scss']
 })
 
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, AfterViewInit {
   //测试数据
   categoryProduct: any = [];
 
@@ -304,7 +304,17 @@ export class MainPageComponent implements OnInit {
                   self.aboutMeDesTag = value.context.aboutMeDesTag != '' ? value.context.aboutMeDesTag : self.aboutMeDesTag;
                   self.blogDesTag = value.context.blogDesTag != '' ? value.context.blogDesTag : self.blogDesTag;
                   self.textCategoryList = value.context.tempCategoryList;
-
+                  if (value.context.blogFlag) {
+                    self.blogFlag = value.context.blogFlag;
+                  } else {
+                    self.blogFlag = 1;
+                  }
+                  // 对于显示和隐藏进行设定
+                  if (self.blogFlag == 1 || self.blogFlag == 2) {
+                    self.isShowBlog = true;
+                  } else {
+                    self.isShowBlog = false;
+                  }
 
                   self.imageBanner = value.images.imageBanner;
                   self.imageAboutCover = value.images.imageAboutCover;
@@ -507,6 +517,7 @@ export class MainPageComponent implements OnInit {
           aboutMeDesTag: this.aboutMeDesTag,
           blogDesTag: this.blogDesTag,
           tempCategoryList: this.tempCategoryList,
+          blogFlag: this.blogFlag
         },
         images: {
           imageBanner: this.imageBanner,
@@ -541,6 +552,7 @@ export class MainPageComponent implements OnInit {
           aboutMeDesTag: this.aboutMeDesTag,
           blogDesTag: this.blogDesTag,
           tempCategoryList: this.tempCategoryList,
+          blogFlag: this.blogFlag
         },
 
         images: {
@@ -635,6 +647,7 @@ export class MainPageComponent implements OnInit {
       }
     });
   }
+
 // 跳转到商品详情页
   selectProductId: any;
   goodsDetail: boolean = false;
@@ -646,6 +659,28 @@ export class MainPageComponent implements OnInit {
 
   changeGoodsDetail(viewNum: number) {
     this.viewIndex = viewNum;
-    this.isCategory=false ;
+    this.isCategory = false;
+  }
+
+  ngAfterViewInit() {
+    if (document.getElementById('xb-6-template-to-top')) {
+      document.getElementById('xb-6-template-to-top').scrollTop = 0;
+    }
+  }
+
+  //设定一个变量，用来保存是否显示还是隐藏blog.
+  // 1.表示未设定这个功能 2.表示显示（true） 3表示隐藏(false)
+  blogFlag: number = 1;
+
+  //是否需要显示blog(用户自己设定)
+  isShowBlog: boolean = true;
+
+  changeIsShowBlog(isShow: boolean) {
+    this.isShowBlog = isShow;
+    if (isShow) {
+      this.blogFlag = 2;
+    } else {
+      this.blogFlag = 3;
+    }
   }
 }

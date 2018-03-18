@@ -13,6 +13,7 @@ export class StoreNavigationComponent implements OnInit {
   @Output() public categoryChange: EventEmitter<any> = new EventEmitter();
   @Input() navigationIndex = 0;
   @Input() isCategory = false;
+  @Input() isNavigationHaveBlog = true;
   contents = [{
     name: 'DISCOVER',
   }, {

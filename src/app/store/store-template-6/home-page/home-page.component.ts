@@ -37,6 +37,10 @@ export class HomePageComponent implements OnInit {
   isHaveBlog: boolean = false;
 
   currency: string = 'USD';
+  showBlogFlag: number = 1;
+
+  //是否显示根据两者条件
+  isBlog: boolean = false;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -55,6 +59,9 @@ export class HomePageComponent implements OnInit {
         self.currency = data.currency.toUpperCase();
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
+        if (data.context && data.context.blogFlag) {
+          self.showBlogFlag = data.context.blogFlag;
+        }
         self.categoryInfoList = data.context.tempCategoryList;
         self.text = data.description;
         self.ownerId = data.ownerId;
@@ -143,6 +150,14 @@ export class HomePageComponent implements OnInit {
       this.isHaveBlog = !(data.count === 0);
       if (data.next == null) {
         self.nextBlogPage = false;
+      }
+      // 当为1：未设定 2 显示 3 不显示
+      if (self.showBlogFlag == 1) {
+        self.isBlog = self.isHaveBlog;
+      } else if (self.showBlogFlag == 2) {
+        self.isBlog = true;
+      } else if (self.showBlogFlag == 3) {
+        self.isBlog = false;
       }
     });
   }

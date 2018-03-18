@@ -260,6 +260,17 @@ export class MainPageComponent implements OnInit, AfterViewInit {
                     self.aboutMeDesTag = value.context.aboutMeDesTag != '' ? value.context.aboutMeDesTag : self.aboutMeDesTag;
                     self.blogDesTag = value.context.blogDesTag != '' ? value.context.blogDesTag : self.blogDesTag;
 
+                    if (value.context.blogFlag) {
+                      self.blogFlag = value.context.blogFlag;
+                    } else {
+                      self.blogFlag = 1;
+                    }
+                    // 对于显示和隐藏进行设定
+                    if (self.blogFlag == 1 || self.blogFlag == 2) {
+                      self.isShowBlog = true;
+                    } else {
+                      self.isShowBlog = false;
+                    }
                     self.imageBanner = value.images.imageBanner;
                     self.imageAboutCover = value.images.imageAboutCover;
                     self.imageBlogCover = value.images.imageBlogCover;
@@ -378,6 +389,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
           aboutMeTitleTag: this.aboutMeTitleTag,
           aboutMeDesTag: this.aboutMeDesTag,
           blogDesTag: this.blogDesTag,
+          blogFlag: this.blogFlag
         },
         images: {
           imageBanner: this.imageBanner,
@@ -408,6 +420,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
           aboutMeTitleTag: this.aboutMeTitleTag,
           aboutMeDesTag: this.aboutMeDesTag,
           blogDesTag: this.blogDesTag,
+          blogFlag: this.blogFlag
         },
 
         images: {
@@ -515,6 +528,22 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   changeGoodsDetail(viewNum: number) {
     this.viewIndex = viewNum;
     this.isCategory = false;
+  }
+
+  //设定一个变量，用来保存是否显示还是隐藏blog.
+  // 1.表示未设定这个功能 2.表示显示（true） 3表示隐藏(false)
+  blogFlag: number = 1;
+
+  //是否需要显示blog(用户自己设定)
+  isShowBlog: boolean = true;
+
+  changeIsShowBlog(isShow: boolean) {
+    this.isShowBlog = isShow;
+    if (isShow) {
+      this.blogFlag = 2;
+    } else {
+      this.blogFlag = 3;
+    }
   }
 
   ngAfterViewInit() {

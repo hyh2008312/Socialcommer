@@ -8,6 +8,7 @@ import { StoreResolverService } from './store-resolve.service';
 
 import { SharedModule } from '../shared/shared.module';
 import { StoreTemplateRouter } from '../config/app.constant';
+import {StoreClosedDialogComponent} from "./store-closed/store-closed-dialog.component";
 
 @NgModule({
   imports: [
@@ -18,9 +19,12 @@ import { StoreTemplateRouter } from '../config/app.constant';
 
   ],
   declarations: [
-    StoreMainComponent
+    StoreMainComponent,
+    StoreClosedDialogComponent
   ],
-  entryComponents: [],
+  entryComponents: [
+    StoreClosedDialogComponent
+  ],
   providers: [
     StoreService,
     StoreTemplateRouter,

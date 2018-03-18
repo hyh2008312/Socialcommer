@@ -1,0 +1,15 @@
+@charset "UTF-8";
+@import "../../styles/utils/_index";
+@import "../../styles/_variables";
+// 添加购物车成功时的弹框
+.xb-store-closed-dialog {
+  width: 600px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  padding-left: 40px;
+
+  &__tip{
+    font-size: 24px;
+  }
+
+}
