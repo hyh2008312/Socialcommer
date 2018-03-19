@@ -80,6 +80,9 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   }
 
   confirm(): void {
+    if(this.balanceForm.invalid) {
+      return;
+    }
     this.status = 2;
   }
 
@@ -88,13 +91,17 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   }
 
   complete() {
+    if(this.balanceForm.invalid) {
+      return;
+    }
     let params = this.balanceForm.value;
     let self = this;
 
     this.disabled = false;
     this.shopService.withDrawMoney(params).then((data) => {
       self.data.availableBalance = self.data.availableBalance - self.balanceForm.value.amount;
-      self.data.totalWithdrawals = self.data.totalWithdrawals + self.balanceForm.value.amount;
+      self.data.totalWithdrawals = parseFloat(self.data.totalWithdrawals) + parseFloat(self.balanceForm.value.amount);
+      self.data.isWithDraw = true;
       self.checkoutIsEnoughWithDraw();
       self.status = 3;
     });

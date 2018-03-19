@@ -84,13 +84,20 @@ export class AccountBalanceComponent implements OnInit {
       data: {
         availableBalance: this.summary.availableBalance,
         totalWithdrawals: this.summary.totalWithdrawals,
+        isWithDraw: false,
         name: 'Luzhenqiang'
       }
     });
 
     let self = this;
     dialogRef.afterClosed().subscribe(result => {
-      self.summary.availableBalance = dialogRef.componentInstance.data.availableBalance;
+
+      if(dialogRef.componentInstance.data.isWithDraw) {
+        self.summary.availableBalance = dialogRef.componentInstance.data.availableBalance;
+        self.summary.totalWithdrawals = dialogRef.componentInstance.data.totalWithdrawals;
+        self.paymentListIndex = 1;
+        self.changePaymentHistory();
+      }
     });
   }
 
