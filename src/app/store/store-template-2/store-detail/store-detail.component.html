@@ -122,6 +122,9 @@
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">OUT OF STOCK</a>
             </button>
           </div>
+          <div class="md-margin-top-2">
+            <app-share-button [link]="shareLink" [text]="text"></app-share-button>
+          </div>
           <div fxHide.gt-xs class="xb-store-template__detail-buttons-fixed" fxLayout="column" fxShow="false"
                fxShow.xs="true"
                *ngIf="showButton">
