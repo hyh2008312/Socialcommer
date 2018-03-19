@@ -49,12 +49,14 @@
   </div>
   <div class="xb-account-balance__title xb-account__margin-top-48 md-padding-left-2">Payment History</div>
   <app-account-title></app-account-title>
-  <ng-container *ngFor="let item of paymentList">
-    <div [ngStyle]="{'background-color':'white'}">
-      <app-account-item [item]="item"></app-account-item>
-      <div class="xb-account-item__line"></div>
-    </div>
-  </ng-container>
+  <div class="md-margin-top-2">
+    <ng-container *ngFor="let item of paymentList">
+      <div [ngStyle]="{'background-color':'white'}">
+        <app-account-item [item]="item"></app-account-item>
+        <div class="xb-account-item__line"></div>
+      </div>
+    </ng-container>
+  </div>
   <mat-paginator [length]="length"
                  [pageSize]="pageSize"
                  [pageSizeOptions]="pageSizeOptions"
