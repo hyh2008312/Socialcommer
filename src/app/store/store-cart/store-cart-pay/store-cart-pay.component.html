@@ -481,7 +481,7 @@
               {{ stepOneFormError }}
             </div>
             <button mat-raised-button color="primary" (click)="save()" *ngIf="step == 1 && payMethodItem.display" >COMPLETE ORDER</button>
-            <button mat-raised-button color="primary"  *ngIf="step == 2">
+            <button mat-raised-button color="primary"  *ngIf="step == 2" routerLink="../../order">
               CONTACT SUPPORT
             </button>
             <div class="xb-cart__order-button" [ngClass]="{'xb-cart__order-button-hidden': step != 1 || payMethodItem.display}" >
@@ -518,7 +518,7 @@
     <div class="unicorn-dark-theme" fxLayout="column" >
       <button mat-raised-button color="primary" *ngIf="step == 0" (click)="continue(true)">NEXT</button>
       <button mat-raised-button color="primary" (click)="save()" *ngIf="step == 1 && payMethodItem.display" >COMPLETE ORDER</button>
-      <button mat-raised-button color="primary"  *ngIf="step == 2">
+      <button mat-raised-button color="primary"  *ngIf="step == 2" routerLink="../../order">
         CONTACT SUPPORT
       </button>
       <div class="xb-cart__order-button" [hidden]="step != 1 || payMethodItem.display" >
