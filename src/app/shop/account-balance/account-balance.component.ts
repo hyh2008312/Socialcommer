@@ -81,11 +81,16 @@ export class AccountBalanceComponent implements OnInit {
   openWithdrawMoney() {
     let dialogRef = this.dialog.open(AccountBalanceWithdrawMoneyDialogComponent, {
       disableClose: true,
-      data: {name: 'Luzhenqiang'}
+      data: {
+        availableBalance: this.summary.availableBalance,
+        totalWithdrawals: this.summary.totalWithdrawals,
+        name: 'Luzhenqiang'
+      }
     });
 
+    let self = this;
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      self.summary.availableBalance = dialogRef.componentInstance.data.availableBalance;
     });
   }
 

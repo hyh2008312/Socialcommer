@@ -4,6 +4,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { UserService } from  '../../shared/services/user/user.service';
 
+import { ShopService } from '../shop.service';
+
 @Component({
   selector: 'app-account-balance-withdraw-money-dialog',
   templateUrl: './account-balance-withdraw-money-dialog.component.html',
@@ -22,7 +24,8 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<AccountBalanceWithdrawMoneyDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private shopService: ShopService
   ) {
     this.balanceForm = this.fb.group({
       email: ['', [
@@ -30,9 +33,16 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
         Validators.email
       ]],
       amount: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern(/^[-]?([1-9]{1}[0-9]{0,}(\.[0-9]{0,2})?|0(\.[0-9]{0,2})?|\.[0-9]{1,2})$/)
       ]]
     });
+
+    this.balanceForm.patchValue({
+      amount: this.data.availableBalance
+    });
+
+    this.checkoutIsEnoughWithDraw();
 
     this.sub = this.userService.store.subscribe((data) => {
       if(data) {
@@ -49,8 +59,28 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  checkoutIsEnoughWithDraw() {
+    if(this.data.availableBalance >= 50) {
+      this.disabled = false;
+    } else {
+      this.disabled = true;
+    }
+  }
+
+  isWithDrawNumberLargeThenAvailable($event) {
+    if($event > this.data.availableBalance) {
+      this.balanceForm.patchValue({
+        amount: this.data.availableBalance
+      });
+    } else if($event < 0) {
+      this.balanceForm.patchValue({
+        amount: 0
+      });
+    }
+  }
+
   confirm(): void {
-    //this.status = 2;
+    this.status = 2;
   }
 
   back() {
@@ -58,6 +88,16 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
   }
 
   complete() {
-    this.status = 3;
+    let params = this.balanceForm.value;
+    let self = this;
+
+    this.disabled = false;
+    this.shopService.withDrawMoney(params).then((data) => {
+      self.data.availableBalance = self.data.availableBalance - self.balanceForm.value.amount;
+      self.data.totalWithdrawals = self.data.totalWithdrawals + self.balanceForm.value.amount;
+      self.checkoutIsEnoughWithDraw();
+      self.status = 3;
+    });
+
   }
 }

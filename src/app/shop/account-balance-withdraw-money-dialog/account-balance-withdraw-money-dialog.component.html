@@ -6,8 +6,8 @@
         Available Balance
       </div>
       <div class="xb-account-money-dialog__14regular md-margin-left-4">
-        {{0 | exchangeCurrency:currency|currency:currency:true}}
-        {{currency == 'INR'? '(Estimated in $0.00)':''}}
+        {{data.availableBalance | exchangeCurrency:currency|currency:currency:true}}
+        {{currency == 'INR'? '(Estimated in '+(data.availableBalance|currency:'USD':true)+')':''}}
       </div>
     </div>
     <form [formGroup]="balanceForm" novalidate>
@@ -38,7 +38,7 @@
       <div class="xb-account-money-dialog__payment md-margin-top-4">Withdraw Amount</div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
         <mat-form-field >
-          <input matInput formControlName="paypalAmount">
+          <input matInput formControlName="amount" type="text" (ngModelChange)="isWithDrawNumberLargeThenAvailable($event)">
         </mat-form-field>
       </div>
       <div *ngIf="balanceForm.get('amount').invalid && (balanceForm.get('amount').dirty ||
@@ -46,13 +46,16 @@
         <div *ngIf="balanceForm.get('amount').hasError('required')">
           This field is required.
         </div>
+        <div *ngIf="balanceForm.get('amount').hasError('pattern')">
+          This number pattern is invalid.
+        </div>
       </div>
       <div class="xb-account-money-dialog__14regular">The fund can only be withdrawn when your available
         balance reaches $50.
       </div>
       <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="end start">
         <div class="md-margin-right-2">
-          <button mat-raised-button color="primary" disabled="disabled" type="submit" (click)="confirm()">Withdraw Now</button>
+          <button mat-raised-button color="primary" [disabled]="disabled" type="submit" (click)="confirm()">Withdraw Now</button>
         </div>
         <button mat-button color="primary" (click)="close()" type="button">Cancel</button>
       </div>
@@ -65,8 +68,8 @@
         Amount:
       </div>
       <div class="xb-account-money-dialog__14regular md-margin-left-4">
-        {{0 | exchangeCurrency:currency|currency:currency:true}}
-        {{currency == 'INR'? '(Estimated in $0.00)':''}}
+        {{ balanceForm.get("amount").value | exchangeCurrency:currency|currency:currency:true}}
+        {{currency == 'INR'? '(Estimated in '+(balanceForm.get("amount").value|currency:currency:true)+')':''}}
       </div>
     </div>
     <div class="xb-account-payment-settings__left-note">
@@ -76,14 +79,14 @@
     <div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-account-money-dialog__payment-name">Paypal Account</div>
-        <div class="xb-account-money-dialog__payment-content"></div>
+        <div class="xb-account-money-dialog__payment-content">{{balanceForm.get("email").value}}</div>
       </div>
     </div>
     <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="end start">
       <div class="md-margin-right-2">
         <button mat-button color="primary" (click)="back()">Back</button>
       </div>
-      <button mat-raised-button color="primary" (click)="complete()">Confirm Payments</button>
+      <button mat-raised-button color="primary" [disabled]="disabled" (click)="complete()">Confirm Payments</button>
     </div>
   </div>
   <div [hidden]="!(status===3)">
@@ -92,7 +95,7 @@
     </div>
     <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="end start">
       <div class="md-margin-right-2">
-        <button mat-button color="primary" (click)="back()">OK</button>
+        <button mat-raised-button color="primary" (click)="close()">OK</button>
       </div>
     </div>
   </div>
