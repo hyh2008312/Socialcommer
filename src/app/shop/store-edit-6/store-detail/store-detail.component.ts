@@ -229,5 +229,101 @@ export class StoreDetailComponent implements OnInit {
   changeViewIndex(index: number) {
     this.closeDetail.emit(index);
   }
+  selectVariant(value, item) {
+    this.isShowCartWarn = false;
+    this.isSelectInvalid = false;
+    let isSelected = value.isSelected;
+    for (let itm of item.value) {
+      itm.isSelected = false;
+    }
+    value.isSelected = !isSelected;
+    let id = item.id;
+    if (value.isSelected) {
+      if (id == 2) {
+        this.insertImage = value.image;
+      }
+      this.selectVariant[id] = value.value;
+      let mVariant = this.checkIsVariant();
+      if (mVariant && mVariant.length > 0) {
+        this.variantId = mVariant[0].id;
+        this.salePrice = mVariant[0].saleUnitPrice;
+        this.originalPrice = mVariant[0].unitPrice;
+        this.isCanBuy = mVariant[0].isCanBuy;
+        this.variant = mVariant[0];
+      } else {
+        this.variantId = this.product.variants[0].id;
+        this.salePrice = this.product.salePrice;
+        this.originalPrice = this.product.originalPrice;
+        this.isCanBuy = this.product.variants[0].isCanBuy;
+        this.variant = this.product.variants[0];
+      }
+    } else {
+      if (id == 2) {
+        this.insertImage = null;
+      }
+      this.selectVariant[id] = false;
+      this.variantId = this.product.variants[0].id;
+      this.salePrice = this.product.salePrice;
+      this.originalPrice = this.product.originalPrice;
+      this.isCanBuy = this.product.variants[0].isCanBuy;
+      this.variant = this.product.variants[0];
+    }
+    //判断有没有选择变体（两者）
+    let count = 0;
+    for (let item of this.variantList) {
+      if (item.name == 'Size') {
+        this.isSelectSize = false;
+        for (let i of item.value) {
+          if (i.isSelected) {
+            count++;
+            this.isSelectSize = true;
+            break;
+          }
+        }
+      } else if (item.name == 'Color') {
+        this.isSelectColor = false;
+        for (let i of item.value) {
+          if (i.isSelected) {
+            count++;
+            this.isSelectColor = true;
+            break;
+          }
+        }
+      }
+    }
+    // 判断是否显示价格范围
+    this.isPriceRange = !(count == this.variantList.length);
+  }
 
+  checkIsVariant(): any {
+    let variant = [...this.product.variants];
+    for (let prop in this.selectedVariant) {
+      if (!this.selectVariant[prop]) {
+        return false;
+      }
+      let item = this.selectVariant[prop];
+      for (let i of this.product.variants) {
+        let isDelete = true;
+        for (let j of i.attributeValues) {
+          if (j.attributeId == parseInt(prop) && item == j.value) {
+            isDelete = false;
+            break;
+          }
+        }
+        if (isDelete) {
+          let id = i.id;
+          let index = variant.findIndex((data) => {
+            if (data.id == id) {
+              return true;
+            }
+          });
+          if (index > -1) {
+            variant.splice(index, 1);
+          }
+        }
+      }
+    }
+    this.isSelectInvalid = variant.length === 0;
+    return variant;
+  }
 }

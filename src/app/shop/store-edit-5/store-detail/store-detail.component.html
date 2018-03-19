@@ -51,11 +51,11 @@
             <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
               <div *ngFor="let value of item.value;let j = index;">
                 <div class="xb-store-template__car-image" [ngClass]="{'active':value.isSelected}"
-                     *ngIf="value.image" [ngStyle]="{'cursor':'initial'}">
+                     *ngIf="value.image" (click)="selectVariant(value, item)">
                   <img [src]="value.image"/>
                 </div>
                 <div *ngIf="!value.image" class="xb-store-template__car-text"
-                     [ngClass]="{'active':value.isSelected}" [ngStyle]="{'cursor':'initial'}">
+                     [ngClass]="{'active':value.isSelected}" (click)="selectVariant(value, item)">
                   {{value.value}}
                 </div>
               </div>
@@ -99,6 +99,9 @@
           <a class="gtag-shop-detail-get-it-now-button" *ngIf="!isCanBuy">
             <button class="xb-4-template-detail__buy-buttons" [ngStyle]="{'cursor':'initial'}" [disabled]="true">OUT OF STOCK</button>
           </a>
+        </div>
+        <div class="md-margin-top-2">
+          <app-share-button [link]="shareLink" [text]="text"></app-share-button>
         </div>
         <div class="xb-4-template-detail__line" *ngIf="product?.recommendation"></div>
         <div class="xb-4-template-detail__store-owner" *ngIf="product?.recommendation">

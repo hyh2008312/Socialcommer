@@ -131,6 +131,7 @@ export class StoreDetailComponent implements OnInit {
           }
 
           this.isHaveVariant = data.attributes.length > 0;
+          this.variantList=[];
           if (this.isHaveVariant) {
             self.arrangeVariant(data);
           } else {

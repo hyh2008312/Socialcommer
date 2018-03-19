@@ -55,11 +55,11 @@
             <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
               <div *ngFor="let value of item.value;let j = index;">
                 <div class="xb-store__details-image" [ngClass]="{'active':value.isSelected}"
-                     *ngIf="value.image" [ngStyle]="{'cursor':'initial'}">
+                     *ngIf="value.image" (click)="selectVariant(value, item)">
                   <img [src]="value.image" />
                 </div>
                 <div *ngIf="!value.image" class="xb-store__details-text"
-                     [ngClass]="{'active':value.isSelected}"[ngStyle]="{'cursor':'initial'}">
+                     [ngClass]="{'active':value.isSelected}"(click)="selectVariant(value, item)">
                   {{value.value}}
                 </div>
               </div>

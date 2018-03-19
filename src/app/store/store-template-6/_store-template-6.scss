@@ -838,7 +838,7 @@
       z-index: 5;
       background-color: white;
       left: -15px;
-      width: 220px;
+      min-width: 200px;
       box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
     }
     &-flex {
@@ -846,6 +846,8 @@
       font-size: 16px;
       font-family: Helvetica;
       height: 40px;
+      white-space: nowrap;
+      padding-right: 16px;
       padding-left: 16px;
       line-height: 40px;
       &.active {
