@@ -4,7 +4,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {ShopComponent} from './shop/shop.component';
 import {ShopErrorComponent} from './shop-error/shop-error.component';
 import {StoreComponent} from './store/store.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
 import {SettingsComponent} from './settings/settings.component';
 import {StorePreviewComponent} from './store-preview/store-preview.component';
 import {StoreEditComponent} from './store-edit/store-edit.component';
@@ -78,7 +77,8 @@ const routes: Routes = [
             ]
           }]
       }, {
-        path: 'dashboard', component: DashboardComponent
+        path: 'dashboard',
+        loadChildren: 'app/shop/dashboard/dashboard.module#DashboardModule'
       }, {
         path: 'settings', component: SettingsComponent
       }, {

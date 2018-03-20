@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from  '../../shared/services/user/user.service';
+import { UserService } from  '../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-shop-bonus-tips-dialog',

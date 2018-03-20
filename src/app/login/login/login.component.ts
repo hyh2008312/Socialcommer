@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
         if(data && data.store && data.store.length>0) {
           self.userService.addStore(data.store[0]);
           if(data && data.isInvite) {
-            self.router.navigate(['/shop/dashboard']).then((data) => {
+            self.router.navigate(['/shop/listings/items']).then((data) => {
               self.showLoading = false;
               self.loadingValue = 0;
             });

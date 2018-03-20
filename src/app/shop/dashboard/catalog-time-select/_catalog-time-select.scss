@@ -1,0 +1,44 @@
+@import "../../../styles/utils/_index";
+@import "../../../styles/_variables";
+
+.xb-shop {
+
+  &__select {
+    position: relative;
+    height: 40px;
+    &-color {
+      color: $primaryColor;
+      @include media();
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+
+    &-tri {
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid rgba(0, 0, 0, .87);
+    }
+
+    &-panel {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 120px;
+      background-color: $whiteColor;
+      @include resetBorder();
+      z-index: 10;
+
+      > div {
+        line-height: 40px;
+        padding: 0 16px;
+
+        &.active {
+          background-color: rgba(0, 0, 0, .12);
+        }
+      }
+    }
+  }
+
+}
