@@ -10,8 +10,6 @@ import {StorePreviewComponent} from './store-preview/store-preview.component';
 import {StoreEditComponent} from './store-edit/store-edit.component';
 import {ToDoListComponent} from './to-do-list/to-do-list.component';
 import {StoreFrontComponent} from './store-front/store-front.component';
-import {AccountBalanceComponent} from "./account-balance/account-balance.component";
-import { AccountBalancePendingComponent } from "./account-balance-pending/account-balance-pending.component";
 
 const routes: Routes = [
   {
@@ -92,11 +90,7 @@ const routes: Routes = [
       },
       {
         path: 'account',
-        children: [{
-          path: '', component: AccountBalanceComponent
-        }, {
-          path: 'pendingbalance', component: AccountBalancePendingComponent
-        }]
+        loadChildren: 'app/shop/account/account.module#AccountModule'
       },{
         path: 'report',
         loadChildren: 'app/shop/report/report.module#ReportModule'

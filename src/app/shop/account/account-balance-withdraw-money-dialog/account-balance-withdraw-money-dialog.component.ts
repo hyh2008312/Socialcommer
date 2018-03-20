@@ -2,9 +2,9 @@ import {Component, OnInit, Inject} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { UserService } from  '../../shared/services/user/user.service';
+import { UserService } from  '../../../shared/services/user/user.service';
 
-import { ShopService } from '../shop.service';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-account-balance-withdraw-money-dialog',
@@ -25,7 +25,7 @@ export class AccountBalanceWithdrawMoneyDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private userService: UserService,
-    private shopService: ShopService
+    private shopService: AccountService
   ) {
     this.balanceForm = this.fb.group({
       email: ['', [
