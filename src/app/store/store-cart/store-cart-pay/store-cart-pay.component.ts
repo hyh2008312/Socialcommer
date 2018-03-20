@@ -401,7 +401,7 @@ export class StoreCartPayComponent implements OnInit{
       if(typeof item.quantity == 'number' && item.quantity > 0) {
         price += item.quantity * item.unitPriceExclTax;
         if(item.shippingExclTax) {
-          shippingPrice += parseFloat(item.shippingExclTax) * item.quantity;
+          shippingPrice += parseFloat(item.shippingExclTax);
         }
       }
     }

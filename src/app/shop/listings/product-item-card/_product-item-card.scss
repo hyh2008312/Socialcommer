@@ -1,0 +1,77 @@
+@import "../../../styles/utils/_index";
+@import "../../../styles/_variables";
+
+.xb-shop{
+  &__card{
+    display: block;
+    width: 100%;
+    position: relative;
+    margin: 0 10px 20px;
+    border-radius: 4px;
+    @include resetBorder();
+    background-color: $whiteColor;
+
+    &-image{
+      padding-bottom: 100%;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      position: relative;
+      >div{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        background-color: $whiteColor;
+        overflow: hidden;
+        >img{
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          @include transform(translate(-50%, -50%))
+        }
+      }
+    }
+
+    &-content{
+      position: relative;
+      padding: 8px 16px 16px;
+    }
+
+    &-title{
+      margin-top: 12px;
+      height: 48px;
+      line-height: 24px;
+      overflow: hidden;
+    }
+
+    &-price{
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    &-commission{
+      margin-top: 8px;
+      border: 1px solid $blackColor;
+      border-radius: 4px;
+      line-height: 24px;
+      padding: 0 12px;
+      @include media();
+    }
+
+    &-sale{
+      background-color: $orangeColor;
+      border-radius: 4px;
+      padding: 0 8px;
+      color: $whiteColor;
+      line-height: 24px;
+    }
+
+    &-action{
+      position: relative;
+    }
+
+  }
+}
+

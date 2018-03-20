@@ -1,0 +1,436 @@
+@import "../../../styles/utils/_index";
+@import "../../../styles/_variables";
+
+.xb-shop{
+
+  &__padding-bottom{
+    padding-bottom: 32px;
+  }
+
+  &__tab{
+    line-height: 40px;
+    margin-right: 54px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &.active{
+      @include media();
+      color: $primaryColor;
+      border-bottom: 2px solid $primaryColor;
+    }
+    &-bg{
+      @include xb-xs-screen{
+        overflow-x: scroll;
+      }
+    }
+
+    &-scroll{
+      border-bottom: 1px solid rgba(0,0,0, .12);
+      ::-webkit-scrollbar {
+        height: 2px;
+      }
+      @include xb-xs-screen{
+        padding: 0 16px;
+      }
+    }
+  }
+
+  &__title{
+    font-size: 16px;
+    @include media();
+  }
+
+  &__title-1{
+    font-size: 24px;
+    @include media();
+  }
+
+  &__text{
+    line-height: 24px;
+  }
+
+  &__margin-top{
+    margin-top: 12px;
+  }
+
+  &__content{
+    padding: 24px 0;
+    @include xb-xs-screen{
+      padding: 16px;
+    }
+  }
+
+  &__recommend-content{
+    @include xb-xs-screen{
+      padding: 0 16px;
+    }
+  }
+
+  &__width{
+    width: 200px;
+  }
+
+}
+
+.xb-store {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+
+  &__background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 1000;
+
+    @include xb-xs-screen {
+      overflow-y: hidden;
+    }
+  }
+
+  &__details {
+    margin-top: 56px;
+    margin-bottom: 56px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 40px 48px;
+    background-color: $whiteColor;
+
+    @include xb-xs-screen {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    &-bg-new {
+      margin-top: 56px;
+      margin-bottom: 56px;
+      width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      padding: 40px 48px;
+      background-color: $whiteColor;
+
+      @include xb-xs-screen {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+    }
+
+    @include xb-sm-screen {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    &-close {
+      position: absolute;
+      left: calc(100% + 24px);
+      top: 0;
+      color: $whiteColor;
+      cursor: pointer;
+      i {
+        font-size: 56px;
+        line-height: 56px;
+      }
+
+      @include xb-xs-screen {
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+
+      @include xb-sm-screen {
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+    }
+
+    &-title {
+      font-size: 24px;
+      line-height: 32px;
+      @include media();
+
+      @include xb-xs-screen {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      @include xb-sm-screen {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    &-price {
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+
+      @include xb-xs-screen {
+        font-size: 16px;
+      }
+
+      @include xb-sm-screen {
+        font-size: 16px;
+      }
+    }
+
+    &-sale {
+      background-color: $primaryColor;
+      border-radius: 4px;
+      padding: 0 8px;
+      color: $whiteColor;
+      line-height: 28px;
+
+      @include xb-xs-screen {
+        line-height: 24px;
+      }
+
+      @include xb-sm-screen {
+        line-height: 24px;
+      }
+    }
+
+    &-margin-right {
+      width: 580px;
+      height: 480px;
+      margin-right: 32px;
+      @include xb-xs-screen {
+        width: auto;
+        height: auto;
+        margin-right: 16px;
+        margin-left: 16px;
+        margin-top: 16px;
+        @include resetBorder();
+      }
+      @include xb-sm-screen {
+        width: 416px;
+        height: 320px;
+        margin-right: 16px;
+        margin-left: 16px;
+        margin-top: 16px;
+
+      }
+    }
+
+    &-margin-top {
+      margin-top: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-margin-top-1 {
+      margin-top: 12px;
+      @include xb-xs-screen {
+        margin-top: 0px;
+      }
+    }
+
+    &-margin-top-2 {
+      margin-top: 20px;
+      @include xb-xs-screen {
+        margin-top: 0;
+      }
+    }
+
+    &-left-part {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 54px;
+      margin-right: 24px;
+      margin-top: 6px;
+      @include xb-xs-screen {
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    &-bg {
+      margin-top: 40px;
+      background-color: #efefef;
+      border-radius: 4px;
+      padding: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-left-part-1 {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 138px;
+      margin-right: 14px;
+    }
+
+    &-left-part-2 {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 135px;
+      margin-right: 32px;
+    }
+
+    &-image {
+      width: 54px;
+      height: 54px;
+      position: relative;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #dedede;
+      overflow: hidden;
+      cursor: pointer;
+      > img {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+      &.active {
+        border: 2px solid $primaryColor;
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      color: rgba(0, 0, 0, .87);
+      padding: 0 8px;
+      line-height: 32px;
+      margin-right: 40px;
+      cursor: pointer;
+      @include text-overflow();
+      border: 2px solid transparent;
+      &.active {
+        @include media();
+        border: 2px solid $primaryColor;
+      }
+    }
+
+    &-item {
+
+      &-input {
+        border: 1px solid #dedede;
+        border-radius: 2px;
+        input {
+          width: 100%;
+          line-height: 40px;
+          font-size: 16px;
+          border: none;
+          text-align: center;
+          padding: 0;
+        }
+      }
+
+      &-add {
+        > i {
+          display: block;
+          user-select: none;
+        }
+      }
+    }
+
+    &-padding-bottom {
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
+      padding-bottom: 64px;
+
+      @include xb-xs-screen {
+        padding-bottom: 16px;
+      }
+
+      @include xb-sm-screen {
+        padding-bottom: 16px;
+      }
+    }
+
+    &-padding-top {
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
+      padding-top: 48px;
+      padding-bottom: 16px;
+
+      @include xb-xs-screen {
+        padding: 0 16px 16px;
+      }
+
+      @include xb-sm-screen {
+        padding: 0 16px 16px;
+      }
+    }
+
+    &-description {
+      padding-top: 48px;
+      img {
+        width: 100%;
+      }
+
+      @include xb-xs-screen {
+        padding: 16px 16px 72px;
+      }
+      @include xb-sm-screen {
+        padding: 16px 16px 16px;
+      }
+    }
+
+    &-content {
+      @include xb-xs-screen {
+        padding: 0 16px;
+        margin-top: 16px;
+        width: 100%;
+      }
+      @include xb-sm-screen {
+        padding: 0 16px 0 0;
+        margin-top: 16px;
+      }
+    }
+
+    &-buttons {
+      margin-top: 24px;
+      background-color: $whiteColor;
+      &-color {
+        color: $whiteColor;
+        display: block;
+      }
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+    &-buttons-fixed {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 8px 16px;
+      width: 100%;
+      background-color: $whiteColor;
+      z-index: 1;
+      display: block;
+    }
+  }
+}

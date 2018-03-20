@@ -4,22 +4,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {ShopComponent} from './shop/shop.component';
 import {ShopErrorComponent} from './shop-error/shop-error.component';
 import {StoreComponent} from './store/store.component';
-import {CatalogComponent} from './catalog/catalog.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {SettingsComponent} from './settings/settings.component';
-import {FindProductsComponent} from './find-products/find-products.component';
-import {FindSupplierProductsComponent} from "./find-supplier-products/find-supplier-products.component";
-import {CatalogAddProductComponent} from './catalog-add-product/catalog-add-product.component';
-import {CatalogEditProductComponent} from './catalog-edit-product/catalog-edit-product.component';
-import {FindProductsAddProductComponent} from './find-products-add-product/find-products-add-product.component';
-import {FindProductsEditPreviewComponent} from './find-products-edit-preview/find-products-edit-preview.component';
 import {StorePreviewComponent} from './store-preview/store-preview.component';
 import {StoreEditComponent} from './store-edit/store-edit.component';
 import {ToDoListComponent} from './to-do-list/to-do-list.component';
-import {ProductCategoryComponent} from './product-category/product-category.component';
 import {StoreFrontComponent} from './store-front/store-front.component';
 import {AccountBalanceComponent} from "./account-balance/account-balance.component";
-import {AccountPaymentSettingComponent} from "./account-payment-setting/account-payment-setting.component";
 import {AccountReportComponent} from  "./account-report/account-report.component";
 import { AccountBalancePendingComponent } from "./account-balance-pending/account-balance-pending.component";
 
@@ -95,30 +86,7 @@ const routes: Routes = [
         path: 'settings', component: SettingsComponent
       }, {
         path: 'listings',
-        children: [{
-          path: 'products', component: CatalogComponent,
-          children: [{
-            path: 'create', component: CatalogAddProductComponent
-          }, {
-            path: ':id/edit', component: CatalogEditProductComponent
-          }]
-        }, {
-          path: 'categories', component: ProductCategoryComponent
-        }, {
-          path: 'items', component: FindProductsComponent,
-          children: [{
-            path: ':id', component: FindProductsAddProductComponent
-          }, {
-            path: ':id/preview', component: FindProductsEditPreviewComponent,
-          }]
-        }, {
-          path: 'items/supplier/:supplierId', component: FindSupplierProductsComponent,
-          children: [{
-            path: ':id', component: FindProductsAddProductComponent
-          }, {
-            path: ':id/preview', component: FindProductsEditPreviewComponent,
-          }]
-        }]
+        loadChildren: 'app/shop/listings/listings.module#ListingsModule'
       }, {
         path: 'blog',
         loadChildren: 'app/shop/blog/blog.module#BlogModule'

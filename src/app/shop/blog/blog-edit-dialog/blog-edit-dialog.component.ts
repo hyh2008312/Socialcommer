@@ -13,8 +13,6 @@ import { UserService } from  '../../../shared/services/user/user.service';
 import { ImageUploadPreviewService } from "../../../shared/components/image-upload-preview/image-upload-preview.service";
 import { S3UploaderService } from "../../../shared/services/s3-upload/s3-upload.service";
 
-import { ProductAffiliateLinkDialogComponent } from "../../product-affiliate-link-dialog/product-affiliate-link-dialog.component";
-
 @Component({
   selector: 'app-blog-edit-dialog',
   templateUrl: './blog-edit-dialog.component.html',
