@@ -126,9 +126,11 @@ export class LeftSideNavigationComponent implements OnInit {
 
     this.sub1 = this.router.events.subscribe((s) => {
       if(s instanceof NavigationStart) {
-        this.showLoading = true;
-        this.loadingValue = 0;
-        this.load();
+        if(s.url.split('templates')[0] == null) {
+          this.showLoading = true;
+          this.loadingValue = 0;
+          this.load();
+        }
       }
       if(s instanceof NavigationEnd) {
         this.showLoading = false;

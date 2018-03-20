@@ -10,8 +10,7 @@ import {Router, ActivatedRoute, NavigationStart, NavigationEnd} from '@angular/r
 export class StoreFrontComponent implements OnInit {
 
   loading: boolean = false;
-  selectedIndex: number = 0;
-  sub: any
+  sub: any;
 
   constructor(
     private router: Router,
@@ -19,7 +18,9 @@ export class StoreFrontComponent implements OnInit {
   ) {
     this.sub = this.router.events.subscribe((s) => {
       if(s instanceof NavigationStart) {
-        this.loading = true;
+        if(s.url.split('templates')[0] != null) {
+          this.loading = true;
+        }
       }
       if(s instanceof NavigationEnd) {
         this.loading = false;
