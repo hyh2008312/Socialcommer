@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { ShopService } from '../shop.service';
+import { BlogService } from '../blog.service';
 
-import { ImageUploadPreviewService } from "../../shared/components/image-upload-preview/image-upload-preview.service";
-import { S3UploaderService } from "../../shared/services/s3-upload/s3-upload.service";
+import { ImageUploadPreviewService } from "../../../shared/components/image-upload-preview/image-upload-preview.service";
+import { S3UploaderService } from "../../../shared/services/s3-upload/s3-upload.service";
 
 @Component({
   selector: 'app-blog-create-dialog',
   templateUrl: './blog-create-dialog.component.html',
-  styleUrls: ['../../store/store.scss','../shop.scss']
+  styleUrls: ['../_blog.scss']
 })
 
 export class BlogCreateDialogComponent implements OnInit {
@@ -33,7 +33,7 @@ export class BlogCreateDialogComponent implements OnInit {
   constructor(
     public router: Router,
     private fb: FormBuilder,
-    public shopService: ShopService,
+    public shopService: BlogService,
     private activatedRoute: ActivatedRoute,
     public previewImageService: ImageUploadPreviewService,
     public s3UploaderService: S3UploaderService

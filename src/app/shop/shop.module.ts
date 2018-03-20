@@ -15,7 +15,6 @@ import { StorePreviewComponent } from "./store-preview/store-preview.component";
 import { StoreEditComponent } from "./store-edit/store-edit.component";
 import { ToDoListComponent } from "./to-do-list/to-do-list.component";
 import { ProductCategoryComponent } from "./product-category/product-category.component";
-import { BlogComponent } from "./blog/blog.component";
 import { StoreFrontComponent } from "./store-front/store-front.component";
 import { AccountBalancePendingComponent } from "./account-balance-pending/account-balance-pending.component";
 
@@ -29,8 +28,6 @@ import { StatisticItemComponent } from './statistic-item/statistic-item.componen
 import { StatisticTitleComponent } from './statistic-title/statistic-title.component';
 import { CategoryItemComponent } from './category-item/category-item.component';
 import { CategoryTitleComponent } from './category-title/category-title.component';
-import { BlogItemComponent } from './blog-item/blog-item.component';
-import { BlogTitleComponent } from './blog-title/blog-title.component';
 import { FindProductCategoryComponent } from './find-product-category/find-product-category.component';
 import { BonusTitleComponent } from "./bonus-title/bonus-title.component";
 import { BonusItemComponent } from "./bonus-item/bonus-item.component";
@@ -44,9 +41,6 @@ import { ProductAffiliateLinkDialogComponent } from "./product-affiliate-link-di
 import { CategoryCreateDialogComponent } from "./category-create-dialog/category-create-dialog.component";
 import { CategoryDeleteDialogComponent } from "./category-delete-dialog/category-delete-dialog.component";
 import { CategoryEditDialogComponent } from "./category-edit-dialog/category-edit-dialog.component";
-import { BlogCreateDialogComponent } from "./blog-create-dialog/blog-create-dialog.component";
-import { BlogEditDialogComponent } from "./blog-edit-dialog/blog-edit-dialog.component";
-import { BlogDeleteDialogComponent } from "./blog-delete-dialog/blog-delete-dialog.component";
 import { SettingsPasswordDialogComponent } from "./setting-password-dialog/setting-password-dialog.component";
 import { BonusTipsDialogComponent } from "./bonus-tips-dialog/bonus-tips-dialog.component";
 import { ProductShareDialogComponent } from "./product-share-dialog/product-share-dialog.component";
@@ -99,23 +93,17 @@ import { SharedModule } from '../shared/shared.module';
     FindProductsEditPreviewComponent,
     StorePreviewComponent,
     StoreEditComponent,
-    BlogComponent,
     StoreFrontComponent,
     StatisticItemComponent,
     StatisticTitleComponent,
     CategoryItemComponent,
     CategoryTitleComponent,
-    BlogTitleComponent,
-    BlogItemComponent,
     StoreShareDialogComponent,
     ProductAffiliateLinkDialogComponent,
     SnackBarSuccessComponent,
     CategoryCreateDialogComponent,
     CategoryDeleteDialogComponent,
     CategoryEditDialogComponent,
-    BlogCreateDialogComponent,
-    BlogEditDialogComponent,
-    BlogDeleteDialogComponent,
     SettingsPasswordDialogComponent,
     ShopErrorComponent,
     FindProductCategoryComponent,
@@ -146,7 +134,6 @@ import { SharedModule } from '../shared/shared.module';
     CategoryCreateDialogComponent,
     CategoryDeleteDialogComponent,
     CategoryEditDialogComponent,
-    BlogDeleteDialogComponent,
     SettingsPasswordDialogComponent,
     AccountBalanceWithdrawMoneyDialogComponent,
     BonusTipsDialogComponent,

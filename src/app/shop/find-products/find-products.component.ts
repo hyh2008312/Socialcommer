@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -58,6 +58,14 @@ export class FindProductsComponent implements OnInit {
 
   isSearch: boolean = false;
 
+  currency: string = 'USD';
+
+  sub: any;
+
+  sub1: any;
+
+  sub2: any;
+
   constructor(
     private shopService: ShopService,
     private userService: UserService,
@@ -72,7 +80,7 @@ export class FindProductsComponent implements OnInit {
 
     this.searchForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
-    this.userService.countryList.subscribe((data) => {
+    this.sub1 = this.userService.countryList.subscribe((data) => {
       if(data) {
         this.countryList = data;
       }
@@ -90,7 +98,7 @@ export class FindProductsComponent implements OnInit {
   ngOnInit():void {
 
     let self = this;
-    self.userService.pubCategory.subscribe((data) => {
+    self.sub2 = self.userService.pubCategory.subscribe((data) => {
       if(data) {
         self.categories.push({
           id: null,
@@ -104,6 +112,12 @@ export class FindProductsComponent implements OnInit {
           self.categories.push(item);
         }
 
+      }
+    });
+
+    self.sub = self.userService.store.subscribe((data) => {
+      if(data) {
+        self.currency = data.currency.toUpperCase();
       }
     });
   }
@@ -160,6 +174,12 @@ export class FindProductsComponent implements OnInit {
   changeSort($event) {
     this.sort = $event;
     this.getSupplyProductList();
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+    this.sub1.unsubscribe();
+    this.sub2.unsubscribe();
   }
 
 }

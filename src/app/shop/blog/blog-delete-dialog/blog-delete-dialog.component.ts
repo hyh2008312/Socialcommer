@@ -1,12 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { ShopService } from '../shop.service';
+import { BlogService } from '../blog.service';
 
 @Component({
   selector: 'app-blog-delete-dialog',
   templateUrl: './blog-delete-dialog.component.html',
-  styleUrls: ['../shop.scss']
+  styleUrls: ['../_blog.scss']
 })
 
 export class BlogDeleteDialogComponent implements OnInit {
@@ -14,7 +14,7 @@ export class BlogDeleteDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<BlogDeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private shopService: ShopService
+    private shopService: BlogService
   ) {
 
   }

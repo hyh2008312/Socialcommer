@@ -96,7 +96,7 @@ export class ProductItemComponent implements OnInit {
   promote() {
     let dialogRef = this.dialog.open(ProductShareDialogComponent, {
       data: {
-        shareLink: `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${this.product.id}` + ''+ this.product.id,
+        shareLink: `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${this.product.id}`,
         text: this.product.title
       }
     });

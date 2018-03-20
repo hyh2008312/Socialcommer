@@ -3,7 +3,7 @@
     <div fxLayout="row" fxLayoutAlign="start stretch">
       <div class="xb-order-tracking__detail-width xb-order-tracking__detail-margin-right" fxLayout="row" fxLayoutAlign="start stretch" fxFlex="none">
         <div class="xb-order-tracking__detail-image" fxFlex="none">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/716Mg13ZLZL._SL1500_.jpg">
+          <img [src]="order.mainImage">
         </div>
         <div fxFlex fxLayout="column" fxLayoutAlign="space-between start">
           <div class="xb-order-tracking__product-title-2" >{{order.title}}</div>

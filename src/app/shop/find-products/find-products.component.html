@@ -6,7 +6,8 @@
          fxLayout.xs="column" fxLayoutAlign.xs="start start">
       <div>
         <div class="xb-shop__products-title">Find Awesome Dropshipping Products to Sell</div>
-        <div class="xb-shop__products-title-1">All products are dropshipped by verified suppliers in 5 days with 30 day return guarantee!</div>
+        <div class="xb-shop__products-title-1">All products are dropshipped by verified suppliers in 5 days with
+          {{currency == 'INR'? 10: 30}} day return guarantee!</div>
       </div>
       <div fxLayout="row" fxLayoutAlign="end center">
         <form class="xb-shop__products-search" [formGroup]="searchForm"

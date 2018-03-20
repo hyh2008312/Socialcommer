@@ -17,10 +17,7 @@ import {StorePreviewComponent} from './store-preview/store-preview.component';
 import {StoreEditComponent} from './store-edit/store-edit.component';
 import {ToDoListComponent} from './to-do-list/to-do-list.component';
 import {ProductCategoryComponent} from './product-category/product-category.component';
-import {BlogComponent} from './blog/blog.component';
 import {StoreFrontComponent} from './store-front/store-front.component';
-import {BlogCreateDialogComponent} from './blog-create-dialog/blog-create-dialog.component';
-import {BlogEditDialogComponent} from './blog-edit-dialog/blog-edit-dialog.component';
 import {AccountBalanceComponent} from "./account-balance/account-balance.component";
 import {AccountPaymentSettingComponent} from "./account-payment-setting/account-payment-setting.component";
 import {AccountReportComponent} from  "./account-report/account-report.component";
@@ -123,12 +120,8 @@ const routes: Routes = [
           }]
         }]
       }, {
-        path: 'blog', component: BlogComponent,
-        children: [{
-          path: 'create', component: BlogCreateDialogComponent
-        }, {
-          path: ':id/edit', component: BlogEditDialogComponent
-        }]
+        path: 'blog',
+        loadChildren: 'app/shop/blog/blog.module#BlogModule'
       },
       {
         path: 'account',

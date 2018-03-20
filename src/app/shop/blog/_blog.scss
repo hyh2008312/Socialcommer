@@ -1,0 +1,637 @@
+@import "../../styles/utils/_index";
+@import "../../styles/_variables";
+
+.xb-shop{
+
+  &__width-100{
+    width: 100%;
+  }
+
+  &__margin-top{
+    margin-top: 48px;
+  }
+
+  &__header{
+    position: absolute;
+    background-color: $whiteColor;
+    height: 65px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+  }
+
+  &__product{
+    position: relative;
+
+    &-navigation{
+      height: 64px;
+      background-color: $whiteColor;
+      padding: 0 16px;
+      border-radius: 2px;
+    }
+
+    &-bg{
+      padding: 0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    &-image{
+      width: 120px;
+      height: 120px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-right: 16px;
+      position: relative;
+      border: 1px solid rgba(0,0,0,.12);
+
+      >img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+    }
+    &-width{
+      width: 120px;
+      margin-right: 16px;
+    }
+
+    &-id{
+      text-align: center;
+    }
+
+    &-time{
+      text-align: center;
+    }
+
+    &-title{
+      font-size: 14px;
+      color: rgba(0,0,0, .87);
+      line-height: 24px;
+      max-height: 48px;
+      overflow: hidden;
+    }
+
+    &-title-1{
+      font-size: 14px;
+      @include media();
+      color: rgba(0,0,0,.87);
+    }
+
+    &-price{
+      text-align: center;
+      &-sale{
+        font-size: 16px;
+        font-weight: bold;
+        color: rgba(0,0,0, .87);
+        line-height: 24px;
+      }
+    }
+
+    &-category{
+      line-height: 28px;
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    &-item{
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+    &-list{
+      padding: 0 16px;
+      background-color: $whiteColor;
+    }
+
+    &-none{
+      padding: 96px 0;
+      background-color: $whiteColor;
+      border-radius: 4px;
+      span{
+        margin-top: 16px;
+        @include media();
+      }
+    }
+
+    &-buttons {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      z-index: 10;
+    }
+
+    &-button-list{
+      width: 210px;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background-color: $lightWhiteColor;
+      @include media();
+      @include resetBorder();
+
+      >a{
+        height: 56px;
+        color: rgba(0,0,0,.87);
+        &:hover{
+          background-color: rgba(0,0,0,.12);
+        }
+      }
+    }
+  }
+
+  &__statistic{
+    min-height: 48px;
+    padding: 12px 0;
+    &-text{
+      text-align: center;
+      overflow: hidden;
+      height: 20px;
+      @include text-overflow();
+    }
+
+  }
+
+  &__mobile-dialog-inner{
+    @include xb-xs-screen{
+      padding: 16px;
+    }
+    @include xb-sm-screen{
+      padding: 16px;
+    }
+  }
+
+
+}
+
+.xb-share-dialog{
+
+  padding: 56px;
+  max-width: 720px;
+  position: relative;
+  background-color: $whiteColor;
+  border-radius: 4px;
+  @include xb-xs-screen{
+    padding: 56px 16px;
+  }
+
+  &__close{
+    position: absolute;
+    left: calc(100% - 40px);
+    top: 16px;
+    color: $blackColor;
+    cursor: pointer;
+    i{
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+    }
+  }
+
+  &__title{
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    @include media();
+  }
+
+  &__content{
+    margin-top: 32px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    @include regular();
+  }
+
+  &__link{
+    font-size: 24px;
+    line-height: 32px;
+    text-decoration: underline;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 12px;
+    display: block;
+    color: rgba(0,0,0,.87);
+  }
+
+  &__margin-top{
+    margin-top: 48px;
+  }
+
+  &__width-100{
+    width: 720px;
+    .mat-form-field{
+      width: 100%;
+    }
+    @include xb-xs-screen{
+      width: 100%;
+    }
+  }
+}
+
+.xb-affiliate-dialog{
+
+  padding: 56px;
+  max-width: 720px;
+  position: relative;
+  border-radius: 4px;
+  @include xb-xs-screen{
+    padding: 0;
+  }
+
+  &__close{
+    position: absolute;
+    left: calc(100% - 40px);
+    top: 16px;
+    color: $blackColor;
+    cursor: pointer;
+    i{
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+    }
+  }
+
+  &__title{
+    font-size: 24px;
+    line-height: 32px;
+    @include media();
+  }
+
+  &__content{
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 28px;
+    @include regular();
+  }
+
+  &__margin-top{
+    margin-top: 32px;
+  }
+}
+
+.xb-store {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+
+  &__background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 1000;
+
+    @include xb-xs-screen {
+      overflow-y: hidden;
+    }
+  }
+
+  &__details {
+    margin-top: 56px;
+    margin-bottom: 56px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 40px 48px;
+    background-color: $whiteColor;
+
+    @include xb-xs-screen {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    &-bg-new {
+      margin-top: 56px;
+      margin-bottom: 56px;
+      width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      padding: 40px 48px;
+      background-color: $whiteColor;
+
+      @include xb-xs-screen {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+    }
+
+    @include xb-sm-screen {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    &-close {
+      position: absolute;
+      left: calc(100% + 24px);
+      top: 0;
+      color: $whiteColor;
+      cursor: pointer;
+      i {
+        font-size: 56px;
+        line-height: 56px;
+      }
+
+      @include xb-xs-screen {
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+
+      @include xb-sm-screen {
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+    }
+
+    &-title {
+      font-size: 24px;
+      line-height: 32px;
+      @include media();
+
+      @include xb-xs-screen {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      @include xb-sm-screen {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    &-price {
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+
+      @include xb-xs-screen {
+        font-size: 16px;
+      }
+
+      @include xb-sm-screen {
+        font-size: 16px;
+      }
+    }
+
+    &-sale {
+      background-color: $primaryColor;
+      border-radius: 4px;
+      padding: 0 8px;
+      color: $whiteColor;
+      line-height: 28px;
+
+      @include xb-xs-screen {
+        line-height: 24px;
+      }
+
+      @include xb-sm-screen {
+        line-height: 24px;
+      }
+    }
+
+    &-margin-right {
+      width: 580px;
+      height: 480px;
+      margin-right: 32px;
+      @include xb-xs-screen {
+        width: auto;
+        height: auto;
+        margin-right: 16px;
+        margin-left: 16px;
+        margin-top: 16px;
+        @include resetBorder();
+      }
+      @include xb-sm-screen {
+        width: 416px;
+        height: 320px;
+        margin-right: 16px;
+        margin-left: 16px;
+        margin-top: 16px;
+
+      }
+    }
+
+    &-margin-top {
+      margin-top: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-margin-top-1 {
+      margin-top: 12px;
+      @include xb-xs-screen {
+        margin-top: 0px;
+      }
+    }
+
+    &-margin-top-2 {
+      margin-top: 20px;
+      @include xb-xs-screen {
+        margin-top: 0;
+      }
+    }
+
+    &-left-part {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 54px;
+      margin-right: 24px;
+      margin-top: 6px;
+      @include xb-xs-screen {
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    &-bg {
+      margin-top: 40px;
+      background-color: #efefef;
+      border-radius: 4px;
+      padding: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-left-part-1 {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 138px;
+      margin-right: 14px;
+    }
+
+    &-left-part-2 {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 135px;
+      margin-right: 32px;
+    }
+
+    &-image {
+      width: 54px;
+      height: 54px;
+      position: relative;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #dedede;
+      overflow: hidden;
+      cursor: pointer;
+      > img {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+      &.active {
+        border: 2px solid $primaryColor;
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      color: rgba(0, 0, 0, .87);
+      padding: 0 8px;
+      line-height: 32px;
+      margin-right: 40px;
+      cursor: pointer;
+      @include text-overflow();
+      border: 2px solid transparent;
+      &.active {
+        @include media();
+        border: 2px solid $primaryColor;
+      }
+    }
+
+    &-item {
+
+      &-input {
+        border: 1px solid #dedede;
+        border-radius: 2px;
+        input {
+          width: 100%;
+          line-height: 40px;
+          font-size: 16px;
+          border: none;
+          text-align: center;
+          padding: 0;
+        }
+      }
+
+      &-add {
+        > i {
+          display: block;
+          user-select: none;
+        }
+      }
+    }
+
+    &-padding-bottom {
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
+      padding-bottom: 64px;
+
+      @include xb-xs-screen {
+        padding-bottom: 16px;
+      }
+
+      @include xb-sm-screen {
+        padding-bottom: 16px;
+      }
+    }
+
+    &-padding-top {
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
+      padding-top: 48px;
+      padding-bottom: 16px;
+
+      @include xb-xs-screen {
+        padding: 0 16px 16px;
+      }
+
+      @include xb-sm-screen {
+        padding: 0 16px 16px;
+      }
+    }
+
+    &-description {
+      padding-top: 48px;
+      img {
+        width: 100%;
+      }
+
+      @include xb-xs-screen {
+        padding: 16px 16px 72px;
+      }
+      @include xb-sm-screen {
+        padding: 16px 16px 16px;
+      }
+    }
+
+    &-content {
+      @include xb-xs-screen {
+        padding: 0 16px;
+        margin-top: 16px;
+        width: 100%;
+      }
+      @include xb-sm-screen {
+        padding: 0 16px 0 0;
+        margin-top: 16px;
+      }
+    }
+
+    &-buttons {
+      margin-top: 24px;
+      background-color: $whiteColor;
+      &-color {
+        color: $whiteColor;
+        display: block;
+      }
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+    &-buttons-fixed {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 8px 16px;
+      width: 100%;
+      background-color: $whiteColor;
+      z-index: 1;
+      display: block;
+    }
+  }
+}
+

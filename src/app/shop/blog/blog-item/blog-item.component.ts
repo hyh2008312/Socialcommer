@@ -1,6 +1,6 @@
 import { Input, Output, Component, OnInit,EventEmitter, Inject} from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { ShopService } from '../shop.service';
+import { BlogService } from '../blog.service';
 
 import { BlogDeleteDialogComponent } from '../blog-delete-dialog/blog-delete-dialog.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -8,7 +8,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-blog-item',
   templateUrl: './blog-item.component.html',
-  styleUrls: ['../shop.scss']
+  styleUrls: ['../_blog.scss']
 })
 
 export class BlogItemComponent implements OnInit {
