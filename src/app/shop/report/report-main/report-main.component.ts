@@ -1,18 +1,16 @@
-import { Component, OnInit, OnDestroy, Inject} from '@angular/core';
-import { Router,NavigationStart, ActivatedRoute} from '@angular/router';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
-import { ShopService } from '../shop.service';
-import { UserService } from  '../../shared/services/user/user.service';
+import { ReportService } from '../report.service';
 
 @Component({
-  selector: 'app-shop-account-report',
-  templateUrl: './account-report.component.html',
-  styleUrls: ['./_account-report.scss']
+  selector: 'app-shop-account-report-main',
+  templateUrl: './report-main.component.html',
+  styleUrls: ['../_account-report.scss']
 })
 
-export class AccountReportComponent implements OnInit {
+export class ReportMainComponent implements OnInit {
 
   storeId: number;
   storeCurrency: string = 'USD';
@@ -95,7 +93,7 @@ export class AccountReportComponent implements OnInit {
   pageSizeOptions = [6, 12];
 
   constructor(
-    private shopService: ShopService
+    private reportService: ReportService
   ) {
 
   }
@@ -143,25 +141,17 @@ export class AccountReportComponent implements OnInit {
     }
 
     let self = this;
-    self.shopService.getProductList({
-      status: relationStatus,
-      page: page,
-      page_size: this.pageSize
-    }).then((data) => {
-      self.length = data.count;
-      switch (event.index) {
-        case 1:
-          self.transaction = [];
-          break;
-        case 2:
-          self.refund = [];
-          break;
-        default:
-          self.sales = [];
-          break;
-      }
-
-    });
+    switch (event.index) {
+      case 1:
+        self.transaction = [];
+        break;
+      case 2:
+        self.refund = [];
+        break;
+      default:
+        self.sales = [];
+        break;
+    }
   }
 
   changeSort($event, type, index) {

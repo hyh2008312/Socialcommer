@@ -11,7 +11,6 @@ import {StoreEditComponent} from './store-edit/store-edit.component';
 import {ToDoListComponent} from './to-do-list/to-do-list.component';
 import {StoreFrontComponent} from './store-front/store-front.component';
 import {AccountBalanceComponent} from "./account-balance/account-balance.component";
-import {AccountReportComponent} from  "./account-report/account-report.component";
 import { AccountBalancePendingComponent } from "./account-balance-pending/account-balance-pending.component";
 
 const routes: Routes = [
