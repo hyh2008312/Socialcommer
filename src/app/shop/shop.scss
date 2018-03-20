@@ -1,17 +1,17 @@
 @import "../styles/utils/_index";
 @import "../styles/_variables";
 
-.xb-shop{
-  &__logo{
+.xb-shop {
+  &__logo {
     position: relative;
 
-    &-bg{
+    &-bg {
       height: 56px;
       padding: 0 16px;
       background-color: $whiteColor;
-      border-bottom: 1px solid rgba(0,0,0,.12);
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
     }
-    &-badge{
+    &-badge {
       position: absolute;
       top: -2px;
       left: 100%;
@@ -23,7 +23,7 @@
       padding: 0 4px;
     }
 
-    &-button{
+    &-button {
       position: relative;
       margin: 0 16px;
       line-height: 56px;
@@ -32,21 +32,21 @@
       @include media();
       color: $primaryColor;
       cursor: pointer;
-      &.active{
+      &.active {
         border-bottom: 2px solid $primaryColor;
       }
     }
   }
-  &__bg-content{
+  &__bg-content {
     height: calc(100vh - 56px);
   }
-  &__avatar{
+  &__avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
     position: relative;
   }
-  &__icons{
+  &__icons {
     width: 40px;
     height: 40px;
     padding: 8px;
@@ -54,16 +54,16 @@
     line-height: 24px;
   }
 
-  &__left-navigation{
+  &__left-navigation {
     padding-top: 16px;
-    border-right: 1px solid rgba(0,0,0,.12);
+    border-right: 1px solid rgba(0, 0, 0, .12);
     background-color: #0a2529;
 
-    &-scroll{
+    &-scroll {
       overflow-y: scroll;
     }
 
-    &-arrow{
+    &-arrow {
       width: 0;
       height: 0;
       border-left: 5px solid transparent;
@@ -72,7 +72,7 @@
       margin-left: 8px;
     }
 
-    &-arrow-1{
+    &-arrow-1 {
       width: 0;
       height: 0;
       border-top: 5px solid transparent;
@@ -82,38 +82,38 @@
       display: none;
     }
 
-    &-bg{
+    &-bg {
       width: 160px;
     }
 
-    &-buttons{
+    &-buttons {
       padding-left: 8px;
       height: 56px;
       color: $whiteColor;
       @include media();
       cursor: pointer;
-      &.active{
+      &.active {
         color: $primaryColor;
       }
 
     }
 
-    &-bg-1{
+    &-bg-1 {
       background-color: #051c1d;
-      border-top: 1px solid rgba(255,255,255,.12);
+      border-top: 1px solid rgba(255, 255, 255, .12);
     }
 
     $parent: &;
 
-    &-buttons-1{
+    &-buttons-1 {
       padding-left: 8px;
       height: 56px;
       color: $whiteColor;
       @include media();
       cursor: pointer;
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      &.active{
-        #{$parent}-arrow-1{
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      &.active {
+        #{$parent}-arrow-1 {
           display: block;
         }
       }
@@ -121,142 +121,142 @@
     }
   }
 
-  &__scroll{
+  &__scroll {
     overflow-y: scroll;
   }
-  &__margin-top{
+  &__margin-top {
     margin-top: 48px;
   }
 
-  &__margin-bottom{
+  &__margin-bottom {
     margin-bottom: 48px;
   }
 
-  &__margin-bottom-1{
+  &__margin-bottom-1 {
     margin-bottom: 40px;
   }
 
-  &__margin-bottom-2{
+  &__margin-bottom-2 {
     margin-bottom: 32px;
     padding: 0;
   }
 
-  &__margin-bottom-3{
+  &__margin-bottom-3 {
     margin-bottom: 16px;
   }
 
-  &__margin-left{
+  &__margin-left {
     margin-left: 16px;
     position: relative;
   }
 
-  &__width-100{
+  &__width-100 {
     width: 100%;
   }
 
-  &__width-1{
+  &__width-1 {
     width: 100px;
   }
 
-  &__header{
+  &__header {
     position: absolute;
     background-color: $whiteColor;
     height: 65px;
     width: 100%;
     left: 0;
     top: 0;
-    border-bottom: 1px solid rgba(0,0,0,.12);
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
   }
 
-  &__product{
+  &__product {
     position: relative;
 
-    &-navigation{
+    &-navigation {
       height: 64px;
       background-color: $whiteColor;
       padding: 0 16px;
       border-radius: 2px;
     }
 
-    &-bg{
+    &-bg {
       padding: 0;
       border-radius: 2px;
       overflow: hidden;
     }
 
-    &-image{
+    &-image {
       width: 120px;
       height: 120px;
       border-radius: 4px;
       overflow: hidden;
       margin-right: 16px;
       position: relative;
-      border: 1px solid rgba(0,0,0,.12);
+      border: 1px solid rgba(0, 0, 0, .12);
 
-      >img{
+      > img {
         position: absolute;
         left: 50%;
         top: 50%;
         @include transform(translate(-50%, -50%));
       }
     }
-    &-width{
+    &-width {
       width: 120px;
       margin-right: 16px;
     }
 
-    &-id{
+    &-id {
       text-align: center;
     }
 
-    &-time{
+    &-time {
       text-align: center;
     }
 
-    &-title{
+    &-title {
       font-size: 14px;
-      color: rgba(0,0,0, .87);
+      color: rgba(0, 0, 0, .87);
       line-height: 24px;
       max-height: 48px;
       overflow: hidden;
     }
 
-    &-title-1{
+    &-title-1 {
       font-size: 14px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-price{
+    &-price {
       text-align: center;
-      &-sale{
+      &-sale {
         font-size: 16px;
         font-weight: bold;
-        color: rgba(0,0,0, .87);
+        color: rgba(0, 0, 0, .87);
         line-height: 24px;
       }
     }
 
-    &-category{
+    &-category {
       line-height: 28px;
       border-radius: 2px;
       text-align: center;
     }
 
-    &-item{
+    &-item {
       padding: 16px 0;
-      border-bottom: 1px solid rgba(0,0,0,.12);
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
     }
-    &-list{
+    &-list {
       padding: 0 16px;
       background-color: $whiteColor;
     }
 
-    &-none{
+    &-none {
       padding: 96px 0;
       background-color: $whiteColor;
       border-radius: 4px;
-      span{
+      span {
         margin-top: 16px;
         @include media();
       }
@@ -269,7 +269,7 @@
       z-index: 10;
     }
 
-    &-button-list{
+    &-button-list {
       width: 210px;
       position: absolute;
       right: 0;
@@ -278,32 +278,32 @@
       @include media();
       @include resetBorder();
 
-      >a{
+      > a {
         height: 56px;
-        color: rgba(0,0,0,.87);
-        &:hover{
-          background-color: rgba(0,0,0,.12);
+        color: rgba(0, 0, 0, .87);
+        &:hover {
+          background-color: rgba(0, 0, 0, .12);
         }
       }
     }
   }
 
-  &__white{
+  &__white {
     color: $whiteColor !important;
   }
 
-  &__dialog{
+  &__dialog {
     max-width: 960px;
     padding: 16px 24px;
     max-height: calc(100vh - 160px);
 
-    &-margin-left{
+    &-margin-left {
       margin-left: 64px;
     }
   }
 
-  &__dashboard{
-    &-card{
+  &__dashboard {
+    &-card {
       border-radius: 10px;
       padding: 28px 0 28px 28px;
       color: $whiteColor;
@@ -311,7 +311,7 @@
       overflow: hidden;
       position: relative;
 
-      >i{
+      > i {
         position: absolute;
         color: $whiteColor;
         font-size: 88px;
@@ -320,18 +320,18 @@
         top: 0;
       }
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-bottom: 16px;
       }
     }
 
-    &-number{
+    &-number {
       font-size: 34px;
       line-height: 34px;
       margin-bottom: 4px;
     }
 
-    &-title{
+    &-title {
       font-size: 16px;
       line-height: 16px;
       margin-bottom: 8px;
@@ -339,33 +339,33 @@
       @include media();
     }
 
-    &-margin-right{
+    &-margin-right {
       margin-right: 54px;
     }
 
-    &-color-1{
+    &-color-1 {
       background-color: $navigationColor;
     }
-    &-color-2{
+    &-color-2 {
       background-color: $primaryColor;
     }
-    &-color-3{
+    &-color-3 {
       background-color: $orangeColor;
     }
-    &-color-4{
+    &-color-4 {
       background-color: $successColor;
     }
 
-    &-content{
-      border-top: 1px solid rgba(0,0,0,.12);
+    &-content {
+      border-top: 1px solid rgba(0, 0, 0, .12);
     }
 
-    &-margin-right{
+    &-margin-right {
       margin-right: 56px;
     }
 
-    &-table{
-      span{
+    &-table {
+      span {
         line-height: 28px;
         height: 28px;
         max-width: 100%;
@@ -374,25 +374,25 @@
     }
   }
 
-  &__select{
+  &__select {
     position: relative;
     height: 40px;
-    &-color{
+    &-color {
       color: $primaryColor;
       @include media();
       margin-right: 8px;
       white-space: nowrap;
     }
 
-    &-tri{
+    &-tri {
       width: 0;
       height: 0;
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      border-top: 6px solid rgba(0,0,0,.87);
+      border-top: 6px solid rgba(0, 0, 0, .87);
     }
 
-    &-panel{
+    &-panel {
       position: absolute;
       top: 100%;
       right: 0;
@@ -401,75 +401,75 @@
       @include resetBorder();
       z-index: 10;
 
-      >div{
+      > div {
         line-height: 40px;
         padding: 0 16px;
 
-        &.active{
-          background-color: rgba(0,0,0,.12);
+        &.active {
+          background-color: rgba(0, 0, 0, .12);
         }
       }
     }
   }
 
-  &__radio{
+  &__radio {
     display: inline-flex;
     flex-direction: column;
   }
 
-  &__products{
-    &-title{
+  &__products {
+    &-title {
       margin-top: 24px;
       font-size: 16px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-title-1{
+    &-title-1 {
       height: 40px;
       font-size: 16px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-title-2{
+    &-title-2 {
       font-size: 16px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-left-bg{
+    &-left-bg {
       margin-top: 24px;
       width: 220px;
-      border-right: 1px solid rgba(0,0,0,.12);
+      border-right: 1px solid rgba(0, 0, 0, .12);
       margin-right: 16px;
       min-height: calc(100vh - 96px);
     }
 
-    &-content{
+    &-content {
       max-height: calc(100vh - 72px);
       overflow: scroll;
     }
 
-    &-search{
+    &-search {
       border: 1px solid $primaryColor;
       border-radius: 4px;
       height: 32px;
       margin-right: 50px;
       position: relative;
 
-      >i{
+      > i {
         margin: 0 16px 0 12px;
-        color: rgba(0,0,0,.54);
+        color: rgba(0, 0, 0, .54);
       }
 
-      >input{
+      > input {
         border: none;
         background-color: transparent;
         width: 250px;
       }
 
-      &-close{
+      &-close {
         position: absolute;
         cursor: pointer;
         right: 12px;
@@ -478,52 +478,52 @@
         border-radius: 50%;
         width: 16px;
         height: 16px;
-        background-color: rgba(0,0,0,.54);
-        >i{
+        background-color: rgba(0, 0, 0, .54);
+        > i {
           font-size: 12px;
           line-height: 12px;
           color: $whiteColor;
         }
       }
 
-      &-result{
+      &-result {
         color: $primaryColor;
       }
     }
   }
 
-  &__edit{
-    &-title{
+  &__edit {
+    &-title {
       font-size: 16px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
       margin-bottom: 16px;
     }
 
-    &-description{
-      img{
+    &-description {
+      img {
         width: 100%;
       }
     }
 
-    &-color{
+    &-color {
       color: $primaryColor;
       @include media();
       cursor: pointer;
     }
   }
 
-  &__mobile-dialog-inner{
-    @include xb-xs-screen{
+  &__mobile-dialog-inner {
+    @include xb-xs-screen {
       padding: 16px;
     }
-    @include xb-sm-screen{
+    @include xb-sm-screen {
       padding: 16px;
     }
   }
 
-  &__store{
-    &-template{
+  &__store {
+    &-template {
       width: 100%;
       padding-bottom: 112.5%;
       position: relative;
@@ -532,7 +532,7 @@
       border: 1px solid $primaryColor;
       border-radius: 4px;
 
-      >img{
+      > img {
         display: block;
         width: 100%;
         position: absolute;
@@ -541,23 +541,23 @@
       }
 
       $parent: &;
-      &-cover{
+      &-cover {
         display: none !important;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,.7);
+        background-color: rgba(0, 0, 0, .7);
       }
 
-      &:hover{
-        #{$parent}-cover{
+      &:hover {
+        #{$parent}-cover {
           display: flex !important;
         }
       }
     }
-    &-button{
+    &-button {
       width: 148px;
       border-radius: 16px;
       line-height: 32px;
@@ -570,19 +570,19 @@
         color: $whiteColor;
       }
 
-      &-normal{
+      &-normal {
         background-color: $whiteColor;
         color: $blackColor;
       }
     }
 
-    &-padding{
+    &-padding {
       padding: 0;
       max-width: 1200px;
       width: 100%;
     }
 
-    &-bg{
+    &-bg {
       position: absolute;
       left: 0;
       top: 0;
@@ -595,32 +595,32 @@
     }
   }
 
-  &__template{
+  &__template {
 
-    &-edit{
+    &-edit {
       border: 3px solid $primaryColor;
     }
 
-    &-banner{
+    &-banner {
       background-color: #000;
       height: 500px;
       position: relative;
       border: 1px solid $primaryColor;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         padding: 0 16px;
         height: 320px;
       }
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         padding: 0 16px;
       }
-      &-right{
+      &-right {
         position: absolute;
         top: 16px;
         right: 0;
       }
     }
 
-    &-name{
+    &-name {
       margin: auto;
       width: 300px;
       height: 60px;
@@ -630,7 +630,7 @@
       text-align: center;
       font-size: 24px;
       @include media();
-      input{
+      input {
         margin: 0;
         padding: 0;
         height: 60px;
@@ -642,12 +642,12 @@
         background-color: transparent;
         text-align: center;
       }
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         width: 100%;
       }
     }
 
-    &-title{
+    &-title {
       width: 100%;
       margin-top: 100px;
       max-height: 112px;
@@ -655,39 +655,39 @@
       color: $whiteColor;
       position: relative;
       @include media();
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 0;
       }
     }
 
-    &-description{
+    &-description {
       width: 100%;
       margin-top: 24px;
       color: $whiteColor;
       border: 1px solid $primaryColor;
       position: relative;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 16px;
       }
     }
 
-    &-user{
+    &-user {
       width: 100%;
       margin-top: 24px;
       border: 1px solid $primaryColor;
       position: relative;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 16px;
       }
 
-      &-name{
+      &-name {
         width: 100%;
         margin-top: 12px;
         border: 1px solid $primaryColor;
         @include media();
         height: 20px;
         overflow: hidden;
-        input{
+        input {
           margin: 0;
           padding: 0;
           border: none;
@@ -697,21 +697,20 @@
           width: 100%;
         }
       }
-      &-country{
+      &-country {
         width: 100%;
         margin-top: 8px;
         border: 1px solid $primaryColor;
         height: 20px;
         overflow: hidden;
-        &-input{
+        &-input {
           width: 100%;
         }
 
       }
     }
 
-
-    &-header{
+    &-header {
       width: 100%;
       border-radius: 50%;
       overflow: hidden;
@@ -720,7 +719,7 @@
 
     }
 
-    &-edit-button{
+    &-edit-button {
       padding: 0 32px;
       line-height: 32px;
       position: absolute;
@@ -733,12 +732,12 @@
       cursor: pointer;
       z-index: 1;
       font-size: 14px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         padding: 0 16px;
       }
     }
 
-    &-button{
+    &-button {
       line-height: 40px;
       border-radius: 16px;
       background-color: $whiteColor;
@@ -747,7 +746,7 @@
       text-align: center;
       cursor: pointer;
     }
-    &-button-1{
+    &-button-1 {
       line-height: 40px;
       border-radius: 16px;
       background-color: $primaryColor;
@@ -757,76 +756,91 @@
       cursor: pointer;
     }
 
-    &-title-1{
+    &-title-1 {
       font-size: 24px;
       @include media();
       margin-bottom: 8px;
     }
-    &-content-1{
+    &-content-1 {
       margin-bottom: 24px;
     }
 
-    &-mask{
+    &-mask {
       position: absolute;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,.3);
+      background-color: rgba(0, 0, 0, .3);
     }
 
   }
 
-  &__toDo{
-    &-title{
+  &__toDo {
+    &-number {
+      position: absolute;
+      top: -48px;
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+      text-align: center;
+      line-height: 36px;
+      font-weight: bold;
+      color: $primaryColor;
+      border-radius: 50%;
+      border: 1px solid $primaryColor;
+    }
+
+    &-title {
       margin-top: 64px;
       font-size: 42px;
       line-height: 1;
       text-align: center;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-description{
+    &-description {
       margin-top: 8px;
       font-size: 16px;
       line-height: 28px;
       text-align: center;
       @include regular();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-content{
-      margin-top: 48px;
+    &-content {
+      margin-top: 80px;
     }
 
-    &-card{
+    &-card {
       width: 350px;
       height: 270px;
-      border: 1px solid rgba(0,0,0,.12);
+      border: 1px solid rgba(0, 0, 0, .12);
+      position: relative;
       border-radius: 10px;
       cursor: pointer;
       background-color: $whiteColor;
-      margin: 0 32px 32px;
-      &:hover{
-        @include box-shadow(0 0 3px 0 rgba(0,0,0,.19))
+      margin: 0 32px 72px;
+      &:hover {
+        @include box-shadow(0 0 3px 0 rgba(0, 0, 0, .19))
       }
 
-      >img{
+      > img {
         width: 96px;
         height: 96px;
         display: block;
         margin-top: 56px;
       }
 
-      &-text{
+      &-text {
         font-size: 24px;
         margin-top: 24px;
         @include media();
         text-align: center;
       }
 
-      &-text-1{
+      &-text-1 {
         font-size: 14px;
         line-height: 40px;
         margin-top: 16px;
@@ -838,7 +852,7 @@
         min-width: 120px;
       }
 
-      &-text-2{
+      &-text-2 {
         font-size: 14px;
         line-height: 40px;
         margin-top: 16px;
@@ -852,35 +866,35 @@
       }
     }
 
-    &-margin-left{
+    &-margin-left {
       margin-left: 24px;
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-left: 0;
       }
 
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         margin-left: 0;
       }
     }
 
-    &-margin-left-1{
+    &-margin-left-1 {
       margin-left: 24px;
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-left: 0;
       }
 
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         margin-left: 0;
       }
     }
   }
 
-  &__statistic{
+  &__statistic {
     min-height: 48px;
     padding: 12px 0;
-    &-text{
+    &-text {
       text-align: center;
       overflow: hidden;
       height: 20px;
@@ -889,7 +903,7 @@
 
   }
 
-  &__setting-bg{
+  &__setting-bg {
     min-height: calc(100vh - 137px);
     background-color: $whiteColor;
     border-radius: 4px;
@@ -897,22 +911,22 @@
     padding: 16px;
   }
 
-  &__setting-button{
+  &__setting-button {
     line-height: 40px;
     border-radius: 4px;
     color: $primaryColor;
     display: block;
     cursor: pointer;
-    &:hover{
-      background-color: rgba(0,0,0,.12);
+    &:hover {
+      background-color: rgba(0, 0, 0, .12);
     }
   }
 
-  &__pop-bg{
+  &__pop-bg {
     position: relative;
     padding: 8px 0 8px 8px;
     cursor: pointer;
-    &-list{
+    &-list {
       position: absolute;
       right: 0;
       top: 100%;
@@ -924,42 +938,42 @@
       font-size: 16px;
       z-index: 100;
       display: none;
-      div{
-        &:hover{
-          background-color: rgba(0,0,0,.12);
+      div {
+        &:hover {
+          background-color: rgba(0, 0, 0, .12);
         }
       }
     }
 
     $parent: &;
-    &:hover{
-      #{$parent}-list{
+    &:hover {
+      #{$parent}-list {
         display: block;
       }
     }
   }
 
-  &__loading{
+  &__loading {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, .8);
     overflow: hidden;
 
-    &-close{
+    &-close {
       position: absolute;
       right: 56px;
       top: 56px;
       color: $whiteColor;
       cursor: pointer;
-      i{
+      i {
         font-size: 56px;
       }
     }
 
-    &-text{
+    &-text {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -969,14 +983,14 @@
   }
 }
 
-.xb-category{
-  &__title{
+.xb-category {
+  &__title {
     height: 56px;
     position: relative;
     z-index: 1;
   }
 
-  &__title-1{
+  &__title-1 {
     font-size: 16px;
     min-width: 160px;
     line-height: 48px;
@@ -984,50 +998,50 @@
     position: relative;
     z-index: 1;
     font-weight: 500;
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, .87);
     font-family: Roboto;
   }
 
-  &__title-2{
+  &__title-2 {
     font-size: 24px;
     line-height: 32px;
     position: relative;
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, .87);
   }
 }
 
-.xb-share-dialog{
+.xb-share-dialog {
 
   padding: 56px;
   max-width: 720px;
   position: relative;
   background-color: $whiteColor;
   border-radius: 4px;
-  @include xb-xs-screen{
+  @include xb-xs-screen {
     padding: 56px 16px;
   }
 
-  &__close{
+  &__close {
     position: absolute;
     left: calc(100% - 40px);
     top: 16px;
     color: $blackColor;
     cursor: pointer;
-    i{
+    i {
       font-size: 24px;
       line-height: 24px;
       @include media();
     }
   }
 
-  &__title{
+  &__title {
     font-size: 24px;
     line-height: 32px;
     text-align: center;
     @include media();
   }
 
-  &__content{
+  &__content {
     margin-top: 32px;
     font-size: 16px;
     line-height: 24px;
@@ -1035,7 +1049,7 @@
     @include regular();
   }
 
-  &__link{
+  &__link {
     font-size: 24px;
     line-height: 32px;
     text-decoration: underline;
@@ -1044,66 +1058,66 @@
     overflow: hidden;
     margin-top: 12px;
     display: block;
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, .87);
   }
 
-  &__margin-top{
+  &__margin-top {
     margin-top: 48px;
   }
 
-  &__width-100{
+  &__width-100 {
     width: 720px;
-    .mat-form-field{
+    .mat-form-field {
       width: 100%;
     }
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       width: 100%;
     }
   }
 }
 
-.xb-affiliate-dialog{
+.xb-affiliate-dialog {
 
   padding: 56px;
   max-width: 720px;
   position: relative;
   border-radius: 4px;
-  @include xb-xs-screen{
+  @include xb-xs-screen {
     padding: 0;
   }
 
-  &__close{
+  &__close {
     position: absolute;
     left: calc(100% - 40px);
     top: 16px;
     color: $blackColor;
     cursor: pointer;
-    i{
+    i {
       font-size: 24px;
       line-height: 24px;
       @include media();
     }
   }
 
-  &__title{
+  &__title {
     font-size: 24px;
     line-height: 32px;
     @include media();
   }
 
-  &__content{
+  &__content {
     margin-top: 16px;
     font-size: 14px;
     line-height: 28px;
     @include regular();
   }
 
-  &__margin-top{
+  &__margin-top {
     margin-top: 32px;
   }
 }
 
-.xb-error{
+.xb-error {
   height: calc(100vh - 56px);
   overflow-y: scroll;
   background-color: $whiteColor;
