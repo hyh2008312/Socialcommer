@@ -1,6 +1,5 @@
-import {Input, Output, Component, OnInit, EventEmitter, ElementRef, OnChanges} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {UserService} from  '../../shared/services/user/user.service';
+import {Input, Component, OnInit, ElementRef} from '@angular/core';
+import {UserService} from  '../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-shop-bonus-item',

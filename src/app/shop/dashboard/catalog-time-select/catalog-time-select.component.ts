@@ -3,7 +3,7 @@ import { Input, Output, Component, OnInit, EventEmitter} from '@angular/core';
 @Component({
   selector: 'app-catalog-time-select',
   templateUrl: './catalog-time-select.component.html',
-  styleUrls: ['../shop.scss']
+  styleUrls: ['./_catalog-time-select.scss']
 })
 
 export class CatalogTimeSelectComponent implements OnInit {

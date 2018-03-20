@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ShopService } from '../shop.service';
-import { StoreStatistic } from '../shop';
-import { UserService } from  '../../shared/services/user/user.service';
+import { DashboardService } from '../dashboard.service';
+import { UserService } from '../../../shared/services/user/user.service';
 import { MatDialog } from "@angular/material";
 
 import { BonusTipsDialogComponent } from '../bonus-tips-dialog/bonus-tips-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./_dashboard.scss']
+  templateUrl: './dashboard-main.component.html',
+  styleUrls: ['./_dashboard-main.scss']
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardMainComponent implements OnInit {
 
   timeOverview: string = 'Yesterday';
   timeStatistic: string = 'Yesterday';
@@ -48,7 +47,7 @@ export class DashboardComponent implements OnInit {
   currency: string = 'USD';
 
   constructor(
-    private shopService: ShopService,
+    private shopService: DashboardService,
     private userService: UserService,
     public dialog: MatDialog
   ) {
