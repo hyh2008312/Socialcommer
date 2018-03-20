@@ -97,6 +97,7 @@ export class StoreEditComponent implements OnInit {
         self.userService.store.subscribe((data) => {
           if (data) {
             self.store = data;
+            self.nameTag = data.name;
             if (!firstLoad) {
               firstLoad = true;
 

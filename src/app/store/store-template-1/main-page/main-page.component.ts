@@ -70,7 +70,7 @@ export class MainPageComponent implements OnInit {
         self.displayName = data.displayName;
         self.storeName = data.context ? data.context.nameTag : data.name;
         self.contextList = data.context ? data.context : {
-          nameTag: self.nameTag1,
+          nameTag: data.name,
           titleTag: self.titleTag1,
           descriptionTag: self.descriptionTag1,
           userTag: self.userTag1
