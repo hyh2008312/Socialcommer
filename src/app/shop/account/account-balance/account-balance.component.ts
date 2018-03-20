@@ -5,9 +5,9 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
 import {MatDialog} from "@angular/material";
-import { UserService } from  '../../shared/services/user/user.service';
+import { UserService } from  '../../../shared/services/user/user.service';
 
-import { ShopService } from "../shop.service";
+import { AccountService } from "../account.service";
 
 import {AccountBalanceWithdrawMoneyDialogComponent} from "../account-balance-withdraw-money-dialog/account-balance-withdraw-money-dialog.component";
 
@@ -39,7 +39,7 @@ export class AccountBalanceComponent implements OnInit {
     public dialog: MatDialog,
     private fb: FormBuilder,
     private userService: UserService,
-    private shopService: ShopService
+    private shopService: AccountService
   ) {
     this.sub = this.userService.store.subscribe((data) => {
       if(data) {

@@ -1,13 +1,8 @@
-@import "../../styles/utils/_index";
-@import "../../styles/_variables";
+@import "../../styles/utils/index";
+@import "../../styles/variables";
 
 .xb-shop{
 
-  &__title{
-    font-size: 24px;
-    @include media();
-    color: rgba(0,0,0,.87);
-  }
   &__header{
     position: absolute;
     background-color: $whiteColor;

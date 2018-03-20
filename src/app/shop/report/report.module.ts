@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { AccountReportComponent } from  "./account-report/account-report.component";
-import { AccountReportTitleComponent } from "./account-report-title/account-report-title.component";
-import { AccountReportItemComponent } from "./account-report-item/account-report-item.component";
+import { ReportMainComponent } from "./report-main/report-main.component";
+import { ReportTitleComponent } from "./report-title/report-title.component";
+import { ReportItemComponent } from "./report-item/report-item.component";
 
 
 import { ReportRoutingModule } from './report.routes.module';
@@ -19,9 +19,9 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   exports: [],
   declarations: [
-    AccountReportComponent,
-    AccountReportTitleComponent,
-    AccountReportItemComponent
+    ReportMainComponent,
+    ReportTitleComponent,
+    ReportItemComponent
   ],
   providers: [
     ReportService

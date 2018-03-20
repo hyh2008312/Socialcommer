@@ -2,12 +2,12 @@ import {Input, Component, OnInit} from '@angular/core';
 
 
 @Component({
-  selector: 'app-shop-account-report-item',
-  templateUrl: './account-report-item.component.html',
-  styleUrls: ['../account-report/_account-report.scss']
+  selector: 'app-shop-report-item',
+  templateUrl: './report-item.component.html',
+  styleUrls: ['../_account-report.scss']
 })
 
-export class AccountReportItemComponent implements OnInit {
+export class ReportItemComponent implements OnInit {
 
   @Input() status: number = 0;
   @Input() product: any;
