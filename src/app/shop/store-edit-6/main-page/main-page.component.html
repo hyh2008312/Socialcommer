@@ -4,24 +4,30 @@
       <!--header-->
       <div class="xb-4-template__cancel-save">
         <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
+            SAVE
+          </div>
           <div class="xb-4-template-edit__button" (click)="close()">
             CANCEL
           </div>
-          <div class="xb-4-template-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
-            SAVE
-          </div>
         </div>
-        <div class="xb-4-template-edit__left">
-          <div class="xb-4-template-edit__button-2" *ngIf="!isShowBlog" (click)="changeIsShowBlog(true)">
+        <div class="xb-4-template-edit__left" fxLayout="row" fxLayoutAlign="start center"
+             *ngIf="!isShowBlog" (click)="changeIsShowBlog(true)">
+          <i class="iconfontXberts icon-pic-show xb-4-template-edit__icon"></i>
+          <div class="xb-4-template-edit__add-blog xb-4-template-edit__magleft-12">
             ADD BLOG SECTION
           </div>
         </div>
-        <div class="xb-4-template-edit__left" *ngIf="isShowBlog" (click)="changeIsShowBlog(false)">
-          <div class="xb-4-template-edit__button-2">
+        <div class="xb-4-template-edit__left" *ngIf="isShowBlog" (click)="changeIsShowBlog(false)"
+             fxLayout="row" fxLayoutAlign="start center">
+          <i class="iconfontXberts  icon-pic-hide xb-4-template-edit__icon"></i>
+          <div class="xb-4-template-edit__add-blog xb-4-template-edit__magleft-12">
             HIDE BLOG SECTION
           </div>
         </div>
       </div>
+      <div class="xb-4-template__divider-line"></div>
+
       <div class="xb-4-template__box-shadow" fxLayout="row" fxLayoutAlign="start center">
         <div class="xb-4-template__title xb-4-template__edit-border"
              [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()">

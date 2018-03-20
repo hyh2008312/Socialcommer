@@ -1,5 +1,31 @@
 <form [formGroup]="storeTemplateForm" novalidate>
   <div class="xb-store-template__store-bg">
+    <div class="xb-4-template-edit__cancel-save">
+      <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
+          SAVE
+        </div>
+        <div class="xb-4-template-edit__button" (click)="close()">
+          CANCEL
+        </div>
+      </div>
+      <div class="xb-4-template-edit__left" fxLayout="row" fxLayoutAlign="start center"
+           *ngIf="!isShowBlog" (click)="changeIsShowBlog(true)">
+        <i class="iconfontXberts icon-pic-show xb-4-template-edit__icon"></i>
+        <div class="xb-4-template-edit__add-blog xb-4-template-edit__magleft-12">
+          ADD BLOG SECTION
+        </div>
+      </div>
+      <div class="xb-4-template-edit__left" *ngIf="isShowBlog" (click)="changeIsShowBlog(false)"
+           fxLayout="row" fxLayoutAlign="start center">
+        <i class="iconfontXberts  icon-pic-hide xb-4-template-edit__icon"></i>
+        <div class="xb-4-template-edit__add-blog xb-4-template-edit__magleft-12">
+          HIDE BLOG SECTION
+        </div>
+      </div>
+    </div>
+    <div class="xb-4-template-edit__divider-line"></div>
+
     <div class="xb-store-template__container xb-store-template__content" fxLayout="row" fxLayoutAlign="start stretch">
       <div class="xb-store-template__left" fxFlex="none" fxShow.xs="false" fxLayout="column">
         <div class="xb-store-template__store-name xb-shop__template-edit">
@@ -35,24 +61,6 @@
                  [ngStyle]="{'background': 'url(' + imageSrc + ') center / auto 100% ' }">
               <div class="xb-store-template__template-mask"></div>
               <div class="xb-store-template__content-2">
-                <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
-                  <div class="xb-shop__template-button" (click)="close()">
-                    CANCEL
-                  </div>
-                  <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
-                    SAVE
-                  </div>
-                </div>
-                <div class="xb-shop__template-banner-left">
-                  <div class="xb-shop__template-button-2" *ngIf="!isShowBlog" (click)="changeIsShowBlog(true)">
-                    ADD BLOG SECTION
-                  </div>
-                </div>
-                <div class="xb-shop__template-banner-left" *ngIf="isShowBlog" (click)="changeIsShowBlog(false)">
-                  <div class="xb-shop__template-button-2">
-                    HIDE BLOG SECTION
-                  </div>
-                </div>
                 <div class="xb-shop__template-title xb-shop__template-edit">
                   <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
                                 [options]="editorConfig"></quill-editor>
@@ -116,24 +124,6 @@
             </div>
           </div>
           <div class="xb-store-template__collection-bottom" [hidden]="viewIndex != 1">
-            <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
-              <div class="xb-shop__template-button" (click)="close()">
-                CANCEL
-              </div>
-              <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
-                SAVE
-              </div>
-            </div>
-            <div class="xb-shop__template-banner-left">
-              <div class="xb-shop__template-button-2" *ngIf="!isShowBlog" (click)="changeIsShowBlog(true)">
-                ADD BLOG SECTION
-              </div>
-            </div>
-            <div class="xb-shop__template-banner-left" *ngIf="isShowBlog" (click)="changeIsShowBlog(false)">
-              <div class="xb-shop__template-button-2">
-                HIDE BLOG SECTION
-              </div>
-            </div>
             <div class="xb-store-template__collection-container">
               <div class="xb-store-template__collection-title" fxShow.xs="false">
                 COLLECTIONS
@@ -157,17 +147,7 @@
             </div>
           </div>
           <div class="xb-store-template__blog-content" [hidden]="viewIndex != 2">
-            <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
-              <div class="xb-shop__template-button" (click)="close()">
-                CANCEL
-              </div>
-              <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
-                SAVE
-              </div>
-            </div>
-
             <div class="xb-store-template__blog-title">BLOG</div>
-
             <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
               <app-shop-template-3-store-blog-card *ngFor="let item of blog"
                                                    fxFlex="45" fxFlex.xs="100"
@@ -183,24 +163,6 @@
             </div>
           </div>
           <div class="xb-store-template__about" [hidden]="viewIndex != 3">
-            <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
-              <div class="xb-shop__template-button" (click)="close()">
-                CANCEL
-              </div>
-              <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
-                SAVE
-              </div>
-            </div>
-            <div class="xb-shop__template-banner-left">
-              <div class="xb-shop__template-button-2" *ngIf="!isShowBlog" (click)="changeIsShowBlog(true)">
-                ADD BLOG SECTION
-              </div>
-            </div>
-            <div class="xb-shop__template-banner-left" *ngIf="isShowBlog" (click)="changeIsShowBlog(false)">
-              <div class="xb-shop__template-button-2">
-                HIDE BLOG SECTION
-              </div>
-            </div>
             <div class="xb-store-template__about-title">About Me</div>
             <div class="xb-store-template__about-image-bg xb-shop__template-edit">
               <app-image-upload-preview-blog [(previewImgFile)]="aboutMeSrc" [(previewImgSrc)]="aboutMeSrc"

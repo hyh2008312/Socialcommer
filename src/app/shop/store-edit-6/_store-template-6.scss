@@ -14,13 +14,21 @@
   background-color: $whiteColor;
   z-index: 500;
 
-  &__cancel-save{
+  &__divider-line {
+    background-color: #dcdcdc;
+    height: 1px;
+    width: 100vw;
+  }
+
+  &__cancel-save {
     position: relative;
     height: 72px;
-    background-color: rgba(0,0,0,.21);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
   &__box-shadow {
-    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.19);
+    box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.12);
   }
 
   &__jump-button {
@@ -79,12 +87,6 @@
     color: #ee4b80;
     line-height: 58px;
     margin-left: 135px;
-  }
-  &__left-24px {
-    margin-left: 24px;
-  }
-  &__edit-border {
-    border: 1px solid $primaryColor;
     > input {
       border: none;
       font-size: 24px;
@@ -96,6 +98,12 @@
       text-align: center;
       background-color: transparent;
     }
+  }
+  &__left-24px {
+    margin-left: 24px;
+  }
+  &__edit-border {
+    border: 1px solid $primaryColor;
   }
   &__detail {
     margin-top: 20px;
@@ -223,6 +231,17 @@
     position: relative;
     color: $whiteColor;
     margin-top: 200px;
+    >input{
+      border: none;
+      font-size: 80px;
+      width: auto;
+      height: auto;
+      line-height: 58px;
+      font-family: Helvetica;
+      color: #ee4b80;
+      text-align: center;
+      background-color: transparent;
+    }
     @include xb-xs-screen {
       margin-top: 105px;
       text-align: center;
@@ -799,6 +818,19 @@
 //edit
 .xb-4-template-edit {
 
+  &__magleft-12 {
+    margin-left: 12px;
+  }
+  &__add-blog {
+    font-size: 14px;
+    @include media();
+    color: $primaryColor;
+  }
+  &__icon {
+    font-size: 24px;
+    color: $primaryColor;
+  }
+
   &__nav-right {
     position: absolute;
     top: 16px;
@@ -806,8 +838,9 @@
   }
   &__left {
     position: absolute;
-    top: 16px;
+    height: 100%;
     left: 48px;
+    cursor: pointer;
   }
   //是否编辑blog的页面
   &__button-2 {
@@ -824,7 +857,7 @@
     line-height: 40px;
     border-radius: 16px;
     background-color: $whiteColor;
-    color: $blackColor;
+    color: $primaryColor;
     width: 100px;
     text-align: center;
     cursor: pointer;
