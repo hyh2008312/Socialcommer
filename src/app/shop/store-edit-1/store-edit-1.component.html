@@ -1,22 +1,21 @@
 <form [formGroup]="storeTemplateForm" novalidate>
   <div class="xb-shop__store-bg">
-
+    <div class="xb-4-template-edit__cancel-save">
+      <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
+          SAVE
+        </div>
+        <div class="xb-4-template-edit__button" (click)="close()">
+          CANCEL
+        </div>
+      </div>
+    </div>
+    <div class="xb-4-template-edit__divider-line"></div>
     <div class="xb-shop__template-banner" fxLayout="column" fxLayoutAlign.xs="center center"
          [ngStyle]="{'background': 'url(' + imageSrc + ') center / auto 100% ' }">
       <div class="xb-shop__template-mask"></div>
       <div class="xb-store__content-2">
-        <div class="xb-shop__template-banner-right" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-shop__template-button" (click)="close()">
-            CANCEL
-          </div>
-          <div class="xb-shop__template-button-1 md-margin-left-2" (click)="submitTemplate()">
-            SAVE
-          </div>
-        </div>
-        <div class="xb-shop__template-name xb-pointer" [hidden]="nameEdited" (click)="editName()"
-             [innerHTML]="nameTag | safeHtml">
-        </div>
-        <div class="xb-shop__template-name xb-shop__template-edit" [hidden]="!nameEdited">
+        <div class="xb-shop__template-name xb-shop__template-edit">
           <input formControlName="nameTag" [(ngModel)]="nameTag">
         </div>
         <div class="xb-shop__template-title ql-editor xb-pointer" [hidden]="titleEdited" (click)="editTitle()"

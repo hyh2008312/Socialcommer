@@ -1,5 +1,17 @@
 <div class="xb-template-2-edit ">
   <form [formGroup]="storeTemplateForm" novalidate>
+    <div class="xb-4-template-edit__cancel-save">
+      <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
+          SAVE
+        </div>
+        <div class="xb-4-template-edit__button" (click)="close()">
+          CANCEL
+        </div>
+      </div>
+    </div>
+    <div class="xb-4-template-edit__divider-line"></div>
+
     <!--1 home-->
     <div [hidden]="viewIndex != 0">
       <div class="xb-store-template__banner "
@@ -11,14 +23,6 @@
           </div>
           <app-store-template-edit-2-navigation fxFlex [navigationIndex]="viewIndex"
                                                 (routerChange)="changeViewIndex($event)"></app-store-template-edit-2-navigation>
-          <div class="xb-template-2-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
-            <div class="xb-template-2-edit__button" (click)="close()">
-              CANCEL
-            </div>
-            <div class="xb-template-2-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
-              SAVE
-            </div>
-          </div>
         </div>
         <div class="xb-store__content-2">
 
@@ -157,14 +161,6 @@
                 <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
                                                       (routerChange)="changeViewIndex($event)"
                                                       fxFlex></app-store-template-edit-2-navigation>
-                <div class="xb-template-2-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
-                  <div class="xb-template-2-edit__button" (click)="close()">
-                    CANCEL
-                  </div>
-                  <div class="xb-template-2-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
-                    SAVE
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -222,14 +218,6 @@
                 <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
                                                       (routerChange)="changeViewIndex($event)"
                                                       fxFlex></app-store-template-edit-2-navigation>
-                <div class="xb-template-2-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
-                  <div class="xb-template-2-edit__button" (click)="close()">
-                    CANCEL
-                  </div>
-                  <div class="xb-template-2-edit__button-1 md-margin-left-2" (click)="submitTemplate()">
-                    SAVE
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -243,7 +231,11 @@
                                              [type]="uploadAboutType"></app-image-upload-preview-blog>
             </div>
 
-            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border">
+            <div class="xb-store-template__introduce-one-describe xb-pointer xb-template-2-edit__edit-border ql-editor"
+                 [innerHTML]="aboutMeNewTag | safeHtml" [hidden]="aboutMeNewEdited" (click)="editAboutMeNew()"></div>
+
+            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
+                 [hidden]="!aboutMeNewEdited">
               <quill-editor formControlName="aboutMeNewTag" [ngModel]="aboutMeNewTag"
                             (ngModelChange)="changeAboutMe($event)"
                             [options]="editorConfig"></quill-editor>

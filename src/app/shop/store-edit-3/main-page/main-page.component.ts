@@ -106,6 +106,7 @@ export class MainPageComponent implements OnInit {
         self.userService.store.subscribe((data) => {
           if (data) {
             self.store = data;
+            self.nameTag = data.name;
             self.text = data.description;
             if (!firstLoad) {
               firstLoad = true;
