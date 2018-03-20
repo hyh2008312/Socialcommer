@@ -96,31 +96,6 @@
         @include media();
       }
     }
-
-    &-buttons {
-      position: absolute;
-      right: 16px;
-      top: 16px;
-      z-index: 10;
-    }
-
-    &-button-list {
-      width: 210px;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      background-color: $lightWhiteColor;
-      @include media();
-      @include resetBorder();
-
-      > a {
-        height: 56px;
-        color: rgba(0, 0, 0, .87);
-        &:hover {
-          background-color: rgba(0, 0, 0, .12);
-        }
-      }
-    }
   }
 
   &__statistic {
