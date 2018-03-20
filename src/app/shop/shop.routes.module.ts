@@ -99,7 +99,8 @@ const routes: Routes = [
           path: 'pendingbalance', component: AccountBalancePendingComponent
         }]
       },{
-        path: 'report', component: AccountReportComponent
+        path: 'report',
+        loadChildren: 'app/shop/report/report.module#ReportModule'
       }, {
         path: 'todolist', component: ToDoListComponent
       }, {
