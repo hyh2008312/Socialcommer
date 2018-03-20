@@ -1,20 +1,20 @@
 import { Component, OnInit, OnDestroy, Inject} from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 
-import { ShopService } from '../shop.service';
-import { UserService } from  '../../shared/services/user/user.service';
+import { ShopService } from '../../shop.service';
+import { UserService } from  '../../../shared/services/user/user.service';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BlogCreateDialogComponent } from '../blog-create-dialog/blog-create-dialog.component';
 
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['../shop.scss']
+  selector: 'app-shop-blog-main',
+  templateUrl: './blog-main.component.html',
+  styleUrls: ['../_blog.scss']
 })
 
-export class BlogComponent implements OnInit {
+export class BlogMainComponent implements OnInit {
 
 
   // MatPaginator Inputs

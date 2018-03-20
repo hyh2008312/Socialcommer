@@ -6,19 +6,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ENTER } from '@angular/cdk/keycodes';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { ShopService } from '../shop.service';
-import { Product, StoreProduct } from '../shop';
-import { UserService } from  '../../shared/services/user/user.service';
+import { BlogService } from '../blog.service';
+import { Product, StoreProduct } from '../blog';
+import { UserService } from  '../../../shared/services/user/user.service';
 
-import { ImageUploadPreviewService } from "../../shared/components/image-upload-preview/image-upload-preview.service";
-import { S3UploaderService } from "../../shared/services/s3-upload/s3-upload.service";
+import { ImageUploadPreviewService } from "../../../shared/components/image-upload-preview/image-upload-preview.service";
+import { S3UploaderService } from "../../../shared/services/s3-upload/s3-upload.service";
 
-import { ProductAffiliateLinkDialogComponent } from "../product-affiliate-link-dialog/product-affiliate-link-dialog.component";
+import { ProductAffiliateLinkDialogComponent } from "../../product-affiliate-link-dialog/product-affiliate-link-dialog.component";
 
 @Component({
   selector: 'app-blog-edit-dialog',
   templateUrl: './blog-edit-dialog.component.html',
-  styleUrls: ['../../store/store.scss','../shop.scss']
+  styleUrls: ['../_blog.scss']
 })
 
 export class BlogEditDialogComponent implements OnInit {
@@ -39,7 +39,7 @@ export class BlogEditDialogComponent implements OnInit {
   constructor(
     public router: Router,
     private fb: FormBuilder,
-    public shopService: ShopService,
+    public shopService: BlogService,
     public userService: UserService,
     private activatedRoute : ActivatedRoute,
     public previewImageService: ImageUploadPreviewService,
