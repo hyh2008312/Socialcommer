@@ -32,10 +32,12 @@
     {
       "platform": "server",
       "root": "src",
-      "outDir": "dist/server",
+      "outDir": "dist-server",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "robots.txt",
+        "manifest.json"
       ],
       "index": "index.html",
       "main": "main.server.ts",
