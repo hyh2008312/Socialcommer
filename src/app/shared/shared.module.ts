@@ -40,12 +40,6 @@ import { QuillEditorModule } from 'ngx-quill-editor';
 import { AngularCropperjsModule } from 'angular-cropperjs';
 import { CarouselModule } from './components/angular4-carousel/index';
 
-import { LoginDialogComponent } from '../login/login/login-dialog.component';
-import { SignUpDialogComponent } from '../login/sign-up/sign-up-dialog.component';
-import { ResetPasswordComponent } from '../login/reset-password/reset-password.component';
-import { ResetPasswordConfirmComponent } from '../login/reset-password-confirm/reset-password-confirm.component';
-import { InviteCodeComponent } from "../login/invite-code/invite-code.component";
-
 import { LoginService } from '../login/login.service';
 
 import { Angular2SocialLoginModule } from "angular2-social-login";
@@ -147,11 +141,6 @@ let providers = {
     ShareButtonRowComponent,
     NavigationHeaderComponent,
     BottomFooterComponent,
-    LoginDialogComponent,
-    SignUpDialogComponent,
-    ResetPasswordComponent,
-    ResetPasswordConfirmComponent,
-    InviteCodeComponent,
     ImageUploadPreviewTwoTemplateComponent,
     ImageUploadPreviewFourTemplateComponent
 
@@ -187,11 +176,6 @@ let providers = {
     ShareButtonRowComponent,
     NavigationHeaderComponent,
     BottomFooterComponent,
-    LoginDialogComponent,
-    SignUpDialogComponent,
-    ResetPasswordComponent,
-    ResetPasswordConfirmComponent,
-    InviteCodeComponent,
     CommonModule,
     RouterModule,
     FormsModule,
@@ -225,13 +209,6 @@ let providers = {
     ConstantService,
     S3UploaderService,
     LoginService
-  ],
-  entryComponents: [
-    LoginDialogComponent,
-    SignUpDialogComponent,
-    ResetPasswordComponent,
-    ResetPasswordConfirmComponent,
-    InviteCodeComponent
   ]
 })
 export class SharedModule { }
