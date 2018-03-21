@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { ShopService } from '../shop.service';
-import { RecommendProduct, Image, OriginalPrice, SalePrice} from '../shop';
 import { ViewScrollTopDirective } from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
 import { UserService } from  '../../../shared/services/user/user.service';
 
