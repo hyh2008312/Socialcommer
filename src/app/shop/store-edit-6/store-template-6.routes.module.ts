@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MainPageComponent} from './main-page/main-page.component';
 const routes: Routes = [{
-  path: '6', component: MainPageComponent,
+  path: '', component: MainPageComponent,
 }
 ];
 

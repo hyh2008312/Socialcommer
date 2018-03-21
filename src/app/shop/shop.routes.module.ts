@@ -55,23 +55,23 @@ const routes: Routes = [
                 loadChildren: 'app/shop/store-edit-1/store-template-1.module#StoreTemplateOneModule'
               },
               {
-                path: '',
+                path: '1',
                 loadChildren: 'app/shop/store-edit-2/store-template-2.module#StoreTemplateTwoModule'
               },
               {
-                path: '',
+                path: '2',
                 loadChildren: 'app/shop/store-edit-3/store-template-3.module#StoreTemplateThreeModule'
               },
               {
-                path: '',
+                path: '3',
                 loadChildren: 'app/shop/store-edit-4/store-template-4.module#StoreTemplateFourModule'
               },
               {
-                path: '',
+                path: '4',
                 loadChildren: 'app/shop/store-edit-5/store-template-5.module#StoreTemplateFiveModule'
               },
               {
-                path: '',
+                path: '5',
                 loadChildren: 'app/shop/store-edit-6/store-template-6.module#StoreTemplateSixModule'
               }
             ]

@@ -13,88 +13,10 @@
       border-radius: 2px;
     }
 
-    &-bg {
-      padding: 0;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    &-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-right: 16px;
-      position: relative;
-      border: 1px solid rgba(0, 0, 0, .12);
-
-      > img {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        @include transform(translate(-50%, -50%));
-      }
-    }
-    &-width {
-      width: 120px;
-      margin-right: 16px;
-    }
-
-    &-id {
-      text-align: center;
-    }
-
-    &-time {
-      text-align: center;
-    }
-
-    &-title {
-      font-size: 14px;
-      color: rgba(0, 0, 0, .87);
-      line-height: 24px;
-      max-height: 48px;
-      overflow: hidden;
-    }
-
     &-title-1 {
       font-size: 14px;
       @include media();
       color: rgba(0, 0, 0, .87);
-    }
-
-    &-price {
-      text-align: center;
-      &-sale {
-        font-size: 16px;
-        font-weight: bold;
-        color: rgba(0, 0, 0, .87);
-        line-height: 24px;
-      }
-    }
-
-    &-category {
-      line-height: 28px;
-      border-radius: 2px;
-      text-align: center;
-    }
-
-    &-item {
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(0, 0, 0, .12);
-    }
-    &-list {
-      padding: 0 16px;
-      background-color: $whiteColor;
-    }
-
-    &-none {
-      padding: 96px 0;
-      background-color: $whiteColor;
-      border-radius: 4px;
-      span {
-        margin-top: 16px;
-        @include media();
-      }
     }
   }
 
