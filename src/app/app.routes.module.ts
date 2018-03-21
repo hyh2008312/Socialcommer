@@ -33,8 +33,5 @@ const routes: Routes = [
   }
 ];
 
-@NgModule({
-  imports:[RouterModule.forRoot(routes)],
-  exports:[RouterModule]
-})
-export class AppRoutingModule{ }
+// must use {initialNavigation: 'enabled'}) - for one load page, without reload
+export const AppRoutes = RouterModule.forRoot(routes, { initialNavigation: 'enabled' });

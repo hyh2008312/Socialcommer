@@ -1,4 +1,4 @@
-import { NgModule }            from '@angular/core';
+import { NgModule, ModuleWithProviders}            from '@angular/core';
 import { CommonModule }        from '@angular/common';
 import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -211,5 +211,9 @@ let providers = {
     LoginService
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return { ngModule: SharedModule };
+  }
+}
 Angular2SocialLoginModule.loadProvidersScripts(providers);

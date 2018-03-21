@@ -5,8 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
 
+import { CookieService } from 'ngx-cookie-service';
+import { PrebootModule } from 'preboot';
+import { AppRoutes } from './app.routes.module';
 
-import { AppRoutingModule } from './app.routes.module';
+// shared
+import { SharedServerModule } from './shared-server/shared-server.module';
 
 import { AppComponent } from './app.component';
 
@@ -18,9 +22,6 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AuthenticationModule } from './shared/services/authentication/index';
 import { UserModule } from './shared/services/user/user.module';
 
-import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-
 
 @NgModule({
   declarations: [
@@ -28,8 +29,9 @@ import { isPlatformBrowser } from '@angular/common';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'socialcommer-shop' }),
+    PrebootModule.withConfig({ appRoot: 'app-root' }),
     BrowserModule,
-    AppRoutingModule,
+    AppRoutes,
     HttpModule,
     HttpClientModule,
     JsonpModule,
@@ -40,17 +42,10 @@ import { isPlatformBrowser } from '@angular/common';
       pageTracking: {
         autoTrackVirtualPages: true
       }
-    })
+    }),
+    SharedServerModule.forRoot()
   ],
-  providers: [BaseApi, SystemConstant, DataApi, SupportApi, BlogCover, HttpClientModule],
+  providers: [BaseApi, SystemConstant, DataApi, SupportApi, BlogCover, HttpClientModule, CookieService],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(APP_ID) private appId: string) {
-    const platform = isPlatformBrowser(platformId) ?
-      'in the browser' : 'on the server';
-    console.log(`Running ${platform} with appId=${appId}`);
-  }
-}
+export class AppModule {}

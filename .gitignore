@@ -43,3 +43,6 @@ Thumbs.db
 
 # config
 /src/app/config/app.api.ts
+
+server.js
+prerender.js

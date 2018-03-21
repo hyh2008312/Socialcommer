@@ -5,11 +5,20 @@ const template = fs.readFileSync(path.join(__dirname, '.', 'dist', 'index.html')
 const win = domino.createWindow(template);
 const files = fs.readdirSync(`${process.cwd()}/dist-server`);
 import fetch from 'node-fetch';
+import 'localstorage-polyfill';
 // const styleFiles = files.filter(file => file.startsWith('styles'));
 // const hashStyle = styleFiles[0].split('.')[1];
 // const style = fs.readFileSync(path.join(__dirname, '.', 'dist-server', `styles.${hashStyle}.bundle.css`)).toString();
+
 win.fetch = fetch;
 global['window'] = win;
+global['DOMTokenList'] = win.DOMTokenList;
+global['Node'] = win.Node;
+global['Text'] = win.Text;
+global['HTMLElement'] = win.HTMLElement;
+global['navigator'] = win.navigator;
+global['Event'] = win.Event;
+global['Event']['prototype'] = win.Event.prototype;
 Object.defineProperty(win.document.body.style, 'transform', {
   value: () => {
     return {
@@ -20,8 +29,7 @@ Object.defineProperty(win.document.body.style, 'transform', {
 });
 global['document'] = win.document;
 global['CSS'] = null;
-// global['XMLHttpRequest'] = require('xmlhttprequest').XMLHttpRequest;
-global['Prism'] = null;
+global['localStorage'] = localStorage;
 
 import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
@@ -35,8 +43,8 @@ const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader')
 const mainFiles = files.filter(file => file.startsWith('main'));
 const hash = mainFiles[0].split('.')[1];
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./dist-server/main.${hash}.bundle`);
-import { ngExpressEngine } from '@nguniversal/express-engine';
-import { REQUEST, RESPONSE } from '@nguniversal/express-engine';
+import { ngExpressEngine } from '@nguniversal/express-engine/public-api';
+import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 const PORT = 4000;
 
 enableProdMode();

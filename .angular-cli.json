@@ -12,7 +12,7 @@
         "favicon.ico"
       ],
       "index": "index.html",
-      "main": "main.ts",
+      "main": "main.browser.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
@@ -25,8 +25,8 @@
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "dev": "environments/browser/environment.ts",
+        "prod": "environments/browser/environment.prod.ts"
       }
     },
     {
@@ -35,9 +35,7 @@
       "outDir": "dist-server",
       "assets": [
         "assets",
-        "favicon.ico",
-        "robots.txt",
-        "manifest.json"
+        "favicon.ico"
       ],
       "index": "index.html",
       "main": "main.server.ts",
@@ -52,8 +50,8 @@
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "dev": "environments/server/environment.ts",
+        "prod": "environments/server/environment.prod.ts"
       }
     }
   ],

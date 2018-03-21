@@ -1,19 +1,30 @@
+// angular
 import { NgModule } from '@angular/core';
-import { ServerModule } from '@angular/platform-server';
+import { ServerModule, ServerTransferStateModule } from '@angular/platform-server';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+// libs
 import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
-
-import { AppModule } from './app.module';
+// shared
+import { UniversalStorage } from './shared-server/for-storage/server.storage';
+import { AppStorage } from './shared-server/for-storage/universal.inject';
+import { TranslatesServerModule } from './shared-server/translates/translates-server';
+// components
 import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
 
 @NgModule({
   imports: [
     AppModule,
+    NoopAnimationsModule,
+    ServerTransferStateModule,
     ServerModule,
-    ModuleMapLoaderModule
+    ModuleMapLoaderModule,
+    TranslatesServerModule
   ],
+  bootstrap: [AppComponent],
   providers: [
-    // Add universal-only providers here
+    { provide: AppStorage, useClass: UniversalStorage }
   ],
-  bootstrap: [ AppComponent ],
 })
-export class AppServerModule {}
+export class AppServerModule {
+}
