@@ -51,27 +51,27 @@ const routes: Routes = [
             path: 'edit', component: StoreEditComponent,
             children: [
               {
-                path: '',
+                path: '1',
                 loadChildren: 'app/shop/store-edit-1/store-template-1.module#StoreTemplateOneModule'
               },
               {
-                path: '1',
+                path: '2',
                 loadChildren: 'app/shop/store-edit-2/store-template-2.module#StoreTemplateTwoModule'
               },
               {
-                path: '2',
+                path: '3',
                 loadChildren: 'app/shop/store-edit-3/store-template-3.module#StoreTemplateThreeModule'
               },
               {
-                path: '3',
+                path: '4',
                 loadChildren: 'app/shop/store-edit-4/store-template-4.module#StoreTemplateFourModule'
               },
               {
-                path: '4',
+                path: '5',
                 loadChildren: 'app/shop/store-edit-5/store-template-5.module#StoreTemplateFiveModule'
               },
               {
-                path: '5',
+                path: '6',
                 loadChildren: 'app/shop/store-edit-6/store-template-6.module#StoreTemplateSixModule'
               }
             ]
