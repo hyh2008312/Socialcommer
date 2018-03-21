@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AttachmentUploadComponent } from './attachment-upload.component';
+import { AttachmentPreviewComponent } from './attachment-preview.component';
 
-describe('AttachmentUploadComponent', () => {
-  let component: AttachmentUploadComponent;
-  let fixture: ComponentFixture<AttachmentUploadComponent>;
+describe('AttachmentPreviewComponent', () => {
+  let component: AttachmentPreviewComponent;
+  let fixture: ComponentFixture<AttachmentPreviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AttachmentUploadComponent ]
+      declarations: [ AttachmentPreviewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AttachmentUploadComponent);
+    fixture = TestBed.createComponent(AttachmentPreviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageUploadPreviewMultiComponent } from './image-upload-preview-multi.component';
+import { ImagePreviewMultiComponent } from './image-preview-multi.component';
 
-describe('ImageUploadPreviewMultiComponent', () => {
-  let component: ImageUploadPreviewMultiComponent;
-  let fixture: ComponentFixture<ImageUploadPreviewMultiComponent>;
+describe('ImagePreviewMultiComponent', () => {
+  let component: ImagePreviewMultiComponent;
+  let fixture: ComponentFixture<ImagePreviewMultiComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageUploadPreviewMultiComponent ]
+      declarations: [ ImagePreviewMultiComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageUploadPreviewMultiComponent);
+    fixture = TestBed.createComponent(ImagePreviewMultiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

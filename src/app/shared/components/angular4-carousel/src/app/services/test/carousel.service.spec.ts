@@ -68,24 +68,6 @@ describe('CarouselService', () => {
       });
     }));
 
-    it('should invoke logger', inject([CarouselService], (service: CarouselService) => {
-      const spy = spyOn(service, 'carouselTinyLogger');
-
-      service.init(imageSources, config);
-      (service as any).onImageElementLoad(['imgSrc'], 'loadedImgSrc');
-
-      expect(spy).toHaveBeenCalled();
-    }));
-
-    it('should invoke function checks if all images is load', inject([CarouselService], (service: CarouselService) => {
-      const spy = spyOn(service, 'emitIfAllImagesLoaded');
-
-      service.init(imageSources, config);
-      (service as any).onImageElementLoad(['imgSrc'], 'loadedImgSrc');
-
-      expect(spy).toHaveBeenCalled();
-    }));
-
   });
 
   describe('defines image error handler and', () => {
@@ -98,23 +80,6 @@ describe('CarouselService', () => {
       expect(imageSources.length).toEqual(2);
     }));
 
-    it('should invoke logger', inject([CarouselService], (service: CarouselService) => {
-      const spy = spyOn(service, 'carouselTinyLogger');
-
-      service.init(imageSources, config);
-      (service as any).onImageElementLoadError(['imgSrc'], 'loadedImgSrc');
-
-      expect(spy).toHaveBeenCalled();
-    }));
-
-    it('should invoke function checks if all images is load', inject([CarouselService], (service: CarouselService) => {
-      const spy = spyOn(service, 'emitIfAllImagesLoaded');
-
-      service.init(imageSources, config);
-      (service as any).onImageElementLoadError(['imgSrc'], 'loadedImgSrc');
-
-      expect(spy).toHaveBeenCalled();
-    }));
 
   });
 

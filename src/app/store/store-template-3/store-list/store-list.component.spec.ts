@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoreListComponent } from './store-list.component';
 
 describe('StoreListComponent', () => {
-  let component: MainPageComponent;
+  let component: StoreListComponent;
   let fixture: ComponentFixture<StoreListComponent>;
 
   beforeEach(async(() => {

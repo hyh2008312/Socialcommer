@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CatalogTimeSelectComponent } from './catalog-time-select.component';
+import { StoreNavigationComponent } from './store-navigation.component';
 
-describe('CatalogTimeSelectComponent', () => {
-  let component: CatalogTimeSelectComponent;
-  let fixture: ComponentFixture<CatalogTimeSelectComponent>;
+describe('StoreNavigationComponent', () => {
+  let component: StoreNavigationComponent;
+  let fixture: ComponentFixture<StoreNavigationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CatalogTimeSelectComponent ]
+      declarations: [ StoreNavigationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CatalogTimeSelectComponent);
+    fixture = TestBed.createComponent(StoreNavigationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

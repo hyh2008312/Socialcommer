@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthorizeReturnDialogComponent } from './authorize-return-dialog.component';
+import { ForgetOrderNumberDialogComponent } from './forget-order-number-dialog.component';
 
-describe('AuthorizeReturnDialogComponent', () => {
-  let component: AuthorizeReturnDialogComponent;
-  let fixture: ComponentFixture<AuthorizeReturnDialogComponent>;
+describe('ForgetOrderNumberDialogComponent', () => {
+  let component: ForgetOrderNumberDialogComponent;
+  let fixture: ComponentFixture<ForgetOrderNumberDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthorizeReturnDialogComponent ]
+      declarations: [ ForgetOrderNumberDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthorizeReturnDialogComponent);
+    fixture = TestBed.createComponent(ForgetOrderNumberDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

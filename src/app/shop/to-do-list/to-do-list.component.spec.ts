@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CatalogComponent, CatalogAddProductDialog } from './reset-password.component';
+import { ToDoListComponent } from './to-do-list.component';
 
-describe('CatalogComponent', () => {
-  let component: CatalogComponent;
-  let fixture: ComponentFixture<CatalogComponent>;
+describe('ToDoListComponent', () => {
+  let component: ToDoListComponent;
+  let fixture: ComponentFixture<ToDoListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CatalogComponent ]
+      declarations: [ ToDoListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CatalogComponent);
+    fixture = TestBed.createComponent(ToDoListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -24,24 +24,3 @@ describe('CatalogComponent', () => {
   });
 });
 
-describe('CatalogAddProductDialog', () => {
-  let component: CatalogAddProductDialog;
-  let fixture: ComponentFixture<CatalogAddProductDialog>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-        declarations: [ CatalogAddProductDialog ]
-      })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CatalogAddProductDialog);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
-});

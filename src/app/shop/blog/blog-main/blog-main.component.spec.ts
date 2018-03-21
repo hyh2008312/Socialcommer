@@ -1,42 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CatalogComponent, CatalogAddProductDialog } from './reset-password.component';
+import { BlogMainComponent } from './blog-main.component';
 
-describe('CatalogComponent', () => {
-  let component: CatalogComponent;
-  let fixture: ComponentFixture<CatalogComponent>;
+describe('BlogMainComponent', () => {
+  let component: BlogMainComponent;
+  let fixture: ComponentFixture<BlogMainComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CatalogComponent ]
+      declarations: [ BlogMainComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CatalogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
-});
-
-describe('CatalogAddProductDialog', () => {
-  let component: CatalogAddProductDialog;
-  let fixture: ComponentFixture<CatalogAddProductDialog>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-        declarations: [ CatalogAddProductDialog ]
-      })
-      .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CatalogAddProductDialog);
+    fixture = TestBed.createComponent(BlogMainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

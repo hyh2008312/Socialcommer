@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StoreCartPayComponent } from './store-cart-pay.component';
+import { StoreErrorDialogComponent } from './store-error-dialog.component';
 
-describe('StoreCartPayComponent', () => {
-  let component: StoreCartPayComponent;
-  let fixture: ComponentFixture<StoreCartPayComponent>;
+describe('StoreErrorDialogComponent', () => {
+  let component: StoreErrorDialogComponent;
+  let fixture: ComponentFixture<StoreErrorDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StoreCartPayComponent ]
+      declarations: [ StoreErrorDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StoreCartPayComponent);
+    fixture = TestBed.createComponent(StoreErrorDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

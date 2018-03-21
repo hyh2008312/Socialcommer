@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StoreCartHeaderComponent } from './store-message-header.component';
+import { StoreMessageHeaderComponent } from './store-message-header.component';
 
-describe('StoreCartHeaderComponent', () => {
-  let component: StoreCartHeaderComponent;
-  let fixture: ComponentFixture<StoreCartHeaderComponent>;
+describe('StoreMessageHeaderComponent', () => {
+  let component: StoreMessageHeaderComponent;
+  let fixture: ComponentFixture<StoreMessageHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StoreCartHeaderComponent ]
+      declarations: [ StoreMessageHeaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StoreCartHeaderComponent);
+    fixture = TestBed.createComponent(StoreMessageHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

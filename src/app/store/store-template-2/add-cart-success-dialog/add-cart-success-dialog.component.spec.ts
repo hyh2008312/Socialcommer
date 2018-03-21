@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChangeShippingAddressDialogComponent } from './add-cart-success-dialog.component';
+import { AddCartSuccessDialogComponent } from './add-cart-success-dialog.component';
 
-describe('ChangeShippingAddressDialogComponent', () => {
-  let component: ChangeShippingAddressDialogComponent;
-  let fixture: ComponentFixture<ChangeShippingAddressDialogComponent>;
+describe('AddCartSuccessDialogComponent', () => {
+  let component: AddCartSuccessDialogComponent;
+  let fixture: ComponentFixture<AddCartSuccessDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChangeShippingAddressDialogComponent ]
+      declarations: [ AddCartSuccessDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChangeShippingAddressDialogComponent);
+    fixture = TestBed.createComponent(AddCartSuccessDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

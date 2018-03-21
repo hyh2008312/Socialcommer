@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeftSideNavigationComponent } from './left-side-navigation.component';
+import { ProductItemComponent } from './product-item.component';
 
-describe('LeftSideNavigationComponent', () => {
-  let component: LeftSideNavigationComponent;
-  let fixture: ComponentFixture<LeftSideNavigationComponent>;
+describe('ProductItemComponent', () => {
+  let component: ProductItemComponent;
+  let fixture: ComponentFixture<ProductItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeftSideNavigationComponent ]
+      declarations: [ ProductItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeftSideNavigationComponent);
+    fixture = TestBed.createComponent(ProductItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

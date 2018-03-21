@@ -9,8 +9,6 @@ import { ToDoListComponent } from "./to-do-list/to-do-list.component";
 import { StoreFrontComponent } from "./store-front/store-front.component";
 
 import { LeftSideNavigationComponent } from "./left-side-navigation/left-side-navigation.component";
-import { StatisticItemComponent } from './statistic-item/statistic-item.component';
-import { StatisticTitleComponent } from './statistic-title/statistic-title.component';
 
 import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
 import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
@@ -43,8 +41,6 @@ import { SharedModule } from '../shared/shared.module';
     StorePreviewComponent,
     StoreEditComponent,
     StoreFrontComponent,
-    StatisticItemComponent,
-    StatisticTitleComponent,
     StoreShareDialogComponent,
     SnackBarSuccessComponent,
     SettingsPasswordDialogComponent,

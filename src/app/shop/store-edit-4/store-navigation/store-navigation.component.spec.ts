@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StoreNavigationComponent } from './store-navigation.component';
+import { StoreNavigationEditFourComponent } from './store-navigation.component';
 
-describe('StoreNavigationComponent', () => {
-  let component: StoreNavigationComponent;
-  let fixture: ComponentFixture<StoreNavigationComponent>;
+describe('StoreNavigationEditFourComponent', () => {
+  let component: StoreNavigationEditFourComponent;
+  let fixture: ComponentFixture<StoreNavigationEditFourComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StoreNavigationComponent ]
+      declarations: [ StoreNavigationEditFourComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StoreNavigationComponent);
+    fixture = TestBed.createComponent(StoreNavigationEditFourComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

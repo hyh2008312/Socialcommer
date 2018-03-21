@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReturnRequestDialogComponent } from './return-progress.component';
+import { ReturnProgressComponent } from './return-progress.component';
 
-describe('ReturnRequestDialogComponent', () => {
-  let component: ReturnRequestDialogComponent;
-  let fixture: ComponentFixture<ReturnRequestDialogComponent>;
+describe('ReturnProgressComponent', () => {
+  let component: ReturnProgressComponent;
+  let fixture: ComponentFixture<ReturnProgressComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReturnRequestDialogComponent ]
+      declarations: [ ReturnProgressComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReturnRequestDialogComponent);
+    fixture = TestBed.createComponent(ReturnProgressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
