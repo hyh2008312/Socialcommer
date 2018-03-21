@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FindProductsAddProductComponent } from './find-products-add-product.component';
+import { StoreShareDialogComponent } from './store-share-dialog.component';
 
-describe('FindProductsAddProductComponent', () => {
-  let component: FindProductsAddProductComponent;
-  let fixture: ComponentFixture<FindProductsAddProductComponent>;
+describe('StoreShareDialogComponent', () => {
+  let component: StoreShareDialogComponent;
+  let fixture: ComponentFixture<StoreShareDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FindProductsAddProductComponent ]
+      declarations: [ StoreShareDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FindProductsAddProductComponent);
+    fixture = TestBed.createComponent(StoreShareDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
