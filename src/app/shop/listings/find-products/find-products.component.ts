@@ -1,8 +1,6 @@
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute} from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ENTER } from '@angular/cdk/keycodes';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 import { ShopService } from '../shop.service';
@@ -41,9 +39,6 @@ export class FindProductsComponent implements OnInit {
     data: {name: 'All'}
   };
   categories:any = [];
-
-  selectable: boolean = true;
-  removable: boolean = true;
 
   // MatPaginator Inputs
   productIndex: number = 1;
@@ -100,6 +95,7 @@ export class FindProductsComponent implements OnInit {
     let self = this;
     self.sub2 = self.userService.pubCategory.subscribe((data) => {
       if(data) {
+        self.categories = [];
         self.categories.push({
           id: null,
           data: {name: 'All'}
