@@ -20,7 +20,7 @@
         <i class="material-icons xb-pointer" >remove</i>
       </div>
       <mat-form-field class="xb-cart__item-input unicorn-dark-theme md-align-center">
-        <input type="number" class="unicorn-dark-theme" matInput [ngModel]="product.number" step="1" min="0"
+        <input type="number" class="unicorn-dark-theme xb-cart__align-center" matInput [ngModel]="product.number" step="1" min="0"
           (ngModelChange)="numberChanges($event)">
       </mat-form-field>
       <div class="md-margin-left-1 xb-cart__item-add" (click)="plusNumber()" fxFlex="none">
@@ -89,7 +89,7 @@
         <i class="material-icons xb-pointer" >remove</i>
       </div>
       <mat-form-field class="xb-cart__item-input unicorn-dark-theme md-align-center">
-        <input type="number" class="unicorn-dark-theme" matInput [ngModel]="product.number" step="1" min="0"
+        <input type="number" class="unicorn-dark-theme xb-cart__align-center" matInput [ngModel]="product.number" step="1" min="0"
                (ngModelChange)="numberChanges($event)">
       </mat-form-field>
       <div class="md-margin-left-1" (click)="plusNumber()">

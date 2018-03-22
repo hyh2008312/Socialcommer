@@ -14,7 +14,7 @@ export class ExchangeCurrencyPipe implements PipeTransform {
 
   transform(val: any, currency: any): any {
     if(currency.toUpperCase() == 'INR') {
-      return val * this.currencyExchange;
+      return Math.floor(val * this.currencyExchange * 100) / 100;
     }
 
     return val;

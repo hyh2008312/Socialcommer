@@ -3,13 +3,13 @@ import { environment } from './src/environments/environment';
 const domino = require('domino');
 const fs = require('fs');
 const path = require('path');
-const template = fs.readFileSync(path.join(__dirname, '.', 'dist/browser', 'index.html')).toString();
+const template = fs.readFileSync(path.join(__dirname, '.', 'browser', 'index.html')).toString();
 const win = domino.createWindow(template);
-const files = fs.readdirSync(`${process.cwd()}/dist/server`);
+const files = fs.readdirSync(`${process.cwd()}/server`);
 import 'localstorage-polyfill';
 // const styleFiles = files.filter(file => file.startsWith('styles'));
 // const hashStyle = styleFiles[0].split('.')[1];
-// const style = fs.readFileSync(path.join(__dirname, '.', 'dist/server', `styles.${hashStyle}.bundle.css`)).toString();
+// const style = fs.readFileSync(path.join(__dirname, '.', 'server', `styles.${hashStyle}.bundle.css`)).toString();
 win.fetch = fetch;
 global['window'] = win;
 global['DOMTokenList'] = win.DOMTokenList;
@@ -52,13 +52,13 @@ import { ROUTES } from './static.paths';
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const mainFiles = files.filter(file => file.startsWith('main'));
 const hash = mainFiles[0].split('.')[1];
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./dist/server/main.${hash}.bundle`);
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./server/main.${hash}.bundle`);
 import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 
 const BROWSER_FOLDER = join(process.cwd(), 'static');
 
 // Load the index.html file containing referances to your application bundle.
-const index = readFileSync(join('dist/browser', 'index.html'), 'utf8');
+const index = readFileSync(join('browser', 'index.html'), 'utf8');
 
 let previousRender = Promise.resolve();
 

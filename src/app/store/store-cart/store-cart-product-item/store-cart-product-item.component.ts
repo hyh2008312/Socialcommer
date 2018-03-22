@@ -41,6 +41,8 @@ export class StoreCartProductItemComponent{
         this.changeShipping(this.shippingLists[0]);
       }
     }
+
+
   }
 
   plusNumber() {

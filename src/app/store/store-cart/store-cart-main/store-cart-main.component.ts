@@ -113,9 +113,9 @@ export class StoreCartMainComponent implements OnInit{
     let shippingPrice = 0;
     for(let item of this.products) {
       if(typeof item.number == 'number' && item.number > 0) {
-        price += item.number * item.salePriceAmount;
+        price += item.number * Math.floor(item.salePriceAmount * 100) / 100;
         if(this.shippingItem[item.id]) {
-          shippingPrice += parseFloat(this.shippingItem[item.id].priceItem) * item.number;
+          shippingPrice += Math.floor(this.shippingItem[item.id].priceItem * 100) / 100 * item.number;
         }
       }
     }
