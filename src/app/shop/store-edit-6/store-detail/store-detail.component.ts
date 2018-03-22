@@ -7,7 +7,7 @@ import {ShopService} from "../../shop.service";
 @Component({
   selector: 'app-shop-template-6-store-edit-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../../store/store-template-5/_store-template-5.scss']
+  styleUrls: ['../_store-template-6.scss']
 })
 
 export class StoreDetailComponent implements OnInit {
@@ -68,12 +68,15 @@ export class StoreDetailComponent implements OnInit {
 
   constructor(private userService: UserService,
               private storeService: StoreService,
-              private shopService: ShopService){
+              private shopService: ShopService) {
 
   }
 
   ngOnChanges() {
     if (this.productId) {
+      if (document.getElementById('xb-6-template-to-top')) {
+        document.getElementById('xb-6-template-to-top').scrollTop = 0;
+      }
       this.queryDetail();
     }
   }
@@ -81,8 +84,6 @@ export class StoreDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.shareLink = window.location.href;
-
-
   }
 
   queryDetail() {
@@ -229,6 +230,7 @@ export class StoreDetailComponent implements OnInit {
   changeViewIndex(index: number) {
     this.closeDetail.emit(index);
   }
+
   selectVariant(value, item) {
     this.isShowCartWarn = false;
     this.isSelectInvalid = false;

@@ -1,10 +1,26 @@
 <div class="xb-4-template-detail">
-  <div class="xb-4-template-detail__container xb-4-template__w960">
+  <div id="xb-6-goods" class="xb-4-template-detail__container xb-4-template__w960">
     <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
       <div>
         <app-shop-detail-5-picture [images]="image" [selectedImage]="selectedImage"
                                    [imageSources]="imageSources"
                                    [insertImage]="insertImage"></app-shop-detail-5-picture>
+        <div class="xb-4-template-detail__store-owner" *ngIf="product?.recommendation">
+          <div class="xb-4-template-detail__store-owner-title">
+            Store Owner Says
+          </div>
+          <div class="xb-4-template-detail__store-owner-des">
+            {{product?.recommendation}}
+          </div>
+        </div>
+        <div class="xb-4-template-detail__store-owner">
+          <div class="xb-4-template-detail__store-owner-title">
+            About the Product
+          </div>
+          <div class="md-margin-top-2"
+               [innerHTML]="product?.description | safeHtml">
+          </div>
+        </div>
       </div>
       <div id="xb-6-detail-top" class="xb-4-template-detail__content" fxFlex>
         <div class="xb-4-template-detail__title md-margin-top-1">{{product?.title}}</div>
@@ -64,13 +80,13 @@
                fxLayout.xs="column" fxLayoutAlign.xs="start start" *ngIf="isCanBuy">
             <div class="xb-store-template__car-left-part">Quantity</div>
             <div fxLayout="row" fxLayoutAlign="start center">
-              <div class="md-margin-right-2 xb-store-template__car-item-add"  fxFlex="none">
+              <div class="md-margin-right-2 xb-store-template__car-item-add" fxFlex="none">
                 <i class="material-icons">add</i>
               </div>
               <div class="xb-store-template__car-item-input" fxFlex>
                 <input type="number" [(ngModel)]="number" step="1" min="0">
               </div>
-              <div class="md-margin-left-2 xb-store-template__car-item-add"  fxFlex="none">
+              <div class="md-margin-left-2 xb-store-template__car-item-add" fxFlex="none">
                 <i class="material-icons">remove</i>
               </div>
             </div>
@@ -101,22 +117,6 @@
         </div>
         <div class="md-margin-top-2">
           <app-share-button [link]="shareLink" [text]="text"></app-share-button>
-        </div>
-        <div class="xb-4-template-detail__store-owner" *ngIf="product?.recommendation">
-          <div class="xb-4-template-detail__store-owner-title">
-            Store Owner Says
-          </div>
-          <div class="xb-4-template-detail__store-owner-des">
-            {{product?.recommendation}}
-          </div>
-        </div>
-        <div class="xb-4-template-detail__store-owner">
-          <div class="xb-4-template-detail__store-owner-title">
-            About the Product
-          </div>
-          <div class="md-margin-top-2"
-               [innerHTML]="product?.description | safeHtml">
-          </div>
         </div>
       </div>
     </div>

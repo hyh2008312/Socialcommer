@@ -168,6 +168,143 @@
 
 .xb-store-template {
 
+  &__buttons-color {
+    color: $whiteColor;
+    display: block;
+  }
+
+  &__car {
+    &-margin-top {
+      margin-top: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-margin-top-1 {
+      margin-top: 12px;
+      @include xb-xs-screen {
+        margin-top: 0px;
+      }
+    }
+
+    &-margin-top-2 {
+      margin-top: 20px;
+      @include xb-xs-screen {
+        margin-top: 0;
+      }
+    }
+
+    &-left-part {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 54px;
+      margin-right: 24px;
+      @include xb-xs-screen {
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    &-bg {
+      margin-top: 40px;
+      background-color: #efefef;
+      border-radius: 4px;
+      padding: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-left-part-1 {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 145px;
+      margin-right: 32px;
+    }
+
+    &-image {
+      width: 54px;
+      height: 54px;
+      position: relative;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #dedede;
+      overflow: hidden;
+      cursor: pointer;
+      > img {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+      &.active {
+        border: 2px solid #501c19;
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      color: rgba(0, 0, 0, .87);
+      padding: 0 8px;
+      line-height: 32px;
+      margin-right: 40px;
+      cursor: pointer;
+      @include text-overflow();
+      &.active {
+        @include media();
+        border: 2px solid #501c19;
+      }
+    }
+
+    &-item {
+
+      &-input {
+        border: 1px solid #dedede;
+        border-radius: 2px;
+        input {
+          width: 100%;
+          line-height: 40px;
+          font-size: 16px;
+          border: none;
+          text-align: center;
+          padding: 0;
+        }
+      }
+
+      &-add {
+        > i {
+          display: block;
+          user-select: none;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    height: 56px;
+    line-height: 56px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, .19);
+    position: relative;
+    @include text-overflow();
+    padding: 0 56px;
+    width: 100%;
+    text-align: center;
+
+    i {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 32px;
+      line-height: 32px;
+      padding: 12px;
+    }
+  }
+
   &__collection-no-goods {
     margin-top: 105px;
     text-align: center;
@@ -789,22 +926,11 @@
 
   //商品详情
   &__detail {
-    margin-top: 20px;
-    margin-bottom: 56px;
+    margin: 20px auto 56px ;
     max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
     position: relative;
     padding: 40px 40px;
     background-color: $whiteColor;
-    @include xb-xs-screen {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: calc(100vh - 56px);
-      overflow-y: scroll;
-      overflow-x: hidden;
-    }
     &-background {
       position: absolute;
       left: 0;
@@ -815,9 +941,6 @@
       overflow-x: hidden;
       background-color: rgba(0, 0, 0, .7);
       z-index: 1000;
-      @include xb-xs-screen {
-        overflow-y: scroll;
-      }
     }
     &-close {
       position: absolute;
@@ -829,86 +952,25 @@
         font-size: 56px;
         line-height: 56px;
       }
-
-      @include xb-xs-screen {
-        left: 50%;
-        top: calc(100% - 40px);
-        @include transform(translateX(-50%));
-        i {
-          font-size: 24px;
-          line-height: 24px;
-        }
-      }
-
-      @include xb-sm-screen {
-        left: 50%;
-        top: calc(100% - 40px);
-        @include transform(translateX(-50%));
-        i {
-          font-size: 24px;
-          line-height: 24px;
-        }
-      }
     }
 
     &-margin-right {
       margin-right: 32px;
-      @include xb-xs-screen {
-        width: auto;
-        height: auto;
-        margin-right: 16px;
-        margin-left: 16px;
-        margin-top: 16px;
-        @include resetBorder();
-      }
-      @include xb-sm-screen {
-        width: 416px;
-        height: 320px;
-        margin-right: 16px;
-        margin-left: 16px;
-        margin-top: 16px;
-
-      }
     }
 
     &-content {
       overflow-y: scroll;
       height: 530px;
-      @include xb-xs-screen {
-        height: 100%;
-        overflow-y: visible;
-        margin-top: 16px;
-        margin-left: 16px;
-        margin-right: 16px;
-      }
     }
     &-title {
       font-size: 24px;
       line-height: 32px;
       @include media();
-
-      @include xb-xs-screen {
-        font-size: 16px;
-        line-height: 24px;
-      }
-
-      @include xb-sm-screen {
-        font-size: 16px;
-        line-height: 24px;
-      }
     }
     &-price {
       font-size: 24px;
       line-height: 32px;
       @include media();
-
-      @include xb-xs-screen {
-        font-size: 16px;
-      }
-
-      @include xb-sm-screen {
-        font-size: 16px;
-      }
     }
     &-original-price {
       font-size: 14px;
@@ -923,34 +985,16 @@
       font-size: 14px;
       line-height: 28px;
       @include media();
-
-      @include xb-xs-screen {
-        line-height: 24px;
-      }
-
-      @include xb-sm-screen {
-        line-height: 24px;
-      }
     }
     &-buttons-bg {
-      margin-left: 32px;
+      margin-top: 25px;
       > a {
         height: 40px;
         width: 132px;
       }
-      @include xb-xs-screen {
-        margin-left: 0;
-        margin-top: 16px;
-        overflow-x: hidden;
-        > a {
-          height: 40px;
-          width: calc(100vw - 32px);
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
     }
     &-buttons {
+      display: block;
       background-color: #511a1a;
       border-radius: 4px;
       height: 40px;
@@ -959,11 +1003,6 @@
       color: $whiteColor;
       font-size: 14px;
       @include media();
-      @include xb-xs-screen {
-        width: calc(100vw - 32px);
-        margin-left: auto;
-        margin-right: auto;
-      }
     }
 
     &-line {

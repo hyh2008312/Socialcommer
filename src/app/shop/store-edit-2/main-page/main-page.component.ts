@@ -11,7 +11,7 @@ import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-di
 @Component({
   selector: 'app-store-template-edit-2',
   templateUrl: './main-page.component.html',
-  styleUrls: ['../store-template-2-edit.scss']
+  styleUrls: ['../_store-template-2-edit.scss']
 })
 
 export class MainPageComponent implements OnInit {

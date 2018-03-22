@@ -374,6 +374,20 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     })
   }
 
+  changeFixed(): void {
+    let Atheight = document.getElementById('xb-6-template-to-top').scrollTop;
+    let cartHeight = document.getElementById('xb-6-detail-top').offsetHeight;
+    let detialHeight = document.getElementById('xb-6-goods').offsetHeight;
+
+    if (Atheight + cartHeight >= detialHeight) {
+      document.getElementById('xb-6-detail-top').style.position = 'absolute';
+      document.getElementById('xb-6-detail-top').style.top = (detialHeight + 184 - cartHeight) + "px";
+    } else {
+      document.getElementById('xb-6-detail-top').style.position = 'fixed';
+      document.getElementById('xb-6-detail-top').style.top = "auto";
+    }
+  }
+
   defaultCategoryTitle(mCategoryTitle: string): string {
     return `<p class="ql-align-center"><span class="ql-size-huge" style="color: rgb(255, 255, 255);">${mCategoryTitle}</span></p>`;
   }
