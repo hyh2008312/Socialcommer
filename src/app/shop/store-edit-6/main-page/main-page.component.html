@@ -1,48 +1,49 @@
-<div id="xb-6-template-to-top" class="xb-4-template">
+<div id="xb-6-template-to-top" (scroll)="changeFixed()" class="xb-4-template">
   <form [formGroup]="storeTemplateForm" novalidate>
     <div class="xb-4-template__container">
       <!--header-->
-      <div class="xb-4-template__cancel-save">
-        <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
-            SAVE
+      <div>
+        <div class="xb-4-template__cancel-save">
+          <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
+              SAVE
+            </div>
+            <div class="xb-4-template-edit__button" (click)="close()">
+              CANCEL
+            </div>
           </div>
-          <div class="xb-4-template-edit__button" (click)="close()">
-            CANCEL
+          <div class="xb-4-template-edit__left" fxLayout="row" fxLayoutAlign="start center"
+               *ngIf="!isShowBlog" (click)="changeIsShowBlog(true)">
+            <i class="iconfontXberts icon-pic-show xb-4-template-edit__icon"></i>
+            <div class="xb-4-template-edit__add-blog xb-4-template-edit__magleft-12">
+              ADD BLOG SECTION
+            </div>
+          </div>
+          <div class="xb-4-template-edit__left" *ngIf="isShowBlog" (click)="changeIsShowBlog(false)"
+               fxLayout="row" fxLayoutAlign="start center">
+            <i class="iconfontXberts  icon-pic-hide xb-4-template-edit__icon"></i>
+            <div class="xb-4-template-edit__add-blog xb-4-template-edit__magleft-12">
+              HIDE BLOG SECTION
+            </div>
           </div>
         </div>
-        <div class="xb-4-template-edit__left" fxLayout="row" fxLayoutAlign="start center"
-             *ngIf="!isShowBlog" (click)="changeIsShowBlog(true)">
-          <i class="iconfontXberts icon-pic-show xb-4-template-edit__icon"></i>
-          <div class="xb-4-template-edit__add-blog xb-4-template-edit__magleft-12">
-            ADD BLOG SECTION
+        <div class="xb-4-template__divider-line"></div>
+        <div class="xb-4-template__box-shadow" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-4-template__title xb-4-template__edit-border"
+               [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()">
           </div>
-        </div>
-        <div class="xb-4-template-edit__left" *ngIf="isShowBlog" (click)="changeIsShowBlog(false)"
-             fxLayout="row" fxLayoutAlign="start center">
-          <i class="iconfontXberts  icon-pic-hide xb-4-template-edit__icon"></i>
-          <div class="xb-4-template-edit__add-blog xb-4-template-edit__magleft-12">
-            HIDE BLOG SECTION
+          <div class="xb-4-template__title xb-4-template__edit-border"
+               [hidden]="!nameEdited">
+            <input formControlName="nameTag" [(ngModel)]="nameTag">
           </div>
-        </div>
-      </div>
-      <div class="xb-4-template__divider-line"></div>
-
-      <div class="xb-4-template__box-shadow" fxLayout="row" fxLayoutAlign="start center">
-        <div class="xb-4-template__title xb-4-template__edit-border"
-             [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()">
-        </div>
-        <div class="xb-4-template__left-24px xb-4-template__edit-border"
-             [hidden]="!nameEdited">
-          <input formControlName="nameTag" [(ngModel)]="nameTag">
-        </div>
-        <div class="md-margin-left-4" fxShow="true" fxShow.xs="false" fxLayout="row" fxLayoutAlign="start center">
-          <app-shop-template-5-navigation [categories]="categories"
-                                          [navigationIndex]="viewIndex"
-                                          [isNavigationHaveBlog]="isShowBlog"
-                                          (navigationChange)="changeNavigation($event)"
-                                          (categoryChange)="changeCategoryNavigation($event)"
-                                          [isCategory]="isCategory"></app-shop-template-5-navigation>
+          <div class="md-margin-left-4" fxShow="true" fxShow.xs="false" fxLayout="row" fxLayoutAlign="start center">
+            <app-shop-template-5-navigation [categories]="categories"
+                                            [navigationIndex]="viewIndex"
+                                            [isNavigationHaveBlog]="isShowBlog"
+                                            (navigationChange)="changeNavigation($event)"
+                                            (categoryChange)="changeCategoryNavigation($event)"
+                                            [isCategory]="isCategory"></app-shop-template-5-navigation>
+          </div>
         </div>
       </div>
       <!--home-->
@@ -112,38 +113,38 @@
               </a>
             </div>
           </div>
-        <div *ngIf="isShowBlog">
-          <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
-               [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / auto 100% '}">
-            <div class="xb-4-template-home__category-mask"></div>
-            <div class="xb-4-template-home__blog-name xb-4-template__edit-border">
-              <quill-editor formControlName="blogDesTag" [(ngModel)]="blogDesTag"
-                            [options]="editorConfig"></quill-editor>
+          <div *ngIf="isShowBlog">
+            <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
+                 [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / auto 100% '}">
+              <div class="xb-4-template-home__category-mask"></div>
+              <div class="xb-4-template-home__blog-name xb-4-template__edit-border">
+                <quill-editor formControlName="blogDesTag" [(ngModel)]="blogDesTag"
+                              [options]="editorConfig"></quill-editor>
+              </div>
+              <div class="xb-4-template-edit__banner-button" (click)="editBlogCoverImage()">
+                CLICK TO CHANGE IMAGE
+              </div>
             </div>
-            <div class="xb-4-template-edit__banner-button" (click)="editBlogCoverImage()">
-              CLICK TO CHANGE IMAGE
+            <div class="xb-4-template-home__category-name">Blog</div>
+            <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row"
+                 fxLayoutAlign="space-between start"
+                 fxLayoutWrap
+                 fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
+              <app-shop-item-blog-card-5 *ngFor="let item of homeBlog"
+                                         fxFlex.xs="48" fxFlex.gt-xs="50"
+                                         [blog]="item" [status]="1"></app-shop-item-blog-card-5>
+              <div fxFlex="50"></div>
+            </div>
+            <div class="xb-4-template-products__collection-no-goods" *ngIf="homeBlog.length == 0">
+              <div>You haven't added any blog yet.</div>
+              <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
+              >
+                <a routerLink="/shop/blog" target="_blank">
+                  Add Your First Blog
+                </a>
+              </div>
             </div>
           </div>
-          <div class="xb-4-template-home__category-name">Blog</div>
-          <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row"
-               fxLayoutAlign="space-between start"
-               fxLayoutWrap
-               fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
-            <app-shop-item-blog-card-5 *ngFor="let item of homeBlog"
-                                       fxFlex.xs="48" fxFlex.gt-xs="50"
-                                       [blog]="item" [status]="1"></app-shop-item-blog-card-5>
-            <div fxFlex="50"></div>
-          </div>
-          <div class="xb-4-template-products__collection-no-goods" *ngIf="homeBlog.length == 0">
-            <div>You haven't added any blog yet.</div>
-            <div class="xb-4-template__jump-button" fxLaout="row" fxLayoutAlign="center center"
-            >
-              <a routerLink="/shop/blog" target="_blank">
-                Add Your First Blog
-              </a>
-            </div>
-          </div>
-        </div>
         </div>
       </div>
       <!--blog-->

@@ -3,7 +3,7 @@ import { Input, Output, Component, OnInit, EventEmitter} from '@angular/core';
 @Component({
   selector: 'app-store-template-edit-2-category',
   templateUrl: './store-category.component.html',
-  styleUrls: ['../store-template-2-edit.scss']
+  styleUrls: ['../_store-template-2-edit.scss']
 })
 
 export class StoreCategoryComponent implements OnInit {

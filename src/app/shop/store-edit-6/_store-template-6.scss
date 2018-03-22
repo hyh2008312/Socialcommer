@@ -231,7 +231,7 @@
     position: relative;
     color: $whiteColor;
     margin-top: 200px;
-    >input{
+    > input {
       border: none;
       font-size: 80px;
       width: auto;
@@ -904,20 +904,42 @@
 
 //product --detail
 .xb-4-template-detail {
-  margin-top: 24px;
+  padding-top: 40px;
   overflow-x: hidden;
+  @include xb-xs-screen {
+    padding-top: 16px;
+    background-color: white;
+  }
   &__container {
   }
-  &__content {
-    overflow-y: scroll;
-    height: 576px;
-    margin-left: 16px;
+  &__nav-line {
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.12);
     @include xb-xs-screen {
+      height: 1px;
+    }
+  }
+  &__pink-line {
+    width: 100vw;
+    background-color: #ee4b80;
+    height: 4px;
+    margin-top: 64px;
+  }
+  &__content {
+    background-color: white;
+    padding-left: 24px;
+    padding-right: 24px;
+    position: fixed;
+    margin-left: 760px;
+    &-mobile {
       height: 100%;
       overflow-y: visible;
+      position: relative;
       margin-top: 16px;
       margin-left: 16px;
       margin-right: 16px;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
   &__title {
@@ -936,7 +958,7 @@
   }
   &__buy-buttons {
     display: block;
-    background-color: #e1ab18;
+    background-color: #ee4b80;
     border-radius: 4px;
     height: 40px;
     width: 132px;
@@ -945,21 +967,25 @@
     font-size: 14px;
     @include media();
     @include xb-xs-screen {
-      width: calc(100vw - 32px);
-      margin-left: auto;
-      margin-right: auto;
     }
   }
   &__line {
-    margin-top: 24px;
+    margin-top: 32px;
     background-color: rgba(0, 0, 0, 0.12);
     height: 1px;
   }
   &__store-owner {
     margin-top: 32px;
+    width: 720px;
+    @include xb-xs-screen {
+      width: calc(100vw - 32px);
+      margin-left: auto;
+      margin-right: auto;
+    }
     &-title {
       font-weight: bold;
-      font-size: 16px;
+      font-size: 24px;
+      color: black;
     }
     &-des {
       margin-top: 24px;
@@ -973,9 +999,15 @@
   }
   &__recommend {
     &-title {
-      margin-top: 80px;
-      font-size: 24px;
+      margin-top: 64px;
+      font-size: 34px;
       font-weight: bold;
+      margin-left: 16px;
+      @include xb-xs-screen {
+        margin-top: 0;
+        padding-top: 24px;
+        font-size: 24px;
+      }
     }
   }
   &__buttons_bg {
@@ -983,6 +1015,120 @@
       margin-top: 16px;
     }
   }
+}
+
+// 购物车
+.xb-store-template {
+  &__car {
+    &-margin-top {
+      margin-top: 8px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-margin-top-1 {
+      margin-top: 12px;
+      @include xb-xs-screen {
+        margin-top: 0px;
+      }
+    }
+
+    &-margin-top-2 {
+      margin-top: 20px;
+      @include xb-xs-screen {
+        margin-top: 0;
+      }
+    }
+
+    &-left-part {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 54px;
+      margin-right: 24px;
+      @include xb-xs-screen {
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    &-bg {
+      margin-top: 32px;
+      background-color: #efefef;
+      border-radius: 4px;
+      padding: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-left-part-1 {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 145px;
+      margin-right: 32px;
+    }
+
+    &-image {
+      width: 54px;
+      height: 54px;
+      position: relative;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #dedede;
+      overflow: hidden;
+      cursor: pointer;
+      > img {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+      &.active {
+        border: 2px solid #ee4b80;
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      color: rgba(0, 0, 0, .87);
+      padding: 0 8px;
+      line-height: 32px;
+      margin-right: 40px;
+      cursor: pointer;
+      @include text-overflow();
+      &.active {
+        @include media();
+        border: 2px solid #ee4b80;
+      }
+    }
+
+    &-item {
+
+      &-input {
+        border: 1px solid #dedede;
+        border-radius: 2px;
+        input {
+          width: 100%;
+          line-height: 40px;
+          font-size: 16px;
+          border: none;
+          text-align: center;
+          padding: 0;
+        }
+      }
+
+      &-add {
+        > i {
+          display: block;
+          user-select: none;
+        }
+      }
+    }
+  }
+
 }
 
 .xb-store__footer {

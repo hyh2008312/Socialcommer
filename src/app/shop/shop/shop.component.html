@@ -2,14 +2,14 @@
   <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
     <div class="xb-shop__logo" fxLayout="row" fxLayoutAlign="start center">
       <img src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png" width="140">
-      <div  class="xb-shop__logo-badge">
+      <div class="xb-shop__logo-badge">
         Beta
       </div>
     </div>
-    <div class="md-margin-left-4 md-dark-primary" fxLayout="row" fxLayoutAlign="end center" fxFlex>
+    <div [ngStyle]="{'margin-left':'64px'}" class="md-dark-primary" fxLayout="row" fxLayoutAlign="start center" fxFlex>
       <div class="xb-shop__logo-button" routerLink="./todolist" routerLinkActive="active">To-do List</div>
       <div class="xb-shop__logo-button" routerLink="./templates" routerLinkActive="active">Templates</div>
-      <a class="md-dark-primary xb-shop__logo-button" routerLink="/store/{{storeName}}" target="_blank">My Store</a>
+      <a class="md-dark-primary xb-shop__logo-button" routerLink="/store/{{storeName}}" target="_blank">Visit My Store</a>
     </div>
   </div>
   <div class="xb-shop__pop-bg" fxLayout="row" fxLayoutAlign="start center">
@@ -24,7 +24,7 @@
 </div>
 <div class="background-bg-light xb-shop__bg-content" fxLayout="column">
   <div fxLayout="row" fxLayoutAlign="stretch stretch" fxFlex>
-    <app-left-side-navigation class="xb-shop__left-navigation-scroll" fxLayout="column" ></app-left-side-navigation>
+    <app-left-side-navigation class="xb-shop__left-navigation-scroll" fxLayout="column"></app-left-side-navigation>
     <div class="xb-shop__scroll" fxFlex fxLayout="column">
       <router-outlet></router-outlet>
     </div>

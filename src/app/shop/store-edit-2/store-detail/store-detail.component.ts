@@ -5,7 +5,7 @@ import {ShopService} from "../../shop.service";
 @Component({
   selector: 'app-store-template-2-store-edit-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../../store/store-template-2/store-template-2.scss']
+  styleUrls: ['../_store-template-2-edit.scss']
 })
 
 export class StoreDetailComponent implements OnInit {
