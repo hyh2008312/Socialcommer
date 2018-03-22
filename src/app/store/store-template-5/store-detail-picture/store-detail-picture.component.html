@@ -5,16 +5,6 @@
       <img *ngIf="selectedImage" [src]="selectedImage">
     </div>
   </div>
-  <div class="xb-image-display__left-bg" fxLayout="row" fxLayoutAlign="start start"
-       fxLayoutGap="20px">
-    <ng-container *ngFor="let image of images; let i = index;">
-      <div class="xb-image-display__left"
-           [ngClass]="{'active': image == selectedImage  }"
-           (click)="selectImage(image)" *ngIf="i < 5">
-        <img *ngIf="image" [src]="image">
-      </div>
-    </ng-container>
-  </div>
 </div>
 
 <!--手机端图片展示-->

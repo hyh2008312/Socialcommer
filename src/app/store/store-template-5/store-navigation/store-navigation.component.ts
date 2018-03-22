@@ -66,8 +66,7 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
       .subscribe((event) => {
         if (event instanceof NavigationStart) { // 当导航成功结束时执行
           self.routerChange.emit();
-          if (this.scrollTopDirective)
-            this.scrollTopDirective.setScrollTop();
+          document.querySelector('html').scrollTop = 0;
         }
       });
   }
@@ -85,6 +84,7 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
   hiddenShowMoreCategory(): void {
     this.isShowMoreCategory = false;
   }
+
   jumpCart(): void {
     this.router.navigate([`./store/${this.displayName}/cart`]);
   }

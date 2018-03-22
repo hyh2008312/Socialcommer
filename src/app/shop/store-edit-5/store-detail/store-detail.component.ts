@@ -76,6 +76,9 @@ export class StoreDetailComponent implements OnInit {
 
   ngOnChanges() {
     if (this.productId) {
+      if (document.getElementById('xb-5-template-to-top')) {
+        document.getElementById('xb-5-template-to-top').scrollTop = 0;
+      }
       this.queryDetail();
     }
   }

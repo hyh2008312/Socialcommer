@@ -99,7 +99,20 @@ export class StoreDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.shareLink = window.location.href;
-
+    window.addEventListener('scroll', function (e) {
+        let Atheight = this.document.querySelector('html').scrollTop;
+        let cartHeight = this.document.getElementById('xb-5-detail-top').offsetHeight;
+        let detialHeight = this.document.getElementById('xb-5-goods').offsetHeight;
+        let elementFixed = this.document.getElementById('xb-5-detail-top');
+        if (Atheight + cartHeight >= detialHeight) {
+          elementFixed.style.position = 'absolute';
+          elementFixed.style.top = (detialHeight + 136 - cartHeight) + "px";
+        } else {
+          elementFixed.style.position = 'fixed';
+          elementFixed.style.top = "auto";
+        }
+      }
+    );
   }
 
   ngOnDestroy() {

@@ -552,4 +552,17 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       document.getElementById('xb-5-template-to-top').scrollTop = 0;
     }
   }
+  changeFixed(): void {
+    let Atheight = document.getElementById('xb-5-template-to-top').scrollTop;
+    let cartHeight = document.getElementById('xb-5-detail-top').offsetHeight;
+    let detialHeight = document.getElementById('xb-5-goods').offsetHeight;
+     let ele =  document.getElementById('xb-5-detail-top');
+    if (Atheight + cartHeight >= detialHeight) {
+      ele.style.position = 'absolute';
+      ele.style.top = (detialHeight + 208 - cartHeight) + "px";
+    } else {
+      ele.style.position = 'fixed';
+      ele.style.top = "auto";
+    }
+  }
 }
