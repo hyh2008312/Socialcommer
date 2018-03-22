@@ -13,7 +13,7 @@ export class MainPageComponent implements OnInit {
   storeName: string = '';
   text: string = '';
   productNumber: number = 0;
-  displayName:string ;
+  displayName: string;
 
 
   ownerId: any;
@@ -25,7 +25,7 @@ export class MainPageComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
-              private router:Router,
+              private router: Router,
               private userService: UserService) {
 
   }
@@ -37,7 +37,7 @@ export class MainPageComponent implements OnInit {
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.storeName = data.context ? data.context.nameTag : data.name;
         self.text = data.description;
-        self.displayName = data.displayName ;
+        self.displayName = data.displayName;
         if (data.context && data.context.blogFlag) {
           self.showBlogFlag = data.context.blogFlag;
         }
@@ -46,9 +46,9 @@ export class MainPageComponent implements OnInit {
       }
     });
     self.storeService.cart.subscribe((data) => {
-      if(data && data.length>0) {
+      if (data && data.length > 0) {
         self.productNumber = 0;
-        for(let item of data) {
+        for (let item of data) {
           self.productNumber += parseInt(item.number);
         }
       }
@@ -88,12 +88,14 @@ export class MainPageComponent implements OnInit {
     );
   }
 
-
   isShowNav = false;
 
   changeNavigationShow(isShowNavigation: any): void {
     this.isShowNav = isShowNavigation;
+
+
   }
+
   jumpCart(): void {
     this.router.navigate([`./store/${this.displayName}/cart`]);
   }

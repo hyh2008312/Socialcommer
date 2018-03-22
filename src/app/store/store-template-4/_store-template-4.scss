@@ -36,6 +36,11 @@
     margin-left: auto;
     margin-right: auto;
   }
+  &__w1000 {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   &__w720 {
     max-width: 720px;
@@ -610,13 +615,13 @@
   &__container {
   }
   &__content {
-    overflow-y: scroll;
-    height: 576px;
-    margin-left: 16px;
+    position: absolute;
+    margin-left: 640px;
+    padding-left: 16px;
+    max-width: 360px;
     padding-right: 16px;
-    @include xb-xs-screen {
+    &-mobile{
       height: 100%;
-      overflow-y: visible;
       margin-top: 16px;
       margin-left: 16px;
       margin-right: 16px;
@@ -662,6 +667,7 @@
   }
   &__store-owner {
     margin-top: 32px;
+    max-width: 600px;
     &-title {
       font-weight: bold;
       font-size: 16px;
@@ -769,7 +775,7 @@
       color: rgba(0, 0, 0, .87);
       padding: 0 8px;
       line-height: 32px;
-      margin-right: 40px;
+      margin-right: 8px;
       cursor: pointer;
       @include text-overflow();
       &.active {

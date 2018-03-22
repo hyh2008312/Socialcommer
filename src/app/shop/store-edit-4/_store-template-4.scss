@@ -17,15 +17,13 @@
     height: 1px;
     width: 100vw;
   }
-  &__cancel-save{
+  &__cancel-save {
     position: relative;
     height: 72px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
   }
-
-
 
   &__jump-button {
     margin-top: 20px;
@@ -181,7 +179,7 @@
     color: $whiteColor;
     font-size: 24px;
     @include light();
-    >a{
+    > a {
       color: white;
     }
   }
@@ -507,5 +505,206 @@
   }
 }
 
+//product --detail
+.xb-4-template-detail {
+  margin-top: 24px;
+  overflow-x: hidden;
+  &__container {
+  }
+  &__content {
+    position: absolute;
+    margin-left: 640px;
+    padding-left: 16px;
+    max-width: 360px;
+    padding-right: 16px;
+    &-mobile {
+      height: 100%;
+      margin-top: 16px;
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 32px;
+  }
+  &__price {
+    font-size: 16px;
+    font-weight: bold;
+    @include xb-xs-screen {
+      margin-left: 8px;
+    }
+  }
+  &__original-price {
+    font-size: 16px;
+    margin-left: 40px;
+    @include regular();
+  }
+  &__buy-buttons {
+    display: block;
+    background-color: #e1ab18;
+    border-radius: 4px;
+    height: 40px;
+    width: 132px;
+    cursor: pointer;
+    color: $whiteColor;
+    font-size: 14px;
+    @include media();
+    @include xb-xs-screen {
+      width: calc(100vw - 32px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  &__line {
+    margin-top: 24px;
+    background-color: rgba(0, 0, 0, 0.12);
+    height: 1px;
+  }
+  &__store-owner {
+    margin-top: 32px;
+    max-width: 600px;
+    &-title {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    &-des {
+      margin-top: 24px;
+      font-size: 14px;
+      @include regular();
+      line-height: 24px;
+      margin-right: 24px;
+      margin-bottom: 32px;
+
+    }
+  }
+  &__recommend {
+    &-title {
+      margin-top: 80px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+  &__buttons_bg {
+    @include xb-xs-screen {
+      margin-top: 16px;
+    }
+  }
+}
+
+// cart
+.xb-store-template {
+  &__car {
+    &-margin-top {
+      margin-top: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-margin-top-1 {
+      margin-top: 12px;
+      @include xb-xs-screen {
+        margin-top: 0px;
+      }
+    }
+
+    &-margin-top-2 {
+      margin-top: 20px;
+      @include xb-xs-screen {
+        margin-top: 0;
+      }
+    }
+
+    &-left-part {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 54px;
+      margin-right: 24px;
+      @include xb-xs-screen {
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    &-bg {
+      margin-top: 40px;
+      background-color: #efefef;
+      border-radius: 4px;
+      padding: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-left-part-1 {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 145px;
+      margin-right: 32px;
+    }
+
+    &-image {
+      width: 54px;
+      height: 54px;
+      position: relative;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #dedede;
+      overflow: hidden;
+      cursor: pointer;
+      > img {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+      &.active {
+        border: 2px solid #e1ab18;
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      color: rgba(0, 0, 0, .87);
+      padding: 0 8px;
+      line-height: 32px;
+      margin-right: 8px;
+      cursor: pointer;
+      @include text-overflow();
+      &.active {
+        @include media();
+        border: 2px solid #e1ab18;
+      }
+    }
+
+    &-item {
+
+      &-input {
+        border: 1px solid #dedede;
+        border-radius: 2px;
+        input {
+          width: 100%;
+          line-height: 40px;
+          font-size: 16px;
+          border: none;
+          text-align: center;
+          padding: 0;
+        }
+      }
+
+      &-add {
+        > i {
+          display: block;
+          user-select: none;
+        }
+      }
+    }
+  }
+
+}
 
 

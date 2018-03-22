@@ -101,7 +101,35 @@ export class StoreDetailComponent implements OnInit {
           self.initData();
         }
       });
-    })
+    });
+
+    let ScrollDom = document.querySelector('mat-sidenav-content');
+    ScrollDom.addEventListener('scroll', function () {
+      console.log(ScrollDom.scrollTop);
+      console.log(document.getElementById('xb-4-detail-top').offsetHeight);
+      console.log( document.getElementById('xb-4-goods').offsetHeight);
+
+      let Atheight = ScrollDom.scrollTop;
+      let elementFixed = document.getElementById('xb-4-detail-top');
+      let cartHeight = elementFixed.offsetHeight;
+      let detialHeight = document.getElementById('xb-4-goods').offsetHeight;
+
+      if (Atheight < 194) {
+        elementFixed.style.position = 'absolute';
+        elementFixed.style.top = 'auto';
+      } else {
+        if (Atheight + cartHeight >= detialHeight) {
+          elementFixed.style.position = 'absolute';
+          elementFixed.style.top = (detialHeight + 54 - cartHeight) + "px";
+        } else {
+          elementFixed.style.position = 'fixed';
+          elementFixed.style.top = "55px";
+        }
+      }
+
+    });
+
+
   }
 
   ngOnDestroy() {
