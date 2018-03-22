@@ -36,7 +36,7 @@ export class ChangeShippingAddressDialogComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       line1: ['', Validators.required],
-      line2: ['', Validators.required],
+      line2: [''],
       city: ['', Validators.required],
       countryId: ['', Validators.required],
       stateId: ['', Validators.required],

@@ -7,7 +7,7 @@
       Tracking Information
     </div>
     <div class="md-margin-top-2">
-      please note there may be no tracking information available for some international sipping methods.
+      Please note there may be no tracking information available for some international sipping methods.
     </div>
     <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="center center"
       *ngIf="status > 0">
@@ -23,8 +23,10 @@
       <div class="xb-order-tracking__shipping-process-line"></div>
       <div class="xb-order-tracking__shipping-process-bg" fxLayout="column" fxLayoutAlign="center center" fxFlex="none">
         <div class="xb-order-tracking__shipping-process-circle" [ngClass]="{'active': status > 2}">3</div>
-        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text"
+        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text" *ngIf="data.order.arrivalDate"
              [ngClass]="{'active': status > 2}">Delivered by {{data.order.arrivalDate| amDateFormat:'MMMM Do, YYYY'}}</div>
+        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text" *ngIf="!data.order.arrivalDate"
+             [ngClass]="{'active': status > 2}">Delivered</div>
       </div>
     </div>
     <div *ngIf="status > 0">
@@ -42,7 +44,8 @@
       </div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Tracking URL</div>
-        <a class="md-margin-left-3 text-underline xb-bold sc-order-dialog__color" href="{{data.order.shippingUrl}}" target="_blank">View Details</a>
+        <a class="md-margin-left-3 text-underline xb-bold sc-order-dialog__color" *ngIf="data.order.shippingUrl"
+           href="{{data.order.shippingUrl}}" target="_blank">View Details</a>
       </div>
       <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
         <button mat-raised-button color="primary" (click)="close()">CLOSE</button>

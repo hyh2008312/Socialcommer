@@ -23,7 +23,7 @@ export class StoreMessageMainComponent implements OnInit {
   replyMessageForm: FormGroup;
 
   isMessageEmpty: boolean = false;
-  replayPlaceholder: any = 'Tell us about your issue';
+  replayPlaceholder: any = 'Tell us about your issue（In English)';
   // 两个条件一个是消息是否为空，一个是消息是否进行了关闭
   isNoMessage: boolean = false;
   //这个问题是否解决
@@ -122,10 +122,10 @@ export class StoreMessageMainComponent implements OnInit {
   // 修改按钮的状态和文字
   updateWord() {
     if (!this.isClose || !this.isNoMessage) {
-      this.replayPlaceholder = 'Tell us about your issue';
+      this.replayPlaceholder = 'Tell us about your issue（In English)';
       this.submitTitle = 'SUBMIT';
     } else {
-      this.replayPlaceholder = 'Leave a reply';
+      this.replayPlaceholder = 'Leave a reply（In English)';
       this.submitTitle = 'REPLY';
     }
   }

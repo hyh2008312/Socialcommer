@@ -20,21 +20,21 @@
       </div>
       <div class="xb-order-tracking__container-1 md-margin-top-2">
         <div class="xb-order-tracking__title-1">Order Summary</div>
-        <div class="xb-order-tracking__height-1 xb-order-tracking__width xb-order-tracking__border-bottom"
+        <div class="xb-order-tracking__height-1 xb-order-tracking__width xb-order-tracking__border-bottom md-margin-top-1"
              fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="20">
             Item Subtotal
           </div>
-          <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="20">
+          <div class="xb-order-tracking__title-2 md-align-center xb-order-tracking__margin-right" fxFlex="20">
             Shipping
           </div>
-          <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="15">
+          <div class="xb-order-tracking__title-2 md-align-center xb-order-tracking__margin-right" fxFlex="15">
             Tax
           </div>
-          <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="20">
+          <div class="xb-order-tracking__title-2 md-align-center xb-order-tracking__margin-right" fxFlex="20">
             Grand Total
           </div>
-          <div class="xb-order-tracking__title-2" fxFlex="30">
+          <div class="xb-order-tracking__title-2 md-align-center" fxFlex="30">
             Payment Method
           </div>
         </div>
@@ -59,13 +59,13 @@
       </div>
       <div class="xb-order-tracking__container-2 md-margin-top-2 md-margin-bottom-5">
         <div class="xb-order-tracking__title-1">Order Details</div>
-        <div>
+        <div class="md-margin-top-1">
           <app-order-detail-title></app-order-detail-title>
         </div>
         <div class="xb-order-tracking__detail-border-top" *ngFor="let item of order.supplyLine">
           <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
             <div class="md-dark-secondary xb-bold">
-              Supply
+              Supplier
             </div>
             <div class="xb-order-tracking__title-3 md-margin-left-2">
               {{item.supplier}}
