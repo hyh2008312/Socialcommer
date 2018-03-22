@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const template = fs.readFileSync(path.join(__dirname, '.', 'browser', 'index.html')).toString();
 const win = domino.createWindow(template);
-const files = fs.readdirSync(`${process.cwd()}/server`);
+const files = fs.readdirSync(`${process.cwd()}/dist/server`);
 import 'localstorage-polyfill';
 // const styleFiles = files.filter(file => file.startsWith('styles'));
 // const hashStyle = styleFiles[0].split('.')[1];
@@ -52,7 +52,7 @@ import { ROUTES } from './static.paths';
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const mainFiles = files.filter(file => file.startsWith('main'));
 const hash = mainFiles[0].split('.')[1];
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./server/main.${hash}.bundle`);
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./dist/server/main.${hash}.bundle`);
 import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 
 const BROWSER_FOLDER = join(process.cwd(), 'static');

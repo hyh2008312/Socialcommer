@@ -14,6 +14,7 @@
     "build": "ng build",
     "build:prod": "ng build --prod",
     "build:universal": "ng build --prod && ng build --prod --app 1 && webpack --progress --colors",
+    "build:server": "webpack --progress --colors",
     "server": "node dist/server.js",
     "test": "ng test",
     "lint": "ng lint",

@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const template = fs.readFileSync(path.join(__dirname, '.', 'browser', 'index.html')).toString();
 const win = domino.createWindow(template);
-const files = fs.readdirSync(`${process.cwd()}/server`);
+const files = fs.readdirSync(`${process.cwd()}/dist/server`);
 import fetch from 'node-fetch';
 import 'localstorage-polyfill';
 // const styleFiles = files.filter(file => file.startsWith('styles'));
@@ -43,7 +43,7 @@ const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader')
 
 const mainFiles = files.filter(file => file.startsWith('main'));
 const hash = mainFiles[0].split('.')[1];
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./server/main.${hash}.bundle`);
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./dist/server/main.${hash}.bundle`);
 import { ngExpressEngine } from '@nguniversal/express-engine/public-api';
 import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 const PORT = 4000;
@@ -108,7 +108,7 @@ app.get('*', (req, res) => {
   // tslint:disable-next-line:no-console
   console.time(`GET: ${req.originalUrl}`);
   res.render(
-    '../browser/index',
+    '../dist/browser/index',
     {
       req: req,
       res: res,
