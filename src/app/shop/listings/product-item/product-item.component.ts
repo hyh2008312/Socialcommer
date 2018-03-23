@@ -1,6 +1,6 @@
-import { Input, Output, Component, OnInit,EventEmitter} from '@angular/core';
+import { Input, Output, Component, OnInit, OnChanges, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { ShopService } from '../shop.service';
 import { UserService } from  '../../../shared/services/user/user.service';
@@ -25,6 +25,9 @@ export class ProductItemComponent implements OnInit {
   displayName = '';
   templateId = 5;
 
+  link: string = '';
+  text: string = '';
+
   constructor(
     private shopService: ShopService,
     private userService: UserService,
@@ -42,6 +45,13 @@ export class ProductItemComponent implements OnInit {
         self.templateId = data.template?data.template.templateId:5;
       }
     });
+  }
+
+  ngOnChanges() {
+    if(this.displayName && this.product) {
+      this.link = `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${this.product.id}`;
+      this.text = this.product.title;
+    }
   }
 
   delete() {
@@ -93,7 +103,7 @@ export class ProductItemComponent implements OnInit {
     });
   }
 
-  promote() {
+  shareToYoutube() {
     let dialogRef = this.dialog.open(ProductShareDialogComponent, {
       data: {
         shareLink: `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${this.product.id}`,

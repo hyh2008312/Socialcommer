@@ -1,0 +1,79 @@
+<div class="xb-store__background">
+  <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.sm="true"  fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store__details">
+    <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-shop__mobile-dialog-inner">
+      <div class="xb-share-dialog__title">Share on your social media and make money!</div>
+      <form [formGroup]="productForm" novalidate>
+        <div class="xb-shop__edit-title md-margin-top-3">This item will be added to your store for sale, please select
+          a category for it:</div>
+        <div class="md-margin-top-2">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start stretch" *ngIf="category.length > 0">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <mat-form-field class="md-margin-right-2" >
+                <mat-select placeholder="Select a Category" formControlName="categoryName">
+                  <mat-option *ngFor="let item of category" [value]="item.name" >
+                    {{ item.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!isCreateCategory" >
+              <div class="md-margin-right-2" >OR</div>
+              <button mat-raised-button color="primary" (click)="showCreate()" >Add New Category</button>
+            </div>
+            <div fxLayout="row" fxLayoutAlgin="start center">
+              <mat-form-field *ngIf="isCreateCategory">
+                <input matInput formControlName="tags" [(ngModel)]="tags">
+              </mat-form-field>
+              <div class="md-margin-left-2">
+                <button type="button" mat-raised-button color="primary" (click)="add(tags)" *ngIf="isCreateCategory">Add</button>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start stretch" *ngIf="category.length == 0">
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!isCreateCategory" >
+              <button mat-raised-button color="primary" (click)="showCreate()" >Add New Category</button>
+            </div>
+            <div fxLayout="row" fxLayoutAlgin="start center">
+              <mat-form-field *ngIf="isCreateCategory">
+                <input matInput formControlName="tags" [(ngModel)]="tags">
+              </mat-form-field>
+              <div class="md-margin-left-2">
+                <button type="button" mat-raised-button color="primary" (click)="add(tags)" *ngIf="isCreateCategory">Add</button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="formErrors['categoryName']" class="xb-input-error">
+            {{ formErrors['categoryName'] }}
+          </div>
+        </div>
+        <div class="xb-shop__edit-title md-margin-top-2">Click the button below to promote this item on your social media: </div>
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-social-share xb-social-share__large xb-social-share__whatsapp" fxLayout="row" fxLayoutAlign="center center"
+               (click)="create()">
+            <i class="iconfontXberts icon-ic-social-whatsapp" ></i>
+            <div>Share to WhatsApp</div>
+          </div>
+          <div class="xb-social-share xb-social-share__large xb-social-share__facebook md-margin-left-2" fxLayout="row" fxLayoutAlign="center center"
+               (click)="create()">
+            <i class="iconfontXberts icon-ic-facebook" ></i>
+            <div>Share to Facebook</div>
+          </div>
+          <div class="xb-social-share xb-social-share__large xb-social-share__youtube md-margin-left-2" fxLayout="row" fxLayoutAlign="center center"
+               (click)="create()">
+            <i class="iconfontXberts icon-ic-youtube"></i>
+            <div>Share to Youtube</div>
+          </div>
+          <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
+            <button mat-button color="primary" (click)="close()">CLOSE</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
