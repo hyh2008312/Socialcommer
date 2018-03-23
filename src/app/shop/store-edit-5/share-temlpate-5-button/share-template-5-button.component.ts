@@ -3,7 +3,7 @@ import { Input, Component } from '@angular/core';
 @Component({
   selector: 'app-share-template-5-button',
   templateUrl: './share-template-5-button.component.html',
-  styleUrls: ['./share-button.component.scss']
+  styleUrls: ['./_share-button.component.scss']
 })
 
 export class ShareTemplate5ButtonComponent {

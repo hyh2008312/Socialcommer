@@ -891,6 +891,12 @@
   }
   &__store-owner {
     margin-top: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+    @include xb-xs-screen{
+      padding-left: 0;
+      padding-right: 0;
+    }
     &-title {
       font-weight: bold;
       font-size: 24px;

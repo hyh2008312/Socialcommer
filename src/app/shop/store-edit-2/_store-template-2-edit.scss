@@ -167,6 +167,21 @@
 }
 
 .xb-store-template {
+  &__details-bg-new {
+    max-width: 1184px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    @include xb-xs-screen {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      background-color: $whiteColor;
+    }
+  }
 
   &__buttons-color {
     color: $whiteColor;
@@ -208,7 +223,7 @@
     }
 
     &-bg {
-      margin-top: 40px;
+      margin-top: 24px;
       background-color: #efefef;
       border-radius: 4px;
       padding: 24px;
@@ -926,11 +941,18 @@
 
   //商品详情
   &__detail {
-    margin: 20px auto 56px ;
-    max-width: 1000px;
+    height: calc(100vh - 55px);
+    max-width: 1130px;
     position: relative;
     padding: 40px 40px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 40px auto;
     background-color: $whiteColor;
+    @include xb-xs-screen {
+      margin: 0;
+      padding: 0;
+    }
     &-background {
       position: absolute;
       left: 0;
@@ -941,10 +963,13 @@
       overflow-x: hidden;
       background-color: rgba(0, 0, 0, .7);
       z-index: 1000;
+      @include xb-xs-screen {
+        overflow-y: scroll;
+      }
     }
     &-close {
       position: absolute;
-      left: calc(100% + 24px);
+      left: calc(100% - 24px);
       top: 0;
       color: $whiteColor;
       cursor: pointer;
@@ -952,25 +977,88 @@
         font-size: 56px;
         line-height: 56px;
       }
+
+      @include xb-xs-screen {
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+
+      @include xb-sm-screen {
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
     }
 
     &-margin-right {
       margin-right: 32px;
+      width: 624px;
+      @include xb-xs-screen {
+        width: auto;
+        height: auto;
+        margin-right: 16px;
+        margin-left: 16px;
+        margin-top: 16px;
+        @include resetBorder();
+      }
+      @include xb-sm-screen {
+        width: 416px;
+        height: 320px;
+        margin-right: 16px;
+        margin-left: 16px;
+        margin-top: 16px;
+
+      }
     }
 
     &-content {
-      overflow-y: scroll;
-      height: 530px;
+      position: fixed;
+      max-width: 400px;
+      margin-left: 656px;
+      &-mobile {
+        height: 100%;
+        overflow-y: visible;
+        margin-top: 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+      }
     }
     &-title {
       font-size: 24px;
       line-height: 32px;
       @include media();
+
+      @include xb-xs-screen {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      @include xb-sm-screen {
+        font-size: 16px;
+        line-height: 24px;
+      }
     }
     &-price {
       font-size: 24px;
       line-height: 32px;
       @include media();
+
+      @include xb-xs-screen {
+        font-size: 16px;
+      }
+
+      @include xb-sm-screen {
+        font-size: 16px;
+      }
     }
     &-original-price {
       font-size: 14px;
@@ -985,12 +1073,31 @@
       font-size: 14px;
       line-height: 28px;
       @include media();
+
+      @include xb-xs-screen {
+        line-height: 24px;
+      }
+
+      @include xb-sm-screen {
+        line-height: 24px;
+      }
     }
     &-buttons-bg {
       margin-top: 25px;
       > a {
         height: 40px;
         width: 132px;
+      }
+      @include xb-xs-screen {
+        margin-left: 0;
+        margin-top: 16px;
+        overflow-x: hidden;
+        > a {
+          height: 40px;
+          width: calc(100vw - 32px);
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
     }
     &-buttons {
@@ -1003,6 +1110,11 @@
       color: $whiteColor;
       font-size: 14px;
       @include media();
+      @include xb-xs-screen {
+        width: calc(100vw - 32px);
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     &-line {

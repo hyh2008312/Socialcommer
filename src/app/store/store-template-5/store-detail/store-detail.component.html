@@ -1,25 +1,26 @@
 <div class="xb-4-template-detail">
   <div id="xb-5-goods" class="xb-4-template-detail__container xb-4-template__w960">
     <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
-      <div>
+      <div class="xb-4-template-detail__store-left">
         <app-shop-detail-5-picture [images]="image" [selectedImage]="selectedImage"
                                    [imageSources]="imageSources"
                                    [insertImage]="insertImage"></app-shop-detail-5-picture>
-        <div class="xb-4-template-detail__store-owner" *ngIf="product?.recommendation">
-          <div class="xb-4-template-detail__store-owner-title">
-            Store Owner Says
+        <div fxShow="true" fxShow.xs="false">
+          <div class="xb-4-template-detail__store-owner" *ngIf="product?.recommendation">
+            <div class="xb-4-template-detail__store-owner-title">
+              Store Owner Says
+            </div>
+            <div class="xb-4-template-detail__store-owner-des">
+              {{product?.recommendation}}
+            </div>
           </div>
-          <div class="xb-4-template-detail__store-owner-des">
-            {{product?.recommendation}}
-          </div>
-        </div>
-        <div class="xb-4-template-detail__line"></div>
-        <div class="xb-4-template-detail__store-owner">
-          <div class="xb-4-template-detail__store-owner-title">
-            About the Product
-          </div>
-          <div class="md-margin-top-2"
-               [innerHTML]="product?.description | safeHtml">
+          <div class="xb-4-template-detail__store-owner">
+            <div class="xb-4-template-detail__store-owner-title">
+              About the Product
+            </div>
+            <div class="md-margin-top-2"
+                 [innerHTML]="product?.description | safeHtml">
+            </div>
           </div>
         </div>
       </div>
@@ -94,6 +95,17 @@
             </div>
           </div>
         </div>
+
+        <div class="md-margin-top-3 xb-4-template-detail__buttons_bg">
+          <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-bottom-2"> {{cartWarn}}</div>
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy">
+            <button class="xb-4-template-detail__buy-buttons" (click)="openLink()">ADD TO CART</button>
+          </a>
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="!isCanBuy">
+            <button class="xb-4-template-detail__buy-buttons" [disabled]="true">OUT OF STOCK</button>
+          </a>
+        </div>
+
         <div class="xb-store-template__car-bg" fxLayout="column" fxLayoutAlign="start stretch">
           <div fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store-template__car-left-part-1">Estimated Delivery</div>
@@ -108,15 +120,7 @@
             <div>{{deliveryCountry}}</div>
           </div>
         </div>
-        <div class="md-margin-top-3 xb-4-template-detail__buttons_bg">
-          <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy">
-            <button class="xb-4-template-detail__buy-buttons" (click)="openLink()">ADD TO CART</button>
-          </a>
-          <a class="gtag-shop-detail-get-it-now-button" *ngIf="!isCanBuy">
-            <button class="xb-4-template-detail__buy-buttons" [disabled]="true">OUT OF STOCK</button>
-          </a>
-        </div>
+
         <div class="md-margin-top-2">
           <app-share-button [link]="shareLink" [text]="text"></app-share-button>
         </div>
@@ -192,6 +196,15 @@
             </div>
           </div>
         </div>
+        <div class="md-margin-top-3 xb-4-template-detail__buttons_bg">
+          <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-bottom-2"> {{cartWarn}}</div>
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy">
+            <button class="xb-4-template-detail__buy-buttons" (click)="openLink()">ADD TO CART</button>
+          </a>
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="!isCanBuy">
+            <button class="xb-4-template-detail__buy-buttons" [disabled]="true">OUT OF STOCK</button>
+          </a>
+        </div>
         <div class="xb-store-template__car-bg" fxLayout="column" fxLayoutAlign="start stretch">
           <div fxLayout="row" fxLayoutAlign="start start">
             <div class="xb-store-template__car-left-part-1">Estimated Delivery</div>
@@ -206,15 +219,7 @@
             <div>{{deliveryCountry}}</div>
           </div>
         </div>
-        <div class="md-margin-top-3 xb-4-template-detail__buttons_bg">
-          <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy">
-            <button class="xb-4-template-detail__buy-buttons" (click)="openLink()">ADD TO CART</button>
-          </a>
-          <a class="gtag-shop-detail-get-it-now-button" *ngIf="!isCanBuy">
-            <button class="xb-4-template-detail__buy-buttons" [disabled]="true">OUT OF STOCK</button>
-          </a>
-        </div>
+
         <div class="md-margin-top-2">
           <app-share-button [link]="shareLink" [text]="text"></app-share-button>
         </div>

@@ -78,10 +78,11 @@
               <div class="xb-store__content xb-store__border-bottom">
                 <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="space-around start" fxLayoutWrap>
                   <app-shop-item-card *ngFor="let item of product"
-                                      fxFlex="49" fxFlex.xs="100"
+                                      fxFlex="33" fxFlex.xs="100"
                                       (productId)="jumpGoodsDetail($event)"
                                       [product]="item" [status]="0"></app-shop-item-card>
-                  <div fxFlex="49" fxFlex.xs="100"></div>
+                  <div fxFlex="33" fxFlex.xs="100"></div>
+                  <div fxFlex="33" fxFlex.xs="100"></div>
                 </div>
                 <div *ngIf="product.length > 0" class="xb-store-template__buttons-bg" fxLaout="row"
                      fxLayoutAlign="center center">
@@ -133,10 +134,11 @@
             </div>
             <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutWrap>
               <app-shop-item-card *ngFor="let item of product"
-                                  fxFlex="49" fxFlex.xs="100"
+                                  fxFlex="33" fxFlex.xs="100"
                                   (productId)="jumpGoodsDetail($event)"
                                   [product]="item" [status]="1"></app-shop-item-card>
-              <div fxFlex="49" fxFlex.xs="100"></div>
+              <div fxFlex="33" fxFlex.xs="100"></div>
+              <div fxFlex="33" fxFlex.xs="100"></div>
             </div>
             <div class="md-margin-top-4" *ngIf="categories.length <=0 && !nextPage && product.length <= 0"
                  fxLayout="column" fxLayoutAlign="center center">

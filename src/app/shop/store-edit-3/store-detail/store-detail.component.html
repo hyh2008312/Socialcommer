@@ -4,12 +4,23 @@
   <div class="xb-store-template__details-category-bg" fxHide.gt-sm>
     <span class="xb-pointer" (click)="changeViewIndex(1)">COLLECTION</span> / <span
     class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>
-  <div class="xb-store-template__details-cover-bg" fxFlexOrder.xs="0" fxFlexOrder.sm="0" fxFlexOrder="1">
+  <div class="xb-store-template__details-scroll" fxFlexOrder.xs="0" fxFlexOrder.sm="0" fxFlexOrder="1">
     <app-store-template-3-products-image-cover [images]="image" [selectedImage]="selectedImage"
                                                [imageSources]="imageSources"
                                                [insertImage]="insertImage"></app-store-template-3-products-image-cover>
+    <div class="xb-store-template__details-padding-top" *ngIf="product.recommendation">
+      <div class="xb-store-template__details-title-1">Store Owner Says</div>
+      <div class="md-margin-top-2 xb-store-template__content-text">
+        {{product.recommendation}}
+      </div>
+    </div>
+    <div class="xb-store-template__details-description" *ngIf="product.description">
+      <div class="xb-store-template__details-title-1">About the Product</div>
+      <div class="ql-editor"
+           [innerHTML]="product.description | safeHtml"></div>
+    </div>
   </div>
-  <div class="xb-store-template__details-scroll" fxFlex.xs="none" fxFlex.sm="none" fxFlex>
+  <div class="xb-store-template__details-cover-bg" fxFlex.xs="none" fxFlex.sm="none" fxFlex>
     <div class="xb-store-template__details-content">
       <div fxHide.xs fxHide.sm>
         <span class="xb-pointer"(click)="changeViewIndex(1)">COLLECTION</span> / <span
@@ -91,6 +102,15 @@
           </div>
         </div>
       </div>
+      <div class="xb-store-template__details-buttons">
+        <div *ngIf="isShowCartWarn" class="xb-store-template__red md-margin-bottom-2"> {{cartWarn}}</div>
+        <button mat-raised-button color="primary" [disabled]="true" *ngIf="isCanBuy">
+          <a class="xb-store-template__details-buttons-color gtag-shop-detail-get-it-now-button">ADD TO CART</a>
+        </button>
+        <button mat-raised-button color="primary" [disabled]="true" *ngIf="!isCanBuy">
+          <a class="xb-store-template__details-buttons-color gtag-shop-detail-get-it-now-button">OUT OF STOCK</a>
+        </button>
+      </div>
       <div class="xb-store-template__details-bg-1" fxLayout="column" fxLayoutAlign="start stretch">
         <div fxLayout="row" fxLayoutAlign="start start">
           <div class="xb-store-template__details-left-part-1">Estimated Delivery</div>
@@ -105,29 +125,9 @@
           <div>{{deliveryCountry}}</div>
         </div>
       </div>
-      <div class="xb-store-template__details-buttons">
-        <div *ngIf="isShowCartWarn" class="xb-store-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-        <button mat-raised-button color="primary" [disabled]="true" *ngIf="isCanBuy">
-          <a class="xb-store-template__details-buttons-color gtag-shop-detail-get-it-now-button">ADD TO CART</a>
-        </button>
-        <button mat-raised-button color="primary" [disabled]="true" *ngIf="!isCanBuy">
-          <a class="xb-store-template__details-buttons-color gtag-shop-detail-get-it-now-button">OUT OF STOCK</a>
-        </button>
-      </div>
       <div class="md-margin-top-2">
         <app-share-button [link]="shareLink" [text]="text"></app-share-button>
       </div>
-    </div>
-    <div class="xb-store-template__details-padding-top" *ngIf="product.recommendation">
-      <div class="xb-store-template__details-title-1">Store Owner Says</div>
-      <div class="md-margin-top-2 xb-store-template__content-text">
-        {{product.recommendation}}
-      </div>
-    </div>
-    <div class="xb-store-template__details-description" *ngIf="product.description">
-      <div class="xb-store-template__details-title-1">About the Product</div>
-      <div class="ql-editor"
-           [innerHTML]="product.description | safeHtml"></div>
     </div>
   </div>
 </div>

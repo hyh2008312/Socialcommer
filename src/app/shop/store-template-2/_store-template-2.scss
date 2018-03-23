@@ -614,13 +614,9 @@
 
   //商品详情
   &__detail {
-    margin-top: 20px;
-    margin-bottom: 56px;
     max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
     position: relative;
-    padding: 40px 40px;
+    margin: 40px auto;
     background-color: $whiteColor;
     @include xb-xs-screen {
       margin: 0;
@@ -629,6 +625,16 @@
       height: calc(100vh - 56px);
       overflow-y: scroll;
       overflow-x: hidden;
+    }
+    &-scroll {
+      height: calc(100vh - 80px);
+      overflow: scroll;
+      padding: 40px 40px;
+      @include xb-xs-screen {
+        height: auto;
+        overflow-y: visible;
+        padding: 0 0;
+      }
     }
     &-background {
       position: fixed;
@@ -678,6 +684,7 @@
 
     &-margin-right {
       margin-right: 32px;
+      width: 624px;
       @include xb-xs-screen {
         width: auto;
         height: auto;
@@ -697,14 +704,18 @@
     }
 
     &-content {
-      overflow-y: scroll;
-      height: 530px;
+      position: fixed;
+      margin-left: 656px;
       @include xb-xs-screen {
         height: 100%;
         overflow-y: visible;
         margin-top: 16px;
         margin-left: 16px;
         margin-right: 16px;
+      }
+      &-mobile {
+        padding-left: 16px;
+        padding-right: 16px;
       }
     }
     &-title {
@@ -758,7 +769,7 @@
       }
     }
     &-buttons-bg {
-      margin-left: 32px;
+      margin-top: 16px;
       > a {
         height: 40px;
         width: 132px;
@@ -780,7 +791,6 @@
       border-radius: 4px;
       height: 40px;
       width: 132px;
-      cursor: pointer;
       color: $whiteColor;
       font-size: 14px;
       @include media();
@@ -999,6 +1009,7 @@
     }
   }
 }
+
 .xb-store-template__cart {
   &-position {
     position: relative;

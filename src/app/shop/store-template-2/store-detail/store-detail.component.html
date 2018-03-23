@@ -1,59 +1,102 @@
 <div class="xb-store-template__detail-background" (click)="close()">
   <!--移动端关闭按钮-->
-  <div class="xb-store-template__detail-close" (click)="close()" fxShow="false" fxShow.xs="true" >
+  <div class="xb-store-template__detail-close" (click)="close()" fxShow="false" fxShow.xs="true">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-store-template__detail" (click)="$event.stopPropagation();">
-    <!--pc端关闭按钮-->
-    <div class="xb-store-template__detail-close" (click)="close()" fxShow="false" fxShow.gt-xs="true">
-      <i class="iconfontXberts icon-ic-close"></i>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch" >
-      <div class="xb-store-template__detail-margin-right">
-        <app-shop-detail-picture [images]="image" [selectedImage]="selectedImage"
-                                  [imageSources]="imageSources"></app-shop-detail-picture>
+    <div>
+      <!--pc端关闭按钮-->
+      <div class="xb-store-template__detail-close" (click)="close()" fxShow="false" fxShow.gt-xs="true">
+        <i class="iconfontXberts icon-ic-close"></i>
       </div>
-      <div class="xb-store-template__detail-content" fxFlex.xs="false" >
-        <div>{{categoryName}}</div>
-        <div class="xb-store-template__detail-title md-margin-top-1">{{product.title}}</div>
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center" >
-          <div class="xb-store-template__detail-price">{{product.salePriceAmount|currency: product.salePriceCurrency:
-            true }}
+
+      <div class="xb-store-template__detail-scroll" fxLayout="row" fxLayoutAlign="start start" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+        <div class="xb-store-template__detail-margin-right">
+          <app-shop-detail-picture [images]="image" [selectedImage]="selectedImage"
+                                   [imageSources]="imageSources"></app-shop-detail-picture>
+          <div fxShow="true" fxShow.xs="false">
+            <div class="xb-store-template__detail-store-owner">
+              <div class="xb-store-template__detail-store-owner-title">
+                Store Owner Says
+              </div>
+              <div class="xb-store-template__detail-store-owner-des">
+                {{recommendation}}
+              </div>
+            </div>
+            <div class="xb-store-template__detail-product">
+              <div class="xb-store-template__detail-product-title">
+                About the product
+              </div>
+              <div class="xb-store-template__detail-product-des"
+                   [innerHTML]="description | safeHtml">
+              </div>
+            </div>
           </div>
-          <div class="xb-store-template__detail-original-price line-through md-margin-left-2"
-               *ngIf="product.originalPriceAmount > 0">
-            {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
-          </div>
-          <div class="xb-store-template__detail-sale md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
-            {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
+        </div>
+        <div fxShow="true" fxShow.xs="false" class="xb-store-template__detail-content" fxFlex>
+          <div>{{categoryName}}</div>
+          <div class="xb-store-template__detail-title md-margin-top-1">{{product.title}}</div>
+          <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-store-template__detail-price">{{product.salePriceAmount|currency: product.salePriceCurrency:
+              true }}
+            </div>
+            <div class="xb-store-template__detail-original-price line-through md-margin-left-2"
+                 *ngIf="product.originalPriceAmount > 0">
+              {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+            </div>
+            <div class="xb-store-template__detail-sale md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
+              {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
+            </div>
           </div>
           <div class="xb-store-template__detail-buttons-bg" fxShow="true" fxShow.xs="false">
+            <button class="xb-store-template__detail-buttons">ADD TO CART</button>
+          </div>
+          <div class="xb-store-template__detail-buttons-bg" fxShow="false" fxShow.xs="true">
+            <button class="xb-store-template__detail-buttons">ADD TO CART</button>
+          </div>
+        </div>
+        <div fxShow="false" fxShow.xs="true" class="xb-store-template__detail-content-mobile">
+          <div>{{categoryName}}</div>
+          <div class="xb-store-template__detail-title md-margin-top-1">{{product.title}}</div>
+          <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-store-template__detail-price">{{product.salePriceAmount|currency: product.salePriceCurrency:
+              true }}
+            </div>
+            <div class="xb-store-template__detail-original-price line-through md-margin-left-2"
+                 *ngIf="product.originalPriceAmount > 0">
+              {{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}
+            </div>
+            <div class="xb-store-template__detail-sale md-margin-left-2" *ngIf="product.originalPriceAmount > 0">
+              {{product.salePriceAmount|saleDiscount:product.originalPriceAmount}} OFF
+            </div>
+            <div class="xb-store-template__detail-buttons-bg" fxShow="true" fxShow.xs="false">
+              <a fxLayout="column">
+                <button class="xb-store-template__detail-buttons">ADD TO CART</button>
+              </a>
+            </div>
+          </div>
+          <div class="xb-store-template__detail-buttons-bg" fxShow="false" fxShow.xs="true">
             <a fxLayout="column">
               <button class="xb-store-template__detail-buttons">ADD TO CART</button>
             </a>
           </div>
-        </div>
-        <div class="xb-store-template__detail-buttons-bg" fxShow="false" fxShow.xs="true">
-          <a fxLayout="column">
-            <button class="xb-store-template__detail-buttons">ADD TO CART</button>
-          </a>
-        </div>
-        <div class="xb-store-template__detail-line"></div>
-        <div class="xb-store-template__detail-store-owner">
-          <div class="xb-store-template__detail-store-owner-title">
-            Store Owner Says
+          <div class="xb-store-template__detail-line"></div>
+          <div class="xb-store-template__detail-store-owner">
+            <div class="xb-store-template__detail-store-owner-title">
+              Store Owner Says
+            </div>
+            <div class="xb-store-template__detail-store-owner-des">
+              {{recommendation}}
+            </div>
           </div>
-          <div class="xb-store-template__detail-store-owner-des">
-            {{recommendation}}
-          </div>
-        </div>
-        <div class="xb-store-template__detail-line"></div>
-        <div class="xb-store-template__detail-product">
-          <div class="xb-store-template__detail-product-title">
-            About the product
-          </div>
-          <div class="xb-store-template__detail-product-des"
-               [innerHTML]="description | safeHtml">
+          <div class="xb-store-template__detail-line"></div>
+          <div class="xb-store-template__detail-product">
+            <div class="xb-store-template__detail-product-title">
+              About the product
+            </div>
+            <div class="xb-store-template__detail-product-des"
+                 [innerHTML]="description | safeHtml">
+            </div>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import {UserService} from "../../../shared/services/user/user.service";
 @Component({
   selector: 'app-store-template-3-store-edit-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../../store/store-template-3/_store-template-3.scss']
+  styleUrls: ['../_store-template-3.scss']
 })
 
 export class StoreDetailComponent implements OnInit {

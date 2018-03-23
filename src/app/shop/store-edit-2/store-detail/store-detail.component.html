@@ -1,9 +1,9 @@
 <div class="xb-store-template__detail-background" (click)="close()">
   <div class="xb-store-template__details-bg-new" (click)="$event.stopPropagation();">
+    <div class="xb-store-template__detail-close" (click)="close()" fxShow="false" fxShow.gt-xs="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
     <div class="xb-store-template__detail">
-      <div class="xb-store-template__detail-close" (click)="close()" fxShow="false" fxShow.gt-xs="true">
-        <i class="iconfontXberts icon-ic-close"></i>
-      </div>
       <div class="xb-store-template__nav" fxShow="false" fxShow.xs="show">
         <i class="material-icons md-dark-primary" (click)="close()">keyboard_arrow_left</i> {{store.nameTag ||
         store.name}}
@@ -13,8 +13,24 @@
           <app-store-detail-picture [images]="image" [selectedImage]="selectedImage"
                                     [imageSources]="imageSources"
                                     [insertImage]="insertImage"></app-store-detail-picture>
+          <div class="xb-store-template__detail-store-owner" *ngIf="product.recommendation">
+            <div class="xb-store-template__detail-store-owner-title">
+              Store Owner Says
+            </div>
+            <div class="xb-store-template__detail-store-owner-des">
+              {{product.recommendation}}
+            </div>
+          </div>
+          <div class="xb-store-template__detail-product">
+            <div class="xb-store-template__detail-product-title">
+              About the product
+            </div>
+            <div class="xb-store-template__detail-product-des"
+                 [innerHTML]="product.description | safeHtml">
+            </div>
+          </div>
         </div>
-        <div class="xb-store-template__detail-content" fxFlex.xs="false">
+        <div class="xb-store-template__detail-content" fxFlex>
           <div>{{product.categoryName}}</div>
           <div class="xb-store-template__detail-title md-margin-top-1">{{product.title}}</div>
           <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
@@ -91,6 +107,15 @@
               </div>
             </div>
           </div>
+          <div class="xb-store-template__detail-buttons-bg" fxShow="true" fxShow.xs="false">
+            <div *ngIf="isShowCartWarn" class="xb-store-template__red md-margin-bottom-2"> {{cartWarn}}</div>
+            <button class="xb-store-template__detail-buttons" [ngStyle]="{'cursor':'initial'}" [disabled]="true" *ngIf="isCanBuy">
+              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">ADD TO CART</a>
+            </button>
+            <button class="xb-store-template__detail-buttons" [disabled]="true" *ngIf="!isCanBuy">
+              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">OUT OF STOCK</a>
+            </button>
+          </div>
           <div class="xb-store-template__car-bg" fxLayout="column" fxLayoutAlign="start stretch">
             <div fxLayout="row" fxLayoutAlign="start start">
               <div class="xb-store-template__car-left-part-1">Estimated Delivery</div>
@@ -104,15 +129,6 @@
               <div class="xb-store-template__car-left-part-1">Shipping Availability</div>
               <div>{{deliveryCountry}}</div>
             </div>
-          </div>
-          <div class="xb-store-template__detail-buttons-bg" fxShow="true" fxShow.xs="false">
-            <div *ngIf="isShowCartWarn" class="xb-store-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-            <button class="xb-store-template__detail-buttons" [ngStyle]="{'cursor':'initial'}" [disabled]="true" *ngIf="isCanBuy">
-              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">ADD TO CART</a>
-            </button>
-            <button class="xb-store-template__detail-buttons" [disabled]="true" *ngIf="!isCanBuy">
-              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">OUT OF STOCK</a>
-            </button>
           </div>
           <div class="xb-store-template__detail-buttons-bg xb-store-template__detail-app " fxShow="false"
                fxShow.xs="true">
@@ -135,24 +151,6 @@
           </div>
           <div class="md-margin-top-2">
             <app-share-button [link]="shareLink" [text]="text"></app-share-button>
-          </div>
-          <div class="xb-store-template__detail-line" *ngIf="product.recommendation"></div>
-          <div class="xb-store-template__detail-store-owner" *ngIf="product.recommendation">
-            <div class="xb-store-template__detail-store-owner-title">
-              Store Owner Says
-            </div>
-            <div class="xb-store-template__detail-store-owner-des">
-              {{product.recommendation}}
-            </div>
-          </div>
-          <div class="xb-store-template__detail-line"></div>
-          <div class="xb-store-template__detail-product">
-            <div class="xb-store-template__detail-product-title">
-              About the product
-            </div>
-            <div class="xb-store-template__detail-product-des"
-                 [innerHTML]="product.description | safeHtml">
-            </div>
           </div>
         </div>
       </div>
