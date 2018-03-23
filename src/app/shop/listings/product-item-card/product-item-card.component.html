@@ -35,10 +35,10 @@
       </div>
       <div class="xb-shop__card-action md-margin-top-2" *ngIf="!isRecommend">
         <div fxLayout="column">
-          <button mat-raised-button color="primary" (click)="jumpEditLink()">Add to Sell</button>
+          <button mat-raised-button color="primary" (click)="shareToEarn()">Share to Earn</button>
         </div>
-        <div fxLayout="column" class="md-margin-top-1">
-          <div class="xb-shop__card-button" (click)="shareToEarn()">Share to Earn</div>
+        <div class="md-margin-top-1" fxLayout="column">
+          <div class="xb-shop__card-button" (click)="jumpEditLink()">Add to Sell</div>
         </div>
       </div>
     </div>

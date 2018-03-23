@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatSnackBar} from '@angular/material';
@@ -8,7 +8,7 @@ import { UserService } from  '../../../shared/services/user/user.service';
 import { ImageUploadPreviewService } from "../../../shared/components/image-upload-preview/image-upload-preview.service";
 import { S3UploaderService } from "../../../shared/services/s3-upload/s3-upload.service";
 
-import { SnackItemBarSuccessComponent } from '../snack-item-bar-success/snack-item-bar-success.component';
+import { ProductShareDialogComponent } from "../product-share-dialog/product-share-dialog.component";
 
 @Component({
   selector: 'app-shop-find-products-share',
@@ -47,6 +47,8 @@ export class FindProductsShareComponent implements OnInit {
   // Reset product
   productCopy: any;
   storeId: number;
+  displayName: string = '';
+  templateId: any = 5;
 
   isSupplierEdit = false;
 
@@ -59,7 +61,6 @@ export class FindProductsShareComponent implements OnInit {
     private previewImageService: ImageUploadPreviewService,
     private s3UploaderService: S3UploaderService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
   ) {
     this.productForm = this.fb.group({
       title: ['', [
@@ -108,6 +109,9 @@ export class FindProductsShareComponent implements OnInit {
     self.userService.store.subscribe((data) => {
       if(data) {
         self.storeId = data.id;
+        self.displayName = data.displayName;
+        self.templateId = data.templateId;
+        console.log(data)
       }
     });
 
@@ -169,18 +173,6 @@ export class FindProductsShareComponent implements OnInit {
 
   }
 
-  onEditorCreated(quill) {
-    this.editor = quill;
-
-    let self = this;
-    this.editor.getModule('toolbar').addHandler("image", (image) => {
-      if(image) {
-        var fileInput = document.getElementById(self.editorImageId);
-        fileInput.click();
-      }
-    });
-  }
-
   showCreate() {
     this.isCreateCategory = true;
   }
@@ -233,7 +225,7 @@ export class FindProductsShareComponent implements OnInit {
   showCategoryInput: boolean = false;
 
 
-  create() {
+  create(source?:any) {
     if(!this.productForm.valid) {
       this.formErr = 'Please select a category first. ';
       return;
@@ -254,29 +246,123 @@ export class FindProductsShareComponent implements OnInit {
     let self = this;
     self.shopService.createSupplyProduct(storeProduct).then((data) => {
       self.formErr = false;
+      let link = `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${data.id}`;
+      let text = data.title;
+      self.getSharer(source, {
+        link,
+        text
+      });
       if(!self.isSupplierEdit) {
-        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  }).then(() => {
-          self.openSnackBar();
-        });
+        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  });
       } else {
-        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false }).then(() => {
-          self.openSnackBar();
-        });
+        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false });
       }
     }).catch((data) => {
       self.formErr = data;
     });
   }
 
-  openDialog() {
+  private sharers = {
+    facebook: {
+      shareUrl: 'https://www.facebook.com/sharer/sharer.php'
+    },
+    twitter: {
+      shareUrl: 'https://twitter.com/intent/tweet/'
+    },
+    whatsapp: {
+      shareUrl: 'https://api.whatsapp.com/send'
+    }
+  };
+
+  shareWidth: string;
+  shareHeight: string;
+
+  private urlSharer(sharer: any) {
+    let p = sharer.params || {},
+      keys = Object.keys(p),
+      i: any,
+      str = keys.length > 0 ? '?' : '';
+    for (i = 0; i < keys.length; i++) {
+      if (str !== '?') {
+        str += '&';
+      }
+      if (p[keys[i]]) {
+        str += keys[i] + '=' + encodeURIComponent(p[keys[i]]);
+      }
+    }
+
+    let url = sharer.shareUrl + str;
+
+    if (!sharer.isLink) {
+      let popWidth = sharer.width || 600,
+        popHeight = sharer.height || 480,
+        left = window.innerWidth / 2 - popWidth / 2 + window.screenX,
+        top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
+        popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
+        newWindow = window.open(url, '', popParams);
+
+      if (window.focus) {
+        newWindow.focus();
+      }
+    } else {
+      window.location.href = url;
+    }
+  }
+
+
+  private getSharer(share:any, data:any){
+    if(!share) {
+      return;
+    }
+
+    if(share == 'youtube') {
+      this.shareToYoutube(data);
+      return;
+    }
+
+    let _sharer: any = {};
+    if(share == 'facebook'){
+      _sharer= this.sharers['facebook'];
+      _sharer.params = {
+        u: data.link
+      }
+    }
+
+    if(share == 'twitter'){
+      _sharer = this.sharers['twitter'];
+      _sharer.params = {
+        url: data.link,
+        text: 'Don’t miss out on this new product in my store: ' + data.text,
+        hashtags: ''
+      };
+    }
+
+    if(share == 'whatsApp') {
+      _sharer = this.sharers['whatsapp'];
+      _sharer.params = {
+        text: 'Don’t miss out on this new product in my store: ' + data.text + '. Product link:' + data.link
+      };
+    }
+
+    _sharer.width = this.shareWidth;
+    _sharer.height = this.shareHeight;
+    this.urlSharer(_sharer);
 
   }
 
-  openSnackBar() {
-    this.snackBar.openFromComponent(SnackItemBarSuccessComponent, {
-      duration: 1500,
-      verticalPosition: 'top'
+  shareToYoutube(data) {
+    let dialogRef = this.dialog.open(ProductShareDialogComponent, {
+      data: {
+        shareLink: data.link,
+        text: data.text
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
     });
   }
+
+
 
 }

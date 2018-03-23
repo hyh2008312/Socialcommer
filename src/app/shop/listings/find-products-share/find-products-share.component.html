@@ -53,24 +53,29 @@
           </div>
         </div>
         <div class="xb-shop__edit-title md-margin-top-2">Click the button below to promote this item on your social media: </div>
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-social-share xb-social-share__large xb-social-share__whatsapp" fxLayout="row" fxLayoutAlign="center center"
-               (click)="create()">
+        <div *ngIf="formErr" class="xb-input-error md-margin-top-2">
+          {{ formErr }}
+        </div>
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap="">
+          <div class="xb-social-share xb-social-share__large xb-social-share__whatsapp md-margin-right-2 md-margin-bottom-1" fxLayout="row" fxLayoutAlign="center center"
+               (click)="create('whatsApp')">
             <i class="iconfontXberts icon-ic-social-whatsapp" ></i>
             <div>Share to WhatsApp</div>
           </div>
-          <div class="xb-social-share xb-social-share__large xb-social-share__facebook md-margin-left-2" fxLayout="row" fxLayoutAlign="center center"
-               (click)="create()">
+          <div class="xb-social-share xb-social-share__large xb-social-share__facebook md-margin-right-2 md-margin-bottom-1"
+               fxLayout="row" fxLayoutAlign="center center" (click)="create('facebook')">
             <i class="iconfontXberts icon-ic-facebook" ></i>
             <div>Share to Facebook</div>
           </div>
-          <div class="xb-social-share xb-social-share__large xb-social-share__youtube md-margin-left-2" fxLayout="row" fxLayoutAlign="center center"
-               (click)="create()">
+          <div class="xb-social-share xb-social-share__large xb-social-share__youtube md-margin-right-2 md-margin-bottom-1"
+               fxLayout="row" fxLayoutAlign="center center" (click)="create('youtube')">
             <i class="iconfontXberts icon-ic-youtube"></i>
             <div>Share to Youtube</div>
           </div>
-          <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxHide.xs>
-            <button mat-button color="primary" (click)="close()">CLOSE</button>
+          <div class="xb-social-share xb-social-share__large xb-social-share__twitter md-margin-bottom-1"
+               fxLayout="row" fxLayoutAlign="center center" (click)="create('twitter')">
+            <i class="iconfontXberts icon-ic-twitter"></i>
+            <div>Share to Twitter</div>
           </div>
         </div>
       </form>
