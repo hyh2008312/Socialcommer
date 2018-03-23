@@ -479,7 +479,6 @@
     }
 
     &-padding-top {
-      border-top: 1px solid rgba(0, 0, 0, .12);
       padding: 32px 24px;
       margin: 0 8px;
 
@@ -490,7 +489,6 @@
     }
 
     &-description {
-      border-top: 1px solid rgba(0, 0, 0, .12);
       padding: 32px 24px;
       img {
         width: 100%;
@@ -505,6 +503,7 @@
     &-content {
       margin-top: 72px;
       margin-left: 32px;
+      width: 249px;
       padding-bottom: 32px;
       @include xb-xs-screen {
         margin: 0;
@@ -526,7 +525,11 @@
 
       @include xb-xs-screen {
         height: auto;
-        overflow: auto;
+        overflow: hidden;
+      }
+      @include xb-sm-screen{
+        height: auto;
+        overflow: hidden;
       }
     }
 

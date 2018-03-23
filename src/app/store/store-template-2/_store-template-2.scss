@@ -3,7 +3,6 @@
 
 .xb-store-template {
 
-
   &__return-policy {
     cursor: pointer;
     &:hover {
@@ -11,8 +10,8 @@
     }
   }
 
-  &__red{
-    color:red;
+  &__red {
+    color: red;
   }
 
   &__top-category {
@@ -26,6 +25,10 @@
   }
 
   &__details-bg-new {
+    max-width: 1184px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
     @include xb-xs-screen {
       margin: 0;
       padding: 0;
@@ -716,13 +719,13 @@
 
   //商品详情
   &__detail {
-    margin-top: 20px;
-    margin-bottom: 56px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    height: calc(100vh - 55px);
+    max-width: 1130px;
     position: relative;
     padding: 40px 40px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 40px auto;
     background-color: $whiteColor;
     @include xb-xs-screen {
       margin: 0;
@@ -744,7 +747,7 @@
     }
     &-close {
       position: absolute;
-      left: calc(100% + 24px);
+      left: calc(100% - 24px);
       top: 0;
       color: $whiteColor;
       cursor: pointer;
@@ -776,6 +779,7 @@
 
     &-margin-right {
       margin-right: 32px;
+      width: 624px;
       @include xb-xs-screen {
         width: auto;
         height: auto;
@@ -795,9 +799,10 @@
     }
 
     &-content {
-      overflow-y: scroll;
-      height: 530px;
-      @include xb-xs-screen {
+      position: fixed;
+      max-width: 400px;
+      margin-left: 656px;
+      &-mobile {
         height: 100%;
         overflow-y: visible;
         margin-top: 16px;
@@ -970,7 +975,7 @@
 .xb-store-template {
   &__car {
     &-margin-top {
-      margin-top: 24px;
+      margin-top: 16px;
       @include xb-xs-screen {
         margin-top: 32px;
       }
@@ -1003,7 +1008,7 @@
     }
 
     &-bg {
-      margin-top: 40px;
+      margin-top: 32px;
       background-color: #efefef;
       border-radius: 4px;
       padding: 24px;
@@ -1045,7 +1050,7 @@
       color: rgba(0, 0, 0, .87);
       padding: 0 8px;
       line-height: 32px;
-      margin-right: 40px;
+      margin-right: 16px;
       cursor: pointer;
       @include text-overflow();
       &.active {

@@ -4,15 +4,6 @@
       <img *ngIf="selectedImage" [src]="selectedImage">
     </div>
   </div>
-  <div class="md-margin-right-2 xb-image-display__bottom-bg" fxLayout="row" fxLayoutAlign="start start">
-    <ng-container *ngFor="let image of images; let i = index;">
-      <div class="xb-image-display__bottom xb-image-display__margin-left" fxFlex="none"
-           [ngClass]="{'active': image == selectedImage}" *ngIf="i < 4"
-           (click)="selectImage(image)">
-        <img *ngIf="image" [src]="image">
-      </div>
-    </ng-container>
-  </div>
 </div>
 <div *ngIf="!insertImage">
   <div class="xb-image-display__slide" fxShow="false" fxShow.xs="true" fxShow.sm="true"

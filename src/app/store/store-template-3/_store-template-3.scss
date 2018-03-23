@@ -543,7 +543,7 @@
 
       @include xb-xs-screen {
         height: auto;
-        overflow: auto;
+        overflow: hidden;
       }
 
       @include xb-sm-screen {

@@ -4,7 +4,7 @@ import {AnimationConfig, ICarouselConfig} from '../../../shared/components/angul
 @Component({
   selector: 'app-shop-detail-4-picture',
   templateUrl: './store-detail-picture.component.html',
-  styleUrls: ['./store-detail-picture.scss']
+  styleUrls: ['./_store-detail-picture.scss']
 })
 
 

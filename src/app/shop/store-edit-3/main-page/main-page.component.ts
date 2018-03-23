@@ -396,7 +396,7 @@ export class MainPageComponent implements OnInit {
       store: this.store.id,
       relationStatus: 'published',
       page: this.page,
-      page_size: 4
+      page_size: 6
     };
     let self = this;
     self.storeService.getProductList(options).then((data) => {

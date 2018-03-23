@@ -18,7 +18,7 @@ import {StoreService} from "../../store.service";
 @Component({
   selector: 'app-shop-template-4-store-edit-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../../store/store-template-4/_store-template-4.scss']
+  styleUrls: ['../_store-template-4.scss']
 })
 
 export class StoreDetailComponent implements OnInit {
@@ -98,7 +98,30 @@ export class StoreDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.shareLink = window.location.href;
+    let ScrollDom = document.getElementById('xb-4-template-to-top');
+    ScrollDom.addEventListener('scroll', function () {
+      console.log(ScrollDom.scrollTop);
+      console.log(document.getElementById('xb-4-detail-top').offsetHeight);
+      console.log( document.getElementById('xb-4-goods').offsetHeight);
 
+      let Atheight = ScrollDom.scrollTop;
+      let elementFixed = document.getElementById('xb-4-detail-top');
+      let cartHeight = elementFixed.offsetHeight;
+      let detialHeight = document.getElementById('xb-4-goods').offsetHeight;
+
+      if (Atheight < 182) {
+        elementFixed.style.position = 'absolute';
+        elementFixed.style.top = 'auto';
+      } else {
+        if (Atheight + cartHeight >= detialHeight) {
+          elementFixed.style.position = 'absolute';
+          elementFixed.style.top = (detialHeight + 54 - cartHeight) + "px";
+        } else {
+          elementFixed.style.position = 'fixed';
+          elementFixed.style.top = "106px";
+        }
+      }
+    });
   }
 
   queryDetail() {

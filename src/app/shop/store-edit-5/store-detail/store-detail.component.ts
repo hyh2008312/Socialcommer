@@ -9,7 +9,7 @@ import {ShopService} from "../../shop.service";
 @Component({
   selector: 'app-shop-template-5-store-edit-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../../store/store-template-5/_store-template-5.scss']
+  styleUrls: ['../_store-template-5.scss']
 })
 
 export class StoreDetailComponent implements OnInit {

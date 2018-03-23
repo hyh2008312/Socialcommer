@@ -1004,10 +1004,21 @@
     background-color: rgba(0, 0, 0, 0.12);
     height: 1px;
   }
+  &__store-left{
+    background-color: white;
+    max-width: 600px;
+  }
   &__store-owner {
     margin-top: 32px;
-    max-width: 600px;
-    padding-bottom: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
+    @include xb-xs-screen {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
     &-title {
       font-weight: bold;
       font-size: 24px;
@@ -1085,7 +1096,7 @@
     }
 
     &-bg {
-      margin-top: 40px;
+      margin-top: 32px;
       background-color: #efefef;
       border-radius: 4px;
       padding: 24px;

@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { Store } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store} from '../../store';
 
 @Component({
   selector: 'app-shop-template-3-home-page',
@@ -12,7 +12,7 @@ import { Store } from '../../store';
 
 export class HomePageComponent implements OnInit {
 
-  public categories:any = [{
+  public categories: any = [{
     id: 0,
     name: 'All'
   }, {
@@ -57,7 +57,7 @@ export class HomePageComponent implements OnInit {
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
     mainImage: 'https://media.socialcommer.com/source/web/template/3/12-pic.jpg'
-  },{
+  }, {
     id: 1,
     title: 'Product Name',
     salePriceAmount: '12',
@@ -65,7 +65,7 @@ export class HomePageComponent implements OnInit {
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
     mainImage: 'https://media.socialcommer.com/source/web/template/3/07-pic.jpg'
-  },{
+  }, {
     id: 2,
     title: 'Product Name',
     salePriceAmount: '12',
@@ -73,7 +73,7 @@ export class HomePageComponent implements OnInit {
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
     mainImage: 'https://media.socialcommer.com/source/web/template/3/13-pic.jpg'
-  },{
+  }, {
     id: 3,
     title: 'Product Name',
     salePriceAmount: '12',
@@ -81,6 +81,22 @@ export class HomePageComponent implements OnInit {
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
     mainImage: 'https://media.socialcommer.com/source/web/template/3/14-pic.jpg'
+  }, {
+    id: 4,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/12-pic.jpg'
+  }, {
+    id: 5,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/07-pic.jpg'
   }];
 
   blog: any = [{
@@ -88,7 +104,7 @@ export class HomePageComponent implements OnInit {
     title: 'Blog Title',
     cover: 'https://media.socialcommer.com/source/web/template/3/04-pic.jpg',
     context: 'Blog Description',
-  },{
+  }, {
     id: 1,
     title: 'Blog Title',
     cover: 'https://media.socialcommer.com/source/web/template/3/06-pic.jpg',
@@ -104,45 +120,42 @@ export class HomePageComponent implements OnInit {
     'and to communicate your unique story to your customers.</strong></p>';
 
 
-
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private storeService: StoreService
-  ) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private storeService: StoreService) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.shareLink = window.location.href;
 
     let self = this;
 
     let firstLoad = false;
     this.storeService.store.subscribe((data) => {
-      if(data && !firstLoad) {
+      if (data && !firstLoad) {
         firstLoad = true;
         self.store = data;
-        self.contextList = data.context? data.context: {};
-        self.imageList = data.images? data.images: {};
+        self.contextList = data.context ? data.context : {};
+        self.imageList = data.images ? data.images : {};
         self.text = data.description;
       }
     });
   }
 
-  queryProduct(clearProduct?:boolean) {
+  queryProduct(clearProduct?: boolean) {
 
   }
 
-  queryBlog(clearBlog?:boolean) {
+  queryBlog(clearBlog?: boolean) {
 
   }
 
   jumpToCollection() {
-    this.router.navigate(['./list'],{relativeTo: this.activatedRoute});
+    this.router.navigate(['./list'], {relativeTo: this.activatedRoute});
   }
 
   jumpToBlog() {
-    this.router.navigate(['./blog'],{relativeTo: this.activatedRoute});
+    this.router.navigate(['./blog'], {relativeTo: this.activatedRoute});
   }
 }

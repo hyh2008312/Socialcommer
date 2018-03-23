@@ -15,10 +15,11 @@
   </div>
   <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutWrap>
     <app-store-item-card *ngFor="let item of product"
-                         fxFlex="49" fxFlex.xs="100"
+                         fxFlex="33" fxFlex.xs="100"
                          [currency]="currency"
                          [product]="item" [status]="1"></app-store-item-card>
-    <div fxFlex="49" fxFlex.xs="100"></div>
+    <div fxFlex="33" fxFlex.xs="100"></div>
+    <div fxFlex="33" fxFlex.xs="100"></div>
   </div>
   <div class="md-margin-top-4 md-dark-secondary" fxLayout="row" fxLayoutAlign="center center"
        *ngIf="!nextPage && product.length <= 0">

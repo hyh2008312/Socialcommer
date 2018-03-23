@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {StoreService} from '../../store.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -14,7 +14,7 @@ import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-di
   styleUrls: ['../_store-template-2-edit.scss']
 })
 
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, AfterViewInit {
   imageHomeMade: string = 'https://media.socialcommer.com/source/web/pic/pic-2-5.jpg';
 
   shareLink: string;
@@ -472,6 +472,7 @@ export class MainPageComponent implements OnInit {
   // 跳转到商品详情页
   selectProductId: any;
   goodsDetail: boolean = false;
+
   jumpGoodsDetail(productId: any) {
     this.selectProductId = productId;
     this.changeGoodsDetail();
@@ -479,6 +480,12 @@ export class MainPageComponent implements OnInit {
 
   changeGoodsDetail() {
     this.goodsDetail = !this.goodsDetail;
+  }
+
+  ngAfterViewInit() {
+    if (document.getElementById('xb-1-template-to-top')) {
+      document.getElementById('xb-1-template-to-top').scrollTop = 0;
+    }
   }
 
 }
