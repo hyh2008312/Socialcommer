@@ -60,7 +60,7 @@ export class FindProductsShareComponent implements OnInit {
     private userService: UserService,
     private previewImageService: ImageUploadPreviewService,
     private s3UploaderService: S3UploaderService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {
     this.productForm = this.fb.group({
       title: ['', [
@@ -110,8 +110,7 @@ export class FindProductsShareComponent implements OnInit {
       if(data) {
         self.storeId = data.id;
         self.displayName = data.displayName;
-        self.templateId = data.templateId;
-        console.log(data)
+        self.templateId = data.template? data.template.templateId:5;
       }
     });
 
