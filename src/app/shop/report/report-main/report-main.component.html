@@ -5,7 +5,7 @@
       <div class="md-margin-top-2 unicorn-theme" fxLayout="row" fxLayoutAlign="start center">
         <div class="md-margin-right-2">Date Range</div>
         <mat-form-field class="xb-shop__products-sort">
-          <mat-select [ngModel]="date" name="date" (valueChange)="changeSort($event, 0, 0)">
+          <mat-select [ngModel]="dateSales" name="date" (valueChange)="changeDate($event, 0, 0)">
             <mat-option *ngFor="let item of dateList" [value]="item.value">
               {{ item.name }}
             </mat-option>
@@ -47,7 +47,7 @@
       <div class="md-margin-top-2 unicorn-theme" fxLayout="row" fxLayoutAlign="start center">
         <div class="md-margin-right-2">Date Range</div>
         <mat-form-field class="xb-shop__products-sort">
-          <mat-select [ngModel]="date" name="date" (valueChange)="changeSort($event, 0, 1)">
+          <mat-select [ngModel]="dateTransaction" name="date" (valueChange)="changeDate($event, 1, 1)">
             <mat-option *ngFor="let item of dateList" [value]="item.value">
               {{ item.name }}
             </mat-option>
@@ -89,7 +89,7 @@
       <div class="md-margin-top-2 unicorn-theme" fxLayout="row" fxLayoutAlign="start center">
         <div class="md-margin-right-2">Date Range</div>
         <mat-form-field class="xb-shop__products-sort">
-          <mat-select [ngModel]="date" name="date" (valueChange)="changeSort($event, 0, 2)">
+          <mat-select [ngModel]="dateRefund" name="date" (valueChange)="changeDate($event, 2, 2)">
             <mat-option *ngFor="let item of dateList" [value]="item.value">
               {{ item.name }}
             </mat-option>

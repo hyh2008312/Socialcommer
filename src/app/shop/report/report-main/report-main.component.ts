@@ -14,7 +14,10 @@ export class ReportMainComponent implements OnInit {
 
   storeId: number;
 
-  date: any = 7;
+  dateSales: any = 7;
+  dateTransaction: any = 7;
+  dateRefund: any = 7;
+
   dateList = [{
     name: 'Last 7 Days',
     value: 7
@@ -104,12 +107,15 @@ export class ReportMainComponent implements OnInit {
 
   changeProducts(event) {
     let page = this.salesIndex;
+    let date = this.dateSales;
     switch (event.index) {
       case 1:
         page = this.transactionIndex;
+        date = this.dateTransaction;
         break;
       case 2:
         page = this.refundIndex;
+        date = this.dateRefund;
         break;
       default:
         break;
@@ -120,7 +126,7 @@ export class ReportMainComponent implements OnInit {
       case 0:
         this.reportService.getSalesPerformance({
           sort: this.salesSort,
-          days: this.date,
+          days: date,
           page,
           page_size: this.pageSize
         }).then((data) => {
@@ -131,7 +137,7 @@ export class ReportMainComponent implements OnInit {
       case 1:
         this.reportService.getTransactionHistory({
           status: this.transactionStatus,
-          days: this.date,
+          days: date,
           page,
           page_size: this.pageSize
         }).then((data) => {
@@ -141,7 +147,7 @@ export class ReportMainComponent implements OnInit {
         break;
       case 2:
         this.reportService.getRefundHistory({
-          days: this.date,
+          days: date,
           page,
           page_size: this.pageSize
         }).then((data) => {
@@ -160,8 +166,20 @@ export class ReportMainComponent implements OnInit {
       case 2:
         this.transactionStatus = $event;
         break;
+    }
+    this.changeProducts({index: index});
+  }
+
+  changeDate($event, type, index) {
+    switch (type) {
+      case 1:
+        this.dateTransaction = $event;
+        break;
+      case 2:
+        this.dateRefund = $event;
+        break;
       default:
-        this.date = $event;
+        this.dateSales = $event;
         break;
     }
     this.changeProducts({index: index});

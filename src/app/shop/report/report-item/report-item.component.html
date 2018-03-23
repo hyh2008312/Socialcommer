@@ -58,7 +58,7 @@
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      {{prodcuct.status}}
+      {{product.status}}
     </div>
   </div>
 </div>
@@ -72,21 +72,17 @@
          fxLayout="column" fxLayoutAlign="space-between start">
       <div class="xb-account-item__title-1">{{product.title}}</div>
     </div>
-    <div class="xb-account-item__title" fxFlex="20"
+    <div class="xb-account-item__title" fxFlex="25"
          fxLayout="row" fxLayoutAlign="center center">
       {{product.customerName}}
     </div>
-    <div class="xb-account-item__title" fxFlex="20"
+    <div class="xb-account-item__title" fxFlex="25"
          fxLayout="row" fxLayoutAlign="center center">
-      {{product.prictInclTax| exchangeCurrency:currency | currency: currency: true}}
+      {{product.priceInclTax| exchangeCurrency:currency | currency: currency: true}}
     </div>
-    <div class="xb-account-item__title" fxFlex="20"
+    <div class="xb-account-item__title" fxFlex="25"
          fxLayout="row" fxLayoutAlign="center center">
       {{product.amount| exchangeCurrency:currency | currency: currency: true}}
-    </div>
-    <div class="xb-account-item__title" fxFlex="20"
-         fxLayout="row" fxLayoutAlign="center center">
-      {{product.status? 'Success': 'Failure'}}
     </div>
   </div>
 </div>
