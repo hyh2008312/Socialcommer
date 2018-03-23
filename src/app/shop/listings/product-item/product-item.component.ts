@@ -43,15 +43,13 @@ export class ProductItemComponent implements OnInit {
         self.storeCurrency = data.currency.toUpperCase();
         self.displayName = data.displayName;
         self.templateId = data.template?data.template.templateId:5;
+        self.link = `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${this.product.id}`;
+        self.text = this.product.title;
       }
     });
   }
 
   ngOnChanges() {
-    if(this.displayName && this.product) {
-      this.link = `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${this.product.id}`;
-      this.text = this.product.title;
-    }
   }
 
   delete() {
