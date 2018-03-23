@@ -95,6 +95,9 @@ const routes: Routes = [
         path: 'report',
         loadChildren: 'app/shop/report/report.module#ReportModule'
       }, {
+        path: 'reward',
+        loadChildren: 'app/shop/reward/reward.module#RewardModule'
+      }, {
         path: 'todolist', component: ToDoListComponent
       }, {
         path: 'error', component: ShopErrorComponent

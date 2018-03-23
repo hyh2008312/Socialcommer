@@ -36,6 +36,16 @@
         border-bottom: 2px solid $primaryColor;
       }
     }
+
+    &-circle{
+      position: absolute;
+      top: 14px;
+      right: -2px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: #e11111;
+    }
   }
   &__bg-content {
     height: calc(100vh - 56px);

@@ -1,0 +1,35 @@
+@import "../../styles/utils/index";
+@import "../../styles/variables";
+
+.xb-reward{
+  &__title{
+    font-size: 34px;
+    @include media();
+    margin-top: 54px;
+    text-align: center;
+  }
+
+  &__title-1{
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  &__margin-top{
+    margin-top: 54px;
+  }
+
+  &__margin-top-1{
+    margin-top: 96px;
+  }
+
+  &__container{
+    max-width: 880px;
+    margin: auto;
+  }
+
+  &__text{
+    font-size: 12px;
+  }
+
+}

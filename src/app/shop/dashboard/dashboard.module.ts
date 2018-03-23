@@ -7,6 +7,7 @@ import { StatisticTitleComponent } from './statistic-title/statistic-title.compo
 import { BonusTitleComponent } from "./bonus-title/bonus-title.component";
 import { BonusItemComponent } from "./bonus-item/bonus-item.component";
 import { BonusTipsDialogComponent } from './bonus-tips-dialog/bonus-tips-dialog.component';
+import { RewardItemComponent } from './reward-item/reward-item.component';
 
 import { DashboardRoutingModule } from './dashboard.routes.module';
 
@@ -28,7 +29,8 @@ import { SharedModule } from '../../shared/shared.module';
     StatisticTitleComponent,
     BonusTitleComponent,
     BonusItemComponent,
-    BonusTipsDialogComponent
+    BonusTipsDialogComponent,
+    RewardItemComponent
   ],
   entryComponents: [
     BonusTipsDialogComponent

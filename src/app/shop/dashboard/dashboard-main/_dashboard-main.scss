@@ -85,6 +85,10 @@
         @include text-overflow();
       }
     }
+
+    &-title{
+      font-size: 12px;
+    }
   }
 
   &__none{
@@ -117,6 +121,27 @@
 
     &-inner-container{
       border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+  }
+
+  &__navigation{
+    &-bg{
+      background-color: #071f22;
+      font-size: 14px;
+      color: $whiteColor;
+      line-height: 40px;
+      @include media();
+      padding: 0 16px;
+    }
+
+    &-card{
+      border-radius: 4px;
+      overflow: hidden;
+      background-color: $whiteColor;
+
+      &-inner{
+        padding: 0 16px;
+      }
     }
   }
 }

@@ -7,14 +7,14 @@
     position: relative;
 
     &-navigation {
-      height: 64px;
+      height: 40px;
       background-color: $whiteColor;
-      padding: 0 16px;
-      border-radius: 2px;
+      margin: 0 16px;
+      border-bottom: 2px solid rgba(0,0,0,.12);
     }
 
     &-title-1 {
-      font-size: 14px;
+      font-size: 12px;
       @include media();
       color: rgba(0, 0, 0, .87);
     }
@@ -26,6 +26,7 @@
     &-text {
       text-align: center;
       overflow: hidden;
+      font-size: 12px;
       height: 20px;
       @include text-overflow();
     }

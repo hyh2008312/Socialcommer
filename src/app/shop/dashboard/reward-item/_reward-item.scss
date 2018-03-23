@@ -1,0 +1,52 @@
+@charset "UTF-8";
+@import "../../../styles/utils/_index";
+@import "../../../styles/_variables";
+
+.xb-reward {
+  &__item{
+    width: 144px;
+    height: 144px;
+    position: relative;
+
+    >img{
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include transform(translate(-50%, -50%));
+    }
+  }
+
+  &__logo{
+    position: absolute;
+    left: 0;
+    top: 6px;
+    padding: 0 6px;
+    font-size: 10px;
+    line-height: 24px;
+    width: 90px;
+    height: 24px;
+    display: block;
+    @include media();
+    background: url("https://media.socialcommer.com/source/web/pic/upcoming.png") 0 0 / 100% 100% no-repeat;
+  }
+
+  &__money{
+    position: absolute;
+    right: 8px;
+    bottom: 0;
+    font-size: 14px;
+    line-height: 28px;
+    padding: 0 8px;
+    @include media();
+    color: $whiteColor;
+    background-color: rgba(0,0,0,.7);
+  }
+
+  &__margin-right{
+    margin-right: 20px;
+  }
+}
+
+
+

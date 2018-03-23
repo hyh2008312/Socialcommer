@@ -1,0 +1,15 @@
+<div class="xb-reward__bg" fxLayout="row" fxLayoutAlign="space-between center">
+  <div class="xb-reward" *ngFor="let item of rewardList;let i = index;"
+       [ngClass]="{'xb-reward__margin-right': i < rewardList.length - 1}">
+    <div class="xb-reward__item">
+      <img [src]="item.image">
+    </div>
+    <div class="xb-reward__title">
+      {{item.title}}
+    </div>
+    <div class="md-margin-bottom-2" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="xb-reward__money">{{item.money|currency:currency: true}}</div>
+      <div class="xb-reward__logo">Upcomming</div>
+    </div>
+  </div>
+</div>
