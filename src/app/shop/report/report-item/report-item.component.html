@@ -7,27 +7,26 @@
     <div class="xb-account-item__title xb-account-item__width" fxFlex="none"
          fxLayout="column" fxLayoutAlign="space-between start">
       <div class="xb-account-item__title-1">{{product.title}}</div>
-      <div>Black L</div>
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      599
+      {{product.viewTotal}}
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      500
+      {{product.totalSum}}
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      15%
+      {{product.conversionRate}}%
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      $ 3000
+      {{product.totalSales | exchangeCurrency:currency | currency: currency: true}}
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      $ 450
+      {{product.commissions | exchangeCurrency:currency | currency: currency: true}}
     </div>
   </div>
 </div>
@@ -40,27 +39,26 @@
     <div class="xb-account-item__title xb-account-item__width" fxFlex="none"
          fxLayout="column" fxLayoutAlign="space-between start">
       <div class="xb-account-item__title-1">{{product.title}}</div>
-      <div>Black L</div>
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      Steven Huang
+      {{product.customerName}}
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      December 25, 2017
+      {{product.created | amDateFormat:'MMMM Do, YYYY'}}
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      $320
+      {{product.priceInclTax| exchangeCurrency:currency | currency: currency: true}}
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      $320
+      {{product.commissions | exchangeCurrency:currency | currency: currency: true}}
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      Fulfilled
+      {{product.status}}
     </div>
   </div>
 </div>
@@ -73,23 +71,18 @@
     <div class="xb-account-item__title xb-account-item__width" fxFlex="none"
          fxLayout="column" fxLayoutAlign="space-between start">
       <div class="xb-account-item__title-1">{{product.title}}</div>
-      <div>Black L</div>
     </div>
-    <div class="xb-account-item__title" fxFlex="20"
+    <div class="xb-account-item__title" fxFlex="25"
          fxLayout="row" fxLayoutAlign="center center">
-      Steven Huang
+      {{product.customerName}}
     </div>
-    <div class="xb-account-item__title" fxFlex="20"
+    <div class="xb-account-item__title" fxFlex="25"
          fxLayout="row" fxLayoutAlign="center center">
-      $ 3000
+      {{product.priceInclTax| exchangeCurrency:currency | currency: currency: true}}
     </div>
-    <div class="xb-account-item__title" fxFlex="20"
+    <div class="xb-account-item__title" fxFlex="25"
          fxLayout="row" fxLayoutAlign="center center">
-      $ 3000
-    </div>
-    <div class="xb-account-item__title" fxFlex="20"
-         fxLayout="row" fxLayoutAlign="center center">
-      Canceled
+      {{product.amount| exchangeCurrency:currency | currency: currency: true}}
     </div>
   </div>
 </div>

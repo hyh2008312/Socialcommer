@@ -20,6 +20,7 @@ import { FindProductsComponent } from "./find-products/find-products.component";
 import { FindSupplierProductsComponent } from "./find-supplier-products/find-supplier-products.component";
 import { FindProductsAddProductComponent } from "./find-products-add-product/find-products-add-product.component";
 import { FindProductsEditPreviewComponent } from "./find-products-edit-preview/find-products-edit-preview.component";
+import { FindProductsShareComponent } from "./find-products-share/find-products-share.component";
 import { FindProductCategoryComponent } from './find-product-category/find-product-category.component';
 
 import { SnackItemBarSuccessComponent } from './snack-item-bar-success/snack-item-bar-success.component';
@@ -59,7 +60,8 @@ import { SharedModule } from '../../shared/shared.module';
     FindProductCategoryComponent,
     FindSupplierProductsComponent,
     ProductShareDialogComponent,
-    SnackItemBarSuccessComponent
+    SnackItemBarSuccessComponent,
+    FindProductsShareComponent
   ],
   entryComponents: [
     CategoryCreateDialogComponent,

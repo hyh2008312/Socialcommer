@@ -422,6 +422,23 @@
         margin-top: 32px;
       }
     }
+
+    &-buttons-1{
+      border-radius: 4px;
+      line-height: 38px;
+      border: 1px solid $primaryColor;
+      color: $primaryColor;
+      text-align: center;
+      cursor: pointer;
+
+      @include xb-xs-screen{
+        line-height: 34px;
+      }
+      &:hover{
+        background-color: $primaryColor;
+        color: $whiteColor;
+      }
+    }
     &-buttons-fixed {
       position: fixed;
       bottom: 0;

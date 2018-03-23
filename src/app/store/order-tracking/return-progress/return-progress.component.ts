@@ -92,15 +92,6 @@ export class ReturnProgressComponent{
   }
 
 
-  editRequest() {
-    let dialogRef = this.dialog.open(ReturnRequestDialogComponent, {
-      data: {}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-    });
-  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

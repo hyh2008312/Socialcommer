@@ -4,7 +4,7 @@
   </div>
   <div class="xb-shop__product-title md-margin-right-2" fxFlex="35">{{product.title}}</div>
   <div class="xb-shop__product-category md-margin-right-2" fxFlex="15">{{product.categoryName}}</div>
-  <div class="xb-shop__product-time md-margin-right-2" fxFlex="12">{{product.modified | amDateFormat:'MMMM Do, YYYY'}}</div>
+
   <div class="xb-shop__product-price md-margin-right-2" fxFlex="10">
     <div class="xb-shop__product-price-sale">{{product.salePrice|currency: storeCurrency: true }}</div>
     <div class="line-through" *ngIf="product.originalPrice>0">
@@ -13,10 +13,26 @@
   </div>
   <div class="xb-shop__product-price md-margin-right-2" fxFlex="15">{{product.commissionRate + '%'}}</div>
   <div class="xb-shop__product-action-buttons md-margin-right-2" fxLayout="column" fxLayoutAlign="center center" fxFlex="15">
-    <button mat-button color="primary" (click)="promote()"  *ngIf="status == 0">Promote</button>
     <button mat-button color="primary" (click)="edit()">Edit</button>
     <button mat-button color="primary" *ngIf="status == 1" (click)="publish()">Publish</button>
     <button mat-button color="primary" *ngIf="status == 0" (click)="unpublish()">Unpublish</button>
-    <button mat-button color="primary" (click)="delete()" *ngIf="status == 1">Delete</button>
+    <button mat-button color="primary" (click)="delete()">Delete</button>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="15">
+    <div class="xb-social-share xb-social-share__whatsapp" fxLayout="row" fxLayoutAlign="center center"
+         appSocialShare [whatsApp]="{text: text + ' ' + link}">
+      <i class="iconfontXberts icon-ic-social-whatsapp" ></i>
+      <div>Share to WhatsApp</div>
+    </div>
+    <div class="xb-social-share xb-social-share__facebook xb-social-share__margin-top" fxLayout="row" fxLayoutAlign="center center"
+         appSocialShare [facebook]="{u: link}">
+      <i class="iconfontXberts icon-ic-facebook" ></i>
+      <div>Share to Facebook</div>
+    </div>
+    <div class="xb-social-share xb-social-share__youtube xb-social-share__margin-top" fxLayout="row" fxLayoutAlign="center center"
+        (click)="shareToYoutube()">
+      <i class="iconfontXberts icon-ic-youtube"></i>
+      <div>Share to Youtube</div>
+    </div>
   </div>
 </div>

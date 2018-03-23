@@ -77,16 +77,34 @@
     @include media();
     margin-top: 48px;
     text-align: center;
+
+    @include xb-xs-screen{
+      font-size: 24px;
+      line-height: 28px;
+      margin-top: 28px;
+      text-align: left;
+    }
   }
 
   &__title-1{
     font-size: 24px;
     @include media();
+    @include xb-xs-screen{
+      font-size: 16px;
+      line-height: 18px;
+    }
   }
 
   &__title-2{
     font-size: 16px;
     @include media();
+    @include xb-xs-screen{
+      font-size: 14px;
+      width: 120px;
+      line-height: 32px;
+      text-align: right;
+      color: rgba(0,0,0,.37);
+    }
   }
 
   &__title-3{
@@ -101,6 +119,9 @@
     width: 100%;
     background-color: $whiteColor;
     border-radius: 4px;
+    @include xb-xs-screen{
+      padding: 16px 16px 32px;
+    }
   }
 
   &__container-1{
@@ -119,6 +140,42 @@
     padding: 32px 40px 48px;
     background-color: $whiteColor;
     border-radius: 4px;
+
+    @include xb-xs-screen{
+      padding: 32px 16px;
+    }
+  }
+
+  &__container-4{
+    @include xb-xs-screen{
+      padding: 32px 16px;
+      background-color: $whiteColor;
+      border-radius: 4px;
+    }
+  }
+
+  &__inner-container{
+    @include xb-xs-screen{
+      padding: 0 8px;
+    }
+  }
+
+  &__inner-container-1{
+    @include xb-xs-screen{
+      padding: 0 24px;
+    }
+  }
+
+  &__margin-bottom{
+    @include xb-xs-screen{
+      margin-bottom: 8px;
+    }
+  }
+
+  &__margin-bottom-1{
+    @include xb-xs-screen{
+      margin-bottom: 24px;
+    }
   }
 
   &__border-bottom{
@@ -139,6 +196,9 @@
 
   &__margin-right{
     margin-right: 65px;
+    @include xb-xs-screen{
+      margin-right: 32px;
+    }
   }
 
   &__margin-right-1{
@@ -149,6 +209,11 @@
     max-width: 1000px;
   }
 
+  &__width-1{
+    @include xb-xs-screen{
+      width: 100%;
+    }
+  }
   &__line-height{
     line-height: 24px;
   }
@@ -158,6 +223,23 @@
     &-image{
       width: 120px;
       height: 120px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-right: 16px;
+      position: relative;
+      border: 1px solid rgba(0,0,0,.12);
+
+      >img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+    }
+
+    &-image-1{
+      width: 64px;
+      height: 64px;
       border-radius: 4px;
       overflow: hidden;
       margin-right: 16px;
@@ -183,6 +265,10 @@
       }
     }
 
+    &-card{
+      overflow: hidden;
+      border-radius: 4px;
+    }
     &-container{
       padding: 32px 16px 48px;
       background-color: $whiteColor;
@@ -216,6 +302,34 @@
       height: 56px;
     }
 
+    &-container-5{
+      min-height: 40px;
+      padding: 8px;
+      background-color: $whiteColor;
+      @include xb-sm-screen{
+        padding: 16px;
+        min-height: 56px;
+      ;
+      }
+    }
+
+    &-container-6{
+      padding: 8px;
+      background-color: #f9f9f9;
+      @include xb-sm-screen{
+        padding: 16px;
+      }
+    }
+
+    &-container-7{
+      border-top: 1px solid rgba(0,0,0,.12);
+      padding: 16px 8px;
+      background-color: $whiteColor;
+      @include xb-sm-screen{
+        padding: 24px 16px;
+      }
+    }
+
     &-title{
       font-size: 24px;
       @include media();
@@ -233,6 +347,14 @@
 
     &-title-3{
       font-size: 16px;
+      @include xb-xs-screen{
+        font-size: 14px;
+      }
+    }
+
+    &-title-4{
+      font-size: 16px;
+      @include media();
     }
 
     &-margin-top{
@@ -305,6 +427,10 @@
 
     &-width-3{
       width: 204px;
+      @include xb-xs-screen{
+        width: 190px;
+        margin-left: 16px;
+      }
     }
 
     &-height{
@@ -327,10 +453,19 @@
       &.active{
         background-color: #f3bc20;
       }
+
+      @include xb-xs-screen{
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+      }
     }
 
     &-bg{
       width: 48px;
+      @include xb-xs-screen{
+        width: 20px;
+      }
     }
 
     &-text{
@@ -348,6 +483,10 @@
       height: 1px;
       background-color: rgba(0,0,0,.38);
       margin-bottom: 24px;
+
+      @include xb-xs-screen{
+        margin-bottom: 28px;
+      }
     }
 
     &-text-1{
@@ -440,6 +579,18 @@
     padding: 40px 16px;
   }
 
+  &__margin{
+    @include xb-xs-screen{
+      padding: 32px 16px;
+    }
+  }
+
+  &__full{
+    @include xb-xs-screen{
+      min-height: 100vh;
+    }
+  }
+
   &__close{
     position: absolute;
     left: calc(100% - 36px);
@@ -461,6 +612,10 @@
     font-size: 24px;
     line-height: 32px;
     @include media();
+    @include xb-xs-screen{
+      font-size: 16px;
+      line-height: 28px;
+    }
   }
 
   &__content{

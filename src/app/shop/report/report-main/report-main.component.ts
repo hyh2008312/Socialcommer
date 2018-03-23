@@ -13,9 +13,11 @@ import { ReportService } from '../report.service';
 export class ReportMainComponent implements OnInit {
 
   storeId: number;
-  storeCurrency: string = 'USD';
 
-  date: any = 7;
+  dateSales: any = 7;
+  dateTransaction: any = 7;
+  dateRefund: any = 7;
+
   dateList = [{
     name: 'Last 7 Days',
     value: 7
@@ -30,52 +32,31 @@ export class ReportMainComponent implements OnInit {
     value: 360
   }];
 
-  salesSort: any = 7;
+  salesSort: any = 'unit_prices';
   salesSortList = [{
     name: 'Units Sold',
-    value: 7
+    value: 'unit_prices'
   }, {
     name: 'Total Sales',
-    value: 30
-  }, {
-    name: 'Total Views',
-    value: 90
-  }, {
-    name: 'Conversion',
-    value: 360
+    value: 'total_sales'
   }, {
     name: 'Commissions Earned',
-    value: 360
+    value: 'commissions'
   }];
 
-  transactionStatus: any = 0;
+  transactionStatus: any = 'All';
   transactionStatusList = [{
     name: 'All Status',
-    value: 0
+    value: 'All'
   }, {
     name: 'Processing',
-    value: 7
+    value: 'Processing'
   }, {
     name: 'Fulfilled',
-    value: 30
+    value: 'Fulfilled'
   }, {
     name: 'Canceled',
-    value: 90
-  }];
-
-  refundStatus: any = 0;
-  refundStatusList = [{
-    name: 'All Status',
-    value: 0
-  }, {
-    name: 'Refunded',
-    value: 7
-  }, {
-    name: 'Processing',
-    value: 30
-  }, {
-    name: 'Canceled',
-    value: 90
+    value: 'Canceled'
   }];
 
   sales: any = false;
@@ -84,8 +65,6 @@ export class ReportMainComponent implements OnInit {
   transactionIndex = 1;
   refund: any = false;
   refundIndex = 1;
-
-  selectedIndex: number = 0;
 
   // MatPaginator Inputs
   length:number = 0;
@@ -127,14 +106,16 @@ export class ReportMainComponent implements OnInit {
   }
 
   changeProducts(event) {
-    let relationStatus = 'published';
     let page = this.salesIndex;
+    let date = this.dateSales;
     switch (event.index) {
       case 1:
         page = this.transactionIndex;
+        date = this.dateTransaction;
         break;
       case 2:
         page = this.refundIndex;
+        date = this.dateRefund;
         break;
       default:
         break;
@@ -142,14 +123,37 @@ export class ReportMainComponent implements OnInit {
 
     let self = this;
     switch (event.index) {
+      case 0:
+        this.reportService.getSalesPerformance({
+          sort: this.salesSort,
+          days: date,
+          page,
+          page_size: this.pageSize
+        }).then((data) => {
+          self.length = data.count;
+          self.sales = [...data.results];
+        });
+        break;
       case 1:
-        self.transaction = [];
+        this.reportService.getTransactionHistory({
+          status: this.transactionStatus,
+          days: date,
+          page,
+          page_size: this.pageSize
+        }).then((data) => {
+          self.length = data.count;
+          self.transaction = [...data.results];
+        });
         break;
       case 2:
-        self.refund = [];
-        break;
-      default:
-        self.sales = [];
+        this.reportService.getRefundHistory({
+          days: date,
+          page,
+          page_size: this.pageSize
+        }).then((data) => {
+          self.length = data.count;
+          self.refund = [...data.results];
+        });
         break;
     }
   }
@@ -162,11 +166,20 @@ export class ReportMainComponent implements OnInit {
       case 2:
         this.transactionStatus = $event;
         break;
-      case 3:
-        this.refundStatus = $event;
+    }
+    this.changeProducts({index: index});
+  }
+
+  changeDate($event, type, index) {
+    switch (type) {
+      case 1:
+        this.dateTransaction = $event;
+        break;
+      case 2:
+        this.dateRefund = $event;
         break;
       default:
-        this.date = $event;
+        this.dateSales = $event;
         break;
     }
     this.changeProducts({index: index});

@@ -82,4 +82,12 @@ export class ProductItemCardComponent implements OnInit {
     }
   }
 
+  shareToEarn() {
+    if(this.supplier) {
+      this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/${this.product.id}/share/`]);
+    } else {
+      this.router.navigate([`/shop/listings/items/${this.product.id}/share/`]);
+    }
+  }
+
 }

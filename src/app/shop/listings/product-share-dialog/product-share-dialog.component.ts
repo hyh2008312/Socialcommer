@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -15,7 +15,7 @@ export class ProductShareDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ProductShareDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.text = this.text + this.data.text;
+    this.text = this.text + this.data.text + ' Product link:' + this.data.shareLink;
   }
 
   ngOnInit():void {
@@ -24,6 +24,16 @@ export class ProductShareDialogComponent implements OnInit {
 
   close():void {
     this.dialogRef.close();
+  }
+
+  copy($event) {
+    let self = this;
+    let save = function (e){
+      e.clipboardData.setData('text/plain',self.text);
+      e.preventDefault();//阻止默认行为
+    };
+    document.addEventListener('copy',save);
+    document.execCommand("copy");
   }
 
 }
