@@ -105,7 +105,6 @@
 }
 
 .xb-account-item {
-  height: 96px;
   padding: 0 16px;
   background-color: $whiteColor;
   &__container{
@@ -125,6 +124,6 @@
   }
 
   &__width{
-    width: 300px;
+    width: 200px;
   }
 }

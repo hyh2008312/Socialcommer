@@ -53,23 +53,6 @@ export class ShopService {
     return array.join('&');
   }
 
-  getCategoryList(): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}store/category/list/`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
   getProductCategoryList(category): Promise<any> {
 
     let headers = new Headers({

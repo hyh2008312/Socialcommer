@@ -1,5 +1,6 @@
-import {Input, Component, OnInit} from '@angular/core';
+import {Input, Component, OnInit, OnDestroy} from '@angular/core';
 
+import { UserService } from  '../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-shop-report-item',
@@ -15,7 +16,22 @@ export class ReportItemComponent implements OnInit {
   @Input() page: number = 1;
   @Input() pageSize: number = 1;
 
-  constructor() {
+  currency: string = 'USD';
+  sub: any;
+
+  constructor(
+    private userService: UserService
+  ) {
+    let self = this;
+    self.sub = self.userService.store.subscribe((data) => {
+      if(data) {
+        self.currency = data.currency.toUpperCase();
+      }
+    });
+  }
+
+  ngOnDetroy() {
+    this.sub.unsubscribe();
   }
 
   ngOnInit(): void {
