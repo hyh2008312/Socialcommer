@@ -57,6 +57,7 @@ export class MainPageComponent implements OnInit {
         }
       }
     });
+    document.body.style.overflowY = 'auto';
   }
 
   ngOnDestroy() {
@@ -82,7 +83,7 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.storeService.getBlog(options).then((data) => {
       self.blog = self.blog.concat(data.results);
-      if(self.blog.length > 0) {
+      if (self.blog.length > 0) {
         self.isHaveBlog = true;
       } else {
         self.isHaveBlog = false;

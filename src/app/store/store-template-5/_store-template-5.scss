@@ -78,9 +78,6 @@
   }
 
   &__container {
-    min-height: 100vh;
-    height: 100vh;
-    overflow-y: scroll;
     margin-left: auto;
     margin-right: auto;
     overflow-x: hidden;
@@ -950,8 +947,7 @@
     padding-top: 16px;
     background-color: white;
   }
-  &__container {
-  }
+
   &__nav-line {
     height: 0;
     background-color: rgba(0, 0, 0, 0.12);
@@ -960,20 +956,20 @@
     }
   }
   &__content {
-    overflow-y: scroll;
-    height: 576px;
+    position: fixed;
+    max-width: 365px;
     background-color: white;
     padding-left: 24px;
     padding-right: 24px;
-    margin-left: 40px;
-    @include xb-xs-screen {
+    padding-bottom: 16px;
+    margin-left: 640px;
+    &-mobile{
       height: 100%;
       overflow-y: visible;
       margin-top: 16px;
       margin-left: 16px;
       margin-right: 16px;
       padding-left: 0;
-      padding-right: 0;
     }
   }
   &__title {
@@ -1010,6 +1006,7 @@
   }
   &__store-owner {
     margin-top: 32px;
+    max-width: 600px;
     padding-bottom: 40px;
     &-title {
       font-weight: bold;
@@ -1130,7 +1127,7 @@
       color: rgba(0, 0, 0, .87);
       padding: 0 8px;
       line-height: 32px;
-      margin-right: 40px;
+      margin-right: 16px;
       cursor: pointer;
       @include text-overflow();
       &.active {
