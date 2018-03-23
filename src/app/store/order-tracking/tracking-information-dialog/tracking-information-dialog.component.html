@@ -1,4 +1,4 @@
-<div class="sc-order-dialog unicorn-dark-theme">
+<div class="sc-order-dialog sc-order-dialog__full unicorn-dark-theme">
   <div class="sc-order-dialog__close" (click)="close()" >
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
@@ -9,7 +9,7 @@
     <div class="md-margin-top-2">
       Please note there may be no tracking information available for some international sipping methods.
     </div>
-    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="center center"
+    <div class="md-margin-top-2 xb-order-tracking__inner-container-1" fxLayout="row" fxLayoutAlign="center center"
       *ngIf="status > 0">
       <div class="xb-order-tracking__shipping-process-bg" fxLayout="column" fxLayoutAlign="center center"  fxFlex="none">
         <div class="xb-order-tracking__shipping-process-circle" [ngClass]="{'active': status > 0}">1</div>

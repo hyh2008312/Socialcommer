@@ -1,4 +1,4 @@
-<div class="unicorn-dark-theme-1 md-margin-top-2"  fxLayout="row" fxLayoutAlign="start start">
+<div class="unicorn-dark-theme-1 md-margin-top-2"  fxLayout="row" fxLayoutAlign="start start" fxHide.xs fxHide.sm>
   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex>
     <div fxLayout="row" fxLayoutAlign="start stretch">
       <div class="xb-order-tracking__detail-width xb-order-tracking__detail-margin-right" fxLayout="row" fxLayoutAlign="start stretch" fxFlex="none">
@@ -363,4 +363,330 @@
     </div>
   </div>
 
+</div>
+<div class="xb-order-tracking__detail-card unicorn-dark-theme-1 md-margin-top-2" fxHide.gt-sm>
+  <div class="xb-order-tracking__detail-container-5" fxLayout="row" fxLayoutAlign="start center">
+    <div class="md-dark-secondary xb-bold">
+      Supplier
+    </div>
+    <div class="xb-order-tracking__title-3 md-margin-left-2">
+      {{order.supplierName}}
+    </div>
+    <div fxFlex></div>
+    <div *ngIf="order.status == 'Unfulfilled'">Processing</div>
+    <div *ngIf="order.status == 'Fulfilled'">Shipped</div>
+    <div *ngIf="order.status == 'Completed'">Delivered</div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+           && order.returnOrder.status == 'Pending'">Return Requested</div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+           && order.returnOrder.status == 'Authorized'">Return Authorized</div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+           && order.returnOrder.status == 'Denied'">Return Denied</div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+           && order.returnOrder.status == 'Exchanged'">Exchanged Item Shipped</div>
+    <div *ngIf="order.status == 'Canceled'">
+      {{order.cancelSource != null? order.cancelSource + ' ' + order.status: 'Payment ' + order.status}}</div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+           && order.returnOrder.status == 'Partially Refunded'">
+      Partially Refunded</div>
+    <div class="xb-order-tracking__detail-margin-right" fxFlex="20"
+         fxLayout="column" fxLayoutAlign="center center"
+         *ngIf="order.status == 'Return' && order.returnOrder
+           && order.returnOrder.status == 'Refunded'">
+      Refunded</div>
+  </div>
+  <div class="xb-order-tracking__detail-container-6" fxLayout="row" fxLayoutAlign="start stretch">
+    <div class="xb-order-tracking__detail-image-1" fxFlex="none">
+      <img [src]="order.mainImage">
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="space-between start">
+      <div class="xb-order-tracking__product-title-2" >{{order.title}}</div>
+      <div>{{order.attributes}}</div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start end">
+      <div class="xb-order-tracking__detail-title-4">{{order.unitPriceExclTax | exchangeCurrency:currency | currency: currency: true}}</div>
+      <div>x {{order.quantity}}</div>
+    </div>
+  </div>
+  <div class="xb-order-tracking__detail-container-5" fxLayout="row" fxLayoutAlign="end center">
+    <div>
+      Total Price: <span class="xb-order-tracking__detail-title-4">{{totalAmount | exchangeCurrency:currency | currency: currency: true}}</span>
+      <div class="md-margin-top-1" *ngIf="order.status == 'Return' && order.returnOrder
+           && (order.returnOrder.status == 'Partially Refunded' || order.returnOrder.status == 'Refunded')">
+        Refunded Amount: <span class="xb-order-tracking__detail-title-4">{{totalAmount | exchangeCurrency:currency | currency: currency: true}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="xb-order-tracking__detail-container-7" fxLayout="row" fxLayoutAlign="start start">
+    <div *ngIf="order.status == 'Canceled'" fxFlex>
+      <div>
+        <div class="md-dark-secondary xb-bold">
+          Shipping Method
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.shippingPrice.shippingName}}
+        </div>
+      </div>
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary xb-bold">
+          Processing & Packing
+        </div>
+        <div>
+          1-5 business days
+        </div>
+      </div>
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary xb-bold">
+          Estimated Delivery
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.shippingPrice.shippingTimeMin}}-{{order.shippingPrice.shippingTimeMax}} days after order shipped
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order.status == 'Unfulfilled'" fxFlex>
+      <div>
+        <div class="md-dark-secondary xb-bold">
+          Shipping Method
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.shippingPrice.shippingName}}
+        </div>
+      </div>
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary xb-bold">
+          Processing & Packing
+        </div>
+        <div>
+          1-5 business days
+        </div>
+      </div>
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary xb-bold">
+          Estimated Delivery
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.shippingPrice.shippingTimeMin}}-{{order.shippingPrice.shippingTimeMax}} days after order shipped
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+      && order.returnOrder.status == 'Pending'" fxFlex>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary xb-bold">
+          Requested on
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.returnOrder.created | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary">
+          Note: You have request a return. if you haven't received any response within 3 business days, you can
+          file a claim.
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+      && order.returnOrder.status == 'Authorized'" fxFlex>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary xb-bold">
+          Authorized on
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary">
+          Note: Please follow the return instructions to ship your item back before {{order.return_deadline | amDateFormat:'MMMM Do, YYYY'}}.
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+      && order.returnOrder.status == 'Denied'" fxFlex>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondary xb-bold">
+          Denied on
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary">
+          Note: Your return request was denied, please check out the reason or file a claim.
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+      && order.returnOrder.status == 'Exchanged'" fxFlex>
+      <div>
+        <div class="md-dark-secondary xb-bold">
+          Exchanged Item Shipped on
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary">
+          Note: Your exchanged item has been shipped, please track your package. If you're still not satisfied
+          with the result, you can file a claim.
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order.status == 'Fulfilled' && !order.isArrival" fxFlex>
+      <div>
+        <div class="md-dark-secondary xb-bold">
+          Shipping Method
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.shippingPrice.shippingName}}
+        </div>
+      </div>
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary xb-bold">
+          Estimated Delivery
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.arrivalDate | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order.status == 'Fulfilled' && order.isArrival" fxFlex>
+      <div>
+        <div class="md-dark-secondary xb-bold">
+          Delivery on
+        </div>
+        <div *ngIf="order.shippingPrice">
+          {{order.arrivalDate | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary">
+          Note: You have request a return {{order.return_deadline | amDateFormat:'MMMM Do, YYYY'}} if you're not satisfied
+          with your order.
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Partially Refunded'" fxFlex>
+      <div>
+        <div class="md-dark-secondary xb-bold">
+          Refunded on:
+        </div>
+        <div>
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary">
+          Note: Your order has been partially refunded, if you're still not satisfied width the result, you can file a claim.
+        </div>
+      </div>
+    </div>
+    <div *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Refunded'" fxFlex>
+      <div>
+        <div class="md-dark-secondary xb-bold">
+          Refunded on:
+        </div>
+        <div>
+          {{order.modified | amDateFormat:'MMMM Do, YYYY'}}
+        </div>
+      </div>
+
+      <div class="md-margin-top-1">
+        <div class="md-dark-secondary">
+          Note: Your order has been fully refunded.
+        </div>
+      </div>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Canceled'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Unfulfilled'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" (click)="changeShippingAddress()">Change Shipping Address</button>
+      </div>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" (click)="trackingInformation()">Track Your Package</button>
+      </div>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" (click)="cancelItem()">Cancel Item</button>
+      </div>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Fulfilled'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" (click)="trackingInformation()">Track Your Package</button>
+      </div>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" (click)="returnItem()">Return Item</button>
+      </div>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Completed'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" (click)="trackingInformation()">Track Your Package</button>
+      </div>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Pending'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+      </div>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Denied'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+      </div>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Authorized'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+      </div>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Exchanged'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+      </div>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" (click)="trackingInformation()">Track Your Package</button>
+      </div>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Partially Refunded'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+      </div>
+    </div>
+    <div fxFlex="none" class="xb-order-tracking__detail-width-3"
+         fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Return' && order.returnOrder
+       && order.returnOrder.status == 'Refunded'">
+      <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
+      <div class="md-margin-top-1" fxLayout="column">
+        <button mat-raised-button color="accent" routerLink="../progress/{{order.returnOrder.id}}">View Return Progress</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -582,7 +582,7 @@ export class StoreCartPayComponent implements OnInit{
       payment: function() {
 
         // Set up a url on your server to create the payment
-        var CREATE_URL = `${self.baseApi.url}order/payment/paypal/create/`;
+        let CREATE_URL = `${self.baseApi.url}order/payment/paypal/create/`;
 
         let data:any = {
           orderId: self.order.id
@@ -602,7 +602,7 @@ export class StoreCartPayComponent implements OnInit{
       onAuthorize: function(data, actions) {
 
         // Set up a url on your server to execute the payment
-        var EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
+        let EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
 
         // Set up the data you need to pass to your server
         let params: any = {
@@ -660,7 +660,7 @@ export class StoreCartPayComponent implements OnInit{
       payment: function() {
 
         // Set up a url on your server to create the payment
-        var CREATE_URL = `${self.baseApi.url}order/payment/paypal/create/`;
+        let CREATE_URL = `${self.baseApi.url}order/payment/paypal/create/`;
 
         let data:any = {
           orderId: self.order.id
@@ -680,7 +680,7 @@ export class StoreCartPayComponent implements OnInit{
       onAuthorize: function(data, actions) {
 
         // Set up a url on your server to execute the payment
-        var EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
+        let EXECUTE_URL = `${self.baseApi.url}order/payment/paypal/execute/`;
 
         // Set up the data you need to pass to your server
         let params: any = {

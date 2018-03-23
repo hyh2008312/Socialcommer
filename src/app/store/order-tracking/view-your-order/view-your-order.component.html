@@ -4,21 +4,27 @@
       <app-store-cart-header></app-store-cart-header>
     </div>
   </div>
-  <div class="background-bg-light" fxFlex="noshrink" >
+  <div class="background-bg-light xb-order-tracking__inner-container" fxFlex="noshrink" >
     <div class="xb-order-tracking__title">
       View Your Order
     </div>
     <div class="container">
-      <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="start center">
-        <div class="md-dark-secondary xb-bold">Guest Order Number</div>
-        <div class="md-margin-left-2 xb-order-tracking__margin-right-1">{{order.number}}</div>
-        <div class="md-dark-secondary xb-bold">Order Date</div>
-        <div class="md-margin-left-2" fxFlex>{{created | amDateFormat:'MMMM Do, YYYY'}}</div>
+      <div class="md-margin-top-4 xb-order-tracking__container-4"
+           fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start start">
+        <div class="xb-order-tracking__margin-bottom" fxLayout="row" fxLayoutAlign="start center">
+          <div class="md-dark-secondary xb-bold">Guest Order Number</div>
+          <div class="md-margin-left-2 xb-order-tracking__margin-right-1">{{order.number}}</div>
+        </div>
+        <div class="xb-order-tracking__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+          <div class="md-dark-secondary xb-bold">Order Date</div>
+          <div class="md-margin-left-2" fxFlex>{{created | amDateFormat:'MMMM Do, YYYY'}}</div>
+        </div>
+        <div fxFlex></div>
         <div class="unicorn-dark-theme">
           <button mat-raised-button color="primary">View Invoice</button>
         </div>
       </div>
-      <div class="xb-order-tracking__container-1 md-margin-top-2">
+      <div class="xb-order-tracking__container-1 md-margin-top-2" fxHide.xs>
         <div class="xb-order-tracking__title-1">Order Summary</div>
         <div class="xb-order-tracking__height-1 xb-order-tracking__width xb-order-tracking__border-bottom md-margin-top-1"
              fxLayout="row" fxLayoutAlign="start center">
@@ -57,7 +63,52 @@
           </div>
         </div>
       </div>
-      <div class="xb-order-tracking__container-2 md-margin-top-2 md-margin-bottom-5">
+      <div class="md-margin-top-2" fxHide.gt-xs>
+        <div class="xb-order-tracking__title-1">Order Summary</div>
+        <div class="xb-order-tracking__container-1 md-margin-top-2">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="none">
+              Item Subtotal
+            </div>
+            <div fxFlex>
+              {{order.totalExclTax | exchangeCurrency:(order.currency|uppercase)|currency:(order.currency|uppercase):true}}
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="none">
+              Shipping
+            </div>
+            <div fxFlex>
+              {{order.shippingExclTax | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase):true}}
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="none">
+              Tax
+            </div>
+            <div fxFlex>
+              {{0 | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase):true}}
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="none">
+              Grand Total
+            </div>
+            <div fxFlex>
+              {{totalPrice | exchangeCurrency:(order.currency|uppercase) | currency:(order.currency|uppercase):true}}
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="none">
+              Payment Method
+            </div>
+            <div fxFlex>
+              {{order.paymentType == 'Paypal'? 'Paypal': 'Credit Card'}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="xb-order-tracking__container-2 md-margin-top-2 md-margin-bottom-5" fxHide.xs fxHide.sm>
         <div class="xb-order-tracking__title-1">Order Details</div>
         <div class="md-margin-top-1">
           <app-order-detail-title></app-order-detail-title>
@@ -71,6 +122,14 @@
               {{item.supplier}}
             </div>
           </div>
+          <div *ngFor="let order of item.lines">
+            <app-order-detail-item [order]="order" [email]="emailAddress" [number]="trackingNumber"></app-order-detail-item>
+          </div>
+        </div>
+      </div>
+      <div class="md-margin-top-2 md-margin-bottom-5" fxHide.gt-sm>
+        <div class="xb-order-tracking__title-1">Order Details</div>
+        <div *ngFor="let item of order.supplyLine">
           <div class="xb-order-tracking__detail-border-bottom" *ngFor="let order of item.lines">
             <app-order-detail-item [order]="order" [email]="emailAddress" [number]="trackingNumber"></app-order-detail-item>
           </div>
