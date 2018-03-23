@@ -142,33 +142,13 @@ export class FindProductsAddProductComponent implements OnInit {
 
   }
 
-  getLowestPrice(variants): any {
-    let price: any = {
-      saleUnitPrice : variants[0],
-      unitPrice : variants[0]
-    };
-
-    let unitPriceArray = [];
-
-    for(let i=0;i<variants.length;i++){
-      if(variants[i].saleUnitPrice <=  price.saleUnitPrice){
-        price.saleUnitPrice = variants[i].saleUnitPrice;
-      }
+  shareToEarn() {
+    let id = this.activatedRoute.snapshot.params['id'];
+    if(this.isSupplierDetail) {
+      this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/${id}/share/`]);
+    } else {
+      this.router.navigate([`/shop/listings/items/${id}/share/`]);
     }
-
-    for(let value of variants) {
-      if(value.saleUnitPrice == price.saleUnitPrice) {
-        unitPriceArray.push(value.unitPrice);
-      }
-    }
-
-    for(let value of unitPriceArray) {
-      if(value <=  price.unitPrice){
-        price.unitPrice = value;
-      }
-    }
-
-    return price;
   }
 
   arrangeVariant(data) {

@@ -58,6 +58,9 @@
           <button mat-raised-button color="primary" (click)="addEdit()" *ngIf="!isAdded">Add To Sell</button>
           <button mat-raised-button color="primary" disabled *ngIf="isAdded">Added</button>
         </div>
+        <div fxLayout="column" class="md-margin-top-1">
+          <div class="xb-store__details-buttons-1" (click)="shareToEarn()">Share to Earn</div>
+        </div>
       </div>
     </div>
     <div class="xb-shop__tab-scroll">
