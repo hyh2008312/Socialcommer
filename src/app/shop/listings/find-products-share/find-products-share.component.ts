@@ -276,7 +276,7 @@ export class FindProductsShareComponent implements OnInit {
   shareWidth: string;
   shareHeight: string;
 
-  private urlSharer(sharer: any) {
+  urlSharer(sharer: any) {
     let p = sharer.params || {},
       keys = Object.keys(p),
       i: any,
@@ -293,23 +293,23 @@ export class FindProductsShareComponent implements OnInit {
     let url = sharer.shareUrl + str;
 
     if (!sharer.isLink) {
-      let popWidth = sharer.width || 600,
+      var popWidth = sharer.width || 600,
         popHeight = sharer.height || 480,
-        left = window.innerWidth / 2 - popWidth / 2 + window.screenX,
-        top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
+        left = (<any>window).innerWidth / 2 - popWidth / 2 + (<any>window).screenX,
+        top = (<any>window).innerHeight / 2 - popHeight / 2 + (<any>window).screenY,
         popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
-        newWindow = window.open(url, '', popParams);
+        newWindow = (<any>window).open(url, '', popParams);
 
-      if (window.focus) {
+      if ((<any>window).focus) {
         newWindow.focus();
       }
     } else {
-      window.location.href = url;
+      (<any>window).location.href = url;
     }
   }
 
 
-  private getSharer(share:any, data:any){
+  getSharer(share:any, data:any){
     if(!share) {
       return;
     }
