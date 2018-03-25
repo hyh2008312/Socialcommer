@@ -245,16 +245,22 @@ export class FindProductsShareComponent implements OnInit {
     let self = this;
     self.shopService.createSupplyProduct(storeProduct).then((data) => {
       self.formErr = false;
-      let link = `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${data.id}`;
+      let link = `http://${window.location.host}/store/${self.displayName}/${self.templateId}/detail/${data.id}`;
       let text = data.title;
-      self.getSharer(source, {
-        link,
-        text
-      });
       if(!self.isSupplierEdit) {
-        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  });
+        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  }).then(() => {
+          self.getSharer(source, {
+            link,
+            text
+          });
+        });
       } else {
-        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false });
+        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false }).then(() => {
+          self.getSharer(source, {
+            link,
+            text
+          });
+        });
       }
     }).catch((data) => {
       self.formErr = data;
@@ -299,12 +305,12 @@ export class FindProductsShareComponent implements OnInit {
         top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
         popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
         newWindow = window.open(url, '', popParams);
-      console.log(newWindow)
+
       if (window.focus) {
         newWindow.focus();
       }
     } else {
-      (<any>window).location.href = url;
+      window.location.href = url;
     }
   }
 
