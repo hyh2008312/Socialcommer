@@ -276,7 +276,7 @@ export class FindProductsShareComponent implements OnInit {
   shareWidth: string;
   shareHeight: string;
 
-  urlSharer(sharer: any) {
+  private urlSharer(sharer: any) {
     let p = sharer.params || {},
       keys = Object.keys(p),
       i: any,
@@ -309,7 +309,7 @@ export class FindProductsShareComponent implements OnInit {
   }
 
 
-  getSharer(share:any, data:any){
+  private getSharer(share:any, data:any){
     if(!share) {
       return;
     }
