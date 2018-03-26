@@ -60,7 +60,7 @@ export class FindProductsShareComponent implements OnInit {
     private userService: UserService,
     private previewImageService: ImageUploadPreviewService,
     private s3UploaderService: S3UploaderService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {
     this.productForm = this.fb.group({
       title: ['', [
@@ -110,8 +110,7 @@ export class FindProductsShareComponent implements OnInit {
       if(data) {
         self.storeId = data.id;
         self.displayName = data.displayName;
-        self.templateId = data.templateId;
-        console.log(data)
+        self.templateId = data.template? data.template.templateId:5;
       }
     });
 
@@ -246,16 +245,22 @@ export class FindProductsShareComponent implements OnInit {
     let self = this;
     self.shopService.createSupplyProduct(storeProduct).then((data) => {
       self.formErr = false;
-      let link = `http://${window.location.host}/store/${this.displayName}/${this.templateId}/detail/${data.id}`;
+      let link = `http://${window.location.host}/store/${self.displayName}/${self.templateId}/detail/${data.id}`;
       let text = data.title;
-      self.getSharer(source, {
-        link,
-        text
-      });
       if(!self.isSupplierEdit) {
-        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  });
+        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  }).then(() => {
+          self.getSharer(source, {
+            link,
+            text
+          });
+        });
       } else {
-        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false });
+        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false }).then(() => {
+          self.getSharer(source, {
+            link,
+            text
+          });
+        });
       }
     }).catch((data) => {
       self.formErr = data;
@@ -293,19 +298,15 @@ export class FindProductsShareComponent implements OnInit {
 
     let url = sharer.shareUrl + str;
 
-    if (!sharer.isLink) {
-      let popWidth = sharer.width || 600,
-        popHeight = sharer.height || 480,
-        left = window.innerWidth / 2 - popWidth / 2 + window.screenX,
-        top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
-        popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
-        newWindow = window.open(url, '', popParams);
+    var popWidth = sharer.width || 600,
+      popHeight = sharer.height || 480,
+      left = window.innerWidth / 2 - popWidth / 2 + window.screenX,
+      top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
+      popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
+      newWindow = window.open(url, '', popParams);
 
-      if (window.focus) {
-        newWindow.focus();
-      }
-    } else {
-      window.location.href = url;
+    if (window.focus) {
+      newWindow.focus();
     }
   }
 
@@ -346,7 +347,7 @@ export class FindProductsShareComponent implements OnInit {
 
     _sharer.width = this.shareWidth;
     _sharer.height = this.shareHeight;
-    this.urlSharer(_sharer);
+    return this.urlSharer(_sharer);
 
   }
 

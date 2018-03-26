@@ -2,7 +2,7 @@
   <div class="xb-reward__item" *ngFor="let item of rewardList;let i = index;"
        [ngClass]="{'xb-reward__margin-right': i < rewardList.length - 1}">
     <img [src]="item.image">
-    <div class="xb-reward__logo">Upcomming</div>
+    <div class="xb-reward__logo">Upcoming</div>
     <div class="xb-reward__money">{{item.money | currency: currency: true}}</div>
   </div>
 </div>
