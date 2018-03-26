@@ -29,9 +29,7 @@ export class FindProductsShareComponent implements OnInit {
 
   category: any = [];
 
-  public editor;
-  public editorContent = 'Please add product details and images';
-  public editorImageId = 'quillImage';
+  step = 0;
 
   product = {
     title: '',
@@ -51,6 +49,9 @@ export class FindProductsShareComponent implements OnInit {
   templateId: any = 5;
 
   isSupplierEdit = false;
+
+  link: string = '';
+  text: string = '';
 
   constructor(
     public router: Router,
@@ -91,8 +92,6 @@ export class FindProductsShareComponent implements OnInit {
         recommendation: '',
         description: data.description
       });
-
-      self.editorContent = data.description;
 
       self.product.title = data.title;
       self.product.categoryName = data.categories[0].name;
@@ -221,10 +220,8 @@ export class FindProductsShareComponent implements OnInit {
     }
   }
 
-  showCategoryInput: boolean = false;
 
-
-  create(source?:any) {
+  create() {
     if(!this.productForm.valid) {
       this.formErr = 'Please select a category first. ';
       return;
@@ -245,123 +242,35 @@ export class FindProductsShareComponent implements OnInit {
     let self = this;
     self.shopService.createSupplyProduct(storeProduct).then((data) => {
       self.formErr = false;
-      let link = `http://${window.location.host}/store/${self.displayName}/${self.templateId}/detail/${data.id}`;
-      let text = data.title;
-      if(!self.isSupplierEdit) {
-        self.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  }).then(() => {
-          self.getSharer(source, {
-            link,
-            text
-          });
-        });
-      } else {
-        self.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false }).then(() => {
-          self.getSharer(source, {
-            link,
-            text
-          });
-        });
-      }
+      self.link = `http://${window.location.host}/store/${self.displayName}/${self.templateId}/detail/${data.id}`;
+      self.text = data.title;
+      self.step = 1;
     }).catch((data) => {
       self.formErr = data;
     });
   }
 
-  private sharers = {
-    facebook: {
-      shareUrl: 'https://www.facebook.com/sharer/sharer.php'
-    },
-    twitter: {
-      shareUrl: 'https://twitter.com/intent/tweet/'
-    },
-    whatsapp: {
-      shareUrl: 'https://api.whatsapp.com/send'
-    }
-  };
-
-  shareWidth: string;
-  shareHeight: string;
-
-  private urlSharer(sharer: any) {
-    let p = sharer.params || {},
-      keys = Object.keys(p),
-      i: any,
-      str = keys.length > 0 ? '?' : '';
-    for (i = 0; i < keys.length; i++) {
-      if (str !== '?') {
-        str += '&';
-      }
-      if (p[keys[i]]) {
-        str += keys[i] + '=' + encodeURIComponent(p[keys[i]]);
-      }
-    }
-
-    let url = sharer.shareUrl + str;
-
-    var popWidth = sharer.width || 600,
-      popHeight = sharer.height || 480,
-      left = window.innerWidth / 2 - popWidth / 2 + window.screenX,
-      top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
-      popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
-      newWindow = window.open(url, '', popParams);
-
-    if (window.focus) {
-      newWindow.focus();
-    }
-  }
-
-
-  private getSharer(share:any, data:any){
-    if(!share) {
-      return;
-    }
-
-    if(share == 'youtube') {
-      this.shareToYoutube(data);
-      return;
-    }
-
-    let _sharer: any = {};
-    if(share == 'facebook'){
-      _sharer= this.sharers['facebook'];
-      _sharer.params = {
-        u: data.link
-      }
-    }
-
-    if(share == 'twitter'){
-      _sharer = this.sharers['twitter'];
-      _sharer.params = {
-        url: data.link,
-        text: 'Don’t miss out on this new product in my store: ' + data.text,
-        hashtags: ''
-      };
-    }
-
-    if(share == 'whatsApp') {
-      _sharer = this.sharers['whatsapp'];
-      _sharer.params = {
-        text: 'Don’t miss out on this new product in my store: ' + data.text + '. Product link:' + data.link
-      };
-    }
-
-    _sharer.width = this.shareWidth;
-    _sharer.height = this.shareHeight;
-    return this.urlSharer(_sharer);
-
-  }
-
-  shareToYoutube(data) {
+  shareToYoutube(status: any) {
+    this.jump();
     let dialogRef = this.dialog.open(ProductShareDialogComponent, {
       data: {
-        shareLink: data.link,
-        text: data.text
+        shareLink: this.link,
+        text: this.text,
+        status: status
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
 
     });
+  }
+
+  jump() {
+    if(!this.isSupplierEdit) {
+      this.router.navigate(['/shop/listings/items/'],{ replaceUrl: true, skipLocationChange: false  });
+    } else {
+      this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`], { replaceUrl: true, skipLocationChange: false });
+    }
   }
 
 

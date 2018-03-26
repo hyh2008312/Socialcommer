@@ -8,9 +8,9 @@
     </div>
     <div class="xb-shop__mobile-dialog-inner">
       <div class="xb-share-dialog__title">Share on your social media and make money!</div>
-      <form [formGroup]="productForm" novalidate>
-        <div class="xb-shop__edit-title md-margin-top-3">This item will be added to your store for sale, please select
-          a category for it:</div>
+      <form [formGroup]="productForm" novalidate *ngIf="step == 0">
+        <div class="xb-shop__edit-title md-margin-top-3">This item will be added to your store for sale before sharing,
+          please select a category first: </div>
         <div class="md-margin-top-2">
           <div fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start stretch" *ngIf="category.length > 0">
             <div fxLayout="row" fxLayoutAlign="start center">
@@ -52,33 +52,49 @@
             {{ formErrors['categoryName'] }}
           </div>
         </div>
-        <div class="xb-shop__edit-title md-margin-top-2">Click the button below to promote this item on your social media: </div>
+
         <div *ngIf="formErr" class="xb-input-error md-margin-top-2">
           {{ formErr }}
         </div>
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap="">
-          <div class="xb-social-share xb-social-share__large xb-social-share__whatsapp md-margin-right-2 md-margin-bottom-1" fxLayout="row" fxLayoutAlign="center center"
-               (click)="create('whatsApp')">
+        <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="center center">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button mat-button type="submit" color="primary" (click)="create()">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                PROCEED TO SHARE <i class="iconfontXberts icon-ic-next md-margin-left-2"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+
+      </form>
+      <div *ngIf="step==1">
+        <div class="xb-shop__edit-title md-margin-top-2">Click the button below to promote this item on your social media: </div>
+        <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap="">
+          <div class="xb-social-share md-margin-right-1 xb-social-share__large xb-social-share__whatsapp"
+               fxLayout="row" fxLayoutAlign="center center"
+               appSocialShare [whatsApp]="{text: text + ' ' + link}" (click)="jump()" >
             <i class="iconfontXberts icon-ic-social-whatsapp" ></i>
             <div>Share to WhatsApp</div>
           </div>
-          <div class="xb-social-share xb-social-share__large xb-social-share__facebook md-margin-right-2 md-margin-bottom-1"
-               fxLayout="row" fxLayoutAlign="center center" (click)="create('facebook')">
+          <div class="xb-social-share md-margin-right-1 xb-social-share__large xb-social-share__facebook"
+               fxLayout="row" fxLayoutAlign="center center"
+               appSocialShare [facebook]="{u: link}"  (click)="jump()" >
             <i class="iconfontXberts icon-ic-facebook" ></i>
             <div>Share to Facebook</div>
           </div>
-          <div class="xb-social-share xb-social-share__large xb-social-share__youtube md-margin-right-2 md-margin-bottom-1"
-               fxLayout="row" fxLayoutAlign="center center" (click)="create('youtube')">
+          <div class="xb-social-share md-margin-right-1 xb-social-share__large xb-social-share__youtube"
+               fxLayout="row" fxLayoutAlign="center center"
+               (click)="shareToYoutube(0)">
             <i class="iconfontXberts icon-ic-youtube"></i>
             <div>Share to Youtube</div>
           </div>
-          <div class="xb-social-share xb-social-share__large xb-social-share__twitter md-margin-bottom-1"
-               fxLayout="row" fxLayoutAlign="center center" (click)="create('twitter')">
-            <i class="iconfontXberts icon-ic-twitter"></i>
-            <div>Share to Twitter</div>
+          <div class="xb-social-share md-margin-right-1 xb-social-share__large xb-social-share__instagram"
+               fxLayout="row" fxLayoutAlign="center center">
+            <i class="iconfontXberts icon-ic-Instagram"></i>
+            <div (click)="shareToYoutube(1)">Share to Instagram</div>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>

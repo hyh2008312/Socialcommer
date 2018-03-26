@@ -11,11 +11,17 @@ export class ProductShareDialogComponent implements OnInit {
 
   text: string = 'Don’t miss out on this new product in my store: ';
 
+  title: string = 'Youtube Channel';
+
   constructor(
     public dialogRef: MatDialogRef<ProductShareDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.text = this.text + this.data.text + ' Product link:' + this.data.shareLink;
+
+    if(this.data.status == 1) {
+      this.title = 'Instagram'
+    }
   }
 
   ngOnInit():void {
