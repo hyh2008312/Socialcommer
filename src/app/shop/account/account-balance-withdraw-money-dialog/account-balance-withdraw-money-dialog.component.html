@@ -36,7 +36,8 @@
         </div>
       </div>
       <div class="xb-account-money-dialog__payment md-margin-top-4">Withdraw Amount</div>
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-margin-right-1">$</div>
         <mat-form-field >
           <input matInput formControlName="amount" type="text" (ngModelChange)="isWithDrawNumberLargeThenAvailable($event)">
         </mat-form-field>

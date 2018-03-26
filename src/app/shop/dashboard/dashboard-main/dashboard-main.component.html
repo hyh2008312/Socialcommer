@@ -40,26 +40,28 @@
       </div>
     </div>
   </div>
-  <div class="xb-shop__navigation-card md-margin-right-2">
-    <div class="xb-shop__navigation-bg" fxLayout="row" fxLayoutAlign="start center">
-      Monthly Bonus Tracker
+  <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="start stretch" >
+    <div class="xb-shop__navigation-card md-margin-top-2 md-margin-right-2" fxFlex fxFlex.sm="none">
+      <div class="xb-shop__navigation-bg" fxLayout="row" fxLayoutAlign="start center">
+        Monthly Bonus Tracker
+      </div>
+      <div class="md-padding-bottom-2">
+        <div class="md-margin-top-2 xb-shop__navigation-card-inner xb-shop__dashboard-title">
+          Earn up to {{currency != 'INR' ? '$1000':'Rs.5000'}} extra bonus for reaching your monthly sales targets!
+          <a class="md-margin-left-1 text-underline xb-pointer xb-bold" (click)="openBonusTipDialog()">Learn More</a></div>
+        <app-shop-bonus-item [monthSale]="monthlySale"></app-shop-bonus-item>
+      </div>
     </div>
-    <div class="md-margin-top-2 xb-shop__navigation-card-inner xb-shop__dashboard-title" >
-      Earn up to {{currency != 'INR' ? '$1000':'Rs.5000'}} extra bonus for reaching your monthly sales targets!
-      <a class="md-margin-left-1 text-underline xb-pointer xb-bold" (click)="openBonusTipDialog()">LEARN MORE >></a></div>
-    <div class="md-margin-top-3 md-padding-bottom-2">
-      <app-shop-bonus-item [monthSale]="monthlySale"></app-shop-bonus-item>
-    </div>
-  </div>
-  <div class="xb-shop__navigation-card md-margin-top-2 md-margin-bottom-2 md-margin-right-2">
-    <div class="xb-shop__navigation-bg">Monthly Reward</div>
-    <div class="md-margin-top-2 xb-shop__navigation-card-inner xb-shop__dashboard-title" >
-      Make over $100 sales within current month, then you can pick one of the following items for product review in the
-      next month. You can keep the item for free! <br>
-      <a class="md-margin-top-1 text-underline xb-pointer xb-bold" routerLink="/shop/reward">LEARN MORE >></a>
-    </div>
-    <div class="md-margin-top-3 md-margin-bottom-3 xb-shop__navigation-card-inner">
-      <app-shop-dashboard-reward-item></app-shop-dashboard-reward-item>
+    <div class="xb-shop__navigation-card xb-shop__navigation-width md-margin-top-2 md-margin-right-2" >
+      <div class="xb-shop__navigation-bg">Monthly Reward</div>
+      <div class="md-margin-top-2 xb-shop__navigation-card-inner xb-shop__dashboard-title" >
+        Make over $100 sales within current month, then you can pick one of the following items for product review in the
+        next month. You can keep the item for free!
+        <a class="md-margin-left-1 text-underline xb-pointer xb-bold" routerLink="/shop/reward">Learn More</a>
+      </div>
+      <div class="md-margin-top-3 md-margin-bottom-3 xb-shop__navigation-card-inner">
+        <app-shop-dashboard-reward-item></app-shop-dashboard-reward-item>
+      </div>
     </div>
   </div>
   <div class="xb-shop__navigation-card md-margin-top-2 md-margin-bottom-2 md-margin-right-2">

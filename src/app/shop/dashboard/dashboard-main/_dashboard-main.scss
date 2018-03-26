@@ -143,5 +143,12 @@
         padding: 0 16px;
       }
     }
+
+    &-width{
+      width: 510px;
+      @include xb-sm-screen{
+        width: auto;
+      }
+    }
   }
 }

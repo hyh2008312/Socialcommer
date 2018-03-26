@@ -1,34 +1,44 @@
-<div class="xb-bonus__bg">
-  <div class="xb-bonus__item-bg" >
-    <ng-container *ngFor="let item of bonusList;let i = index;" >
-      <div class="xb-bonus__item xb-bonus__item-{{i}}" fxLayout="row" fxLayoutAlign="start center" *ngIf="i >= targetIndex;">
-        <div class="xb-bonus__item-{{i}}-line" fxFlex></div>
-        <div class="xb-bonus__sales" fxLayout="column" fxLayoutAlign="start center" fxFlex="none">
-          <i class="iconfontXberts icon-pic-lock" *ngIf="item.sales > monthSale "></i>
-          <i class="iconfontXberts icon-pic-unlock" *ngIf="item.sales <= monthSale "></i>
-          <div class="xb-bonus__text-1 xb-bold md-margin-top-1">{{item.bonus |currency:currency:true}}</div>
-          <div class="xb-bonus__text" fxLayout="column" fxLayoutAlign="start center" >
-            Bonus
-          </div>
-          <div class="xb-bonus__line-1"></div>
-          <div class="xb-bonus__text-1 xb-bold md-margin-top-1">{{item.sales |currency:currency:true}}</div>
-          <div class="xb-bonus__text" fxLayout="column" fxLayoutAlign="start center">
-            Target Sales
-          </div>
-        </div>
-      </div>
-    </ng-container>
+<div fxLayout="row" fxLayoutAlign="start start">
+  <div class="xb-bonus__circle-bg" fxLayout="column" fxLayoutAlign="center center">
+    <div class="xb-bold md-margin-top-2">Month-to-date Sales</div>
+    <div class="md-margin-top-2 md-margin-bottom-2 xb-bonus__circle">
+      <canvas #myCanvas width="150px" height="150px"></canvas>
+      <div class="xb-bonus__circle-text">{{monthSale |currency:currency:true}}</div>
+    </div>
+    <div class="xb-bonus__title-1" *ngIf="targetBonus">{{targetOffSale|currency:currency:true}} left to unlock {{targetBonus|currency:currency:true}} bonus!</div>
+    <div class="xb-bonus__title-1" *ngIf="!targetBonus">Congrats! You just unlock $4000 in total this month.</div>
+  </div>
 
-    <div class="xb-bonus__target" fxLayout="row" fxLayoutAlign="start start">
-      <div class="xb-bonus__target-line" fxFlex [ngClass]="{'xb-bonus__target-shadow': monthSale>0}"></div>
-      <div class="xb-bonus__sales" fxLayout="column" fxLayoutAlign="start center" fxFlex="none">
-        <div class="xb-bonus__target-line-1"></div>
-        <div class="xb-bonus__text" fxLayout="row" fxLayoutAlign="start center">
-          <span class="xb-bold">{{monthSale |currency:currency:true}}</span>
+  <div class="xb-bonus__processing-bg" fxFlex>
+    <div class="md-margin-top-2 xb-bonus__navigation" fxLayout="row" fxLayoutAlign="start center">
+      <div class="md-margin-right-3" fxFlex="20">Target<br> Sales</div>
+      <div class="md-margin-right-5" fxFlex="20">Cumulative<br> Bonus</div>
+      <div fxFlex>Current<br> Progress</div>
+    </div>
+    <div class="xb-bonus__processing-item" *ngFor="let item of bonusList; let i = index;" fxLayout="row" fxLayoutAlign="start center">
+      <div class="md-margin-right-3" fxFlex="20" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-bonus__processing-target xb-bonus__color-{{i}}" >{{item.sales |currency:currency:true}}</div>
+      </div>
+      <div class="md-margin-right-5" fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
+        <span class="md-margin-right-1">{{item.bonus |currency:currency:true}} </span>
+        <i class="iconfontXberts icon-pic-lock md-dark-secondary" *ngIf="item.sales > monthSale "></i>
+        <i class="iconfontXberts icon-pic-unlock" *ngIf="item.sales <= monthSale "></i>
+      </div>
+      <div fxFlex>
+        <div class="xb-bonus__processing">
+          <div class="xb-bonus__processing-line xb-bonus__color-{{i}}" *ngIf="i <= targetIndex()" style="width: 100%;"></div>
+          <div class="xb-bonus__processing-line xb-bonus__color-{{i}}"
+               *ngIf="i == targetIndex() + 1 && targetIndex() + 1 <= bonusList.length - 1" [ngStyle]="{width: targetOffSalePercent + '%'}"></div>
         </div>
-        <div class="xb-bonus__text-1">Month-to-Date Sales</div>
+        <div class="md-dark-secondary xb-bonus__text" *ngIf="i <= targetIndex()" >
+          Bonus Unlocked!
+        </div>
+        <div class="md-dark-secondary xb-bonus__text" *ngIf="i == targetIndex() + 1 && targetIndex() + 1 <= bonusList.length - 1" >
+          {{targetOffSalePercent + '%'}}</div>
+        <div class="md-dark-secondary xb-bonus__text" *ngIf="i > targetIndex() + 1">
+          0%
+        </div>
       </div>
     </div>
   </div>
-
 </div>

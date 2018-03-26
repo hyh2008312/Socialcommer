@@ -9,6 +9,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { PrebootModule } from 'preboot';
 import { AppRoutes } from './app.routes.module';
 
+import { CommonModule }        from '@angular/common';
+import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FlexLayoutModule }    from '@angular/flex-layout';
+
 // shared
 import { SharedServerModule } from './shared-server/shared-server.module';
 
@@ -43,7 +48,12 @@ import { UserModule } from './shared/services/user/user.module';
         autoTrackVirtualPages: true
       }
     }),
-    SharedServerModule.forRoot()
+    SharedServerModule.forRoot(),
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FlexLayoutModule
   ],
   providers: [BaseApi, SystemConstant, DataApi, SupportApi, BlogCover, HttpClientModule, CookieService],
   bootstrap: [AppComponent]

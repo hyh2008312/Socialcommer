@@ -43,7 +43,7 @@ export class LeftSideNavigationComponent implements OnInit {
   }, {
     id: 2,
     icon: 'icon-pic-store',
-    text: 'Store',
+    text: 'Storefront',
     subContent: [{
       text: 'Edit Store',
       router: null

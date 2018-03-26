@@ -9,8 +9,10 @@
        fxLayout="column" fxLayoutAlign="center center">Price</div>
   <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="15"
        fxLayout="column" fxLayoutAlign="center center">Sales Commission</div>
+  <div class="xb-shop__product-title-1" fxFlex="15" *ngIf="status == 1"
+       fxLayout="column" fxLayoutAlign="center center">Unpublished Date</div>
   <div class="xb-shop__product-title-1 md-margin-right-2" fxFlex="15"
        fxLayout="column" fxLayoutAlign="center center">Action</div>
-  <div class="xb-shop__product-title-1" fxFlex="15"
+  <div class="xb-shop__product-title-1" fxFlex="15" *ngIf="status == 0"
        fxLayout="column" fxLayoutAlign="center center">Promote</div>
 </div>

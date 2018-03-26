@@ -4,83 +4,98 @@
 
 .xb-bonus {
 
-  &__bg{
-    padding: 32px 72px;
-    background-color: $whiteColor;
-    border-radius: 4px;
-    height: 282px;
-  }
 
-  &__item{
-    position: absolute;
-    left: 0;
-    top: 0;
+  &__circle{
+    position: relative;
 
     &-bg{
       position: relative;
-      height: 200px;
+      width: 250px;
+    }
+
+    &-text{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      @include transform(translate(-50%, -50%));
+      font-size: 16px;
+      @include media();
     }
   }
 
-  $widths: (0 12.5%) (1 25%) (2 50%) (3 75%) (4 100%);
-  @each $width in $widths {
-    &__item-#{nth($width, 1)} {
-      width: nth($width, 2);
-      &-line{
-        background-color: rgba(0,0,0,.08);
-        height: 20px;
-        border-radius: 10px;
-        margin-top: 20px;
-      }
+  &__processing{
+    position: relative;
+    width: 100%;
+    height: 3px;
+    border-radius: 1px;
+    overflow: hidden;
+    margin: 3px 0;
+    background-color: rgba(0,0,0,.12);
 
-      i{
-        color: $primaryColor;
-      }
+    &-bg{
+      padding: 0 16px;
     }
-  }
-
-  &__line-1{
-    width: 1px;
-    height: 44px;
-    background-color: $primaryColor;
-  }
-
-  &__target{
-    position: absolute;
-    left: 0;
-    top: 84px;
     &-line{
-      background: linear-gradient(180deg, #42dcf0 0, #00bcd4 100%);
-      height: 21px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 3px;
+    }
+
+    &-target{
+      line-height: 20px;
+      text-align: center;
+      font-size: 10px;
+      color: $whiteColor;
       border-radius: 10px;
+      padding: 0 10px;
     }
 
-    &-shadow{
-      @include box-shadow(0 1px 3px 2px rgba(0, 0, 0, 0.19));
+    &-text{
+      font-size: 10px;
+      >i{
+        font-size: 12px;
+        line-height: 12px;
+      }
     }
 
-    &-line-1{
-      margin-top: 10px;
-      width: 1px;
-      height: 80px;
-      background-color: $orangeColor;
+    &-item{
+      padding: 12px 0 0;
     }
+  }
+
+
+
+  $bgs: (0 #f8194e) (1 $primaryColor) (2 #f8cd00) (3 #30a1f6) (4 #575757);
+  @each $bg in $bgs {
+    &__color-#{nth($bg, 1)} {
+      background-color: nth($bg, 2);
+    }
+  }
+
+
+  &__title{
+    font-size: 12px;
+    line-height: 20px;
+    @include media();
+  }
+  &__title-1{
+    padding: 0 16px;
+    text-align: center;
   }
 
   &__text{
-    line-height: 14px;
-    margin: 8px 0;
-    white-space: nowrap;
+    font-size: 10px;
   }
 
-  &__text-1{
-    line-height: 14px;
-    white-space: nowrap;
+  &__navigation{
+    line-height: 20px;
+    font-size: 12px;
+    @include media();
+    border-bottom: 2px solid rgba(0,0,0,.21);
+    padding-bottom: 8px;
   }
 
-  &__sales{
-    width: 1px;
-  }
 }
 
 
