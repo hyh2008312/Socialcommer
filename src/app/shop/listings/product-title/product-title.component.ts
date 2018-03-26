@@ -8,6 +8,8 @@ import { Input, Output, Component, OnInit} from '@angular/core';
 
 export class ProductTitleComponent implements OnInit {
 
+  @Input() status: any = 0;
+
   constructor(
   ) { }
 

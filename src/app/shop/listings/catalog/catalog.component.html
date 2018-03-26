@@ -11,7 +11,7 @@
   <mat-tab-group color="accent" (selectedTabChange)="changeProducts($event)"  [(selectedIndex)]="selectedIndex">
     <mat-tab label="Published Items">
       <div class="md-margin-top-2 ">
-        <app-product-title></app-product-title>
+        <app-product-title [status]="0" ></app-product-title>
       </div>
       <div class="md-margin-top-2 xb-shop__product-bg" fxLayout="column">
         <div class="xb-shop__product-list" *ngFor="let item of productPublished;let i = index;">
@@ -39,7 +39,7 @@
     </mat-tab>
     <mat-tab label="Unpublished Items">
       <div class="md-margin-top-2 ">
-        <app-product-title></app-product-title>
+        <app-product-title [status]="1" ></app-product-title>
       </div>
       <div class="md-margin-top-2 xb-shop__product-bg" fxLayout="column">
         <div class="xb-shop__product-list" *ngFor="let item of productUnpublished;let i = index;" >

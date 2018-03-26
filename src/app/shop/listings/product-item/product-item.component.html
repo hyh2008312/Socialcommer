@@ -13,7 +13,7 @@
   </div>
   <div class="xb-shop__product-price md-margin-right-2" fxFlex="15">{{product.commissionRate + '%'}}</div>
   <div fxLayout="column" fxLayoutAlign="center center" fxFlex="15" *ngIf="status == 1">
-    {{product.created | amDateFormat:'MMMM Do, YYYY'}}
+    {{product.modified | amDateFormat:'MMMM Do, YYYY'}}
   </div>
   <div class="xb-shop__product-action-buttons md-margin-right-2" fxLayout="column" fxLayoutAlign="center center" fxFlex="15">
     <button mat-button color="primary" (click)="edit()">Edit</button>
