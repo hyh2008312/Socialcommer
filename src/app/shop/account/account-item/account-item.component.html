@@ -9,10 +9,10 @@
   </div>
   <div class="xb-account-item__title" fxFlex="20"
        fxLayout="row" fxLayoutAlign="center center">
-    {{item.paymentAction == 'Sale'? '+':'-'}} {{item.amount | exchangeCurrency:currency | currency:currency: true}}
+    {{item.paymentAction == 'Sale'? '+':'-'}} {{item.amount | exchangeCurrency:currency | currency:currency}}
   </div>
   <div class="xb-account-item__title" fxFlex="20"
        fxLayout="row" fxLayoutAlign="center center">
-    {{item.availableBalance | exchangeCurrency:currency | currency:currency: true}}
+    {{item.availableBalance | exchangeCurrency:currency | currency:currency}}
   </div>
 </div>
