@@ -14,7 +14,7 @@ import {StoreShareDialogComponent} from "../store-share-dialog/store-share-dialo
 @Component({
   selector: 'app-store-edit-1',
   templateUrl: './store-edit-1.component.html',
-  styleUrls: ['../../store/store.scss', '../shop.scss']
+  styleUrls: ['../../store/store.scss', '../shop.scss', './_store-template-1-edit.scss']
 })
 
 export class StoreEditComponent implements OnInit {
@@ -120,7 +120,7 @@ export class StoreEditComponent implements OnInit {
               });
 
               for (let value of self.templateList) {
-                if (value.templateId == 8) {
+                if (value.templateId == 1) {
 
                   self.templateId = value.id;
                   self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
@@ -417,32 +417,60 @@ export class StoreEditComponent implements OnInit {
     this.goodsDetail = !this.goodsDetail;
   }
 
-  titleInput:any;
+  // 跳转到购物车页面
+  storeCart: boolean = false;
+
+  jumpStoreCart() {
+    this.storeCart = !this.storeCart;
+  }
+
+  // 跳转到订单页面
+  storeOrder: boolean = false;
+
+  jumpStoreOrder() {
+    this.storeOrder = !this.storeOrder;
+  }
+
+  OpenStoreOrder() {
+    this.storeOrder = true;
+    this.storeCart = false;
+  }
+  OpenStoreCart() {
+    this.storeOrder = false;
+    this.storeCart = true;
+  }
+
+
+
+  titleInput: any;
+
   getTitleInputEdit(textedit: any): void {
-    this.titleInput = textedit ;
+    this.titleInput = textedit;
   }
 
-  editTitleInput():void{
-    this.titleInput.setSelection(0, this.titleInput.getLength(),'user');
+  editTitleInput(): void {
+    this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
   }
 
-  desInput:any;
+  desInput: any;
+
   getDesInputEdit(textedit: any): void {
-    this.desInput = textedit ;
+    this.desInput = textedit;
   }
 
-  editDesInput():void{
-    this.desInput.setSelection(0, this.desInput.getLength(),'user');
+  editDesInput(): void {
+    this.desInput.setSelection(0, this.desInput.getLength(), 'user');
   }
-  aboutInput:any;
+
+  aboutInput: any;
+
   getAboutInputEdit(textedit: any): void {
-    this.aboutInput = textedit ;
+    this.aboutInput = textedit;
   }
 
-  editAboutInput():void{
-    this.aboutInput.setSelection(0, this.aboutInput.getLength(),'user');
+  editAboutInput(): void {
+    this.aboutInput.setSelection(0, this.aboutInput.getLength(), 'user');
   }
-
 
 
 }

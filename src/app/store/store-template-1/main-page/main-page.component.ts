@@ -44,10 +44,9 @@ export class MainPageComponent implements OnInit {
   storeName: string = '';
   currency: string = 'USD';
 
-  nameTag1 = 'STORE NAME';
-  titleTag1 = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">store title</strong></p>';
-  descriptionTag1 = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">This is your starter site, a single page online storefront. All of the images and text on this page can be changed to personalize the site for brand and to communicate your unique story to your customers.</strong></p>';
-  userTag1 = '<p>Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business. Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training that make you an expert in your field? Show your customers that there are real people with interesting stories working behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust in your brand.</p>';
+  titleTag1 = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Welcome to The Beauty Store!</strong></p>';
+  descriptionTag1 = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">Follow beauty tips and find unique high-quality makeup tools, cosmetics and hairstyles all in once place.</strong></p>';
+  userTag1 = '<p>Welcome to my curated online store. This is a place to share you with beauty tips and high-quality unique makeup tools, cosmetics, hairstyles and everyday essentials. Please browse my collections and grab an item!</p>';
   imageSrc1 = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
 
   constructor(private router: Router,
