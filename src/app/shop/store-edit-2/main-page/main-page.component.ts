@@ -488,4 +488,67 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+  titleInput: any;
+
+  getTitleInputEdit(textedit: any): void {
+    this.titleInput = textedit;
+  }
+
+  editTitleInput(): void {
+    this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
+  }
+
+  desInput: any;
+
+  getDesInputEdit(textedit: any): void {
+    this.desInput = textedit;
+  }
+
+  editDesInput(): void {
+    this.desInput.setSelection(0, this.desInput.getLength(), 'user');
+  }
+
+
+  aboutMeInput: any;
+
+  getAboutMeInputEdit(textedit: any): void {
+    this.aboutMeInput = textedit;
+  }
+
+  editAboutMeInput(): void {
+    this.aboutMeInput.setSelection(0, this.aboutMeInput.getLength(), 'user');
+  }
+
+  aboutMeNewInput: any;
+
+  getAboutMeNewInputEdit(textedit: any): void {
+    this.aboutMeNewInput = textedit;
+  }
+
+  editAboutMeNewInput(): void {
+    this.aboutMeNewInput.setSelection(0, this.aboutMeNewInput.getLength(), 'user');
+  }
+
+  homeMadeDesInput: any;
+
+  getHomeMadeDesInputEdit(textedit: any): void {
+    this.homeMadeDesInput = textedit;
+  }
+
+  editHomeMadeDesInput(): void {
+    this.homeMadeDesInput.setSelection(0, this.homeMadeDesInput.getLength(), 'user');
+  }
+
+  homeMadeTitleInput: any;
+
+  getHomeMadeTitleInputEdit(textedit: any): void {
+    this.homeMadeTitleInput = textedit;
+  }
+
+  editHomeMadeTitleInput(): void {
+    this.homeMadeTitleInput.setSelection(0, this.homeMadeTitleInput.getLength(), 'user');
+  }
+
+
 }

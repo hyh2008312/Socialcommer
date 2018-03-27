@@ -63,11 +63,19 @@
               <div class="xb-store-template__content-2">
                 <div class="xb-shop__template-title xb-shop__template-edit">
                   <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
+                                (ready)="getTitleInputEdit($event)"
                                 [options]="editorConfig"></quill-editor>
+                  <div class="xb-shop__template-edit-text-button" (click)="editTitleInput()">
+                    CLICK TO EDIT TEXT
+                  </div>
                 </div>
                 <div class="xb-shop__template-description xb-shop__template-edit">
                   <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
+                                (ready)="getDesInputEdit($event)"
                                 [options]="editorConfig"></quill-editor>
+                  <div class="xb-shop__template-edit-text-button" (click)="editDesInput()">
+                    CLICK TO EDIT TEXT
+                  </div>
                 </div>
               </div>
               <div class="xb-shop__template-edit-button" (click)="editImage()">
@@ -172,7 +180,11 @@
             </div>
             <div class="xb-store-template__about-user xb-shop__template-edit">
               <quill-editor formControlName="userTag" [(ngModel)]="userTag"
+                            (ready)="getAboutMeInputEdit($event)"
                             [options]="editorConfig"></quill-editor>
+              <div class="xb-shop__template-edit-text-button" (click)="editAboutMeInput()">
+                CLICK TO EDIT TEXT
+              </div>
             </div>
           </div>
           <div [hidden]="viewIndex != 4">

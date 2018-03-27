@@ -18,20 +18,22 @@
         <div class="xb-shop__template-name xb-shop__template-edit">
           <input formControlName="nameTag" [(ngModel)]="nameTag">
         </div>
-        <div class="xb-shop__template-title ql-editor xb-pointer" [hidden]="titleEdited" (click)="editTitle()"
-             [innerHTML]="titleTag | safeHtml">
-        </div>
-        <div class="xb-shop__template-title xb-shop__template-edit" [hidden]="!titleEdited">
+        <div class="xb-shop__template-title xb-shop__template-edit">
           <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
+                        (ready)="getTitleInputEdit($event)"
                         [options]="editorConfig"></quill-editor>
+          <div class="xb-shop__template-edit-text-button" (click)="editTitleInput()">
+            CLICK TO EDIT TEXT
+          </div>
         </div>
-        <div class="xb-shop__template-description ql-editor xb-pointer" [hidden]="descriptionEdited"
-             (click)="editDescription()"
-             [innerHTML]="descriptionTag | safeHtml">
-        </div>
-        <div class="xb-shop__template-description xb-shop__template-edit" [hidden]="!descriptionEdited">
+
+        <div class="xb-shop__template-description xb-shop__template-edit">
           <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
+                        (ready)="getDesInputEdit($event)"
                         [options]="editorConfig"></quill-editor>
+          <div class="xb-shop__template-edit-text-button" (click)="editDesInput()">
+            CLICK TO EDIT TEXT
+          </div>
         </div>
       </div>
       <div class="xb-store__store-buttons" fxShow="false" fxShow.gt-xs="true">
@@ -103,13 +105,13 @@
             <div class="xb-store__icons md-dark-third" fxShow.xs="false">
               <i class="iconfontXberts icon-pic-quota"></i>
             </div>
-            <div class="xb-shop__template-user ql-editor xb-pointer" [hidden]="userEdited"
-                 (click)="editUser()"
-                 [innerHTML]="userTag | safeHtml">
-            </div>
-            <div class="xb-shop__template-user xb-shop__template-edit" [hidden]="!userEdited">
+            <div class="xb-shop__template-user xb-shop__template-edit">
               <quill-editor formControlName="userTag" [(ngModel)]="userTag"
+                            (ready)="getAboutInputEdit($event)"
                             [options]="editorConfig"></quill-editor>
+              <div class="xb-shop__template-edit-text-button" (click)="editAboutInput()">
+                CLICK TO EDIT TEXT
+              </div>
             </div>
             <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start"
                  fxShow.xs="false">

@@ -29,11 +29,7 @@
         </div>
         <div class="xb-4-template__divider-line"></div>
         <div class="xb-4-template__box-shadow" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-4-template__title xb-4-template__edit-border"
-               [innerHTML]="nameTag | safeHtml" [hidden]="nameEdited" (click)="editName()">
-          </div>
-          <div class="xb-4-template__title xb-4-template__edit-border"
-               [hidden]="!nameEdited">
+          <div class="xb-4-template__title xb-4-template__edit-border">
             <input formControlName="nameTag" [(ngModel)]="nameTag">
           </div>
           <div class="md-margin-left-4" fxShow="true" fxShow.xs="false" fxLayout="row" fxLayoutAlign="start center">
@@ -53,10 +49,20 @@
                fxLayoutAlign="start center">
             <div class="xb-4-template-home__background-w1200px">
               <div class="xb-4-template-home__title xb-4-template__edit-border">
-                <quill-editor formControlName="titleTag" [(ngModel)]="titleTag" [options]="editorConfig"></quill-editor>
+                <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
+                              (ready)="getTitleInputEdit($event)"
+                              [options]="editorConfig"></quill-editor>
+                <div class="xb-4-template__edit-text-button" (click)="editTitleInput()">
+                  CLICK TO EDIT TEXT
+                </div>
               </div>
               <div class="xb-4-template-home__des xb-4-template__edit-border">
-                <quill-editor formControlName="desTag" [(ngModel)]="desTag" [options]="editorConfig"></quill-editor>
+                <quill-editor formControlName="desTag" [(ngModel)]="desTag"
+                              (ready)="getDesInputEdit($event)"
+                              [options]="editorConfig"></quill-editor>
+                <div class="xb-4-template__edit-text-button" (click)="editDesInput()">
+                  CLICK TO EDIT TEXT
+                </div>
               </div>
               <div class="xb-4-template-home__banner-image xb-4-template__edit-border">
                 <app-image-upload-preview-four-template [(previewImgFile)]="imageBanner"
@@ -74,7 +80,11 @@
                   <div [formGroupName]="i">
                     <div class="xb-4-template-home__category-subtitle xb-4-template__w960 xb-4-template__edit-border">
                       <quill-editor formControlName="title" [(ngModel)]="tempCategoryList[i].title"
+                                    (ready)="getCategoryInput($event)"
                                     [options]="editorConfig"></quill-editor>
+                      <div class="xb-4-template__edit-text-button" (click)="editCategoryInput(i)">
+                        CLICK TO EDIT TEXT
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -113,13 +123,17 @@
               </a>
             </div>
           </div>
-          <div *ngIf="isShowBlog">
+          <div [hidden]="!isShowBlog">
             <div class="xb-4-template-home__category-banner" fxLayout="row" fxLayoutAlign="center center"
                  [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / auto 100% '}">
               <div class="xb-4-template-home__category-mask"></div>
               <div class="xb-4-template-home__blog-name xb-4-template__edit-border">
                 <quill-editor formControlName="blogDesTag" [(ngModel)]="blogDesTag"
+                              (ready)="getBlogInputEdit($event)"
                               [options]="editorConfig"></quill-editor>
+                <div class="xb-4-template__edit-text-button" (click)="editBlogInput()">
+                  CLICK TO EDIT TEXT
+                </div>
               </div>
               <div class="xb-4-template-edit__banner-button" (click)="editBlogCoverImage()">
                 CLICK TO CHANGE IMAGE
@@ -182,7 +196,11 @@
             <div class="xb-4-template-home__category-subtitle xb-4-template__w960 xb-4-template__edit-border">
               <quill-editor formControlName="categoryTitle" [ngModel]="categoryTitle"
                             (ngModelChange)="changeCategoryTitle($event)"
+                            (ready)="getCategorySingleInput($event)"
                             [options]="editorConfig"></quill-editor>
+              <div class="xb-4-template__edit-text-button" (click)="editCategorySingleInput()">
+                CLICK TO EDIT TEXT
+              </div>
             </div>
 
             <div class="xb-4-template-edit__banner-button" (click)="openUpdateCategoryImage(category.id)">

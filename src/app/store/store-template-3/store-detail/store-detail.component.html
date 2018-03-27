@@ -29,7 +29,7 @@
         class="xb-store-template__details-category">{{ product.categoryName | uppercase}}</span></div>
       <div class="xb-store-template__details-title">{{product.title}}</div>
       <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="start start">
-        <div class="xb-store-template__details-left-part">Price</div>
+        <div class="xb-store-template__details-left-part" fxShow="true" fxShow.xs="false">Price</div>
         <div [ngStyle]="{'margin-top': '6px'}" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
           <div class="xb-store-template__details-price" *ngIf="!isHaveVariant">
             {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
