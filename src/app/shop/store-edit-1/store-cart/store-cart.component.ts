@@ -12,7 +12,7 @@ import {StoreService} from '../../store.service';
 export class StoreCartComponent implements OnInit {
   products: any;
 
-  sharelink: string = '';
+  shareLink: string = '';
   text: string = '';
 
   @Input() storeName: string;
