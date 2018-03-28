@@ -5,9 +5,8 @@
         [(category)]="category" [categories]="categories"
         (categoryChange)="changeCategory()"></app-shop-template-4-category>
     </div>
-    <div class="xb-4-template-collection__product md-margin-left-2" fxLayoutAlign="space-between start" fxLayout="row"
-         fxLayoutGap.xs="16px"
-         fxLayoutWrap>
+    <div class="xb-4-template-collection__product md-margin-left-2" fxLayoutAlign="space-between start" fxLayout="row wrap"
+         fxLayoutGap.xs="16px">
       <app-shop-item-product-card-4 *ngFor="let item of product"
                                     fxFlex.xs="44" fxFlex.gt-xs="30"
                                     [product]="item" [status]="1"></app-shop-item-product-card-4>

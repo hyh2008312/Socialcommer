@@ -1,5 +1,5 @@
 <div class="xb-store-template__category-bg">
-  <div class="xb-store-template__category-scroll" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
+  <div class="xb-store-template__category-scroll" fxLayout="row wrap" fxLayoutAlign="start center">
     <ng-container *ngFor="let item of categories;let i = index;" >
       <div fxFlex="none" class="xb-store-template__category" (click)="changeCategory(item)"
            *ngIf="hideCategory(item)"

@@ -41,7 +41,7 @@
       </div>
       <div>
         <div class="xb-store-template__list-products md-margin-top-1">
-          <div  fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+          <div  fxLayout="row wrap" fxLayoutAlign="space-between start">
             <app-store-item-card-edit *ngFor="let item of product"
                                  fxFlex.xs="48" fxFlex.gt-xs="30"
                                  [product]="item" [status]="1"></app-store-item-card-edit>

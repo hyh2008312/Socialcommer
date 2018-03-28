@@ -30,7 +30,7 @@
                fxLayout="row" fxLayoutAlign="start start"
                fxLayout.xs="column" fxLayoutAlign="start start">
             <div class="xb-store__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">{{item.name}}</div>
-            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <div fxLayout="row wrap" fxLayoutAlign="start start">
               <div *ngFor="let value of item.value;let j = index;">
                 <div class="xb-store__details-image" [ngClass]="{'active':value.isSelected}"
                      *ngIf="value.image" (click)="selectVariant(value, item)">
@@ -107,7 +107,7 @@
         issue them full refunds or send them new exchanged items.</div>
     </div>
     <div class="xb-shop__title-1 md-align-center md-margin-top-5">Related Products</div>
-    <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap
+    <div class="md-margin-top-4" fxLayout="row wrap" fxLayoutAlign="space-between center"
       fxHide.xs>
       <app-product-item-card *ngFor="let product of productList" [product]="product" [supplier]="isSupplierDetail"
         [isRecommend]="true" fxFlex="32"></app-product-item-card>

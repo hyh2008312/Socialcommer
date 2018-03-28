@@ -99,9 +99,8 @@
                 {{category?.name| makeFirstLetterBig }}
               </div>
               <div class="xb-4-template-collection__product xb-4-template__w960" fxLayoutAlign="space-between start"
-                   fxLayout="row"
-                   fxLayoutGap.xs="16px"
-                   fxLayoutWrap>
+                   fxLayout="row wrap"
+                   fxLayoutGap.xs="16px">
                 <app-shop-item-product-card-5 *ngFor="let item of category.goods"
                                               fxFlex="25"
                                               (productId)="jumpGoodsDetail($event)"
@@ -142,9 +141,8 @@
               </div>
             </div>
             <div class="xb-4-template-home__category-name">Blog</div>
-            <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row"
+            <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row wrap"
                  fxLayoutAlign="space-between start"
-                 fxLayoutWrap
                  fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
               <app-shop-item-blog-card-5 *ngFor="let item of homeBlog"
                                          fxFlex.xs="48" fxFlex.gt-xs="50"
@@ -166,8 +164,8 @@
       <!--blog-->
       <div [hidden]="viewIndex != 1 || isCategory" class="xb-4-template-content">
         <div class="xb-4-template-blog">
-          <div class="xb-4-template__w960" fxLayout="row" fxLayoutAlign="start start"
-               fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px" fxLayoutWrap>
+          <div class="xb-4-template__w960" fxLayout="row wrap" fxLayoutAlign="start start"
+               fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
             <app-shop-item-blog-card-5 *ngFor="let item of blog"
                                        fxFlex.xs="48" fxFlex.gt-xs="50"
                                        [blog]="item" [status]="1"></app-shop-item-blog-card-5>
@@ -210,9 +208,8 @@
             </div>
           </div>
           <div class="xb-4-template-collection__product xb-4-template__w960" fxLayoutAlign="space-between start"
-               fxLayout="row"
-               fxLayoutGap.xs="16px"
-               fxLayoutWrap>
+               fxLayout="row wrap"
+               fxLayoutGap.xs="16px">
             <app-shop-item-product-card-5 *ngFor="let item of product"
                                           fxFlex="25"
                                           (productId)="jumpGoodsDetail($event)"

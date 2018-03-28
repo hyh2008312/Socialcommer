@@ -13,7 +13,7 @@
     </div>
     <app-store-template-3-category [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"></app-store-template-3-category>
   </div>
-  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutWrap>
+  <div fxLayout="row wrap" fxLayoutAlign="space-around center">
     <app-store-item-card *ngFor="let item of product"
                          fxFlex="33" fxFlex.xs="100"
                          [currency]="currency"

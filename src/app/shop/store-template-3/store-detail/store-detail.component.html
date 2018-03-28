@@ -27,7 +27,7 @@
         <span class="xb-pointer" routerLink="../../list">COLLECTION</span> / <span
         class="xb-store-template__details-category">{{ categoryName | uppercase}}</span></div>
       <div class="xb-store-template__details-title">{{product.title}}</div>
-      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
+      <div fxLayout="row wrap" fxLayoutAlign="start center">
         <div class="xb-store-template__details-price md-margin-right-2">{{product.salePriceAmount|currency:
           product.salePriceCurrency: true }}
         </div>

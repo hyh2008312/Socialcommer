@@ -52,7 +52,7 @@
                fxLayout="row" fxLayoutAlign="start start"
                fxLayout.xs="column" fxLayoutAlign="start start">
             <div class="xb-store__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">{{item.name}}</div>
-            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <div fxLayout="row wrap" fxLayoutAlign="start start">
               <div *ngFor="let value of item.value;let j = index;">
                 <div class="xb-store__details-image" [ngClass]="{'active':value.isSelected}"
                      *ngIf="value.image" (click)="selectVariant(value, item)">
@@ -156,7 +156,7 @@
                fxLayout="row" fxLayoutAlign="start start"
                fxLayout.xs="column" fxLayoutAlign="start start">
             <div class="xb-store__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">{{item.name}}</div>
-            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <div fxLayout="row wrap" fxLayoutAlign="start start">
               <div *ngFor="let value of item.value;let j = index;">
                 <div class="xb-store__details-image" [ngClass]="{'active':value.isSelected}"
                      *ngIf="value.image">

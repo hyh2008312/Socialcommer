@@ -141,7 +141,7 @@
 
       <!--产品列表-->
       <div class="xb-store-template__product-content ">
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+        <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between start">
           <app-store-item-card-edit *ngFor="let item of product"
                                     fxFlex.xs="48" fxFlex.gt-xs="30"
                                     (productId)="jumpGoodsDetail($event)"
@@ -203,7 +203,7 @@
             </div>
             <div>
               <div class="xb-store-template__list-products md-margin-top-1">
-                <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+                <div fxLayout="row wrap" fxLayoutAlign="space-between start">
                   <app-store-item-card-edit *ngFor="let item of product"
                                             fxFlex.xs="48" fxFlex.gt-xs="30"
                                             [product]="item" [status]="1"></app-store-item-card-edit>
