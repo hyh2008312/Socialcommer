@@ -27,12 +27,21 @@
         <div class="xb-store__content-2">
 
           <div class="xb-template-2-edit__store-title xb-template-2-edit__edit-border">
-            <quill-editor formControlName="titleTag" [(ngModel)]="titleTag" [options]="editorConfig"></quill-editor>
+            <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
+                          (ready)="getTitleInputEdit($event)"
+                          [options]="editorConfig"></quill-editor>
+            <div class="xb-template-2-edit__edit-text-button" (click)="editTitleInput()">
+              CLICK TO EDIT TEXT
+            </div>
           </div>
 
           <div class="xb-template-2-edit__store-description xb-template-2-edit__edit-border">
             <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
+                          (ready)="getDesInputEdit($event)"
                           [options]="editorConfig"></quill-editor>
+            <div class="xb-template-2-edit__edit-text-button" (click)="editDesInput()">
+              CLICK TO EDIT TEXT
+            </div>
           </div>
         </div>
         <div class="xb-store-template__store-buttons" fxShow="false" fxShow.gt-xs="true">
@@ -54,7 +63,11 @@
 
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border">
               <quill-editor formControlName="aboutMeTag" [ngModel]="aboutMeTag" (ngModelChange)="changeAboutMe($event)"
+                            (ready)="getAboutMeInputEdit($event)"
                             [options]="editorConfig"></quill-editor>
+              <div class="xb-template-2-edit__edit-text-button" (click)="editAboutMeInput()">
+                CLICK TO EDIT TEXT
+              </div>
             </div>
 
             <div class="md-margin-top-2">
@@ -96,7 +109,11 @@
           <div class="xb-store-template__introduce-two-bottom-right">
             <div class="xb-store-template__introduce-two-describe xb-template-2-edit__edit-border">
               <quill-editor formControlName="homeMadeDesTag" [(ngModel)]="homeMadeDesTag"
+                            (ready)="getHomeMadeDesInputEdit($event)"
                             [options]="editorConfig"></quill-editor>
+              <div class="xb-template-2-edit__edit-text-button" (click)="editHomeMadeDesInput()">
+                CLICK TO EDIT TEXT
+              </div>
             </div>
           </div>
 
@@ -109,7 +126,11 @@
 
         <div class="xb-store-template__home-made-title xb-template-2-edit__edit-border">
           <quill-editor formControlName="homeMadeTitle" [(ngModel)]="homeMadeTitle"
+                        (ready)="getHomeMadeTitleInputEdit($event)"
                         [options]="editorConfig"></quill-editor>
+          <div class="xb-template-2-edit__edit-text-button" (click)="editHomeMadeTitleInput()">
+            CLICK TO EDIT TEXT
+          </div>
         </div>
         <div class="xb-template-2-edit__edit-button" (click)="editImageHomeMade()">
           CLICK TO CHANGE IMAGE
@@ -230,15 +251,14 @@
               <app-image-upload-preview-blog [(previewImgFile)]="aboutMeCover" [(previewImgSrc)]="aboutMeCover"
                                              [type]="uploadAboutType"></app-image-upload-preview-blog>
             </div>
-
-            <div class="xb-store-template__introduce-one-describe xb-pointer xb-template-2-edit__edit-border ql-editor"
-                 [innerHTML]="aboutMeNewTag | safeHtml" [hidden]="aboutMeNewEdited" (click)="editAboutMeNew()"></div>
-
-            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border"
-                 [hidden]="!aboutMeNewEdited">
+            <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border">
               <quill-editor formControlName="aboutMeNewTag" [ngModel]="aboutMeNewTag"
                             (ngModelChange)="changeAboutMe($event)"
+                            (ready)="getAboutMeNewInputEdit($event)"
                             [options]="editorConfig"></quill-editor>
+              <div class="xb-template-2-edit__edit-text-button" (click)="editAboutMeNewInput()">
+                CLICK TO EDIT TEXT
+              </div>
             </div>
           </div>
           <!--网页底部-->

@@ -487,6 +487,35 @@ export class MainPageComponent implements OnInit {
     }
   }
 
+  titleInput: any;
+
+  getTitleInputEdit(textedit: any): void {
+    this.titleInput = textedit;
+  }
+
+  editTitleInput(): void {
+    this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
+  }
+
+  desInput: any;
+
+  getDesInputEdit(textedit: any): void {
+    this.desInput = textedit;
+  }
+
+  editDesInput(): void {
+    this.desInput.setSelection(0, this.desInput.getLength(), 'user');
+  }
+
+  aboutMeInput: any ;
+
+  getAboutMeInputEdit(textedit: any): void {
+    this.aboutMeInput = textedit;
+  }
+
+  editAboutMeInput(): void {
+    this.aboutMeInput.setSelection(0, this.aboutMeInput.getLength(), 'user');
+  }
 
 
 }

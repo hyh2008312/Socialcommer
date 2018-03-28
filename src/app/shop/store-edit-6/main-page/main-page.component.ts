@@ -698,4 +698,55 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       this.blogFlag = 3;
     }
   }
+
+  titleInput: any;
+
+  getTitleInputEdit(textedit: any): void {
+    this.titleInput = textedit;
+  }
+
+  editTitleInput(): void {
+    this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
+  }
+
+  desInput: any;
+
+  getDesInputEdit(textedit: any): void {
+    this.desInput = textedit;
+  }
+
+  editDesInput(): void {
+    this.desInput.setSelection(0, this.desInput.getLength(), 'user');
+  }
+
+  BlogInput: any;
+
+  getBlogInputEdit(textedit: any): void {
+    this.BlogInput = textedit;
+  }
+
+  editBlogInput(): void {
+    this.BlogInput.setSelection(0, this.BlogInput.getLength(), 'user');
+  }
+
+  categoryInputs: any = [];
+
+  getCategoryInput(value: any): void {
+    this.categoryInputs.push(value);
+  }
+
+  editCategoryInput(index: number): void {
+    this.categoryInputs[index].setSelection(0, this.categoryInputs[index].getLength(), 'user');
+  }
+  categorySingleInputs: any;
+
+  getCategorySingleInput(textedit: any): void {
+    this.categorySingleInputs = textedit;
+  }
+
+  editCategorySingleInput(index: number): void {
+    this.categorySingleInputs.setSelection(0, this.categorySingleInputs.getLength(), 'user');
+  }
+
+
 }

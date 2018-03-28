@@ -746,6 +746,23 @@
         padding: 0 16px;
       }
     }
+    &-edit-text-button {
+      padding: 0 32px;
+      line-height: 32px;
+      position: absolute;
+      left: 50%;
+      bottom: 100%;
+      @include transform(translateX(-50%));
+      background-color: $primaryColor;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 1;
+      font-size: 14px;
+      @include xb-xs-screen {
+        padding: 0 16px;
+      }
+    }
 
     &-button {
       line-height: 40px;

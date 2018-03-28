@@ -552,11 +552,12 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       document.getElementById('xb-5-template-to-top').scrollTop = 0;
     }
   }
+
   changeFixed(): void {
     let Atheight = document.getElementById('xb-5-template-to-top').scrollTop;
     let cartHeight = document.getElementById('xb-5-detail-top').offsetHeight;
     let detialHeight = document.getElementById('xb-5-goods').offsetHeight;
-     let ele =  document.getElementById('xb-5-detail-top');
+    let ele = document.getElementById('xb-5-detail-top');
     if (Atheight + cartHeight >= detialHeight) {
       ele.style.position = 'absolute';
       ele.style.top = (detialHeight + 208 - cartHeight) + "px";
@@ -565,4 +566,46 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       ele.style.top = "auto";
     }
   }
+
+  desInput: any;
+
+  getDesInputEdit(textedit: any): void {
+    this.desInput = textedit;
+  }
+
+  editDesInput(): void {
+    this.desInput.setSelection(0, this.desInput.getLength(), 'user');
+  }
+
+  aboutTitleInput: any;
+
+  getAboutTitleInputEdit(textedit: any): void {
+    this.aboutTitleInput = textedit;
+  }
+
+  editAboutTitleInput(): void {
+    this.aboutTitleInput.setSelection(0, this.aboutTitleInput.getLength(), 'user');
+  }
+
+  aboutDesInput: any;
+
+  getAboutDesInputEdit(textedit: any): void {
+    this.aboutDesInput = textedit;
+  }
+
+  editAboutDesInput(): void {
+    this.aboutDesInput.setSelection(0, this.aboutDesInput.getLength(), 'user');
+  }
+
+  blogDesInput: any;
+
+  getBlogDesInputEdit(textedit: any): void {
+    this.blogDesInput = textedit;
+  }
+
+  editBlogDesInput(): void {
+    this.blogDesInput.setSelection(0, this.blogDesInput.getLength(), 'user');
+  }
+
+
 }

@@ -14,7 +14,7 @@ import {StoreShareDialogComponent} from "../store-share-dialog/store-share-dialo
 @Component({
   selector: 'app-store-edit-1',
   templateUrl: './store-edit-1.component.html',
-  styleUrls: ['../../store/store.scss', '../shop.scss']
+  styleUrls: ['../../store/store.scss', '../shop.scss', './_store-template-1-edit.scss']
 })
 
 export class StoreEditComponent implements OnInit {
@@ -209,9 +209,9 @@ export class StoreEditComponent implements OnInit {
   storeForm: FormGroup;
 
   nameTag = 'STORE NAME';
-  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Click here to edit the title</strong></p>';
-  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">This is your starter site, a single page online storefront. All of the images and text on this page can be changed to personalize the site for brand and to communicate your unique story to your customers.</strong></p>';
-  userTag = '<p>Here you let your customers get to know you. Tell them a little bit about yourself and why you create this business. Do you have a passion, hobby or life experience that inspired you to get started? Do you have special skills or training that make you an expert in your field? Show your customers that there are real people with interesting stories working behind the scenes. Helping customers feel connected to you and your purpose will inspire more trust in your brand.</p>';
+  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Welcome to The Beauty Store!</strong></p>';
+  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);" class="ql-size-large">Follow beauty tips and find unique high-quality makeup tools, cosmetics and hairstyles all in once place.</strong></p>';
+  userTag = '<p>Welcome to my curated online store. This is a place to share you with beauty tips and high-quality unique makeup tools, cosmetics, hairstyles and everyday essentials. Please browse my collections and grab an item!</p>';
   imageSrc = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
 
   nameEdited: boolean = false;
@@ -407,6 +407,7 @@ export class StoreEditComponent implements OnInit {
   // 跳转到商品详情页
   selectProductId: any;
   goodsDetail: boolean = false;
+
   jumpGoodsDetail(productId: any) {
     this.selectProductId = productId;
     this.changeGoodsDetail();
@@ -415,4 +416,61 @@ export class StoreEditComponent implements OnInit {
   changeGoodsDetail() {
     this.goodsDetail = !this.goodsDetail;
   }
+
+  // 跳转到购物车页面
+  storeCart: boolean = false;
+
+  jumpStoreCart() {
+    this.storeCart = !this.storeCart;
+  }
+
+  // 跳转到订单页面
+  storeOrder: boolean = false;
+
+  jumpStoreOrder() {
+    this.storeOrder = !this.storeOrder;
+  }
+
+  OpenStoreOrder() {
+    this.storeOrder = true;
+    this.storeCart = false;
+  }
+  OpenStoreCart() {
+    this.storeOrder = false;
+    this.storeCart = true;
+  }
+
+
+
+  titleInput: any;
+
+  getTitleInputEdit(textedit: any): void {
+    this.titleInput = textedit;
+  }
+
+  editTitleInput(): void {
+    this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
+  }
+
+  desInput: any;
+
+  getDesInputEdit(textedit: any): void {
+    this.desInput = textedit;
+  }
+
+  editDesInput(): void {
+    this.desInput.setSelection(0, this.desInput.getLength(), 'user');
+  }
+
+  aboutInput: any;
+
+  getAboutInputEdit(textedit: any): void {
+    this.aboutInput = textedit;
+  }
+
+  editAboutInput(): void {
+    this.aboutInput.setSelection(0, this.aboutInput.getLength(), 'user');
+  }
+
+
 }

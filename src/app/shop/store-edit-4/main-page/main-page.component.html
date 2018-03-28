@@ -43,7 +43,12 @@
           <div class="xb-4-template-home__background " fxLayout="column" fxLayoutAlign="start start"
                [ngStyle]="{'background': 'url(' + (imageBanner)   + ') center / auto 100% ' }">
             <div class="xb-4-template-home__title xb-4-template__edit-border">
-              <quill-editor formControlName="titleTag" [(ngModel)]="titleTag" [options]="editorConfig"></quill-editor>
+              <quill-editor formControlName="titleTag" [(ngModel)]="titleTag"
+                            (ready)="getTitleInputEdit($event)"
+                            [options]="editorConfig"></quill-editor>
+              <div class="xb-4-template__edit-text-button" (click)="editTitleInput()">
+                CLICK TO EDIT TEXT
+              </div>
             </div>
             <div class="xb-4-template-edit__banner-button" (click)="editImage()">
               CLICK TO CHANGE IMAGE
@@ -96,12 +101,20 @@
               <!--product title-->
               <div class="xb-4-template-products__title xb-4-template__edit-border">
                 <quill-editor formControlName="productTitleTag" [(ngModel)]="productTitleTag"
+                              (ready)="getProductTitleInputEdit($event)"
                               [options]="editorConfig"></quill-editor>
+                <div class="xb-4-template__edit-text-button" (click)="editProductTitleInput()">
+                  CLICK TO EDIT TEXT
+                </div>
               </div>
               <!--product subtitle-->
               <div class="xb-4-template-products__subtitle xb-4-template__edit-border">
                 <quill-editor formControlName="productDesTag" [(ngModel)]="productDesTag"
+                              (ready)="getProductDesInputEdit($event)"
                               [options]="editorConfig"></quill-editor>
+                <div class="xb-4-template__edit-text-button" (click)="editProductDesInput()">
+                  CLICK TO EDIT TEXT
+                </div>
               </div>
             </div>
             <app-shop-item-product-card-4 *ngFor="let item of homeProduct"
@@ -199,7 +212,11 @@
           <!--about me-->
           <div class="xb-4-template-about__content xb-4-template__edit-border">
             <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
+                          (ready)="getAboutMeInputEdit($event)"
                           [options]="editorConfig"></quill-editor>
+            <div class="xb-4-template__edit-text-button" (click)="editAboutMeInput()">
+              CLICK TO EDIT TEXT
+            </div>
           </div>
           <div class="xb-4-template-about__image xb-pointer xb-4-template__edit-border md-margin-top-4">
             <app-image-upload-preview-blog [(previewImgFile)]="aboutMeCover" [(previewImgSrc)]="aboutMeCover"

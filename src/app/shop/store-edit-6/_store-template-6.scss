@@ -14,6 +14,22 @@
   background-color: $whiteColor;
   z-index: 500;
 
+  &__edit-text-button {
+    padding: 0 32px;
+    line-height: 32px;
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    @include transform(translateX(-50%));
+    background-color: $primaryColor;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
   &__divider-line {
     background-color: #dcdcdc;
     height: 1px;
@@ -78,21 +94,16 @@
     margin-right: auto;
   }
   &__title {
-    padding-left: 40px;
-    padding-right: 40px;
-    margin-right: 80px;
-    height: 60px;
+    height: 48px;
     font-size: 24px;
     font-family: Helvetica;
     color: #ee4b80;
-    line-height: 58px;
+    line-height: 48px;
     margin-left: 135px;
     > input {
       border: none;
       font-size: 24px;
       width: auto;
-      height: 60px;
-      line-height: 58px;
       font-family: Helvetica;
       color: #ee4b80;
       text-align: center;
@@ -193,9 +204,11 @@
   }
   &__blog-name {
     width: 1200px;
+    position: relative;
   }
   &__category-subtitle {
     width: 1200px;
+    position: relative;
   }
   &__category-des {
     margin-top: 32px;

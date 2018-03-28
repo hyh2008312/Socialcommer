@@ -13,6 +13,22 @@
   background-color: $whiteColor;
   z-index: 500;
 
+  &__edit-text-button {
+    padding: 0 32px;
+    line-height: 32px;
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    @include transform(translateX(-50%));
+    background-color: $primaryColor;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
   &__divider-line {
     background-color: #dcdcdc;
     height: 1px;
@@ -235,6 +251,7 @@
     overflow-y: scroll;
     &-content {
       width: 100%;
+      position: relative;
     }
   }
   &__about-title {

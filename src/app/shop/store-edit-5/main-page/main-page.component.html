@@ -48,7 +48,12 @@
                [ngStyle]="{'background': 'url(' + (imageBanner)   + ') center / auto 100% ' }">
             <div class="xb-4-template__mask"></div>
             <div class="xb-4-template-home__des xb-4-template__edit-border">
-              <quill-editor formControlName="desTag" [(ngModel)]="desTag" [options]="editorConfig"></quill-editor>
+              <quill-editor formControlName="desTag" [(ngModel)]="desTag"
+                            (ready)="getDesInputEdit($event)"
+                            [options]="editorConfig"></quill-editor>
+              <div class="xb-4-template__edit-text-button" (click)="editDesInput()">
+                CLICK TO EDIT TEXT
+              </div>
             </div>
             <div class="xb-4-template-edit__banner-button" (click)="editBannerImage()">
               CLICK TO CHANGE IMAGE
@@ -57,19 +62,26 @@
           <div class="xb-4-template-home__about-store xb-4-template__w960" fxLayout="row"
                fxLayoutAlign="start start">
             <div class="xb-4-template-home__about-cover xb-4-template__edit-border">
-              <div class="xb-4-template__mask" [ngStyle]="{'z-index': '5'}"></div>
               <app-image-upload-preview-four-template [(previewImgFile)]="imageAboutCover"
                                                       [(previewImgSrc)]="imageAboutCover"
                                                       [type]="uploadAboutType"></app-image-upload-preview-four-template>
               <div class="xb-4-template-home__about-title xb-4-template__edit-border" [ngStyle]="{'z-index': '5'}">
                 <quill-editor formControlName="aboutMeTitleTag" [(ngModel)]="aboutMeTitleTag"
+                              (ready)="getAboutTitleInputEdit($event)"
                               [options]="editorConfig"></quill-editor>
+                <div class="xb-4-template__edit-text-button" (click)="editAboutTitleInput()">
+                  CLICK TO EDIT TEXT
+                </div>
               </div>
             </div>
             <div class="xb-4-template-home__about-des" fxLayout="row" fxLayoutAlign="start center" fxFlex>
               <div class="xb-4-template-home__about-des-content xb-4-template__edit-border">
                 <quill-editor formControlName="aboutMeDesTag" [(ngModel)]="aboutMeDesTag"
+                              (ready)="getAboutDesInputEdit($event)"
                               [options]="editorConfig"></quill-editor>
+                <div class="xb-4-template__edit-text-button" (click)="editAboutDesInput()">
+                  CLICK TO EDIT TEXT
+                </div>
               </div>
             </div>
           </div>
@@ -105,7 +117,7 @@
               </a>
             </div>
           </div>
-          <div *ngIf="isShowBlog">
+          <div [hidden]="!isShowBlog">
             <div class="xb-4-template-home__blog-background" fxLayout="column" fxLayoutAlign="start center"
                  [ngStyle]="{'background': 'url(' + (imageBlogCover)   + ') center / auto 100% ' }">
               <div class="xb-4-template__mask"></div>
@@ -114,7 +126,11 @@
               </div>
               <div class="xb-4-template-home__blog-des xb-4-template__edit-border">
                 <quill-editor formControlName="blogDesTag" [(ngModel)]="blogDesTag"
+                              (ready)="getBlogDesInputEdit($event)"
                               [options]="editorConfig"></quill-editor>
+                <div class="xb-4-template__edit-text-button" (click)="editBlogDesInput()">
+                  CLICK TO EDIT TEXT
+                </div>
               </div>
               <div class="xb-4-template-edit__banner-button" (click)="editBlogCoverImage()">
                 CLICK TO CHANGE IMAGE

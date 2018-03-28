@@ -556,4 +556,46 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       document.getElementById('xb-4-template-to-top').scrollTop = 0;
     }
   }
+
+  titleInput: any;
+
+  getTitleInputEdit(textedit: any): void {
+    this.titleInput = textedit;
+  }
+
+  editTitleInput(): void {
+    this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
+  }
+
+  productTitleInput: any;
+
+  getProductTitleInputEdit(textedit: any): void {
+    this.productTitleInput = textedit;
+  }
+
+  editProductTitleInput(): void {
+    this.productTitleInput.setSelection(0, this.productTitleInput.getLength(), 'user');
+  }
+
+  productDesInput: any;
+
+  getProductDesInputEdit(textedit: any): void {
+    this.productDesInput = textedit;
+  }
+
+  editProductDesInput(): void {
+    this.productDesInput.setSelection(0, this.productDesInput.getLength(), 'user');
+  }
+
+  aboutMeInput: any;
+
+  getAboutMeInputEdit(textedit: any): void {
+    this.aboutMeInput = textedit;
+  }
+
+  editAboutMeInput(): void {
+    this.aboutMeInput.setSelection(0, this.aboutMeInput.getLength(), 'user');
+  }
+
+
 }

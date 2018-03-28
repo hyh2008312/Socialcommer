@@ -61,6 +61,21 @@
     z-index: 1;
     font-size: 14px;
   }
+  &__edit-text-button {
+    padding: 0 32px;
+    line-height: 32px;
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    @include transform(translateX(-50%));
+    background-color: $primaryColor;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 14px;
+    white-space: nowrap;
+  }
   &__store-name {
     height: 40px;
     line-height: 40px;
