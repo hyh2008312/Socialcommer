@@ -744,7 +744,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.categorySingleInputs = textedit;
   }
 
-  editCategorySingleInput(index: number): void {
+  editCategorySingleInput(): void {
     this.categorySingleInputs.setSelection(0, this.categorySingleInputs.getLength(), 'user');
   }
 
