@@ -12,6 +12,9 @@ import {StoreService} from '../../store.service';
 export class StoreCartComponent implements OnInit {
   products: any;
 
+  shareLink: string = '';
+  text: string = '';
+
   @Input() storeName: string;
   shareLink: string;
   @Output() public closeStoreCart: EventEmitter<any> = new EventEmitter();

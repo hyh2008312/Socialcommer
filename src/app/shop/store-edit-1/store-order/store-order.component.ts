@@ -18,6 +18,9 @@ export class StoreOrderComponent {
   @Output() public closeStoreOrder: EventEmitter<any> = new EventEmitter();
   @Output() public openStoreCart: EventEmitter<any> = new EventEmitter();
 
+  shareLink: string = '';
+  text: string = '';
+
   constructor() {
     this.shareLink = window.location.href;
   }
