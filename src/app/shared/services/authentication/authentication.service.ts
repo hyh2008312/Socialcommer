@@ -4,7 +4,6 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
-
 import { AuthService } from 'ngx-auth';
 
 import { BaseApi,SystemConstant } from '../../../config/app.api';
