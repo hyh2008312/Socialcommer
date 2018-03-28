@@ -2,9 +2,8 @@
   <div class="xb-4-template-category__title">
     {{categoryName | uppercase}}
   </div>
-  <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
-       fxLayoutGap.xs="16px"
-       fxLayoutWrap>
+  <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row wrap"
+       fxLayoutGap.xs="16px">
     <ng-container *ngFor="let item of product">
     <app-shop-item-product-card-5
                                   fxFlex.xs="44" fxFlex.gt-xs="30"

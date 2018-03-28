@@ -5,7 +5,7 @@
     </div>
     <app-shop-template-3-category [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"></app-shop-template-3-category>
   </div>
-  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutWrap>
+  <div fxLayout="row wrap" fxLayoutAlign="space-around center">
     <app-shop-item-card *ngFor="let item of product"
                          fxFlex="49" fxFlex.xs="100"
                          [product]="item" [status]="1"></app-shop-item-card>

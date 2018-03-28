@@ -103,8 +103,7 @@
               </div>
             </div>
           </div>
-          <div class="xb-4-template-products xb-4-template__w960" fxLayout="row" fxLayoutAlign="space-between start"
-               fxLayoutWrap>
+          <div class="xb-4-template-products xb-4-template__w960" fxLayout="row wrap" fxLayoutAlign="space-between start">
             <div class="xb-4-template-products__text" fxLayout="column" fxLayoutAlign="start center">
               <!--product title-->
               <div class="xb-4-template-products__title xb-4-template__edit-border">
@@ -173,7 +172,7 @@
                 (categoryChange)="changeCategory()"></app-shop-template-edit-4-category>
             </div>
             <div class="xb-4-template-collection__product md-margin-left-2" fxLayoutAlign="space-between start"
-                 fxLayout="row" fxLayoutWrap>
+                 fxLayout="row wrap">
               <app-shop-item-product-card-4 *ngFor="let item of product"
                                             fxFlex.xs="48" fxFlex.gt-xs="28"
                                             (productId)="jumpGoodsDetail($event)"
@@ -198,7 +197,7 @@
           <div class="xb-4-template-blog__title">
             BLOG
           </div>
-          <div fxLayoutWrap class="xb-4-template-blog__article" fxLayout="row" fxLayoutAlign="space-between start">
+          <div class="xb-4-template-blog__article" fxLayout="row wrap" fxLayoutAlign="space-between start">
             <app-shop-item-blog-card-edit-4 *ngFor="let item of blog"
                                             fxFlex.xs="48" fxFlex.gt-xs="45"
                                             [blog]="item" [status]="0"></app-shop-item-blog-card-edit-4>

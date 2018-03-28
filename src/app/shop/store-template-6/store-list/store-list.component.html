@@ -7,8 +7,7 @@
       {{categoryName}}
     </div>
   </div>
-  <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
-       fxLayoutWrap>
+  <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row wrap">
     <app-shop-item-product-card-5 *ngFor="let item of categoryProduct"
                                   fxFlex.gt-xs="25" fxFlex.xs="50" [product]="item"
                                   [status]="1"></app-shop-item-product-card-5>

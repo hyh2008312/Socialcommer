@@ -66,7 +66,7 @@
             <div class="xb-store-template__car-left-part"
                  [ngClass]="{'xb-store-template__car-margin-top-1':item.id == 2}">{{item.name}}
             </div>
-            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <div fxLayout="row wrap" fxLayoutAlign="start start">
               <div *ngFor="let value of item.value;let j = index;">
                 <div class="xb-store-template__car-image" [ngClass]="{'active':value.isSelected}"
                      *ngIf="value.image" (click)="selectVariant(value, item)">
@@ -167,7 +167,7 @@
             <div class="xb-store-template__car-left-part"
                  [ngClass]="{'xb-store-template__car-margin-top-1':item.id == 2}">{{item.name}}
             </div>
-            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <div fxLayout="row wrap" fxLayoutAlign="start start">
               <div *ngFor="let value of item.value;let j = index;">
                 <div class="xb-store-template__car-image" [ngClass]="{'active':value.isSelected}"
                      *ngIf="value.image" (click)="selectVariant(value, item)">
@@ -249,8 +249,7 @@
     <div class="xb-4-template-detail__recommend-title md-margin-left-1">
       Related Products
     </div>
-    <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start" fxLayout="row"
-         fxLayoutWrap.xs>
+    <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start" fxLayout="row wrap">
       <app-shop-item-product-card-5 *ngFor="let item of relatedProduct"
                                     fxFlex.xs="100" fxFlex.gt-xs="31"
                                     [product]="item" [status]="2"

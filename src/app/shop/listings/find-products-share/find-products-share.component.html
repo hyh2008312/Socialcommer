@@ -69,7 +69,7 @@
       </form>
       <div *ngIf="step==1">
         <div class="xb-shop__edit-title md-margin-top-2">Click the button below to promote this item on your social media: </div>
-        <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap="">
+        <div class="md-margin-top-3" fxLayout="row wrap" fxLayoutAlign="start center">
           <div class="xb-social-share md-margin-right-1 xb-social-share__large xb-social-share__whatsapp"
                fxLayout="row" fxLayoutAlign="center center"
                appSocialShare [whatsApp]="{text: text + ' ' + link}" (click)="jump()" >

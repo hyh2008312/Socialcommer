@@ -69,7 +69,7 @@
            *ngIf="categories.length<=0 && product.length <= 0">
         There are no products available.
       </div>
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutWrap>
+      <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between start">
         <app-store-item-card *ngFor="let item of product"
                              fxFlex.xs="48" fxFlex.gt-xs="30"
                              [currency]="currency"

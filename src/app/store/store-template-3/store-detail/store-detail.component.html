@@ -30,7 +30,7 @@
       <div class="xb-store-template__details-title">{{product.title}}</div>
       <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-store-template__details-left-part" fxShow="true" fxShow.xs="false">Price</div>
-        <div [ngStyle]="{'margin-top': '6px'}" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
+        <div [ngStyle]="{'margin-top': '6px'}" fxLayout="row wrap" fxLayoutAlign="start center">
           <div class="xb-store-template__details-price" *ngIf="!isHaveVariant">
             {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
           </div>
@@ -75,7 +75,7 @@
           <div class="xb-store-template__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">
             {{item.name}}
           </div>
-          <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+          <div fxLayout="row wrap" fxLayoutAlign="start start">
             <div *ngFor="let value of item.value;let j = index;">
               <div class="xb-store-template__details-image" [ngClass]="{'active':value.isSelected}"
                    *ngIf="value.image" (click)="selectVariant(value, item)">

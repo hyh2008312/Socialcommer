@@ -92,9 +92,8 @@
               <div class="xb-4-template-category__title">
                 {{category.name | uppercase}}
               </div>
-              <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row"
-                   fxLayoutGap.xs="16px"
-                   fxLayoutWrap>
+              <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row wrap"
+                   fxLayoutGap.xs="16px">
                 <ng-container *ngFor="let item of category.goods ; let i=index">
                   <app-shop-item-product-card-5
                     *ngIf="i<3"
@@ -166,7 +165,7 @@
           <div class="xb-4-template-blog__title">
             BLOG
           </div>
-          <div fxLayoutWrap class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row"
+          <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row wrap"
                fxLayoutAlign="space-between start"
                fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
             <app-shop-item-blog-card-two-5 *ngFor="let item of blog"
@@ -197,9 +196,7 @@
             {{category?.name }}
           </div>
           <div class="xb-4-template-collection__product xb-4-template__w960 " fxLayoutAlign="space-between start"
-               fxLayout="row"
-               fxLayoutGap.xs="16px"
-               fxLayoutWrap>
+               fxLayout="row wrap" fxLayoutGap.xs="16px">
             <app-shop-item-product-card-5 *ngFor="let item of product"
                                           fxFlex.xs="44" fxFlex.gt-xs="31"
                                           (productId)="jumpGoodsDetail($event)"
