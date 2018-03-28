@@ -14,6 +14,8 @@ export class StoreNavigationComponent implements OnInit {
   @Input() navigationIndex = 0;
   @Input() isCategory = false;
   @Input() isNavigationHaveBlog = true;
+  @Output() public openCart: EventEmitter<any> = new EventEmitter();
+  @Output() public openOrder: EventEmitter<any> = new EventEmitter();
   contents = [{
     name: 'DISCOVER',
   }, {
@@ -46,5 +48,12 @@ export class StoreNavigationComponent implements OnInit {
       'index': index
     };
     this.categoryChange.emit(cate);
+  }
+  openStoreCart():void{
+    this.openCart.emit();
+  }
+
+  openStoreOrder():void{
+    this.openOrder.emit();
   }
 }

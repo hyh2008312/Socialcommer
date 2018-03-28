@@ -16,6 +16,7 @@ export class StoreCartComponent implements OnInit {
   text: string = '';
 
   @Input() storeName: string;
+  shareLink: string;
   @Output() public closeStoreCart: EventEmitter<any> = new EventEmitter();
   @Output() public openStoreOrder: EventEmitter<any> = new EventEmitter();
 
@@ -24,6 +25,7 @@ export class StoreCartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.shareLink = window.location.href;
   }
 
   closeCart(): void {

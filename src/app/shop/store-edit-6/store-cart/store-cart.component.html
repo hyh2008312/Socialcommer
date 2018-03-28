@@ -1,0 +1,73 @@
+<div class="xb-cart" fxLayout="column">
+  <div class="background-bg-white">
+    <div class="container">
+      <div class="xb-cart__navigation" fxLayout="row" fxLayoutAlign="start center">
+        <div class="xb-cart__navigation-title xb-pointer" (click)="closeCart()">
+          {{storeName}}
+        </div>
+        <div fxFlex></div>
+        <div class="xb-cart__order-and-cart" fxLayout="row" fxLayoutAlign="start center">
+          <i class="iconfontXberts icon-pic-per xb-cart__icon md-margin-right-4"
+             (click)="openOrder()"></i>
+          <div class="xb-cart__position">
+            <i class="iconfontXberts icon-pic-cart1 xb-cart__icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="xb-cart__none background-bg-light" fxLayout="column" fxLayoutAlign="center center" fxFlex="noshrink">
+    <div class="xb-cart__none-image">
+      <i class="iconfontXberts icon-ic-cart"></i>
+    </div>
+    <div class="xb-cart__none-title">Your shopping cart is empty now</div>
+    <div class="xb-bold text-underline md-margin-top-2 xb-pointer" (click)="closeCart()">Continue Shopping</div>
+  </div>
+  <div class="xb-cart__none background-bg-light" fxLayout="column" fxLayoutAlign="center center" fxFlex="noshrink"
+       *ngIf="!products">
+  </div>
+  <div class="background-bg-white" fxHide.xs>
+    <div class="container">
+      <div class="xb-store__footer">
+        <div fxLayout="row" fxLayoutAlign="space-between start" fxLayout.xs="column">
+          <div fxFlex="30">
+            <div class="xb-store__footer-title">Contact Support</div>
+            <div>
+              If you need any help, please go to View Your Order section on the navigation bar where you can access
+              your order information and contact our customer support!
+            </div>
+          </div>
+          <div fxFlex="15">
+            <div class="xb-store__footer-title">Share</div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
+              <div class="xb-store__footer-icons xb-pointer gtag-shop-detail-share-button-google"
+                   appSocialShare [googlePlus]="{url: shareLink}">
+                <i class="iconfontXberts icon-google"></i>
+              </div>
+              <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+                   appSocialShare [facebook]="{u: shareLink}">
+                <i class="iconfontXberts icon-ic-facebook"></i>
+              </div>
+              <div class="xb-store__footer-icons xb-pointer md-margin-left-3"
+                   appSocialShare [twitter]="{url: shareLink, text: text, hashtags: '' }">
+                <i class="iconfontXberts icon-ic-twitter"></i>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="25">
+            <div class="xb-store__footer-title">About</div>
+            <div class="xb-store__footer-word">Why Shop With Us</div>
+            <div class="xb-store__footer-word md-margin-top-1">FAQ</div>
+            <div class="xb-store__footer-word md-margin-top-1">Privacy Policy</div>
+            <div class="xb-store__footer-word md-margin-top-1">Return Policy</div>
+          </div>
+        </div>
+        <div class="xb-store__footer-bottom-content" fxLayout="row" fxLayoutAlign="start center"
+             fxLayout.xs="column" fxLayoutAlign.xs="start start">
+          <div>© 2018 All rights reserved.</div>
+          <div class="xb-store__footer-bottom-content-left xb-pointer" routerLink="/">POWERED BY SocialCommer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

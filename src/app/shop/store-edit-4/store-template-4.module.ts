@@ -12,6 +12,8 @@ import {ShareTemplate4ButtonComponent} from './share-temlpate-4-button/share-tem
 import {StoreDetailComponent} from "./store-detail/store-detail.component";
 import {StoreDetailPictureComponent} from "./store-detail-picture/store-detail-picture.component";
 import {StoreItemProductCardComponent} from "./store-item-products-card/store-item-product-card.component";
+import {StoreCartComponent} from "./store-cart/store-cart.component";
+import {StoreOrderComponent} from "./store-order/store-order.component";
 
 @NgModule({
   imports: [
@@ -28,7 +30,9 @@ import {StoreItemProductCardComponent} from "./store-item-products-card/store-it
     ShareTemplate4ButtonComponent,
     StoreDetailComponent,
     StoreDetailPictureComponent,
-    StoreItemProductCardComponent
+    StoreItemProductCardComponent,
+    StoreCartComponent,
+    StoreOrderComponent
 
 
   ],
