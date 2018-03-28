@@ -1305,3 +1305,35 @@
     font-size: 14px;
   }
 }
+
+.xb-store-template__cart {
+  &-position {
+    position: relative;
+    @include xb-xs-screen {
+      margin-right: 16px;
+    }
+  }
+  &-icon {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    position: relative;
+  }
+  &-order-and-cart {
+    position: absolute;
+    right: 24px;
+  }
+  &-circle {
+    width: 16px;
+    height: 16px;
+    background: red;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    right: -11px;
+    top: 0;
+  }
+}

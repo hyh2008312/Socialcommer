@@ -676,6 +676,28 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.viewIndex = viewNum;
     this.isCategory = false;
   }
+  // 跳转到购物车页面
+  storeCart: boolean = false;
+
+  jumpStoreCart() {
+    this.storeCart = !this.storeCart;
+  }
+
+  // 跳转到订单页面
+  storeOrder: boolean = false;
+
+  jumpStoreOrder() {
+    this.storeOrder = !this.storeOrder;
+  }
+
+  OpenStoreOrder() {
+    this.storeOrder = true;
+    this.storeCart = false;
+  }
+  OpenStoreCart() {
+    this.storeOrder = false;
+    this.storeCart = true;
+  }
 
   ngAfterViewInit() {
     if (document.getElementById('xb-6-template-to-top')) {

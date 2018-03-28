@@ -5,4 +5,12 @@
        (click)="changeNavigation(i)">
     {{value.text}}
   </div>
+  <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
+    <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"
+       [style.color]="isBlack?'#555555':'white'" (click)="openStoreOrder()"></i>
+    <div style="position: relative" (click)="openStoreCart()">
+      <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"
+         [style.color]="isBlack?'#555555':'white'"></i>
+    </div>
+  </div>
 </div>

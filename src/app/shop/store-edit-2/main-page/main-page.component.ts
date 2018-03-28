@@ -478,6 +478,29 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.changeGoodsDetail();
   }
 
+  // 跳转到购物车页面
+  storeCart: boolean = false;
+
+  jumpStoreCart() {
+    this.storeCart = !this.storeCart;
+  }
+
+  // 跳转到订单页面
+  storeOrder: boolean = false;
+
+  jumpStoreOrder() {
+    this.storeOrder = !this.storeOrder;
+  }
+
+  OpenStoreOrder() {
+    this.storeOrder = true;
+    this.storeCart = false;
+  }
+  OpenStoreCart() {
+    this.storeOrder = false;
+    this.storeCart = true;
+  }
+
   changeGoodsDetail() {
     this.goodsDetail = !this.goodsDetail;
   }

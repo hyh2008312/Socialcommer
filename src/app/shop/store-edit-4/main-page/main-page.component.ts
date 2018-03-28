@@ -535,6 +535,32 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.viewIndex = viewNum;
   }
 
+
+  // 跳转到购物车页面
+  storeCart: boolean = false;
+
+  jumpStoreCart() {
+    this.storeCart = !this.storeCart;
+  }
+
+  // 跳转到订单页面
+  storeOrder: boolean = false;
+
+  jumpStoreOrder() {
+    this.storeOrder = !this.storeOrder;
+  }
+
+  OpenStoreOrder() {
+    this.storeOrder = true;
+    this.storeCart = false;
+  }
+  OpenStoreCart() {
+    this.storeOrder = false;
+    this.storeCart = true;
+  }
+
+
+
   //设定一个变量，用来保存是否显示还是隐藏blog.
   // 1.表示未设定这个功能 2.表示显示（true） 3表示隐藏(false)
   blogFlag: number = 1;

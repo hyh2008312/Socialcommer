@@ -14,6 +14,8 @@ import { StoreTemplateThreeRoutingModule } from './store-template-3.routes.modul
 import { StoreService } from '../store.service';
 
 import { SharedModule } from '../../shared/shared.module';
+import {StoreCartComponent} from "./store-cart/store-cart.component";
+import {StoreOrderComponent} from "./store-order/store-order.component";
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { SharedModule } from '../../shared/shared.module';
     StoreFooterComponent,
     ProductsImageCoverComponent,
     StoreBlogCardComponent,
-    StoreBlogDetailComponent
+    StoreBlogDetailComponent,
+    StoreCartComponent,
+    StoreOrderComponent
   ],
   entryComponents: [
   ],

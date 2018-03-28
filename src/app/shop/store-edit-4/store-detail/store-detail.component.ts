@@ -100,10 +100,6 @@ export class StoreDetailComponent implements OnInit {
     this.shareLink = window.location.href;
     let ScrollDom = document.getElementById('xb-4-template-to-top');
     ScrollDom.addEventListener('scroll', function () {
-      console.log(ScrollDom.scrollTop);
-      console.log(document.getElementById('xb-4-detail-top').offsetHeight);
-      console.log( document.getElementById('xb-4-goods').offsetHeight);
-
       let Atheight = ScrollDom.scrollTop;
       let elementFixed = document.getElementById('xb-4-detail-top');
       let cartHeight = elementFixed.offsetHeight;

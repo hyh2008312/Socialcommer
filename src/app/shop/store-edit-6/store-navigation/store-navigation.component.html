@@ -10,6 +10,13 @@
        [ngClass]="{active: ((i == navigationIndex) && isCategory)}" (click)="changeCategoryNavigation(i)">
     {{category.name | uppercase}}
   </div>
+  <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
+    <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"
+       (click)="openStoreOrder()"></i>
+    <div class="xb-store-template__cart-position" (click)="openStoreCart()">
+      <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"></i>
+    </div>
+  </div>
 </div>
 
 
