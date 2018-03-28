@@ -16,7 +16,6 @@ export class StoreCartComponent implements OnInit {
   text: string = '';
 
   @Input() storeName: string;
-  shareLink: string;
   @Output() public closeStoreCart: EventEmitter<any> = new EventEmitter();
   @Output() public openStoreOrder: EventEmitter<any> = new EventEmitter();
 

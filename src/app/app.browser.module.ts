@@ -13,11 +13,6 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 
-import { CommonModule }        from '@angular/common';
-import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { FlexLayoutModule }    from '@angular/flex-layout';
-
 // the Request object only lives on the server
 export function getRequest(): any {
   return { headers: { cookie: document.cookie } };
@@ -31,12 +26,7 @@ export function getRequest(): any {
     BrowserTransferStateModule,
     AppModule,
     TranslatesBrowserModule,
-    BrowserAnimationsModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    FlexLayoutModule
+    BrowserAnimationsModule
   ],
   providers: [
     {

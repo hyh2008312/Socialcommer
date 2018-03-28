@@ -9,6 +9,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { PrebootModule } from 'preboot';
 import { AppRoutes } from './app.routes.module';
 
+import { SharedModule } from './shared/shared.module';
+
 // shared
 import { SharedServerModule } from './shared-server/shared-server.module';
 
@@ -39,7 +41,8 @@ import { UserModule } from './shared/services/user/user.module';
         autoTrackVirtualPages: true
       }
     }),
-    SharedServerModule.forRoot()
+    SharedServerModule.forRoot(),
+    SharedModule.forRoot()
   ],
   providers: [BaseApi, SystemConstant, DataApi, SupportApi, HttpClientModule, CookieService],
   bootstrap: [AppComponent]
