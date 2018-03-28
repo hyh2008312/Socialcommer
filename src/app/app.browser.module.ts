@@ -8,11 +8,10 @@ import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { CookieStorage } from './shared-server/for-storage/browser.storage';
 import { AppStorage } from './shared-server/for-storage/universal.inject';
 import { TranslatesBrowserModule } from './shared-server/translates/translates-browser';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // components
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
-
-// import { ServiceWorkerModule } from '@angular/service-worker';
 
 // the Request object only lives on the server
 export function getRequest(): any {
@@ -25,9 +24,9 @@ export function getRequest(): any {
     BrowserModule.withServerTransition({ appId: 'socialcommer-shop' }),
     TransferHttpCacheModule,
     BrowserTransferStateModule,
-    // ServiceWorkerModule.register('/ngsw-worker.js'),
     AppModule,
-    TranslatesBrowserModule
+    TranslatesBrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

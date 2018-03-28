@@ -6,9 +6,9 @@
   <div class="xb-shop__product-category md-margin-right-2" fxFlex="15">{{product.categoryName}}</div>
 
   <div class="xb-shop__product-price md-margin-right-2" fxFlex="10">
-    <div class="xb-shop__product-price-sale">{{product.salePrice|currency: storeCurrency: true }}</div>
+    <div class="xb-shop__product-price-sale">{{product.salePrice|currency: storeCurrency }}</div>
     <div class="line-through" *ngIf="product.originalPrice>0">
-      {{product.originalPrice|currency: storeCurrency: true }}
+      {{product.originalPrice|currency: storeCurrency }}
     </div>
   </div>
   <div class="xb-shop__product-price md-margin-right-2" fxFlex="15">{{product.commissionRate + '%'}}</div>

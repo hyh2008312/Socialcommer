@@ -3,9 +3,9 @@
     <div class="xb-bold md-margin-top-2">Month-to-date Sales</div>
     <div class="md-margin-top-2 md-margin-bottom-2 xb-bonus__circle">
       <canvas #myCanvas width="150px" height="150px"></canvas>
-      <div class="xb-bonus__circle-text">{{monthSale |currency:currency:true}}</div>
+      <div class="xb-bonus__circle-text">{{monthSale |currency:currency}}</div>
     </div>
-    <div class="xb-bonus__title-1" *ngIf="targetBonus">{{targetOffSale|currency:currency:true}} left to unlock {{targetBonus|currency:currency:true}} bonus!</div>
+    <div class="xb-bonus__title-1" *ngIf="targetBonus">{{targetOffSale|currency:currency}} left to unlock {{targetBonus|currency:currency}} bonus!</div>
     <div class="xb-bonus__title-1" *ngIf="!targetBonus">Congrats! You just unlock $4000 in total this month.</div>
   </div>
 
@@ -17,10 +17,10 @@
     </div>
     <div class="xb-bonus__processing-item" *ngFor="let item of bonusList; let i = index;" fxLayout="row" fxLayoutAlign="start center">
       <div class="md-margin-right-3" fxFlex="20" fxLayout="row" fxLayoutAlign="start start">
-        <div class="xb-bonus__processing-target xb-bonus__color-{{i}}" >{{item.sales |currency:currency:true}}</div>
+        <div class="xb-bonus__processing-target xb-bonus__color-{{i}}" >{{item.sales |currency:currency}}</div>
       </div>
       <div class="md-margin-right-5" fxFlex="20" fxLayout="row" fxLayoutAlign="start center">
-        <span class="md-margin-right-1">{{item.bonus |currency:currency:true}} </span>
+        <span class="md-margin-right-1">{{item.bonus |currency:currency}} </span>
         <i class="iconfontXberts icon-pic-lock md-dark-secondary" *ngIf="item.sales > monthSale "></i>
         <i class="iconfontXberts icon-pic-unlock" *ngIf="item.sales <= monthSale "></i>
       </div>

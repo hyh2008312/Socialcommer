@@ -3,6 +3,6 @@
        [ngClass]="{'xb-reward__margin-right': i < rewardList.length - 1}">
     <img [src]="item.image">
     <div class="xb-reward__logo">Upcoming</div>
-    <div class="xb-reward__money">{{item.money | currency: currency: true}}</div>
+    <div class="xb-reward__money">{{item.money | currency: currency}}</div>
   </div>
 </div>

@@ -35,6 +35,7 @@ import { BottomFooterComponent } from './components/bottom-footer/bottom-footer.
 import { ImageUploadPreviewService } from './components/image-upload-preview/image-upload-preview.service';
 import { ConstantService } from './services/constant/constant.service';
 import { S3UploaderService } from './services/s3-upload/s3-upload.service';
+import { PlatformService } from  './services/platform/platform.service';
 
 import { QuillEditorModule } from 'ngx-quill-editor';
 import { AngularCropperjsModule } from 'angular-cropperjs';

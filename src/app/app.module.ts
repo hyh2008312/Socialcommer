@@ -20,12 +20,11 @@ import { SharedServerModule } from './shared-server/shared-server.module';
 import { AppComponent } from './app.component';
 
 import { BaseApi, SystemConstant, DataApi, SupportApi } from './config/app.api';
-import { BlogCover} from './config/app.constant';
-
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AuthenticationModule } from './shared/services/authentication/index';
 import { UserModule } from './shared/services/user/user.module';
+
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -40,9 +39,8 @@ import { UserModule } from './shared/services/user/user.module';
     HttpModule,
     HttpClientModule,
     JsonpModule,
-    BrowserAnimationsModule,
     AuthenticationModule,
-    UserModule,
+    UserModule.forRoot(),
     Angulartics2Module.forRoot([ Angulartics2GoogleTagManager], {
       pageTracking: {
         autoTrackVirtualPages: true
@@ -53,9 +51,10 @@ import { UserModule } from './shared/services/user/user.module';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedModule.forRoot()
   ],
-  providers: [BaseApi, SystemConstant, DataApi, SupportApi, BlogCover, HttpClientModule, CookieService],
+  providers: [BaseApi, SystemConstant, DataApi, SupportApi, HttpClientModule, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
