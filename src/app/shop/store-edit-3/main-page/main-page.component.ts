@@ -42,6 +42,7 @@ export class MainPageComponent implements OnInit {
 
   public editorConfig = {
     theme: 'bubble',
+    readOnly: true,
     modules: {
       toolbar: [
         ['bold', 'italic'],
@@ -489,6 +490,7 @@ export class MainPageComponent implements OnInit {
     this.storeOrder = true;
     this.storeCart = false;
   }
+
   OpenStoreCart() {
     this.storeOrder = false;
     this.storeCart = true;
@@ -518,6 +520,7 @@ export class MainPageComponent implements OnInit {
   }
 
   editTitleInput(): void {
+    this.titleInput.enable(true);
     this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
   }
 
@@ -528,16 +531,18 @@ export class MainPageComponent implements OnInit {
   }
 
   editDesInput(): void {
+    this.desInput.enable(true);
     this.desInput.setSelection(0, this.desInput.getLength(), 'user');
   }
 
-  aboutMeInput: any ;
+  aboutMeInput: any;
 
   getAboutMeInputEdit(textedit: any): void {
     this.aboutMeInput = textedit;
   }
 
   editAboutMeInput(): void {
+    this.aboutMeInput.enable(true);
     this.aboutMeInput.setSelection(0, this.aboutMeInput.getLength(), 'user');
   }
 
