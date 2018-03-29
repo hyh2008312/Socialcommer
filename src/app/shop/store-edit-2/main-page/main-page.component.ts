@@ -60,6 +60,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   public editorConfig = {
     theme: 'bubble',
+    readOnly: true,
     modules: {
       toolbar: [
         ['bold', 'italic'],
@@ -519,6 +520,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editTitleInput(): void {
+    this.titleInput.enable(true);
     this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
   }
 
@@ -529,6 +531,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editDesInput(): void {
+    this.desInput.enable(true);
     this.desInput.setSelection(0, this.desInput.getLength(), 'user');
   }
 
@@ -540,6 +543,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editAboutMeInput(): void {
+    this.aboutMeInput.enable(true);
     this.aboutMeInput.setSelection(0, this.aboutMeInput.getLength(), 'user');
   }
 
@@ -550,6 +554,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editAboutMeNewInput(): void {
+    this.aboutMeNewInput.enable(true);
     this.aboutMeNewInput.setSelection(0, this.aboutMeNewInput.getLength(), 'user');
   }
 
@@ -560,6 +565,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editHomeMadeDesInput(): void {
+    this.homeMadeDesInput.enable(true);
     this.homeMadeDesInput.setSelection(0, this.homeMadeDesInput.getLength(), 'user');
   }
 
@@ -570,6 +576,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editHomeMadeTitleInput(): void {
+    this.homeMadeTitleInput.enable(true);
     this.homeMadeTitleInput.setSelection(0, this.homeMadeTitleInput.getLength(), 'user');
   }
 

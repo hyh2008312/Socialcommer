@@ -52,7 +52,8 @@ export class StoreComponent implements OnInit {
         Validators.required
       ]],
       displayName: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^[a-z0-9\.-]*$')
       ]],
       status: ['']
     });
@@ -102,7 +103,8 @@ export class StoreComponent implements OnInit {
       'required': 'This field is required.'
     },
     'displayName':{
-      'required': 'This field is required.'
+      'required': 'This field is required.',
+      'pattern': 'Permalink only lowercase alphanumeric and "-" allowed.'
     }
   };
 

@@ -30,6 +30,7 @@ export class StoreEditComponent implements OnInit {
 
   public editorConfig = {
     theme: 'bubble',
+    readOnly: true,
     modules: {
       toolbar: [
         ['bold', 'italic'],
@@ -435,11 +436,11 @@ export class StoreEditComponent implements OnInit {
     this.storeOrder = true;
     this.storeCart = false;
   }
+
   OpenStoreCart() {
     this.storeOrder = false;
     this.storeCart = true;
   }
-
 
 
   titleInput: any;
@@ -449,6 +450,7 @@ export class StoreEditComponent implements OnInit {
   }
 
   editTitleInput(): void {
+    this.titleInput.enable(true);
     this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
   }
 
@@ -459,6 +461,7 @@ export class StoreEditComponent implements OnInit {
   }
 
   editDesInput(): void {
+    this.desInput.enable(true);
     this.desInput.setSelection(0, this.desInput.getLength(), 'user');
   }
 
@@ -469,6 +472,7 @@ export class StoreEditComponent implements OnInit {
   }
 
   editAboutInput(): void {
+    this.aboutInput.enable(true);
     this.aboutInput.setSelection(0, this.aboutInput.getLength(), 'user');
   }
 

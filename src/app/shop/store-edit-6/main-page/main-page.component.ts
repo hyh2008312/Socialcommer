@@ -70,7 +70,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   openUpdateCategoryImage(selectCagegoryId: number): void {
     this.isOpenUploadCategoryPicture = true;
     this.cagegoryId = selectCagegoryId;
-    console.log('cagegoryId----->' + this.cagegoryId);
   }
 
   closeUpdateCategoryImage(isHaveData: boolean, imageString: any) {
@@ -87,6 +86,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   public editorConfig = {
     theme: 'bubble',
+    readOnly: true,
     modules: {
       toolbar: [
         ['bold', 'italic'],
@@ -728,6 +728,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editTitleInput(): void {
+    this.titleInput.enable(true);
     this.titleInput.setSelection(0, this.titleInput.getLength(), 'user');
   }
 
@@ -738,6 +739,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editDesInput(): void {
+    this.desInput.enable(true);
     this.desInput.setSelection(0, this.desInput.getLength(), 'user');
   }
 
@@ -748,6 +750,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editBlogInput(): void {
+    this.BlogInput.enable(true);
     this.BlogInput.setSelection(0, this.BlogInput.getLength(), 'user');
   }
 
@@ -758,6 +761,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editCategoryInput(index: number): void {
+    this.categoryInputs[index].enable(true);
     this.categoryInputs[index].setSelection(0, this.categoryInputs[index].getLength(), 'user');
   }
   categorySingleInputs: any;
@@ -767,6 +771,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editCategorySingleInput(): void {
+    this.categorySingleInputs.enable(true);
     this.categorySingleInputs.setSelection(0, this.categorySingleInputs.getLength(), 'user');
   }
 

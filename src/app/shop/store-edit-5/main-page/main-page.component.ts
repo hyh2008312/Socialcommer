@@ -51,6 +51,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   public editorConfig = {
     theme: 'bubble',
+    readOnly: true,
     modules: {
       toolbar: [
         ['bold', 'italic'],
@@ -549,6 +550,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.storeOrder = true;
     this.storeCart = false;
   }
+
   OpenStoreCart() {
     this.storeOrder = false;
     this.storeCart = true;
@@ -597,6 +599,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editDesInput(): void {
+    this.desInput.enable(true);
     this.desInput.setSelection(0, this.desInput.getLength(), 'user');
   }
 
@@ -607,6 +610,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editAboutTitleInput(): void {
+    this.aboutTitleInput.enable(true);
     this.aboutTitleInput.setSelection(0, this.aboutTitleInput.getLength(), 'user');
   }
 
@@ -617,6 +621,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editAboutDesInput(): void {
+    this.aboutDesInput.enable(true);
     this.aboutDesInput.setSelection(0, this.aboutDesInput.getLength(), 'user');
   }
 
@@ -627,6 +632,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   editBlogDesInput(): void {
+    this.blogDesInput.enable(true);
     this.blogDesInput.setSelection(0, this.blogDesInput.getLength(), 'user');
   }
 
