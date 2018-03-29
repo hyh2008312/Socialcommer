@@ -10,8 +10,8 @@
          [ngStyle]="{'background': 'url(' + (imageList.bannerImageStr == ''? baseImageUrl:imageList.bannerImageStr) + ') center / auto 640px no-repeat ' }">
       <div class="xb-store-template__template-mask"></div>
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center" fxShow="true" fxShow.xs="false">
-        <div class="xb-store-template__store-name ql-editor"
-             [innerHTML]="contextList.nameTag | safeHtml" *ngIf="contextList.nameTag">
+        <div class="xb-store-template__store-name">
+            {{store.name}}
         </div>
         <app-store-template-2-navigation [productNumber]="productNumber" [displayName]="displayName"
                                          fxFlex></app-store-template-2-navigation>
@@ -21,7 +21,7 @@
         <i class="material-icons xb-pointer" [ngStyle]="{'color': 'white','margin-left':'16px'}"
            (click)="sidenav.open()">menu</i>
         <div class="xb-store-template__store-name">
-          {{contextList.nameTag}}
+          {{store.name}}
         </div>
         <div class="xb-store-template__cart-position" (click)="jumpCart()">
           <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"></i>
@@ -164,7 +164,7 @@
     </div>
     <!--网址底部-->
     <div>
-      <app-store-template-2-store-foot [storeName]="contextList.nameTag" [displayName]="displayName"></app-store-template-2-store-foot>
+      <app-store-template-2-store-foot [storeName]="store.name" [displayName]="displayName"></app-store-template-2-store-foot>
     </div>
   </mat-sidenav-container>
   <router-outlet></router-outlet>

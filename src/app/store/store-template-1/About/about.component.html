@@ -2,7 +2,7 @@
   <div>
     <div class="xb-store-about__navigation" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="xb-store-about__store-name xb-pointer" (click)="jumpStore()">
-        {{contextList.nameTag != '' ? contextList.nameTag : store.name}}
+        {{store.name}}
       </div>
       <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
         <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"
@@ -27,7 +27,7 @@
       SocialCommer’s Authorized Store
     </div>
     <div class="xb-store-about-shop__14sizeLight md-margin-top-1">
-      The store {{contextList.nameTag || store.name}} is a member of SocialCommer’s Global Seller Network – which is the
+      The store {{store.name}} is a member of SocialCommer’s Global Seller Network – which is the
       leading ecommerce platform for brands and influencers. All the merchandises are authorized to sell by SocialCommer
       and they’re 100% authentic
       and genuine!

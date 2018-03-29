@@ -781,7 +781,7 @@
 .xb-4-template-navigation {
   @include regular();
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   font-family: Helvetica;
   color: black;
   &.active {
@@ -826,7 +826,7 @@
     @include regular();
     position: relative;
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     font-family: Helvetica;
     &-bold {
       font-weight: bold;
@@ -845,7 +845,7 @@
     }
     &-flex {
       @include regular();
-      font-size: 16px;
+      font-size: 20px;
       font-family: Helvetica;
       height: 40px;
       white-space: nowrap;

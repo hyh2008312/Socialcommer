@@ -2,7 +2,7 @@
   <div>
     <div class="xb-store-about__navigation" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="xb-store-about__store-name xb-pointer" (click)="jumpStore()">
-        {{contextList.nameTag != '' ? contextList.nameTag : store.name}}
+        {{ store.name}}
       </div>
       <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
         <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"
@@ -121,7 +121,7 @@
            fxLayoutAlign.xs="center center">
         <app-share-button [link]="shareLink" [text]="text" [style]="{'store':true}"></app-share-button>
       </div>
-      <div class="xb-store-about__footer-right xb-store-about__footer-mgtop56">© 2018 {{contextList.nameTag || store.name}}. All
+      <div class="xb-store-about__footer-right xb-store-about__footer-mgtop56">© 2018 {{ store.name}}. All
         rights reserved.
       </div>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="center center"

@@ -1,8 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {StoreService} from '../../store.service';
-import {Store} from '../../../shop/shop';
-
+import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-store-template-2',
   templateUrl: './main-page.component.html',
@@ -10,22 +6,10 @@ import {Store} from '../../../shop/shop';
 })
 
 export class MainPageComponent implements OnInit {
-  public shareLink: string;
-  public text = '';
-  storeName:string;
-  constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
-              private storeService: StoreService) {
+  constructor() {
 
   }
   ngOnInit(): void {
-    let self = this ;
-    this.storeService.store.subscribe((data) => {
-      if(data) {
-        self.storeName = data.context? data.context.nameTag: data.name;
-        self.text = data.description;
-      }
-    });
   }
 
   ngOnDestroy() {

@@ -67,7 +67,7 @@ export class MainPageComponent implements OnInit {
         self.currency = data.currency.toUpperCase();
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.displayName = data.displayName;
-        self.storeName = data.context ? data.context.nameTag : data.name;
+        self.storeName = data.name;
         self.contextList = data.context ? data.context : {
           nameTag: data.name,
           titleTag: self.titleTag1,

@@ -99,7 +99,7 @@
     font-family: Helvetica;
     color: #ee4b80;
     line-height: 48px;
-    margin-left: 16px;
+    margin-left: 64px;
     > input {
       border: none;
       font-size: 24px;
@@ -683,7 +683,7 @@
 .xb-4-template-navigation {
   @include regular();
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   color: black;
   font-family: Helvetica;
   &.active {

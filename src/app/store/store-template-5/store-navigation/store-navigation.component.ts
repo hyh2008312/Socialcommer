@@ -41,13 +41,13 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
     if (self.categories != null && self.categories.length != 0) {
       if (self.isFirstLoad) {
         self.isFirstLoad = false;
-        if (self.categories.length <= 4) {
+        if (self.categories.length <= 5) {
           self.showCategory = self.categories;
           self.isShowMore = false;
         } else {
           self.isShowMore = true;
           for (let i = 0; i < self.categories.length; i++) {
-            if (i <= 2) {
+            if (i <= 3) {
               self.showCategory.push(self.categories[i]);
             } else {
               self.moreCategory.push(self.categories[i])

@@ -398,6 +398,7 @@
   &__navigation {
     margin-left: 16px;
     text-align: center;
+    font-size: 18px;
     color: $whiteColor;
     &.active {
       @include media();

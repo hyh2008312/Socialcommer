@@ -127,6 +127,11 @@
   &__left-24px {
     margin-left: 24px;
   }
+
+  &__store-name{
+    font-size: 24px;
+    font-family: Didot, Helvetica;
+  }
   &__edit-border {
     border: 1px solid $primaryColor;
     > input {
@@ -629,8 +634,8 @@
 .xb-4-template-navigation {
   @include regular();
   text-align: center;
-  font-size: 16px;
-  font-family: Helvetica;
+  font-size: 20px;
+  font-family: Didot, Helvetica;
   &.active {
     font-weight: bold;
   }

@@ -17,6 +17,7 @@
     "build:universal": "ng build --prod && ng build --prod --app 1 && webpack --progress --colors",
     "build:universalServer": "webpack --progress --colors",
     "server": "node dist/server.js",
+    "server:csr": "node csr_server.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

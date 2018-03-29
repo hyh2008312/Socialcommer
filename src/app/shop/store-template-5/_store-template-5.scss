@@ -559,8 +559,8 @@
 .xb-4-template-navigation {
   @include regular();
   text-align: center;
-  font-size: 16px;
-  font-family: Helvetica;
+  font-size: 19px;
+  font-family: 'Didot',Helvetica;
   &.active {
     font-weight: bold;
   }
@@ -589,7 +589,7 @@
     background-color: #f9f9f9;
   }
   &__store-name {
-    font-family: 'Didot';
+    font-family: 'Didot',Helvetica;
     font-size: 24px;
     font-weight: bold;
     color: black;

@@ -137,7 +137,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.ratioBanner = 1920 / 645;
     let self = this;
     self.storeTemplateForm = self.fb.group({
-      nameTag: [self.nameTag],
       desTag: [self.desTag],
       aboutMeTitleTag: [self.aboutMeTitleTag],
       aboutMeDesTag: [self.aboutMeDesTag],
@@ -258,7 +257,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
                 for (let value of self.templateList) {
                   if (value.templateId == 5) {
                     self.templateId = value.id;
-                    self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
                     self.desTag = value.context.desTag != '' ? value.context.desTag : self.desTag;
                     self.aboutMeTitleTag = value.context.aboutMeTitleTag != '' ? value.context.aboutMeTitleTag : self.aboutMeTitleTag;
                     self.aboutMeDesTag = value.context.aboutMeDesTag != '' ? value.context.aboutMeDesTag : self.aboutMeDesTag;
@@ -388,7 +386,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         templateId: 5,
         storeId: this.store.id,
         context: {
-          nameTag: this.nameTag,
           desTag: this.desTag,
           aboutMeTitleTag: this.aboutMeTitleTag,
           aboutMeDesTag: this.aboutMeDesTag,
@@ -419,7 +416,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       let options = {
         id: this.templateId,
         context: {
-          nameTag: this.nameTag,
           desTag: this.desTag,
           aboutMeTitleTag: this.aboutMeTitleTag,
           aboutMeDesTag: this.aboutMeDesTag,

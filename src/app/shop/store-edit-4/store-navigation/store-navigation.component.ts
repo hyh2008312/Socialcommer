@@ -16,16 +16,16 @@ export class StoreNavigationEditFourComponent implements OnInit {
 
   contents = [
     {
-      text: 'HOME'
+      text: 'Home'
     },
     {
-      text: 'COLLECTIONS'
+      text: 'Collections'
     },
     {
-      text: 'BLOG'
+      text: 'Blog'
     },
     {
-      text: 'ABOUT'
+      text: 'About'
     }
   ];
 

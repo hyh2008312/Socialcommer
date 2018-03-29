@@ -24,15 +24,12 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   //定义字段
   nameTag = 'STORE NAME';
 
-  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Click here to edit the title</strong></p>';
+  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">A Curated Store for Affordable Everyday Essentials </strong></p>';
 
-  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">This was founded with starter site, a single page ' +
-    'online storefront. All of the images and text on this page can be changed to personalize the site for brand ' +
-    'and to communicate your unique story to your customers.</strong></p>';
+  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">Shop our exclusive collections of gadgets, kitchen tools, cookware, and more.</strong></p>';
 
-  aboutMeTag = '<p>Here you let your customers get to know you. Tell them a little bit about ' +
-    'yourself and why you create this business. Show your customers that there are real people with ' +
-    'interesting stories working behind the scenes.</p>';
+  aboutMeTag = '<p>Welcome to my curated store. This is a place to share my favorite high-quality unique kitchen gadgets,' +
+    ' cookware, bakeware, and lifestyle stuffs, etc. Please browse my collections and grab your favorite items!</p>';
 
   aboutMeNewTag = '<p>Here you let your customers get to know you. Tell them a little bit about ' +
     'yourself and why you create this business. Show your customers that there are real people with ' +
@@ -134,12 +131,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.storeEdited = !this.storeEdited;
   }
 
-  changeAboutMe($event) {
-    this.aboutMeTag = $event;
-    this.aboutMeNewTag = $event;
-
-  }
-
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
@@ -151,7 +142,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.ratio = 1920 / 270;
     let self = this;
     self.storeTemplateForm = self.fb.group({
-      nameTag: [self.nameTag],
       titleTag: [self.titleTag],
       descriptionTag: [self.descriptionTag],
       aboutMeTag: [self.aboutMeTag],
@@ -267,7 +257,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
                 if (value.templateId == 2) {
 
                   self.templateId = value.id;
-                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
                   self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
                   self.descriptionTag = value.context.descriptionTag != '' ? value.context.descriptionTag : self.descriptionTag;
                   self.aboutMeTag = value.context.aboutMeTag != '' ? value.context.aboutMeTag : self.aboutMeTag;
@@ -348,7 +337,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   submitTemplate() {
-    if (!this.storeForm.valid) {
+    if (this.storeForm.valid) {
       this.storeEdited = true;
       return;
     }
@@ -363,7 +352,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         templateId: 2,
         storeId: this.store.id,
         context: {
-          nameTag: this.nameTag,
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           aboutMeTag: this.aboutMeTag,
@@ -399,7 +387,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       let options = {
         id: this.templateId,
         context: {
-          nameTag: this.nameTag,
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           aboutMeTag: this.aboutMeTag,

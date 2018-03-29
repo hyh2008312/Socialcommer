@@ -660,8 +660,8 @@
 .xb-4-template-navigation {
   @include regular();
   text-align: center;
-  font-size: 16px;
-  font-family: Helvetica;
+  font-size: 19px;
+  font-family: 'Didot',Helvetica;
   &.active {
     font-weight: bold;
   }
@@ -705,8 +705,8 @@
     @include regular();
     position: relative;
     text-align: center;
-    font-size: 16px;
-    font-family: Helvetica;
+    font-size: 19px;
+    font-family: 'Didot',Helvetica;
     cursor: pointer;
     &-bold {
       font-weight: bold;
@@ -725,8 +725,8 @@
     }
     &-flex {
       @include regular();
-      font-size: 16px;
-      font-family: Helvetica;
+      font-size: 19px;
+      font-family: 'Didot',Helvetica;
       height: 40px;
       line-height: 40px;
       white-space: nowrap;

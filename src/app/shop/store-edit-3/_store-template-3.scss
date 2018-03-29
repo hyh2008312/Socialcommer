@@ -102,6 +102,7 @@
 
   &__navigation {
     text-align: center;
+    font-size: 18px;
     margin-bottom: 24px;
     &.active {
       @include media();
