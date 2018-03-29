@@ -1,8 +1,7 @@
 // angular
 import { NgModule } from '@angular/core';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 // libs
-import { TransferHttpCacheModule } from '@nguniversal/common';
+
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 // shared
 import { CookieStorage } from './shared-server/for-storage/browser.storage';
@@ -21,9 +20,6 @@ export function getRequest(): any {
 @NgModule({
   bootstrap: [AppComponent],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'socialcommer-shop' }),
-    TransferHttpCacheModule,
-    BrowserTransferStateModule,
     AppModule,
     TranslatesBrowserModule
   ],

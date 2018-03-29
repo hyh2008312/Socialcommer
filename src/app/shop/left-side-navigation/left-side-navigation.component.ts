@@ -27,10 +27,10 @@ export class LeftSideNavigationComponent implements OnInit {
     icon: 'icon-pic-product',
     text: 'Products',
     subContent: [{
-      text: 'Add Items',
+      text: 'Add Product',
       router: './listings/items'
     }, {
-      text: 'Catalog',
+      text: 'My Listings',
       router: './listings/products'
     }, {
       text: 'Categories',

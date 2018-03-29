@@ -9,6 +9,7 @@ import {StorePreviewComponent} from './store-preview/store-preview.component';
 import {StoreEditComponent} from './store-edit/store-edit.component';
 import {ToDoListComponent} from './to-do-list/to-do-list.component';
 import {StoreFrontComponent} from './store-front/store-front.component';
+import {ShopTemplateOneModule} from './store-template-1/store-template-1.module';
 
 const routes: Routes = [
   {
@@ -24,27 +25,27 @@ const routes: Routes = [
             children: [
               {
                 path: '1',
-                loadChildren: 'app/shop/store-template-1/store-template-1.module#StoreTemplateOneModule'
+                loadChildren: './store-template-1/store-template-1.module#ShopTemplateOneModule'
               },
               {
                 path: '2',
-                loadChildren: 'app/shop/store-template-2/store-template-2.module#StoreTemplateTwoModule'
+                loadChildren: './store-template-2/store-template-2.module#ShopTemplateTwoModule'
               },
               {
                 path: '3',
-                loadChildren: 'app/shop/store-template-3/store-template-3.module#StoreTemplateThreeModule'
+                loadChildren: './store-template-3/store-template-3.module#ShopTemplateThreeModule'
               },
               {
                 path: '4',
-                loadChildren: 'app/shop/store-template-4/store-template-4.module#StoreTemplateFourModule'
+                loadChildren: './store-template-4/store-template-4.module#ShopTemplateFourModule'
               },
               {
                 path: '5',
-                loadChildren: 'app/shop/store-template-5/store-template-5.module#StoreTemplateFiveModule'
+                loadChildren: './store-template-5/store-template-5.module#ShopTemplateFiveModule'
               },
               {
                 path: '6',
-                loadChildren: 'app/shop/store-template-6/store-template-6.module#StoreTemplateSixModule'
+                loadChildren: './store-template-6/store-template-6.module#ShopTemplateSixModule'
               }
             ]
           }, {
@@ -52,51 +53,51 @@ const routes: Routes = [
             children: [
               {
                 path: '1',
-                loadChildren: 'app/shop/store-edit-1/store-template-1.module#StoreTemplateOneModule'
+                loadChildren: './store-edit-1/store-template-1.module#StoreTemplateOneModule'
               },
               {
                 path: '2',
-                loadChildren: 'app/shop/store-edit-2/store-template-2.module#StoreTemplateTwoModule'
+                loadChildren: './store-edit-2/store-template-2.module#StoreTemplateTwoModule'
               },
               {
                 path: '3',
-                loadChildren: 'app/shop/store-edit-3/store-template-3.module#StoreTemplateThreeModule'
+                loadChildren: './store-edit-3/store-template-3.module#StoreTemplateThreeModule'
               },
               {
                 path: '4',
-                loadChildren: 'app/shop/store-edit-4/store-template-4.module#StoreTemplateFourModule'
+                loadChildren: './store-edit-4/store-template-4.module#StoreTemplateFourModule'
               },
               {
                 path: '5',
-                loadChildren: 'app/shop/store-edit-5/store-template-5.module#StoreTemplateFiveModule'
+                loadChildren: './store-edit-5/store-template-5.module#StoreTemplateFiveModule'
               },
               {
                 path: '6',
-                loadChildren: 'app/shop/store-edit-6/store-template-6.module#StoreTemplateSixModule'
+                loadChildren: './store-edit-6/store-template-6.module#StoreTemplateSixModule'
               }
             ]
           }]
       }, {
         path: 'dashboard',
-        loadChildren: 'app/shop/dashboard/dashboard.module#DashboardModule'
+        loadChildren: './dashboard/dashboard.module#DashboardModule'
       }, {
         path: 'settings', component: SettingsComponent
       }, {
         path: 'listings',
-        loadChildren: 'app/shop/listings/listings.module#ListingsModule'
+        loadChildren: './listings/listings.module#ListingsModule'
       }, {
         path: 'blog',
-        loadChildren: 'app/shop/blog/blog.module#BlogModule'
+        loadChildren: './blog/blog.module#BlogModule'
       },
       {
         path: 'account',
-        loadChildren: 'app/shop/account/account.module#AccountModule'
+        loadChildren: './account/account.module#AccountModule'
       },{
         path: 'report',
-        loadChildren: 'app/shop/report/report.module#ReportModule'
+        loadChildren: './report/report.module#ReportModule'
       }, {
         path: 'reward',
-        loadChildren: 'app/shop/reward/reward.module#RewardModule'
+        loadChildren: './reward/reward.module#RewardModule'
       }, {
         path: 'todolist', component: ToDoListComponent
       }, {

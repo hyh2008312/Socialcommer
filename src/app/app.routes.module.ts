@@ -11,20 +11,20 @@ const routes: Routes = [
     children: [
       {
         path: 'account',
-        loadChildren: 'app/login/login.module#LoginModule'
+        loadChildren: './login/login.module#LoginModule'
       }, {
         path: 'shop',
         canActivate: [ ProtectedGuard ],
-        loadChildren: 'app/shop/shop.module#ShopModule'
+        loadChildren: './shop/shop.module#ShopModule'
       }, {
         path: 'store',
-        loadChildren: 'app/store/store.module#StoreModule'
+        loadChildren: './store/store.module#StoreModule'
       }, {
         path: '',
-        loadChildren: 'app/landing-page/landing-page.module#LandingPageModule'
+        loadChildren: './landing-page/landing-page.module#LandingPageModule'
       }, {
         path: 'about',
-        loadChildren: 'app/about/about.module#AboutModule'
+        loadChildren: './about/about.module#AboutModule'
       }
     ]
   }, {

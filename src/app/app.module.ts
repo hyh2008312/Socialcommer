@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { HttpModule,JsonpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Angulartics2Module } from 'angulartics2';
@@ -7,7 +7,7 @@ import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { CookieService } from 'ngx-cookie-service';
-import { PrebootModule } from 'preboot';
+
 import { AppRoutes } from './app.routes.module';
 
 import { SharedModule } from './shared/shared.module';
@@ -21,6 +21,7 @@ import { BaseApi, SystemConstant, DataApi, SupportApi } from './config/app.api';
 
 import { AuthenticationModule } from './shared/services/authentication/index';
 import { UserModule } from './shared/services/user/user.module';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 
 @NgModule({
@@ -29,8 +30,8 @@ import { UserModule } from './shared/services/user/user.module';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'socialcommer-shop' }),
-    PrebootModule.withConfig({ appRoot: 'app-root' }),
-    BrowserModule,
+    BrowserTransferStateModule,
+    TransferHttpCacheModule,
     AppRoutes,
     HttpModule,
     HttpClientModule,
