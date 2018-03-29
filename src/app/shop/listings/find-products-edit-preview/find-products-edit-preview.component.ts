@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import { MatDialog, MatSnackBar} from '@angular/material';
 
 import { ShopService } from '../shop.service';
 import { UserService } from  '../../../shared/services/user/user.service';
 import { ImageUploadPreviewService } from "../../../shared/components/image-upload-preview/image-upload-preview.service";
 import { S3UploaderService } from "../../../shared/services/s3-upload/s3-upload.service";
-
-import { StoreProduct } from '../shop';
 
 import { SnackItemBarSuccessComponent } from '../snack-item-bar-success/snack-item-bar-success.component';
 
@@ -170,18 +167,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
 
   }
 
-  onEditorCreated(quill) {
-    this.editor = quill;
-
-    let self = this;
-    this.editor.getModule('toolbar').addHandler("image", (image) => {
-      if(image) {
-        var fileInput = document.getElementById(self.editorImageId);
-        fileInput.click();
-      }
-    });
-  }
-
   showCreate() {
     this.isCreateCategory = true;
   }
@@ -231,19 +216,12 @@ export class FindProductsEditPreviewComponent implements OnInit {
     }
   }
 
-  showTitleInput: boolean = false;
   showCategoryInput: boolean = false;
-  showDescriptionEditor: boolean = false;
-
-  showTitle() {
-    //this.showTitleInput = !this.showTitleInput;
-  }
-
-  resetTitle() {
-    this.product.title = this.productCopy.title;
-  }
 
   showCategory() {
+    this.productForm.patchValue({
+      tags: ''
+    });
     this.showCategoryInput = !this.showCategoryInput;
   }
 
@@ -253,85 +231,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
       id: null,
       name: this.productCopy.category
     });
-  }
-
-  showDescription() {
-    //this.showDescriptionEditor = !this.showDescriptionEditor;
-  }
-
-  resetDescription() {
-    let feature = '';
-    if(this.productCopy.features) {
-      for(let value of this.productCopy.features) {
-        feature += `<p>${value}</p><br>`;
-      }
-      this.editorContent = `<div>${feature}</div>`;
-    } else {
-      this.editorContent = '';
-    }
-  }
-
-  addPicture(event) {
-    if(!event.target.files[0]) {
-      return;
-    }
-    let that = this;
-    this.previewImageService.readAsDataUrl(event.target.files[0]).then(function(result) {
-
-      let file = event.target.files[0];
-
-      let image = new Image();
-      image.onload = function(){
-        let width = image.width;
-        let height = image.height;
-
-        that.s3UploaderService.upload({
-          type: 'COLLECTOR_PRODUCT_DETAILS',
-          fileName: file.name,
-          use: 'detail',
-          width: width,
-          height: height
-        }).then((data)=> {
-          let id = data.id;
-          let imageUrl = `${data.url}/${data.key}`;
-          that.s3UploaderService.uploadToS3WithoutLoading(file, data).then((data) => {
-            let range = that.editor.getSelection();
-            that.editor.insertEmbed(range.index, 'image', imageUrl);
-          });
-        });
-      };
-      image.src = window.URL.createObjectURL(file);
-
-    })
-  }
-
-  getLowestPrice(variants): any {
-    let price: any = {
-      saleUnitPrice : variants[0],
-      unitPrice : variants[0]
-    };
-
-    let unitPriceArray = [];
-
-    for(let i=0;i<variants.length;i++){
-      if(variants[i].saleUnitPrice <=  price.saleUnitPrice){
-        price.saleUnitPrice = variants[i].saleUnitPrice;
-      }
-    }
-
-    for(let value of variants) {
-      if(value.saleUnitPrice == price.saleUnitPrice) {
-        unitPriceArray.push(value.unitPrice);
-      }
-    }
-
-    for(let value of unitPriceArray) {
-      if(value <=  price.unitPrice){
-        price.unitPrice = value;
-      }
-    }
-
-    return price;
   }
 
   create() {

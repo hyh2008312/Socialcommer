@@ -172,6 +172,9 @@ export class FindProductsShareComponent implements OnInit {
   }
 
   showCreate() {
+    this.productForm.patchValue({
+      tags: ''
+    });
     this.isCreateCategory = true;
   }
 
