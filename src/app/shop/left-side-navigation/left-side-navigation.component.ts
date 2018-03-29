@@ -85,6 +85,16 @@ export class LeftSideNavigationComponent implements OnInit {
     }],
     router:  './report',
     isActive: false
+  }, {
+    id: 6,
+    icon: 'icon-pic-report',
+    text: 'Templates',
+    subContent: [{
+      text: '',
+      router: ''
+    }],
+    router:  './templates',
+    isActive: false
   }];
 
   showLoading: boolean = false;
