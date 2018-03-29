@@ -107,11 +107,9 @@ export class HomePageComponent implements OnInit {
 
   nameTag = 'STORE NAME';
 
-  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Store title</strong></p>';
+  titleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">A Curated Store for Affordable Everyday Essentials</strong></p>';
 
-  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">This was founded with starter site, a single page ' +
-    'online storefront. All of the images and text on this page can be changed to personalize the site for brand ' +
-    'and to communicate your unique story to your customers.</strong></p>';
+  descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">Shop our exclusive collections of gadgets, kitchen tools, cookware, and more.</strong></p>';
   productNumber:number=0;
 
   constructor(private router: Router,

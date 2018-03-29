@@ -51,13 +51,8 @@
     <div class="xb-store-template__introduce" fxShow="true" fxShow.xs="false">
       <div class="xb-store-template__introduce-one" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-store-template__introduce-one-top-left">
-          <div class="xb-store-template__introduce-one-title">About Me</div>
-          <div class="xb-store-template__introduce-title-line"></div>
           <div class="xb-store-template__introduce-one-describe ql-editor"
                [innerHTML]="contextList.aboutMeTag | safeHtml" *ngIf="contextList.aboutMeTag">
-          </div>
-          <div class="md-margin-top-2">
-            <app-store-share-button [link]="shareLink" [text]="text"></app-store-share-button>
           </div>
         </div>
         <div class="xb-store-template__introduce-one-top-right">

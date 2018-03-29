@@ -993,25 +993,16 @@
         font-size: 56px;
         line-height: 56px;
       }
-
-      @include xb-xs-screen {
-        left: 50%;
-        top: calc(100% - 40px);
-        @include transform(translateX(-50%));
-        i {
-          font-size: 24px;
-          line-height: 24px;
-        }
-      }
-
-      @include xb-sm-screen {
-        left: 50%;
-        top: calc(100% - 40px);
-        @include transform(translateX(-50%));
-        i {
-          font-size: 24px;
-          line-height: 24px;
-        }
+    }
+    &-image-close {
+      position: absolute;
+      left: calc(100% - 80px);
+      top: 25px;
+      color: $whiteColor;
+      cursor: pointer;
+      i {
+        font-size: 56px;
+        line-height: 56px;
       }
     }
 
