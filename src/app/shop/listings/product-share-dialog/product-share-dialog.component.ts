@@ -17,7 +17,7 @@ export class ProductShareDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ProductShareDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.text = this.text + this.data.text + ' Product link:' + this.data.shareLink;
+    this.text = this.text + this.data.text + '; Follow this link to get a discount today:  ' + this.data.shareLink;
 
     if(this.data.status == 1) {
       this.title = 'Instagram'
