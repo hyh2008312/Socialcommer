@@ -198,7 +198,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         Validators.required
       ]],
       displayName: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^[a-z0-9\.-]*$')
       ]]
     });
 
@@ -242,7 +243,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       'required': 'This field is required.'
     },
     'displayName': {
-      'required': 'This field is required.'
+      'required': 'This field is required.',
+      'pattern': 'Permalink only lowercase alphanumeric and "-" allowed.'
     },
     'description': {
       'required': 'This field is required.'
