@@ -14,6 +14,7 @@ export class StoreOrderComponent {
   loginGroup: FormGroup;
   loginErr: any = false;
   shareLink: string;
+  text: string;
   @Input() storeName: string;
   @Output() public closeStoreOrder: EventEmitter<any> = new EventEmitter();
   @Output() public openStoreCart: EventEmitter<any> = new EventEmitter();

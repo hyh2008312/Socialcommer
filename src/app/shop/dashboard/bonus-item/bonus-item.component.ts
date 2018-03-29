@@ -59,16 +59,16 @@ export class BonusItemComponent implements OnInit {
     if(this.currency == 'INR') {
       this.monthSale = this.monthSale * 65.4;
       this.bonusList =[{
-        bonus: 300,
-        sales: 3000
+        bonus: 500,
+        sales: 2500
       }, {
-        bonus: 900,
-        sales: 6000
+        bonus: 1000,
+        sales: 5000
       }, {
-        bonus: 1750,
+        bonus: 2000,
         sales: 10000
       }, {
-        bonus: 3000,
+        bonus: 3500,
         sales: 15000
       }, {
         bonus: 5000,

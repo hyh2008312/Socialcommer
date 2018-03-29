@@ -16,10 +16,10 @@ import {FlexLayoutServerModule} from '@angular/flex-layout/server';
 @NgModule({
   imports: [
     AppModule,
-    ServerTransferStateModule,
     ServerModule,
     ModuleMapLoaderModule,
     TranslatesServerModule,
+    ServerTransferStateModule,
     FlexLayoutServerModule
   ],
   bootstrap: [AppComponent],

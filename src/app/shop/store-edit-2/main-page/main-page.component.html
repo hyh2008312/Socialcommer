@@ -22,8 +22,8 @@
             <input formControlName="nameTag" [(ngModel)]="nameTag">
           </div>
           <app-store-template-edit-2-navigation fxFlex [navigationIndex]="viewIndex"
-                                                (openCart)="OpenStoreCart()"
-                                                (openOrder)="OpenStoreOrder()"
+                                                (openCart)="openStoreCart()"
+                                                (openOrder)="openStoreOrder()"
                                                 (routerChange)="changeViewIndex($event)"></app-store-template-edit-2-navigation>
         </div>
         <div class="xb-store__content-2">

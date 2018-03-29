@@ -492,11 +492,11 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.storeOrder = !this.storeOrder;
   }
 
-  OpenStoreOrder() {
+  openStoreOrder() {
     this.storeOrder = true;
     this.storeCart = false;
   }
-  OpenStoreCart() {
+  openStoreCart() {
     this.storeOrder = false;
     this.storeCart = true;
   }

@@ -14,11 +14,11 @@
     {{product.quantity}}
   </div>
   <div fxFlex="20" fxLayout="column" fxLayoutAlign="start center">
-    <div class="xb-cart__item-sale">{{product.unitPriceExclTax | exchangeCurrency:(currency|uppercase) |currency: (currency|uppercase): true }}</div>
+    <div class="xb-cart__item-sale">{{product.unitPriceExclTax | exchangeCurrency:(currency|uppercase) |currency: (currency|uppercase) }}</div>
   </div>
   <div fxFlex="25"  fxLayout="column" fxLayoutAlign="center end">
     <div class="xb-cart__item-sale">
-      {{product.shippingExclTax | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}
+      {{product.shippingExclTax | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase) }}
     </div>
     <div class="md-margin-top-1">{{ product.shippingPrice.type }}&nbsp;Shipping</div>
     <div class="md-dark-secondary md-margin-top-1">{{product.shippingPrice.shippingTimeMin}} - {{product.shippingPrice.shippingTimeMax}} days</div>
@@ -35,11 +35,11 @@
     <div class="md-margin-top-2">
       {{product.shippingPrice.type}} Shipping
       <span class="xb-cart__item-shipping md-margin-left-1">
-        {{product.shippingExclTax | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase): true }}
+        {{product.shippingExclTax | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase) }}
       </span>
     </div>
     <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-      <div class="xb-cart__item-sale">{{product.unitPriceExclTax | exchangeCurrency:(currency|uppercase)|currency: (currency|uppercase): true }}</div>
+      <div class="xb-cart__item-sale">{{product.unitPriceExclTax | exchangeCurrency:(currency|uppercase)|currency: (currency|uppercase) }}</div>
     </div>
   </div>
   <div fxFlex="none" fxLayout="column" fxLayoutAlign="center center" >
