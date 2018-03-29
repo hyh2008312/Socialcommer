@@ -7,7 +7,7 @@ import {StoreDetailComponent} from './store-detail/store-detail.component';
 
 import {StoreNavigationComponent} from './store-navigation/store-navigation.component'
 
-import {StoreTemplateFiveRoutingModule} from './store-template-5.routes.module';
+import {ShopTemplateFiveRoutingModule} from './shop-template-5.routes.module';
 import {StoreService} from '../store.service';
 
 import {SharedModule} from '../../shared/shared.module';
@@ -30,7 +30,7 @@ import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.componen
 @NgModule({
   imports: [
     SharedModule,
-    StoreTemplateFiveRoutingModule
+    ShopTemplateFiveRoutingModule
   ],
   exports: [],
   declarations: [

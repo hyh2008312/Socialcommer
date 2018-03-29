@@ -14,7 +14,7 @@ import { StoreBlogCardComponent } from './store-blog-card/store-blog-card.compon
 import { StoreNavigationComponent } from  './store-navigation/store-navigation.component';
 import { StoreFooterComponent } from './store-footer/store-footer.component';
 
-import { StoreTemplateThreeRoutingModule } from './store-template-3.routes.module';
+import { ShopTemplateThreeRoutingModule } from './shop-template-3.routes.module';
 import { StoreService } from '../store.service';
 
 import { SharedModule } from '../../shared/shared.module';
@@ -26,7 +26,7 @@ import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.componen
 @NgModule({
   imports: [
     SharedModule,
-    StoreTemplateThreeRoutingModule
+    ShopTemplateThreeRoutingModule
   ],
   exports: [
 

@@ -6,7 +6,7 @@ import { StoreListDetailComponent } from './store-detail/store-list-detail.compo
 import { StoreItemCardComponent } from './store-item-card/store-item-card.component';
 import { StoreAvatarComponent } from './store-avatar/store-avatar.component';
 
-import { StoreTemplateOneRoutingModule } from './store-template-1.routes.module';
+import { ShopTemplateOneRoutingModule } from './shop-template-1.routes.module';
 
 import { SharedModule } from '../../shared/shared.module';
 import {StoreCartFooterComponent} from "./store-cart-footer/store-cart-footer.component";
@@ -18,7 +18,7 @@ import {StoreNavigationComponent} from "./store-navigation/store-navigation.comp
 @NgModule({
   imports: [
     SharedModule,
-    StoreTemplateOneRoutingModule
+    ShopTemplateOneRoutingModule
   ],
   exports: [
 
