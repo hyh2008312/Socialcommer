@@ -9,7 +9,7 @@ import {StoreItemCardComponent} from './store-item-card/store-item-card.componen
 
 import {StoreNavigationComponent} from './store-navigation/store-navigation.component'
 
-import {ShopTemplateFourRoutingModule} from './store-template-4.routes.module';
+import {ShopTemplateFourRoutingModule} from './shop-template-4.routes.module';
 import {StoreService} from '../store.service';
 
 import {SharedModule} from '../../shared/shared.module';
