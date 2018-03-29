@@ -17,6 +17,7 @@ export class ShopComponent implements OnInit {
   firstName: any = '';
   storeName: any = false;
   isPopOpen: boolean = false;
+  currency: string = 'USD';
 
   constructor(private userService: UserService,
               private shopService: ShopService,
@@ -33,6 +34,7 @@ export class ShopComponent implements OnInit {
     self.userService.store.subscribe((data) =>  {
       if(data) {
         self.storeName = data.displayName;
+        self.currency = data.currency.toUpperCase();
         if (data.template != null) {
           let templateId = data.template.templateId;
           self.shopService.setTemplateUId(templateId);

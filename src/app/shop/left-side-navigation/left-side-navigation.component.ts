@@ -87,7 +87,7 @@ export class LeftSideNavigationComponent implements OnInit {
     isActive: false
   }, {
     id: 6,
-    icon: 'icon-pic-report',
+    icon: 'icon-pic-template',
     text: 'Templates',
     subContent: [{
       text: '',

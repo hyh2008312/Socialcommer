@@ -7,7 +7,7 @@
       </div>
     </div>
     <div [ngStyle]="{'margin-left':'64px'}" class="md-dark-primary" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-      <div class="xb-shop__logo-button" routerLink="./reward" routerLinkActive="active">
+      <div class="xb-shop__logo-button" routerLink="./reward" routerLinkActive="active" *ngIf="currency=='USD'">
         Monthly Reward
         <div class="xb-shop__logo-circle"></div>
       </div>
