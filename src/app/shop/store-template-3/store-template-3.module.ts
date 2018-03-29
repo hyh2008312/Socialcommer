@@ -56,5 +56,5 @@ import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.componen
     StoreService
   ]
 })
-export class StoreTemplateThreeModule { }
+export class ShopTemplateThreeModule { }
 

@@ -40,5 +40,5 @@ import {StoreNavigationComponent} from "./store-navigation/store-navigation.comp
   ],
   providers: []
 })
-export class StoreTemplateOneModule { }
+export class ShopTemplateOneModule { }
 

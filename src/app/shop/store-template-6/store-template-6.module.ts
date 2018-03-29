@@ -62,6 +62,6 @@ import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.componen
     StoreService
   ]
 })
-export class StoreTemplateSixModule {
+export class ShopTemplateSixModule {
 }
 

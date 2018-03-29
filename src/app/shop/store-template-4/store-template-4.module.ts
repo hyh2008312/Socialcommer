@@ -59,6 +59,6 @@ import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.componen
     StoreService
   ]
 })
-export class StoreTemplateFourModule {
+export class ShopTemplateFourModule {
 }
 
