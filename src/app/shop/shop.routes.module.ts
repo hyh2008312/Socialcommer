@@ -24,7 +24,7 @@ const routes: Routes = [
             children: [
               {
                 path: '1',
-                loadChildren: './store-template-1/store-template-1.module#ShopTemplateOneModule'
+                loadChildren: './shop-template-1/shop-template-1.module#ShopTemplateOneModule'
               },
               {
                 path: '2',
