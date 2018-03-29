@@ -111,11 +111,15 @@ export class StoreCartMainComponent implements OnInit{
   calculatePrice() {
     let price = 0;
     let shippingPrice = 0;
+    let rate = 1;
+    if(this.currency.toUpperCase() == 'INR') {
+      rate = 65.4;
+    }
     for(let item of this.products) {
       if(typeof item.number == 'number' && item.number > 0) {
-        price += item.number * Math.floor(item.salePriceAmount * 100) / 100;
+        price += item.number * Math.floor(item.salePriceAmount * rate * 100) / 100;
         if(this.shippingItem[item.id]) {
-          shippingPrice += Math.floor(this.shippingItem[item.id].priceItem * 100) / 100 * item.number;
+          shippingPrice += Math.floor(this.shippingItem[item.id].priceItem * rate * 100) / 100 * item.number;
         }
       }
     }

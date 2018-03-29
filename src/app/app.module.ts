@@ -4,6 +4,7 @@ import { HttpModule,JsonpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { CookieService } from 'ngx-cookie-service';
 import { PrebootModule } from 'preboot';
@@ -42,7 +43,8 @@ import { UserModule } from './shared/services/user/user.module';
       }
     }),
     SharedServerModule.forRoot(),
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [BaseApi, SystemConstant, DataApi, SupportApi, HttpClientModule, CookieService],
   bootstrap: [AppComponent]
