@@ -74,7 +74,6 @@ export class MainPageComponent implements OnInit {
               private dialog: MatDialog) {
     let self = this;
     self.storeTemplateForm = self.fb.group({
-      nameTag: [self.nameTag],
       titleTag: [self.titleTag],
       descriptionTag: [self.descriptionTag],
       userTag: [self.userTag],
@@ -134,8 +133,7 @@ export class MainPageComponent implements OnInit {
               for (let value of self.templateList) {
                 if (value.templateId == 3) {
                   self.templateId = value.id;
-                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
-                  self.storeName = value.context.nameTag != '' ? value.context.nameTag : data.name;
+                  self.storeName =data.name;
                   self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
                   self.descriptionTag = value.context.descriptionTag != '' ? value.context.descriptionTag : self.descriptionTag;
                   self.userTag = value.context.userTag != '' ? value.context.userTag : self.userTag;
@@ -290,7 +288,6 @@ export class MainPageComponent implements OnInit {
         templateId: 3,
         storeId: this.store.id,
         context: {
-          nameTag: this.nameTag,
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           userTag: this.userTag,
@@ -319,7 +316,6 @@ export class MainPageComponent implements OnInit {
       let options = {
         id: this.templateId,
         context: {
-          nameTag: this.nameTag,
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           userTag: this.userTag,

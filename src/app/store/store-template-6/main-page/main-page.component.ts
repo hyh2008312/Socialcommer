@@ -32,7 +32,7 @@ export class MainPageComponent implements OnInit {
     let self = this;
     self.storeService.store.subscribe((data) => {
       if (data) {
-        self.storeName = data.context ? data.context.nameTag : data.name;
+        self.storeName = data.name;
         self.displayName = data.displayName;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.contactUsTag = data.context ? data.context.contactUsTag : '';

@@ -17,13 +17,13 @@ export class StoreNavigationComponent implements OnInit {
   routerObservable: any;
 
   contents = [{
-    text: 'HOME'
+    text: 'Home'
   }, {
-    text: 'COLLECTION'
+    text: 'Collection'
   }, {
-    text: 'BLOG'
+    text: 'Blog'
   }, {
-    text: 'ABOUT ME'
+    text: 'About'
   }];
 
 

@@ -4,11 +4,11 @@
   <div class="xb-4-template-navigation__store-name">STORE NAME</div>
   <div class="xb-4-template-navigation xb-pointer" *ngFor="let value of contents"
        routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
-    {{value.text}}
+    {{value.text |makeFirstLetterBig}}
   </div>
   <div class="xb-4-template-navigation xb-pointer" *ngFor="let category of templateCategories"
        [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
-    {{category.name | uppercase}}
+    {{category.name | makeFirstLetterBig}}
   </div>
   <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
     <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"
@@ -22,13 +22,13 @@
      fxLayout="column" fxLayoutAlign="start center">
   <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let value of contents"
        routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
-    {{value.text}}
+    {{value.text |makeFirstLetterBig}}
   </div>
   <div class="xb-4-template-navigation__side-flex xb-pointer" *ngFor="let category of templateCategories"
        [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">
-    {{category.name | uppercase}}
+    {{category.name | makeFirstLetterBig}}
   </div>
   <div class="xb-4-template-navigation__side-flex" (click)="jumpOrder()">
-    VIEW YOUR ORDER
+    View Your Order
   </div>
 </div>

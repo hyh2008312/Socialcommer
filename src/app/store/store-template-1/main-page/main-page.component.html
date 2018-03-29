@@ -30,7 +30,7 @@
     <div class="xb-store__template-mask"></div>
     <div class="xb-store__content-2">
       <div class="xb-store__template-name" fxShow.xs="false">
-        {{contextList.nameTag != '' ? contextList.nameTag : store.name}}
+        {{store.name}}
       </div>
       <div class="ql-editor xb-store__template-title"
            [innerHTML]="contextList.titleTag| safeHtml" *ngIf="contextList.titleTag != ''">
@@ -141,7 +141,7 @@
            fxLayoutAlign.xs="center center">
         <app-share-button [link]="shareLink" [text]="text" [style]="{'store':true}"></app-share-button>
       </div>
-      <div class="xb-store__footer-right xb-store__footer-mgtop56">© 2018 {{contextList.nameTag || store.name}}. All
+      <div class="xb-store__footer-right xb-store__footer-mgtop56">© 2018 {{store.name}}. All
         rights reserved.
       </div>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="center center"

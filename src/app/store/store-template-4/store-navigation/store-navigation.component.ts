@@ -19,19 +19,19 @@ export class StoreNavigationComponent implements OnInit {
 
 
   contents = [{
-    text: 'HOME',
+    text: 'Home',
     link: './',
     exact: true
   }, {
-    text: 'COLLECTIONS',
+    text: 'Collections',
     link: './list',
     exact: false
   }, {
-    text: 'BLOG',
+    text: 'Blog',
     link: './blog',
     exact: true
   }, {
-    text: 'ABOUT',
+    text: 'About',
     link: './about_me',
     exact: true
   }];

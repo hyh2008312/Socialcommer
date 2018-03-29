@@ -29,8 +29,8 @@
         </div>
         <div class="xb-4-template__divider-line"></div>
         <div class="xb-4-template__box-shadow" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-4-template__title xb-4-template__edit-border">
-            <input formControlName="nameTag" [(ngModel)]="nameTag">
+          <div class="xb-4-template__title">
+            {{nameTag}}
           </div>
           <div class="md-margin-left-4" fxShow="true" fxShow.xs="false" fxLayout="row" fxLayoutAlign="start center">
             <app-shop-template-5-navigation [categories]="categories"

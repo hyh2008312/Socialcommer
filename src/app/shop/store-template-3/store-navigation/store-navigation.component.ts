@@ -15,19 +15,19 @@ export class StoreNavigationComponent implements OnInit {
   routerObservable: any;
 
   contents = [{
-    text: 'HOME',
+    text: 'Home',
     link: './',
     exact: true
   }, {
-    text: 'COLLECTION',
+    text: 'Collection',
     link: './list',
     exact: false
   }, {
-    text: 'BLOG',
+    text: 'Blog',
     link: './blog',
     exact: true
   }, {
-    text: 'ABOUT ME',
+    text: 'About',
     link: './about_me',
     exact: true
   }];

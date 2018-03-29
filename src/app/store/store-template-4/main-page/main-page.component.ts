@@ -35,7 +35,7 @@ export class MainPageComponent implements OnInit {
     self.storeService.store.subscribe((data) => {
       if (data) {
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
-        self.storeName = data.context ? data.context.nameTag : data.name;
+        self.storeName = data.name;
         self.text = data.description;
         self.displayName = data.displayName;
         if (data.context && data.context.blogFlag) {

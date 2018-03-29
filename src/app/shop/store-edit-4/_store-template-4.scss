@@ -342,6 +342,7 @@
 .xb-4-template-navigation {
   color: #e1ab18;
   @include light();
+  font-size: 18px;
   text-align: center;
   &.active {
     font-weight: bold;

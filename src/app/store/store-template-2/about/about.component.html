@@ -11,7 +11,7 @@
           <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
             <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
               <div class="xb-store-template__category-store-name" fxFlex="none">
-                {{contextList.nameTag}}
+                {{store.name}}
               </div>
               <app-store-template-2-navigation [isBlack]="true" [type]="5" [displayName]="displayName"
                                                [productNumber]="productNumber" fxFlex></app-store-template-2-navigation>
@@ -23,7 +23,7 @@
             <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-left':'16px'}"
                (click)="sidenav.open()">menu</i>
             <div class="xb-store-template__store-name" [ngStyle]="{'color': 'black'}">
-              {{contextList.nameTag}}
+              {{store.name}}
             </div>
             <div class="xb-store-template__cart-position" (click)="jumpCart()">
               <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color': 'black'}"></i>
@@ -45,7 +45,7 @@
               SocialCommer’s Authorized Store
             </div>
             <div class="xb-store-about-shop__14sizeLight md-margin-top-1">
-              The store {{contextList.nameTag || store.name}} is a member of SocialCommer’s Global Seller Network – which is the
+              The store {{store.name}} is a member of SocialCommer’s Global Seller Network – which is the
               leading ecommerce platform for brands and influencers. All the merchandises are authorized to sell by SocialCommer
               and they’re 100% authentic
               and genuine!
@@ -126,7 +126,7 @@
         <div>
           <app-store-template-2-store-foot
             [displayName]="displayName"
-            [storeName]="(contextList.nameTag || store.name)"></app-store-template-2-store-foot>
+            [storeName]="(store.name)"></app-store-template-2-store-foot>
         </div>
       </div>
     </div>

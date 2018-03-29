@@ -3,12 +3,12 @@
     <div class="xb-4-template-navigation xb-pointer"
          *ngIf=" !(i==1 && !isNavigationHaveBlog)"
          [ngClass]="{active: ((i == navigationIndex) && !isCategory)}" (click)="changeNavigation(i)">
-      {{value.name}}
+      {{value.name |makeFirstLetterBig}}
     </div>
   </ng-container>
   <div class="xb-4-template-navigation xb-pointer" *ngFor="let category of categories ; let i=index"
        [ngClass]="{active: ((i == navigationIndex) && isCategory)}" (click)="changeCategoryNavigation(i)">
-    {{category.name | uppercase}}
+    {{category.name | makeFirstLetterBig}}
   </div>
   <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
     <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"

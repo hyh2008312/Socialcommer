@@ -129,7 +129,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.ratio = 1920 / 270;
     let self = this;
     self.storeTemplateForm = self.fb.group({
-      nameTag: [self.nameTag],
       titleTag: [self.titleTag],
       productTitleTag: [self.productTitleTag],
       productDesTag: [self.productDesTag],
@@ -279,7 +278,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
                   self.productTitleTag = value.context.productTitleTag != '' ? value.context.productTitleTag : self.productTitleTag;
                   self.productDesTag = value.context.productDesTag != '' ? value.context.productDesTag : self.productDesTag;
                   self.aboutMeTag = value.context.aboutMeTag != '' ? value.context.aboutMeTag : self.aboutMeTag;
-                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
                   if (value.context.blogFlag) {
                     self.blogFlag = value.context.blogFlag;
                   } else {
@@ -397,7 +395,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         templateId: 4,
         storeId: this.store.id,
         context: {
-          nameTag: this.nameTag,
           titleTag: this.titleTag,
           aboutMeTag: this.aboutMeTag,
           productTitleTag: this.productTitleTag,
@@ -430,7 +427,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       let options = {
         id: this.templateId,
         context: {
-          nameTag: this.nameTag,
           titleTag: this.titleTag,
           aboutMeTag: this.aboutMeTag,
           productTitleTag: this.productTitleTag,

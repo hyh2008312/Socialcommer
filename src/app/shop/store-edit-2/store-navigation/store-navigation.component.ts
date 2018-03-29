@@ -17,11 +17,11 @@ export class StoreNavigationComponent implements OnInit {
 
 
   contents = [{
-    text: 'HOME'
+    text: 'Home'
   }, {
-    text: 'PRODUCTS'
+    text: 'Products'
   },  {
-    text: 'ABOUT ME'
+    text: 'About Me'
   }];
 
 

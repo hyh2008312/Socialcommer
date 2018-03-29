@@ -18,8 +18,8 @@
            [ngStyle]="{'background': 'url(' + (bannerImageStr) + ') center / auto 640px no-repeat' }">
         <div class="xb-store-template__template-mask"></div>
         <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border">
-            <input formControlName="nameTag" [(ngModel)]="nameTag">
+          <div class="xb-template-2-edit__store-name">
+            {{nameTag}}
           </div>
           <app-store-template-edit-2-navigation fxFlex [navigationIndex]="viewIndex"
                                                 (openCart)="openStoreCart()"
@@ -64,7 +64,7 @@
             <div class="xb-store-template__introduce-title-line"></div>
 
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border">
-              <quill-editor formControlName="aboutMeTag" [ngModel]="aboutMeTag" (ngModelChange)="changeAboutMe($event)"
+              <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
                             (ready)="getAboutMeInputEdit($event)"
                             [options]="editorConfig"></quill-editor>
               <div class="xb-template-2-edit__edit-text-button" (click)="editAboutMeInput()">
@@ -178,8 +178,8 @@
           <div class="xb-template-2-edit__container">
             <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
               <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
-                <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border">
-                  <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
+                <div class="xb-template-2-edit__store-name" [ngStyle]="{'color':'black'}">
+                  {{nameTag}}
                 </div>
                 <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
                                                       (openCart)="openStoreCart()"
@@ -236,8 +236,8 @@
             <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
               <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
-                <div class="xb-template-2-edit__store-name xb-template-2-edit__edit-border">
-                  <input [ngStyle]="{'color':'black'}" formControlName="nameTag" [(ngModel)]="nameTag">
+                <div class="xb-template-2-edit__store-name" [ngStyle]="{'color':'black'}">
+                 {{nameTag}}
                 </div>
                 <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
                                                       (openCart)="openStoreCart()"
@@ -258,7 +258,6 @@
             </div>
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border">
               <quill-editor formControlName="aboutMeNewTag" [ngModel]="aboutMeNewTag"
-                            (ngModelChange)="changeAboutMe($event)"
                             (ready)="getAboutMeNewInputEdit($event)"
                             [options]="editorConfig"></quill-editor>
               <div class="xb-template-2-edit__edit-text-button" (click)="editAboutMeNewInput()">
@@ -276,13 +275,10 @@
   </form>
 </div>
 <div class="xb-template-2-edit__background" *ngIf="imageEdited">
-  <div class="xb-store-template__detail-close" (click)="editImage()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
+  <div class="xb-store-template__detail-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-store-template__detail">
-    <div class="xb-store-template__detail-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
-      <i class="iconfontXberts icon-ic-close"></i>
-    </div>
     <div class="xb-template-2-edit__mobile-dialog-inner">
       <app-image-upload-preview [(previewImgFile)]="bannerImageStr"
                                 (previewImgFileChange)="editImage()"></app-image-upload-preview>
@@ -367,9 +363,11 @@
   </app-store-template-2-store-edit-detail>
 </div>
 <div class="xb-template-2-edit__background" *ngIf="storeCart">
-  <app-edit-cart-main-2 [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()" (openStoreOrder)="OpenStoreOrder()" ></app-edit-cart-main-2>
+  <app-edit-cart-main-2 [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()"
+                        (openStoreOrder)="OpenStoreOrder()"></app-edit-cart-main-2>
 </div>
 <div class="xb-template-2-edit__background" *ngIf="storeOrder">
-  <app-edit-2-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()" (openStoreCart)="OpenStoreCart()" ></app-edit-2-order>
+  <app-edit-2-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()"
+                    (openStoreCart)="OpenStoreCart()"></app-edit-2-order>
 </div>
 

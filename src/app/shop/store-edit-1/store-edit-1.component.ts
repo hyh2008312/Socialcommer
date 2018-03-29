@@ -68,7 +68,6 @@ export class StoreEditComponent implements OnInit {
 
     let self = this;
     self.storeTemplateForm = self.fb.group({
-      nameTag: [self.nameTag],
       titleTag: [self.titleTag],
       descriptionTag: [self.descriptionTag],
       userTag: [self.userTag],
@@ -125,7 +124,6 @@ export class StoreEditComponent implements OnInit {
                 if (value.templateId == 1) {
 
                   self.templateId = value.id;
-                  self.nameTag = value.context.nameTag != '' ? value.context.nameTag : self.nameTag;
                   self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
                   self.descriptionTag = value.context.descriptionTag != '' ? value.context.descriptionTag : self.descriptionTag;
                   self.userTag = value.context.descriptionTag != '' ? value.context.userTag : self.userTag;
@@ -287,7 +285,6 @@ export class StoreEditComponent implements OnInit {
         templateId: 1,
         storeId: this.store.id,
         context: {
-          nameTag: this.nameTag,
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           userTag: this.userTag
@@ -314,7 +311,6 @@ export class StoreEditComponent implements OnInit {
       let options = {
         id: this.templateId,
         context: {
-          nameTag: this.nameTag,
           titleTag: this.titleTag,
           descriptionTag: this.descriptionTag,
           userTag: this.userTag

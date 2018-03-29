@@ -18,7 +18,7 @@
           <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
             <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
               <div class="xb-store-template__category-store-name" fxFlex="none">
-                {{contextList.nameTag}}
+                {{store.name}}
               </div>
               <app-store-template-2-navigation [isBlack]="true" [type]="2" [displayName]="displayName"
                                                [productNumber]="productNumber"
@@ -31,7 +31,7 @@
             <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-left':'16px'}"
                (click)="sidenav.open()">menu</i>
             <div class="xb-store-template__store-name" [ngStyle]="{'color': 'black'}">
-              {{contextList.nameTag}}
+              {{store.name}}
             </div>
             <div class="xb-store-template__cart-position" (click)="jumpCart()">
               <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color': 'black'}"></i>
@@ -84,7 +84,7 @@
         <!--网页底部-->
         <div>
           <app-store-template-2-store-foot
-            [storeName]="(contextList.nameTag || store.name)"></app-store-template-2-store-foot>
+            [storeName]="store.name"></app-store-template-2-store-foot>
         </div>
       </div>
     </div>
