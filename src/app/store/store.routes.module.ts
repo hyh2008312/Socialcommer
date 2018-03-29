@@ -20,23 +20,23 @@ const routes: Routes = [{
     },
     {
       path: '2',
-      loadChildren: './shop-template-2/shop-template-2.module#StoreTemplateTwoModule'
+      loadChildren: './store-template-2/store-template-2.module#StoreTemplateTwoModule'
     },
     {
       path: '3',
-      loadChildren: './shop-template-3/shop-template-3.module#StoreTemplateThreeModule'
+      loadChildren: './store-template-3/store-template-3.module#StoreTemplateThreeModule'
     },
     {
       path: '4',
-      loadChildren: './shop-template-4/shop-template-4.module#StoreTemplateFourModule'
+      loadChildren: './store-template-4/store-template-4.module#StoreTemplateFourModule'
     },
     {
       path: '5',
-      loadChildren: './shop-template-5/shop-template-5.module#StoreTemplateFiveModule'
+      loadChildren: './store-template-5/store-template-5.module#StoreTemplateFiveModule'
     },
     {
       path: '6',
-      loadChildren: './shop-template-6/shop-template-6.module#StoreTemplateSixModule'
+      loadChildren: './store-template-6/store-template-6.module#StoreTemplateSixModule'
     }
   ]
 }];
