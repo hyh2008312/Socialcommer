@@ -56,23 +56,23 @@ const routes: Routes = [
               },
               {
                 path: '2',
-                loadChildren: './store-edit-2/shop-template-2.module#StoreTemplateTwoModule'
+                loadChildren: './store-edit-2/store-template-2.module#StoreTemplateTwoModule'
               },
               {
                 path: '3',
-                loadChildren: './store-edit-3/shop-template-3.module#StoreTemplateThreeModule'
+                loadChildren: './store-edit-3/store-template-3.module#StoreTemplateThreeModule'
               },
               {
                 path: '4',
-                loadChildren: './store-edit-4/shop-template-4.module#StoreTemplateFourModule'
+                loadChildren: './store-edit-4/store-template-4.module#StoreTemplateFourModule'
               },
               {
                 path: '5',
-                loadChildren: './store-edit-5/shop-template-5.module#StoreTemplateFiveModule'
+                loadChildren: './store-edit-5/store-template-5.module#StoreTemplateFiveModule'
               },
               {
                 path: '6',
-                loadChildren: './store-edit-6/shop-template-6.module#StoreTemplateSixModule'
+                loadChildren: './store-edit-6/store-template-6.module#StoreTemplateSixModule'
               }
             ]
           }]
