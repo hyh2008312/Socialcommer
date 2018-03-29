@@ -22,6 +22,7 @@ import { BaseApi, SystemConstant, DataApi, SupportApi } from './config/app.api';
 import { AuthenticationModule } from './shared/services/authentication/index';
 import { UserModule } from './shared/services/user/user.module';
 import { TransferHttpCacheModule } from '@nguniversal/common';
+import {PrebootModule} from 'preboot';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
     }),
     SharedServerModule.forRoot(),
     SharedModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PrebootModule.withConfig({ appRoot: 'app-root' })
   ],
   providers: [BaseApi, SystemConstant, DataApi, SupportApi, HttpClientModule, CookieService],
   bootstrap: [AppComponent]

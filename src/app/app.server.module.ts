@@ -13,12 +13,9 @@ import { AppModule } from './app.module';
 
 import {FlexLayoutServerModule} from '@angular/flex-layout/server';
 
-import { PrebootModule } from 'preboot';
-
 @NgModule({
   imports: [
     AppModule,
-    PrebootModule.withConfig({ appRoot: 'app-root' }),
     ServerModule,
     ModuleMapLoaderModule,
     TranslatesServerModule,
