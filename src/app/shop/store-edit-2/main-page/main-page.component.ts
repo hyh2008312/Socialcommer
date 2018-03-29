@@ -337,7 +337,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   submitTemplate() {
-    if (this.storeForm.valid) {
+    if (!this.storeForm.valid) {
       this.storeEdited = true;
       return;
     }

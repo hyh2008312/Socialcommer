@@ -559,6 +559,38 @@
       }
     }
 
+    &-preview-close {
+      position: absolute;
+      left: calc(100%);
+      top: 0;
+      color: $whiteColor;
+      cursor: pointer;
+      i {
+        font-size: 56px;
+        line-height: 56px;
+      }
+
+      @include xb-xs-screen {
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+
+      @include xb-sm-screen {
+        left: 50%;
+        top: calc(100% - 40px);
+        @include transform(translateX(-50%));
+        i {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+    }
+
     &-title {
       font-size: 24px;
       line-height: 32px;

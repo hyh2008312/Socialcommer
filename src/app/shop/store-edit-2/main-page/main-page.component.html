@@ -60,9 +60,6 @@
       <div class="xb-store-template__introduce">
         <div class="xb-store-template__introduce-one" fxLayout="row" fxLayoutAlign="start start">
           <div class="xb-store-template__introduce-one-top-left">
-            <div class="xb-store-template__introduce-one-title">About Me</div>
-            <div class="xb-store-template__introduce-title-line"></div>
-
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border">
               <quill-editor formControlName="aboutMeTag" [(ngModel)]="aboutMeTag"
                             (ready)="getAboutMeInputEdit($event)"
@@ -70,10 +67,6 @@
               <div class="xb-template-2-edit__edit-text-button" (click)="editAboutMeInput()">
                 CLICK TO EDIT TEXT
               </div>
-            </div>
-
-            <div class="md-margin-top-2">
-              <app-store-share-button-edit [link]="shareLink" [text]="text"></app-store-share-button-edit>
             </div>
           </div>
           <div class="xb-store-template__introduce-one-top-right">
@@ -237,7 +230,7 @@
               <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
 
                 <div class="xb-template-2-edit__store-name" [ngStyle]="{'color':'black'}">
-                 {{nameTag}}
+                  {{nameTag}}
                 </div>
                 <app-store-template-edit-2-navigation [navigationIndex]="viewIndex" [isBlack]="true"
                                                       (openCart)="openStoreCart()"
@@ -257,7 +250,7 @@
                                              [type]="uploadAboutType"></app-image-upload-preview-blog>
             </div>
             <div class="xb-store-template__introduce-one-describe xb-template-2-edit__edit-border">
-              <quill-editor formControlName="aboutMeNewTag" [ngModel]="aboutMeNewTag"
+              <quill-editor formControlName="aboutMeNewTag" [(ngModel)]="aboutMeNewTag"
                             (ready)="getAboutMeNewInputEdit($event)"
                             [options]="editorConfig"></quill-editor>
               <div class="xb-template-2-edit__edit-text-button" (click)="editAboutMeNewInput()">
@@ -275,7 +268,7 @@
   </form>
 </div>
 <div class="xb-template-2-edit__background" *ngIf="imageEdited">
-  <div class="xb-store-template__detail-close" (click)="editImage()" fxShow="false" fxShow.gt-sm="true">
+  <div class="xb-store-template__detail-image-close" (click)="editImage()">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-store-template__detail">
@@ -286,14 +279,10 @@
   </div>
 </div>
 <div class="xb-template-2-edit__background" *ngIf="imageHomeMadeEdited">
-  <div class="xb-store-template__detail-close" (click)="editImageHomeMade()" fxShow="false" fxShow.sm="true"
-       fxShow.xs="true">
+  <div class="xb-store-template__detail-image-close" (click)="editImageHomeMade()" fxShow="false" fxShow.gt-sm="true">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-store-template__detail">
-    <div class="xb-store-template__detail-close" (click)="editImageHomeMade()" fxShow="false" fxShow.gt-sm="true">
-      <i class="iconfontXberts icon-ic-close"></i>
-    </div>
     <div class="xb-template-2-edit__mobile-dialog-inner">
       <app-image-upload-preview [(previewImgFile)]="imageHomeMade" [ratio]="ratio"
                                 (previewImgFileChange)="editImageHomeMade()"></app-image-upload-preview>
@@ -301,13 +290,10 @@
   </div>
 </div>
 <div class="xb-template-2-edit__background" *ngIf="storeEdited">
-  <div class="xb-store-template__detail-close" (click)="editStore()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
+  <div class="xb-store-template__detail-image-close" (click)="editStore()" fxShow="false" fxShow.gt-sm="true">
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-store-template__detail">
-    <div class="xb-store-template__detail-close" (click)="editStore()" fxShow="false" fxShow.gt-sm="true">
-      <i class="iconfontXberts icon-ic-close"></i>
-    </div>
     <div class="xb-template-2-edit__mobile-dialog-inner">
       <div class="xb-template-2-edit__title-1">
         Ready to Publish?
