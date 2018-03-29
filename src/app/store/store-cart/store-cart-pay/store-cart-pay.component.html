@@ -467,11 +467,11 @@
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
               </div>
               <div>
-                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase) }}</div>
-                <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase) }}</div>
-                <div class="xb-cart__bill-margin-top-1">{{0 | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase) }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice |currency: (order.currency | uppercase) }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice |currency: (order.currency | uppercase) }}</div>
+                <div class="xb-cart__bill-margin-top-1">{{0 |currency: (order.currency | uppercase) }}</div>
                 <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">
-                  {{totalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase)}}</div>
+                  {{totalPrice |currency: (order.currency | uppercase)}}</div>
               </div>
             </div>
           </div>
@@ -499,8 +499,8 @@
     <div class="xb-cart__fixed-bottom-dialog" *ngIf="isTotalDialogOpen">
       <div fxLayout="row" fxLayoutAlign="start stretch">
         <div>
-          <div>{{subTotalPrice | exchangeCurrency:(order.currency|uppercase)|currency: (order.currency | uppercase) }}</div>
-          <div class="md-margin-top-3">{{shippingTotalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency | uppercase) }}</div>
+          <div>{{subTotalPrice |currency: (order.currency | uppercase) }}</div>
+          <div class="md-margin-top-3">{{shippingTotalPrice |currency: (order.currency | uppercase) }}</div>
         </div>
         <div class="md-margin-left-3">
           <div>Subtotal</div>
@@ -510,7 +510,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex (click)="openDialog()">
       <div class="xb-cart__item-sale md-margin-left-1">
-        {{totalPrice | exchangeCurrency:(order.currency|uppercase) |currency: (order.currency| uppercase)}}
+        {{totalPrice |currency: (order.currency| uppercase)}}
       </div>
       <div class="xb-cart__fixed-bottom-tri xb-cart__fixed-bottom-margin" *ngIf="!isTotalDialogOpen"></div>
       <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>
