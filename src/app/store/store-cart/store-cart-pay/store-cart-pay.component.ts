@@ -1,9 +1,6 @@
-import { Component, OnInit, OnDestroy, OnChanges, NgZone, ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { Headers,RequestOptions } from '@angular/http';
 
 import { StoreService } from '../../store.service';
 import { StoreCartService } from '../store-cart.service';
