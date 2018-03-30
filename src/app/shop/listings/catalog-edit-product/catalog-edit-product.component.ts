@@ -39,8 +39,6 @@ export class CatalogEditProductComponent implements OnInit {
 
   tab: string = '';
 
-  // Editor
-
   tags: any = '';
   isCreateCategory: boolean = false;
 
