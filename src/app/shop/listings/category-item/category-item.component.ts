@@ -1,7 +1,6 @@
-import { Input, Output, Component, OnInit,EventEmitter, Inject} from '@angular/core';
+import { Input, Output, Component, OnInit, EventEmitter } from '@angular/core';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ShopService } from '../shop.service';
+import { MatDialog } from '@angular/material';
 
 import { CategoryDeleteDialogComponent } from '../category-delete-dialog/category-delete-dialog.component';
 import { CategoryEditDialogComponent } from '../category-edit-dialog/category-edit-dialog.component';
