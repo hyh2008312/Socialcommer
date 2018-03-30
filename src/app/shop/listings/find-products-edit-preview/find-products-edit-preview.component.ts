@@ -168,6 +168,10 @@ export class FindProductsEditPreviewComponent implements OnInit {
   }
 
   showCreate() {
+    this.productForm.patchValue({
+      tags: ''
+    });
+    this.tags = '';
     this.isCreateCategory = true;
   }
 
@@ -214,23 +218,6 @@ export class FindProductsEditPreviewComponent implements OnInit {
     } else {
       this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`]);
     }
-  }
-
-  showCategoryInput: boolean = false;
-
-  showCategory() {
-    this.productForm.patchValue({
-      tags: ''
-    });
-    this.showCategoryInput = !this.showCategoryInput;
-  }
-
-  resetCategory() {
-    this.tags = [];
-    this.tags.push({
-      id: null,
-      name: this.productCopy.category
-    });
   }
 
   create() {

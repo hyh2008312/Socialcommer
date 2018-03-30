@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 import { ShopService } from '../shop.service';
-import { Product, StoreProduct } from '../shop';
 import { UserService } from  '../../../shared/services/user/user.service';
 
 import { ImageUploadPreviewService } from "../../../shared/components/image-upload-preview/image-upload-preview.service";
@@ -25,10 +23,8 @@ export class CatalogEditProductComponent implements OnInit {
   productForm : FormGroup;
   previewImgFile: any[] = [];
   previewImgSrcs: any[] = [];
-  relationId: number;
   productId: number;
   title: string = '';
-  isUser: boolean = false;
 
   product = {
     originalPrice: {
@@ -44,8 +40,6 @@ export class CatalogEditProductComponent implements OnInit {
   tab: string = '';
 
   // Editor
-  public editor;
-  public editorImageId = 'quillImage';
 
   tags: any = '';
   isCreateCategory: boolean = false;
@@ -136,18 +130,6 @@ export class CatalogEditProductComponent implements OnInit {
     });
   }
 
-  onEditorCreated(quill) {
-    this.editor = quill;
-    // console.log('quill is ready! this is current quill instance object', quill);
-    let self = this;
-    this.editor.getModule('toolbar').addHandler("image", (image) => {
-      if(image) {
-        var fileInput = document.getElementById(self.editorImageId);
-        fileInput.click();
-      }
-    });
-  }
-
   /**
    * 表单值改变时，重新校验
    * @param data
@@ -173,6 +155,10 @@ export class CatalogEditProductComponent implements OnInit {
   }
 
   showCreate() {
+    this.productForm.patchValue({
+      tags: ''
+    });
+    this.tags = '';
     this.isCreateCategory = true;
   }
 
@@ -244,23 +230,6 @@ export class CatalogEditProductComponent implements OnInit {
     });
   }
 
-  createDraft() {
-    let productForm = this.productForm.value;
-
-    let storeProduct = productForm;
-
-    storeProduct.id = this.productId;
-
-    storeProduct.status = 'draft';
-
-    let self = this;
-    self.shopService.changeProduct(storeProduct).then((data) => {
-      self.router.navigate(['/shop/listings/products'], { queryParams: {tab: 'draft'}, replaceUrl: true}).then(() => {
-        self.openSnackBar();
-      });
-    });
-  }
-
   save() {
     if(!this.productForm.valid) {
       return;
@@ -281,41 +250,6 @@ export class CatalogEditProductComponent implements OnInit {
         self.openSnackBar();
       });
     });
-  }
-
-  addPicture(event) {
-    if(!event.target.files[0]) {
-      return;
-    }
-    let that = this;
-    this.previewImageService.readAsDataUrl(event.target.files[0]).then(function(result) {
-
-      let file = event.target.files[0];
-
-      let image = new Image();
-      image.onload = function(){
-        let width = image.width;
-        let height = image.height;
-
-        that.s3UploaderService.upload({
-          type: 'COLLECTOR_PRODUCT_DETAILS',
-          fileName: file.name,
-          use: 'detail',
-          width: width,
-          height: height
-        }).then((data)=> {
-          let id = data.id;
-          let imageUrl = `${data.url}/${data.key}`;
-          that.s3UploaderService.uploadToS3WithoutLoading(file, data).then((data) => {
-            let range = that.editor.getSelection();
-            that.editor.insertEmbed(range.index, 'image', imageUrl);
-          });
-        });
-      };
-      image.src = window.URL.createObjectURL(file);
-
-    })
-
   }
 
   openSnackBar() {

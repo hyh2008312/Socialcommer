@@ -52,12 +52,6 @@
           <div *ngIf="formErrors['categoryName']" class="xb-input-error">
             {{ formErrors['categoryName'] }}
           </div>
-          <div class="xb-shop__margin-bottom-2" fxLayout="row" fxLayoutAlign="start center" fxHide>
-            <button mat-raised-button color="primary" (click)="showCategory()">SAVE</button>
-            <div class="xb-shop__margin-left">
-              <button mat-button color="primary" (click)="resetCategory()">CANCEL</button>
-            </div>
-          </div>
         </div>
         <div class="xb-shop__edit-title md-margin-top-2">Tell your audiences why you recommend this product (optional)</div>
         <mat-form-field class="xb-shop__width-100">
