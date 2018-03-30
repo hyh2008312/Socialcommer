@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { ShopService } from '../shop.service';
 import { Product, StoreProduct } from '../shop';
