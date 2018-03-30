@@ -27,6 +27,7 @@ export class StoreMessageMainComponent implements OnInit {
   isClose: boolean = false;
   customerMessage: any;
 
+
   //message列表的消息
   messageList: any = [];
 
@@ -39,7 +40,10 @@ export class StoreMessageMainComponent implements OnInit {
   customerEmail: string;
 
   submitTitle: string = 'SUBMIT';
-
+  // 是否显示提示order的小按钮
+  isShowRelatedOrder: boolean = true;
+  // 是否显示order的遮罩
+  isShowRelatedOrderMask: boolean = false;
 
   constructor(private fb: FormBuilder,
               private activeRoute: ActivatedRoute,
@@ -131,9 +135,11 @@ export class StoreMessageMainComponent implements OnInit {
     if (!this.isClose || !this.isNoMessage) {
       this.replayPlaceholder = 'Tell us about your issue';
       this.submitTitle = 'SUBMIT';
+      this.isShowRelatedOrder = true;
     } else {
       this.replayPlaceholder = 'Leave a reply';
       this.submitTitle = 'REPLY';
+      this.isShowRelatedOrder = false;
     }
   }
 
@@ -155,5 +161,9 @@ export class StoreMessageMainComponent implements OnInit {
     } else {
       this.isMessageEmpty = true;
     }
+  }
+
+  changeOrderMask(): void {
+    this.isShowRelatedOrderMask = !this.isShowRelatedOrderMask;
   }
 }

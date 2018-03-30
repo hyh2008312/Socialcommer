@@ -420,6 +420,59 @@
   min-height: 100vh;
   height: 100vh;
   overflow-y: scroll;
+  overflow-x: hidden;
+
+  &__mask {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .7);
+    &-content {
+      background-color: white;
+      margin-left: 12px;
+      margin-right: 12px;
+      margin-top: 150px;
+      padding: 24px 16px;
+      border-radius: 4px;
+    }
+    &-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &-attribute {
+      width: 96px;
+      text-align: right;
+      font-size: 12px;
+      line-height: 32px;
+      color: rgba(0,0,0,.38);
+    }
+    &-des {
+      margin-left: 24px;
+      font-size: 12px;
+      line-height: 32px;
+      letter-spacing: -0.29px;
+    }
+
+  }
+
+  &__related-order {
+    width: 94px;
+    height: 28px;
+    background-color: black;
+    color: white;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    margin-left: 12px;
+    font-family: SFNSDisplay-Bold;
+    letter-spacing: -0.29px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+
   &__regular {
     @include regular();
   }
@@ -437,6 +490,9 @@
 }
 
 .xb-customer-service-detail {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
   &__resolved-one {
     font-size: 16px;
     font-weight: bold;
@@ -464,16 +520,31 @@
   }
   &__content {
     padding-top: 50px;
+    @include xb-xs-screen {
+      padding-top: 16px;
+    }
     &-left {
       width: 640px;
       padding-bottom: 40px;
+      @include xb-xs-screen {
+        width: calc(100vw - 24px);
+        margin-left: 12px;
+        margin-right: 12px;
+      }
       &-warn {
         font-style: italic;
+        @include xb-xs-screen {
+          font-size: 10px;
+        }
       }
       &-bottom {
         margin-left: 40px;
         margin-right: 40px;
         margin-top: 30px;
+        @include xb-xs-screen {
+          margin-left: 16px;
+          margin-right: 16px;
+        }
       }
       &-close {
         font-size: 14px;
@@ -503,6 +574,10 @@
         margin-top: 40px;
         margin-right: 40px;
         margin-left: 40px;
+        @include xb-xs-screen {
+          margin-left: 16px;
+          margin-right: 16px;
+        }
       }
       &-line {
         height: 1px;
@@ -513,6 +588,10 @@
         height: 70px;
         margin-left: 40px;
         margin-right: 40px;
+        @include xb-xs-screen {
+          margin-left: 16px;
+          margin-right: 16px;
+        }
       }
       &-title {
         font-size: 16px;
@@ -533,6 +612,14 @@
       width: 280px;
       padding: 32px 24px 40px;
       background-color: white;
+      @include xb-xs-screen {
+        width: calc(100vw - 24px);
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-top: 19px;
+        padding: 24px 16px 40px;
+        border-radius: 4px;
+      }
       &-title {
         font-size: 16px;
         font-weight: bold;
@@ -560,23 +647,35 @@
   //detail -->message的列表
   &__message {
     margin: 10px 40px;
+    @include xb-xs-screen {
+      margin: 10px 12px;
+    }
     &-name {
       font-size: 14px;
       font-weight: bold;
       color: black;
       margin-left: 12px;
+      @include xb-xs-screen {
+        font-size: 10px;
+      }
     }
     &-date {
       font-size: 14px;
       @include regular();
       margin-left: 16px;
       color: rgba(0, 0, 0, .54);
+      @include xb-xs-screen {
+        font-size: 10px;
+      }
     }
     &-description {
       font-size: 14px;
       @include regular();
       line-height: 24px;
       margin-left: 36px;
+      @include xb-xs-screen {
+        font-size: 12px;
+      }
     }
   }
 

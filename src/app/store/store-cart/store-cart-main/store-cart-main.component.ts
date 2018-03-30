@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit, OnDestroy, OnChanges} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { StoreCartService } from '../store-cart.service';
+import {StoreService} from '../../store.service';
+import {StoreCartService} from '../store-cart.service';
 
 @Component({
   selector: 'app-store-cart-main',
@@ -10,9 +10,9 @@ import { StoreCartService } from '../store-cart.service';
   styleUrls: ['../store-cart.scss']
 })
 
-export class StoreCartMainComponent implements OnInit{
+export class StoreCartMainComponent implements OnInit {
 
-  homeLink:string = '';
+  homeLink: string = '';
 
   isTotalDialogOpen: boolean = false;
 
@@ -42,12 +42,10 @@ export class StoreCartMainComponent implements OnInit{
 
   cartErr: any = false;
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private storeService: StoreService,
-    private storeCartService: StoreCartService
-  ) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private storeService: StoreService,
+              private storeCartService: StoreCartService) {
 
   }
 
@@ -55,8 +53,8 @@ export class StoreCartMainComponent implements OnInit{
     let self = this;
 
     self.storeService.store.subscribe((data) => {
-      if(data) {
-        let uid = data.templateId;
+      if (data) {
+        let uid = data.templateId || 1;
         self.homeLink = `/store/${data.displayName}/${uid}`;
         self.storeId = data.id;
         self.currency = data.currency;
@@ -85,15 +83,15 @@ export class StoreCartMainComponent implements OnInit{
         break;
     }
     this.calculatePrice();
-    this.storeService.addProductToCart(this.displayName,this.products);
+    this.storeService.addProductToCart(this.displayName, this.products);
   }
 
   changeShipping($event) {
     this.countryId = $event;
     let pid = '';
     let pidArray = [];
-    if(this.products && this.products.length > 0) {
-      for(let value of this.products) {
+    if (this.products && this.products.length > 0) {
+      for (let value of this.products) {
         pidArray.push(value.id);
       }
       pid = pidArray.join(',');
@@ -112,13 +110,13 @@ export class StoreCartMainComponent implements OnInit{
     let price = 0;
     let shippingPrice = 0;
     let rate = 1;
-    if(this.currency.toUpperCase() == 'INR') {
+    if (this.currency.toUpperCase() == 'INR') {
       rate = 65.4;
     }
-    for(let item of this.products) {
-      if(typeof item.number == 'number' && item.number > 0) {
+    for (let item of this.products) {
+      if (typeof item.number == 'number' && item.number > 0) {
         price += item.number * Math.floor(item.salePriceAmount * rate * 100) / 100;
-        if(this.shippingItem[item.id]) {
+        if (this.shippingItem[item.id]) {
           shippingPrice += Math.floor(this.shippingItem[item.id].priceItem * rate * 100) / 100 * item.number;
         }
       }
@@ -131,12 +129,12 @@ export class StoreCartMainComponent implements OnInit{
 
   checkout() {
     let lines = [];
-    for(let item of this.products) {
+    for (let item of this.products) {
       lines.push({
         goodsId: item.goodsId,
         quantity: item.number,
         variantId: item.variantId,
-        shippingPriceId : this.shippingItem[item.id].id
+        shippingPriceId: this.shippingItem[item.id].id
       });
     }
 
@@ -144,7 +142,7 @@ export class StoreCartMainComponent implements OnInit{
       storeId: this.storeId,
       totalInclTax: 0,
       totalExclTax: 0,
-      shippingInclTax:0,
+      shippingInclTax: 0,
       shippingExclTax: 0,
       currency: this.currency,
       lines

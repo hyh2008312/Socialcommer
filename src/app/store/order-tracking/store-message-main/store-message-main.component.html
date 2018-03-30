@@ -4,14 +4,45 @@
       <app-store-cart-header></app-store-cart-header>
     </div>
   </div>
-  <div [ngStyle]="{'background-color':'#eeeeee','padding-bottom':'165px'}">
-    <div class="xb-customer-service-detail xb-customer-service__w960px">
+  <div [ngStyle]="{'background-color':'#eeeeee','padding-bottom':'165px'}" [ngStyle.xs]="{'padding-bottom': '18px'}">
+    <div class="xb-customer-service-detail">
       <div class="md-padding-top-3">
         <span class="xb-pointer xb-customer-service-detail__nav-title xb-customer-service__regular"
+              [ngStyle.xs]="{'margin-left':'16px'}"
               routerLink="../detail">View Your Orders</span>
         <span class="xb-customer-service__bold">></span>
         <span class="xb-customer-service-detail__nav-title xb-customer-service__bold">Contact Supplier</span>
       </div>
+      <div class="xb-customer-service-detail__content-right" *ngIf="isShowRelatedOrder" fxShow="false" fxShow.xs="true">
+        <div class="xb-customer-service-detail__content-right-title">
+          Related Order
+        </div>
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-customer-service-detail__content-right-attribute">
+            Supplier
+          </div>
+          <div class="xb-customer-service-detail__content-right-content md-margin-left-3">
+            {{customerMessage?.communication.supplier.name}}
+          </div>
+        </div>
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-customer-service-detail__content-right-attribute">
+            Order Number
+          </div>
+          <div class="xb-customer-service-detail__content-right-content md-margin-left-3">
+            {{customerMessage?.number}}
+          </div>
+        </div>
+        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-customer-service-detail__content-right-attribute">
+            Product Name
+          </div>
+          <div class="xb-customer-service-detail__content-right-content md-margin-left-3">
+            {{customerMessage?.title}}
+          </div>
+        </div>
+      </div>
+      <div class="xb-customer-service__related-order" (click)="changeOrderMask()" fxShow="false" fxShow.xs="true" *ngIf="!isShowRelatedOrder">Related Order</div>
       <div class="xb-customer-service-detail__content" fxLayout="row" fxLayoutAlign="space-between start">
         <div class="xb-customer-service-detail__content-left">
           <div [ngStyle]="{'background-color':'white','padding-bottom':'40px'}">
@@ -70,7 +101,7 @@
             </div>
           </div>
         </div>
-        <div class="xb-customer-service-detail__content-right">
+        <div class="xb-customer-service-detail__content-right" fxShow="true" fxShow.xs="false">
           <div class="xb-customer-service-detail__content-right-title">
             Related Order
           </div>
@@ -94,13 +125,42 @@
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
   <div class="background-bg-white" fxHide.xs>
     <div class="container">
       <app-store-cart-footer></app-store-cart-footer>
+    </div>
+  </div>
+</div>
+<div (click)="changeOrderMask()" *ngIf="isShowRelatedOrderMask" class="xb-customer-service__mask"  fxShow="false" fxShow.xs="true">
+  <div (click)="$event.stopPropagation()" class="xb-customer-service__mask-content" >
+    <div class="xb-customer-service__mask-title">
+      Related Order
+    </div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-customer-service__mask-attribute">
+        Supplier
+      </div>
+      <div class="xb-customer-service__mask-des md-margin-left-3">
+        {{customerMessage?.communication.supplier.name}}
+      </div>
+    </div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-customer-service__mask-attribute">
+        Order Number
+      </div>
+      <div class="xb-customer-service__mask-des md-margin-left-3">
+        {{customerMessage?.number}}
+      </div>
+    </div>
+    <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-customer-service__mask-attribute">
+        Product Name
+      </div>
+      <div class="xb-customer-service__mask-des md-margin-left-3">
+        {{customerMessage?.title}}
+      </div>
     </div>
   </div>
 </div>
