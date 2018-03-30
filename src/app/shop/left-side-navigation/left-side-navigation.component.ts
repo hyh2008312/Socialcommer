@@ -114,7 +114,7 @@ export class LeftSideNavigationComponent implements OnInit {
     let self = this;
     this.sub = this.shopService.templateUid.subscribe((data) => {
       if (data) {
-        self.editRouter = '/shop/templates/edit' + (data == 1 ? '' : '/' + data);
+        self.editRouter = '/shop/templates/edit/' + data;
       }
     });
     let url = this.router.routerState.snapshot['url'].split('/shop');
