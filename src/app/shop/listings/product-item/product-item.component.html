@@ -2,7 +2,7 @@
   <div class="xb-shop__product-image" fxFlex="none">
     <img [src]="product.mainImage">
   </div>
-  <div class="xb-shop__product-title md-margin-right-2" fxFlex="35">{{product.title}}</div>
+  <div class="xb-shop__product-title" fxFlex="35">{{product.title}}</div>
   <div class="xb-shop__product-category md-margin-right-2" fxFlex="15">{{product.categoryName}}</div>
 
   <div class="xb-shop__product-price md-margin-right-2" fxFlex="10">
@@ -21,7 +21,7 @@
     <button mat-button color="primary" *ngIf="status == 0" (click)="unpublish()">Unpublish</button>
     <button mat-button color="primary" (click)="delete()">Delete</button>
   </div>
-  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="15" *ngIf="status == 0">
+  <div class="xb-shop__product-width-1" fxLayout="column" fxLayoutAlign="center center" fxFlex="none" *ngIf="status == 0">
     <div class="xb-social-share xb-social-share__whatsapp" fxLayout="row" fxLayoutAlign="center center"
          appSocialShare [whatsApp]="{text: text + ' ' + link}">
       <i class="iconfontXberts icon-ic-social-whatsapp" ></i>

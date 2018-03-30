@@ -1,6 +1,5 @@
 import {Input, Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {UserService} from  '../../../shared/services/user/user.service';
-import {BonusTipsDialogComponent} from '../bonus-tips-dialog/bonus-tips-dialog.component';
 import {MatDialog} from '@angular/material';
 
 @Component({
@@ -121,10 +120,6 @@ export class BonusItemComponent implements OnInit {
     return Math.floor((this.monthSale - (i >= 0 ? this.bonusList[i].sales: 0)) / (targeSale - (i >= 0 ? this.bonusList[i].sales: 0)) * 10000) / 100;
   }
 
-  get bonusTarget() {
-    return this.bonusList[this.bonusList.length - 1].sales;
-  }
-
   private paint() {
 
     // Paint current frame
@@ -196,14 +191,6 @@ export class BonusItemComponent implements OnInit {
     ctx.stroke();
     ctx.closePath();
     ctx.restore();
-  }
-
-  openBonusTipDialog() {
-    let dialogRef = this.dialog.open(BonusTipsDialogComponent, {});
-
-    dialogRef.afterClosed().subscribe(result => {
-
-    });
   }
 
 
