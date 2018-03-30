@@ -58,7 +58,7 @@
     </div>
     <div class="xb-account-item__title" fxFlex="15"
          fxLayout="row" fxLayoutAlign="center center">
-      {{product.status}}
+      {{product.status == 'Unfulfilled'? 'Processing': product.status}}
     </div>
   </div>
 </div>
@@ -78,7 +78,7 @@
     </div>
     <div class="xb-account-item__title" fxFlex="25"
          fxLayout="row" fxLayoutAlign="center center">
-      {{product.priceInclTax| exchangeCurrency:currency | currency: currency}}
+      {{product.orderPrices| exchangeCurrency:currency | currency: currency}}
     </div>
     <div class="xb-account-item__title" fxFlex="25"
          fxLayout="row" fxLayoutAlign="center center">
