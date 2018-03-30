@@ -46,7 +46,7 @@ export class CatalogEditProductComponent implements OnInit {
 
   storeId: number;
   storeCurrency: string = 'USD';
-  category: any;
+  category: any = [];
 
   hasPicture: boolean = false;
 
