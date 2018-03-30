@@ -164,6 +164,7 @@ export class FindProductsComponent implements OnInit {
 
   changeCategory($event) {
     this.category = $event;
+    this.productIndex = 1;
     this.getSupplyProductList();
   }
 
