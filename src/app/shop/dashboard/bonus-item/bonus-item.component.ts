@@ -41,7 +41,6 @@ export class BonusItemComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private elementRef: ElementRef,
     public dialog: MatDialog
   ) {
     this.userService.store.subscribe((data) => {

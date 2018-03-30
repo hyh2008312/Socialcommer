@@ -5,15 +5,15 @@
       <canvas #myCanvas width="150px" height="150px"></canvas>
       <div class="xb-bonus__circle-text">{{monthSale |currency:currency}}</div>
     </div>
-    <div class="xb-bonus__title-1" *ngIf="targetBonus">{{targetOffSale|currency:currency}} left to unlock {{targetBonus|currency:currency}} bonus!</div>
+    <div class="xb-bonus__title-1" *ngIf="targetBonus">{{targetOffSale|currency:currency}} way from reaching target for {{targetBonus|currency:currency}} bonus!</div>
     <div class="xb-bonus__title-1" *ngIf="!targetBonus">Congrats! You just unlock $4000 in total this month.</div>
   </div>
 
   <div class="xb-bonus__processing-bg" fxFlex>
     <div class="md-margin-top-2 xb-bonus__navigation" fxLayout="row" fxLayoutAlign="start center">
-      <div class="md-margin-right-3" fxFlex="20">Target<br> Sales</div>
-      <div class="md-margin-right-5" fxFlex="20">Cumulative<br> Bonus</div>
-      <div fxFlex>Current<br> Progress</div>
+      <div class="md-margin-right-3" fxFlex="20">Target<br *ngIf="currency == 'USD'"> Sales</div>
+      <div class="md-margin-right-5" fxFlex="20">Cumulative<br *ngIf="currency == 'USD'"> Bonus</div>
+      <div fxFlex>Current<br *ngIf="currency == 'USD'"> Progress</div>
     </div>
     <div class="xb-bonus__processing-item" *ngFor="let item of bonusList; let i = index;" fxLayout="row" fxLayoutAlign="start center">
       <div class="md-margin-right-3" fxFlex="20" fxLayout="row" fxLayoutAlign="start start">

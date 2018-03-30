@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 8080",
+    "start:ssr": "ng serve --app1 --port 8080",
     "ssr": "npm run build:universal && npm run server",
     "ssr:debug": "ng build --dev --aot=true --output-hashing=all --named-chunks=false --build-optimizer=true  && ng build --dev --aot=true --output-hashing=all --named-chunks=false --build-optimizer=true --app 1 && webpack && node server.js",
     "ssr:cw": "ng build --dev --aot=true --output-hashing=all --named-chunks=false --build-optimizer=true --watch",
