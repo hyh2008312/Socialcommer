@@ -5,7 +5,7 @@
       <canvas #myCanvas width="150px" height="150px"></canvas>
       <div class="xb-bonus__circle-text">{{monthSale |currency:currency}}</div>
     </div>
-    <div class="xb-bonus__title-1" *ngIf="targetBonus">{{targetOffSale|currency:currency}} way from reaching target for {{targetBonus|currency:currency}} bonus!</div>
+    <div class="xb-bonus__title-1" *ngIf="targetBonus">{{targetOffSale|currency:currency}} away from reaching target for {{targetBonus|currency:currency}} bonus!</div>
     <div class="xb-bonus__title-1" *ngIf="!targetBonus">Congrats! You just unlock $4000 in total this month.</div>
   </div>
 
