@@ -41,7 +41,10 @@ export class MainPageComponent implements OnInit {
         self.displayName = data.displayName;
         self.contactUsTag = data.context ? data.context.contactUsTag : '';
         self.text = data.description;
-        self.categories = data.category;
+        let tempCategory = data.category.filter((data)=>{
+          return data.goodsCount !=0 ;
+        });
+        self.categories = tempCategory;
         if (data.context && data.context.blogFlag) {
           self.showBlogFlag = data.context.blogFlag;
         }

@@ -48,7 +48,10 @@ export class StoreListComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        self.categories = [{name: 'All'}, ...data.category];
+        let tempCategory = data.category.filter((data)=>{
+          return data.goodsCount !=0 ;
+        });
+        self.categories = [{name: 'All'}, ...tempCategory];
         self.category = self.categories[0];
         self.storeService.addStore(data);
 

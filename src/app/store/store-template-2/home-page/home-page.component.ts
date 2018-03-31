@@ -68,10 +68,13 @@ export class HomePageComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        if (data.category.length > 1) {
-          self.categories = [{name: 'All'}, ...data.category];
+        let tempCategory = data.category.filter((data)=>{
+          return data.goodsCount !=0 ;
+        });
+        if (tempCategory.length > 1) {
+          self.categories = [{name: 'All'}, ...tempCategory];
         } else {
-          self.categories = [...data.category];
+          self.categories = [...tempCategory];
         }
         self.category = self.categories[0];
 
