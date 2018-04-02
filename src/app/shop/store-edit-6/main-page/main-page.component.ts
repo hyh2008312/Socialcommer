@@ -290,7 +290,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
-                self.categories = [...data.category];
+                let tempCategory = data.category.filter((data)=>{
+                  return data.goodsCount !=0 ;
+                });
+                self.categories = [...tempCategory];
                 self.category = self.categories[0];
                 self.queryProduct();
                 self.queryBlog();

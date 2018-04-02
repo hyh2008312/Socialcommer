@@ -52,7 +52,10 @@ export class StoreListComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        self.categories = [{name: 'All'}, ...data.category];
+        let tempCategory = data.category.filter((data)=>{
+          return data.goodsCount !=0 ;
+        });
+        self.categories = [{name: 'All'}, ...tempCategory];
         if (!isNaN(self.date)) {
           for (let value of data.category) {
             if (value.id === self.date) {
