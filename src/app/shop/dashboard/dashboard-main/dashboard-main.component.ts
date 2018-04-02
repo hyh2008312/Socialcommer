@@ -14,8 +14,8 @@ import { BonusTipsDialogComponent } from '../bonus-tips-dialog/bonus-tips-dialog
 
 export class DashboardMainComponent implements OnInit {
 
-  timeOverview: string = 'Yesterday';
-  timeStatistic: string = 'Yesterday';
+  timeOverview: string = 'Last 7 days';
+  timeStatistic: string = 'Last 7 days';
 
   times = [{
     code: 'Yesterday',
@@ -35,8 +35,8 @@ export class DashboardMainComponent implements OnInit {
     day: 31
   }];
 
-  storeDay: number = 1;
-  productDay: number = 1;
+  storeDay: number = 7;
+  productDay: number = 7;
 
   storeId: number;
 

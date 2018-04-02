@@ -31,6 +31,7 @@ global['document'] = win.document;
 global['CSS'] = null;
 global['localStorage'] = localStorage;
 global['location'] = win.location;
+global['Image'] = win.Image;
 
 // Load zone.js for the server.
 import 'zone.js/dist/zone-node';

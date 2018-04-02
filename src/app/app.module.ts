@@ -47,7 +47,9 @@ import {PrebootModule} from 'preboot';
     SharedServerModule.forRoot(),
     SharedModule.forRoot(),
     BrowserAnimationsModule,
-    PrebootModule.withConfig({ appRoot: 'app-root' })
+    PrebootModule.withConfig({
+      appRoot: 'app-root'
+    })
   ],
   providers: [BaseApi, SystemConstant, DataApi, SupportApi, HttpClientModule, CookieService],
   bootstrap: [AppComponent]

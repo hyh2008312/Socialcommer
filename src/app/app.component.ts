@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, PLATFORM_ID, Inject } from '@angular/core';
 import { UserService } from './shared/services/user/user.service';
 import { AuthenticationService } from './shared/services/authentication/authentication.service';
 import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
@@ -11,12 +12,20 @@ import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
 export class AppComponent {
   title = 'SocialCommer';
 
+  isLoadingShow: boolean = true;
+
   constructor(
     private userService: UserService,
     private authenticationService: AuthenticationService,
-    private angulartics2GoogleTagManager: Angulartics2GoogleTagManager
+    private angulartics2GoogleTagManager: Angulartics2GoogleTagManager,
+    @Inject(PLATFORM_ID) private platformId: string
   ) {
     let self = this;
+
+    window.document.addEventListener('PrebootComplete', () => {
+      // put your code here that you want to run once preboot is complete
+      self.isLoadingShow = false;
+    });
 
     // 防止懒加载重定向
     if(!window['userInfo']) {

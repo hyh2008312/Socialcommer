@@ -31,11 +31,11 @@ import { ShareButtonRowComponent } from './components/share-button-row/share-but
 import { StoreNavigationComponent } from './components/store-navigation/store-navigation.component';
 import { NavigationHeaderComponent } from './components/navigation-header/navigation-header.component';
 import { BottomFooterComponent } from './components/bottom-footer/bottom-footer.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 import { ImageUploadPreviewService } from './components/image-upload-preview/image-upload-preview.service';
 import { ConstantService } from './services/constant/constant.service';
 import { S3UploaderService } from './services/s3-upload/s3-upload.service';
-import { PlatformService } from  './services/platform/platform.service';
 
 import { QuillEditorModule } from 'ngx-quill-editor';
 import { AngularCropperjsModule } from 'angular-cropperjs';
@@ -143,8 +143,8 @@ let providers = {
     NavigationHeaderComponent,
     BottomFooterComponent,
     ImageUploadPreviewTwoTemplateComponent,
-    ImageUploadPreviewFourTemplateComponent
-
+    ImageUploadPreviewFourTemplateComponent,
+    LoadingComponent
 
   ],
   exports: [
@@ -177,6 +177,7 @@ let providers = {
     ShareButtonRowComponent,
     NavigationHeaderComponent,
     BottomFooterComponent,
+    LoadingComponent,
     CommonModule,
     RouterModule,
     FormsModule,

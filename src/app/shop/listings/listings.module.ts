@@ -24,6 +24,7 @@ import { FindProductsShareComponent } from "./find-products-share/find-products-
 import { FindProductCategoryComponent } from './find-product-category/find-product-category.component';
 
 import { SnackItemBarSuccessComponent } from './snack-item-bar-success/snack-item-bar-success.component';
+import { ProductShareSuccessComponent } from './product-share-success/product-share-success.component';
 
 import { ListingsRoutingModule } from './listings.routes.module';
 
@@ -61,14 +62,16 @@ import { SharedModule } from '../../shared/shared.module';
     FindSupplierProductsComponent,
     ProductShareDialogComponent,
     SnackItemBarSuccessComponent,
-    FindProductsShareComponent
+    FindProductsShareComponent,
+    ProductShareSuccessComponent
   ],
   entryComponents: [
     CategoryCreateDialogComponent,
     CategoryDeleteDialogComponent,
     CategoryEditDialogComponent,
     SnackItemBarSuccessComponent,
-    ProductShareDialogComponent
+    ProductShareDialogComponent,
+    ProductShareSuccessComponent
   ],
   providers: [
     ShopService,

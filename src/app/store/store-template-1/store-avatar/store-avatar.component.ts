@@ -29,7 +29,7 @@ export class StoreAvatarComponent implements OnInit {
   ngOnChanges() {
     let self = this;
     if(self.avatar && self.avatar != '') {
-      let image = new Image();
+      let image = new (<any>window).Image();
       image.onload = function(){
         self.image = self.avatar;
       };

@@ -18,13 +18,13 @@ export class BonusItemComponent implements OnInit {
   colorList = ['#f8194e','#04bfdb','#f8cd00','#30a1f6','#575757'];
 
   bonusList: any[] = [{
-    bonus: 50,
+    bonus: 100,
     sales: 500
   }, {
-    bonus: 150,
+    bonus: 200,
     sales: 1000
   }, {
-    bonus: 350,
+    bonus: 400,
     sales: 2000
   }, {
     bonus: 600,

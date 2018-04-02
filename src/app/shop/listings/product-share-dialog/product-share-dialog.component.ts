@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject, ElementRef } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+
+import { ProductShareSuccessComponent } from '../product-share-success/product-share-success.component';
 
 @Component({
   selector: 'app-store-product-share-dialog',
@@ -15,7 +17,8 @@ export class ProductShareDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ProductShareDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private snackBar: MatSnackBar
   ) {
     this.text = this.text + this.data.text + '; Follow this link to get a discount today:  ' + this.data.shareLink;
 
@@ -36,10 +39,18 @@ export class ProductShareDialogComponent implements OnInit {
     let self = this;
     let save = function (e){
       e.clipboardData.setData('text/plain',self.text);
+      self.openCopyBar();
       e.preventDefault();//阻止默认行为
     };
     document.addEventListener('copy',save);
     document.execCommand("copy");
+  }
+
+  openCopyBar() {
+    this.snackBar.openFromComponent(ProductShareSuccessComponent, {
+      duration: 1500,
+      verticalPosition: 'top'
+    });
   }
 
 }
