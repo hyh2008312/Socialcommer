@@ -23,7 +23,7 @@ export class CookieStorage implements Storage {
   }
 
   public removeItem(key: string): void {
-    this.cookieService.delete(key, '/', window.location.hostname);
+    this.cookieService.delete(key, '/', window.location.host);
   }
 
   public setItem(key: string, data: string): void {

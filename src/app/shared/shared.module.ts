@@ -36,12 +36,11 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ImageUploadPreviewService } from './components/image-upload-preview/image-upload-preview.service';
 import { ConstantService } from './services/constant/constant.service';
 import { S3UploaderService } from './services/s3-upload/s3-upload.service';
+import { PlatformService } from './services/platform/platform.service';
 
 import { QuillEditorModule } from 'ngx-quill-editor';
 import { AngularCropperjsModule } from 'angular-cropperjs';
 import { CarouselModule } from './components/angular4-carousel/index';
-
-import { LoginService } from '../login/login.service';
 
 import { Angular2SocialLoginModule } from "angular2-social-login";
 
@@ -210,7 +209,7 @@ let providers = {
     ImageUploadPreviewService,
     ConstantService,
     S3UploaderService,
-    LoginService
+    PlatformService
   ]
 })
 export class SharedModule {
