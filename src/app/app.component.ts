@@ -22,7 +22,7 @@ export class AppComponent {
   ) {
     let self = this;
 
-    if(this.platformService.isBrowser) {
+    if(this.platformService.isServer) {
       this.isLoadingShow = true;
     }
 
