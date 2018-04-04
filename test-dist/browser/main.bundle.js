@@ -474,7 +474,7 @@ var AppComponent = /** @class */ (function () {
         this.title = 'SocialCommer';
         this.isLoadingShow = false;
         var self = this;
-        if (this.platformService.isBrowser) {
+        if (this.platformService.isServer) {
             this.isLoadingShow = true;
         }
         window.document.addEventListener('PrebootComplete', function () {
@@ -555,7 +555,7 @@ var BaseApi = /** @class */ (function () {
 
 var DataApi = /** @class */ (function () {
     function DataApi() {
-        this.url = 'https://192.155.80.196/';
+        this.url = 'https://collect-test.socialcommer.com/';
         if (__WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].production === true) {
             this.url = 'https://collect.socialcommer.com/';
         }
