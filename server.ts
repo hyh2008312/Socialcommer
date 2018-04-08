@@ -47,7 +47,7 @@ const hash = mainFiles[0].split('.')[1];
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`./dist/server/main.${hash}.bundle`);
 import { ngExpressEngine } from '@nguniversal/express-engine/public-api';
 import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
-const PORT = 4000;
+const PORT = 4040;
 
 enableProdMode();
 
