@@ -1,0 +1,18 @@
+<div class="xb-guide-dialog">
+  <div class="xb-guide-dialog__close">
+    <i class="iconfontXberts icon-ic-close" (click)="close()" ></i>
+  </div>
+  <div class="xb-guide-dialog__container">
+    <div class="xb-guide__text-1">Beauty</div>
+  </div>
+  <div class="xb-guide-dialog__scroll">
+    <div class="xb-guide-dialog__inner-container" fxLayout="row wrap" fxLayoutAlign="start start">
+      <div *ngFor="let item of array" fxFlex="20" fxFlex.xs="50">
+        <app-shop-guide-product-dialog-item></app-shop-guide-product-dialog-item>
+      </div>
+    </div>
+  </div>
+  <div class="xb-guide-dialog__container-1 xb-guide__bottom-button" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" (click)="close()" >CLOSE</button>
+  </div>
+</div>

@@ -32,6 +32,7 @@
       @include media();
       color: $primaryColor;
       cursor: pointer;
+      white-space: nowrap;
       &.active {
         border-bottom: 2px solid $primaryColor;
       }

@@ -97,6 +97,9 @@ const routes: Routes = [
       }, {
         path: 'reward',
         loadChildren: './reward/reward.module#RewardModule'
+      },  {
+        path: 'guide',
+        loadChildren: './guide/guide.module#GuideModule'
       }, {
         path: 'todolist', component: ToDoListComponent
       }, {

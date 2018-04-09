@@ -1,0 +1,271 @@
+@charset "UTF-8";
+@import "../../styles/utils/_index";
+@import "../../styles/_variables";
+
+.xb-guide {
+
+  &__bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: $whiteColor;
+    z-index: 1000;
+  }
+
+  &__title{
+    margin-top: 72px;
+    font-size: 24px;
+    letter-spacing: -.58px;
+    line-height: 29px;
+    text-align: center;
+    padding: 0 16px;
+    @include media();
+    @include xb-xs-screen{
+      margin-top: 40px;
+    }
+  }
+
+  &__subtitle{
+    margin-top: 12px;
+    font-size: 10px;
+    letter-spacing: -.24px;
+    line-height: 12px;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  &__text{
+    letter-spacing: -0.34px;
+    @include media();
+  }
+
+  &__text-1{
+    font-size: 16px;
+    line-height: 19px;
+    @include media();
+    letter-spacing: -0.39px;
+  }
+
+  &__button{
+    width: 100px;
+    font-size: 12px;
+    line-height: 32px;
+    color: $whiteColor;
+    background-color: $primaryColor;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: -0.29px;
+  }
+
+  &__card{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    @include box-shadow(0 0 0 1px rgba(0, 0, 0, .12));
+    overflow: hidden;
+
+    img{
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      top: 50%;
+      @include transform(translate(-50%, -50%));
+    }
+  }
+
+  &__cover{
+    display: none !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.12);
+    background-color: rgba(255,255,255,.68);
+
+    @include xb-xs-screen{
+      display: block !important;
+      padding: 8px 0 17px;
+      width: 100%;
+      height: auto;
+      position: relative;
+      border: none;
+    }
+    &-commission{
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: -.29px;
+      text-align: center;
+      padding: 0 12px;
+    }
+    &-sale{
+      margin-top: 13px;
+      font-size: 14px;
+      letter-spacing: -.34px;
+      line-height: 17px;
+      text-align: center;
+      padding: 0 12px;
+      @include media();
+    }
+    &-original{
+      margin-top: 2px;
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: -.24px;
+      text-align: center;
+      color: rgba(0,0,0,.55);
+      padding: 0 12px;
+    }
+  }
+
+  $parent: &;
+
+  &__card-1{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    @include box-shadow(0 0 0 1px rgba(0, 0, 0, .12));
+    cursor: pointer;
+    overflow: hidden;
+
+    img{
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      top: 50%;
+      @include transform(translate(-50%, -50%));
+    }
+    @include xb-gt-xs-screen{
+      &:hover{
+        #{$parent}__cover{
+          display: flex !important;
+        }
+      }
+    }
+    @include xb-xs-screen{
+      @include box-shadow(none);
+    }
+
+    &-container{
+      @include xb-xs-screen{
+        @include box-shadow(0 0 0 .5px rgba(0, 0, 0, .12));
+      }
+    }
+  }
+
+  &__margin-top{
+    margin-top: 55px;
+    @include xb-xs-screen{
+      margin-top: 40px;
+    }
+  }
+
+  &__margin-top-1{
+    margin-top: 80px;
+  }
+
+  &__margin-top-2{
+    margin-top: 16px;
+    @include xb-xs-screen{
+      margin-top: 8px;
+    }
+  }
+
+
+  &__bottom-button{
+    @include xb-xs-screen{
+      padding: 8px 0;
+      background-color: rgba(255, 255, 255, .94);
+      width: 100%;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      @include box-shadow(0px -.5px 2.5px 0px rgba(0,0,0,0.19))
+    }
+  }
+
+  &__margin-bottom{
+    margin-bottom: 72px;
+  }
+
+  &__margin-bottom-1{
+    margin-bottom: 1px;
+  }
+
+  &__margin{
+    margin-bottom: 1px;
+    margin-right: 1px;
+  }
+
+
+  &__container{
+    @include xb-xs-screen{
+      padding: 0 16px;
+    }
+  }
+
+}
+
+
+.xb-guide-dialog{
+  position: relative;
+  width: 800px;
+  height: 80vh;
+  @include xb-xs-screen{
+    width: 100%;
+    height: 100vh;
+    background-color: $whiteColor;
+  }
+
+  &__close{
+    position: absolute;
+    left: calc(100% - 32px);
+    top: 16px;
+    cursor: pointer;
+    i {
+      font-size: 24px;
+      line-height: 24px;
+      color: rgba(0,0,0,.6);
+    }
+    @include xb-xs-screen{
+      left: 0;
+      top: 0;
+      position: relative;
+      padding: 16px;
+    }
+  }
+
+  &__container{
+    padding: 32px 40px 26px;
+    @include xb-xs-screen{
+      padding: 0 16px 18px;
+    }
+  }
+
+  &__container-1{
+    padding: 24px 40px;
+    @include xb-xs-screen{
+      padding: 12px 0;
+    }
+  }
+
+  &__scroll{
+    height: calc(80vh - 165px);
+    overflow-y: scroll;
+    padding: 0 40px;
+    @include xb-xs-screen{
+      height: calc(100vh - 155px);
+      padding: 0 16px;
+    }
+  }
+
+  &__inner-container{
+    padding: 1px 0;
+    @include xb-xs-screen{
+      padding: 1px;
+    }
+  }
+}

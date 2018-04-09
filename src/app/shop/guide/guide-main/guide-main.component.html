@@ -1,0 +1,18 @@
+<div class="xb-guide__bg">
+  <div class="container">
+    <div class="xb-guide__title">Add Products to Sell</div>
+    <div class="xb-guide__subtitle">Add at least 3 featured collections to your store and start making money quikly!</div>
+    <div class="xb-guide__container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start"
+         fxLayoutAlign.xs="start">
+      <div class="xb-guide__margin-top" *ngFor="let item of [1,2,3,4];let i = index;" fxFlex="46" fxFlex.xs="none"
+        (click)="openGuideProducts()" >
+        <app-shop-guide-product-list></app-shop-guide-product-list>
+      </div>
+    </div>
+    <div class="xb-guide__margin-top-1 xb-guide__margin-bottom">
+      <div class="xb-guide__bottom-button" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary">Proceed to Next Step</button>
+      </div>
+    </div>
+  </div>
+</div>
