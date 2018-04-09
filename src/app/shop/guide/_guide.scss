@@ -50,12 +50,55 @@
     letter-spacing: -0.39px;
   }
 
+  &__text-2{
+    margin-top: 64px;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 15px;
+    text-align: center;
+    @include media();
+    @include xb-xs-screen{
+      margin-top: 40px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__template{
+    width: 100%;
+    padding-bottom: 112.5%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    @include box-shadow(0px 1px 3px 0px rgba(0,0,0,0.19));
+
+    > img {
+      display: block;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
   &__button{
     width: 100px;
     font-size: 12px;
     line-height: 32px;
     color: $whiteColor;
     background-color: $primaryColor;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: -0.29px;
+  }
+
+  &__button-1{
+    width: 100px;
+    font-size: 12px;
+    line-height: 30px;
+    color: $primaryColor;
+    background-color: $whiteColor;
+    border: 1px solid $primaryColor;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
@@ -174,6 +217,13 @@
     }
   }
 
+  &__margin-top-3{
+    margin-top: 17px;
+  }
+
+  &__margin-left{
+    margin-left: 12px;
+  }
 
   &__bottom-button{
     @include xb-xs-screen{
