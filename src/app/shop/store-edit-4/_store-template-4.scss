@@ -12,6 +12,12 @@
   overflow-x: hidden;
   background-color: $whiteColor;
   z-index: 500;
+  &__car-line{
+    width: 100vw;
+    height: 1px;
+    background-color: rgba(0,0,0,.12);
+
+  }
   &__edit-text-button {
     padding: 0 32px;
     line-height: 32px;

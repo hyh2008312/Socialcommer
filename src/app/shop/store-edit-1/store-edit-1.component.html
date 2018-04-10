@@ -56,18 +56,19 @@
     </div>
     <div>
       <div class="xb-store__title">My Collections</div>
-      <app-store-navigation [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"
+      <app-store-navigation [category]="category" [categories]="categories" (categoryChange)="changeCategory($event)"
                             fxShow="true" fxShow.xs="false"></app-store-navigation>
       <div class="xb-store__content xb-store__border-bottom">
         <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between start">
           <app-store-item-card-preview *ngFor="let item of product"
-                                       fxFlex.xs="48" fxFlex.gt-xs="30"
+                                       fxFlex.xs="48" fxFlex.gt-xs="31"
+                                       [isShowPromotionFlag]="isPromotion"
                                        (productId)="jumpGoodsDetail($event)"
                                        [product]="item" [status]="0"></app-store-item-card-preview>
-          <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+          <div fxFlex.xs="48" fxFlex.gt-xs="31"></div>
         </div>
         <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
-             *ngIf="nextPage && product.length > 0">
+             *ngIf="nextPage && product.length > 0" (click)="jumpList()">
           <div>
             SEE MORE
           </div>
@@ -244,9 +245,33 @@
   <app-store-edit-detail [productId]="selectProductId" (closeDetail)="changeGoodsDetail()"></app-store-edit-detail>
 </div>
 
-<div class="xb-store__background" *ngIf="storeCart">
-  <app-edit-cart-main [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()" (openStoreOrder)="OpenStoreOrder()" ></app-edit-cart-main>
+<div class="xb-store__background" *ngIf="storeCart" [ngStyle]="{'background-color':'white'}">
+  <div class="xb-4-template-edit__cancel-save">
+    <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
+        SAVE
+      </div>
+      <div class="xb-4-template-edit__button" (click)="close()">
+        CANCEL
+      </div>
+    </div>
+  </div>
+  <div class="xb-edit-1__line"></div>
+  <app-edit-cart-main [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()"
+                      (openStoreOrder)="OpenStoreOrder()"></app-edit-cart-main>
 </div>
-<div class="xb-store__background" *ngIf="storeOrder">
-  <app-edit-1-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()" (openStoreCart)="OpenStoreCart()" ></app-edit-1-order>
+<div class="xb-store__background" *ngIf="storeOrder" [ngStyle]="{'background-color':'white'}">
+  <div class="xb-4-template-edit__cancel-save">
+    <div class="xb-4-template-edit__nav-right" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
+        SAVE
+      </div>
+      <div class="xb-4-template-edit__button" (click)="close()">
+        CANCEL
+      </div>
+    </div>
+  </div>
+  <div class="xb-edit-1__line"></div>
+  <app-edit-1-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()"
+                    (openStoreCart)="OpenStoreCart()"></app-edit-1-order>
 </div>

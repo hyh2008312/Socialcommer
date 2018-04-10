@@ -9,7 +9,7 @@ import {MatDialog} from "@angular/material";
 @Component({
   selector: 'app-store-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../store.scss']
+  styleUrls: ['../../store.scss', '../_store-template-1.scss']
 })
 
 export class StoreDetailComponent implements OnInit {
@@ -65,6 +65,12 @@ export class StoreDetailComponent implements OnInit {
 
   //快递的国家
   deliveryCountry: string = 'United States';
+
+  // 活动是否开始和是否结束
+  isPromotionOnGoing: boolean = false;
+  isPromotionScheduled: boolean = false;
+  countdownLeftTime: number = 0;
+  progressPercentage: number = 0;
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
@@ -125,6 +131,14 @@ export class StoreDetailComponent implements OnInit {
             }
           }
 
+          if (self.product.promotionOngoing) {
+            self.isPromotionOnGoing = true;
+            this.progressPercentage = this.product.promotionOngoing.saleRatio;
+            self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
+          } else if (self.product.promotionScheduled) {
+            self.isPromotionScheduled = true;
+            self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
+          }
           this.isHaveVariant = data.attributes.length > 0;
           if (this.isHaveVariant) {
             self.arrangeVariant(data);
@@ -396,4 +410,26 @@ export class StoreDetailComponent implements OnInit {
   jumpReturn(): void {
     this.router.navigate([`./store/${this.displayName}/1/return`]);
   }
+
+  // 倒计时
+  timer: any;
+  _diff: number;
+  days: number;
+  hours: number;
+  minute: number;
+  second: number;
+  endDate = new Date(2018, 3, 4, 19, 26, 0, 123);
+
+  set settingTimes(time) {
+    this._diff = Math.floor(time / 1000);
+    this.days = Math.floor(this._diff / 3600 / 24);
+    this.hours = Math.floor(this._diff / 3600 % 24);
+    this.minute = Math.floor((this._diff % 3600) / 60);
+    this.second = (this._diff % 3600) % 60;
+    if (this.days == 0 && this.hours == 0 && this.minute == 0 && this.second == 0) {
+      clearInterval(this.timer);
+    }
+  }
+
+
 }

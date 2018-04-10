@@ -28,6 +28,14 @@ export class StoreListComponent implements OnInit {
 
   currency: string = 'USD';
 
+
+  //导航上是否显示flash sale
+  isHavePromotion: boolean = false;
+
+  //是否是promotion的请求(区分两种卡片)
+  isPromotion: boolean = false;
+
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -42,14 +50,22 @@ export class StoreListComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        let tempCategory = data.category.filter((data)=>{
-          return data.goodsCount !=0 ;
+        self.isHavePromotion = data.promotionNum > 0;
+        let tempCategory = data.category.filter((data) => {
+          return data.goodsCount != 0;
         });
         if (tempCategory.length > 1) {
-
-          self.categories = [{name: 'All'}, ...tempCategory];
+          if (self.isHavePromotion) {
+            self.categories = [{name: 'All'}, {name: 'Flash Sale', id: -100}, ...tempCategory];
+          } else {
+            self.categories = [{name: 'All'}, ...tempCategory];
+          }
         } else {
-          self.categories = [...tempCategory];
+          if (self.isHavePromotion) {
+            self.categories = [{name: 'Flash Sale', id: -100}, ...tempCategory];
+          } else {
+            self.categories = [...tempCategory];
+          }
         }
         self.category = self.categories[0];
 
@@ -72,9 +88,34 @@ export class StoreListComponent implements OnInit {
     this.showButton = $event;
   }
 
-  changeCategory() {
+  changeCategory(category) {
+    this.category = category;
     this.page = 1;
-    this.queryProduct(true);
+    if (this.category.id == -100) {
+      this.queryFlashSale(true);
+    } else {
+      this.queryProduct(true);
+    }
+  }
+
+  queryFlashSale(clearProduct?: boolean) {
+    let options = {
+      store: this.store.id,
+      page: this.page,
+      page_size: 48
+    };
+    let self = this;
+    self.storeService.getFlashSaleList(options).then((data) => {
+      if (clearProduct) {
+        self.product = [];
+        self.nextPage = true;
+      }
+      this.isPromotion = true;
+      self.product = self.product.concat(data.results);
+      if (data.next == null) {
+        self.nextPage = false;
+      }
+    });
   }
 
   queryProduct(clearProduct?: boolean) {
@@ -85,7 +126,7 @@ export class StoreListComponent implements OnInit {
       cat: this.category.id,
       store: this.store.id,
       page: this.page,
-      page_size: 12
+      page_size: 48
     };
     let self = this;
     self.storeService.getProductList(options).then((data) => {
@@ -93,6 +134,7 @@ export class StoreListComponent implements OnInit {
         this.product = [];
         this.nextPage = true;
       }
+      this.isPromotion = false;
       self.product = self.product.concat(data.results);
       if (data.next == null) {
         self.nextPage = false;
@@ -102,7 +144,11 @@ export class StoreListComponent implements OnInit {
 
   jumpList(): void {
     this.page++;
-    this.queryProduct();
+    if (this.category.id == -100) {
+      this.queryFlashSale();
+    } else {
+      this.queryProduct();
+    }
   }
 
   back(): void {

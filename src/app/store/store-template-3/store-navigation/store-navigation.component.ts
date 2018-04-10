@@ -13,6 +13,12 @@ export class StoreNavigationComponent implements OnInit {
 
   @Input() displayName: string;
   @Input() isShowBlog: boolean = false;
+  @Input() category: any;
+  @Input() selectCategory: any;
+
+  isShowCategoryFlag: boolean = false;
+
+  isCategoryBold: boolean = false;
 
 
   routerObservable: any;
@@ -22,11 +28,11 @@ export class StoreNavigationComponent implements OnInit {
     link: './',
     exact: true
   }, {
-    text: 'Collection',
+    text: 'Collections',
     link: './list',
     exact: false
   }, {
-    text: 'Blog',
+    text: 'Blogs',
     link: './blog',
     exact: true
   }, {
@@ -36,7 +42,11 @@ export class StoreNavigationComponent implements OnInit {
   }];
 
   constructor(private router: Router) {
-
+    let arraylist = this.router.url.split('/3/list/');
+    if (arraylist.length == 2) {
+      this.isCategoryBold = true;
+      this.isShowCategoryFlag = true;
+    }
   }
 
   ngOnInit(): void {
@@ -57,6 +67,21 @@ export class StoreNavigationComponent implements OnInit {
 
   jumpOrderList(): void {
     this.router.navigate([`./store/${this.displayName}/order`]);
+  }
+
+  jumpCategory(): void {
+    this.router.navigate([`./store/${this.displayName}/3/list`, this.selectCategory.id]);
+  }
+
+  isShowCategory(): void {
+    this.isShowCategoryFlag = !this.isShowCategoryFlag;
+  }
+
+  changeCategoryBold(isBold: boolean) {
+    this.isCategoryBold = isBold;
+    if (!isBold) {
+      this.isShowCategoryFlag = false;
+    }
   }
 
 }

@@ -351,82 +351,82 @@
   }
 
   &__card {
-    display: block;
-    width: 100%;
-    position: relative;
-    z-index: 0;
-    margin-bottom: 32px;
-
-    @include xb-xs-screen {
-      margin-bottom: 0;
-    }
-
-    &-image {
-      padding-bottom: 100%;
+      display: block;
       width: 100%;
-      height: 0;
-      overflow: hidden;
-      @include resetBorder();
       position: relative;
-      > a {
-        position: absolute;
+      z-index: 0;
+      margin-bottom: 32px;
+
+      @include xb-xs-screen {
+        margin-bottom: 0;
+      }
+
+      &-image {
+        padding-bottom: 100%;
         width: 100%;
-        height: 100%;
-        border-radius: 4px;
+        height: 0;
         overflow: hidden;
-        > img {
+        @include resetBorder();
+        position: relative;
+        > a {
           position: absolute;
-          left: 50%;
-          top: 50%;
           width: 100%;
-          @include transform(translate(-50%, -50%));
+          height: 100%;
+          border-radius: 4px;
+          overflow: hidden;
+          > img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100%;
+            @include transform(translate(-50%, -50%));
+          }
         }
       }
-    }
 
-    &-margin {
-      margin-left: 8px;
-      @include xb-xs-screen {
-        margin-left: 0;
-        margin-top: 8px;
+      &-margin {
+        margin-left: 8px;
+        @include xb-xs-screen {
+          margin-left: 0;
+          margin-top: 8px;
+        }
       }
-    }
 
-    &-content {
-      position: relative;
-      padding: 8px 0 16px;
-
-      @include xb-xs-screen {
+      &-content {
+        position: relative;
         padding: 8px 0 16px;
+
+        @include xb-xs-screen {
+          padding: 8px 0 16px;
+        }
+      }
+
+      &-title {
+        max-height: 56px;
+        height: 56px;
+        line-height: 28px;
+        font-weight: 700;
+        overflow: hidden;
+      }
+
+      &-price {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      &-sale {
+        background-color: $primaryColor;
+        border-radius: 4px;
+        padding: 0 8px;
+        color: $whiteColor;
+        line-height: 24px;
+      }
+
+      &-action {
+        position: relative;
+        display: none;
       }
     }
-
-    &-title {
-      max-height: 56px;
-      height: 56px;
-      line-height: 28px;
-      font-weight: 700;
-      overflow: hidden;
-    }
-
-    &-price {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    &-sale {
-      background-color: $primaryColor;
-      border-radius: 4px;
-      padding: 0 8px;
-      color: $whiteColor;
-      line-height: 24px;
-    }
-
-    &-action {
-      position: relative;
-      display: none;
-    }
-  }
 
   &__buttons-bg {
     margin-top: 20px;
@@ -684,10 +684,9 @@
       @include media();
       color: rgba(0, 0, 0, .54);
       width: 54px;
-      margin-right: 24px;
       margin-top: 6px;
       @include xb-xs-screen {
-        width: auto;
+        width: 54px;
         margin-right: 0;
         margin-bottom: 12px;
       }
@@ -743,7 +742,7 @@
       color: rgba(0, 0, 0, .87);
       padding: 0 8px;
       line-height: 32px;
-      margin-right: 40px;
+      margin-right: 16px;
       cursor: pointer;
       @include text-overflow();
       border: 2px solid transparent;

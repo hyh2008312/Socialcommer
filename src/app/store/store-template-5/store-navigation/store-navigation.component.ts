@@ -41,7 +41,7 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
     if (self.categories != null && self.categories.length != 0) {
       if (self.isFirstLoad) {
         self.isFirstLoad = false;
-        if (self.categories.length <= 5) {
+        if (self.categories.length <= 4) {
           self.showCategory = self.categories;
           self.isShowMore = false;
         } else {

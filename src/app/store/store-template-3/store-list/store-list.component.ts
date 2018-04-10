@@ -27,43 +27,47 @@ export class StoreListComponent implements OnInit {
   product: any = [];
   currency: string = 'USD';
 
+  id: number;
+  categoryName: string;
+  sub: any;
+
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
-
+    // 1.可以通过id去和分类列表进行对比 2.可以用请求下来的商品中的categoryName的名字
+    let self = this;
+    self.sub = this.activatedRoute.params.subscribe(params => {
+      self.id = parseInt(params['id']);
+      if (self.store.id) {
+        self.categoryName = self.getCategoryName();
+        self.changeCategory();
+      } else {
+        self.storeService.store.subscribe((data) => {
+          if (data) {
+            self.store = data;
+            self.text = data.description;
+            self.currency = data.currency.toUpperCase();
+            self.storeService.addTitleDescription({
+              title: data.name,
+              description: data.description,
+              shareImage: data.imageUrl
+            });
+            self.storeService.pageView({
+              pt: 'store',
+              vt: new Date().getTime(),
+              sid: data.id
+            });
+            self.categoryName = self.getCategoryName();
+            self.queryProduct();
+          }
+        });
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.shareLink = window.location.href;
-    let self = this;
-    let firstLoad = false;
-    this.storeService.store.subscribe((data) => {
-      if (data && !firstLoad) {
-        firstLoad = true;
-        self.store = data;
-        self.text = data.description;
-        self.currency = data.currency.toUpperCase();
-        self.storeService.addTitleDescription({
-          title: data.name,
-          description: data.description,
-          shareImage: data.imageUrl
-        });
-        let tempCategory = data.category.filter((data)=>{
-          return data.goodsCount !=0 ;
-        });
-        self.categories = [{name: 'All'}, ...tempCategory];
-        self.category = self.categories[0];
-        self.storeService.addStore(data);
 
-        self.storeService.pageView({
-          pt: 'store',
-          vt: new Date().getTime(),
-          sid: data.id
-        });
-
-        self.queryProduct();
-      }
-    });
   }
 
   scrollChange($event) {
@@ -82,7 +86,7 @@ export class StoreListComponent implements OnInit {
 
   queryProduct(clearCategory?: boolean) {
     let options = {
-      cat: this.category.id,
+      cat: this.id,
       store: this.store.id,
       relationStatus: 'published',
       page: this.page,
@@ -104,4 +108,17 @@ export class StoreListComponent implements OnInit {
   back(): void {
     this.router.navigate([`./store/${this.store.displayName}`]);
   }
+
+  getCategoryName(): string {
+    for (let index = 0; index < this.store.category.length; index++) {
+      if (this.id === this.store.category[index].id) {
+        return this.store.category[index].name;
+      }
+    }
+    return '';
+  }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
 }

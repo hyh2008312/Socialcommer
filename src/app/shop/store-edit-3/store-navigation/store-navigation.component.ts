@@ -19,9 +19,9 @@ export class StoreNavigationComponent implements OnInit {
   contents = [{
     text: 'Home'
   }, {
-    text: 'Collection'
+    text: 'Collections'
   }, {
-    text: 'Blog'
+    text: 'Blogs'
   }, {
     text: 'About'
   }];

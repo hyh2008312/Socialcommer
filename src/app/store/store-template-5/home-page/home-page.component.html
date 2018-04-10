@@ -28,7 +28,7 @@
       <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row wrap"
            fxLayoutGap.xs="16px" fxShow="true" fxShow.xs="false">
         <ng-container *ngFor="let item of category.goods ; let i=index">
-          <app-shop-item-product-card-5 *ngIf="i<3"
+          <app-shop-item-product-card-5 *ngIf="i<6"
                                         fxFlex.xs="100" fxFlex.gt-xs="30"
                                         [currency]="currency"
                                         [product]="item" [status]="0"></app-shop-item-product-card-5>

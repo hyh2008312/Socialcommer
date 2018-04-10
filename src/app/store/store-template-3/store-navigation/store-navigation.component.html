@@ -1,10 +1,47 @@
-<ng-container *ngFor="let value of contents">
+<!--<ng-container *ngFor="let value of contents">
   <div class="xb-store-template__navigation xb-pointer"
        *ngIf="!(value.text == 'BLOG' && !isShowBlog)"
        routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
     {{value.text}}
   </div>
-</ng-container>
+</ng-container>-->
+
+
+<div class="xb-store-template__navigation xb-pointer"
+     routerLink="{{contents[0].link}}" [routerLinkActive]="['active']"
+     (click)="changeCategoryBold(false)"
+     [routerLinkActiveOptions]="{'exact': contents[0].exact}">
+  {{contents[0].text}}
+</div>
+<div class="xb-store-template__category-navigation xb-pointer"
+     [ngClass]="{'xb-store-template__border-top-bottom':isShowCategoryFlag ,'xb-store-template__media':false}"
+     (click)="isShowCategory()">
+  Collections<span [ngClass]="{'xb-store-template__down-triangle':true}"></span>
+</div>
+<div class="xb-store-template__category-side" *ngIf="isShowCategoryFlag">
+  <ng-container *ngFor="let value of category">
+    <div class="xb-store-template__category-navigation-text xb-pointer"
+         (click)="changeCategoryBold(true)"
+         [routerLink]="['./list',value.id]" [routerLinkActive]="['active']">
+      {{value.name}}
+    </div>
+  </ng-container>
+</div>
+<div class="xb-store-template__navigation xb-pointer"
+     *ngIf="isShowBlog"
+     (click)="changeCategoryBold(false)"
+     routerLink="{{contents[2].link}}" [routerLinkActive]="['active']"
+     [routerLinkActiveOptions]="{'exact': contents[2].exact}">
+  {{contents[2].text}}
+</div>
+<div class="xb-store-template__navigation xb-pointer"
+     (click)="changeCategoryBold(false)"
+     routerLink="{{contents[3].link}}" [routerLinkActive]="['active']"
+     [routerLinkActiveOptions]="{'exact': contents[3].exact}">
+  {{contents[3].text}}
+</div>
+
+
 <div class="xb-store-template__navigation xb-pointer" (click)="jumpOrderList()"
      fxShow="false" fxShow.xs="true">VIEW YOUR ORDER
 </div>

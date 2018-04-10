@@ -44,10 +44,17 @@ export class MainPageComponent implements OnInit {
   storeName: string = '';
   currency: string = 'USD';
 
+
   titleTag1 = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">Welcome to The Beauty Store!</strong></p>';
   descriptionTag1 = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);">Follow beauty tips and find unique high-quality makeup tools, cosmetics and hairstyles all in once place.</strong></p>';
   userTag1 = '<p>Welcome to my curated online store. This is a place to share you with beauty tips and high-quality unique makeup tools, cosmetics, hairstyles and everyday essentials. Please browse my collections and grab an item!</p>';
   imageSrc1 = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
+
+  //导航上是否显示flash sale
+  isHavePromotion: boolean = false;
+
+  //是否是promotion的请求(区分两种卡片)
+  isPromotion: boolean = false;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -84,13 +91,24 @@ export class MainPageComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        let tempCategory = data.category.filter((data)=>{
-          return data.goodsCount !=0 ;
+
+        self.isHavePromotion = data.promotionNum > 0;
+
+        let tempCategory = data.category.filter((data) => {
+          return data.goodsCount != 0;
         });
         if (tempCategory.length > 1) {
-          self.categories = [{name: 'All'}, ...tempCategory];
+          if (self.isHavePromotion) {
+            self.categories = [{name: 'All'}, {name: 'Flash Sale', id: -100}, ...tempCategory];
+          } else {
+            self.categories = [{name: 'All'}, ...tempCategory];
+          }
         } else {
-          self.categories = [...tempCategory];
+          if (self.isHavePromotion) {
+            self.categories = [{name: 'Flash Sale', id: -100}, ...tempCategory];
+          } else {
+            self.categories = [...tempCategory];
+          }
         }
         self.category = self.categories[0];
 
@@ -129,14 +147,26 @@ export class MainPageComponent implements OnInit {
       this.router.navigate([`store/${this.store.displayName}/1/list`]);
     } else {
       this.page++;
-      this.queryProduct();
+      if (this.category.id == -100) {
+        this.queryFlashSale();
+      } else {
+        this.queryProduct();
+      }
     }
   }
 
-  changeCategory() {
+  changeCategory(category) {
+    this.category = category;
     this.page = 1;
-    this.queryProduct(true);
+    if (this.category.id == -100) {
+      this.isPromotion = true ;
+     this.queryFlashSale(true);
+    } else {
+      this.isPromotion = false ;
+      this.queryProduct(true);
+    }
   }
+
 
   queryProduct(clearProduct?: boolean) {
     if (this.categories.length <= 0) {
@@ -146,10 +176,28 @@ export class MainPageComponent implements OnInit {
       cat: this.category.id,
       store: this.store.id,
       page: this.page,
-      page_size: 12
+      page_size: 48
     };
     let self = this;
     self.storeService.getProductList(options).then((data) => {
+      if (clearProduct) {
+        self.product = [];
+        self.nextPage = true;
+      }
+      self.product = self.product.concat(data.results);
+      if (data.next == null) {
+        self.nextPage = false;
+      }
+    });
+  }
+  queryFlashSale(clearProduct?: boolean) {
+    let options = {
+      store: this.store.id,
+      page: this.page,
+      page_size: 48
+    };
+    let self = this;
+    self.storeService.getFlashSaleList(options).then((data) => {
       if (clearProduct) {
         self.product = [];
         self.nextPage = true;

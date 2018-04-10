@@ -1,4 +1,4 @@
-<div class="background-bg-light" >
+<div class="background-bg-light">
   <div>
     <div class="xb-shop__products-title-bg"
          fxLayout="row" fxLayoutAlign="space-between center"
@@ -7,11 +7,12 @@
       <div>
         <div class="xb-shop__products-title">Find Awesome Dropshipping Products to Sell</div>
         <div class="xb-shop__products-title-1">All products are dropshipped by verified suppliers in 5 days with
-          {{currency == 'INR'? 10: 30}} day return guarantee!</div>
+          {{currency == 'INR'? 10: 30}} day return guarantee!
+        </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="end center">
         <form class="xb-shop__products-search" [formGroup]="searchForm"
-              fxLayout="row" fxLayoutAlign="start center" >
+              fxLayout="row" fxLayoutAlign="start center">
 
           <input type="text" placeholder="Search product" formControlName="searchKey"
                  [(ngModel)]="searchKey" (keyup.enter)="getSupplyProductList(isSearch)"/>
@@ -26,7 +27,7 @@
     <div class="xb-shop__products-title-bg-1" fxLayout="row" fxLayoutAlign="start center">
       <div>
         <app-shop-find-product-category [(category)]="category" [categories]="categories"
-                                       (categoryChange)="changeCategory($event)"></app-shop-find-product-category>
+                                        (categoryChange)="changeCategory($event)"></app-shop-find-product-category>
       </div>
     </div>
     <div class="md-padding-left-2 md-padding-right-2">
@@ -37,6 +38,12 @@
               {{length}} {{length > 1? 'Results':'Result'}} for
               "<span class="xb-shop__products-search-result">{{searchKey}}</span>"
             </div>
+          </div>
+          <div class="md-margin-right-4" *ngIf="isShowPromotionFlag">
+            <mat-radio-group [ngModel]="promotionState" (ngModelChange)="changePromotionState($event)">
+              <mat-radio-button class="md-margin-right-1" color="primary" value="ongoing">On Going</mat-radio-button>
+              <mat-radio-button color="primary" value="scheduled">Upcoming</mat-radio-button>
+            </mat-radio-group>
           </div>
           <div class="xb-shop__products-padding-right unicorn-theme" fxLayout="row" fxLayoutAlign="start center">
             <div class="md-margin-right-2">Sort by</div>
@@ -66,7 +73,7 @@
         </div>
       </div>
       <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between start">
-        <app-product-item-card *ngFor="let product of productList" [product]="product" fxFlex.xs="100" fxFlex.sm="32"
+        <app-product-item-card *ngFor="let product of productList" [product]="product" [isShowPromotionFlag]="isShowPromotionFlag" fxFlex.xs="100" fxFlex.sm="32"
                                fxFlex.gt-sm="24"></app-product-item-card>
         <div fxFlex.xs="100" fxFlex.sm="32"
              fxFlex.gt-sm="24"></div>

@@ -7,6 +7,11 @@
 }
 
 .xb-store-template {
+  &__line {
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .12);
+    height: 1px;
+  }
 
   &__store {
     &-bg {
@@ -601,7 +606,7 @@
     }
 
     &-bg-1 {
-      margin-top:32px;
+      margin-top: 32px;
       background-color: #efefef;
       border-radius: 4px;
       padding: 24px;
@@ -1247,20 +1252,20 @@
     width: 100%;
   }
 }
+
 .xb-4-template-edit {
   &__divider-line {
     background-color: #dcdcdc;
     height: 1px;
     width: 100vw;
   }
-  &__cancel-save{
+  &__cancel-save {
     position: relative;
     height: 72px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
   }
-
 
   &__magleft-12 {
     margin-left: 12px;
@@ -1344,6 +1349,7 @@
     font-size: 14px;
   }
 }
+
 .xb-store-template__cart {
   &-position {
     position: relative;

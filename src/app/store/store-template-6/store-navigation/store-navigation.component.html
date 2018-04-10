@@ -17,7 +17,7 @@
   <div class="xb-4-template-navigation xb-pointer"
        *ngIf="!isShowMore && isHaveBlog"
        routerLink="./blog" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': true}">
-    BLOG
+    Blogs
   </div>
   <div class="xb-4-template-navigation__more-bg" *ngIf="isShowMore">
     <div fxLayout="row" fxLayoutAlign="start center" class="xb-pointer" (click)="changeShowMoreCategory()">
@@ -36,7 +36,7 @@
       <div class="xb-4-template-navigation__more-flex xb-pointer" (click)="hiddenShowMoreCategory()"
            *ngIf="isShowMore && isHaveBlog"
            routerLink="./blog" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': true}">
-        Blog
+        Blogs
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@
   <div class="xb-4-template-navigation__side-flex xb-pointer"
        *ngIf="isHaveBlog"
        routerLink="./blog" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': true}">
-    Blog
+    Blogs
   </div>
   <div class="xb-4-template-navigation__side-flex" (click)="jumpOrder()">
     View Your Order

@@ -1,72 +1,72 @@
 @import "../../../styles/utils/_index";
 @import "../../../styles/_variables";
 
-.xb-shop{
+.xb-shop {
 
-  &__padding-bottom{
+  &__padding-bottom {
     padding-bottom: 32px;
   }
 
-  &__tab{
+  &__tab {
     line-height: 40px;
     margin-right: 54px;
     white-space: nowrap;
     cursor: pointer;
 
-    &.active{
+    &.active {
       @include media();
       color: $primaryColor;
       border-bottom: 2px solid $primaryColor;
     }
-    &-bg{
-      @include xb-xs-screen{
+    &-bg {
+      @include xb-xs-screen {
         overflow-x: scroll;
       }
     }
 
-    &-scroll{
-      border-bottom: 1px solid rgba(0,0,0, .12);
+    &-scroll {
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
       ::-webkit-scrollbar {
         height: 2px;
       }
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         padding: 0 16px;
       }
     }
   }
 
-  &__title{
+  &__title {
     font-size: 16px;
     @include media();
   }
 
-  &__title-1{
+  &__title-1 {
     font-size: 24px;
     @include media();
   }
 
-  &__text{
+  &__text {
     line-height: 24px;
   }
 
-  &__margin-top{
+  &__margin-top {
     margin-top: 12px;
   }
 
-  &__content{
+  &__content {
     padding: 24px 0;
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       padding: 16px;
     }
   }
 
-  &__recommend-content{
-    @include xb-xs-screen{
+  &__recommend-content {
+    @include xb-xs-screen {
       padding: 0 16px;
     }
   }
 
-  &__width{
+  &__width {
     width: 200px;
   }
 
@@ -193,6 +193,7 @@
       font-size: 24px;
       line-height: 24px;
       @include media();
+      white-space: nowrap;
 
       @include xb-xs-screen {
         font-size: 16px;
@@ -206,9 +207,11 @@
     &-sale {
       background-color: $orangeColor;
       border-radius: 4px;
-      padding: 0 8px;
+      padding: 0 4px;
+      font-size: 12px;
       color: $whiteColor;
-      line-height: 28px;
+      white-space: nowrap;
+      line-height: 24px;
 
       @include xb-xs-screen {
         line-height: 24px;
@@ -266,7 +269,6 @@
       @include media();
       color: rgba(0, 0, 0, .54);
       width: 54px;
-      margin-right: 24px;
       margin-top: 6px;
       @include xb-xs-screen {
         width: auto;
@@ -423,7 +425,7 @@
       }
     }
 
-    &-buttons-1{
+    &-buttons-1 {
       border-radius: 4px;
       line-height: 38px;
       border: 1px solid $primaryColor;
@@ -431,10 +433,10 @@
       text-align: center;
       cursor: pointer;
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         line-height: 34px;
       }
-      &:hover{
+      &:hover {
         background-color: $primaryColor;
         color: $whiteColor;
       }
@@ -450,4 +452,50 @@
       display: block;
     }
   }
+}
+
+.xb-store-promotion {
+  background-color: #F1F1F1;
+  border-radius: 4px;
+  padding: 24px 8px;
+
+  &__processing {
+    position: relative;
+    width: 100%;
+    height: 3px;
+    border-radius: 1px;
+    overflow: hidden;
+    margin-top: 12px;
+    background-color: white;
+    &-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: #ffc400;
+      height: 3px;
+    }
+  }
+  &__upcoming {
+    font-size: 12px;
+    width: 68px;
+    color: #B38A00;
+    @include regular();
+    text-align: center;
+    border-radius: 10px;
+    line-height: 20px;
+    background-color: #F5E3A6;
+    &-time {
+      font-size: 12px;
+      @include regular();
+      margin-left: 8px;
+      white-space: nowrap;
+    }
+  }
+  &__count {
+    &-word {
+      font-size: 12px;
+      @include regular();
+    }
+  }
+
 }
