@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GuideService } from '../guide.service';
 import { UserService } from '../../../shared/services/user/user.service';
 import { MatDialog } from "@angular/material";
 
 import { GuideProductDialogComponent } from '../guide-product-dialog/guide-product-dialog.component';
+import { GuideTipsDialogComponent } from '../guide-tips-dialog/guide-tips-dialog.component';
+import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 
 @Component({
   selector: 'app-shop-guide-main',
@@ -14,13 +15,25 @@ import { GuideProductDialogComponent } from '../guide-product-dialog/guide-produ
 
 export class GuideMainComponent implements OnInit {
 
+  loading: boolean = false;
+  sub: any;
 
   constructor(
     private guideService: GuideService,
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {
-
+    this.sub = this.router.events.subscribe((s) => {
+      if(s instanceof NavigationStart) {
+        if(s.url.split('guide')[0] != null) {
+          this.loading = true;
+        }
+      }
+      if(s instanceof NavigationEnd) {
+        this.loading = false;
+      }
+    });
   }
 
   ngOnInit():void {
@@ -36,6 +49,25 @@ export class GuideMainComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
     });
+  }
+
+
+  openTipsDialog() {
+    let dialogRef = this.dialog.open(GuideTipsDialogComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  close() {
+    this.loading = false;
   }
 
 }

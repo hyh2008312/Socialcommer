@@ -123,6 +123,7 @@ textarea.mat-input-element{
   overflow: hidden !important;
   @include xb-xs-screen{
     background-color: transparent;
+    @include box-shadow(none !important);
   }
 }
 

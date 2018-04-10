@@ -5,6 +5,8 @@ import { GuideProductItemComponent } from './guide-product-item/guide-product-it
 import { GuideProductListComponent } from './guide-product-list/guide-product-list.component';
 import { GuideProductDialogComponent } from './guide-product-dialog/guide-product-dialog.component';
 import { GuideProductDialogItemComponent } from './guide-product-dialog-item/guide-product-dialog-item.component';
+import { GuideTipsDialogComponent } from './guide-tips-dialog/guide-tips-dialog.component';
+import { GuideStorePreviewComponent } from './guide-store-preview/guide-store-preview.component';
 
 import { GuideRoutingModule } from './guide.routes.module';
 
@@ -24,10 +26,13 @@ import { SharedModule } from '../../shared/shared.module';
     GuideProductItemComponent,
     GuideProductListComponent,
     GuideProductDialogItemComponent,
-    GuideProductDialogComponent
+    GuideProductDialogComponent,
+    GuideTipsDialogComponent,
+    GuideStorePreviewComponent
   ],
   entryComponents: [
-    GuideProductDialogComponent
+    GuideProductDialogComponent,
+    GuideTipsDialogComponent
   ],
   providers: [
     GuideService
