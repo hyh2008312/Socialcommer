@@ -1,4 +1,6 @@
 import { environment } from './src/environments/environment';
+import fetch from 'node-fetch';
+import 'localstorage-polyfill';
 
 const domino = require('domino');
 const fs = require('fs');
@@ -6,7 +8,6 @@ const path = require('path');
 const template = fs.readFileSync(path.join(__dirname, '.', 'browser', 'index.html')).toString();
 const win = domino.createWindow(template);
 const files = fs.readdirSync(`${process.cwd()}/dist/server`);
-import 'localstorage-polyfill';
 // const styleFiles = files.filter(file => file.startsWith('styles'));
 // const hashStyle = styleFiles[0].split('.')[1];
 // const style = fs.readFileSync(path.join(__dirname, '.', 'server', `styles.${hashStyle}.bundle.css`)).toString();

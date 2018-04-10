@@ -1,4 +1,6 @@
 import { environment } from './src/environments/environment';
+import fetch from 'node-fetch';
+import 'localstorage-polyfill';
 
 const domino = require('domino');
 const fs = require('fs');
@@ -6,7 +8,6 @@ const path = require('path');
 const template = fs.readFileSync(path.join(__dirname, '.', 'browser', 'index.html')).toString();
 const win = domino.createWindow(template);
 const files = fs.readdirSync(`${process.cwd()}/test-dist/server`);
-import 'localstorage-polyfill';
 // const styleFiles = files.filter(file => file.startsWith('styles'));
 // const hashStyle = styleFiles[0].split('.')[1];
 // const style = fs.readFileSync(path.join(__dirname, '.', 'server', `styles.${hashStyle}.bundle.css`)).toString();
@@ -59,7 +60,7 @@ import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 const BROWSER_FOLDER = join(process.cwd(), 'static');
 
 // Load the index.html file containing referances to your application bundle.
-const index = readFileSync(join('browser', 'index.html'), 'utf8');
+const index = readFileSync(join(__dirname, '.', 'browser', 'index.html'), 'utf8');
 
 let previousRender = Promise.resolve();
 
