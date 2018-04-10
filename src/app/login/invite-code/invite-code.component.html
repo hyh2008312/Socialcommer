@@ -13,7 +13,7 @@
               Welcome back to SocialCommer!<br>
               Your application is currently under review. We will notify you via email once your application is approved.
             </div>
-            <div class="xb-login__margin-top" fxLayout="row" fxLayoutAlign="start center" fxHide
+            <div class="xb-login__margin-top" fxLayout="row" fxLayoutAlign="start center" *ngIf="false"
                  fxLayout.xs="column" fxLayoutAlign.xs="start start" >
               <div>
                 <div>
@@ -54,7 +54,7 @@
       Your application is currently under review. We will notify you via email once your application is approved.
     </div>
     <div class="xb-login__margin-top" fxLayout="row" fxLayoutAlign="start center"
-         fxLayout.xs="column" fxLayoutAlign.xs="start start" fxHide>
+         fxLayout.xs="column" fxLayoutAlign.xs="start start" *ngIf="false">
       <div>
         <div>
           <div class="xb-login__error md-margin-bottom-2" *ngIf="inviteErr">{{inviteErr}}</div>

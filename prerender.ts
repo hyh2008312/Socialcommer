@@ -60,7 +60,7 @@ import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens';
 const BROWSER_FOLDER = join(process.cwd(), 'static');
 
 // Load the index.html file containing referances to your application bundle.
-const index = readFileSync(join('browser', 'index.html'), 'utf8');
+const index = readFileSync(join(__dirname, '.', 'browser', 'index.html'), 'utf8');
 
 let previousRender = Promise.resolve();
 
