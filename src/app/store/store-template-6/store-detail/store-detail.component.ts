@@ -101,23 +101,19 @@ export class StoreDetailComponent implements OnInit {
   ngOnInit(): void {
     this.shareLink = window.location.href;
     window.addEventListener('scroll', function (e) {
-        console.log(this.document.querySelector('html').scrollTop);
-        console.log(this.document.getElementById('xb-6-detail-top').offsetHeight);
-        console.log(this.document.getElementById('xb-6-goods').offsetHeight);
-
-        let Atheight = this.document.querySelector('html').scrollTop;
-
-        let cartHeight = this.document.getElementById('xb-6-detail-top').offsetHeight;
-
-        let detialHeight = this.document.getElementById('xb-6-goods').offsetHeight;
-
-        if (Atheight + cartHeight >= detialHeight) {
-          this.document.getElementById('xb-6-detail-top').style.position = 'absolute';
-          this.document.getElementById('xb-6-detail-top').style.top = (detialHeight + 112 - cartHeight) + "px";
-        } else {
-          this.document.getElementById('xb-6-detail-top').style.position = 'fixed';
-          this.document.getElementById('xb-6-detail-top').style.top = "auto";
+        if (this.document.getElementById('xb-6-detail-top')) {
+          let Atheight = this.document.querySelector('html').scrollTop;
+          let cartHeight = this.document.getElementById('xb-6-detail-top').offsetHeight;
+          let detialHeight = this.document.getElementById('xb-6-goods').offsetHeight;
+          if (Atheight + cartHeight >= detialHeight) {
+            this.document.getElementById('xb-6-detail-top').style.position = 'absolute';
+            this.document.getElementById('xb-6-detail-top').style.top = (detialHeight + 112 - cartHeight) + "px";
+          } else {
+            this.document.getElementById('xb-6-detail-top').style.position = 'fixed';
+            this.document.getElementById('xb-6-detail-top').style.top = "auto";
+          }
         }
+
       }
     );
 

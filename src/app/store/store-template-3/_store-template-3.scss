@@ -89,10 +89,61 @@
   &__navigation {
     text-align: center;
     font-size: 18px;
-    margin-bottom: 24px;
+    line-height: 40px;
+    height: 40px;
     &.active {
       @include media();
     }
+  }
+  &__category-navigation {
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
+    height: 40px;
+    &:hover {
+      border-top: 1px solid rgba(0, 0, 0, .12);
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
+    }
+
+    &-text {
+      text-align: center;
+      font-size: 14px;
+      line-height: 36px;
+      height: 36px;
+      &.active {
+        @include media();
+      }
+    }
+  }
+  &__border-top-bottom {
+    border-top: 1px solid rgba(0, 0, 0, .12);
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+  }
+  &__media{
+    @include media();
+  }
+  &__up-triangle {
+    margin-left: 6px;
+    position: relative;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+  }
+  &__down-triangle {
+    position: relative;
+    top: 15px;
+    margin-left: 6px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+  }
+  &__category-side {
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
   }
 
   &__category {
@@ -370,7 +421,13 @@
       font-size: 24px;
       @include media();
       margin-top: 72px;
-      margin-bottom: 24px;
+      margin-bottom: 72px;
+      @include xb-xs-screen{
+        font-size: 16px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        margin-left: 16px;
+      }
     }
 
     &-fixed {
@@ -384,7 +441,6 @@
 
     &-container {
       margin: 0 64px;
-      height: 215px;
       @include xb-xs-screen {
         margin: 0;
         height: auto;
@@ -993,4 +1049,10 @@
     color: black;
   }
 
+}
+
+.xb-store-template-category {
+  &__title {
+
+  }
 }

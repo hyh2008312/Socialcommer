@@ -1,12 +1,17 @@
 <div class="xb-shop__card">
   <div>
     <div class="xb-shop__card-image">
-      <div class="xb-pointer" (click)="jumpLink()"
+      <div class="xb-pointer xb-shop__card-image-content" (click)="jumpLink()"
            [@goodsState]="animationState"
            (mouseenter)="changeAnimationState()"
            (mouseleave)="changeAnimationState()">
         <img [src]="product.mainImage">
       </div>
+      <div *ngIf="isPromotionOnGoing && !isShowPromotionFlag" class="xb-shop__promotion-ongoing">Ongoing</div>
+      <div *ngIf="isPromotionOnGoing && !isShowPromotionFlag" class="xb-shop__promotion-countdown">
+        <span *ngIf="days>0"> {{days>1?days+' Days,':'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}} Left
+      </div>
+      <div *ngIf="isPromotionScheduled && !isShowPromotionFlag" class="xb-shop__promotion-upcoming">Upcoming</div>
     </div>
     <div class="xb-shop__card-content" fxLayout="column">
       <div fxLayout="row" fxLayoutAlign="start center">
@@ -16,28 +21,57 @@
       </div>
       <div class="xb-shop__card-title xb-pointer" (click)="jumpLink()">{{product.title}}</div>
       <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center" *ngIf="currency != 'INR'">
-        <div class="xb-shop__card-price">{{product.saleUnitPrice | exchangeCurrency:currency | currency: currency}}</div>
-        <div class="line-through md-margin-left-1" *ngIf="product.unitPrice> 0">
-          {{product.unitPrice | exchangeCurrency:currency |currency: currency }}</div>
+        <div class="xb-shop__card-price">{{product.saleUnitPrice | exchangeCurrency:currency | currency: currency}}
+        </div>
+        <div class="xb-shop__card-original-price line-through md-margin-left-1" *ngIf="product.unitPrice> 0">
+          {{product.unitPrice | exchangeCurrency:currency |currency: currency }}
+        </div>
         <div class="xb-shop__card-sale md-margin-left-1" *ngIf="product.unitPrice > 0">
-          {{product.saleUnitPrice|saleDiscount:product.unitPrice}} OFF</div>
+          {{product.saleUnitPrice|saleDiscount:product.unitPrice}} OFF
+        </div>
       </div>
       <div class="md-margin-top-1" *ngIf="currency == 'INR'">
         <div fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-shop__card-price">{{product.saleUnitPrice | exchangeCurrency:currency | currency: currency}}</div>
-          <div class="line-through md-margin-left-1" *ngIf="product.unitPrice> 0">
-            {{product.unitPrice | exchangeCurrency:currency |currency: currency }}</div>
+          <div class="xb-shop__card-price">{{product.saleUnitPrice | exchangeCurrency:currency | currency: currency}}
+          </div>
+          <div class="xb-shop__card-original-price line-through md-margin-left-1" *ngIf="product.unitPrice> 0">
+            {{product.unitPrice | exchangeCurrency:currency |currency: currency }}
+          </div>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-shop__card-sale md-margin-top-1" *ngIf="product.unitPrice > 0">
-            {{product.saleUnitPrice|saleDiscount:product.unitPrice}} OFF</div>
+            {{product.saleUnitPrice|saleDiscount:product.unitPrice}} OFF
+          </div>
         </div>
       </div>
-      <div class="xb-shop__card-action md-margin-top-2" *ngIf="!isRecommend">
-        <div fxLayout="column">
+      <div *ngIf="isPromotionOnGoing && isShowPromotionFlag">
+        <div class="xb-shop__card-processing">
+          <div class="xb-shop__card-processing-line"></div>
+          <div class="xb-shop__card-processing-line" [ngStyle]="{'width':progressPercentage+'%'}"></div>
+        </div>
+        <div class="xb-shop__card-count md-margin-top-1" fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="xb-shop__card-count-word">{{progressPercentage}}% claimed</div>
+          <div class="xb-shop__card-count-word">
+            <span *ngIf="days>0"> {{days>1?days+' Days,':'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}} Left
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isPromotionScheduled && isShowPromotionFlag" [ngStyle]="{'margin-top':'18px'}" fxLayout="row"
+           fxLayoutAlign="start center">
+        <div class="xb-shop__card-upcoming">Upcoming</div>
+        <div class="xb-shop__card-upcoming-time"><span class="xb-bold">Starts in:</span> {{days}} {{days>1 ?
+          'Days':'Day'}}, {{hours}}
+          {{hours>1 ? 'Hours':'Hour'}}
+        </div>
+      </div>
+
+      <div class="xb-shop__card-action md-margin-top-2" *ngIf="!isRecommend" fxLayout="row"
+           fxLayoutAlign="space-between center">
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="47">
           <button mat-raised-button color="primary" (click)="shareToEarn()">Share to Earn</button>
         </div>
-        <div class="md-margin-top-1" fxLayout="column">
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="47">
           <div class="xb-shop__card-button" (click)="jumpEditLink()">Add to Sell</div>
         </div>
       </div>

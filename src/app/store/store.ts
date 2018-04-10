@@ -21,7 +21,7 @@ export class Store {
   currency: string;
   country: any;
   template: any;
-
+  promotionNum:number;
   uid: any;
   templateId: any;
   context: any;

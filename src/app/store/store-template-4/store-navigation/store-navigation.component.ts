@@ -27,7 +27,7 @@ export class StoreNavigationComponent implements OnInit {
     link: './list',
     exact: false
   }, {
-    text: 'Blog',
+    text: 'Blogs',
     link: './blog',
     exact: true
   }, {

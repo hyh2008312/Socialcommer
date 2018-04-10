@@ -9,7 +9,7 @@ import {MatDialog} from "@angular/material";
 @Component({
   selector: 'app-store-list-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../store.scss']
+  styleUrls: ['../../store.scss','../_store-template-1.scss']
 })
 
 export class StoreListDetailComponent implements OnInit {
@@ -64,6 +64,12 @@ export class StoreListDetailComponent implements OnInit {
 
   //快递的国家
   deliveryCountry: string = 'United States';
+
+  // 活动是否开始和是否结束
+  isPromotionOnGoing: boolean = false;
+  isPromotionScheduled: boolean = false;
+  countdownLeftTime: number = 0;
+  progressPercentage: number = 0;
 
   constructor(
     public router: Router,
@@ -124,6 +130,17 @@ export class StoreListDetailComponent implements OnInit {
               self.imageSources.push(value);
             }
           }
+          //促销活动
+
+          if (self.product.promotionOngoing) {
+            self.isPromotionOnGoing = true;
+            this.progressPercentage = this.product.promotionOngoing.saleRatio;
+            self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
+          } else if (self.product.promotionScheduled) {
+            self.isPromotionScheduled = true;
+            self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
+          }
+
 
           this.isHaveVariant = data.attributes.length > 0;
           if (this.isHaveVariant) {

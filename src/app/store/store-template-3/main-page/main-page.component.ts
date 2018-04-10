@@ -23,6 +23,8 @@ export class MainPageComponent implements OnInit {
   showBlogFlag: number = 1;
   //是否显示根据两者条件
   isBlog: boolean = false;
+  categories: any;
+  selectCategoryMain: any;
 
   constructor(private router: Router,
               private storeService: StoreService) {
@@ -38,6 +40,15 @@ export class MainPageComponent implements OnInit {
         if (data.context && data.context.blogFlag) {
           self.showBlogFlag = data.context.blogFlag;
         }
+
+        let tempCategory = data.category.filter((data) => {
+          return data.goodsCount != 0;
+        });
+        self.categories = tempCategory;
+        if (self.categories.length > 0) {
+          self.selectCategoryMain = self.categories[0];
+        }
+
         self.text = data.description;
         self.displayName = data.displayName;
         self.ownerId = data.ownerId;

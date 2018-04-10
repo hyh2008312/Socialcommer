@@ -109,6 +109,7 @@ export class Store{
   image: any;
 
   displayName: string;
+  promotionNum:number;
 }
 
 export class Image{

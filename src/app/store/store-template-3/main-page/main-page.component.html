@@ -11,7 +11,7 @@
       </div>
     </div>
     <div fxFlex="noshrink">
-      <app-store-template-3-navigation [isShowBlog]="isBlog"></app-store-template-3-navigation>
+      <app-store-template-3-navigation [isShowBlog]="isBlog" [category]="categories" [selectCategory]="selectCategoryMain" ></app-store-template-3-navigation>
     </div>
     <app-store-template-3-store-footer [text]="text" [name]="storeName" [displayName]="displayName"></app-store-template-3-store-footer>
   </div>
@@ -32,7 +32,7 @@
       <div class="xb-store-template__top-navigation" fxLayout="row" fxLayoutAlign="end center">
         <i class="material-icons" (click)="openDialog()">close</i>
       </div>
-      <app-store-template-3-navigation (routerChange)="openDialog($event)" [displayName]="displayName" [isShowBlog]="isBlog" ></app-store-template-3-navigation>
+      <app-store-template-3-navigation [category]="categories" [selectCategory]="selectCategoryMain" (routerChange)="openDialog($event)" [displayName]="displayName" [isShowBlog]="isBlog" ></app-store-template-3-navigation>
     </div>
     <div fxFlex="noshrink">
       <router-outlet></router-outlet>

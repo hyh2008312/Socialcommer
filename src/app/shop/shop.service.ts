@@ -309,6 +309,22 @@ export class ShopService {
       .catch(this.handleError);
   }
 
+  getFlashSaleList(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers:headers});
+    const url = `${this.baseUrl.url}store/promotion/goods/list/?${this.serializeParams(product)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+
   getSubCategory(category: any): Promise<any> {
     let headers = new Headers({
       'Content-Type': 'application/json'

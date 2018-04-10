@@ -22,7 +22,7 @@ export class StoreNavigationEditFourComponent implements OnInit {
       text: 'Collections'
     },
     {
-      text: 'Blog'
+      text: 'Blogs'
     },
     {
       text: 'About'

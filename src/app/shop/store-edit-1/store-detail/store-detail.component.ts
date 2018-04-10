@@ -6,7 +6,7 @@ import {ShopService} from "../../shop.service";
 @Component({
   selector: 'app-store-edit-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../../store/store.scss']
+  styleUrls: ['./_store-template-edit.scss']
 })
 
 export class StoreDetailComponent implements OnInit, OnChanges {
@@ -62,6 +62,12 @@ export class StoreDetailComponent implements OnInit, OnChanges {
 
   //快递的国家
   deliveryCountry: string = 'United States';
+
+  // 活动是否开始和是否结束
+  isPromotionOnGoing: boolean = false;
+  isPromotionScheduled: boolean = false;
+  countdownLeftTime: number = 0;
+  progressPercentage: number = 0;
 
   @Input() productId: number;
   @Output() public closeDetail: EventEmitter<any> = new EventEmitter();
@@ -127,6 +133,15 @@ export class StoreDetailComponent implements OnInit, OnChanges {
             for (let value of data.images) {
               self.imageSources.push(value);
             }
+          }
+
+          if (self.product.promotionOngoing) {
+            self.isPromotionOnGoing = true;
+            this.progressPercentage = this.product.promotionOngoing.saleRatio;
+            self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
+          } else if (self.product.promotionScheduled) {
+            self.isPromotionScheduled = true;
+            self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
           }
 
           this.isHaveVariant = data.attributes.length > 0;

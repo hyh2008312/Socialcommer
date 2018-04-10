@@ -33,6 +33,7 @@ import { StoreService } from './store.service';
 import { AuthenticationService } from '../../shared/services/authentication/authentication.service';
 
 import { SharedModule } from '../../shared/shared.module';
+import {FindCountdownComponent} from "./find-countdown/find-countdown.component";
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { SharedModule } from '../../shared/shared.module';
     ProductShareDialogComponent,
     SnackItemBarSuccessComponent,
     FindProductsShareComponent,
-    ProductShareSuccessComponent
+    ProductShareSuccessComponent,
+    FindCountdownComponent
   ],
   entryComponents: [
     CategoryCreateDialogComponent,

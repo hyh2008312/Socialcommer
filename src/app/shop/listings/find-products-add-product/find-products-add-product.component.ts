@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute} from '@angular/router';
-import { ShopService } from '../shop.service';
-import { ViewScrollTopDirective } from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
-import { UserService } from  '../../../shared/services/user/user.service';
+import {Component, OnInit, OnDestroy, ViewChild, NgZone, AfterViewInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {ShopService} from '../shop.service';
+import {ViewScrollTopDirective} from '../../../shared/directives/view-scroll-top/view-scroll-top.directive';
+import {UserService} from '../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-find-products-add-product',
@@ -10,7 +10,7 @@ import { UserService } from  '../../../shared/services/user/user.service';
   styleUrls: ['./_find-products-add-product.scss']
 })
 
-export class FindProductsAddProductComponent implements OnInit {
+export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
 
   product: any = {};
   // Product list
@@ -41,6 +41,29 @@ export class FindProductsAddProductComponent implements OnInit {
 
   isSupplierDetail: boolean = false;
 
+
+  //变体的改版
+  minSalePrice: number = 0;
+  maxSalePrice: number = 0;
+  //保存价格的列表（按照顺序）
+  salePriceList: any = [];
+  isSelectSize: boolean = false;
+  isSelectColor: boolean = false;
+  isPriceRange: boolean = true;
+  // 不能添加购物车时的提示
+  cartWarn: string = '';
+  isShowCartWarn: boolean = false;
+  // 选择的变体是否有效
+  isSelectInvalid: boolean = false;
+  // 是否有变体
+  isHaveVariant: boolean = false;
+  //链接上的店铺的名称
+  displayName: string = '';
+
+  // 活动是否开始和是否结束
+  isPromotionOnGoing: boolean = false;
+  isPromotionScheduled: boolean = false;
+
   sub: any;
   storeSub: any;
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
@@ -49,18 +72,20 @@ export class FindProductsAddProductComponent implements OnInit {
 
   country: string = '';
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private shopService: ShopService,
-    private userService: UserService
-  ) {
+  countdownLeftTime: number = 0;
+  progressPercentage: number = 0;
+
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private shopService: ShopService,
+              private userService: UserService,
+              private ngZone: NgZone) {
     let self = this;
-    if(self.activatedRoute.parent.snapshot.params['supplierId']) {
+    if (self.activatedRoute.parent.snapshot.params['supplierId']) {
       this.isSupplierDetail = true;
     }
-    this.sub =this.activatedRoute.params.subscribe((data) => {
-      if(data) {
+    this.sub = this.activatedRoute.params.subscribe((data) => {
+      if (data) {
         let id = self.activatedRoute.snapshot.params['id'];
 
         self.shopService.getSupplyProductDetail({id}).then((data) => {
@@ -72,21 +97,34 @@ export class FindProductsAddProductComponent implements OnInit {
           self.originalPrice = data.unitPrice;
           self.commission = self.salePrice * self.commissionRate / 100;
           self.image = [...data.images];
-          if(self.image.length > 0) {
+          if (self.image.length > 0) {
             self.selectedImage = self.image[0];
             self.imageSources = [...data.images];
           }
-
           self.isAdded = data.hasInStore;
-
+          self.isPromotionOnGoing = false;
+          self.isPromotionScheduled = false;
+          if (self.product.promotionOngoing) {
+            self.isPromotionOnGoing = true;
+            this.progressPercentage = this.product.promotionOngoing.saleRatio;
+            self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
+          } else if (self.product.promotionScheduled) {
+            self.isPromotionScheduled = true;
+            self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
+          }
           self.supplierName = data.supplierName;
           self.description = data.description;
-
           this.variantList = [];
-          self.arrangeVariant(data);
+          this.isHaveVariant = data.attributes.length > 0;
+          if (this.isHaveVariant) {
+            self.arrangeVariant(data);
+          } else {
+            this.variantId = this.product.variants[0].id;
+            this.salePrice = this.product.saleUnitPrice;
+            this.originalPrice = this.product.unitPrice;
+            this.variant = this.product.variants[0];
+          }
 
-          self.variantId = data.variants[0].id;
-          self.variant = data.variants[0];
 
           let pid = data.id;
           self.shopService.getSupplyProductRecommendList({
@@ -101,7 +139,7 @@ export class FindProductsAddProductComponent implements OnInit {
     });
 
     this.storeSub = this.userService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         this.countryId = data.country.id;
         this.currency = data.currency.toUpperCase();
         this.country = data.country.name;
@@ -110,7 +148,11 @@ export class FindProductsAddProductComponent implements OnInit {
     });
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
+
+  }
+
+  ngAfterViewInit(): void {
 
   }
 
@@ -123,8 +165,8 @@ export class FindProductsAddProductComponent implements OnInit {
     this.tabNumber = $event;
   }
 
-  close():void {
-    if(!this.isSupplierDetail) {
+  close(): void {
+    if (!this.isSupplierDetail) {
       this.router.navigate(['/shop/listings/items/']);
     } else {
       this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`])
@@ -134,7 +176,7 @@ export class FindProductsAddProductComponent implements OnInit {
 
   addEdit(): void {
     let id = this.activatedRoute.snapshot.params['id'];
-    if(!this.isSupplierDetail) {
+    if (!this.isSupplierDetail) {
       this.router.navigate([`/shop/listings/items/${id}/preview`]);
     } else {
       this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/${id}/preview`]);
@@ -144,7 +186,7 @@ export class FindProductsAddProductComponent implements OnInit {
 
   shareToEarn() {
     let id = this.activatedRoute.snapshot.params['id'];
-    if(this.isSupplierDetail) {
+    if (this.isSupplierDetail) {
       this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/${id}/share/`]);
     } else {
       this.router.navigate([`/shop/listings/items/${id}/share/`]);
@@ -152,23 +194,23 @@ export class FindProductsAddProductComponent implements OnInit {
   }
 
   arrangeVariant(data) {
-    for(let item of data.attributes) {
-      let variant:any = {};
+    for (let item of data.attributes) {
+      let variant: any = {};
       variant.id = item.id;
       variant.name = item.name;
       variant.value = [];
       this.selectedVariant[item.id] = false;
-      for(let i of data.variants) {
-        for(let j of i.attributeValues) {
-          if(j.attributeId == variant.id ) {
-            let index =  variant.value.findIndex((data) => {
-              if(data.value == j.value) {
+      for (let i of data.variants) {
+        for (let j of i.attributeValues) {
+          if (j.attributeId == variant.id) {
+            let index = variant.value.findIndex((data) => {
+              if (data.value == j.value) {
                 return true;
               }
             });
-            if(index == -1) {
+            if (index == -1) {
               let obj = {
-                image: variant.id == 2 ? i.mainImage: false,
+                image: variant.id == 2 ? i.mainImage : false,
                 value: j.value,
                 isSelected: false
               };
@@ -181,25 +223,46 @@ export class FindProductsAddProductComponent implements OnInit {
       }
       this.variantList.push(variant);
     }
+
+    // 对价格进行排序为了筛选最低价和最高价
+    if (data.variants) {
+      let list = data.variants.map((data) => {
+        return parseFloat(data.saleUnitPrice);
+      });
+      this.salePriceList = list.sort(function (x, y) {
+        if (x < y) {
+          return -1;
+        }
+        if (x > y) {
+          return 1;
+        }
+        return 0;
+      });
+      this.minSalePrice = this.salePriceList[0];
+      this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1];
+    }
+
   }
 
   selectVariant(value, item) {
+    let self = this;
     let isSelected = value.isSelected;
-    for(let itm of item.value) {
+    for (let itm of item.value) {
       itm.isSelected = false;
     }
     value.isSelected = !isSelected;
     let id = item.id;
-    if(value.isSelected) {
-      if(id == 2) {
+    if (value.isSelected) {
+      if (id == 2) {
         this.insertImage = value.image;
       }
       this.selectVariant[id] = value.value;
-      if(this.checkIsVariant()) {
-        this.variantId = this.checkIsVariant()[0].id;
-        this.salePrice = this.checkIsVariant()[0].saleUnitPrice;
-        this.originalPrice = this.checkIsVariant()[0].unitPrice;
-        this.variant = this.checkIsVariant()[0];
+      let mVariant = this.checkIsVariant();
+      if (mVariant && mVariant.length > 0) {
+        this.variantId = mVariant[0].id;
+        this.salePrice = mVariant[0].saleUnitPrice;
+        this.originalPrice = mVariant[0].unitPrice;
+        this.variant = mVariant[0];
         this.commission = this.salePrice * this.commissionRate / 100;
       } else {
         this.variantId = this.product.variants[0].id;
@@ -208,8 +271,9 @@ export class FindProductsAddProductComponent implements OnInit {
         this.variant = this.product.variants[0];
         this.commission = this.salePrice * this.commissionRate / 100;
       }
+
     } else {
-      if(id == 2) {
+      if (id == 2) {
         this.insertImage = null;
       }
       this.selectVariant[id] = false;
@@ -220,31 +284,58 @@ export class FindProductsAddProductComponent implements OnInit {
       this.commission = this.salePrice * this.commissionRate / 100;
     }
 
+    //判断有没有选择变体（两者）
+    let count = 0;
+    for (let item of this.variantList) {
+      if (item.name == 'Size') {
+        this.isSelectSize = false;
+        for (let i of item.value) {
+          if (i.isSelected) {
+            count++;
+            this.isSelectSize = true;
+            break;
+          }
+        }
+      } else if (item.name == 'Color') {
+        this.isSelectColor = false;
+        for (let i of item.value) {
+          if (i.isSelected) {
+            count++;
+            this.isSelectColor = true;
+            break;
+          }
+        }
+      }
+    }
+    // 判断是否显示价格范围
+    this.isPriceRange = !(count == this.variantList.length);
+
+
   }
 
   checkIsVariant() {
     let variant = [...this.product.variants];
-    for(let prop in this.selectedVariant) {
-      if(!this.selectVariant[prop]) {
+    for (let prop in this.selectedVariant) {
+      if (!this.selectVariant[prop]) {
         return false;
       }
       let item = this.selectVariant[prop];
-      for(let i of this.product.variants) {
+      for (let i of this.product.variants) {
         let isDelete = true;
-        for(let j of i.attributeValues) {
-          if(j.attributeId == parseInt(prop) && item == j.value) {
+        for (let j of i.attributeValues) {
+          if (j.attributeId == parseInt(prop) && item == j.value) {
             isDelete = false;
             break;
           }
         }
-        if(isDelete) {
+        if (isDelete) {
           let id = i.id;
           let index = variant.findIndex((data) => {
-            if(data.id == id) {
+            if (data.id == id) {
               return true;
             }
           });
-          if(index > -1) {
+          if (index > -1) {
             variant.splice(index, 1);
           }
         }
@@ -264,4 +355,6 @@ export class FindProductsAddProductComponent implements OnInit {
       this.shipping = [...data[pid]];
     });
   }
+
+  endDate = new Date(2018, 3, 12, 19, 26, 0, 123);
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { OverlayContainer } from '@angular/cdk/overlay';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {OverlayContainer} from '@angular/cdk/overlay';
 
-import { ShopService } from '../shop.service';
-import { UserService } from  '../../../shared/services/user/user.service';
+import {ShopService} from '../shop.service';
+import {UserService} from '../../../shared/services/user/user.service';
 
 @Component({
   selector: 'app-find-products',
@@ -38,11 +38,11 @@ export class FindProductsComponent implements OnInit {
     id: null,
     data: {name: 'All'}
   };
-  categories:any = [];
+  categories: any = [];
 
   // MatPaginator Inputs
   productIndex: number = 1;
-  length:number = 0;
+  length: number = 0;
   pageSize = 36;
   pageSizeOptions = [36];
 
@@ -61,13 +61,15 @@ export class FindProductsComponent implements OnInit {
 
   sub2: any;
 
-  constructor(
-    private shopService: ShopService,
-    private userService: UserService,
-    private fb: FormBuilder,
-    overlayContainer: OverlayContainer,
-    private activatedRoute: ActivatedRoute
-  ) {
+  promotionState: string = 'ongoing';
+  // 根据这个 1,标志判断  onGoing and upcoming的标志 2,判断详情也的显示类型，（2种类型）
+  isShowPromotionFlag: boolean = false;
+
+  constructor(private shopService: ShopService,
+              private userService: UserService,
+              private fb: FormBuilder,
+              overlayContainer: OverlayContainer,
+              private activatedRoute: ActivatedRoute) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
     this.searchForm = this.fb.group({
       searchKey: ['']
@@ -76,7 +78,7 @@ export class FindProductsComponent implements OnInit {
     this.searchForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
     this.sub1 = this.userService.countryList.subscribe((data) => {
-      if(data) {
+      if (data) {
         this.countryList = data;
       }
     });
@@ -90,21 +92,25 @@ export class FindProductsComponent implements OnInit {
     this.isSearch = false;
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
 
     let self = this;
     self.sub2 = self.userService.pubCategory.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.categories = [];
         self.categories.push({
           id: null,
           data: {name: 'All'}
         });
         self.categories.push({
+          id: 'ongoing',
+          data: {name: 'Flash Sale'}
+        });
+        self.categories.push({
           id: 'special',
           data: {name: 'Special Offers'}
         });
-        for(let item of data) {
+        for (let item of data) {
           self.categories.push(item);
         }
 
@@ -112,7 +118,7 @@ export class FindProductsComponent implements OnInit {
     });
 
     self.sub = self.userService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.currency = data.currency.toUpperCase();
       }
     });
@@ -120,6 +126,8 @@ export class FindProductsComponent implements OnInit {
 
   clearSearchKey() {
     this.searchKey = '';
+    this.productIndex = 1;
+    this.getSupplyProductList();
   }
 
   // MatPaginator Output
@@ -136,12 +144,16 @@ export class FindProductsComponent implements OnInit {
   getSupplyProductList(isSearch?: any) {
     let cat = [];
 
-    if(this.category && this.category.id) {
+    if (this.category && this.category.id) {
       cat = this.category.id;
     }
-    if(isSearch != null) {
+    if (isSearch != null) {
+      this.isShowPromotionFlag = false;
       cat = null;
-      this.category = false;
+      this.category = {
+        id: null,
+        data: {name: 'All'}
+      };
     }
 
     let self = this;
@@ -153,7 +165,7 @@ export class FindProductsComponent implements OnInit {
       sort: this.sort
     }).then((data) => {
 
-      if(isSearch == false) {
+      if (isSearch == false) {
         self.isSearch = true;
       }
       self.length = data.count;
@@ -164,6 +176,12 @@ export class FindProductsComponent implements OnInit {
 
   changeCategory($event) {
     this.category = $event;
+    if (this.category.id == 'ongoing') {
+      this.isShowPromotionFlag = true;
+      this.promotionState = 'ongoing';
+    } else {
+      this.isShowPromotionFlag = false;
+    }
     this.productIndex = 1;
     this.getSupplyProductList();
   }
@@ -179,4 +197,16 @@ export class FindProductsComponent implements OnInit {
     this.sub2.unsubscribe();
   }
 
+  changePromotionState($event): void {
+    if (this.promotionState == $event) {
+      return;
+    }
+    this.promotionState = $event;
+    this.category = {
+      id: $event,
+      data: {name: 'Flash Sale'}
+    };
+    this.productIndex = 1;
+    this.getSupplyProductList();
+  }
 }

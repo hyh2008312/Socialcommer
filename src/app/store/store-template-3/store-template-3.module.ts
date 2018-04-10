@@ -47,7 +47,7 @@ import {AddCartSuccessDialogComponent} from "./add-cart-success-dialog/add-cart-
     PrivacyComponent,
     FaqComponent,
     ReturnPolicyComponent,
-    AddCartSuccessDialogComponent
+    AddCartSuccessDialogComponent,
   ],
   entryComponents: [
     AddCartSuccessDialogComponent

@@ -5,7 +5,8 @@
       <i class="iconfontXberts icon-ic-close"></i>
     </div>
     <div class="xb-store__nav" fxShow="false" fxShow.xs="show">
-      <i class="material-icons md-dark-primary" (click)="close()">keyboard_arrow_left</i> {{store.nameTag || store.name}}
+      <i class="material-icons md-dark-primary" (click)="close()">keyboard_arrow_left</i> {{store.nameTag ||
+      store.name}}
     </div>
     <div class="xb-store__details-padding-bottom" fxLayout="row" fxLayoutAlign="start start" fxHide.xs>
       <div class="xb-store__details-margin-right">
@@ -15,54 +16,78 @@
       <div class="xb-store__details-content" fxFlex fxLayout="column" fxFlex.xs="none">
         <div>{{product.categoryName}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price" *ngIf="!isHaveVariant">
-            {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+        <div class="xb-store-promotion">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-store__details-left-part">Price</div>
+            <div class="xb-store__details-price" *ngIf="!isHaveVariant">
+              {{ salePrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency }} - {{maxSalePrice |
+              exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="xb-store__details-price" *ngIf="isHaveVariant && !isPriceRange">
+              {{ salePrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="xb-store-promotion__details-sale md-margin-left-1"
+                 *ngIf="!isHaveVariant && salePrice != originalPrice ">
+              - {{ salePrice|saleDiscount:originalPrice}}
+            </div>
+            <div class="xb-store-promotion__details-sale md-margin-left-1"
+                 *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
+              - {{ salePrice|saleDiscount:originalPrice}}
+            </div>
           </div>
-
-          <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
-            {{minSalePrice | exchangeCurrency:currency |currency: currency:true }} - {{maxSalePrice |
-            exchangeCurrency:currency |currency: currency:true }}
+          <div [ngStyle]="{'margin-left':'54px'}" fxLayout="row" fxLayoutAlign="start center">
+            <div class="line-through md-margin-top-1"
+                 *ngIf="!isHaveVariant && salePrice != originalPrice ">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="line-through md-margin-top-1"
+                 *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency }}
+            </div>
           </div>
-          <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
-            {{minSalePrice | exchangeCurrency:currency |currency: currency:true }}
+          <div *ngIf="isPromotionOnGoing" [ngStyle]="{'margin-left':'54px'}">
+            <div class="xb-store-promotion__processing">
+              <div class="xb-store-promotion__processing-line"></div>
+              <div class="xb-store-promotion__processing-line" [ngStyle]="{'width':progressPercentage+'%'}"></div>
+            </div>
+            <div class="xb-store-promotion__count md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
+              <div class="xb-store-promotion__count-word">{{progressPercentage}}% claimed</div>
+              <div class="xb-store-promotion__count-word" fxLayout="row" fxLayoutAlign="start start">
+                <span class="xb-bold">Ends in:&nbsp;&nbsp;</span>
+                <app-store-one-countdown [countdownTimer]="countdownLeftTime"></app-store-one-countdown>
+              </div>
+            </div>
           </div>
-
-          <div class="xb-store__details-price" *ngIf="isHaveVariant && !isPriceRange">
-            {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
-          </div>
-
-          <div class="line-through md-margin-left-2"
-               *ngIf="!isHaveVariant && salePrice != originalPrice ">
-            {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
-          </div>
-          <div class="line-through md-margin-left-2"
-               *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
-            {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
-          </div>
-
-          <div class="xb-store__details-sale md-margin-left-2"
-               *ngIf="!isHaveVariant && salePrice != originalPrice ">
-            {{ salePrice|saleDiscount:originalPrice}} OFF
-          </div>
-          <div class="xb-store__details-sale md-margin-left-2"
-               *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
-            {{ salePrice|saleDiscount:originalPrice}} OFF
+          <div *ngIf="isPromotionScheduled" [ngStyle]="{'margin-left':'54px'}" class="md-margin-top-2" fxLayout="row"
+               fxLayoutAlign="start center">
+            <div class="xb-store-promotion__upcoming">Upcoming</div>
+            <div class="xb-store-promotion__upcoming-time" fxLayout="row" fxLayoutAlign="start start">
+              <span class="xb-bold">Starts in:&nbsp;&nbsp;</span>
+              <app-store-one-countdown [countdownTimer]="countdownLeftTime"></app-store-one-countdown>
+            </div>
           </div>
         </div>
         <div class="xb-store__details-margin-top-2">
           <div class="xb-store__details-margin-top" *ngFor="let item of variantList;let i = index;"
                fxLayout="row" fxLayoutAlign="start start"
                fxLayout.xs="column" fxLayoutAlign="start start">
-            <div class="xb-store__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">{{item.name}}</div>
+            <div class="xb-store__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">
+              {{item.name}}
+            </div>
             <div fxLayout="row wrap" fxLayoutAlign="start start">
               <div *ngFor="let value of item.value;let j = index;">
                 <div class="xb-store__details-image" [ngClass]="{'active':value.isSelected}"
                      *ngIf="value.image" (click)="selectVariant(value, item)">
-                  <img [src]="value.image" />
+                  <img [src]="value.image"/>
                 </div>
                 <div *ngIf="!value.image" class="xb-store__details-text"
-                     [ngClass]="{'active':value.isSelected}"(click)="selectVariant(value, item)">
+                     [ngClass]="{'active':value.isSelected}" (click)="selectVariant(value, item)">
                   {{value.value}}
                 </div>
               </div>
@@ -70,16 +95,16 @@
           </div>
           <div class="xb-store__details-margin-top" fxLayout="row" fxLayoutAlign="start center"
                fxLayout.xs="column" fxLayoutAlign.xs="start start" *ngIf="isCanBuy">
-            <div class="xb-store__details-left-part">Quantity</div>
+            <div class="xb-store__details-left-part md-margin-right-3">Quantity</div>
             <div fxLayout="row" fxLayoutAlign="start center">
               <div class="md-margin-right-2 xb-store__details-item-add" (click)="plusNumber()" fxFlex="none">
-                <i class="material-icons xb-pointer" >add</i>
+                <i class="material-icons xb-pointer">add</i>
               </div>
               <div class="xb-store__details-item-input" fxFlex>
                 <input type="number" [(ngModel)]="number" step="1" min="0">
               </div>
               <div class="md-margin-left-2 xb-store__details-item-add" (click)="minusNumber()" fxFlex="none">
-                <i class="material-icons xb-pointer" >remove</i>
+                <i class="material-icons xb-pointer">remove</i>
               </div>
             </div>
           </div>
@@ -88,7 +113,7 @@
           <div *ngIf="isShowCartWarn" class="xb-store__red md-margin-bottom-2"> {{cartWarn}}</div>
           <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">ADD TO CART</a></button>
-          <button mat-raised-button color="primary"  [disabled]="true" *ngIf="!isCanBuy">
+          <button mat-raised-button color="primary" [disabled]="true" *ngIf="!isCanBuy">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">OUT OF STOCK</a></button>
         </div>
         <div class="xb-store__details-bg" fxLayout="column" fxLayoutAlign="start stretch">
@@ -118,54 +143,78 @@
       <div class="xb-store__details-content">
         <div>{{product.categoryName}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store__details-price" *ngIf="!isHaveVariant">
-            {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+        <div class="xb-store-promotion">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-store__details-left-part">Price</div>
+            <div class="xb-store__details-price" *ngIf="!isHaveVariant">
+              {{ salePrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency }} - {{maxSalePrice |
+              exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="xb-store__details-price" *ngIf="isHaveVariant && !isPriceRange">
+              {{ salePrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="xb-store-promotion__details-sale md-margin-left-1"
+                 *ngIf="!isHaveVariant && salePrice != originalPrice ">
+              - {{ salePrice|saleDiscount:originalPrice}}
+            </div>
+            <div class="xb-store-promotion__details-sale md-margin-left-1"
+                 *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
+              - {{ salePrice|saleDiscount:originalPrice}}
+            </div>
           </div>
-
-          <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
-            {{minSalePrice | exchangeCurrency:currency |currency: currency:true }} - {{maxSalePrice |
-            exchangeCurrency:currency |currency: currency:true }}
+          <div [ngStyle]="{'margin-left':'54px'}" fxLayout="row" fxLayoutAlign="start center">
+            <div class="line-through md-margin-top-1"
+                 *ngIf="!isHaveVariant && salePrice != originalPrice ">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="line-through md-margin-top-1"
+                 *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency }}
+            </div>
           </div>
-          <div class="xb-store__details-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
-            {{minSalePrice | exchangeCurrency:currency |currency: currency:true }}
+          <div *ngIf="isPromotionOnGoing" [ngStyle]="{'margin-left':'54px'}">
+            <div class="xb-store-promotion__processing">
+              <div class="xb-store-promotion__processing-line"></div>
+              <div class="xb-store-promotion__processing-line" [ngStyle]="{'width':progressPercentage+'%'}"></div>
+            </div>
+            <div class="xb-store-promotion__count md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
+              <div class="xb-store-promotion__count-word">{{progressPercentage}}% claimed</div>
+              <div class="xb-store-promotion__count-word" fxLayout="row" fxLayoutAlign="start start">
+                <span class="xb-bold">Ends in:&nbsp;&nbsp;</span>
+                <app-store-one-countdown [countdownTimer]="countdownLeftTime"></app-store-one-countdown>
+              </div>
+            </div>
           </div>
-
-          <div class="xb-store__details-price" *ngIf="isHaveVariant && !isPriceRange">
-            {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
-          </div>
-
-          <div class="line-through md-margin-left-2"
-               *ngIf="!isHaveVariant && salePrice != originalPrice ">
-            {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
-          </div>
-          <div class="line-through md-margin-left-2"
-               *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
-            {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
-          </div>
-
-          <div class="xb-store__details-sale md-margin-left-2"
-               *ngIf="!isHaveVariant && salePrice != originalPrice ">
-            {{ salePrice|saleDiscount:originalPrice}} OFF
-          </div>
-          <div class="xb-store__details-sale md-margin-left-2"
-               *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
-            {{ salePrice|saleDiscount:originalPrice}} OFF
+          <div *ngIf="isPromotionScheduled" [ngStyle]="{'margin-left':'54px'}" class="md-margin-top-2" fxLayout="row"
+               fxLayoutAlign="start center">
+            <div class="xb-store-promotion__upcoming">Upcoming</div>
+            <div class="xb-store-promotion__upcoming-time" fxLayout="row" fxLayoutAlign="start start">
+              <span class="xb-bold">Starts in:&nbsp;&nbsp;</span>
+              <app-store-one-countdown [countdownTimer]="countdownLeftTime"></app-store-one-countdown>
+            </div>
           </div>
         </div>
         <div class="xb-store__details-margin-top-2">
           <div class="xb-store__details-margin-top" *ngFor="let item of variantList;let i = index;"
                fxLayout="row" fxLayoutAlign="start start"
                fxLayout.xs="column" fxLayoutAlign="start start">
-            <div class="xb-store__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">{{item.name}}</div>
+            <div class="xb-store__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">
+              {{item.name}}
+            </div>
             <div fxLayout="row wrap" fxLayoutAlign="start start">
               <div *ngFor="let value of item.value;let j = index;">
                 <div class="xb-store__details-image" [ngClass]="{'active':value.isSelected}"
                      *ngIf="value.image" (click)="selectVariant(value, item)">
-                  <img [src]="value.image" />
+                  <img [src]="value.image"/>
                 </div>
                 <div *ngIf="!value.image" class="xb-store__details-text"
-                     [ngClass]="{'active':value.isSelected}"(click)="selectVariant(value, item)">
+                     [ngClass]="{'active':value.isSelected}" (click)="selectVariant(value, item)">
                   {{value.value}}
                 </div>
               </div>
@@ -176,13 +225,13 @@
             <div class="xb-store__details-left-part">Quantity</div>
             <div fxLayout="row" fxLayoutAlign="start center">
               <div class="md-margin-right-2 xb-store__details-item-add" (click)="plusNumber()" fxFlex="none">
-                <i class="material-icons xb-pointer" >add</i>
+                <i class="material-icons xb-pointer">add</i>
               </div>
               <div class="xb-store__details-item-input" fxFlex>
                 <input type="number" [(ngModel)]="number" step="1" min="0">
               </div>
               <div class="md-margin-left-2 xb-store__details-item-add" (click)="minusNumber()" fxFlex="none">
-                <i class="material-icons xb-pointer" >remove</i>
+                <i class="material-icons xb-pointer">remove</i>
               </div>
             </div>
           </div>
@@ -191,7 +240,7 @@
           <div *ngIf="isShowCartWarn" class="xb-store__red md-margin-bottom-2"> {{cartWarn}}</div>
           <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">ADD TO CART</a></button>
-          <button mat-raised-button color="primary"  [disabled]="true" *ngIf="!isCanBuy">
+          <button mat-raised-button color="primary" [disabled]="true" *ngIf="!isCanBuy">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">OUT OF STOCK</a></button>
         </div>
         <div class="xb-store__details-bg" fxLayout="column" fxLayoutAlign="start stretch">
@@ -238,7 +287,8 @@
           <div class="md-margin-top-2 xb-store__content-text">
             {{product.recommendation}}
           </div>
-          <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start" fxShow.xs="false">
+          <div class="xb-store__icons md-dark-third md-margin-top-2" fxLayout="row" fxLayoutAlign="end start"
+               fxShow.xs="false">
             <i class="iconfontXberts icon-pic-quota-2"></i>
           </div>
         </div>

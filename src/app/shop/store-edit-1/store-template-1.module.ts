@@ -9,6 +9,7 @@ import { SharedModule } from '../../shared/shared.module';
 import {StoreDetailComponent} from "./store-detail/store-detail.component";
 import {StoreCartComponent} from "./store-cart/store-cart.component";
 import {StoreOrderComponent} from "./store-order/store-order.component";
+import {StoreCountdownComponent} from "./store-countdown/store-countdown.component";
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {StoreOrderComponent} from "./store-order/store-order.component";
     StoreItemCardPreviewComponent,
     StoreDetailComponent,
     StoreCartComponent,
-    StoreOrderComponent
+    StoreOrderComponent,
+    StoreCountdownComponent
   ],
   entryComponents: [
   ],
