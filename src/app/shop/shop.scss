@@ -540,7 +540,7 @@
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;
-      border: 1px solid $primaryColor;
+      @include box-shadow(0px 1px 3px 0px rgba(0,0,0,0.19));
       border-radius: 4px;
 
       > img {
