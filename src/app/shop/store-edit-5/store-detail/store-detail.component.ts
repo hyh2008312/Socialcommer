@@ -62,6 +62,13 @@ export class StoreDetailComponent implements OnInit {
 //退换货的天数
   returnDays: string = '30 day returns';
 
+  // 活动是否开始和是否结束
+  isPromotionOnGoing: boolean = false;
+  isPromotionScheduled: boolean = false;
+  countdownLeftTime: number = 0;
+  progressPercentage: number = 0;
+
+
   //快递的国家
   deliveryCountry: string = 'United States';
 
@@ -133,6 +140,16 @@ export class StoreDetailComponent implements OnInit {
             for (let value of data.images) {
               self.imageSources.push(value);
             }
+          }
+          this.isPromotionOnGoing = false;
+          this.isPromotionScheduled = false;
+          if (self.product.promotionOngoing) {
+            self.isPromotionOnGoing = true;
+            this.progressPercentage = this.product.promotionOngoing.saleRatio;
+            self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
+          } else if (self.product.promotionScheduled) {
+            self.isPromotionScheduled = true;
+            self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
           }
 
           this.isHaveVariant = data.attributes.length > 0;

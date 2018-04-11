@@ -17,6 +17,7 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
   @Input() productNumber: number = 0; //购物车数量
   @Input() displayName: string; //店铺的链接名
   @Input() isHaveBlog: boolean;  //控制blog是否显示
+  @Input() isHaveFlashSale: boolean = false; //是否有促销
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
   @ViewChild(ViewModifyBodyStyleDirective) scrollTopDirective: ViewModifyBodyStyleDirective;
 
@@ -27,7 +28,8 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
     text: 'DISCOVER',
     link: './',
     exact: true
-  }];
+  }
+  ];
   showCategory: any = [];
   moreCategory: any = [];
 

@@ -17,6 +17,7 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
   @Input() displayName: string;  // 路由的店铺名
   @Input() isHaveBlog: boolean;  //控制blog是否显示
   @Input() productNumber: number;  //购物车产品的数量
+  @Input() isHaveFlashSale: boolean = false; //是否有促销
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
 

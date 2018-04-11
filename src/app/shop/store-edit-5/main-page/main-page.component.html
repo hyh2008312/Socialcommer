@@ -36,6 +36,7 @@
           <app-shop-template-5-navigation [categories]="categories"
                                           [navigationIndex]="viewIndex"
                                           [isNavigationHaveBlog]="isShowBlog"
+                                          [isHavePromotion]="isHavePromotion"
                                           (openCart)="OpenStoreCart()"
                                           (openOrder)="OpenStoreOrder()"
                                           (navigationChange)="changeNavigation($event)"
@@ -183,11 +184,31 @@
           </div>
         </div>
       </div>
-
+      <!--detail-->
       <div [hidden]="viewIndex != 2 || isCategory">
         <app-shop-template-5-store-edit-detail
           [productId]="selectProductId">
         </app-shop-template-5-store-edit-detail>
+      </div>
+      <!--flash sale-->
+      <div [hidden]="viewIndex != 3 || isCategory">
+        <div class="xb-4-template-category__list ">
+          <div class="xb-4-template-category__title">
+            Flash Sale
+          </div>
+          <div class="xb-4-template-collection__product xb-4-template__w960 " fxLayoutAlign="space-between start"
+               fxLayout="row wrap" fxLayoutGap.xs="16px">
+            <app-edit-flase-sale-card-5 *ngFor="let item of flashSaleProduct"
+                                        fxFlex.xs="44" fxFlex.gt-xs="31"
+                                        (productId)="jumpGoodsDetail($event)"
+                                        [product]="item" [status]="0"></app-edit-flase-sale-card-5>
+            <div fxFlex.xs="44" fxFlex.gt-xs="31"></div>
+          </div>
+          <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+               *ngIf="nextFlashSalePage && flashSaleProduct.length>0 ">
+            SEE MORE
+          </div>
+        </div>
       </div>
       <!--category-->
       <div [hidden]="!isCategory" class="xb-4-template-content">
@@ -367,7 +388,8 @@
     </div>
   </div>
   <div class="xb-4-template__divider-line"></div>
-  <app-edit-cart-main-5 [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()" (openStoreOrder)="OpenStoreOrder()" ></app-edit-cart-main-5>
+  <app-edit-cart-main-5 [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()"
+                        (openStoreOrder)="OpenStoreOrder()"></app-edit-cart-main-5>
 </div>
 <div class="xb-4-template-picture__background" *ngIf="storeOrder" [ngStyle]="{'background-color':'white'}">
   <div class="xb-4-template__cancel-save">
@@ -395,5 +417,6 @@
     </div>
   </div>
   <div class="xb-4-template__divider-line"></div>
-  <app-edit-5-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()" (openStoreCart)="OpenStoreCart()" ></app-edit-5-order>
+  <app-edit-5-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()"
+                    (openStoreCart)="OpenStoreCart()"></app-edit-5-order>
 </div>

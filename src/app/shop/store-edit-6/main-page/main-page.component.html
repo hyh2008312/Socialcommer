@@ -36,6 +36,7 @@
             <app-shop-template-5-navigation [categories]="categories"
                                             [navigationIndex]="viewIndex"
                                             [isNavigationHaveBlog]="isShowBlog"
+                                            [isHavePromotion]="isHavePromotion"
                                             (navigationChange)="changeNavigation($event)"
                                             (openCart)="OpenStoreCart()"
                                             (openOrder)="OpenStoreOrder()"
@@ -186,6 +187,26 @@
         <app-shop-template-6-store-edit-detail
           [productId]="selectProductId"
         ></app-shop-template-6-store-edit-detail>
+      </div>
+      <!--flash sale-->
+      <div [hidden]="viewIndex != 3 || isCategory">
+        <div class="xb-4-template-category__list ">
+          <div class="xb-4-template-category__title">
+            Flash Sale
+          </div>
+          <div class="xb-4-template-collection__product xb-4-template__w960 " fxLayoutAlign="space-between start"
+               fxLayout="row wrap" fxLayoutGap.xs="16px">
+            <app-edit-flash-sale-card-6 *ngFor="let item of flashSaleProduct"
+                                        fxFlex.xs="44" fxFlex.gt-xs="31"
+                                        (productId)="jumpGoodsDetail($event)"
+                                        [product]="item" [status]="0"></app-edit-flash-sale-card-6>
+            <div fxFlex.xs="44" fxFlex.gt-xs="31"></div>
+          </div>
+          <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+               *ngIf="nextFlashSalePage && flashSaleProduct.length>0 ">
+            SEE MORE
+          </div>
+        </div>
       </div>
       <!--category-->
       <div [hidden]="!isCategory" class="xb-4-template-content">

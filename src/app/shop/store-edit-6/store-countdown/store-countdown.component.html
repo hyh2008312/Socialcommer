@@ -1,0 +1,12 @@
+<div *ngIf="days==1">
+  0{{days}}day,{{hours<10?'0'+hours:hours}}:{{minute<10?'0'+minute:minute}}:{{second<10?'0'+second:second}}
+</div>
+<div *ngIf="days<1">
+  {{hours<10?'0'+hours:hours}}:{{minute<10?'0'+minute:minute}}:{{second<10?'0'+second:second}}
+</div>
+<div *ngIf="days>1 && days<10">
+  0{{days}}days,{{hours<10?'0'+hours:hours}}:{{minute<10?'0'+minute:minute}}:{{second<10?'0'+second:second}}
+</div>
+<div *ngIf="days>=10">
+  {{days}}days,{{hours<10?'0'+hours:hours}}:{{minute<10?'0'+minute:minute}}:{{second<10?'0'+second:second}}
+</div>

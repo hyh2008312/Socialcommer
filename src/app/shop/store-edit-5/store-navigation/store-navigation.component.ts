@@ -13,14 +13,18 @@ export class StoreNavigationComponent implements OnInit {
   @Output() public categoryChange: EventEmitter<any> = new EventEmitter();
   @Input() navigationIndex = 0;
   @Input() isCategory = false;
-  @Input() isNavigationHaveBlog = true;
+  @Input() isNavigationHaveBlog = false;
+  @Input() isHavePromotion = false;
   @Output() public openCart: EventEmitter<any> = new EventEmitter();
   @Output() public openOrder: EventEmitter<any> = new EventEmitter();
   contents = [{
     name: 'DISCOVER',
   }, {
     name: 'BLOGS',
-  }];
+  }, {
+    name: 'Flash Sale'
+  }
+  ];
 
 
   constructor(public router: Router) {
@@ -49,11 +53,12 @@ export class StoreNavigationComponent implements OnInit {
     };
     this.categoryChange.emit(cate);
   }
-  openStoreCart():void{
+
+  openStoreCart(): void {
     this.openCart.emit();
   }
 
-  openStoreOrder():void{
+  openStoreOrder(): void {
     this.openOrder.emit();
   }
 }

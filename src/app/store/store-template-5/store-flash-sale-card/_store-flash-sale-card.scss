@@ -1,0 +1,176 @@
+@import "../../../styles/utils/_index";
+@import "../../../styles/_variables";
+
+.xb-store {
+  &__card {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    margin-bottom: 32px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, .12);
+    @include xb-xs-screen {
+      margin-bottom: 16px;
+    }
+
+    &-processing {
+      position: relative;
+      width: 100%;
+      height: 3px;
+      border-radius: 1px;
+      overflow: hidden;
+      margin-top: 12px;
+      background-color: rgba(0, 0, 0, .12);
+      &-line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: black;
+        height: 3px;
+      }
+    }
+    &-upcoming {
+      font-size: 12px;
+      border-radius: 4px;
+      line-height: 22px;
+      padding-right: 8px;
+      padding-left: 8px;
+      background-color: #FFefba;
+      &-time {
+        font-size: 12px;
+        @include regular();
+        margin-left: 8px;
+        white-space: nowrap;
+        @include xb-xs-screen {
+          margin-left: 0;
+          margin-top: 16px;
+        }
+      }
+    }
+    &-count {
+      &-word {
+        font-size: 12px;
+        @include regular();
+        @include xb-xs-screen {
+          margin-top: 8px;
+        }
+      }
+    }
+
+    &-image {
+      padding-bottom: 100%;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      position: relative;
+      > a {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        > img {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 100%;
+          @include transform(translate(-50%, -50%));
+        }
+      }
+    }
+
+    &-margin {
+      margin-left: 8px;
+      @include xb-xs-screen {
+        margin-left: 0;
+        margin-top: 8px;
+      }
+    }
+
+    &-content {
+      position: relative;
+      padding: 8px 16px 16px;
+
+      @include xb-xs-screen {
+        padding: 8px 8px 16px;
+      }
+    }
+
+    &-title {
+      max-height: 56px;
+      height: 56px;
+      line-height: 28px;
+      font-weight: 700;
+      overflow: hidden;
+    }
+
+    &-price {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    &-sale {
+      background-color: black;
+      border-radius: 4px;
+      padding: 0 4px;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 100;
+      line-height: 20px;
+    }
+
+    &-action {
+      position: relative;
+      display: none;
+    }
+  }
+  &__promotion {
+    &-ongoing {
+      position: absolute;
+      background-color: #755993;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      color: white;
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      top: 8px;
+      left: 8px;
+    }
+    &-upcoming {
+      position: absolute;
+      background-color: #f85279;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      color: white;
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      top: 8px;
+      left: 8px;
+    }
+    &-countdown {
+      position: absolute;
+      background-color: white;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      border: 1px solid #dcdcdc;
+      right: 8px;
+      top: 8px;
+    }
+
+  }
+}
+

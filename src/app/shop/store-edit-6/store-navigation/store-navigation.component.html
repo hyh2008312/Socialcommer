@@ -6,6 +6,12 @@
       {{value.name |makeFirstLetterBig}}
     </div>
   </ng-container>
+
+  <div class="xb-4-template-navigation xb-pointer"
+       *ngIf="isHavePromotion"
+       [ngClass]="{active: ((3 == navigationIndex) && !isCategory)}" (click)="changeNavigation(3)">
+    Flash Sale
+  </div>
   <div class="xb-4-template-navigation xb-pointer" *ngFor="let category of categories ; let i=index"
        [ngClass]="{active: ((i == navigationIndex) && isCategory)}" (click)="changeCategoryNavigation(i)">
     {{category.name | makeFirstLetterBig}}

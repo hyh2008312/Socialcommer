@@ -1,0 +1,19 @@
+<div class="xb-4-template-category__list xb-4-template__container-content">
+  <div class="xb-4-template-category__title">
+    Flash Sale
+  </div>
+  <div class="xb-4-template-collection__product xb-4-template__w960 " fxLayoutAlign="space-between start"
+       fxLayout="row wrap">
+    <app-flash-sale-card-5 *ngFor="let item of product"
+                           fxFlex.xs="100" fxFlex.gt-xs="31"
+                           [currency]="currency"
+                           [product]="item" [status]="1"></app-flash-sale-card-5>
+    <div fxFlex.xs="44" fxFlex.gt-xs="31"></div>
+  </div>
+  <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
+       *ngIf="nextPage && product.length > 0" (click)="jumpList()">
+    SEE MORE
+  </div>
+</div>
+
+

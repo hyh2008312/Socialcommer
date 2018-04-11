@@ -6,6 +6,7 @@
     {{contents[0].text}}
   </div>
   <div class="xb-4-template-navigation xb-pointer"
+       *ngIf="isHavePromotion"
        [ngClass]="{active: 1 == navigationIndex}" (click)="changeNavigation(1)">
     {{contents[1].text}}
   </div>
