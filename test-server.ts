@@ -38,6 +38,7 @@ import 'zone.js/dist/zone-node';
 import * as express from 'express';
 import * as compression from 'compression';
 import * as cookieparser from 'cookie-parser';
+import * as prerender from 'prerender-node';
 const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
 
 
@@ -85,6 +86,8 @@ app.use((req, res, next) => {
     next();
   }
 );
+
+app.use(prerender.set('prerenderToken', 'jS8IJfvJkoa58o179GWb'));
 
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
