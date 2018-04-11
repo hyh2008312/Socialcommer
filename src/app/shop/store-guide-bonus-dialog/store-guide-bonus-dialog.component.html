@@ -9,14 +9,15 @@
     1. Your store has been published.
   </div>
   <div class="xb-share-dialog__content">
-    You have earned <span class="xb-share-dialog__color">$5 cash reward</span> for setting up your store:
+    You have earned <span class="xb-share-dialog__color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}} cash reward</span> for setting up your store:
   </div>
   <a class="xb-share-dialog__link" href="{{data.shareLink}}" target="_blank">{{data.shareLink}}</a>
   <div class="xb-share-dialog__title-1">
     2. Let’s spread the word.
   </div>
   <div class="xb-share-dialog__content">
-    Share your store link and earn <span class="xb-share-dialog__color">extra $10 cash reward</span> immediately once anyone visits your store via the link you shared!
+    Share your store link and earn <span class="xb-share-dialog__color">extra {{currency == 'USD'? (10|currency: currency): (200|currency: currency)}} cash reward</span>
+    immediately once anyone visits your store via the link you shared!
   </div>
   <div class="xb-share-dialog__margin-top">
     <app-share-button-row [link]="data.shareLink" [text]="data.text"></app-share-button-row>
@@ -25,6 +26,7 @@
     3. Let’s spread the word.
   </div>
   <div class="xb-share-dialog__content">
-    Promote your store and earn <span class="xb-share-dialog__color">another $10 cash reward</span> when you make your first sale!
+    Promote your store and earn <span class="xb-share-dialog__color">another {{currency == 'USD'? (10|currency: currency): (200|currency: currency)}} cash reward</span>
+    when you make your first sale!
   </div>
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+import { UserService } from '../../shared/services/user/user.service';
+
 @Component({
   selector: 'app-store-store-to-reward-dialog',
   templateUrl: './store-to-reward-dialog.component.html',
@@ -9,11 +11,19 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class StoreToRewardDialogComponent implements OnInit {
 
+  currency: string = 'USD';
+  sub: any;
+
   constructor(
     public dialogRef: MatDialogRef<StoreToRewardDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private userService: UserService
   ) {
-
+    this.sub = this.userService.store.subscribe((data) => {
+      if(data) {
+        this.currency = data.currency.toUpperCase();
+      }
+    });
   }
 
   ngOnInit():void {
@@ -21,6 +31,9 @@ export class StoreToRewardDialogComponent implements OnInit {
   }
 
   close():void {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
     this.dialogRef.close();
   }
 

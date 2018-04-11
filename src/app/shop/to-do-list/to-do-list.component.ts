@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject} from '@angular/core';
-import { ShopService } from "../shop.service";
+import { Component, OnInit, OnDestroy} from '@angular/core';
 
 import { UserService } from '../../shared/services/user/user.service';
 import { StoreToRewardDialogComponent } from "../store-to-reward-dialog/store-to-reward-dialog.component";
@@ -11,7 +10,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['../shop.scss']
 })
 
-export class ToDoListComponent implements OnInit {
+export class ToDoListComponent implements OnInit, OnDestroy {
 
   editRouter: string = '/shop/store/templates/edit';
 
@@ -23,7 +22,6 @@ export class ToDoListComponent implements OnInit {
   sub: any;
 
   constructor(
-    private shopService: ShopService,
     private userService: UserService,
     public dialog: MatDialog
   ) {
@@ -33,19 +31,14 @@ export class ToDoListComponent implements OnInit {
   ngOnInit():void {
 
     let self = this;
-    self.shopService.templateUid.subscribe((data) => {
-      if(data) {
-        self.editRouter = '/shop/templates/edit/' + data;
-      }
-    });
 
     self.sub = self.userService.store.subscribe((data) => {
       if(data) {
-        console.log(data);
         self.displayName = data.displayName;
         self.shareLink = 'http://' + window.location.host + '/store/' + self.displayName + '/'
           + (data.template && data.template.templateId? data.template.templateId: 5);
         self.text = data.description;
+        self.editRouter = '/shop/templates/edit/' + (data.template && data.template.templateId? data.template.templateId: 5);
       }
     });
 
