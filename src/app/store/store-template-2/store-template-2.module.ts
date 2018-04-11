@@ -22,6 +22,9 @@ import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
 import {FaqComponent} from './faq/faq.component';
 import {AddCartSuccessDialogComponent} from "./add-cart-success-dialog/add-cart-success-dialog.component";
 import {StoreFlashSaleComponent} from "./store-flash-sale/store-flash-sale.component";
+import {StoreCountdownComponent} from "./store-countdown/store-countdown.component";
+import {StoreFlashSaleCardComponent} from "./store-flash-sale-card/store-flash-sale-card.component";
+import {StoreFlashDetailComponent} from "./store-detail/store-flash-detail.component";
 
 @NgModule({
   imports: [
@@ -47,7 +50,10 @@ import {StoreFlashSaleComponent} from "./store-flash-sale/store-flash-sale.compo
     ReturnPolicyComponent,
     FaqComponent,
     AddCartSuccessDialogComponent,
-    StoreFlashSaleComponent
+    StoreFlashSaleComponent,
+    StoreCountdownComponent,
+    StoreFlashSaleCardComponent,
+    StoreFlashDetailComponent
   ],
   entryComponents: [
     AddCartSuccessDialogComponent

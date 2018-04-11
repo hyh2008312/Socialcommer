@@ -33,7 +33,8 @@
         </div>
 
         <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="center center">
-          <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4" (click)="jumpStoreOrder()"></i>
+          <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"
+             (click)="jumpStoreOrder()"></i>
           <div style="position: relative" (click)="jumpStoreCart()">
             <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon"></i>
           </div>
@@ -42,6 +43,7 @@
         <div fxFlex="noshrink">
           <app-shop-template-3-navigation (routerChange)="changeViewPort($event)"
                                           [isNavigationHaveBlog]="isShowBlog"
+                                          [isHavePromotion]="isHavePromotion"
                                           [navigationIndex]="viewIndex"></app-shop-template-3-navigation>
         </div>
         <app-shop-template-3-store-footer [text]="text" [name]="storeName"></app-shop-template-3-store-footer>
@@ -93,10 +95,13 @@
             <div>
               <div class="xb-store__content xb-store__border-bottom">
                 <div class="md-margin-top-1" fxLayout="row wrap" fxLayoutAlign="space-around start">
-                  <app-shop-item-card *ngFor="let item of product"
+                  <ng-container *ngFor="let item of product ; let i = index" >
+                  <app-shop-item-card
                                       fxFlex="33" fxFlex.xs="100"
                                       (productId)="jumpGoodsDetail($event)"
+                                      *ngIf="i<6"
                                       [product]="item" [status]="0"></app-shop-item-card>
+                  </ng-container>
                   <div fxFlex="33" fxFlex.xs="100"></div>
                   <div fxFlex="33" fxFlex.xs="100"></div>
                 </div>
@@ -143,6 +148,21 @@
           <div class="xb-store-template__collection-bottom" [hidden]="viewIndex != 1">
             <div class="xb-store-template__collection-container">
               <div class="xb-store-template__collection-title" fxShow.xs="false">
+                FLASH SALE
+              </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+              <app-flash-sale-card-3 *ngFor="let item of flashSaleProduct"
+                                  fxFlex="31" fxFlex.xs="100"
+                                  (productId)="jumpGoodsDetail($event)"
+                                  [product]="item" [status]="1"></app-flash-sale-card-3>
+              <div fxFlex="31" fxFlex.xs="100"></div>
+              <div fxFlex="31" fxFlex.xs="100"></div>
+            </div>
+          </div>
+          <div class="xb-store-template__collection-bottom" [hidden]="viewIndex != 2">
+            <div class="xb-store-template__collection-container">
+              <div class="xb-store-template__collection-title" fxShow.xs="false">
                 COLLECTIONS
               </div>
               <app-shop-template-3-category [(category)]="category" [categories]="categories"
@@ -164,7 +184,7 @@
               </div>
             </div>
           </div>
-          <div class="xb-store-template__blog-content" [hidden]="viewIndex != 2">
+          <div class="xb-store-template__blog-content" [hidden]="viewIndex != 3">
             <div class="xb-store-template__blog-title">BLOG</div>
             <div class="md-margin-top-1" fxLayout="row wrap" fxLayoutAlign="space-between start">
               <app-shop-template-3-store-blog-card *ngFor="let item of blog"
@@ -180,7 +200,7 @@
               </div>
             </div>
           </div>
-          <div class="xb-store-template__about" [hidden]="viewIndex != 3">
+          <div class="xb-store-template__about" [hidden]="viewIndex != 5">
             <div class="xb-store-template__about-title">About Me</div>
             <div class="xb-store-template__about-image-bg xb-shop__template-edit">
               <app-image-upload-preview-blog [(previewImgFile)]="aboutMeSrc" [(previewImgSrc)]="aboutMeSrc"
@@ -309,7 +329,8 @@
     </div>
   </div>
   <div class="xb-store-template__line"></div>
-  <app-edit-cart-main-3 [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()" (openStoreOrder)="OpenStoreOrder()" ></app-edit-cart-main-3>
+  <app-edit-cart-main-3 [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()"
+                        (openStoreOrder)="OpenStoreOrder()"></app-edit-cart-main-3>
 </div>
 <div class="xb-store__background" *ngIf="storeOrder" [ngStyle]="{'background-color':'white'}">
   <div class="xb-4-template-edit__cancel-save">
@@ -337,5 +358,6 @@
     </div>
   </div>
   <div class="xb-store-template__line"></div>
-  <app-edit-3-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()" (openStoreCart)="OpenStoreCart()" ></app-edit-3-order>
+  <app-edit-3-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()"
+                    (openStoreCart)="OpenStoreCart()"></app-edit-3-order>
 </div>

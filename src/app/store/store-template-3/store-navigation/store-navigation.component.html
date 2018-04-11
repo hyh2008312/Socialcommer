@@ -13,6 +13,13 @@
      [routerLinkActiveOptions]="{'exact': contents[0].exact}">
   {{contents[0].text}}
 </div>
+<div class="xb-store-template__navigation xb-pointer"
+     *ngIf="isHaveFlashSale"
+     (click)="changeCategoryBold(false)"
+     routerLink="{{contents[4].link}}" [routerLinkActive]="['active']"
+     [routerLinkActiveOptions]="{'exact': contents[4].exact}">
+  {{contents[4].text}}
+</div>
 <div class="xb-store-template__category-navigation xb-pointer"
      [ngClass]="{'xb-store-template__border-top-bottom':isShowCategoryFlag ,'xb-store-template__media':false}"
      (click)="isShowCategory()">

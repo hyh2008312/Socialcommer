@@ -4,6 +4,12 @@
       <a (click)="jumpProductDetail()">
         <img [src]="product.mainImage">
       </a>
+      <div *ngIf="isPromotionOnGoing" class="xb-store__promotion-ongoing">Ongoing</div>
+      <div *ngIf="isPromotionOnGoing" class="xb-store__promotion-countdown" fxShow="true"
+           fxShow.xs="false">
+        <span *ngIf="days>0"> {{days>1?days+' Days,':'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}} Left
+      </div>
+      <div *ngIf="isPromotionScheduled" class="xb-store__promotion-upcoming">Upcoming</div>
       <div class="xb-store-template__card-content" fxLayout="column" fxLayoutAlign="center center" (click)="jumpProductDetail()">
         <div class="xb-store-template__card-title">{{product.title}}</div>
         <div>

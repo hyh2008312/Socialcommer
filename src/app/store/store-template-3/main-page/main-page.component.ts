@@ -25,6 +25,7 @@ export class MainPageComponent implements OnInit {
   isBlog: boolean = false;
   categories: any;
   selectCategoryMain: any;
+  isHavePromotion:boolean = false ;
 
   constructor(private router: Router,
               private storeService: StoreService) {
@@ -40,7 +41,7 @@ export class MainPageComponent implements OnInit {
         if (data.context && data.context.blogFlag) {
           self.showBlogFlag = data.context.blogFlag;
         }
-
+        self.isHavePromotion = data.promotionNum > 0;
         let tempCategory = data.category.filter((data) => {
           return data.goodsCount != 0;
         });

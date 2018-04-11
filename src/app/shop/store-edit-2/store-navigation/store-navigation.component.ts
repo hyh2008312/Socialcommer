@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, Input, Output,EventEmitter} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,28 +11,28 @@ export class StoreNavigationComponent implements OnInit {
   @Output() public routerChange: EventEmitter<number> = new EventEmitter();
   @Output() public openCart: EventEmitter<any> = new EventEmitter();
   @Output() public openOrder: EventEmitter<any> = new EventEmitter();
-  @Input() isBlack =false;
-  @Input()navigationIndex = 0;
-
+  @Input() isBlack = false;
+  @Input() navigationIndex = 0;
+  @Input() isHavePromotion: boolean = false;
 
 
   contents = [{
     text: 'Home'
   }, {
-    text: 'Products'
-  },  {
-    text: 'About Me'
-  }];
+    text: 'Flash Sale'
+  },
+    {
+      text: 'Products'
+    }, {
+      text: 'About Me'
+    }];
 
 
-
-  constructor(
-    private router: Router
-  ) {
+  constructor(private router: Router) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
 
   }
 
@@ -45,11 +45,11 @@ export class StoreNavigationComponent implements OnInit {
     this.routerChange.emit(index);
   }
 
-  openStoreCart():void{
+  openStoreCart(): void {
     this.openCart.emit();
   }
 
-  openStoreOrder():void{
+  openStoreOrder(): void {
     this.openOrder.emit();
   }
 

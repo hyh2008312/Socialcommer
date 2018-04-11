@@ -2,7 +2,7 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push">
       <div class="xb-store-template__side_container">
-        <app-store-template-2-navigation [type]="4" [displayName]="displayName"></app-store-template-2-navigation>
+        <app-store-template-2-navigation [type]="4" [displayName]="displayName"[isHavePromotion]="isHavePromotion"></app-store-template-2-navigation>
       </div>
     </mat-sidenav>
     <div class="xb-store-template__100vh" fxLayout="row" fxLayoutAlign="start stretch">
@@ -14,6 +14,7 @@
                 {{store.name}}
               </div>
               <app-store-template-2-navigation [isBlack]="true" [type]="4" [displayName]="displayName"
+                                               [isHavePromotion]="isHavePromotion"
                                                [productNumber]="productNumber" fxFlex></app-store-template-2-navigation>
             </div>
           </div>
