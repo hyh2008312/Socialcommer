@@ -1,0 +1,95 @@
+<div>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push">
+      <div class="xb-store-template__side_container">
+        <app-store-template-2-navigation [type]="2" [displayName]="displayName"></app-store-template-2-navigation>
+      </div>
+    </mat-sidenav>
+    <!--头部消息-->
+    <div class="xb-store-template__100vh"
+         fxLayout="row" fxLayoutAlign="start stretch"
+         (onScrollChange)="scrollChange($event)"
+         (click)="$event.stopPropagation();" appViewObjectScroll
+         [selector]="'xb-store-template__top-category-app'"
+    >
+      <div
+        fxFlex fxLayout="column" fxLayoutAlign="start stretch">
+        <div class="xb-store-template__collection-background">
+          <div class="xb-store-template__collection-container" fxShow="true" fxShow.xs="false">
+            <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-store-template__category-store-name" fxFlex="none">
+                {{store.name}}
+              </div>
+              <app-store-template-2-navigation [isBlack]="true" [type]="2" [displayName]="displayName"
+                                               [productNumber]="productNumber"
+                                               fxFlex></app-store-template-2-navigation>
+            </div>
+          </div>
+          <!--手机mobile的导航-->
+          <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"
+               fxShow.xs="true">
+            <i class="material-icons xb-pointer" [ngStyle]="{'color': 'black','margin-left':'16px'}"
+               (click)="sidenav.open()">menu</i>
+            <div class="xb-store-template__store-name" [ngStyle]="{'color': 'black'}">
+              {{store.name}}
+            </div>
+            <div class="xb-store-template__cart-position" (click)="jumpCart()">
+              <i class="iconfontXberts icon-pic-cart1 xb-store-template__cart-icon" [ngStyle]="{'color': 'black'}"></i>
+              <div class="xb-store-template__cart-circle" *ngIf="productNumber > 0">{{productNumber > 99 ? '99+':
+                productNumber}}
+              </div>
+            </div>
+          </div>
+          <div class="xb-store-template__collection-title">
+            Products
+          </div>
+        </div>
+        <!--产品列表-->
+        <div class="xb-store-template__collection—product" fxFlex="noshrink">
+          <div class="xb-store-template__collection—category" fxLayout="column" fxLayoutAlign="start start"
+               fxShow="true"
+               fxShow.xs="false">
+            <app-store-template-2-category fxFlexAlign="center" [(category)]="category" [categories]="categories"
+                                           (categoryChange)="changeCategory()"></app-store-template-2-category>
+          </div>
+
+          <div class="xb-store-template__top-category-app" fxShow="false" fxShow.xs="true">
+            <app-store-template-2-category [(category)]="category" [categories]="categories"
+                                           (categoryChange)="changeCategory()"></app-store-template-2-category>
+          </div>
+
+          <div fxHide.gt-xs *ngIf="showButton" class="xb-store-template__top-category" fxShow="false"
+               fxShow.xs="true">
+            <app-store-template-2-category [(category)]="category" [categories]="categories"
+                                           (categoryChange)="changeCategory()"></app-store-template-2-category>
+          </div>
+          <div>
+            <div class="xb-store-template__list-products md-margin-top-1">
+              <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+                <app-store-item-card *ngFor="let item of product"
+                                     fxFlex.xs="48" fxFlex.gt-xs="30"
+                                     [currency]="currency"
+                                     [product]="item" [status]="1"></app-store-item-card>
+                <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+              </div>
+            </div>
+          </div>
+          <div class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+               (click)="jumpList()" *ngIf="nextPage && product.length > 0">
+            <div>
+              SEE MORE
+            </div>
+          </div>
+        </div>
+        <!--网页底部-->
+        <div>
+          <app-store-template-2-store-foot
+            [storeName]="store.name"></app-store-template-2-store-foot>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-container>
+  <router-outlet></router-outlet>
+</div>
+
+

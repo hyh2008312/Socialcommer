@@ -12,10 +12,10 @@
   overflow-x: hidden;
   background-color: $whiteColor;
   z-index: 500;
-  &__car-line{
+  &__car-line {
     width: 100vw;
     height: 1px;
-    background-color: rgba(0,0,0,.12);
+    background-color: rgba(0, 0, 0, .12);
 
   }
   &__edit-text-button {
@@ -32,7 +32,6 @@
     z-index: 1;
     font-size: 14px;
   }
-
 
   &__divider-line {
     background-color: #dcdcdc;
@@ -262,8 +261,8 @@
       font-size: 16px;
       font-weight: bold;
       line-height: 28px;
-      max-height: 84px;
-      overflow: hidden;
+      width: 100%;
+      @include text-overflow();
       text-align: center;
     }
     &-price {
@@ -645,7 +644,6 @@
       @include media();
       color: rgba(0, 0, 0, .54);
       width: 54px;
-      margin-right: 24px;
       @include xb-xs-screen {
         width: auto;
         margin-right: 0;
@@ -742,6 +740,123 @@
     line-height: 54px;
     cursor: pointer;
   }
+}
+
+.xb-store {
+  &__promotion {
+    &-ongoing {
+      position: absolute;
+      background-color: #755993;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      color: white;
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      top: 8px;
+      left: 8px;
+    }
+    &-upcoming {
+      position: absolute;
+      background-color: #f85279;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      color: white;
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      top: 8px;
+      left: 8px;
+    }
+    &-countdown {
+      position: absolute;
+      background-color: white;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      border: 1px solid #dcdcdc;
+      right: 8px;
+      top: 8px;
+    }
+
+  }
+}
+
+.xb-store-promotion {
+  background-color: #F1F1F1;
+  border-radius: 4px;
+  padding: 24px 8px;
+  margin-top: 16px;
+  &__processing {
+    position: relative;
+    width: 100%;
+    height: 3px;
+    border-radius: 1px;
+    overflow: hidden;
+    margin-top: 12px;
+    background-color: white;
+    &-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: #ffc400;
+      height: 3px;
+    }
+  }
+  &__upcoming {
+    font-size: 12px;
+    width: 68px;
+    color: #B38A00;
+    @include regular();
+    text-align: center;
+    border-radius: 10px;
+    line-height: 20px;
+    background-color: #F5E3A6;
+    &-time {
+      font-size: 12px;
+      @include regular();
+      margin-left: 8px;
+      white-space: nowrap;
+    }
+  }
+  &__count {
+    &-word {
+      font-size: 12px;
+      @include regular();
+    }
+  }
+  &__details{
+    &-sale {
+      background-color: #e1ab18;
+      border-radius: 4px;
+      padding: 0 4px;
+      font-size: 12px;
+      color: $whiteColor;
+      white-space: nowrap;
+      line-height: 24px;
+
+      @include xb-xs-screen {
+        line-height: 24px;
+      }
+
+      @include xb-sm-screen {
+        line-height: 24px;
+      }
+    }
+  }
+
+
 }
 
 

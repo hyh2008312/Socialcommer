@@ -5,7 +5,6 @@ import {StoreListComponent} from './store-list/store-list.component';
 import {AboutMeComponent} from './about-me/about-me.component';
 import {StoreCategoryComponent} from './store-category/store-category.component';
 import {StoreDetailComponent} from './store-detail/store-detail.component';
-import {StoreItemCardComponent} from './store-item-card/store-item-card.component';
 
 import {StoreNavigationComponent} from './store-navigation/store-navigation.component'
 
@@ -26,6 +25,9 @@ import {FaqComponent} from "./faq/faq.component";
 import {PrivacyComponent} from "./privacy/privacy.component";
 import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
 import {AddCartSuccessDialogComponent} from "./add-cart-success-dialog/add-cart-success-dialog.component";
+import {StoreFlashSaleComponent} from "./store-flash-sale/store-flash-sale.component";
+import {StoreFlashSaleCardComponent} from "./store-flash-sale-card/store-flash-sale-card.component";
+import {StoreCountdownComponent} from "./store-countdown/store-countdown.component";
 
 @NgModule({
   imports: [
@@ -40,7 +42,6 @@ import {AddCartSuccessDialogComponent} from "./add-cart-success-dialog/add-cart-
     AboutMeComponent,
     StoreCategoryComponent,
     StoreDetailComponent,
-    StoreItemCardComponent,
     StoreNavigationComponent,
     StoreFootComponent,
     StoreDetailPictureComponent,
@@ -54,7 +55,10 @@ import {AddCartSuccessDialogComponent} from "./add-cart-success-dialog/add-cart-
     FaqComponent,
     PrivacyComponent,
     ReturnPolicyComponent,
-    AddCartSuccessDialogComponent
+    AddCartSuccessDialogComponent,
+    StoreFlashSaleComponent,
+    StoreFlashSaleCardComponent,
+    StoreCountdownComponent
 
   ],
   entryComponents: [

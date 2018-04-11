@@ -14,6 +14,8 @@ import {StoreDetailPictureComponent} from "./store-detail-picture/store-detail-p
 import {StoreItemProductCardComponent} from "./store-item-products-card/store-item-product-card.component";
 import {StoreCartComponent} from "./store-cart/store-cart.component";
 import {StoreOrderComponent} from "./store-order/store-order.component";
+import {StoreFlashSaleCardComponent} from "./store-flash-sale-card/store-flash-sale-card.component";
+import {StoreCountdownComponent} from "./store-countdown/store-countdown.component";
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import {StoreOrderComponent} from "./store-order/store-order.component";
     StoreDetailPictureComponent,
     StoreItemProductCardComponent,
     StoreCartComponent,
-    StoreOrderComponent
+    StoreOrderComponent,
+    StoreFlashSaleCardComponent,
+    StoreCountdownComponent
 
 
   ],

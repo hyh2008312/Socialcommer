@@ -19,6 +19,10 @@ export class StoreNavigationEditFourComponent implements OnInit {
       text: 'Home'
     },
     {
+      text: 'Flash Sale'
+    }
+    ,
+    {
       text: 'Collections'
     },
     {

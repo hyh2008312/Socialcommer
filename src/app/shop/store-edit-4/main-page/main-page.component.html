@@ -162,8 +162,23 @@
           </div>
         </div>
       </div>
-      <!-- 2.collections-->
+      <!-- 2.false sale-->
       <div [hidden]="viewIndex != 1" class="xb-4-template-content">
+        <div class="xb-4-template-collection xb-4-template__w960">
+          <div fxLayout="row" fxLayoutAlign="start stretch">
+            <div class="xb-4-template-collection__product md-margin-left-2" fxLayoutAlign="space-between start"
+                 fxLayout="row wrap">
+              <app-edit-flase-sale-card-4 *ngFor="let item of flashSaleProduct"
+                                            fxFlex.xs="48" fxFlex.gt-xs="32"
+                                            (productId)="jumpGoodsDetail($event)"
+                                            [product]="item" [status]="0"></app-edit-flase-sale-card-4>
+              <div fxFlex.xs="48" fxFlex.gt-xs="31"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 2.collections-->
+      <div [hidden]="viewIndex != 2" class="xb-4-template-content">
         <div class="xb-4-template-collection xb-4-template__w960">
           <div fxLayout="row" fxLayoutAlign="start stretch">
             <div class="xb-4-template-collection__category">
@@ -192,7 +207,7 @@
         </div>
       </div>
       <!-- 3.blog-->
-      <div [hidden]="viewIndex != 2" class="xb-4-template-content">
+      <div [hidden]="viewIndex != 3" class="xb-4-template-content">
         <div class="xb-4-template-blog  xb-4-template__w960 ">
           <div class="xb-4-template-blog__title">
             BLOG
@@ -214,7 +229,7 @@
         </div>
       </div>
       <!-- 4.about -->
-      <div [hidden]="viewIndex != 3" class="xb-4-template-content">
+      <div [hidden]="viewIndex != 4" class="xb-4-template-content">
         <div class="xb-4-template-about xb-4-template__w960">
           <!--about me-->
           <div class="xb-4-template-about__content xb-4-template__edit-border">
@@ -232,7 +247,7 @@
         </div>
       </div>
 
-      <div [hidden]="viewIndex != 4" class="xb-4-template-content">
+      <div [hidden]="viewIndex != 8" class="xb-4-template-content">
         <app-shop-template-4-store-edit-detail [productId]="selectProductId">
         </app-shop-template-4-store-edit-detail>
       </div>

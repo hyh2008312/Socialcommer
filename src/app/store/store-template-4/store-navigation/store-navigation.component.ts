@@ -13,6 +13,7 @@ export class StoreNavigationComponent implements OnInit {
   @Input() type: number;
   @Input() displayName: string;
   @Input() isShowBlog: boolean = false;
+  @Input() isHaveFlashSale: boolean = false;
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
   routerObservable: any;
@@ -34,7 +35,12 @@ export class StoreNavigationComponent implements OnInit {
     text: 'About',
     link: './about_me',
     exact: true
-  }];
+  }, {
+    text: 'Flash Sale',
+    link: './flash',
+    exact: true
+  }
+  ];
 
 
   constructor(public router: Router,) {

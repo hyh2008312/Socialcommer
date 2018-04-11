@@ -23,6 +23,8 @@ export class MainPageComponent implements OnInit {
   //是否显示根据两者条件
   isBlog: boolean = false;
 
+  isHavePromotion:boolean = false ;
+
   constructor(private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
               private router: Router,
@@ -38,6 +40,7 @@ export class MainPageComponent implements OnInit {
         self.storeName = data.name;
         self.text = data.description;
         self.displayName = data.displayName;
+        self.isHavePromotion = data.promotionNum > 0;
         if (data.context && data.context.blogFlag) {
           self.showBlogFlag = data.context.blogFlag;
         }

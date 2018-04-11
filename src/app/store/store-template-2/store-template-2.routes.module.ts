@@ -11,6 +11,7 @@ import {AboutComponent} from "./about/about.component";
 import {PrivacyComponent} from "./privacy/privacy.component";
 import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
 import {FaqComponent} from './faq/faq.component';
+import {StoreFlashSaleComponent} from "./store-flash-sale/store-flash-sale.component";
 
 const routes: Routes = [{
   path: '', component: MainPageComponent,
@@ -32,9 +33,10 @@ const routes: Routes = [{
     path: 'privacy', component: PrivacyComponent
   }, {
     path: 'return', component: ReturnPolicyComponent
-  },{
-    path:'faq',component:FaqComponent
-
+  }, {
+    path: 'faq', component: FaqComponent
+  }, {
+    path: 'flashsale', component: StoreFlashSaleComponent
   }
 
   ]
