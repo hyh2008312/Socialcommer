@@ -529,6 +529,7 @@
 
     &-content {
       margin-top: 72px;
+      margin-right: 32px;
       margin-left: 32px;
       padding-bottom: 32px;
       @include xb-xs-screen {
@@ -551,6 +552,7 @@
     }
     &-scroll {
       height: 100vh;
+      max-width: 600px;
       overflow: scroll;
 
       @include xb-xs-screen {
@@ -566,6 +568,7 @@
 
     &-cover-bg {
       margin-top: 32px;
+      max-width: 420px;
       @include xb-xs-screen {
         margin-top: 0;
       }
@@ -596,7 +599,6 @@
       @include media();
       color: rgba(0, 0, 0, .54);
       width: 54px;
-      margin-right: 24px;
       margin-top: 6px;
       @include xb-xs-screen {
         width: auto;
@@ -1379,5 +1381,120 @@
     right: -11px;
     top: 0;
     text-align: center;
+  }
+}
+.xb-store-promotion {
+  background-color: #F1F1F1;
+  border-radius: 4px;
+  padding: 24px 8px;
+  margin-top: 16px;
+  &__processing {
+    position: relative;
+    width: 100%;
+    height: 3px;
+    border-radius: 1px;
+    overflow: hidden;
+    margin-top: 12px;
+    background-color: white;
+    &-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: #6446c3;
+      height: 3px;
+    }
+  }
+  &__upcoming {
+    font-size: 12px;
+    width: 68px;
+    color: #B38A00;
+    @include regular();
+    text-align: center;
+    border-radius: 10px;
+    line-height: 20px;
+    background-color: #F5E3A6;
+    &-time {
+      font-size: 12px;
+      @include regular();
+      margin-left: 8px;
+      white-space: nowrap;
+    }
+  }
+  &__count {
+    &-word {
+      font-size: 12px;
+      @include regular();
+    }
+  }
+  &__details{
+    &-sale {
+      background-color: #6446c3;
+      border-radius: 4px;
+      padding: 0 4px;
+      font-size: 12px;
+      color: $whiteColor;
+      white-space: nowrap;
+      line-height: 24px;
+
+      @include xb-xs-screen {
+        line-height: 24px;
+      }
+
+      @include xb-sm-screen {
+        line-height: 24px;
+      }
+    }
+  }
+
+
+}
+.xb-store {
+  &__promotion {
+    &-ongoing {
+      position: absolute;
+      background-color: #755993;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      color: white;
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      top: 8px;
+      left: 8px;
+    }
+    &-upcoming {
+      position: absolute;
+      background-color: #f85279;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      color: white;
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      top: 8px;
+      left: 8px;
+    }
+    &-countdown {
+      position: absolute;
+      background-color: white;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      border: 1px solid #dcdcdc;
+      right: 8px;
+      top: 8px;
+    }
+
   }
 }

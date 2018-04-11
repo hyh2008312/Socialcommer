@@ -1,6 +1,20 @@
-<ng-container *ngFor="let value of contents;let i = index;">
-  <div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: i == navigationIndex}"
-       (click)="changeNavigation(i)" *ngIf=" !(i==2 && !isNavigationHaveBlog)">
-    {{value.text}}
-  </div>
-</ng-container>
+<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 0 == navigationIndex}"
+     (click)="changeNavigation(0)">
+  {{contents[0].text}}
+</div>
+<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 1 == navigationIndex}"
+     (click)="changeNavigation(1)" >
+  {{contents[1].text}}
+</div>
+<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 2 == navigationIndex}"
+     (click)="changeNavigation(2)">
+  {{contents[2].text}}
+</div>
+<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 3 == navigationIndex}"
+     (click)="changeNavigation(3)" *ngIf="isNavigationHaveBlog">
+  {{contents[3].text}}
+</div>
+<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 5 == navigationIndex}"
+     (click)="changeNavigation(5)" >
+  {{contents[4].text}}
+</div>

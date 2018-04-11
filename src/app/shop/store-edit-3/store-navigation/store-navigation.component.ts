@@ -11,6 +11,7 @@ export class StoreNavigationComponent implements OnInit {
 
   @Input() navigationIndex = 0;
   @Input() isNavigationHaveBlog = true;
+  @Input() isHavePromotion = false;
 
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
 
@@ -18,6 +19,8 @@ export class StoreNavigationComponent implements OnInit {
 
   contents = [{
     text: 'Home'
+  }, {
+    text: 'Flash Sale'
   }, {
     text: 'Collections'
   }, {

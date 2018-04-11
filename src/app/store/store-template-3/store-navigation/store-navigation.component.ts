@@ -13,6 +13,7 @@ export class StoreNavigationComponent implements OnInit {
 
   @Input() displayName: string;
   @Input() isShowBlog: boolean = false;
+  @Input() isHaveFlashSale: boolean = false;
   @Input() category: any;
   @Input() selectCategory: any;
 
@@ -39,7 +40,12 @@ export class StoreNavigationComponent implements OnInit {
     text: 'About',
     link: './about_me',
     exact: true
-  }];
+  },
+    {
+      text: 'Flash Sale',
+      link: './flash',
+      exact: true
+    }];
 
   constructor(private router: Router) {
     let arraylist = this.router.url.split('/3/list/');

@@ -1,18 +1,20 @@
-import {Input, Component, OnInit, Output, EventEmitter} from '@angular/core';
-import { Router } from '@angular/router';
+import {Input, Component, OnInit, Output, EventEmitter, OnChanges} from '@angular/core';
+import {Router} from '@angular/router';
+
 
 @Component({
-  selector: 'app-shop-item-card',
-  templateUrl: './store-item-card.component.html',
-  styleUrls: ['../_store-template-3.scss']
+  selector: 'app-flash-sale-card-5',
+  templateUrl: './store-flash-sale-card.component.html',
+  styleUrls: ['./_store-flash-sale-card.scss'],
 })
 
-export class StoreItemCardComponent implements OnInit {
+export class StoreFlashSaleCardComponent implements OnInit, OnChanges {
 
   @Input() status: number = 0;
   @Input() product: any = null;
-  @Output() public productId: EventEmitter<any> = new EventEmitter();
-  currency = 'USD';
+  @Input() currency: string = 'USD';
+  @Output() scrollToTop = new EventEmitter();
+
   // 活动是否开始和是否结束
   isPromotionOnGoing: boolean = false;
   isPromotionScheduled: boolean = false;
@@ -22,15 +24,26 @@ export class StoreItemCardComponent implements OnInit {
   hours: any;
 
   progressPercentage: number = 0;
-  constructor(
-    private router: Router
-  ) {}
+
+  constructor(private router: Router) {
+  }
+
 
   ngOnInit(): void {
   }
 
-  jumpProductDetail() {
-    this.productId.emit(this.product.id);
+  animationState = 'inactive';
+
+  changeAnimationState(): void {
+    this.animationState = this.animationState === 'active' ? 'inactive' : 'active';
+  }
+
+  jumpLink() {
+
+    let baseLink = this.router.url;
+    let link = `/detail/${this.product.id}`;
+    baseLink = baseLink.split('/flash')[0];
+    this.router.navigate([baseLink + link]);
   }
 
   ngOnChanges() {
