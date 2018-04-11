@@ -27,6 +27,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   navigationIndex: number = 0;   // 导航栏上边的角标
   isCategory: boolean = false; // 开始显示是否为分类
+  //导航上是否显示flash sale
+  isHavePromotion: boolean = false;
 
 
   //定义字段
@@ -290,6 +292,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
+                self.isHavePromotion = data.promotionNum > 0;
                 let tempCategory = data.category.filter((data)=>{
                   return data.goodsCount !=0 ;
                 });
@@ -297,6 +300,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
                 self.category = self.categories[0];
                 self.queryProduct();
                 self.queryBlog();
+                self.queryFlashSale();
               });
               for (let value of self.templateList) {
                 if (value.templateId == 6) {
@@ -491,6 +495,29 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
       if (data.next == null) {
         self.nextPage = false;
+      }
+    });
+  }
+
+  flashPage = 1;
+  nextFlashSalePage: boolean = false;
+  flashSaleProduct:  any = [];
+
+  queryFlashSale(clearProduct?: boolean) {
+    let options = {
+      store: this.store.id,
+      page: this.flashPage,
+      page_size: 48
+    };
+    let self = this;
+    self.shopService.getFlashSaleList(options).then((data) => {
+      if (clearProduct) {
+        self.flashSaleProduct = [];
+        self.nextFlashSalePage = true;
+      }
+      self.flashSaleProduct = self.flashSaleProduct.concat(data.results);
+      if (data.next == null) {
+        self.nextFlashSalePage = false;
       }
     });
   }

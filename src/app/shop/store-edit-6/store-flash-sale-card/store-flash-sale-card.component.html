@@ -1,0 +1,49 @@
+<div class="xb-store__card">
+  <div class="xb-pointer">
+    <div class="xb-store__card-image">
+      <a (click)="jumpProductDetail()">
+        <img [src]="product.mainImage">
+      </a>
+    </div>
+    <div class="xb-store__card-content" fxLayout="column">
+      <div class="xb-store__card-title">{{product.title}}</div>
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center"
+           fxLayout.xs="column" fxLayoutAlign.xs="start start">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="xb-store__card-price">{{product.salePrice | exchangeCurrency:currency | currency: currency}}
+          </div>
+          <div class="line-through md-margin-left-1"
+               *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">
+            {{product.originalPrice | exchangeCurrency:currency | currency: currency }}
+          </div>
+        </div>
+        <div fxShow.xs="false" class="xb-store__card-sale xb-store__card-margin"
+             *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">
+          {{product.salePrice|saleDiscount:product.originalPrice}} OFF
+        </div>
+      </div>
+      <div *ngIf="isPromotionOnGoing">
+        <div class="xb-store__card-processing">
+          <div class="xb-store__card-processing-line"></div>
+          <div class="xb-store__card-processing-line" [ngStyle]="{'width':progressPercentage+'%'}"></div>
+        </div>
+        <div class="xb-store__card-count md-margin-top-1" fxLayout="row" fxLayoutAlign="space-between center"
+             fxLayout.xs="column" fxLayoutAlign.xs="start start">
+          <div class="xb-store__card-count-word">{{progressPercentage}}% claimed</div>
+          <div class="xb-store__card-count-word">
+            <span *ngIf="days>0"> {{days>1?days+' Days,':'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}} Left
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isPromotionScheduled" [ngStyle]="{'margin-top':'18px'}" fxLayout="row"
+           fxLayoutAlign="start center"  fxLayout.xs="column" fxLayoutAlign.xs="start start">
+        <div class="xb-store__card-upcoming">Upcoming</div>
+        <div class="xb-store__card-upcoming-time"><span class="xb-bold">Starts in:</span> {{days}} {{days>1 ?
+          'Days':'Day'}}, {{hours}}
+          {{hours>1 ? 'Hours':'Hour'}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

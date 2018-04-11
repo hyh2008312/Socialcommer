@@ -86,6 +86,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   imageBannerEdited: boolean = false;
   imageBlogCoverEdited: boolean = false;
   storeEdited: boolean = false;
+  //导航上是否显示flash sale
+  isHavePromotion: boolean = false;
 
   editBannerImage() {
     this.imageBannerEdited = !this.imageBannerEdited;
@@ -245,6 +247,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
+                self.isHavePromotion = data.promotionNum > 0;
                 let tempCategory = data.category.filter((data)=>{
                   return data.goodsCount !=0 ;
                 });
@@ -252,6 +255,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
                 self.category = self.categories[0];
                 self.queryProduct();
                 self.queryBlog();
+                self.queryFlashSale();
               });
               self.shopService.getCategoryProduct(self.store.displayName).then((data) => {
                 self.categoryProduct = data;
@@ -314,6 +318,9 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
 
   jumpCategory(index: number): void {
+    if (document.getElementById('xb-5-template-to-top')) {
+      document.getElementById('xb-5-template-to-top').scrollTop = 0;
+    }
     this.viewIndex = index;
     this.isCategory = true;
     this.category = this.categoryProduct[index];
@@ -349,7 +356,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       store: this.store.id,
       relationStatus: 'published',
       page: this.page,
-      page_size: 6
+      page_size: 48
     };
     let self = this;
     self.storeService.getProductList(options).then((data) => {
@@ -361,6 +368,29 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
       if (data.next == null) {
         self.nextPage = false;
+      }
+    });
+  }
+
+  flashPage = 1;
+  nextFlashSalePage: boolean = false;
+  flashSaleProduct:  any = [];
+
+  queryFlashSale(clearProduct?: boolean) {
+    let options = {
+      store: this.store.id,
+      page: this.flashPage,
+      page_size: 48
+    };
+    let self = this;
+    self.shopService.getFlashSaleList(options).then((data) => {
+      if (clearProduct) {
+        self.flashSaleProduct = [];
+        self.nextFlashSalePage = true;
+      }
+      self.flashSaleProduct = self.flashSaleProduct.concat(data.results);
+      if (data.next == null) {
+        self.nextFlashSalePage = false;
       }
     });
   }

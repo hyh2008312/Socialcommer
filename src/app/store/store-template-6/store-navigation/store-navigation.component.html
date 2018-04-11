@@ -8,6 +8,11 @@
       {{value.text | makeFirstLetterBig}}
     </div>
   </ng-container>
+  <div class="xb-4-template-navigation xb-pointer" (click)="hiddenShowMoreCategory()"
+       *ngIf="isHaveFlashSale"
+       routerLink="./flash" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': true}">
+      Flash Sale
+  </div>
   <ng-container *ngFor="let category of showCategory">
     <div class="xb-4-template-navigation xb-pointer" (click)="hiddenShowMoreCategory()"
          [routerLink]="['./category',category.id]" [routerLinkActive]="['active']">

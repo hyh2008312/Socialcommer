@@ -1,4 +1,4 @@
-import {Input, Component, OnInit} from '@angular/core';
+import {Input, Component, OnInit,OnChanges} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -7,11 +7,22 @@ import {Router} from '@angular/router';
   styleUrls: ['../_store-template-5.scss']
 })
 
-export class StoreItemProductCardComponent implements OnInit {
+export class StoreItemProductCardComponent implements OnInit,OnChanges {
 
   @Input() status: number = 0;
   @Input() product: any = null;
   @Input() currency: string = 'USD';
+
+
+  // 活动是否开始和是否结束
+  isPromotionOnGoing: boolean = false;
+  isPromotionScheduled: boolean = false;
+  // 倒计时,时间差，天，时
+  _diff: any;
+  days: any;
+  hours: any;
+
+  progressPercentage: number = 0;
 
 
   constructor(private router: Router) {
@@ -41,5 +52,22 @@ export class StoreItemProductCardComponent implements OnInit {
         break;
     }
     this.router.navigate([baseLink + link]);
+  }
+
+  ngOnChanges() {
+    if (this.product.promotionOngoing) {
+      this.isPromotionOnGoing = true;
+      this.progressPercentage = this.product.promotionOngoing.saleRatio;
+      this.settingTimes = this.product.promotionOngoing.endTimestamp * 1000 - Date.now();
+    } else if (this.product.promotionScheduled) {
+      this.isPromotionScheduled = true;
+      this.settingTimes = this.product.promotionScheduled.startTimestamp * 1000 - Date.now();
+    }
+  }
+
+  set settingTimes(time) {
+    this._diff = Math.floor(time / 1000);
+    this.days = Math.floor(this._diff / 3600 / 24);
+    this.hours = Math.floor(this._diff / 3600 % 24);
   }
 }

@@ -12,6 +12,7 @@ export class StoreNavigationEditFourComponent implements OnInit {
 
   @Input() navigationIndex = 0;
   @Input() isNavigationHaveBlog = true;
+  @Input() isHavePromotion = false;
 
 
   contents = [

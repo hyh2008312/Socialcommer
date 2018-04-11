@@ -20,6 +20,8 @@ import {StoreItemBlogCardTwoComponent} from './store-item-blog-card-two/store-it
 import {StoreDetailComponent} from "./store-detail/store-detail.component";
 import {StoreOrderComponent} from "./store-order/store-order.component";
 import {StoreCartComponent} from "./store-cart/store-cart.component";
+import {StoreCountdownComponent} from "./store-countdown/store-countdown.component";
+import {StoreFlashSaleCardComponent} from "./store-flash-sale-card/store-flash-sale-card.component";
 
 @NgModule({
   imports: [
@@ -42,7 +44,9 @@ import {StoreCartComponent} from "./store-cart/store-cart.component";
     StoreItemBlogCardTwoComponent,
     StoreDetailComponent,
     StoreOrderComponent,
-    StoreCartComponent
+    StoreCartComponent,
+    StoreCountdownComponent,
+    StoreFlashSaleCardComponent
   ],
   entryComponents: [],
   providers: [

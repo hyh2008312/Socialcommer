@@ -80,6 +80,9 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   imageHomeMadeEdited: boolean = false;
   storeEdited: boolean = false;
 
+  //导航上是否显示flash sale
+  isHavePromotion: boolean = false;
+
   editImage() {
     this.imageEdited = !this.imageEdited;
   }
@@ -252,6 +255,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
+                self.isHavePromotion = data.promotionNum > 0;
                 let tempCategory = data.category.filter((data) => {
                   return data.goodsCount != 0;
                 });

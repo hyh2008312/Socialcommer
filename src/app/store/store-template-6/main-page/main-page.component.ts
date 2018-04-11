@@ -25,6 +25,7 @@ export class MainPageComponent implements OnInit {
   showBlogFlag: number = 1;
   //是否显示根据两者条件
   isBlog: boolean = false;
+  isHavePromotion:boolean = false ;
 
   constructor(private storeService: StoreService, private router: Router) {
   }
@@ -35,6 +36,7 @@ export class MainPageComponent implements OnInit {
       if (data) {
         self.storeName = data.name;
         self.displayName = data.displayName;
+        self.isHavePromotion = data.promotionNum > 0;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.contactUsTag = data.context ? data.context.contactUsTag : '';
         self.text = data.description;

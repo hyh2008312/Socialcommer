@@ -24,35 +24,60 @@
       </div>
       <div id="xb-6-detail-top" class="xb-4-template-detail__content" fxFlex>
         <div class="xb-4-template-detail__title md-margin-top-1">{{product?.title}}</div>
-        <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center"
-             fxLayout.xs="column" fxLayoutAlign.xs="start start">
-          <div class="xb-store-template__car-left-part">Price</div>
-          <div fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-store-promotion">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-store-template__car-left-part">Price</div>
             <div class="xb-4-template-detail__price" *ngIf="!isHaveVariant">
-              {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+              {{ salePrice | exchangeCurrency:currency |currency: currency }}
             </div>
-
-            <div class="xb-4-template-detail__price"
-                 *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
-              {{minSalePrice | exchangeCurrency:currency |currency: currency:true }} - {{maxSalePrice |
-              exchangeCurrency:currency |currency: currency:true }}
+            <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency }} - {{maxSalePrice |
+              exchangeCurrency:currency |currency: currency }}
             </div>
-            <div class="xb-4-template-detail__price"
-                 *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
-              {{minSalePrice | exchangeCurrency:currency |currency: currency:true }}
+            <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
+              {{minSalePrice | exchangeCurrency:currency |currency: currency }}
             </div>
-
             <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && !isPriceRange">
-              {{ salePrice | exchangeCurrency:currency |currency: currency: true }}
+              {{ salePrice | exchangeCurrency:currency |currency: currency }}
             </div>
-
-            <div class="xb-4-template-detail__original-price line-through "
+            <div class="xb-store-promotion__details-sale md-margin-left-1"
                  *ngIf="!isHaveVariant && salePrice != originalPrice ">
-              {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
+              - {{ salePrice|saleDiscount:originalPrice}}
             </div>
-            <div class="xb-4-template-detail__original-price line-through "
+            <div class="xb-store-promotion__details-sale md-margin-left-1"
                  *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
-              {{ originalPrice | exchangeCurrency:currency |currency: currency: true }}
+              - {{ salePrice|saleDiscount:originalPrice}}
+            </div>
+          </div>
+          <div [ngStyle]="{'margin-left':'54px'}" fxLayout="row" fxLayoutAlign="start center">
+            <div class="line-through md-margin-top-1"
+                 *ngIf="!isHaveVariant && salePrice != originalPrice ">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+            <div class="line-through md-margin-top-1"
+                 *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
+              {{ originalPrice | exchangeCurrency:currency |currency: currency }}
+            </div>
+          </div>
+          <div *ngIf="isPromotionOnGoing" [ngStyle]="{'margin-left':'54px'}">
+            <div class="xb-store-promotion__processing">
+              <div class="xb-store-promotion__processing-line"></div>
+              <div class="xb-store-promotion__processing-line" [ngStyle]="{'width':progressPercentage+'%'}"></div>
+            </div>
+            <div class="xb-store-promotion__count md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
+              <div class="xb-store-promotion__count-word">{{progressPercentage}}% claimed</div>
+              <div class="xb-store-promotion__count-word" fxLayout="row" fxLayoutAlign="start start">
+                <span class="xb-bold">Ends in:&nbsp;&nbsp;</span>
+                <app-store-edit-six-countdown [countdownTimer]="countdownLeftTime"></app-store-edit-six-countdown>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isPromotionScheduled" [ngStyle]="{'margin-left':'54px'}" class="md-margin-top-2" fxLayout="row"
+               fxLayoutAlign="start center">
+            <div class="xb-store-promotion__upcoming">Upcoming</div>
+            <div class="xb-store-promotion__upcoming-time" fxLayout="row" fxLayoutAlign="start start">
+              <span class="xb-bold">Starts in:&nbsp;&nbsp;</span>
+              <app-store-edit-six-countdown [countdownTimer]="countdownLeftTime"></app-store-edit-six-countdown>
             </div>
           </div>
         </div>
@@ -79,7 +104,7 @@
           <div class="xb-store-template__car-margin-top" fxLayout="row" fxLayoutAlign="start center"
                fxLayout.xs="column" fxLayoutAlign.xs="start start" *ngIf="isCanBuy">
             <div class="xb-store-template__car-left-part">Quantity</div>
-            <div fxLayout="row" fxLayoutAlign="start center">
+            <div  class="md-margin-left-3" fxLayout="row" fxLayoutAlign="start center">
               <div class="md-margin-right-2 xb-store-template__car-item-add" fxFlex="none">
                 <i class="material-icons">add</i>
               </div>

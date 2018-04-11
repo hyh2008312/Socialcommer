@@ -4,13 +4,19 @@
       <a>
         <img [src]="product.mainImage">
       </a>
+      <div *ngIf="isPromotionOnGoing" class="xb-4-template-products__promotion-ongoing">Ongoing</div>
+      <div *ngIf="isPromotionOnGoing" class="xb-4-template-products__promotion-countdown" fxShow="true"
+           fxShow.xs="false">
+        <span *ngIf="days>0"> {{days>1?days+' Days,':'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}} Left
+      </div>
+      <div *ngIf="isPromotionScheduled" class="xb-4-template-products__promotion-upcoming">Upcoming</div>
     </div>
     <div class="xb-4-template-products__card-content" fxLayout="column" fxLayoutAlign="start center">
       <div class="xb-4-template-products__card-title">{{product.title}}</div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-        <div class="xb-4-template-products__card-price">{{product.salePrice | exchangeCurrency:currency |currency: currency:true }}</div>
+        <div class="xb-4-template-products__card-price">{{product.salePrice | exchangeCurrency:currency |currency: currency }}</div>
         <div class="xb-4-template-products__card-original line-through " *ngIf="product.originalPrice > 0">
-          {{product.originalPrice | exchangeCurrency:currency |currency: currency: true }}
+          {{product.originalPrice | exchangeCurrency:currency |currency: currency }}
         </div>
       </div>
     </div>

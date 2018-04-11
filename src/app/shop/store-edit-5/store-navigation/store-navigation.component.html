@@ -1,11 +1,22 @@
 <div class="xb-4-template-navigation__container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="32px">
-  <ng-container *ngFor="let value of contents ;let i=index">
-    <div class="xb-4-template-navigation xb-pointer"
-         *ngIf=" !(i==1 && !isNavigationHaveBlog)"
-         [ngClass]="{active: ((i == navigationIndex) && !isCategory)}" (click)="changeNavigation(i)">
-      {{value.name |makeFirstLetterBig}}
-    </div>
-  </ng-container>
+
+  <div class="xb-4-template-navigation xb-pointer"
+       [ngClass]="{active: ((0 == navigationIndex) && !isCategory)}" (click)="changeNavigation(0)">
+    {{contents[0].name |makeFirstLetterBig}}
+  </div>
+  <div class="xb-4-template-navigation xb-pointer"
+       *ngIf="isHavePromotion"
+       [ngClass]="{active: ((3 == navigationIndex) && !isCategory)}" (click)="changeNavigation(3)">
+    {{contents[2].name |makeFirstLetterBig}}
+  </div>
+  <div class="xb-4-template-navigation xb-pointer"
+       *ngIf="isNavigationHaveBlog"
+       [ngClass]="{active: ((1 == navigationIndex) && !isCategory)}" (click)="changeNavigation(1)">
+    {{contents[1].name |makeFirstLetterBig}}
+  </div>
+
+
+
   <div class="xb-4-template-navigation xb-pointer" *ngFor="let category of categories ; let i=index"
        [ngClass]="{active: ((i == navigationIndex) && isCategory)}" (click)="changeCategoryNavigation(i)">
     {{category.name | makeFirstLetterBig}}
