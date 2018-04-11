@@ -28,7 +28,6 @@ export class ShopService {
     this.auth.getAccessToken().subscribe((data) => {
       if (data) {
         headers.append('Authorization', 'Bearer ' + data);
-        headers.append('Authorization', 'Bearer ' + 111);
       }
     });
 
