@@ -66,6 +66,7 @@ export class StoreFlashDetailComponent implements OnInit {
   isPromotionScheduled: boolean = false;
   countdownLeftTime: number = 0;
   progressPercentage: number = 0;
+  discount: any = '0.0';
   constructor(public router: Router,
               private dialog: MatDialog,
               private activatedRouter: ActivatedRoute,
@@ -130,10 +131,12 @@ export class StoreFlashDetailComponent implements OnInit {
           }
           if (self.product.promotionOngoing) {
             self.isPromotionOnGoing = true;
-            this.progressPercentage = this.product.promotionOngoing.saleRatio;
+            self.progressPercentage = self.product.promotionOngoing.saleRatio;
+            self.discount = self.product.promotionOngoing.discount;
             self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
           } else if (self.product.promotionScheduled) {
             self.isPromotionScheduled = true;
+            self.discount = this.product.promotionScheduled.discount;
             self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
           }
           this.isHaveVariant = data.attributes.length > 0;
@@ -146,6 +149,10 @@ export class StoreFlashDetailComponent implements OnInit {
             this.originalPrice = this.product.originalPrice;
             this.isCanBuy = this.product.variants[0].isCanBuy;
             this.variant = this.product.variants[0];
+          }
+
+          if (this.discount != '0.0') {
+            this.salePrice = this.salePrice * this.discount;
           }
 
 
@@ -289,6 +296,10 @@ export class StoreFlashDetailComponent implements OnInit {
       });
       this.minSalePrice = this.salePriceList[0];
       this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1];
+      if (this.discount != '0.0') {
+        this.minSalePrice = this.minSalePrice * this.discount;
+        this.maxSalePrice = this.maxSalePrice * this.discount;
+      }
     }
   }
 
@@ -330,6 +341,11 @@ export class StoreFlashDetailComponent implements OnInit {
       this.originalPrice = this.product.originalPrice;
       this.isCanBuy = this.product.variants[0].isCanBuy;
       this.variant = this.product.variants[0];
+    }
+
+    // 设置价格
+    if (this.discount != '0.0') {
+      this.salePrice = this.salePrice * this.discount;
     }
     //判断有没有选择变体（两者）
     let count = 0;

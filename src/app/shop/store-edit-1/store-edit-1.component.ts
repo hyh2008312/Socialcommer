@@ -62,6 +62,7 @@ export class StoreEditComponent implements OnInit {
   //是否是promotion的请求(区分两种卡片)
   isPromotion: boolean = false;
 
+  isGuide: boolean = false;
 
   constructor(private userService: UserService,
               private fb: FormBuilder,
@@ -70,6 +71,9 @@ export class StoreEditComponent implements OnInit {
               private constant: ConstantService,
               private dialog: MatDialog) {
 
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/edit') >= 0;
+    console.log("guide" + this.isGuide);
     this.countries = this.constant.getCountries();
 
     let self = this;
@@ -393,7 +397,7 @@ export class StoreEditComponent implements OnInit {
     let options = {
       store: this.store.id,
       page: this.page,
-      page_size:48
+      page_size: 48
     };
     let self = this;
     self.shopService.getFlashSaleList(options).then((data) => {

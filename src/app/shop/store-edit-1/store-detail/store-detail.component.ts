@@ -68,6 +68,7 @@ export class StoreDetailComponent implements OnInit, OnChanges {
   isPromotionScheduled: boolean = false;
   countdownLeftTime: number = 0;
   progressPercentage: number = 0;
+  discount: any = '0.0';
 
   @Input() productId: number;
   @Output() public closeDetail: EventEmitter<any> = new EventEmitter();
@@ -137,10 +138,12 @@ export class StoreDetailComponent implements OnInit, OnChanges {
 
           if (self.product.promotionOngoing) {
             self.isPromotionOnGoing = true;
+            this.discount = this.product.promotionOngoing.discount;
             this.progressPercentage = this.product.promotionOngoing.saleRatio;
             self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
           } else if (self.product.promotionScheduled) {
             self.isPromotionScheduled = true;
+            this.discount = this.product.promotionScheduled.discount;
             self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
           }
 
@@ -153,6 +156,9 @@ export class StoreDetailComponent implements OnInit, OnChanges {
             this.originalPrice = this.product.originalPrice;
             this.isCanBuy = this.product.variants[0].isCanBuy;
             this.variant = this.product.variants[0];
+          }
+          if (this.discount != '0.0') {
+            this.salePrice = this.salePrice * this.discount;
           }
         });
 
@@ -215,6 +221,10 @@ export class StoreDetailComponent implements OnInit, OnChanges {
       });
       this.minSalePrice = this.salePriceList[0];
       this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1];
+      if (this.discount != '0.0') {
+        this.minSalePrice = this.minSalePrice * this.discount;
+        this.maxSalePrice = this.maxSalePrice * this.discount;
+      }
     }
   }
 
@@ -256,6 +266,11 @@ export class StoreDetailComponent implements OnInit, OnChanges {
       this.originalPrice = this.product.originalPrice;
       this.isCanBuy = this.product.variants[0].isCanBuy;
       this.variant = this.product.variants[0];
+    }
+
+    // 设置价格
+    if (this.discount != '0.0') {
+      this.salePrice = this.salePrice * this.discount;
     }
     //判断有没有选择变体（两者）
     let count = 0;

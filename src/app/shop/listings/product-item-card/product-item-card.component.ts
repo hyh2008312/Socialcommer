@@ -46,6 +46,7 @@ export class ProductItemCardComponent implements OnInit {
   days: any;
   hours: any;
   progressPercentage: number = 0;
+
   constructor(private router: Router,
               private userService: UserService) {
     this.sub = this.userService.store.subscribe((data) => {
@@ -74,8 +75,14 @@ export class ProductItemCardComponent implements OnInit {
     if (this.product.promotionOngoing) {
       this.isPromotionOnGoing = true;
       this.progressPercentage = this.product.promotionOngoing.saleRatio;
+      if (this.product.promotionOngoing.discount != '0.0') {
+        this.product.saleUnitPrice = this.product.saleUnitPrice * this.product.promotionOngoing.discount;
+      }
       this.settingTimes = this.product.promotionOngoing.endTimestamp * 1000 - Date.now();
     } else if (this.product.promotionScheduled) {
+      if (this.product.promotionScheduled.discount != '0.0') {
+        this.product.saleUnitPrice = this.product.saleUnitPrice * this.product.promotionScheduled.discount;
+      }
       this.isPromotionScheduled = true;
       this.settingTimes = this.product.promotionScheduled.startTimestamp * 1000 - Date.now();
     }

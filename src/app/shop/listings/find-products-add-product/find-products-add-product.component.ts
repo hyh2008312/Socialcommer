@@ -75,6 +75,8 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
   countdownLeftTime: number = 0;
   progressPercentage: number = 0;
 
+  discount: any = '0.0';
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private shopService: ShopService,
@@ -106,11 +108,13 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
           self.isPromotionScheduled = false;
           if (self.product.promotionOngoing) {
             self.isPromotionOnGoing = true;
-            this.progressPercentage = this.product.promotionOngoing.saleRatio;
-            self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
+            self.progressPercentage = self.product.promotionOngoing.saleRatio;
+            self.discount = self.product.promotionOngoing.discount;
+            self.countdownLeftTime = self.product.promotionOngoing.endTimestamp * 1000;
           } else if (self.product.promotionScheduled) {
             self.isPromotionScheduled = true;
-            self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
+            self.discount = self.product.promotionScheduled.discount;
+            self.countdownLeftTime = self.product.promotionScheduled.startTimestamp * 1000;
           }
           self.supplierName = data.supplierName;
           self.description = data.description;
@@ -238,8 +242,14 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
         }
         return 0;
       });
+
       this.minSalePrice = this.salePriceList[0];
       this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1];
+
+      if (this.discount != '0.0') {
+        this.minSalePrice = this.salePriceList[0] * this.discount;
+        this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1] * this.discount;
+      }
     }
 
   }
@@ -284,6 +294,11 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
       this.commission = this.salePrice * this.commissionRate / 100;
     }
 
+    //显示价格
+    if (this.discount != '0.0') {
+      this.salePrice = this.salePrice * this.discount;
+      this.commission = this.commission * this.discount;
+    }
     //判断有没有选择变体（两者）
     let count = 0;
     for (let item of this.variantList) {

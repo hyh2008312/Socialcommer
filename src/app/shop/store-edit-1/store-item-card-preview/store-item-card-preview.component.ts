@@ -37,6 +37,9 @@ export class StoreItemCardPreviewComponent implements OnInit {
     if (this.product.promotionOngoing) {
       this.isPromotionOnGoing = true;
       this.progressPercentage = this.product.promotionOngoing.saleRatio;
+      if (this.product.promotionOngoing.discount != '0.0') {
+        this.product.salePrice = this.product.salePrice * this.product.promotionOngoing.discount;
+      }
       this.settingTimes = this.product.promotionOngoing.endTimestamp * 1000 - Date.now();
     } else if (this.product.promotionScheduled) {
       this.isPromotionScheduled = true;
