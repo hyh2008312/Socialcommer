@@ -1,0 +1,72 @@
+@import "../../styles/utils/_index";
+@import "../../styles/_variables";
+
+
+.xb-share-dialog {
+
+  padding: 56px;
+  max-width: 720px;
+  position: relative;
+  background-color: $whiteColor;
+  border-radius: 4px;
+  @include xb-xs-screen {
+    padding: 56px 16px;
+  }
+
+  &__close {
+    position: absolute;
+    left: calc(100% - 40px);
+    top: 16px;
+    color: $blackColor;
+    cursor: pointer;
+    i {
+      font-size: 24px;
+      line-height: 24px;
+      @include media();
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    letter-spacing: -.58px;
+    line-height: 29px;
+    text-align: center;
+    @include media();
+  }
+
+  &__title-1{
+    margin-top: 16px;
+    font-size: 14px;
+    letter-spacing: -.58px;
+    line-height: 17px;
+    @include media();
+  }
+
+  &__content {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: -.29px;
+  }
+
+  &__link {
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: -.29px;
+    text-decoration: underline;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 4px;
+    display: block;
+    color: rgba(0, 0, 0, .87);
+  }
+
+  &__color{
+    color: $dangerColor;
+  }
+
+  &__margin-top {
+    margin-top: 16px;
+  }
+
+}

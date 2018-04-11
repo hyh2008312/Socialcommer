@@ -14,6 +14,8 @@ import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.
 import { StoreShareDialogComponent } from "./store-share-dialog/store-share-dialog.component";
 import { SettingsPasswordDialogComponent } from "./setting-password-dialog/setting-password-dialog.component";
 import { StoreStatusChangeDialogComponent } from "./store-status-change-dialog/store-status-change-dialog.component";
+import { StoreGuideBonusDialogComponent } from "./store-guide-bonus-dialog/store-guide-bonus-dialog.component";
+import { StoreToRewardDialogComponent } from "./store-to-reward-dialog/store-to-reward-dialog.component";
 
 import { StoreAvatarComponent } from "./store-avatar/store-avatar.component";
 
@@ -46,13 +48,17 @@ import { SharedModule } from '../shared/shared.module';
     SettingsPasswordDialogComponent,
     ShopErrorComponent,
     StoreAvatarComponent,
-    StoreStatusChangeDialogComponent
+    StoreStatusChangeDialogComponent,
+    StoreGuideBonusDialogComponent,
+    StoreToRewardDialogComponent
   ],
   entryComponents: [
     StoreShareDialogComponent,
     SnackBarSuccessComponent,
     SettingsPasswordDialogComponent,
-    StoreStatusChangeDialogComponent
+    StoreStatusChangeDialogComponent,
+    StoreGuideBonusDialogComponent,
+    StoreToRewardDialogComponent
   ],
   providers: [
     ShopService,
