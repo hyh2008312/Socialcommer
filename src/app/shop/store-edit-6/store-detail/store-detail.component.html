@@ -120,11 +120,18 @@
 
         <div class="md-margin-top-3 xb-4-template-detail__buttons_bg">
           <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy">
-            <button class="xb-4-template-detail__buy-buttons" [ngStyle]="{'cursor':'initial'}">ADD TO CART</button>
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled)">
+            <button class="xb-4-template-detail__buy-buttons" [disabled]="true"
+                    [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}">ADD TO CART</button>
+          </a>
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy && (isPromotionOnGoing || isPromotionScheduled)">
+            <button class="xb-4-template-detail__buy-buttons"[disabled]="true"
+                    [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}" >CLAIM IT NOW</button>
           </a>
           <a class="gtag-shop-detail-get-it-now-button" *ngIf="!isCanBuy">
-            <button class="xb-4-template-detail__buy-buttons" [disabled]="true">OUT OF STOCK</button>
+            <button class="xb-4-template-detail__buy-buttons"
+                    [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}"
+                    [disabled]="true">OUT OF STOCK</button>
           </a>
         </div>
 

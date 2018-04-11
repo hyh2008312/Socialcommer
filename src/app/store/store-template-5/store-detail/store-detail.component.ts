@@ -332,15 +332,18 @@ export class StoreDetailComponent implements OnInit {
       });
     }
     this.storeService.addProductToCart(this.store.displayName, product);
+    if (this.isPromotionOnGoing) {
+      this.router.navigate([`./store/${this.displayName}/cart`]);
+    } else {
+      let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
+        data: {
+          displayName: this.displayName
+        }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+      });
+    }
 
-    let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
-      data: {
-        displayName: this.displayName
-      }
-    });
-    let self = this;
-    dialogRef.afterClosed().subscribe(result => {
-    });
   }
 
   arrangeVariant(data) {

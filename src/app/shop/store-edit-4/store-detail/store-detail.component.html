@@ -120,9 +120,14 @@
 
         <div class="xb-4-template-detail__buttons_bg md-margin-top-3">
           <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy">
-            <button class="xb-4-template-detail__buy-buttons" [ngStyle]="{'cursor':'initial'}" [disabled]="true">ADD TO
-              CART
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled) ">
+            <button class="xb-4-template-detail__buy-buttons" [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}"
+                    [disabled]="true">ADD TO CART
+            </button>
+          </a>
+          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy && (isPromotionOnGoing || isPromotionScheduled)">
+            <button class="xb-4-template-detail__buy-buttons" [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}"
+                    [disabled]="true">CLAIM IT NOW
             </button>
           </a>
           <a class="gtag-shop-detail-get-it-now-button" *ngIf="!isCanBuy">

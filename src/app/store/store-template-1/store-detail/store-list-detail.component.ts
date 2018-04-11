@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { Store, Product, Image } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store, Product, Image} from '../../store';
 import {AddCartSuccessDialogComponent} from "../add-cart-success-dialog/add-cart-success-dialog.component";
 import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-store-list-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['../../store.scss','../_store-template-1.scss']
+  styleUrls: ['../../store.scss', '../_store-template-1.scss']
 })
 
 export class StoreListDetailComponent implements OnInit {
@@ -18,7 +18,7 @@ export class StoreListDetailComponent implements OnInit {
   public text = '';
   currency: string = 'USD';
   store: Store = new Store();
-  product:any = {};
+  product: any = {};
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
@@ -71,20 +71,20 @@ export class StoreListDetailComponent implements OnInit {
   countdownLeftTime: number = 0;
   progressPercentage: number = 0;
   discount: any = '0.0';
-  constructor(
-    public router: Router,
-    private activatedRouter: ActivatedRoute,
-    private dialog: MatDialog,
-    private storeService: StoreService
-  ) {}
 
-  ngOnInit():void {
+  constructor(public router: Router,
+              private activatedRouter: ActivatedRoute,
+              private dialog: MatDialog,
+              private storeService: StoreService) {
+  }
+
+  ngOnInit(): void {
     this.shareLink = window.location.href;
 
     let id = this.activatedRouter.snapshot.params['id'];
     let self = this;
     this.storeService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.store = data;
         self.currency = data.currency.toUpperCase();
         self.displayName = data.displayName;
@@ -105,11 +105,11 @@ export class StoreListDetailComponent implements OnInit {
             pid
           }).then((data) => {
             let priceItem: any = false;
-            for(let item of data[pid]) {
-              if(!priceItem) {
+            for (let item of data[pid]) {
+              if (!priceItem) {
                 priceItem = item.priceItem;
               }
-              if(priceItem >= item.priceItem) {
+              if (priceItem >= item.priceItem) {
                 self.shippingTimeMax = item.shippingTimeMax;
                 self.shippingTimeMin = item.shippingTimeMin;
                 priceItem = item.priceItem;
@@ -124,9 +124,9 @@ export class StoreListDetailComponent implements OnInit {
           });
 
           self.image = data.images;
-          if(data.images.length > 0) {
+          if (data.images.length > 0) {
             self.selectedImage = data.images[0];
-            for(let value of data.images) {
+            for (let value of data.images) {
               self.imageSources.push(value);
             }
           }
@@ -177,7 +177,7 @@ export class StoreListDetailComponent implements OnInit {
     this.showButton = $event;
   }
 
-  close():void {
+  close(): void {
     this.router.navigate([`./store/${this.store.displayName}/1/list`]);
   }
 
@@ -248,14 +248,18 @@ export class StoreListDetailComponent implements OnInit {
     this.storeService.addProductToCart(this.store.displayName, product);
 
 
+    if (this.isPromotionOnGoing) {
+      this.router.navigate([`./store/${this.displayName}/cart`]);
+    } else {
       let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
-      data: {
-        displayName: this.displayName
-      }
-    });
-    let self = this;
-    dialogRef.afterClosed().subscribe(result => {
-    });
+        data: {
+          displayName: this.displayName
+        }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+      });
+    }
+
   }
 
   arrangeVariant(data) {

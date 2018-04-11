@@ -121,8 +121,11 @@
       </div>
       <div class="xb-store-template__details-buttons">
         <div *ngIf="isShowCartWarn" class="xb-store-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-        <button mat-raised-button color="primary" [disabled]="true" *ngIf="isCanBuy">
+        <button mat-raised-button color="primary" [disabled]="true" *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled)"">
           <a class="xb-store-template__details-buttons-color gtag-shop-detail-get-it-now-button">ADD TO CART</a>
+        </button>
+        <button mat-raised-button color="primary" [disabled]="true" *ngIf="isCanBuy && (isPromotionOnGoing || isPromotionScheduled)"">
+          <a class="xb-store-template__details-buttons-color gtag-shop-detail-get-it-now-button">CLAIM IT NOW</a>
         </button>
         <button mat-raised-button color="primary" [disabled]="true" *ngIf="!isCanBuy">
           <a class="xb-store-template__details-buttons-color gtag-shop-detail-get-it-now-button">OUT OF STOCK</a>

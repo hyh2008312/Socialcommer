@@ -111,8 +111,16 @@
         </div>
         <div class="md-margin-top-3" fxLayout="column">
           <div *ngIf="isShowCartWarn" class="xb-store__red md-margin-bottom-2"> {{cartWarn}}</div>
-          <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy">
+          <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled )">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">ADD TO CART</a></button>
+
+          <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy && isPromotionOnGoing">
+            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">CLAIM IT NOW</a></button>
+
+          <button mat-raised-button color="primary" [disabled]="true" *ngIf="isCanBuy && isPromotionScheduled">
+            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">CLAIM IT NOW</a></button>
+
+
           <button mat-raised-button color="primary" [disabled]="true" *ngIf="!isCanBuy">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">OUT OF STOCK</a></button>
         </div>
@@ -238,8 +246,15 @@
         </div>
         <div class="xb-store__details-buttons" fxLayout="column">
           <div *ngIf="isShowCartWarn" class="xb-store__red md-margin-bottom-2"> {{cartWarn}}</div>
-          <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy">
+          <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled )">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">ADD TO CART</a></button>
+
+          <button mat-raised-button color="primary" (click)="openLink()" *ngIf="isCanBuy && isPromotionOnGoing">
+            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">CLAIM IT NOW</a></button>
+
+          <button mat-raised-button color="primary" [disabled]="true" *ngIf="isCanBuy && isPromotionScheduled">
+            <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">CLAIM IT NOW</a></button>
+
           <button mat-raised-button color="primary" [disabled]="true" *ngIf="!isCanBuy">
             <a class="xb-store__details-buttons-color gtag-shop-detail-get-it-now-button">OUT OF STOCK</a></button>
         </div>

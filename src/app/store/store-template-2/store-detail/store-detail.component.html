@@ -131,10 +131,20 @@
           </div>
           <div class="xb-store-template__detail-buttons-bg" fxShow="true" fxShow.xs="false">
             <div *ngIf="isShowCartWarn" class="xb-store-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-            <button class="xb-store-template__detail-buttons" (click)="openLink()" *ngIf="isCanBuy">
+            <button class="xb-store-template__detail-buttons" (click)="openLink()"
+                    *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled )">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">ADD TO CART</a>
             </button>
-            <button class="xb-store-template__detail-buttons" [disabled]="true" *ngIf="!isCanBuy">
+            <button class="xb-store-template__detail-buttons" (click)="openLink()"
+                    *ngIf="isCanBuy && isPromotionOnGoing">
+              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">CLAIM IT NOW</a>
+            </button>
+            <button class="xb-store-template__detail-buttons" [disabled]="true" [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}"
+                    *ngIf="isCanBuy && isPromotionScheduled ">
+              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">CLAIM IT NOW</a>
+            </button>
+            <button class="xb-store-template__detail-buttons" [disabled]="true"
+                    [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}"*ngIf="!isCanBuy">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">OUT OF STOCK</a>
             </button>
           </div>
@@ -273,10 +283,16 @@
           </div>
           <div class="xb-store-template__detail-buttons-bg xb-store-template__detail-app " fxShow="false"
                fxShow.xs="true">
-            <button class="xb-store-template__detail-buttons" (click)="openLink()" *ngIf="isCanBuy">
+            <button class="xb-store-template__detail-buttons" (click)="openLink()" *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled )">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">ADD TO CART</a>
             </button>
-            <button class="xb-store-template__detail-buttons" [disabled]="true" *ngIf="!isCanBuy">
+            <button class="xb-store-template__detail-buttons" (click)="openLink()" *ngIf="isCanBuy && isPromotionOnGoing">
+              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">CLAIM IT NOW</a>
+            </button>
+            <button class="xb-store-template__detail-buttons" [disabled]="true" [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}" *ngIf="isCanBuy && isPromotionScheduled">
+              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">CLAIM IT NOW</a>
+            </button>
+            <button class="xb-store-template__detail-buttons" [disabled]="true" [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}" *ngIf="!isCanBuy">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">OUT OF STOCK</a>
             </button>
           </div>

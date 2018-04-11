@@ -89,7 +89,7 @@ export class StoreListComponent implements OnInit, OnDestroy {
       store: this.store.id,
       relationStatus: 'published',
       page: this.page,
-      page_size: 12
+      page_size: 48
     };
     let self = this;
     self.storeService.getProductList(options).then((data) => {

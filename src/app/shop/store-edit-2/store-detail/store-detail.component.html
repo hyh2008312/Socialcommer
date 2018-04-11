@@ -39,11 +39,13 @@
               <div class="xb-store-template__detail-price" *ngIf="!isHaveVariant">
                 {{ salePrice | exchangeCurrency:currency |currency: currency }}
               </div>
-              <div class="xb-store-template__detail-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
+              <div class="xb-store-template__detail-price"
+                   *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
                 {{minSalePrice | exchangeCurrency:currency |currency: currency }} - {{maxSalePrice |
                 exchangeCurrency:currency |currency: currency }}
               </div>
-              <div class="xb-store-template__detail-price" *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
+              <div class="xb-store-template__detail-price"
+                   *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
                 {{minSalePrice | exchangeCurrency:currency |currency: currency }}
               </div>
               <div class="xb-store-template__detail-price" *ngIf="isHaveVariant && !isPriceRange">
@@ -73,7 +75,8 @@
                 <div class="xb-store-promotion__processing-line"></div>
                 <div class="xb-store-promotion__processing-line" [ngStyle]="{'width':progressPercentage+'%'}"></div>
               </div>
-              <div class="xb-store-promotion__count md-margin-top-2" fxLayout="row" fxLayoutAlign="space-between center">
+              <div class="xb-store-promotion__count md-margin-top-2" fxLayout="row"
+                   fxLayoutAlign="space-between center">
                 <div class="xb-store-promotion__count-word">{{progressPercentage}}% claimed</div>
                 <div class="xb-store-promotion__count-word" fxLayout="row" fxLayoutAlign="start start">
                   <span class="xb-bold">Ends in:&nbsp;&nbsp;</span>
@@ -128,10 +131,18 @@
           </div>
           <div class="xb-store-template__detail-buttons-bg" fxShow="true" fxShow.xs="false">
             <div *ngIf="isShowCartWarn" class="xb-store-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-            <button class="xb-store-template__detail-buttons" [ngStyle]="{'cursor':'initial'}" [disabled]="true" *ngIf="isCanBuy">
+            <button class="xb-store-template__detail-buttons"
+                    [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}" [disabled]="true"
+                    *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled)">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">ADD TO CART</a>
             </button>
-            <button class="xb-store-template__detail-buttons" [disabled]="true" *ngIf="!isCanBuy">
+            <button class="xb-store-template__detail-buttons"
+                    [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}" [disabled]="true"
+                    *ngIf="isCanBuy && (isPromotionOnGoing || isPromotionScheduled)">
+              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">CLAIM IT NOW</a>
+            </button>
+            <button class="xb-store-template__detail-buttons" [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}"
+                    [disabled]="true" *ngIf="!isCanBuy">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">OUT OF STOCK</a>
             </button>
           </div>
@@ -151,20 +162,32 @@
           </div>
           <div class="xb-store-template__detail-buttons-bg xb-store-template__detail-app " fxShow="false"
                fxShow.xs="true">
-            <button class="xb-store-template__detail-buttons"[ngStyle]="{'cursor':'initial'}" *ngIf="isCanBuy">
+            <button class="xb-store-template__detail-buttons" [ngStyle]="{'cursor':'initial'}"
+                    [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}" *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled)">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">ADD TO CART</a>
             </button>
-            <button class="xb-store-template__detail-buttons" [disabled]="true" *ngIf="!isCanBuy">
+            <button class="xb-store-template__detail-buttons" [ngStyle]="{'cursor':'initial'}"
+                    [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}" *ngIf="isCanBuy && (isPromotionOnGoing || isPromotionScheduled)">
+              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">CLAIM IT NOW</a>
+            </button>
+            <button class="xb-store-template__detail-buttons" [disabled]="true"
+                    [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}" *ngIf="!isCanBuy">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">OUT OF STOCK</a>
             </button>
           </div>
           <div fxHide.gt-xs class="xb-store-template__detail-buttons-fixed" fxLayout="column" fxShow="false"
                fxShow.xs="true"
                *ngIf="showButton">
-            <button class="xb-store-template__detail-buttons" *ngIf="isCanBuy">
+            <button class="xb-store-template__detail-buttons" [disabled]="true"
+                    [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}" *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled)">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">ADD TO CART</a>
             </button>
-            <button class="xb-store-template__detail-buttons" [disabled]="true" *ngIf="!isCanBuy">
+            <button class="xb-store-template__detail-buttons" [disabled]="true"
+                    [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}" *ngIf="isCanBuy && (isPromotionOnGoing || isPromotionScheduled)">
+              <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">ADD TO CART</a>
+            </button>
+            <button class="xb-store-template__detail-buttons" [ngStyle]="{'background-color': 'rgba(0,0,0,.19)'}"
+                    [disabled]="true" *ngIf="!isCanBuy">
               <a class="gtag-shop-detail-get-it-now-button xb-store-template__buttons-color">OUT OF STOCK</a>
             </button>
           </div>
