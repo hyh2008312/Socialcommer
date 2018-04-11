@@ -1,9 +1,8 @@
 import { Input, Output, Component, OnInit,EventEmitter, Inject} from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
-import { BlogService } from '../blog.service';
+import { Router } from '@angular/router';
 
 import { BlogDeleteDialogComponent } from '../blog-delete-dialog/blog-delete-dialog.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-blog-item',

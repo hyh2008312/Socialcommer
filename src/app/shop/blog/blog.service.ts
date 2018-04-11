@@ -4,10 +4,10 @@ import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Subject, BehaviorSubject} from 'rxjs';
 
-import {StoreProduct, Email, Store} from './blog';
-
-import {BaseApi, SupportApi} from '../../config/app.api';
+import {BaseApi} from '../../config/app.api';
 import {AuthenticationService} from '../../shared/services/authentication/authentication.service';
+import { GuardLinkService} from '../../shared/services/guard-link/guard-link.service';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class BlogService {
@@ -15,7 +15,9 @@ export class BlogService {
   constructor(
     private http: Http,
     private baseUrl: BaseApi,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    public router: Router,
+    public guardLinkService: GuardLinkService
   ) {}
 
   createAuthorizationHeader(headers: Headers) {
@@ -65,8 +67,8 @@ export class BlogService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getBlogDetail(id: number): Promise<any> {
@@ -82,8 +84,8 @@ export class BlogService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   createBlog(blog: any): Promise<any> {
@@ -99,11 +101,11 @@ export class BlogService {
 
     return this.http.post(url, blog, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
-  changeBlog(blog: any): Promise<StoreProduct> {
+  changeBlog(blog: any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -116,8 +118,8 @@ export class BlogService {
 
     return this.http.put(url, blog, options)
       .toPromise()
-      .then(response => response.json() as StoreProduct)
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   deleteBlog(blog: any): Promise<any> {
@@ -133,13 +135,30 @@ export class BlogService {
 
     return this.http.delete(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
-  private handleError(error: Response | any) {
+  checkIsAuth(response) {
+    if(response.status == 401) {
+      return Promise.reject(401);
+    }
+    return response.json();
+  }
+
+  private handleError(error: Response | any,  target?: any) {
     let errMsg: string;
     if (error instanceof Response) {
+      if(error.status == 401) {
+        if(target) {
+          if(!target.routerLink) {
+            target.routerLink = window.location.pathname;
+            target.guardLinkService.addRouterLink(target.routerLink);
+          }
+          target.router.navigate(['/account/login']);
+          return Promise.reject(401);
+        }
+      }
       const body = error.json() || '';
       const err = body.error || body;
       if (err.detail) {

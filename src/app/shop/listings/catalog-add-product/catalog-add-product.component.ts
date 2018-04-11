@@ -58,10 +58,8 @@ export class CatalogAddProductComponent implements OnInit {
     private fb: FormBuilder,
     public shopService: ShopService,
     public userService: UserService,
-    private activatedRoute: ActivatedRoute,
     public previewImageService: ImageUploadPreviewService,
-    public s3UploaderService: S3UploaderService,
-    private dialog: MatDialog
+    public s3UploaderService: S3UploaderService
   ) {
 
     this.productForm = this.fb.group({

@@ -4,7 +4,6 @@ import { AuthenticationService } from '../authentication/authentication.service'
 import { UserService } from './user.service';
 
 import { User } from './user';
-import {SharedServerModule} from '../../../shared-server/shared-server.module';
 
 @NgModule({
   providers: [

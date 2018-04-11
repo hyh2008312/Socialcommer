@@ -4,40 +4,34 @@ import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Subject, BehaviorSubject} from 'rxjs';
 
-import {StoreProduct, Email, Store} from './shop';
-
-import {BaseApi, SupportApi} from '../config/app.api';
+import {BaseApi} from '../config/app.api';
 import {AuthenticationService} from '../shared/services/authentication/authentication.service';
+
+import { Router } from '@angular/router';
+import { GuardLinkService} from '../shared/services/guard-link/guard-link.service';
 
 @Injectable()
 export class ShopService {
 
-  constructor(private http: Http,
-              private baseUrl: BaseApi,
-              private auth: AuthenticationService,
-              private supportApi: SupportApi) {
-  }
+  routerLink: any = false;
+
+  constructor(
+    private http: Http,
+    private baseUrl: BaseApi,
+    private auth: AuthenticationService,
+    public router: Router,
+    public guardLinkService: GuardLinkService
+  ) {}
 
   createAuthorizationHeader(headers: Headers) {
 
     this.auth.getAccessToken().subscribe((data) => {
       if (data) {
         headers.append('Authorization', 'Bearer ' + data);
+        headers.append('Authorization', 'Bearer ' + 111);
       }
     });
 
-  }
-
-  currentListingTab: Subject<any> = new BehaviorSubject<any>(null);
-
-  public setCurrentListingTab(newTab: number): void {
-    this.currentListingTab.next(newTab);
-  }
-
-  currentBlogTab: Subject<any> = new BehaviorSubject<any>(null);
-
-  public setCurrentBlogTab(newTab: number): void {
-    this.currentBlogTab.next(newTab);
   }
 
   templateUid: Subject<any> = new BehaviorSubject<any>(null);
@@ -85,11 +79,11 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
-  getStore(): Promise<Store> {
+  getStore(): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -102,11 +96,11 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json() as Store)
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
-  changeStore(store: any): Promise<Store> {
+  changeStore(store: any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -119,8 +113,8 @@ export class ShopService {
 
     return this.http.put(url, store, options)
       .toPromise()
-      .then(response => response.json() as Store)
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getUserProfile(): Promise<any> {
@@ -136,8 +130,8 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   changeUserProfile(user: any): Promise<any> {
@@ -153,25 +147,8 @@ export class ShopService {
 
     return this.http.put(url, user, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  changeAvatar(user: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}user/userprofile/avatar/`;
-
-    return this.http.put(url, user, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   changePassword(password: any): Promise<any> {
@@ -187,11 +164,11 @@ export class ShopService {
 
     return this.http.put(url, password, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
-  changeEmail(email: any): Promise<Email> {
+  changeEmail(email: any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -204,25 +181,8 @@ export class ShopService {
 
     return this.http.put(url, email, options)
       .toPromise()
-      .then(response => response.json() as Email)
-      .catch(this.handleError);
-  }
-
-  getMultiTemplateDetail(uid: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}store/template_detail/${uid}/`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   createTemplate(store: any): Promise<any> {
@@ -238,8 +198,8 @@ export class ShopService {
 
     return this.http.put(url, store, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   createMultiTemplate(store: any): Promise<any> {
@@ -255,8 +215,8 @@ export class ShopService {
 
     return this.http.put(url, store, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getMultiTemplate(): Promise<any> {
@@ -272,8 +232,8 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   updateMultiTemplate(store: any): Promise<any> {
@@ -289,8 +249,8 @@ export class ShopService {
 
     return this.http.put(url, store, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getTemplateProductList(product: any): Promise<any> {
@@ -305,8 +265,8 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getFlashSaleList(product: any): Promise<any> {
@@ -320,27 +280,11 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
-
-  getSubCategory(category: any): Promise<any> {
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-
-    const url = `${this.baseUrl.url}subcategory/?${this.serializeParams(category)}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getFrontStore(name: string): Promise<Store> {
+  getFrontStore(name: string): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -352,8 +296,8 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json() as Store)
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   // 获取每个分类以及分类下的产品
@@ -369,121 +313,7 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getStoreStatistics(store: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-    let options = new RequestOptions({headers: headers});
-
-    const url = `${this.baseUrl.url}dashboard/store/data/?${this.serializeParams(store)}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getSaleMonthly(): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-    let options = new RequestOptions({headers: headers});
-
-    const url = `${this.baseUrl.url}dashboard/sell/data/`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getProductStatistics(product: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-    let options = new RequestOptions({headers: headers});
-
-    const url = `${this.baseUrl.url}dashboard/goods/top/?${this.serializeParams(product)}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getCategory(category: any): Promise<any> {
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-    let options = new RequestOptions({headers: headers});
-
-    const url = `${this.baseUrl.url}relation/category/?${this.serializeParams(category)}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  createProductCategory(category: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}store/category/create/`;
-
-    return this.http.post(url, category, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  deleteProductCategory(category: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}store/category/detail/${category.id}/`;
-
-    return this.http.delete(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  editProductCategory(category: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}store/category/detail/${category.id}/`;
-
-    return this.http.put(url, category, options)
-      .toPromise()
-      .then(response => response.json())
+      .then(this.checkIsAuth)
       .catch(this.handleError);
   }
 
@@ -498,8 +328,8 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getBlogDetail(id: number): Promise<any> {
@@ -515,61 +345,9 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
+      .then(this.checkIsAuth)
       .catch(this.handleError);
   }
-
-  createBlog(blog: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}blog/list/`;
-
-    return this.http.post(url, blog, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  changeBlog(blog: any): Promise<StoreProduct> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}blog/${blog.id}/`;
-
-    return this.http.put(url, blog, options)
-      .toPromise()
-      .then(response => response.json() as StoreProduct)
-      .catch(this.handleError);
-  }
-
-  deleteBlog(blog: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}blog/${blog.id}/`;
-
-    return this.http.delete(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
 
   getSupplyCategory(category?: any): Promise<any> {
 
@@ -583,92 +361,7 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getSupplyProductList(product: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}product/store/list/?${this.serializeParams(product)}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getSupplyProductRecommendList(product: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}product/recommend/list/?${this.serializeParams(product)}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getProductListBySupply(product: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}product/supplier/store/list/?${this.serializeParams(product)}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getSupplyProductDetail(product: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}product/detail/${product.id}/`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  createSupplyProduct(product: any): Promise<StoreProduct> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}store/goods/create/`;
-
-    return this.http.post(url, product, options)
-      .toPromise()
-      .then(response => response.json() as StoreProduct)
+      .then(this.checkIsAuth)
       .catch(this.handleError);
   }
 
@@ -684,8 +377,8 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getShippingList(obj): Promise<any> {
@@ -701,8 +394,8 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   /**
@@ -722,64 +415,30 @@ export class ShopService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
-  getPaymentSummary(): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-
-    let options = new RequestOptions({headers: headers});
-
-    const url = `${this.baseUrl.url}payment/store/summary/`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+  checkIsAuth(response) {
+    if(response.status == 401) {
+      return Promise.reject(401);
+    }
+    return response.json();
   }
 
-  getPaymentHistory(params): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-
-    let options = new RequestOptions({headers: headers});
-
-    const url = `${this.baseUrl.url}payment/store/payment/history/?${this.serializeParams(params)}`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  withDrawMoney(params: any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers: headers});
-    this.createAuthorizationHeader(headers);
-
-    const url = `${this.baseUrl.url}payment/store/withdrawals/`;
-
-    return this.http.post(url, params, options)
-      .toPromise()
-      .then(response => response.json() as any)
-      .catch(this.handleError);
-  }
-
-  private handleError(error: Response | any) {
+  private handleError(error: Response | any, target?:any) {
     let errMsg: string;
     if (error instanceof Response) {
+      if(error.status == 401) {
+        if(target) {
+          if(!target.routerLink) {
+            target.routerLink = window.location.pathname;
+            target.guardLinkService.addRouterLink(target.routerLink);
+          }
+          target.router.navigate(['/account/login']);
+          return Promise.reject(401);
+        }
+      }
       const body = error.json() || '';
       const err = body.error || body;
       if (err.detail) {

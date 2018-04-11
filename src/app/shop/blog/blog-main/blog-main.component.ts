@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy, Inject} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 
-import { ShopService } from '../../shop.service';
+import { BlogService } from '../blog.service';
 import { UserService } from  '../../../shared/services/user/user.service';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { BlogCreateDialogComponent } from '../blog-create-dialog/blog-create-dialog.component';
 
 
@@ -31,7 +31,7 @@ export class BlogMainComponent implements OnInit {
   subscription: any;
 
   constructor(
-    private shopService: ShopService,
+    private shopService: BlogService,
     private dialog: MatDialog,
     private userService: UserService,
     private router : Router,

@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { ENTER } from '@angular/cdk/keycodes';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { BlogService } from '../blog.service';
-import { Product, StoreProduct } from '../blog';
 import { UserService } from  '../../../shared/services/user/user.service';
 
 import { ImageUploadPreviewService } from "../../../shared/components/image-upload-preview/image-upload-preview.service";

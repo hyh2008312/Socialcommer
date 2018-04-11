@@ -16,7 +16,6 @@ export class ShopComponent implements OnInit {
   avatar: any = false;
   firstName: any = '';
   storeName: any = false;
-  isPopOpen: boolean = false;
   currency: string = 'USD';
 
   constructor(private userService: UserService,
@@ -63,10 +62,6 @@ export class ShopComponent implements OnInit {
       self.userService.addCountryList(data);
     });
 
-  }
-
-  openPop() {
-    this.isPopOpen = !this.isPopOpen;
   }
 
   logout() {

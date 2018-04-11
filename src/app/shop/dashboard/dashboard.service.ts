@@ -5,6 +5,8 @@ import 'rxjs/add/operator/toPromise';
 
 import {BaseApi} from '../../config/app.api';
 import {AuthenticationService} from '../../shared/services/authentication/authentication.service';
+import {GuardLinkService} from '../../shared/services/guard-link/guard-link.service';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class DashboardService {
@@ -12,7 +14,9 @@ export class DashboardService {
   constructor(
     private http: Http,
     private baseUrl: BaseApi,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    public guardLinkService: GuardLinkService,
+    public router: Router
   ) {
   }
 
@@ -58,8 +62,8 @@ export class DashboardService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getSaleMonthly(): Promise<any> {
@@ -74,8 +78,8 @@ export class DashboardService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getProductStatistics(product: any): Promise<any> {
@@ -90,13 +94,30 @@ export class DashboardService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
-  private handleError(error: Response | any) {
+  checkIsAuth(response) {
+    if(response.status == 401) {
+      return Promise.reject(401);
+    }
+    return response.json();
+  }
+
+  private handleError(error: Response | any, target?: any) {
     let errMsg: string;
     if (error instanceof Response) {
+      if(error.status == 401) {
+        if(target) {
+          if(!target.routerLink) {
+            target.routerLink = window.location.pathname;
+            target.guardLinkService.addRouterLink(target.routerLink);
+          }
+          target.router.navigate(['/account/login']);
+          return Promise.reject(401);
+        }
+      }
       const body = error.json() || '';
       const err = body.error || body;
       if (err.detail) {

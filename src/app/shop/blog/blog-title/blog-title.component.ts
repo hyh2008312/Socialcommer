@@ -1,4 +1,4 @@
-import { Input, Output, Component, OnInit} from '@angular/core';
+import { Input, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-blog-title',

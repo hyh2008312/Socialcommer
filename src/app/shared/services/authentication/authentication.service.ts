@@ -10,6 +10,8 @@ import { BaseApi,SystemConstant } from '../../../config/app.api';
 
 import { AppStorage } from '../../../shared-server/for-storage/universal.inject';
 
+import { GuardLinkService } from '../guard-link/guard-link.service';
+
 @Injectable()
 export class AuthenticationService implements AuthService {
 
@@ -17,13 +19,20 @@ export class AuthenticationService implements AuthService {
     private http: Http,
     private baseUrl: BaseApi,
     private systemConstant: SystemConstant,
-    @Inject(AppStorage) private appStorage
+    @Inject(AppStorage) private appStorage,
+    private guardLinkService: GuardLinkService
   ) {
 
   }
 
   public isAuthorized(): Observable<boolean> {
     const isAuthorized: boolean = !!this.appStorage.getItem('accessToken') && !!this.appStorage.getItem('inviteToken');
+
+    if(!isAuthorized) {
+      this.guardLinkService.addRouterLink(window.location.pathname);
+    } else {
+      this.guardLinkService.addRouterLink(false);
+    }
 
     return Observable.of(isAuthorized);
   }
@@ -36,9 +45,9 @@ export class AuthenticationService implements AuthService {
 
   public setAccessToken(data: any): void {
     this.logout();
-    this.appStorage.setItem('accessToken', data.access_token);
-    this.appStorage.setItem('refreshToken', data.refresh_token);
-    this.appStorage.setItem('expireDate', new Date().getTime() + (data.expires_in  * 1000) + '');
+    this.appStorage.setItem('accessToken', data.access_token, new Date(new Date().getTime() + (data.expires_in  * 1000)));
+    this.appStorage.setItem('refreshToken', data.refresh_token, new Date(new Date().getTime() + (data.expires_in  * 1000)));
+    this.appStorage.setItem('expireDate', new Date().getTime() + (data.expires_in  * 1000) + '', new Date(new Date().getTime() + (data.expires_in  * 1000)));
   }
 
   public inviteToken(data: any): void {
@@ -70,7 +79,7 @@ export class AuthenticationService implements AuthService {
       .catch((error: any) => {
         self.logout();
         return Observable.throw(error.statusText);
-      })
+      });
   }
 
   public refreshShouldHappen(response: HttpErrorResponse): boolean {

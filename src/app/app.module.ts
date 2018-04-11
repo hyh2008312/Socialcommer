@@ -22,7 +22,9 @@ import { BaseApi, SystemConstant, DataApi, SupportApi } from './config/app.api';
 import { AuthenticationModule } from './shared/services/authentication/index';
 import { UserModule } from './shared/services/user/user.module';
 import { TransferHttpCacheModule } from '@nguniversal/common';
-import {PrebootModule} from 'preboot';
+import { PrebootModule } from 'preboot';
+
+import { GuardLinkService } from './shared/services/guard-link/guard-link.service';
 
 
 @NgModule({
@@ -51,7 +53,7 @@ import {PrebootModule} from 'preboot';
       appRoot: 'app-root'
     })
   ],
-  providers: [BaseApi, SystemConstant, DataApi, SupportApi, HttpClientModule, CookieService],
+  providers: [BaseApi, SystemConstant, DataApi, SupportApi, HttpClientModule, CookieService, GuardLinkService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
