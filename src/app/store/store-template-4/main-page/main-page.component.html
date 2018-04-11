@@ -3,6 +3,7 @@
     <div class="xb-4-template-navigation__side_container">
       <app-shop-template-4-navigation (routerChange)="sidenav.close()"
                                       [isShowBlog]="isBlog"
+                                      [isHaveFlashSale]="isHavePromotion"
                                       [displayName]="displayName"></app-shop-template-4-navigation>
     </div>
   </mat-sidenav>
@@ -42,10 +43,10 @@
         </div>
       </div>
       <div class="xb-4-template__w960 xb-4-template__float-nav" fxShow="true" fxShow.xs="false">
-        <app-shop-template-4-navigation [isShowBlog]="isBlog"></app-shop-template-4-navigation>
+        <app-shop-template-4-navigation  [isHaveFlashSale]="isHavePromotion" [isShowBlog]="isBlog"></app-shop-template-4-navigation>
       </div>
       <div class="xb-4-template__fixed-nav" fxShow="true" fxShow.xs="false" *ngIf="isShowNav">
-        <app-shop-template-4-navigation [isShowBlog]="isBlog"></app-shop-template-4-navigation>
+        <app-shop-template-4-navigation  [isHaveFlashSale]="isHavePromotion" [isShowBlog]="isBlog"></app-shop-template-4-navigation>
       </div>
       <div class="xb-4-template__container-content">
         <router-outlet></router-outlet>

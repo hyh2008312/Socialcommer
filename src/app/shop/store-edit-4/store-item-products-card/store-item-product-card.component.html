@@ -3,18 +3,21 @@
     <div class="xb-4-template-products__card-image"
          [@goodsState]="animationState"
          (mouseenter)="changeAnimationState()"
-         (mouseleave)="changeAnimationState()"
-    >
-      <a>
-        <img [src]="product.mainImage">
-      </a>
+         (mouseleave)="changeAnimationState()">
+      <a><img [src]="product.mainImage"></a>
+      <div *ngIf="isPromotionOnGoing" class="xb-store__promotion-ongoing">Ongoing</div>
+      <div *ngIf="isPromotionOnGoing" class="xb-store__promotion-countdown" fxShow="true"
+           fxShow.xs="false">
+        <span *ngIf="days>0"> {{days>1?days+' Days,':'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}} Left
+      </div>
+      <div *ngIf="isPromotionScheduled" class="xb-store__promotion-upcoming">Upcoming</div>
     </div>
     <div class="xb-4-template-products__card-content" fxLayout="column" fxLayoutAlign="start center">
       <div class="xb-4-template-products__card-title">{{product.title}}</div>
-      <div class="xb-4-template-products__card-price">{{product.salePrice |currency: currency:true }}
+      <div class="xb-4-template-products__card-price">{{product.salePrice |currency: currency }}
       </div>
       <div class="xb-4-template-products__card-original line-through " *ngIf="product.originalPrice > 0">
-        {{product.originalPrice|currency: currency: true }}
+        {{product.originalPrice|currency: currency }}
       </div>
     </div>
   </div>

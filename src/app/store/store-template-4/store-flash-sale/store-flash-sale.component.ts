@@ -5,12 +5,12 @@ import {StoreService} from '../../store.service';
 import {Store} from '../../store';
 
 @Component({
-  selector: 'app-shop-template-4-store-list',
-  templateUrl: './store-list.component.html',
+  selector: 'app-shop-template-4-store-flash-sale',
+  templateUrl: './store-flash-sale.component.html',
   styleUrls: ['../_store-template-4.scss']
 })
 
-export class StoreListComponent implements OnInit {
+export class StoreFlashSaleComponent implements OnInit {
 
   public categories: any = [];
   public category: any = {
@@ -26,9 +26,10 @@ export class StoreListComponent implements OnInit {
   nextPage: boolean = true;
   product: any = [];
   date: any;
-  isShowCategoryMenu = false ;
-  currency:string='USD';
-  isHaveProduct:boolean;
+  isShowCategoryMenu = false;
+  currency: string = 'USD';
+  isHaveProduct: boolean;
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -37,9 +38,6 @@ export class StoreListComponent implements OnInit {
 
   ngOnInit(): void {
     this.shareLink = window.location.href;
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.date = parseInt(params['categoryId']);
-    });
     let self = this;
     let firstLoad = false;
     this.storeService.store.subscribe((data) => {
@@ -53,68 +51,42 @@ export class StoreListComponent implements OnInit {
           description: data.description,
           shareImage: data.imageUrl
         });
-        let tempCategory = data.category.filter((data)=>{
-          return data.goodsCount !=0 ;
-        });
-        self.categories = [{name: 'All'}, ...tempCategory];
-        if (!isNaN(self.date)) {
-          for (let value of data.category) {
-            if (value.id === self.date) {
-              self.category = value;
-            }
-          }
-        } else {
-          self.category = self.categories[0];
-        }
-        self.storeService.addStore(data);
-
         self.storeService.pageView({
           pt: 'store',
           vt: new Date().getTime(),
           sid: data.id
         });
-        self.queryProduct();
+        self.queryFlashSale();
       }
     });
   }
 
-  changeCategory() {
-    this.page = 1;
-    this.queryProduct(true);
-  }
-
   jumpList(): void {
     this.page++;
-    this.queryProduct();
+    this.queryFlashSale();
   }
 
-  queryProduct(clearCategory?: boolean) {
+  queryFlashSale(clearProduct?: boolean) {
     let options = {
-      cat: this.category.id,
       store: this.store.id,
-      relationStatus: 'published',
       page: this.page,
       page_size: 48
     };
     let self = this;
-    self.storeService.getProductList(options).then((data) => {
-      if (clearCategory) {
+    self.storeService.getFlashSaleList(options).then((data) => {
+      if (clearProduct) {
         self.product = [];
         self.nextPage = true;
       }
       self.product = self.product.concat(data.results);
-      this.isHaveProduct =self.product.length==0 ;
+      self.isHaveProduct =self.product.length ==0 ;
       if (data.next == null) {
         self.nextPage = false;
       }
     });
   }
 
-  back(): void {
-    this.router.navigate([`./store/${this.store.displayName}`]);
-  }
-
-  changeShowCategoryMenu():void{
-    this.isShowCategoryMenu=!this.isShowCategoryMenu;
+  changeShowCategoryMenu(): void {
+    this.isShowCategoryMenu = !this.isShowCategoryMenu;
   }
 }

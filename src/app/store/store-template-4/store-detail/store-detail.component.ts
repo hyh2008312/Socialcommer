@@ -67,6 +67,12 @@ export class StoreDetailComponent implements OnInit {
 //退换货的天数
   returnDays: string = '30 day returns';
 
+  // 活动是否开始和是否结束
+  isPromotionOnGoing: boolean = false;
+  isPromotionScheduled: boolean = false;
+  countdownLeftTime: number = 0;
+  progressPercentage: number = 0;
+
   //快递的国家
   deliveryCountry: string = 'United States';
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
@@ -105,28 +111,25 @@ export class StoreDetailComponent implements OnInit {
 
     let ScrollDom = document.querySelector('mat-sidenav-content');
     ScrollDom.addEventListener('scroll', function () {
-      console.log(ScrollDom.scrollTop);
-      console.log(document.getElementById('xb-4-detail-top').offsetHeight);
-      console.log( document.getElementById('xb-4-goods').offsetHeight);
+      if (document.getElementById('xb-4-detail-top')) {
+        let Atheight = ScrollDom.scrollTop;
+        let elementFixed = document.getElementById('xb-4-detail-top');
+        let cartHeight = elementFixed.offsetHeight;
+        let detialHeight = document.getElementById('xb-4-goods').offsetHeight;
 
-      let Atheight = ScrollDom.scrollTop;
-      let elementFixed = document.getElementById('xb-4-detail-top');
-      let cartHeight = elementFixed.offsetHeight;
-      let detialHeight = document.getElementById('xb-4-goods').offsetHeight;
-
-      if (Atheight < 194) {
-        elementFixed.style.position = 'absolute';
-        elementFixed.style.top = 'auto';
-      } else {
-        if (Atheight + cartHeight >= detialHeight) {
+        if (Atheight < 194) {
           elementFixed.style.position = 'absolute';
-          elementFixed.style.top = (detialHeight + 54 - cartHeight) + "px";
+          elementFixed.style.top = 'auto';
         } else {
-          elementFixed.style.position = 'fixed';
-          elementFixed.style.top = "55px";
+          if (Atheight + cartHeight >= detialHeight) {
+            elementFixed.style.position = 'absolute';
+            elementFixed.style.top = (detialHeight + 54 - cartHeight) + "px";
+          } else {
+            elementFixed.style.position = 'fixed';
+            elementFixed.style.top = "55px";
+          }
         }
       }
-
     });
 
 
@@ -196,6 +199,16 @@ export class StoreDetailComponent implements OnInit {
         for (let value of data.images) {
           self.imageSources.push(value);
         }
+      }
+      this.isPromotionOnGoing = false;
+      this.isPromotionScheduled = false;
+      if (self.product.promotionOngoing) {
+        self.isPromotionOnGoing = true;
+        this.progressPercentage = this.product.promotionOngoing.saleRatio;
+        self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
+      } else if (self.product.promotionScheduled) {
+        self.isPromotionScheduled = true;
+        self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
       }
 
       this.isHaveVariant = data.attributes.length > 0;

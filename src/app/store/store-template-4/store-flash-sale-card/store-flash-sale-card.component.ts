@@ -1,5 +1,6 @@
-import {Input, Component, OnInit, Output, EventEmitter,OnChanges} from '@angular/core';
+import {Input, Component, OnInit, Output, EventEmitter, OnChanges} from '@angular/core';
 import {Router} from '@angular/router';
+import {Product} from '../../../shop/shop';
 import {
   trigger,
   state,
@@ -9,29 +10,17 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-shop-item-product-card-4',
-  templateUrl: './store-item-product-card.component.html',
-  styleUrls: ['../_store-template-4.scss'],
-  animations: [
-    trigger('goodsState', [
-      state('inactive', style({
-        transform: 'scale(1)'
-      })),
-      state('active', style({
-        transform: 'scale(1.1)'
-      })),
-      transition('inactive => active', animate('100ms ease-in')),
-      transition('active => inactive', animate('100ms ease-out'))
-    ])
-  ]
+  selector: 'app-shop-item-product-flase-sale-card-4',
+  templateUrl: './store-flash-sale-card.component.html',
+  styleUrls: ['./_store-flash-sale-card.scss'],
 })
 
-export class StoreItemProductCardComponent implements OnInit,OnChanges {
+export class StoreFlashSaleCardComponent implements OnInit, OnChanges {
 
   @Input() status: number = 0;
   @Input() product: any = null;
   @Input() currency: string = 'USD';
-  @Output() public productId: EventEmitter<any> = new EventEmitter();
+  @Output() scrollToTop = new EventEmitter();
 
   // 活动是否开始和是否结束
   isPromotionOnGoing: boolean = false;
@@ -40,9 +29,8 @@ export class StoreItemProductCardComponent implements OnInit,OnChanges {
   _diff: any;
   days: any;
   hours: any;
+
   progressPercentage: number = 0;
-
-
 
   constructor(private router: Router) {
   }
@@ -54,20 +42,16 @@ export class StoreItemProductCardComponent implements OnInit,OnChanges {
   animationState = 'inactive';
 
   changeAnimationState(): void {
-    if (this.status === 3) {
-      this.animationState = 'inactive';
-      return;
-    }
     this.animationState = this.animationState === 'active' ? 'inactive' : 'active';
   }
 
-  jumpProductDetail() {
-    if (this.status === 3) {
-      return;
-    }
-    this.productId.emit(this.product.id);
-  }
+  jumpLink() {
 
+    let baseLink = this.router.url;
+    let link = `/detail/${this.product.id}`;
+    baseLink = baseLink.split('/flash')[0];
+    this.router.navigate([baseLink + link]);
+  }
 
   ngOnChanges() {
     if (this.product.promotionOngoing) {
@@ -85,4 +69,5 @@ export class StoreItemProductCardComponent implements OnInit,OnChanges {
     this.days = Math.floor(this._diff / 3600 / 24);
     this.hours = Math.floor(this._diff / 3600 % 24);
   }
+
 }

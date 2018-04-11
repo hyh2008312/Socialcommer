@@ -225,6 +225,11 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   homeProduct: any = [];
   isFirstHomeProduct: boolean = true;
 
+  flashPage = 1;
+  nextFlashSalePage: boolean = false;
+  flashSaleProduct:  any = [];
+
+
   ngOnInit(): void {
     this.shareLink = window.location.host + '/store/';
     let self = this;
@@ -247,8 +252,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
-                let tempCategory = data.category.filter((data)=>{
-                  return data.goodsCount !=0 ;
+                let tempCategory = data.category.filter((data) => {
+                  return data.goodsCount != 0;
                 });
                 if (tempCategory.length > 1) {
                   self.categories = [{name: 'All'}, ...tempCategory];
@@ -273,6 +278,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
                 self.category = self.categories[0];
                 self.queryProduct();
                 self.queryBlog();
+                self.queryFlashSale();
               });
               for (let value of self.templateList) {
                 if (value.templateId == 4) {
@@ -337,7 +343,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       store: this.store.id,
       relationStatus: 'published',
       page: this.page,
-      page_size: 6
+      page_size: 48
     };
     let self = this;
     self.storeService.getProductList(options).then((data) => {
@@ -348,12 +354,31 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       self.product = self.product.concat(data.results);
 
       if (self.isFirstHomeProduct) {
-        self.homeProduct = self.product;
+        self.homeProduct = self.product.slice(0,6);
         self.isFirstHomeProduct = false;
       }
 
       if (data.next == null) {
         self.nextPage = false;
+      }
+    });
+  }
+
+  queryFlashSale(clearProduct?: boolean) {
+    let options = {
+      store: this.store.id,
+      page: this.flashPage,
+      page_size: 48
+    };
+    let self = this;
+    self.shopService.getFlashSaleList(options).then((data) => {
+      if (clearProduct) {
+        self.flashSaleProduct = [];
+        self.nextFlashSalePage = true;
+      }
+      self.flashSaleProduct = self.flashSaleProduct.concat(data.results);
+      if (data.next == null) {
+        self.nextFlashSalePage = false;
       }
     });
   }
@@ -530,7 +555,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   jumpGoodsDetail(productId: any) {
     this.selectProductId = productId;
-    this.changeGoodsDetail(4);
+    this.changeGoodsDetail(8);
   }
 
   changeGoodsDetail(viewNum: number) {
@@ -556,11 +581,11 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.storeOrder = true;
     this.storeCart = false;
   }
+
   OpenStoreCart() {
     this.storeOrder = false;
     this.storeCart = true;
   }
-
 
 
   //设定一个变量，用来保存是否显示还是隐藏blog.
