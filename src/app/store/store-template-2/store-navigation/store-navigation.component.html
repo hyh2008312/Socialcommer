@@ -1,10 +1,13 @@
 <div class="xb-store-template__nav_container" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px"
      fxShow="true" fxShow.xs="false">
-  <div class="xb-store-template__navigation xb-pointer" *ngFor="let value of contents"
-       [style.color]="isBlack?'black':'white'"
-       routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
-    {{value.text}}
-  </div>
+  <ng-container *ngFor="let value of contents">
+    <div class="xb-store-template__navigation xb-pointer"
+         [style.color]="isBlack?'black':'white'"
+         *ngIf="!(value.text == 'Flash Sale' && !isHavePromotion)"
+         routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
+      {{value.text}}
+    </div>
+  </ng-container>
   <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
     <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"
        [style.color]="isBlack?'#555555':'white'" (click)="jumpOrder()"></i>

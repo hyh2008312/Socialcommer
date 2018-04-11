@@ -1,10 +1,12 @@
 <div class="md-margin-left-2" fxLayout="row" fxLayoutAlign="start center">
-  <div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: i == navigationIndex}"
-       *ngFor="let value of contents;let i = index;"
-       [style.color]="isBlack?'black':'white'"
-       (click)="changeNavigation(i)">
-    {{value.text}}
-  </div>
+  <ng-container  *ngFor="let value of contents;let i = index;">
+    <div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: i == navigationIndex}"
+         [style.color]="isBlack?'black':'white'"
+         *ngIf="!(value.text == 'Flash Sale' && !isHavePromotion)"
+         (click)="changeNavigation(i)">
+      {{value.text}}
+    </div>
+  </ng-container>
   <div class="xb-store-template__cart-order-and-cart" fxLayout="row" fxLayoutAlign="start center">
     <i class="iconfontXberts icon-pic-per xb-store-template__cart-icon md-margin-right-4"
        [style.color]="isBlack?'#555555':'white'" (click)="openStoreOrder()"></i>

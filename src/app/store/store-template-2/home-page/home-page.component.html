@@ -2,7 +2,9 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push" fxShow="false" fxShow.xs="true">
       <div class="xb-store-template__side_container">
-        <app-store-template-2-navigation [displayName]="displayName"></app-store-template-2-navigation>
+        <app-store-template-2-navigation [displayName]="displayName"
+                                         [isHavePromotion]="isHavePromotion"
+        ></app-store-template-2-navigation>
       </div>
     </mat-sidenav>
     <!--banner图-->
@@ -14,6 +16,7 @@
             {{store.name}}
         </div>
         <app-store-template-2-navigation [productNumber]="productNumber" [displayName]="displayName"
+                                         [isHavePromotion]="isHavePromotion"
                                          fxFlex></app-store-template-2-navigation>
       </div>
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="space-between center" fxShow="false"

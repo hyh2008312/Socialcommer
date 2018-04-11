@@ -12,12 +12,12 @@ import {MatDialog} from "@angular/material";
   styleUrls: ['../_store-template-2.scss']
 })
 
-export class StoreDetailComponent implements OnInit {
+export class StoreFlashDetailComponent implements OnInit {
 
   public shareLink: string;
   public text = '';
   store: Store = new Store();
-  product: any = {};
+  product: any;
   image: any = [];
   selectedImage: any = false;
   imageSources: string[] = [];
@@ -39,7 +39,6 @@ export class StoreDetailComponent implements OnInit {
   shippingTimeMax: number = 0;
 
 
-
   //变体的改版
   minSalePrice: number = 0;
   maxSalePrice: number = 0;
@@ -57,26 +56,20 @@ export class StoreDetailComponent implements OnInit {
   isHaveVariant: boolean = false;
   //链接上的店铺的名称
   displayName: string = '';
-
-  //退换货的天数
+//退换货的天数
   returnDays: string = '30 day returns';
 
   //快递的国家
   deliveryCountry: string = 'United States';
-
 // 活动是否开始和是否结束
   isPromotionOnGoing: boolean = false;
   isPromotionScheduled: boolean = false;
   countdownLeftTime: number = 0;
   progressPercentage: number = 0;
-
-
   constructor(public router: Router,
-              private activatedRouter: ActivatedRoute,
               private dialog: MatDialog,
-              private storeService: StoreService) {
-
-  }
+              private activatedRouter: ActivatedRoute,
+              private storeService: StoreService) {}
 
   scrollChange($event) {
     this.showButton = $event;
@@ -127,10 +120,11 @@ export class StoreDetailComponent implements OnInit {
             shareImage: data.images[0]
           });
 
+
           self.image = data.images;
-          if(data.images.length > 0) {
+          if (data.images.length > 0) {
             self.selectedImage = data.images[0];
-            for(let value of data.images) {
+            for (let value of data.images) {
               self.imageSources.push(value);
             }
           }
@@ -170,7 +164,7 @@ export class StoreDetailComponent implements OnInit {
   }
 
   close(): void {
-    this.router.navigate([`./store/${this.store.displayName}/2`]);
+    this.router.navigate([`./store/${this.store.displayName}/2/flash`]);
   }
 
   openLink() {
@@ -238,6 +232,7 @@ export class StoreDetailComponent implements OnInit {
 
     this.storeService.addProductToCart(this.store.displayName, product);
 
+
       let dialogRef = this.dialog.open(AddCartSuccessDialogComponent, {
       data: {
         displayName: this.displayName
@@ -246,7 +241,6 @@ export class StoreDetailComponent implements OnInit {
     let self = this;
     dialogRef.afterClosed().subscribe(result => {
     });
-
   }
 
   arrangeVariant(data) {
@@ -409,4 +403,5 @@ export class StoreDetailComponent implements OnInit {
   jumpReturn(): void {
     this.router.navigate([`./store/${this.displayName}/2/return`]);
   }
+
 }

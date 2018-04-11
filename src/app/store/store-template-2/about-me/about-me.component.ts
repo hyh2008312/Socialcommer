@@ -18,7 +18,7 @@ export class AboutMeComponent implements OnInit {
   text: string;
   productNumber: number = 0;
   displayName: string;
-
+  isHavePromotion: boolean = false;
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -35,6 +35,7 @@ export class AboutMeComponent implements OnInit {
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
         self.displayName = data.displayName ;
+        self.isHavePromotion = data.promotionNum > 0;
       }
     });
     self.storeService.cart.subscribe((data) => {

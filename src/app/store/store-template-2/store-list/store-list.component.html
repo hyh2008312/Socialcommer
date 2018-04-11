@@ -2,7 +2,8 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push">
       <div class="xb-store-template__side_container">
-        <app-store-template-2-navigation [type]="2" [displayName]="displayName"></app-store-template-2-navigation>
+        <app-store-template-2-navigation [type]="3" [displayName]="displayName"
+                                         [isHavePromotion]="isHavePromotion"></app-store-template-2-navigation>
       </div>
     </mat-sidenav>
     <!--头部消息-->
@@ -20,7 +21,8 @@
               <div class="xb-store-template__category-store-name" fxFlex="none">
                 {{store.name}}
               </div>
-              <app-store-template-2-navigation [isBlack]="true" [type]="2" [displayName]="displayName"
+              <app-store-template-2-navigation [isBlack]="true" [type]="3" [displayName]="displayName"
+                                               [isHavePromotion]="isHavePromotion"
                                                [productNumber]="productNumber"
                                                fxFlex></app-store-template-2-navigation>
             </div>

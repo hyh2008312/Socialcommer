@@ -12,6 +12,7 @@ import {PrivacyComponent} from "./privacy/privacy.component";
 import {ReturnPolicyComponent} from "./return-policy/return-policy.component";
 import {FaqComponent} from './faq/faq.component';
 import {StoreFlashSaleComponent} from "./store-flash-sale/store-flash-sale.component";
+import {StoreFlashDetailComponent} from "./store-detail/store-flash-detail.component";
 
 const routes: Routes = [{
   path: '', component: MainPageComponent,
@@ -29,7 +30,13 @@ const routes: Routes = [{
     path: 'about_me', component: AboutMeComponent
   }, {
     path: 'about', component: AboutComponent
-  }, {
+  },{
+    path:'flash',component: StoreFlashSaleComponent,
+    children: [{
+      path: ':id', component: StoreFlashDetailComponent
+    }]
+  }
+  , {
     path: 'privacy', component: PrivacyComponent
   }, {
     path: 'return', component: ReturnPolicyComponent

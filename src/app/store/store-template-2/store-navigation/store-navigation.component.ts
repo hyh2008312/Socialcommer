@@ -12,6 +12,8 @@ export class StoreNavigationComponent implements OnInit {
   @Input() type: number;
   @Input() productNumber: number = 0;
   @Input() displayName: string;
+  @Input() isHavePromotion: boolean = false;
+
   contents: any;
 
   constructor(public  router: Router,
@@ -41,15 +43,21 @@ export class StoreNavigationComponent implements OnInit {
           text: 'Home',
           link: './',
           exact: true
-        }, {
-          text: 'Products',
-          link: './list',
-          exact: false
-        }, {
-          text: 'About Me',
-          link: './about_me',
-          exact: true
-        }
+        },
+          {
+            text: 'Flash Sale',
+            link: './flash',
+            exact: false
+          },
+          {
+            text: 'Products',
+            link: './list',
+            exact: false
+          }, {
+            text: 'About Me',
+            link: './about_me',
+            exact: true
+          }
         ];
         break;
       case 2:
@@ -57,15 +65,43 @@ export class StoreNavigationComponent implements OnInit {
           text: 'Home',
           link: '../',
           exact: true
-        }, {
-          text: 'Products',
-          link: './',
-          exact: false
-        }, {
-          text: 'About Me',
-          link: '../about_me',
+        },
+          {
+            text: 'Flash Sale',
+            link: './',
+            exact: false
+          },
+          {
+            text: 'Products',
+            link: '../list',
+            exact: false
+          }, {
+            text: 'About Me',
+            link: '../about_me',
+            exact: true
+          }
+        ];
+        break;
+      case 3:
+        this.contents = [{
+          text: 'Home',
+          link: '../',
           exact: true
-        }
+        },
+          {
+            text: 'Flash Sale',
+            link: '../flash',
+            exact: false
+          },
+          {
+            text: 'Products',
+            link: './',
+            exact: false
+          }, {
+            text: 'About Me',
+            link: '../about_me',
+            exact: true
+          }
         ];
         break;
       case 4:
@@ -74,14 +110,19 @@ export class StoreNavigationComponent implements OnInit {
           link: '../',
           exact: true
         }, {
-          text: 'Products',
-          link: '../list',
+          text: 'Flash Sale',
+          link: '../flash',
           exact: false
-        }, {
-          text: 'About Me',
-          link: './',
-          exact: true
-        }
+        },
+          {
+            text: 'Products',
+            link: '../list',
+            exact: false
+          }, {
+            text: 'About Me',
+            link: './',
+            exact: true
+          }
         ];
         break;
       case 5:
@@ -89,15 +130,21 @@ export class StoreNavigationComponent implements OnInit {
           text: 'Home',
           link: '../',
           exact: true
-        }, {
-          text: 'Products',
-          link: '../list',
-          exact: false
-        }, {
-          text: 'About Me',
-          link: '../about_me',
-          exact: true
-        }
+        },
+          {
+            text: 'Flash Sale',
+            link: '../flash',
+            exact: false
+          },
+          {
+            text: 'Products',
+            link: '../list',
+            exact: false
+          }, {
+            text: 'About Me',
+            link: '../about_me',
+            exact: true
+          }
         ];
         break;
       default:
@@ -105,15 +152,20 @@ export class StoreNavigationComponent implements OnInit {
           text: 'Home',
           link: './',
           exact: true
-        }, {
-          text: 'Products',
-          link: './list',
-          exact: false
-        }, {
-          text: 'About Me',
-          link: './about_me',
-          exact: true
-        }
+        },
+          {
+            text: 'Flash Sale',
+            link: './flash',
+            exact: false
+          }, {
+            text: 'Products',
+            link: './list',
+            exact: false
+          }, {
+            text: 'About Me',
+            link: './about_me',
+            exact: true
+          }
         ];
     }
   }

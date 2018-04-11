@@ -1,17 +1,19 @@
-import { Input, Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import {Input, Component, OnInit, Output, EventEmitter, OnChanges} from '@angular/core';
+import {Router} from '@angular/router';
+
 
 @Component({
-  selector: 'app-store-item-card',
-  templateUrl: './store-item-card.component.html',
-  styleUrls: ['../_store-template-2.scss']
+  selector: 'app-flash-sale-card-2',
+  templateUrl: './store-flash-sale-card.component.html',
+  styleUrls: ['./_store-flash-sale-card.scss'],
 })
 
-export class StoreItemCardComponent implements OnInit {
+export class StoreFlashSaleCardComponent implements OnInit, OnChanges {
 
   @Input() status: number = 0;
   @Input() product: any = null;
-  @Input() currency:string = 'USD';
+  @Input() currency: string = 'USD';
+  @Output() scrollToTop = new EventEmitter();
 
   // 活动是否开始和是否结束
   isPromotionOnGoing: boolean = false;
@@ -21,29 +23,31 @@ export class StoreItemCardComponent implements OnInit {
   days: any;
   hours: any;
 
-  constructor(
-    private router: Router
-  ) {}
+  progressPercentage: number = 0;
+
+  constructor(private router: Router) {
+  }
+
 
   ngOnInit(): void {
   }
 
+  animationState = 'inactive';
+
+  changeAnimationState(): void {
+    this.animationState = this.animationState === 'active' ? 'inactive' : 'active';
+  }
+
   jumpLink() {
-    let link = '';
-    switch (this.status) {
-      case 0:
-        link = `/detail/${this.product.id}`;
-        break;
-      case 1:
-        link = `/${this.product.id}`;
-        break;
-    }
-    this.router.navigate([this.router.url + link]);
+    let baseLink = this.router.url;
+    let  link = `/${this.product.id}`;
+    this.router.navigate([baseLink + link]);
   }
 
   ngOnChanges() {
     if (this.product.promotionOngoing) {
       this.isPromotionOnGoing = true;
+      this.progressPercentage = this.product.promotionOngoing.saleRatio;
       this.settingTimes = this.product.promotionOngoing.endTimestamp * 1000 - Date.now();
     } else if (this.product.promotionScheduled) {
       this.isPromotionScheduled = true;
@@ -56,7 +60,5 @@ export class StoreItemCardComponent implements OnInit {
     this.days = Math.floor(this._diff / 3600 / 24);
     this.hours = Math.floor(this._diff / 3600 % 24);
   }
-
-
 
 }

@@ -33,7 +33,7 @@ export class StoreListComponent implements OnInit {
   productNumber: number = 0;
   displayName: string;
   currency:string='USD';
-
+  isHavePromotion: boolean = false;
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -53,6 +53,7 @@ export class StoreListComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.displayName = data.displayName;
+        self.isHavePromotion = data.promotionNum > 0;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.contextList = data.context ? data.context : {};
         self.storeService.addTitleDescription({
@@ -104,7 +105,7 @@ export class StoreListComponent implements OnInit {
       store: this.store.id,
       relationStatus: 'published',
       page: this.page,
-      page_size: 12
+      page_size: 48
     };
     this.storeService.getProductList(options).then((data) => {
       if (this.isClearData) {

@@ -42,6 +42,10 @@ export class HomePageComponent implements OnInit {
 
   currency:string = 'USD';
 
+  //导航上是否显示flash sale
+  isHavePromotion: boolean = false;
+
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -63,6 +67,7 @@ export class HomePageComponent implements OnInit {
         self.imageList = data.images ? data.images : {};
         self.text = data.description;
         self.ownerId = data.ownerId;
+        self.isHavePromotion = data.promotionNum > 0;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
