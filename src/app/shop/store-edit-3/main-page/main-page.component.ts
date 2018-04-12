@@ -10,6 +10,7 @@ import {UserProfile, Store} from '../../shop';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {StoreShareDialogComponent} from "../../store-share-dialog/store-share-dialog.component";
+import {StoreGuideBonusDialogComponent} from "../../store-guide-bonus-dialog/store-guide-bonus-dialog.component";
 
 @Component({
   selector: 'app-shop-template-3',
@@ -65,6 +66,8 @@ export class MainPageComponent implements OnInit {
   templateId: any = false;
   templateList: any = [];
   isHavePromotion: boolean = false;
+  //是否为新手引导
+  isGuide: boolean = false;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -73,6 +76,8 @@ export class MainPageComponent implements OnInit {
               private userService: UserService,
               private shopService: ShopService,
               private dialog: MatDialog) {
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/edit') >= 0;
     let self = this;
     self.storeTemplateForm = self.fb.group({
       titleTag: [self.titleTag],
@@ -315,8 +320,13 @@ export class MainPageComponent implements OnInit {
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
-        self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/dashboard']);
+        if (self.isGuide) {
+          self.openGuideDialog(`${self.store.displayName}`);
+          self.router.navigate(['/shop/listings/items']);
+        } else {
+          self.openDialog(`${self.store.displayName}`);
+          self.router.navigate(['/shop/dashboard']);
+        }
       });
     } else {
       let options = {
@@ -349,8 +359,13 @@ export class MainPageComponent implements OnInit {
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
-        self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/dashboard']);
+        if (self.isGuide) {
+          self.openGuideDialog(`${self.store.displayName}`);
+          self.router.navigate(['/shop/listings/items']);
+        } else {
+          self.openDialog(`${self.store.displayName}`);
+          self.router.navigate(['/shop/dashboard']);
+        }
       });
     }
   }
@@ -388,6 +403,19 @@ export class MainPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
+    });
+  }
+
+  openGuideDialog(displayName?: any): void {
+    let dialogRef = this.dialog.open(StoreGuideBonusDialogComponent, {
+      disableClose: true,
+      data: {
+        shareLink: 'http://' + this.shareLink + displayName,
+        text: this.store.description
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 

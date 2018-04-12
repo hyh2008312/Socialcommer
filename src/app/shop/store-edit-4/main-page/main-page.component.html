@@ -6,7 +6,7 @@
           <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
             SAVE
           </div>
-          <div class="xb-4-template-edit__button" (click)="close()">
+          <div class="xb-4-template-edit__button" (click)="close()" [hidden]="isGuide">
             CANCEL
           </div>
         </div>
@@ -350,7 +350,7 @@
       <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
         SAVE
       </div>
-      <div class="xb-4-template-edit__button" (click)="close()">
+      <div class="xb-4-template-edit__button" (click)="close()" [hidden]="isGuide">
         CANCEL
       </div>
     </div>
@@ -378,7 +378,7 @@
       <div class="xb-4-template-edit__button-1 md-margin-right-2" (click)="submitTemplate()">
         SAVE
       </div>
-      <div class="xb-4-template-edit__button" (click)="close()">
+      <div class="xb-4-template-edit__button" (click)="close()" [hidden]="isGuide">
         CANCEL
       </div>
     </div>

@@ -10,7 +10,7 @@
     </div>
     <div class="xb-4-template-products__card-content" fxLayout="column" fxLayoutAlign="start center">
       <div class="xb-4-template-products__card-title">{{product.title}}</div>
-      <div class="xb-4-template-products__card-price">{{product.salePrice |currency: currency }}
+      <div class="xb-4-template-products__card-price">{{salePrice |currency: currency }}
       </div>
       <div class="xb-4-template-products__card-original line-through " *ngIf="product.originalPrice > 0">
         {{product.originalPrice|currency: currency }}

@@ -15,7 +15,7 @@
     <div class="xb-4-template-products__card-content" fxLayout="column" fxLayoutAlign="start center">
       <div class="xb-4-template-products__card-title">{{product.title}}</div>
       <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-        <div class="xb-4-template-products__card-price">{{product.salePrice | exchangeCurrency:currency |currency:
+        <div class="xb-4-template-products__card-price">{{salePrice | exchangeCurrency:currency |currency:
           currency }}
         </div>
         <div class="xb-4-template-products__card-original line-through " *ngIf="product.originalPrice > 0">
