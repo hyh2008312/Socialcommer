@@ -17,6 +17,8 @@ export class GuideMainComponent implements OnInit {
 
   loading: boolean = false;
   sub: any;
+  sub1: any;
+  step: number = 0;
 
   constructor(
     private guideService: GuideService,
@@ -34,6 +36,27 @@ export class GuideMainComponent implements OnInit {
         this.loading = false;
       }
     });
+
+    this.sub1 = this.userService.store.subscribe((data) => {
+      if(data) {
+
+      }
+    });
+  }
+
+  nextStep() {
+
+    let step: string = '';
+    if(this.step == 0) {
+      step = 'second';
+    }
+
+    this.guideService.changeGuideStep({
+      step
+    }).then(() => {
+      this.step = 1;
+    });
+
   }
 
   ngOnInit():void {
@@ -63,7 +86,12 @@ export class GuideMainComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
+    if(this.sub1) {
+      this.sub1.unsubscribe();
+    }
   }
 
   close() {

@@ -47,6 +47,40 @@ export class GuideService {
     return array.join('&');
   }
 
+  changeGuideStep(params: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/change/step/`;
+
+    return this.http.put(url, params, options)
+      .toPromise()
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
+  }
+
+  getProductList(obj): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.baseUrl.url}store/login/first/?${this.serializeParams(obj)}`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
+  }
+
   checkIsAuth(response) {
     if(response.status == 401) {
       return Promise.reject(401);

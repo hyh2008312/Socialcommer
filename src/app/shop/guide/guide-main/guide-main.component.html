@@ -1,5 +1,5 @@
 <div class="xb-guide__bg">
-  <div class="container">
+  <div class="container" *ngIf="step == 0">
     <div class="xb-guide__title">Add Products to Sell</div>
     <div class="xb-guide__subtitle">Add at least 3 featured collections to your store and start making money quikly!</div>
     <div class="xb-guide__container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start"
@@ -11,11 +11,11 @@
     </div>
     <div class="xb-guide__margin-top-1 xb-guide__margin-bottom">
       <div class="xb-guide__bottom-button" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button color="primary">Proceed to Next Step</button>
+        <button mat-raised-button color="primary" (click)="nextStep()">Proceed to Next Step</button>
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" *ngIf="step == 1">
     <div class="xb-guide__title">Edit & Publish Your Store</div>
     <div class="xb-guide__subtitle">You’re one step away from launching your store! Please select a template below to set
       up your storefront.</div>
@@ -109,7 +109,7 @@
     </div>
     <div class="xb-guide__margin-top-1 xb-guide__margin-bottom" fxHide.xs>
       <div class="xb-guide__bottom-button" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button color="primary">Proceed to Next Step</button>
+        <button mat-raised-button color="primary" (click)="nextStep()">Proceed to Next Step</button>
       </div>
     </div>
   </div>
