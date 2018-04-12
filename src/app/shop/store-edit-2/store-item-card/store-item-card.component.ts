@@ -38,12 +38,12 @@ export class StoreItemCardComponent implements OnInit {
     if (this.product.promotionOngoing) {
       this.isPromotionOnGoing = true;
       if (this.product.promotionOngoing.discount != '0.0') {
-        this.salePrice = this.product.salePrice * this.product.promotionOngoing.discount;
+        this.salePrice = this.product.salePrice * this.product.promotionOngoing.discount /100;
       }
       this.settingTimes = this.product.promotionOngoing.endTimestamp * 1000 - Date.now();
     } else if (this.product.promotionScheduled) {
       this.isPromotionScheduled = true;
-      this.salePrice = this.product.salePrice * this.product.promotionScheduled.discount;
+      this.salePrice = this.product.salePrice * this.product.promotionScheduled.discount /100;
       this.settingTimes = this.product.promotionScheduled.startTimestamp * 1000 - Date.now();
     }
   }

@@ -1,4 +1,4 @@
-import {Input, Component, OnInit,OnChanges} from '@angular/core';
+import {Input, Component, OnInit, OnChanges} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
   styleUrls: ['../_store-template-5.scss']
 })
 
-export class StoreItemProductCardComponent implements OnInit,OnChanges {
+export class StoreItemProductCardComponent implements OnInit, OnChanges {
 
   @Input() status: number = 0;
   @Input() product: any = null;
@@ -21,7 +21,7 @@ export class StoreItemProductCardComponent implements OnInit,OnChanges {
   _diff: any;
   days: any;
   hours: any;
-  salePrice:any ;
+  salePrice: any;
   progressPercentage: number = 0;
 
 
@@ -55,18 +55,18 @@ export class StoreItemProductCardComponent implements OnInit,OnChanges {
   }
 
   ngOnChanges() {
-    this.salePrice =  this.product.salePrice ;
+    this.salePrice = this.product.salePrice;
     if (this.product.promotionOngoing) {
       this.isPromotionOnGoing = true;
       this.progressPercentage = this.product.promotionOngoing.saleRatio;
       if (this.product.promotionOngoing.discount != '0.0') {
-        this.salePrice = this.product.salePrice * this.product.promotionOngoing.discount;
+        this.salePrice = this.product.salePrice * this.product.promotionOngoing.discount / 100;
       }
       this.settingTimes = this.product.promotionOngoing.endTimestamp * 1000 - Date.now();
     } else if (this.product.promotionScheduled) {
       this.isPromotionScheduled = true;
       if (this.product.promotionScheduled.discount != '0.0') {
-        this.salePrice = this.product.salePrice * this.product.promotionScheduled.discount;
+        this.salePrice = this.product.salePrice * this.product.promotionScheduled.discount / 100;
       }
       this.settingTimes = this.product.promotionScheduled.startTimestamp * 1000 - Date.now();
     }

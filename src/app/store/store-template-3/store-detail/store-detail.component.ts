@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { Store, Product, Image } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store, Product, Image} from '../../store';
 import {AddCartSuccessDialogComponent} from "../add-cart-success-dialog/add-cart-success-dialog.component";
 import {MatDialog} from "@angular/material";
 
@@ -41,7 +41,6 @@ export class StoreDetailComponent implements OnInit {
   shippingTimeMax: number = 0;
 
 
-
   //变体的改版
   minSalePrice: number = 0;
   maxSalePrice: number = 0;
@@ -73,22 +72,20 @@ export class StoreDetailComponent implements OnInit {
   progressPercentage: number = 0;
   discount: any = '0.0';
 
-  constructor(
-    public router: Router,
-    private activatedRouter: ActivatedRoute,
-    private dialog: MatDialog,
-    private storeService: StoreService
-  ) {
+  constructor(public router: Router,
+              private activatedRouter: ActivatedRoute,
+              private dialog: MatDialog,
+              private storeService: StoreService) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.shareLink = window.location.href;
 
     let id = this.activatedRouter.snapshot.params['id'];
     let self = this;
     this.storeService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.store = data;
         self.currency = data.currency.toUpperCase();
         self.displayName = data.displayName;
@@ -109,11 +106,11 @@ export class StoreDetailComponent implements OnInit {
             pid
           }).then((data) => {
             let priceItem: any = false;
-            for(let item of data[pid]) {
-              if(!priceItem) {
+            for (let item of data[pid]) {
+              if (!priceItem) {
                 priceItem = item.priceItem;
               }
-              if(priceItem >= item.priceItem) {
+              if (priceItem >= item.priceItem) {
                 self.shippingTimeMax = item.shippingTimeMax;
                 self.shippingTimeMin = item.shippingTimeMin;
                 priceItem = item.priceItem;
@@ -128,25 +125,25 @@ export class StoreDetailComponent implements OnInit {
           });
 
           self.image = data.images;
-          if(data.images.length > 0) {
+          if (data.images.length > 0) {
             self.selectedImage = data.images[0];
-            for(let value of data.images) {
+            for (let value of data.images) {
               self.imageSources.push(value);
             }
           }
           if (self.product.promotionOngoing) {
             self.isPromotionOnGoing = true;
-            this.discount = this.product.promotionOngoing.discount;
+            this.discount = this.product.promotionOngoing.discount / 100;
             this.progressPercentage = this.product.promotionOngoing.saleRatio;
             self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
           } else if (self.product.promotionScheduled) {
             self.isPromotionScheduled = true;
-            this.discount = this.product.promotionScheduled.discount;
+            this.discount = this.product.promotionScheduled.discount / 100;
             self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
           }
 
           this.isHaveVariant = data.attributes.length > 0;
-          this.variantList=[];
+          this.variantList = [];
           if (this.isHaveVariant) {
             self.arrangeVariant(data);
           } else {
@@ -409,7 +406,7 @@ export class StoreDetailComponent implements OnInit {
   }
 
   minusNumber() {
-    if(this.number > 1) {
+    if (this.number > 1) {
       this.number--;
     }
   }

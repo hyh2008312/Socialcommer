@@ -109,11 +109,11 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
           if (self.product.promotionOngoing) {
             self.isPromotionOnGoing = true;
             self.progressPercentage = self.product.promotionOngoing.saleRatio;
-            self.discount = self.product.promotionOngoing.discount;
+            self.discount = self.product.promotionOngoing.discount / 100;
             self.countdownLeftTime = self.product.promotionOngoing.endTimestamp * 1000;
           } else if (self.product.promotionScheduled) {
             self.isPromotionScheduled = true;
-            self.discount = self.product.promotionScheduled.discount;
+            self.discount = self.product.promotionScheduled.discount / 100;
             self.countdownLeftTime = self.product.promotionScheduled.startTimestamp * 1000;
           }
           self.supplierName = data.supplierName;
@@ -128,7 +128,9 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
             this.originalPrice = this.product.unitPrice;
             this.variant = this.product.variants[0];
           }
-
+          if (this.discount != '0.0') {
+            this.salePrice = this.salePrice * this.discount;
+          }
 
           let pid = data.id;
           self.shopService.getSupplyProductRecommendList({

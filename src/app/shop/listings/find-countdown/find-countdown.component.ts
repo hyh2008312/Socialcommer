@@ -1,9 +1,18 @@
-import {Input, Output, Component, OnInit, ChangeDetectionStrategy, NgZone, OnDestroy, ChangeDetectorRef} from '@angular/core';
+import {
+  Input,
+  Output,
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  NgZone,
+  OnDestroy,
+  ChangeDetectorRef
+} from '@angular/core';
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 
 @Component({
   selector: 'app-find-countdown',
-  changeDetection:ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './find-countdown.component.html',
   styleUrls: ['./_find-countdown.scss'],
 
@@ -13,12 +22,12 @@ export class FindCountdownComponent implements OnInit, OnDestroy {
 
   @Input() countdownTimer: number = 0;
   // 倒计时
-   timer: any;
-   _diff: number;
-   days: number;
-   hours: number;
-   minute: number;
-   second: number;
+  private timer: any;
+  private _diff: number;
+  private days: number;
+  private hours: number;
+  private minute: number;
+  private second: number;
 
   isFirst: boolean = false;
 
@@ -36,7 +45,7 @@ export class FindCountdownComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor(private ref : ChangeDetectorRef, private ngZone: NgZone) {
+  constructor(private ref: ChangeDetectorRef, private ngZone: NgZone) {
 
   }
 
