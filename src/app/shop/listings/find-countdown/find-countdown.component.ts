@@ -13,12 +13,12 @@ export class FindCountdownComponent implements OnInit, OnDestroy {
 
   @Input() countdownTimer: number = 0;
   // 倒计时
-  private timer: any;
-  private _diff: number;
-  private days: number;
-  private hours: number;
-  private minute: number;
-  private second: number;
+   timer: any;
+   _diff: number;
+   days: number;
+   hours: number;
+   minute: number;
+   second: number;
 
   isFirst: boolean = false;
 

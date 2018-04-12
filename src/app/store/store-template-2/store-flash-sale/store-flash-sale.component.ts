@@ -31,6 +31,7 @@ export class StoreFlashSaleComponent implements OnInit {
   isHaveProduct: boolean;
   isHavePromotion: boolean = false;
   productNumber: number = 0;
+  displayName: string;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -48,6 +49,7 @@ export class StoreFlashSaleComponent implements OnInit {
         self.store = data;
         self.text = data.description;
         self.isHavePromotion = data.promotionNum > 0;
+        self.displayName = data.displayName ;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.currency = data.currency.toUpperCase();
         self.storeService.addTitleDescription({
@@ -101,5 +103,12 @@ export class StoreFlashSaleComponent implements OnInit {
 
   changeShowCategoryMenu(): void {
     this.isShowCategoryMenu = !this.isShowCategoryMenu;
+  }
+  jumpCart(): void {
+    this.router.navigate([`./store/${this.displayName}/cart`]);
+  }
+
+  jumpOrder(): void {
+    this.router.navigate([`./store/${this.displayName}/order`]);
   }
 }

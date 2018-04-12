@@ -5,12 +5,8 @@
          (mouseenter)="changeAnimationState()"
          (mouseleave)="changeAnimationState()">
       <a><img [src]="product.mainImage"></a>
-      <div *ngIf="isPromotionOnGoing && !isShowPromotionFlag" class="xb-4-template-products__promotion-ongoing">Ongoing</div>
-      <!--<div *ngIf="isPromotionOnGoing && !isShowPromotionFlag" class="xb-4-template-products__promotion-countdown" fxShow="true"
-           fxShow.xs="false">
-        <span *ngIf="days>0"> {{days>1?days+' Days,':'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}} Left
-      </div>-->
-      <div *ngIf="isPromotionScheduled && !isShowPromotionFlag" class="xb-4-template-products__promotion-upcoming">Upcoming</div>
+      <div *ngIf="isPromotionOnGoing" class="xb-4-template-products__promotion-ongoing">Ongoing</div>
+      <div *ngIf="isPromotionScheduled" class="xb-4-template-products__promotion-upcoming">Upcoming</div>
     </div>
     <div class="xb-4-template-products__card-content" fxLayout="column" fxLayoutAlign="start center">
       <div class="xb-4-template-products__card-title">{{product.title}}</div>
