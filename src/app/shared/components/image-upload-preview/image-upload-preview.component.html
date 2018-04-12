@@ -1,5 +1,5 @@
 <label class="preview-label preview-label__upload" *ngIf="upload" fxLayout="row" fxLayoutAlign="center center">
-  <img src="{{previewImgSrcs}}" >
+  <img [src]="previewImgSrcs" >
   <div class="popup-mask">
     <div fxLayout="row" fxLayoutAlign="end start">
       <i class="material-icons" (click)="remove();">clear</i>
@@ -21,6 +21,9 @@
 <div class="md-margin-top-2" *ngIf="upload && croppedSrc">
   <div class="preview-label__cropper-bg"  fxLayout="row" fxLayoutAlign="center center">
     <img src="{{croppedSrc}}" >
+  </div>
+  <div *ngIf="loading != null">
+    <mat-progress-bar [mode]="determinate" [value]="loading" color="accent"></mat-progress-bar>
   </div>
   <div class="md-margin-top-2">
     <button mat-raised-button color="accent" >UPLOADING ...</button>

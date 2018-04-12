@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild, OnChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { ImageUploadPreviewService } from "./image-upload-preview.service";
 import { AngularCropperjsComponent } from 'angular-cropperjs';
 import { S3UploaderService } from "../../services/s3-upload/s3-upload.service";
+import {HttpEventType, HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-image-upload-preview',
@@ -16,12 +17,12 @@ export class ImageUploadPreviewComponent implements OnInit {
 
   @ViewChild('angularCropper') public angularCropper: AngularCropperjsComponent;
 
-  previewImgSrcs: Object;
+  previewImgSrcs: any;
 
   upload: boolean = false;
   croppedSrc: any = false;
-  config: Object;
-
+  config: any;
+  loading: any = null;
 
   file: any;
 
@@ -31,7 +32,6 @@ export class ImageUploadPreviewComponent implements OnInit {
     private previewImageService: ImageUploadPreviewService,
     private s3UploaderService : S3UploaderService
   ) {
-    console.log("----->"+this.ratio);
     this.config = {
       aspectRatio : this.ratio,
       scalable: true,
@@ -78,14 +78,14 @@ export class ImageUploadPreviewComponent implements OnInit {
     const canvas = this.angularCropper.cropper.getCroppedCanvas();
     this.croppedSrc = canvas.toDataURL('image/jpeg', 1.0);
     this.previewImgFile = this.croppedSrc;
-    var blob =  this.convertBase64UrlToFile(this.croppedSrc, this.file);
+    let blob =  this.convertBase64UrlToFile(this.croppedSrc, this.file);
 
     let that = this;
+    that.loading = 0;
     let image = new Image();
     image.onload = function(){
       let width = image.width;
       let height = image.height;
-      console.log(width + "|" + height)
 
       that.s3UploaderService.upload({
         type: 'COLLECTOR_STORE_TEMPLATE',
@@ -95,16 +95,20 @@ export class ImageUploadPreviewComponent implements OnInit {
         height: height
       }).then((data)=> {
         that.previewImgFile = data.url + '/' + data.key;
-        that.s3UploaderService.uploadToS3WithoutLoading(blob, data).then((data) => {
-          that.previewImgFileChange.emit(that.previewImgFile);
+        that.s3UploaderService.uploadToS3(blob, data).subscribe((event) => {
+          // Via this API, you get access to the raw event stream.
+          // Look for upload progress events.
+          if (event.type === HttpEventType.UploadProgress) {
+            // This is an upload progress event. Compute and show the % done:
+            that.loading = Math.round(100 * event.loaded / event.total);
+          } else if (event instanceof HttpResponse) {
+            that.previewImgFileChange.emit(that.previewImgFile);
+            that.remove();
+          }
         });
       });
     };
     image.src = window.URL.createObjectURL(blob);
-  }
-
-  onEdit() {
-    this.croppedSrc = false;
   }
 
   convertBase64UrlToFile(dataURI, $file, domain?:any) {
