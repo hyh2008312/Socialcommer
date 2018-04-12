@@ -7,6 +7,7 @@ import {ShopService} from '../../shop.service';
 import {MatDialog} from '@angular/material';
 import {Store} from '../../shop';
 import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-dialog.component';
+import {StoreGuideBonusDialogComponent} from "../../store-guide-bonus-dialog/store-guide-bonus-dialog.component";
 
 @Component({
   selector: 'app-store-template-edit-2',
@@ -55,6 +56,9 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   text = '';
 
   isHavePromotion: boolean = false;
+
+  //是否为新手引导
+  isGuide: boolean = false;
 
   public editorConfig = {
     theme: 'bubble',
@@ -139,6 +143,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
               private userService: UserService,
               private shopService: ShopService,
               private dialog: MatDialog) {
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/edit') >= 0;
     this.viewIndex = 0;
     this.ratio = 1920 / 270;
     let self = this;
@@ -247,8 +253,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
                 self.isHavePromotion = data.promotionNum > 0;
-                let tempCategory = data.category.filter((data)=>{
-                  return data.goodsCount !=0 ;
+                let tempCategory = data.category.filter((data) => {
+                  return data.goodsCount != 0;
                 });
                 if (tempCategory.length > 1) {
                   self.categories = [{name: 'All'}, ...tempCategory];
@@ -320,7 +326,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   flashPage = 1;
   nextFlashSalePage: boolean = false;
-  flashSaleProduct:  any = [];
+  flashSaleProduct: any = [];
 
   queryFlashSale(clearProduct?: boolean) {
     let options = {
@@ -409,8 +415,13 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
-        self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/dashboard']);
+        if (self.isGuide) {
+          self.openGuideDialog(`${self.store.displayName}`);
+          self.router.navigate(['/shop/listings/items']);
+        } else {
+          self.openDialog(`${self.store.displayName}`);
+          self.router.navigate(['/shop/dashboard']);
+        }
       });
     } else {
       let options = {
@@ -450,8 +461,13 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
         });
-        self.openDialog(`${self.store.displayName}`);
-        self.router.navigate(['/shop/dashboard']);
+        if (self.isGuide) {
+          self.openGuideDialog(`${self.store.displayName}`);
+          self.router.navigate(['/shop/listings/items']);
+        } else {
+          self.openDialog(`${self.store.displayName}`);
+          self.router.navigate(['/shop/dashboard']);
+        }
       });
     }
   }
@@ -466,6 +482,19 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
 
+    });
+  }
+
+  openGuideDialog(displayName?: any): void {
+    let dialogRef = this.dialog.open(StoreGuideBonusDialogComponent, {
+      disableClose: true,
+      data: {
+        shareLink: 'http://' + this.shareLink + displayName,
+        text: this.store.description
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 

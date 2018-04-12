@@ -13,14 +13,14 @@
       <div class="xb-store-template__card-content" fxLayout="column" fxLayoutAlign="center center" (click)="jumpProductDetail()">
         <div class="xb-store-template__card-title">{{product.title}}</div>
         <div>
-          <div class="xb-store-template__card-price">{{product.salePrice|currency: product.currency: true }}</div>
+          <div class="xb-store-template__card-price">{{salePrice|currency: product.currency: true }}</div>
           <div class="xb-store-template__card-price-1 line-through"
-               *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">
+               *ngIf="product.originalPrice > 0 && salePrice != product.originalPrice">
             {{product.originalPrice|currency: currency: true }}
           </div>
           <div class="xb-store-template__card-sale xb-store-template__card-margin"
-               *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">
-            {{product.salePrice|saleDiscount:product.originalPrice}} OFF
+               *ngIf="product.originalPrice > 0 && salePrice != product.originalPrice">
+            {{salePrice|saleDiscount:product.originalPrice}} OFF
           </div>
         </div>
       </div>
@@ -29,14 +29,14 @@
   <div class="xb-store-template__card-content-1" fxLayout="column" fxLayoutAlign="center center" fxShow.gt-xs="false">
     <div class="xb-store-template__card-title">{{product.title}}</div>
     <div>
-      <div class="xb-store-template__card-price">{{product.salePrice|currency: currency: true }}</div>
+      <div class="xb-store-template__card-price">{{salePrice|currency: currency: true }}</div>
       <div class="xb-store-template__card-price-1 line-through"
-           *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">
+           *ngIf="product.originalPrice > 0 && salePrice != product.originalPrice">
         {{product.originalPrice|currency: currency: true }}
       </div>
       <div class="xb-store-template__card-sale xb-store-template__card-margin"
-           *ngIf="product.originalPrice > 0 && product.salePrice != product.originalPrice">
-        {{product.salePrice|saleDiscount:product.originalPrice}} OFF
+           *ngIf="product.originalPrice > 0 && salePrice != product.originalPrice">
+        {{salePrice|saleDiscount:product.originalPrice}} OFF
       </div>
     </div>
   </div>
