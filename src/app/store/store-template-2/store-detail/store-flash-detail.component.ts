@@ -67,10 +67,12 @@ export class StoreFlashDetailComponent implements OnInit {
   countdownLeftTime: number = 0;
   progressPercentage: number = 0;
   discount: any = '0.0';
+
   constructor(public router: Router,
               private dialog: MatDialog,
               private activatedRouter: ActivatedRoute,
-              private storeService: StoreService) {}
+              private storeService: StoreService) {
+  }
 
   scrollChange($event) {
     this.showButton = $event;
@@ -103,11 +105,11 @@ export class StoreFlashDetailComponent implements OnInit {
             pid
           }).then((data) => {
             let priceItem: any = false;
-            for(let item of data[pid]) {
-              if(!priceItem) {
+            for (let item of data[pid]) {
+              if (!priceItem) {
                 priceItem = item.priceItem;
               }
-              if(priceItem >= item.priceItem) {
+              if (priceItem >= item.priceItem) {
                 self.shippingTimeMax = item.shippingTimeMax;
                 self.shippingTimeMin = item.shippingTimeMin;
                 priceItem = item.priceItem;
@@ -132,15 +134,15 @@ export class StoreFlashDetailComponent implements OnInit {
           if (self.product.promotionOngoing) {
             self.isPromotionOnGoing = true;
             self.progressPercentage = self.product.promotionOngoing.saleRatio;
-            self.discount = self.product.promotionOngoing.discount;
+            self.discount = self.product.promotionOngoing.discount / 100;
             self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
           } else if (self.product.promotionScheduled) {
             self.isPromotionScheduled = true;
-            self.discount = this.product.promotionScheduled.discount;
+            self.discount = this.product.promotionScheduled.discount / 100;
             self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
           }
           this.isHaveVariant = data.attributes.length > 0;
-          this.variantList=[];
+          this.variantList = [];
           if (this.isHaveVariant) {
             self.arrangeVariant(data);
           } else {

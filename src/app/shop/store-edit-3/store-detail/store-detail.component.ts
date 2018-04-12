@@ -134,11 +134,11 @@ export class StoreDetailComponent implements OnInit {
           if (self.product.promotionOngoing) {
             self.isPromotionOnGoing = true;
             this.progressPercentage = this.product.promotionOngoing.saleRatio;
-            this.discount = this.product.promotionOngoing.discount;
+            this.discount = this.product.promotionOngoing.discount/100;
             self.countdownLeftTime = this.product.promotionOngoing.endTimestamp * 1000;
           } else if (self.product.promotionScheduled) {
             self.isPromotionScheduled = true;
-            this.discount = this.product.promotionScheduled.discount;
+            this.discount = this.product.promotionScheduled.discount/100;
             self.countdownLeftTime = this.product.promotionScheduled.startTimestamp * 1000;
           }
 
