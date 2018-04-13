@@ -400,9 +400,9 @@ export class StoreCartPayComponent implements OnInit{
     }
     for(let item of this.products) {
       if(typeof item.quantity == 'number' && item.quantity > 0) {
-        price += item.quantity * Math.floor(item.unitPriceExclTax * rate * 100) /100;
+        price += item.quantity * Math.round(item.unitPriceExclTax * rate * 100) /100;
         if(item.shippingExclTax) {
-          shippingPrice += Math.floor(item.shippingExclTax * rate * 100) / 100 * item.number;
+          shippingPrice += Math.round(item.shippingExclTax * rate * 100) / 100;
         }
       }
     }
