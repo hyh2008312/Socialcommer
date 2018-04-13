@@ -173,6 +173,23 @@ export class OrderTrackingService {
       .catch(this.handleError);
   }
 
+  getInvoice(params:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}order/invoice/${params.id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   private handleError (error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {

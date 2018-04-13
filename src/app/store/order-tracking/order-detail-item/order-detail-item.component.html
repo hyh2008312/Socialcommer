@@ -262,22 +262,6 @@
   </div>
 
   <div fxFlex="none" class="xb-order-tracking__detail-width-3"
-       fxLayout="column" fxLayoutAlign="start stretch" *ngIf="false">
-    <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
-    <div class="md-margin-top-2" fxLayout="column">
-      <button mat-raised-button color="accent" (click)="changeShippingAddress()">Change Shipping Address</button>
-    </div>
-    <div class="md-margin-top-1" fxLayout="column">
-      <button mat-raised-button color="accent" (click)="trackingInformation()">Track Your Package</button>
-    </div>
-    <div class="md-margin-top-1" fxLayout="column">
-      <button mat-raised-button color="accent" (click)="cancelItem()">Cancel Item</button>
-    </div>
-    <div class="md-margin-top-1" fxLayout="column">
-      <button mat-raised-button color="accent" (click)="returnItem()">Return Item</button>
-    </div>
-  </div>
-  <div fxFlex="none" class="xb-order-tracking__detail-width-3"
        fxLayout="column" fxLayoutAlign="start stretch" *ngIf="order.status == 'Canceled'">
     <button mat-raised-button color="primary" (click)="jumpCustomerService()">Contact Supplier</button>
   </div>

@@ -37,4 +37,12 @@ export class ViewYourOrderComponent{
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+  viewInvoice() {
+    this.orderTrackingService.getInvoice({
+      id: this.order.id
+    }).then((data) => {
+      window.open(data.invoiceUrl);
+    });
+  }
 }
