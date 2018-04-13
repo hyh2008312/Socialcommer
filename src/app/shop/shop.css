@@ -3482,9 +3482,10 @@ textarea.mat-input-element {
     padding: 0 4px; }
   .xb-shop__logo-button {
     position: relative;
-    margin: 0 16px;
-    line-height: 56px;
-    font-size: 16px;
+    margin: 0 20px;
+    line-height: 54px;
+    font-size: 12px;
+    letter-spacing: -.29px;
     display: block;
     font-weight: 600;
     color: #00bdd6;
@@ -3536,6 +3537,9 @@ textarea.mat-input-element {
     display: none; }
   .xb-shop__left-navigation-bg {
     width: 160px; }
+    @media screen and (max-width: 599px) {
+      .xb-shop__left-navigation-bg {
+        width: 56px; } }
   .xb-shop__left-navigation-buttons {
     padding-left: 8px;
     height: 56px;
@@ -4058,76 +4062,99 @@ textarea.mat-input-element {
   background-color: rgba(0, 0, 0, 0.3); }
 .xb-shop__toDo-number {
   position: absolute;
-  top: -48px;
-  width: 36px;
-  height: 36px;
-  font-size: 16px;
-  text-align: center;
-  line-height: 36px;
+  top: -27px;
+  width: 54px;
+  height: 54px;
+  font-size: 24px;
+  line-height: 54px;
   font-weight: bold;
-  color: #00bdd6;
-  border-radius: 50%;
-  border: 1px solid #00bdd6; }
+  text-align: center;
+  letter-spacing: -.43px;
+  color: #fff;
+  background-color: #ffc500;
+  border-radius: 50%; }
+  .xb-shop__toDo-number.active {
+    background-color: #00bdd6; }
+    .xb-shop__toDo-number.active i {
+      font-size: 24px;
+      line-height: 54px; }
 .xb-shop__toDo-title {
-  margin-top: 64px;
-  font-size: 42px;
-  line-height: 1;
+  margin-top: 40px;
+  font-size: 34px;
+  line-height: 40px;
+  letter-spacing: -.29px;
   text-align: center;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.87); }
+  @media screen and (max-width: 599px) {
+    .xb-shop__toDo-title {
+      margin-top: 24px;
+      font-size: 24px;
+      line-height: 28px; } }
 .xb-shop__toDo-description {
-  margin-top: 8px;
-  font-size: 16px;
-  line-height: 28px;
-  text-align: center;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.87); }
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: -.19px;
+  text-align: center; }
 .xb-shop__toDo-content {
-  margin-top: 80px; }
+  margin-top: 40px; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__toDo-content {
+      margin-top: 24px; } }
 .xb-shop__toDo-card {
-  width: 350px;
-  height: 270px;
+  width: 240px;
+  height: 204px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   position: relative;
   border-radius: 10px;
   cursor: pointer;
   background-color: #fff;
-  margin: 0 32px 72px; }
-  .xb-shop__toDo-card:hover {
-    -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19);
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.19); }
+  margin: 67px 20px 0;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.19); }
+  @media screen and (max-width: 599px) {
+    .xb-shop__toDo-card {
+      margin: 27px 0 16px;
+      width: 100%; } }
   .xb-shop__toDo-card > img {
-    width: 96px;
-    height: 96px;
+    width: 80px;
+    height: 80px;
     display: block;
-    margin-top: 56px; }
+    margin-top: 43px; }
   .xb-shop__toDo-card-text {
-    font-size: 24px;
-    margin-top: 24px;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -.29px;
+    margin-top: 16px;
     font-weight: 600;
     text-align: center; }
   .xb-shop__toDo-card-text-1 {
-    font-size: 14px;
-    line-height: 40px;
-    margin-top: 16px;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: -0.11px;
     text-align: center;
-    border-radius: 4px;
-    border: 1px solid #00bdd6;
-    color: #00bdd6;
-    padding: 0 24px;
-    min-width: 120px; }
-  .xb-shop__toDo-card-text-2 {
-    font-size: 14px;
-    line-height: 40px;
-    margin-top: 16px;
+    width: 112px;
+    margin-top: 4px;
+    color: rgba(0, 0, 0, 0.54); }
+  .xb-shop__toDo-card-icon {
+    margin-right: 8px;
+    font-size: 10px;
+    line-height: 12px;
+    width: 12px;
+    height: 12px;
     text-align: center;
-    border-radius: 4px;
-    border: 1px solid #00bdd6;
+    border-radius: 50%;
     color: #fff;
-    background: #00bdd6;
-    padding: 0 24px;
-    min-width: 120px; }
+    background-color: #ffc500;
+    display: block; }
+    .xb-shop__toDo-card-icon.active {
+      background-color: #00bdd6; }
+      .xb-shop__toDo-card-icon.active i {
+        font-size: 10px;
+        line-height: 12px;
+        color: #fff; }
 .xb-shop__toDo-margin-left {
   margin-left: 24px; }
   @media screen and (max-width: 599px) {
