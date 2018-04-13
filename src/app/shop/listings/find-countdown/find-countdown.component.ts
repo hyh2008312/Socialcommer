@@ -78,5 +78,6 @@ export class FindCountdownComponent implements OnInit, OnDestroy {
     if (this.timer) {
       window.clearInterval(this.timer);
     }
+    this.ref.detach();
   }
 }

@@ -73,5 +73,6 @@ export class StoreCountdownComponent implements OnInit, OnDestroy {
     if (this.timer) {
       window.clearInterval(this.timer);
     }
+    this.ref.detach();
   }
 }
