@@ -3,7 +3,6 @@ import {TimerObservable} from "rxjs/observable/TimerObservable";
 
 @Component({
   selector: 'app-store-six-countdown',
-  changeDetection:ChangeDetectionStrategy.OnPush,
   templateUrl: './store-countdown.component.html',
   styleUrls: ['./_store-countdown.scss'],
 
