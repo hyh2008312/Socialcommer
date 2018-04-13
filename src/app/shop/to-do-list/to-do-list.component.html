@@ -12,7 +12,7 @@
          (click)="openBonusDialog()">
       <img src="https://media.socialcommer.com/source/web/pic/todolist-pic-reward.png">
       <div class="xb-shop__toDo-card-text">Earn Newbie Cash Reward</div>
-      <div class="xb-shop__toDo-card-text-1" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-shop__toDo-card-text-1" fxLayout="row" fxLayoutAlign="start center" *ngIf="false">
         <span class="xb-shop__toDo-card-icon active" *ngIf="stepOneBonus">
            <i class="iconfontXberts icon-pic-ok-bold"></i>
         </span>
@@ -21,7 +21,7 @@
         </span>
         Spread the word
       </div>
-      <div class="xb-shop__toDo-card-text-1" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-shop__toDo-card-text-1" fxLayout="row" fxLayoutAlign="start center" *ngIf="false">
         <span class="xb-shop__toDo-card-icon active" *ngIf="stepTwoBonus">
            <i class="iconfontXberts icon-pic-ok-bold"></i>
         </span>
@@ -73,8 +73,11 @@
          routerLink="/shop/blog">
       <img src="https://media.socialcommer.com/source/web/pic/ic-blog.jpg">
       <div class="xb-shop__toDo-card-text">Create Viral Blog Post</div>
-      <div class="xb-shop__toDo-number">
+      <div class="xb-shop__toDo-number" *ngIf="blogCount<=0">
         5
+      </div>
+      <div class="xb-shop__toDo-number active" *ngIf="blogCount>0">
+        <i class="iconfontXberts icon-pic-ok-regular"></i>
       </div>
     </div>
   </div>

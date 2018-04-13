@@ -43,6 +43,9 @@ export class ShopComponent implements OnInit {
         self.shopService.getMultiTemplate().then((data) => {
           self.shopService.setTemplateList(data);
         });
+        if(data.setStep != 'finished') {
+          self.router.navigate(['/shop/guide']);
+        }
       }
     })
   }

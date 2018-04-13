@@ -40,8 +40,8 @@
       </div>
     </div>
   </div>
-  <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="start stretch" >
-    <div class="xb-shop__navigation-card md-margin-top-2 md-margin-right-2" fxFlex fxFlex.sm="none">
+  <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="start stretch" >
+    <div class="xb-shop__navigation-card md-margin-top-2 md-margin-right-2" fxFlex fxFlex.sm="none" fxFlex.xs="none">
       <div class="xb-shop__navigation-bg" fxLayout="row" fxLayoutAlign="start center">
         Monthly Bonus Tracker
       </div>
@@ -52,7 +52,8 @@
         <app-shop-bonus-item [monthSale]="monthlySale"></app-shop-bonus-item>
       </div>
     </div>
-    <div class="xb-shop__navigation-card xb-shop__navigation-width md-margin-top-2 md-margin-right-2" *ngIf="currency == 'USD'">
+    <div class="xb-shop__navigation-card xb-shop__navigation-width md-margin-top-2 md-margin-right-2"
+         *ngIf="currency == 'USD'" fxFlex.sm="none" fxFlex.xs="none">
       <div class="xb-shop__navigation-bg">Monthly Reward</div>
       <div class="md-margin-top-2 xb-shop__navigation-card-inner xb-shop__dashboard-title" >
         Make over $100 sales within current month, then you can pick one of the following items for product review in the

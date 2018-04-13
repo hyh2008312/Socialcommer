@@ -25,9 +25,10 @@
 
     &-button {
       position: relative;
-      margin: 0 16px;
-      line-height: 56px;
-      font-size: 16px;
+      margin: 0 20px;
+      line-height: 54px;
+      font-size: 12px;
+      letter-spacing: -.29px;
       display: block;
       @include media();
       color: $primaryColor;
@@ -95,6 +96,9 @@
 
     &-bg {
       width: 160px;
+      @include xb-xs-screen{
+        width: 56px;
+      }
     }
 
     &-buttons {
@@ -837,6 +841,11 @@
       text-align: center;
       @include media();
       color: rgba(0, 0, 0, .87);
+      @include xb-xs-screen{
+        margin-top: 24px;
+        font-size: 24px;
+        line-height: 28px;
+      }
     }
 
     &-description {
@@ -848,7 +857,10 @@
     }
 
     &-content {
-      margin-top: 80px;
+      margin-top: 40px;
+      @include xb-xs-screen{
+        margin-top: 24px;
+      }
     }
 
     &-card {
@@ -859,8 +871,12 @@
       border-radius: 10px;
       cursor: pointer;
       background-color: $whiteColor;
-      margin: 0 20px 67px;
+      margin: 67px 20px 0;
       @include box-shadow(0 1px 3px 0 rgba(0,0,0,0.19));
+      @include xb-xs-screen{
+        margin: 27px 0 16px;
+        width: 100%;
+      }
 
       > img {
         width: 80px;

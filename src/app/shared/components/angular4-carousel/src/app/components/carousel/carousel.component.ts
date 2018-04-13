@@ -144,6 +144,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.autoplayIntervalId) {
       clearInterval(this.autoplayIntervalId);
+      this.ref.detach();
     }
   }
 }

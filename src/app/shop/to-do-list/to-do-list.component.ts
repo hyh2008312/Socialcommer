@@ -21,11 +21,13 @@ export class ToDoListComponent implements OnInit, OnDestroy {
 
   firstStoreBonus: boolean = false;
 
+  blogCount: number = 0;
 
   shareLink: string = '';
   text: string = '';
 
   sub: any;
+  sub1: any;
 
   constructor(
     private userService: UserService,
@@ -49,6 +51,12 @@ export class ToDoListComponent implements OnInit, OnDestroy {
         self.stepOneBonus = data.firstShareBonus;
         self.stepTwoBonus = data.firstOrderBonus;
         self.firstStoreBonus = data.setStoreBonus;
+      }
+    });
+
+    self.sub1 = self.userService.currentUser.subscribe((data) => {
+      if(data) {
+        self.blogCount = data.blogCount;
       }
     });
 
