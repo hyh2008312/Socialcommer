@@ -70,7 +70,7 @@ export class StoreListDetailComponent implements OnInit {
   isPromotionScheduled: boolean = false;
   countdownLeftTime: number = 0;
   progressPercentage: number = 0;
-  discount: any = '0.0';
+  discount: any = 0;
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
@@ -155,7 +155,7 @@ export class StoreListDetailComponent implements OnInit {
             this.variant = this.product.variants[0];
           }
 
-          if (this.discount != '0.0') {
+          if (this.discount != 0) {
             this.salePrice = this.salePrice * this.discount;
           }
 
@@ -309,7 +309,7 @@ export class StoreListDetailComponent implements OnInit {
       this.minSalePrice = this.salePriceList[0];
       this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1];
 
-      if (this.discount != '0.0') {
+      if (this.discount != 0) {
         this.minSalePrice = this.minSalePrice * this.discount;
         this.maxSalePrice = this.maxSalePrice * this.discount;
       }
@@ -356,7 +356,7 @@ export class StoreListDetailComponent implements OnInit {
       this.variant = this.product.variants[0];
     }
     // 设置价格
-    if (this.discount != '0.0') {
+    if (this.discount != 0) {
       this.salePrice = this.salePrice * this.discount;
     }
     //判断有没有选择变体（两者）

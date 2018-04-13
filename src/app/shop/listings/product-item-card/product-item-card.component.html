@@ -52,7 +52,8 @@
         <div class="xb-shop__card-count md-margin-top-1" fxLayout="row" fxLayoutAlign="space-between center">
           <div class="xb-shop__card-count-word">{{progressPercentage}}% claimed</div>
           <div class="xb-shop__card-count-word">
-            <span *ngIf="days>0"> {{days>1?days+' Days,':'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}} Left
+            <span *ngIf="days>0"> {{days>1?days+' Days,':days+'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}}
+            Left
           </div>
         </div>
       </div>

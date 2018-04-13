@@ -45,14 +45,21 @@ export class StoreFlashSaleCardComponent implements OnInit, OnChanges {
     baseLink = baseLink.split('/flash')[0];
     this.router.navigate([baseLink + link]);
   }
-
+  salePrice: any;
   ngOnChanges() {
+    this.salePrice = this.product.salePrice;
     if (this.product.promotionOngoing) {
       this.isPromotionOnGoing = true;
       this.progressPercentage = this.product.promotionOngoing.saleRatio;
+      if (this.product.promotionOngoing.discount != 0) {
+        this.salePrice = this.product.salePrice * this.product.promotionOngoing.discount / 100;
+      }
       this.settingTimes = this.product.promotionOngoing.endTimestamp * 1000 - Date.now();
     } else if (this.product.promotionScheduled) {
       this.isPromotionScheduled = true;
+      if (this.product.promotionScheduled.discount != 0) {
+        this.salePrice = this.product.salePrice * this.product.promotionScheduled.discount / 100;
+      }
       this.settingTimes = this.product.promotionScheduled.startTimestamp * 1000 - Date.now();
     }
   }

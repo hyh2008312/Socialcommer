@@ -75,7 +75,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
   countdownLeftTime: number = 0;
   progressPercentage: number = 0;
 
-  discount: any = '0.0';
+  discount: any = 0;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -118,18 +118,18 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
           }
           self.supplierName = data.supplierName;
           self.description = data.description;
-          this.variantList = [];
-          this.isHaveVariant = data.attributes.length > 0;
-          if (this.isHaveVariant) {
+          self.variantList = [];
+          self.isHaveVariant = data.attributes.length > 0;
+          if (self.isHaveVariant) {
             self.arrangeVariant(data);
           } else {
-            this.variantId = this.product.variants[0].id;
-            this.salePrice = this.product.saleUnitPrice;
-            this.originalPrice = this.product.unitPrice;
-            this.variant = this.product.variants[0];
+            self.variantId = self.product.variants[0].id;
+            self.salePrice = self.product.saleUnitPrice;
+            self.originalPrice = self.product.unitPrice;
+            self.variant = self.product.variants[0];
           }
-          if (this.discount != '0.0') {
-            this.salePrice = this.salePrice * this.discount;
+          if (self.discount != 0) {
+            self.salePrice = self.salePrice * self.discount;
           }
 
           let pid = data.id;
@@ -248,7 +248,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
       this.minSalePrice = this.salePriceList[0];
       this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1];
 
-      if (this.discount != '0.0') {
+      if (this.discount != 0) {
         this.minSalePrice = this.salePriceList[0] * this.discount;
         this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1] * this.discount;
       }
@@ -297,7 +297,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
     }
 
     //显示价格
-    if (this.discount != '0.0') {
+    if (this.discount != 0) {
       this.salePrice = this.salePrice * this.discount;
       this.commission = this.commission * this.discount;
     }

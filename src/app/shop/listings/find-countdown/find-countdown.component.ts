@@ -3,40 +3,36 @@ import {
   Output,
   Component,
   OnInit,
-  ChangeDetectionStrategy,
   NgZone,
   OnDestroy,
   ChangeDetectorRef
 } from '@angular/core';
-import {TimerObservable} from "rxjs/observable/TimerObservable";
 
 @Component({
   selector: 'app-find-countdown',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './find-countdown.component.html',
-  styleUrls: ['./_find-countdown.scss'],
-
+  styleUrls: ['./_find-countdown.scss']
 })
 
 export class FindCountdownComponent implements OnInit, OnDestroy {
 
   @Input() countdownTimer: number = 0;
   // 倒计时
-  private timer: any;
-  private _diff: number;
-  private days: number;
-  private hours: number;
-  private minute: number;
-  private second: number;
+   timer: any;
+   _diff: number;
+   days: number;
+   hours: number;
+   minute: number;
+   second: number;
 
   isFirst: boolean = false;
 
   settingTimes(time) {
     return (self) => {
       self._diff = Math.floor(time / 1000);
-      self.days = Math.floor(this._diff / 3600 / 24);
-      self.hours = Math.floor(this._diff / 3600 % 24);
-      self.minute = Math.floor((this._diff % 3600) / 60);
+      self.days = Math.floor(self._diff / 3600 / 24);
+      self.hours = Math.floor(self._diff / 3600 % 24);
+      self.minute = Math.floor((self._diff % 3600) / 60);
       self.second = (this._diff % 3600) % 60;
       if (self.days == 0 && self.hours == 0 && self.minute == 0 && self.second == 0) {
         window.clearInterval(self.timer);
@@ -54,15 +50,6 @@ export class FindCountdownComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewChecked() {
-    /* let self = this;
-     if (this.countdownTimer <= 0) {
-       return;
-     }
-     this.timer = window.setInterval(() => {
-       self.settingTimes(this.countdownTimer - new Date().getTime());
-     }, 1000);*/
-
-
   }
 
   ngOnChanges(): void {

@@ -3426,7 +3426,10 @@ textarea.mat-input-element {
   overflow: hidden !important; }
   @media screen and (max-width: 599px) {
     .mat-dialog-container {
-      background-color: transparent; } }
+      background-color: transparent;
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      box-shadow: none !important; } }
 
 @media screen and (max-width: 599px) {
   .cdk-overlay-pane {
@@ -3485,7 +3488,8 @@ textarea.mat-input-element {
     display: block;
     font-weight: 600;
     color: #00bdd6;
-    cursor: pointer; }
+    cursor: pointer;
+    white-space: nowrap; }
     .xb-shop__logo-button.active {
       border-bottom: 2px solid #00bdd6; }
   .xb-shop__logo-circle {
@@ -3837,7 +3841,9 @@ textarea.mat-input-element {
   position: relative;
   overflow: hidden;
   margin-bottom: 24px;
-  border: 1px solid #00bdd6;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.19);
   border-radius: 4px; }
   .xb-shop__store-template > img {
     display: block;
@@ -4000,6 +4006,26 @@ textarea.mat-input-element {
   font-size: 14px; }
   @media screen and (max-width: 599px) {
     .xb-shop__template-edit-button {
+      padding: 0 16px; } }
+.xb-shop__template-edit-text-button {
+  padding: 0 32px;
+  line-height: 32px;
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: #00bdd6;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 14px; }
+  @media screen and (max-width: 599px) {
+    .xb-shop__template-edit-text-button {
       padding: 0 16px; } }
 .xb-shop__template-button {
   line-height: 40px;

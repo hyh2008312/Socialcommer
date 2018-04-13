@@ -1,148 +1,148 @@
 @import "../../styles/utils/_index";
 @import "../../styles/_variables";
 
-.xb-shop{
+.xb-shop {
 
-  &__scroll{
+  &__scroll {
     overflow-y: scroll;
   }
-  &__margin-top{
+  &__margin-top {
     margin-top: 48px;
   }
 
-  &__margin-bottom{
+  &__margin-bottom {
     margin-bottom: 48px;
   }
 
-  &__margin-bottom-1{
+  &__margin-bottom-1 {
     margin-bottom: 40px;
   }
 
-  &__margin-bottom-2{
+  &__margin-bottom-2 {
     margin-bottom: 32px;
     padding: 0;
   }
 
-  &__margin-bottom-3{
+  &__margin-bottom-3 {
     margin-bottom: 16px;
   }
 
-  &__margin-left{
+  &__margin-left {
     margin-left: 16px;
     position: relative;
   }
 
-  &__width-100{
+  &__width-100 {
     width: 100%;
   }
 
-  &__width-1{
+  &__width-1 {
     width: 100px;
   }
 
-  &__header{
+  &__header {
     position: absolute;
     background-color: $whiteColor;
     height: 65px;
     width: 100%;
     left: 0;
     top: 0;
-    border-bottom: 1px solid rgba(0,0,0,.12);
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
   }
 
-  &__product{
+  &__product {
     position: relative;
 
-    &-navigation{
+    &-navigation {
       height: 64px;
       background-color: $whiteColor;
       padding: 0 16px;
       border-radius: 2px;
     }
 
-    &-bg{
+    &-bg {
       padding: 0;
       border-radius: 2px;
       overflow: hidden;
     }
 
-    &-image{
+    &-image {
       width: 120px;
       height: 120px;
       border-radius: 4px;
       overflow: hidden;
       margin-right: 16px;
       position: relative;
-      border: 1px solid rgba(0,0,0,.12);
+      border: 1px solid rgba(0, 0, 0, .12);
 
-      >img{
+      > img {
         position: absolute;
         left: 50%;
         top: 50%;
         @include transform(translate(-50%, -50%));
       }
     }
-    &-width{
+    &-width {
       width: 120px;
       margin-right: 16px;
     }
 
-    &-width-1{
+    &-width-1 {
       width: 200px;
     }
 
-    &-id{
+    &-id {
       text-align: center;
     }
 
-    &-time{
+    &-time {
       text-align: center;
     }
 
-    &-title{
-      font-size: 14px;
-      color: rgba(0,0,0, .87);
-      line-height: 24px;
-      max-height: 48px;
+    &-title {
+      font-size: 12px;
+      color: rgba(0, 0, 0, .87);
+      line-height: 22px;
+      height: 44px;
       overflow: hidden;
     }
 
-    &-title-1{
+    &-title-1 {
       font-size: 14px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-price{
+    &-price {
       text-align: center;
-      &-sale{
+      &-sale {
         font-size: 16px;
         font-weight: bold;
-        color: rgba(0,0,0, .87);
+        color: rgba(0, 0, 0, .87);
         line-height: 24px;
       }
     }
 
-    &-category{
+    &-category {
       line-height: 28px;
       border-radius: 2px;
       text-align: center;
     }
 
-    &-item{
+    &-item {
       padding: 16px 0;
-      border-bottom: 1px solid rgba(0,0,0,.12);
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
     }
-    &-list{
+    &-list {
       padding: 0 16px;
       background-color: $whiteColor;
     }
 
-    &-none{
+    &-none {
       padding: 96px 0;
       background-color: $whiteColor;
       border-radius: 4px;
-      span{
+      span {
         margin-top: 16px;
         @include media();
       }
@@ -155,7 +155,7 @@
       z-index: 10;
     }
 
-    &-button-list{
+    &-button-list {
       width: 210px;
       position: absolute;
       right: 0;
@@ -164,88 +164,88 @@
       @include media();
       @include resetBorder();
 
-      >a{
+      > a {
         height: 56px;
-        color: rgba(0,0,0,.87);
-        &:hover{
-          background-color: rgba(0,0,0,.12);
+        color: rgba(0, 0, 0, .87);
+        &:hover {
+          background-color: rgba(0, 0, 0, .12);
         }
       }
     }
   }
 
-  &__white{
+  &__white {
     color: $whiteColor !important;
   }
 
-  &__dialog{
+  &__dialog {
     max-width: 960px;
     padding: 16px 24px;
     max-height: calc(100vh - 160px);
 
-    &-margin-left{
+    &-margin-left {
       margin-left: 64px;
     }
   }
 
-  &__radio{
+  &__radio {
     display: inline-flex;
     flex-direction: column;
   }
 
-  &__products{
-    &-title{
+  &__products {
+    &-title {
       margin-top: 24px;
       font-size: 16px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-title-1{
+    &-title-1 {
       height: 40px;
       font-size: 16px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-title-2{
+    &-title-2 {
       font-size: 16px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-left-bg{
+    &-left-bg {
       margin-top: 24px;
       width: 220px;
-      border-right: 1px solid rgba(0,0,0,.12);
+      border-right: 1px solid rgba(0, 0, 0, .12);
       margin-right: 16px;
       min-height: calc(100vh - 96px);
     }
 
-    &-content{
+    &-content {
       max-height: calc(100vh - 72px);
       overflow: scroll;
     }
 
-    &-search{
+    &-search {
       border: 1px solid $primaryColor;
       border-radius: 4px;
       height: 32px;
       margin-right: 50px;
       position: relative;
 
-      >i{
+      > i {
         margin: 0 16px 0 12px;
-        color: rgba(0,0,0,.54);
+        color: rgba(0, 0, 0, .54);
       }
 
-      >input{
+      > input {
         border: none;
         background-color: transparent;
         width: 250px;
       }
 
-      &-close{
+      &-close {
         position: absolute;
         cursor: pointer;
         right: 12px;
@@ -254,33 +254,33 @@
         border-radius: 50%;
         width: 16px;
         height: 16px;
-        background-color: rgba(0,0,0,.54);
-        >i{
+        background-color: rgba(0, 0, 0, .54);
+        > i {
           font-size: 12px;
           line-height: 12px;
           color: $whiteColor;
         }
       }
 
-      &-result{
+      &-result {
         color: $primaryColor;
       }
     }
   }
 
-  &__mobile-dialog-inner{
-    @include xb-xs-screen{
+  &__mobile-dialog-inner {
+    @include xb-xs-screen {
       padding: 16px;
     }
-    @include xb-sm-screen{
+    @include xb-sm-screen {
       padding: 16px;
     }
   }
 
-  &__statistic{
+  &__statistic {
     min-height: 48px;
     padding: 12px 0;
-    &-text{
+    &-text {
       text-align: center;
       overflow: hidden;
       height: 20px;
@@ -289,7 +289,7 @@
 
   }
 
-  &__setting-bg{
+  &__setting-bg {
     min-height: calc(100vh - 137px);
     background-color: $whiteColor;
     border-radius: 4px;
@@ -297,22 +297,22 @@
     padding: 16px;
   }
 
-  &__setting-button{
+  &__setting-button {
     line-height: 40px;
     border-radius: 4px;
     color: $primaryColor;
     display: block;
     cursor: pointer;
-    &:hover{
-      background-color: rgba(0,0,0,.12);
+    &:hover {
+      background-color: rgba(0, 0, 0, .12);
     }
   }
 
-  &__pop-bg{
+  &__pop-bg {
     position: relative;
     padding: 8px 0 8px 8px;
     cursor: pointer;
-    &-list{
+    &-list {
       position: absolute;
       right: 0;
       top: 100%;
@@ -324,30 +324,30 @@
       font-size: 16px;
       z-index: 100;
       display: none;
-      div{
-        &:hover{
-          background-color: rgba(0,0,0,.12);
+      div {
+        &:hover {
+          background-color: rgba(0, 0, 0, .12);
         }
       }
     }
 
     $parent: &;
-    &:hover{
-      #{$parent}-list{
+    &:hover {
+      #{$parent}-list {
         display: block;
       }
     }
   }
 }
 
-.xb-category{
-  &__title{
+.xb-category {
+  &__title {
     height: 56px;
     position: relative;
     z-index: 1;
   }
 
-  &__title-1{
+  &__title-1 {
     font-size: 16px;
     min-width: 160px;
     line-height: 48px;
@@ -355,50 +355,50 @@
     position: relative;
     z-index: 1;
     font-weight: 500;
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, .87);
     font-family: Roboto;
   }
 
-  &__title-2{
+  &__title-2 {
     font-size: 24px;
     line-height: 32px;
     position: relative;
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, .87);
   }
 }
 
-.xb-share-dialog{
+.xb-share-dialog {
 
   padding: 56px;
   max-width: 720px;
   position: relative;
   background-color: $whiteColor;
   border-radius: 4px;
-  @include xb-xs-screen{
+  @include xb-xs-screen {
     padding: 56px 16px;
   }
 
-  &__close{
+  &__close {
     position: absolute;
     left: calc(100% - 40px);
     top: 16px;
     color: $blackColor;
     cursor: pointer;
-    i{
+    i {
       font-size: 24px;
       line-height: 24px;
       @include media();
     }
   }
 
-  &__title{
+  &__title {
     font-size: 24px;
     line-height: 32px;
     text-align: center;
     @include media();
   }
 
-  &__content{
+  &__content {
     margin-top: 32px;
     font-size: 16px;
     line-height: 24px;
@@ -406,7 +406,7 @@
     @include regular();
   }
 
-  &__link{
+  &__link {
     font-size: 24px;
     line-height: 32px;
     text-decoration: underline;
@@ -415,61 +415,61 @@
     overflow: hidden;
     margin-top: 12px;
     display: block;
-    color: rgba(0,0,0,.87);
+    color: rgba(0, 0, 0, .87);
   }
 
-  &__margin-top{
+  &__margin-top {
     margin-top: 48px;
   }
 
-  &__width-100{
+  &__width-100 {
     width: 720px;
-    .mat-form-field{
+    .mat-form-field {
       width: 100%;
     }
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       width: 100%;
     }
   }
 }
 
-.xb-affiliate-dialog{
+.xb-affiliate-dialog {
 
   padding: 56px;
   max-width: 720px;
   position: relative;
   border-radius: 4px;
-  @include xb-xs-screen{
+  @include xb-xs-screen {
     padding: 0;
   }
 
-  &__close{
+  &__close {
     position: absolute;
     left: calc(100% - 40px);
     top: 16px;
     color: $blackColor;
     cursor: pointer;
-    i{
+    i {
       font-size: 24px;
       line-height: 24px;
       @include media();
     }
   }
 
-  &__title{
+  &__title {
     font-size: 24px;
     line-height: 32px;
     @include media();
   }
 
-  &__content{
+  &__content {
     margin-top: 16px;
     font-size: 14px;
     line-height: 28px;
     @include regular();
   }
 
-  &__margin-top{
+  &__margin-top {
     margin-top: 32px;
   }
 }
@@ -577,50 +577,251 @@
   }
 }
 
-
-.xb-social-share{
+.xb-social-share {
   width: 190px;
   height: 32px;
   cursor: pointer;
   border-radius: 4px;
   color: $whiteColor;
 
-  &__large{
+  &__large {
     height: 40px;
   }
 
-  &__facebook{
+  &__facebook {
     background-color: $facebookColor;
   }
 
-  &__twitter{
+  &__twitter {
     background-color: $twitterColor;
   }
 
-  &__youtube{
+  &__youtube {
     background-color: $youtube;
   }
 
-  &__whatsapp{
+  &__whatsapp {
     background-color: $whatsAppColor;
   }
 
-  &__instagram{
+  &__instagram {
     background-color: $instagram;
   }
 
-  >i{
+  > i {
     font-size: 24px;
     line-height: 24px;
     color: $whiteColor;
   }
 
-  >div{
+  > div {
     margin-left: 8px;
   }
 
-  &__margin-top{
+  &__margin-top {
     margin-top: 8px;
   }
 
+}
+
+.xb-store {
+
+  &__card {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    margin-bottom: 32px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, .12);
+    @include xb-xs-screen {
+      margin-bottom: 16px;
+    }
+
+    &-ongoing {
+      background-color: #755993;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 400;
+      color: white;
+      letter-spacing: -0.25px;
+      text-align: center;
+      height: 16px;
+      line-height: 16px;
+      margin-top: 4px;
+      width: 50px;
+    }
+    &-upcomings {
+      background-color: #f85279;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      color: white;
+      letter-spacing: -0.25px;
+      text-align: center;
+      height: 16px;
+      line-height: 16px;
+      margin-top: 4px;
+      width: 55px;
+    }
+
+    &-processing {
+      position: relative;
+      width: 100%;
+      height: 2px;
+      border-radius: 1px;
+      overflow: hidden;
+      margin-top: 12px;
+      background-color: #D8D8D8;
+      &-line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: $primaryColor;
+        height: 2px;
+      }
+    }
+    &-upcoming {
+      font-size: 12px;
+      border-radius: 4px;
+      line-height: 22px;
+      padding-right: 8px;
+      padding-left: 8px;
+      background-color: #FFefba;
+      &-time {
+        font-size: 12px;
+        @include regular();
+        white-space: nowrap;
+        margin-top: 8px;
+        @include xb-xs-screen {
+          margin-left: 0;
+          margin-top: 16px;
+        }
+      }
+    }
+    &-count {
+      &-word {
+        font-size: 12px;
+        margin-top: 4px;
+        @include regular();
+        @include xb-xs-screen {
+          margin-top: 8px;
+        }
+      }
+    }
+
+    &-image {
+      padding-bottom: 100%;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      position: relative;
+      > a {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        > img {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 100%;
+          @include transform(translate(-50%, -50%));
+        }
+      }
+    }
+
+    &-margin {
+      margin-left: 8px;
+      @include xb-xs-screen {
+        margin-left: 0;
+        margin-top: 8px;
+      }
+    }
+
+    &-content {
+      position: relative;
+      padding: 8px 16px 16px;
+
+      @include xb-xs-screen {
+        padding: 8px 8px 16px;
+      }
+    }
+
+    &-title {
+      max-height: 56px;
+      height: 56px;
+      line-height: 28px;
+      font-weight: 700;
+      overflow: hidden;
+    }
+
+    &-price {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    &-sale {
+      background-color: black;
+      border-radius: 4px;
+      padding: 0 4px;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 100;
+      line-height: 20px;
+    }
+
+    &-action {
+      position: relative;
+      display: none;
+    }
+  }
+  &__promotion {
+    &-ongoing {
+      position: absolute;
+      background-color: #755993;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      color: white;
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      top: 8px;
+      left: 8px;
+    }
+    &-upcoming {
+      position: absolute;
+      background-color: #f85279;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      color: white;
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      top: 8px;
+      left: 8px;
+    }
+    &-countdown {
+      position: absolute;
+      background-color: white;
+      border-radius: 4px;
+      font-size: 10px;
+      @include regular();
+      text-align: center;
+      padding-left: 6px;
+      padding-right: 6px;
+      height: 22px;
+      line-height: 22px;
+      border: 1px solid #dcdcdc;
+      right: 8px;
+      top: 8px;
+    }
+
+  }
 }
