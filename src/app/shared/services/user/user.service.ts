@@ -13,7 +13,7 @@ import { Store } from '../../../shop/shop';
 @Injectable()
 export class UserService {
   currentUser: Subject<User> = new BehaviorSubject<User>(null);
-  store: Subject<Store> = new BehaviorSubject<Store>(null);
+  store: Subject<any> = new BehaviorSubject<any>(null);
   userCategory: Subject<any> = new BehaviorSubject<any>(null);
   pubCategory: Subject<any> = new BehaviorSubject<any>(null);
   countryList: Subject<any> = new BehaviorSubject<any>(null);

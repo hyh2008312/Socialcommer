@@ -5,21 +5,20 @@ import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 
 import {StoreTemplateRouter} from '../../config/app.constant';
 import {StoreService} from '../store.service';
-import {Store} from '../store';
-
-import {ConstantService} from '../../shared/services/constant/constant.service';
 import {MatDialog} from "@angular/material";
 import {StoreClosedDialogComponent} from "../store-closed/store-closed-dialog.component";
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './store-main.component.html',
-  styleUrls: ['../store.scss', '../../shop/shop.scss']
+  styleUrls: ['../store.scss']
 })
 
 export class StoreMainComponent implements OnInit {
 
   storeRouter: any;
+
+  sub: any;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -27,6 +26,16 @@ export class StoreMainComponent implements OnInit {
               private dialog: MatDialog,
               private storeTemplateRouter: StoreTemplateRouter) {
     this.storeRouter = this.storeTemplateRouter.router;
+
+    this.sub = this.activatedRoute.queryParams.subscribe((data)=> {
+      if(data) {
+        if(data.source == 'share') {
+          this.storeService.shareStore({
+            displayName:  this.activatedRoute.snapshot.params['name']
+          }).then((data) => {});
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -90,6 +99,12 @@ export class StoreMainComponent implements OnInit {
       });
     }
 
+  }
+
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 }

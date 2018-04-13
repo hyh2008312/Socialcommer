@@ -127,17 +127,25 @@ export class LoginComponent implements OnInit {
         if(data && data.store && data.store.length>0) {
           self.userService.addStore(data.store[0]);
           if(data && data.isInvite) {
-            if(self.loginLink) {
-              self.router.navigate([self.loginLink]).then((data) => {
-                self.showLoading = false;
-                self.loadingValue = 0;
-              });
+            if(data.store[0].setStep == 'finished') {
+              if(self.loginLink) {
+                self.router.navigate([self.loginLink]).then((data) => {
+                  self.showLoading = false;
+                  self.loadingValue = 0;
+                });
+              } else {
+                self.router.navigate(['/shop/listings/items']).then((data) => {
+                  self.showLoading = false;
+                  self.loadingValue = 0;
+                });
+              }
             } else {
-              self.router.navigate(['/shop/listings/items']).then((data) => {
+              self.router.navigate(['/shop/guide']).then((data) => {
                 self.showLoading = false;
                 self.loadingValue = 0;
               });
             }
+
           } else {
             self.router.navigate(['/account/invitation']).then((data) => {
               self.showLoading = false;

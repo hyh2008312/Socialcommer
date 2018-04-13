@@ -4,12 +4,23 @@
     <div class="xb-guide__subtitle">Add at least 3 featured collections to your store and start making money quikly!</div>
     <div class="xb-guide__container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start"
          fxLayoutAlign.xs="start">
-      <div class="xb-guide__margin-top" *ngFor="let item of [1,2,3,4];let i = index;" fxFlex="46" fxFlex.xs="none"
-        (click)="openGuideProducts()" >
-        <app-shop-guide-product-list></app-shop-guide-product-list>
-      </div>
+      <ng-container *ngFor="let item of productArr;let i = index;">
+        <div class="xb-guide__margin-top" fxFlex="46" fxFlex.xs="none" *ngIf="item.products.length > 0">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="xb-guide__text" fxFlex>{{item.name}}</div>
+            <div class="xb-guide__button" *ngIf="item.type == 'product'" (click)="addToSell(item, i)">Add to Sell</div>
+            <div class="xb-guide__added" *ngIf="item.type == 'goods'">
+              <div class="xb-guide__button-added" >Added</div>
+              <div class="xb-guide__button" (click)="addToSell(item, i)">Remove</div>
+            </div>
+          </div>
+          <app-shop-guide-product-list [productList]="item" [index]="index" (productListChange)="productListChange($event)"
+                                       (click)="openGuideProducts(i, item.id)" ></app-shop-guide-product-list>
+        </div>
+      </ng-container>
     </div>
     <div class="xb-guide__margin-top-1 xb-guide__margin-bottom">
+      <div *ngIf="selectErr" class="xb-input-error md-align-center">Please at least select three categories.</div>
       <div class="xb-guide__bottom-button" fxLayout="row" fxLayoutAlign="center center">
         <button mat-raised-button color="primary" (click)="nextStep()">Proceed to Next Step</button>
       </div>
@@ -19,12 +30,12 @@
     <div class="xb-guide__title">Edit & Publish Your Store</div>
     <div class="xb-guide__subtitle">You’re one step away from launching your store! Please select a template below to set
       up your storefront.</div>
-    <div class="xb-guide__container">
+    <div class="xb-guide__container xb-guide__margin-bottom">
       <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutAlign.xs="start stretch">
       <div fxFlex="30" fxFlex.xs="100">
         <div class="xb-guide__text-2">Fashion Theme</div>
         <div class="xb-guide__template">
-          <img src="https://media.socialcommer.com/source/web/template/5/mode-5.jpg">
+          <img src="https://media.socialcommer.com/source/web/template/template-mode-5.jpg">
         </div>
         <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
           <div class="xb-guide__button" routerLink="./edit/5">Select</div>
@@ -38,7 +49,7 @@
       <div fxFlex="30" fxFlex.xs="100">
         <div class="xb-guide__text-2">Kitchen Theme</div>
         <div class="xb-guide__template">
-          <img src="https://socialcommer.xberts.com/source/web/template/mode-2.jpg">
+          <img src="https://media.socialcommer.com/source/web/template/template-mode-2.jpg">
         </div>
         <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
           <div class="xb-guide__button" routerLink="./edit/2">Select</div>
@@ -52,7 +63,7 @@
       <div fxFlex="30" fxFlex.xs="100">
         <div class="xb-guide__text-2">Electronics Theme</div>
         <div class="xb-guide__template">
-          <img src="https://media.socialcommer.com/source/web/template/3/mode-3.jpg">
+          <img src="https://media.socialcommer.com/source/web/template/template-mode-3.jpg">
         </div>
         <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
           <div class="xb-guide__button" routerLink="./edit/3">Select</div>
@@ -66,7 +77,7 @@
       <div fxFlex="30" fxFlex.xs="100">
         <div class="xb-guide__text-2">Baby & Mom Theme</div>
         <div class="xb-guide__template" >
-          <img src="https://media.socialcommer.com/source/web/template/4/mode-4.jpg">
+          <img src="https://media.socialcommer.com/source/web/template/template-mode-4.jpg">
         </div>
         <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
           <div class="xb-guide__button">Select</div>
@@ -80,7 +91,7 @@
       <div fxFlex="30" fxFlex.xs="100">
         <div class="xb-guide__text-2">Beauty Theme</div>
         <div class="xb-guide__template">
-          <img src="https://media.xberts.com/collector/source/web/templats/mode-2.jpg">
+          <img src="https://media.socialcommer.com/source/web/template/template-mode-1.jpg">
         </div>
         <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
           <div class="xb-guide__button" routerLink="./edit/1">Select</div>
@@ -94,7 +105,7 @@
       <div fxFlex="30" fxFlex.xs="100">
         <div class="xb-guide__text-2">Home Theme</div>
         <div class="xb-guide__template">
-          <img src="https://media.socialcommer.com/source/web/template/6/mode-6.jpg">
+          <img src="https://media.socialcommer.com/source/web/template/template-mode-6.jpg">
         </div>
         <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
           <div class="xb-guide__button" routerLink="./edit/6">Select</div>
@@ -106,11 +117,6 @@
         </div>
       </div>
     </div>
-    </div>
-    <div class="xb-guide__margin-top-1 xb-guide__margin-bottom" fxHide.xs>
-      <div class="xb-guide__bottom-button" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button color="primary" (click)="nextStep()">Proceed to Next Step</button>
-      </div>
     </div>
   </div>
 </div>

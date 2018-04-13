@@ -90,6 +90,38 @@
     cursor: pointer;
     text-align: center;
     letter-spacing: -0.29px;
+
+    &-added{
+      width: 100px;
+      font-size: 12px;
+      line-height: 32px;
+      color: $whiteColor;
+      background-color: rgba(0,0,0,.54);
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      letter-spacing: -0.29px;
+    }
+  }
+  $parent: &;
+
+  &__added{
+    #{$parent}__button{
+      display: none;
+    }
+    #{$parent}__button-added{
+      display: block;
+    }
+
+    &:hover{
+      #{$parent}__button{
+        display: block;
+      }
+      #{$parent}__button-added{
+        display: none;
+      }
+    }
+
   }
 
   &__button-1{
@@ -163,8 +195,6 @@
       padding: 0 12px;
     }
   }
-
-  $parent: &;
 
   &__card-1{
     position: relative;

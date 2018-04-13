@@ -15,8 +15,6 @@ import { UserService } from '../../../shared/services/user/user.service';
 export class GuideProductDialogComponent implements OnInit {
 
 
-  array: any = [];
-
   constructor(
     private guideService: GuideService,
     private userService: UserService,
@@ -24,18 +22,21 @@ export class GuideProductDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
 
-    for(let i = 0; i < 30; i++) {
-      this.array.push(1);
-    }
+    this.getProductList(this.data.productList.id);
   }
 
   ngOnInit():void {
-    let self = this;
 
   }
 
   close():void {
     this.dialogRef.close();
+  }
+
+  getProductList(categoryId) {
+    this.guideService.getCategoryProductList(categoryId).then((data) => {
+      this.data.productList.addProducts = [...data.products];
+    });
   }
 
 }

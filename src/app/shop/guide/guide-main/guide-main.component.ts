@@ -20,6 +20,10 @@ export class GuideMainComponent implements OnInit {
   sub1: any;
   step: number = 0;
 
+  selectErr: boolean = false;
+
+  productArr: any = [];
+
   constructor(
     private guideService: GuideService,
     private userService: UserService,
@@ -39,38 +43,78 @@ export class GuideMainComponent implements OnInit {
 
     this.sub1 = this.userService.store.subscribe((data) => {
       if(data) {
-
+        switch(data.setStep) {
+          case 'first':
+            this.step = 0;
+            this.productList();
+            break;
+          case 'second':
+            this.step = 1;
+            break;
+        }
       }
     });
   }
 
   nextStep() {
+    let self = this;
+
+    if(!this.isCategorySelectedEnough()) {
+      self.selectErr = true;
+      return;
+    }
 
     let step: string = '';
-    if(this.step == 0) {
+    if(self.step == 0) {
       step = 'second';
     }
 
-    this.guideService.changeGuideStep({
+    self.guideService.changeGuideStep({
       step
-    }).then(() => {
-      this.step = 1;
+    }).then((data) => {
+      self.step = 1;
+      self.userService.addStore(data);
     });
 
+  }
+
+  isCategorySelectedEnough() {
+    let number: number = 0;
+    for(let i = 0; i< this.productArr.length;i++) {
+      if(this.productArr[i].type == 'goods') {
+        number++;
+      }
+    }
+    if(number >= 3) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   ngOnInit():void {
-    let self = this;
 
   }
 
-  openGuideProducts() {
+  productList() {
+    this.guideService.getProductList().then((data) => {
+      this.productArr = data;
+    });
+  }
+
+  openGuideProducts(index) {
     let dialogRef = this.dialog.open(GuideProductDialogComponent, {
-      data: {}
+      data: {
+        productList: this.productArr[index]
+      }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    let self = this;
 
+    dialogRef.afterClosed().subscribe(result => {
+      if(!self.productArr[index].addProducts) {
+        self.productArr[index].addProducts = [...dialogRef.componentInstance.data.productList.addProducts];
+      }
     });
   }
 
@@ -96,6 +140,29 @@ export class GuideMainComponent implements OnInit {
 
   close() {
     this.loading = false;
+  }
+
+  productListChange($event) {
+    if($event.status == 'edit') {
+      this.productArr[$event.index] = $event.data;
+    }
+  }
+
+  addToSell(item, index) {
+    let self = this;
+    if(item.type == 'product') {
+      self.guideService.addCategoryProductList({
+        id: item.id
+      }).then((data) => {
+        self.productArr[index] = data;
+      });
+    } else {
+      self.guideService.deleteCategoryProductList({
+        id: item.id
+      }).then((data) => {
+        self.productArr[index] = data;
+      });
+    }
   }
 
 }

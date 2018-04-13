@@ -14,6 +14,9 @@ export class StoreToRewardDialogComponent implements OnInit {
   currency: string = 'USD';
   sub: any;
 
+  stepOneBonus: boolean = false;
+  stepTwoBonus: boolean = false;
+
   constructor(
     public dialogRef: MatDialogRef<StoreToRewardDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -22,6 +25,8 @@ export class StoreToRewardDialogComponent implements OnInit {
     this.sub = this.userService.store.subscribe((data) => {
       if(data) {
         this.currency = data.currency.toUpperCase();
+        this.stepOneBonus = data.firstShareBonus;
+        this.stepTwoBonus = data.firstOrderBonus;
       }
     });
   }

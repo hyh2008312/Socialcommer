@@ -16,7 +16,7 @@ export class FindProductCategoryComponent implements OnInit {
 
   @Output() categoryChange = new EventEmitter<string>();
 
-  hideCategoryList: any = ["Baby & Mom", "Men’s Fashion", "Toys & Games", "Pet Supplies"];
+  hideCategoryList: any = ["Men’s Fashion", "Toys & Games", "Pet Supplies"];
 
   constructor(
 

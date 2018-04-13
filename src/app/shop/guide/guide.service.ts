@@ -64,7 +64,7 @@ export class GuideService {
       .catch((error) => {this.handleError(error, this)});
   }
 
-  getProductList(obj): Promise<any> {
+  getProductList(): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -73,9 +73,60 @@ export class GuideService {
 
     let options = new RequestOptions({headers: headers});
 
-    const url = `${this.baseUrl.url}store/login/first/?${this.serializeParams(obj)}`;
+    const url = `${this.baseUrl.url}store/login/first/`;
 
     return this.http.get(url, options)
+      .toPromise()
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
+  }
+
+  getCategoryProductList(id): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.baseUrl.url}store/batch/goods/${id}/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
+  }
+
+  addCategoryProductList(params): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.baseUrl.url}store/batch/goods/${params.id}/`;
+
+    return this.http.put(url, params, options)
+      .toPromise()
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
+  }
+
+  deleteCategoryProductList(params): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers: headers});
+
+    const url = `${this.baseUrl.url}store/batch/goods/${params.id}/`;
+
+    return this.http.post(url, params, options)
       .toPromise()
       .then(this.checkIsAuth)
       .catch((error) => {this.handleError(error, this)});

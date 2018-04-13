@@ -16,6 +16,12 @@ export class ToDoListComponent implements OnInit, OnDestroy {
 
   displayName: string = '';
 
+  stepOneBonus: boolean = false;
+  stepTwoBonus: boolean = false;
+
+  firstStoreBonus: boolean = false;
+
+
   shareLink: string = '';
   text: string = '';
 
@@ -39,6 +45,10 @@ export class ToDoListComponent implements OnInit, OnDestroy {
           + (data.template && data.template.templateId? data.template.templateId: 5);
         self.text = data.description;
         self.editRouter = '/shop/templates/edit/' + (data.template && data.template.templateId? data.template.templateId: 5);
+
+        self.stepOneBonus = data.firstShareBonus;
+        self.stepTwoBonus = data.firstOrderBonus;
+        self.firstStoreBonus = data.setStoreBonus;
       }
     });
 

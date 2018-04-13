@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 import { GuideService } from '../guide.service';
 import { UserService } from '../../../shared/services/user/user.service';
@@ -13,18 +13,32 @@ import { MatDialog } from "@angular/material";
 
 export class GuideProductDialogItemComponent implements OnInit {
 
+  @Input() product: any = {};
+
+  currency: string = 'USD';
+
+  sub: any;
 
   constructor(
     private guideService: GuideService,
     private userService: UserService,
     public dialog: MatDialog
   ) {
-
+    this.sub = this.userService.store.subscribe((data) => {
+      if(data) {
+        this.currency = data.currency.toUpperCase();
+      }
+    });
   }
 
   ngOnInit():void {
-    let self = this;
 
+  }
+
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 }

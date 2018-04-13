@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { GuideService } from '../guide.service';
 import { UserService } from '../../../shared/services/user/user.service';
@@ -13,6 +13,7 @@ import { MatDialog } from "@angular/material";
 
 export class GuideProductItemComponent implements OnInit {
 
+  @Input() product: any = {};
 
   constructor(
     private guideService: GuideService,
@@ -23,7 +24,6 @@ export class GuideProductItemComponent implements OnInit {
   }
 
   ngOnInit():void {
-    let self = this;
 
   }
 
