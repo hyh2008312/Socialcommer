@@ -68,7 +68,7 @@ export class StoreDetailComponent implements OnInit, OnChanges {
   isPromotionScheduled: boolean = false;
   countdownLeftTime: number = 0;
   progressPercentage: number = 0;
-  discount: any = '0.0';
+  discount: any = 0;
 
   @Input() productId: number;
   @Output() public closeDetail: EventEmitter<any> = new EventEmitter();
@@ -157,7 +157,7 @@ export class StoreDetailComponent implements OnInit, OnChanges {
             this.isCanBuy = this.product.variants[0].isCanBuy;
             this.variant = this.product.variants[0];
           }
-          if (this.discount != '0.0') {
+          if (this.discount != 0) {
             this.salePrice = this.salePrice * this.discount;
           }
         });
@@ -221,7 +221,7 @@ export class StoreDetailComponent implements OnInit, OnChanges {
       });
       this.minSalePrice = this.salePriceList[0];
       this.maxSalePrice = this.salePriceList[this.salePriceList.length - 1];
-      if (this.discount != '0.0') {
+      if (this.discount != 0) {
         this.minSalePrice = this.minSalePrice * this.discount;
         this.maxSalePrice = this.maxSalePrice * this.discount;
       }
@@ -269,7 +269,7 @@ export class StoreDetailComponent implements OnInit, OnChanges {
     }
 
     // 设置价格
-    if (this.discount != '0.0') {
+    if (this.discount != 0) {
       this.salePrice = this.salePrice * this.discount;
     }
     //判断有没有选择变体（两者）

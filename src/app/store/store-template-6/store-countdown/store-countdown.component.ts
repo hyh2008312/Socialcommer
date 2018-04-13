@@ -25,10 +25,10 @@ export class StoreCountdownComponent implements OnInit, OnDestroy {
   settingTimes(time) {
     return (self) => {
       self._diff = Math.floor(time / 1000);
-      self.days = Math.floor(this._diff / 3600 / 24);
-      self.hours = Math.floor(this._diff / 3600 % 24);
-      self.minute = Math.floor((this._diff % 3600) / 60);
-      self.second = (this._diff % 3600) % 60;
+      self.days = Math.floor(self._diff / 3600 / 24);
+      self.hours = Math.floor(self._diff / 3600 % 24);
+      self.minute = Math.floor((self._diff % 3600) / 60);
+      self.second = (self._diff % 3600) % 60;
       if (self.days == 0 && self.hours == 0 && self.minute == 0 && self.second == 0) {
         window.clearInterval(self.timer);
       }

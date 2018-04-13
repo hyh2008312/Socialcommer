@@ -2,44 +2,66 @@
   <div class="xb-shop__product-image" fxFlex="none">
     <img [src]="product.mainImage">
   </div>
-  <div fxFlex="35">
+  <div fxFlex="45" fxFlexAlign="stretch" class="md-margin-right-2">
     <div fxLayout="column" fxLayoutAlign="start start">
-     <div class="xb-shop__product-title">{{product.title}}</div>
+      <div class="xb-shop__product-title">{{product.title}}</div>
+      <div [ngStyle]="{'width':'100%'}" *ngIf="isPromotionOnGoing">
+        <div class="xb-store__card-ongoing">Ongoing</div>
+        <div class="xb-store__card-processing">
+          <div class="xb-store__card-processing-line"></div>
+          <div class="xb-store__card-processing-line" [ngStyle]="{'width':progressPercentage+'%'}"></div>
+        </div>
+        <div class="xb-store__card-count-word">{{progressPercentage}}% claimed</div>
+        <div class="xb-store__card-count-word">
+          <span class="xb-bold"> Ends in:</span>
+          <span *ngIf="days>0"> {{days>1?days+' Days,':days+'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}} Left
+        </div>
+      </div>
+
+      <div [ngStyle]="{'width':'100%'}" *ngIf="isPromotionScheduled">
+        <div class="xb-store__card-upcomings">Upcoming</div>
+        <div class="xb-store__card-upcoming-time">
+          <span class="xb-bold">Starts in:</span>
+          <span *ngIf="days>0"> {{days>1?days+' Days,':days+'Day,'}}</span> {{hours}} {{hours>1 ? 'Hours':'Hour'}}
+        </div>
+      </div>
     </div>
-
-
   </div>
   <div class="xb-shop__product-category md-margin-right-2" fxFlex="15">{{product.categoryName}}</div>
 
   <div class="xb-shop__product-price md-margin-right-2" fxFlex="10">
-    <div class="xb-shop__product-price-sale">{{product.salePrice|currency: storeCurrency }}</div>
+    <div class="xb-shop__product-price-sale">{{salePrice|currency: storeCurrency }}</div>
     <div class="line-through" *ngIf="product.originalPrice>0">
       {{product.originalPrice|currency: storeCurrency }}
     </div>
   </div>
-  <div class="xb-shop__product-price md-margin-right-2" fxFlex="15">{{product.commissionRate + '%'}}</div>
+  <div class="xb-shop__product-price md-margin-right-2" fxFlex="10">{{product.commissionRate + '%'}}</div>
   <div fxLayout="column" fxLayoutAlign="center center" fxFlex="15" *ngIf="status == 1">
     {{product.modified | amDateFormat:'MMMM Do, YYYY'}}
   </div>
-  <div class="xb-shop__product-action-buttons md-margin-right-2" fxLayout="column" fxLayoutAlign="center center" fxFlex="15">
+  <div class="xb-shop__product-action-buttons md-margin-right-2" fxLayout="column" fxLayoutAlign="center center"
+       fxFlex="10">
     <button mat-button color="primary" (click)="edit()">Edit</button>
     <button mat-button color="primary" *ngIf="status == 1" (click)="publish()">Publish</button>
     <button mat-button color="primary" *ngIf="status == 0" (click)="unpublish()">Unpublish</button>
     <button mat-button color="primary" (click)="delete()">Delete</button>
   </div>
-  <div class="xb-shop__product-width-1" fxLayout="column" fxLayoutAlign="center center" fxFlex="none" *ngIf="status == 0">
+  <div class="xb-shop__product-width-1" fxLayout="column" fxLayoutAlign="center center" fxFlex="none"
+       *ngIf="status == 0">
     <div class="xb-social-share xb-social-share__whatsapp" fxLayout="row" fxLayoutAlign="center center"
          appSocialShare [whatsApp]="{text: text + ' ' + link}">
-      <i class="iconfontXberts icon-ic-social-whatsapp" ></i>
+      <i class="iconfontXberts icon-ic-social-whatsapp"></i>
       <div>Share to WhatsApp</div>
     </div>
-    <div class="xb-social-share xb-social-share__facebook xb-social-share__margin-top" fxLayout="row" fxLayoutAlign="center center"
+    <div class="xb-social-share xb-social-share__facebook xb-social-share__margin-top" fxLayout="row"
+         fxLayoutAlign="center center"
          appSocialShare [facebook]="{u: link}">
-      <i class="iconfontXberts icon-ic-facebook" ></i>
+      <i class="iconfontXberts icon-ic-facebook"></i>
       <div>Share to Facebook</div>
     </div>
-    <div class="xb-social-share xb-social-share__youtube xb-social-share__margin-top" fxLayout="row" fxLayoutAlign="center center"
-        (click)="shareToYoutube()">
+    <div class="xb-social-share xb-social-share__youtube xb-social-share__margin-top" fxLayout="row"
+         fxLayoutAlign="center center"
+         (click)="shareToYoutube()">
       <i class="iconfontXberts icon-ic-youtube"></i>
       <div>Share to Youtube</div>
     </div>
