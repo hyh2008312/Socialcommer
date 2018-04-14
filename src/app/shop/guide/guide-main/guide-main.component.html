@@ -1,7 +1,9 @@
 <div class="xb-guide__bg">
   <div class="container" *ngIf="step == 0">
-    <div class="xb-guide__title">Add Products to Sell</div>
-    <div class="xb-guide__subtitle">Add at least 3 featured collections to your store and start making money quikly!</div>
+    <div class="xb-guide__title">Add Featured Products to Sell</div>
+    <div class="xb-guide__subtitle">Add at least 3 featured collections to your store and start making money quickly. P.S. You will earn
+      <span class="xb-guide__subtitle-color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}}
+      cash reward</span> immediately once you complete the onboarding process!</div>
     <div class="xb-guide__container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start"
          fxLayoutAlign.xs="start">
       <ng-container *ngFor="let item of productArr;let i = index;">

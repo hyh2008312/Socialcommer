@@ -9,7 +9,7 @@
     Reward 1: Let’s spread the word. <span class="xb-share-dialog__color-1 md-margin-left-2" *ngIf="stepOneBonus">Finished</span>
   </div>
   <div class="xb-share-dialog__content" *ngIf="!stepOneBonus">
-    Share your store link and earn <span class="xb-share-dialog__color">extra {{currency == 'USD'? (10|currency: currency): (200|currency: currency)}}  cash reward</span>
+    Share your store link and earn <span class="xb-share-dialog__color xb-bold">extra {{currency == 'USD'? (10|currency: currency): (200|currency: currency)}} cash reward</span>
     immediately once anyone visits your store via the link you shared!
   </div>
   <div class="xb-share-dialog__content" *ngIf="stepOneBonus">
@@ -22,7 +22,7 @@
     Reward 2: Hit the first sale. <span class="xb-share-dialog__color-1 md-margin-left-2" *ngIf="stepTwoBonus">Finished</span>
   </div>
   <div class="xb-share-dialog__content" *ngIf="!stepTwoBonus">
-    Promote your store and earn <span class="xb-share-dialog__color">another {{currency == 'USD'? (10|currency: currency): (200|currency: currency)}} cash reward</span>
+    Promote your store and earn <span class="xb-share-dialog__color xb-bold">another {{currency == 'USD'? (10|currency: currency): (200|currency: currency)}} cash reward</span>
     when you make your first sale!
   </div>
   <div class="xb-share-dialog__content" *ngIf="stepTwoBonus">

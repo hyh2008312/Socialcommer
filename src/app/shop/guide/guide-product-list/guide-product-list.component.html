@@ -1,6 +1,4 @@
-
-
-<div class="xb-guide__margin-top-2 xb-pointer" fxLayout="row" fxLayoutAlign="start stretch">
+<div class="xb-guide__margin-top-2 xb-guide__list xb-pointer" fxLayout="row" fxLayoutAlign="start stretch">
   <div fxFlex="50">
     <app-shop-guide-product-item [product]="productList.products[0]"></app-shop-guide-product-item>
   </div>
@@ -11,5 +9,10 @@
   <div fxFlex="25">
     <app-shop-guide-product-item [product]="productList.products[3]"></app-shop-guide-product-item>
     <app-shop-guide-product-item [product]="productList.products[4]"></app-shop-guide-product-item>
+  </div>
+  <div fxHide.xs>
+    <div class="xb-guide__cover" fxLayout="column" fxLayoutAlign="center stretch">
+      <div class="xb-guide__cover-color">View all featured products</div>
+    </div>
   </div>
 </div>

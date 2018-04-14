@@ -20,6 +20,8 @@ export class GuideMainComponent implements OnInit {
   sub1: any;
   step: number = 0;
 
+  currency: string = 'USD';
+
   selectErr: boolean = false;
 
   productArr: any = [];
@@ -43,6 +45,7 @@ export class GuideMainComponent implements OnInit {
 
     this.sub1 = this.userService.store.subscribe((data) => {
       if(data) {
+        this.currency = this.currency.toUpperCase();
         switch(data.setStep) {
           case 'first':
             this.step = 0;
