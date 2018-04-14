@@ -24,7 +24,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
   blogCount: number = 0;
 
   shareLink: string = '';
-  text: string = '';
+  text: string = 'Welcome to my store: ';
 
   sub: any;
   sub1: any;
@@ -44,7 +44,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
       if(data) {
         self.displayName = data.displayName;
         self.shareLink = 'http://' + window.location.host + '/store/' + self.displayName + '?source=share';
-        self.text = data.description;
+        self.text = self.text + data.name + ' - '+ data.description;
         self.editRouter = '/shop/templates/edit/' + (data.template && data.template.templateId? data.template.templateId: 5);
 
         self.stepOneBonus = data.firstShareBonus;
