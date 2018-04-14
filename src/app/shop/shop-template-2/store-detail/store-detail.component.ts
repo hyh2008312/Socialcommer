@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { StoreService } from '../../store.service';
-import { Store, Product, Image } from '../../store';
+import {StoreService} from '../../store.service';
+import {Store, Product, Image} from '../../store';
 
 @Component({
   selector: 'app-shop-template-2-store-detail',
@@ -76,21 +76,23 @@ export class StoreDetailComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
   }];
+  //是否为新手引导
+  isGuide: boolean = false;
 
-  constructor(
-    public router: Router,
-    private activatedRouter: ActivatedRoute,
-    private storeService: StoreService
-  ) {
+  constructor(public router: Router,
+              private activatedRouter: ActivatedRoute,
+              private storeService: StoreService) {
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
     let self = this;
     this.storeService.store.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.store = data;
       }
     });
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.shareLink = window.location.href;
 
     let id = this.activatedRouter.snapshot.params['id'];
@@ -100,8 +102,13 @@ export class StoreDetailComponent implements OnInit {
     this.imageSources.push(this.product.imageUrl);
   }
 
-  close():void {
-    this.router.navigate([`/shop/templates/preview/2`]);
+  close(): void {
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/2`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/2`]);
+    }
+
   }
 
   openLink() {
