@@ -170,6 +170,10 @@
     @include box-shadow(0 0 0 1px rgba(0, 0, 0, .12));
     background-color: rgba(255,255,255,.68);
 
+    &-1{
+      background-color: rgba(0,0,0,.68);
+    }
+
     @include xb-xs-screen{
       display: block !important;
       padding: 8px 0 17px;
@@ -195,12 +199,12 @@
       @include media();
     }
     &-color{
-      font-size: 16px;
+      font-size: 14px;
       letter-spacing: -.34px;
       line-height: 20px;
       text-align: center;
       @include media();
-      color: $primaryColor;
+      color: $whiteColor;
     }
     &-original{
       margin-top: 2px;

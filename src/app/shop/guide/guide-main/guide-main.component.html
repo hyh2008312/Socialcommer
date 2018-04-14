@@ -1,8 +1,8 @@
 <div class="xb-guide__bg">
   <div class="container" *ngIf="step == 0">
     <div class="xb-guide__title">Add Featured Products to Sell</div>
-    <div class="xb-guide__subtitle">Add at least 3 featured collections to your store and start making money quickly. P.S. You will earn
-      <span class="xb-guide__subtitle-color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}}
+    <div class="xb-guide__subtitle">Add at least 3 featured collections to your store and start making money quickly.
+      <br>P.S. You will earn <span class="xb-guide__subtitle-color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}}
       cash reward</span> immediately once you complete the onboarding process!</div>
     <div class="xb-guide__container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start"
          fxLayoutAlign.xs="start">
@@ -22,7 +22,7 @@
       </ng-container>
     </div>
     <div class="xb-guide__margin-top-1 xb-guide__margin-bottom">
-      <div *ngIf="selectErr" class="xb-input-error md-align-center">Please at least select three categories.</div>
+      <div *ngIf="selectErr" class="xb-input-error md-align-center">To continue, please at least select three categories.</div>
       <div class="xb-guide__bottom-button" fxLayout="row" fxLayoutAlign="center center">
         <button mat-raised-button color="primary" (click)="nextStep()">Proceed to Next Step</button>
       </div>
