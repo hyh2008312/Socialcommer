@@ -43,8 +43,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
     self.sub = self.userService.store.subscribe((data) => {
       if(data) {
         self.displayName = data.displayName;
-        self.shareLink = 'http://' + window.location.host + '/store/' + self.displayName + '?source=share'
-          + (data.template && data.template.templateId? data.template.templateId: 5);
+        self.shareLink = 'http://' + window.location.host + '/store/' + self.displayName + '?source=share';
         self.text = data.description;
         self.editRouter = '/shop/templates/edit/' + (data.template && data.template.templateId? data.template.templateId: 5);
 
