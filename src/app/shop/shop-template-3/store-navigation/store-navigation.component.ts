@@ -31,9 +31,11 @@ export class StoreNavigationComponent implements OnInit {
     link: './about_me',
     exact: true
   }];
-
+//是否为新手引导
+  isGuide: boolean = false;
   constructor(private router: Router) {
-
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
   }
 
   ngOnInit(): void {
@@ -54,7 +56,12 @@ export class StoreNavigationComponent implements OnInit {
 
 
   jumpOrder(): void {
-    this.router.navigate([`/shop/templates/preview/3/order`]);
+    if(this.isGuide){
+      this.router.navigate([`/shop/guide/preview/3/order`]);
+    }else {
+      this.router.navigate([`/shop/templates/preview/3/order`]);
+    }
+
   }
 
 }

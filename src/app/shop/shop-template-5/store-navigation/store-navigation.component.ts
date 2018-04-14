@@ -14,6 +14,8 @@ export class StoreNavigationComponent implements OnInit {
   @Input() categories: any;
   @Output() public routerChange: EventEmitter<any> = new EventEmitter();
   @ViewChild(ViewScrollTopDirective) scrollTopDirective: ViewScrollTopDirective;
+  //是否为新手引导
+  isGuide: boolean = false;
   templateCategories =
     [
       {id: 1, name: 'Daily Specials'},
@@ -38,6 +40,8 @@ export class StoreNavigationComponent implements OnInit {
 
 
   constructor(public router: Router) {
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
   }
 
   ngOnInit(): void {
@@ -59,11 +63,21 @@ export class StoreNavigationComponent implements OnInit {
   }
 
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/5/cart`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/5/cart`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/5/cart`]);
+    }
+
   }
 
   jumpOrder(): void {
-    this.router.navigate([`/shop/templates/preview/5/order`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/5/order`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/5/order`]);
+    }
+
   }
 
 }

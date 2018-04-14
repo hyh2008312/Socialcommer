@@ -19,6 +19,9 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
   isShowMore: boolean = false; //1.是否显示more的按钮 2.控制blog显示的位置(导航或者more里边)
   isShowMoreCategory: boolean = false;
   routerObservable: any;
+  //是否为新手引导
+  isGuide: boolean = false;
+
   contents = [{
     text: 'Home',
     link: './',
@@ -32,6 +35,8 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
   moreCategory: any = [];
 
   constructor(public router: Router) {
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
   }
 
   isFirstLoad: boolean = true;
@@ -66,10 +71,19 @@ export class StoreNavigationComponent implements OnInit, OnChanges {
   }
 
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/1/cart`]);
+    if(this.isGuide){
+      this.router.navigate([`/shop/guide/preview/1/cart`]);
+    }else {
+      this.router.navigate([`/shop/templates/preview/1/cart`]);
+    }
+
   }
   jumpOrder(): void {
-    this.router.navigate([`/shop/templates/preview/1/order`]);
+    if(this.isGuide){
+      this.router.navigate([`/shop/guide/preview/1/order`]);
+    }else {
+      this.router.navigate([`/shop/templates/preview/1/order`]);
+    }
   }
 
 }

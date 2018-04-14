@@ -39,6 +39,8 @@ export class StoreCartMainComponent implements OnInit {
   totalPrice: number = 0;
 
   cartErr: any = false;
+//是否为新手引导
+  isGuide: boolean = false;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,) {
@@ -46,8 +48,16 @@ export class StoreCartMainComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
     let self = this;
-    self.homeLink = `/shop/templates/preview/6`;
+    if (this.isGuide) {
+      self.homeLink = `/shop/guide/preview/6`;
+    } else {
+      self.homeLink = `/shop/templates/preview/6`;
+    }
+
   }
 
   openDialog() {

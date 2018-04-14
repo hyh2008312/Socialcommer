@@ -15,20 +15,39 @@ export class StoreCartHeaderComponent {
   productNumber: number = 0;
   storeName: string = 'STORE NAME';
   isNavigationShow: boolean = false;
+  //是否为新手引导
+  isGuide: boolean = false;
 
   constructor(private router: Router,
               private storeService: StoreService) {
-    this.homeLink = '/shop/templates/preview/1';
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
+    if (this.isGuide) {
+      this.homeLink = '/shop/guide/preview/1';
+    } else {
+      this.homeLink = '/shop/templates/preview/1';
+    }
   }
+
 
   changeShowMenu() {
     this.isNavigationShow = !this.isNavigationShow;
   }
+
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/1/cart`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/1/cart`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/1/cart`]);
+    }
   }
+
   jumpOrder(): void {
-    this.router.navigate([`/shop/templates/preview/1/order`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/1/order`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/1/order`]);
+    }
   }
 
 }

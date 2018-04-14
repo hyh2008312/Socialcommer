@@ -12,9 +12,12 @@ export class StoreNavigationComponent implements OnInit {
   @Input() type: number;
   @Input() productNumber: number = 0;
   contents: any;
+  //是否为新手引导
+  isGuide: boolean = false;
 
   constructor(private  router: Router) {
-
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
   }
 
   ngOnInit(): void {
@@ -94,11 +97,21 @@ export class StoreNavigationComponent implements OnInit {
   }
 
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/2/cart`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/2/cart`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/2/cart`]);
+    }
+
   }
 
   jumpOrder(): void {
-    this.router.navigate([`/shop/templates/preview/2/order`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/2/order`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/2/order`]);
+    }
+
   }
 
 

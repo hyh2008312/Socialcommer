@@ -30,11 +30,14 @@ export class StoreNavigationComponent implements OnInit {
     link: './blog',
     exact: true
   }];
-
+  //是否为新手引导
+  isGuide: boolean = false;
   categoryContents: any;
 
 
   constructor(public router: Router) {
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
   }
 
   ngOnInit(): void {
@@ -56,11 +59,21 @@ export class StoreNavigationComponent implements OnInit {
   }
 
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/6/cart`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/6/cart`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/6/cart`]);
+    }
+
   }
 
   jumpOrder(): void {
-    this.router.navigate([`/shop/templates/preview/6/order`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/6/order`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/6/order`]);
+    }
+
   }
 
 }

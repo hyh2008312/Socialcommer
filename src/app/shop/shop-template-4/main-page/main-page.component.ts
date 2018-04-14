@@ -12,12 +12,15 @@ import {UserService} from '../../../shared/services/user/user.service';
 export class MainPageComponent implements OnInit {
   storeName: string = 'STORE NAME';
   text: string = '';
-
+//是否为新手引导
+  isGuide: boolean = false;
   constructor(private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
               private router: Router,
               private userService: UserService) {
 
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
   }
 
   ngOnInit(): void {
@@ -32,11 +35,21 @@ export class MainPageComponent implements OnInit {
   }
 
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/4/cart`]);
+    if(this.isGuide){
+      this.router.navigate([`/shop/guide/preview/4/cart`]);
+    }else {
+      this.router.navigate([`/shop/templates/preview/4/cart`]);
+    }
+
   }
 
   jumpOrder(): void {
-    this.router.navigate([`/shop/templates/preview/4/order`]);
+    if(this.isGuide){
+      this.router.navigate([`/shop/guide/preview/4/order`]);
+    }else {
+      this.router.navigate([`/shop/templates/preview/4/order`]);
+    }
+
   }
 
   ngOnDestroy() {
