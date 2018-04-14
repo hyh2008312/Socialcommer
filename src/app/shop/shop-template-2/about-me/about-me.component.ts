@@ -14,12 +14,15 @@ export class AboutMeComponent implements OnInit {
   store: Store = new Store();
   aboutBanner:string = 'https://media.socialcommer.com/source/web/template/3/02-pic.jpg';
   productNumber:number=0;
+  //是否为新手引导
+  isGuide: boolean = false;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private storeService: StoreService
   ) {
-
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
   }
 
   ngOnInit():void {
@@ -35,6 +38,11 @@ export class AboutMeComponent implements OnInit {
     });
   }
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/2/cart`]);
+    if(this.isGuide){
+      this.router.navigate([`/shop/guide/preview/2/cart`]);
+    }else {
+      this.router.navigate([`/shop/templates/preview/2/cart`]);
+    }
+
   }
 }

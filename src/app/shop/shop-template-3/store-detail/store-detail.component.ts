@@ -76,14 +76,11 @@ export class StoreDetailComponent implements OnInit {
     originalPriceCurrency: 'USD',
     imageUrl: 'https://media.socialcommer.com/source/web/template/3/07-pic.jpg'
   }];
-//是否为新手引导
-  isGuide: boolean = false;
+
 
   constructor(public router: Router,
               private activatedRouter: ActivatedRoute,
               private storeService: StoreService) {
-    let url = this.router.url;
-    this.isGuide = url.indexOf('guide/preview') >= 0;
     let self = this;
     this.storeService.store.subscribe((data) => {
       if (data) {
@@ -102,9 +99,6 @@ export class StoreDetailComponent implements OnInit {
     this.imageSources.push(this.product.imageUrl);
   }
 
-  close(): void {
-    this.router.navigate([`/shop/store/templates/preview/3`]);
-  }
 
   openLink() {
     let id = this.activatedRouter.snapshot.params['id'];

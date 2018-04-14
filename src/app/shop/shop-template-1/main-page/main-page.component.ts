@@ -99,7 +99,7 @@ export class MainPageComponent implements OnInit {
 
   queryMedia: any;
   isMobile: boolean = false;
-  productNumber:number=0;
+  productNumber: number = 0;
   about: string = 'Thank you for visiting my store! Have a nice day.  ';
 
 
@@ -108,13 +108,18 @@ export class MainPageComponent implements OnInit {
   descriptionTag = '<p class="ql-align-center"><strong style="color: rgb(255, 255, 255);" class="ql-size-large">Follow beauty tips and find unique high-quality makeup tools, cosmetics and hairstyles all in once place.</strong></p>';
   userTag = '<p>Welcome to my curated online store. This is a place to share you with beauty tips and high-quality unique makeup tools, cosmetics, hairstyles and everyday essentials. Please browse my collections and grab an item!</p>';
   imageSrc = 'https://media.xberts.com/collector/source/web/templats/01-pic-7.jpg';
+//是否为新手引导
+  isGuide: boolean = false;
 
   isShowMenu: boolean = false;
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
               private media: ObservableMedia,
               private userService: UserService) {
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
     let self = this;
     self.queryMedia = this.media.asObservable()
       .subscribe((data) => {
@@ -148,11 +153,21 @@ export class MainPageComponent implements OnInit {
   }
 
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/1/cart`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/1/cart`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/1/cart`]);
+    }
   }
+
   jumpOrder(): void {
-    this.router.navigate([`/shop/templates/preview/1/order`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/1/order`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/1/order`]);
+    }
   }
+
   changeShowMenu() {
     this.isShowMenu = !this.isShowMenu;
   }

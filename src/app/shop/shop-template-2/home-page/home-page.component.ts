@@ -39,6 +39,8 @@ export class HomePageComponent implements OnInit {
   };
   public shareLink: string;
   public text = '';
+  //是否为新手引导
+  isGuide: boolean = false;
 
   baseImageUrl: string = 'https://media.socialcommer.com/source/web/pic/pic-2-1.jpg';
 
@@ -116,6 +118,9 @@ export class HomePageComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
 
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
+
   }
 
   ngOnInit(): void {
@@ -137,10 +142,18 @@ export class HomePageComponent implements OnInit {
   }
 
   jumpProductList(): void {
-    this.router.navigate([`/shop/templates/preview/2/list`]);
+    if(this.isGuide){
+      this.router.navigate([`/shop/guide/preview/2/list`]);
+    }else {
+      this.router.navigate([`/shop/templates/preview/2/list`]);
+    }
   }
 
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/2/cart`]);
+    if(this.isGuide){
+      this.router.navigate([`/shop/guide/preview/2/cart`]);
+    }else {
+      this.router.navigate([`/shop/templates/preview/2/cart`]);
+    }
   }
 }

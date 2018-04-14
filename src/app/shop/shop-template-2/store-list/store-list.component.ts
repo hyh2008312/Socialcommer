@@ -12,7 +12,7 @@ import {Store} from '../../store';
 
 export class StoreListComponent implements OnInit {
 
-  public categories:any = [{
+  public categories: any = [{
     id: 0,
     name: 'All'
   }, {
@@ -98,11 +98,14 @@ export class StoreListComponent implements OnInit {
   }];
 
   isClearData: boolean = false;
+  //是否为新手引导
+  isGuide: boolean = false;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
-
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
   }
 
   ngOnInit(): void {
@@ -125,7 +128,7 @@ export class StoreListComponent implements OnInit {
           viewTime: new Date().getTime(),
           storeId: data.id
         });
-        this.isClearData=false ;
+        this.isClearData = false;
         this.queryProduct();
       }
     });
@@ -138,10 +141,11 @@ export class StoreListComponent implements OnInit {
   queryProduct() {
   }
 
-  back(): void {
-    this.router.navigate([`/shop/store/templates/preview/2`]);
-  }
   jumpCart(): void {
-    this.router.navigate([`/shop/templates/preview/2/cart`]);
+    if (this.isGuide) {
+      this.router.navigate([`/shop/guide/preview/2/cart`]);
+    } else {
+      this.router.navigate([`/shop/templates/preview/2/cart`]);
+    }
   }
 }
