@@ -53,11 +53,11 @@
               </div>
               <div class="xb-store-promotion__details-sale md-margin-left-1"
                    *ngIf="!isHaveVariant && salePrice != originalPrice ">
-                - {{ salePrice|saleDiscount:originalPrice}}
+                {{ salePrice|saleDiscount:originalPrice}} OFF
               </div>
               <div class="xb-store-promotion__details-sale md-margin-left-1"
                    *ngIf="isHaveVariant && salePrice != originalPrice && !isPriceRange">
-                - {{ salePrice|saleDiscount:originalPrice}}
+                {{ salePrice|saleDiscount:originalPrice}} OFF
               </div>
             </div>
             <div [ngStyle]="{'margin-left':'54px'}" fxLayout="row" fxLayoutAlign="start center">
