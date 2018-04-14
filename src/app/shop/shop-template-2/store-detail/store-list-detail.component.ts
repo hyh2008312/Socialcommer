@@ -79,11 +79,16 @@ export class StoreListDetailComponent implements OnInit {
     imageUrl: 'https://media.socialcommer.com/source/web/pic/pic-2-7.jpg'
   }];
 
+  //是否为新手引导
+  isGuide: boolean = false;
+
   constructor(
     public router: Router,
     private activatedRouter: ActivatedRoute,
     private storeService: StoreService
   ) {
+    let url = this.router.url;
+    this.isGuide = url.indexOf('guide/preview') >= 0;
     let self = this;
     this.storeService.store.subscribe((data) => {
       if(data) {
@@ -103,7 +108,12 @@ export class StoreListDetailComponent implements OnInit {
   }
 
   close():void {
-    this.router.navigate([`/shop/templates/preview/2/list`]);
+    if(this.isGuide){
+      this.router.navigate([`/shop/guide/preview/2/list`]);
+    }else {
+      this.router.navigate([`/shop/templates/preview/2/list`]);
+    }
+
   }
 
   openLink() {
