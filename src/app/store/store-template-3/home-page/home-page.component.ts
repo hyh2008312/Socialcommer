@@ -25,6 +25,7 @@ export class HomePageComponent implements OnInit {
   contextList: any = {};
   imageList: any = {};
   page = 1;
+  blogPage=1;
   nextPage: boolean = true;
   nextBlogPage: boolean = true;
   product: any = [];
@@ -97,7 +98,7 @@ export class HomePageComponent implements OnInit {
       store: this.store.id,
       relationStatus: 'published',
       page: this.page,
-      page_size: 6
+      page_size: 48
     };
     let self = this;
     self.storeService.getProductList(options).then((data) => {
@@ -118,7 +119,7 @@ export class HomePageComponent implements OnInit {
     }
     let options = {
       ownerId: this.ownerId,
-      page: this.page,
+      page: this.blogPage,
       page_size: 2
     };
     let self = this;
@@ -144,7 +145,8 @@ export class HomePageComponent implements OnInit {
   }
 
   jumpToCollection() {
-    this.router.navigate(['./list'], {relativeTo: this.activatedRoute});
+    this.page++ ;
+    this.queryProduct();
   }
 
   jumpToBlog() {
