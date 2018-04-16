@@ -10,6 +10,7 @@
   </ng-container>
 
   <div class="xb-4-template-navigation xb-pointer"
+       *ngIf="isHaveFlashSale"
        routerLink='./flash' [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact':true}">
     Flash Sale
   </div>

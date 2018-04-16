@@ -10,17 +10,14 @@
     <div fxFlex="15">
       <div class="xb-store__footer-title">Share</div>
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.xs="start center">
-        <div class="xb-store__footer-icons xb-pointer gtag-shop-detail-share-button-facebook"
-             appSocialShare [facebook]="{u: shareLink}">
+        <div class="xb-store__footer-icons">
           <i class="iconfontXberts icon-ic-facebook"></i>
         </div>
-        <div class="xb-store__footer-icons xb-pointer md-margin-left-3 gtag-shop-detail-share-button-twitter"
-             appSocialShare [twitter]="{url: shareLink, text: text, hashtags: '' }">
+        <div class="xb-store__footer-icons md-margin-left-3">
           <i class="iconfontXberts icon-ic-twitter"></i>
         </div>
-        <div class="xb-store__footer-icons xb-pointer md-margin-left-3 gtag-shop-detail-share-button-whatsapp"
-             fxLayout="row" fxLayoutAlign="center center"
-             appSocialShare  [whatsApp]="{text: text + ' '+ shareLink}">
+        <div class="xb-store__footer-icons md-margin-left-3"
+             fxLayout="row" fxLayoutAlign="center center">
           <i class="iconfontXberts icon-ic-social-whatsapp"></i>
         </div>
       </div>

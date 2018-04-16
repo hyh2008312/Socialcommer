@@ -2,10 +2,9 @@
 @import "../../../styles/_variables";
 
 .xb-social-share{
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  cursor: pointer;
 
   &__facebook{
     background-color: $facebookColor;
@@ -19,9 +18,13 @@
     background-color: $googleColor;
   }
 
+  &__whatsapp{
+    background-color: $whatsAppColor;
+  }
+
   >i{
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 14px;
     color: $whiteColor;
   }
 
@@ -38,11 +41,11 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    cursor: pointer;
-    background-color: rgba(255,255,255,.3);
+    background-color: white;
+
     >i{
-      font-size: 24px;
-      line-height: 24px;
+      font-size: 16px;
+      line-height: 16px;
       color: #252525;
     }
   }

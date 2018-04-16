@@ -17,7 +17,6 @@ import {StoreShareButtonComponent} from './store-share-button/store-share-button
 import {StoreBlogComponent} from './store-blog/store-blog.component';
 import {StoreItemProductCardComponent} from './store-item-products-card/store-item-product-card.component';
 import {StoreItemBlogCardComponent} from './store-item-blog-card/store-item-blog-card.component';
-import {ShareTemplate5ButtonComponent} from './share-temlpate-5-button/share-template-5-button.component';
 import {StoreBlogDetailComponent} from './store-blog-detail/store-blog-detail.component';
 import {StoreCategoryCardComponent} from './store-category-card/store-category-card.component';
 import {StoreListComponent} from './store-list/store-list.component';
@@ -47,7 +46,6 @@ import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.componen
     StoreBlogComponent,
     StoreItemProductCardComponent,
     StoreItemBlogCardComponent,
-    ShareTemplate5ButtonComponent,
     StoreBlogDetailComponent,
     StoreListComponent,
     StoreItemBlogCardTwoComponent,

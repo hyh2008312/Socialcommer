@@ -73,6 +73,7 @@ import {ViewShareScrollDirective} from './directives/view-share-srcoll/view-shar
 import {ViewScrollTopDirective} from './directives/view-scroll-top/view-scroll-top.directive';
 import {ViewModifyBodyStyleDirective} from "./directives/view-modify-body-style/view-modify-body-style.directive";
 import {MakeFirstLetterBigPipe} from 'app/shared/pipes/make-first-letter-big/make-first-letter-big.pipe';
+import {ShareShowButtonComponent} from "./components/share-show-button/share-show-button.component";
 
 let providers = {
   "google": {
@@ -143,7 +144,8 @@ let providers = {
     BottomFooterComponent,
     ImageUploadPreviewTwoTemplateComponent,
     ImageUploadPreviewFourTemplateComponent,
-    LoadingComponent
+    LoadingComponent,
+    ShareShowButtonComponent
 
   ],
   exports: [
@@ -172,6 +174,7 @@ let providers = {
     ImageUploadPreviewFourTemplateComponent,
     LeftProductsImageComponent,
     ShareButtonComponent,
+    ShareShowButtonComponent,
     StoreNavigationComponent,
     ShareButtonRowComponent,
     NavigationHeaderComponent,

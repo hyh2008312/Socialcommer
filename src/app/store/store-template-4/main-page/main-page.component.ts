@@ -38,7 +38,7 @@ export class MainPageComponent implements OnInit {
       if (data) {
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.storeName = data.name;
-        self.text = data.description;
+        self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         self.displayName = data.displayName;
         self.isHavePromotion = data.promotionNum > 0;
         if (data.context && data.context.blogFlag) {

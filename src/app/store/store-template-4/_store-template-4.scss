@@ -133,7 +133,9 @@
   }
   &__ad-title {
     position: relative;
-    max-width: 100%;
+    width: 80%;
+    text-align: center;
+    @include text-overflow();
     margin-top: 64px;
     border: 4px solid $whiteColor;
     padding-left: 24px;

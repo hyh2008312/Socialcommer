@@ -5,7 +5,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  cursor: pointer;
+
 
   &__facebook{
     background-color: $facebookColor;
@@ -38,7 +38,7 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    cursor: pointer;
+
     background-color: rgba(255,255,255,.3);
     >i{
       font-size: 24px;

@@ -69,10 +69,10 @@
 
       <div class="xb-shop__card-action md-margin-top-2" *ngIf="!isRecommend" fxLayout="row"
            fxLayoutAlign="space-between center">
-        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="47">
-          <button mat-raised-button color="primary" (click)="shareToEarn()">Share to Earn</button>
+        <div fxLayout="column" fxLayoutAlign="center stretch" fxFlex="47">
+          <div class="xb-shop__card-share-button" (click)="shareToEarn()">Share to Earn</div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="47">
+        <div fxLayout="column" fxLayoutAlign="center stretch" fxFlex="47">
           <div class="xb-shop__card-button" (click)="jumpEditLink()">Add to Sell</div>
         </div>
       </div>
