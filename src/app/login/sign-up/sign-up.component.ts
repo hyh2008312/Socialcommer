@@ -8,8 +8,6 @@ import { ConstantService } from  '../../shared/services/constant/constant.servic
 import { AuthenticationService } from  '../../shared/services/authentication/authentication.service';
 import { UserService } from '../../shared/services/user/user.service';
 
-import { Subject } from "rxjs/Subject";
-
 import { AuthService } from "angular2-social-login";
 import { SystemConstant } from '../../config/app.api';
 
@@ -451,15 +449,10 @@ export class SignUpComponent {
       self.userService.getUser().then((data) => {
         self.userService.addUser(data);
         self.userService.addStore(data.store[0]);
-        if(data.isInvite) {
-          self.router.navigate(['shop/dashboard']);
+        if(data.store[0].setStep == 'finished') {
+          self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
         } else {
-          self.step = 2;
-          (<any>window).dataLayer.push({
-            'event': 'VirtualPageView',
-            'virtualPageURL': '/signup/complete',
-            'virtualPageTitle': 'Signup - Complete'
-          });
+          self.router.navigate(['/shop/guide'], {replaceUrl: true});
         }
       });
     }).catch((data) => {

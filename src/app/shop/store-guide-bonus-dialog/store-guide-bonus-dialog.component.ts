@@ -14,6 +14,9 @@ export class StoreGuideBonusDialogComponent implements OnInit {
 
   currency: string = 'USD';
   sub: any;
+  shareLink: string = '';
+
+  firstName: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<StoreGuideBonusDialogComponent>,
@@ -21,10 +24,12 @@ export class StoreGuideBonusDialogComponent implements OnInit {
     private userService: UserService,
     private shopServie: ShopService
   ) {
+    this.shareLink = this.data.shareLink;
     this.data.shareLink = this.data.shareLink + '?source=share';
     this.sub = this.userService.store.subscribe((data) => {
       if(data) {
         this.currency = data.currency.toUpperCase();
+        this.firstName = data.firstName;
       }
     });
     this.guideSuccess();

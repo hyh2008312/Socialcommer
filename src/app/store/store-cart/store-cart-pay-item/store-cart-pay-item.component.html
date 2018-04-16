@@ -1,12 +1,12 @@
 <div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start center" fxHide.xs fxHide.sm>
   <div fxLayout="row" fxLayoutAlign="start stretch" fxFlex="40">
-    <div class="xb-cart__item-image" fxFlex="none">
+    <a class="xb-cart__item-image" fxFlex="none" href="{{productLink}}" target="_blank">
       <img [src]="product.mainImage">
-    </div>
+    </a>
     <div fxLayout="column" fxLayoutAlign="space-between stretch">
-      <div class="xb-cart__item-title">
+      <a class="xb-cart__item-title" href="{{productLink}}" target="_blank">
         {{product.title}}
-      </div>
+      </a>
       <div>{{product.attributes}}</div>
     </div>
   </div>
