@@ -42,7 +42,7 @@ export class MainPageComponent implements OnInit {
         self.displayName = data.displayName;
         self.isHavePromotion = data.promotionNum > 0;
         self.contactUsTag = data.context ? data.context.contactUsTag : '';
-        self.text = data.description;
+        self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         let tempCategory = data.category.filter((data)=>{
           return data.goodsCount !=0 ;
         });

@@ -65,7 +65,7 @@ export class HomePageComponent implements OnInit {
         self.displayName = data.displayName ;
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
-        self.text = data.description;
+        self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         self.ownerId = data.ownerId;
         self.isHavePromotion = data.promotionNum > 0;
         self.storeService.addTitleDescription({

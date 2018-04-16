@@ -50,7 +50,7 @@ export class MainPageComponent implements OnInit {
           self.selectCategoryMain = self.categories[0];
         }
 
-        self.text = data.description;
+        self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         self.displayName = data.displayName;
         self.ownerId = data.ownerId;
         self.queryBlog();

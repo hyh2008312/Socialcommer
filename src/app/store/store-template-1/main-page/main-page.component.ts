@@ -85,7 +85,7 @@ export class MainPageComponent implements OnInit {
         self.imageList = data.images ? data.images : {
           imageSrc: self.imageSrc1
         };
-        self.text = data.description;
+        self.text = `Welcome to my store: ${data.name}-${data.description}`;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
@@ -159,10 +159,10 @@ export class MainPageComponent implements OnInit {
     this.category = category;
     this.page = 1;
     if (this.category.id == -100) {
-      this.isPromotion = true ;
-     this.queryFlashSale(true);
+      this.isPromotion = true;
+      this.queryFlashSale(true);
     } else {
-      this.isPromotion = false ;
+      this.isPromotion = false;
       this.queryProduct(true);
     }
   }
@@ -190,6 +190,7 @@ export class MainPageComponent implements OnInit {
       }
     });
   }
+
   queryFlashSale(clearProduct?: boolean) {
     let options = {
       store: this.store.id,
