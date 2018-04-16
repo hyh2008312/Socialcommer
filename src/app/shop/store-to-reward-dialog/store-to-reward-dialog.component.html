@@ -15,7 +15,7 @@
   <div class="xb-share-dialog__content" *ngIf="stepOneBonus">
      <span class="xb-share-dialog__color">Congrats! You have earned {{currency == 'USD'? (10|currency: currency): (200|currency: currency)}} cash reward for sharing your store link!</span>
   </div>
-  <div class="xb-share-dialog__margin-top" *ngIf="!stepOneBonus">
+  <div class="xb-share-dialog__margin-top">
     <app-share-button-row [link]="data.shareLink" [text]="data.text"></app-share-button-row>
   </div>
   <div class="xb-share-dialog__title-1">
