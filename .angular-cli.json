@@ -34,7 +34,8 @@
       "outDir": "dist/browser",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "robots.txt"
       ],
       "index": "index.html",
       "main": "main.browser.ts",
@@ -60,7 +61,8 @@
       "outDir": "dist/server",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "robots.txt"
       ],
       "index": "index.html",
       "main": "main.server.ts",

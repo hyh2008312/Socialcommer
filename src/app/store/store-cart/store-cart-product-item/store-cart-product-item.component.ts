@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import {StoreService} from '../../store.service';
 
 @Component({
   selector: 'app-store-cart-product-item',
@@ -11,10 +11,12 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 export class StoreCartProductItemComponent{
 
   @Input() homeLink: string = '';
-  @Input() product: any;
+  @Input() product: any= {};
   @Output() productChange = new EventEmitter<any>();
   @Input() index: number = 0;
   @Input() shippingList: any;
+
+  productLink: any = '';
 
   shippingLists: any=[];
 
@@ -30,8 +32,20 @@ export class StoreCartProductItemComponent{
   isEdit: boolean = false;
   isDialogOpen: boolean = false;
 
-  constructor(overlayContainer: OverlayContainer) {
+  sub:any;
+
+  constructor(
+    overlayContainer: OverlayContainer,
+    private storeService: StoreService
+  ) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
+
+    this.sub = this.storeService.store.subscribe((data) => {
+      if(data) {
+        this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' + (data.templateId?data.templateId:5)
+        + '/detail/';
+      }
+    });
   }
 
   ngOnChanges() {
@@ -40,8 +54,8 @@ export class StoreCartProductItemComponent{
         this.shippingLists = this.shippingList[this.product.id];
         this.changeShipping(this.shippingLists[0]);
       }
+      this.productLink = this.productLink + this.product.goodsId;
     }
-
 
   }
 
@@ -110,5 +124,11 @@ export class StoreCartProductItemComponent{
       shippingPrice: this.shipping,
       index: this.index
     });
+  }
+
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 }

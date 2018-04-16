@@ -24,7 +24,7 @@
            *ngIf="categories.length<=0 && product.length <= 0">
         There are no products available.
       </div>
-      <div *ngIf="product.length > 0" class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center">
+      <div *ngIf="product.length > 0 && nextPage" class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center">
         <div (click)="jumpToCollection()">
           SEE MORE
         </div>

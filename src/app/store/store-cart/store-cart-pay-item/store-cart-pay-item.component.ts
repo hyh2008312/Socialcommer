@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { OverlayContainer } from '@angular/cdk/overlay';
+import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+
+import {StoreService} from '../../store.service';
 
 @Component({
   selector: 'app-store-cart-pay-item',
@@ -14,12 +14,33 @@ export class StoreCartPayItemComponent{
   @Output() productChange = new EventEmitter<any>();
   @Input() currency: any = '';
 
-  constructor() {
+  productLink: any = '';
 
+  sub: any;
+
+  constructor(
+    private storeService: StoreService
+  ) {
+    this.sub = this.storeService.store.subscribe((data) => {
+      if(data) {
+        this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' + (data.templateId?data.templateId:5)
+          + '/detail/';
+      }
+    });
   }
 
   ngOnChanges() {
 
+    if(this.product) {
+      this.productLink = this.productLink + this.product.goodsId;
+    }
+
+  }
+
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 }

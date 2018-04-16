@@ -53,6 +53,7 @@ export class StoreListComponent implements OnInit {
         firstLoad = true;
         self.store = data;
         self.displayName = data.displayName;
+        self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         self.isHavePromotion = data.promotionNum > 0;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.contextList = data.context ? data.context : {};

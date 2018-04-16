@@ -5,7 +5,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-store-template-edit-2-store-foot',
   templateUrl: './store-foot.component.html',
-  styleUrls: ['./store-foot.scss']
+  styleUrls: ['./_store-foot.scss']
 })
 
 export class StoreFootComponent implements OnInit {

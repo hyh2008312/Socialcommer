@@ -3,7 +3,7 @@
     <i class="iconfontXberts icon-ic-close"></i>
   </div>
   <div class="xb-share-dialog__title">
-    Congrats !
+    Congrats {{firstName}} !
   </div>
   <div class="xb-share-dialog__title-1">
     1. Your store has been published.
@@ -11,7 +11,7 @@
   <div class="xb-share-dialog__content">
     You have earned <span class="xb-share-dialog__color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}} cash reward</span> for setting up your store:
   </div>
-  <a class="xb-share-dialog__link" href="{{data.shareLink}}" target="_blank">{{data.shareLink}}</a>
+  <a class="xb-share-dialog__link" href="{{data.shareLink}}" target="_blank">{{shareLink}}</a>
   <div class="xb-share-dialog__title-1">
     2. Let’s spread the word.
   </div>

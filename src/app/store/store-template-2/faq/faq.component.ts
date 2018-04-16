@@ -36,7 +36,7 @@ export class FaqComponent implements OnInit {
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
-        self.text = data.description;
+        self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         self.displayName = data.displayName ;
         self.isHavePromotion = data.promotionNum > 0;
         let countryCode = data.country.code;

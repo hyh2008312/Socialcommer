@@ -47,7 +47,7 @@ export class StoreFlashSaleComponent implements OnInit {
       if (data && !firstLoad) {
         firstLoad = true;
         self.store = data;
-        self.text = data.description;
+        self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         self.isHavePromotion = data.promotionNum > 0;
         self.displayName = data.displayName ;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));

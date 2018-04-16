@@ -44,10 +44,11 @@ export class ShopComponent implements OnInit {
           self.shopService.setTemplateList(data);
         });
         if(data.setStep != 'finished') {
-          self.router.navigate(['/shop/guide']);
+          self.router.navigate(['/shop/guide'],{replaceUrl: true});
         }
       }
-    })
+    });
+    self.router.navigate(['/shop/guide'],{replaceUrl: true});
   }
 
   ngOnInit(): void {

@@ -13,7 +13,7 @@
       <div class="xb-store-template__template-mask"></div>
       <div class="xb-store-template__left" fxLayout="row" fxLayoutAlign="start center" fxShow="true" fxShow.xs="false">
         <div class="xb-store-template__store-name">
-            {{store.name}}
+          {{store.name}}
         </div>
         <app-store-template-2-navigation [productNumber]="productNumber" [displayName]="displayName"
                                          [isHavePromotion]="isHavePromotion"
@@ -162,7 +162,8 @@
     </div>
     <!--网址底部-->
     <div>
-      <app-store-template-2-store-foot [storeName]="store.name" [displayName]="displayName"></app-store-template-2-store-foot>
+      <app-store-template-2-store-foot [storeName]="store.name" [displayName]="displayName"
+                                       [text]="text"></app-store-template-2-store-foot>
     </div>
   </mat-sidenav-container>
   <router-outlet></router-outlet>
