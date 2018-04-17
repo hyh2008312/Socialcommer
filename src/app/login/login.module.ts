@@ -6,7 +6,6 @@ import { SignUpComponent } from "./sign-up/sign-up.component";
 import { ResetPasswordSuccessDialogComponent } from "./rest-password-success-dialog/rest-password-success-dialog.component";
 import { ResetPasswordComponent} from "./reset-password/reset-password.component";
 import { ResetPasswordConfirmComponent} from "./reset-password-confirm/reset-password-confirm.component";
-import { InviteCodeComponent } from "./invite-code/invite-code.component";
 
 import { LoginRoutingModule } from './login.routes.module';
 import { LoginService } from './login.service';
@@ -25,8 +24,7 @@ import { SharedModule } from '../shared/shared.module';
     SignUpComponent,
     ResetPasswordSuccessDialogComponent,
     ResetPasswordComponent,
-    ResetPasswordConfirmComponent,
-    InviteCodeComponent
+    ResetPasswordConfirmComponent
   ],
   providers: [
     LoginService

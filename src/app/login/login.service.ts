@@ -28,7 +28,7 @@ export class LoginService {
 
   }
 
-  login(token:any): Promise<Login> {
+  login(token:any): Promise<any> {
 
     let headers = new Headers({
       'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ export class LoginService {
 
     return this.http.post(url, token, options)
       .toPromise()
-      .then(response => response.json() as Login)
+      .then(response => response.json() as any)
       .catch(this.handleError);
   }
 
