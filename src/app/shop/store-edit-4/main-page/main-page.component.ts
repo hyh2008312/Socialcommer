@@ -534,7 +534,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         'virtualPageURL': '/storesetup/complete',
         'virtualPageTitle': 'StoreSetup - Complete'
       });
-      self.router.navigate(['/shop/listings/item'], {replaceUrl: true});
+      self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
     } else {
       self.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
         let step = 'finished';

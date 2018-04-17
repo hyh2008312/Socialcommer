@@ -46,7 +46,7 @@ export class GuideMainComponent implements OnInit {
 
     this.sub1 = this.userService.store.subscribe((data) => {
       if(data) {
-        this.currency = this.currency.toUpperCase();
+        this.currency = data.currency.toUpperCase();
         switch(data.setStep) {
           case 'first':
             this.step = 0;
