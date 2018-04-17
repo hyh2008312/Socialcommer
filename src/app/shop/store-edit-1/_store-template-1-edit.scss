@@ -59,3 +59,36 @@
   }
 }
 
+.preview-home-box {
+  max-width: 31% !important;
+  flex: 1 1 300px !important;
+  -webkit-flex: 1 1 300px !important;
+  min-width: 31%;
+
+  @include xb-xs-screen {
+    max-width: 48% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 48%;
+  }
+  @include xb-sm-screen {
+    max-width: 31% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 31%;
+  }
+  @include xb-md-screen {
+    max-width: 31% !important;
+    flex: 1 1 300px !important;
+    -webkit-flex: 1 1 300px !important;
+    min-width: 31%;
+  }
+  @include xb-lg-screen {
+    max-width: 31% !important;
+    flex: 1 1 300px !important;
+    -webkit-flex: 1 1 300px !important;
+    min-width: 31%;
+  }
+
+}
+

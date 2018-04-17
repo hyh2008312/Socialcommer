@@ -60,12 +60,13 @@
                             fxShow="true" fxShow.xs="false"></app-store-navigation>
       <div class="xb-store__content xb-store__border-bottom">
         <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between start">
-          <app-store-item-card-preview *ngFor="let item of product"
+          <app-store-item-card-preview class="preview-home-box"
+                                       *ngFor="let item of product"
                                        fxFlex.xs="48" fxFlex.gt-xs="31"
                                        [isShowPromotionFlag]="isPromotion"
                                        (productId)="jumpGoodsDetail($event)"
                                        [product]="item" [status]="0"></app-store-item-card-preview>
-          <div fxFlex.xs="48" fxFlex.gt-xs="31"></div>
+          <div class="preview-home-box" fxFlex.xs="48" fxFlex.gt-xs="31"></div>
         </div>
         <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
              *ngIf="nextPage && product.length > 0" (click)="jumpList()">

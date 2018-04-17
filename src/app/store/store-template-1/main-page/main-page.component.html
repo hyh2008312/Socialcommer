@@ -70,12 +70,13 @@
         There are no products available.
       </div>
       <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between start">
-        <app-store-item-card *ngFor="let item of product"
+        <app-store-item-card class="preview-home-box-1"
+                             *ngFor="let item of product"
                              fxFlex.xs="48" fxFlex.gt-xs="31"
                              [currency]="currency"
                              [isShowPromotionFlag]="isPromotion"
                              [product]="item" [status]="0"></app-store-item-card>
-        <div fxFlex.xs="48" fxFlex.gt-xs="31"></div>
+        <div class="preview-home-box-1" fxFlex.xs="48" fxFlex.gt-xs="31"></div>
       </div>
       <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
            (click)="jumpList()" *ngIf="!isMobile && nextPage && product.length > 0">
