@@ -228,6 +228,7 @@
       margin-right: 16px;
       position: relative;
       border: 1px solid rgba(0,0,0,.12);
+      cursor: pointer;
 
       >img{
         position: absolute;
@@ -355,6 +356,11 @@
     &-title-4{
       font-size: 16px;
       @include media();
+    }
+
+    &-title-5{
+      font-size: 14px;
+      color: #000;
     }
 
     &-margin-top{

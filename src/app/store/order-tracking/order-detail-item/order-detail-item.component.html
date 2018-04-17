@@ -2,11 +2,11 @@
   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex>
     <div fxLayout="row" fxLayoutAlign="start stretch">
       <div class="xb-order-tracking__detail-width xb-order-tracking__detail-margin-right" fxLayout="row" fxLayoutAlign="start stretch" fxFlex="none">
-        <div class="xb-order-tracking__detail-image" fxFlex="none">
+        <a class="xb-order-tracking__detail-image" fxFlex="none" href="{{productLink}}" target="_blank">
           <img [src]="order.mainImage">
-        </div>
+        </a>
         <div fxFlex fxLayout="column" fxLayoutAlign="space-between start">
-          <div class="xb-order-tracking__product-title-2" >{{order.title}}</div>
+          <a class="xb-order-tracking__detail-title-5" href="{{productLink}}" target="_blank">{{order.title}}</a>
           <div>{{order.attributes}}</div>
         </div>
       </div>

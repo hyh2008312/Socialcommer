@@ -8,7 +8,7 @@ import {StoreService} from '../../store.service';
   styleUrls: ['../store-cart.scss']
 })
 
-export class StoreCartProductItemComponent{
+export class StoreCartProductItemComponent implements OnDestroy{
 
   @Input() homeLink: string = '';
   @Input() product: any= {};
@@ -42,7 +42,8 @@ export class StoreCartProductItemComponent{
 
     this.sub = this.storeService.store.subscribe((data) => {
       if(data) {
-        this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' + (data.templateId?data.templateId:5)
+        this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' +
+          (data.template && data.template.templateId?data.template.templateId:5)
         + '/detail/';
       }
     });
