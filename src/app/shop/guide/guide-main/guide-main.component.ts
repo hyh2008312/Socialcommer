@@ -27,7 +27,6 @@ export class GuideMainComponent implements OnInit {
   selectErr: boolean = false;
 
   productArr: any = [];
-
   constructor(
     private guideService: GuideService,
     private userService: UserService,
@@ -52,16 +51,30 @@ export class GuideMainComponent implements OnInit {
           case 'first':
             this.step = 0;
             this.productList();
+            (<any>window).dataLayer.push({
+              'event': 'VirtualPageView',
+              'virtualPageURL': '/storesetup/pickcategories',
+              'virtualPageTitle': 'StoreSetup - PickCategories'
+            });
             break;
           case 'second':
             this.step = 1;
+            (<any>window).dataLayer.push({
+              'event': 'VirtualPageView',
+              'virtualPageURL': '/storesetup/templates',
+              'virtualPageTitle': 'StoreSetup - Templates'
+            });
             break;
           case 'finished':
             if(data.setStoreBonus) {
-              this.step = 2;
-              //this.router.navigate(['/shop/listings/items'], {replaceUrl: true});
+              this.router.navigate(['/shop/listings/items'], {replaceUrl: true});
             } else {
               this.step = 2;
+              (<any>window).dataLayer.push({
+                'event': 'VirtualPageView',
+                'virtualPageURL': '/storesetup/complete',
+                'virtualPageTitle': 'StoreSetup - Complete'
+              });
             }
             break;
         }
@@ -71,6 +84,9 @@ export class GuideMainComponent implements OnInit {
     this.sub2 = this.userService.currentUser.subscribe((data) => {
       if(data) {
         this.approveStatus = data.status;
+        if(data.status == 'Approved') {
+          this.router.navigate(['/shop/listings/items'], {replaceUrl: true});
+        }
       }
     });
   }

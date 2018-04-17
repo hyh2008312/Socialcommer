@@ -7,7 +7,7 @@ import {ShopService} from '../../shop.service';
 import {MatDialog} from '@angular/material';
 import {Store} from '../../shop';
 import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-dialog.component';
-import {StoreGuideBonusDialogComponent} from "../../store-guide-bonus-dialog/store-guide-bonus-dialog.component";
+
 
 @Component({
   selector: 'app-store-template-edit-2',
@@ -417,7 +417,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         });
         if (self.isGuide) {
           self.openGuideDialog(`${self.store.displayName}`);
-          self.router.navigate(['/shop/listings/items']);
         } else {
           self.openDialog(`${self.store.displayName}`);
           self.router.navigate(['/shop/dashboard']);
@@ -463,7 +462,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         });
         if (self.isGuide) {
           self.openGuideDialog(`${self.store.displayName}`);
-          self.router.navigate(['/shop/listings/items']);
         } else {
           self.openDialog(`${self.store.displayName}`);
           self.router.navigate(['/shop/dashboard']);
@@ -486,15 +484,14 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   openGuideDialog(displayName?: any): void {
-    let dialogRef = this.dialog.open(StoreGuideBonusDialogComponent, {
-      disableClose: true,
-      data: {
-        shareLink: 'http://' + this.shareLink + displayName,
-        text: this.store.description
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
+    let self = this;
+    this.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
+      let step = 'finished';
+      self.shopService.changeGuideStep({
+        step
+      }).then((data) => {
+        self.userService.addStore(data);
+      });
     });
   }
 

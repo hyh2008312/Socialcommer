@@ -157,8 +157,8 @@ export class LoginComponent implements OnInit {
             self.loadingValue = 0;
             (<any>window).dataLayer.push({
               'event': 'VirtualPageView',
-              'virtualPageURL': '/signup/store-setup',
-              'virtualPageTitle': 'Signup - Store Setup'
+              'virtualPageURL': '/storesetup/url',
+              'virtualPageTitle': 'StoreSetup - URL'
             });
           });
         }

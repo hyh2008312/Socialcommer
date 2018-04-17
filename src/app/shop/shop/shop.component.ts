@@ -1,9 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
 
 import {ShopService} from '../shop.service';
 import {UserService} from '../../shared/services/user/user.service';
 import {AuthenticationService} from '../../shared/services/authentication/authentication.service';
+
+import {StoreGuideBonusDialogComponent} from "../store-guide-bonus-dialog/store-guide-bonus-dialog.component";
 
 @Component({
   selector: 'app-shop',
@@ -17,11 +20,16 @@ export class ShopComponent implements OnInit {
   firstName: any = '';
   storeName: any = false;
   currency: string = 'USD';
+  shareLink: string = '';
+  description: string = 'Welcome to my store: ';
 
-  constructor(private userService: UserService,
-              private shopService: ShopService,
-              private authenticationService: AuthenticationService,
-              private router: Router) {
+  constructor(
+    private userService: UserService,
+    private shopService: ShopService,
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {
     let self = this;
     self.userService.currentUser.subscribe((data) => {
       if (data) {
@@ -32,6 +40,7 @@ export class ShopComponent implements OnInit {
 
     self.userService.store.subscribe((data) =>  {
       if(data) {
+        self.description = self.description + data.name + ' - ' + data.description;
         self.storeName = data.displayName;
         self.currency = data.currency.toUpperCase();
         if (data.template != null) {
@@ -43,7 +52,8 @@ export class ShopComponent implements OnInit {
         self.shopService.getMultiTemplate().then((data) => {
           self.shopService.setTemplateList(data);
         });
-        if(data.setStep != 'finished') {
+        self.shareLink = window.location.host + '/store/' + self.storeName
+        if(!data.setStoreBonus) {
           self.router.navigate(['/shop/guide'],{replaceUrl: true});
         }
       }
@@ -71,6 +81,19 @@ export class ShopComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/account/login']);
+  }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(StoreGuideBonusDialogComponent, {
+      data: {
+        shareLink: 'http://' + this.shareLink ,
+        text: this.description
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 
 }
