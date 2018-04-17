@@ -9,7 +9,7 @@ import {Store} from '../../store';
 @Component({
   selector: 'app-store-template-1',
   templateUrl: './main-page.component.html',
-  styleUrls: ['../store.scss', '../../shop.scss']
+  styleUrls: ['../_store.scss', '../../shop.scss']
 })
 
 export class MainPageComponent implements OnInit {

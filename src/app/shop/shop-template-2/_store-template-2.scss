@@ -1042,3 +1042,36 @@
     top: 0;
   }
 }
+ // 第二套模版首页safari
+.preview-home-box {
+  max-width: 30% !important;
+  flex: 1 1 300px !important;
+  -webkit-flex: 1 1 300px !important;
+  min-width: 30%;
+
+  @include xb-xs-screen {
+    max-width: 48% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 48%;
+  }
+  @include xb-sm-screen {
+    max-width: 30% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 30%;
+  }
+  @include xb-md-screen {
+    max-width: 30% !important;
+    flex: 1 1 300px !important;
+    -webkit-flex: 1 1 300px !important;
+    min-width: 30%;
+  }
+  @include xb-lg-screen {
+    max-width: 30% !important;
+    flex: 1 1 300px !important;
+    -webkit-flex: 1 1 300px !important;
+    min-width: 30%;
+  }
+
+}
