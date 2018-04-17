@@ -59,6 +59,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   //是否为新手引导
   isGuide: boolean = false;
+  isApproved: boolean = false;
+  sub: any;
 
   public editorConfig = {
     theme: 'bubble',
@@ -170,6 +172,12 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     });
 
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
+
+    self.sub = self.userService.currentUser.subscribe((data) => {
+      if(data) {
+        self.isApproved = data.isInvite;
+      }
+    });
   }
 
   /**
@@ -485,14 +493,23 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   openGuideDialog(displayName?: any): void {
     let self = this;
-    this.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
-      let step = 'finished';
-      self.shopService.changeGuideStep({
-        step
-      }).then((data) => {
-        self.userService.addStore(data);
+    if(self.isApproved) {
+      (<any>window).dataLayer.push({
+        'event': 'VirtualPageView',
+        'virtualPageURL': '/storesetup/complete',
+        'virtualPageTitle': 'StoreSetup - Complete'
       });
-    });
+      self.router.navigate(['/shop/listings/item'], {replaceUrl: true});
+    } else {
+      self.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
+        let step = 'finished';
+        self.shopService.changeGuideStep({
+          step
+        }).then((data) => {
+          self.userService.addStore(data);
+        });
+      });
+    }
   }
 
   changeStore() {
@@ -625,5 +642,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.homeMadeTitleInput.setSelection(0, this.homeMadeTitleInput.getLength(), 'user');
   }
 
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 
 }

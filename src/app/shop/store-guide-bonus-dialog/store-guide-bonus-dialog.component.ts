@@ -48,11 +48,7 @@ export class StoreGuideBonusDialogComponent implements OnInit {
 
   guideSuccess() {
     let self = this;
-    self.shopServie.changeGuideStep({
-      step: 'finished'
-    }).then((data) => {
-      self.userService.addStore(data);
-    });
+    self.shopServie.getFirstStoreLogin().then(() => {});
   }
 
 }

@@ -82,6 +82,10 @@ export class AuthenticationService implements AuthService {
       });
   }
 
+  public logoutOfServer() {
+
+  }
+
   public refreshShouldHappen(response: HttpErrorResponse): boolean {
     return response.status === 401;
   }

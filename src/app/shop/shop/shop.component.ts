@@ -22,6 +22,7 @@ export class ShopComponent implements OnInit {
   currency: string = 'USD';
   shareLink: string = '';
   description: string = 'Welcome to my store: ';
+  isFirstLogin: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -35,6 +36,9 @@ export class ShopComponent implements OnInit {
       if (data) {
         self.avatar = data.avatar;
         self.firstName = data.firstName;
+        if(!data.isInvite) {
+          self.router.navigate(['/shop/guide'],{replaceUrl: true});
+        }
       }
     });
 
@@ -52,13 +56,15 @@ export class ShopComponent implements OnInit {
         self.shopService.getMultiTemplate().then((data) => {
           self.shopService.setTemplateList(data);
         });
-        self.shareLink = window.location.host + '/store/' + self.storeName
-        if(!data.setStoreBonus) {
-          self.router.navigate(['/shop/guide'],{replaceUrl: true});
+        self.shareLink = window.location.host + '/store/' + self.storeName;
+        if(!data.setStoreBonus && data.setStep == 'finished' && !self.isFirstLogin) {
+          if(self.router.url != '/shop/guide') {
+            self.isFirstLogin = true;
+            self.openDialog();
+          }
         }
       }
     });
-    self.router.navigate(['/shop/guide'],{replaceUrl: true});
   }
 
   ngOnInit(): void {

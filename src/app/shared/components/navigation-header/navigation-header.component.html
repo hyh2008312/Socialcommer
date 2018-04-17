@@ -8,11 +8,16 @@
       </div>
     </div>
   </div>
-  <a class="xb-navigation-header__login" [ngClass]="{'xb-navigation-header__login-active': status}"
-     routerLink="/account/login" fxShow.xs="false">Log In</a>
-  <a class="md-margin-right-2 xb-navigation-header__button" routerLink="/account/signup" fxShow.xs="false">Sign Up</a>
-  <i class="iconfontXberts icon-pic-per xb-navigation-header__menu xb-pointer"
-     fxShow.gt-xs="false" (click)="openPop()"></i>
+  <div *ngIf="!source" fxLayout="row" fxLayoutAlign="start center">
+    <a class="xb-navigation-header__login" [ngClass]="{'xb-navigation-header__login-active': status}"
+       routerLink="/account/login" fxShow.xs="false">Log In</a>
+    <a class="md-margin-right-2 xb-navigation-header__button" routerLink="/account/signup" fxShow.xs="false">Sign Up</a>
+    <i class="iconfontXberts icon-pic-per xb-navigation-header__menu xb-pointer"
+       fxShow.gt-xs="false" (click)="openPop()"></i>
+  </div>
+  <div *ngIf="source">
+    <a class="xb-navigation-header__logout" (click)="logout()" fxShow.xs="false">Logout</a>
+  </div>
 </div>
 <div class="xb-navigation-header__mask"  *ngIf="isPopOpen" (click)="openPop()">
   <div class="xb-navigation-header__black" (click)="$event.stopPropagation()">
@@ -30,10 +35,13 @@
          (click)="openPop()">close</i>
     </div>
   </div>
-  <div class="xb-navigation-header__list" routerLink="/account/login">
+  <div class="xb-navigation-header__list" *ngIf="!source" routerLink="/account/login">
     Log In
   </div>
-  <div class="xb-navigation-header__list" routerLink="/account/signup">
+  <div class="xb-navigation-header__list" *ngIf="!source" routerLink="/account/signup">
     Sign Up
+  </div>
+  <div class="xb-navigation-header__list" *ngIf="source" (click)="logout()" >
+    Logout
   </div>
 </div>

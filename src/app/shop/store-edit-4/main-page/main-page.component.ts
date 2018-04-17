@@ -7,7 +7,6 @@ import {ShopService} from '../../shop.service';
 import {MatDialog} from '@angular/material';
 import {Store} from '../../shop';
 import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-dialog.component';
-import {StoreGuideBonusDialogComponent} from "../../store-guide-bonus-dialog/store-guide-bonus-dialog.component";
 
 @Component({
   selector: 'app-store-template-edit-2',
@@ -85,7 +84,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   isHavePromotion: boolean = false;
   //是否为新手引导
   isGuide: boolean = false;
-
+  isApproved: boolean = false;
+  sub: any;
 
   editImage() {
     this.imageEdited = !this.imageEdited;
@@ -158,6 +158,12 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     });
 
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
+
+    self.sub = self.userService.currentUser.subscribe((data) => {
+      if(data) {
+        self.isApproved = data.isInvite;
+      }
+    });
   }
 
   /**
@@ -394,10 +400,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnDestroy() {
-
-  }
-
   openNavigationDialog(event?: any) {
     if (event) {
       this.changeViewIndex(event);
@@ -526,14 +528,23 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
   openGuideDialog(displayName?: any): void {
     let self = this;
-    this.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
-      let step = 'finished';
-      self.shopService.changeGuideStep({
-        step
-      }).then((data) => {
-        self.userService.addStore(data);
+    if(self.isApproved) {
+      (<any>window).dataLayer.push({
+        'event': 'VirtualPageView',
+        'virtualPageURL': '/storesetup/complete',
+        'virtualPageTitle': 'StoreSetup - Complete'
       });
-    });
+      self.router.navigate(['/shop/listings/item'], {replaceUrl: true});
+    } else {
+      self.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
+        let step = 'finished';
+        self.shopService.changeGuideStep({
+          step
+        }).then((data) => {
+          self.userService.addStore(data);
+        });
+      });
+    }
   }
 
   changeStore() {
@@ -685,5 +696,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.aboutMeInput.setSelection(0, this.aboutMeInput.getLength(), 'user');
   }
 
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 
 }

@@ -64,6 +64,8 @@ export class StoreEditComponent implements OnInit {
   isPromotion: boolean = false;
   //是否为新手引导
   isGuide: boolean = false;
+  isApproved: boolean = false;
+  sub: any;
 
   constructor(private userService: UserService,
               private fb: FormBuilder,
@@ -158,6 +160,12 @@ export class StoreEditComponent implements OnInit {
             }
           }
         })
+      }
+    });
+
+    self.sub = self.userService.currentUser.subscribe((data) => {
+      if(data) {
+        self.isApproved = data.isInvite;
       }
     });
 
@@ -464,14 +472,24 @@ export class StoreEditComponent implements OnInit {
 
   openGuideDialog(displayName?: any): void {
     let self = this;
-    this.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
-      let step = 'finished';
-      self.shopService.changeGuideStep({
-        step
-      }).then((data) => {
-        self.userService.addStore(data);
+    if(self.isApproved) {
+      (<any>window).dataLayer.push({
+        'event': 'VirtualPageView',
+        'virtualPageURL': '/storesetup/complete',
+        'virtualPageTitle': 'StoreSetup - Complete'
       });
-    });
+      self.router.navigate(['/shop/listings/item'], {replaceUrl: true});
+    } else {
+      self.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
+        let step = 'finished';
+        self.shopService.changeGuideStep({
+          step
+        }).then((data) => {
+          self.userService.addStore(data);
+        });
+      });
+    }
+
   }
 
   // 跳转到商品详情页
@@ -551,6 +569,12 @@ export class StoreEditComponent implements OnInit {
       this.queryFlashSale(false);
     } else {
       this.queryProduct(false);
+    }
+  }
+
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
     }
   }
 }

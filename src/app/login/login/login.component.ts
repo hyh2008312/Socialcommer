@@ -140,10 +140,18 @@ export class LoginComponent implements OnInit {
                 });
               }
             } else {
-              self.router.navigate(['/shop/guide']).then((data) => {
-                self.showLoading = false;
-                self.loadingValue = 0;
-              });
+              if(data.store[0].setStep == 'finished') {
+                self.router.navigate(['/shop/listings/items']).then((data) => {
+                  self.showLoading = false;
+                  self.loadingValue = 0;
+                });
+              } else {
+                self.router.navigate(['/shop/guide']).then((data) => {
+                  self.showLoading = false;
+                  self.loadingValue = 0;
+                });
+              }
+
             }
           } else {
             self.router.navigate(['/shop/guide']).then((data) => {
