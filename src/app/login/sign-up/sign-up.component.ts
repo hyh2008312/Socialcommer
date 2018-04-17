@@ -273,6 +273,11 @@ export class SignUpComponent {
         self.step = 1;
         (<any>window).dataLayer.push({
           'event': 'VirtualPageView',
+          'virtualPageURL': '/signup/complete',
+          'virtualPageTitle': 'Signup - Signup Complete'
+        });
+        (<any>window).dataLayer.push({
+          'event': 'VirtualPageView',
           'virtualPageURL': '/signup/store-setup',
           'virtualPageTitle': 'Signup - Store Setup'
         });

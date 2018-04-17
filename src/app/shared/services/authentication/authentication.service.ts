@@ -26,7 +26,7 @@ export class AuthenticationService implements AuthService {
   }
 
   public isAuthorized(): Observable<boolean> {
-    const isAuthorized: boolean = !!this.appStorage.getItem('accessToken') && !!this.appStorage.getItem('inviteToken');
+    const isAuthorized: boolean = !!this.appStorage.getItem('accessToken');
 
     if(!isAuthorized) {
       this.guardLinkService.addRouterLink(window.location.pathname);

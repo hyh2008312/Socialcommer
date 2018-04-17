@@ -18,6 +18,8 @@ export class GuideMainComponent implements OnInit {
   loading: boolean = false;
   sub: any;
   sub1: any;
+  sub2: any;
+  approveStatus: any;
   step: number = 0;
 
   currency: string = 'USD';
@@ -54,7 +56,21 @@ export class GuideMainComponent implements OnInit {
           case 'second':
             this.step = 1;
             break;
+          case 'finished':
+            if(data.setStoreBonus) {
+              this.step = 2;
+              //this.router.navigate(['/shop/listings/items'], {replaceUrl: true});
+            } else {
+              this.step = 2;
+            }
+            break;
         }
+      }
+    });
+
+    this.sub2 = this.userService.currentUser.subscribe((data) => {
+      if(data) {
+        this.approveStatus = data.status;
       }
     });
   }
@@ -138,6 +154,9 @@ export class GuideMainComponent implements OnInit {
     }
     if(this.sub1) {
       this.sub1.unsubscribe();
+    }
+    if(this.sub2) {
+      this.sub2.unsubscribe();
     }
   }
 

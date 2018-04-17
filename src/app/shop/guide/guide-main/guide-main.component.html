@@ -124,6 +124,28 @@
     </div>
     </div>
   </div>
+  <div class="container" *ngIf="step == 2">
+    <div *ngIf="approveStatus == 'Pending' || approveStatus == 'Skip'">
+      <div class="xb-guide__title">Well done! Your store has been set up successfully and submitted for approval. </div>
+      <div class="xb-guide__container">
+        <div class="xb-guide__notice-text">
+          We will review it and get back to you in 1-2 business days. Once your store is approved, your account will receive
+          {{currency == 'USD'? (5|currency: currency): (100|currency: currency)}} newbie cash reward immediately. Please be patient and stay tuned!
+        </div>
+      </div>
+    </div>
+    <div *ngIf="approveStatus == 'Disapproved'">
+      <div class="xb-guide__container">
+        <div class="xb-guide__notice-text">
+          Welcome back to SocialCommer! We're sorry to tell you that your account has been disapproved. To continue,
+          please sign up for a new account. Thanks!
+        </div>
+      </div>
+    </div>
+    <div class="xb-guide__notice">
+      <img src="https://media.xberts.com/collector/source/web/pic/pic-waiting-01.png">
+    </div>
+  </div>
 </div>
 <div class="xb-guide__loading" fxLayout="row" fxLayoutAlign="center center" *ngIf="loading">
   <div class="xb-guide__loading-close" (click)="close()">

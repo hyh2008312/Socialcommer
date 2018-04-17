@@ -424,6 +424,20 @@
     }
   }
 
+  &__notice{
+    margin: 32px auto;
+    text-align: center;
+
+    >img{
+      margin: auto;
+      text-align: center;
+    }
+
+    &-text{
+      margin-top: 16px;
+    }
+  }
+
 }
 
 
