@@ -2,6 +2,46 @@
 @import "../styles/_variables";
 
 .xb-shop {
+
+  &__flex-preview-box {
+    @media screen and (max-width: 599px) {
+      max-width: 100% !important;
+      flex: 1 1 180px !important;
+      -webkit-flex: 1 1 180px !important;
+      min-width: 100%;
+    }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      max-width: 48% !important;
+      flex: 1 1 200px !important;
+      -webkit-flex: 1 1 200px !important;
+      min-width: 48%;
+    }
+    @media screen and (min-width: 960px) and (max-width: 1179px) {
+      max-width: 32% !important;
+      flex: 1 1 270px !important;
+      -webkit-flex: 1 1 250px !important;
+      min-width: 32%;
+    }
+    @media screen and (min-width: 1180px) and (max-width: 1439px) {
+      max-width: 32% !important;
+      flex: 1 1 330px !important;
+      -webkit-flex: 1 1 330px !important;
+      min-width: 32%;
+    }
+    @media screen and (min-width: 1440px) and (max-width: 1919px) {
+      max-width: 32% !important;
+      flex: 1 1 415px !important;
+      -webkit-flex: 1 1 415px !important;
+      min-width: 32%;
+    }
+    @media screen and (min-width: 1920px) {
+      max-width: 30% !important;
+      flex: 1 1 450px !important;
+      -webkit-flex: 1 1 450px !important;
+      min-width: 30%;
+    }
+  }
+
   &__logo {
     position: relative;
 
@@ -39,7 +79,7 @@
       }
     }
 
-    &-circle{
+    &-circle {
       position: absolute;
       top: 14px;
       right: -2px;
@@ -96,7 +136,7 @@
 
     &-bg {
       width: 160px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         width: 56px;
       }
     }
@@ -544,7 +584,7 @@
       position: relative;
       overflow: hidden;
       margin-bottom: 24px;
-      @include box-shadow(0px 1px 3px 0px rgba(0,0,0,0.19));
+      @include box-shadow(0px 1px 3px 0px rgba(0, 0, 0, 0.19));
       border-radius: 4px;
 
       > img {
@@ -823,10 +863,10 @@
       background-color: $orangeColor;
       border-radius: 50%;
 
-      &.active{
+      &.active {
         background-color: $primaryColor;
 
-        i{
+        i {
           font-size: 24px;
           line-height: 54px;
         }
@@ -841,7 +881,7 @@
       text-align: center;
       @include media();
       color: rgba(0, 0, 0, .87);
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 24px;
         font-size: 24px;
         line-height: 28px;
@@ -858,7 +898,7 @@
 
     &-content {
       margin-top: 40px;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 24px;
       }
     }
@@ -872,8 +912,8 @@
       cursor: pointer;
       background-color: $whiteColor;
       margin: 67px 20px 0;
-      @include box-shadow(0 1px 3px 0 rgba(0,0,0,0.19));
-      @include xb-xs-screen{
+      @include box-shadow(0 1px 3px 0 rgba(0, 0, 0, 0.19));
+      @include xb-xs-screen {
         margin: 27px 0 16px;
         width: 100%;
       }
@@ -901,10 +941,10 @@
         text-align: center;
         width: 112px;
         margin-top: 4px;
-        color: rgba(0,0,0,.54);
+        color: rgba(0, 0, 0, .54);
       }
 
-      &-icon{
+      &-icon {
         margin-right: 8px;
         font-size: 10px;
         line-height: 12px;
@@ -915,9 +955,9 @@
         color: $whiteColor;
         background-color: $orangeColor;
         display: block;
-        &.active{
+        &.active {
           background-color: $primaryColor;
-          i{
+          i {
             font-size: 10px;
             line-height: 12px;
             color: $whiteColor;

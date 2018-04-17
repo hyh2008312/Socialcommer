@@ -1,9 +1,41 @@
 @import "../../../styles/utils/index";
 @import "../../../styles/variables";
 
-.xb-shop{
-  &__dashboard{
-    &-card{
+.xb-shop {
+
+  &__flex-box {
+    max-width: 32% !important;
+    flex: 1 1 390px !important;
+    -webkit-flex: 1 1 390px !important;
+    min-width: 32%;
+    @include xb-xs-screen {
+      max-width: 100% !important;
+      flex: 1 1 180px !important;
+      -webkit-flex: 1 1 180px !important;
+      min-width: 100%;
+    }
+    @include xb-sm-screen {
+      max-width: 48% !important;
+      flex: 1 1 200px !important;
+      -webkit-flex: 1 1 200px !important;
+      min-width: 48%;
+    }
+    @include xb-md-screen {
+      max-width: 32% !important;
+      flex: 1 1 270px !important;
+      -webkit-flex: 1 1 250px !important;
+      min-width: 32%;
+    }
+    @include xb-lg-screen {
+      max-width: 32% !important;
+      flex: 1 1 330px !important;
+      -webkit-flex: 1 1 330px !important;
+      min-width: 32%;
+    }
+  }
+
+  &__dashboard {
+    &-card {
       border-radius: 10px;
       padding: 28px 0 28px 28px;
       color: $whiteColor;
@@ -11,7 +43,7 @@
       overflow: hidden;
       position: relative;
 
-      >i{
+      > i {
         position: absolute;
         color: $whiteColor;
         font-size: 64px;
@@ -20,25 +52,25 @@
         top: 24px;
       }
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-bottom: 16px;
       }
     }
 
-    &-width{
+    &-width {
       max-width: 800px;
       border-radius: 4px;
       overflow: hidden;
     }
 
-    &-number{
+    &-number {
       font-size: 34px;
       line-height: 34px;
       margin-bottom: 4px;
       height: 34px;
     }
 
-    &-title{
+    &-title {
       font-size: 16px;
       line-height: 16px;
       margin-bottom: 8px;
@@ -46,39 +78,39 @@
       @include media();
     }
 
-    &-margin-right{
+    &-margin-right {
       margin-right: 54px;
     }
 
-    &-color-1{
+    &-color-1 {
       background-color: $navigationColor;
     }
-    &-color-2{
+    &-color-2 {
       background-color: $primaryColor;
     }
-    &-color-3{
+    &-color-3 {
       background-color: $orangeColor;
     }
-    &-color-4{
-       background-color: $successColor;
+    &-color-4 {
+      background-color: $successColor;
     }
-    &-color-5{
+    &-color-5 {
       background-color: $purpleColor;
     }
-    &-color-6{
+    &-color-6 {
       background-color: $redColor;
     }
 
-    &-content{
-      border-top: 1px solid rgba(0,0,0,.12);
+    &-content {
+      border-top: 1px solid rgba(0, 0, 0, .12);
     }
 
-    &-margin-right{
+    &-margin-right {
       margin-right: 56px;
     }
 
-    &-table{
-      span{
+    &-table {
+      span {
         line-height: 28px;
         height: 28px;
         max-width: 100%;
@@ -86,46 +118,46 @@
       }
     }
 
-    &-title{
+    &-title {
       font-size: 12px;
     }
   }
 
-  &__none{
+  &__none {
     padding: 96px 0;
     background-color: $whiteColor;
     border-radius: 4px;
-    span{
+    span {
       margin-top: 16px;
       @include media();
     }
   }
 
-  &__statistic{
+  &__statistic {
 
     $parent: &;
-    &-bg{
+    &-bg {
       cursor: pointer;
       padding: 0 16px;
       background-color: $whiteColor;
-      &:hover{
-        background-color: rgba(0,0,0,.08);
+      &:hover {
+        background-color: rgba(0, 0, 0, .08);
       }
 
-      &:last-child{
-        #{$parent}-inner-container{
+      &:last-child {
+        #{$parent}-inner-container {
           border-bottom: none;
         }
       }
     }
 
-    &-inner-container{
-      border-bottom: 1px solid rgba(0,0,0,.12);
+    &-inner-container {
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
     }
   }
 
-  &__navigation{
-    &-bg{
+  &__navigation {
+    &-bg {
       background-color: #071f22;
       font-size: 14px;
       color: $whiteColor;
@@ -134,19 +166,19 @@
       padding: 0 16px;
     }
 
-    &-card{
+    &-card {
       border-radius: 4px;
       overflow: hidden;
       background-color: $whiteColor;
 
-      &-inner{
+      &-inner {
         padding: 0 16px;
       }
     }
 
-    &-width{
+    &-width {
       width: 510px;
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         width: auto;
       }
     }

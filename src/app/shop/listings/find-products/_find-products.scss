@@ -1,43 +1,43 @@
 @import "../../../styles/utils/_index";
 @import "../../../styles/_variables";
 
-.xb-shop{
+.xb-shop {
 
-  &__products{
-    &-title{
+  &__products {
+    &-title {
       font-size: 24px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-title-1{
+    &-title-1 {
       font-size: 14px;
       margin-top: 12px;
     }
 
-    &-title-2{
+    &-title-2 {
       font-size: 16px;
       @include media();
-      color: rgba(0,0,0,.87);
+      color: rgba(0, 0, 0, .87);
     }
 
-    &-title-bg{
+    &-title-bg {
       padding: 32px;
       background-color: $whiteColor;
-      border-bottom: 1px solid rgba(0,0,0,.12);
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
     }
 
-    &-title-bg-1{
+    &-title-bg-1 {
       padding: 24px 32px;
       background-color: $whiteColor;
     }
 
-    &-content{
+    &-content {
       max-height: calc(100vh - 72px);
       overflow: scroll;
     }
 
-    &-search{
+    &-search {
       border: 1px solid #dcdcdc;
       border-radius: 10px;
       padding-left: 16px;
@@ -47,7 +47,7 @@
       position: relative;
       overflow: hidden;
 
-      >i{
+      > i {
         line-height: 40px;
         width: 64px;
         text-align: center;
@@ -55,14 +55,14 @@
         background-color: $primaryColor;
       }
 
-      >input{
+      > input {
         border: none;
         background-color: transparent;
         width: 340px;
-        color: rgba(0,0,0,.87);
+        color: rgba(0, 0, 0, .87);
       }
 
-      &-close{
+      &-close {
         position: absolute;
         cursor: pointer;
         right: 80px;
@@ -71,20 +71,20 @@
         border-radius: 50%;
         width: 16px;
         height: 16px;
-        background-color: rgba(0,0,0,.54);
-        >i{
+        background-color: rgba(0, 0, 0, .54);
+        > i {
           font-size: 12px;
           line-height: 12px;
           color: $whiteColor;
         }
       }
 
-      &-result{
+      &-result {
         color: $primaryColor;
       }
     }
 
-    &-sort{
+    &-sort {
       width: 180px;
       line-height: 40px;
       border: 1px solid #dcdcdc;
@@ -93,26 +93,58 @@
       background-color: $whiteColor;
     }
 
-    &-padding-right{
+    &-padding-right {
       padding-right: 8px;
     }
 
-    &-none{
+    &-none {
       padding: 96px 0;
       border-radius: 4px;
-      img{
+      img {
         width: 300px;
       }
-      span{
+      span {
         margin-top: 16px;
         @include media();
       }
     }
   }
 
-  &__width{
+  &__width {
     width: 250px;
     margin: 0 10px;
+  }
+}
+
+.box {
+  max-width: 24% !important;
+  flex: 1 1 240px !important;
+  -webkit-flex: 1 1 240px !important;
+  min-width: 24%;
+
+  @include xb-xs-screen {
+    max-width: 100% !important;
+    flex: 1 1 507px !important;
+    -webkit-flex: 1 1 507px !important;
+    min-width: 100%;
+  }
+  @include xb-sm-screen {
+    max-width: 48% !important;
+    flex: 1 1 243px !important;
+    -webkit-flex: 1 1 243px !important;
+    min-width: 48%;
+  }
+  @include xb-md-screen {
+    max-width: 24% !important;
+    flex: 1 1 192px !important;
+    -webkit-flex: 1 1 192px !important;
+    min-width: 24%;
+  }
+  @include xb-lg-screen {
+    max-width: 24% !important;
+    flex: 1 1 245px !important;
+    -webkit-flex: 1 1 245px !important;
+    min-width: 24%;
   }
 
 }
