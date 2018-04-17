@@ -145,12 +145,16 @@
       padding-left: 8px;
       height: 56px;
       color: $whiteColor;
-      @include media();
+      font-weight: 500;
       cursor: pointer;
       &.active {
         color: $primaryColor;
       }
 
+    }
+
+    &-text{
+      font-size: 12px;
     }
 
     &-bg-1 {
@@ -164,7 +168,7 @@
       padding-left: 8px;
       height: 56px;
       color: $whiteColor;
-      @include media();
+      font-weight: 500;
       cursor: pointer;
       border-bottom: 1px solid rgba(255, 255, 255, .12);
       &.active {
