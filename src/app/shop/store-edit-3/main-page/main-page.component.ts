@@ -329,7 +329,6 @@ export class MainPageComponent implements OnInit {
         });
         if (self.isGuide) {
           self.openGuideDialog(`${self.store.displayName}`);
-          self.router.navigate(['/shop/listings/items']);
         } else {
           self.openDialog(`${self.store.displayName}`);
           self.router.navigate(['/shop/dashboard']);
