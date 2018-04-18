@@ -44,7 +44,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "deployUrl": "https://origin.socialcommer.com",
+      "deployUrl": "https://origin.socialcommer.com/",
       "styles": [
         "_styles.scss",
         "app/styles/main.scss"
