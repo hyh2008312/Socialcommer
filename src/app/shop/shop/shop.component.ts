@@ -94,7 +94,8 @@ export class ShopComponent implements OnInit {
       data: {
         shareLink: 'http://' + this.shareLink ,
         text: this.description
-      }
+      },
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
