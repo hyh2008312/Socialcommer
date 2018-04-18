@@ -1,14 +1,13 @@
 import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {StoreService} from '../../store.service';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../shared/services/user/user.service';
 import {ShopService} from '../../shop.service';
 import {MatDialog} from '@angular/material';
 import {Store} from '../../shop';
 import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-dialog.component';
 import {CategoryInfoDao} from './CategoryInfoDao';
-import {StoreGuideBonusDialogComponent} from "../../store-guide-bonus-dialog/store-guide-bonus-dialog.component";
 
 @Component({
   selector: 'app-store-template-edit-2',
@@ -659,12 +658,18 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   openGuideDialog(displayName?: any): void {
     let self = this;
     if(self.isApproved) {
-      (<any>window).dataLayer.push({
-        'event': 'VirtualPageView',
-        'virtualPageURL': '/storesetup/complete',
-        'virtualPageTitle': 'StoreSetup - Complete'
+      let step = 'finished';
+      self.shopService.changeGuideStep({
+        step
+      }).then((data) => {
+        (<any>window).dataLayer.push({
+          'event': 'VirtualPageView',
+          'virtualPageURL': '/storesetup/complete',
+          'virtualPageTitle': 'StoreSetup - Complete'
+        });
+        self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
+        self.userService.addStore(data);
       });
-      self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
     } else {
       self.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
         let step = 'finished';

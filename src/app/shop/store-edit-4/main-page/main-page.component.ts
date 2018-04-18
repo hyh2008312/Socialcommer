@@ -528,10 +528,17 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   openGuideDialog(displayName?: any): void {
     let self = this;
     if(self.isApproved) {
-      (<any>window).dataLayer.push({
-        'event': 'VirtualPageView',
-        'virtualPageURL': '/storesetup/complete',
-        'virtualPageTitle': 'StoreSetup - Complete'
+      let step = 'finished';
+      self.shopService.changeGuideStep({
+        step
+      }).then((data) => {
+        (<any>window).dataLayer.push({
+          'event': 'VirtualPageView',
+          'virtualPageURL': '/storesetup/complete',
+          'virtualPageTitle': 'StoreSetup - Complete'
+        });
+        self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
+        self.userService.addStore(data);
       });
       self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
     } else {
