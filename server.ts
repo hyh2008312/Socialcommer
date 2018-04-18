@@ -91,7 +91,6 @@ app.use((req, res, next) => {
   }
 );
 
-app.use(prerender.set('host', 'www.socialcommer.com'));
 app.use(prerender.set('prerenderToken', 'jS8IJfvJkoa58o179GWb'));
 
 app.engine('html', ngExpressEngine({

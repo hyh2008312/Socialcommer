@@ -3426,7 +3426,10 @@ textarea.mat-input-element {
   overflow: hidden !important; }
   @media screen and (max-width: 599px) {
     .mat-dialog-container {
-      background-color: transparent; } }
+      background-color: transparent;
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      box-shadow: none !important; } }
 
 @media screen and (max-width: 599px) {
   .cdk-overlay-pane {
@@ -3464,6 +3467,8 @@ textarea.mat-input-element {
   height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden; }
+  .xb-cart__align-center {
+    text-align: center; }
   .xb-cart__width-100 {
     width: 100%; }
   .xb-cart__width-1 {
@@ -3613,6 +3618,7 @@ textarea.mat-input-element {
       -o-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); }
   .xb-cart__item-title {
+    color: #000;
     font-size: 14px;
     line-height: 24px;
     max-height: 72px;

@@ -22,7 +22,6 @@ export class ShopComponent implements OnInit {
   currency: string = 'USD';
   shareLink: string = '';
   description: string = 'Welcome to my store: ';
-  isFirstLogin: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -57,9 +56,9 @@ export class ShopComponent implements OnInit {
           self.shopService.setTemplateList(data);
         });
         self.shareLink = window.location.host + '/store/' + self.storeName;
-        if(!data.setStoreBonus && data.setStep == 'finished' && !self.isFirstLogin) {
+        if(!data.setStoreBonus && data.setStep == 'finished' && !window.isFirstLogin) {
           if(self.router.url != '/shop/guide') {
-            self.isFirstLogin = true;
+            window.isFirstLogin = true;
             self.openDialog();
           }
         }

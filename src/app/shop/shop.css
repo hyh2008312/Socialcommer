@@ -3463,6 +3463,42 @@ textarea.mat-input-element {
   display: none !important;
   color: #222; }
 
+@media screen and (max-width: 599px) {
+  .xb-shop__flex-preview-box {
+    max-width: 100% !important;
+    flex: 1 1 180px !important;
+    -webkit-flex: 1 1 180px !important;
+    min-width: 100%; } }
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .xb-shop__flex-preview-box {
+    max-width: 48% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 48%; } }
+@media screen and (min-width: 960px) and (max-width: 1179px) {
+  .xb-shop__flex-preview-box {
+    max-width: 32% !important;
+    flex: 1 1 270px !important;
+    -webkit-flex: 1 1 250px !important;
+    min-width: 32%; } }
+@media screen and (min-width: 1180px) and (max-width: 1439px) {
+  .xb-shop__flex-preview-box {
+    max-width: 32% !important;
+    flex: 1 1 330px !important;
+    -webkit-flex: 1 1 330px !important;
+    min-width: 32%; } }
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  .xb-shop__flex-preview-box {
+    max-width: 32% !important;
+    flex: 1 1 415px !important;
+    -webkit-flex: 1 1 415px !important;
+    min-width: 32%; } }
+@media screen and (min-width: 1920px) {
+  .xb-shop__flex-preview-box {
+    max-width: 30% !important;
+    flex: 1 1 450px !important;
+    -webkit-flex: 1 1 450px !important;
+    min-width: 30%; } }
 .xb-shop__logo {
   position: relative; }
   .xb-shop__logo-bg {
@@ -3544,10 +3580,12 @@ textarea.mat-input-element {
     padding-left: 8px;
     height: 56px;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer; }
     .xb-shop__left-navigation-buttons.active {
       color: #00bdd6; }
+  .xb-shop__left-navigation-text {
+    font-size: 12px; }
   .xb-shop__left-navigation-bg-1 {
     background-color: #051c1d;
     border-top: 1px solid rgba(255, 255, 255, 0.12); }
@@ -3555,7 +3593,7 @@ textarea.mat-input-element {
     padding-left: 8px;
     height: 56px;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
     .xb-shop__left-navigation-buttons-1.active .xb-shop__left-navigation-arrow-1 {

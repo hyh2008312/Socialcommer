@@ -1,21 +1,21 @@
 /*
 Error: Invalid GBK character "\xE5"
-        on line 1003 of store.scss
+        on line 1034 of store.scss
 
-998:     top: 0;
-999:     text-align: center;
-1000:   }
-1001: }
-1002: 
-1003: //导航 navigation
-1004: .xb-4-template-navigation {
-1005:   @include regular();
-1006:   text-align: center;
-1007:   font-size: 16px;
-1008:   font-family: Helvetica;
+1029:     top: 0;
+1030:     text-align: center;
+1031:   }
+1032: }
+1033: 
+1034: //导航 navigation
+1035: .xb-4-template-navigation {
+1036:   @include regular();
+1037:   text-align: center;
+1038:   font-size: 16px;
+1039:   font-family: Helvetica;
 
 Backtrace:
-store.scss:1003
+store.scss:1034
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/util.rb:1300:in `rescue in block in find_encoding_error'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/util.rb:1297:in `block in find_encoding_error'
 D:/Ruby/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/util.rb:1296:in `each'
@@ -42,4 +42,4 @@ D:/Ruby/Ruby23-x64/bin/scss:22:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid GBK character \"\xE5\"\A         on line 1003 of store.scss\A \A 998:     top: 0;\A 999:     text-align: center;\A 1000:   }\A 1001: }\A 1002: \A 1003: //导航 navigation\A 1004: .xb-4-template-navigation {\A 1005:   @include regular();\A 1006:   text-align: center;\A 1007:   font-size: 16px;\A 1008:   font-family: Helvetica;"; }
+  content: "Error: Invalid GBK character \"\xE5\"\A         on line 1034 of store.scss\A \A 1029:     top: 0;\A 1030:     text-align: center;\A 1031:   }\A 1032: }\A 1033: \A 1034: //导航 navigation\A 1035: .xb-4-template-navigation {\A 1036:   @include regular();\A 1037:   text-align: center;\A 1038:   font-size: 16px;\A 1039:   font-family: Helvetica;"; }
