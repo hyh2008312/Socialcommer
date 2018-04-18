@@ -23,7 +23,7 @@
       <div class="xb-guide__container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start"
            fxLayoutAlign.xs="start">
         <ng-container *ngFor="let item of productArr;let i = index;">
-          <div class="xb-guide__margin-top" fxFlex="46" fxFlex.xs="none" *ngIf="item.products.length > 0">
+          <div class="xb-guide__margin-top xb-guide__flex-preview-box-1" fxFlex="46" fxFlex.xs="none" *ngIf="item.products.length > 0">
             <div fxLayout="row" fxLayoutAlign="start center">
               <div class="xb-guide__text" fxFlex>{{item.name}}</div>
               <div class="xb-guide__button" *ngIf="item.type == 'product'" (click)="addToSell(item, i)">Add to Sell</div>
@@ -50,7 +50,7 @@
         up your storefront.</div>
       <div class="xb-guide__container xb-guide__margin-bottom">
         <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutAlign.xs="start stretch">
-        <div fxFlex="30" fxFlex.xs="100">
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
           <div class="xb-guide__text-2">Fashion Theme</div>
           <div class="xb-guide__template">
             <img src="https://media.socialcommer.com/source/web/template/template-mode-5.jpg">
@@ -64,7 +64,7 @@
             <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
           </div>
         </div>
-        <div fxFlex="30" fxFlex.xs="100">
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
           <div class="xb-guide__text-2">Kitchen Theme</div>
           <div class="xb-guide__template">
             <img src="https://media.socialcommer.com/source/web/template/template-mode-2.jpg">
@@ -78,7 +78,7 @@
             <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
           </div>
         </div>
-        <div fxFlex="30" fxFlex.xs="100">
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
           <div class="xb-guide__text-2">Electronics Theme</div>
           <div class="xb-guide__template">
             <img src="https://media.socialcommer.com/source/web/template/template-mode-3.jpg">
@@ -92,7 +92,7 @@
             <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
           </div>
         </div>
-        <div fxFlex="30" fxFlex.xs="100">
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
           <div class="xb-guide__text-2">Baby & Mom Theme</div>
           <div class="xb-guide__template" >
             <img src="https://media.socialcommer.com/source/web/template/template-mode-4.jpg">
@@ -106,7 +106,7 @@
             <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
           </div>
         </div>
-        <div fxFlex="30" fxFlex.xs="100">
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
           <div class="xb-guide__text-2">Beauty Theme</div>
           <div class="xb-guide__template">
             <img src="https://media.socialcommer.com/source/web/template/template-mode-1.jpg">
@@ -120,7 +120,7 @@
             <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
           </div>
         </div>
-        <div fxFlex="30" fxFlex.xs="100">
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
           <div class="xb-guide__text-2">Home Theme</div>
           <div class="xb-guide__template">
             <img src="https://media.socialcommer.com/source/web/template/template-mode-6.jpg">

@@ -7,7 +7,7 @@
   </div>
   <div class="xb-guide-dialog__scroll">
     <div class="xb-guide-dialog__inner-container" fxLayout="row wrap" fxLayoutAlign="start start">
-      <div *ngFor="let item of data.productList.addProducts" fxFlex="20" fxFlex.xs="50">
+      <div class="xb-guide__flex-preview-box-2" *ngFor="let item of data.productList.addProducts" fxFlex="20" fxFlex.xs="50">
         <app-shop-guide-product-dialog-item [product]="item"></app-shop-guide-product-dialog-item>
       </div>
     </div>

@@ -4,6 +4,111 @@
 
 .xb-guide {
 
+  &__flex-preview-box {
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      max-width: 48% !important;
+      flex: 1 1 200px !important;
+      -webkit-flex: 1 1 200px !important;
+      min-width: 48%;
+    }
+    @media screen and (min-width: 960px) and (max-width: 1179px) {
+      max-width: 32% !important;
+      flex: 1 1 270px !important;
+      -webkit-flex: 1 1 250px !important;
+      min-width: 32%;
+    }
+    @media screen and (min-width: 1180px) and (max-width: 1439px) {
+      max-width: 32% !important;
+      flex: 1 1 330px !important;
+      -webkit-flex: 1 1 330px !important;
+      min-width: 32%;
+    }
+    @media screen and (min-width: 1440px) and (max-width: 1919px) {
+      max-width: 32% !important;
+      flex: 1 1 415px !important;
+      -webkit-flex: 1 1 415px !important;
+      min-width: 32%;
+    }
+    @media screen and (min-width: 1920px) {
+      max-width: 30% !important;
+      flex: 1 1 450px !important;
+      -webkit-flex: 1 1 450px !important;
+      min-width: 30%;
+    }
+  }
+
+  &__flex-preview-box-1 {
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      max-width: 48% !important;
+      flex: 1 1 200px !important;
+      -webkit-flex: 1 1 200px !important;
+      min-width: 48%;
+    }
+    @media screen and (min-width: 960px) and (max-width: 1179px) {
+      max-width: 48% !important;
+      flex: 1 1 325px !important;
+      -webkit-flex: 1 1 325px !important;
+      min-width: 48%;
+    }
+    @media screen and (min-width: 1180px) and (max-width: 1439px) {
+      max-width: 48% !important;
+      flex: 1 1 325px !important;
+      -webkit-flex: 1 1 325px !important;
+      min-width: 48%;
+    }
+    @media screen and (min-width: 1440px) and (max-width: 1919px) {
+      max-width: 48% !important;
+      flex: 1 1 325px !important;
+      -webkit-flex: 1 1 325px !important;
+      min-width: 48%;
+    }
+    @media screen and (min-width: 1920px) {
+      max-width: 48% !important;
+      flex: 1 1 325px !important;
+      -webkit-flex: 1 1 325px !important;
+      min-width: 48%;
+    }
+  }
+
+  &__flex-preview-box-2 {
+    @media screen and (max-width: 599px) {
+      max-width: 50% !important;
+      flex: 1 1 100px !important;
+      -webkit-flex: 1 1 100px !important;
+      min-width: 50%;
+    }
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+      max-width: 20% !important;
+      flex: 1 1 120px !important;
+      -webkit-flex: 1 1 120px !important;
+      min-width: 20%;
+    }
+    @media screen and (min-width: 960px) and (max-width: 1179px) {
+      max-width: 20% !important;
+      flex: 1 1 120px !important;
+      -webkit-flex: 1 1 120px !important;
+      min-width: 20%;
+    }
+    @media screen and (min-width: 1180px) and (max-width: 1439px) {
+      max-width: 20% !important;
+      flex: 1 1 120px !important;
+      -webkit-flex: 1 1 120px !important;
+      min-width: 20%;
+    }
+    @media screen and (min-width: 1440px) and (max-width: 1919px) {
+      max-width: 20% !important;
+      flex: 1 1 120px !important;
+      -webkit-flex: 1 1 120px !important;
+      min-width: 20%;
+    }
+    @media screen and (min-width: 1920px) {
+      max-width: 20% !important;
+      flex: 1 1 120px !important;
+      -webkit-flex: 1 1 120px !important;
+      min-width: 20%;
+    }
+  }
+
   &__bg{
     position: absolute;
     left: 0;
