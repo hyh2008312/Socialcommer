@@ -126,10 +126,11 @@
     <!--产品列表-->
     <div class="xb-store-template__product-content ">
       <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between start">
-        <app-shop-item-card *ngFor="let item of product"
+        <app-shop-item-card class="preview-home-box"
+                            *ngFor="let item of product"
                             fxFlex.xs="48" fxFlex.gt-xs="30"
                             [product]="item" [status]="0"></app-shop-item-card>
-        <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
+        <div class="preview-home-box" fxFlex.xs="48" fxFlex.gt-xs="30"></div>
       </div>
       <div class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
            (click)="jumpProductList()" *ngIf=" nextPage && product.length > 0">

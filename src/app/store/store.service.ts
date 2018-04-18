@@ -258,7 +258,7 @@ export class StoreService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseUrl.url}store/first_share/${params.displayName}/`;
+    const url = `${this.baseUrl.url}store/first/share/${params.displayName}/`;
 
     return this.http.get(url, options)
       .toPromise()

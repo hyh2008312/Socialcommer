@@ -1,127 +1,183 @@
 <div class="xb-guide__bg">
-  <div class="container" *ngIf="step == 0">
-    <div class="xb-guide__title">Add Featured Products to Sell</div>
-    <div class="xb-guide__subtitle" fxHide.xs>Add at least 3 featured collections to your store and start making money quickly.
-      <br>P.S. You will earn <span class="xb-guide__subtitle-color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}}
-      cash reward</span> immediately once you complete the onboarding process!</div>
-    <div class="xb-guide__subtitle" fxHide.gt-xs>Add at least 3 featured collections to your store and start making money quickly. P.S. You will earn
-      <span class="xb-guide__subtitle-color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}}
-      cash reward</span> immediately once you complete the onboarding process!</div>
-    <div class="xb-guide__container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start"
-         fxLayoutAlign.xs="start">
-      <ng-container *ngFor="let item of productArr;let i = index;">
-        <div class="xb-guide__margin-top" fxFlex="46" fxFlex.xs="none" *ngIf="item.products.length > 0">
-          <div fxLayout="row" fxLayoutAlign="start center">
-            <div class="xb-guide__text" fxFlex>{{item.name}}</div>
-            <div class="xb-guide__button" *ngIf="item.type == 'product'" (click)="addToSell(item, i)">Add to Sell</div>
-            <div class="xb-guide__added" *ngIf="item.type == 'goods'">
-              <div class="xb-guide__button-added" >Added</div>
-              <div class="xb-guide__button" (click)="addToSell(item, i)">Remove</div>
+  <div *ngIf="approveStatus == 'Disapproved'">
+    <div class="xb-guide__scroll" >
+      <div class="xb-guide__scroll-inner" fxLayout="column">
+        <div class="background-bg-black" fxFlex="none">
+          <div class="container">
+            <app-navigation-header [status]="true" [source]="1"></app-navigation-header>
+          </div>
+        </div>
+        <div  fxFlex="noshrink" fxLayout="column" fxLayoutAlign="center center">
+          <div class="xb-guide__title">Welcome back to SocialCommer!</div>
+          <div class="xb-guide__container">
+            <div class="xb-guide__notice-text">
+              We're sorry to tell you that your account has been disapproved. To continue,
+              please sign up for a new account. Thanks!
             </div>
           </div>
-          <app-shop-guide-product-list [productList]="item" [index]="index" (productListChange)="productListChange($event)"
-                                       (click)="openGuideProducts(i, item.id)" ></app-shop-guide-product-list>
+          <div class="xb-guide__notice">
+            <img src="https://media.xberts.com/collector/source/web/pic/pic-waiting-01.png">
+          </div>
         </div>
-      </ng-container>
-    </div>
-    <div class="xb-guide__margin-top-1 xb-guide__margin-bottom">
-      <div *ngIf="selectErr" class="xb-input-error md-align-center">To continue, please at least select three categories.</div>
-      <div class="xb-guide__bottom-button" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button color="primary" (click)="nextStep()">Proceed to Next Step</button>
+        <app-bottom-footer></app-bottom-footer>
       </div>
     </div>
   </div>
-  <div class="container" *ngIf="step == 1">
-    <div class="xb-guide__title">Edit & Publish Your Store</div>
-    <div class="xb-guide__subtitle">You’re one step away from launching your store! Please select a template below to set
-      up your storefront.</div>
-    <div class="xb-guide__container xb-guide__margin-bottom">
-      <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutAlign.xs="start stretch">
-      <div fxFlex="30" fxFlex.xs="100">
-        <div class="xb-guide__text-2">Fashion Theme</div>
-        <div class="xb-guide__template">
-          <img src="https://media.socialcommer.com/source/web/template/template-mode-5.jpg">
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
-          <div class="xb-guide__button" routerLink="./edit/5">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/5">Preview</div>
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
-          <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
-        </div>
+  <div *ngIf="approveStatus != 'Disapproved'">
+    <div class="container" *ngIf="step == 0">
+      <div class="xb-guide__title">Add Featured Products to Sell</div>
+      <div class="xb-guide__subtitle" fxHide.xs>Add at least 3 featured collections to your store and start making money quickly.
+        <br>P.S. You will earn <span class="xb-guide__subtitle-color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}}
+        cash reward</span> immediately once you complete the onboarding process!</div>
+      <div class="xb-guide__subtitle" fxHide.gt-xs>Add at least 3 featured collections to your store and start making money quickly. P.S. You will earn
+        <span class="xb-guide__subtitle-color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}}
+        cash reward</span> immediately once you complete the onboarding process!</div>
+      <div class="xb-guide__container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start"
+           fxLayoutAlign.xs="start">
+        <ng-container *ngFor="let item of productArr;let i = index;">
+          <div class="xb-guide__margin-top xb-guide__flex-preview-box-1" fxFlex="46" fxFlex.xs="none" *ngIf="item.products.length > 0">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-guide__text" fxFlex>{{item.name}}</div>
+              <div class="xb-guide__button" *ngIf="item.type == 'product'" (click)="addToSell(item, i)">Add to Sell</div>
+              <div class="xb-guide__added" *ngIf="item.type == 'goods'">
+                <div class="xb-guide__button-added" >Added</div>
+                <div class="xb-guide__button" (click)="addToSell(item, i)">Remove</div>
+              </div>
+            </div>
+            <app-shop-guide-product-list [productList]="item" [index]="index" (productListChange)="productListChange($event)"
+                                         (click)="openGuideProducts(i, item.id)" ></app-shop-guide-product-list>
+          </div>
+        </ng-container>
       </div>
-      <div fxFlex="30" fxFlex.xs="100">
-        <div class="xb-guide__text-2">Kitchen Theme</div>
-        <div class="xb-guide__template">
-          <img src="https://media.socialcommer.com/source/web/template/template-mode-2.jpg">
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
-          <div class="xb-guide__button" routerLink="./edit/2">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/2">Preview</div>
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
-          <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
-        </div>
-      </div>
-      <div fxFlex="30" fxFlex.xs="100">
-        <div class="xb-guide__text-2">Electronics Theme</div>
-        <div class="xb-guide__template">
-          <img src="https://media.socialcommer.com/source/web/template/template-mode-3.jpg">
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
-          <div class="xb-guide__button" routerLink="./edit/3">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/3">Preview</div>
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
-          <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
-        </div>
-      </div>
-      <div fxFlex="30" fxFlex.xs="100">
-        <div class="xb-guide__text-2">Baby & Mom Theme</div>
-        <div class="xb-guide__template" >
-          <img src="https://media.socialcommer.com/source/web/template/template-mode-4.jpg">
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
-          <div class="xb-guide__button">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/4">Preview</div>
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
-          <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
-        </div>
-      </div>
-      <div fxFlex="30" fxFlex.xs="100">
-        <div class="xb-guide__text-2">Beauty Theme</div>
-        <div class="xb-guide__template">
-          <img src="https://media.socialcommer.com/source/web/template/template-mode-1.jpg">
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
-          <div class="xb-guide__button" routerLink="./edit/1">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/1">Preview</div>
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
-          <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
-        </div>
-      </div>
-      <div fxFlex="30" fxFlex.xs="100">
-        <div class="xb-guide__text-2">Home Theme</div>
-        <div class="xb-guide__template">
-          <img src="https://media.socialcommer.com/source/web/template/template-mode-6.jpg">
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
-          <div class="xb-guide__button" routerLink="./edit/6">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/6">Preview</div>
-        </div>
-        <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
-          <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
-          <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
+      <div class="xb-guide__margin-top-1 xb-guide__margin-bottom">
+        <div *ngIf="selectErr" class="xb-input-error md-align-center">To continue, please at least select three categories.</div>
+        <div class="xb-guide__bottom-button" fxLayout="row" fxLayoutAlign="center center">
+          <button mat-raised-button color="primary" (click)="nextStep()">Proceed to Next Step</button>
         </div>
       </div>
     </div>
+    <div class="container" *ngIf="step == 1">
+      <div class="xb-guide__title">Edit & Publish Your Store</div>
+      <div class="xb-guide__subtitle" fxHide.xs>You’re one step away from launching your store! Please select a template below to set
+        up your storefront. <br>P.S. You will earn <span class="xb-guide__subtitle-color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}}
+        cash reward</span> immediately once you complete the onboarding process!</div>
+      <div class="xb-guide__subtitle" fxHide.gt-xs>You’re one step away from launching your store! Please select a template below to set
+        up your storefront. P.S. You will earn <span class="xb-guide__subtitle-color">{{currency == 'USD'? (5|currency: currency): (100|currency: currency)}}
+        cash reward</span> immediately once you complete the onboarding process!</div>
+      <div class="xb-guide__container xb-guide__margin-bottom">
+        <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutAlign.xs="start stretch">
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
+          <div class="xb-guide__text-2">Fashion Theme</div>
+          <div class="xb-guide__template">
+            <img src="https://media.socialcommer.com/source/web/template/template-mode-5.jpg">
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
+            <div class="xb-guide__button" routerLink="./edit/5">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/5">Preview</div>
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+            <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
+          </div>
+        </div>
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
+          <div class="xb-guide__text-2">Kitchen Theme</div>
+          <div class="xb-guide__template">
+            <img src="https://media.socialcommer.com/source/web/template/template-mode-2.jpg">
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
+            <div class="xb-guide__button" routerLink="./edit/2">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/2">Preview</div>
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+            <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
+          </div>
+        </div>
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
+          <div class="xb-guide__text-2">Electronics Theme</div>
+          <div class="xb-guide__template">
+            <img src="https://media.socialcommer.com/source/web/template/template-mode-3.jpg">
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
+            <div class="xb-guide__button" routerLink="./edit/3">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/3">Preview</div>
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+            <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
+          </div>
+        </div>
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
+          <div class="xb-guide__text-2">Baby & Mom Theme</div>
+          <div class="xb-guide__template" >
+            <img src="https://media.socialcommer.com/source/web/template/template-mode-4.jpg">
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
+            <div class="xb-guide__button">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/4">Preview</div>
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+            <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
+          </div>
+        </div>
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
+          <div class="xb-guide__text-2" routerLink="./edit/4">Beauty Theme</div>
+          <div class="xb-guide__template">
+            <img src="https://media.socialcommer.com/source/web/template/template-mode-1.jpg">
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
+            <div class="xb-guide__button" routerLink="./edit/1">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/1">Preview</div>
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+            <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
+          </div>
+        </div>
+        <div class="xb-guide__flex-preview-box" fxFlex="30" fxFlex.xs="100">
+          <div class="xb-guide__text-2">Home Theme</div>
+          <div class="xb-guide__template">
+            <img src="https://media.socialcommer.com/source/web/template/template-mode-6.jpg">
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
+            <div class="xb-guide__button" routerLink="./edit/6">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" routerLink="./preview/6">Preview</div>
+          </div>
+          <div class="xb-guide__margin-top-3" fxLayout="row" fxLayoutAlign="center center" fxHide.gt-xs>
+            <div class="xb-guide__button" (click)="openTipsDialog()">Select</div>
+            <div class="xb-guide__button-1 xb-guide__margin-left" (click)="openTipsDialog()">Preview</div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div *ngIf="step == 2">
+      <div *ngIf="approveStatus == 'Pending' || approveStatus == 'Skip'">
+        <div class="xb-guide__scroll" >
+          <div class="xb-guide__scroll-inner" fxLayout="column">
+            <div class="background-bg-black" fxFlex="none">
+              <div class="container">
+                <app-navigation-header [status]="true" [source]="1"></app-navigation-header>
+              </div>
+            </div>
+            <div  fxFlex="noshrink" fxLayout="column" fxLayoutAlign="center center">
+              <div class="xb-guide__title">Well done! Your store has been set up successfully and submitted for approval. </div>
+              <div class="xb-guide__container">
+                <div class="xb-guide__notice-text">
+                  We will review it and get back to you in 1-2 business days. Once your store is approved, your account will receive
+                  {{currency == 'USD'? (5|currency: currency): (100|currency: currency)}} newbie cash reward immediately. Please be patient and stay tuned!
+                </div>
+              </div>
+              <div class="xb-guide__notice">
+                <img src="https://media.xberts.com/collector/source/web/pic/pic-waiting-01.png">
+              </div>
+            </div>
+            <app-bottom-footer></app-bottom-footer>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

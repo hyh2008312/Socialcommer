@@ -8,7 +8,7 @@ import { UserService } from  '../../../shared/services/user/user.service';
   styleUrls: ['../_account-report.scss']
 })
 
-export class ReportItemComponent implements OnInit {
+export class ReportItemComponent implements OnInit, OnDestroy {
 
   @Input() status: number = 0;
   @Input() product: any;
@@ -30,8 +30,10 @@ export class ReportItemComponent implements OnInit {
     });
   }
 
-  ngOnDetroy() {
-    this.sub.unsubscribe();
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   ngOnInit(): void {

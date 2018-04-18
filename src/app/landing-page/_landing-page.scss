@@ -1,11 +1,89 @@
 @import "../styles/utils/_index";
 @import "../styles/_variables";
 
-.xb-landing-page{
+.xb-landing-page {
   font-family: Roboto;
   width: 100vw;
 
-  &__inner{
+  &__flex-box-1 {
+
+    @include xb-xs-screen {
+      max-width: 50% !important;
+      flex: 1 1 200px !important;
+      -webkit-flex: 1 1 200px !important;
+      min-width: 50%;
+    }
+    @include xb-sm-screen {
+      max-width: 25% !important;
+      flex: 1 1 163px !important;
+      -webkit-flex: 1 1 163px !important;
+      min-width: 25%;
+    }
+    @include xb-md-screen {
+      max-width: 25% !important;
+      flex: 1 1 185px !important;
+      -webkit-flex: 1 1 185px !important;
+      min-width: 25%;
+    }
+    @include xb-lg-screen {
+      max-width: 25% !important;
+      flex: 1 1 300px !important;
+      -webkit-flex: 1 1 300px !important;
+      min-width: 25%;
+    }
+  }
+
+  &__flex-box-2 {
+    @include xb-xs-screen {
+      max-width: 50% !important;
+      flex: 1 1 200px !important;
+      -webkit-flex: 1 1 200px !important;
+      min-width: 50%;
+    }
+    @include xb-sm-screen {
+      max-width: 25% !important;
+      flex: 1 1 180px !important;
+      -webkit-flex: 1 1 180px !important;
+      min-width: 25%;
+    }
+    @include xb-md-screen {
+      max-width: 25% !important;
+      flex: 1 1 185px !important;
+      -webkit-flex: 1 1 185px !important;
+      min-width: 25%;
+    }
+    @include xb-lg-screen {
+      max-width: 25% !important;
+      flex: 1 1 240px !important;
+      -webkit-flex: 1 1 240px !important;
+      min-width: 25%;
+    }
+  }
+
+  &__flex-box-3 {
+    @include xb-sm-screen {
+      max-width: 48% !important;
+      flex: 1 1 290px !important;
+      -webkit-flex: 1 1 290px !important;
+      min-width: 48%;
+    }
+    @include xb-md-screen {
+      max-width: 24% !important;
+      flex: 1 1 193px !important;
+      -webkit-flex: 1 1 193px !important;
+      min-width: 24%;
+    }
+    @include xb-lg-screen {
+      max-width: 24% !important;
+      flex: 1 1 250px !important;
+      -webkit-flex: 1 1 250px !important;
+      min-width: 24%;
+    }
+  }
+
+
+
+  &__inner {
     overflow-x: hidden;
     overflow-y: scroll;
     height: 100vh;
@@ -13,82 +91,82 @@
     position: relative;
   }
 
-  &__banner{
+  &__banner {
     height: 720px;
     background-image: url("https://media.socialcommer.com/source/web/pic/banner-1.jpg");
     background-position: center;
     background-size: auto 720px;
     background-repeat: repeat;
 
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       height: auto;
       padding-bottom: 56px;
       background-size: auto 100%;
     }
 
-    @include xb-sm-screen{
+    @include xb-sm-screen {
       height: 480px;
       background-size: auto 100%;
     }
 
-    &-1{
+    &-1 {
       height: 600px;
       background-image: url("https://media.socialcommer.com/source/web/pic/3.jpg");
       background-position: center;
       background-size: auto 100%;
       background-repeat: repeat;
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         height: auto;
         padding-bottom: 64px;
         background-size: auto 100%;
       }
 
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         height: 400px;
         background-size: auto 100%;
       }
     }
 
-    &-title{
+    &-title {
       font-size: 60px;
       line-height: 80px;
       color: $whiteColor;
       margin-top: 110px;
       @include light();
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         font-size: 32px;
         line-height: 48px;
         margin-top: 56px;
       }
 
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         font-size: 32px;
         line-height: 48px;
         margin-top: 48px;
       }
     }
-    &-subtitle{
+    &-subtitle {
       margin-top: 48px;
       font-size: 24px;
       line-height: 36px;
       color: $whiteColor;
       @include light();
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         margin-top: 24px;
         font-size: 14px;
         line-height: 24px;
       }
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 48px;
         font-size: 18px;
         line-height: 32px;
       }
     }
 
-    &-title-2{
+    &-title-2 {
       font-size: 38px;
       line-height: 64px;
       color: $whiteColor;
@@ -96,7 +174,7 @@
       @include light();
       text-align: center;
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         font-size: 24px;
         line-height: 48px;
         margin-top: 64px;
@@ -104,26 +182,26 @@
         padding: 0 16px;
       }
 
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         font-size: 32px;
         line-height: 48px;
         margin-top: 64px;
       }
     }
 
-    &-subtitle-1{
+    &-subtitle-1 {
       margin-top: 40px;
       font-size: 24px;
       line-height: 36px;
       color: $whiteColor;
       @include light();
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         margin-top: 24px;
         font-size: 16px;
         line-height: 24px;
       }
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 24px;
         font-size: 14px;
         line-height: 24px;
@@ -132,8 +210,7 @@
       }
     }
 
-
-    &-button{
+    &-button {
       margin-top: 88px;
       color: $whiteColor;
       background: linear-gradient(90deg, #572487 0, #1199ab 100%);
@@ -143,18 +220,18 @@
       text-align: center;
       padding: 0 32px;
       display: block;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 32px;
         line-height: 40px;
         font-size: 14px;
         border-radius: 20px;
       }
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         margin-top: 48px;
       }
     }
 
-    &-button-1{
+    &-button-1 {
       margin-top: 54px;
       color: $whiteColor;
       background: linear-gradient(90deg, #572487 0, #1199ab 100%);
@@ -164,12 +241,12 @@
       text-align: center;
       padding: 0 32px;
       display: block;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         margin-top: 24px;
       }
     }
 
-    &-title-1{
+    &-title-1 {
       height: 120px;
       color: $whiteColor;
       background-color: #231d1a;
@@ -182,20 +259,20 @@
 
       @include media();
 
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         font-size: 24px;
         line-height: 32px;
         height: 120px;
       }
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         font-size: 16px;
         line-height: 24px;
         height: 88px;
       }
     }
 
-    &-tri{
+    &-tri {
       position: absolute;
       top: 100%;
       left: 50%;
@@ -206,7 +283,7 @@
       border-right: 25px solid transparent;
       border-top: 16px solid #231d1a;
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         border-left: 15px solid transparent;
         border-right: 15px solid transparent;
         border-top: 8px solid #231d1a;
@@ -214,82 +291,82 @@
     }
   }
 
-  &__navigation{
+  &__navigation {
 
-    &-bg{
+    &-bg {
       background-color: $blackColor;
     }
   }
 
-  &__content{
+  &__content {
     margin-top: 120px;
     padding: 0 16px;
-    @include xb-sm-screen{
+    @include xb-sm-screen {
       margin-top: 60px;
       padding: 0 8px;
     }
 
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       margin-top: 40px;
       padding: 0 4px;
     }
 
-    &-bg{
+    &-bg {
       background-color: #17120f;
       height: 480px;
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         height: 360px;
       }
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         height: auto;
         padding-bottom: 40px;
       }
     }
-    &-title{
+    &-title {
       font-size: 34px;
       margin-bottom: 32px;
       color: $whiteColor;
       display: none;
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         font-size: 24px;
       }
     }
-    i{
+    i {
       font-size: 54px;
       line-height: 54px;
       display: block;
       color: $primaryColor;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         font-size: 32px;
         line-height: 32px;
       }
     }
-    &-title-1{
+    &-title-1 {
       font-size: 34px;
       line-height: 42px;
       color: $whiteColor;
       margin-top: 40px;
       @include light();
       text-align: center;
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         font-size: 24px;
         line-height: 32px;
       }
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         font-size: 20px;
         line-height: 32px;
         margin-top: 16px;
         min-height: 64px;
       }
     }
-    &-title-2{
+    &-title-2 {
       font-size: 16px;
       @include light();
-      color: rgba(255,255,255,.54);
+      color: rgba(255, 255, 255, .54);
       line-height: 24px;
       margin-top: 24px;
       text-align: center;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         font-size: 14px;
         line-height: 20px;
         margin-top: 12px;
@@ -297,38 +374,38 @@
     }
   }
 
-  &__title{
+  &__title {
     margin-top: 96px;
     font-size: 48px;
     @include media();
     text-align: center;
     color: $whiteColor;
 
-    @include xb-sm-screen{
+    @include xb-sm-screen {
       margin-top: 48px;
       font-size: 32px;
     }
 
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       margin-top: 40px;
       font-size: 24px;
       line-height: 24px;
     }
   }
 
-  &__content-1{
+  &__content-1 {
     margin-top: 96px;
     padding: 0 16px;
-    @include xb-sm-screen{
+    @include xb-sm-screen {
       margin-top: 48px;
       padding: 0 8px;
     }
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       margin-top: 40px;
       padding: 0 4px;
     }
 
-    &-bg{
+    &-bg {
       overflow: hidden;
       height: 700px;
       background-image: url("https://media.socialcommer.com/source/web/pic/2.jpg");
@@ -337,16 +414,16 @@
       background-repeat: repeat;
       background-attachment: fixed !important;
 
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         height: 480px;
       }
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         height: auto;
         padding-bottom: 40px;
       }
     }
-    &-title{
+    &-title {
       margin-top: 16px;
       font-size: 26px;
       line-height: 32px;
@@ -356,16 +433,16 @@
       display: block;
       text-align: center;
       @include light();
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         font-size: 24px;
       }
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         font-size: 20px;
         margin-top: 16px;
         margin-bottom: 12px;
       }
     }
-    i{
+    i {
       width: 108px;
       font-size: 40px;
       line-height: 108px;
@@ -373,99 +450,99 @@
       display: block;
       color: $whiteColor;
       border-radius: 50%;
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         width: 80px;
         line-height: 80px;
         font-size: 32px;
       }
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         width: 56px;
         font-size: 18px;
         line-height: 56px;
       }
     }
 
-    &-icon-1{
+    &-icon-1 {
       background: linear-gradient(45deg, #572487 0, #1199ab 100%);
     }
-    &-icon-2{
+    &-icon-2 {
       background: linear-gradient(135deg, #572487 0, #1199ab 100%);
     }
-    &-icon-3{
+    &-icon-3 {
       background: linear-gradient(180deg, #572487 0, #1199ab 100%);
     }
 
-    &-title-1{
+    &-title-1 {
       font-size: 16px;
       @include light();
-      color: rgba(255,255,255,.87);
+      color: rgba(255, 255, 255, .87);
       line-height: 24px;
       text-align: center;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         font-size: 14px;
         line-height: 20px;
       }
     }
   }
 
-  &__list{
+  &__list {
     padding: 32px 28px;
     background-color: #231d1a;
     height: 292px;
     margin-bottom: 20px;
-    @include xb-sm-screen{
+    @include xb-sm-screen {
       height: 240px;
       margin-bottom: 16px;
     }
-    @include xb-xs-screen{
+    @include xb-xs-screen {
       height: auto;
       margin-bottom: 16px;
     }
 
-    @media screen and (min-width: 960px) and (max-width: 1100px){
+    @media screen and (min-width: 960px) and (max-width: 1100px) {
       height: 360px;
       margin-bottom: 16px;
     }
 
-    &-bg{
+    &-bg {
       padding: 64px 0 44px;
       background-color: #17120f;
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         padding: 16px 16px 0;
       }
     }
-    i{
+    i {
       color: $primaryColor;
       font-size: 32px;
       line-height: 32px;
     }
 
-    &-title{
+    &-title {
       margin-top: 16px;
       font-size: 22px;
       line-height: 32px;
       min-height: 64px;
       @include light();
       color: $whiteColor;
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         font-size: 24px;
       }
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         min-height: 0;
         font-size: 20px;
       }
     }
 
-    &-title-1{
+    &-title-1 {
       margin-top: 16px;
       font-size: 16px;
       line-height: 24px;
       @include light();
-      color: rgba(255,255,255,.54);
+      color: rgba(255, 255, 255, .54);
 
-      @include xb-xs-screen{
+      @include xb-xs-screen {
         font-size: 14px;
       }
     }

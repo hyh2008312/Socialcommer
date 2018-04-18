@@ -18,6 +18,8 @@ export class GuideMainComponent implements OnInit {
   loading: boolean = false;
   sub: any;
   sub1: any;
+  sub2: any;
+  approveStatus: any;
   step: number = 0;
 
   currency: string = 'USD';
@@ -25,7 +27,6 @@ export class GuideMainComponent implements OnInit {
   selectErr: boolean = false;
 
   productArr: any = [];
-
   constructor(
     private guideService: GuideService,
     private userService: UserService,
@@ -45,16 +46,40 @@ export class GuideMainComponent implements OnInit {
 
     this.sub1 = this.userService.store.subscribe((data) => {
       if(data) {
-        this.currency = this.currency.toUpperCase();
+        this.currency = data.currency.toUpperCase();
         switch(data.setStep) {
           case 'first':
             this.step = 0;
             this.productList();
+            (<any>window).dataLayer.push({
+              'event': 'VirtualPageView',
+              'virtualPageURL': '/storesetup/pickcategories',
+              'virtualPageTitle': 'StoreSetup - PickCategories'
+            });
             break;
           case 'second':
             this.step = 1;
+            (<any>window).dataLayer.push({
+              'event': 'VirtualPageView',
+              'virtualPageURL': '/storesetup/templates',
+              'virtualPageTitle': 'StoreSetup - Templates'
+            });
+            break;
+          case 'finished':
+            this.step = 2;
+            (<any>window).dataLayer.push({
+              'event': 'VirtualPageView',
+              'virtualPageURL': '/storesetup/complete',
+              'virtualPageTitle': 'StoreSetup - Complete'
+            });
             break;
         }
+      }
+    });
+
+    this.sub2 = this.userService.currentUser.subscribe((data) => {
+      if(data) {
+        this.approveStatus = data.status;
       }
     });
   }
@@ -138,6 +163,9 @@ export class GuideMainComponent implements OnInit {
     }
     if(this.sub1) {
       this.sub1.unsubscribe();
+    }
+    if(this.sub2) {
+      this.sub2.unsubscribe();
     }
   }
 

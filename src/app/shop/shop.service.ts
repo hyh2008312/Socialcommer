@@ -435,6 +435,23 @@ export class ShopService {
       .catch((error) => {this.handleError(error, this)});
   }
 
+  getFirstStoreLogin(): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/first/store/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
+  }
+
   checkIsAuth(response) {
     if(response.status == 401) {
       return Promise.reject(401);

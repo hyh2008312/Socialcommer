@@ -1,4 +1,4 @@
-import {Input, Output, Component, OnInit, OnChanges, EventEmitter} from '@angular/core';
+import {Input, Output, Component, OnInit, OnChanges, EventEmitter, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 
@@ -9,6 +9,7 @@ import {ChangeShippingAddressDialogComponent} from '../change-shipping-address-d
 import {CancelItemDialogComponent} from '../cancel-item-dialog/cancel-item-dialog.component';
 import {TrackingInformationDialogComponent} from '../tracking-information-dialog/tracking-information-dialog.component';
 import {ReturnRequestDialogComponent} from '../return-request-dialog/return-request-dialog.component';
+import {StoreService} from '../../store.service';
 
 @Component({
   selector: 'app-order-detail-item',
@@ -16,7 +17,7 @@ import {ReturnRequestDialogComponent} from '../return-request-dialog/return-requ
   styleUrls: ['../_order-tracking.scss']
 })
 
-export class OrderDetailItemComponent implements OnInit {
+export class OrderDetailItemComponent implements OnInit, OnDestroy {
 
   @Input() status: number = 0;
   @Input() order: any;
@@ -25,18 +26,31 @@ export class OrderDetailItemComponent implements OnInit {
   @Input() index: number = 0;
   @Output() productChange = new EventEmitter<any>();
 
+  productLink: any = '';
+  sub: any;
+
   currency: string = 'USD';
 
   totalAmount: number = 0;
 
   netPaymentAmount: number = 0;
 
-  constructor(private orderTrackingService: OrderTrackingService,
-              private router: Router,
-              private  activatedRoute: ActivatedRoute,
-              private dialog: MatDialog,
-              overlayContainer: OverlayContainer) {
+  constructor(
+    private orderTrackingService: OrderTrackingService,
+    private router: Router,
+    private  activatedRoute: ActivatedRoute,
+    private dialog: MatDialog,
+    overlayContainer: OverlayContainer,
+    private storeService: StoreService
+  ) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
+    this.sub = this.storeService.store.subscribe((data) => {
+      if(data) {
+        this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' +
+          (data.template && data.template.templateId?data.template.templateId:5)
+          + '/detail/';
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -53,6 +67,7 @@ export class OrderDetailItemComponent implements OnInit {
         }
       }
       this.currency = this.order.currency.toUpperCase();
+      this.productLink = this.productLink + this.order.goodsId;
     }
   }
 
@@ -146,4 +161,9 @@ export class OrderDetailItemComponent implements OnInit {
     })
   }
 
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 }

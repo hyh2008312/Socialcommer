@@ -67,6 +67,16 @@ export class LeftSideNavigationComponent implements OnInit {
     isActive: false
   }, {
     id: 4,
+    icon: 'icon-pic-list1',
+    text: 'Orders',
+    subContent: [{
+      text: '',
+      router: ''
+    }],
+    router:  './orders',
+    isActive: false
+  }, {
+    id: 5,
     icon: 'icon-pic-earning',
     text: 'Payment',
     subContent: [{
@@ -76,7 +86,7 @@ export class LeftSideNavigationComponent implements OnInit {
     router: './account',
     isActive: false
   }, {
-    id: 5,
+    id: 6,
     icon: 'icon-pic-report',
     text: 'Reports',
     subContent: [{
@@ -86,7 +96,7 @@ export class LeftSideNavigationComponent implements OnInit {
     router:  './report',
     isActive: false
   }, {
-    id: 6,
+    id: 7,
     icon: 'icon-pic-template',
     text: 'Templates',
     subContent: [{

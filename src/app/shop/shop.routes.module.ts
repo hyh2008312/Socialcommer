@@ -94,6 +94,9 @@ const routes: Routes = [
       },{
         path: 'report',
         loadChildren: './report/report.module#ReportModule'
+      },{
+        path: 'orders',
+        loadChildren: './orders/orders.module#OrdersModule'
       }, {
         path: 'reward',
         loadChildren: './reward/reward.module#RewardModule'

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
+
+
+import {AuthenticationService} from '../../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-navigation-header',
@@ -10,9 +13,11 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class NavigationHeaderComponent implements OnInit {
 
   @Input() status: boolean = false;
+  @Input() source: any = false;
 
   constructor(
-    private dialog: MatDialog
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
 
   }
@@ -25,6 +30,11 @@ export class NavigationHeaderComponent implements OnInit {
 
   openPop() {
     this.isPopOpen = !this.isPopOpen;
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/account/login']);
   }
 
 

@@ -64,6 +64,8 @@ export class StoreEditComponent implements OnInit {
   isPromotion: boolean = false;
   //是否为新手引导
   isGuide: boolean = false;
+  isApproved: boolean = false;
+  sub: any;
 
   constructor(private userService: UserService,
               private fb: FormBuilder,
@@ -158,6 +160,12 @@ export class StoreEditComponent implements OnInit {
             }
           }
         })
+      }
+    });
+
+    self.sub = self.userService.currentUser.subscribe((data) => {
+      if(data) {
+        self.isApproved = data.isInvite;
       }
     });
 
@@ -329,7 +337,6 @@ export class StoreEditComponent implements OnInit {
         });
         if (self.isGuide) {
           self.openGuideDialog(`${self.store.displayName}`);
-          self.router.navigate(['/shop/listings/items']);
         } else {
           self.openDialog(`${self.store.displayName}`);
           self.router.navigate(['/shop/dashboard']);
@@ -366,7 +373,6 @@ export class StoreEditComponent implements OnInit {
         });
         if (self.isGuide) {
           self.openGuideDialog(`${self.store.displayName}`);
-          self.router.navigate(['/shop/listings/items']);
         } else {
           self.openDialog(`${self.store.displayName}`);
           self.router.navigate(['/shop/dashboard']);
@@ -464,16 +470,31 @@ export class StoreEditComponent implements OnInit {
   }
 
   openGuideDialog(displayName?: any): void {
-    let dialogRef = this.dialog.open(StoreGuideBonusDialogComponent, {
-      disableClose: true,
-      data: {
-        shareLink: 'http://' + this.shareLink + displayName,
-        text: this.store.description
-      }
-    });
+    let self = this;
+    if(self.isApproved) {
+      let step = 'finished';
+      self.shopService.changeGuideStep({
+        step
+      }).then((data) => {
+        (<any>window).dataLayer.push({
+          'event': 'VirtualPageView',
+          'virtualPageURL': '/storesetup/complete',
+          'virtualPageTitle': 'StoreSetup - Complete'
+        });
+        self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
+        self.userService.addStore(data);
+      });
+    } else {
+      self.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
+        let step = 'finished';
+        self.shopService.changeGuideStep({
+          step
+        }).then((data) => {
+          self.userService.addStore(data);
+        });
+      });
+    }
 
-    dialogRef.afterClosed().subscribe(result => {
-    });
   }
 
   // 跳转到商品详情页
@@ -553,6 +574,12 @@ export class StoreEditComponent implements OnInit {
       this.queryFlashSale(false);
     } else {
       this.queryProduct(false);
+    }
+  }
+
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
     }
   }
 }

@@ -7,32 +7,32 @@
       </div>
       <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between center"
            fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-1 xb-shop__flex-box" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-earning" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.totalEarning ? (storeStatistic.totalEarning | exchangeCurrency:currency|currency:currency) : 0}}</div>
           <div>Total Earning</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-2 xb-shop__flex-box" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-cart1" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.totalOrders ? storeStatistic.totalOrders : 0}}</div>
           <div>Total Orders</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-3 xb-shop__flex-box" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-sales" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.totalSales ? (storeStatistic.totalSales | exchangeCurrency:currency|currency:currency) : 0}}</div>
           <div class="">Total Sales</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-4 xb-shop__flex-box" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-view1" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.viewTotal ? storeStatistic.viewTotal: 0}}</div>
           <div>Total Pageviews</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-5" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-5 xb-shop__flex-box" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-group" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.visitorTotal ? storeStatistic.visitorTotal: 0}}</div>
           <div>Total Visitors</div>
         </div>
-        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-6" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
+        <div class="xb-shop__dashboard-card xb-shop__dashboard-color-6 xb-shop__flex-box" fxFlex.gt-sm="32" fxFlex.sm="48" fxFlex.xs="100">
           <i class="iconfontXberts icon-pic-rate" ></i>
           <div class="xb-shop__dashboard-number">{{storeStatistic.conversionRate ? storeStatistic.conversionRate + '%': 0.00 + '%'}}</div>
           <div>Conversion Rate</div>
@@ -78,7 +78,7 @@
            *ngIf="productStatistic && productStatistic.length <= 0">
         <div fxLayout="column" fxLayoutAlign="center center">
           <img src="https://media.socialcommer.com/source/web/pic/pic-no-data.png">
-          <span class="md-dark-secondary">Your store doesn't have any products yet.</span>
+          <span class="md-dark-secondary">Your store hasn’t generated any sales yet. </span>
           <div class="md-margin-top-3">
             <button mat-raised-button color="primary" routerLink="/shop/listings/items">Add Your First Product</button>
           </div>

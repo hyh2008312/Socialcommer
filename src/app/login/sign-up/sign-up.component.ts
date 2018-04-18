@@ -273,8 +273,13 @@ export class SignUpComponent {
         self.step = 1;
         (<any>window).dataLayer.push({
           'event': 'VirtualPageView',
-          'virtualPageURL': '/signup/store-setup',
-          'virtualPageTitle': 'Signup - Store Setup'
+          'virtualPageURL': '/signup/complete',
+          'virtualPageTitle': 'Signup - Complete'
+        });
+        (<any>window).dataLayer.push({
+          'event': 'VirtualPageView',
+          'virtualPageURL': '/storesetup/url',
+          'virtualPageTitle': 'StoreSetup - URL'
         });
       });
     }).catch((data) => {
@@ -449,11 +454,7 @@ export class SignUpComponent {
       self.userService.getUser().then((data) => {
         self.userService.addUser(data);
         self.userService.addStore(data.store[0]);
-        if(data.store[0].setStep == 'finished') {
-          self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
-        } else {
-          self.router.navigate(['/shop/guide'], {replaceUrl: true});
-        }
+        self.router.navigate(['/shop/guide'], {replaceUrl: true});
       });
     }).catch((data) => {
       self.storeErr = data;

@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="xb-shop__card-title xb-pointer" (click)="jumpLink()">{{product.title}}</div>
-      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center" *ngIf="currency != 'INR'">
+      <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
         <div class="xb-shop__card-price">{{salePrice | exchangeCurrency:currency | currency: currency}}
         </div>
         <div class="xb-shop__card-original-price line-through md-margin-left-1" *ngIf="product.unitPrice> 0">
@@ -28,20 +28,6 @@
         </div>
         <div class="xb-shop__card-sale md-margin-left-1" *ngIf="product.unitPrice > 0">
           {{salePrice|saleDiscount:product.unitPrice}} OFF
-        </div>
-      </div>
-      <div class="md-margin-top-1" *ngIf="currency == 'INR'">
-        <div fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-shop__card-price">{{salePrice | exchangeCurrency:currency | currency: currency}}
-          </div>
-          <div class="xb-shop__card-original-price line-through md-margin-left-1" *ngIf="product.unitPrice> 0">
-            {{product.unitPrice | exchangeCurrency:currency |currency: currency }}
-          </div>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-shop__card-sale md-margin-top-1" *ngIf="product.unitPrice > 0">
-            {{salePrice|saleDiscount:product.unitPrice}} OFF
-          </div>
         </div>
       </div>
       <div *ngIf="isPromotionOnGoing && isShowPromotionFlag">

@@ -7,7 +7,6 @@ import {ShopService} from '../../shop.service';
 import {MatDialog} from '@angular/material';
 import {Store} from '../../shop';
 import {StoreShareDialogComponent} from '../../store-share-dialog/store-share-dialog.component';
-import {StoreGuideBonusDialogComponent} from "../../store-guide-bonus-dialog/store-guide-bonus-dialog.component";
 
 @Component({
   selector: 'app-store-template-edit-2',
@@ -85,7 +84,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   isHavePromotion: boolean = false;
   //是否为新手引导
   isGuide: boolean = false;
-
+  isApproved: boolean = false;
+  sub: any;
 
   editImage() {
     this.imageEdited = !this.imageEdited;
@@ -158,6 +158,12 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     });
 
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
+
+    self.sub = self.userService.currentUser.subscribe((data) => {
+      if(data) {
+        self.isApproved = data.isInvite;
+      }
+    });
   }
 
   /**
@@ -394,10 +400,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnDestroy() {
-
-  }
-
   openNavigationDialog(event?: any) {
     if (event) {
       this.changeViewIndex(event);
@@ -461,7 +463,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         });
         if (self.isGuide) {
           self.openGuideDialog(`${self.store.displayName}`);
-          self.router.navigate(['/shop/listings/items']);
         } else {
           self.openDialog(`${self.store.displayName}`);
           self.router.navigate(['/shop/dashboard']);
@@ -504,7 +505,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         });
         if (self.isGuide) {
           self.openGuideDialog(`${self.store.displayName}`);
-          self.router.navigate(['/shop/listings/items']);
         } else {
           self.openDialog(`${self.store.displayName}`);
           self.router.navigate(['/shop/dashboard']);
@@ -526,16 +526,31 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     });
   }
   openGuideDialog(displayName?: any): void {
-    let dialogRef = this.dialog.open(StoreGuideBonusDialogComponent, {
-      disableClose: true,
-      data: {
-        shareLink: 'http://' + this.shareLink + displayName,
-        text: this.store.description
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
+    let self = this;
+    if(self.isApproved) {
+      let step = 'finished';
+      self.shopService.changeGuideStep({
+        step
+      }).then((data) => {
+        (<any>window).dataLayer.push({
+          'event': 'VirtualPageView',
+          'virtualPageURL': '/storesetup/complete',
+          'virtualPageTitle': 'StoreSetup - Complete'
+        });
+        self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
+        self.userService.addStore(data);
+      });
+      self.router.navigate(['/shop/listings/items'], {replaceUrl: true});
+    } else {
+      self.router.navigate(['/shop/guide'], {replaceUrl: true}).then(() => {
+        let step = 'finished';
+        self.shopService.changeGuideStep({
+          step
+        }).then((data) => {
+          self.userService.addStore(data);
+        });
+      });
+    }
   }
 
   changeStore() {
@@ -687,5 +702,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.aboutMeInput.setSelection(0, this.aboutMeInput.getLength(), 'user');
   }
 
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 
 }

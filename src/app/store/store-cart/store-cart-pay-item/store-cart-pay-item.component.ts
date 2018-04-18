@@ -23,7 +23,8 @@ export class StoreCartPayItemComponent{
   ) {
     this.sub = this.storeService.store.subscribe((data) => {
       if(data) {
-        this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' + (data.templateId?data.templateId:5)
+        this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' +
+          (data.template && data.template.templateId?data.template.templateId:5)
           + '/detail/';
       }
     });

@@ -1,9 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Http } from '@angular/http';
+import {Http, Response} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
+
+import 'rxjs/add/operator/toPromise';
 import { AuthService } from 'ngx-auth';
 
 import { BaseApi,SystemConstant } from '../../../config/app.api';
@@ -26,7 +28,7 @@ export class AuthenticationService implements AuthService {
   }
 
   public isAuthorized(): Observable<boolean> {
-    const isAuthorized: boolean = !!this.appStorage.getItem('accessToken') && !!this.appStorage.getItem('inviteToken');
+    const isAuthorized: boolean = !!this.appStorage.getItem('accessToken');
 
     if(!isAuthorized) {
       this.guardLinkService.addRouterLink(window.location.pathname);
@@ -82,6 +84,21 @@ export class AuthenticationService implements AuthService {
       });
   }
 
+  public logoutOfServer(): Promise<any>{
+    const url = `${this.baseUrl.url}oauth2/revoke_token/`;
+    const token: string = this.appStorage.getItem('accessToken');
+    const params: Object = {
+      client_id: this.systemConstant.clientId,
+      token: token
+    };
+
+    let self = this;
+    return this.http.post(url, params)
+      .toPromise()
+      .then(response => response.json() as any)
+      .catch(this.handleError);
+  }
+
   public refreshShouldHappen(response: HttpErrorResponse): boolean {
     return response.status === 401;
   }
@@ -105,4 +122,27 @@ export class AuthenticationService implements AuthService {
     // set the authorization null of http client
     return {'authorization': ''};
   }
+
+  private handleError (error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      if(error.status == 401) {
+        errMsg = 'Your email or password is incorrect. Please try again!';
+      } else {
+        const body = error.json() || '';
+        const err = body.error || body;
+        if(err.detail) {
+          errMsg = `${err.detail}`;
+        } else {
+          if(err.error) {
+            errMsg = "Sorry! Server is busy now!";
+          }
+        }
+      }
+    } else {
+      errMsg = error.msg ? error.msg : error.toString();
+    }
+    return Promise.reject(errMsg);
+  }
+
 }

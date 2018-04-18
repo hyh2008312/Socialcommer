@@ -50,11 +50,12 @@
           <div>
             <div class="xb-store-template__list-products md-margin-top-1">
               <div fxLayout="row wrap" fxLayoutAlign="space-between start">
-                <app-flash-sale-card-2 *ngFor="let item of product"
+                <app-flash-sale-card-2 class="preview-home-box"
+                                       *ngFor="let item of product"
                                        fxFlex.xs="100" fxFlex.gt-xs="31"
                                        [currency]="currency"
                                        [product]="item" [status]="1"></app-flash-sale-card-2>
-                <div fxFlex.xs="44" fxFlex.gt-xs="31"></div>
+                <div class="preview-home-box" fxFlex.xs="100" fxFlex.gt-xs="31"></div>
               </div>
             </div>
           </div>
