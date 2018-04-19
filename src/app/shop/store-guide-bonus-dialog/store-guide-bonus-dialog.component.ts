@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { UserService } from '../../shared/services/user/user.service';
@@ -10,10 +10,11 @@ import {ShopService} from '../shop.service';
   styleUrls: ['./_store-guide-bonus-dialog.scss']
 })
 
-export class StoreGuideBonusDialogComponent implements OnInit {
+export class StoreGuideBonusDialogComponent implements OnInit, OnDestroy {
 
   currency: string = 'USD';
   sub: any;
+  sub1: any;
   shareLink: string = '';
 
   firstName: string = '';
@@ -29,6 +30,10 @@ export class StoreGuideBonusDialogComponent implements OnInit {
     this.sub = this.userService.store.subscribe((data) => {
       if(data) {
         this.currency = data.currency.toUpperCase();
+      }
+    });
+    this.sub1 = this.userService.currentUser.subscribe((data) => {
+      if(data) {
         this.firstName = data.firstName;
       }
     });
@@ -51,4 +56,13 @@ export class StoreGuideBonusDialogComponent implements OnInit {
     self.shopServie.getFirstStoreLogin().then(() => {});
   }
 
+  ngOnDestroy() {
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
+
+    if(this.sub1) {
+      this.sub1.unsubscribe();
+    }
+  }
 }
