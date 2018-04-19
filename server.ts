@@ -56,7 +56,7 @@ const app = express();
 app.use(compression());
 app.use(cookieparser());
 
-const redirectowww = true;
+const redirectowww = false;
 const redirectohttps = false;
 const wwwredirecto = false;
 app.use((req, res, next) => {
