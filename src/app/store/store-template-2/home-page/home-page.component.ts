@@ -38,9 +38,9 @@ export class HomePageComponent implements OnInit {
   imageList: any = {};
   ownerId: any;
   productNumber: number = 0;
-  displayName:string ;
+  displayName: string;
 
-  currency:string = 'USD';
+  currency: string = 'USD';
 
   //导航上是否显示flash sale
   isHavePromotion: boolean = false;
@@ -62,19 +62,20 @@ export class HomePageComponent implements OnInit {
         self.store = data;
         self.currency = data.currency.toUpperCase();
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
-        self.displayName = data.displayName ;
+        self.displayName = data.displayName;
         self.contextList = data.context ? data.context : {};
         self.imageList = data.images ? data.images : {};
         self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         self.ownerId = data.ownerId;
         self.isHavePromotion = data.promotionNum > 0;
+        let banner = data.images ? data.images.bannerImageStr : self.baseImageUrl;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
-          shareImage: data.imageUrl
+          shareImage: banner
         });
-        let tempCategory = data.category.filter((data)=>{
-          return data.goodsCount !=0 ;
+        let tempCategory = data.category.filter((data) => {
+          return data.goodsCount != 0;
         });
         if (tempCategory.length > 1) {
           self.categories = [{name: 'All'}, ...tempCategory];
@@ -95,9 +96,9 @@ export class HomePageComponent implements OnInit {
     });
 
     self.storeService.cart.subscribe((data) => {
-      if(data && data.length>0) {
+      if (data && data.length > 0) {
         self.productNumber = 0;
-        for(let item of data) {
+        for (let item of data) {
           self.productNumber += parseInt(item.number);
         }
       }

@@ -21,6 +21,7 @@ export class ReturnPolicyComponent implements OnInit {
   //退换货的天数
   returnDays: string = '30';
   isHavePromotion: boolean = false;
+  baseImageUrl: string = 'https://media.socialcommer.com/source/web/pic/pic-2-1.jpg';
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -44,6 +45,13 @@ export class ReturnPolicyComponent implements OnInit {
         } else if (countryCode == 'IN') {
           self.returnDays = '10';
         }
+
+        let banner = data.images ? data.images.bannerImageStr : self.baseImageUrl;
+        self.storeService.addTitleDescription({
+          title: data.name,
+          description: data.description,
+          shareImage: banner
+        });
       }
     });
     self.storeService.cart.subscribe((data) => {

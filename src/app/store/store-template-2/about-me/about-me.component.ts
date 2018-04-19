@@ -19,6 +19,7 @@ export class AboutMeComponent implements OnInit {
   productNumber: number = 0;
   displayName: string;
   isHavePromotion: boolean = false;
+  baseImageUrl: string = 'https://media.socialcommer.com/source/web/pic/pic-2-1.jpg';
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -36,6 +37,14 @@ export class AboutMeComponent implements OnInit {
         self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         self.displayName = data.displayName ;
         self.isHavePromotion = data.promotionNum > 0;
+
+        let banner = data.images ? data.images.bannerImageStr : self.baseImageUrl;
+        self.storeService.addTitleDescription({
+          title: data.name,
+          description: data.description,
+          shareImage: banner
+        });
+
       }
     });
     self.storeService.cart.subscribe((data) => {

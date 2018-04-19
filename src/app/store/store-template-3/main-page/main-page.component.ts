@@ -26,7 +26,7 @@ export class MainPageComponent implements OnInit {
   categories: any;
   selectCategoryMain: any;
   isHavePromotion:boolean = false ;
-
+  baseImageUrl: string = 'https://media.socialcommer.com/source/web/template/3/15-pic.jpg';
   constructor(private router: Router,
               private storeService: StoreService) {
 
@@ -51,6 +51,13 @@ export class MainPageComponent implements OnInit {
         }
 
         self.text = `Welcome to my store: ${data.name} - ${data.description}`;
+
+        let banner = data.images ? data.images.imageSrc : self.baseImageUrl;
+        self.storeService.addTitleDescription({
+          title: data.name,
+          description: data.description,
+          shareImage: banner
+        });
         self.displayName = data.displayName;
         self.ownerId = data.ownerId;
         self.queryBlog();

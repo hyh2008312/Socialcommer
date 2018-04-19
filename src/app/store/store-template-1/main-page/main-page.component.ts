@@ -89,7 +89,7 @@ export class MainPageComponent implements OnInit {
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
-          shareImage: data.imageUrl
+          shareImage: self.imageList.imageSrc
         });
 
         self.isHavePromotion = data.promotionNum > 0;

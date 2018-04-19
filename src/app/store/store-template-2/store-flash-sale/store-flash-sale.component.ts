@@ -32,7 +32,7 @@ export class StoreFlashSaleComponent implements OnInit {
   isHavePromotion: boolean = false;
   productNumber: number = 0;
   displayName: string;
-
+  baseImageUrl: string = 'https://media.socialcommer.com/source/web/pic/pic-2-1.jpg';
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -52,10 +52,11 @@ export class StoreFlashSaleComponent implements OnInit {
         self.displayName = data.displayName ;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.currency = data.currency.toUpperCase();
+        let banner = data.images ? data.images.bannerImageStr : self.baseImageUrl;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
-          shareImage: data.imageUrl
+          shareImage: banner
         });
         self.storeService.pageView({
           pt: 'store',

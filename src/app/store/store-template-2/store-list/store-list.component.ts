@@ -34,6 +34,7 @@ export class StoreListComponent implements OnInit {
   displayName: string;
   currency:string='USD';
   isHavePromotion: boolean = false;
+  baseImageUrl: string = 'https://media.socialcommer.com/source/web/pic/pic-2-1.jpg';
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private storeService: StoreService) {
@@ -57,10 +58,11 @@ export class StoreListComponent implements OnInit {
         self.isHavePromotion = data.promotionNum > 0;
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.contextList = data.context ? data.context : {};
+        let banner = data.images ? data.images.bannerImageStr : self.baseImageUrl;
         self.storeService.addTitleDescription({
           title: data.name,
           description: data.description,
-          shareImage: data.imageUrl
+          shareImage: banner
         });
         let tempCategory = data.category.filter((data)=>{
           return data.goodsCount !=0 ;

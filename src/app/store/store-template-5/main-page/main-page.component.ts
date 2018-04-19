@@ -28,7 +28,7 @@ export class MainPageComponent implements OnInit {
   //是否显示根据两者条件
   isBlog: boolean = false;
   isHavePromotion:boolean = false ;
-
+  imageBanner: string = 'https://media.socialcommer.com/source/web/template/5/banner_1.jpg';
   constructor(private storeService: StoreService,
               private  router: Router) {
   }
@@ -45,6 +45,12 @@ export class MainPageComponent implements OnInit {
         self.text = `Welcome to my store: ${data.name} - ${data.description}`;
         let tempCategory = data.category.filter((data)=>{
           return data.goodsCount !=0 ;
+        });
+        let banner = data.images ? data.images.imageBanner : self.imageBanner;
+        self.storeService.addTitleDescription({
+          title: data.name,
+          description: data.description,
+          shareImage: banner
         });
         self.categories = tempCategory;
         if (data.context && data.context.blogFlag) {
