@@ -116,10 +116,10 @@ export class StoreListDetailComponent implements OnInit {
               }
             }
           });
-          self.text = data.title;
+          self.text = data.pathDescription;
           self.storeService.addTitleDescription({
             title: data.title,
-            description: data.description,
+            description: data.pathDescription,
             shareImage: data.images[0]
           });
 

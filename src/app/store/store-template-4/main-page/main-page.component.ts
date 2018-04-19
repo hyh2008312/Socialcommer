@@ -24,7 +24,7 @@ export class MainPageComponent implements OnInit {
   isBlog: boolean = false;
 
   isHavePromotion:boolean = false ;
-
+  imageBanner: string = 'https://media.socialcommer.com/source/web/template/4/12.jpg';
   constructor(private activatedRoute: ActivatedRoute,
               private storeService: StoreService,
               private router: Router,
@@ -44,6 +44,14 @@ export class MainPageComponent implements OnInit {
         if (data.context && data.context.blogFlag) {
           self.showBlogFlag = data.context.blogFlag;
         }
+
+        let banner = data.images ? data.images.imageBanner : self.imageBanner;
+        self.storeService.addTitleDescription({
+          title: data.name,
+          description: data.description,
+          shareImage: banner
+        });
+
         self.ownerId = data.ownerId;
         self.queryBlog();
       }

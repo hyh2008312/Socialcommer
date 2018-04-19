@@ -26,7 +26,7 @@ export class MainPageComponent implements OnInit {
   //是否显示根据两者条件
   isBlog: boolean = false;
   isHavePromotion:boolean = false ;
-
+  imageBanner: string = 'https://media.socialcommer.com/source/web/template/6/flowerpots-2754775.png';
   constructor(private storeService: StoreService, private router: Router) {
   }
 
@@ -40,6 +40,14 @@ export class MainPageComponent implements OnInit {
         self.storeService.addCart(self.storeService.getProductInCart(data.displayName));
         self.contactUsTag = data.context ? data.context.contactUsTag : '';
         self.text = `Welcome to my store: ${data.name} - ${data.description}`;
+
+        let banner = data.images ? data.images.imageBanner : self.imageBanner;
+        self.storeService.addTitleDescription({
+          title: data.name,
+          description: data.description,
+          shareImage: banner
+        });
+
         let tempCategory = data.category.filter((data) => {
           return data.goodsCount != 0;
         });

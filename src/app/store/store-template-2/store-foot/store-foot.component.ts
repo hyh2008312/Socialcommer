@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 
@@ -8,7 +8,7 @@ import {Router, ActivatedRoute} from '@angular/router';
   styleUrls: ['./_store-foot.scss']
 })
 
-export class StoreFootComponent implements OnInit {
+export class StoreFootComponent implements OnInit ,OnChanges{
   @Input() storeName: string;
   @Input() displayName: string;
   public shareLink: string;
@@ -18,8 +18,13 @@ export class StoreFootComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.shareLink = window.location.href;
   }
+
+  ngOnChanges(): void {
+    let baseUrl = window.location.href.split("/store/");
+    this.shareLink = `${baseUrl[0]}/store/${this.displayName}/2`;
+  }
+
   jumpAbout(): void {
     this.router.navigate([`./store/${this.displayName}/2/about`]);
   }
