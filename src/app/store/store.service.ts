@@ -3,7 +3,6 @@ import { Http, Response , Headers , RequestOptions, Jsonp, URLSearchParams } fro
 import { Title, Meta } from '@angular/platform-browser';
 
 import 'rxjs/add/operator/toPromise';
-import { Observable } from  'rxjs/observable';
 import{ Subject, BehaviorSubject } from 'rxjs';
 
 import { Store } from './store';
