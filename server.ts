@@ -56,9 +56,9 @@ const app = express();
 app.use(compression());
 app.use(cookieparser());
 
-const redirectowww = false;
+const redirectowww = true;
 const redirectohttps = false;
-const wwwredirecto = true;
+const wwwredirecto = false;
 app.use((req, res, next) => {
     // for domain/index.html
     if (req.url === '/index.html') {
