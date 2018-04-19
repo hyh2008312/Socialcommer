@@ -28,7 +28,6 @@ import { ImagePreviewLoadingComponent } from './components/image-preview-loading
 import { LeftProductsImageComponent } from './components/left-products-image/left-products-image.component';
 import { ShareButtonComponent } from './components/share-button/share-button.component';
 import { ShareButtonRowComponent } from './components/share-button-row/share-button-row.component';
-import { StoreNavigationComponent } from './components/store-navigation/store-navigation.component';
 import { NavigationHeaderComponent } from './components/navigation-header/navigation-header.component';
 import { BottomFooterComponent } from './components/bottom-footer/bottom-footer.component';
 import { LoadingComponent } from './components/loading/loading.component';
@@ -141,7 +140,6 @@ let providers = {
     ImageUploadPreviewBlogComponent,
     LeftProductsImageComponent,
     ShareButtonComponent,
-    StoreNavigationComponent,
     ShareButtonRowComponent,
     NavigationHeaderComponent,
     BottomFooterComponent,
@@ -178,7 +176,6 @@ let providers = {
     LeftProductsImageComponent,
     ShareButtonComponent,
     ShareShowButtonComponent,
-    StoreNavigationComponent,
     ShareButtonRowComponent,
     NavigationHeaderComponent,
     BottomFooterComponent,

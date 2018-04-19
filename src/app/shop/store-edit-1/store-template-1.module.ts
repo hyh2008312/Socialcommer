@@ -10,6 +10,7 @@ import {StoreDetailComponent} from "./store-detail/store-detail.component";
 import {StoreCartComponent} from "./store-cart/store-cart.component";
 import {StoreOrderComponent} from "./store-order/store-order.component";
 import {StoreCountdownComponent} from "./store-countdown/store-countdown.component";
+import {StoreCategoryComponent} from "./store-category/store-category.component";
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import {StoreCountdownComponent} from "./store-countdown/store-countdown.compone
     StoreDetailComponent,
     StoreCartComponent,
     StoreOrderComponent,
-    StoreCountdownComponent
+    StoreCountdownComponent,
+    StoreCategoryComponent
   ],
   entryComponents: [
   ],

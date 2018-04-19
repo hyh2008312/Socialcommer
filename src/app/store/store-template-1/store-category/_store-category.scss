@@ -1,0 +1,54 @@
+@import "../../../styles/utils/_index";
+@import "../../../styles/_variables";
+
+.xb-store-template {
+
+  &__category {
+    position: relative;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+    &.active {
+      @include media();
+      color: $primaryColor;
+    }
+
+    &-bg {
+    }
+    &-scroll {
+      width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &-margin-right {
+      line-height: 48px;
+      margin-right: 48px;
+      @include xb-xs-screen {
+        margin-left: 16px;
+      }
+    }
+  }
+
+}
+
+.xb-store__navigation {
+  &-bg {
+    height: 48px;
+    ::-webkit-scrollbar {
+      height: 0;
+    }
+  }
+  &-scroll {
+    overflow-x: scroll;
+    width: 100%;
+    height: 100%;
+  }
+  &__margin-right {
+    margin-right: 40px;
+
+    @include xb-xs-screen {
+      margin-right: 24px;
+    }
+  }
+}

@@ -16,6 +16,7 @@ import {FaqComponent} from "./FAQ/faq.component";
 import {StoreNavigationComponent} from "./store-navigation/store-navigation.component";
 import {AddCartSuccessDialogComponent} from "./add-cart-success-dialog/add-cart-success-dialog.component";
 import {StoreCountdownComponent} from "./store-countdown/store-countdown.component";
+import {StoreCategoryComponent} from "./store-category/store-category.component";
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import {StoreCountdownComponent} from "./store-countdown/store-countdown.compone
     FaqComponent,
     StoreNavigationComponent,
     AddCartSuccessDialogComponent,
-    StoreCountdownComponent
+    StoreCountdownComponent,
+    StoreCategoryComponent
   ],
   entryComponents: [
     AddCartSuccessDialogComponent
