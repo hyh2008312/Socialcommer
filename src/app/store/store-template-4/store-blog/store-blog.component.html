@@ -5,7 +5,8 @@
   <div class="xb-4-template-blog__article" fxLayout="row wrap" fxLayoutAlign="space-between start"
        fxLayout.xs="column wrap" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px"
   >
-    <app-shop-item-blog-card-4 *ngFor="let item of blog"
+    <app-shop-item-blog-card-4 class="preview-home-blog-box"
+                               *ngFor="let item of blog"
                                fxFlex.xs="48" fxFlex.gt-xs="45"
                                [blog]="item" [status]="1"></app-shop-item-blog-card-4>
   </div>

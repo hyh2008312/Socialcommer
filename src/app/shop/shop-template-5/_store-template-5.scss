@@ -898,6 +898,7 @@
   &-order-and-cart {
     position: absolute;
     right: 32px;
+    height: 72px;
   }
   &-circle {
     width: 16px;
@@ -914,3 +915,27 @@
     text-align: center;
   }
 }
+// 第四套模版产品safari(3个)
+.preview-home-box {
+  @include xb-sm-screen {
+    max-width: 30% !important;
+    flex: 1 1 220px !important;
+    -webkit-flex: 1 1 220px !important;
+    min-width: 30%;
+  }
+  @include xb-md-screen {
+    max-width: 30% !important;
+    flex: 1 1 255px !important;
+    -webkit-flex: 1 1 255px !important;
+    min-width: 30%;
+  }
+  @include xb-lg-screen {
+    max-width: 30% !important;
+    flex: 1 1 280px !important;
+    -webkit-flex: 1 1 280px !important;
+    min-width: 30%;
+  }
+
+}
+
+

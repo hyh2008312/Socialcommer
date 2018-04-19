@@ -86,15 +86,15 @@
     <div class="xb-4-template-detail__recommend-title md-margin-left-1">
       Related Product
     </div>
-    <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start" fxLayout="row wrap">
-      <app-shop-item-product-card-4 *ngFor="let item of relatedProduct"
+    <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start"
+         fxLayout="row wrap">
+      <app-shop-item-product-card-4 class="preview-home-box"
+                                    *ngFor="let item of relatedProduct"
                                     fxFlex.xs="48" fxFlex.gt-xs="22"
                                     [product]="item" [status]="3"
-                                    (scrollToTop)="changeScrollToTop($event)"
-      >
-      </app-shop-item-product-card-4>
-      <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
-      <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
+                                    (scrollToTop)="changeScrollToTop($event)"></app-shop-item-product-card-4>
+      <div class="preview-home-box" fxFlex.xs="48" fxFlex.gt-xs="22"></div>
+      <div class="preview-home-box" fxFlex.xs="48" fxFlex.gt-xs="22"></div>
     </div>
   </div>
 </div>

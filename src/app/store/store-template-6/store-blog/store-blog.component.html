@@ -3,8 +3,9 @@
        fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
     <app-shop-item-blog-card-5 *ngFor="let item of blog"
                                fxFlex.xs="48" fxFlex.gt-xs="50"
+                               class="preview-home-blog-box"
                                [blog]="item" [status]="1"></app-shop-item-blog-card-5>
-    <div fxFlex="50"></div>
+    <div  class="preview-home-blog-box" fxFlex="50"></div>
   </div>
   <div class="xb-4-template__center md-margin-top-4" *ngIf="isBlog">There are no blogs.</div>
   <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"

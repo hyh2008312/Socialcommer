@@ -3,12 +3,14 @@
     <div class="xb-store-template__collection-title" fxShow.xs="false">
       COLLECTIONS
     </div>
-    <app-shop-template-3-category [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"></app-shop-template-3-category>
+    <app-shop-template-3-category [(category)]="category" [categories]="categories"
+                                  (categoryChange)="changeCategory()"></app-shop-template-3-category>
   </div>
   <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-    <app-shop-item-card *ngFor="let item of product"
-                         fxFlex="49" fxFlex.xs="100"
-                         [product]="item" [status]="1"></app-shop-item-card>
-    <div fxFlex="49" fxFlex.xs="100"></div>
+    <app-shop-item-card class="preview-home-box"
+                        *ngFor="let item of product"
+                        fxFlex="33" fxFlex.xs="100"
+                        [product]="item" [status]="1"></app-shop-item-card>
+    <div fxFlex="33" fxFlex.xs="100"></div>
   </div>
 </div>

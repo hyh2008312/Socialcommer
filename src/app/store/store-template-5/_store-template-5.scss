@@ -709,7 +709,7 @@
 .xb-4-template-navigation {
   @include regular();
   text-align: center;
-  font-size: 19px;
+  font-size: 16px;
   font-family: 'Didot',Helvetica;
   &.active {
     font-weight: bold;
@@ -1237,6 +1237,7 @@
   &-order-and-cart {
     position: absolute;
     right: 32px;
+    height: 72px;
   }
   &-circle {
     width: 16px;
@@ -1568,6 +1569,50 @@
       }
     }
   }
+}
 
+// 第四套模版产品safari(3个)
+.preview-home-box {
+  @include xb-sm-screen {
+    max-width: 30% !important;
+    flex: 1 1 220px !important;
+    -webkit-flex: 1 1 220px !important;
+    min-width: 30%;
+  }
+  @include xb-md-screen {
+    max-width: 30% !important;
+    flex: 1 1 255px !important;
+    -webkit-flex: 1 1 255px !important;
+    min-width: 30%;
+  }
+  @include xb-lg-screen {
+    max-width: 30% !important;
+    flex: 1 1 280px !important;
+    -webkit-flex: 1 1 280px !important;
+    min-width: 30%;
+  }
+
+}
+//第四套模版flash safari 兼容 （3个）
+.preview-flash-box {
+
+  @include xb-sm-screen {
+    max-width: 45% !important;
+    flex: 1 1 260px !important;
+    -webkit-flex: 1 1 260px !important;
+    min-width: 45%;
+  }
+  @include xb-md-screen {
+    max-width: 31% !important;
+    flex: 1 1 270px !important;
+    -webkit-flex: 1 1 270px !important;
+    min-width: 31%;
+  }
+  @include xb-lg-screen {
+    max-width: 31% !important;
+    flex: 1 1 310px !important;
+    -webkit-flex: 1 1 310px !important;
+    min-width: 31%;
+  }
 
 }

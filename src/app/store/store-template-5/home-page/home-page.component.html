@@ -29,6 +29,7 @@
            fxLayoutGap.xs="16px" fxShow="true" fxShow.xs="false">
         <ng-container *ngFor="let item of category.goods ; let i=index">
           <app-shop-item-product-card-5 *ngIf="i<6"
+                                        class="preview-home-box"
                                         fxFlex.xs="100" fxFlex.gt-xs="30"
                                         [currency]="currency"
                                         [product]="item" [status]="0"></app-shop-item-product-card-5>

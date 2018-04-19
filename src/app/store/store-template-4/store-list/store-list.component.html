@@ -21,11 +21,13 @@
       <div fxLayoutAlign="space-between start" fxLayout="row wrap"
            fxLayoutGap.xs="16px"
       >
-        <app-shop-item-product-card-4 *ngFor="let item of product"
+        <app-shop-item-product-card-4 class="preview-list-box"
+                                      *ngFor="let item of product"
                                       fxFlex.xs="44" fxFlex.gt-xs="30"
                                       [currency]="currency"
                                       [product]="item" [status]="1"></app-shop-item-product-card-4>
-        <div fxFlex.xs="44" fxFlex.gt-xs="30"></div>
+        <div class="preview-list-box" fxFlex.xs="44" fxFlex.gt-xs="30"></div>
+        <div class="preview-list-box" fxFlex.xs="44" fxFlex.gt-xs="30"></div>
       </div>
       <div class="xb-4-template-collection__more-button" fxLaout="row" fxLayoutAlign="center center"
            (click)="jumpList()" *ngIf="nextPage && product.length > 0">

@@ -5,6 +5,7 @@
   <div class="xb-4-template-collection__product xb-4-template__w960 " fxLayoutAlign="space-between start"
        fxLayout="row wrap">
     <app-flash-sale-card-5 *ngFor="let item of product"
+                           class="preview-flash-box"
                            fxFlex.xs="100" fxFlex.gt-xs="31"
                            [currency]="currency"
                            [product]="item" [status]="1"></app-flash-sale-card-5>

@@ -2,6 +2,7 @@
   <div class="xb-4-template__w960 xb-4-template-blog__article" fxLayout="row wrap" fxLayoutAlign="start start"
        fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
     <app-shop-item-blog-card-6 *ngFor="let item of blog"
+                               class="preview-home-blog-box"
                                fxFlex.xs="48" fxFlex.gt-xs="50"
                                [blog]="item" [status]="2"></app-shop-item-blog-card-6>
   </div>

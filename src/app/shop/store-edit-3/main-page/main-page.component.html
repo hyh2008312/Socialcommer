@@ -95,15 +95,15 @@
             <div>
               <div class="xb-store__content xb-store__border-bottom">
                 <div class="md-margin-top-1" fxLayout="row wrap" fxLayoutAlign="space-around start">
-                  <ng-container *ngFor="let item of product ; let i = index" >
-                  <app-shop-item-card
-                                      fxFlex="33" fxFlex.xs="100"
-                                      (productId)="jumpGoodsDetail($event)"
-                                      *ngIf="i<6"
-                                      [product]="item" [status]="0"></app-shop-item-card>
+                  <ng-container *ngFor="let item of product ; let i = index">
+                    <app-shop-item-card class="preview-home-box"
+                                        fxFlex="33" fxFlex.xs="100"
+                                        (productId)="jumpGoodsDetail($event)"
+                                        *ngIf="i<6"
+                                        [product]="item" [status]="0"></app-shop-item-card>
                   </ng-container>
-                  <div fxFlex="33" fxFlex.xs="100"></div>
-                  <div fxFlex="33" fxFlex.xs="100"></div>
+                  <div class="preview-home-box" fxFlex="33" fxFlex.xs="100"></div>
+                  <div class="preview-home-box" fxFlex="33" fxFlex.xs="100"></div>
                 </div>
                 <div *ngIf="product.length > 0" class="xb-store-template__buttons-bg" fxLaout="row"
                      fxLayoutAlign="center center">
@@ -124,10 +124,11 @@
                 <div class="xb-store-template__blog-title">BLOG</div>
 
                 <div class="md-margin-top-1" fxLayout="row wrap" fxLayoutAlign="space-between start">
-                  <app-shop-template-3-store-blog-card *ngFor="let item of blog"
+                  <app-shop-template-3-store-blog-card class="preview-home-blog-box"
+                                                       *ngFor="let item of blog"
                                                        fxFlex="45" fxFlex.xs="100"
                                                        [blog]="item" [status]="0"></app-shop-template-3-store-blog-card>
-                  <div fxFlex="49" fxFlex.xs="100"></div>
+                  <div class="preview-home-blog-box" fxFlex="45" fxFlex.xs="100"></div>
                 </div>
                 <div *ngIf="blog.length > 0" class="xb-store-template__buttons-bg" fxLaout="row"
                      fxLayoutAlign="center center">
@@ -152,12 +153,13 @@
               </div>
             </div>
             <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-              <app-flash-sale-card-3 *ngFor="let item of flashSaleProduct"
-                                  fxFlex="31" fxFlex.xs="100"
-                                  (productId)="jumpGoodsDetail($event)"
-                                  [product]="item" [status]="1"></app-flash-sale-card-3>
-              <div fxFlex="31" fxFlex.xs="100"></div>
-              <div fxFlex="31" fxFlex.xs="100"></div>
+              <app-flash-sale-card-3 class="preview-flash-box"
+                                     *ngFor="let item of flashSaleProduct"
+                                     fxFlex="31" fxFlex.xs="100"
+                                     (productId)="jumpGoodsDetail($event)"
+                                     [product]="item" [status]="1"></app-flash-sale-card-3>
+              <div class="preview-flash-box" fxFlex="31" fxFlex.xs="100"></div>
+              <div class="preview-flash-box" fxFlex="31" fxFlex.xs="100"></div>
             </div>
           </div>
           <div class="xb-store-template__collection-bottom" [hidden]="viewIndex != 2">
@@ -169,12 +171,13 @@
                                             (categoryChange)="changeCategory()"></app-shop-template-3-category>
             </div>
             <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-              <app-shop-item-card *ngFor="let item of product"
+              <app-shop-item-card class="preview-home-box"
+                                  *ngFor="let item of product"
                                   fxFlex="33" fxFlex.xs="100"
                                   (productId)="jumpGoodsDetail($event)"
                                   [product]="item" [status]="1"></app-shop-item-card>
-              <div fxFlex="33" fxFlex.xs="100"></div>
-              <div fxFlex="33" fxFlex.xs="100"></div>
+              <div class="preview-home-box" fxFlex="33" fxFlex.xs="100"></div>
+              <div class="preview-home-box" fxFlex="33" fxFlex.xs="100"></div>
             </div>
             <div class="md-margin-top-4" *ngIf="categories.length <=0 && !nextPage && product.length <= 0"
                  fxLayout="column" fxLayoutAlign="center center">
@@ -187,9 +190,11 @@
           <div class="xb-store-template__blog-content" [hidden]="viewIndex != 3">
             <div class="xb-store-template__blog-title">BLOG</div>
             <div class="md-margin-top-1" fxLayout="row wrap" fxLayoutAlign="space-between start">
-              <app-shop-template-3-store-blog-card *ngFor="let item of blog"
+              <app-shop-template-3-store-blog-card class="preview-home-blog-box"
+                                                   *ngFor="let item of blog"
                                                    fxFlex="45" fxFlex.xs="100"
                                                    [blog]="item" [status]="1"></app-shop-template-3-store-blog-card>
+              <div class="preview-home-blog-box" fxFlex="45" fxFlex.xs="100"></div>
 
             </div>
             <div class="md-margin-top-4" *ngIf="blog && !nextBlogPage && blog.length <= 0" fxLayout="column"

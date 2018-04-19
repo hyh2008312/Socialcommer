@@ -89,6 +89,7 @@
     </div>
     <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start" fxLayout="row wrap">
       <app-shop-item-product-card-5 *ngFor="let item of recommedProducts"
+                                    class="preview-home-box"
                                     fxFlex.xs="50" fxFlex.gt-xs="25"
                                     [product]="item" [status]="3"
                                     (scrollToTop)="changeScrollToTop($event)">

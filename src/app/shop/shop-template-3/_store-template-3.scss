@@ -528,7 +528,7 @@
         height: auto;
         overflow: hidden;
       }
-      @include xb-sm-screen{
+      @include xb-sm-screen {
         height: auto;
         overflow: hidden;
       }
@@ -626,6 +626,7 @@
     }
   }
 }
+
 .xb-store-template__cart {
   &-position {
     position: relative;
@@ -656,4 +657,51 @@
     top: 0;
     text-align: center;
   }
+}
+
+// 第三套模版产品safari
+.preview-home-box {
+  @include xb-sm-screen {
+    max-width: 50% !important;
+    flex: 1 1 180px !important;
+    -webkit-flex: 1 1 180px !important;
+    min-width: 50%;
+  }
+  @include xb-md-screen {
+    max-width: 33% !important;
+    flex: 1 1 235px !important;
+    -webkit-flex: 1 1 235px !important;
+    min-width: 33%;
+  }
+  @include xb-lg-screen {
+    max-width: 33% !important;
+    flex: 1 1 300px !important;
+    -webkit-flex: 1 1 300px !important;
+    min-width: 33%;
+  }
+
+}
+
+//第三套模版blog safari 兼容
+.preview-home-blog-box {
+
+  @include xb-sm-screen {
+    max-width: 45% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 45%;
+  }
+  @include xb-md-screen {
+    max-width: 45% !important;
+    flex: 1 1 235px !important;
+    -webkit-flex: 1 1 235px !important;
+    min-width: 45%;
+  }
+  @include xb-lg-screen {
+    max-width: 45% !important;
+    flex: 1 1 300px !important;
+    -webkit-flex: 1 1 300px !important;
+    min-width: 30%;
+  }
+
 }
