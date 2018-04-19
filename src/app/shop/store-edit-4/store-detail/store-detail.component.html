@@ -30,11 +30,13 @@
             <div class="xb-4-template-detail__price" *ngIf="!isHaveVariant">
               {{ salePrice | exchangeCurrency:currency |currency: currency }}
             </div>
-            <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
+            <div class="xb-4-template-detail__price"
+                 *ngIf="isHaveVariant && isPriceRange && minSalePrice!=maxSalePrice">
               {{minSalePrice | exchangeCurrency:currency |currency: currency }} - {{maxSalePrice |
               exchangeCurrency:currency |currency: currency }}
             </div>
-            <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
+            <div class="xb-4-template-detail__price"
+                 *ngIf="isHaveVariant && isPriceRange && minSalePrice==maxSalePrice">
               {{minSalePrice | exchangeCurrency:currency |currency: currency }}
             </div>
             <div class="xb-4-template-detail__price" *ngIf="isHaveVariant && !isPriceRange">
@@ -120,13 +122,17 @@
 
         <div class="xb-4-template-detail__buttons_bg md-margin-top-3">
           <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-bottom-2"> {{cartWarn}}</div>
-          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled) ">
-            <button class="xb-4-template-detail__buy-buttons" [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}"
+          <a class="gtag-shop-detail-get-it-now-button"
+             *ngIf="isCanBuy && !(isPromotionOnGoing || isPromotionScheduled) ">
+            <button class="xb-4-template-detail__buy-buttons"
+                    [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}"
                     [disabled]="true">ADD TO CART
             </button>
           </a>
-          <a class="gtag-shop-detail-get-it-now-button" *ngIf="isCanBuy && (isPromotionOnGoing || isPromotionScheduled)">
-            <button class="xb-4-template-detail__buy-buttons" [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}"
+          <a class="gtag-shop-detail-get-it-now-button"
+             *ngIf="isCanBuy && (isPromotionOnGoing || isPromotionScheduled)">
+            <button class="xb-4-template-detail__buy-buttons"
+                    [ngStyle]="{'cursor':'initial','background-color': 'rgba(0,0,0,.19)'}"
                     [disabled]="true">CLAIM IT NOW
             </button>
           </a>
@@ -160,14 +166,14 @@
     <div class="xb-4-template-detail__recommend-title md-margin-left-1">
       Related Product
     </div>
-    <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start" fxLayout="row wrap">
-      <app-shop-item-product-card-4 *ngFor="let item of relatedProduct"
+    <div class="xb-4-template-collection__product md-margin-top-4" fxLayoutAlign="space-between start"
+         fxLayout="row wrap">
+      <app-shop-item-product-card-4 class="preview-home-box"
+                                    *ngFor="let item of relatedProduct"
                                     fxFlex.xs="48" fxFlex.gt-xs="22"
-                                    [product]="item" [status]="3"
-      >
-      </app-shop-item-product-card-4>
-      <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
-      <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
+                                    [product]="item" [status]="3"></app-shop-item-product-card-4>
+      <div class="preview-home-box" fxFlex.xs="48" fxFlex.gt-xs="22"></div>
+      <div class="preview-home-box" fxFlex.xs="48" fxFlex.gt-xs="22"></div>
     </div>
   </div>
 </div>

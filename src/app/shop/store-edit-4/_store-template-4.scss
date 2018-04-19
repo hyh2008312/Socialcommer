@@ -855,7 +855,111 @@
       }
     }
   }
+}
 
+// 第四套模版产品safari(4个)
+.preview-home-box {
+  @include xb-xs-screen {
+    max-width: 48% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 48%;
+  }
+  @include xb-sm-screen {
+    max-width: 25% !important;
+    flex: 1 1 180px !important;
+    -webkit-flex: 1 1 180px !important;
+    min-width: 25%;
+  }
+  @include xb-md-screen {
+    max-width: 25% !important;
+    flex: 1 1 235px !important;
+    -webkit-flex: 1 1 235px !important;
+    min-width: 25%;
+  }
+  @include xb-lg-screen {
+    max-width: 25% !important;
+    flex: 1 1 240px !important;
+    -webkit-flex: 1 1 240px !important;
+    min-width: 25%;
+  }
+
+}
+
+// 第四套模版产品safari（3个）
+.preview-list-box {
+  @include xb-xs-screen {
+    max-width: 50% !important;
+    flex: 1 1 180px !important;
+    -webkit-flex: 1 1 180px !important;
+    min-width: 50%;
+  }
+  @include xb-sm-screen {
+    max-width: 50% !important;
+    flex: 1 1 180px !important;
+    -webkit-flex: 1 1 180px !important;
+    min-width: 50%;
+  }
+  @include xb-md-screen {
+    max-width: 31% !important;
+    flex: 1 1 235px !important;
+    -webkit-flex: 1 1 235px !important;
+    min-width: 31%;
+  }
+  @include xb-lg-screen {
+    max-width: 31% !important;
+    flex: 1 1 250px !important;
+    -webkit-flex: 1 1 250px !important;
+    min-width: 31%;
+  }
+
+}
+
+//第四套模版blog safari 兼容（2个）
+.preview-home-blog-box {
+
+  @include xb-sm-screen {
+    max-width: 45% !important;
+    flex: 1 1 340px !important;
+    -webkit-flex: 1 1 340px !important;
+    min-width: 45%;
+  }
+  @include xb-md-screen {
+    max-width: 45% !important;
+    flex: 1 1 400px !important;
+    -webkit-flex: 1 1 400px !important;
+    min-width: 45%;
+  }
+  @include xb-lg-screen {
+    max-width: 45% !important;
+    flex: 1 1 400px !important;
+    -webkit-flex: 1 1 400px !important;
+    min-width: 45%;
+  }
+
+}
+
+//第四套模版flash safari 兼容 （3个）
+.preview-flash-box {
+
+  @include xb-sm-screen {
+    max-width: 45% !important;
+    flex: 1 1 260px !important;
+    -webkit-flex: 1 1 260px !important;
+    min-width: 45%;
+  }
+  @include xb-md-screen {
+    max-width: 31% !important;
+    flex: 1 1 270px !important;
+    -webkit-flex: 1 1 270px !important;
+    min-width: 31%;
+  }
+  @include xb-lg-screen {
+    max-width: 31% !important;
+    flex: 1 1 310px !important;
+    -webkit-flex: 1 1 310px !important;
+    min-width: 31%;
+  }
 
 }
 

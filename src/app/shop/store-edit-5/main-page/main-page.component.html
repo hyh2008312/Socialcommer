@@ -97,6 +97,7 @@
                    fxLayoutGap.xs="16px">
                 <ng-container *ngFor="let item of category.goods ; let i=index">
                   <app-shop-item-product-card-5
+                    class="preview-home-box"
                     *ngIf="i<6"
                     (productId)="jumpGoodsDetail($event)"
                     fxFlex.xs="44" fxFlex.gt-xs="30"
@@ -198,7 +199,8 @@
           </div>
           <div class="xb-4-template-collection__product xb-4-template__w960 " fxLayoutAlign="space-between start"
                fxLayout="row wrap" fxLayoutGap.xs="16px">
-            <app-edit-flase-sale-card-5 *ngFor="let item of flashSaleProduct"
+            <app-edit-flase-sale-card-5 class="preview-flash-box"
+                                        *ngFor="let item of flashSaleProduct"
                                         fxFlex.xs="44" fxFlex.gt-xs="31"
                                         (productId)="jumpGoodsDetail($event)"
                                         [product]="item" [status]="0"></app-edit-flase-sale-card-5>
@@ -219,6 +221,7 @@
           <div class="xb-4-template-collection__product xb-4-template__w960 " fxLayoutAlign="space-between start"
                fxLayout="row wrap" fxLayoutGap.xs="16px">
             <app-shop-item-product-card-5 *ngFor="let item of product"
+                                          class="preview-home-box"
                                           fxFlex.xs="44" fxFlex.gt-xs="31"
                                           (productId)="jumpGoodsDetail($event)"
                                           [product]="item" [status]="0"></app-shop-item-product-card-5>

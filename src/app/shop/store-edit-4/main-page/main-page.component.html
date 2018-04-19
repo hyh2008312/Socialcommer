@@ -28,7 +28,8 @@
       <div class="xb-4-template__divider-line"></div>
       <div class="xb-4-template__cart-order" fxShow="true" fxShow.xs="false">
         <div class="xb-4-template__w960" fxLayout="row" fxLayoutAlign="end start">
-          <div class="xb-4-template__cart-order-word  md-margin-right-4" (click)="jumpStoreOrder()">VIEW YOUR ORDER</div>
+          <div class="xb-4-template__cart-order-word  md-margin-right-4" (click)="jumpStoreOrder()">VIEW YOUR ORDER
+          </div>
           <div (click)="jumpStoreCart()" fxLayout="row" fxLayoutAlign="start center">
             <div class="xb-4-template__cart-order-word">CART</div>
           </div>
@@ -104,7 +105,8 @@
               </div>
             </div>
           </div>
-          <div class="xb-4-template-products xb-4-template__w960" fxLayout="row wrap" fxLayoutAlign="space-between start">
+          <div class="xb-4-template-products xb-4-template__w960" fxLayout="row wrap"
+               fxLayoutAlign="space-between start">
             <div class="xb-4-template-products__text" fxLayout="column" fxLayoutAlign="start center">
               <!--product title-->
               <div class="xb-4-template-products__title xb-4-template__edit-border">
@@ -125,13 +127,14 @@
                 </div>
               </div>
             </div>
-            <app-shop-item-product-card-4 *ngFor="let item of homeProduct"
+            <app-shop-item-product-card-4 class="preview-home-box"
+                                          *ngFor="let item of homeProduct"
                                           fxFlex.xs="48" fxFlex.gt-xs="22"
                                           (productId)="jumpGoodsDetail($event)"
                                           [product]="item" [status]="0"></app-shop-item-product-card-4>
-            <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
-            <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
-            <div fxFlex.xs="48" fxFlex.gt-xs="22"></div>
+            <div class="preview-home-box" fxFlex.xs="48" fxFlex.gt-xs="22"></div>
+            <div class="preview-home-box" fxFlex.xs="48" fxFlex.gt-xs="22"></div>
+            <div class="preview-home-box" fxFlex.xs="48" fxFlex.gt-xs="22"></div>
           </div>
           <div class="xb-4-template-products__no-goods" *ngIf="homeProduct.length == 0">
             <div>You haven't added any affiliate products yet.</div>
@@ -169,11 +172,12 @@
           <div fxLayout="row" fxLayoutAlign="start stretch">
             <div class="xb-4-template-collection__product md-margin-left-2" fxLayoutAlign="space-between start"
                  fxLayout="row wrap">
-              <app-edit-flase-sale-card-4 *ngFor="let item of flashSaleProduct"
-                                            fxFlex.xs="48" fxFlex.gt-xs="32"
-                                            (productId)="jumpGoodsDetail($event)"
-                                            [product]="item" [status]="0"></app-edit-flase-sale-card-4>
-              <div fxFlex.xs="48" fxFlex.gt-xs="31"></div>
+              <app-edit-flase-sale-card-4 class="preview-flash-box"
+                                          *ngFor="let item of flashSaleProduct"
+                                          fxFlex.xs="48" fxFlex.gt-xs="32"
+                                          (productId)="jumpGoodsDetail($event)"
+                                          [product]="item" [status]="0"></app-edit-flase-sale-card-4>
+              <div class="preview-flash-box" fxFlex.xs="48" fxFlex.gt-xs="31"></div>
             </div>
           </div>
         </div>
@@ -189,11 +193,12 @@
             </div>
             <div class="xb-4-template-collection__product md-margin-left-2" fxLayoutAlign="space-between start"
                  fxLayout="row wrap">
-              <app-shop-item-product-card-4 *ngFor="let item of product"
+              <app-shop-item-product-card-4 class="preview-list-box"
+                                            *ngFor="let item of product"
                                             fxFlex.xs="48" fxFlex.gt-xs="28"
                                             (productId)="jumpGoodsDetail($event)"
                                             [product]="item" [status]="0"></app-shop-item-product-card-4>
-              <div fxFlex.xs="48" fxFlex.gt-xs="28"></div>
+              <div class="preview-list-box" fxFlex.xs="48" fxFlex.gt-xs="28"></div>
             </div>
           </div>
           <div class="xb-4-template-products__collection-no-goods" *ngIf="product.length == 0">
@@ -214,7 +219,8 @@
             BLOG
           </div>
           <div class="xb-4-template-blog__article" fxLayout="row wrap" fxLayoutAlign="space-between start">
-            <app-shop-item-blog-card-edit-4 *ngFor="let item of blog"
+            <app-shop-item-blog-card-edit-4 class="preview-home-blog-box"
+                                            *ngFor="let item of blog"
                                             fxFlex.xs="48" fxFlex.gt-xs="45"
                                             [blog]="item" [status]="0"></app-shop-item-blog-card-edit-4>
           </div>
@@ -370,7 +376,8 @@
     </div>
   </div>
   <div class="xb-4-template__car-line"></div>
-  <app-edit-cart-main-4 [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()" (openStoreOrder)="OpenStoreOrder()" ></app-edit-cart-main-4>
+  <app-edit-cart-main-4 [storeName]="nameTag" (closeStoreCart)="jumpStoreCart()"
+                        (openStoreOrder)="OpenStoreOrder()"></app-edit-cart-main-4>
 </div>
 <div class="xb-4-template-picture__background" *ngIf="storeOrder" [ngStyle]="{'background-color':'white'}">
   <div class="xb-4-template__cancel-save">
@@ -398,6 +405,7 @@
     </div>
   </div>
   <div class="xb-4-template__car-line"></div>
-  <app-edit-4-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()" (openStoreCart)="OpenStoreCart()" ></app-edit-4-order>
+  <app-edit-4-order [storeName]="nameTag" (closeStoreOrder)="jumpStoreOrder()"
+                    (openStoreCart)="OpenStoreCart()"></app-edit-4-order>
 </div>
 

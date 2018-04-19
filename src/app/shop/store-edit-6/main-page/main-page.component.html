@@ -102,13 +102,14 @@
               <div class="xb-4-template-collection__product xb-4-template__w960" fxLayoutAlign="space-between start"
                    fxLayout="row wrap"
                    fxLayoutGap.xs="16px">
-                <app-shop-item-product-card-5 *ngFor="let item of category.goods"
+                <app-shop-item-product-card-5 class="preview-home-box"
+                                              *ngFor="let item of category.goods"
                                               fxFlex="25"
                                               (productId)="jumpGoodsDetail($event)"
                                               [product]="item" [status]="0"></app-shop-item-product-card-5>
-                <div fxFlex="25"></div>
-                <div fxFlex="25"></div>
-                <div fxFlex="25"></div>
+                <div class="preview-home-box" fxFlex="25"></div>
+                <div class="preview-home-box" fxFlex="25"></div>
+                <div class="preview-home-box" fxFlex="25"></div>
               </div>
               <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
                    (click)="jumpCategory(i)">
@@ -145,10 +146,11 @@
             <div class="xb-4-template-blog__article xb-4-template__w960" fxLayout="row wrap"
                  fxLayoutAlign="space-between start"
                  fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
-              <app-shop-item-blog-card-5 *ngFor="let item of homeBlog"
+              <app-shop-item-blog-card-5 class="preview-home-blog-box"
+                                         *ngFor="let item of homeBlog"
                                          fxFlex.xs="48" fxFlex.gt-xs="50"
                                          [blog]="item" [status]="1"></app-shop-item-blog-card-5>
-              <div fxFlex="50"></div>
+              <div class="preview-home-blog-box" fxFlex="50"></div>
             </div>
             <div class="xb-4-template-products__collection-no-goods" *ngIf="homeBlog.length == 0">
               <div>You haven't added any blog yet.</div>
@@ -168,6 +170,7 @@
           <div class="xb-4-template__w960" fxLayout="row wrap" fxLayoutAlign="start start"
                fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutGap.xs="32px">
             <app-shop-item-blog-card-5 *ngFor="let item of blog"
+                                       class="preview-home-blog-box"
                                        fxFlex.xs="48" fxFlex.gt-xs="50"
                                        [blog]="item" [status]="1"></app-shop-item-blog-card-5>
           </div>
@@ -198,9 +201,10 @@
                fxLayout="row wrap" fxLayoutGap.xs="16px">
             <app-edit-flash-sale-card-6 *ngFor="let item of flashSaleProduct"
                                         fxFlex.xs="44" fxFlex.gt-xs="31"
+                                        class="preview-flash-box"
                                         (productId)="jumpGoodsDetail($event)"
                                         [product]="item" [status]="0"></app-edit-flash-sale-card-6>
-            <div fxFlex.xs="44" fxFlex.gt-xs="31"></div>
+            <div class="preview-flash-box" fxFlex.xs="44" fxFlex.gt-xs="31"></div>
           </div>
           <div class="xb-4-template-category__see-more xb-pointer" fxLayout="row" fxLayoutAlign="center center"
                *ngIf="nextFlashSalePage && flashSaleProduct.length>0 ">
@@ -233,11 +237,12 @@
                fxLayoutGap.xs="16px">
             <app-shop-item-product-card-5 *ngFor="let item of product"
                                           fxFlex="25"
+                                          class="preview-home-box"
                                           (productId)="jumpGoodsDetail($event)"
                                           [product]="item" [status]="0"></app-shop-item-product-card-5>
-            <div fxFlex="25"></div>
-            <div fxFlex="25"></div>
-            <div fxFlex="25"></div>
+            <div class="preview-home-box" fxFlex="25"></div>
+            <div class="preview-home-box" fxFlex="25"></div>
+            <div class="preview-home-box" fxFlex="25"></div>
           </div>
           <div class="xb-4-template-category__see-more xb-pointer md-margin-bottom-4" fxLayout="row"
                fxLayoutAlign="center center"

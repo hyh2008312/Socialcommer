@@ -2,7 +2,7 @@
   <div class="xb-4-template-home__background" fxLayout="column" fxLayoutAlign="center center"
        [ngStyle]="{'background': 'url(' + (imageBanner)   + ') center / auto 100% ' }">
     <div class="xb-4-template-home__title">
-      S T O R E  N A M E
+      S T O R E N A M E
     </div>
   </div>
   <div class="xb-4-template-home__ad-bg xb-4-template__w960" fxLayout="row" fxLayoutAlign="space-around start"
@@ -46,7 +46,8 @@
       </div>
 
     </div>
-    <app-shop-item-product-card-4 *ngFor="let item of product"
+    <app-shop-item-product-card-4 class="preview-home-box"
+                                  *ngFor="let item of product"
                                   fxFlex.xs="48" fxFlex.gt-xs="22"
                                   [product]="item" [status]="0"></app-shop-item-product-card-4>
   </div>

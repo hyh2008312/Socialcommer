@@ -14,7 +14,8 @@
   <div>
     <div class="xb-store__content xb-store__border-bottom">
       <div class="md-margin-top-1" fxLayout="row wrap" fxLayoutAlign="space-around start">
-        <app-shop-item-card *ngFor="let item of product"
+        <app-shop-item-card class="preview-home-box"
+                            *ngFor="let item of product"
                             fxFlex="33" fxFlex.xs="100"
                             [product]="item" [status]="0"></app-shop-item-card>
         <div fxFlex="33" fxFlex.xs="100"></div>
@@ -29,7 +30,8 @@
       <div class="xb-store-template__blog-title">BLOG</div>
 
       <div class="md-margin-top-1" fxLayout="row wrap" fxLayoutAlign="space-between start">
-        <app-shop-template-3-store-blog-card *ngFor="let item of blog"
+        <app-shop-template-3-store-blog-card class="preview-home-blog-box"
+                                             *ngFor="let item of blog"
                                              fxFlex="45" fxFlex.xs="100"
                                              [blog]="item" [status]="0"></app-shop-template-3-store-blog-card>
         <div fxFlex="49" fxFlex.xs="100"></div>

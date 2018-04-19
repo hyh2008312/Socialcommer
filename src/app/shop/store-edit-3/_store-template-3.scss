@@ -1497,3 +1497,83 @@
 
   }
 }
+// 第三套模版产品safari
+.preview-home-box {
+  @include xb-sm-screen {
+    max-width: 50% !important;
+    flex: 1 1 180px !important;
+    -webkit-flex: 1 1 180px !important;
+    min-width: 50%;
+  }
+  @include xb-md-screen {
+    max-width: 33% !important;
+    flex: 1 1 235px !important;
+    -webkit-flex: 1 1 235px !important;
+    min-width: 33%;
+  }
+  @include xb-lg-screen {
+    max-width: 33% !important;
+    flex: 1 1 300px !important;
+    -webkit-flex: 1 1 300px !important;
+    min-width: 33%;
+  }
+
+}
+
+//第三套模版blog safari 兼容
+.preview-home-blog-box {
+
+  @include xb-sm-screen {
+    max-width: 45% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 45%;
+  }
+  @include xb-md-screen {
+    max-width: 45% !important;
+    flex: 1 1 235px !important;
+    -webkit-flex: 1 1 235px !important;
+    min-width: 45%;
+  }
+  @include xb-lg-screen {
+    max-width: 45% !important;
+    flex: 1 1 300px !important;
+    -webkit-flex: 1 1 300px !important;
+    min-width: 30%;
+  }
+
+}
+//第三套模版blog safari 兼容
+.preview-flash-box {
+
+  max-width: 30% !important;
+  flex: 1 1 300px !important;
+  -webkit-flex: 1 1 300px !important;
+  min-width: 30%;
+
+  @include xb-xs-screen {
+    max-width: 48% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 48%;
+  }
+  @include xb-sm-screen {
+    max-width: 45% !important;
+    flex: 1 1 260px !important;
+    -webkit-flex: 1 1 260px !important;
+    min-width: 45%;
+  }
+  @include xb-md-screen {
+    max-width: 30% !important;
+    flex: 1 1 270px !important;
+    -webkit-flex: 1 1 270px !important;
+    min-width: 30%;
+  }
+  @include xb-lg-screen {
+    max-width: 30% !important;
+    flex: 1 1 310px !important;
+    -webkit-flex: 1 1 310px !important;
+    min-width: 30%;
+  }
+
+}

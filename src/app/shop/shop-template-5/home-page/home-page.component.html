@@ -28,7 +28,7 @@
       </div>
       <div class="xb-4-template-collection__product " fxLayoutAlign="space-between start" fxLayout="row wrap"
            fxShow="true" fxShow.xs="false">
-        <app-shop-item-product-card-5 *ngFor="let item of category.relations"
+        <app-shop-item-product-card-5 class="preview-home-box" *ngFor="let item of category.relations"
                                       fxFlex.xs="100" fxFlex.gt-xs="30"
                                       [product]="item" [status]="0"></app-shop-item-product-card-5>
         <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>

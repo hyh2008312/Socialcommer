@@ -14,17 +14,19 @@
   <div>
     <div class="xb-store__content xb-store__border-bottom">
       <div class="md-margin-top-1" fxLayout="row wrap" fxLayoutAlign="space-around start">
-        <app-store-item-card *ngFor="let item of product"
+        <app-store-item-card class="preview-home-box"
+                             *ngFor="let item of product"
                              fxFlex="33" fxFlex.xs="100" [currency]="currency"
                              [product]="item" [status]="0"></app-store-item-card>
-        <div fxFlex="33" fxFlex.xs="100"></div>
-        <div fxFlex="33" fxFlex.xs="100"></div>
+        <div class="preview-home-box" fxFlex="33" fxFlex.xs="100"></div>
+        <div class="preview-home-box" fxFlex="33" fxFlex.xs="100"></div>
       </div>
       <div class="md-margin-top-4 md-dark-secondary" fxLayout="row" fxLayoutAlign="center center"
            *ngIf="categories.length<=0 && product.length <= 0">
         There are no products available.
       </div>
-      <div *ngIf="product.length > 0 && nextPage" class="xb-store-template__buttons-bg" fxLaout="row" fxLayoutAlign="center center">
+      <div *ngIf="product.length > 0 && nextPage" class="xb-store-template__buttons-bg" fxLaout="row"
+           fxLayoutAlign="center center">
         <div (click)="jumpToCollection()">
           SEE MORE
         </div>
@@ -34,10 +36,11 @@
       <div class="xb-store-template__blog-title">BLOG</div>
 
       <div class="md-margin-top-1" fxLayout="row wrap" fxLayoutAlign="space-between start">
-        <app-store-template-3-store-blog-card *ngFor="let item of blog"
+        <app-store-template-3-store-blog-card class="preview-home-blog-box"
+                                              *ngFor="let item of blog"
                                               fxFlex="45" fxFlex.xs="100"
                                               [blog]="item" [status]="0"></app-store-template-3-store-blog-card>
-        <div fxFlex="49" fxFlex.xs="100"></div>
+        <div class="preview-home-blog-box" fxFlex="45" fxFlex.xs="100"></div>
       </div>
       <div class="md-margin-top-4 md-dark-secondary" fxLayout="row" fxLayoutAlign="center center"
            *ngIf="!nextBlogPage && blog.length == 0">

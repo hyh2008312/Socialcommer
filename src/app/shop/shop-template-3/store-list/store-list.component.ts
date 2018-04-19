@@ -76,6 +76,22 @@ export class StoreListComponent implements OnInit {
     originalPriceAmount: '16',
     originalPriceCurrency: 'USD',
     mainImage: 'https://media.socialcommer.com/source/web/template/3/14-pic.jpg'
+  }, {
+    id: 4,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/12-pic.jpg'
+  }, {
+    id: 5,
+    title: 'Product Name',
+    salePriceAmount: '12',
+    salePriceCurrency: 'USD',
+    originalPriceAmount: '16',
+    originalPriceCurrency: 'USD',
+    mainImage: 'https://media.socialcommer.com/source/web/template/3/07-pic.jpg'
   }];
 
   constructor(

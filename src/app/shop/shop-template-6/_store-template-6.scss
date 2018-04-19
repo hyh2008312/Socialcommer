@@ -52,7 +52,7 @@
     line-height: 56px;
     @include xb-xs-screen {
       font-family: Helvetica;
-      font-size: 24px;
+      font-size: 16px;
       font-weight: bold;
       color: #ee4b80;
     }
@@ -947,6 +947,7 @@
   &-order-and-cart {
     position: absolute;
     right: 32px;
+    height: 72px;
   }
   &-circle {
     width: 16px;
@@ -962,4 +963,80 @@
     top: 0;
     text-align: center;
   }
+}
+// 第四套模版产品safari(4个)
+.preview-home-box {
+  @include xb-xs-screen {
+    max-width: 48% !important;
+    flex: 1 1 200px !important;
+    -webkit-flex: 1 1 200px !important;
+    min-width: 48%;
+  }
+  @include xb-sm-screen {
+    max-width: 25% !important;
+    flex: 1 1 180px !important;
+    -webkit-flex: 1 1 180px !important;
+    min-width: 25%;
+  }
+  @include xb-md-screen {
+    max-width: 25% !important;
+    flex: 1 1 235px !important;
+    -webkit-flex: 1 1 235px !important;
+    min-width: 25%;
+  }
+  @include xb-lg-screen {
+    max-width: 25% !important;
+    flex: 1 1 280px !important;
+    -webkit-flex: 1 1 280px !important;
+    min-width: 25%;
+  }
+
+}
+
+//第四套模版blog safari 兼容（2个）
+.preview-home-blog-box {
+
+  @include xb-sm-screen {
+    max-width: 45% !important;
+    flex: 1 1 340px !important;
+    -webkit-flex: 1 1 340px !important;
+    min-width: 45%;
+  }
+  @include xb-md-screen {
+    max-width: 45% !important;
+    flex: 1 1 400px !important;
+    -webkit-flex: 1 1 400px !important;
+    min-width: 45%;
+  }
+  @include xb-lg-screen {
+    max-width: 45% !important;
+    flex: 1 1 450px !important;
+    -webkit-flex: 1 1 450px !important;
+    min-width: 45%;
+  }
+
+}
+
+//第四套模版blog safari 兼容 （3个）
+.preview-flash-box {
+
+  @include xb-sm-screen {
+    max-width: 45% !important;
+    flex: 1 1 260px !important;
+    -webkit-flex: 1 1 260px !important;
+    min-width: 45%;
+  }
+  @include xb-md-screen {
+    max-width: 31% !important;
+    flex: 1 1 270px !important;
+    -webkit-flex: 1 1 270px !important;
+    min-width: 31%;
+  }
+  @include xb-lg-screen {
+    max-width: 31% !important;
+    flex: 1 1 310px !important;
+    -webkit-flex: 1 1 310px !important;
+    min-width: 31%;
+  }
+
 }

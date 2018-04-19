@@ -10,8 +10,8 @@
         <div  fxLayout="row" fxLayoutAlign="start center"
            fxLayout.xs="column" fxLayoutAlign.xs="start start">
         <div fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-store-template__card-price">{{product.salePriceAmount|currency: product.salePriceCurrency: true }}</div>
-          <div class="xb-store-template__card-original line-through md-margin-left-1" *ngIf="product.originalPriceAmount > 0">{{product.originalPriceAmount|currency: product.originalPriceCurrency: true }}</div>
+          <div class="xb-store-template__card-price">{{product.salePriceAmount|currency: product.salePriceCurrency }}</div>
+          <div class="xb-store-template__card-original line-through md-margin-left-1" *ngIf="product.originalPriceAmount > 0">{{product.originalPriceAmount|currency: product.originalPriceCurrency }}</div>
         </div>
       </div>
     </div>
