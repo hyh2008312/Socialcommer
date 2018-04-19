@@ -72,13 +72,13 @@
         <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="center center">
           <div class="xb-social-share md-margin-right-2 xb-social-share__large xb-social-share__whatsapp"
                fxLayout="row" fxLayoutAlign="center center"
-               appSocialShare [whatsApp]="{text: text + ' ' + link}" (click)="jump()" >
+               appSocialShare [whatsApp]="{text: text + ' ' + link}" >
             <i class="iconfontXberts icon-ic-social-whatsapp" ></i>
             <div>Share to WhatsApp</div>
           </div>
           <div class="xb-social-share xb-social-share__large xb-social-share__facebook"
                fxLayout="row" fxLayoutAlign="center center"
-               appSocialShare [facebook]="{u: link}"  (click)="jump()" >
+               appSocialShare [facebook]="{u: link}" >
             <i class="iconfontXberts icon-ic-facebook" ></i>
             <div>Share to Facebook</div>
           </div>

@@ -255,7 +255,6 @@ export class FindProductsShareComponent implements OnInit {
   }
 
   shareToYoutube(status: any) {
-    this.jump();
     let dialogRef = this.dialog.open(ProductShareDialogComponent, {
       data: {
         shareLink: this.link,
