@@ -56,9 +56,9 @@ export class ShopComponent implements OnInit {
           self.shopService.setTemplateList(data);
         });
         self.shareLink = window.location.host + '/store/' + self.storeName;
-        if(!data.setStoreBonus && data.setStep == 'finished' && !window.isFirstLogin) {
+        if(!data.setStoreBonus && data.setStep == 'finished' && !(<any>window).isFirstLogin) {
           if(self.router.url != '/shop/guide') {
-            window.isFirstLogin = true;
+            (<any>window).isFirstLogin = true;
             self.openDialog();
           }
         }
