@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ElementRef } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { ProductShareSuccessComponent } from '../product-share-success/product-share-success.component';
@@ -36,14 +36,7 @@ export class ProductShareDialogComponent implements OnInit {
   }
 
   copy($event) {
-    let self = this;
-    let save = function (e){
-      e.clipboardData.setData('text/plain',self.text);
-      self.openCopyBar();
-      e.preventDefault();//阻止默认行为
-    };
-    document.addEventListener('copy',save);
-    document.execCommand("copy");
+    this.openCopyBar();
   }
 
   openCopyBar() {

@@ -70,7 +70,7 @@
       font-size: 14px;
       letter-spacing: -.29px;
       display: block;
-      @include media();
+      font-weight: 500;
       color: $primaryColor;
       cursor: pointer;
       white-space: nowrap;
@@ -915,7 +915,7 @@
       border-radius: 10px;
       cursor: pointer;
       background-color: $whiteColor;
-      margin: 67px 20px 0;
+      margin: 67px 40px 0;
       @include box-shadow(0 1px 3px 0 rgba(0, 0, 0, 0.19));
       @include xb-xs-screen {
         margin: 27px 0 16px;

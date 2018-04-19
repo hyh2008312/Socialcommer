@@ -70,6 +70,7 @@
     "mongodb": "^2.2.30",
     "morgan": "^1.8.2",
     "ngx-auth": "^3.0.0",
+    "ngx-clipboard": "^10.0.0",
     "ngx-cookie-service": "^1.0.10",
     "ngx-quill-editor": "^2.2.2",
     "node-fetch": "^2.1.1",

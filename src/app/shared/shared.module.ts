@@ -75,6 +75,8 @@ import {ViewModifyBodyStyleDirective} from "./directives/view-modify-body-style/
 import {MakeFirstLetterBigPipe} from 'app/shared/pipes/make-first-letter-big/make-first-letter-big.pipe';
 import {ShareShowButtonComponent} from "./components/share-show-button/share-show-button.component";
 
+import { ClipboardModule } from 'ngx-clipboard';
+
 let providers = {
   "google": {
     "clientId": GoogleClientId
@@ -112,7 +114,8 @@ let providers = {
     Angular2SocialLoginModule,
     MatSidenavModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ClipboardModule
   ],
   declarations: [
     SafeHtmlPipe,
@@ -206,7 +209,8 @@ let providers = {
     MatSnackBarModule,
     MatSidenavModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ClipboardModule
   ],
   providers: [
     ImageUploadPreviewService,

@@ -12,6 +12,6 @@
     </mat-form-field>
   </div>
   <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="center center">
-    <button mat-raised-button color="primary" (click)="copy($event)">COPY</button>
+    <button mat-raised-button color="primary" ngxClipboard [cbContent]="text" (cbOnSuccess)="copy($event)">COPY</button>
   </div>
 </div>
