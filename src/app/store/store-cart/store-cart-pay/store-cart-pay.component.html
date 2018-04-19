@@ -459,20 +459,28 @@
             <div class="xb-cart__bill-title" fxLayout="row" fxLayoutAlign="start center">
               Order Summary
             </div>
+          </div>
+          <div class="xb-cart__bill background-bg-white md-margin-top-2" fxHide.xs>
             <div fxLayout="row" fxLayoutAlign="start start">
               <div class="xb-cart__bill-left">
-                <div class="xb-cart__bill-margin-top-1">Subtotal</div>
-                <div class="xb-cart__bill-margin-top-1">Shipping</div>
-                <div class="xb-cart__bill-margin-top-1">Tax</div>
-                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text">Subtotal</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text">Shipping</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text">Tax</div>
               </div>
-              <div>
-                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice |currency: (order.currency | uppercase) }}</div>
-                <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice |currency: (order.currency | uppercase) }}</div>
-                <div class="xb-cart__bill-margin-top-1">{{0 |currency: (order.currency | uppercase) }}</div>
-                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">
-                  {{totalPrice |currency: (order.currency | uppercase)}}</div>
+              <div class="md-margin-bottom-3">
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text-1">{{subTotalPrice |currency: (order.currency | uppercase) }}</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text-1">{{shippingTotalPrice |currency: (order.currency | uppercase) }}</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text-1">{{0 |currency: (order.currency | uppercase) }}</div>
               </div>
+            </div>
+          </div>
+          <div class="xb-cart__bill xb-cart__bill-height background-bg-white"
+               fxLayout="row" fxLayoutAlign="start center" fxHide.xs>
+            <div class="xb-cart__bill-left">
+              <div class="xb-cart__bill-text-2 xb-cart__bill-margin-right">Grand Total</div>
+            </div>
+            <div>
+              <div class="xb-cart__bill-text-2">{{totalPrice |currency: (order.currency | uppercase)}}</div>
             </div>
           </div>
           <div class="md-margin-top-2 unicorn-dark-theme" fxLayout="column">

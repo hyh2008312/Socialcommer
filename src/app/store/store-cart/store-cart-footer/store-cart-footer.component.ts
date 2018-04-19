@@ -11,7 +11,7 @@ import { StoreService } from '../../store.service';
 
 export class StoreCartFooterComponent{
 
-  @Input() text: string;
+  text: string;
   shareLink: string;
   displayName: string;
 
@@ -25,12 +25,14 @@ export class StoreCartFooterComponent{
       if(data) {
         this.uid = data.templateId;
         this.displayName = data.displayName;
+        this.text = 'Welcome to my store: '+ data.name + ' - ' + data.description;
+        this.shareLink = 'http://'+ window.location.host + '/store/' + this.displayName;
       }
     });
   }
 
   ngOnInit(): void {
-    this.shareLink = window.location.href;
+
   }
 
   jumpAbout(): void {

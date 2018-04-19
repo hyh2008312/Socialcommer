@@ -91,10 +91,13 @@
     overflow: hidden;
 
     &-margin-right{
-      margin-right: 16px;
+      margin-right: 32px;
       @include xb-xs-screen{
         margin-right: 0;
         width: 100%;
+      }
+      @include xb-sm-screen{
+        margin-right: 16px;
       }
     }
 
@@ -143,12 +146,13 @@
   }
 
   &__bill{
-    padding: 0 24px;
+    padding: 0 16px;
     width: 224px;
 
     &-title{
-      height: 54px;
-      font-size: 16px;
+      height: 40px;
+      font-size: 14px;
+      letter-spacing: -.08px;
       @include media();
     }
 
@@ -167,12 +171,8 @@
       }
     }
 
-    &-left{
-      width: 100px;
-    }
-
     &-margin-top-1{
-      margin-top: 16px;
+      margin-top: 24px;
     }
 
     &-margin-top-2{
@@ -182,16 +182,51 @@
     &-margin-bottom{
       margin-bottom: 24px;
     }
+
+    &-height{
+      height: 64px;
+      border-top: 1px solid rgba(0,0,0,.12);
+    }
+
+    &-text{
+      font-size: 12px;
+      line-height: 14px;
+      color: rgba(0,0,0,.54);
+      letter-spacing: -0.08px;
+      text-align: right;
+      @include media();
+      width: 48px;
+      margin-right: 24px;
+    }
+
+    &-text-1{
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: -0.08px;
+      @include media();
+    }
+
+    &-text-2{
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: -0.08px;
+      @include media();
+    }
+
+    &-margin-right{
+      margin-right: 12px;
+    }
   }
 
   &__product-title-bg{
-    height: 54px;
+    height: 40px;
     padding: 0 16px;
     border-bottom: 1px solid rgba(0,0,0,.12);
   }
 
   &__title{
-    font-size: 16px;
+    font-size: 14px;
+    letter-spacing: -.08px;
     @include media();
   }
 
@@ -225,20 +260,27 @@
 
     &-title{
       color: #000;
-      font-size: 14px;
-      line-height: 24px;
-      max-height: 72px;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: -.08px;
+      max-height: 60px;
       overflow: hidden;
       @include xb-xs-screen{
-        height: 14px;
+        height: 12px;
         line-height: 14px;
         overflow: hidden;
       }
       @include xb-sm-screen{
-        height: 14px;
+        height: 12px;
         line-height: 14px;
         overflow: hidden;
       }
+    }
+
+    &-title-1{
+      font-size: 12px;
+      letter-spacing: -0.08px;
+      line-height: 14px;
     }
 
     &-input{
@@ -272,6 +314,14 @@
 
       &-text{
         margin-top: -8px;
+        font-size: 12px;
+        letter-spacing: -.08px;
+        line-height: 14px;
+      }
+      &-text-1{
+        font-size: 12px;
+        letter-spacing: -.08px;
+        line-height: 14px;
       }
     }
 
@@ -281,7 +331,9 @@
     }
 
     &-sale{
-      font-size: 16px;
+      font-size: 14px;
+      letter-spacing: -.08px;
+      line-height: 16px;
       @include media();
     }
 
@@ -297,6 +349,9 @@
 
     &-original{
       margin-top: 4px;
+      font-size: 12px;
+      letter-spacing: -.08px;
+      line-height: 14px;
       @include xb-xs-screen{
         margin-top: 0;
         margin-left: 12px;
@@ -330,6 +385,7 @@
         user-select: none;
       }
     }
+
   }
 
   &__footer{

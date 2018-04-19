@@ -20,7 +20,7 @@ $dark-theme: mat-light-theme($dark-primary, $dark-accent, $dark-warn);
 .unicorn-dark-theme {
   @include angular-material-theme($dark-theme);
   .mat-form-field-underline{
-    height: 2px;
+    height: 1px;
     background-color: #000;
   }
 

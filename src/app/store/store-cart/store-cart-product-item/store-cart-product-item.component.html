@@ -8,7 +8,7 @@
         {{product.title}}
       </a>
       <div fxLayout="row" fxLayoutAlign="start center">
-        <div class="md-margin-right-2" *ngFor="let item of product.variant.attributeValues;">
+        <div class="xb-cart__item-title-1 md-margin-right-2" *ngFor="let item of product.variant.attributeValues;">
           {{item.value}}
         </div>
       </div>
@@ -47,7 +47,7 @@
       </mat-form-field>
     </div>
     <div class="xb-cart__item-select-text xb-bold">{{shipping.priceItem | exchangeCurrency:product.salePriceCurrency |currency: product.salePriceCurrency }}</div>
-    <div class="md-margin-top-1">{{shipping.shippingTimeMin}}-{{shipping.shippingTimeMax}} days</div>
+    <div class="md-margin-top-1 xb-cart__item-select-text-1">{{shipping.shippingTimeMin}}-{{shipping.shippingTimeMax}} days</div>
   </div>
   <div fxFlex="5" fxLayout="row" fxLayoutAlign="end center">
     <div class="xb-cart__icon xb-pointer">
@@ -78,7 +78,7 @@
     </div>
     <div class="md-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
       <div class="xb-cart__item-sale">{{product.salePriceAmount | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency }}</div>
-      <div class="line-through md-dark-secondary xb-cart__item-original">
+      <div class="line-through xb-cart__item-original">
         {{product.originalPriceAmount | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency }}
       </div>
     </div>
@@ -96,7 +96,7 @@
         <i class="material-icons xb-pointer" >add</i>
       </div>
     </div>
-    <div *ngIf="shipping" class="md-margin-top-2">
+    <div *ngIf="shipping">
       <div class="xb-cart__item-select xb-cart__item-select-mobile" (click)="openDialog()">
         {{shipping.type}} Shipping
         <span class="xb-cart__item-select-tri"></span>
@@ -104,7 +104,7 @@
       <div class="xb-cart__item-sale md-margin-top-1">
         {{shipping.priceItem | exchangeCurrency:product.salePriceCurrency | currency: product.salePriceCurrency }}
       </div>
-      <div class="md-margin-top-1">{{shipping.shippingTimeMin}}-{{shipping.shippingTimeMax}} days</div>
+      <div class="md-margin-top-1 xb-cart__item-select-text-1">{{shipping.shippingTimeMin}}-{{shipping.shippingTimeMax}} days</div>
     </div>
   </div>
   <div fxFlex="none" fxLayout="column" fxLayoutAlign="center center" *ngIf="!isEdit">

@@ -7,7 +7,7 @@
       <a class="xb-cart__item-title" href="{{productLink}}" target="_blank">
         {{product.title}}
       </a>
-      <div>{{product.attributes}}</div>
+      <div class="xb-cart__item-title-1">{{product.attributes}}</div>
     </div>
   </div>
   <div fxFlex="20" fxLayout="column" fxLayoutAlign="center center">
@@ -20,8 +20,8 @@
     <div class="xb-cart__item-sale">
       {{product.shippingExclTax | exchangeCurrency:(currency|uppercase) | currency: (currency|uppercase) }}
     </div>
-    <div class="md-margin-top-1">{{ product.shippingPrice.type }}&nbsp;Shipping</div>
-    <div class="md-dark-secondary md-margin-top-1">{{product.shippingPrice.shippingTimeMin}} - {{product.shippingPrice.shippingTimeMax}} days</div>
+    <div class="md-margin-top-1 xb-cart__item-select-text-1">{{ product.shippingPrice.type }}&nbsp;Shipping</div>
+    <div class="md-margin-top-1 xb-cart__item-select-text-1">{{product.shippingPrice.shippingTimeMin}} - {{product.shippingPrice.shippingTimeMax}} days</div>
   </div>
 </div>
 <div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start stretch" fxHide.gt-sm>

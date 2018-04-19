@@ -10,7 +10,7 @@
         <div class="md-margin-left-2 text-underline xb-pointer xb-bold" fxHide.xs
              routerLink="{{homeLink}}"><< Continue Shopping</div>
         <div fxFlex></div>
-        <div class="unicorn-dark-theme md-margin-right-2" fxLayoutAlign="start center">
+        <div class="unicorn-dark-theme xb-cart__body-margin-right" fxLayoutAlign="start center">
           Ship to: {{countryName}}
         </div>
         <div class="xb-cart__bill" fxHide.xs fxFlex="none">
@@ -18,24 +18,24 @@
       </div>
       <div class="xb-cart__bg" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-cart__body-margin-right" fxFlex>
-          <div class="background-bg-white" >
-            <div class="xb-cart__product-title-bg" fxLayout="row" fxLayoutAlign="start center" fxHide.xs>
-              <div class="xb-cart__title" fxFlex="40">
-                Product
-              </div>
-              <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
-                Quantity
-              </div>
-              <div class="xb-cart__title" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
-                Unit Price
-              </div>
-              <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
-                Shipping
-              </div>
-              <div fxFlex="5">
-
-              </div>
+          <div class="md-margin-bottom-2 xb-cart__product-title-bg background-bg-white" fxLayout="row" fxLayoutAlign="start center" fxHide.xs>
+            <div class="xb-cart__title" fxFlex="40">
+              Product
             </div>
+            <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+              Quantity
+            </div>
+            <div class="xb-cart__title" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+              Unit Price
+            </div>
+            <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+              Shipping
+            </div>
+            <div fxFlex="5">
+
+            </div>
+          </div>
+          <div class="background-bg-white">
             <div class="xb-cart__product-list" *ngFor="let item of products;let i = index;">
               <app-store-cart-product-item [homeLink]="homeLink" [product]="item" [index]="i"
                                            (productChange)="productEdit($event)" [shippingList]="shippingList"></app-store-cart-product-item>
@@ -46,23 +46,32 @@
           </div>
         </div>
         <div fxLayout="column" fxHide.xs>
-          <div class="xb-cart__bill background-bg-white" fxHide.xs>
+          <div class="xb-cart__bill background-bg-white " fxHide.xs>
             <div class="xb-cart__bill-title" fxLayout="row" fxLayoutAlign="start center">
               Order Summary
             </div>
+          </div>
+          <div class="xb-cart__bill background-bg-white md-margin-top-2" fxHide.xs>
             <div fxLayout="row" fxLayoutAlign="start start">
               <div class="xb-cart__bill-left">
-                <div class="xb-cart__bill-margin-top-1">Subtotal</div>
-                <div class="xb-cart__bill-margin-top-1">Shipping</div>
-                <div class="xb-cart__bill-margin-top-1">Tax</div>
-                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">Grand Total</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text">Subtotal</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text">Shipping</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text">Tax</div>
               </div>
-              <div>
-                <div class="xb-cart__bill-margin-top-1">{{subTotalPrice | currency: (currency|uppercase) }}</div>
-                <div class="xb-cart__bill-margin-top-1">{{shippingTotalPrice | currency: (currency|uppercase) }}</div>
-                <div class="xb-cart__bill-margin-top-1">{{0 | currency: (currency|uppercase) }}</div>
-                <div class="xb-cart__bill-margin-top-2 xb-cart__bill-margin-bottom xb-cart__title">{{totalPrice | currency: (currency|uppercase) }}</div>
+              <div class="md-margin-bottom-3">
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text-1">{{subTotalPrice | currency: (currency|uppercase) }}</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text-1">{{shippingTotalPrice | currency: (currency|uppercase) }}</div>
+                <div class="xb-cart__bill-margin-top-1 xb-cart__bill-text-1">{{0 | currency: (currency|uppercase) }}</div>
               </div>
+            </div>
+          </div>
+          <div class="xb-cart__bill xb-cart__bill-height background-bg-white"
+               fxLayout="row" fxLayoutAlign="start center" fxHide.xs>
+            <div class="xb-cart__bill-left">
+              <div class="xb-cart__bill-text-2 xb-cart__bill-margin-right">Grand Total</div>
+            </div>
+            <div>
+              <div class="xb-cart__bill-text-2">{{totalPrice | currency: (currency|uppercase) }}</div>
             </div>
           </div>
           <div class="md-margin-top-2 unicorn-dark-theme" fxLayout="column">
