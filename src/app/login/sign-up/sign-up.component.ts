@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnDestroy} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
@@ -17,7 +17,7 @@ import { SystemConstant } from '../../config/app.api';
   styleUrls: ['../login.scss']
 })
 
-export class SignUpComponent {
+export class SignUpComponent implements OnDestroy {
 
   step: number = 0;
   isFirstLogin: boolean = false;
@@ -88,6 +88,10 @@ export class SignUpComponent {
     }
   };
 
+  sub: any;
+
+  ads: any = {};
+
   constructor(
     private router : Router,
     private service: LoginService,
@@ -144,6 +148,13 @@ export class SignUpComponent {
     this.signUpGroup.valueChanges.subscribe(data => this.onSignUpGroupValueChanged(data));
     this.storeForm.valueChanges.subscribe(data => this.onStoreFormValueChanged(data));
     this.settingForm.valueChanges.subscribe(data => this.onSettingFormValueChanged(data));
+
+
+    this.sub = this.userService.currentAds.subscribe((data) => {
+      if(data) {
+        this.ads = data;
+      }
+    });
 
   }
 
@@ -262,7 +273,14 @@ export class SignUpComponent {
     }
 
     let self = this;
-    self.service.signUp(this.signUpGroup.value).then((data) => {
+    let params: any = this.signUpGroup.value;
+
+    for(let k in this.ads) {
+      if(this.ads.hasOwnProperty(k)) {
+        params[k] = this.ads[k];
+      }
+    }
+    self.service.signUp(params).then((data) => {
       self.signUpErr = false;
       let loginObject = {
         username: self.signUpGroup.value.email,
@@ -462,6 +480,15 @@ export class SignUpComponent {
   }
 
   ngOnDestroy(){
+    if(this.currentUserSub) {
+      this.currentUserSub.unsubscribe();
+    }
+    if(this.authSub) {
+      this.authSub.unsubscribe();
+    }
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 }

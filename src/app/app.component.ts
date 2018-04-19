@@ -8,8 +8,11 @@ import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'SocialCommer';
+
+  sub: any;
+  sub1: any;
 
   isLoadingShow: boolean = true;
 
@@ -42,5 +45,4 @@ export class AppComponent {
       });
     }
   }
-
 }

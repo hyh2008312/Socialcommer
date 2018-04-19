@@ -17,6 +17,7 @@ export class UserService {
   userCategory: Subject<any> = new BehaviorSubject<any>(null);
   pubCategory: Subject<any> = new BehaviorSubject<any>(null);
   countryList: Subject<any> = new BehaviorSubject<any>(null);
+  currentAds: Subject<any> = new BehaviorSubject<any>(null);
 
   public addUser(newUser: User): void {
     this.currentUser.next(newUser);
@@ -36,6 +37,10 @@ export class UserService {
 
   public addCountryList(newCountryList: any): void {
     this.countryList.next(newCountryList);
+  }
+
+  public addCurrentAds(ads: any): void {
+    this.currentAds.next(ads);
   }
 
   constructor(
