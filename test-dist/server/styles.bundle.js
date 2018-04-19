@@ -127,7 +127,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\n@import url(\"//at.alicdn.com/t/font_431208_pn9noxxsn4su4n29.css\");\n@import url(\"https://fonts.googleapis.com/icon?family=Material+Icons\");\n@import url(\"https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic\");\n@import url(\"//cdn.quilljs.com/1.3.3/quill.core.css\");\n/* You can add global styles to this file, and also import other style files */\n", ""]);
+exports.push([module.i, "\n@import url(\"//at.alicdn.com/t/font_431208_3o86ts019vgnl8fr.css\");\n@import url(\"https://fonts.googleapis.com/icon?family=Material+Icons\");\n@import url(\"https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic\");\n@import url(\"//cdn.quilljs.com/1.3.3/quill.core.css\");\n/* You can add global styles to this file, and also import other style files */\n", ""]);
 
 // exports
 

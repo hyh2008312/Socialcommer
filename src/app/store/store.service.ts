@@ -228,7 +228,7 @@ export class StoreService {
     this.metaService.updateTag({property: "og:image", content: data.shareImage});
     this.metaService.updateTag({property: "og:image:width", content: '600'});
     this.metaService.updateTag({property: "og:image:height", content: '315'});
-    this.metaService.updateTag({property: "og:url", content: location.href});
+    this.metaService.updateTag({property: "og:url", content: window.location.href});
   }
 
   getShippingList(obj): Promise<any> {
