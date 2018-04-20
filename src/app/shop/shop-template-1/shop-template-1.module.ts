@@ -14,6 +14,7 @@ import {StoreCartHeaderComponent} from "./store-cart-header/store-cart-header.co
 import {StoreCartMainComponent} from "./store-cart-main/store-cart-main.component";
 import {OrderTrackingLoginComponent} from "./order-tracking-login/order-tracking-login.component";
 import {StoreNavigationComponent} from "./store-navigation/store-navigation.component";
+import {StoreCategoryComponent} from "./store-category/store-category.component";
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import {StoreNavigationComponent} from "./store-navigation/store-navigation.comp
     StoreCartHeaderComponent,
     StoreCartMainComponent,
     OrderTrackingLoginComponent,
-    StoreNavigationComponent
+    StoreNavigationComponent,
+    StoreCategoryComponent
   ],
   entryComponents: [
   ],
