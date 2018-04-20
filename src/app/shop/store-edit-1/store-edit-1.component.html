@@ -56,8 +56,8 @@
     </div>
     <div>
       <div class="xb-store__title">My Collections</div>
-      <app-store-navigation [category]="category" [categories]="categories" (categoryChange)="changeCategory($event)"
-                            fxShow="true" fxShow.xs="false"></app-store-navigation>
+      <app-store-1-edit-category [category]="category" [categories]="categories" (categoryChange)="changeCategory($event)"
+                            fxShow="true" fxShow.xs="false"></app-store-1-edit-category>
       <div class="xb-store__content xb-store__border-bottom">
         <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between start">
           <app-store-item-card-preview class="preview-home-box"

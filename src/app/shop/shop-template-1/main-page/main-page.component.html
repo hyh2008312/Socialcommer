@@ -58,8 +58,8 @@
   </div>
   <div>
     <div class="xb-store__title">My Collections</div>
-    <app-store-navigation [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"
-                          fxShow="true" fxShow.xs="false"></app-store-navigation>
+    <app-store-1-preview-category [(category)]="category" [categories]="categories" (categoryChange)="changeCategory()"
+                                  fxShow="true" fxShow.xs="false"></app-store-1-preview-category>
     <div class="xb-store__content xb-store__border-bottom">
       <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between start">
         <app-shop-template-1-store-item-card class="preview-home-box"
@@ -68,13 +68,13 @@
                                              [product]="item" [status]="0"></app-shop-template-1-store-item-card>
         <div fxFlex.xs="48" fxFlex.gt-xs="30"></div>
       </div>
-      <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
-           (click)="jumpList()" *ngIf="!isMobile && nextPage && product.length > 0">
+      <div class="xb-store__buttons-bg" fxLayout="row" fxLayoutAlign="center center"
+           (click)="jumpList()" *ngIf="false">
         <div>
           SEE MORE
         </div>
       </div>
-      <div class="xb-store__buttons-bg" fxLaout="row" fxLayoutAlign="center center"
+      <div class="xb-store__buttons-bg" fxLayout="row" fxLayoutAlign="center center"
            (click)="jumpList()" *ngIf="isMobile">
         <div>
           SEE MORE

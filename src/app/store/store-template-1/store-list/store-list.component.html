@@ -6,12 +6,12 @@
   </div>
   <div fxFlex="noshrink">
     <div class="xb-store__navigation-mobile xb-store-template__collection-bg">
-      <app-store-navigation [category]="category" [categories]="categories"
-                            (categoryChange)="changeCategory($event)"></app-store-navigation>
+      <app-store-1-store-category [category]="category" [categories]="categories"
+                            (categoryChange)="changeCategory($event)"></app-store-1-store-category>
     </div>
     <div class="xb-store__navigation-fixed" *ngIf="showButton" fxHide.gt-xs>
-      <app-store-navigation [category]="category" [categories]="categories"
-                            (categoryChange)="changeCategory($event)"></app-store-navigation>
+      <app-store-1-store-category [category]="category" [categories]="categories"
+                            (categoryChange)="changeCategory($event)"></app-store-1-store-category>
     </div>
     <div class="xb-store__content ">
       <div class="md-margin-top-2" fxLayout="row wrap" fxLayoutAlign="space-between center">
