@@ -100,7 +100,7 @@
 
     @include xb-xs-screen {
       height: auto;
-      padding-bottom: 32px;
+      padding-bottom: 48px;
       background-size: auto 100%;
     }
 
@@ -118,7 +118,7 @@
 
       @include xb-xs-screen {
         height: auto;
-        padding-bottom: 32px;
+        padding-bottom: 48px;
         background-size: auto 100%;
       }
 
@@ -139,7 +139,7 @@
         font-size: 16px;
         line-height: 24px;
         letter-spacing: -.12px;
-        margin-top: 32px;
+        margin-top: 48px;
       }
 
       @include xb-sm-screen {
