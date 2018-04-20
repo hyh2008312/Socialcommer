@@ -14,7 +14,7 @@
              (click)="changeSlide(content,i)" fxLayout="row" fxLayoutAlign="start center">
           <i class="iconfontXberts xb-shop__icons" [ngClass]="content.icon"></i>
           <span class="md-margin-left-1" fxHide.xs>{{ content.text }}</span>
-          <div class="xb-shop__left-navigation-arrow" *ngIf="content.isActive"></div>
+          <div class="xb-shop__left-navigation-arrow" *ngIf="content.isActive" fxHide.xs></div>
         </div>
         <div class="xb-shop__left-navigation-bg-1" *ngIf="content.isActive" fxHide.xs>
           <ng-container *ngFor="let item of content.subContent;">

@@ -2,7 +2,6 @@
   <div class="xb-store-template__category-scroll" fxLayout="row wrap" fxLayoutAlign="start center">
     <ng-container *ngFor="let item of categories;let i = index;" >
       <div fxFlex="none" class="xb-store-template__category" (click)="changeCategory(item)"
-           *ngIf="hideCategory(item)"
            [ngClass]="{'active': item.data.name == category.data.name, 'xb-store-template__category-margin-right': i < categories.length - 1,
          'md-padding-right-2': i == categories.length - 1}">
         {{ item.data.name }}

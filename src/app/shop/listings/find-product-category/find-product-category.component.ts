@@ -16,8 +16,6 @@ export class FindProductCategoryComponent implements OnInit {
 
   @Output() categoryChange = new EventEmitter<string>();
 
-  hideCategoryList: any = ["Men’s Fashion", "Toys & Games", "Pet Supplies"];
-
   constructor(
 
   ) { }
@@ -29,14 +27,5 @@ export class FindProductCategoryComponent implements OnInit {
   changeCategory(category: any) {
     this.category = category;
     this.categoryChange.emit(this.category);
-  }
-
-  hideCategory(item) {
-    for(let value of this.hideCategoryList) {
-      if(item.data.name == value){
-        return false;
-      }
-    }
-    return true;
   }
 }

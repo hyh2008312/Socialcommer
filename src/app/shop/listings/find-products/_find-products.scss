@@ -60,6 +60,9 @@
         background-color: transparent;
         width: 340px;
         color: rgba(0, 0, 0, .87);
+        @include xb-xs-screen{
+          width: 200px;
+        }
       }
 
       &-close {

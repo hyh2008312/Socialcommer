@@ -106,10 +106,6 @@ export class FindProductsComponent implements OnInit {
           id: 'ongoing',
           data: {name: 'Flash Sale'}
         });
-        self.categories.push({
-          id: 'special',
-          data: {name: 'Special Offers'}
-        });
         for (let item of data) {
           self.categories.push(item);
         }
