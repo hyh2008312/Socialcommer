@@ -11,7 +11,7 @@ import { BaseApi, DataApi } from '../config/app.api';
 
 @Injectable()
 export class StoreService {
-  store: Subject<Store> = new BehaviorSubject<Store>(null);
+  store: Subject<any> = new BehaviorSubject<any>(null);
 
   constructor(
     private http: Http,

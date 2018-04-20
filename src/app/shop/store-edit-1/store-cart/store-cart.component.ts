@@ -1,8 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {StoreService} from '../../store.service';
-
 @Component({
   selector: 'app-edit-cart-main',
   templateUrl: './store-cart.component.html',

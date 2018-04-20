@@ -1,32 +1,20 @@
 <div class="xb-cart" fxLayout="column">
-  <div class="background-bg-white">
-    <div class="container">
-      <app-store-cart-header></app-store-cart-header>
-    </div>
-  </div>
   <div class="background-bg-light xb-cart__body" fxFlex="noshrink" *ngIf="products && products.length > 0">
-    <div class="container">
-      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start center">
-        <div class="md-margin-left-2 text-underline xb-pointer xb-bold" fxHide.xs
-             routerLink="{{homeLink}}"><< Continue Shopping</div>
-        <div fxFlex></div>
-        <div class="unicorn-dark-theme xb-cart__body-margin-right" fxLayoutAlign="start center">
-          Ship to: {{countryName}}
-        </div>
-        <div class="xb-cart__bill" fxHide.xs fxFlex="none">
-        </div>
-      </div>
+    <div class="xb-cart__container">
       <div class="xb-cart__bg" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-cart__body-margin-right" fxFlex>
           <div class="md-margin-bottom-2 xb-cart__product-title-bg background-bg-white" fxLayout="row" fxLayoutAlign="start center" fxHide.xs>
-            <div class="xb-cart__title" fxFlex="40">
+            <div class="xb-cart__title" fxFlex="35">
               Product
             </div>
             <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
               Quantity
             </div>
-            <div class="xb-cart__title" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+            <div class="xb-cart__title md-align-center" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
               Unit Price
+            </div>
+            <div class="xb-cart__title" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+              Cashback
             </div>
             <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
               Shipping
@@ -37,16 +25,18 @@
           </div>
           <div class="background-bg-white">
             <div class="xb-cart__product-list" *ngFor="let item of products;let i = index;">
-              <app-store-cart-product-item [homeLink]="homeLink" [product]="item" [index]="i"
-                                           (productChange)="productEdit($event)" [shippingList]="shippingList"></app-store-cart-product-item>
+              <app-shop-cart-product-item [homeLink]="homeLink" [product]="item" [index]="i"
+                                           (productChange)="productEdit($event)" [shippingList]="shippingList"></app-shop-cart-product-item>
             </div>
           </div>
+          <div class="md-margin-top-2 text-underline xb-pointer xb-bold" fxHide.xs
+               routerLink="{{homeLink}}"><< Continue Shopping</div>
           <div *ngIf="cartErr" class="xb-input-error md-margin-top-2">
             {{ cartErr }}
           </div>
         </div>
         <div fxLayout="column" fxHide.xs>
-          <div class="xb-cart__bill background-bg-white " fxHide.xs>
+          <div class="xb-cart__bill background-bg-white" fxHide.xs>
             <div class="xb-cart__bill-title" fxLayout="row" fxLayoutAlign="start center">
               Order Summary
             </div>
@@ -73,6 +63,9 @@
             <div>
               <div class="xb-cart__bill-text-2">{{totalPrice | currency: (currency|uppercase) }}</div>
             </div>
+          </div>
+          <div class="xb-cart__bill-button">
+            Ship to: {{countryName}}
           </div>
           <div class="md-margin-top-2 unicorn-dark-theme-1" fxLayout="column">
             <button mat-raised-button color="primary" (click)="checkout()">CHECKOUT</button>
@@ -115,13 +108,8 @@
       <div class="xb-cart__fixed-bottom-tri xb-cart__fixed-bottom-margin" *ngIf="isTotalDialogOpen"></div>
       <div class="xb-cart__fixed-bottom-tri-1 xb-cart__fixed-bottom-margin" *ngIf="!isTotalDialogOpen"></div>
     </div>
-    <div class="unicorn-dark-theme-1" fxLayout="column">
+    <div class="unicorn-dark-theme" fxLayout="column">
       <button mat-raised-button color="primary" (click)="checkout()">CHECKOUT</button>
-    </div>
-  </div>
-  <div class="background-bg-white" fxHide.xs>
-    <div class="container">
-      <app-store-cart-footer></app-store-cart-footer>
     </div>
   </div>
 </div>

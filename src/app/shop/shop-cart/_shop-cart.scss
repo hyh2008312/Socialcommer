@@ -2,9 +2,15 @@
 @import "../../styles/_variables";
 
 .xb-cart{
-  height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
+
+  &__container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 24px;
+    @include xb-xs-screen{
+      padding: 0 16px;
+    }
+  }
 
   &__align-center{
     text-align: center;
@@ -79,7 +85,7 @@
   }
 
   &__bg{
-    margin-top: 16px;
+    margin-top: 24px;
     margin-bottom: 64px;
     @include xb-xs-screen{
       margin-top: 16px;
@@ -215,6 +221,15 @@
 
     &-margin-right{
       margin-right: 12px;
+    }
+
+    &-button{
+      padding: 0 16px;
+      line-height: 32px;
+      background-color: $whiteColor;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-top: 16px;
     }
   }
 
@@ -550,7 +565,7 @@
       width: 100%;
       font-size: 14px;
       padding: 0 16px;
-      line-height: 32px;
+      line-height: 40px;
       @include media();
       text-align: center;
       color: rgba(255,255,255,.87);

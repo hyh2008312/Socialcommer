@@ -98,6 +98,9 @@ const routes: Routes = [
         path: 'orders',
         loadChildren: './orders/orders.module#OrdersModule'
       }, {
+        path: 'cart',
+        loadChildren: './shop-cart/shop-cart.module#ShopCartModule'
+      }, {
         path: 'reward',
         loadChildren: './reward/reward.module#RewardModule'
       },  {
