@@ -57,7 +57,7 @@ export class ShopComponent implements OnInit {
         });
         self.shareLink = window.location.host + '/store/' + self.storeName;
         if(!data.setStoreBonus && data.setStep == 'finished' && !(<any>window).isFirstLogin) {
-          if(self.router.url != '/shop/guide') {
+          if(self.router.url != '/shop/guide' && self.router.url != '/account/login') {
             (<any>window).isFirstLogin = true;
             self.openDialog();
           }

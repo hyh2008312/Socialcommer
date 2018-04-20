@@ -248,7 +248,7 @@ export class FindProductsShareComponent implements OnInit {
     let self = this;
     self.shopService.createSupplyProduct(storeProduct).then((data) => {
       self.formErr = false;
-      self.link = `http://${window.location.host}/store/${self.displayName}/${self.templateId}/detail/${data.id}`;
+      self.link = `${environment.production === true? 'https://':'http://'}${window.location.host}/store/${self.displayName}/${self.templateId}/detail/${data.id}`;
       self.text = data.title;
       self.step = 1;
     }).catch((data) => {

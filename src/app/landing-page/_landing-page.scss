@@ -173,7 +173,7 @@
       line-height: 64px;
       color: $whiteColor;
       margin-top: 160px;
-      @include light();
+      @include media();
       text-align: center;
 
       @include xb-xs-screen {
@@ -183,6 +183,7 @@
         letter-spacing: -.12px;
         text-align: center;
         padding: 0 16px;
+        font-weight: 300;
       }
 
       @include xb-sm-screen {
