@@ -73,7 +73,10 @@
         </div>
       </div>
       <div class="md-margin-top-2 " fxLayout="row wrap" fxLayoutAlign="space-between start">
-        <app-product-item-card class="box" *ngFor="let product of productList" [product]="product" [isShowPromotionFlag]="isShowPromotionFlag" fxFlex.xs="100" fxFlex.sm="32"
+        <app-product-item-card class="box" *ngFor="let product of productList"
+                               [isShowUpComingFlag]="isShowUpComingFlag"
+                               [product]="product" [isShowPromotionFlag]="isShowPromotionFlag" fxFlex.xs="100"
+                               fxFlex.sm="32"
                                fxFlex.gt-sm="24"></app-product-item-card>
         <div fxFlex.xs="100" fxFlex.sm="32"
              fxFlex.gt-sm="24"></div>

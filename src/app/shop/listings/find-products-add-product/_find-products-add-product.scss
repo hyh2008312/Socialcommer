@@ -499,3 +499,24 @@
   }
 
 }
+.recommend-box {
+  @include xb-sm-screen {
+    max-width: 32% !important;
+    flex: 1 1 243px !important;
+    -webkit-flex: 1 1 243px !important;
+    min-width: 32%;
+  }
+  @include xb-md-screen {
+    max-width: 32% !important;
+    flex: 1 1 245px !important;
+    -webkit-flex: 1 1 245px !important;
+    min-width: 32%;
+  }
+  @include xb-lg-screen {
+    max-width: 32% !important;
+    flex: 1 1 245px !important;
+    -webkit-flex: 1 1 245px !important;
+    min-width: 32%;
+  }
+
+}
