@@ -34,8 +34,12 @@ export class ProductItemCardComponent implements OnInit {
   @Input() isRecommend: any = false;
   @Input() isShowPromotionFlag: boolean = false;
 
+  @Input() isShowUpComingFlag: boolean = false;
+
   currency: string = 'USD';
-  commission: any = 0;
+  commission: any = 0; // 比例
+  commissionMoney: any = 0; // 价格
+
 
   sub: any;
   // 活动是否开始和是否结束
@@ -73,21 +77,34 @@ export class ProductItemCardComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.commission = this.product.commissionRate;
-    this.salePrice = this.product.saleUnitPrice;
-    if (this.product.promotionOngoing) {
-      this.isPromotionOnGoing = true;
-      this.progressPercentage = this.product.promotionOngoing.saleRatio;
-      if (this.product.promotionOngoing.discount != '0.0') {
-        this.salePrice = this.product.saleUnitPrice * this.product.promotionOngoing.discount / 100;
+    if (this.product) {
+      this.commission = this.product.commissionRate;
+      this.salePrice = this.product.saleUnitPrice;
+      if (this.isShowUpComingFlag) {
+        if (this.product.promotionScheduled) {
+          if (this.product.promotionScheduled.discount != 0) {
+            this.salePrice = this.product.saleUnitPrice * this.product.promotionScheduled.discount / 100;
+          }
+          this.isPromotionScheduled = true;
+          this.settingTimes = this.product.promotionScheduled.startTimestamp * 1000 - Date.now();
+        }
+      } else {
+        if (this.product.promotionOngoing) {
+          this.isPromotionOnGoing = true;
+          this.progressPercentage = this.product.promotionOngoing.saleRatio;
+          if (this.product.promotionOngoing.discount != 0) {
+            this.salePrice = this.product.saleUnitPrice * this.product.promotionOngoing.discount / 100;
+          }
+          this.settingTimes = this.product.promotionOngoing.endTimestamp * 1000 - Date.now();
+        } else if (this.product.promotionScheduled) {
+          if (this.product.promotionScheduled.discount != 0) {
+            this.salePrice = this.product.saleUnitPrice * this.product.promotionScheduled.discount / 100;
+          }
+          this.isPromotionScheduled = true;
+          this.settingTimes = this.product.promotionScheduled.startTimestamp * 1000 - Date.now();
+        }
       }
-      this.settingTimes = this.product.promotionOngoing.endTimestamp * 1000 - Date.now();
-    } else if (this.product.promotionScheduled) {
-      if (this.product.promotionScheduled.discount != '0.0') {
-        this.salePrice = this.product.saleUnitPrice * this.product.promotionScheduled.discount / 100;
-      }
-      this.isPromotionScheduled = true;
-      this.settingTimes = this.product.promotionScheduled.startTimestamp * 1000 - Date.now();
+      this.commissionMoney = this.salePrice * this.commission / 100;
     }
   }
 

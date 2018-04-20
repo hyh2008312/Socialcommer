@@ -65,6 +65,9 @@ export class FindProductsComponent implements OnInit {
   // 根据这个 1,标志判断  onGoing and upcoming的标志 2,判断详情也的显示类型，（2种类型）
   isShowPromotionFlag: boolean = false;
 
+  // 是否为 flash为iscoming
+  isShowUpComingFlag:boolean = false ;
+
   constructor(private shopService: ShopService,
               private userService: UserService,
               private fb: FormBuilder,
@@ -174,6 +177,7 @@ export class FindProductsComponent implements OnInit {
     this.category = $event;
     if (this.category.id == 'ongoing') {
       this.isShowPromotionFlag = true;
+      this.isShowUpComingFlag =false ;
       this.promotionState = 'ongoing';
     } else {
       this.isShowPromotionFlag = false;
@@ -198,6 +202,11 @@ export class FindProductsComponent implements OnInit {
       return;
     }
     this.promotionState = $event;
+    if(this.promotionState == 'scheduled'){
+      this.isShowUpComingFlag =true ;
+    }else {
+      this.isShowUpComingFlag =false ;
+    }
     this.category = {
       id: $event,
       data: {name: 'Flash Sale'}

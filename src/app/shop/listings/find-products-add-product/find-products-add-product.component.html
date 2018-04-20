@@ -169,6 +169,7 @@
     <div class="md-margin-top-4" fxLayout="row wrap" fxLayoutAlign="space-between center"
          fxHide.xs>
       <app-product-item-card *ngFor="let product of productList" [product]="product" [supplier]="isSupplierDetail"
+                             class="recommend-box"
                              [isRecommend]="true" fxFlex="32"></app-product-item-card>
       <div fxFlex="32"></div>
     </div>

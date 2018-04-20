@@ -97,7 +97,6 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
           self.category = data.categories[0].name;
           self.salePrice = data.saleUnitPrice;
           self.originalPrice = data.unitPrice;
-          self.commission = self.salePrice * self.commissionRate / 100;
           self.image = [...data.images];
           if (self.image.length > 0) {
             self.selectedImage = self.image[0];
@@ -131,6 +130,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
           if (self.discount != 0) {
             self.salePrice = self.salePrice * self.discount;
           }
+          self.commission = self.salePrice * self.commissionRate / 100;
 
           let pid = data.id;
           self.shopService.getSupplyProductRecommendList({
