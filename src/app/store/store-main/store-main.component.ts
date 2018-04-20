@@ -69,7 +69,7 @@ export class StoreMainComponent implements OnInit {
                 }
               }
             } else {
-              self.router.navigate([`/store/${storeName}/1`]);
+              self.router.navigate([`/store/${storeName}/5`]);
             }
 
           } else {
@@ -87,7 +87,7 @@ export class StoreMainComponent implements OnInit {
             if (data.templateId) {
               self.router.navigate([`/store/${storeName}/${data.templateId}`]);
             } else {
-              self.router.navigate([`/store/${storeName}/1`]);
+              self.router.navigate([`/store/${storeName}/5`]);
             }
           } else {
             let dialogRef = this.dialog.open(StoreClosedDialogComponent, {
