@@ -8,6 +8,11 @@
     font-size: 16px;
     line-height: 24px;
     cursor: pointer;
+
+    @include xb-xs-screen{
+      font-size: 14px;
+      line-height: 24px;
+    }
     &.active {
       @include media();
       color: $primaryColor;
@@ -23,7 +28,8 @@
       line-height: 48px;
       margin-right: 48px;
       @include xb-xs-screen {
-        margin-left: 16px;
+        margin-right: 16px;
+        line-height: 24px;
       }
     }
   }
