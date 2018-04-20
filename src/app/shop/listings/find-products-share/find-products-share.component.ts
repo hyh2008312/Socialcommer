@@ -10,6 +10,8 @@ import { S3UploaderService } from "../../../shared/services/s3-upload/s3-upload.
 
 import { ProductShareDialogComponent } from "../product-share-dialog/product-share-dialog.component";
 
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-shop-find-products-share',
   templateUrl: './find-products-share.component.html',

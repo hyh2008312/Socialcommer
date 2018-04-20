@@ -100,7 +100,7 @@
 
     @include xb-xs-screen {
       height: auto;
-      padding-bottom: 56px;
+      padding-bottom: 32px;
       background-size: auto 100%;
     }
 
@@ -118,7 +118,7 @@
 
       @include xb-xs-screen {
         height: auto;
-        padding-bottom: 64px;
+        padding-bottom: 32px;
         background-size: auto 100%;
       }
 
@@ -136,9 +136,10 @@
       @include light();
 
       @include xb-xs-screen {
-        font-size: 32px;
-        line-height: 48px;
-        margin-top: 56px;
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: -.12px;
+        margin-top: 32px;
       }
 
       @include xb-sm-screen {
@@ -160,9 +161,9 @@
       }
 
       @include xb-xs-screen {
-        margin-top: 48px;
-        font-size: 18px;
-        line-height: 32px;
+        margin-top: 16px;
+        font-size: 14px;
+        line-height: 24px;
       }
     }
 
@@ -176,8 +177,8 @@
 
       @include xb-xs-screen {
         font-size: 24px;
-        line-height: 48px;
-        margin-top: 64px;
+        line-height: 32px;
+        margin-top: 32px;
         text-align: center;
         padding: 0 16px;
       }
@@ -197,7 +198,7 @@
       @include light();
       @include xb-sm-screen {
         margin-top: 24px;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 24px;
       }
 
