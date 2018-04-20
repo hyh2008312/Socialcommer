@@ -31,8 +31,6 @@ export class ShopCartPayComponent implements OnInit{
   stepOneForm : FormGroup;
   stepTwoForm : FormGroup;
 
-  homeLink:string = '';
-
   isTotalDialogOpen: boolean = false;
 
   countries: any;
@@ -80,8 +78,6 @@ export class ShopCartPayComponent implements OnInit{
 
   stripeToken: string = '';
 
-  cartLink: string = '';
-
   shippingAddressList: any;
 
   products: any;
@@ -94,6 +90,8 @@ export class ShopCartPayComponent implements OnInit{
   phoneCode: string = '+1';
 
   stepOneFormError: any = false;
+
+  countryName: string = '';
 
   constructor(
     overlayContainer: OverlayContainer,
@@ -116,6 +114,7 @@ export class ShopCartPayComponent implements OnInit{
         this.storeId = data.id;
         this.countries = [];
         this.countries.push(data.country);
+        this.countryName = data.country.name;
         if(data.country.code == 'IN') {
           this.postCodeName = 'Pincode';
           this.phoneCode = '+91';
@@ -324,16 +323,7 @@ export class ShopCartPayComponent implements OnInit{
   }
 
   ngOnInit() {
-    let self = this;
 
-    self.userService.store.subscribe((data) => {
-      if(data) {
-        let uid = data.templateId;
-        self.homeLink = `/store/${data.displayName}/${uid}`;
-        self.cartLink = `/store/${data.displayName}/cart`;
-        self.displayName = data.displayName;
-      }
-    });
   }
 
   changePayMethod($event) {

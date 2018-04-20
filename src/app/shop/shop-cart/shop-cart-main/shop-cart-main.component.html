@@ -4,6 +4,9 @@
       <div class="xb-cart__bg" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-cart__body-margin-right" fxFlex>
           <div class="md-margin-bottom-2 xb-cart__product-title-bg background-bg-white" fxLayout="row" fxLayoutAlign="start center" fxHide.xs>
+            <div class="unicorn-dark-theme-1" fxLaout="column" fxLayoutAlign="center center" fxFlex="5">
+              <mat-checkbox></mat-checkbox>
+            </div>
             <div class="xb-cart__title" fxFlex="35">
               Product
             </div>
@@ -29,8 +32,10 @@
                                            (productChange)="productEdit($event)" [shippingList]="shippingList"></app-shop-cart-product-item>
             </div>
           </div>
-          <div class="md-margin-top-2 text-underline xb-pointer xb-bold" fxHide.xs
-               routerLink="{{homeLink}}"><< Continue Shopping</div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="md-margin-top-2 text-underline xb-pointer xb-bold" fxHide.xs
+                 routerLink="{{homeLink}}"><< Continue Shopping</div>
+          </div>
           <div *ngIf="cartErr" class="xb-input-error md-margin-top-2">
             {{ cartErr }}
           </div>

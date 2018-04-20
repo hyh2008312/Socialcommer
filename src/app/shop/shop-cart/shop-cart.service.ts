@@ -4,6 +4,7 @@ import { Title, Meta } from '@angular/platform-browser';
 
 import 'rxjs/add/operator/toPromise';
 import { BaseApi } from '../../config/app.api';
+import {AuthenticationService} from '../../shared/services/authentication/authentication.service';
 
 @Injectable()
 export class ShopCartService {
@@ -13,11 +14,16 @@ export class ShopCartService {
     private baseApi: BaseApi,
     private jsonp : Jsonp,
     private titleService: Title,
-    private metaService: Meta
+    private metaService: Meta,
+    private auth: AuthenticationService
   ) { }
 
   createAuthorizationHeader(headers: Headers) {
-
+    this.auth.getAccessToken().subscribe((data) => {
+      if (data) {
+        headers.append('Authorization', 'Bearer ' + data);
+      }
+    });
   }
 
   serializeParams(params) {
@@ -50,6 +56,23 @@ export class ShopCartService {
     _params.set('callback', "JSONP_CALLBACK");
 
     return _params;
+  }
+
+  getProductList(): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}store/cart/list/`;
+
+    return this.http.get(url, options)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
   }
 
   createOrder(cart) {

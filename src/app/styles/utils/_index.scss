@@ -39,6 +39,10 @@ $dark-theme: mat-light-theme($dark-primary, $dark-accent, $dark-warn);
     line-height: 32px;
     border-radius: 4px;
   }
+  .mat-checkbox-inner-container{
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .unicorn-theme {
