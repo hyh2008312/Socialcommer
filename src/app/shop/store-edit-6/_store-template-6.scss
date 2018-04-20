@@ -716,6 +716,63 @@
     color: black;
     margin-left: 48px;
   }
+  &__more {
+    @include regular();
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    font-family: Helvetica;
+    cursor: pointer;
+    &-bold {
+      font-weight: bold;
+    }
+    &-bg {
+      position: relative;
+    }
+    &-category {
+      position: absolute;
+      top: 40px;
+      z-index: 5;
+      background-color: white;
+      left: -15px;
+      min-width: 200px;
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+    }
+    &-flex {
+      @include regular();
+      font-size: 16px;
+      font-family: Helvetica;
+      height: 40px;
+      white-space: nowrap;
+      padding-right: 16px;
+      padding-left: 16px;
+      line-height: 40px;
+      &.active {
+        font-weight: bold;
+        color: #ee4b80;
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+    }
+  }
+  &__up-triangle {
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 8px solid black;
+  }
+  &__down-triangle {
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 8px solid black;
+  }
 
 }
 
