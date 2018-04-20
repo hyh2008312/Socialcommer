@@ -460,6 +460,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
           storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
+          self.userService.addStore(data);
         });
         if (self.isGuide) {
           self.openGuideDialog(`${self.store.displayName}`);
@@ -502,6 +503,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
           storeTemplateId: data.id
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
+          self.userService.addStore(data);
         });
         if (self.isGuide) {
           self.openGuideDialog(`${self.store.displayName}`);

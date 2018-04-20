@@ -1,10 +1,10 @@
 <div class="xb-shop__product-item" fxLayout="row" fxLayoutAlign="start center">
-  <div class="xb-shop__product-image" fxFlex="none">
+  <div class="xb-shop__product-image xb-pointer" fxFlex="none" (click)="jumpProductDetails()">
     <img [src]="product.mainImage">
   </div>
   <div fxFlex="45" fxFlexAlign="stretch" class="md-margin-right-2">
     <div fxLayout="column" fxLayoutAlign="start start">
-      <div class="xb-shop__product-title">{{product.title}}</div>
+      <div class="xb-shop__product-title xb-pointer" (click)="jumpProductDetails()">{{product.title}}</div>
       <div [ngStyle]="{'width':'100%'}" *ngIf="isPromotionOnGoing">
         <div class="xb-store__card-ongoing">Ongoing</div>
         <div class="xb-store__card-processing">

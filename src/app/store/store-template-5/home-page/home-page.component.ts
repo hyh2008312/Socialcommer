@@ -11,7 +11,6 @@ import {Store} from '../../store';
 })
 
 export class HomePageComponent implements OnInit {
-  imageBanner: string = 'https://media.socialcommer.com/source/web/template/4/12.jpg';
   public categories: any = [];
   public category: any = {
     id: null,
@@ -35,6 +34,21 @@ export class HomePageComponent implements OnInit {
 
   showBlogFlag: number = 1;
 
+  desTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">' +
+    'We bring you the best style inspirations and outfit ideas!</strong></p>';
+
+  aboutMeTitleTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">' +
+    'Welcome to my store!</strong></p>';
+  aboutMeDesTag = '<div> Confucius once said that “everything has its beauty but not everyone sees it”.This definitely does not apply to our range of tops and shirts!<br>' +
+    '<br>Our range of eco-friendly,nature inspired clothes is the result of countless hours of work. Made of high quality bamboo viscose,we believe that style should be accessible to anyone.</div>';
+
+  blogDesTag = '<p class="ql-align-center"><strong class="ql-size-huge" style="color: rgb(255, 255, 255);">' +
+    'The latest fashion trends, styles and inspirations.</strong></p>';
+  imageBanner: string = 'https://media.socialcommer.com/source/web/template/5/banner_1.jpg';
+  imageAboutCover: string = 'https://media.socialcommer.com/source/web/template/5/about_2.jpg';
+  imageBlogCover: string = 'https://media.socialcommer.com/source/web/template/5/blog_3.jpg';
+
+
   //是否显示根据两者条件
   isBlog: boolean = false;
 
@@ -53,11 +67,22 @@ export class HomePageComponent implements OnInit {
       if (data) {
         self.store = data;
         self.currency=data.currency.toUpperCase();
-        self.contextList = data.context ? data.context : {};
+        self.contextList = data.context ? data.context : {
+          desTag: this.desTag,
+          aboutMeTitleTag: this.aboutMeTitleTag,
+          aboutMeDesTag: this.aboutMeDesTag,
+          blogDesTag: this.blogDesTag,
+          blogFlag: false
+
+        };
         if (data.context && data.context.blogFlag) {
           self.showBlogFlag = data.context.blogFlag;
         }
-        self.imageList = data.images ? data.images : {};
+        self.imageList = data.images ? data.images : {
+          imageBanner: this.imageBanner,
+          imageAboutCover: this.imageAboutCover,
+          imageBlogCover: this.imageBlogCover,
+        };
         self.text = data.description;
         self.ownerId = data.ownerId;
         self.queryCategoryProduct();

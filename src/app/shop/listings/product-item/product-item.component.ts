@@ -158,5 +158,8 @@ export class ProductItemComponent implements OnInit, OnChanges {
     this.days = Math.floor(this._diff / 3600 / 24);
     this.hours = Math.floor(this._diff / 3600 % 24);
   }
+  jumpProductDetails() {
+      this.router.navigate([`/shop/listings/products/${this.product.productId}/`]);
+  }
 
 }
