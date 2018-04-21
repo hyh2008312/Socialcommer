@@ -40,7 +40,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
   tabNumber: number = 0;
 
   isSupplierDetail: boolean = false;
-
+  isListItems: boolean = false;
 
   //变体的改版
   minSalePrice: number = 0;
@@ -83,6 +83,9 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
               private userService: UserService,
               private ngZone: NgZone) {
     let self = this;
+    if(self.activatedRoute.parent.snapshot.url[0].path == 'products') {
+      this.isListItems = true;
+    }
     if (self.activatedRoute.parent.snapshot.params['supplierId']) {
       this.isSupplierDetail = true;
     }
@@ -172,11 +175,16 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
   }
 
   close(): void {
-    if (!this.isSupplierDetail) {
-      this.router.navigate(['/shop/listings/items/']);
+    if(this.isListItems) {
+      this.router.navigate(['/shop/listings/products/']);
     } else {
-      this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`])
+      if (!this.isSupplierDetail) {
+        this.router.navigate(['/shop/listings/items/']);
+      } else {
+        this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/`])
+      }
     }
+
 
   }
 
