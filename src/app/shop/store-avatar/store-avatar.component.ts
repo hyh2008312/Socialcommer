@@ -22,7 +22,6 @@ export class StoreAvatarComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.formateAvatar();
 
   }
 
@@ -38,6 +37,7 @@ export class StoreAvatarComponent implements OnInit {
         self.formateAvatar();
       };
       image.src = self.avatar;
+      this.formateAvatar();
     }
   }
 
