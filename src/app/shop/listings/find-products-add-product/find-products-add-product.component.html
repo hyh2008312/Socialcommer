@@ -112,7 +112,7 @@
         </div>
 
         <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-top-1"> {{cartWarn}}</div>
-        <div class="md-margin-top-1" fxLayout="column">
+        <div class="md-margin-top-1" fxLayout="column" *ngIf="false">
           <div class="xb-store__details-buttons-1 gtag-shop-detail-get-it-now-button" (click)="openLink()"
                *ngIf="isCanBuy&& !(isPromotionOnGoing || isPromotionScheduled )">Add To Bag
           </div>
