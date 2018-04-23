@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import {UserService} from "../../../shared/services/user/user.service";
+import {ShopCartService} from '../shop-cart.service';
 
 @Component({
   selector: 'app-shop-cart-product-item',
@@ -14,20 +15,9 @@ export class ShopCartProductItemComponent implements OnDestroy{
   @Input() product: any= {};
   @Output() productChange = new EventEmitter<any>();
   @Input() index: number = 0;
-  @Input() shippingList: any;
 
   productLink: any = '';
-
-  shippingLists: any=[];
-
-  shipping:any = {
-    id: '',
-    type: 'Free',
-    shippingName: '',
-    shippingTimeMin: 0,
-    shippingTimeMax: 0,
-    priceItem: 0
-  };
+  currency: string = '';
 
   isEdit: boolean = false;
   isDialogOpen: boolean = false;
@@ -36,7 +26,8 @@ export class ShopCartProductItemComponent implements OnDestroy{
 
   constructor(
     overlayContainer: OverlayContainer,
-    private userService: UserService
+    private userService: UserService,
+    private shopCartService: ShopCartService
   ) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
 
@@ -45,39 +36,45 @@ export class ShopCartProductItemComponent implements OnDestroy{
         this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' +
           (data.template && data.template.templateId?data.template.templateId:5)
         + '/detail/';
+        this.currency = data.currency.toUpperCase();
       }
     });
   }
 
   ngOnChanges() {
-    if(this.shippingList) {
-      if(this.shippingList[this.product.id]) {
-        this.shippingLists = this.shippingList[this.product.id];
-        this.changeShipping(this.shippingLists[0]);
-      }
+    if(this.product) {
       this.productLink = this.productLink + this.product.goodsId;
     }
-
   }
 
   plusNumber() {
-    this.product.number++;
+    this.product.quantity++;
     this.productChange.emit({
       type: 'edit',
       product: this.product,
-      shippingPrice: this.shipping,
       index: this.index
+    });
+    this.shopCartService.changeProductNumber({
+      id: this.product.id,
+      quantity: this.product.quantity
+    }).then((data) => {
+      console.log(data);
     });
   }
 
   minusNumber() {
-    if(this.product.number > 1) {
-      this.product.number--;
+    if(this.product.quantity > 1) {
+      this.product.quantity--;
       this.productChange.emit({
         type: 'edit',
         product: this.product,
-        shippingPrice: this.shipping,
         index: this.index
+      });
+      this.shopCartService.changeProductNumber({
+        id: this.product.id,
+        quantity: this.product.quantity
+      }).then((data) => {
+        console.log(data);
       });
     }
   }
@@ -89,11 +86,10 @@ export class ShopCartProductItemComponent implements OnDestroy{
   changeShipping($event) {
     this.isDialogOpen = false;
     if($event) {
-      this.shipping = $event;
+      this.product.shippingItem = $event;
       this.productChange.emit({
         type: 'edit',
         product: this.product,
-        shippingPrice: this.shipping,
         index: this.index
       });
     }
@@ -107,23 +103,32 @@ export class ShopCartProductItemComponent implements OnDestroy{
     this.productChange.emit({
       type: 'delete',
       product: this.product,
-      shippingPrice: this.shipping,
       index: this.index
+    });
+    this.shopCartService.deleteProduct({
+      id: this.product.id
+    }).then((data) => {
+      console.log(data);
     });
   }
 
   numberChanges($event) {
     if(typeof $event != "number" || $event <= 0) {
-      this.product.number = 1;
+      this.product.quantity = 1;
     } else {
-      this.product.number = $event;
+      this.product.quantity = $event;
     }
 
     this.productChange.emit({
       type: 'edit',
       product: this.product,
-      shippingPrice: this.shipping,
       index: this.index
+    });
+    this.shopCartService.changeProductNumber({
+      id: this.product.id,
+      quantity: this.product.quantity
+    }).then((data) => {
+      console.log(data);
     });
   }
 

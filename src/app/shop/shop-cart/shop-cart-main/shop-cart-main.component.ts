@@ -43,12 +43,15 @@ export class ShopCartMainComponent implements OnInit {
 
   cartErr: any = false;
 
-  constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
-              private userService: UserService,
-              private shopService: ShopService,
-              private shopCartService: ShopCartService) {
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private userService: UserService,
+    private shopService: ShopService,
+    private shopCartService: ShopCartService
+  ) {
 
+    //this.getProductList();
   }
 
   ngOnInit() {
@@ -61,10 +64,9 @@ export class ShopCartMainComponent implements OnInit {
         self.storeId = data.id;
         self.currency = data.currency;
         self.displayName = data.displayName;
-        self.products = self.shopService.getProductInCart(self.displayName);
+        self.countryId = data.country.id;
         self.countryName = data.country.name;
-        self.changeShipping(data.country.id);
-        self.calculatePrice();
+        self.getProductList();
       }
     });
   }
@@ -77,35 +79,12 @@ export class ShopCartMainComponent implements OnInit {
     switch ($event.type) {
       case 'edit':
         this.products[$event.index] = $event.product;
-        this.shippingItem[$event.product.id] = $event.shippingPrice;
         break;
       case 'delete':
         this.products.splice($event.index, 1);
-        delete this.shippingItem[$event.product.id];
         break;
     }
     this.calculatePrice();
-    this.shopService.addProductToCart(this.displayName, this.products);
-  }
-
-  changeShipping($event) {
-    this.countryId = $event;
-    let pid = '';
-    let pidArray = [];
-    if (this.products && this.products.length > 0) {
-      for (let value of this.products) {
-        pidArray.push(value.id);
-      }
-      pid = pidArray.join(',');
-      let obj = {
-        cid: this.countryId,
-        pid
-      };
-
-      this.shopCartService.getShippingList(obj).then((data) => {
-        this.shippingList = data;
-      });
-    }
   }
 
   calculatePrice() {
@@ -116,10 +95,10 @@ export class ShopCartMainComponent implements OnInit {
       rate = 65.4;
     }
     for (let item of this.products) {
-      if (typeof item.number == 'number' && item.number > 0) {
-        price += item.number * Math.round(item.salePriceAmount * rate * 100) / 100;
-        if (this.shippingItem[item.id]) {
-          shippingPrice += Math.round(this.shippingItem[item.id].priceItem * rate * 100) / 100 * item.number;
+      if (typeof item.quantity == 'number' && item.quantity > 0) {
+        price += item.quantity * Math.round(item.salePrice * rate * 100) / 100;
+        if (Object.keys(item.shippingItem).length>0) {
+          shippingPrice += Math.round(item.shippingItem.priceItem * rate * 100) / 100 * item.quantity;
         }
       }
     }
@@ -157,6 +136,18 @@ export class ShopCartMainComponent implements OnInit {
       self.router.navigate([`./checkout`], {relativeTo: this.activatedRoute});
     }).catch((data) => {
       self.cartErr = data;
+    });
+  }
+
+  getProductList() {
+    this.shopCartService.getProductList().then((data) => {
+      this.products = [];
+      for(let i = 0; i < data.length; i++) {
+        let item: any = data[i];
+        item.shippingItem = data[i].shippingPrices.length>0?data[i].shippingPrices[0]: {};
+        this.products.push(item);
+      }
+      this.calculatePrice();
     });
   }
 
