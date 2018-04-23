@@ -1,0 +1,55 @@
+<div class="xb-store__background">
+  <div class="xb-store__details-close" (click)="close()" fxShow="false" fxShow.sm="true" fxShow.xs="true">
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div class="xb-store-template__details">
+    <div class="xb-store-template__close" (click)="close()" fxShow="false" fxShow.gt-sm="true">
+      <i class="iconfontXberts icon-ic-close"></i>
+    </div>
+    <div class="xb-shop__mobile-dialog-inner">
+      <div class="xb-store-template__title">Place Order for Your Customers & Earn Commission</div>
+      <div class="xb-store-template__car-margin-top-2">
+        <div class="xb-store-template__car-margin-top" *ngFor="let item of variantList;let i = index;"
+             fxLayout="row" fxLayoutAlign="start start"
+             fxLayout.xs="column" fxLayoutAlign="start start">
+          <div class="xb-store-template__car-left-part md-margin-right-1"
+               [ngClass]="{'xb-store-template__car-margin-top-1':item.id == 2}">{{item.name}}
+          </div>
+          <div fxLayout="row wrap" fxLayoutAlign="start start">
+            <div *ngFor="let value of item.value;let j = index;">
+              <div class="xb-store-template__car-image" [ngClass]="{'active':value.isSelected}"
+                   *ngIf="value.image" (click)="selectVariant(value, item)">
+                <img [src]="value.image"/>
+              </div>
+              <div *ngIf="!value.image" class="xb-store-template__car-text"
+                   [ngClass]="{'active':value.isSelected}" (click)="selectVariant(value, item)">
+                {{value.value}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xb-store-template__car-margin-top" fxLayout="row" fxLayoutAlign="start center"
+             fxLayout.xs="column" fxLayoutAlign.xs="start start">
+          <div class="xb-store-template__car-left-part md-margin-right-1">Quantity</div>
+          <div  fxLayout="row" fxLayoutAlign="start center">
+            <div class="md-margin-right-1 xb-store-template__car-item-add" (click)="plusNumber()" fxFlex="none">
+              <i class="material-icons xb-pointer">add</i>
+            </div>
+            <div class="xb-store-template__car-item-input">
+              <input type="number" [(ngModel)]="number" step="1" min="0">
+            </div>
+            <div class="md-margin-left-1 xb-store-template__car-item-add" (click)="minusNumber()" fxFlex="none">
+              <i class="material-icons xb-pointer">remove</i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isShowCartWarn" class="xb-store-template__red md-margin-top-2"> {{cartWarn}}</div>
+      <div fxLayout="row" fxLayoutAlign="center start" (click)="openLink()">
+        <div class="xb-store-template__add-to-bag">
+          Add to Bag
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

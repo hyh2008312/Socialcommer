@@ -1,0 +1,168 @@
+@import "../../../styles/utils/_index";
+@import "../../../styles/_variables";
+
+// 购物车变体
+.xb-store-template {
+  &__red{
+    font-size: 14px;
+    color: red;
+    font-family: Roboto-Regular;
+  }
+  &__close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    color: #fff;
+    cursor: pointer;
+    > i {
+      font-size: 18px;
+      color: black;
+    }
+  }
+  &__add-to-bag {
+    background: #28C7DB;
+    border-radius: 4px;
+    width: 180px;
+    height: 32px;
+    line-height: 32px;
+    margin-top: 36px;
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    letter-spacing: -0.08px;
+    text-align: center;
+  }
+
+  &__details {
+    margin: 200px auto;
+    width: 500px;
+    position: relative;
+    padding: 32px 32px;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+
+  &__title {
+    font-family: Roboto-Bold;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000000;
+    letter-spacing: -0.11px;
+    text-align: center;
+  }
+  &__car {
+    &-margin-top {
+      margin-top: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-margin-top-1 {
+      margin-top: 12px;
+      @include xb-xs-screen {
+        margin-top: 0;
+      }
+    }
+
+    &-margin-top-2 {
+      margin-top: 20px;
+      @include xb-xs-screen {
+        margin-top: 0;
+      }
+    }
+
+    &-left-part {
+      @include media();
+      width: 54px;
+      font-family: Roboto-Regular;
+      font-size: 12px;
+      color: #000000;
+      letter-spacing: -0.29px;
+      @include xb-xs-screen {
+        width: 54px;
+        margin-right: 0;
+        margin-bottom: 12px;
+      }
+    }
+
+    &-bg {
+      margin-top: 32px;
+      background-color: #efefef;
+      border-radius: 4px;
+      padding: 24px;
+      @include xb-xs-screen {
+        margin-top: 32px;
+      }
+    }
+
+    &-left-part-1 {
+      @include media();
+      color: rgba(0, 0, 0, .54);
+      width: 145px;
+      margin-right: 32px;
+    }
+
+    &-image {
+      width: 54px;
+      height: 54px;
+      position: relative;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #dedede;
+      overflow: hidden;
+      cursor: pointer;
+      > img {
+        position: absolute;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+      &.active {
+        border: 1px solid #F5937E;
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      color: rgba(0, 0, 0, .87);
+      padding: 0 8px;
+      line-height: 32px;
+      margin-right: 16px;
+      cursor: pointer;
+      @include text-overflow();
+      &.active {
+        @include media();
+        border: 1px solid #F5937E;
+      }
+    }
+
+    &-item {
+
+      &-input {
+        border-bottom: 1px solid #dedede;
+        width: 72px;
+        input {
+          width: 100%;
+          line-height: 14px;
+          font-size: 16px;
+          border: none;
+          text-align: center;
+          padding: 0;
+        }
+      }
+
+      &-add {
+        > i {
+          font-size: 24px;
+          display: block;
+          user-select: none;
+        }
+      }
+    }
+  }
+
+}
+

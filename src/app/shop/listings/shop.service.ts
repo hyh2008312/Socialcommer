@@ -312,6 +312,24 @@ export class ShopService {
       .catch((error) => {this.handleError(error, this)});
   }
 
+
+  addToCart(product: any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    let options = new RequestOptions({headers: headers});
+    this.createAuthorizationHeader(headers);
+
+    const url = `${this.baseUrl.url}store/cart/list/`;
+
+    return this.http.post(url, product, options)
+      .toPromise()
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
+  }
+
   createSupplyProduct(product: any): Promise<any> {
 
     let headers = new Headers({

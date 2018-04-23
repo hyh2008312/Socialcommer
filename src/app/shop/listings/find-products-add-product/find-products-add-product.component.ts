@@ -15,7 +15,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
   product: any = {};
   // Product list
   productList: any = false;
-
+  isCanBuy: boolean = true;
   category: any;
   originalPrice: any = 0;
   salePrice: any = 0;
@@ -63,6 +63,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
   // 活动是否开始和是否结束
   isPromotionOnGoing: boolean = false;
   isPromotionScheduled: boolean = false;
+  number:any = 1 ;
 
   sub: any;
   storeSub: any;
@@ -128,6 +129,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
             self.variantId = self.product.variants[0].id;
             self.salePrice = self.product.saleUnitPrice;
             self.originalPrice = self.product.unitPrice;
+            this.isCanBuy = this.product.variants[0].isCanBuy;
             self.variant = self.product.variants[0];
           }
           if (self.discount != 0) {
@@ -283,12 +285,14 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
         this.salePrice = mVariant[0].saleUnitPrice;
         this.originalPrice = mVariant[0].unitPrice;
         this.variant = mVariant[0];
+        this.isCanBuy = mVariant[0].isCanBuy;
         this.commission = this.salePrice * this.commissionRate / 100;
       } else {
         this.variantId = this.product.variants[0].id;
         this.salePrice = this.product.saleUnitPrice;
         this.originalPrice = this.product.unitPrice;
         this.variant = this.product.variants[0];
+        this.isCanBuy = this.product.variants[0].isCanBuy;
         this.commission = this.salePrice * this.commissionRate / 100;
       }
 
@@ -301,6 +305,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
       this.salePrice = this.product.saleUnitPrice;
       this.originalPrice = this.product.unitPrice;
       this.variant = this.product.variants[0];
+      this.isCanBuy = this.product.variants[0].isCanBuy;
       this.commission = this.salePrice * this.commissionRate / 100;
     }
 
@@ -381,5 +386,56 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
     });
   }
 
-  endDate = new Date(2018, 3, 12, 19, 26, 0, 123);
+  openLink() {
+    // 2类变体
+    if (this.variantList.length === 2) {
+      if (!this.isSelectSize) {
+        this.cartWarn = 'Please select a size.';
+        this.isShowCartWarn = true;
+        return;
+      }
+      if (!this.isSelectColor) {
+        this.isShowCartWarn = true;
+        this.cartWarn = 'Please select a color.';
+        return;
+      }
+    }
+    // 1类变体
+    if (this.variantList.length === 1) {
+      if (this.variantList[0].name == 'Size') {
+        if (!this.isSelectSize) {
+          this.cartWarn = 'Please select a size.';
+          this.isShowCartWarn = true;
+          return;
+        }
+      } else if (this.variantList[0].name == 'Color') {
+        if (!this.isSelectColor) {
+          this.cartWarn = 'Please select a color.';
+          this.isShowCartWarn = true;
+          return;
+        }
+      }
+    }
+
+    if (this.isSelectInvalid) {
+      this.cartWarn = 'Oops! This option is currently unavailable. Please choose another option!';
+      this.isShowCartWarn = true;
+      return;
+    }
+
+    let param = {
+      quantity: this.number,
+      variantId: this.variantId
+    };
+    this.addToCart(param);
+  }
+
+  addToCart(param: any): void {
+    let self = this;
+    self.shopService.addToCart(param).then((data) => {
+      self.close();
+    });
+  }
+
+
 }

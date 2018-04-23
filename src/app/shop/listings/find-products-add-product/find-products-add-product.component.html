@@ -15,7 +15,7 @@
       <div class="xb-store__details-content" fxFlex>
         <div>{{category}}</div>
         <div class="xb-store__details-title md-margin-top-1">{{product.title}}</div>
-        <div class="xb-store-promotion">
+        <div class="xb-store-promotion md-margin-top-1">
           <div fxLayout="row" fxLayoutAlign="start center">
             <div class="xb-store__details-left-part">Price</div>
             <div class="xb-store__details-price" *ngIf="!isHaveVariant">
@@ -57,7 +57,7 @@
               <div class="xb-store-promotion__count-word">{{progressPercentage}}% claimed</div>
               <div class="xb-store-promotion__count-word" fxLayout="row" fxLayoutAlign="start center">
                 <span class="xb-bold">Ends in:&nbsp;&nbsp;</span>
-                <app-find-countdown  [countdownTimer]="countdownLeftTime"></app-find-countdown>
+                <app-find-countdown [countdownTimer]="countdownLeftTime"></app-find-countdown>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@
             <div class="xb-store-promotion__upcoming">Upcoming</div>
             <div class="xb-store-promotion__upcoming-time" fxLayout="row" fxLayoutAlign="start center">
               <span class="xb-bold">Starts in:&nbsp;&nbsp;</span>
-              <app-find-countdown  [countdownTimer]="countdownLeftTime"></app-find-countdown>
+              <app-find-countdown [countdownTimer]="countdownLeftTime"></app-find-countdown>
             </div>
           </div>
         </div>
@@ -109,6 +109,22 @@
         <div class="md-margin-top-1" fxLayout="column" *ngIf="!isListItems">
           <div class="xb-store__details-buttons-1" (click)="addEdit()" *ngIf="!isAdded">Add To Sell</div>
           <button mat-raised-button color="primary" disabled *ngIf="isAdded">Added</button>
+        </div>
+
+        <div *ngIf="isShowCartWarn" class="xb-4-template__red md-margin-top-1"> {{cartWarn}}</div>
+        <div class="md-margin-top-1" fxLayout="column">
+          <div class="xb-store__details-buttons-1 gtag-shop-detail-get-it-now-button" (click)="openLink()"
+               *ngIf="isCanBuy&& !(isPromotionOnGoing || isPromotionScheduled )">Add To Bag
+          </div>
+          <div class="xb-store__details-buttons-1 gtag-shop-detail-get-it-now-button" (click)="openLink()"
+               *ngIf="isCanBuy && isPromotionOnGoing">CLAIM IT NOW
+          </div>
+          <button mat-raised-button color="primary" disabled
+                  *ngIf="isCanBuy && isPromotionScheduled">CLAIM IT NOW
+          </button>
+          <button mat-raised-button color="primary" disabled
+                  *ngIf="!isCanBuy">OUT OF STOCK
+          </button>
         </div>
       </div>
     </div>

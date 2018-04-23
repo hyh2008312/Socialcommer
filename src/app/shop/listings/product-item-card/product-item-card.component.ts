@@ -138,5 +138,12 @@ export class ProductItemCardComponent implements OnInit {
       this.router.navigate([`/shop/listings/items/${this.product.id}/share/`]);
     }
   }
+  toAddCart() {
+    if (this.supplier) {
+      this.router.navigate([`/shop/listings/items/supplier/${this.product.supplierId}/${this.product.id}/add_cart/`]);
+    } else {
+      this.router.navigate([`/shop/listings/items/${this.product.id}/add_cart/`]);
+    }
+  }
 
 }

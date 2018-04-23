@@ -32,7 +32,7 @@
       <div class="xb-store-template__top-navigation" fxLayout="row" fxLayoutAlign="end center">
         <i class="material-icons" (click)="openDialog()">close</i>
       </div>
-      <app-store-template-3-navigation [category]="categories" [selectCategory]="selectCategoryMain" (routerChange)="openDialog($event)" [displayName]="displayName" [isShowBlog]="isBlog" ></app-store-template-3-navigation>
+      <app-store-template-3-navigation [isHaveFlashSale]="isHavePromotion" [category]="categories" [selectCategory]="selectCategoryMain" (routerChange)="openDialog($event)" [displayName]="displayName" [isShowBlog]="isBlog" ></app-store-template-3-navigation>
     </div>
     <div fxFlex="noshrink">
       <router-outlet></router-outlet>

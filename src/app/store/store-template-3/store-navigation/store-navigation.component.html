@@ -1,12 +1,3 @@
-<!--<ng-container *ngFor="let value of contents">
-  <div class="xb-store-template__navigation xb-pointer"
-       *ngIf="!(value.text == 'BLOG' && !isShowBlog)"
-       routerLink="{{value.link}}" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact': value.exact}">
-    {{value.text}}
-  </div>
-</ng-container>-->
-
-
 <div class="xb-store-template__navigation xb-pointer"
      routerLink="{{contents[0].link}}" [routerLinkActive]="['active']"
      (click)="changeCategoryBold(false)"
@@ -50,5 +41,5 @@
 
 
 <div class="xb-store-template__navigation xb-pointer" (click)="jumpOrderList()"
-     fxShow="false" fxShow.xs="true">VIEW YOUR ORDER
+     fxShow="false" fxShow.xs="true">View Your Order
 </div>

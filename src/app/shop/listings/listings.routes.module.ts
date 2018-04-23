@@ -12,6 +12,7 @@ import {FindProductsAddProductComponent} from "./find-products-add-product/find-
 import {FindProductsEditPreviewComponent} from "./find-products-edit-preview/find-products-edit-preview.component";
 
 import {FindProductsShareComponent} from "./find-products-share/find-products-share.component";
+import {ProductToCartComponent} from "./product-to-cart/product-to-cart.component";
 
 const routes: Routes = [
   {
@@ -33,6 +34,8 @@ const routes: Routes = [
       path: ':id/preview', component: FindProductsEditPreviewComponent,
     }, {
       path: ':id/share', component: FindProductsShareComponent,
+    }, {
+      path: ':id/add_cart', component: ProductToCartComponent
     }]
   }, {
     path: 'items/supplier/:supplierId', component: FindSupplierProductsComponent,
@@ -42,6 +45,8 @@ const routes: Routes = [
       path: ':id/preview', component: FindProductsEditPreviewComponent,
     }, {
       path: ':id/share', component: FindProductsShareComponent,
+    }, {
+      path: ':id/add_cart', component: ProductToCartComponent
     }]
   }
 ];

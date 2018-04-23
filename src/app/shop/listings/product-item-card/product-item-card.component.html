@@ -13,7 +13,7 @@
       </div>
       <div *ngIf="isPromotionScheduled && !isShowPromotionFlag" class="xb-shop__promotion-upcoming">Upcoming</div>
     </div>
-    <div class="xb-shop__card-content" fxLayout="column">
+    <div class="xb-shop__card-content" fxLayout="column" fxLayoutAlign="center center">
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="xb-shop__card-commission">
           Your Commission: {{commissionMoney|exchangeCurrency:currency|currency:currency}} ({{commission + '%'}})
@@ -30,7 +30,7 @@
           {{salePrice|saleDiscount:product.unitPrice}} OFF
         </div>
       </div>
-      <div *ngIf="isPromotionOnGoing && isShowPromotionFlag">
+      <div [ngStyle]=" {'width':'100%'}" *ngIf="isPromotionOnGoing && isShowPromotionFlag">
         <div class="xb-shop__card-processing">
           <div class="xb-shop__card-processing-line"></div>
           <div class="xb-shop__card-processing-line" [ngStyle]="{'width':progressPercentage+'%'}"></div>
@@ -44,7 +44,8 @@
         </div>
       </div>
 
-      <div *ngIf="isPromotionScheduled && isShowPromotionFlag" [ngStyle]="{'margin-top':'18px'}" fxLayout="row"
+      <div [ngStyle]=" {'width':'100%'}" class="md-margin-top-1" *ngIf="isPromotionScheduled && isShowPromotionFlag"
+           fxLayout="row"
            fxLayoutAlign="start center">
         <div class="xb-shop__card-upcoming">Upcoming</div>
         <div class="xb-shop__card-upcoming-time"><span class="xb-bold">Starts in:</span>
@@ -62,6 +63,7 @@
           <div class="xb-shop__card-button" (click)="jumpEditLink()">Add to Sell</div>
         </div>
       </div>
+      <div *ngIf="!isRecommend" class="xb-shop__card-buy-button" (click)="toAddCart()">Order & Earn Commission</div>
     </div>
   </div>
 </div>
