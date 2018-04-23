@@ -79,7 +79,7 @@
                     CLICK TO EDIT TEXT
                   </div>
                 </div>
-                <div class="xb-shop__template-description xb-shop__template-edit">
+                <div *ngIf="false" class="xb-shop__template-description xb-shop__template-edit">
                   <quill-editor formControlName="descriptionTag" [(ngModel)]="descriptionTag"
                                 (ready)="getDesInputEdit($event)"
                                 [options]="editorConfig"></quill-editor>
