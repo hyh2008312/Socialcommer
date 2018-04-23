@@ -69,7 +69,8 @@
            *ngIf="productList && productList.length <= 0">
         <div fxLayout="column" fxLayoutAlign="center center">
           <img src="https://media.socialcommer.com/source/web/pic/pic-none-01.png">
-          <span class="md-dark-secondary">Please try again with different search keywords.</span>
+          <span class="md-dark-secondary" *ngIf="searchKey != ''">Please try again with different search keywords.</span>
+          <span class="md-dark-secondary" *ngIf="searchKey == ''">There’s no product to show.</span>
         </div>
       </div>
       <div class="md-margin-top-2 " fxLayout="row wrap" fxLayoutAlign="space-between start">
