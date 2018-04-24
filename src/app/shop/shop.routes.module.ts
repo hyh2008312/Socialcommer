@@ -9,6 +9,7 @@ import {StorePreviewComponent} from './store-preview/store-preview.component';
 import {StoreEditComponent} from './store-edit/store-edit.component';
 import {ToDoListComponent} from './to-do-list/to-do-list.component';
 import {StoreFrontComponent} from './store-front/store-front.component';
+import {ShopOrderTrackingModule} from './shop-order-tracking/shop-order-tracking.module';
 
 const routes: Routes = [
   {
@@ -100,6 +101,9 @@ const routes: Routes = [
       }, {
         path: 'cart',
         loadChildren: './shop-cart/shop-cart.module#ShopCartModule'
+      }, {
+        path: 'ordertracking',
+        loadChildren: './shop-order-tracking/shop-order-tracking.module#ShopOrderTrackingModule'
       }, {
         path: 'reward',
         loadChildren: './reward/reward.module#RewardModule'

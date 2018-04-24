@@ -33,16 +33,13 @@ export class ShopCartProductItemComponent implements OnDestroy{
 
     this.sub = this.userService.store.subscribe((data) => {
       if(data) {
-        this.productLink = 'http://' + window.location.host + '/shop/listings/items/';
         this.currency = data.currency.toUpperCase();
       }
     });
   }
 
   ngOnChanges() {
-    if(this.product) {
-      this.productLink = this.productLink + this.product.productId;
-    }
+
   }
 
   plusNumber() {

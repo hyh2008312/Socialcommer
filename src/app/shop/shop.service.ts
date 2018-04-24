@@ -15,8 +15,6 @@ export class ShopService {
 
   routerLink: any = false;
 
-  cart: Subject<any> = new BehaviorSubject<any>(null);
-
   constructor(
     private http: Http,
     private baseUrl: BaseApi,

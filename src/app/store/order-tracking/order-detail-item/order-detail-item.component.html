@@ -27,14 +27,14 @@
             </div>
           </div>
           <div class="md-margin-left-2">
-            <div>{{order.priceExclTax | exchangeCurrency:currency | currency: currency: true}}</div>
-            <div class="md-margin-top-1">{{order.shippingExclTax | exchangeCurrency:currency | currency: currency: true}}</div>
-            <div class="md-margin-top-1">{{0 | exchangeCurrency:currency | currency: currency: true}}</div>
-            <div class="md-margin-top-1">{{totalAmount | exchangeCurrency:currency | currency: currency: true}}</div>
+            <div>{{order.priceExclTax | exchangeCurrency:currency | currency: currency}}</div>
+            <div class="md-margin-top-1">{{order.shippingExclTax | exchangeCurrency:currency | currency: currency}}</div>
+            <div class="md-margin-top-1">{{0 | exchangeCurrency:currency | currency: currency}}</div>
+            <div class="md-margin-top-1">{{totalAmount | exchangeCurrency:currency | currency: currency}}</div>
             <div *ngIf="order.status == 'Return' && order.returnOrder
            && (order.returnOrder.status == 'Partially Refunded' || order.returnOrder.status == 'Refunded')">
-              <div class="md-margin-top-1">{{order.refundAmount | exchangeCurrency:currency | currency: currency: true}}</div>
-              <div class="md-margin-top-1">{{netPaymentAmount | exchangeCurrency:currency | currency: currency: true}}</div>
+              <div class="md-margin-top-1">{{order.refundAmount | exchangeCurrency:currency | currency: currency}}</div>
+              <div class="md-margin-top-1">{{netPaymentAmount | exchangeCurrency:currency | currency: currency}}</div>
             </div>
           </div>
         </div>
@@ -388,16 +388,16 @@
       <div>{{order.attributes}}</div>
     </div>
     <div fxLayout="column" fxLayoutAlign="start end">
-      <div class="xb-order-tracking__detail-title-4">{{order.unitPriceExclTax | exchangeCurrency:currency | currency: currency: true}}</div>
+      <div class="xb-order-tracking__detail-title-4">{{order.unitPriceExclTax | exchangeCurrency:currency | currency: currency}}</div>
       <div>x {{order.quantity}}</div>
     </div>
   </div>
   <div class="xb-order-tracking__detail-container-5" fxLayout="row" fxLayoutAlign="end center">
     <div>
-      Total Price: <span class="xb-order-tracking__detail-title-4">{{totalAmount | exchangeCurrency:currency | currency: currency: true}}</span>
+      Total Price: <span class="xb-order-tracking__detail-title-4">{{totalAmount | exchangeCurrency:currency | currency: currency}}</span>
       <div class="md-margin-top-1" *ngIf="order.status == 'Return' && order.returnOrder
            && (order.returnOrder.status == 'Partially Refunded' || order.returnOrder.status == 'Refunded')">
-        Refunded Amount: <span class="xb-order-tracking__detail-title-4">{{totalAmount | exchangeCurrency:currency | currency: currency: true}}</span>
+        Refunded Amount: <span class="xb-order-tracking__detail-title-4">{{totalAmount | exchangeCurrency:currency | currency: currency}}</span>
       </div>
     </div>
   </div>

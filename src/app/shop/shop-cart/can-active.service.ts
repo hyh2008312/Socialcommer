@@ -12,16 +12,15 @@ export class CanActive implements CanActivate {
   }
 
   getOrder(): any {
-    if(localStorage && localStorage.getItem('order')) {
-      return JSON.parse(localStorage.getItem('order'));
+    if(localStorage && localStorage.getItem('order-cart')) {
+      return JSON.parse(localStorage.getItem('order-cart'));
     }
     return {};
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     if (JSON.stringify(this.getOrder()) == '{}') {
-      let cart = state.url.split('/cart')[0];
-      this.router.navigate([cart]);
+      this.router.navigate(['/shop/cart']);
       return false;
     }
     return true;

@@ -47,16 +47,16 @@
         <div class="xb-order-tracking__height-2 xb-order-tracking__width xb-order-tracking__border-bottom"
              fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-order-tracking__margin-right" fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
-            {{order.totalExclTax | exchangeCurrency:(order.currency|uppercase)|currency:(order.currency|uppercase):true}}
+            {{order.totalExclTax | exchangeCurrency:(order.currency|uppercase)|currency:(order.currency|uppercase)}}
           </div>
           <div class="xb-order-tracking__margin-right" fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
-            {{order.shippingExclTax | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase):true}}
+            {{order.shippingExclTax | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase)}}
           </div>
           <div class="xb-order-tracking__margin-right" fxFlex="15" fxLayout="row" fxLayoutAlign="center center">
-            {{0 | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase):true}}
+            {{0 | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase)}}
           </div>
           <div class="xb-order-tracking__margin-right" fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
-            {{totalPrice | exchangeCurrency:(order.currency|uppercase) | currency:(order.currency|uppercase):true}}
+            {{totalPrice | exchangeCurrency:(order.currency|uppercase) | currency:(order.currency|uppercase)}}
           </div>
           <div fxFlex="30" fxLayout="row" fxLayoutAlign="center center">
             {{order.paymentType == 'Paypal'? 'Paypal': 'Credit Card'}}
@@ -71,7 +71,7 @@
               Item Subtotal
             </div>
             <div fxFlex>
-              {{order.totalExclTax | exchangeCurrency:(order.currency|uppercase)|currency:(order.currency|uppercase):true}}
+              {{order.totalExclTax | exchangeCurrency:(order.currency|uppercase)|currency:(order.currency|uppercase)}}
             </div>
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">
@@ -79,7 +79,7 @@
               Shipping
             </div>
             <div fxFlex>
-              {{order.shippingExclTax | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase):true}}
+              {{order.shippingExclTax | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase)}}
             </div>
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">
@@ -87,7 +87,7 @@
               Tax
             </div>
             <div fxFlex>
-              {{0 | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase):true}}
+              {{0 | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase)}}
             </div>
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">
@@ -95,7 +95,7 @@
               Grand Total
             </div>
             <div fxFlex>
-              {{totalPrice | exchangeCurrency:(order.currency|uppercase) | currency:(order.currency|uppercase):true}}
+              {{totalPrice | exchangeCurrency:(order.currency|uppercase) | currency:(order.currency|uppercase)}}
             </div>
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">

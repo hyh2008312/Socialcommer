@@ -1,0 +1,76 @@
+<div class="sc-order-dialog sc-order-dialog__full unicorn-dark-theme">
+  <div class="sc-order-dialog__close" (click)="close()" >
+    <i class="iconfontXberts icon-ic-close"></i>
+  </div>
+  <div>
+    <div class="xb-order-tracking__title-1">
+      Tracking Information
+    </div>
+    <div class="md-margin-top-2">
+      Please note there may be no tracking information available for some international sipping methods.
+    </div>
+    <div class="md-margin-top-2 xb-order-tracking__inner-container-1" fxLayout="row" fxLayoutAlign="center center"
+      *ngIf="status > 0">
+      <div class="xb-order-tracking__shipping-process-bg" fxLayout="column" fxLayoutAlign="center center"  fxFlex="none">
+        <div class="xb-order-tracking__shipping-process-circle" [ngClass]="{'active': status > 0}">1</div>
+        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text" [ngClass]="{'active': status > 0}">Processing</div>
+      </div>
+      <div class="xb-order-tracking__shipping-process-line"></div>
+      <div class="xb-order-tracking__shipping-process-bg" fxLayout="column" fxLayoutAlign="center center"  fxFlex="none">
+        <div class="xb-order-tracking__shipping-process-circle" [ngClass]="{'active': status > 1}">2</div>
+        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text" [ngClass]="{'active': status > 1}">Shipping</div>
+      </div>
+      <div class="xb-order-tracking__shipping-process-line"></div>
+      <div class="xb-order-tracking__shipping-process-bg" fxLayout="column" fxLayoutAlign="center center" fxFlex="none">
+        <div class="xb-order-tracking__shipping-process-circle" [ngClass]="{'active': status > 2}">3</div>
+        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text" *ngIf="data.order.arrivalDate"
+             [ngClass]="{'active': status > 2}">Delivered by {{data.order.arrivalDate| amDateFormat:'MMMM Do, YYYY'}}</div>
+        <div class="md-margin-top-1 xb-order-tracking__shipping-process-text" *ngIf="!data.order.arrivalDate"
+             [ngClass]="{'active': status > 2}">Delivered</div>
+      </div>
+    </div>
+    <div *ngIf="status > 0">
+      <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Product</div>
+        <div class="md-margin-left-3">{{data.order.title}}</div>
+      </div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Shipping Carrier</div>
+        <div class="md-margin-left-3">{{data.order.shippingPrice.shippingName}}</div>
+      </div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Tracking Number</div>
+        <div class="md-margin-left-3">{{data.order.shippingNumber}}</div>
+      </div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Tracking URL</div>
+        <a class="md-margin-left-3 text-underline xb-bold sc-order-dialog__color" *ngIf="data.order.shippingUrl"
+           href="{{data.order.shippingUrl}}" target="_blank">View Details</a>
+      </div>
+      <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" (click)="close()">CLOSE</button>
+      </div>
+    </div>
+    <div *ngIf="status == 0">
+      <div class="md-margin-top-4" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Product</div>
+        <div class="md-margin-left-3">{{data.order.title}}</div>
+      </div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Shipping Carrier</div>
+        <div class="md-margin-left-3">{{data.order.exchangeShippingProvider}}</div>
+      </div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Tracking Number</div>
+        <div class="md-margin-left-3">{{data.order.exchangeShippingNumber}}</div>
+      </div>
+      <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+        <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Tracking URL</div>
+        <a class="md-margin-left-3 text-underline xb-bold sc-order-dialog__color" href="{{data.order.exchangeShippingUrl}}" target="_blank">View Details</a>
+      </div>
+      <div class="sc-order-dialog__margin-top" fxLayout="row" fxLayoutAlign="end center">
+        <button mat-raised-button color="primary" (click)="close()">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>

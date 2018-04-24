@@ -232,7 +232,7 @@ export class ProductToCartComponent implements OnInit {
   addToCart(param: any): void {
     let self = this;
     self.shopService.addToCart(param).then((data) => {
-      self.store.cartProductNumber += parseInt(data.cartProductNumber);
+      self.store.cartProductNum = data.cartProductNum;
       self.userService.addStore(self.store);
       self.close();
     });

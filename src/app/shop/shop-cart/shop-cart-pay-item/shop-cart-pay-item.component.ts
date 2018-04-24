@@ -1,6 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-
-import {UserService} from "../../../shared/services/user/user.service";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-shop-cart-pay-item',
@@ -14,34 +12,11 @@ export class ShopCartPayItemComponent{
   @Output() productChange = new EventEmitter<any>();
   @Input() currency: any = '';
 
-  productLink: any = '';
-
-  sub: any;
-
-  constructor(
-    private userService: UserService
-  ) {
-    this.sub = this.userService.store.subscribe((data) => {
-      if(data) {
-        this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' +
-          (data.template && data.template.templateId?data.template.templateId:5)
-          + '/detail/';
-      }
-    });
-  }
+  constructor() {}
 
   ngOnChanges() {
 
-    if(this.product) {
-      this.productLink = this.productLink + this.product.goodsId;
-    }
-
   }
 
-  ngOnDestroy() {
-    if(this.sub) {
-      this.sub.unsubscribe();
-    }
-  }
 
 }

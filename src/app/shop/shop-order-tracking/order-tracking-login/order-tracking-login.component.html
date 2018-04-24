@@ -1,0 +1,46 @@
+<div class="xb-order-tracking" fxLayout="column">
+  <div class="background-bg-light xb-order-tracking__inner-container" fxFlex="noshrink" >
+    <div class="">
+      <div class="xb-order-tracking__title">
+        View Your Order
+      </div>
+      <div class="md-margin-top-4 md-margin-bottom-4" fxLayout="row" FxLayoutAlign="center start">
+        <div class="xb-order-tracking__container unicorn-dark-theme">
+          <div class="md-margin-top-2 xb-bold">
+            Please enter the email you used to place your order and the Guest Order Number to access your order information.
+          </div>
+          <div class="md-margin-top-1">
+            For each order, you can:
+          </div>
+          <div><span class="xb-bold">·</span> View Order Details</div>
+          <div><span class="xb-bold">·</span> Check Your Order Status</div>
+          <div><span class="xb-bold">·</span> Change Your Order</div>
+          <div><span class="xb-bold">·</span> Contact Customer Support</div>
+          <form class="md-margin-top-3" fxLayout="column" fxLayoutAlign="start start" [formGroup]="loginGroup" (ngSubmit)="login()" novalidate>
+            <div class="xb-input-error md-margin-bottom-2" *ngIf="loginErr">{{loginErr}}</div>
+            <mat-form-field>
+              <input matInput placeholder="Enter Your Email Address" formControlName="email">
+            </mat-form-field>
+            <div *ngIf="formErrors['email']" class="xb-input-error">
+              {{ formErrors['email'] }}
+            </div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Enter Your Guest Order Number" formControlName="number">
+            </mat-form-field>
+            <div *ngIf="formErrors['number']" class="xb-input-error">
+              {{ formErrors['number'] }}
+            </div>
+            <div class="md-margin-bottom-3">
+              <a class="text-underline md-dark-primary xb-pointer" (click)="forgetOrderNumber()">Forgot Your Guest Order Number?</a>
+            </div>
+            <div class="md-margin-top-1">
+              <button mat-raised-button color="primary" type="submit">
+                CONTINUE
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

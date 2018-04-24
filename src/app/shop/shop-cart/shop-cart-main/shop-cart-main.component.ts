@@ -47,7 +47,6 @@ export class ShopCartMainComponent implements OnInit {
     private shopCartService: ShopCartService
   ) {
 
-    //this.getProductList();
   }
 
   ngOnInit() {
@@ -60,7 +59,9 @@ export class ShopCartMainComponent implements OnInit {
         self.currency = data.currency;
         self.countryId = data.country.id;
         self.countryName = data.country.name;
-        self.getProductList();
+        if(this.products == null) {
+          self.getProductList();
+        }
       }
     });
   }
@@ -133,7 +134,10 @@ export class ShopCartMainComponent implements OnInit {
     let self = this;
     this.shopCartService.createOrder(cart).then((data) => {
       self.cartErr = false;
-      self.router.navigate([`./checkout/${data.id}/`], {relativeTo: this.activatedRoute});
+      self.store.cartProductNum = 0;
+      self.userService.addStore(self.store);
+      self.shopCartService.addCartOrder(data);
+      self.router.navigate([`/shop/cart/checkout/${data.id}`]);
     }).catch((data) => {
       self.cartErr = data;
 

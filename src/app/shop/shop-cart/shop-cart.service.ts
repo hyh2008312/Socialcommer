@@ -5,9 +5,12 @@ import { Title, Meta } from '@angular/platform-browser';
 import 'rxjs/add/operator/toPromise';
 import { BaseApi } from '../../config/app.api';
 import {AuthenticationService} from '../../shared/services/authentication/authentication.service';
+import {GuardLinkService} from '../../shared/services/guard-link/guard-link.service';
 
 @Injectable()
 export class ShopCartService {
+
+  routerLink: any = false;
 
   constructor(
     private http: Http,
@@ -15,7 +18,8 @@ export class ShopCartService {
     private jsonp : Jsonp,
     private titleService: Title,
     private metaService: Meta,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    public guardLinkService: GuardLinkService
   ) { }
 
   createAuthorizationHeader(headers: Headers) {
@@ -71,8 +75,8 @@ export class ShopCartService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   changeProductNumber(params:any): Promise<any> {
@@ -88,8 +92,8 @@ export class ShopCartService {
 
     return this.http.put(url, params, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   deleteProduct(params:any): Promise<any> {
@@ -105,8 +109,8 @@ export class ShopCartService {
 
     return this.http.delete(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   createOrder(cart): Promise<any>  {
@@ -121,8 +125,8 @@ export class ShopCartService {
 
     return this.http.post(url, cart, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getOrder(params:any): Promise<any>  {
@@ -137,8 +141,8 @@ export class ShopCartService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getCountryList(): Promise<any> {
@@ -154,8 +158,8 @@ export class ShopCartService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getStateList(country:any): Promise<any> {
@@ -171,8 +175,8 @@ export class ShopCartService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getShippingList(obj): Promise<any> {
@@ -188,8 +192,8 @@ export class ShopCartService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   createMail(mail:any) {
@@ -203,8 +207,8 @@ export class ShopCartService {
 
     return this.http.post(url, mail, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   createShippingAddress(address:any) {
@@ -218,8 +222,8 @@ export class ShopCartService {
 
     return this.http.post(url, address, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   getShippingAddressItem(address:any): Promise<any> {
@@ -235,40 +239,8 @@ export class ShopCartService {
 
     return this.http.get(url, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  createBillingAddress(address:any) {
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-
-    let options = new RequestOptions({headers:headers});
-
-    const url = `${this.baseApi.url}address/billing/create/`;
-
-    return this.http.post(url, address, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
-  getBillingAddress(address:any): Promise<any> {
-
-    let headers = new Headers({
-      'Content-Type': 'application/json'
-    });
-    this.createAuthorizationHeader(headers);
-
-    let options = new RequestOptions({headers:headers});
-
-    const url = `${this.baseApi.url}address/billing/${address.id}/`;
-
-    return this.http.get(url, options)
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   createStripePayment(payment:any) {
@@ -282,8 +254,8 @@ export class ShopCartService {
 
     return this.http.post(url, payment, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
   createPaypalPayment(payment:any) {
@@ -297,8 +269,8 @@ export class ShopCartService {
 
     return this.http.post(url, payment, options)
       .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
   }
 
 
@@ -313,20 +285,37 @@ export class ShopCartService {
     return {};
   }
 
-  private handleError (error: Response | any) {
+  addCartOrder(order:any) {
+    localStorage.setItem('order-cart', JSON.stringify(order));
+  }
+
+  checkIsAuth(response) {
+    if(response.status == 401) {
+      return Promise.reject(401);
+    }
+    return response.json();
+  }
+
+  private handleError(error: Response | any, target?:any) {
     let errMsg: string;
     if (error instanceof Response) {
       if(error.status == 401) {
-        errMsg = 'Your email or password is incorrect. Please try again!';
-      } else {
-        const body = error.json() || '';
-        const err = body.error || body;
-        if(err.detail) {
-          errMsg = `${err.detail}`;
-        } else {
-          if(err.error) {
-            errMsg = "Sorry! Server is busy now!";
+        if(target) {
+          if(!target.routerLink) {
+            target.routerLink = window.location.pathname;
+            target.guardLinkService.addRouterLink(target.routerLink);
           }
+          target.router.navigate(['/account/login']);
+          return Promise.reject(401);
+        }
+      }
+      const body = error.json() || '';
+      const err = body.error || body;
+      if (err.detail) {
+        errMsg = `${err.detail}`;
+      } else {
+        if (err.error) {
+          errMsg = 'Sorry! Server is busy now!';
         }
       }
     } else {

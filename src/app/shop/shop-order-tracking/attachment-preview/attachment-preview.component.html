@@ -1,0 +1,7 @@
+<div fxLayout="row" fxLayoutAlign="start stretch">
+  <label class="preview-label" fxLayout="row" fxLayoutAlign="center center"
+    [ngClass]="{'preview-label__not-upload': !upload,'preview-label__upload': upload}">
+    <i class="iconfontXberts icon-ic-pic preview-label__icons" *ngIf="!upload"></i>
+    <img src="{{previewImgSrcs}}" *ngIf="upload">
+  </label>
+</div>

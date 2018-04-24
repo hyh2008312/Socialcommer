@@ -1,0 +1,839 @@
+<div class="xb-order-tracking" fxLayout="column">
+  <div class="background-bg-light xb-order-tracking__inner-container" fxFlex="noshrink" >
+    <div class="container">
+      <div class="xb-order-tracking__detail-title-3 md-margin-top-4" fxLayout="row" fxLayoutAlign="start center">
+        <div class="md-dark-secondray xb-pointer" routerLink="../../detail">View Your Orders</div>&nbsp;>&nbsp;<div class="xb-bold">View Return Progress</div>
+      </div>
+      <div class="xb-order-tracking__title">
+        Return Progress
+      </div>
+      <div class="md-margin-top-4 md-margin-bottom-4">
+        <div class="xb-order-tracking__container-3" fxHide.xs>
+          <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="48">
+              <div class="unicorn-dark-theme-1" fxLayout="row" fxLayoutAlign="start center">
+                <div class="md-margin-right-3 xb-order-tracking__title-2">
+                  Return Request
+                </div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Product</div>
+                <div class="md-margin-left-3">{{returnOrder.title}}</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Order Number</div>
+                <div class="md-margin-left-3">{{returnOrder.number}}</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Return Quantity</div>
+                <div class="md-margin-left-3">{{returnOrder.quantity}}</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Request Type</div>
+                <div class="md-margin-left-3">Return for {{returnOrder.type == 'Refund'? 'Refund': 'Item Exchange'}}</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Return Reason</div>
+                <div class="md-margin-left-3">{{returnOrder.reason}}</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Comments</div>
+                <div class="md-margin-left-3">{{returnOrder.comments}}</div>
+              </div>
+              <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Attachment</div>
+                <div class="md-margin-left-3" fxLayout="row" fxLayoutAlign="start start">
+                  <div fxLayout="column">
+                    <app-shop-attachment-preview [previewImgSrcs]="returnOrder.annex"></app-shop-attachment-preview>
+                    <div class="md-align-center md-margin-top-1">{{annexName}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div fxFlex="48">
+              <div *ngIf="returnOrder.status == 'Pending'">
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Requested
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Instruction
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step1:</div>
+                    <div>
+                      Print the following Return Authorization Number and put it into your returned package.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step2:</div>
+                    <div>
+                      Send your returned package back to the following Return Address within 5 business days.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step3:</div>
+                    <div>
+                      We will process the refund or exchange within 3 business days upon receiving your package.
+                    </div>
+                  </div>
+                  <div>
+                    Please note that if you return an item without a RAN number, your return request may be rejected!
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="returnOrder.status == 'Authorized'">
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Authorized
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Instruction
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step1:</div>
+                    <div>
+                      Print the following Return Authorization Number and put it into your returned package.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step2:</div>
+                    <div>
+                      Send your returned package back to the following Return Address within 5 business days.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step3:</div>
+                    <div>
+                      We will process the refund or exchange within 3 business days upon receiving your package.
+                    </div>
+                  </div>
+                  <div>
+                    Please note that if you return an item without a RAN number, your return request may be rejected!
+                  </div>
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Authorization Number(RAN)
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  {{returnOrder.ran}}
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Shipping Address
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div>{{returnOrder.supplierAddress.firstName}}</div>
+                  <div>{{returnOrder.supplierAddress.line1}}</div>
+                  <div>{{returnOrder.supplierAddress.line2}}</div>
+                  <div>{{returnOrder.supplierAddress.state.name}}</div>
+                  <div>{{returnOrder.supplierAddress.country.name}}</div>
+                  <div>Phone Number:{{returnOrder.supplierAddress.phoneNumber}}</div>
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div>
+                    If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                    to get help from our customer service team.
+                  </div>
+                  <div>
+                    Please note that the deadline for filling a claim for this order is
+                    <span class="xb-bold">{{returnOrder.complainDeadline | amDateFormat:'MMMM Do, YYYY'}}</span>.
+                  </div>
+                </div>
+                <div class="unicorn-dark-theme md-margin-top-4">
+                  <button mat-raised-button color="primary">File a Claim</button>
+                </div>
+              </div>
+              <div *ngIf="returnOrder.status == 'Denied' && !returnOrder.isComplain">
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Denied
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Reason for Return Denied
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  {{returnOrder.denyReason }}
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div>
+                    If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                    to get help from our customer service team.
+                  </div>
+                  <div>
+                    Please note that the deadline for filling a claim for this order is
+                    <span class="xb-bold">{{returnOrder.complainDeadline | amDateFormat:'MMMM Do, YYYY' }}</span>.
+                  </div>
+                </div>
+                <div class="md-margin-top-4">
+                  Tell us about your claim:
+                </div>
+                <div class="unicorn-dark-theme" fxLayout="row" fxLayoutAlign="start center">
+                  <mat-form-field fxFlex>
+                    <textarea matInput placeholder="Please describe in detail"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="unicorn-dark-theme md-margin-top-3">
+                  <button mat-raised-button color="primary">File a Claim</button>
+                </div>
+              </div>
+              <div *ngIf="returnOrder.status == 'Denied' && returnOrder.isComplain">
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Denied
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Reason for Return Denied
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Print the following Return Authorizatin Number and put it into your returned package.
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="xb-order-tracking__line-height">
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Date Filed</div>
+                    <div class="md-margin-left-3">January 2nd, 2018</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Status</div>
+                    <div class="md-margin-left-3">Claim Submitted</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Description</div>
+                    <div class="md-margin-left-3">Print the following Return Authorization Number and put it into your
+                      returned package.</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Result</div>
+                    <div class="md-margin-left-3">Your claim has been filed! Our customer service team will contact
+                      you shortly</div>
+                  </div>
+                  <div class="md-margin-top-2">
+                    If the problem is resolve before our investigation is complete, your can withdraw your claim.
+                    Please note that withdrawn claims cannot be reopened any more.
+                  </div>
+                </div>
+                <div class="unicorn-dark-theme md-margin-top-3">
+                  <button mat-raised-button color="primary">Withdraw Claim</button>
+                </div>
+              </div>
+              <div *ngIf="returnOrder.status == 'Denied' && returnOrder.isComplain">
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Return Denied
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Reason for Return Denied
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  Print the following Return Authorizatin Number and put it into your returned package.
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="xb-order-tracking__line-height">
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Date Filed</div>
+                    <div class="md-margin-left-3">January 2nd, 2018</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Status</div>
+                    <div class="md-margin-left-3">Claim Withdrawn</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Description</div>
+                    <div class="md-margin-left-3">Print the following Return Authorization Number and put it into your
+                      returned package.</div>
+                  </div>
+                  <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                    <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Result</div>
+                    <div class="md-margin-left-3">You had withdrawn your claim.</div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="returnOrder.status == 'Partially Refunded' || returnOrder.status == 'Refunded'">
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  {{returnOrder.status}}
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Instruction
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step1:</div>
+                    <div>
+                      Print the following Return Authorization Number and put it into your returned package.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step2:</div>
+                    <div>
+                      Send your returned package back to the following Return Address within 5 business days.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step3:</div>
+                    <div>
+                      We will process the refund or exchange within 3 business days upon receiving your package.
+                    </div>
+                  </div>
+                  <div>
+                    Please note that if you return an item without a RAN number, your return request may be rejected!
+                  </div>
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Authorization Number(RAN)
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="returnOrder.ran">
+                  {{returnOrder.ran}}
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="!returnOrder.ran">
+                  N/A
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Shipping Address
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="returnOrder.supplierAddress">
+                  <div>{{returnOrder.supplierAddress.firstName}}</div>
+                  <div>{{returnOrder.supplierAddress.line1}}</div>
+                  <div>{{returnOrder.supplierAddress.line2}}</div>
+                  <div>{{returnOrder.supplierAddress.state.name}}</div>
+                  <div>{{returnOrder.supplierAddress.country.name}}</div>
+                  <div>Phone Number:{{returnOrder.supplierAddress.phoneNumber}}</div>
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="!returnOrder.supplierAddress">
+                  <div>N/A</div>
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div>
+                    If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                    to get help from our customer service team.
+                  </div>
+                  <div>
+                    Please note that the deadline for filling a claim for this order is
+                    <span class="xb-bold">{{returnOrder.complainDeadline | amDateFormat:'MMMM Do, YYYY'}}</span>.
+                  </div>
+                </div>
+                <div class="unicorn-dark-theme md-margin-top-4">
+                  <button mat-raised-button color="primary">File a Claim</button>
+                </div>
+              </div>
+              <div *ngIf="returnOrder.status == 'Exchanged'">
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                  Return Status
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  EExchanged Item Shipped
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Instruction
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step1:</div>
+                    <div>
+                      Print the following Return Authorization Number and put it into your returned package.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step2:</div>
+                    <div>
+                      Send your returned package back to the following Return Address within 5 business days.
+                    </div>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start start">
+                    <div>Step3:</div>
+                    <div>
+                      We will process the refund or exchange within 3 business days upon receiving your package.
+                    </div>
+                  </div>
+                  <div>
+                    Please note that if you return an item without a RAN number, your return request may be rejected!
+                  </div>
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Authorization Number(RAN)
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="returnOrder.ran">
+                  {{returnOrder.ran}}
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="!returnOrder.ran">
+                  N/A
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  Return Shipping Address
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="returnOrder.supplierAddress">
+                  <div>{{returnOrder.supplierAddress.firstName}}</div>
+                  <div>{{returnOrder.supplierAddress.line1}}</div>
+                  <div>{{returnOrder.supplierAddress.line2}}</div>
+                  <div>{{returnOrder.supplierAddress.state.name}}</div>
+                  <div>{{returnOrder.supplierAddress.country.name}}</div>
+                  <div>Phone Number:{{returnOrder.supplierAddress.phoneNumber}}</div>
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="!returnOrder.supplierAddress">
+                  <div>N/A</div>
+                </div>
+                <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                  File a Reimbursement Claim
+                </div>
+                <div class="md-margin-top-1 xb-order-tracking__line-height">
+                  <div>
+                    If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                    to get help from our customer service team.
+                  </div>
+                  <div>
+                    Please note that the deadline for filling a claim for this order is
+                    <span class="xb-bold">{{returnOrder.complainDeadline | amDateFormat:'MMMM Do, YYYY'}}</span>.
+                  </div>
+                </div>
+                <div class="unicorn-dark-theme md-margin-top-4">
+                  <button mat-raised-button color="primary">File a Claim</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xb-order-tracking__container-3" fxHide.gt-xs>
+          <div>
+            <div class="unicorn-dark-theme-1">
+              <div class="xb-order-tracking__detail-title-1">
+                Return Request
+              </div>
+              <div class="md-margin-top-2">
+                <button mat-raised-button color="primary">View Invoice</button>
+              </div>
+            </div>
+            <div class="md-margin-top-3" fxLayout="row" fxLayoutAlign="start start">
+              <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Product</div>
+              <div class="md-margin-left-3">{{returnOrder.title}}</div>
+            </div>
+            <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+              <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Order Number</div>
+              <div class="md-margin-left-3">{{returnOrder.number}}</div>
+            </div>
+            <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+              <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Return Quantity</div>
+              <div class="md-margin-left-3">{{returnOrder.quantity}}</div>
+            </div>
+            <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+              <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Request Type</div>
+              <div class="md-margin-left-3">Return for {{returnOrder.type == 'Refund'? 'Refund': 'Item Exchange'}}</div>
+            </div>
+            <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+              <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Return Reason</div>
+              <div class="md-margin-left-3">{{returnOrder.reason}}</div>
+            </div>
+            <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+              <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Comments</div>
+              <div class="md-margin-left-3">{{returnOrder.comments}}</div>
+            </div>
+            <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+              <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Attachment</div>
+              <div class="md-margin-left-3" fxLayout="row" fxLayoutAlign="start start">
+                <div fxLayout="column">
+                  <app-shop-attachment-preview [previewImgSrcs]="returnOrder.annex"></app-shop-attachment-preview>
+                  <div class="md-align-center md-margin-top-1">{{annexName}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xb-order-tracking__container-3 md-margin-top-2" fxHide.gt-xs>
+          <div>
+            <div *ngIf="returnOrder.status == 'Pending'">
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                Return Status
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                Return Requested
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Instruction
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step1:</div>
+                  <div>
+                    Print the following Return Authorization Number and put it into your returned package.
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step2:</div>
+                  <div>
+                    Send your returned package back to the following Return Address within 5 business days.
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step3:</div>
+                  <div>
+                    We will process the refund or exchange within 3 business days upon receiving your package.
+                  </div>
+                </div>
+                <div>
+                  Please note that if you return an item without a RAN number, your return request may be rejected!
+                </div>
+              </div>
+            </div>
+            <div *ngIf="returnOrder.status == 'Authorized'">
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                Return Status
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                Return Authorized
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Instruction
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step1:</div>
+                  <div>
+                    Print the following Return Authorization Number and put it into your returned package.
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step2:</div>
+                  <div>
+                    Send your returned package back to the following Return Address within 5 business days.
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step3:</div>
+                  <div>
+                    We will process the refund or exchange within 3 business days upon receiving your package.
+                  </div>
+                </div>
+                <div>
+                  Please note that if you return an item without a RAN number, your return request may be rejected!
+                </div>
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Authorization Number(RAN)
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                {{returnOrder.ran}}
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Shipping Address
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                <div>{{returnOrder.supplierAddress.firstName}}</div>
+                <div>{{returnOrder.supplierAddress.line1}}</div>
+                <div>{{returnOrder.supplierAddress.line2}}</div>
+                <div>{{returnOrder.supplierAddress.state.name}}</div>
+                <div>{{returnOrder.supplierAddress.country.name}}</div>
+                <div>Phone Number:{{returnOrder.supplierAddress.phoneNumber}}</div>
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                File a Reimbursement Claim
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                <div>
+                  If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                  to get help from our customer service team.
+                </div>
+                <div>
+                  Please note that the deadline for filling a claim for this order is
+                  <span class="xb-bold">{{returnOrder.complainDeadline | amDateFormat:'MMMM Do, YYYY'}}</span>.
+                </div>
+              </div>
+              <div class="unicorn-dark-theme md-margin-top-4">
+                <button mat-raised-button color="primary">File a Claim</button>
+              </div>
+            </div>
+            <div *ngIf="returnOrder.status == 'Denied' && !returnOrder.isComplain">
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                Return Status
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                Return Denied
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Reason for Return Denied
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                {{returnOrder.denyReason }}
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                File a Reimbursement Claim
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                <div>
+                  If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                  to get help from our customer service team.
+                </div>
+                <div>
+                  Please note that the deadline for filling a claim for this order is
+                  <span class="xb-bold">{{returnOrder.complainDeadline | amDateFormat:'MMMM Do, YYYY' }}</span>.
+                </div>
+              </div>
+              <div class="md-margin-top-4">
+                Tell us about your claim:
+              </div>
+              <div class="unicorn-dark-theme" fxLayout="row" fxLayoutAlign="start center">
+                <mat-form-field fxFlex>
+                  <textarea matInput placeholder="Please describe in detail"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="unicorn-dark-theme md-margin-top-3">
+                <button mat-raised-button color="primary">File a Claim</button>
+              </div>
+            </div>
+            <div *ngIf="returnOrder.status == 'Denied' && returnOrder.isComplain">
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                Return Status
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                Return Denied
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Reason for Return Denied
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                Print the following Return Authorizatin Number and put it into your returned package.
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                File a Reimbursement Claim
+              </div>
+              <div class="xb-order-tracking__line-height">
+                <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                  <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Date Filed</div>
+                  <div class="md-margin-left-3">January 2nd, 2018</div>
+                </div>
+                <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                  <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Status</div>
+                  <div class="md-margin-left-3">Claim Submitted</div>
+                </div>
+                <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                  <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Description</div>
+                  <div class="md-margin-left-3">Print the following Return Authorization Number and put it into your
+                    returned package.</div>
+                </div>
+                <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                  <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Result</div>
+                  <div class="md-margin-left-3">Your claim has been filed! Our customer service team will contact
+                    you shortly</div>
+                </div>
+                <div class="md-margin-top-2">
+                  If the problem is resolve before our investigation is complete, your can withdraw your claim.
+                  Please note that withdrawn claims cannot be reopened any more.
+                </div>
+              </div>
+              <div class="unicorn-dark-theme md-margin-top-3">
+                <button mat-raised-button color="primary">Withdraw Claim</button>
+              </div>
+            </div>
+            <div *ngIf="returnOrder.status == 'Denied' && returnOrder.isComplain">
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                Return Status
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                Return Denied
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Reason for Return Denied
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                Print the following Return Authorizatin Number and put it into your returned package.
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                File a Reimbursement Claim
+              </div>
+              <div class="xb-order-tracking__line-height">
+                <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                  <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Date Filed</div>
+                  <div class="md-margin-left-3">January 2nd, 2018</div>
+                </div>
+                <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                  <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Status</div>
+                  <div class="md-margin-left-3">Claim Withdrawn</div>
+                </div>
+                <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                  <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Description</div>
+                  <div class="md-margin-left-3">Print the following Return Authorization Number and put it into your
+                    returned package.</div>
+                </div>
+                <div class="md-margin-top-2" fxLayout="row" fxLayoutAlign="start start">
+                  <div class="xb-order-tracking__shipping-process-text-1" fxFlex="none">Claim Result</div>
+                  <div class="md-margin-left-3">You had withdrawn your claim.</div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="returnOrder.status == 'Partially Refunded' || returnOrder.status == 'Refunded'">
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                Return Status
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                {{returnOrder.status}}
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Instruction
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step1:</div>
+                  <div>
+                    Print the following Return Authorization Number and put it into your returned package.
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step2:</div>
+                  <div>
+                    Send your returned package back to the following Return Address within 5 business days.
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step3:</div>
+                  <div>
+                    We will process the refund or exchange within 3 business days upon receiving your package.
+                  </div>
+                </div>
+                <div>
+                  Please note that if you return an item without a RAN number, your return request may be rejected!
+                </div>
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Authorization Number(RAN)
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="returnOrder.ran">
+                {{returnOrder.ran}}
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="!returnOrder.ran">
+                N/A
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Shipping Address
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="returnOrder.supplierAddress">
+                <div>{{returnOrder.supplierAddress.firstName}}</div>
+                <div>{{returnOrder.supplierAddress.line1}}</div>
+                <div>{{returnOrder.supplierAddress.line2}}</div>
+                <div>{{returnOrder.supplierAddress.state.name}}</div>
+                <div>{{returnOrder.supplierAddress.country.name}}</div>
+                <div>Phone Number:{{returnOrder.supplierAddress.phoneNumber}}</div>
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="!returnOrder.supplierAddress">
+                <div>N/A</div>
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                File a Reimbursement Claim
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                <div>
+                  If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                  to get help from our customer service team.
+                </div>
+                <div>
+                  Please note that the deadline for filling a claim for this order is
+                  <span class="xb-bold">{{returnOrder.complainDeadline | amDateFormat:'MMMM Do, YYYY'}}</span>.
+                </div>
+              </div>
+              <div class="unicorn-dark-theme md-margin-top-4">
+                <button mat-raised-button color="primary">File a Claim</button>
+              </div>
+            </div>
+            <div *ngIf="returnOrder.status == 'Exchanged'">
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-1">
+                Return Status
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                EExchanged Item Shipped
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Instruction
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step1:</div>
+                  <div>
+                    Print the following Return Authorization Number and put it into your returned package.
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step2:</div>
+                  <div>
+                    Send your returned package back to the following Return Address within 5 business days.
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                  <div>Step3:</div>
+                  <div>
+                    We will process the refund or exchange within 3 business days upon receiving your package.
+                  </div>
+                </div>
+                <div>
+                  Please note that if you return an item without a RAN number, your return request may be rejected!
+                </div>
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Authorization Number(RAN)
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="returnOrder.ran">
+                {{returnOrder.ran}}
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="!returnOrder.ran">
+                N/A
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                Return Shipping Address
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="returnOrder.supplierAddress">
+                <div>{{returnOrder.supplierAddress.firstName}}</div>
+                <div>{{returnOrder.supplierAddress.line1}}</div>
+                <div>{{returnOrder.supplierAddress.line2}}</div>
+                <div>{{returnOrder.supplierAddress.state.name}}</div>
+                <div>{{returnOrder.supplierAddress.country.name}}</div>
+                <div>Phone Number:{{returnOrder.supplierAddress.phoneNumber}}</div>
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height" *ngIf="!returnOrder.supplierAddress">
+                <div>N/A</div>
+              </div>
+              <div class="xb-order-tracking__detail-title-1 md-margin-top-4">
+                File a Reimbursement Claim
+              </div>
+              <div class="md-margin-top-1 xb-order-tracking__line-height">
+                <div>
+                  If contacting the supplier has failled to resolve the problem, please file a reimbursement claim
+                  to get help from our customer service team.
+                </div>
+                <div>
+                  Please note that the deadline for filling a claim for this order is
+                  <span class="xb-bold">{{returnOrder.complainDeadline | amDateFormat:'MMMM Do, YYYY'}}</span>.
+                </div>
+              </div>
+              <div class="unicorn-dark-theme md-margin-top-4">
+                <button mat-raised-button color="primary">File a Claim</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

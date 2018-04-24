@@ -89,13 +89,6 @@
       background-color: #e11111;
     }
 
-    &-cart {
-      margin-right: 16px;
-      @include xb-xs-screen{
-        margin-right: 0;
-      }
-    }
-
     &-icon {
       font-size: 24px;
       color: black;

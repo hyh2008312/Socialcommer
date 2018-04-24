@@ -525,6 +525,7 @@ export class ShopCartPayComponent implements OnInit{
         self.shopCartService.createStripePayment(order).then((data) => {
           self.step = 2;
           self.order = data;
+          self.shopCartService.addCartOrder({});
           self.changeDetectorRef.markForCheck();
           self.changeDetectorRef.detectChanges();
         }).catch(()=>{
@@ -616,6 +617,7 @@ export class ShopCartPayComponent implements OnInit{
         }).then(function (data) {
           self.step = 2;
           self.order = data;
+          self.shopCartService.addCartOrder({});
           self.changeDetectorRef.markForCheck();
           self.changeDetectorRef.detectChanges();
         });
@@ -692,6 +694,7 @@ export class ShopCartPayComponent implements OnInit{
         }).then(function (data) {
           self.step = 2;
           self.order = data;
+          self.shopCartService.addCartOrder({});
           self.changeDetectorRef.markForCheck();
           self.changeDetectorRef.detectChanges();
           });

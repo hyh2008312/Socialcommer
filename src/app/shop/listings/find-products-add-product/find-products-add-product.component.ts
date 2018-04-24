@@ -12,6 +12,7 @@ import {UserService} from '../../../shared/services/user/user.service';
 
 export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
 
+  store: any;
   product: any = {};
   // Product list
   productList: any = false;
@@ -151,6 +152,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
 
     this.storeSub = this.userService.store.subscribe((data) => {
       if (data) {
+        this.store = data;
         this.countryId = data.country.id;
         this.currency = data.currency.toUpperCase();
         this.country = data.country.name;
@@ -433,6 +435,8 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
   addToCart(param: any): void {
     let self = this;
     self.shopService.addToCart(param).then((data) => {
+      self.store.cartProductNum = data.cartProductNum;
+      self.userService.addStore(self.store);
       self.close();
     });
   }
