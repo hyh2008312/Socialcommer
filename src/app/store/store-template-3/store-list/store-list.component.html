@@ -2,7 +2,7 @@
      appViewObjectScroll (onScrollChange)="scrollChange($event)"
      [selector]="'xb-store-template__collection-bg'">
   <div class="xb-store-template__collection-container xb-store-template__collection-bg">
-    <div class="xb-store-template__collection-title">
+    <div class="xb-store-template__collection-title" *ngIf="categoryName">
       {{categoryName | makeFirstLetterBig}}
     </div>
   </div>

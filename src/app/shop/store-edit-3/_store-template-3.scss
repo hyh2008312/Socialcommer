@@ -7,6 +7,55 @@
 }
 
 .xb-store-template {
+  &__category-side {
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+  }
+  &__up-triangle {
+    margin-left: 6px;
+    position: relative;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+  }
+  &__down-triangle {
+    position: relative;
+    top: 15px;
+    margin-left: 6px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+  }
+
+  &__category-navigation {
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
+    height: 40px;
+    &:hover {
+      border-top: 1px solid rgba(0, 0, 0, .12);
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
+    }
+
+    &-text {
+      text-align: center;
+      font-size: 14px;
+      line-height: 36px;
+      height: 36px;
+      &.active {
+        @include media();
+      }
+    }
+  }
+  &__border-top-bottom {
+    border-top: 1px solid rgba(0, 0, 0, .12);
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+  }
+
   &__line {
     width: 100vw;
     background-color: rgba(0, 0, 0, .12);
@@ -108,7 +157,8 @@
   &__navigation {
     text-align: center;
     font-size: 18px;
-    margin-bottom: 24px;
+    height: 40px;
+    line-height: 40px;
     &.active {
       @include media();
     }
@@ -387,13 +437,12 @@
     &-title {
       font-size: 24px;
       @include media();
-      margin-top: 72px;
-      margin-bottom: 24px;
+      margin-top: 64px;
+      margin-bottom: 64px;
     }
 
     &-container {
       margin: 0 64px;
-      height: 215px;
       @include xb-xs-screen {
         margin: 0;
         height: auto;
@@ -712,6 +761,7 @@
   }
 
   &__footer {
+    margin-top: 200px;
     @include xb-xs-screen {
       margin-top: 24px;
       margin-bottom: 16px;
@@ -1382,6 +1432,7 @@
     text-align: center;
   }
 }
+
 .xb-store-promotion {
   background-color: #F1F1F1;
   border-radius: 4px;
@@ -1425,7 +1476,7 @@
       @include regular();
     }
   }
-  &__details{
+  &__details {
     &-sale {
       background-color: #6446c3;
       border-radius: 4px;
@@ -1445,8 +1496,8 @@
     }
   }
 
-
 }
+
 .xb-store {
   &__promotion {
     &-ongoing {
@@ -1497,6 +1548,7 @@
 
   }
 }
+
 // 第三套模版产品safari
 .preview-home-box {
   @include xb-sm-screen {
@@ -1506,16 +1558,16 @@
     min-width: 50%;
   }
   @include xb-md-screen {
-    max-width: 33% !important;
+    max-width: 33.3% !important;
     flex: 1 1 235px !important;
     -webkit-flex: 1 1 235px !important;
-    min-width: 33%;
+    min-width: 33.3%;
   }
   @include xb-lg-screen {
-    max-width: 33% !important;
+    max-width: 33.3% !important;
     flex: 1 1 300px !important;
     -webkit-flex: 1 1 300px !important;
-    min-width: 33%;
+    min-width: 33.3%;
   }
 
 }
@@ -1539,10 +1591,11 @@
     max-width: 45% !important;
     flex: 1 1 300px !important;
     -webkit-flex: 1 1 300px !important;
-    min-width: 30%;
+    min-width: 45%;
   }
 
 }
+
 //第三套模版blog safari 兼容
 .preview-flash-box {
 

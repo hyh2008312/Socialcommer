@@ -104,7 +104,7 @@ export class MainPageComponent implements OnInit {
     this.storeForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
     self.sub = self.userService.currentUser.subscribe((data) => {
-      if(data) {
+      if (data) {
         self.isApproved = data.isInvite;
       }
     });
@@ -134,14 +134,10 @@ export class MainPageComponent implements OnInit {
               self.shopService.getFrontStore(self.store.displayName).then((data) => {
                 self.ownerId = data.ownerId;
                 self.isHavePromotion = data.promotionNum > 0;
-                let tempCategory = data.category.filter((data)=>{
-                  return data.goodsCount !=0 ;
+                let tempCategory = data.category.filter((data) => {
+                  return data.goodsCount != 0;
                 });
-                if (tempCategory.length > 1) {
-                  self.categories = [{name: 'All'}, ...tempCategory];
-                } else {
-                  self.categories = [...tempCategory];
-                }
+                self.categories = [...tempCategory];
                 self.category = self.categories[0];
                 self.queryProduct();
                 self.queryBlog();
@@ -151,7 +147,7 @@ export class MainPageComponent implements OnInit {
               for (let value of self.templateList) {
                 if (value.templateId == 3) {
                   self.templateId = value.id;
-                  self.storeName =data.name;
+                  self.storeName = data.name;
                   self.titleTag = value.context.titleTag != '' ? value.context.titleTag : self.titleTag;
                   self.descriptionTag = value.context.descriptionTag != '' ? value.context.descriptionTag : self.descriptionTag;
                   self.userTag = value.context.userTag != '' ? value.context.userTag : self.userTag;
@@ -395,9 +391,11 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  changeCategory() {
+  changeCategory($category: any) {
+    this.viewIndex = 2;
+    this.category = $category;
     this.page = 1;
-    this.queryProduct(true);
+    this.queryCategoryProduct(true);
   }
 
   openDialog(displayName?: any): void {
@@ -415,7 +413,7 @@ export class MainPageComponent implements OnInit {
 
   openGuideDialog(displayName?: any): void {
     let self = this;
-    if(self.isApproved) {
+    if (self.isApproved) {
       let step = 'finished';
       self.shopService.changeGuideStep({
         step
@@ -446,11 +444,11 @@ export class MainPageComponent implements OnInit {
       return;
     }
     let options = {
-      cat: this.category.id,
+      cat: null,
       store: this.store.id,
       relationStatus: 'published',
       page: this.page,
-      page_size: 48
+      page_size: 24
     };
     let self = this;
     self.storeService.getProductList(options).then((data) => {
@@ -461,6 +459,32 @@ export class MainPageComponent implements OnInit {
       self.product = self.product.concat(data.results);
       if (data.next == null) {
         self.nextPage = false;
+      }
+    });
+  }
+
+  //分类产品
+  categoryPage = 1;
+  nextCategoryPage: boolean = true;
+  categoryProduct: any = [];
+
+  queryCategoryProduct(clearProduct?: boolean) {
+    let options = {
+      cat: this.category.id,
+      store: this.store.id,
+      relationStatus: 'published',
+      page: this.categoryPage,
+      page_size: 48
+    };
+    let self = this;
+    self.storeService.getProductList(options).then((data) => {
+      if (clearProduct) {
+        self.categoryProduct = [];
+        self.nextCategoryPage = true;
+      }
+      self.categoryProduct = self.categoryProduct.concat(data.results);
+      if (data.next == null) {
+        self.nextCategoryPage = false;
       }
     });
   }
@@ -489,7 +513,7 @@ export class MainPageComponent implements OnInit {
 
   flashPage = 1;
   nextFlashSalePage: boolean = false;
-  flashSaleProduct:  any = [];
+  flashSaleProduct: any = [];
 
   queryFlashSale(clearProduct?: boolean) {
     let options = {
@@ -523,11 +547,12 @@ export class MainPageComponent implements OnInit {
   }
 
   jumpToCollection() {
-    this.viewIndex = 1;
+    this.page++ ;
+    this.queryProduct(false);
   }
 
   jumpToBlog() {
-    this.viewIndex = 2;
+    this.viewIndex = 3;
   }
 
   // 跳转到商品详情页
@@ -619,7 +644,7 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if(this.sub) {
+    if (this.sub) {
       this.sub.unsubscribe();
     }
   }

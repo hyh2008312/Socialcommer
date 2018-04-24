@@ -25,7 +25,7 @@ export class StoreNavigationComponent implements OnInit {
   routerObservable: any;
 
   contents = [{
-    text: 'Home',
+    text: 'Discover',
     link: './',
     exact: true
   }, {
@@ -73,10 +73,6 @@ export class StoreNavigationComponent implements OnInit {
 
   jumpOrderList(): void {
     this.router.navigate([`./store/${this.displayName}/order`]);
-  }
-
-  jumpCategory(): void {
-    this.router.navigate([`./store/${this.displayName}/3/list`, this.selectCategory.id]);
   }
 
   isShowCategory(): void {

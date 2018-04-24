@@ -1,20 +1,32 @@
-<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 0 == navigationIndex}"
+<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 0 == navigationIndex && isNavigationFlag}"
      (click)="changeNavigation(0)">
   {{contents[0].text}}
 </div>
-<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 1 == navigationIndex}"
+<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 1 == navigationIndex && isNavigationFlag}"
      (click)="changeNavigation(1)" >
   {{contents[1].text}}
 </div>
-<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 2 == navigationIndex}"
-     (click)="changeNavigation(2)">
-  {{contents[2].text}}
+
+<div class="xb-store-template__category-navigation xb-pointer"
+     [ngClass]="{'xb-store-template__border-top-bottom':isShowCategoryFlag ,'xb-store-template__media':false}"
+     (click)="isShowCategory()">
+  Collections<span [ngClass]="{'xb-store-template__down-triangle':true}"></span>
 </div>
-<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 3 == navigationIndex}"
+<div class="xb-store-template__category-side" *ngIf="isShowCategoryFlag">
+  <ng-container *ngFor="let value of category ;let i= index">
+    <div class="xb-store-template__category-navigation-text xb-pointer"
+         (click)="changeCategoryBold(true,i)" [ngClass]="{active: i == categoryIndex && !isNavigationFlag}">
+      {{value.name | makeFirstLetterBig}}
+    </div>
+  </ng-container>
+</div>
+
+
+<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 3 == navigationIndex && isNavigationFlag}"
      (click)="changeNavigation(3)" *ngIf="isNavigationHaveBlog">
   {{contents[3].text}}
 </div>
-<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 5 == navigationIndex}"
+<div class="xb-store-template__navigation xb-pointer" [ngClass]="{active: 5 == navigationIndex && isNavigationFlag}"
      (click)="changeNavigation(5)" >
   {{contents[4].text}}
 </div>
