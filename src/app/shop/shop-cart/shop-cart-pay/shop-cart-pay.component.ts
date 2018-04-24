@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -24,7 +25,7 @@ export class ShopCartPayComponent implements OnInit{
 
   storeId: number = 0;
 
-  order: any;
+  order: any = {};
 
   step = 0;
 
@@ -103,7 +104,8 @@ export class ShopCartPayComponent implements OnInit{
     private changeDetectorRef:ChangeDetectorRef,
     private systemConstant: SystemConstant,
     private dialog: MatDialog,
-    private baseApi: BaseApi
+    private baseApi: BaseApi,
+    private activatedRoute: ActivatedRoute
   ) {
     if((<any>window).Stripe) {
       (<any>window).Stripe.setPublishableKey(this.systemConstant.stripeToken);
@@ -192,64 +194,69 @@ export class ShopCartPayComponent implements OnInit{
 
     this.stepTwoForm.valueChanges.subscribe(data => this.onValueChanged(data, this.stepTwoForm));
 
-    this.order = this.shopCartService.getOrder();
-    this.products = this.order.lines;
-    this.calculatePrice();
+    let id = this.activatedRoute.snapshot.params['id'];
+    this.shopCartService.getOrder({
+      id
+    }).then((data) => {
+      this.order = data;
+      this.products = this.order.lines;
+      this.calculatePrice();
 
-    this.shippingAddressList = this.shopCartService.getShippingAddress();
+      this.shippingAddressList = this.shopCartService.getShippingAddress();
 
-    this.stepOneForm.patchValue({
-      isSaveAddress: this.shippingAddressList.isSaveAddress
-    });
-
-    if(this.order.shippingAddress) {
       this.stepOneForm.patchValue({
-        emailAddress: this.order.emailAddress,
-        confirmEmail: this.order.emailAddress,
-        firstName: this.order.shippingAddress.firstName,
-        lastName: this.order.shippingAddress.lastName,
-        line1: this.order.shippingAddress.line1,
-        line2: this.order.shippingAddress.line2,
-        city: this.order.shippingAddress.city,
-        countryId: this.order.shippingAddress.country.id,
-        stateId: this.order.shippingAddress.state.id,
-        postcode: this.order.shippingAddress.postcode,
-        phoneNumber: this.order.shippingAddress.phoneNumber,
+        isSaveAddress: this.shippingAddressList.isSaveAddress
       });
-      this.stepTwoForm.setValue({
-        firstName: this.order.shippingAddress.firstName,
-        lastName: this.order.shippingAddress.lastName,
-        line1: this.order.shippingAddress.line1,
-        line2: this.order.shippingAddress.line2,
-        city: this.order.shippingAddress.city,
-        countryId: this.order.shippingAddress.country.id,
-        stateId: this.order.shippingAddress.state.id,
-        postcode: this.order.shippingAddress.postcode
-      });
-      this.changeBillingState(this.order.shippingAddress.country.id);
-      this.changeShippingState(this.order.shippingAddress.country.id);
-      if(this.order.shippingAddress.id) {
-        this.step = 1;
+
+      if(this.order.shippingAddress) {
+        this.stepOneForm.patchValue({
+          emailAddress: this.order.emailAddress,
+          confirmEmail: this.order.emailAddress,
+          firstName: this.order.shippingAddress.firstName,
+          lastName: this.order.shippingAddress.lastName,
+          line1: this.order.shippingAddress.line1,
+          line2: this.order.shippingAddress.line2,
+          city: this.order.shippingAddress.city,
+          countryId: this.order.shippingAddress.country.id,
+          stateId: this.order.shippingAddress.state.id,
+          postcode: this.order.shippingAddress.postcode,
+          phoneNumber: this.order.shippingAddress.phoneNumber,
+        });
+        this.stepTwoForm.setValue({
+          firstName: this.order.shippingAddress.firstName,
+          lastName: this.order.shippingAddress.lastName,
+          line1: this.order.shippingAddress.line1,
+          line2: this.order.shippingAddress.line2,
+          city: this.order.shippingAddress.city,
+          countryId: this.order.shippingAddress.country.id,
+          stateId: this.order.shippingAddress.state.id,
+          postcode: this.order.shippingAddress.postcode
+        });
+        this.changeBillingState(this.order.shippingAddress.country.id);
+        this.changeShippingState(this.order.shippingAddress.country.id);
+        if(this.order.shippingAddress.id) {
+          this.step = 1;
+        }
+        return;
       }
-      return;
-    }
 
-    if(this.shippingAddressList.id && this.shippingAddressList.isSaveAddress) {
-      this.stepOneForm.patchValue({
-        emailAddress: this.shippingAddressList.emailAddress,
-        confirmEmail: this.shippingAddressList.emailAddress,
-        firstName: this.shippingAddressList.firstName,
-        lastName: this.shippingAddressList.lastName,
-        line1: this.shippingAddressList.line1,
-        line2: this.shippingAddressList.line2,
-        city: this.shippingAddressList.city,
-        countryId: this.shippingAddressList.country.id,
-        stateId: this.shippingAddressList.state.id,
-        postcode: this.shippingAddressList.postcode,
-        phoneNumber: this.shippingAddressList.phoneNumber,
-      });
-      this.changeShippingState(this.shippingAddressList.country.id);
-    }
+      if(this.shippingAddressList.id && this.shippingAddressList.isSaveAddress) {
+        this.stepOneForm.patchValue({
+          emailAddress: this.shippingAddressList.emailAddress,
+          confirmEmail: this.shippingAddressList.emailAddress,
+          firstName: this.shippingAddressList.firstName,
+          lastName: this.shippingAddressList.lastName,
+          line1: this.shippingAddressList.line1,
+          line2: this.shippingAddressList.line2,
+          city: this.shippingAddressList.city,
+          countryId: this.shippingAddressList.country.id,
+          stateId: this.shippingAddressList.state.id,
+          postcode: this.shippingAddressList.postcode,
+          phoneNumber: this.shippingAddressList.phoneNumber,
+        });
+        this.changeShippingState(this.shippingAddressList.country.id);
+      }
+    });
 
 
   }
@@ -440,7 +447,6 @@ export class ShopCartPayComponent implements OnInit{
       self.stepOneFormError = false;
       self.step = 1;
       self.order = data;
-      self.shopCartService.addOrder(self.order);
       let shippingAddress = data.shippingAddress;
       shippingAddress.emailAddress = data.emailAddress;
       if(stepOneObject.isSaveAddress) {
@@ -519,8 +525,6 @@ export class ShopCartPayComponent implements OnInit{
         self.shopCartService.createStripePayment(order).then((data) => {
           self.step = 2;
           self.order = data;
-          self.shopCartService.addOrder({});
-          self.shopService.addProductToCart(self.displayName, []);
           self.changeDetectorRef.markForCheck();
           self.changeDetectorRef.detectChanges();
         }).catch(()=>{
@@ -612,8 +616,6 @@ export class ShopCartPayComponent implements OnInit{
         }).then(function (data) {
           self.step = 2;
           self.order = data;
-          self.shopCartService.addOrder({});
-          self.shopService.addProductToCart(self.displayName, []);
           self.changeDetectorRef.markForCheck();
           self.changeDetectorRef.detectChanges();
         });
@@ -690,8 +692,6 @@ export class ShopCartPayComponent implements OnInit{
         }).then(function (data) {
           self.step = 2;
           self.order = data;
-          self.shopCartService.addOrder({});
-          self.shopService.addProductToCart(self.displayName, []);
           self.changeDetectorRef.markForCheck();
           self.changeDetectorRef.detectChanges();
           });

@@ -13,15 +13,13 @@ import {ShopCartService} from '../shop-cart.service';
 
 export class ShopCartMainComponent implements OnInit {
 
+  store: any;
+
   homeLink: string = '';
 
   isTotalDialogOpen: boolean = false;
 
-  storeId: any = '';
-
   currency: string = 'USD';
-
-  countries: any[];
 
   countryName: any = '';
 
@@ -36,8 +34,6 @@ export class ShopCartMainComponent implements OnInit {
   subTotalPrice: number = 0;
 
   shippingTotalPrice: number = 0;
-
-  shippingItem: any = {};
 
   totalPrice: number = 0;
 
@@ -59,6 +55,8 @@ export class ShopCartMainComponent implements OnInit {
 
     self.userService.store.subscribe((data) => {
       if (data) {
+        self.store = data;
+        self.displayName = data.displayName;
         self.currency = data.currency;
         self.countryId = data.country.id;
         self.countryName = data.country.name;
@@ -81,6 +79,13 @@ export class ShopCartMainComponent implements OnInit {
         break;
     }
     this.calculatePrice();
+    let number = 0;
+    for(let item of this.products) {
+      number += parseInt(item.quantity);
+    }
+    this.store.cartProductNum = number;
+    this.userService.addStore(this.store);
+    this.cartErr = false;
   }
 
   calculatePrice() {
@@ -128,10 +133,10 @@ export class ShopCartMainComponent implements OnInit {
     let self = this;
     this.shopCartService.createOrder(cart).then((data) => {
       self.cartErr = false;
-      self.shopCartService.addOrder(data);
-      self.router.navigate([`./checkout`], {relativeTo: this.activatedRoute});
+      self.router.navigate([`./checkout/${data.id}/`], {relativeTo: this.activatedRoute});
     }).catch((data) => {
       self.cartErr = data;
+
     });
   }
 

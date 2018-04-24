@@ -304,7 +304,11 @@
 
     &-select{
       margin-top: -16px;
-      width: 140px !important;
+      width: 120px !important;
+
+      @include xb-xs-screen{
+        margin-top: -8px;
+      }
 
       &-mobile{
         position: relative;
@@ -399,6 +403,10 @@
         display: block;
         user-select: none;
       }
+    }
+
+    &-margin-top{
+      margin-top: -16px;
     }
 
   }

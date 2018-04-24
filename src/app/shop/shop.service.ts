@@ -17,22 +17,6 @@ export class ShopService {
 
   cart: Subject<any> = new BehaviorSubject<any>(null);
 
-  public addCart(any: any): void {
-    this.cart.next(any);
-  }
-
-  addProductToCart(storeName:any, product:any) {
-    localStorage.setItem(storeName, JSON.stringify(product));
-    this.addCart(product);
-  }
-
-  getProductInCart(storeName:any): any {
-    if(localStorage && localStorage.getItem(storeName)) {
-      return JSON.parse(localStorage.getItem(storeName));
-    }
-    return [];
-  }
-
   constructor(
     private http: Http,
     private baseUrl: BaseApi,

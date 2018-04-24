@@ -8,7 +8,7 @@ import { CanActive } from './can-active.service';
 const routes: Routes = [{
   path: '', component: ShopCartMainComponent
 },{
-  path: 'checkout', component: ShopCartPayComponent,
+  path: 'checkout/:id', component: ShopCartPayComponent,
   canActivate: [ CanActive ]
 }];
 

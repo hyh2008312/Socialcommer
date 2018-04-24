@@ -22,6 +22,7 @@ export class ShopComponent implements OnInit {
   currency: string = 'USD';
   shareLink: string = '';
   description: string = 'Welcome to my store: ';
+  productNumber: number = 0;
 
   constructor(
     private userService: UserService,
@@ -46,6 +47,7 @@ export class ShopComponent implements OnInit {
         self.description = self.description + data.name + ' - ' + data.description;
         self.storeName = data.displayName;
         self.currency = data.currency.toUpperCase();
+        self.productNumber = data.cartProductNum;
         if (data.template != null) {
           let templateId = data.template.templateId;
           self.shopService.setTemplateUId(templateId);

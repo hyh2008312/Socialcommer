@@ -1,16 +1,8 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MatDialog, MatSnackBar} from '@angular/material';
 
 import {ShopService} from '../shop.service';
 import {UserService} from '../../../shared/services/user/user.service';
-import {ImageUploadPreviewService} from "../../../shared/components/image-upload-preview/image-upload-preview.service";
-import {S3UploaderService} from "../../../shared/services/s3-upload/s3-upload.service";
-
-import {ProductShareDialogComponent} from "../product-share-dialog/product-share-dialog.component";
-
-import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-product-to-cart',
@@ -19,6 +11,8 @@ import {environment} from '../../../../environments/environment';
 })
 
 export class ProductToCartComponent implements OnInit {
+
+  store: any;
   product: any = {};
   variantId: any = '';
   variant: any = {};
@@ -38,6 +32,8 @@ export class ProductToCartComponent implements OnInit {
   number: any = 1;
 
   isSupplierEdit = false;
+
+  sub: any;
 
   constructor(public router: Router,
               private activatedRoute: ActivatedRoute,
@@ -61,6 +57,12 @@ export class ProductToCartComponent implements OnInit {
         self.variant = self.product.variants[0];
       }
     });
+
+    self.sub = self.userService.store.subscribe((data) => {
+      if(data) {
+        self.store = data;
+      }
+    })
   }
 
   arrangeVariant(data) {
@@ -230,6 +232,8 @@ export class ProductToCartComponent implements OnInit {
   addToCart(param: any): void {
     let self = this;
     self.shopService.addToCart(param).then((data) => {
+      self.store.cartProductNumber += parseInt(data.cartProductNumber);
+      self.userService.addStore(self.store);
       self.close();
     });
   }
