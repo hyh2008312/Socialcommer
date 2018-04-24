@@ -21,7 +21,7 @@
     <div class="xb-store-template__category-navigation-text xb-pointer"
          (click)="changeCategoryBold(true)"
          [routerLink]="['./list',value.id]" [routerLinkActive]="['active']">
-      {{value.name}}
+      {{value.name | makeFirstLetterBig}}
     </div>
   </ng-container>
 </div>
