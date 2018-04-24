@@ -44,7 +44,7 @@
         </div>
         <div class="xb-order-tracking__height-2 xb-order-tracking__width xb-order-tracking__border-bottom"
              fxLayout="row" fxLayoutAlign="start center">
-          <div class="xb-order-tracking__margin-right" fxFlex="15" fxLayout="row" fxLayoutAlign="center center">
+          <div class="xb-order-tracking__margin-right" fxFlex="15" fxLayout="row">
             {{order.totalExclTax | exchangeCurrency:(order.currency|uppercase)|currency:(order.currency|uppercase)}}
           </div>
           <div class="xb-order-tracking__margin-right" fxFlex="15" fxLayout="row" fxLayoutAlign="center center">

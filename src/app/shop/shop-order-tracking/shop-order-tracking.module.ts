@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { OrderDetailItemComponent } from './order-detail-item/order-detail-item.component';
 import { OrderDetailTitleComponent } from './order-detail-title/order-detail-title.component';
+import { OrderListTitleComponent } from './order-list-title/order-list-title.component';
 import { AttachmentUploadComponent } from './attachment-upload/attachment-upload.component';
 import { AttachmentPreviewComponent } from './attachment-preview/attachment-preview.component';
 
@@ -48,7 +49,8 @@ import {CustomerServiceMessageComponent} from "./customer-service-message/custom
     AttachmentPreviewComponent,
     ReturnProgressComponent,
     StoreMessageMainComponent,
-    CustomerServiceMessageComponent
+    CustomerServiceMessageComponent,
+    OrderListTitleComponent
   ],
   entryComponents: [
     ForgetOrderNumberDialogComponent,

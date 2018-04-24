@@ -94,7 +94,9 @@
   }
 
   &__title-2{
-    font-size: 16px;
+    font-size: 14px;
+    letter-spacing: -.08px;
+    line-height: 16px;
     @include media();
     @include xb-xs-screen{
       font-size: 14px;
@@ -152,6 +154,11 @@
     }
   }
 
+  &__container-5{
+    background-color: $whiteColor;
+    border-radius: 4px;
+  }
+
   &__inner-container{
     max-width: 1200px;
     width: 100%;
@@ -193,7 +200,7 @@
   }
 
   &__height-3{
-    height: 48px;
+    height: 40px;
   }
 
   &__margin-right{
@@ -216,6 +223,11 @@
       width: 100%;
     }
   }
+
+  &__width-2{
+    width: 100px;
+  }
+
   &__line-height{
     line-height: 24px;
   }
@@ -345,6 +357,8 @@
 
     &-title-2{
       font-size: 14px;
+      letter-spacing: -.08px;
+      line-height: 16px;
       @include media();
     }
 
