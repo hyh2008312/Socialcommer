@@ -47,32 +47,30 @@ export class ShopCartProductItemComponent implements OnDestroy{
 
   plusNumber() {
     this.product.quantity++;
-    this.productChange.emit({
-      type: 'edit',
-      product: this.product,
-      index: this.index
-    });
     this.shopCartService.changeProductNumber({
       id: this.product.id,
       quantity: this.product.quantity
     }).then((data) => {
-      console.log(data);
+      this.productChange.emit({
+        type: 'edit',
+        product: this.product,
+        index: this.index
+      });
     });
   }
 
   minusNumber() {
     if(this.product.quantity > 1) {
       this.product.quantity--;
-      this.productChange.emit({
-        type: 'edit',
-        product: this.product,
-        index: this.index
-      });
       this.shopCartService.changeProductNumber({
         id: this.product.id,
         quantity: this.product.quantity
       }).then((data) => {
-        console.log(data);
+        this.productChange.emit({
+          type: 'edit',
+          product: this.product,
+          index: this.index
+        });
       });
     }
   }
@@ -98,15 +96,14 @@ export class ShopCartProductItemComponent implements OnDestroy{
   }
 
   delete() {
-    this.productChange.emit({
-      type: 'delete',
-      product: this.product,
-      index: this.index
-    });
     this.shopCartService.deleteProduct({
       id: this.product.id
     }).then((data) => {
-      console.log(data);
+      this.productChange.emit({
+        type: 'delete',
+        product: this.product,
+        index: this.index
+      });
     });
   }
 
@@ -117,16 +114,15 @@ export class ShopCartProductItemComponent implements OnDestroy{
       this.product.quantity = $event;
     }
 
-    this.productChange.emit({
-      type: 'edit',
-      product: this.product,
-      index: this.index
-    });
     this.shopCartService.changeProductNumber({
       id: this.product.id,
       quantity: this.product.quantity
     }).then((data) => {
-      console.log(data);
+      this.productChange.emit({
+        type: 'edit',
+        product: this.product,
+        index: this.index
+      });
     });
   }
 

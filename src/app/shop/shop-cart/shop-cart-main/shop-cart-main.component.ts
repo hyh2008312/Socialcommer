@@ -105,19 +105,24 @@ export class ShopCartMainComponent implements OnInit {
   }
 
   checkout() {
-    let cart = [];
+    let cpList = [];
     this.cartErr = false;
     for (let item of this.products) {
 
       if(item.checked) {
         let arr = [];
         arr.push(item.id, item.shippingItem.id);
-        cart.push(arr);
+        cpList.push(arr);
       }
 
-      if(cart.length == 0) {
-        return this.cartErr = 'You have to choose product first.';
-      }
+    }
+
+    let cart: any = {
+      cpList
+    };
+
+    if(cpList.length == 0) {
+      return this.cartErr = 'You have to choose product first.';
     }
 
     let self = this;

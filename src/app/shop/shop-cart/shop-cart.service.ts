@@ -113,10 +113,11 @@ export class ShopCartService {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
+    this.createAuthorizationHeader(headers);
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseApi.url}order/create/`;
+    const url = `${this.baseApi.url}order/store/create/`;
 
     return this.http.post(url, cart, options)
       .toPromise()

@@ -39,7 +39,7 @@
     </div>
   </div>
   <div fxFlex="15"  fxLayout="column" fxLayoutAlign="center center">
-    <div class="xb-cart__item-select-text-1">{{20 | exchangeCurrency:currency |currency: currency }}</div>
+    <div class="xb-cart__item-select-text-1">{{product.commissions * product.quantity | exchangeCurrency:currency |currency: currency }}</div>
   </div>
   <div fxFlex="20"  fxLayout="column" fxLayoutAlign="center center">
     <div class="unicorn-dark-theme" fxLayout="row" fxLayoutAlign="space-between center">
