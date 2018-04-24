@@ -29,7 +29,7 @@ export class ShopCartMainComponent implements OnInit {
 
   products: any;
 
-  shippingList: any;
+  isAllChecked: boolean = false;
 
   displayName: any = '';
 
@@ -59,11 +59,7 @@ export class ShopCartMainComponent implements OnInit {
 
     self.userService.store.subscribe((data) => {
       if (data) {
-        let uid = data.templateId || 1;
-        self.homeLink = `/store/${data.displayName}/${uid}`;
-        self.storeId = data.id;
         self.currency = data.currency;
-        self.displayName = data.displayName;
         self.countryId = data.country.id;
         self.countryName = data.country.name;
         self.getProductList();
@@ -109,25 +105,20 @@ export class ShopCartMainComponent implements OnInit {
   }
 
   checkout() {
-    let lines = [];
+    let cart = [];
+    this.cartErr = false;
     for (let item of this.products) {
-      lines.push({
-        goodsId: item.goodsId,
-        quantity: item.number,
-        variantId: item.variantId,
-        shippingPriceId: this.shippingItem[item.id].id
-      });
-    }
 
-    let cart = {
-      storeId: this.storeId,
-      totalInclTax: 0,
-      totalExclTax: 0,
-      shippingInclTax: 0,
-      shippingExclTax: 0,
-      currency: this.currency,
-      lines
-    };
+      if(item.checked) {
+        let arr = [];
+        arr.push(item.id, item.shippingItem.id);
+        cart.push(arr);
+      }
+
+      if(cart.length == 0) {
+        return this.cartErr = 'You have to choose product first.';
+      }
+    }
 
     let self = this;
     this.shopCartService.createOrder(cart).then((data) => {
@@ -139,12 +130,20 @@ export class ShopCartMainComponent implements OnInit {
     });
   }
 
+  checkAll($event) {
+    this.isAllChecked = $event;
+    for(let item of this.products) {
+      item.checked = $event;
+    }
+  }
+
   getProductList() {
     this.shopCartService.getProductList().then((data) => {
       this.products = [];
       for(let i = 0; i < data.length; i++) {
         let item: any = data[i];
         item.shippingItem = data[i].shippingPrices.length>0?data[i].shippingPrices[0]: {};
+        item.checked = false;
         this.products.push(item);
       }
       this.calculatePrice();

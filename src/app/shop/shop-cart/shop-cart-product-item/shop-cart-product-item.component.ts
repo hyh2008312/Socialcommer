@@ -33,9 +33,7 @@ export class ShopCartProductItemComponent implements OnDestroy{
 
     this.sub = this.userService.store.subscribe((data) => {
       if(data) {
-        this.productLink = 'http://' + window.location.host + '/store/' + data.displayName + '/' +
-          (data.template && data.template.templateId?data.template.templateId:5)
-        + '/detail/';
+        this.productLink = 'http://' + window.location.host + '/shop/listings/items/';
         this.currency = data.currency.toUpperCase();
       }
     });
@@ -43,7 +41,7 @@ export class ShopCartProductItemComponent implements OnDestroy{
 
   ngOnChanges() {
     if(this.product) {
-      this.productLink = this.productLink + this.product.goodsId;
+      this.productLink = this.productLink + this.product.productId;
     }
   }
 
@@ -129,6 +127,15 @@ export class ShopCartProductItemComponent implements OnDestroy{
       quantity: this.product.quantity
     }).then((data) => {
       console.log(data);
+    });
+  }
+
+  productChecked($event) {
+    this.product.checked = $event;
+    this.productChange.emit({
+      type: 'edit',
+      product: this.product,
+      index: this.index
     });
   }
 

@@ -1,13 +1,13 @@
 <div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start center" fxHide.xs fxHide.sm>
   <div class="unicorn-dark-theme-1" fxLayout="column" fxLayoutAlign="center center" fxFlex="5">
-    <mat-checkbox></mat-checkbox>
+    <mat-checkbox [ngModel]="product.checked" (ngModelChange)="productChecked($event)"></mat-checkbox>
   </div>
   <div fxLayout="row" fxLayoutAlign="start stretch" fxFlex="35">
-    <a class="xb-cart__item-image" fxFlex="none" href="{{productLink}}" target="_blank">
+    <a class="xb-cart__item-image" fxFlex="none" routerLink="/shop/listings/items/{{product.productId}}">
       <img [src]="product.mainImage">
     </a>
     <div fxLayout="column" fxLayoutAlign="space-between stretch">
-      <a class="xb-cart__item-title xb-pointer" href="{{productLink}}" target="_blank">
+      <a class="xb-cart__item-title xb-pointer" routerLink="/shop/listings/items/{{product.productId}}">
         {{product.title}}
       </a>
       <div fxLayout="row" fxLayoutAlign="start center">
