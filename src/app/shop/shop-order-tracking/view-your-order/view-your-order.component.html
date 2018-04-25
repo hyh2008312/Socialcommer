@@ -1,26 +1,26 @@
 <div class="xb-order-tracking">
   <div class="background-bg-light xb-order-tracking__inner-container" fxFlex="noshrink" >
-    <div class="xb-order-tracking__title">
-      View Your Order
+    <div class="xb-order-tracking__detail-title-3 md-margin-top-4" fxLayout="row" fxLayoutAlign="start center">
+      <div class="md-dark-secondray xb-pointer" routerLink="/shop/ordertracking">Check Your Order Status</div>&nbsp;>&nbsp;<div class="xb-bold">Order Detail</div>
     </div>
     <div>
-      <div class="md-margin-top-4 xb-order-tracking__container-4"
-           fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start start">
-        <div class="xb-order-tracking__margin-bottom" fxLayout="row" fxLayoutAlign="start center">
-          <div class="md-dark-secondary xb-bold">Guest Order Number</div>
-          <div class="md-margin-left-2 xb-order-tracking__margin-right-1">{{order.number}}</div>
-        </div>
-        <div class="xb-order-tracking__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
-          <div class="md-dark-secondary xb-bold">Order Date</div>
-          <div class="md-margin-left-2" fxFlex>{{created | amDateFormat:'MMMM Do, YYYY'}}</div>
-        </div>
-        <div fxFlex></div>
-        <div class="unicorn-dark-theme">
-          <button mat-raised-button color="primary" (click)="viewInvoice()">View Invoice</button>
-        </div>
-      </div>
       <div class="xb-order-tracking__container-1 md-margin-top-2" fxHide.xs>
         <div class="xb-order-tracking__title-1">Order Summary</div>
+        <div class="md-margin-top-2 xb-order-tracking__container-4"
+             fxLayout="row" fxLayoutAlign="start center" fxLayout.xs="column" fxLayoutAlign.xs="start start">
+          <div class="xb-order-tracking__margin-bottom" fxLayout="row" fxLayoutAlign="start center">
+            <div class="md-dark-secondary xb-bold">Order Number</div>
+            <div class="md-margin-left-2 xb-order-tracking__margin-right-1">{{order.number}}</div>
+          </div>
+          <div class="xb-order-tracking__margin-bottom-1" fxLayout="row" fxLayoutAlign="start center">
+            <div class="md-dark-secondary xb-bold">Order Date</div>
+            <div class="md-margin-left-2" fxFlex>{{created | amDateFormat:'MMMM Do, YYYY'}}</div>
+          </div>
+          <div fxFlex></div>
+          <div class="unicorn-dark-theme">
+            <button mat-raised-button color="primary" (click)="viewInvoice()">View Invoice</button>
+          </div>
+        </div>
         <div class="xb-order-tracking__height-1 xb-order-tracking__width xb-order-tracking__border-bottom md-margin-top-1"
              fxLayout="row" fxLayoutAlign="start center">
           <div class="xb-order-tracking__title-2 xb-order-tracking__margin-right" fxFlex="15">
@@ -36,7 +36,7 @@
             Grand Total
           </div>
           <div class="xb-order-tracking__title-2 md-align-center xb-order-tracking__margin-right" fxFlex="20">
-            Commissions Earned
+            Commission
           </div>
           <div class="xb-order-tracking__title-2 md-align-center" fxFlex="20">
             Payment Method

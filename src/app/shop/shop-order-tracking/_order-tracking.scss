@@ -3,6 +3,57 @@
 
 .xb-order-tracking{
 
+  &__none{
+    padding: 83px 0 155px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    background-color: $whiteColor;
+  }
+
+  &__search{
+    border-bottom: 1px solid #000;
+    height: 32px;
+    margin: 0 0 16px 16px;
+    position: relative;
+    max-width: 337px;
+
+    >i{
+      margin: 0 8px 0 0;
+      font-size: 20px;
+      color: rgba(0,0,0,.6);
+    }
+
+    >input{
+      border: none;
+      background-color: transparent;
+      width: 300px;
+    }
+
+    &-close{
+      position: absolute;
+      cursor: pointer;
+      right: 0;
+      top: 50%;
+      @include transform(translateY(-50%));
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      background-color: rgba(0,0,0,.54);
+      >i{
+        font-size: 12px;
+        line-height: 12px;
+        color: $whiteColor;
+      }
+    }
+
+    &-result{
+      color: $primaryColor;
+    }
+
+    &-margin-top{
+      margin-top: 10px;
+    }
+  }
 
   &__navigation{
     height: 56px;
@@ -86,6 +137,7 @@
 
   &__title-1{
     font-size: 24px;
+    letter-spacing: -.08px;
     @include media();
     @include xb-xs-screen{
       font-size: 16px;
@@ -155,7 +207,13 @@
   }
 
   &__container-5{
+    margin-top: 16px;
     background-color: $whiteColor;
+    border-radius: 4px;
+  }
+
+  &__container-6{
+    margin: 49px 16px;
     border-radius: 4px;
   }
 
@@ -585,6 +643,69 @@
     background-color: white;
     width: 100%;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.19);
+  }
+
+  &__item{
+
+    &-list{
+      padding: 16px 0 16px 16px;
+    }
+
+    &-image{
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-right: 16px;
+      position: relative;
+      border: 1px solid rgba(0,0,0,.12);
+      cursor: pointer;
+
+      >img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%, -50%));
+      }
+    }
+
+    &-title{
+      font-size: 12px;
+      letter-spacing: -0.08px;
+      line-height: 20px;
+      color: #000;
+    }
+
+    &-text-1{
+      font-size: 12px;
+      color: rgba(0,0,0,0.38);
+      letter-spacing: -0.29px;
+      line-height: 14px;
+      @include media();
+    }
+
+    &-text-2{
+      font-size: 12px;
+      color: #000;
+      letter-spacing: -0.29px;
+      @include media();
+    }
+
+    &-margin-left{
+      margin-left: 54px;
+    }
+
+    &-border-bottom{
+      border-bottom: 1px solid rgba(0,0,0,.12);
+    }
+
+    &-border-right{
+      border-right: 1px solid rgba(0,0,0,.12);
+    }
+
+    &-height{
+      min-height: 112px;
+    }
   }
 }
 

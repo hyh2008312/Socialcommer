@@ -96,7 +96,7 @@ export class StoreMessageService {
     });
     this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers: headers});
-    const url = `${this.baseApi.url}order/customer/message/close/${params.lineId}/`;
+    const url = `${this.baseApi.url}order/store/message/close/${params.lineId}/`;
     return this.http.put(url, params, options)
       .toPromise()
       .then(this.checkIsAuth)

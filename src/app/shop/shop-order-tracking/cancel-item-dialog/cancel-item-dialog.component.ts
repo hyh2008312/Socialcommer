@@ -91,8 +91,6 @@ export class CancelItemDialogComponent implements OnInit {
     }
     let order = {
       id: this.data.order.id,
-      number: this.data.number,
-      email: this.data.email,
       reason: this.orderForm.value.reason
     };
     let self = this;

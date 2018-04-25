@@ -1,0 +1,54 @@
+<div class="xb-order-tracking__container-5">
+  <div class="xb-order-tracking__height-3 xb-order-tracking__item-border-bottom md-padding-right-2 md-padding-left-2"
+       fxLayout="row" fxLayoutAlign="start center">
+    <div><span class="xb-order-tracking__item-text-1">Order Number:</span> <span class="xb-order-tracking__item-text-2">{{order.number}}</span></div>
+    <div class="xb-order-tracking__item-margin-left"><span class="xb-order-tracking__item-text-1">Order Date:</span>
+      <span class="xb-order-tracking__item-text-2">{{order.lines[0].created | amDateFormat:'MMMM Do, YYYY'}}</span></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start start">
+    <div class="xb-order-tracking__item-border-right" fxFlex="40">
+      <div *ngFor="let item of order.lines;let i = index;"
+           [ngClass]="{'xb-order-tracking__item-border-bottom': i < order.lines.length - 1}">
+        <div class="xb-order-tracking__item-list" fxLayout="row" fxLayoutAlign="start stretch">
+          <a class="xb-order-tracking__item-image" fxFlex="none" routerLink="/shop/listings/items/{{item.productId}}">
+            <img [src]="item.mainImage">
+          </a>
+          <div fxFlex fxLayout="column" fxLayoutAlign="space-between start">
+            <a class="xb-order-tracking__item-title" routerLink="/shop/listings/items/{{item.productId}}">{{item.title}}</a>
+            <div class="xb-order-tracking__item-title">{{item.attributes}}</div>
+          </div>
+          <div class="xb-order-tracking__detail-margin-right" fxLayout="column" fxLayoutAlign="center center" fxFlex="20">
+            {{item.quantity}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="xb-order-tracking__item-height" fxFlex="50" fxLayout="row" fxLayoutAlign="start center">
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="25"
+           fxLayout="column" fxLayoutAlign="center center">
+        <div class="xb-order-tracking__item-title xb-bold">{{order.lines[0].customer || '-'}}</div>
+      </div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="25"
+           fxLayout="column" fxLayoutAlign="center center">
+        <div class="xb-order-tracking__item-title xb-bold">{{order.totalExclTax | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase)}}</div>
+      </div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="25"
+           fxLayout="column" fxLayoutAlign="center center">
+        <div class="xb-order-tracking__item-title xb-bold">{{order.totalCommissions | exchangeCurrency:(order.currency|uppercase) |currency:(order.currency|uppercase)}}</div>
+      </div>
+      <div class="xb-order-tracking__detail-margin-right" fxFlex="25"
+           fxLayout="column" fxLayoutAlign="center center">
+        <div class="xb-order-tracking__item-title">{{order.paymentStatus}}</div>
+      </div>
+    </div>
+    <div class="xb-order-tracking__width-2 xb-order-tracking__item-height md-margin-right-2 md-align-center unicorn-dark-theme-1"
+         fxFlex="none" fxLayout="column" fxLayoutAlign="center stretch">
+      <button mat-raised-button color="primary" *ngIf="order.paymentStatus == 'Unpaid'" (click)="jumpCheckout()">Checkout</button>
+      <div class="md-margin-top-1" fxLayout="column" *ngIf="order.paymentStatus == 'Unpaid'">
+        <button mat-raised-button color="accent" (click)="delete()">Delete</button>
+      </div>
+      <button mat-raised-button color="primary" *ngIf="order.paymentStatus == 'Paid'"
+        routerLink="./detail/{{order.id}}">View Details</button>
+    </div>
+  </div>
+</div>
