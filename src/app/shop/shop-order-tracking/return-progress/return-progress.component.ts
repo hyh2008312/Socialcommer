@@ -42,25 +42,13 @@ export class ReturnProgressComponent{
 
     let id = this.activatedRoute.snapshot.params['id'];
     let self = this;
-    self.subscription = this.orderTrackingService.order.subscribe((data) => {
-
-      if(data) {
-        let email = data.emailAddress;
-        let number = data.number;
-
-        let returnOrder = {
-          id,
-          email,
-          number
-        };
-        self.orderTrackingService.getReturnProgress(returnOrder).then((data) => {
-          self.returnOrder = data;
-          if(self.returnOrder.annex) {
-            self.annexName = self.returnOrder.annex.split('/source/annex/')[1];
-          }
-        });
+    self.orderTrackingService.getReturnProgress({
+      id
+    }).then((data) => {
+      self.returnOrder = data;
+      if(self.returnOrder.annex) {
+        self.annexName = self.returnOrder.annex.split('/source/annex/')[1];
       }
-
     });
   }
 

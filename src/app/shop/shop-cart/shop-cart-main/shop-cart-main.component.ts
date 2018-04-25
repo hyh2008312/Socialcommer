@@ -85,7 +85,7 @@ export class ShopCartMainComponent implements OnInit {
       number += parseInt(item.quantity);
     }
     this.store.cartProductNum = number;
-    this.userService.addStore(this.store);
+    this.userService.addCartNumber(this.store );
     this.cartErr = false;
   }
 
@@ -135,7 +135,7 @@ export class ShopCartMainComponent implements OnInit {
     this.shopCartService.createOrder(cart).then((data) => {
       self.cartErr = false;
       self.store.cartProductNum = 0;
-      self.userService.addStore(self.store);
+      self.userService.addCartNumber(self.store);
       self.shopCartService.addCartOrder(data);
       self.router.navigate([`/shop/cart/checkout/${data.id}`]);
     }).catch((data) => {

@@ -47,7 +47,7 @@ export class ShopComponent implements OnInit {
         self.description = self.description + data.name + ' - ' + data.description;
         self.storeName = data.displayName;
         self.currency = data.currency.toUpperCase();
-        self.productNumber = data.cartProductNum;
+
         if (data.template != null) {
           let templateId = data.template.templateId;
           self.shopService.setTemplateUId(templateId);
@@ -64,6 +64,12 @@ export class ShopComponent implements OnInit {
             self.openDialog();
           }
         }
+      }
+    });
+
+    self.userService.cartNumber.subscribe((data) => {
+      if(data) {
+        self.productNumber = data.cartProductNum;
       }
     });
   }
