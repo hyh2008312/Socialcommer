@@ -38,6 +38,9 @@ $dark-theme: mat-light-theme($dark-primary, $dark-accent, $dark-warn);
   .mat-raised-button {
     line-height: 32px;
     border-radius: 4px;
+    .mat-button-wrapper{
+      font-size: 12px !important;
+    }
   }
   .mat-checkbox-inner-container{
     width: 16px;

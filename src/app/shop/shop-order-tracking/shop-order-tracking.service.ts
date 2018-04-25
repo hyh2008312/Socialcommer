@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response , Headers , RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, Response , Headers , RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
-import{ Subject, BehaviorSubject } from 'rxjs';
 import { BaseApi } from '../../config/app.api';
 import {AuthenticationService} from '../../shared/services/authentication/authentication.service';
 import {GuardLinkService} from '../../shared/services/guard-link/guard-link.service';
@@ -11,12 +10,6 @@ import {GuardLinkService} from '../../shared/services/guard-link/guard-link.serv
 export class ShopOrderTrackingService {
 
   routerLink: any = false;
-
-  order: Subject<any> = new BehaviorSubject<any>(null);
-
-  public addOrder(newOrder: any): void {
-    this.order.next(newOrder);
-  }
 
   constructor(
     private http: Http,
@@ -53,6 +46,10 @@ export class ShopOrderTrackingService {
     return array.join('&');
   }
 
+  addCartOrder(order:any) {
+    localStorage.setItem('order-cart', JSON.stringify(order));
+  }
+
   getOrderList(params): Promise<any> {
 
     let headers = new Headers({
@@ -65,6 +62,23 @@ export class ShopOrderTrackingService {
     const url = `${this.baseApi.url}order/store/list/?${this.serializeParams(params)}`;
 
     return this.http.get(url, options)
+      .toPromise()
+      .then(this.checkIsAuth)
+      .catch((error) => {this.handleError(error, this)});
+  }
+
+  deleteOrder(order:any): Promise<any> {
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    this.createAuthorizationHeader(headers);
+
+    let options = new RequestOptions({headers:headers});
+
+    const url = `${this.baseApi.url}order/store/cancel/${order.id}/`;
+
+    return this.http.delete(url, options)
       .toPromise()
       .then(this.checkIsAuth)
       .catch((error) => {this.handleError(error, this)});

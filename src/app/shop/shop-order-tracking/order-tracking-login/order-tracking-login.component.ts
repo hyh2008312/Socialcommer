@@ -23,6 +23,10 @@ export class OrderTrackingLoginComponent{
 
   length: number = 0;
 
+  searchKey: any = '';
+  isSearch: boolean = false;
+  searchForm: FormGroup;
+
   // MatPaginator Output
   changePage(event, type) {
     this.pageSize = event.pageSize;
@@ -39,6 +43,20 @@ export class OrderTrackingLoginComponent{
     private orderTrackingService: ShopOrderTrackingService
   ) {
     this.getOrderList();
+
+    this.searchForm = this.fb.group({
+      searchKey: ['']
+    });
+
+    this.searchForm.valueChanges.subscribe(data => this.onValueChanged(data));
+  }
+
+  onValueChanged(data) {
+    this.isSearch = false;
+  }
+
+  clearSearchKey() {
+    this.searchKey = '';
   }
 
   getOrderList() {
@@ -49,5 +67,11 @@ export class OrderTrackingLoginComponent{
       this.length = data.count;
       this.orderList = [...data.results];
     });
+  }
+
+  orderChange($event) {
+    if($event.status == 'delete') {
+      this.orderList.splice($event.index, 1);
+    }
   }
 }

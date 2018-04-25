@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { OrderDetailItemComponent } from './order-detail-item/order-detail-item.component';
 import { OrderDetailTitleComponent } from './order-detail-title/order-detail-title.component';
 import { OrderListTitleComponent } from './order-list-title/order-list-title.component';
+import { OrderListItemComponent } from './order-list-item/order-list-item.component';
 import { AttachmentUploadComponent } from './attachment-upload/attachment-upload.component';
 import { AttachmentPreviewComponent } from './attachment-preview/attachment-preview.component';
 
@@ -20,7 +21,6 @@ import { ReturnRequestDialogComponent } from './return-request-dialog/return-req
 import { ShopOrderTrackingRoutingModule } from './shop-order-tracking.routes.module';
 
 import { ShopOrderTrackingService } from './shop-order-tracking.service';
-import { CanActive } from './can-active.service';
 
 import { SharedModule } from '../../shared/shared.module';
 import {StoreMessageService} from "./store-message.service";
@@ -50,7 +50,8 @@ import {CustomerServiceMessageComponent} from "./customer-service-message/custom
     ReturnProgressComponent,
     StoreMessageMainComponent,
     CustomerServiceMessageComponent,
-    OrderListTitleComponent
+    OrderListTitleComponent,
+    OrderListItemComponent
   ],
   entryComponents: [
     ForgetOrderNumberDialogComponent,
@@ -61,8 +62,7 @@ import {CustomerServiceMessageComponent} from "./customer-service-message/custom
   ],
   providers: [
     ShopOrderTrackingService,
-    StoreMessageService,
-    CanActive
+    StoreMessageService
   ]
 })
 export class ShopOrderTrackingModule { }

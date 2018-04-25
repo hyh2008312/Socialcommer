@@ -5,7 +5,6 @@ import {OrderTrackingLoginComponent} from './order-tracking-login/order-tracking
 import {ViewYourOrderComponent} from './view-your-order/view-your-order.component';
 import {ReturnProgressComponent} from './return-progress/return-progress.component';
 
-import {CanActive} from './can-active.service';
 import {StoreMessageMainComponent} from './store-message-main/store-message-main.component';
 
 const routes: Routes = [{
@@ -26,8 +25,7 @@ const routes: Routes = [{
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-  providers: [CanActive]
+  exports: [RouterModule]
 })
 export class ShopOrderTrackingRoutingModule {
 }

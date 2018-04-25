@@ -1,15 +1,38 @@
-<div class="xb-order-tracking" fxLayout="column">
-  <div class="background-bg-light xb-order-tracking__inner-container" fxFlex="noshrink" >
-    <div class="">
+<div class="xb-order-tracking">
+  <div class="background-bg-light xb-order-tracking__inner-container" >
+    <div class="xb-order-tracking__title-1 xb-order-tracking__container-6">
       <div>Check Your Order Status</div>
-      <div>
-        <app-shop-order-list-title></app-shop-order-list-title>
+    </div>
+    <div>
+      <form class="xb-order-tracking__search" [formGroup]="searchForm"
+            fxLayout="row" fxLayoutAlign="start center" >
+        <i class="material-icons">search</i>
+        <input type="text" formControlName="searchKey" [(ngModel)]="searchKey"
+               placeholder="Searchor by recipient or order number"
+               (keyup.enter)="changeProducts({index:0})"/>
+        <div class="xb-order-tracking__search-close" fxLayout="row" fxLayoutAlign="center center"
+             *ngIf="searchKey != ''" (click)="clearSearchKey()">
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+      <app-shop-order-list-title></app-shop-order-list-title>
+      <div *ngFor="let item of orderList;let i = index;">
+        <app-shop-order-list-item [order]="item" [index]="i" (orderChange)="orderChange($event)"></app-shop-order-list-item>
+      </div>
+      <div class="md-margin-top-2 md-margin-bottom-2">
         <mat-paginator [length]="length"
                        [pageSize]="pageSize"
                        [pageSizeOptions]="pageSizeOptions"
                        (page)="changePage($event)"
                        *ngIf="orderList && orderList.length > 0">
         </mat-paginator>
+      </div>
+      <div class="xb-order-tracking__none" fxLayout="row" fxLayoutAlign="center center"
+           *ngIf="orderList && orderList.length <= 0">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <img src="https://media.socialcommer.com/source/web/pic/pic-no-data.png">
+          <span class="md-dark-secondary">Your store haven’t placed any order yet. </span>
+        </div>
       </div>
     </div>
   </div>
