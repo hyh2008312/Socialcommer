@@ -35,10 +35,12 @@ export class ProductToCartComponent implements OnInit {
 
   sub: any;
 
-  constructor(public router: Router,
-              private activatedRoute: ActivatedRoute,
-              private shopService: ShopService,
-              private userService: UserService,) {
+  constructor(
+    public router: Router,
+    private activatedRoute: ActivatedRoute,
+    private shopService: ShopService,
+    private userService: UserService
+  ) {
   }
 
   ngOnInit(): void {
@@ -233,6 +235,7 @@ export class ProductToCartComponent implements OnInit {
     let self = this;
     self.shopService.addToCart(param).then((data) => {
       self.store.cartProductNum = data.cartProductNum;
+      self.store.isOnAddToCart = true;
       self.userService.addCartNumber(self.store);
       self.close();
     });

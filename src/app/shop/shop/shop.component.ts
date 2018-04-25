@@ -59,10 +59,6 @@ export class ShopComponent implements OnInit {
 
   animationState = 'inactive';
 
-  changeAnimationState(): void {
-    this.animationState = this.animationState === 'active' ? 'inactive' : 'active';
-  }
-
   constructor(
     private userService: UserService,
     private shopService: ShopService,
@@ -110,9 +106,11 @@ export class ShopComponent implements OnInit {
       if(data) {
         self.animationState = 'inactive';
         self.productNumber = data.cartProductNum;
-        setTimeout(() => {
-          self.animationState = 'active';
-        }, 100);
+        if(data.isOnAddToCart) {
+          (<any>window).setTimeout(() => {
+            self.animationState = 'active';
+          }, 100);
+        }
       }
     });
   }

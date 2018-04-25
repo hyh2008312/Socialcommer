@@ -2743,6 +2743,11 @@ input.mat-input-element {
 .unicorn-dark-theme-1 .mat-raised-button {
   line-height: 32px;
   border-radius: 4px; }
+  .unicorn-dark-theme-1 .mat-raised-button .mat-button-wrapper {
+    font-size: 12px !important; }
+.unicorn-dark-theme-1 .mat-checkbox-inner-container {
+  width: 16px;
+  height: 16px; }
 
 .unicorn-theme .mat-ripple-element {
   background-color: rgba(0, 0, 0, 0.1); }
@@ -3520,7 +3525,7 @@ textarea.mat-input-element {
     position: relative;
     margin: 0 20px;
     line-height: 54px;
-    font-size: 14px;
+    font-size: 15px;
     letter-spacing: -.29px;
     display: block;
     font-weight: 500;
@@ -3537,6 +3542,36 @@ textarea.mat-input-element {
     height: 4px;
     border-radius: 50%;
     background-color: #e11111; }
+  .xb-shop__logo-icon {
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+    position: relative;
+    color: rgba(0, 0, 0, 0.38); }
+  .xb-shop__logo-circle-1 {
+    width: 16px;
+    height: 16px;
+    background: red;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    right: -11px;
+    top: 0;
+    text-align: center; }
+  .xb-shop__logo-position {
+    position: relative;
+    margin-right: 24px; }
+    @media screen and (max-width: 599px) {
+      .xb-shop__logo-position {
+        margin-right: 24px; } }
+  .xb-shop__logo-animation {
+    position: absolute;
+    left: -50px;
+    top: -50px;
+    z-index: 9999999; }
 .xb-shop__bg-content {
   height: calc(100vh - 56px); }
 .xb-shop__avatar {
