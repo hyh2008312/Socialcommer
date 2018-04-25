@@ -440,6 +440,14 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
       self.close();
     });
   }
+  minusNumber() {
+    if (this.number > 1) {
+      this.number--;
+    }
+  }
 
+  plusNumber() {
+    this.number++;
+  }
 
 }
