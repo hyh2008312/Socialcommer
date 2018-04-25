@@ -16,7 +16,7 @@
             <div class="xb-cart__title md-align-center" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
               Unit Price
             </div>
-            <div class="xb-cart__title" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
+            <div class="xb-cart__title md-align-center" fxFlex="15" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
               Total Commission
             </div>
             <div class="xb-cart__title" fxFlex="20" fxLaout="column" fxLayoutAlign="center center" fxHide.sm>
@@ -69,7 +69,7 @@
               <div class="xb-cart__bill-text-2">{{totalPrice | currency: (currency|uppercase) }}</div>
             </div>
           </div>
-          <div class="xb-cart__bill-button">
+          <div class="xb-cart__bill-button" fxHide>
             Ship to: {{countryName}}
           </div>
           <div class="md-margin-top-2 unicorn-dark-theme-1" fxLayout="column">
