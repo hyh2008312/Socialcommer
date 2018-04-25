@@ -135,11 +135,13 @@ export class ShopCartMainComponent implements OnInit {
 
     let self = this;
     this.shopCartService.createOrder(cart).then((data) => {
-      self.cartErr = false;
-      self.store.cartProductNum = number;
-      self.userService.addCartNumber(self.store);
-      self.shopCartService.addCartOrder(data);
-      self.router.navigate([`/shop/cart/checkout/${data.id}`]);
+      if(data) {
+        self.cartErr = false;
+        self.store.cartProductNum = number;
+        self.userService.addCartNumber(self.store);
+        self.shopCartService.addCartOrder(data);
+        self.router.navigate([`/shop/cart/checkout/${data.id}`]);
+      }
     }).catch((data) => {
       self.cartErr = data;
 

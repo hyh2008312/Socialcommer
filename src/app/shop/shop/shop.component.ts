@@ -36,7 +36,7 @@ import {
           }),
           style({
             position: 'absolute',
-            left: '90%',
+            left: 'calc(100% - 100px)',
             top: '16px',
             transform: 'translateX(-50%)',
             display: 'none'

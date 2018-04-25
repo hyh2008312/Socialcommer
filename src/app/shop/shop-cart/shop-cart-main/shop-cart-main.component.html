@@ -4,7 +4,8 @@
       <div class="xb-cart__bg" fxLayout="row" fxLayoutAlign="start start">
         <div class="xb-cart__body-margin-right" fxFlex>
           <div class="md-margin-bottom-2 xb-cart__product-title-bg background-bg-white" fxLayout="row" fxLayoutAlign="start center" fxHide.xs>
-            <div class="unicorn-dark-theme-1" fxLaout="column" fxLayoutAlign="center center" fxFlex="5">
+            <div class="unicorn-dark-theme-1" fxLaout="column" fxLayoutAlign="center center"
+                 fxFlex.xs="10" fxFlex.sm="10" fxFlex.gt-sm="5">
               <mat-checkbox [ngModel]="isAllChecked" (ngModelChange)="checkAll($event)"></mat-checkbox>
             </div>
             <div class="xb-cart__title" fxFlex="35">
