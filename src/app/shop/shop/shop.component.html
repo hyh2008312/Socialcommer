@@ -1,6 +1,6 @@
 <div class="xb-shop__logo-bg">
   <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
-    <div class="xb-shop__logo" fxLayout="row" fxLayoutAlign="start center" fxFlex="none">
+    <div class="xb-shop__logo" fxLayout="row" fxLayoutAlign="start center" fxFlex="none" (click)="changeAnimationState()">
       <img src="https://media.xberts.com/collector/source/web/pic/logo-180x28.png" width="140">
       <div class="xb-shop__logo-badge">
         Beta
@@ -37,6 +37,8 @@
     </div>
   </div>
 </div>
+<i class="iconfontXberts icon-ic-bag xb-shop__logo-icon xb-shop__logo-animation"
+   [@cartState]="animationState"></i>
 <div class="background-bg-light xb-shop__bg-content" fxLayout="column">
   <div fxLayout="row" fxLayoutAlign="stretch stretch" fxFlex>
     <app-left-side-navigation class="xb-shop__left-navigation-scroll" fxLayout="column"></app-left-side-navigation>

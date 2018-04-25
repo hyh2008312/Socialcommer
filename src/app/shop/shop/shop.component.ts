@@ -8,10 +8,43 @@ import {AuthenticationService} from '../../shared/services/authentication/authen
 
 import {StoreGuideBonusDialogComponent} from "../store-guide-bonus-dialog/store-guide-bonus-dialog.component";
 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  keyframes
+} from '@angular/animations';
+
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['../shop.scss']
+  styleUrls: ['../shop.scss'],
+  animations: [
+    trigger('cartState', [
+      state('inactive', style({
+        display: 'none'
+      })),
+      transition('inactive => active', animate('500ms 10ms cubic-bezier(1,.5,.45,1)',
+        keyframes([
+          style({
+            position: 'absolute',
+            left: '50%',
+            top: '40%',
+            transform: 'translateX(-50%)'
+          }),
+          style({
+            position: 'absolute',
+            left: '90%',
+            top: '16px',
+            transform: 'translateX(-50%)',
+            display: 'none'
+          }
+      )]))),
+      transition('active => inactive', animate('0ms linear'))
+    ])
+  ]
 })
 
 export class ShopComponent implements OnInit {
@@ -23,6 +56,12 @@ export class ShopComponent implements OnInit {
   shareLink: string = '';
   description: string = 'Welcome to my store: ';
   productNumber: number = 0;
+
+  animationState = 'inactive';
+
+  changeAnimationState(): void {
+    this.animationState = this.animationState === 'active' ? 'inactive' : 'active';
+  }
 
   constructor(
     private userService: UserService,
@@ -47,7 +86,7 @@ export class ShopComponent implements OnInit {
         self.description = self.description + data.name + ' - ' + data.description;
         self.storeName = data.displayName;
         self.currency = data.currency.toUpperCase();
-
+        self.userService.addCartNumber(data);
         if (data.template != null) {
           let templateId = data.template.templateId;
           self.shopService.setTemplateUId(templateId);
@@ -69,7 +108,11 @@ export class ShopComponent implements OnInit {
 
     self.userService.cartNumber.subscribe((data) => {
       if(data) {
+        self.animationState = 'inactive';
         self.productNumber = data.cartProductNum;
+        setTimeout(() => {
+          self.animationState = 'active';
+        }, 100);
       }
     });
   }
