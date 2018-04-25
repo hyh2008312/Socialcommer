@@ -93,7 +93,7 @@ export class ShopOrderTrackingService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseApi.url}order/customer/detail/?${this.serializeParams(order)}`;
+    const url = `${this.baseApi.url}order/store/detail/?${this.serializeParams(order)}`;
 
     return this.http.get(url, options)
       .toPromise()
@@ -127,7 +127,7 @@ export class ShopOrderTrackingService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseApi.url}order/customer/modify/address/${order.id}/`;
+    const url = `${this.baseApi.url}order/store/modify/address/${order.id}/`;
 
     return this.http.put(url, order, options)
       .toPromise()
@@ -144,9 +144,9 @@ export class ShopOrderTrackingService {
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseApi.url}order/customer/review/return/${order.id}/`;
+    const url = `${this.baseApi.url}order/store/review/return/${order.id}/`;
 
-    return this.http.put(url, order, options)
+    return this.http.get(url, options)
       .toPromise()
       .then(this.checkIsAuth)
       .catch((error) => {this.handleError(error, this)});
@@ -156,10 +156,11 @@ export class ShopOrderTrackingService {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
+    this.createAuthorizationHeader(headers);
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseApi.url}order/customer/cancel/${order.id}/`;
+    const url = `${this.baseApi.url}order/store/cancel/${order.id}/`;
 
     return this.http.put(url, order, options)
       .toPromise()
@@ -171,6 +172,7 @@ export class ShopOrderTrackingService {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
+    this.createAuthorizationHeader(headers);
 
     let options = new RequestOptions({headers:headers});
 
@@ -186,10 +188,11 @@ export class ShopOrderTrackingService {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
+    this.createAuthorizationHeader(headers);
 
     let options = new RequestOptions({headers:headers});
 
-    const url = `${this.baseApi.url}order/customer/return/${order.id}/`;
+    const url = `${this.baseApi.url}order/store/return/${order.id}/`;
 
     return this.http.put(url, order, options)
       .toPromise()

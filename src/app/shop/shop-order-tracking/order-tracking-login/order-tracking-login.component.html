@@ -8,8 +8,8 @@
             fxLayout="row" fxLayoutAlign="start center" >
         <i class="material-icons">search</i>
         <input type="text" formControlName="searchKey" [(ngModel)]="searchKey"
-               placeholder="Searchor by recipient or order number"
-               (keyup.enter)="changeProducts({index:0})"/>
+               placeholder="Search by recipient or order number"
+               (keyup.enter)="getOrderList()"/>
         <div class="xb-order-tracking__search-close" fxLayout="row" fxLayoutAlign="center center"
              *ngIf="searchKey != ''" (click)="clearSearchKey()">
           <i class="material-icons">close</i>
