@@ -31,16 +31,17 @@
         <div class="xb-store-template__car-margin-top" fxLayout="row" fxLayoutAlign="start center"
              fxLayout.xs="column" fxLayoutAlign.xs="start start">
           <div class="xb-store-template__car-left-part md-margin-right-1">Quantity</div>
-          <div  fxLayout="row" fxLayoutAlign="start center">
-            <div class="md-margin-right-1 xb-store-template__car-item-add" (click)="plusNumber()" fxFlex="none">
-              <i class="material-icons xb-pointer">add</i>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="md-margin-right-1 xb-store-template__car-item-add" (click)="minusNumber()" fxFlex="none">
+              <i class="material-icons xb-pointer">remove</i>
             </div>
             <div class="xb-store-template__car-item-input">
               <input type="number" [(ngModel)]="number" step="1" min="0">
             </div>
-            <div class="md-margin-left-1 xb-store-template__car-item-add" (click)="minusNumber()" fxFlex="none">
-              <i class="material-icons xb-pointer">remove</i>
+            <div class="md-margin-left-1 xb-store-template__car-item-add" (click)="plusNumber()" fxFlex="none">
+              <i class="material-icons xb-pointer">add</i>
             </div>
+
           </div>
         </div>
       </div>
