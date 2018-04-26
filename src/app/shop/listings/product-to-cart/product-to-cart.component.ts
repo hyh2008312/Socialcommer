@@ -34,7 +34,8 @@ export class ProductToCartComponent implements OnInit {
   isSupplierEdit = false;
 
   sub: any;
-
+  isPromotionOnGoing:boolean = false ;
+  isPromotionScheduled:boolean =false ;
   constructor(
     public router: Router,
     private activatedRoute: ActivatedRoute,
@@ -57,6 +58,11 @@ export class ProductToCartComponent implements OnInit {
       } else {
         self.variantId = self.product.variants[0].id;
         self.variant = self.product.variants[0];
+      }
+      if (self.product.promotionOngoing) {
+        self.isPromotionOnGoing = true;
+      } else if (self.product.promotionScheduled) {
+        self.isPromotionScheduled = true;
       }
     });
 

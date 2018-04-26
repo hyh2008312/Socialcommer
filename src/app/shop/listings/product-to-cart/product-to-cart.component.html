@@ -46,11 +46,17 @@
         </div>
       </div>
       <div *ngIf="isShowCartWarn" class="xb-store-template__red md-margin-top-2"> {{cartWarn}}</div>
-      <div fxLayout="row" fxLayoutAlign="center start" (click)="openLink()">
+      <div fxLayout="row" fxLayoutAlign="center start" (click)="openLink()" *ngIf="!isPromotionScheduled">
         <div class="xb-store-template__add-to-bag">
           Add to Bag
         </div>
       </div>
+      <div fxLayout="row" fxLayoutAlign="center start" *ngIf="isPromotionScheduled">
+        <div class="xb-store-template__add-no-bag">
+          Add to Bag
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
