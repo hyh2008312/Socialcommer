@@ -120,6 +120,13 @@
       }
     }
 
+    &-animation{
+      position: absolute;
+      left: -50px;
+      top: -50px;
+      z-index: 9999999;
+    }
+
   }
   &__bg-content {
     height: calc(100vh - 56px);

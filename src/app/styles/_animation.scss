@@ -14,29 +14,30 @@
 }
 
 // perk points animation
-.animation-perks-points{
+.animation-add-to-cart{
 
-  @include prefixer(animation, perks-points-flow 2s linear .1s 1 forwards, $prefix-list);
+  @include prefixer(animation, perks-points-flow .5s cubic-bezier(1,.5,.45,1) .1s 1 forwards, $prefix-list);
 
   @at-root {
 
     @include prefix-keyframes(perks-points-flow, $prefix-list) {
       0%   {
-        opacity: 0;
+        left: 50%;
         top:40%;
-        @include prefix-content(transform,translateX(-50%) scale(.8, .8));
+        @include prefix-content(transform,translateX(-50%));
+      }
+      25%   {
+        @include prefix-content(transform,translateX(-50%));
       }
       50%  {
-        opacity: 1;
-        @include prefix-content(transform,translateX(-50%) scale(.9, .9));
+        @include prefix-content(transform,translateX(-50%));
       }
       75%  {
-        opacity: 1;
       }
-      100% {
-        opacity: 0;
-        top:35%;
-        @include prefix-content(transform,translateX(-50%) scale(1, 1));
+      99% {
+        left: 90%;
+        top:16px;
+        @include prefix-content(transform,translateX(-50%));
         display: none;
       }
     }

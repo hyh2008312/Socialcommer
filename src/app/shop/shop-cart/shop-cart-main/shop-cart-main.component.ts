@@ -55,6 +55,7 @@ export class ShopCartMainComponent implements OnInit {
     self.userService.store.subscribe((data) => {
       if (data) {
         self.store = data;
+        delete self.store.isOnAddToCart;
         self.displayName = data.displayName;
         self.currency = data.currency;
         self.countryId = data.country.id;
@@ -85,7 +86,7 @@ export class ShopCartMainComponent implements OnInit {
       number += parseInt(item.quantity);
     }
     this.store.cartProductNum = number;
-    this.userService.addStore(this.store);
+    this.userService.addCartNumber(this.store );
     this.cartErr = false;
   }
 
@@ -113,14 +114,15 @@ export class ShopCartMainComponent implements OnInit {
   checkout() {
     let cpList = [];
     this.cartErr = false;
+    let number = 0;
     for (let item of this.products) {
-
       if(item.checked) {
         let arr = [];
         arr.push(item.id, item.shippingItem.id);
         cpList.push(arr);
+      } else {
+        number += parseInt(item.quantity);
       }
-
     }
 
     let cart: any = {
@@ -133,11 +135,13 @@ export class ShopCartMainComponent implements OnInit {
 
     let self = this;
     this.shopCartService.createOrder(cart).then((data) => {
-      self.cartErr = false;
-      self.store.cartProductNum = 0;
-      self.userService.addStore(self.store);
-      self.shopCartService.addCartOrder(data);
-      self.router.navigate([`/shop/cart/checkout/${data.id}`]);
+      if(data) {
+        self.cartErr = false;
+        self.store.cartProductNum = number;
+        self.userService.addCartNumber(self.store);
+        self.shopCartService.addCartOrder(data);
+        self.router.navigate([`/shop/cart/checkout/${data.id}`]);
+      }
     }).catch((data) => {
       self.cartErr = data;
 

@@ -436,7 +436,7 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
     let self = this;
     self.shopService.addToCart(param).then((data) => {
       self.store.cartProductNum = data.cartProductNum;
-      self.userService.addStore(self.store);
+      self.userService.addCartNumber(self.store);
       self.close();
     });
   }

@@ -97,7 +97,7 @@
     overflow: hidden;
 
     &-margin-right{
-      margin-right: 32px;
+      margin-right: 16px;
       @include xb-xs-screen{
         margin-right: 0;
         width: 100%;

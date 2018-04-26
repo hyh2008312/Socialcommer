@@ -62,6 +62,9 @@
   </div>
 </div>
 <div class="xb-cart__item" fxLayout="row" fxLayoutAlign="start start" fxHide.gt-sm>
+  <div class="unicorn-dark-theme-1" fxLayout="column" fxLayoutAlign="center center" fxFlex="10">
+    <mat-checkbox [ngModel]="product.checked" (ngModelChange)="productChecked($event)"></mat-checkbox>
+  </div>
   <div class="xb-cart__item-image" fxFlex="none">
     <img [src]="product.mainImage">
   </div>
