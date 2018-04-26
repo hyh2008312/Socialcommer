@@ -2,16 +2,17 @@
 @import "../../../styles/_variables";
 
 .xb-navigation-header{
-  height: 72px;
+  height: 56px;
 
   @include xb-xs-screen{
     height: 56px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
   }
 
   &__image{
     width: 180px;
     @include xb-xs-screen{
-      width: 140px;
+      width: 108px;
     }
   }
 
@@ -34,32 +35,22 @@
   }
 
   &__login{
-    font-size: 16px;
-    color: $whiteColor;
-
-    &-active{
-      color: $primaryColor;
-    }
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: -0.29px;
+    text-align: center;
   }
 
   &__button{
-    font-size: 16px;
     color: $whiteColor;
-    background-color: $primaryColor;
-    border: 1px solid $primaryColor;
-    line-height: 40px;
+    background-color: $primaryColorNew;
+    font-size: 14px;
+    letter-spacing: -0.29px;
+    line-height: 32px;
     text-align: center;
-    border-radius: 20px;
-    width: 100px;
+    width: 96px;
     display: block;
-    margin-left: 32px;
-    @include box-shadow(0 0 2px 0 $primaryColor);
-
-    @include xb-xs-screen{
-      line-height: 36px;
-      border-radius: 18px;
-      margin-left: 16px;
-    }
+    margin-left: 20px;
   }
 
   &__logout{
