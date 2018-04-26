@@ -170,7 +170,30 @@
       </div>
     </div>
   </div>
+  <div>
+    <swiper *ngIf="type == 'component' && show" class="swiper-container" [config]="config" [disabled]="disabled" (indexChange)="onIndexChange($event)" fxFlex="auto">
+      <div *ngFor="let slide of slides" class="swiper-slide">
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+          {{slide}}
+        </div>
+      </div>
+    </swiper>
+    <div *ngIf="type == 'directive' && show" class="swiper-container" [disabled]="disabled" [swiper]="config" (indexChange)="onIndexChange($event)">
+      <div class="swiper-wrapper">
+        <div *ngFor="let slide of slides" class="swiper-slide">
+          <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+            {{slide}}
+          </div>
+        </div>
+      </div>
 
+      <div class="swiper-scrollbar" [hidden]="config.scrollbar === false"></div>
+      <div class="swiper-pagination" [hidden]="config.pagination === false"></div>
+
+      <div class="swiper-button-prev" [hidden]="config.navigation === false"></div>
+      <div class="swiper-button-next" [hidden]="config.navigation === false"></div>
+    </div>
+  </div>
   <div class="xb-landing-page__banner-1">
     <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch" fxLayoutAlgin.xs="start start">
       <div class="xb-landing-page__banner-1-left" fxFlex="50" fxLayout="column" fxLayoutAlign="center start" fxFlexOrder.xs="2">
