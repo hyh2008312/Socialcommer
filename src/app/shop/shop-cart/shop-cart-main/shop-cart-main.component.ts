@@ -27,7 +27,7 @@ export class ShopCartMainComponent implements OnInit {
 
   products: any;
 
-  isAllChecked: boolean = false;
+  isAllChecked: boolean = true;
 
   displayName: any = '';
 
@@ -161,7 +161,7 @@ export class ShopCartMainComponent implements OnInit {
       for(let i = 0; i < data.length; i++) {
         let item: any = data[i];
         item.shippingItem = data[i].shippingPrices.length>0?data[i].shippingPrices[0]: {};
-        item.checked = false;
+        item.checked = true;
         this.products.push(item);
       }
       this.calculatePrice();
