@@ -22,7 +22,7 @@ export class StoreAvatarComponent implements OnInit {
   }
 
   ngOnInit():void {
-
+    this.formateAvatar();
   }
 
   ngOnChanges() {
