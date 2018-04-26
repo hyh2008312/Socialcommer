@@ -35,7 +35,7 @@
           </div>
           <div fxLayout="row" fxLayoutAlign="start center">
             <div class="md-margin-top-2 text-underline xb-pointer xb-bold" fxHide.xs
-                 routerLink="/shop/listings/items"><< Continue Shopping</div>
+                 routerLink="/shop/listings/items"><< Browse Products</div>
           </div>
           <div *ngIf="cartErr" class="xb-input-error md-margin-top-2">
             {{ cartErr }}
@@ -85,8 +85,8 @@
     <div class="xb-cart__none-image">
       <i class="iconfontXberts icon-ic-cart"></i>
     </div>
-    <div class="xb-cart__none-title">Your shopping cart is empty now</div>
-    <div class="xb-bold text-underline md-margin-top-2 xb-pointer" routerLink="/shop/listings/items">Continue Shopping</div>
+    <div class="xb-cart__none-title">Your shopping bag is empty now. </div>
+    <div class="xb-bold text-underline md-margin-top-2 xb-pointer" routerLink="/shop/listings/items">Browse Products</div>
   </div>
   <div class="xb-cart__none background-bg-light" fxLayout="column" fxLayoutAlign="center center" fxFlex="noshrink"
        *ngIf="!products">
