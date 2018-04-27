@@ -54,27 +54,20 @@
   }
 
   &__logout{
-    font-size: 16px;
-    color: $primaryColor;
-    border: 1px solid $primaryColor;
-    line-height: 40px;
+    font-size: 14px;
+    letter-spacing: -0.29px;
+    color: $whiteColor;
+    background-color: $primaryColorNew;
+    line-height: 32px;
     text-align: center;
-    border-radius: 20px;
-    width: 100px;
+    width: 96px;
     display: block;
     margin-left: 32px;
     cursor: pointer;
-    @include box-shadow(0 0 2px 0 $primaryColor);
-
-    @include xb-xs-screen{
-      line-height: 36px;
-      border-radius: 18px;
-      margin-left: 16px;
-    }
   }
 
   &__menu{
-    color: $primaryColor;
+    color: $primaryColorNew;
     padding: 16px;
     font-size: 24px;
   }

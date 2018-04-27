@@ -7,7 +7,7 @@
   <div class="xb-landing-page__banner">
     <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutAlgin.xs="start start">
       <div fxFlex="50" fxHide.xs>
-
+        <div class="xb-landing-page__banner-box animation-background-position"></div>
       </div>
       <div fxFlex="50" fxFlex.xs="none">
         <div class="xb-landing-page__banner-title">
@@ -56,7 +56,7 @@
       </div>
       <div fxFlex="40" fxFlex.xs>
         <div class="container xb-landing-page__content-1-title-2">
-          How It Works
+          HOW IT WORKS
         </div>
         <div class="xb-landing-page__content-1" fxLayout="row" fxLayoutAlign="start stretch">
           <div class="md-margin-right-2" fxFlex="none" fxLayout="column" fxLayoutAlign="start center">
@@ -105,93 +105,101 @@
       </div>
     </div>
   </div>
-  <div class="xb-landing-page__banner-title-1" fxLayout="row" fxLayoutAlign="center center" fxHide.xs>
-    Everything You Need to Start Your Business
-    <div class="xb-landing-page__banner-tri"></div>
-  </div>
-  <div class="xb-landing-page__list-bg" fxLayout="row" fxLayoutAlign="center start" fxHide.xs>
-    <div class="container" fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutAlign.sm="space-around start"
-         >
-      <div class="xb-landing-page__list xb-landing-page__flex-box-3" fxLayout="column" fxLayoutAlign="start start" fxFlex="24" fxFlex.sm="48" fxFlex.xs="100">
-        <i class="iconfontXberts icon-pic-one"></i>
-        <div class="xb-landing-page__list-title">Best-Selling Dropshipped Products</div>
-        <div class="xb-landing-page__list-title-1">
-          Find and add great products to sell on your online store with just a few clicks
+  <div class="xb-landing-page__list-bg">
+    <div class="xb-landing-page__list-title">FEATURED PRODUCTS</div>
+    <div class="xb-landing-page__list-bg-1" fxHide.xs>
+      <swiper class="swiper-container" [config]="config1" [disabled]="disabled" (indexChange)="onIndexChange1($event)">
+        <div *ngFor="let slide of slides1" class="xb-landing-page__list">
+          <div class="xb-landing-page__list-image">
+            <img [src]="slide.image">
+          </div>
+          <div class="xb-landing-page__list-title-1">{{slide.title}}</div>
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <div class="xb-landing-page__list-title-2" >{{slide.salePrice}}</div>
+            <div class="xb-landing-page__list-title-3" >{{slide.originalPrice}}</div>
+          </div>
+          <div class="xb-landing-page__list-title-4"  fxLayout="row" fxLayoutAlign="center center">
+            <div class="xb-bold">Sales Commission：</div>
+            <div>{{slide.commission}}%</div>
+          </div>
         </div>
-      </div>
-      <div class="xb-landing-page__list xb-landing-page__flex-box-3" fxLayout="column" fxLayoutAlign="start start" fxFlex="24" fxFlex.sm="48" fxFlex.xs="100">
-        <i class="iconfontXberts icon-pic-shipping"></i>
-        <div class="xb-landing-page__list-title">Automated Order Fulfillment</div>
-        <div class="xb-landing-page__list-title-1">
-          We partner with the best suppliers and ship products directly to your customers
+      </swiper>
+    </div>
+    <div class="xb-landing-page__list-bg-1" fxHide.gt-xs>
+      <swiper class="swiper-container" [config]="config2" [disabled]="disabled" (indexChange)="onIndexChange1($event)">
+        <div *ngFor="let slide of slides1" class="xb-landing-page__list">
+          <div class="xb-landing-page__list-image">
+            <img [src]="slide.image">
+          </div>
+          <div class="xb-landing-page__list-title-1">{{slide.title}}</div>
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <div class="xb-landing-page__list-title-2" >{{slide.salePrice}}</div>
+            <div class="xb-landing-page__list-title-3" >{{slide.originalPrice}}</div>
+          </div>
+          <div class="xb-landing-page__list-title-4"  fxLayout="row" fxLayoutAlign="center center">
+            <div class="xb-bold">Sales Commission：</div>
+            <div>{{slide.commission}}%</div>
+          </div>
         </div>
-      </div>
-      <div class="xb-landing-page__list xb-landing-page__flex-box-3" fxLayout="column" fxLayoutAlign="start start" fxFlex="24" fxFlex.sm="48" fxFlex.xs="100">
-        <i class="iconfontXberts icon-pic-service"></i>
-        <div class="xb-landing-page__list-title">Best-in-Class Customer Support</div>
-        <div class="xb-landing-page__list-title-1">
-          We provide dedicated customer support to process all customer queries for you
-        </div>
-      </div>
-      <div class="xb-landing-page__list xb-landing-page__flex-box-3" fxLayout="column" fxLayoutAlign="start start" fxFlex="24" fxFlex.sm="48" fxFlex.xs="100">
-        <i class="iconfontXberts icon-pic-safe"></i>
-        <div class="xb-landing-page__list-title">100% Buyer Protection Policy</div>
-        <div class="xb-landing-page__list-title-1">
-          All products shipped to your customers will be covered under 30 day free return
-        </div>
-      </div>
-      <div class="xb-landing-page__list xb-landing-page__flex-box-3" fxLayout="column" fxLayoutAlign="start start" fxFlex="24" fxFlex.sm="48" fxFlex.xs="100">
-        <i class="iconfontXberts icon-pic-deco"></i>
-        <div class="xb-landing-page__list-title">Customizable Storefront Templates</div>
-        <div class="xb-landing-page__list-title-1">
-          Pick the perfect template and customize your storefront based on your preference
-        </div>
-      </div>
-      <div class="xb-landing-page__list xb-landing-page__flex-box-3" fxLayout="column" fxLayoutAlign="start start" fxFlex="24" fxFlex.sm="48" fxFlex.xs="100">
-        <i class="iconfontXberts icon-pic-data"></i>
-        <div class="xb-landing-page__list-title">Comprehensive Data Analytics</div>
-        <div class="xb-landing-page__list-title-1">
-          Track daily views, conversion and sales performance for each item in your store
-        </div>
-      </div>
-      <div class="xb-landing-page__list xb-landing-page__flex-box-3" fxLayout="column" fxLayoutAlign="start start" fxFlex="24" fxFlex.sm="48" fxFlex.xs="100">
-        <i class="iconfontXberts icon-pic-tool"></i>
-        <div class="xb-landing-page__list-title">Content Marketing Tools</div>
-        <div class="xb-landing-page__list-title-1">
-          Use our content creation and social sharing tools to drive traffic to your store
-        </div>
-      </div>
-      <div class="xb-landing-page__list xb-landing-page__flex-box-3" fxLayout="column" fxLayoutAlign="start start" fxFlex="24" fxFlex.sm="48" fxFlex.xs="100">
-        <i class="iconfontXberts icon-pic-phone"></i>
-        <div class="xb-landing-page__list-title">Mobile Responsive Design</div>
-        <div class="xb-landing-page__list-title-1">
-          Your online store automatically adapts to any smartphone and screen size
-        </div>
+      </swiper>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="xb-landing-page__list-button" routerLink="/account/signup">
+        VIEW MORE PRODUCTS
       </div>
     </div>
   </div>
-  <div>
-    <swiper *ngIf="type == 'component' && show" class="swiper-container" [config]="config" [disabled]="disabled" (indexChange)="onIndexChange($event)" fxFlex="auto">
-      <div *ngFor="let slide of slides" class="swiper-slide">
-        <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-          {{slide}}
+  <div class="xb-landing-page__content-container-bg">
+    <div class="xb-landing-page__content-container-title">FEATURED STORE OWNER</div>
+    <div class="container xb-landing-page__content-container-margin-top" fxLayout="row" fxLayoutAlign="start stretch"
+      fxLayout.xs="column">
+      <div fxFlex="60" fxLayout="row" fxLayoutAlign="end start" fxFlex.xs="none">
+        <div class="xb-landing-page__content-container">
+          <ng-container *ngFor="let slide of slides;let i = index;">
+            <div class="xb-landing-page__content-container-image" *ngIf="i == slideIndex">
+              <img class="animation-transform-auto-1" [src]="slide.image">
+            </div>
+          </ng-container>
+          <swiper class="swiper-container" [config]="config" [disabled]="disabled" (indexChange)="onIndexChange($event)" fxFlex="auto">
+            <div *ngFor="let slide of slides" class="swiper-slide">
+              <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+                <img [src]="slide.slideImage">
+              </div>
+            </div>
+          </swiper>
         </div>
       </div>
-    </swiper>
-    <div *ngIf="type == 'directive' && show" class="swiper-container" [disabled]="disabled" [swiper]="config" (indexChange)="onIndexChange($event)">
-      <div class="swiper-wrapper">
-        <div *ngFor="let slide of slides" class="swiper-slide">
-          <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-            {{slide}}
+      <div fxFlex="40" fxFlex.xs="none">
+        <ng-container *ngFor="let slide of slides;let i = index;">
+          <div *ngIf="i == slideIndex;">
+            <div class="xb-landing-page__content-container-title-1 animation-transform-auto">{{slide.title}}</div>
+            <div class="xb-landing-page__content-container-title-2 animation-transform-auto">
+              {{slide.content}}
+            </div>
+            <div class="xb-landing-page__content-container-margin-top-1" fxLayout="row" fxLayoutAlign="start center">
+              <div class="xb-landing-page__content-container-header">
+                <img [src]="slide.avatar">
+              </div>
+              <div class="xb-landing-page__content-container-name">{{slide.name}}</div>
+            </div>
+            <div fxLayout="row">
+              <a class="xb-landing-page__content-container-button" href="{{slide.url}}" target="_blank">
+                VISIT STORE
+              </a>
+            </div>
+          </div>
+        </ng-container>
+        <div class="xb-landing-page__content-container-margin-top-2" fxLayout="row" fxLayoutAlign="end center"
+          fxLayoutAlign.xs="start center">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <ng-container *ngFor="let item of slides; let i = index;" >
+              <div [ngClass]="{'swiper-pagination-handle':i != slideIndex,'swiper-pagination-handle-active': i == slideIndex}"
+                   (click)="changeIndex(i)" >
+              </div>
+            </ng-container>
           </div>
         </div>
       </div>
-
-      <div class="swiper-scrollbar" [hidden]="config.scrollbar === false"></div>
-      <div class="swiper-pagination" [hidden]="config.pagination === false"></div>
-
-      <div class="swiper-button-prev" [hidden]="config.navigation === false"></div>
-      <div class="swiper-button-next" [hidden]="config.navigation === false"></div>
     </div>
   </div>
   <div class="xb-landing-page__banner-1">

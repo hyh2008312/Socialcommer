@@ -5,84 +5,6 @@
   font-family: ProximaNova;
   width: 100vw;
 
-  &__flex-box-1 {
-
-    @include xb-xs-screen {
-      max-width: 50% !important;
-      flex: 1 1 200px !important;
-      -webkit-flex: 1 1 200px !important;
-      min-width: 50%;
-    }
-    @include xb-sm-screen {
-      max-width: 25% !important;
-      flex: 1 1 163px !important;
-      -webkit-flex: 1 1 163px !important;
-      min-width: 25%;
-    }
-    @include xb-md-screen {
-      max-width: 25% !important;
-      flex: 1 1 185px !important;
-      -webkit-flex: 1 1 185px !important;
-      min-width: 25%;
-    }
-    @include xb-lg-screen {
-      max-width: 25% !important;
-      flex: 1 1 300px !important;
-      -webkit-flex: 1 1 300px !important;
-      min-width: 25%;
-    }
-  }
-
-  &__flex-box-2 {
-    @include xb-xs-screen {
-      max-width: 50% !important;
-      flex: 1 1 200px !important;
-      -webkit-flex: 1 1 200px !important;
-      min-width: 50%;
-    }
-    @include xb-sm-screen {
-      max-width: 25% !important;
-      flex: 1 1 180px !important;
-      -webkit-flex: 1 1 180px !important;
-      min-width: 25%;
-    }
-    @include xb-md-screen {
-      max-width: 25% !important;
-      flex: 1 1 185px !important;
-      -webkit-flex: 1 1 185px !important;
-      min-width: 25%;
-    }
-    @include xb-lg-screen {
-      max-width: 25% !important;
-      flex: 1 1 240px !important;
-      -webkit-flex: 1 1 240px !important;
-      min-width: 25%;
-    }
-  }
-
-  &__flex-box-3 {
-    @include xb-sm-screen {
-      max-width: 48% !important;
-      flex: 1 1 290px !important;
-      -webkit-flex: 1 1 290px !important;
-      min-width: 48%;
-    }
-    @include xb-md-screen {
-      max-width: 24% !important;
-      flex: 1 1 193px !important;
-      -webkit-flex: 1 1 193px !important;
-      min-width: 24%;
-    }
-    @include xb-lg-screen {
-      max-width: 24% !important;
-      flex: 1 1 250px !important;
-      -webkit-flex: 1 1 250px !important;
-      min-width: 24%;
-    }
-  }
-
-
-
   &__inner {
     overflow-x: hidden;
     overflow-y: scroll;
@@ -253,6 +175,16 @@
         border-top: 8px solid #231d1a;
       }
     }
+
+    &-box{
+      position: absolute;
+      top: 391px;
+      right: calc(50% + 223px);
+      width: 240px;
+      height: 151px;
+      background-image: url("https://media.socialcommer.com/source/web/pic/landing-banner2-20180426.jpg");
+      background-repeat: repeat-y;
+    }
   }
 
   &__navigation {
@@ -267,6 +199,7 @@
 
     &-bg {
       height: 471px;
+      overflow: hidden;
       @include xb-xs-screen {
         height: auto;
         padding: 54px 16px;
@@ -343,12 +276,10 @@
 
     &-bg {
       overflow: hidden;
-      height: 691px;
       background-color: #f8f3f3;
-      padding: 116px 0 159px;
+      padding: 120px 0;
       @include xb-xs-screen{
         padding: 54px 16px;
-        height: auto;
       }
     }
     &-title {
@@ -397,47 +328,108 @@
   }
 
   &__list {
-    padding: 32px 28px;
-    background-color: #231d1a;
-    height: 292px;
-    margin-bottom: 20px;
-    @include xb-sm-screen {
-      height: 240px;
-      margin-bottom: 16px;
-    }
-    @include xb-xs-screen {
-      height: auto;
-      margin-bottom: 16px;
+
+    padding: 0 4px;
+
+    @include xb-xs-screen{
+      padding: 0 8px;
     }
 
-    @media screen and (min-width: 960px) and (max-width: 1100px) {
-      height: 360px;
-      margin-bottom: 16px;
+    @include xb-xs-screen{
+      width: 360px;
+      padding: 0 8px;
+    }
+
+    &-image{
+      width: 100%;
+      padding-bottom: 100%;
+      position: relative;
+      overflow: hidden;
+      img{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+    &-title-1{
+      font-size: 14px;
+      letter-spacing: -0.29px;
+      line-height: 17px;
+      max-height: 17px;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      text-align: center;
+      @include text-overflow();
+    }
+
+    &-title-2{
+      font-size: 16px;
+      letter-spacing: -0.29px;
+      line-height: 19px;
+      @include media();
+      margin-right: 12px;
+    }
+
+    &-title-3{
+      font-size: 14px;
+      color: rgba(0,0,0,.54);
+      letter-spacing: -0.29px;
+      line-height: 17px;
+    }
+
+    &-title-4{
+      font-size: 16px;
+      color: #000000;
+      letter-spacing: -0.29px;
+      line-height: 19px;
+      margin-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    &-button{
+      margin-top: 32px;
+      font-size: 14px;
+      color: $primaryColorNew;
+      letter-spacing: -0.29px;
+      line-height: 30px;
+      padding: 0 60px;
+      border: 1px solid $primaryColorNew;
+      cursor: pointer;
     }
 
     &-bg {
-      padding: 64px 0 44px;
-      background-color: #17120f;
-      @include xb-xs-screen {
-        padding: 16px 16px 0;
+      width: 100%;
+
+      padding: 120px 0;
+
+      @include xb-xs-screen{
+        padding: 54px 0;
+        overflow-x: hidden;
+        ::-webkit-scrollbar {
+          height: 1px;
+        }
       }
     }
-    i {
-      color: $primaryColor;
-      font-size: 32px;
-      line-height: 32px;
+
+    &-bg-1{
+      margin-left: -15%;
+      width: 130%;
+      @include xb-xs-screen{
+        margin-left: -50%;
+        width: 200%;
+      }
     }
 
     &-title {
-      margin-top: 16px;
-      font-size: 22px;
-      line-height: 32px;
-      min-height: 64px;
-      @include light();
-      color: $whiteColor;
-      @include xb-sm-screen {
-        font-size: 24px;
-      }
+      font-family: Didot;
+      font-size: 24px;
+      color: #000000;
+      letter-spacing: -0.29px;
+      text-align: center;
+      line-height: 31px;
+      margin-bottom: 64px;
 
       @include xb-xs-screen {
         min-height: 0;
@@ -445,108 +437,179 @@
       }
     }
 
-    &-title-1 {
-      margin-top: 16px;
-      font-size: 16px;
-      line-height: 24px;
-      @include light();
-      color: rgba(255, 255, 255, .54);
+  }
 
-      @include xb-xs-screen {
-        font-size: 14px;
+  &__content-container{
+    position: relative;
+
+    width: 70%;
+    max-width: 540px;
+    margin-right: 72px;
+
+    background-color: $whiteColor;
+
+    @include xb-sm-screen{
+      margin-right: 32px;
+    }
+
+    @include xb-xs-screen{
+      width: 80%;
+      margin-right: 0;
+      min-height: 100px;
+    }
+
+    &-bg{
+      height: 771px;
+      padding: 120px 0;
+      background-color: #f8f3f3;
+
+      @include xb-xs-screen{
+        height: auto;
+        padding: 54px 16px;
+      }
+    }
+
+    &-title{
+      font-family: Didot;
+      font-size: 24px;
+      line-height: 31px;
+      letter-spacing: -0.29px;
+      text-align: center;
+    }
+
+    &-title-1{
+      margin-top: 32px;
+      font-size: 24px;
+      line-height: 29px;
+      color: #000000;
+      letter-spacing: -0.29px;
+      @include media();
+
+      @include xb-xs-screen{
+        margin-top: 72px;
+      }
+    }
+
+    &-title-2{
+      font-size: 14px;
+      color: #000000;
+      text-align: left;
+      line-height: 20px;
+      margin-top: 24px;
+
+      @include xb-xs-screen{
+        margin-top: 12px;
+      }
+    }
+
+    &-margin-top{
+      margin-top: 72px;
+    }
+
+    &-margin-top-1{
+      margin-top: 24px;
+      @include xb-xs-screen{
+        margin-top: 18px;
+      }
+    }
+
+    &-margin-top-2{
+      margin-top: 87px;
+      padding-right: 40px;
+      @include xb-xs-screen{
+        margin-top: 40px;
+        padding-right: 0;
+      }
+    }
+
+    &-header{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      >img{
+        width: 40px;
+        height: 40px;
+        display: block;
+      }
+    }
+
+    &-name{
+      font-size: 14px;
+      line-height: 17px;
+      margin-left: 12px;
+    }
+
+    &-button{
+      margin-top: 40px;
+      border: 1px solid $primaryColorNew;
+      color: $primaryColorNew;
+      font-size: 14px;
+      line-height: 38px;
+      padding: 0 30px;
+      cursor: pointer;
+      @include xb-xs-screen{
+        margin-top: 32px;
+        font-size: 12px;
+        line-height: 32px;
+      }
+    }
+
+    &-image{
+      width: 80%;
+      max-width: 280px;
+      padding-bottom: 160%;
+      position: absolute;
+      left: -40%;
+      top: 50%;
+      @include transform(translateY(-50%));
+
+      >img{
+        position: absolute;
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: 50%;
+        @include transform(translateY(-50%));
+      }
+
+      @include xb-xs-screen{
+        width: 60%;
+        left: -20%;
       }
     }
   }
 }
 
-.app-title {
-  font-size: 24px;
-}
-
-.box-title {
-  font-size: 20px;
-}
-
-.box-container {
-  box-sizing: border-box;
-  width: 800px;
-  height: 500px;
-  max-width: 90%;
-  max-height: 90%;
-  padding: 24px;
-  margin: 24px auto;
-  border-radius: 4px;
-
-  color: #555;
-  background-color: #eee;
-  box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.18),
-    0 6px 6px rgba(0, 0, 0, 0.25);
-}
-
-.info-container {
-  padding: 12px 16px;
-
-  line-height: 24px;
-}
-
-.action-container,
-.content-container {
-  position: relative;
-
-  overflow: auto;
-  height: 300px;
-  min-height: 0;
-  margin: 8px 16px;
-  border-radius: 4px;
-
-  background-color: #fff;
-}
-
-.action-container {
-  padding: 16px;
-}
-
-.vertical-container,
-.horizontal-container {
-  min-height: 0 !important;
-}
-
-.action-button {
-  box-sizing: border-box;
-  width: calc(100% - 16px);
-  min-height: 35px;
-  padding: 4px 16px;
-  margin: 8px;
-  border: 1px solid #555;
-  border-radius: 4px;
-
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 14px;
-  text-align: center;
-}
-
-.action-button:hover {
-  color: #fff;
-  background-color: #555;
-}
-
-.swiper-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
 .swiper-slide {
-  color: #aaa;
-  background-color: #eee;
+  background-color: $whiteColor;
+  img{
+    width: 100%;
+    display: block;
+  }
 }
 
-.swiper-slide-active {
-  color: #fff;
-  background-color: #aaa;
+
+.swiper-pagination-handle{
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin: 0 8px;
+  background-color: #D8D8D8;
+  cursor: pointer;
+  @include xb-xs-screen{
+    margin: 0 16px 0 0;
+  }
+}
+
+.swiper-pagination-handle-active{
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin: 0 8px;
+  background-color: $primaryColorNew;
+  cursor: pointer;
+  @include xb-xs-screen{
+    margin: 0 16px 0 0;
+  }
 }
