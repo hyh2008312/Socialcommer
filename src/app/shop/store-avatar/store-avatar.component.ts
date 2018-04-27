@@ -11,7 +11,6 @@ export class StoreAvatarComponent implements OnInit {
   @Input() avatar: any = '';
   @Input() name: string = '';
 
-  failWords;
   image;
   avatarColor: string = '';
 
@@ -42,8 +41,11 @@ export class StoreAvatarComponent implements OnInit {
   }
 
   formateAvatar() {
-    this.failWords = this.name?this.name.substr(0,1).toUpperCase():'A';
     this.avatarColor = 'c-user__bg-' + (Math.floor(Math.random() * 5) + 1);
+  }
+
+  get failWords() {
+    return this.name?this.name.substr(0,1).toUpperCase():'A';
   }
 
   ngOnDestroy() {
