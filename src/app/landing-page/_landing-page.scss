@@ -2,86 +2,8 @@
 @import "../styles/_variables";
 
 .xb-landing-page {
-  font-family: Roboto;
+  font-family: ProximaNova;
   width: 100vw;
-
-  &__flex-box-1 {
-
-    @include xb-xs-screen {
-      max-width: 50% !important;
-      flex: 1 1 200px !important;
-      -webkit-flex: 1 1 200px !important;
-      min-width: 50%;
-    }
-    @include xb-sm-screen {
-      max-width: 25% !important;
-      flex: 1 1 163px !important;
-      -webkit-flex: 1 1 163px !important;
-      min-width: 25%;
-    }
-    @include xb-md-screen {
-      max-width: 25% !important;
-      flex: 1 1 185px !important;
-      -webkit-flex: 1 1 185px !important;
-      min-width: 25%;
-    }
-    @include xb-lg-screen {
-      max-width: 25% !important;
-      flex: 1 1 300px !important;
-      -webkit-flex: 1 1 300px !important;
-      min-width: 25%;
-    }
-  }
-
-  &__flex-box-2 {
-    @include xb-xs-screen {
-      max-width: 50% !important;
-      flex: 1 1 200px !important;
-      -webkit-flex: 1 1 200px !important;
-      min-width: 50%;
-    }
-    @include xb-sm-screen {
-      max-width: 25% !important;
-      flex: 1 1 180px !important;
-      -webkit-flex: 1 1 180px !important;
-      min-width: 25%;
-    }
-    @include xb-md-screen {
-      max-width: 25% !important;
-      flex: 1 1 185px !important;
-      -webkit-flex: 1 1 185px !important;
-      min-width: 25%;
-    }
-    @include xb-lg-screen {
-      max-width: 25% !important;
-      flex: 1 1 240px !important;
-      -webkit-flex: 1 1 240px !important;
-      min-width: 25%;
-    }
-  }
-
-  &__flex-box-3 {
-    @include xb-sm-screen {
-      max-width: 48% !important;
-      flex: 1 1 290px !important;
-      -webkit-flex: 1 1 290px !important;
-      min-width: 48%;
-    }
-    @include xb-md-screen {
-      max-width: 24% !important;
-      flex: 1 1 193px !important;
-      -webkit-flex: 1 1 193px !important;
-      min-width: 24%;
-    }
-    @include xb-lg-screen {
-      max-width: 24% !important;
-      flex: 1 1 250px !important;
-      -webkit-flex: 1 1 250px !important;
-      min-width: 24%;
-    }
-  }
-
-
 
   &__inner {
     overflow-x: hidden;
@@ -92,161 +14,121 @@
   }
 
   &__banner {
-    height: 720px;
-    background-image: url("https://media.socialcommer.com/source/web/pic/banner-1.jpg");
+    height: 823px;
+    background-image: url("https://media.socialcommer.com/source/web/pic/landing-banner1-20184026.jpg");
     background-position: center;
-    background-size: auto 720px;
+    background-size: auto 823px;
     background-repeat: repeat;
 
     @include xb-xs-screen {
+      background-image: url("https://media.socialcommer.com/source/web/pic/landing-bitmap2-20180426.png");
       height: auto;
-      padding-bottom: 48px;
       background-size: auto 100%;
-    }
-
-    @include xb-sm-screen {
-      height: 480px;
-      background-size: auto 100%;
+      padding: 0 16px 48px;
     }
 
     &-1 {
-      height: 600px;
-      background-image: url("https://media.socialcommer.com/source/web/pic/3.jpg");
-      background-position: center;
-      background-size: auto 100%;
-      background-repeat: repeat;
+      padding: 112px 0 120px;
+      border-bottom: 1px solid rgba(0,0,0,.12);
 
-      @include xb-xs-screen {
-        height: auto;
-        padding-bottom: 48px;
-        background-size: auto 100%;
+      @include xb-xs-screen{
+        padding: 58px 16px 54px;
       }
 
-      @include xb-sm-screen {
-        height: 400px;
-        background-size: auto 100%;
+      &-left{
+        padding: 0 32px;
+        @include xb-xs-screen{
+          padding: 0;
+        }
       }
     }
 
     &-title {
-      font-size: 60px;
-      line-height: 80px;
-      color: $whiteColor;
-      margin-top: 110px;
-      @include light();
+      font-family: Didot;
+      font-size: 40px;
+      line-height: 52px;
+      letter-spacing: -0.29px;
+      margin-top: 196px;
+      @include media();
 
       @include xb-xs-screen {
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: -.12px;
-        margin-top: 48px;
-      }
-
-      @include xb-sm-screen {
-        font-size: 32px;
-        line-height: 48px;
-        margin-top: 48px;
+        font-size: 24px;
+        line-height: 31px;
+        margin-top: 291px;
       }
     }
     &-subtitle {
-      margin-top: 48px;
-      font-size: 24px;
-      line-height: 36px;
-      color: $whiteColor;
+      margin-top: 16px;
+      font-size: 16px;
+      letter-spacing: -0.29px;
+      line-height: 24px;
       @include light();
-      @include xb-sm-screen {
-        margin-top: 24px;
-        font-size: 14px;
-        line-height: 24px;
-      }
 
       @include xb-xs-screen {
-        margin-top: 16px;
-        font-size: 12px;
-        line-height: 18px;
-        letter-spacing: -.02px;
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 24px;
       }
     }
 
     &-title-2 {
-      font-size: 38px;
-      line-height: 64px;
-      color: $whiteColor;
-      margin-top: 160px;
-      @include media();
-      text-align: center;
+      font-family: 'Didot';
+      font-size: 34px;
+      line-height: 56px;
 
+      @include xb-sm-screen{
+        margin-top: 0px;
+      }
       @include xb-xs-screen {
         font-size: 24px;
-        line-height: 32px;
-        margin-top: 32px;
-        letter-spacing: -.12px;
-        text-align: center;
-        padding: 0 16px;
-        @include media();
-      }
-
-      @include xb-sm-screen {
-        font-size: 32px;
-        line-height: 48px;
-        margin-top: 64px;
+        line-height: 40px;
+        margin-top: 28px;
       }
     }
 
     &-subtitle-1 {
-      margin-top: 40px;
-      font-size: 24px;
-      line-height: 36px;
-      color: $whiteColor;
-      @include light();
-      @include xb-sm-screen {
-        margin-top: 24px;
-        font-size: 14px;
-        line-height: 24px;
-      }
+      margin-top: 24px;
+      font-size: 16px;
+      line-height: 19px;
 
       @include xb-xs-screen {
-        margin-top: 16px;
+        margin-top: 12px;
         font-size: 14px;
         line-height: 24px;
-        text-align: center;
-        padding: 0 16px;
       }
     }
 
     &-button {
-      margin-top: 88px;
+      margin-top: 63px;
       color: $whiteColor;
-      background: linear-gradient(90deg, #572487 0, #1199ab 100%);
-      font-size: 16px;
-      line-height: 48px;
-      border-radius: 24px;
+      background: $primaryColorNew;
+      font-size: 14px;
+      line-height: 40px;
+      letter-spacing: -0.29px;
       text-align: center;
-      padding: 0 32px;
+      padding: 0 24px;
       display: block;
       @include xb-xs-screen {
-        margin-top: 32px;
-        line-height: 40px;
-        font-size: 14px;
-        border-radius: 20px;
-      }
-      @include xb-sm-screen {
-        margin-top: 48px;
+        margin-top: 20px;
+        line-height: 32px;
+        font-size: 12px;
       }
     }
 
     &-button-1 {
-      margin-top: 54px;
+      margin-top: 48px;
       color: $whiteColor;
-      background: linear-gradient(90deg, #572487 0, #1199ab 100%);
-      font-size: 16px;
-      line-height: 48px;
-      border-radius: 24px;
+      background: $primaryColorNew;
+      font-size: 14px;
+      line-height: 40px;
+      letter-spacing: -0.29px;
       text-align: center;
-      padding: 0 32px;
+      padding: 0 24px;
       display: block;
       @include xb-xs-screen {
-        margin-top: 24px;
+        margin-top: 32px;
+        line-height: 32px;
+        font-size: 12px;
       }
     }
 
@@ -293,6 +175,16 @@
         border-top: 8px solid #231d1a;
       }
     }
+
+    &-box{
+      position: absolute;
+      top: 391px;
+      right: calc(50% + 223px);
+      width: 240px;
+      height: 151px;
+      background-image: url("https://media.socialcommer.com/source/web/pic/landing-banner2-20180426.jpg");
+      background-repeat: repeat-y;
+    }
   }
 
   &__navigation {
@@ -303,72 +195,47 @@
   }
 
   &__content {
-    margin-top: 120px;
     padding: 0 16px;
-    @include xb-sm-screen {
-      margin-top: 60px;
-      padding: 0 8px;
-    }
-
-    @include xb-xs-screen {
-      margin-top: 40px;
-      padding: 0 4px;
-    }
 
     &-bg {
-      background-color: #17120f;
-      height: 480px;
-      @include xb-sm-screen {
-        height: 360px;
-      }
+      height: 471px;
+      overflow: hidden;
       @include xb-xs-screen {
         height: auto;
-        padding-bottom: 40px;
+        padding: 54px 16px;
       }
     }
     &-title {
-      font-size: 34px;
-      margin-bottom: 32px;
-      color: $whiteColor;
-      display: none;
-      @include xb-sm-screen {
-        font-size: 24px;
+      font-family: Didot;
+      margin-top: 120px;
+      font-size: 24px;
+      line-height: 31px;
+      text-align: center;
+      margin-bottom: 82px;
+      @include xb-xs-screen{
+        margin: 0;
       }
     }
     i {
-      font-size: 54px;
-      line-height: 54px;
+      font-size: 40px;
+      line-height: 40px;
       display: block;
-      color: $primaryColor;
-      @include xb-xs-screen {
-        font-size: 32px;
-        line-height: 32px;
+      color: $primaryColorNew;
+      @include xb-xs-screen{
+        margin-top: 32px;
       }
     }
     &-title-1 {
-      font-size: 34px;
-      line-height: 42px;
-      color: $whiteColor;
-      margin-top: 40px;
-      @include light();
+      font-size: 16px;
+      margin-top: 12px;
+      line-height: 19px;
+      @include media();
       text-align: center;
-      @include xb-sm-screen {
-        font-size: 24px;
-        line-height: 32px;
-      }
-      @include xb-xs-screen {
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: -.08px;
-        margin-top: 16px;
-        min-height: 48px;
-      }
     }
     &-title-2 {
-      font-size: 16px;
+      font-size: 14px;
       @include light();
-      color: rgba(255, 255, 255, .54);
-      line-height: 24px;
+      line-height: 20px;
       margin-top: 24px;
       text-align: center;
       @include xb-xs-screen {
@@ -399,142 +266,170 @@
   }
 
   &__content-1 {
-    margin-top: 96px;
-    padding: 0 16px;
-    @include xb-sm-screen {
-      margin-top: 48px;
-      padding: 0 8px;
-    }
-    @include xb-xs-screen {
-      margin-top: 40px;
-      padding: 0 4px;
+
+    &-image{
+      padding: 0 88px;
+      @include xb-sm-screen{
+        padding: 0 32px;
+      }
     }
 
     &-bg {
       overflow: hidden;
-      height: 700px;
-      background-image: url("https://media.socialcommer.com/source/web/pic/2.jpg");
-      background-position: center;
-      background-size: 1920px auto;
-      background-repeat: repeat;
-      background-attachment: fixed !important;
-
-      @include xb-sm-screen {
-        height: 480px;
-      }
-
-      @include xb-xs-screen {
-        height: auto;
-        padding-bottom: 40px;
+      background-color: #f8f3f3;
+      padding: 120px 0;
+      @include xb-xs-screen{
+        padding: 54px 16px;
       }
     }
     &-title {
-      margin-top: 16px;
-      font-size: 26px;
-      line-height: 32px;
-      min-height: 64px;
-      margin-bottom: 24px;
-      color: $whiteColor;
-      display: block;
-      text-align: center;
-      @include light();
-      @include xb-sm-screen {
-        font-size: 24px;
-      }
-      @include xb-xs-screen {
-        font-size: 16px;
-        line-height: 24px;
-        min-height: 48px;
-        margin-top: 16px;
-        margin-bottom: 12px;
-      }
-    }
-    i {
-      width: 108px;
-      font-size: 40px;
-      line-height: 108px;
-      text-align: center;
-      display: block;
-      color: $whiteColor;
-      border-radius: 50%;
-      @include xb-sm-screen {
-        width: 80px;
-        line-height: 80px;
-        font-size: 32px;
-      }
-
-      @include xb-xs-screen {
-        width: 56px;
-        font-size: 18px;
-        line-height: 56px;
-      }
-    }
-
-    &-icon-1 {
-      background: linear-gradient(45deg, #572487 0, #1199ab 100%);
-    }
-    &-icon-2 {
-      background: linear-gradient(135deg, #572487 0, #1199ab 100%);
-    }
-    &-icon-3 {
-      background: linear-gradient(180deg, #572487 0, #1199ab 100%);
+      font-size: 14px;
+      line-height: 17px;
+      @include media();
     }
 
     &-title-1 {
-      font-size: 16px;
-      @include light();
-      color: rgba(255, 255, 255, .87);
-      line-height: 24px;
-      text-align: center;
-      @include xb-xs-screen {
-        font-size: 12px;
-        line-height: 18px;
+      font-size: 12px;
+      color: #000000;
+      line-height: 20px;
+      margin-bottom: 36px;
+      @include xb-sm-screen{
+        margin-bottom: 24px;
       }
+    }
+
+    &-title-2{
+      font-family: Didot;
+      font-size: 24px;
+      line-height: 31px;
+      margin-bottom: 32px;
+      @include xb-xs-screen{
+        text-align: center;
+      }
+    }
+
+    &-circle{
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid #000000;
+      line-height: 20px;
+      font-size: 14px;
+      text-align: center;
+      display: block;
+    }
+
+    &-line{
+      width: 1px;
+      height: 100%;
+      background-color: #AA7942;
+      display: block;
     }
   }
 
   &__list {
-    padding: 32px 28px;
-    background-color: #231d1a;
-    height: 292px;
-    margin-bottom: 20px;
-    @include xb-sm-screen {
-      height: 240px;
-      margin-bottom: 16px;
-    }
-    @include xb-xs-screen {
-      height: auto;
-      margin-bottom: 16px;
+
+    padding: 0 4px;
+
+    @include xb-xs-screen{
+      padding: 0 8px;
     }
 
-    @media screen and (min-width: 960px) and (max-width: 1100px) {
-      height: 360px;
-      margin-bottom: 16px;
+    @include xb-xs-screen{
+      width: 360px;
+      padding: 0 8px;
+    }
+
+    &-image{
+      width: 100%;
+      padding-bottom: 100%;
+      position: relative;
+      overflow: hidden;
+      img{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+    &-title-1{
+      font-size: 14px;
+      letter-spacing: -0.29px;
+      line-height: 17px;
+      max-height: 17px;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      text-align: center;
+      @include text-overflow();
+    }
+
+    &-title-2{
+      font-size: 16px;
+      letter-spacing: -0.29px;
+      line-height: 19px;
+      @include media();
+      margin-right: 12px;
+    }
+
+    &-title-3{
+      font-size: 14px;
+      color: rgba(0,0,0,.54);
+      letter-spacing: -0.29px;
+      line-height: 17px;
+    }
+
+    &-title-4{
+      font-size: 16px;
+      color: #000000;
+      letter-spacing: -0.29px;
+      line-height: 19px;
+      margin-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    &-button{
+      margin-top: 32px;
+      font-size: 14px;
+      color: $primaryColorNew;
+      letter-spacing: -0.29px;
+      line-height: 30px;
+      padding: 0 60px;
+      border: 1px solid $primaryColorNew;
+      cursor: pointer;
     }
 
     &-bg {
-      padding: 64px 0 44px;
-      background-color: #17120f;
-      @include xb-xs-screen {
-        padding: 16px 16px 0;
+      width: 100%;
+
+      padding: 120px 0;
+
+      @include xb-xs-screen{
+        padding: 54px 0;
+        overflow-x: hidden;
+        ::-webkit-scrollbar {
+          height: 1px;
+        }
       }
     }
-    i {
-      color: $primaryColor;
-      font-size: 32px;
-      line-height: 32px;
+
+    &-bg-1{
+      margin-left: -15%;
+      width: 130%;
+      @include xb-xs-screen{
+        margin-left: -50%;
+        width: 200%;
+      }
     }
 
     &-title {
-      margin-top: 16px;
-      font-size: 22px;
-      line-height: 32px;
-      min-height: 64px;
-      @include light();
-      color: $whiteColor;
-      @include xb-sm-screen {
-        font-size: 24px;
-      }
+      font-family: Didot;
+      font-size: 24px;
+      color: #000000;
+      letter-spacing: -0.29px;
+      text-align: center;
+      line-height: 31px;
+      margin-bottom: 64px;
 
       @include xb-xs-screen {
         min-height: 0;
@@ -542,17 +437,179 @@
       }
     }
 
-    &-title-1 {
-      margin-top: 16px;
-      font-size: 16px;
-      line-height: 24px;
-      @include light();
-      color: rgba(255, 255, 255, .54);
+  }
 
-      @include xb-xs-screen {
-        font-size: 14px;
+  &__content-container{
+    position: relative;
+
+    width: 70%;
+    max-width: 540px;
+    margin-right: 72px;
+
+    background-color: $whiteColor;
+
+    @include xb-sm-screen{
+      margin-right: 32px;
+    }
+
+    @include xb-xs-screen{
+      width: 80%;
+      margin-right: 0;
+      min-height: 100px;
+    }
+
+    &-bg{
+      height: 771px;
+      padding: 120px 0;
+      background-color: #f8f3f3;
+
+      @include xb-xs-screen{
+        height: auto;
+        padding: 54px 16px;
+      }
+    }
+
+    &-title{
+      font-family: Didot;
+      font-size: 24px;
+      line-height: 31px;
+      letter-spacing: -0.29px;
+      text-align: center;
+    }
+
+    &-title-1{
+      margin-top: 32px;
+      font-size: 24px;
+      line-height: 29px;
+      color: #000000;
+      letter-spacing: -0.29px;
+      @include media();
+
+      @include xb-xs-screen{
+        margin-top: 72px;
+      }
+    }
+
+    &-title-2{
+      font-size: 14px;
+      color: #000000;
+      text-align: left;
+      line-height: 20px;
+      margin-top: 24px;
+
+      @include xb-xs-screen{
+        margin-top: 12px;
+      }
+    }
+
+    &-margin-top{
+      margin-top: 72px;
+    }
+
+    &-margin-top-1{
+      margin-top: 24px;
+      @include xb-xs-screen{
+        margin-top: 18px;
+      }
+    }
+
+    &-margin-top-2{
+      margin-top: 87px;
+      padding-right: 40px;
+      @include xb-xs-screen{
+        margin-top: 40px;
+        padding-right: 0;
+      }
+    }
+
+    &-header{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      >img{
+        width: 40px;
+        height: 40px;
+        display: block;
+      }
+    }
+
+    &-name{
+      font-size: 14px;
+      line-height: 17px;
+      margin-left: 12px;
+    }
+
+    &-button{
+      margin-top: 40px;
+      border: 1px solid $primaryColorNew;
+      color: $primaryColorNew;
+      font-size: 14px;
+      line-height: 38px;
+      padding: 0 30px;
+      cursor: pointer;
+      @include xb-xs-screen{
+        margin-top: 32px;
+        font-size: 12px;
+        line-height: 32px;
+      }
+    }
+
+    &-image{
+      width: 80%;
+      max-width: 280px;
+      padding-bottom: 160%;
+      position: absolute;
+      left: -40%;
+      top: 50%;
+      @include transform(translateY(-50%));
+
+      >img{
+        position: absolute;
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: 50%;
+        @include transform(translateY(-50%));
+      }
+
+      @include xb-xs-screen{
+        width: 60%;
+        left: -20%;
       }
     }
   }
 }
 
+.swiper-slide {
+  background-color: $whiteColor;
+  img{
+    width: 100%;
+    display: block;
+  }
+}
+
+
+.swiper-pagination-handle{
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin: 0 8px;
+  background-color: #D8D8D8;
+  cursor: pointer;
+  @include xb-xs-screen{
+    margin: 0 16px 0 0;
+  }
+}
+
+.swiper-pagination-handle-active{
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin: 0 8px;
+  background-color: $primaryColorNew;
+  cursor: pointer;
+  @include xb-xs-screen{
+    margin: 0 16px 0 0;
+  }
+}

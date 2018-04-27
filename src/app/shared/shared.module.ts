@@ -76,6 +76,8 @@ import {ShareShowButtonComponent} from "./components/share-show-button/share-sho
 
 import { ClipboardModule } from 'ngx-clipboard';
 
+import { SwiperModule } from 'ngx-swiper-wrapper';
+
 let providers = {
   "google": {
     "clientId": GoogleClientId
@@ -114,7 +116,8 @@ let providers = {
     MatSidenavModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    ClipboardModule
+    ClipboardModule,
+    SwiperModule
   ],
   declarations: [
     SafeHtmlPipe,
@@ -207,7 +210,8 @@ let providers = {
     MatSidenavModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    ClipboardModule
+    ClipboardModule,
+    SwiperModule
   ],
   providers: [
     ImageUploadPreviewService,
