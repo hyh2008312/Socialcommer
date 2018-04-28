@@ -40,6 +40,21 @@ export class LandingPageComponent implements OnInit {
 
   loaded: boolean = false;
 
+  public config: SwiperConfigInterface = {
+    direction: 'horizontal',
+    slidesPerView: 1,
+    speed: 800,
+    loop: true,
+    autoplay: {
+      delay: 10000
+    },
+    keyboard: true,
+    mousewheel: true,
+    scrollbar: false,
+    navigation: false,
+    pagination: false
+  };
+
   public config1: SwiperConfigInterface = {
     observer: true,
     threshold: 50,
