@@ -45,7 +45,7 @@ import { enableProdMode } from '@angular/core';
 enableProdMode();
 
 // Express Engine
-import { ngExpressEngine } from '@nguniversal/express-engine/public-api';
+import { ngExpressEngine } from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { renderModuleFactory } from '@angular/platform-server';

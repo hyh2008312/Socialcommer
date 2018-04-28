@@ -70,11 +70,11 @@
       font-size: 15px;
       letter-spacing: -.29px;
       display: block;
-      color: #000;
+      font-weight: 500;
+      color: $primaryColor;
       cursor: pointer;
       white-space: nowrap;
       &.active {
-        @include media();
         border-bottom: 2px solid $primaryColor;
       }
     }

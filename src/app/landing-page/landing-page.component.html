@@ -107,26 +107,8 @@
   </div>
   <div class="xb-landing-page__list-bg">
     <div class="xb-landing-page__list-title">FEATURED PRODUCTS</div>
-    <div class="xb-landing-page__list-bg-1" fxHide.xs>
+    <div class="xb-landing-page__list-bg-1">
       <swiper class="swiper-container" [config]="config1" [disabled]="disabled" (indexChange)="onIndexChange1($event)">
-        <div *ngFor="let slide of slides1" class="xb-landing-page__list">
-          <div class="xb-landing-page__list-image">
-            <img [src]="slide.mainImage">
-          </div>
-          <div class="xb-landing-page__list-title-1">{{slide.title}}</div>
-          <div fxLayout="row" fxLayoutAlign="center center">
-            <div class="xb-landing-page__list-title-2" >{{slide.saleUnitPrice|currency:currency}}</div>
-            <div class="xb-landing-page__list-title-3" >{{slide.unitPrice|currency:currency}}</div>
-          </div>
-          <div class="xb-landing-page__list-title-4"  fxLayout="row" fxLayoutAlign="center center">
-            <div class="xb-bold">Sales Commission：</div>
-            <div>{{slide.commissionRate}}%</div>
-          </div>
-        </div>
-      </swiper>
-    </div>
-    <div class="xb-landing-page__list-bg-1" fxHide.gt-xs>
-      <swiper class="swiper-container" [config]="config2" [disabled]="disabled" (indexChange)="onIndexChange1($event)">
         <div *ngFor="let slide of slides1" class="xb-landing-page__list">
           <div class="xb-landing-page__list-image">
             <img [src]="slide.mainImage">
@@ -162,7 +144,7 @@
           </ng-container>
           <swiper class="swiper-container" [config]="config" [disabled]="disabled" (indexChange)="onIndexChange($event)" fxFlex="auto">
             <div *ngFor="let slide of slides" class="swiper-slide">
-              <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+              <div fxLayout="column" fxLayoutAlign="center center">
                 <img [src]="slide.slideImage">
               </div>
             </div>

@@ -36,88 +36,35 @@ export class LandingPageComponent implements OnInit {
     url: 'https://www.socialcommer.com/store/maryamhampton/6'
   }];
 
-  public slides1 = [{
-    image: 'https://media.socialcommer.com/cdn/product/cc/5e7ed89d-f3c5-4063-9e63-b68b990f0530.jpg',
-    title: 'SAM EDELMAN Sable suede over-the-knee boots',
-    salePrice: '$ 15.00 ',
-    originalPrice: '$ 10.00 ',
-    commission: '20.0'
-  }, {
-    image: 'https://media.socialcommer.com/cdn/product/cc/5e7ed89d-f3c5-4063-9e63-b68b990f0530.jpg',
-    title: 'SAM EDELMAN Sable suede over-the-knee boots',
-    salePrice: '$ 15.00 ',
-    originalPrice: '$ 10.00 ',
-    commission: '20.0'
-  }, {
-    image: 'https://media.socialcommer.com/cdn/product/cc/5e7ed89d-f3c5-4063-9e63-b68b990f0530.jpg',
-    title: 'SAM EDELMAN Sable suede over-the-knee boots',
-    salePrice: '$ 15.00 ',
-    originalPrice: '$ 10.00 ',
-    commission: '20.0'
-  }, {
-    image: 'https://media.socialcommer.com/cdn/product/cc/5e7ed89d-f3c5-4063-9e63-b68b990f0530.jpg',
-    title: 'SAM EDELMAN Sable suede over-the-knee boots',
-    salePrice: '$ 15.00 ',
-    originalPrice: '$ 10.00 ',
-    commission: '20.0'
-  }, {
-    image: 'https://media.socialcommer.com/cdn/product/cc/5e7ed89d-f3c5-4063-9e63-b68b990f0530.jpg',
-    title: 'SAM EDELMAN Sable suede over-the-knee boots',
-    salePrice: '$ 15.00 ',
-    originalPrice: '$ 10.00 ',
-    commission: '20.0'
-  }, {
-    image: 'https://media.socialcommer.com/cdn/product/cc/5e7ed89d-f3c5-4063-9e63-b68b990f0530.jpg',
-    title: 'SAM EDELMAN Sable suede over-the-knee boots',
-    salePrice: '$ 15.00 ',
-    originalPrice: '$ 10.00 ',
-    commission: '20.0'
-  }, {
-    image: 'https://media.socialcommer.com/cdn/product/cc/5e7ed89d-f3c5-4063-9e63-b68b990f0530.jpg',
-    title: 'SAM EDELMAN Sable suede over-the-knee boots',
-    salePrice: '$ 15.00 ',
-    originalPrice: '$ 10.00 ',
-    commission: '20.0'
-  }];
+  public slides1:any;
 
-  public config: SwiperConfigInterface = {
-    direction: 'horizontal',
-    slidesPerView: 1,
-    autoplay: false,
-    keyboard: true,
-    mousewheel: true,
-    scrollbar: false,
-    navigation: false,
-    pagination: false
-  };
+  loaded: boolean = false;
 
   public config1: SwiperConfigInterface = {
+    observer: true,
+    threshold: 50,
     direction: 'horizontal',
     slidesPerView: 5,
     speed: 800,
-    loop: true,
     autoplay: {
       delay: 5000
     },
+    loop: true,
     keyboard: true,
-    mousewheel: true,
+    mousewheel: false,
     scrollbar: false,
     navigation: false,
-    pagination: false
+    pagination: false,
+    breakpoints: {
+      959: {
+        autoplay: false
+      },
+      600: {
+        autoplay: false
+      }
+    }
   };
 
-  public config2: SwiperConfigInterface = {
-    direction: 'horizontal',
-    slidesPerView: 3,
-    speed: 800,
-    loop: true,
-    autoplay: false,
-    keyboard: true,
-    mousewheel: true,
-    scrollbar: false,
-    navigation: false,
-    pagination: false
-  };
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -165,12 +112,12 @@ export class LandingPageComponent implements OnInit {
   }
 
   public onIndexChange1(index: number): void {
-
   }
 
   getProductList() {
     this.landingPageService.getProductList().then((data) => {
-      this.slides1 = data;
+      this.slides1 = [...data];
+      this.slides1.push(...data);
     });
   }
 

@@ -226,7 +226,7 @@
       }
     }
     &-title-1 {
-      font-size: 16px;
+      font-size: 18px;
       margin-top: 12px;
       line-height: 19px;
       @include media();
@@ -283,7 +283,7 @@
       }
     }
     &-title {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 17px;
       @include media();
     }
@@ -293,6 +293,7 @@
       color: #000000;
       line-height: 20px;
       margin-bottom: 36px;
+      margin-top: 4px;
       @include xb-sm-screen{
         margin-bottom: 24px;
       }
