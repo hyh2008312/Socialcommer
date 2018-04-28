@@ -78,15 +78,15 @@ import { ClipboardModule } from 'ngx-clipboard';
 
 import { SwiperModule } from 'ngx-swiper-wrapper';
 
-let providers = {
-  "google": {
-    "clientId": GoogleClientId
-  },
-  "facebook": {
-    "clientId": FacebookClientId,
-    "apiVersion": "v2.10"
-  }
-};
+// let providers = {
+//   "google": {
+//     "clientId": GoogleClientId
+//   },
+//   "facebook": {
+//     "clientId": FacebookClientId,
+//     "apiVersion": "v2.10"
+//   }
+// };
 
 @NgModule({
   imports: [
@@ -225,4 +225,4 @@ export class SharedModule {
     return { ngModule: SharedModule };
   }
 }
-Angular2SocialLoginModule.loadProvidersScripts(providers);
+//Angular2SocialLoginModule.loadProvidersScripts(providers);

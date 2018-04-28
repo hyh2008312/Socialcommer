@@ -386,6 +386,10 @@
       line-height: 19px;
       margin-top: 8px;
       padding-bottom: 8px;
+
+      @include xb-xs-screen{
+        font-size: 14px;
+      }
     }
 
     &-button{
@@ -393,10 +397,14 @@
       font-size: 14px;
       color: $primaryColorNew;
       letter-spacing: -0.29px;
-      line-height: 30px;
-      padding: 0 60px;
+      line-height: 38px;
+      padding: 0 32px;
       border: 1px solid $primaryColorNew;
       cursor: pointer;
+
+      @include xb-xs-screen{
+        line-height: 30px;
+      }
     }
 
     &-bg {

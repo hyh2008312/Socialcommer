@@ -8,6 +8,8 @@ import {FaqsComponent} from './faqs/faqs.component';
 import {TermsComponent} from './terms/terms.component';
 import {UsePolicyComponent} from './use-policy/use-policy.component';
 
+import {LandingPageService} from './landing-page.service';
+
 @NgModule({
   imports: [
     SharedModule,
@@ -24,7 +26,9 @@ import {UsePolicyComponent} from './use-policy/use-policy.component';
     UsePolicyComponent
   ],
   entryComponents: [],
-  providers: []
+  providers: [
+    LandingPageService
+  ]
 })
 export class LandingPageModule { }
 

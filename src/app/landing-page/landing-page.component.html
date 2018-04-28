@@ -111,16 +111,16 @@
       <swiper class="swiper-container" [config]="config1" [disabled]="disabled" (indexChange)="onIndexChange1($event)">
         <div *ngFor="let slide of slides1" class="xb-landing-page__list">
           <div class="xb-landing-page__list-image">
-            <img [src]="slide.image">
+            <img [src]="slide.mainImage">
           </div>
           <div class="xb-landing-page__list-title-1">{{slide.title}}</div>
           <div fxLayout="row" fxLayoutAlign="center center">
-            <div class="xb-landing-page__list-title-2" >{{slide.salePrice}}</div>
-            <div class="xb-landing-page__list-title-3" >{{slide.originalPrice}}</div>
+            <div class="xb-landing-page__list-title-2" >{{slide.saleUnitPrice}}</div>
+            <div class="xb-landing-page__list-title-3" >{{slide.unitPrice}}</div>
           </div>
           <div class="xb-landing-page__list-title-4"  fxLayout="row" fxLayoutAlign="center center">
             <div class="xb-bold">Sales Commission：</div>
-            <div>{{slide.commission}}%</div>
+            <div>{{slide.commissionRate}}%</div>
           </div>
         </div>
       </swiper>
@@ -129,16 +129,16 @@
       <swiper class="swiper-container" [config]="config2" [disabled]="disabled" (indexChange)="onIndexChange1($event)">
         <div *ngFor="let slide of slides1" class="xb-landing-page__list">
           <div class="xb-landing-page__list-image">
-            <img [src]="slide.image">
+            <img [src]="slide.mainImage">
           </div>
           <div class="xb-landing-page__list-title-1">{{slide.title}}</div>
           <div fxLayout="row" fxLayoutAlign="center center">
-            <div class="xb-landing-page__list-title-2" >{{slide.salePrice}}</div>
-            <div class="xb-landing-page__list-title-3" >{{slide.originalPrice}}</div>
+            <div class="xb-landing-page__list-title-2" >{{slide.saleUnitPrice}}</div>
+            <div class="xb-landing-page__list-title-3" >{{slide.unitPrice}}</div>
           </div>
           <div class="xb-landing-page__list-title-4"  fxLayout="row" fxLayoutAlign="center center">
             <div class="xb-bold">Sales Commission：</div>
-            <div>{{slide.commission}}%</div>
+            <div>{{slide.commissionRate}}%</div>
           </div>
         </div>
       </swiper>

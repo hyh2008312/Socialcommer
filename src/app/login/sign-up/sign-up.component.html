@@ -1,6 +1,6 @@
 <div class="xb-login__scroll background-bg-light" >
   <div class="xb-login__scroll-inner" fxLayout="column">
-    <div class="background-bg-black" fxFlex="none">
+    <div class="background-bg-white" fxFlex="none">
       <div class="container">
         <app-navigation-header [status]="true" *ngIf="step==0"></app-navigation-header>
         <app-navigation-header [status]="true" [source]="step" *ngIf="step==1"></app-navigation-header>
@@ -190,6 +190,8 @@
         </div>
       </div>
     </div>
-    <app-bottom-footer></app-bottom-footer>
+    <div class="background-bg-white">
+      <app-bottom-footer></app-bottom-footer>
+    </div>
   </div>
 </div>

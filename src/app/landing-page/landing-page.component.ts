@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../shared/services/user/user.service';
 
+import {LandingPageService} from './landing-page.service';
+
 import {
   SwiperComponent, SwiperDirective, SwiperConfigInterface
 } from 'ngx-swiper-wrapper';
@@ -14,7 +16,7 @@ import {
 
 export class LandingPageComponent implements OnInit {
 
-  slideIndex: number = 1;
+  slideIndex: number = 0;
 
   public show: boolean = true;
 
@@ -25,15 +27,7 @@ export class LandingPageComponent implements OnInit {
     image: 'https://media.socialcommer.com/source/web/pic/landing-group2-20180426.png',
     title: 'Maryam Hampton\'s Collections',
     content: 'Make your life look way more glamorous than it really is',
-    avatar: 'https://media.socialcommer.com/source/web/pic/landing-group-20180426.png',
-    name: 'Maria Brural',
-    url: 'https://www.socialcommer.com/store/maryamhampton/6'
-  }, {
-    slideImage: 'https://media.socialcommer.com/source/web/pic/landing-group-20180426.png',
-    image: 'https://media.socialcommer.com/source/web/pic/landing-group2-20180426.png',
-    title: 'Maryam Hampton\'s Collections',
-    content: 'Make your life look way more glamorous than it really is',
-    avatar: 'https://media.socialcommer.com/source/web/pic/landing-group-20180426.png',
+    avatar: 'https://media.socialcommer.com/image/other/b035babd-1171-4235-a4fa-464645568919.jpg',
     name: 'Maria Brural',
     url: 'https://www.socialcommer.com/store/maryamhampton/6'
   }];
@@ -85,11 +79,7 @@ export class LandingPageComponent implements OnInit {
   public config: SwiperConfigInterface = {
     direction: 'horizontal',
     slidesPerView: 1,
-    speed: 800,
-    loop: true,
-    autoplay: {
-      delay: 10000
-    },
+    autoplay: false,
     keyboard: true,
     mousewheel: true,
     scrollbar: false,
@@ -127,9 +117,10 @@ export class LandingPageComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private landingPageService: LandingPageService
   ) {
-
+    this.getProductList();
   }
 
   ngOnInit():void {
@@ -171,6 +162,12 @@ export class LandingPageComponent implements OnInit {
 
   public onIndexChange1(index: number): void {
 
+  }
+
+  getProductList() {
+    this.landingPageService.getProductList().then((data) => {
+      this.slides1 = data;
+    });
   }
 
 
