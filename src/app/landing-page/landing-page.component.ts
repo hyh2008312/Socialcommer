@@ -72,9 +72,10 @@ export class LandingPageComponent implements OnInit {
     pagination: false,
     breakpoints: {
       959: {
-        autoplay: false
+        slidesPerView: 3
       },
       600: {
+        slidesPerView: 3,
         autoplay: false
       }
     }
