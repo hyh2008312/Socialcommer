@@ -20,6 +20,8 @@ export class LandingPageComponent implements OnInit {
 
   currency: string = 'USD';
 
+  disabled: boolean = false;
+
   public show: boolean = true;
 
   public type: string = 'component';
