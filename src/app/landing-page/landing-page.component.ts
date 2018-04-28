@@ -18,6 +18,8 @@ export class LandingPageComponent implements OnInit {
 
   slideIndex: number = 0;
 
+  currency: string = 'USD';
+
   public show: boolean = true;
 
   public type: string = 'component';
