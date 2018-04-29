@@ -13,6 +13,8 @@ export class LandingSlideComponent implements OnInit {
 
   slideIndex: number = 0;
 
+  disabled: boolean = false;
+
   public slides = [{
     slideImage: 'https://media.socialcommer.com/source/web/pic/landing-group-20180426.png',
     image: 'https://media.socialcommer.com/source/web/pic/landing-group2-20180426.png',
