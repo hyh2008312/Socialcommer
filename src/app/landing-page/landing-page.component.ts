@@ -85,9 +85,7 @@ export class LandingPageComponent implements OnInit {
     });
   }
 
-  public onIndexChange1(index: number): void {
-    console.log(index)
-  }
+  public onIndexChange1(index: number): void {}
 
   getProductList() {
     this.landingPageService.getProductList().then((data) => {
