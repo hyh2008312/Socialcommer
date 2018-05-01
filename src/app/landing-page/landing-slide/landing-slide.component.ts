@@ -23,14 +23,6 @@ export class LandingSlideComponent implements OnInit {
     avatar: 'https://media.socialcommer.com/image/other/b035babd-1171-4235-a4fa-464645568919.jpg',
     name: 'Maria Brural',
     url: 'https://www.socialcommer.com/store/maryamhampton/6'
-  },{
-    slideImage: 'https://media.socialcommer.com/source/web/pic/landing-group-20180426.png',
-    image: 'https://media.socialcommer.com/source/web/pic/landing-group2-20180426.png',
-    title: 'Maryam Hampton\'s Collections',
-    content: 'Make your life look way more glamorous than it really is',
-    avatar: 'https://media.socialcommer.com/image/other/b035babd-1171-4235-a4fa-464645568919.jpg',
-    name: 'Maria Brural',
-    url: 'https://www.socialcommer.com/store/maryamhampton/6'
   }];
 
   public config: SwiperConfigInterface = {
