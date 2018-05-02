@@ -323,10 +323,11 @@ export class MainPageComponent implements OnInit {
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
           self.userService.addStore(data);
+          if (self.isGuide) {
+            self.openGuideDialog(`${self.store.displayName}`);
+          }
         });
-        if (self.isGuide) {
-          self.openGuideDialog(`${self.store.displayName}`);
-        } else {
+        if (!self.isGuide) {
           self.openDialog(`${self.store.displayName}`);
           self.router.navigate(['/shop/dashboard']);
         }
@@ -362,10 +363,11 @@ export class MainPageComponent implements OnInit {
         }).then((data) => {
           self.shopService.setTemplateList(self.templateList);
           self.userService.addStore(data);
+          if (self.isGuide) {
+            self.openGuideDialog(`${self.store.displayName}`);
+          }
         });
-        if (self.isGuide) {
-          self.openGuideDialog(`${self.store.displayName}`);
-        } else {
+        if (!self.isGuide) {
           self.openDialog(`${self.store.displayName}`);
           self.router.navigate(['/shop/dashboard']);
         }
