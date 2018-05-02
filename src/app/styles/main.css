@@ -3931,37 +3931,209 @@ a.xb2-nostyle-link {
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
     display: none; } }
-.animation-height-hide {
-  -webkit-animation: height-hide 0.2s linear 0s 1 normal;
-  -moz-animation: height-hide 0.2s linear 0s 1 normal;
-  -ms-animation: height-hide 0.2s linear 0s 1 normal;
-  -o-animation: height-hide 0.2s linear 0s 1 normal;
-  animation: height-hide 0.2s linear 0s 1 normal; }
-@-webkit-keyframes height-hide {
+.animation-transform-auto {
+  -webkit-animation: transform-auto 0.8s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal;
+  -moz-animation: transform-auto 0.8s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal;
+  -ms-animation: transform-auto 0.8s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal;
+  -o-animation: transform-auto 0.8s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal;
+  animation: transform-auto 0.8s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal; }
+@-webkit-keyframes transform-auto {
   0% {
-    height: 56px; }
+    opacity: 1; }
+  20% {
+    opacity: 0; }
   100% {
-    height: 0; } }
-@-moz-keyframes height-hide {
+    opacity: 1; } }
+@-moz-keyframes transform-auto {
   0% {
-    height: 56px; }
+    opacity: 1; }
+  20% {
+    opacity: 0; }
   100% {
-    height: 0; } }
-@-ms-keyframes height-hide {
+    opacity: 1; } }
+@-ms-keyframes transform-auto {
   0% {
-    height: 56px; }
+    opacity: 1; }
+  20% {
+    opacity: 0; }
   100% {
-    height: 0; } }
-@-o-keyframes height-hide {
+    opacity: 1; } }
+@-o-keyframes transform-auto {
   0% {
-    height: 56px; }
+    opacity: 1; }
+  20% {
+    opacity: 0; }
   100% {
-    height: 0; } }
-@keyframes height-hide {
+    opacity: 1; } }
+@keyframes transform-auto {
   0% {
-    height: 56px; }
+    opacity: 1; }
+  20% {
+    opacity: 0; }
   100% {
-    height: 0; } }
+    opacity: 1; } }
+.animation-transform-auto-1 {
+  -webkit-animation: transform-auto-1 0.5s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal;
+  -moz-animation: transform-auto-1 0.5s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal;
+  -ms-animation: transform-auto-1 0.5s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal;
+  -o-animation: transform-auto-1 0.5s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal;
+  animation: transform-auto-1 0.5s cubic-bezier(1, 0.5, 0.45, 1) 0s 1 normal; }
+@-webkit-keyframes transform-auto-1 {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-moz-keyframes transform-auto-1 {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-ms-keyframes transform-auto-1 {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-o-keyframes transform-auto-1 {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes transform-auto-1 {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+.animation-background-position {
+  -webkit-animation: background-position-scroll 20s cubic-bezier(1, 0.8, 0.8, 1) 0.5s infinite alternate;
+  -moz-animation: background-position-scroll 20s cubic-bezier(1, 0.8, 0.8, 1) 0.5s infinite alternate;
+  -ms-animation: background-position-scroll 20s cubic-bezier(1, 0.8, 0.8, 1) 0.5s infinite alternate;
+  -o-animation: background-position-scroll 20s cubic-bezier(1, 0.8, 0.8, 1) 0.5s infinite alternate;
+  animation: background-position-scroll 20s cubic-bezier(1, 0.8, 0.8, 1) 0.5s infinite alternate; }
+@-webkit-keyframes background-position-scroll {
+  0% {
+    background-position-y: 0; }
+  15% {
+    background-position-y: 0; }
+  20% {
+    background-position-y: -150px; }
+  35% {
+    background-position-y: -150px; }
+  40% {
+    background-position-y: -300px; }
+  55% {
+    background-position-y: -300px; }
+  60% {
+    background-position-y: -450px; }
+  75% {
+    background-position-y: -450px; }
+  80% {
+    background-position-y: -600px; }
+  95% {
+    background-position-y: -600px; }
+  100% {
+    background-position-y: -750px; } }
+@-moz-keyframes background-position-scroll {
+  0% {
+    background-position-y: 0; }
+  15% {
+    background-position-y: 0; }
+  20% {
+    background-position-y: -150px; }
+  35% {
+    background-position-y: -150px; }
+  40% {
+    background-position-y: -300px; }
+  55% {
+    background-position-y: -300px; }
+  60% {
+    background-position-y: -450px; }
+  75% {
+    background-position-y: -450px; }
+  80% {
+    background-position-y: -600px; }
+  95% {
+    background-position-y: -600px; }
+  100% {
+    background-position-y: -750px; } }
+@-ms-keyframes background-position-scroll {
+  0% {
+    background-position-y: 0; }
+  15% {
+    background-position-y: 0; }
+  20% {
+    background-position-y: -150px; }
+  35% {
+    background-position-y: -150px; }
+  40% {
+    background-position-y: -300px; }
+  55% {
+    background-position-y: -300px; }
+  60% {
+    background-position-y: -450px; }
+  75% {
+    background-position-y: -450px; }
+  80% {
+    background-position-y: -600px; }
+  95% {
+    background-position-y: -600px; }
+  100% {
+    background-position-y: -750px; } }
+@-o-keyframes background-position-scroll {
+  0% {
+    background-position-y: 0; }
+  15% {
+    background-position-y: 0; }
+  20% {
+    background-position-y: -150px; }
+  35% {
+    background-position-y: -150px; }
+  40% {
+    background-position-y: -300px; }
+  55% {
+    background-position-y: -300px; }
+  60% {
+    background-position-y: -450px; }
+  75% {
+    background-position-y: -450px; }
+  80% {
+    background-position-y: -600px; }
+  95% {
+    background-position-y: -600px; }
+  100% {
+    background-position-y: -750px; } }
+@keyframes background-position-scroll {
+  0% {
+    background-position-y: 0; }
+  15% {
+    background-position-y: 0; }
+  20% {
+    background-position-y: -150px; }
+  35% {
+    background-position-y: -150px; }
+  40% {
+    background-position-y: -300px; }
+  55% {
+    background-position-y: -300px; }
+  60% {
+    background-position-y: -450px; }
+  75% {
+    background-position-y: -450px; }
+  80% {
+    background-position-y: -600px; }
+  95% {
+    background-position-y: -600px; }
+  100% {
+    background-position-y: -750px; } }
 .animation-height-show {
   -webkit-animation: height-show 0.2s linear 0s 1 normal;
   -moz-animation: height-show 0.2s linear 0s 1 normal;

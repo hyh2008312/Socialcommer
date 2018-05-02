@@ -7,6 +7,7 @@ import {PrivacyComponent} from './privacy/privacy.component';
 import {FaqsComponent} from './faqs/faqs.component';
 import {TermsComponent} from './terms/terms.component';
 import {UsePolicyComponent} from './use-policy/use-policy.component';
+import {LandingSlideComponent} from './landing-slide/landing-slide.component';
 
 import {LandingPageService} from './landing-page.service';
 
@@ -23,7 +24,8 @@ import {LandingPageService} from './landing-page.service';
     PrivacyComponent,
     FaqsComponent,
     TermsComponent,
-    UsePolicyComponent
+    UsePolicyComponent,
+    LandingSlideComponent
   ],
   entryComponents: [],
   providers: [

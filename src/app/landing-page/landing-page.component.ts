@@ -16,8 +16,6 @@ import {
 
 export class LandingPageComponent implements OnInit {
 
-  slideIndex: number = 0;
-
   currency: string = 'USD';
 
   disabled: boolean = false;
@@ -26,34 +24,7 @@ export class LandingPageComponent implements OnInit {
 
   public type: string = 'component';
 
-  public slides = [{
-    slideImage: 'https://media.socialcommer.com/source/web/pic/landing-group-20180426.png',
-    image: 'https://media.socialcommer.com/source/web/pic/landing-group2-20180426.png',
-    title: 'Maryam Hampton\'s Collections',
-    content: 'Make your life look way more glamorous than it really is',
-    avatar: 'https://media.socialcommer.com/image/other/b035babd-1171-4235-a4fa-464645568919.jpg',
-    name: 'Maria Brural',
-    url: 'https://www.socialcommer.com/store/maryamhampton/6'
-  }];
-
   public slides1:any;
-
-  loaded: boolean = false;
-
-  public config: SwiperConfigInterface = {
-    direction: 'horizontal',
-    slidesPerView: 1,
-    speed: 800,
-    loop: true,
-    autoplay: {
-      delay: 10000
-    },
-    keyboard: true,
-    mousewheel: true,
-    scrollbar: false,
-    navigation: false,
-    pagination: false
-  };
 
   public config1: SwiperConfigInterface = {
     observer: true,
@@ -80,7 +51,6 @@ export class LandingPageComponent implements OnInit {
       }
     }
   };
-
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -115,20 +85,7 @@ export class LandingPageComponent implements OnInit {
     });
   }
 
-  @ViewChild(SwiperComponent) componentRef: SwiperComponent;
-  @ViewChild(SwiperDirective) directiveRef: SwiperDirective;
-
-  public onIndexChange(index: number): void {
-    this.slideIndex = index;
-  }
-
-  changeIndex(index) {
-    this.slideIndex = index;
-    this.componentRef.directiveRef.setIndex(this.slideIndex);
-  }
-
-  public onIndexChange1(index: number): void {
-  }
+  public onIndexChange1(index: number): void {}
 
   getProductList() {
     this.landingPageService.getProductList().then((data) => {

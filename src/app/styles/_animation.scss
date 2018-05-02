@@ -46,11 +46,11 @@
 
 .animation-transform-auto{
 
-  @include prefixer(animation, height-hide .8s cubic-bezier(1,.5,.45,1) 0s 1 normal, $prefix-list);
+  @include prefixer(animation, transform-auto .8s cubic-bezier(1,.5,.45,1) 0s 1 normal, $prefix-list);
 
   @at-root {
 
-    @include prefix-keyframes(height-hide, $prefix-list) {
+    @include prefix-keyframes(transform-auto, $prefix-list) {
       0%   { opacity: 1;}
       20%  { opacity: 0;}
       100% { opacity: 1;}
@@ -60,11 +60,11 @@
 
 .animation-transform-auto-1{
 
-  @include prefixer(animation, height-hide .5s cubic-bezier(1,.5,.45,1) 0s 1 normal, $prefix-list);
+  @include prefixer(animation, transform-auto-1 .5s cubic-bezier(1,.5,.45,1) 0s 1 normal, $prefix-list);
 
   @at-root {
 
-    @include prefix-keyframes(height-hide, $prefix-list) {
+    @include prefix-keyframes(transform-auto-1, $prefix-list) {
       0%   { opacity: 1;}
       20%  { opacity: 0;}
       100% { opacity: 1;}
@@ -74,11 +74,11 @@
 
 .animation-background-position{
 
-  @include prefixer(animation, height-hide 20s cubic-bezier(1,.8,.8,1) 0.5s infinite alternate, $prefix-list);
+  @include prefixer(animation, background-position-scroll 20s cubic-bezier(1,.8,.8,1) 0.5s infinite alternate, $prefix-list);
 
   @at-root {
 
-    @include prefix-keyframes(height-hide, $prefix-list) {
+    @include prefix-keyframes(background-position-scroll, $prefix-list) {
       0%   { background-position-y: 0;}
       15%  { background-position-y: 0;}
       20%  { background-position-y: -150px;}
