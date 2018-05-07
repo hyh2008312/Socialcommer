@@ -74,7 +74,7 @@
           <div class="xb-store__details-margin-top" *ngFor="let item of variantList;let i = index;"
                fxLayout="row"
                fxLayout.xs="column" fxLayoutAlign="start start">
-            <div class="xb-store__details-left-part" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">
+            <div class="xb-store__details-left-part" fxFlex="none" [ngClass]="{'xb-store__details-margin-top-1':item.id == 2}">
               {{item.name}}
             </div>
             <div fxLayout="row wrap" fxLayoutAlign="start start">
