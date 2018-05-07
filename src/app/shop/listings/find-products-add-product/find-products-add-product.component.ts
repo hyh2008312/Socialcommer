@@ -102,7 +102,11 @@ export class FindProductsAddProductComponent implements OnInit, AfterViewInit {
           self.category = data.categories[0].name;
           self.salePrice = data.saleUnitPrice;
           self.originalPrice = data.unitPrice;
-          self.image = [...data.images];
+          if (data.images.length>5){
+            self.image = data.images.slice(0,5);
+          }else {
+            self.image = [...data.images];
+          }
           if (self.image.length > 0) {
             self.selectedImage = self.image[0];
             self.imageSources = [...data.images];
